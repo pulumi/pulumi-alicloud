@@ -55,6 +55,10 @@ namespace Pulumi.AliCloud.Oss.Outputs
         public readonly string Owner;
         public readonly string? Policy;
         /// <summary>
+        /// Redundancy type. Possible values: `LRS`, and `ZRS`.
+        /// </summary>
+        public readonly string RedundancyType;
+        /// <summary>
         /// A list of one element containing referer configuration. It contains the following attributes:
         /// </summary>
         public readonly Outputs.GetBucketsBucketRefererConfigResult RefererConfig;
@@ -103,6 +107,8 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             string? policy,
 
+            string redundancyType,
+
             Outputs.GetBucketsBucketRefererConfigResult refererConfig,
 
             Outputs.GetBucketsBucketServerSideEncryptionRuleResult serverSideEncryptionRule,
@@ -126,6 +132,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
             Name = name;
             Owner = owner;
             Policy = policy;
+            RedundancyType = redundancyType;
             RefererConfig = refererConfig;
             ServerSideEncryptionRule = serverSideEncryptionRule;
             StorageClass = storageClass;

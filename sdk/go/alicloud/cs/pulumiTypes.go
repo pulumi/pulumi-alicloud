@@ -782,6 +782,147 @@ func (o KubernetesMasterNodeArrayOutput) Index(i pulumi.IntInput) KubernetesMast
 	}).(KubernetesMasterNodeOutput)
 }
 
+type KubernetesWorkerDataDisk struct {
+	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
+	Category             *string `pulumi:"category"`
+	Device               *string `pulumi:"device"`
+	Encrypted            *string `pulumi:"encrypted"`
+	KmsKeyId             *string `pulumi:"kmsKeyId"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name       *string `pulumi:"name"`
+	Size       *string `pulumi:"size"`
+	SnapshotId *string `pulumi:"snapshotId"`
+}
+
+// KubernetesWorkerDataDiskInput is an input type that accepts KubernetesWorkerDataDiskArgs and KubernetesWorkerDataDiskOutput values.
+// You can construct a concrete instance of `KubernetesWorkerDataDiskInput` via:
+//
+// 		 KubernetesWorkerDataDiskArgs{...}
+//
+type KubernetesWorkerDataDiskInput interface {
+	pulumi.Input
+
+	ToKubernetesWorkerDataDiskOutput() KubernetesWorkerDataDiskOutput
+	ToKubernetesWorkerDataDiskOutputWithContext(context.Context) KubernetesWorkerDataDiskOutput
+}
+
+type KubernetesWorkerDataDiskArgs struct {
+	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
+	Category             pulumi.StringPtrInput `pulumi:"category"`
+	Device               pulumi.StringPtrInput `pulumi:"device"`
+	Encrypted            pulumi.StringPtrInput `pulumi:"encrypted"`
+	KmsKeyId             pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Size       pulumi.StringPtrInput `pulumi:"size"`
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+}
+
+func (KubernetesWorkerDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (i KubernetesWorkerDataDiskArgs) ToKubernetesWorkerDataDiskOutput() KubernetesWorkerDataDiskOutput {
+	return i.ToKubernetesWorkerDataDiskOutputWithContext(context.Background())
+}
+
+func (i KubernetesWorkerDataDiskArgs) ToKubernetesWorkerDataDiskOutputWithContext(ctx context.Context) KubernetesWorkerDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesWorkerDataDiskOutput)
+}
+
+// KubernetesWorkerDataDiskArrayInput is an input type that accepts KubernetesWorkerDataDiskArray and KubernetesWorkerDataDiskArrayOutput values.
+// You can construct a concrete instance of `KubernetesWorkerDataDiskArrayInput` via:
+//
+// 		 KubernetesWorkerDataDiskArray{ KubernetesWorkerDataDiskArgs{...} }
+//
+type KubernetesWorkerDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesWorkerDataDiskArrayOutput() KubernetesWorkerDataDiskArrayOutput
+	ToKubernetesWorkerDataDiskArrayOutputWithContext(context.Context) KubernetesWorkerDataDiskArrayOutput
+}
+
+type KubernetesWorkerDataDiskArray []KubernetesWorkerDataDiskInput
+
+func (KubernetesWorkerDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (i KubernetesWorkerDataDiskArray) ToKubernetesWorkerDataDiskArrayOutput() KubernetesWorkerDataDiskArrayOutput {
+	return i.ToKubernetesWorkerDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesWorkerDataDiskArray) ToKubernetesWorkerDataDiskArrayOutputWithContext(ctx context.Context) KubernetesWorkerDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesWorkerDataDiskArrayOutput)
+}
+
+type KubernetesWorkerDataDiskOutput struct{ *pulumi.OutputState }
+
+func (KubernetesWorkerDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (o KubernetesWorkerDataDiskOutput) ToKubernetesWorkerDataDiskOutput() KubernetesWorkerDataDiskOutput {
+	return o
+}
+
+func (o KubernetesWorkerDataDiskOutput) ToKubernetesWorkerDataDiskOutputWithContext(ctx context.Context) KubernetesWorkerDataDiskOutput {
+	return o
+}
+
+func (o KubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesWorkerDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o KubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesWorkerDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+type KubernetesWorkerDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesWorkerDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (o KubernetesWorkerDataDiskArrayOutput) ToKubernetesWorkerDataDiskArrayOutput() KubernetesWorkerDataDiskArrayOutput {
+	return o
+}
+
+func (o KubernetesWorkerDataDiskArrayOutput) ToKubernetesWorkerDataDiskArrayOutputWithContext(ctx context.Context) KubernetesWorkerDataDiskArrayOutput {
+	return o
+}
+
+func (o KubernetesWorkerDataDiskArrayOutput) Index(i pulumi.IntInput) KubernetesWorkerDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesWorkerDataDisk {
+		return vs[0].([]KubernetesWorkerDataDisk)[vs[1].(int)]
+	}).(KubernetesWorkerDataDiskOutput)
+}
+
 type KubernetesWorkerNode struct {
 	// ID of the node.
 	Id *string `pulumi:"id"`
@@ -1196,6 +1337,147 @@ func (o ManagedKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedKubernetesWorkerDataDisk struct {
+	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
+	Category             *string `pulumi:"category"`
+	Device               *string `pulumi:"device"`
+	Encrypted            *string `pulumi:"encrypted"`
+	KmsKeyId             *string `pulumi:"kmsKeyId"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name       *string `pulumi:"name"`
+	Size       *string `pulumi:"size"`
+	SnapshotId *string `pulumi:"snapshotId"`
+}
+
+// ManagedKubernetesWorkerDataDiskInput is an input type that accepts ManagedKubernetesWorkerDataDiskArgs and ManagedKubernetesWorkerDataDiskOutput values.
+// You can construct a concrete instance of `ManagedKubernetesWorkerDataDiskInput` via:
+//
+// 		 ManagedKubernetesWorkerDataDiskArgs{...}
+//
+type ManagedKubernetesWorkerDataDiskInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesWorkerDataDiskOutput() ManagedKubernetesWorkerDataDiskOutput
+	ToManagedKubernetesWorkerDataDiskOutputWithContext(context.Context) ManagedKubernetesWorkerDataDiskOutput
+}
+
+type ManagedKubernetesWorkerDataDiskArgs struct {
+	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
+	Category             pulumi.StringPtrInput `pulumi:"category"`
+	Device               pulumi.StringPtrInput `pulumi:"device"`
+	Encrypted            pulumi.StringPtrInput `pulumi:"encrypted"`
+	KmsKeyId             pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Size       pulumi.StringPtrInput `pulumi:"size"`
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+}
+
+func (ManagedKubernetesWorkerDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (i ManagedKubernetesWorkerDataDiskArgs) ToManagedKubernetesWorkerDataDiskOutput() ManagedKubernetesWorkerDataDiskOutput {
+	return i.ToManagedKubernetesWorkerDataDiskOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesWorkerDataDiskArgs) ToManagedKubernetesWorkerDataDiskOutputWithContext(ctx context.Context) ManagedKubernetesWorkerDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesWorkerDataDiskOutput)
+}
+
+// ManagedKubernetesWorkerDataDiskArrayInput is an input type that accepts ManagedKubernetesWorkerDataDiskArray and ManagedKubernetesWorkerDataDiskArrayOutput values.
+// You can construct a concrete instance of `ManagedKubernetesWorkerDataDiskArrayInput` via:
+//
+// 		 ManagedKubernetesWorkerDataDiskArray{ ManagedKubernetesWorkerDataDiskArgs{...} }
+//
+type ManagedKubernetesWorkerDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesWorkerDataDiskArrayOutput() ManagedKubernetesWorkerDataDiskArrayOutput
+	ToManagedKubernetesWorkerDataDiskArrayOutputWithContext(context.Context) ManagedKubernetesWorkerDataDiskArrayOutput
+}
+
+type ManagedKubernetesWorkerDataDiskArray []ManagedKubernetesWorkerDataDiskInput
+
+func (ManagedKubernetesWorkerDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (i ManagedKubernetesWorkerDataDiskArray) ToManagedKubernetesWorkerDataDiskArrayOutput() ManagedKubernetesWorkerDataDiskArrayOutput {
+	return i.ToManagedKubernetesWorkerDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesWorkerDataDiskArray) ToManagedKubernetesWorkerDataDiskArrayOutputWithContext(ctx context.Context) ManagedKubernetesWorkerDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesWorkerDataDiskArrayOutput)
+}
+
+type ManagedKubernetesWorkerDataDiskOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesWorkerDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (o ManagedKubernetesWorkerDataDiskOutput) ToManagedKubernetesWorkerDataDiskOutput() ManagedKubernetesWorkerDataDiskOutput {
+	return o
+}
+
+func (o ManagedKubernetesWorkerDataDiskOutput) ToManagedKubernetesWorkerDataDiskOutputWithContext(ctx context.Context) ManagedKubernetesWorkerDataDiskOutput {
+	return o
+}
+
+func (o ManagedKubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedKubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedKubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedKubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedKubernetesWorkerDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o ManagedKubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedKubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedKubernetesWorkerDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesWorkerDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesWorkerDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (o ManagedKubernetesWorkerDataDiskArrayOutput) ToManagedKubernetesWorkerDataDiskArrayOutput() ManagedKubernetesWorkerDataDiskArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesWorkerDataDiskArrayOutput) ToManagedKubernetesWorkerDataDiskArrayOutputWithContext(ctx context.Context) ManagedKubernetesWorkerDataDiskArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesWorkerDataDiskArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesWorkerDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesWorkerDataDisk {
+		return vs[0].([]ManagedKubernetesWorkerDataDisk)[vs[1].(int)]
+	}).(ManagedKubernetesWorkerDataDiskOutput)
+}
+
 type ManagedKubernetesWorkerNode struct {
 	// ID of the node.
 	Id *string `pulumi:"id"`
@@ -1311,6 +1593,117 @@ func (o ManagedKubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) Managed
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesWorkerNode {
 		return vs[0].([]ManagedKubernetesWorkerNode)[vs[1].(int)]
 	}).(ManagedKubernetesWorkerNodeOutput)
+}
+
+type ServerlessKubernetesAddon struct {
+	Config   *string `pulumi:"config"`
+	Disabled *bool   `pulumi:"disabled"`
+	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	Name *string `pulumi:"name"`
+}
+
+// ServerlessKubernetesAddonInput is an input type that accepts ServerlessKubernetesAddonArgs and ServerlessKubernetesAddonOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesAddonInput` via:
+//
+// 		 ServerlessKubernetesAddonArgs{...}
+//
+type ServerlessKubernetesAddonInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesAddonOutput() ServerlessKubernetesAddonOutput
+	ToServerlessKubernetesAddonOutputWithContext(context.Context) ServerlessKubernetesAddonOutput
+}
+
+type ServerlessKubernetesAddonArgs struct {
+	Config   pulumi.StringPtrInput `pulumi:"config"`
+	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
+	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ServerlessKubernetesAddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesAddon)(nil)).Elem()
+}
+
+func (i ServerlessKubernetesAddonArgs) ToServerlessKubernetesAddonOutput() ServerlessKubernetesAddonOutput {
+	return i.ToServerlessKubernetesAddonOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesAddonArgs) ToServerlessKubernetesAddonOutputWithContext(ctx context.Context) ServerlessKubernetesAddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesAddonOutput)
+}
+
+// ServerlessKubernetesAddonArrayInput is an input type that accepts ServerlessKubernetesAddonArray and ServerlessKubernetesAddonArrayOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesAddonArrayInput` via:
+//
+// 		 ServerlessKubernetesAddonArray{ ServerlessKubernetesAddonArgs{...} }
+//
+type ServerlessKubernetesAddonArrayInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesAddonArrayOutput() ServerlessKubernetesAddonArrayOutput
+	ToServerlessKubernetesAddonArrayOutputWithContext(context.Context) ServerlessKubernetesAddonArrayOutput
+}
+
+type ServerlessKubernetesAddonArray []ServerlessKubernetesAddonInput
+
+func (ServerlessKubernetesAddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerlessKubernetesAddon)(nil)).Elem()
+}
+
+func (i ServerlessKubernetesAddonArray) ToServerlessKubernetesAddonArrayOutput() ServerlessKubernetesAddonArrayOutput {
+	return i.ToServerlessKubernetesAddonArrayOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesAddonArray) ToServerlessKubernetesAddonArrayOutputWithContext(ctx context.Context) ServerlessKubernetesAddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesAddonArrayOutput)
+}
+
+type ServerlessKubernetesAddonOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesAddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesAddon)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesAddonOutput) ToServerlessKubernetesAddonOutput() ServerlessKubernetesAddonOutput {
+	return o
+}
+
+func (o ServerlessKubernetesAddonOutput) ToServerlessKubernetesAddonOutputWithContext(ctx context.Context) ServerlessKubernetesAddonOutput {
+	return o
+}
+
+func (o ServerlessKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
+}
+
+func (o ServerlessKubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesAddon) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The kubernetes cluster's name. It is the only in one Alicloud account.
+func (o ServerlessKubernetesAddonOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ServerlessKubernetesAddonArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesAddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerlessKubernetesAddon)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesAddonArrayOutput) ToServerlessKubernetesAddonArrayOutput() ServerlessKubernetesAddonArrayOutput {
+	return o
+}
+
+func (o ServerlessKubernetesAddonArrayOutput) ToServerlessKubernetesAddonArrayOutputWithContext(ctx context.Context) ServerlessKubernetesAddonArrayOutput {
+	return o
+}
+
+func (o ServerlessKubernetesAddonArrayOutput) Index(i pulumi.IntInput) ServerlessKubernetesAddonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerlessKubernetesAddon {
+		return vs[0].([]ServerlessKubernetesAddon)[vs[1].(int)]
+	}).(ServerlessKubernetesAddonOutput)
 }
 
 type SwarmNode struct {
@@ -3714,14 +4107,20 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesConnectionsPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesWorkerDataDiskOutput{})
+	pulumi.RegisterOutputType(KubernetesWorkerDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesWorkerNodeOutput{})
 	pulumi.RegisterOutputType(KubernetesWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesWorkerDataDiskOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesWorkerDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesWorkerNodeOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesWorkerNodeArrayOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesAddonOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(SwarmNodeOutput{})
 	pulumi.RegisterOutputType(SwarmNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterOutput{})

@@ -13,6 +13,7 @@ import (
 type ServerlessKubernetes struct {
 	pulumi.CustomResourceState
 
+	Addons ServerlessKubernetesAddonArrayOutput `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
 	// The path of client key, like `~/.kube/client-key.pem`.
@@ -36,14 +37,18 @@ type ServerlessKubernetes struct {
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone pulumi.BoolPtrOutput `pulumi:"privateZone"`
-	// The ID of security group where the current cluster worker node is located.
+	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
+	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
+	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	// The vswitches where new kubernetes cluster will be located.
+	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 }
 
 // NewServerlessKubernetes registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +56,6 @@ func NewServerlessKubernetes(ctx *pulumi.Context,
 	name string, args *ServerlessKubernetesArgs, opts ...pulumi.ResourceOption) (*ServerlessKubernetes, error) {
 	if args == nil || args.VpcId == nil {
 		return nil, errors.New("missing required argument 'VpcId'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
 	}
 	if args == nil {
 		args = &ServerlessKubernetesArgs{}
@@ -80,6 +82,7 @@ func GetServerlessKubernetes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerlessKubernetes resources.
 type serverlessKubernetesState struct {
+	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
 	// The path of client key, like `~/.kube/client-key.pem`.
@@ -103,17 +106,22 @@ type serverlessKubernetesState struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone *bool `pulumi:"privateZone"`
-	// The ID of security group where the current cluster worker node is located.
+	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId *string `pulumi:"vpcId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId *string `pulumi:"vswitchId"`
+	// The vswitches where new kubernetes cluster will be located.
+	VswitchIds []string `pulumi:"vswitchIds"`
 }
 
 type ServerlessKubernetesState struct {
+	Addons ServerlessKubernetesAddonArrayInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
 	// The path of client key, like `~/.kube/client-key.pem`.
@@ -137,14 +145,18 @@ type ServerlessKubernetesState struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone pulumi.BoolPtrInput
-	// The ID of security group where the current cluster worker node is located.
+	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags pulumi.MapInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringPtrInput
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId pulumi.StringPtrInput
+	// The vswitches where new kubernetes cluster will be located.
+	VswitchIds pulumi.StringArrayInput
 }
 
 func (ServerlessKubernetesState) ElementType() reflect.Type {
@@ -152,6 +164,7 @@ func (ServerlessKubernetesState) ElementType() reflect.Type {
 }
 
 type serverlessKubernetesArgs struct {
+	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
 	// The path of client key, like `~/.kube/client-key.pem`.
@@ -175,16 +188,23 @@ type serverlessKubernetesArgs struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone *bool `pulumi:"privateZone"`
+	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId string `pulumi:"vpcId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	VswitchId string `pulumi:"vswitchId"`
+	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
+	VswitchId *string `pulumi:"vswitchId"`
+	// The vswitches where new kubernetes cluster will be located.
+	VswitchIds []string `pulumi:"vswitchIds"`
 }
 
 // The set of arguments for constructing a ServerlessKubernetes resource.
 type ServerlessKubernetesArgs struct {
+	Addons ServerlessKubernetesAddonArrayInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
 	// The path of client key, like `~/.kube/client-key.pem`.
@@ -208,12 +228,18 @@ type ServerlessKubernetesArgs struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone pulumi.BoolPtrInput
+	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+	SecurityGroupId pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags pulumi.MapInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringInput
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	VswitchId pulumi.StringInput
+	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
+	VswitchId pulumi.StringPtrInput
+	// The vswitches where new kubernetes cluster will be located.
+	VswitchIds pulumi.StringArrayInput
 }
 
 func (ServerlessKubernetesArgs) ElementType() reflect.Type {

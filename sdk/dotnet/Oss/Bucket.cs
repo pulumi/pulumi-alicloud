@@ -13,29 +13,6 @@ namespace Pulumi.AliCloud.Oss
     /// Provides a resource to create a oss bucket and set its attribution.
     /// 
     /// &gt; **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
-    /// 
-    /// 
-    /// ## Example Usage
-    /// 
-    /// 
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bucket_acl = new AliCloud.Oss.Bucket("bucket-acl", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///             Bucket = "bucket-170309-acl",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Bucket : Pulumi.CustomResource
     {
@@ -113,6 +90,12 @@ namespace Pulumi.AliCloud.Oss
         /// </summary>
         [Output("policy")]
         public Output<string?> Policy { get; private set; } = null!;
+
+        /// <summary>
+        /// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+        /// </summary>
+        [Output("redundancyType")]
+        public Output<string?> RedundancyType { get; private set; } = null!;
 
         /// <summary>
         /// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
@@ -254,6 +237,12 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? Policy { get; set; }
 
         /// <summary>
+        /// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+        /// </summary>
+        [Input("redundancyType")]
+        public Input<string>? RedundancyType { get; set; }
+
+        /// <summary>
         /// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
         /// </summary>
         [Input("refererConfig")]
@@ -388,6 +377,12 @@ namespace Pulumi.AliCloud.Oss
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
+
+        /// <summary>
+        /// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+        /// </summary>
+        [Input("redundancyType")]
+        public Input<string>? RedundancyType { get; set; }
 
         /// <summary>
         /// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).

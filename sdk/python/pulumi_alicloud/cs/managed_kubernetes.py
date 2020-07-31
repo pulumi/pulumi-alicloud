@@ -11,6 +11,10 @@ from .. import utilities, tables
 
 class ManagedKubernetes(pulumi.CustomResource):
     addons: pulumi.Output[list]
+    api_audiences: pulumi.Output[list]
+    """
+    A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+    """
     availability_zone: pulumi.Output[str]
     """
     The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
@@ -55,6 +59,10 @@ class ManagedKubernetes(pulumi.CustomResource):
     install_cloud_monitor: pulumi.Output[bool]
     """
     Install cloud monitor agent on ECS. default: true 
+    """
+    is_enterprise_security_group: pulumi.Output[bool]
+    """
+    Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
     """
     key_name: pulumi.Output[str]
     """
@@ -111,7 +119,11 @@ class ManagedKubernetes(pulumi.CustomResource):
     """
     security_group_id: pulumi.Output[str]
     """
-    The ID of security group where the current cluster worker node is located.
+    The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+    """
+    service_account_issuer: pulumi.Output[str]
+    """
+    The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
     """
     service_cidr: pulumi.Output[str]
     """
@@ -153,6 +165,25 @@ class ManagedKubernetes(pulumi.CustomResource):
     """
     worker_data_disk_category: pulumi.Output[str]
     worker_data_disk_size: pulumi.Output[float]
+    worker_data_disks: pulumi.Output[list]
+    """
+    The data disk configurations of worker nodes, such as the disk type and disk size. 
+    - category: the type of the data disks. Valid values:
+    + cloud: basic disks.
+    + cloud_efficiency: ultra disks.
+    + cloud_ssd: SSDs.
+    - size: the size of a data disk. Unit: GiB.
+    - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+
+      * `autoSnapshotPolicyId` (`str`)
+      * `category` (`str`)
+      * `device` (`str`)
+      * `encrypted` (`str`)
+      * `kms_key_id` (`str`)
+      * `name` (`str`) - The kubernetes cluster's name. It is unique in one Alicloud account.
+      * `size` (`str`)
+      * `snapshot_id` (`str`)
+    """
     worker_disk_category: pulumi.Output[str]
     """
     The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -194,11 +225,12 @@ class ManagedKubernetes(pulumi.CustomResource):
     The RamRole Name attached to worker node.
     """
     worker_vswitch_ids: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, addons=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, cpu_policy=None, enable_ssh=None, exclude_autoscaler_nodes=None, image_id=None, install_cloud_monitor=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, node_cidr_mask=None, node_name_mode=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, security_group_id=None, service_cidr=None, slb_internet_enabled=None, user_ca=None, user_data=None, version=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_vswitch_ids=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, addons=None, api_audiences=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, cpu_policy=None, enable_ssh=None, exclude_autoscaler_nodes=None, image_id=None, install_cloud_monitor=None, is_enterprise_security_group=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, node_cidr_mask=None, node_name_mode=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, security_group_id=None, service_account_issuer=None, service_cidr=None, slb_internet_enabled=None, user_ca=None, user_data=None, version=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_data_disks=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_vswitch_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ManagedKubernetes resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
@@ -208,6 +240,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. default: false 
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: true 
+        :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[dict] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -220,7 +253,8 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel. 
         :param pulumi.Input[list] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-        :param pulumi.Input[str] security_group_id: The ID of security group where the current cluster worker node is located.
+        :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+        :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -228,6 +262,13 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
         :param pulumi.Input[float] worker_auto_renew_period: Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+        :param pulumi.Input[list] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. 
+               - category: the type of the data disks. Valid values:
+               + cloud: basic disks.
+               + cloud_efficiency: ultra disks.
+               + cloud_ssd: SSDs.
+               - size: the size of a data disk. Unit: GiB.
+               - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[float] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
@@ -241,6 +282,17 @@ class ManagedKubernetes(pulumi.CustomResource):
           * `config` (`pulumi.Input[str]`)
           * `disabled` (`pulumi.Input[bool]`)
           * `name` (`pulumi.Input[str]`) - The kubernetes cluster's name. It is unique in one Alicloud account.
+
+        The **worker_data_disks** object supports the following:
+
+          * `autoSnapshotPolicyId` (`pulumi.Input[str]`)
+          * `category` (`pulumi.Input[str]`)
+          * `device` (`pulumi.Input[str]`)
+          * `encrypted` (`pulumi.Input[str]`)
+          * `kms_key_id` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - The kubernetes cluster's name. It is unique in one Alicloud account.
+          * `size` (`pulumi.Input[str]`)
+          * `snapshot_id` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -260,6 +312,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['addons'] = addons
+            __props__['api_audiences'] = api_audiences
             __props__['availability_zone'] = availability_zone
             __props__['client_cert'] = client_cert
             __props__['client_key'] = client_key
@@ -269,6 +322,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['exclude_autoscaler_nodes'] = exclude_autoscaler_nodes
             __props__['image_id'] = image_id
             __props__['install_cloud_monitor'] = install_cloud_monitor
+            __props__['is_enterprise_security_group'] = is_enterprise_security_group
             __props__['key_name'] = key_name
             __props__['kms_encrypted_password'] = kms_encrypted_password
             __props__['kms_encryption_context'] = kms_encryption_context
@@ -283,6 +337,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['pod_vswitch_ids'] = pod_vswitch_ids
             __props__['proxy_mode'] = proxy_mode
             __props__['security_group_id'] = security_group_id
+            __props__['service_account_issuer'] = service_account_issuer
             __props__['service_cidr'] = service_cidr
             __props__['slb_internet_enabled'] = slb_internet_enabled
             __props__['user_ca'] = user_ca
@@ -292,6 +347,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['worker_auto_renew_period'] = worker_auto_renew_period
             __props__['worker_data_disk_category'] = worker_data_disk_category
             __props__['worker_data_disk_size'] = worker_data_disk_size
+            __props__['worker_data_disks'] = worker_data_disks
             __props__['worker_disk_category'] = worker_disk_category
             __props__['worker_disk_size'] = worker_disk_size
             __props__['worker_instance_charge_type'] = worker_instance_charge_type
@@ -321,7 +377,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, addons=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, connections=None, cpu_policy=None, enable_ssh=None, exclude_autoscaler_nodes=None, image_id=None, install_cloud_monitor=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, nat_gateway_id=None, new_nat_gateway=None, node_cidr_mask=None, node_name_mode=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, security_group_id=None, service_cidr=None, slb_id=None, slb_internet=None, slb_internet_enabled=None, slb_intranet=None, user_ca=None, user_data=None, version=None, vpc_id=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_nodes=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_ram_role_name=None, worker_vswitch_ids=None):
+    def get(resource_name, id, opts=None, addons=None, api_audiences=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, connections=None, cpu_policy=None, enable_ssh=None, exclude_autoscaler_nodes=None, image_id=None, install_cloud_monitor=None, is_enterprise_security_group=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, nat_gateway_id=None, new_nat_gateway=None, node_cidr_mask=None, node_name_mode=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, security_group_id=None, service_account_issuer=None, service_cidr=None, slb_id=None, slb_internet=None, slb_internet_enabled=None, slb_intranet=None, user_ca=None, user_data=None, version=None, vpc_id=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_data_disks=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_nodes=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_ram_role_name=None, worker_vswitch_ids=None):
         """
         Get an existing ManagedKubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -329,6 +385,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
@@ -339,6 +396,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. default: false 
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: true 
+        :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[dict] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -352,7 +410,8 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel. 
         :param pulumi.Input[list] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-        :param pulumi.Input[str] security_group_id: The ID of security group where the current cluster worker node is located.
+        :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+        :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
@@ -362,6 +421,13 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
         :param pulumi.Input[float] worker_auto_renew_period: Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+        :param pulumi.Input[list] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. 
+               - category: the type of the data disks. Valid values:
+               + cloud: basic disks.
+               + cloud_efficiency: ultra disks.
+               + cloud_ssd: SSDs.
+               - size: the size of a data disk. Unit: GiB.
+               - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[float] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
@@ -385,6 +451,17 @@ class ManagedKubernetes(pulumi.CustomResource):
           * `master_public_ip` (`pulumi.Input[str]`)
           * `service_domain` (`pulumi.Input[str]`) - Service Access Domain.
 
+        The **worker_data_disks** object supports the following:
+
+          * `autoSnapshotPolicyId` (`pulumi.Input[str]`)
+          * `category` (`pulumi.Input[str]`)
+          * `device` (`pulumi.Input[str]`)
+          * `encrypted` (`pulumi.Input[str]`)
+          * `kms_key_id` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - The kubernetes cluster's name. It is unique in one Alicloud account.
+          * `size` (`pulumi.Input[str]`)
+          * `snapshot_id` (`pulumi.Input[str]`)
+
         The **worker_nodes** object supports the following:
 
           * `id` (`pulumi.Input[str]`) - ID of the node.
@@ -396,6 +473,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["addons"] = addons
+        __props__["api_audiences"] = api_audiences
         __props__["availability_zone"] = availability_zone
         __props__["client_cert"] = client_cert
         __props__["client_key"] = client_key
@@ -406,6 +484,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["exclude_autoscaler_nodes"] = exclude_autoscaler_nodes
         __props__["image_id"] = image_id
         __props__["install_cloud_monitor"] = install_cloud_monitor
+        __props__["is_enterprise_security_group"] = is_enterprise_security_group
         __props__["key_name"] = key_name
         __props__["kms_encrypted_password"] = kms_encrypted_password
         __props__["kms_encryption_context"] = kms_encryption_context
@@ -421,6 +500,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["pod_vswitch_ids"] = pod_vswitch_ids
         __props__["proxy_mode"] = proxy_mode
         __props__["security_group_id"] = security_group_id
+        __props__["service_account_issuer"] = service_account_issuer
         __props__["service_cidr"] = service_cidr
         __props__["slb_id"] = slb_id
         __props__["slb_internet"] = slb_internet
@@ -434,6 +514,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["worker_auto_renew_period"] = worker_auto_renew_period
         __props__["worker_data_disk_category"] = worker_data_disk_category
         __props__["worker_data_disk_size"] = worker_data_disk_size
+        __props__["worker_data_disks"] = worker_data_disks
         __props__["worker_disk_category"] = worker_disk_category
         __props__["worker_disk_size"] = worker_disk_size
         __props__["worker_instance_charge_type"] = worker_instance_charge_type

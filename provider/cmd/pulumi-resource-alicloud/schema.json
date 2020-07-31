@@ -3733,6 +3733,9 @@
                 "ons": {
                     "type": "string"
                 },
+                "oos": {
+                    "type": "string"
+                },
                 "oss": {
                     "type": "string"
                 },
@@ -4274,6 +4277,76 @@
                 }
             }
         },
+        "alicloud:cs/KubernetesWorkerDataDisk:KubernetesWorkerDataDisk": {
+            "properties": {
+                "autoSnapshotPolicyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "category": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "device": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encrypted": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kmsKeyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The kubernetes cluster's name. It is unique in one Alicloud account.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "size": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "snapshotId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "alicloud:cs/KubernetesWorkerNode:KubernetesWorkerNode": {
             "properties": {
                 "id": {
@@ -4375,6 +4448,76 @@
                 }
             }
         },
+        "alicloud:cs/ManagedKubernetesWorkerDataDisk:ManagedKubernetesWorkerDataDisk": {
+            "properties": {
+                "autoSnapshotPolicyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "category": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "device": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encrypted": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kmsKeyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The kubernetes cluster's name. It is unique in one Alicloud account.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "size": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "snapshotId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "alicloud:cs/ManagedKubernetesWorkerNode:ManagedKubernetesWorkerNode": {
             "properties": {
                 "id": {
@@ -4415,6 +4558,36 @@
                     ]
                 }
             }
+        },
+        "alicloud:cs/ServerlessKubernetesAddon:ServerlessKubernetesAddon": {
+            "properties": {
+                "config": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The kubernetes cluster's name. It is the only in one Alicloud account.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "alicloud:cs/SwarmNode:SwarmNode": {
             "properties": {
@@ -7900,6 +8073,29 @@
                 "vswitchId"
             ]
         },
+        "alicloud:ecs/DedicatedHostNetworkAttribute:DedicatedHostNetworkAttribute": {
+            "properties": {
+                "slbUdpTimeout": {
+                    "type": "integer",
+                    "description": "The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "udpTimeout": {
+                    "type": "integer",
+                    "description": "The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "alicloud:ecs/ImageDiskDeviceMapping:ImageDiskDeviceMapping": {
             "properties": {
                 "device": {
@@ -8215,6 +8411,234 @@
                 }
             },
             "type": "object"
+        },
+        "alicloud:ecs/getDedicatedHostsHost:getDedicatedHostsHost": {
+            "properties": {
+                "actionOnMaintenance": {
+                    "type": "string",
+                    "description": "The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autoPlacement": {
+                    "type": "string",
+                    "description": "Specifies whether to add the dedicated host to the resource pool for automatic deployment.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autoReleaseTime": {
+                    "type": "string",
+                    "description": "The automatic release time of the dedicated host.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cores": {
+                    "type": "integer",
+                    "description": "A mapping of tags to assign to the resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dedicatedHostId": {
+                    "type": "string",
+                    "description": "The ID of ECS Dedicated Host.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dedicatedHostName": {
+                    "type": "string",
+                    "description": "The name of ECS Dedicated Host.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dedicatedHostType": {
+                    "type": "string",
+                    "description": "The type of the dedicated host.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the dedicated host.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "expiredTime": {
+                    "type": "string",
+                    "description": "The expiration time of the subscription dedicated host.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gpuSpec": {
+                    "type": "string",
+                    "description": "The GPU model.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the ECS Dedicated Host.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "machineId": {
+                    "type": "string",
+                    "description": "The machine code of the dedicated host.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "paymentType": {
+                    "type": "string",
+                    "description": "The billing method of the dedicated host.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "physicalGpus": {
+                    "type": "integer",
+                    "description": "The number of physical GPUs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of the resource group to which the ECS Dedicated Host belongs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "saleCycle": {
+                    "type": "string",
+                    "description": "The unit of the subscription billing method.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sockets": {
+                    "type": "integer",
+                    "description": "The number of physical CPUs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "supportedInstanceTypesLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of ECS instanc\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A mapping of tags to assign to the resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID of the ECS Dedicated Host.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "actionOnMaintenance",
+                "autoPlacement",
+                "autoReleaseTime",
+                "cores",
+                "dedicatedHostId",
+                "dedicatedHostName",
+                "dedicatedHostType",
+                "description",
+                "expiredTime",
+                "gpuSpec",
+                "id",
+                "machineId",
+                "paymentType",
+                "physicalGpus",
+                "resourceGroupId",
+                "saleCycle",
+                "sockets",
+                "status",
+                "supportedInstanceTypesLists",
+                "tags",
+                "zoneId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "alicloud:ecs/getDisksDisk:getDisksDisk": {
             "properties": {
@@ -11014,6 +11438,14 @@
         },
         "alicloud:ess/ScalingConfigurationDataDisk:ScalingConfigurationDataDisk": {
             "properties": {
+                "autoSnapshotPolicyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "category": {
                     "type": "string",
                     "language": {
@@ -11030,9 +11462,41 @@
                         }
                     }
                 },
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "device": {
                     "type": "string",
                     "deprecationMessage": "Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encrypted": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kmsKeyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13402,6 +13866,14 @@
                         }
                     }
                 },
+                "oos": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "oss": {
                     "type": "string",
                     "language": {
@@ -15736,6 +16208,171 @@
                 }
             }
         },
+        "alicloud:oos/getTemplatesTemplate:getTemplatesTemplate": {
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "description": "The category of template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "The creator of the template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createdDate": {
+                    "type": "string",
+                    "description": "The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the OOS Template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hasTrigger": {
+                    "type": "boolean",
+                    "description": "Is it triggered successfully.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the OOS Template. The value is same as template_name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shareType": {
+                    "type": "string",
+                    "description": "The sharing type of the template. Valid values: `Private`, `Public`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A mapping of tags to assign to the resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "templateFormat": {
+                    "type": "string",
+                    "description": "The format of the template. Valid values: `JSON`, `YAML`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "ID of the OOS Template resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "templateName": {
+                    "type": "string",
+                    "description": "Name of the OOS Template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "templateType": {
+                    "type": "string",
+                    "description": "The type of OOS Template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "templateVersion": {
+                    "type": "string",
+                    "description": "Version of the OOS Template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "The user who updated the template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updatedDate": {
+                    "type": "string",
+                    "description": "The time when the template was updated.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "category",
+                "createdBy",
+                "createdDate",
+                "description",
+                "hasTrigger",
+                "id",
+                "shareType",
+                "tags",
+                "templateFormat",
+                "templateId",
+                "templateName",
+                "templateType",
+                "templateVersion",
+                "updatedBy",
+                "updatedDate"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "alicloud:oss/BucketCorsRule:BucketCorsRule": {
             "properties": {
                 "allowedHeaders": {
@@ -15989,6 +16626,15 @@
         },
         "alicloud:oss/BucketServerSideEncryptionRule:BucketServerSideEncryptionRule": {
             "properties": {
+                "kmsMasterKeyId": {
+                    "type": "string",
+                    "description": "The alibaba cloud KMS master key ID used for the SSE-KMS encryption. \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "sseAlgorithm": {
                     "type": "string",
                     "description": "The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.\n",
@@ -16305,6 +16951,15 @@
                         }
                     }
                 },
+                "redundancyType": {
+                    "type": "string",
+                    "description": "Redundancy type. Possible values: `LRS`, and `ZRS`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "refererConfig": {
                     "$ref": "#/types/alicloud:oss/getBucketsBucketRefererConfig:getBucketsBucketRefererConfig",
                     "description": "A list of one element containing referer configuration. It contains the following attributes:\n",
@@ -16375,6 +17030,7 @@
                 "logging",
                 "name",
                 "owner",
+                "redundancyType",
                 "refererConfig",
                 "serverSideEncryptionRule",
                 "storageClass",
@@ -16606,6 +17262,15 @@
         },
         "alicloud:oss/getBucketsBucketServerSideEncryptionRule:getBucketsBucketServerSideEncryptionRule": {
             "properties": {
+                "kmsMasterKeyId": {
+                    "type": "string",
+                    "description": "The alibaba cloud KMS master key ID used for the SSE-KMS encryption. \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "sseAlgorithm": {
                     "type": "string",
                     "description": "The server-side encryption algorithm to use.\n",
@@ -16618,6 +17283,7 @@
             },
             "type": "object",
             "required": [
+                "kmsMasterKeyId",
                 "sseAlgorithm"
             ],
             "language": {
@@ -21959,6 +22625,18 @@
                         }
                     }
                 },
+                "ipLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The ip address of the bind eip.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the NAT gateway.\n",
@@ -22011,6 +22689,7 @@
                 "description",
                 "forwardTableId",
                 "id",
+                "ipLists",
                 "name",
                 "snatTableId",
                 "spec",
@@ -29080,6 +29759,13 @@
                         "$ref": "#/types/alicloud:cs/KubernetesAddon:KubernetesAddon"
                     }
                 },
+                "apiAudiences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[\"kubernetes.default.svc\"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.\n"
+                },
                 "availabilityZone": {
                     "type": "string",
                     "description": "The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.\n"
@@ -29119,6 +29805,10 @@
                 "installCloudMonitor": {
                     "type": "boolean",
                     "description": "Install cloud monitor agent on ECS. default: true \n"
+                },
+                "isEnterpriseSecurityGroup": {
+                    "type": "boolean",
+                    "description": "Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).\n"
                 },
                 "keyName": {
                     "type": "string",
@@ -29232,7 +29922,11 @@
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The ID of security group where the current cluster worker node is located.\n"
+                    "description": "The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.\n"
+                },
+                "serviceAccountIssuer": {
+                    "type": "string",
+                    "description": "The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `\"kubernetes.default.svc\"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).\n"
                 },
                 "serviceCidr": {
                     "type": "string",
@@ -29282,6 +29976,13 @@
                 },
                 "workerDataDiskSize": {
                     "type": "integer"
+                },
+                "workerDataDisks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:cs/KubernetesWorkerDataDisk:KubernetesWorkerDataDisk"
+                    },
+                    "description": "The data disk configurations of worker nodes, such as the disk type and disk size. \n- category: the type of the data disks. Valid values:\n+ cloud: basic disks.\n+ cloud_efficiency: ultra disks.\n+ cloud_ssd: SSDs.\n- size: the size of a data disk. Unit: GiB.\n- encrypted: specifies whether to encrypt data disks. Valid values: true and false.\n"
                 },
                 "workerDiskCategory": {
                     "type": "string",
@@ -29335,6 +30036,7 @@
             "required": [
                 "availabilityZone",
                 "connections",
+                "isEnterpriseSecurityGroup",
                 "masterInstanceTypes",
                 "masterNodes",
                 "masterVswitchIds",
@@ -29358,6 +30060,13 @@
                     "items": {
                         "$ref": "#/types/alicloud:cs/KubernetesAddon:KubernetesAddon"
                     }
+                },
+                "apiAudiences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[\"kubernetes.default.svc\"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.\n"
                 },
                 "availabilityZone": {
                     "type": "string",
@@ -29394,6 +30103,10 @@
                 "installCloudMonitor": {
                     "type": "boolean",
                     "description": "Install cloud monitor agent on ECS. default: true \n"
+                },
+                "isEnterpriseSecurityGroup": {
+                    "type": "boolean",
+                    "description": "Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).\n"
                 },
                 "keyName": {
                     "type": "string",
@@ -29496,7 +30209,11 @@
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The ID of security group where the current cluster worker node is located.\n"
+                    "description": "The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.\n"
+                },
+                "serviceAccountIssuer": {
+                    "type": "string",
+                    "description": "The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `\"kubernetes.default.svc\"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).\n"
                 },
                 "serviceCidr": {
                     "type": "string",
@@ -29531,6 +30248,13 @@
                 },
                 "workerDataDiskSize": {
                     "type": "integer"
+                },
+                "workerDataDisks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:cs/KubernetesWorkerDataDisk:KubernetesWorkerDataDisk"
+                    },
+                    "description": "The data disk configurations of worker nodes, such as the disk type and disk size. \n- category: the type of the data disks. Valid values:\n+ cloud: basic disks.\n+ cloud_efficiency: ultra disks.\n+ cloud_ssd: SSDs.\n- size: the size of a data disk. Unit: GiB.\n- encrypted: specifies whether to encrypt data disks. Valid values: true and false.\n"
                 },
                 "workerDiskCategory": {
                     "type": "string",
@@ -29586,6 +30310,13 @@
                             "$ref": "#/types/alicloud:cs/KubernetesAddon:KubernetesAddon"
                         }
                     },
+                    "apiAudiences": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[\"kubernetes.default.svc\"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.\n"
+                    },
                     "availabilityZone": {
                         "type": "string",
                         "description": "The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.\n"
@@ -29625,6 +30356,10 @@
                     "installCloudMonitor": {
                         "type": "boolean",
                         "description": "Install cloud monitor agent on ECS. default: true \n"
+                    },
+                    "isEnterpriseSecurityGroup": {
+                        "type": "boolean",
+                        "description": "Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).\n"
                     },
                     "keyName": {
                         "type": "string",
@@ -29738,7 +30473,11 @@
                     },
                     "securityGroupId": {
                         "type": "string",
-                        "description": "The ID of security group where the current cluster worker node is located.\n"
+                        "description": "The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.\n"
+                    },
+                    "serviceAccountIssuer": {
+                        "type": "string",
+                        "description": "The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `\"kubernetes.default.svc\"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).\n"
                     },
                     "serviceCidr": {
                         "type": "string",
@@ -29788,6 +30527,13 @@
                     },
                     "workerDataDiskSize": {
                         "type": "integer"
+                    },
+                    "workerDataDisks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cs/KubernetesWorkerDataDisk:KubernetesWorkerDataDisk"
+                        },
+                        "description": "The data disk configurations of worker nodes, such as the disk type and disk size. \n- category: the type of the data disks. Valid values:\n+ cloud: basic disks.\n+ cloud_efficiency: ultra disks.\n+ cloud_ssd: SSDs.\n- size: the size of a data disk. Unit: GiB.\n- encrypted: specifies whether to encrypt data disks. Valid values: true and false.\n"
                     },
                     "workerDiskCategory": {
                         "type": "string",
@@ -29955,6 +30701,13 @@
                         "$ref": "#/types/alicloud:cs/ManagedKubernetesAddon:ManagedKubernetesAddon"
                     }
                 },
+                "apiAudiences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[\"kubernetes.default.svc\"]` if you want to enable the Token Volume Projection feature.\n"
+                },
                 "availabilityZone": {
                     "type": "string",
                     "description": "The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.\n"
@@ -29994,6 +30747,10 @@
                 "installCloudMonitor": {
                     "type": "boolean",
                     "description": "Install cloud monitor agent on ECS. default: true \n"
+                },
+                "isEnterpriseSecurityGroup": {
+                    "type": "boolean",
+                    "description": "Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).\n"
                 },
                 "keyName": {
                     "type": "string",
@@ -30058,7 +30815,11 @@
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The ID of security group where the current cluster worker node is located.\n"
+                    "description": "The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.\n"
+                },
+                "serviceAccountIssuer": {
+                    "type": "string",
+                    "description": "The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.\n"
                 },
                 "serviceCidr": {
                     "type": "string",
@@ -30108,6 +30869,13 @@
                 },
                 "workerDataDiskSize": {
                     "type": "integer"
+                },
+                "workerDataDisks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:cs/ManagedKubernetesWorkerDataDisk:ManagedKubernetesWorkerDataDisk"
+                    },
+                    "description": "The data disk configurations of worker nodes, such as the disk type and disk size. \n- category: the type of the data disks. Valid values:\n+ cloud: basic disks.\n+ cloud_efficiency: ultra disks.\n+ cloud_ssd: SSDs.\n- size: the size of a data disk. Unit: GiB.\n- encrypted: specifies whether to encrypt data disks. Valid values: true and false.\n"
                 },
                 "workerDiskCategory": {
                     "type": "string",
@@ -30161,6 +30929,7 @@
             "required": [
                 "availabilityZone",
                 "connections",
+                "isEnterpriseSecurityGroup",
                 "name",
                 "natGatewayId",
                 "securityGroupId",
@@ -30181,6 +30950,13 @@
                     "items": {
                         "$ref": "#/types/alicloud:cs/ManagedKubernetesAddon:ManagedKubernetesAddon"
                     }
+                },
+                "apiAudiences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[\"kubernetes.default.svc\"]` if you want to enable the Token Volume Projection feature.\n"
                 },
                 "availabilityZone": {
                     "type": "string",
@@ -30217,6 +30993,10 @@
                 "installCloudMonitor": {
                     "type": "boolean",
                     "description": "Install cloud monitor agent on ECS. default: true \n"
+                },
+                "isEnterpriseSecurityGroup": {
+                    "type": "boolean",
+                    "description": "Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).\n"
                 },
                 "keyName": {
                     "type": "string",
@@ -30277,7 +31057,11 @@
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The ID of security group where the current cluster worker node is located.\n"
+                    "description": "The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.\n"
+                },
+                "serviceAccountIssuer": {
+                    "type": "string",
+                    "description": "The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.\n"
                 },
                 "serviceCidr": {
                     "type": "string",
@@ -30312,6 +31096,13 @@
                 },
                 "workerDataDiskSize": {
                     "type": "integer"
+                },
+                "workerDataDisks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:cs/ManagedKubernetesWorkerDataDisk:ManagedKubernetesWorkerDataDisk"
+                    },
+                    "description": "The data disk configurations of worker nodes, such as the disk type and disk size. \n- category: the type of the data disks. Valid values:\n+ cloud: basic disks.\n+ cloud_efficiency: ultra disks.\n+ cloud_ssd: SSDs.\n- size: the size of a data disk. Unit: GiB.\n- encrypted: specifies whether to encrypt data disks. Valid values: true and false.\n"
                 },
                 "workerDiskCategory": {
                     "type": "string",
@@ -30365,6 +31156,13 @@
                             "$ref": "#/types/alicloud:cs/ManagedKubernetesAddon:ManagedKubernetesAddon"
                         }
                     },
+                    "apiAudiences": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[\"kubernetes.default.svc\"]` if you want to enable the Token Volume Projection feature.\n"
+                    },
                     "availabilityZone": {
                         "type": "string",
                         "description": "The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.\n"
@@ -30404,6 +31202,10 @@
                     "installCloudMonitor": {
                         "type": "boolean",
                         "description": "Install cloud monitor agent on ECS. default: true \n"
+                    },
+                    "isEnterpriseSecurityGroup": {
+                        "type": "boolean",
+                        "description": "Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).\n"
                     },
                     "keyName": {
                         "type": "string",
@@ -30468,7 +31270,11 @@
                     },
                     "securityGroupId": {
                         "type": "string",
-                        "description": "The ID of security group where the current cluster worker node is located.\n"
+                        "description": "The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.\n"
+                    },
+                    "serviceAccountIssuer": {
+                        "type": "string",
+                        "description": "The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.\n"
                     },
                     "serviceCidr": {
                         "type": "string",
@@ -30518,6 +31324,13 @@
                     },
                     "workerDataDiskSize": {
                         "type": "integer"
+                    },
+                    "workerDataDisks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cs/ManagedKubernetesWorkerDataDisk:ManagedKubernetesWorkerDataDisk"
+                        },
+                        "description": "The data disk configurations of worker nodes, such as the disk type and disk size. \n- category: the type of the data disks. Valid values:\n+ cloud: basic disks.\n+ cloud_efficiency: ultra disks.\n+ cloud_ssd: SSDs.\n- size: the size of a data disk. Unit: GiB.\n- encrypted: specifies whether to encrypt data disks. Valid values: true and false.\n"
                     },
                     "workerDiskCategory": {
                         "type": "string",
@@ -30917,6 +31730,12 @@
         },
         "alicloud:cs/serverlessKubernetes:ServerlessKubernetes": {
             "properties": {
+                "addons": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:cs/ServerlessKubernetesAddon:ServerlessKubernetesAddon"
+                    }
+                },
                 "clientCert": {
                     "type": "string",
                     "description": "The path of client certificate, like `~/.kube/client-cert.pem`.\n"
@@ -30962,7 +31781,7 @@
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The ID of security group where the current cluster worker node is located.\n"
+                    "description": "The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -30977,16 +31796,31 @@
                 },
                 "vswitchId": {
                     "type": "string",
-                    "description": "The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.\n"
+                    "description": "(Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.\n",
+                    "deprecationMessage": "Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it."
+                },
+                "vswitchIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The vswitches where new kubernetes cluster will be located.\n"
                 }
             },
             "required": [
+                "addons",
                 "name",
                 "securityGroupId",
                 "vpcId",
-                "vswitchId"
+                "vswitchIds"
             ],
             "inputProperties": {
+                "addons": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:cs/ServerlessKubernetesAddon:ServerlessKubernetesAddon"
+                    }
+                },
                 "clientCert": {
                     "type": "string",
                     "description": "The path of client certificate, like `~/.kube/client-cert.pem`.\n"
@@ -31030,6 +31864,10 @@
                     "type": "boolean",
                     "description": "Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.\n"
                 },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.\n"
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -31043,16 +31881,29 @@
                 },
                 "vswitchId": {
                     "type": "string",
-                    "description": "The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.\n"
+                    "description": "(Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.\n",
+                    "deprecationMessage": "Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it."
+                },
+                "vswitchIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The vswitches where new kubernetes cluster will be located.\n"
                 }
             },
             "requiredInputs": [
-                "vpcId",
-                "vswitchId"
+                "vpcId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ServerlessKubernetes resources.\n",
                 "properties": {
+                    "addons": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cs/ServerlessKubernetesAddon:ServerlessKubernetesAddon"
+                        }
+                    },
                     "clientCert": {
                         "type": "string",
                         "description": "The path of client certificate, like `~/.kube/client-cert.pem`.\n"
@@ -31098,7 +31949,7 @@
                     },
                     "securityGroupId": {
                         "type": "string",
-                        "description": "The ID of security group where the current cluster worker node is located.\n"
+                        "description": "The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.\n"
                     },
                     "tags": {
                         "type": "object",
@@ -31113,7 +31964,15 @@
                     },
                     "vswitchId": {
                         "type": "string",
-                        "description": "The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.\n"
+                        "description": "(Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.\n",
+                        "deprecationMessage": "Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it."
+                    },
+                    "vswitchIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The vswitches where new kubernetes cluster will be located.\n"
                     }
                 },
                 "type": "object"
@@ -33358,7 +34217,7 @@
             }
         },
         "alicloud:drds/instance:Instance": {
-            "description": "Distributed Relational Database Service (DRDS) is a lightweight (stateless), flexible, stable, and efficient middleware product independently developed by Alibaba Group to resolve scalability issues with single-host relational databases.\nWith its compatibility with MySQL protocols and syntaxes, DRDS enables database/table sharding, smooth scaling, configuration upgrade/downgrade,\ntransparent read/write splitting, and distributed transactions, providing O\u0026M capabilities for distributed databases throughout their entire lifecycle.\n\nFor information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).\n\n\u003e **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao.\n\n\u003e **NOTE:** Currently, this resource only support `Domestic Site Account`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultInstance = new alicloud.drds.Instance(\"default\", {\n    description: \"drds instance\",\n    instanceChargeType: \"PostPaid\",\n    instanceSeries: \"drds.sn1.4c8g\",\n    specification: \"drds.sn1.4c8g.8C16G\",\n    vswitchId: \"vsw-bp1jlu3swk8rq2yoi40ey\",\n    zoneId: \"cn-hangzhou-e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.drds.Instance(\"default\",\n    description=\"drds instance\",\n    instance_charge_type=\"PostPaid\",\n    instance_series=\"drds.sn1.4c8g\",\n    specification=\"drds.sn1.4c8g.8C16G\",\n    vswitch_id=\"vsw-bp1jlu3swk8rq2yoi40ey\",\n    zone_id=\"cn-hangzhou-e\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Drds.Instance(\"default\", new AliCloud.Drds.InstanceArgs\n        {\n            Description = \"drds instance\",\n            InstanceChargeType = \"PostPaid\",\n            InstanceSeries = \"drds.sn1.4c8g\",\n            Specification = \"drds.sn1.4c8g.8C16G\",\n            VswitchId = \"vsw-bp1jlu3swk8rq2yoi40ey\",\n            ZoneId = \"cn-hangzhou-e\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Distributed Relational Database Service (DRDS) is a lightweight (stateless), flexible, stable, and efficient middleware product independently developed by Alibaba Group to resolve scalability issues with single-host relational databases.\nWith its compatibility with MySQL protocols and syntaxes, DRDS enables database/table sharding, smooth scaling, configuration upgrade/downgrade,\ntransparent read/write splitting, and distributed transactions, providing O\u0026M capabilities for distributed databases throughout their entire lifecycle.\n\nFor information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).\n\n\u003e **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.\n\n\u003e **NOTE:** Currently, this resource only support `Domestic Site Account`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultInstance = new alicloud.drds.Instance(\"default\", {\n    description: \"drds instance\",\n    instanceChargeType: \"PostPaid\",\n    instanceSeries: \"drds.sn1.4c8g\",\n    specification: \"drds.sn1.4c8g.8C16G\",\n    vswitchId: \"vsw-bp1jlu3swk8rq2yoi40ey\",\n    zoneId: \"cn-hangzhou-e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.drds.Instance(\"default\",\n    description=\"drds instance\",\n    instance_charge_type=\"PostPaid\",\n    instance_series=\"drds.sn1.4c8g\",\n    specification=\"drds.sn1.4c8g.8C16G\",\n    vswitch_id=\"vsw-bp1jlu3swk8rq2yoi40ey\",\n    zone_id=\"cn-hangzhou-e\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Drds.Instance(\"default\", new AliCloud.Drds.InstanceArgs\n        {\n            Description = \"drds instance\",\n            InstanceChargeType = \"PostPaid\",\n            InstanceSeries = \"drds.sn1.4c8g\",\n            Specification = \"drds.sn1.4c8g.8C16G\",\n            VswitchId = \"vsw-bp1jlu3swk8rq2yoi40ey\",\n            ZoneId = \"cn-hangzhou-e\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -33388,7 +34247,9 @@
             "required": [
                 "description",
                 "instanceSeries",
-                "specification"
+                "specification",
+                "vswitchId",
+                "zoneId"
             ],
             "inputProperties": {
                 "description": {
@@ -33419,7 +34280,9 @@
             "requiredInputs": [
                 "description",
                 "instanceSeries",
-                "specification"
+                "specification",
+                "vswitchId",
+                "zoneId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Instance resources.\n",
@@ -34153,6 +35016,260 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "alicloud:ecs/dedicatedHost:DedicatedHost": {
+            "description": "This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).\n\n\u003e **NOTE:** Available in 1.91.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "actionOnMaintenance": {
+                    "type": "string",
+                    "description": "The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.\n"
+                },
+                "autoPlacement": {
+                    "type": "string",
+                    "description": "Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.\n"
+                },
+                "autoReleaseTime": {
+                    "type": "string",
+                    "description": "The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.\n"
+                },
+                "autoRenew": {
+                    "type": "boolean",
+                    "description": "Specifies whether to automatically renew the subscription dedicated host.\n"
+                },
+                "autoRenewPeriod": {
+                    "type": "integer",
+                    "description": "The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.\n"
+                },
+                "dedicatedHostName": {
+                    "type": "string",
+                    "description": "The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).\n"
+                },
+                "dedicatedHostType": {
+                    "type": "string",
+                    "description": "The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.\n"
+                },
+                "detailFee": {
+                    "type": "boolean",
+                    "description": "Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.\n"
+                },
+                "dryRun": {
+                    "type": "boolean",
+                    "description": "Specifies whether to only validate the request. Default: `false`.\n"
+                },
+                "expiredTime": {
+                    "type": "string",
+                    "description": "The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.\n"
+                },
+                "networkAttributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:ecs/DedicatedHostNetworkAttribute:DedicatedHostNetworkAttribute"
+                    },
+                    "description": "dedicated host network parameters. contains the following attributes:\n"
+                },
+                "paymentType": {
+                    "type": "string",
+                    "description": "The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.\n"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of the resource group to which the dedicated host belongs.\n"
+                },
+                "saleCycle": {
+                    "type": "string",
+                    "description": "The unit of the subscription period of the dedicated host.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the dedicated host.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A mapping of tags to assign to the resource.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.\n"
+                }
+            },
+            "required": [
+                "dedicatedHostType",
+                "expiredTime",
+                "resourceGroupId",
+                "saleCycle",
+                "status",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "actionOnMaintenance": {
+                    "type": "string",
+                    "description": "The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.\n"
+                },
+                "autoPlacement": {
+                    "type": "string",
+                    "description": "Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.\n"
+                },
+                "autoReleaseTime": {
+                    "type": "string",
+                    "description": "The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.\n"
+                },
+                "autoRenew": {
+                    "type": "boolean",
+                    "description": "Specifies whether to automatically renew the subscription dedicated host.\n"
+                },
+                "autoRenewPeriod": {
+                    "type": "integer",
+                    "description": "The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.\n"
+                },
+                "dedicatedHostName": {
+                    "type": "string",
+                    "description": "The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).\n"
+                },
+                "dedicatedHostType": {
+                    "type": "string",
+                    "description": "The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.\n"
+                },
+                "detailFee": {
+                    "type": "boolean",
+                    "description": "Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.\n"
+                },
+                "dryRun": {
+                    "type": "boolean",
+                    "description": "Specifies whether to only validate the request. Default: `false`.\n"
+                },
+                "expiredTime": {
+                    "type": "string",
+                    "description": "The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.\n"
+                },
+                "networkAttributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:ecs/DedicatedHostNetworkAttribute:DedicatedHostNetworkAttribute"
+                    },
+                    "description": "dedicated host network parameters. contains the following attributes:\n"
+                },
+                "paymentType": {
+                    "type": "string",
+                    "description": "The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.\n"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of the resource group to which the dedicated host belongs.\n"
+                },
+                "saleCycle": {
+                    "type": "string",
+                    "description": "The unit of the subscription period of the dedicated host.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A mapping of tags to assign to the resource.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.\n"
+                }
+            },
+            "requiredInputs": [
+                "dedicatedHostType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DedicatedHost resources.\n",
+                "properties": {
+                    "actionOnMaintenance": {
+                        "type": "string",
+                        "description": "The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.\n"
+                    },
+                    "autoPlacement": {
+                        "type": "string",
+                        "description": "Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.\n"
+                    },
+                    "autoReleaseTime": {
+                        "type": "string",
+                        "description": "The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.\n"
+                    },
+                    "autoRenew": {
+                        "type": "boolean",
+                        "description": "Specifies whether to automatically renew the subscription dedicated host.\n"
+                    },
+                    "autoRenewPeriod": {
+                        "type": "integer",
+                        "description": "The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.\n"
+                    },
+                    "dedicatedHostName": {
+                        "type": "string",
+                        "description": "The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).\n"
+                    },
+                    "dedicatedHostType": {
+                        "type": "string",
+                        "description": "The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.\n"
+                    },
+                    "detailFee": {
+                        "type": "boolean",
+                        "description": "Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.\n"
+                    },
+                    "dryRun": {
+                        "type": "boolean",
+                        "description": "Specifies whether to only validate the request. Default: `false`.\n"
+                    },
+                    "expiredTime": {
+                        "type": "string",
+                        "description": "The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.\n"
+                    },
+                    "networkAttributes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:ecs/DedicatedHostNetworkAttribute:DedicatedHostNetworkAttribute"
+                        },
+                        "description": "dedicated host network parameters. contains the following attributes:\n"
+                    },
+                    "paymentType": {
+                        "type": "string",
+                        "description": "The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.\n"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of the resource group to which the dedicated host belongs.\n"
+                    },
+                    "saleCycle": {
+                        "type": "string",
+                        "description": "The unit of the subscription period of the dedicated host.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the dedicated host.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of tags to assign to the resource.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.\n"
                     }
                 },
                 "type": "object"
@@ -35788,7 +36905,7 @@
                 },
                 "publicKey": {
                     "type": "string",
-                    "description": "You can import an existing public key and using Alicloud key pair to manage it.\n"
+                    "description": "You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.\n"
                 },
                 "resourceGroupId": {
                     "type": "string",
@@ -35819,7 +36936,7 @@
                 },
                 "publicKey": {
                     "type": "string",
-                    "description": "You can import an existing public key and using Alicloud key pair to manage it.\n"
+                    "description": "You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.\n"
                 },
                 "resourceGroupId": {
                     "type": "string",
@@ -35851,7 +36968,7 @@
                     },
                     "publicKey": {
                         "type": "string",
-                        "description": "You can import an existing public key and using Alicloud key pair to manage it.\n"
+                        "description": "You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.\n"
                     },
                     "resourceGroupId": {
                         "type": "string",
@@ -38838,6 +39955,10 @@
                     "type": "string",
                     "description": "ID of an image file, indicating the image resource selected when an instance is enabled.\n"
                 },
+                "imageName": {
+                    "type": "string",
+                    "description": "Name of an image file, indicating the image resource selected when an instance is enabled.\n"
+                },
                 "instanceIds": {
                     "type": "array",
                     "items": {
@@ -38936,9 +40057,21 @@
                     "type": "string",
                     "description": "The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.\n"
                 },
+                "systemDiskAutoSnapshotPolicyId": {
+                    "type": "string",
+                    "description": "The id of auto snapshot policy for system disk.\n"
+                },
                 "systemDiskCategory": {
                     "type": "string",
                     "description": "Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.\n"
+                },
+                "systemDiskDescription": {
+                    "type": "string",
+                    "description": "The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.\n"
+                },
+                "systemDiskName": {
+                    "type": "string",
+                    "description": "The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.\n"
                 },
                 "systemDiskSize": {
                     "type": "integer",
@@ -38958,7 +40091,6 @@
             },
             "required": [
                 "active",
-                "imageId",
                 "internetMaxBandwidthIn",
                 "scalingConfigurationName",
                 "scalingGroupId",
@@ -38988,6 +40120,10 @@
                     "type": "string",
                     "description": "ID of an image file, indicating the image resource selected when an instance is enabled.\n"
                 },
+                "imageName": {
+                    "type": "string",
+                    "description": "Name of an image file, indicating the image resource selected when an instance is enabled.\n"
+                },
                 "instanceIds": {
                     "type": "array",
                     "items": {
@@ -39086,9 +40222,21 @@
                     "type": "string",
                     "description": "The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.\n"
                 },
+                "systemDiskAutoSnapshotPolicyId": {
+                    "type": "string",
+                    "description": "The id of auto snapshot policy for system disk.\n"
+                },
                 "systemDiskCategory": {
                     "type": "string",
                     "description": "Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.\n"
+                },
+                "systemDiskDescription": {
+                    "type": "string",
+                    "description": "The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.\n"
+                },
+                "systemDiskName": {
+                    "type": "string",
+                    "description": "The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.\n"
                 },
                 "systemDiskSize": {
                     "type": "integer",
@@ -39107,7 +40255,6 @@
                 }
             },
             "requiredInputs": [
-                "imageId",
                 "scalingGroupId"
             ],
             "stateInputs": {
@@ -39135,6 +40282,10 @@
                     "imageId": {
                         "type": "string",
                         "description": "ID of an image file, indicating the image resource selected when an instance is enabled.\n"
+                    },
+                    "imageName": {
+                        "type": "string",
+                        "description": "Name of an image file, indicating the image resource selected when an instance is enabled.\n"
                     },
                     "instanceIds": {
                         "type": "array",
@@ -39234,9 +40385,21 @@
                         "type": "string",
                         "description": "The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.\n"
                     },
+                    "systemDiskAutoSnapshotPolicyId": {
+                        "type": "string",
+                        "description": "The id of auto snapshot policy for system disk.\n"
+                    },
                     "systemDiskCategory": {
                         "type": "string",
                         "description": "Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.\n"
+                    },
+                    "systemDiskDescription": {
+                        "type": "string",
+                        "description": "The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.\n"
+                    },
+                    "systemDiskName": {
+                        "type": "string",
+                        "description": "The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.\n"
                     },
                     "systemDiskSize": {
                         "type": "integer",
@@ -39887,7 +41050,7 @@
                 },
                 "launchTime": {
                     "type": "string",
-                    "description": "The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. \nThe time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.\nIf the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.\nOtherwise, the task is only executed once at the date and time specified by LaunchTime.\n"
+                    "description": "The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. \nThe time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.\nIf the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.\nOtherwise, the task is only executed once at the date and time specified by LaunchTime.\n"
                 },
                 "maxValue": {
                     "type": "integer",
@@ -39948,7 +41111,7 @@
                 },
                 "launchTime": {
                     "type": "string",
-                    "description": "The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. \nThe time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.\nIf the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.\nOtherwise, the task is only executed once at the date and time specified by LaunchTime.\n"
+                    "description": "The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. \nThe time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.\nIf the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.\nOtherwise, the task is only executed once at the date and time specified by LaunchTime.\n"
                 },
                 "maxValue": {
                     "type": "integer",
@@ -40004,7 +41167,7 @@
                     },
                     "launchTime": {
                         "type": "string",
-                        "description": "The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. \nThe time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.\nIf the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.\nOtherwise, the task is only executed once at the date and time specified by LaunchTime.\n"
+                        "description": "The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. \nThe time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.\nIf the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.\nOtherwise, the task is only executed once at the date and time specified by LaunchTime.\n"
                     },
                     "maxValue": {
                         "type": "integer",
@@ -44050,56 +45213,91 @@
             }
         },
         "alicloud:nas/accessGroup:AccessGroup": {
-            "description": "Provides a Nas Access Group resource.\n\nIn NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.\n\n\u003e **NOTE:** Available in v1.33.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst foo = new alicloud.nas.AccessGroup(\"foo\", {\n    description: \"test_AccessG\",\n    type: \"Classic\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nfoo = alicloud.nas.AccessGroup(\"foo\",\n    description=\"test_AccessG\",\n    type=\"Classic\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new AliCloud.Nas.AccessGroup(\"foo\", new AliCloud.Nas.AccessGroupArgs\n        {\n            Description = \"test_AccessG\",\n            Type = \"Classic\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Provides a NAS Access Group resource.\n\nIn NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.\nFor information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/doc-detail/27534)\n\n\u003e **NOTE:** Available in v1.33.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
+                "accessGroupName": {
+                    "type": "string",
+                    "description": "A Name of one Access Group.\n"
+                },
+                "accessGroupType": {
+                    "type": "string",
+                    "description": "A Type of one Access Group. Valid values: `Vpc` and `Classic`.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The Access Group description.\n"
                 },
+                "fileSystemType": {
+                    "type": "string",
+                    "description": "The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.\n"
+                },
                 "name": {
                     "type": "string",
-                    "description": "A Name of one Access Group.\n"
+                    "description": "Replaced by `access_group_name` after version 1.92.0.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "A Type of one Access Group. Valid values: `Vpc` and `Classic`.\n"
+                    "description": "Replaced by `access_group_type` after version 1.92.0.\n"
                 }
             },
             "required": [
+                "accessGroupName",
+                "accessGroupType",
                 "name",
                 "type"
             ],
             "inputProperties": {
+                "accessGroupName": {
+                    "type": "string",
+                    "description": "A Name of one Access Group.\n"
+                },
+                "accessGroupType": {
+                    "type": "string",
+                    "description": "A Type of one Access Group. Valid values: `Vpc` and `Classic`.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The Access Group description.\n"
                 },
+                "fileSystemType": {
+                    "type": "string",
+                    "description": "The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.\n"
+                },
                 "name": {
                     "type": "string",
-                    "description": "A Name of one Access Group.\n"
+                    "description": "Replaced by `access_group_name` after version 1.92.0.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "A Type of one Access Group. Valid values: `Vpc` and `Classic`.\n"
+                    "description": "Replaced by `access_group_type` after version 1.92.0.\n"
                 }
             },
-            "requiredInputs": [
-                "type"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AccessGroup resources.\n",
                 "properties": {
+                    "accessGroupName": {
+                        "type": "string",
+                        "description": "A Name of one Access Group.\n"
+                    },
+                    "accessGroupType": {
+                        "type": "string",
+                        "description": "A Type of one Access Group. Valid values: `Vpc` and `Classic`.\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "The Access Group description.\n"
                     },
+                    "fileSystemType": {
+                        "type": "string",
+                        "description": "The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.\n"
+                    },
                     "name": {
                         "type": "string",
-                        "description": "A Name of one Access Group.\n"
+                        "description": "Replaced by `access_group_name` after version 1.92.0.\n"
                     },
                     "type": {
                         "type": "string",
-                        "description": "A Type of one Access Group. Valid values: `Vpc` and `Classic`.\n"
+                        "description": "Replaced by `access_group_type` after version 1.92.0.\n"
                     }
                 },
                 "type": "object"
@@ -44322,8 +45520,197 @@
                 "type": "object"
             }
         },
+        "alicloud:oos/template:Template": {
+            "description": "Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).\n\n\u003e **NOTE:** Available in 1.92.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "autoDeleteExecutions": {
+                    "type": "boolean",
+                    "description": "When deleting a template, whether to delete its related executions. Default to `false`.\n"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB. \n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "The creator of the template.\n"
+                },
+                "createdDate": {
+                    "type": "string",
+                    "description": "The time when the template is created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the template.\n"
+                },
+                "hasTrigger": {
+                    "type": "boolean",
+                    "description": "Is it triggered successfully.\n"
+                },
+                "shareType": {
+                    "type": "string",
+                    "description": "The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A mapping of tags to assign to the resource.\n"
+                },
+                "templateFormat": {
+                    "type": "string",
+                    "description": "The format of the template. The format can be JSON or YAML. The system automatically identifies the format.\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "The id of OOS Template.\n"
+                },
+                "templateName": {
+                    "type": "string",
+                    "description": "The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.\n"
+                },
+                "templateType": {
+                    "type": "string",
+                    "description": "The type of OOS Template. `Automation` means the implementation of Alibaba Cloud API template, `Package` means represents a template for installing software.\n"
+                },
+                "templateVersion": {
+                    "type": "string",
+                    "description": "The version of OOS Template.\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "The user who updated the template.\n"
+                },
+                "updatedDate": {
+                    "type": "string",
+                    "description": "The time when the template was updated.\n"
+                },
+                "versionName": {
+                    "type": "string",
+                    "description": "The name of template version.\n"
+                }
+            },
+            "required": [
+                "content",
+                "createdBy",
+                "createdDate",
+                "description",
+                "hasTrigger",
+                "shareType",
+                "templateFormat",
+                "templateId",
+                "templateName",
+                "templateType",
+                "templateVersion",
+                "updatedBy",
+                "updatedDate"
+            ],
+            "inputProperties": {
+                "autoDeleteExecutions": {
+                    "type": "boolean",
+                    "description": "When deleting a template, whether to delete its related executions. Default to `false`.\n"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB. \n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A mapping of tags to assign to the resource.\n"
+                },
+                "templateName": {
+                    "type": "string",
+                    "description": "The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.\n"
+                },
+                "versionName": {
+                    "type": "string",
+                    "description": "The name of template version.\n"
+                }
+            },
+            "requiredInputs": [
+                "content",
+                "templateName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Template resources.\n",
+                "properties": {
+                    "autoDeleteExecutions": {
+                        "type": "boolean",
+                        "description": "When deleting a template, whether to delete its related executions. Default to `false`.\n"
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB. \n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "The creator of the template.\n"
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "description": "The time when the template is created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the template.\n"
+                    },
+                    "hasTrigger": {
+                        "type": "boolean",
+                        "description": "Is it triggered successfully.\n"
+                    },
+                    "shareType": {
+                        "type": "string",
+                        "description": "The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of tags to assign to the resource.\n"
+                    },
+                    "templateFormat": {
+                        "type": "string",
+                        "description": "The format of the template. The format can be JSON or YAML. The system automatically identifies the format.\n"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "The id of OOS Template.\n"
+                    },
+                    "templateName": {
+                        "type": "string",
+                        "description": "The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.\n"
+                    },
+                    "templateType": {
+                        "type": "string",
+                        "description": "The type of OOS Template. `Automation` means the implementation of Alibaba Cloud API template, `Package` means represents a template for installing software.\n"
+                    },
+                    "templateVersion": {
+                        "type": "string",
+                        "description": "The version of OOS Template.\n"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "description": "The user who updated the template.\n"
+                    },
+                    "updatedDate": {
+                        "type": "string",
+                        "description": "The time when the template was updated.\n"
+                    },
+                    "versionName": {
+                        "type": "string",
+                        "description": "The name of template version.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "alicloud:oss/bucket:Bucket": {
-            "description": "Provides a resource to create a oss bucket and set its attribution.\n\n\u003e **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nPrivate Bucket\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_acl = new alicloud.oss.Bucket(\"bucket-acl\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-acl\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_acl = alicloud.oss.Bucket(\"bucket-acl\",\n    acl=\"private\",\n    bucket=\"bucket-170309-acl\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_acl = new AliCloud.Oss.Bucket(\"bucket-acl\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-acl\",\n        });\n    }\n\n}\n```\n\nStatic Website\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_website = new alicloud.oss.Bucket(\"bucket-website\", {\n    bucket: \"bucket-170309-website\",\n    website: {\n        errorDocument: \"error.html\",\n        indexDocument: \"index.html\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_website = alicloud.oss.Bucket(\"bucket-website\",\n    bucket=\"bucket-170309-website\",\n    website={\n        \"errorDocument\": \"error.html\",\n        \"indexDocument\": \"index.html\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_website = new AliCloud.Oss.Bucket(\"bucket-website\", new AliCloud.Oss.BucketArgs\n        {\n            Bucket = \"bucket-170309-website\",\n            Website = new AliCloud.Oss.Inputs.BucketWebsiteArgs\n            {\n                ErrorDocument = \"error.html\",\n                IndexDocument = \"index.html\",\n            },\n        });\n    }\n\n}\n```\n\nEnable Logging\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_target = new alicloud.oss.Bucket(\"bucket-target\", {\n    acl: \"public-read\",\n    bucket: \"bucket-170309-acl\",\n});\nconst bucket_logging = new alicloud.oss.Bucket(\"bucket-logging\", {\n    bucket: \"bucket-170309-logging\",\n    logging: {\n        targetBucket: bucket_target.id,\n        targetPrefix: \"log/\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_target = alicloud.oss.Bucket(\"bucket-target\",\n    acl=\"public-read\",\n    bucket=\"bucket-170309-acl\")\nbucket_logging = alicloud.oss.Bucket(\"bucket-logging\",\n    bucket=\"bucket-170309-logging\",\n    logging={\n        \"targetBucket\": bucket_target.id,\n        \"targetPrefix\": \"log/\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_target = new AliCloud.Oss.Bucket(\"bucket-target\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"public-read\",\n            Bucket = \"bucket-170309-acl\",\n        });\n        var bucket_logging = new AliCloud.Oss.Bucket(\"bucket-logging\", new AliCloud.Oss.BucketArgs\n        {\n            Bucket = \"bucket-170309-logging\",\n            Logging = new AliCloud.Oss.Inputs.BucketLoggingArgs\n            {\n                TargetBucket = bucket_target.Id,\n                TargetPrefix = \"log/\",\n            },\n        });\n    }\n\n}\n```\n\nReferer configuration\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_referer = new alicloud.oss.Bucket(\"bucket-referer\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-referer\",\n    refererConfig: {\n        allowEmpty: false,\n        referers: [\n            \"http://www.aliyun.com\",\n            \"https://www.aliyun.com\",\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_referer = alicloud.oss.Bucket(\"bucket-referer\",\n    acl=\"private\",\n    bucket=\"bucket-170309-referer\",\n    referer_config={\n        \"allowEmpty\": False,\n        \"referers\": [\n            \"http://www.aliyun.com\",\n            \"https://www.aliyun.com\",\n        ],\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_referer = new AliCloud.Oss.Bucket(\"bucket-referer\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-referer\",\n            RefererConfig = new AliCloud.Oss.Inputs.BucketRefererConfigArgs\n            {\n                AllowEmpty = false,\n                Referers = \n                {\n                    \"http://www.aliyun.com\",\n                    \"https://www.aliyun.com\",\n                },\n            },\n        });\n    }\n\n}\n```\n\nSet lifecycle rule\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_lifecycle = new alicloud.oss.Bucket(\"bucket-lifecycle\", {\n    acl: \"public-read\",\n    bucket: \"bucket-170309-lifecycle\",\n    lifecycleRules: [{\n        enabled: true,\n        id: \"rule-days-transition\",\n        prefix: \"path3/\",\n        transitions: [\n            {\n                createdBeforeDate: \"2020-11-11\",\n                storageClass: \"IA\",\n            },\n            {\n                createdBeforeDate: \"2021-11-11\",\n                storageClass: \"Archive\",\n            },\n        ],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_lifecycle = alicloud.oss.Bucket(\"bucket-lifecycle\",\n    acl=\"public-read\",\n    bucket=\"bucket-170309-lifecycle\",\n    lifecycle_rules=[{\n        \"enabled\": True,\n        \"id\": \"rule-days-transition\",\n        \"prefix\": \"path3/\",\n        \"transitions\": [\n            {\n                \"createdBeforeDate\": \"2020-11-11\",\n                \"storage_class\": \"IA\",\n            },\n            {\n                \"createdBeforeDate\": \"2021-11-11\",\n                \"storage_class\": \"Archive\",\n            },\n        ],\n    }])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_lifecycle = new AliCloud.Oss.Bucket(\"bucket-lifecycle\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"public-read\",\n            Bucket = \"bucket-170309-lifecycle\",\n            LifecycleRules = \n            {\n                new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs\n                {\n                    Enabled = true,\n                    Id = \"rule-days-transition\",\n                    Prefix = \"path3/\",\n                    Transitions = \n                    {\n                        new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs\n                        {\n                            CreatedBeforeDate = \"2020-11-11\",\n                            StorageClass = \"IA\",\n                        },\n                        new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs\n                        {\n                            CreatedBeforeDate = \"2021-11-11\",\n                            StorageClass = \"Archive\",\n                        },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n\nSet bucket policy \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_policy = new alicloud.oss.Bucket(\"bucket-policy\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-policy\",\n    policy: `  {\"Statement\":\n      [{\"Action\":\n          [\"oss:PutObject\", \"oss:GetObject\", \"oss:DeleteBucket\"],\n        \"Effect\":\"Allow\",\n        \"Resource\":\n            [\"acs:oss:*:*:*\"]}],\n   \"Version\":\"1\"}\n  `,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_policy = alicloud.oss.Bucket(\"bucket-policy\",\n    acl=\"private\",\n    bucket=\"bucket-170309-policy\",\n    policy=\"\"\"  {\"Statement\":\n      [{\"Action\":\n          [\"oss:PutObject\", \"oss:GetObject\", \"oss:DeleteBucket\"],\n        \"Effect\":\"Allow\",\n        \"Resource\":\n            [\"acs:oss:*:*:*\"]}],\n   \"Version\":\"1\"}\n  \n\"\"\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_policy = new AliCloud.Oss.Bucket(\"bucket-policy\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-policy\",\n            Policy = @\"  {\"\"Statement\"\":\n      [{\"\"Action\"\":\n          [\"\"oss:PutObject\"\", \"\"oss:GetObject\"\", \"\"oss:DeleteBucket\"\"],\n        \"\"Effect\"\":\"\"Allow\"\",\n        \"\"Resource\"\":\n            [\"\"acs:oss:*:*:*\"\"]}],\n   \"\"Version\"\":\"\"1\"\"}\n  \n\",\n        });\n    }\n\n}\n```\n\nIA Bucket\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_storageclass = new alicloud.oss.Bucket(\"bucket-storageclass\", {\n    bucket: \"bucket-170309-storageclass\",\n    storageClass: \"IA\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_storageclass = alicloud.oss.Bucket(\"bucket-storageclass\",\n    bucket=\"bucket-170309-storageclass\",\n    storage_class=\"IA\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_storageclass = new AliCloud.Oss.Bucket(\"bucket-storageclass\", new AliCloud.Oss.BucketArgs\n        {\n            Bucket = \"bucket-170309-storageclass\",\n            StorageClass = \"IA\",\n        });\n    }\n\n}\n```\n\nSet bucket server-side encryption rule \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_sserule = new alicloud.oss.Bucket(\"bucket-sserule\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-sserule\",\n    serverSideEncryptionRule: {\n        sseAlgorithm: \"AES256\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_sserule = alicloud.oss.Bucket(\"bucket-sserule\",\n    acl=\"private\",\n    bucket=\"bucket-170309-sserule\",\n    server_side_encryption_rule={\n        \"sseAlgorithm\": \"AES256\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_sserule = new AliCloud.Oss.Bucket(\"bucket-sserule\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-sserule\",\n            ServerSideEncryptionRule = new AliCloud.Oss.Inputs.BucketServerSideEncryptionRuleArgs\n            {\n                SseAlgorithm = \"AES256\",\n            },\n        });\n    }\n\n}\n```\n\nSet bucket tags \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_tags = new alicloud.oss.Bucket(\"bucket-tags\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-tags\",\n    tags: {\n        key1: \"value1\",\n        key2: \"value2\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_tags = alicloud.oss.Bucket(\"bucket-tags\",\n    acl=\"private\",\n    bucket=\"bucket-170309-tags\",\n    tags={\n        \"key1\": \"value1\",\n        \"key2\": \"value2\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_tags = new AliCloud.Oss.Bucket(\"bucket-tags\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-tags\",\n            Tags = \n            {\n                { \"key1\", \"value1\" },\n                { \"key2\", \"value2\" },\n            },\n        });\n    }\n\n}\n```\n\nEnable bucket versioning \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_versioning = new alicloud.oss.Bucket(\"bucket-versioning\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-versioning\",\n    versioning: {\n        status: \"Enabled\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_versioning = alicloud.oss.Bucket(\"bucket-versioning\",\n    acl=\"private\",\n    bucket=\"bucket-170309-versioning\",\n    versioning={\n        \"status\": \"Enabled\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_versioning = new AliCloud.Oss.Bucket(\"bucket-versioning\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-versioning\",\n            Versioning = new AliCloud.Oss.Inputs.BucketVersioningArgs\n            {\n                Status = \"Enabled\",\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Provides a resource to create a oss bucket and set its attribution.\n\n\u003e **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.\n\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "acl": {
                     "type": "string",
@@ -44387,6 +45774,10 @@
                 "policy": {
                     "type": "string",
                     "description": "Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).\n"
+                },
+                "redundancyType": {
+                    "type": "string",
+                    "description": "The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be \"LRS\", and \"ZRS\". Defaults to \"LRS\".\n"
                 },
                 "refererConfig": {
                     "$ref": "#/types/alicloud:oss/BucketRefererConfig:BucketRefererConfig",
@@ -44466,6 +45857,10 @@
                 "policy": {
                     "type": "string",
                     "description": "Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).\n"
+                },
+                "redundancyType": {
+                    "type": "string",
+                    "description": "The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be \"LRS\", and \"ZRS\". Defaults to \"LRS\".\n"
                 },
                 "refererConfig": {
                     "$ref": "#/types/alicloud:oss/BucketRefererConfig:BucketRefererConfig",
@@ -44560,6 +45955,10 @@
                     "policy": {
                         "type": "string",
                         "description": "Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).\n"
+                    },
+                    "redundancyType": {
+                        "type": "string",
+                        "description": "The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be \"LRS\", and \"ZRS\". Defaults to \"LRS\".\n"
                     },
                     "refererConfig": {
                         "$ref": "#/types/alicloud:oss/BucketRefererConfig:BucketRefererConfig",
@@ -59081,6 +60480,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getInstances.\n",
                 "properties": {
+                    "descriptionRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by instance description.\n"
+                    },
                     "ids": {
                         "type": "array",
                         "items": {
@@ -59090,7 +60493,8 @@
                     },
                     "nameRegex": {
                         "type": "string",
-                        "description": "A regex string to filter results by instance name.\n"
+                        "description": "A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.\n",
+                        "deprecationMessage": "Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead."
                     },
                     "outputFile": {
                         "type": "string"
@@ -59101,6 +60505,9 @@
             "outputs": {
                 "description": "A collection of values returned by getInstances.\n",
                 "properties": {
+                    "descriptionRegex": {
+                        "type": "string"
+                    },
                     "descriptions": {
                         "type": "array",
                         "items": {
@@ -59127,7 +60534,8 @@
                         "description": "A list of DRDS instances.\n"
                     },
                     "nameRegex": {
-                        "type": "string"
+                        "type": "string",
+                        "deprecationMessage": "Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead."
                     },
                     "outputFile": {
                         "type": "string"
@@ -59233,6 +60641,133 @@
                 "type": "object",
                 "required": [
                     "caches",
+                    "ids",
+                    "names",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:ecs/getDedicatedHosts:getDedicatedHosts": {
+            "description": "This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.91.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDedicatedHosts.\n",
+                "properties": {
+                    "dedicatedHostId": {
+                        "type": "string",
+                        "description": "The ID of ECS Dedicated Host.\n"
+                    },
+                    "dedicatedHostName": {
+                        "type": "string",
+                        "description": "The name of ECS Dedicated Host.\n"
+                    },
+                    "dedicatedHostType": {
+                        "type": "string",
+                        "description": "The type of the dedicated host.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of ECS Dedicated Host ids.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by the ECS Dedicated Host name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string",
+                        "description": "Save the result to the file.\n"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of the resource group to which the ECS Dedicated Host belongs.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of tags to assign to the resource.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone ID of the ECS Dedicated Host.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDedicatedHosts.\n",
+                "properties": {
+                    "dedicatedHostId": {
+                        "type": "string",
+                        "description": "ID of the ECS Dedicated Host.\n"
+                    },
+                    "dedicatedHostName": {
+                        "type": "string",
+                        "description": "The name of the dedicated host.\n"
+                    },
+                    "dedicatedHostType": {
+                        "type": "string",
+                        "description": "The type of the dedicated host.\n"
+                    },
+                    "hosts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:ecs/getDedicatedHostsHost:getDedicatedHostsHost"
+                        },
+                        "description": "A list of ECS Dedicated Hosts. Each element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of ECS Dedicated Host ids. \n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of ECS Dedicated Host names.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of the resource group to which the dedicated host belongs.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The service status of the dedicated host.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "zoneId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "hosts",
                     "ids",
                     "names",
                     "id"
@@ -64081,6 +65616,147 @@
                 "required": [
                     "protocols",
                     "type",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:oos/getTemplates:getTemplates": {
+            "description": "This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.92.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTemplates.\n",
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "description": "The category of template.\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "The creator of the template.\n"
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "description": "The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.\n"
+                    },
+                    "createdDateAfter": {
+                        "type": "string",
+                        "description": "Create a template whose time is greater than or equal to the specified time. The format is: YYYY-MM-DDThh:mm:ssZ.\n"
+                    },
+                    "hasTrigger": {
+                        "type": "boolean",
+                        "description": "Is it triggered successfully.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of OOS Template ids. Each element in the list is same as template_name.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter the results by the template_name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "shareType": {
+                        "type": "string",
+                        "description": "The sharing type of the template. Valid values: `Private`, `Public`.\n"
+                    },
+                    "sortField": {
+                        "type": "string",
+                        "description": "Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.\n"
+                    },
+                    "sortOrder": {
+                        "type": "string",
+                        "description": "Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of tags to assign to the resource.\n"
+                    },
+                    "templateFormat": {
+                        "type": "string",
+                        "description": "The format of the template. Valid values: `JSON`, `YAML`.\n"
+                    },
+                    "templateType": {
+                        "type": "string",
+                        "description": "The type of OOS Template.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTemplates.\n",
+                "properties": {
+                    "category": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "createdDate": {
+                        "type": "string"
+                    },
+                    "createdDateAfter": {
+                        "type": "string"
+                    },
+                    "hasTrigger": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of OOS Template ids. Each element in the list is same as template_name.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "shareType": {
+                        "type": "string"
+                    },
+                    "sortField": {
+                        "type": "string"
+                    },
+                    "sortOrder": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "templateFormat": {
+                        "type": "string"
+                    },
+                    "templateType": {
+                        "type": "string"
+                    },
+                    "templates": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:oos/getTemplatesTemplate:getTemplatesTemplate"
+                        },
+                        "description": "A list of OOS Templates. Each element contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "templates",
                     "id"
                 ]
             }
@@ -68978,6 +70654,7 @@
                 "mns": "Mns",
                 "mongodb": "MongoDB",
                 "nas": "Nas",
+                "oos": "Oos",
                 "oss": "Oss",
                 "ots": "Ots",
                 "polardb": "PolarDB",

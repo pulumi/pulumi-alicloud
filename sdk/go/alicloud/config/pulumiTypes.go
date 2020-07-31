@@ -116,6 +116,7 @@ type Endpoints struct {
 	Mns             *string `pulumi:"mns"`
 	Nas             *string `pulumi:"nas"`
 	Ons             *string `pulumi:"ons"`
+	Oos             *string `pulumi:"oos"`
 	Oss             *string `pulumi:"oss"`
 	Ots             *string `pulumi:"ots"`
 	Polardb         *string `pulumi:"polardb"`
@@ -179,6 +180,7 @@ type EndpointsArgs struct {
 	Mns             pulumi.StringPtrInput `pulumi:"mns"`
 	Nas             pulumi.StringPtrInput `pulumi:"nas"`
 	Ons             pulumi.StringPtrInput `pulumi:"ons"`
+	Oos             pulumi.StringPtrInput `pulumi:"oos"`
 	Oss             pulumi.StringPtrInput `pulumi:"oss"`
 	Ots             pulumi.StringPtrInput `pulumi:"ots"`
 	Polardb         pulumi.StringPtrInput `pulumi:"polardb"`
@@ -390,6 +392,10 @@ func (o EndpointsOutput) Nas() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Ons() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Ons }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Oos() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Oos }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Oss() pulumi.StringPtrOutput {

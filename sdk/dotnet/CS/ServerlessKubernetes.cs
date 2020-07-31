@@ -11,6 +11,9 @@ namespace Pulumi.AliCloud.CS
 {
     public partial class ServerlessKubernetes : Pulumi.CustomResource
     {
+        [Output("addons")]
+        public Output<ImmutableArray<Outputs.ServerlessKubernetesAddon>> Addons { get; private set; } = null!;
+
         /// <summary>
         /// The path of client certificate, like `~/.kube/client-cert.pem`.
         /// </summary>
@@ -77,7 +80,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> PrivateZone { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of security group where the current cluster worker node is located.
+        /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
@@ -95,10 +98,16 @@ namespace Pulumi.AliCloud.CS
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        /// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string> VswitchId { get; private set; } = null!;
+        public Output<string?> VswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The vswitches where new kubernetes cluster will be located.
+        /// </summary>
+        [Output("vswitchIds")]
+        public Output<ImmutableArray<string>> VswitchIds { get; private set; } = null!;
 
 
         /// <summary>
@@ -146,6 +155,14 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class ServerlessKubernetesArgs : Pulumi.ResourceArgs
     {
+        [Input("addons")]
+        private InputList<Inputs.ServerlessKubernetesAddonArgs>? _addons;
+        public InputList<Inputs.ServerlessKubernetesAddonArgs> Addons
+        {
+            get => _addons ?? (_addons = new InputList<Inputs.ServerlessKubernetesAddonArgs>());
+            set => _addons = value;
+        }
+
         /// <summary>
         /// The path of client certificate, like `~/.kube/client-cert.pem`.
         /// </summary>
@@ -210,6 +227,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
+
+        /// <summary>
+        /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -230,10 +253,22 @@ namespace Pulumi.AliCloud.CS
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        /// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         /// </summary>
-        [Input("vswitchId", required: true)]
-        public Input<string> VswitchId { get; set; } = null!;
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        [Input("vswitchIds")]
+        private InputList<string>? _vswitchIds;
+
+        /// <summary>
+        /// The vswitches where new kubernetes cluster will be located.
+        /// </summary>
+        public InputList<string> VswitchIds
+        {
+            get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
+            set => _vswitchIds = value;
+        }
 
         public ServerlessKubernetesArgs()
         {
@@ -242,6 +277,14 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class ServerlessKubernetesState : Pulumi.ResourceArgs
     {
+        [Input("addons")]
+        private InputList<Inputs.ServerlessKubernetesAddonGetArgs>? _addons;
+        public InputList<Inputs.ServerlessKubernetesAddonGetArgs> Addons
+        {
+            get => _addons ?? (_addons = new InputList<Inputs.ServerlessKubernetesAddonGetArgs>());
+            set => _addons = value;
+        }
+
         /// <summary>
         /// The path of client certificate, like `~/.kube/client-cert.pem`.
         /// </summary>
@@ -308,7 +351,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? PrivateZone { get; set; }
 
         /// <summary>
-        /// The ID of security group where the current cluster worker node is located.
+        /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -332,10 +375,22 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        /// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
+
+        [Input("vswitchIds")]
+        private InputList<string>? _vswitchIds;
+
+        /// <summary>
+        /// The vswitches where new kubernetes cluster will be located.
+        /// </summary>
+        public InputList<string> VswitchIds
+        {
+            get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
+            set => _vswitchIds = value;
+        }
 
         public ServerlessKubernetesState()
         {

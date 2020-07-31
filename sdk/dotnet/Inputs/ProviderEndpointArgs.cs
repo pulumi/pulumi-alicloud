@@ -123,6 +123,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("ons")]
         public Input<string>? Ons { get; set; }
 
+        [Input("oos")]
+        public Input<string>? Oos { get; set; }
+
         [Input("oss")]
         public Input<string>? Oss { get; set; }
 

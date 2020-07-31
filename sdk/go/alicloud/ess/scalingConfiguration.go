@@ -22,7 +22,9 @@ type ScalingConfiguration struct {
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
-	ImageId pulumi.StringOutput `pulumi:"imageId"`
+	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	// Name of an image file, indicating the image resource selected when an instance is enabled.
+	ImageName pulumi.StringPtrOutput `pulumi:"imageName"`
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
@@ -69,8 +71,14 @@ type ScalingConfiguration struct {
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute pulumi.StringOutput `pulumi:"substitute"`
+	// The id of auto snapshot policy for system disk.
+	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
+	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	SystemDiskDescription pulumi.StringPtrOutput `pulumi:"systemDiskDescription"`
+	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+	SystemDiskName pulumi.StringPtrOutput `pulumi:"systemDiskName"`
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -84,9 +92,6 @@ type ScalingConfiguration struct {
 // NewScalingConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewScalingConfiguration(ctx *pulumi.Context,
 	name string, args *ScalingConfigurationArgs, opts ...pulumi.ResourceOption) (*ScalingConfiguration, error) {
-	if args == nil || args.ImageId == nil {
-		return nil, errors.New("missing required argument 'ImageId'")
-	}
 	if args == nil || args.ScalingGroupId == nil {
 		return nil, errors.New("missing required argument 'ScalingGroupId'")
 	}
@@ -125,6 +130,8 @@ type scalingConfigurationState struct {
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId *string `pulumi:"imageId"`
+	// Name of an image file, indicating the image resource selected when an instance is enabled.
+	ImageName *string `pulumi:"imageName"`
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
@@ -171,8 +178,14 @@ type scalingConfigurationState struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute *string `pulumi:"substitute"`
+	// The id of auto snapshot policy for system disk.
+	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+	SystemDiskName *string `pulumi:"systemDiskName"`
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -194,6 +207,8 @@ type ScalingConfigurationState struct {
 	ForceDelete pulumi.BoolPtrInput
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId pulumi.StringPtrInput
+	// Name of an image file, indicating the image resource selected when an instance is enabled.
+	ImageName pulumi.StringPtrInput
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
@@ -240,8 +255,14 @@ type ScalingConfigurationState struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute pulumi.StringPtrInput
+	// The id of auto snapshot policy for system disk.
+	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
+	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	SystemDiskDescription pulumi.StringPtrInput
+	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+	SystemDiskName pulumi.StringPtrInput
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -266,7 +287,9 @@ type scalingConfigurationArgs struct {
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
-	ImageId string `pulumi:"imageId"`
+	ImageId *string `pulumi:"imageId"`
+	// Name of an image file, indicating the image resource selected when an instance is enabled.
+	ImageName *string `pulumi:"imageName"`
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
@@ -313,8 +336,14 @@ type scalingConfigurationArgs struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute *string `pulumi:"substitute"`
+	// The id of auto snapshot policy for system disk.
+	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+	SystemDiskName *string `pulumi:"systemDiskName"`
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -336,7 +365,9 @@ type ScalingConfigurationArgs struct {
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
 	ForceDelete pulumi.BoolPtrInput
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
-	ImageId pulumi.StringInput
+	ImageId pulumi.StringPtrInput
+	// Name of an image file, indicating the image resource selected when an instance is enabled.
+	ImageName pulumi.StringPtrInput
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
@@ -383,8 +414,14 @@ type ScalingConfigurationArgs struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute pulumi.StringPtrInput
+	// The id of auto snapshot policy for system disk.
+	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
+	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	SystemDiskDescription pulumi.StringPtrInput
+	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+	SystemDiskName pulumi.StringPtrInput
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.

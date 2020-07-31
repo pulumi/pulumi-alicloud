@@ -27,6 +27,12 @@ namespace Pulumi.AliCloud.Drds
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A regex string to filter results by instance description.
+        /// </summary>
+        [Input("descriptionRegex")]
+        public string? DescriptionRegex { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -40,7 +46,7 @@ namespace Pulumi.AliCloud.Drds
         }
 
         /// <summary>
-        /// A regex string to filter results by instance name.
+        /// A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -57,6 +63,7 @@ namespace Pulumi.AliCloud.Drds
     [OutputType]
     public sealed class GetInstancesResult
     {
+        public readonly string? DescriptionRegex;
         /// <summary>
         /// A list of DRDS descriptions. 
         /// </summary>
@@ -78,6 +85,8 @@ namespace Pulumi.AliCloud.Drds
 
         [OutputConstructor]
         private GetInstancesResult(
+            string? descriptionRegex,
+
             ImmutableArray<string> descriptions,
 
             string id,
@@ -90,6 +99,7 @@ namespace Pulumi.AliCloud.Drds
 
             string? outputFile)
         {
+            DescriptionRegex = descriptionRegex;
             Descriptions = descriptions;
             Id = id;
             Ids = ids;

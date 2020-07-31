@@ -106,6 +106,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly policy!: pulumi.Output<string | undefined>;
     /**
+     * The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+     */
+    public readonly redundancyType!: pulumi.Output<string | undefined>;
+    /**
      * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
      */
     public readonly refererConfig!: pulumi.Output<outputs.oss.BucketRefererConfig | undefined>;
@@ -155,6 +159,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["loggingIsenable"] = state ? state.loggingIsenable : undefined;
             inputs["owner"] = state ? state.owner : undefined;
             inputs["policy"] = state ? state.policy : undefined;
+            inputs["redundancyType"] = state ? state.redundancyType : undefined;
             inputs["refererConfig"] = state ? state.refererConfig : undefined;
             inputs["serverSideEncryptionRule"] = state ? state.serverSideEncryptionRule : undefined;
             inputs["storageClass"] = state ? state.storageClass : undefined;
@@ -171,6 +176,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["logging"] = args ? args.logging : undefined;
             inputs["loggingIsenable"] = args ? args.loggingIsenable : undefined;
             inputs["policy"] = args ? args.policy : undefined;
+            inputs["redundancyType"] = args ? args.redundancyType : undefined;
             inputs["refererConfig"] = args ? args.refererConfig : undefined;
             inputs["serverSideEncryptionRule"] = args ? args.serverSideEncryptionRule : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
@@ -250,6 +256,10 @@ export interface BucketState {
      */
     readonly policy?: pulumi.Input<string>;
     /**
+     * The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+     */
+    readonly redundancyType?: pulumi.Input<string>;
+    /**
      * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
      */
     readonly refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
@@ -310,6 +320,10 @@ export interface BucketArgs {
      * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
      */
     readonly policy?: pulumi.Input<string>;
+    /**
+     * The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+     */
+    readonly redundancyType?: pulumi.Input<string>;
     /**
      * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
      */

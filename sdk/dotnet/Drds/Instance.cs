@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Drds
     /// 
     /// For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).
     /// 
-    /// &gt; **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao.
+    /// &gt; **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
     /// 
     /// &gt; **NOTE:** Currently, this resource only support `Domestic Site Account`.
     /// 
@@ -88,13 +88,13 @@ namespace Pulumi.AliCloud.Drds
         /// The VSwitch ID to launch in.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string?> VswitchId { get; private set; } = null!;
+        public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The Zone to launch the DRDS instance.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -181,14 +181,14 @@ namespace Pulumi.AliCloud.Drds
         /// <summary>
         /// The VSwitch ID to launch in.
         /// </summary>
-        [Input("vswitchId")]
-        public Input<string>? VswitchId { get; set; }
+        [Input("vswitchId", required: true)]
+        public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
         /// The Zone to launch the DRDS instance.
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public InstanceArgs()
         {

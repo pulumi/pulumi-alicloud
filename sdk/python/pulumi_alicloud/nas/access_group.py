@@ -10,23 +10,36 @@ from typing import Union
 from .. import utilities, tables
 
 class AccessGroup(pulumi.CustomResource):
+    access_group_name: pulumi.Output[str]
+    """
+    A Name of one Access Group.
+    """
+    access_group_type: pulumi.Output[str]
+    """
+    A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+    """
     description: pulumi.Output[str]
     """
     The Access Group description.
     """
+    file_system_type: pulumi.Output[str]
+    """
+    The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+    """
     name: pulumi.Output[str]
     """
-    A Name of one Access Group.
+    Replaced by `access_group_name` after version 1.92.0.
     """
     type: pulumi.Output[str]
     """
-    A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+    Replaced by `access_group_type` after version 1.92.0.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, access_group_name=None, access_group_type=None, description=None, file_system_type=None, name=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Nas Access Group resource.
+        Provides a NAS Access Group resource.
 
         In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
+        For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/doc-detail/27534)
 
         > **NOTE:** Available in v1.33.0+.
 
@@ -46,9 +59,12 @@ class AccessGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_group_name: A Name of one Access Group.
+        :param pulumi.Input[str] access_group_type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
         :param pulumi.Input[str] description: The Access Group description.
-        :param pulumi.Input[str] name: A Name of one Access Group.
-        :param pulumi.Input[str] type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        :param pulumi.Input[str] file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        :param pulumi.Input[str] name: Replaced by `access_group_name` after version 1.92.0.
+        :param pulumi.Input[str] type: Replaced by `access_group_type` after version 1.92.0.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,10 +83,11 @@ class AccessGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['access_group_name'] = access_group_name
+            __props__['access_group_type'] = access_group_type
             __props__['description'] = description
+            __props__['file_system_type'] = file_system_type
             __props__['name'] = name
-            if type is None:
-                raise TypeError("Missing required property 'type'")
             __props__['type'] = type
         super(AccessGroup, __self__).__init__(
             'alicloud:nas/accessGroup:AccessGroup',
@@ -79,7 +96,7 @@ class AccessGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, name=None, type=None):
+    def get(resource_name, id, opts=None, access_group_name=None, access_group_type=None, description=None, file_system_type=None, name=None, type=None):
         """
         Get an existing AccessGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -87,15 +104,21 @@ class AccessGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_group_name: A Name of one Access Group.
+        :param pulumi.Input[str] access_group_type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
         :param pulumi.Input[str] description: The Access Group description.
-        :param pulumi.Input[str] name: A Name of one Access Group.
-        :param pulumi.Input[str] type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        :param pulumi.Input[str] file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        :param pulumi.Input[str] name: Replaced by `access_group_name` after version 1.92.0.
+        :param pulumi.Input[str] type: Replaced by `access_group_type` after version 1.92.0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["access_group_name"] = access_group_name
+        __props__["access_group_type"] = access_group_type
         __props__["description"] = description
+        __props__["file_system_type"] = file_system_type
         __props__["name"] = name
         __props__["type"] = type
         return AccessGroup(resource_name, opts=opts, __props__=__props__)

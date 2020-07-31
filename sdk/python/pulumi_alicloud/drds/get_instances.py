@@ -13,7 +13,10 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, descriptions=None, id=None, ids=None, instances=None, name_regex=None, output_file=None):
+    def __init__(__self__, description_regex=None, descriptions=None, id=None, ids=None, instances=None, name_regex=None, output_file=None):
+        if description_regex and not isinstance(description_regex, str):
+            raise TypeError("Expected argument 'description_regex' to be a str")
+        __self__.description_regex = description_regex
         if descriptions and not isinstance(descriptions, list):
             raise TypeError("Expected argument 'descriptions' to be a list")
         __self__.descriptions = descriptions
@@ -40,6 +43,9 @@ class GetInstancesResult:
         """
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
+        if name_regex is not None:
+            warnings.warn("Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.", DeprecationWarning)
+            pulumi.log.warn("name_regex is deprecated: Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.")
         __self__.name_regex = name_regex
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
@@ -50,6 +56,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
         if False:
             yield self
         return GetInstancesResult(
+            description_regex=self.description_regex,
             descriptions=self.descriptions,
             id=self.id,
             ids=self.ids,
@@ -57,7 +64,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             name_regex=self.name_regex,
             output_file=self.output_file)
 
-def get_instances(ids=None,name_regex=None,output_file=None,opts=None):
+def get_instances(description_regex=None,ids=None,name_regex=None,output_file=None,opts=None):
     """
      The `drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
@@ -67,12 +74,14 @@ def get_instances(ids=None,name_regex=None,output_file=None,opts=None):
 
 
 
+    :param str description_regex: A regex string to filter results by instance description.
     :param list ids: A list of DRDS instance IDs.
-    :param str name_regex: A regex string to filter results by instance name.
+    :param str name_regex: A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.
     """
     __args__ = dict()
 
 
+    __args__['descriptionRegex'] = description_regex
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -83,6 +92,7 @@ def get_instances(ids=None,name_regex=None,output_file=None,opts=None):
     __ret__ = pulumi.runtime.invoke('alicloud:drds/getInstances:getInstances', __args__, opts=opts).value
 
     return AwaitableGetInstancesResult(
+        description_regex=__ret__.get('descriptionRegex'),
         descriptions=__ret__.get('descriptions'),
         id=__ret__.get('id'),
         ids=__ret__.get('ids'),

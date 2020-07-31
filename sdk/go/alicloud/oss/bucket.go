@@ -42,6 +42,8 @@ type Bucket struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy pulumi.StringPtrOutput `pulumi:"policy"`
+	// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+	RedundancyType pulumi.StringPtrOutput `pulumi:"redundancyType"`
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig BucketRefererConfigPtrOutput `pulumi:"refererConfig"`
 	// A configuration of server-side encryption (documented below).
@@ -111,6 +113,8 @@ type bucketState struct {
 	Owner *string `pulumi:"owner"`
 	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy *string `pulumi:"policy"`
+	// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+	RedundancyType *string `pulumi:"redundancyType"`
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig *BucketRefererConfig `pulumi:"refererConfig"`
 	// A configuration of server-side encryption (documented below).
@@ -153,6 +157,8 @@ type BucketState struct {
 	Owner pulumi.StringPtrInput
 	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy pulumi.StringPtrInput
+	// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+	RedundancyType pulumi.StringPtrInput
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig BucketRefererConfigPtrInput
 	// A configuration of server-side encryption (documented below).
@@ -189,6 +195,8 @@ type bucketArgs struct {
 	LoggingIsenable *bool `pulumi:"loggingIsenable"`
 	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy *string `pulumi:"policy"`
+	// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+	RedundancyType *string `pulumi:"redundancyType"`
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig *BucketRefererConfig `pulumi:"refererConfig"`
 	// A configuration of server-side encryption (documented below).
@@ -222,6 +230,8 @@ type BucketArgs struct {
 	LoggingIsenable pulumi.BoolPtrInput
 	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy pulumi.StringPtrInput
+	// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+	RedundancyType pulumi.StringPtrInput
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig BucketRefererConfigPtrInput
 	// A configuration of server-side encryption (documented below).

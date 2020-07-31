@@ -19,7 +19,7 @@ type KeyPair struct {
 	// The key pair's name. It is the only in one Alicloud account.
 	KeyName       pulumi.StringOutput    `pulumi:"keyName"`
 	KeyNamePrefix pulumi.StringPtrOutput `pulumi:"keyNamePrefix"`
-	// You can import an existing public key and using Alicloud key pair to manage it.
+	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
@@ -60,7 +60,7 @@ type keyPairState struct {
 	// The key pair's name. It is the only in one Alicloud account.
 	KeyName       *string `pulumi:"keyName"`
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
-	// You can import an existing public key and using Alicloud key pair to manage it.
+	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId *string                `pulumi:"resourceGroupId"`
@@ -74,7 +74,7 @@ type KeyPairState struct {
 	// The key pair's name. It is the only in one Alicloud account.
 	KeyName       pulumi.StringPtrInput
 	KeyNamePrefix pulumi.StringPtrInput
-	// You can import an existing public key and using Alicloud key pair to manage it.
+	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -91,7 +91,7 @@ type keyPairArgs struct {
 	// The key pair's name. It is the only in one Alicloud account.
 	KeyName       *string `pulumi:"keyName"`
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
-	// You can import an existing public key and using Alicloud key pair to manage it.
+	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId *string                `pulumi:"resourceGroupId"`
@@ -105,7 +105,7 @@ type KeyPairArgs struct {
 	// The key pair's name. It is the only in one Alicloud account.
 	KeyName       pulumi.StringPtrInput
 	KeyNamePrefix pulumi.StringPtrInput
-	// You can import an existing public key and using Alicloud key pair to manage it.
+	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput

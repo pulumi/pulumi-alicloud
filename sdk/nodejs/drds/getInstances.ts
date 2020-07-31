@@ -22,6 +22,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:drds/getInstances:getInstances", {
+        "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -33,11 +34,17 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  */
 export interface GetInstancesArgs {
     /**
+     * A regex string to filter results by instance description.
+     */
+    readonly descriptionRegex?: string;
+    /**
      * A list of DRDS instance IDs.
      */
     readonly ids?: string[];
     /**
-     * A regex string to filter results by instance name.
+     * A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.
+     *
+     * @deprecated Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
@@ -47,6 +54,7 @@ export interface GetInstancesArgs {
  * A collection of values returned by getInstances.
  */
 export interface GetInstancesResult {
+    readonly descriptionRegex?: string;
     /**
      * A list of DRDS descriptions. 
      */
@@ -63,6 +71,9 @@ export interface GetInstancesResult {
      * A list of DRDS instances.
      */
     readonly instances: outputs.drds.GetInstancesInstance[];
+    /**
+     * @deprecated Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.
+     */
     readonly nameRegex?: string;
     readonly outputFile?: string;
 }

@@ -94,6 +94,7 @@ export interface ProviderEndpoint {
     mns?: string;
     nas?: string;
     ons?: string;
+    oos?: string;
     oss?: string;
     ots?: string;
     polardb?: string;
@@ -1414,6 +1415,7 @@ export namespace config {
         mns?: string;
         nas?: string;
         ons?: string;
+        oos?: string;
         oss?: string;
         ots?: string;
         polardb?: string;
@@ -2090,6 +2092,20 @@ export namespace cs {
         privateIp: string;
     }
 
+    export interface KubernetesWorkerDataDisk {
+        autoSnapshotPolicyId?: string;
+        category?: string;
+        device?: string;
+        encrypted?: string;
+        kmsKeyId?: string;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: string;
+        size?: string;
+        snapshotId?: string;
+    }
+
     export interface KubernetesWorkerNode {
         /**
          * ID of the node.
@@ -2130,6 +2146,20 @@ export namespace cs {
         serviceDomain: string;
     }
 
+    export interface ManagedKubernetesWorkerDataDisk {
+        autoSnapshotPolicyId?: string;
+        category?: string;
+        device?: string;
+        encrypted?: string;
+        kmsKeyId?: string;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: string;
+        size?: string;
+        snapshotId?: string;
+    }
+
     export interface ManagedKubernetesWorkerNode {
         /**
          * ID of the node.
@@ -2143,6 +2173,15 @@ export namespace cs {
          * The private IP address of node.
          */
         privateIp: string;
+    }
+
+    export interface ServerlessKubernetesAddon {
+        config?: string;
+        disabled?: boolean;
+        /**
+         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         */
+        name?: string;
     }
 
     export interface SwarmNode {
@@ -2802,6 +2841,104 @@ export namespace ecs {
         priority?: string;
         vswitchId: string;
         weightedCapacity?: string;
+    }
+
+    export interface DedicatedHostNetworkAttribute {
+        /**
+         * The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
+         */
+        slbUdpTimeout?: number;
+        /**
+         * The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
+         */
+        udpTimeout?: number;
+    }
+
+    export interface GetDedicatedHostsHost {
+        /**
+         * The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online.
+         */
+        actionOnMaintenance: string;
+        /**
+         * Specifies whether to add the dedicated host to the resource pool for automatic deployment.
+         */
+        autoPlacement: string;
+        /**
+         * The automatic release time of the dedicated host.
+         */
+        autoReleaseTime: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        cores: number;
+        /**
+         * The ID of ECS Dedicated Host.
+         */
+        dedicatedHostId: string;
+        /**
+         * The name of ECS Dedicated Host.
+         */
+        dedicatedHostName: string;
+        /**
+         * The type of the dedicated host.
+         */
+        dedicatedHostType: string;
+        /**
+         * The description of the dedicated host.
+         */
+        description: string;
+        /**
+         * The expiration time of the subscription dedicated host.
+         */
+        expiredTime: string;
+        /**
+         * The GPU model.
+         */
+        gpuSpec: string;
+        /**
+         * ID of the ECS Dedicated Host.
+         */
+        id: string;
+        /**
+         * The machine code of the dedicated host.
+         */
+        machineId: string;
+        /**
+         * The billing method of the dedicated host.
+         */
+        paymentType: string;
+        /**
+         * The number of physical GPUs.
+         */
+        physicalGpus: number;
+        /**
+         * The ID of the resource group to which the ECS Dedicated Host belongs.
+         */
+        resourceGroupId: string;
+        /**
+         * The unit of the subscription billing method.
+         */
+        saleCycle: string;
+        /**
+         * The number of physical CPUs.
+         */
+        sockets: number;
+        /**
+         * The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+         */
+        status: string;
+        /**
+         * The list of ECS instanc
+         */
+        supportedInstanceTypesLists: string[];
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The zone ID of the ECS Dedicated Host.
+         */
+        zoneId: string;
     }
 
     export interface GetDisksDisk {
@@ -4344,12 +4481,17 @@ export namespace ess {
     }
 
     export interface ScalingConfigurationDataDisk {
+        autoSnapshotPolicyId?: string;
         category?: string;
         deleteWithInstance?: boolean;
+        description?: string;
         /**
          * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
          */
         device?: string;
+        encrypted?: boolean;
+        kmsKeyId?: string;
+        name?: string;
         size?: number;
         snapshotId?: string;
     }
@@ -5552,6 +5694,71 @@ export namespace nas {
     }
 }
 
+export namespace oos {
+    export interface GetTemplatesTemplate {
+        /**
+         * The category of template.
+         */
+        category: string;
+        /**
+         * The creator of the template.
+         */
+        createdBy: string;
+        /**
+         * The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
+         */
+        createdDate: string;
+        /**
+         * Description of the OOS Template.
+         */
+        description: string;
+        /**
+         * Is it triggered successfully.
+         */
+        hasTrigger: boolean;
+        /**
+         * ID of the OOS Template. The value is same as template_name.
+         */
+        id: string;
+        /**
+         * The sharing type of the template. Valid values: `Private`, `Public`.
+         */
+        shareType: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The format of the template. Valid values: `JSON`, `YAML`.
+         */
+        templateFormat: string;
+        /**
+         * ID of the OOS Template resource.
+         */
+        templateId: string;
+        /**
+         * Name of the OOS Template.
+         */
+        templateName: string;
+        /**
+         * The type of OOS Template.
+         */
+        templateType: string;
+        /**
+         * Version of the OOS Template.
+         */
+        templateVersion: string;
+        /**
+         * The user who updated the template.
+         */
+        updatedBy: string;
+        /**
+         * The time when the template was updated.
+         */
+        updatedDate: string;
+    }
+}
+
 export namespace oss {
     export interface BucketCorsRule {
         /**
@@ -5648,6 +5855,10 @@ export namespace oss {
     }
 
     export interface BucketServerSideEncryptionRule {
+        /**
+         * The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
+         */
+        kmsMasterKeyId?: string;
         /**
          * The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
          */
@@ -5774,6 +5985,10 @@ export namespace oss {
         owner: string;
         policy?: string;
         /**
+         * Redundancy type. Possible values: `LRS`, and `ZRS`.
+         */
+        redundancyType: string;
+        /**
          * A list of one element containing referer configuration. It contains the following attributes:
          */
         refererConfig: outputs.oss.GetBucketsBucketRefererConfig;
@@ -5875,6 +6090,10 @@ export namespace oss {
     }
 
     export interface GetBucketsBucketServerSideEncryptionRule {
+        /**
+         * The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
+         */
+        kmsMasterKeyId: string;
         /**
          * The server-side encryption algorithm to use.
          */
@@ -7687,6 +7906,10 @@ export namespace vpc {
          * The ID of the NAT gateway.
          */
         id: string;
+        /**
+         * The ip address of the bind eip.
+         */
+        ipLists: string[];
         /**
          * Name of the NAT gateway.
          */

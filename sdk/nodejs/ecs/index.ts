@@ -4,10 +4,12 @@
 // Export members:
 export * from "./autoProvisioningGroup";
 export * from "./copyImage";
+export * from "./dedicatedHost";
 export * from "./disk";
 export * from "./diskAttachment";
 export * from "./eip";
 export * from "./eipAssociation";
+export * from "./getDedicatedHosts";
 export * from "./getDisks";
 export * from "./getEips";
 export * from "./getImages";

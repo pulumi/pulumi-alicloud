@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 class ServerlessKubernetes(pulumi.CustomResource):
+    addons: pulumi.Output[list]
     client_cert: pulumi.Output[str]
     """
     The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -55,7 +56,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     """
     security_group_id: pulumi.Output[str]
     """
-    The ID of security group where the current cluster worker node is located.
+    The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
     """
     tags: pulumi.Output[dict]
     """
@@ -67,9 +68,13 @@ class ServerlessKubernetes(pulumi.CustomResource):
     """
     vswitch_id: pulumi.Output[str]
     """
-    The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+    (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
     """
-    def __init__(__self__, resource_name, opts=None, client_cert=None, client_key=None, cluster_ca_cert=None, deletion_protection=None, endpoint_public_access_enabled=None, force_update=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, private_zone=None, tags=None, vpc_id=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
+    vswitch_ids: pulumi.Output[list]
+    """
+    The vswitches where new kubernetes cluster will be located.
+    """
+    def __init__(__self__, resource_name, opts=None, addons=None, client_cert=None, client_key=None, cluster_ca_cert=None, deletion_protection=None, endpoint_public_access_enabled=None, force_update=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, private_zone=None, security_group_id=None, tags=None, vpc_id=None, vswitch_id=None, vswitch_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ServerlessKubernetes resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -86,9 +91,17 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
         :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+        :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[dict] tags: Default nil, A map of tags assigned to the kubernetes cluster .
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
-        :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        :param pulumi.Input[str] vswitch_id: (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        :param pulumi.Input[list] vswitch_ids: The vswitches where new kubernetes cluster will be located.
+
+        The **addons** object supports the following:
+
+          * `config` (`pulumi.Input[str]`)
+          * `disabled` (`pulumi.Input[bool]`)
+          * `name` (`pulumi.Input[str]`) - The kubernetes cluster's name. It is the only in one Alicloud account.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,6 +120,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['addons'] = addons
             __props__['client_cert'] = client_cert
             __props__['client_key'] = client_key
             __props__['cluster_ca_cert'] = cluster_ca_cert
@@ -118,14 +132,16 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__['name_prefix'] = name_prefix
             __props__['new_nat_gateway'] = new_nat_gateway
             __props__['private_zone'] = private_zone
+            __props__['security_group_id'] = security_group_id
             __props__['tags'] = tags
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
-            if vswitch_id is None:
-                raise TypeError("Missing required property 'vswitch_id'")
+            if vswitch_id is not None:
+                warnings.warn("Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.", DeprecationWarning)
+                pulumi.log.warn("vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.")
             __props__['vswitch_id'] = vswitch_id
-            __props__['security_group_id'] = None
+            __props__['vswitch_ids'] = vswitch_ids
         super(ServerlessKubernetes, __self__).__init__(
             'alicloud:cs/serverlessKubernetes:ServerlessKubernetes',
             resource_name,
@@ -133,7 +149,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, client_cert=None, client_key=None, cluster_ca_cert=None, deletion_protection=None, endpoint_public_access_enabled=None, force_update=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, private_zone=None, security_group_id=None, tags=None, vpc_id=None, vswitch_id=None):
+    def get(resource_name, id, opts=None, addons=None, client_cert=None, client_key=None, cluster_ca_cert=None, deletion_protection=None, endpoint_public_access_enabled=None, force_update=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, private_zone=None, security_group_id=None, tags=None, vpc_id=None, vswitch_id=None, vswitch_ids=None):
         """
         Get an existing ServerlessKubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -153,15 +169,23 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
         :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
-        :param pulumi.Input[str] security_group_id: The ID of security group where the current cluster worker node is located.
+        :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[dict] tags: Default nil, A map of tags assigned to the kubernetes cluster .
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
-        :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        :param pulumi.Input[str] vswitch_id: (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        :param pulumi.Input[list] vswitch_ids: The vswitches where new kubernetes cluster will be located.
+
+        The **addons** object supports the following:
+
+          * `config` (`pulumi.Input[str]`)
+          * `disabled` (`pulumi.Input[bool]`)
+          * `name` (`pulumi.Input[str]`) - The kubernetes cluster's name. It is the only in one Alicloud account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["addons"] = addons
         __props__["client_cert"] = client_cert
         __props__["client_key"] = client_key
         __props__["cluster_ca_cert"] = cluster_ca_cert
@@ -177,6 +201,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["vpc_id"] = vpc_id
         __props__["vswitch_id"] = vswitch_id
+        __props__["vswitch_ids"] = vswitch_ids
         return ServerlessKubernetes(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

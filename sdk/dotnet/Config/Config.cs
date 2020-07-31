@@ -127,6 +127,7 @@ namespace Pulumi.AliCloud
                 public string? Mns { get; set; } = null!;
                 public string? Nas { get; set; } = null!;
                 public string? Ons { get; set; } = null!;
+                public string? Oos { get; set; } = null!;
                 public string? Oss { get; set; } = null!;
                 public string? Ots { get; set; } = null!;
                 public string? Polardb { get; set; } = null!;

@@ -50,6 +50,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Mns;
         public readonly string? Nas;
         public readonly string? Ons;
+        public readonly string? Oos;
         public readonly string? Oss;
         public readonly string? Ots;
         public readonly string? Polardb;
@@ -138,6 +139,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? ons,
 
+            string? oos,
+
             string? oss,
 
             string? ots,
@@ -197,6 +200,7 @@ namespace Pulumi.AliCloud.Outputs
             Mns = mns;
             Nas = nas;
             Ons = ons;
+            Oos = oos;
             Oss = oss;
             Ots = ots;
             Polardb = polardb;

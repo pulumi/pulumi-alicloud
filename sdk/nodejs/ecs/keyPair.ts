@@ -43,7 +43,7 @@ export class KeyPair extends pulumi.CustomResource {
     public readonly keyName!: pulumi.Output<string>;
     public readonly keyNamePrefix!: pulumi.Output<string | undefined>;
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it.
+     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
     public readonly publicKey!: pulumi.Output<string | undefined>;
     /**
@@ -107,7 +107,7 @@ export interface KeyPairState {
     readonly keyName?: pulumi.Input<string>;
     readonly keyNamePrefix?: pulumi.Input<string>;
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it.
+     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
     readonly publicKey?: pulumi.Input<string>;
     /**
@@ -131,7 +131,7 @@ export interface KeyPairArgs {
     readonly keyName?: pulumi.Input<string>;
     readonly keyNamePrefix?: pulumi.Input<string>;
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it.
+     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
     readonly publicKey?: pulumi.Input<string>;
     /**

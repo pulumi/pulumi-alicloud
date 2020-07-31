@@ -11,10 +11,15 @@ import (
 )
 
 type ScalingConfigurationDataDisk struct {
-	Category           *string `pulumi:"category"`
-	DeleteWithInstance *bool   `pulumi:"deleteWithInstance"`
+	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
+	Category             *string `pulumi:"category"`
+	DeleteWithInstance   *bool   `pulumi:"deleteWithInstance"`
+	Description          *string `pulumi:"description"`
 	// Deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
 	Device     *string `pulumi:"device"`
+	Encrypted  *bool   `pulumi:"encrypted"`
+	KmsKeyId   *string `pulumi:"kmsKeyId"`
+	Name       *string `pulumi:"name"`
 	Size       *int    `pulumi:"size"`
 	SnapshotId *string `pulumi:"snapshotId"`
 }
@@ -32,10 +37,15 @@ type ScalingConfigurationDataDiskInput interface {
 }
 
 type ScalingConfigurationDataDiskArgs struct {
-	Category           pulumi.StringPtrInput `pulumi:"category"`
-	DeleteWithInstance pulumi.BoolPtrInput   `pulumi:"deleteWithInstance"`
+	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
+	Category             pulumi.StringPtrInput `pulumi:"category"`
+	DeleteWithInstance   pulumi.BoolPtrInput   `pulumi:"deleteWithInstance"`
+	Description          pulumi.StringPtrInput `pulumi:"description"`
 	// Deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
 	Device     pulumi.StringPtrInput `pulumi:"device"`
+	Encrypted  pulumi.BoolPtrInput   `pulumi:"encrypted"`
+	KmsKeyId   pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	Name       pulumi.StringPtrInput `pulumi:"name"`
 	Size       pulumi.IntPtrInput    `pulumi:"size"`
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
@@ -92,6 +102,10 @@ func (o ScalingConfigurationDataDiskOutput) ToScalingConfigurationDataDiskOutput
 	return o
 }
 
+func (o ScalingConfigurationDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
 func (o ScalingConfigurationDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -100,9 +114,25 @@ func (o ScalingConfigurationDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrO
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
+func (o ScalingConfigurationDataDiskOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
 // Deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
 func (o ScalingConfigurationDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
+func (o ScalingConfigurationDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+func (o ScalingConfigurationDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o ScalingConfigurationDataDiskOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o ScalingConfigurationDataDiskOutput) Size() pulumi.IntPtrOutput {
