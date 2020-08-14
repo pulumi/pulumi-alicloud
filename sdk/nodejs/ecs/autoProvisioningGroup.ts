@@ -97,7 +97,13 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === AutoProvisioningGroup.__pulumiType;
     }
 
+    /**
+     * The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
+     */
     public readonly autoProvisioningGroupName!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
+     */
     public readonly autoProvisioningGroupType!: pulumi.Output<string | undefined>;
     /**
      * The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
@@ -251,7 +257,13 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AutoProvisioningGroup resources.
  */
 export interface AutoProvisioningGroupState {
+    /**
+     * The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
+     */
     readonly autoProvisioningGroupName?: pulumi.Input<string>;
+    /**
+     * The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
+     */
     readonly autoProvisioningGroupType?: pulumi.Input<string>;
     /**
      * The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
@@ -331,7 +343,13 @@ export interface AutoProvisioningGroupState {
  * The set of arguments for constructing a AutoProvisioningGroup resource.
  */
 export interface AutoProvisioningGroupArgs {
+    /**
+     * The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
+     */
     readonly autoProvisioningGroupName?: pulumi.Input<string>;
+    /**
+     * The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
+     */
     readonly autoProvisioningGroupType?: pulumi.Input<string>;
     /**
      * The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.

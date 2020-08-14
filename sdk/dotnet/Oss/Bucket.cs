@@ -13,6 +13,29 @@ namespace Pulumi.AliCloud.Oss
     /// Provides a resource to create a oss bucket and set its attribution.
     /// 
     /// &gt; **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bucket_acl = new AliCloud.Oss.Bucket("bucket-acl", new AliCloud.Oss.BucketArgs
+    ///         {
+    ///             Acl = "private",
+    ///             Bucket = "bucket-170309-acl",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Bucket : Pulumi.CustomResource
     {

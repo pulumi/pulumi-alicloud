@@ -19,17 +19,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.OosTemplates({
+ * const example = pulumi.output(alicloud.oos.getTemplates({
  *     hasTrigger: false,
  *     nameRegex: "test",
  *     shareType: "Private",
- *     tags: [{
+ *     tags: {
  *         Created: "TF",
  *         For: "template Test",
- *     }],
+ *     },
  * }, { async: true }));
  *
- * export const firstTemplateName = example.templates.0.templateName;
+ * export const firstTemplateName = example.templates[0].templateName;
  * ```
  */
 export function getTemplates(args?: GetTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplatesResult> {

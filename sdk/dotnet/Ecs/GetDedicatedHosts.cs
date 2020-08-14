@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.Ecs
         /// &gt; **NOTE:** Available in v1.91.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dedicatedHostsDs = Output.Create(AliCloud.Ecs.GetDedicatedHosts.InvokeAsync(new AliCloud.Ecs.GetDedicatedHostsArgs
+        ///         {
+        ///             DedicatedHostType = "ddh.g5",
+        ///             NameRegex = "tf-testAcc",
+        ///             Status = "Available",
+        ///         }));
+        ///         this.FirstDedicatedHostsId = dedicatedHostsDs.Apply(dedicatedHostsDs =&gt; dedicatedHostsDs.Hosts[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstDedicatedHostsId")]
+        ///     public Output&lt;string&gt; FirstDedicatedHostsId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDedicatedHostsResult> InvokeAsync(GetDedicatedHostsArgs? args = null, InvokeOptions? options = null)

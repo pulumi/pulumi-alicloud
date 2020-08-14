@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Rds
         /// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         /// </summary>
         [Output("sqlCollectorStatus")]
-        public Output<string?> SqlCollectorStatus { get; private set; } = null!;
+        public Output<string> SqlCollectorStatus { get; private set; } = null!;
 
         /// <summary>
         /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).

@@ -20,6 +20,8 @@ type Cluster struct {
 
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
+	// (Available in 1.93.0+) The connection string of the ADB cluster.
+	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory pulumi.StringOutput `pulumi:"dbClusterCategory"`
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
@@ -97,6 +99,8 @@ func GetCluster(ctx *pulumi.Context,
 type clusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// (Available in 1.93.0+) The connection string of the ADB cluster.
+	ConnectionString *string `pulumi:"connectionString"`
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory *string `pulumi:"dbClusterCategory"`
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
@@ -132,6 +136,8 @@ type clusterState struct {
 type ClusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// (Available in 1.93.0+) The connection string of the ADB cluster.
+	ConnectionString pulumi.StringPtrInput
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory pulumi.StringPtrInput
 	// Cluster version. Value options: `3.0`, Default to `3.0`.

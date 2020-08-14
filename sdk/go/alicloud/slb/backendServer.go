@@ -21,7 +21,8 @@ import (
 //
 // * `serverId` - (Required) A list backend server ID (ECS instance ID).
 // * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100].
-// * `type` - (Optional) Type of the backend server. Valid value ecs, eni. Default to eni.
+// * `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`. Default to `ecs`.
+// * `serverIp` - (Optional, Available in 1.93.0+) ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
 type BackendServer struct {
 	pulumi.CustomResourceState
 

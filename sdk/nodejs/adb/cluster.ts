@@ -79,6 +79,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
+     * (Available in 1.93.0+) The connection string of the ADB cluster.
+     */
+    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    /**
      * Cluster category. Value options: `Basic`, `Cluster`.
      */
     public readonly dbClusterCategory!: pulumi.Output<string>;
@@ -150,6 +154,7 @@ export class Cluster extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ClusterState | undefined;
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            inputs["connectionString"] = state ? state.connectionString : undefined;
             inputs["dbClusterCategory"] = state ? state.dbClusterCategory : undefined;
             inputs["dbClusterVersion"] = state ? state.dbClusterVersion : undefined;
             inputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
@@ -196,6 +201,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+            inputs["connectionString"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -216,6 +222,10 @@ export interface ClusterState {
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * (Available in 1.93.0+) The connection string of the ADB cluster.
+     */
+    readonly connectionString?: pulumi.Input<string>;
     /**
      * Cluster category. Value options: `Basic`, `Cluster`.
      */

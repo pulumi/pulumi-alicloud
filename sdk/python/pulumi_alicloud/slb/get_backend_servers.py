@@ -50,6 +50,17 @@ def get_backend_servers(ids=None,load_balancer_id=None,output_file=None,opts=Non
 
     > **NOTE:** Available in 1.53.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_backend_servers(load_balancer_id=alicloud_slb["sample_slb"]["id"])
+    pulumi.export("firstSlbBackendServerId", sample_ds.backend_servers[0]["id"])
+    ```
 
 
 

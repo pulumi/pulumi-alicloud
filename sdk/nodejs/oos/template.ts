@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.OosTemplate("example", {
+ * const example = new alicloud.oos.Template("example", {
  *     content: `  {
  *     "FormatVersion": "OOS-2019-06-01",
  *     "Description": "Update Describe instances of given status",
@@ -41,10 +41,10 @@ import * as utilities from "../utilities";
  *       }]
  *   }
  *   `,
- *     tags: [{
+ *     tags: {
  *         Created: "TF",
  *         For: "acceptance Test",
- *     }],
+ *     },
  *     templateName: "test-name",
  *     versionName: "test",
  * });

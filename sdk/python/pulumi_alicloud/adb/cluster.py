@@ -14,6 +14,10 @@ class Cluster(pulumi.CustomResource):
     """
     Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
     """
+    connection_string: pulumi.Output[str]
+    """
+    (Available in 1.93.0+) The connection string of the ADB cluster.
+    """
     db_cluster_category: pulumi.Output[str]
     """
     Cluster category. Value options: `Basic`, `Cluster`.
@@ -175,6 +179,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id
+            __props__['connection_string'] = None
         super(Cluster, __self__).__init__(
             'alicloud:adb/cluster:Cluster',
             resource_name,
@@ -182,7 +187,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_renew_period=None, db_cluster_category=None, db_cluster_version=None, db_node_class=None, db_node_count=None, db_node_storage=None, description=None, maintain_time=None, pay_type=None, period=None, renewal_status=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, auto_renew_period=None, connection_string=None, db_cluster_category=None, db_cluster_version=None, db_node_class=None, db_node_count=None, db_node_storage=None, description=None, maintain_time=None, pay_type=None, period=None, renewal_status=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -191,6 +196,7 @@ class Cluster(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[str] connection_string: (Available in 1.93.0+) The connection string of the ADB cluster.
         :param pulumi.Input[str] db_cluster_category: Cluster category. Value options: `Basic`, `Cluster`.
         :param pulumi.Input[str] db_cluster_version: Cluster version. Value options: `3.0`, Default to `3.0`.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
@@ -213,6 +219,7 @@ class Cluster(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["auto_renew_period"] = auto_renew_period
+        __props__["connection_string"] = connection_string
         __props__["db_cluster_category"] = db_cluster_category
         __props__["db_cluster_version"] = db_cluster_version
         __props__["db_node_class"] = db_node_class

@@ -29,6 +29,8 @@ type GetInstancesInstance struct {
 	Name string `pulumi:"name"`
 	// The paid type of the instance.
 	PaidType string `pulumi:"paidType"`
+	// The security group of the instance.
+	SecurityGroup string `pulumi:"securityGroup"`
 	// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
 	ServiceStatus int `pulumi:"serviceStatus"`
 	// The spec type of the instance.
@@ -74,6 +76,8 @@ type GetInstancesInstanceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The paid type of the instance.
 	PaidType pulumi.StringInput `pulumi:"paidType"`
+	// The security group of the instance.
+	SecurityGroup pulumi.StringInput `pulumi:"securityGroup"`
 	// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
 	ServiceStatus pulumi.IntInput `pulumi:"serviceStatus"`
 	// The spec type of the instance.
@@ -183,6 +187,11 @@ func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 // The paid type of the instance.
 func (o GetInstancesInstanceOutput) PaidType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaidType }).(pulumi.StringOutput)
+}
+
+// The security group of the instance.
+func (o GetInstancesInstanceOutput) SecurityGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityGroup }).(pulumi.StringOutput)
 }
 
 // The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.

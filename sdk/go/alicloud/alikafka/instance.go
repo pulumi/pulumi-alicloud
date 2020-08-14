@@ -38,6 +38,8 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrOutput `pulumi:"paidType"`
+	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+	SecurityGroup pulumi.StringPtrOutput `pulumi:"securityGroup"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrOutput `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
@@ -112,6 +114,8 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType *string `pulumi:"paidType"`
+	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+	SecurityGroup *string `pulumi:"securityGroup"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
@@ -141,6 +145,8 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrInput
+	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+	SecurityGroup pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -174,6 +180,8 @@ type instanceArgs struct {
 	Name *string `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType *string `pulumi:"paidType"`
+	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+	SecurityGroup *string `pulumi:"securityGroup"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
@@ -200,6 +208,8 @@ type InstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrInput
+	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+	SecurityGroup pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.

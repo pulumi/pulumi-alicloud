@@ -114,6 +114,7 @@ func (o AclEntryListArrayOutput) Index(i pulumi.IntInput) AclEntryListOutput {
 
 type BackendServerBackendServer struct {
 	ServerId string  `pulumi:"serverId"`
+	ServerIp *string `pulumi:"serverIp"`
 	Type     *string `pulumi:"type"`
 	Weight   int     `pulumi:"weight"`
 }
@@ -132,6 +133,7 @@ type BackendServerBackendServerInput interface {
 
 type BackendServerBackendServerArgs struct {
 	ServerId pulumi.StringInput    `pulumi:"serverId"`
+	ServerIp pulumi.StringPtrInput `pulumi:"serverIp"`
 	Type     pulumi.StringPtrInput `pulumi:"type"`
 	Weight   pulumi.IntInput       `pulumi:"weight"`
 }
@@ -190,6 +192,10 @@ func (o BackendServerBackendServerOutput) ToBackendServerBackendServerOutputWith
 
 func (o BackendServerBackendServerOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServerBackendServer) string { return v.ServerId }).(pulumi.StringOutput)
+}
+
+func (o BackendServerBackendServerOutput) ServerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServerBackendServer) *string { return v.ServerIp }).(pulumi.StringPtrOutput)
 }
 
 func (o BackendServerBackendServerOutput) Type() pulumi.StringPtrOutput {

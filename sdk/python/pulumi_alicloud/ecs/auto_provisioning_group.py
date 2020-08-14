@@ -11,7 +11,13 @@ from .. import utilities, tables
 
 class AutoProvisioningGroup(pulumi.CustomResource):
     auto_provisioning_group_name: pulumi.Output[str]
+    """
+    The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
+    """
     auto_provisioning_group_type: pulumi.Output[str]
+    """
+    The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
+    """
     default_target_capacity_type: pulumi.Output[str]
     """
     The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
@@ -146,6 +152,8 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auto_provisioning_group_name: The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
+        :param pulumi.Input[str] auto_provisioning_group_type: The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
         :param pulumi.Input[str] default_target_capacity_type: The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
         :param pulumi.Input[str] description: The description of the auto provisioning group.
         :param pulumi.Input[str] excess_capacity_termination_policy: The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
@@ -231,6 +239,8 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auto_provisioning_group_name: The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
+        :param pulumi.Input[str] auto_provisioning_group_type: The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
         :param pulumi.Input[str] default_target_capacity_type: The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
         :param pulumi.Input[str] description: The description of the auto provisioning group.
         :param pulumi.Input[str] excess_capacity_termination_policy: The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.

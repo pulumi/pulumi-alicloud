@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Target IP address segment for egress authorization.
         /// </summary>
         public readonly string DestCidrIp;
+        /// <summary>
+        /// Target security group id for ingress authorization.
+        /// </summary>
         public readonly string DestGroupId;
         /// <summary>
         /// Alibaba Cloud account of the target security group.
@@ -54,6 +57,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Source IP address segment for ingress authorization.
         /// </summary>
         public readonly string SourceCidrIp;
+        /// <summary>
+        /// Source security group ID for ingress authorization.
+        /// </summary>
         public readonly string SourceGroupId;
         /// <summary>
         /// Alibaba Cloud account of the source security group.

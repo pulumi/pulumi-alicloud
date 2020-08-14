@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Declare the data source
- * const dedicatedHostsDs = pulumi.output(alicloud.EcsDedicatedHosts({
+ * const dedicatedHostsDs = pulumi.output(alicloud.ecs.getDedicatedHosts({
  *     dedicatedHostType: "ddh.g5",
  *     nameRegex: "tf-testAcc",
  *     status: "Available",
  * }, { async: true }));
  *
- * export const firstDedicatedHostsId = dedicatedHostsDs.hosts.0.id;
+ * export const firstDedicatedHostsId = dedicatedHostsDs.hosts[0].id;
  * ```
  */
 export function getDedicatedHosts(args?: GetDedicatedHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostsResult> {

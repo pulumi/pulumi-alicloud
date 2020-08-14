@@ -104,7 +104,7 @@ def get_security_group_rules(direction=None,group_id=None,ip_protocol=None,nic_t
     groups_ds = alicloud.ecs.get_security_groups(name_regex="api")
     ingress_rules_ds = alicloud.ecs.get_security_group_rules(direction="ingress",
         group_id=groups_ds.groups[0]["id"],
-        ip_protocol="TCP",
+        ip_protocol="tcp",
         nic_type="internet")
     # Pass port_range to the backend service
     backend = alicloud.ecs.Instance("backend", user_data=f"config_service.sh --portrange={ingress_rules_ds.rules[0]['port_range']}")

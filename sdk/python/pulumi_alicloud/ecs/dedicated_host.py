@@ -87,12 +87,7 @@ class DedicatedHost(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, action_on_maintenance=None, auto_placement=None, auto_release_time=None, auto_renew=None, auto_renew_period=None, dedicated_host_name=None, dedicated_host_type=None, description=None, detail_fee=None, dry_run=None, expired_time=None, network_attributes=None, payment_type=None, resource_group_id=None, sale_cycle=None, tags=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
-
-        > **NOTE:** Available in 1.91.0+.
-
-
-
+        Create a DedicatedHost resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_on_maintenance: The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.

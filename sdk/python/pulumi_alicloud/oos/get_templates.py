@@ -100,6 +100,23 @@ def get_templates(category=None,created_by=None,created_date=None,created_date_a
      
     > **NOTE:** Available in v1.92.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.oos.get_templates(has_trigger=False,
+        name_regex="test",
+        share_type="Private",
+        tags={
+            "Created": "TF",
+            "For": "template Test",
+        })
+    pulumi.export("firstTemplateName", example.templates[0]["template_name"])
+    ```
 
 
 
