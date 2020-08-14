@@ -216,7 +216,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
      */
-    public readonly sqlCollectorStatus!: pulumi.Output<string | undefined>;
+    public readonly sqlCollectorStatus!: pulumi.Output<string>;
     /**
      * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      */

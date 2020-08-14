@@ -16,6 +16,28 @@ namespace Pulumi.AliCloud.Nas
     /// For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/doc-detail/27534)
     /// 
     /// &gt; **NOTE:** Available in v1.33.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.Nas.AccessGroup("foo", new AliCloud.Nas.AccessGroupArgs
+    ///         {
+    ///             Description = "test_AccessG",
+    ///             Type = "Classic",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccessGroup : Pulumi.CustomResource
     {

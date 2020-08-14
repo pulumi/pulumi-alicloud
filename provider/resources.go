@@ -18,10 +18,10 @@ import (
 	"strings"
 	"unicode"
 
+	"github.com/aliyun/terraform-provider-alicloud/alicloud"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-alicloud/alicloud"
 )
 
 // all of the AliCloud token components used below.
@@ -133,6 +133,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:    []string{"pulumi", "alicloud"},
 		Homepage:    "https://pulumi.io",
 		License:     "Apache-2.0",
+		GitHubOrg:   "aliyun",
 		Repository:  "https://github.com/pulumi/pulumi-alicloud",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"access_key": {
@@ -342,6 +343,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_edas_cluster":                     {Tok: resource(edasMod, "Cluster")},
 			"alicloud_edas_instance_cluster_attachment": {Tok: resource(edasMod, "InstanceClusterAttachment")},
 			"alicloud_edas_application_deployment":      {Tok: resource(edasMod, "ApplicationDeployment")},
+			"alicloud_edas_k8s_cluster":                 {Tok: resource(edasMod, "K8sCluster")},
 
 			// ESS
 			"alicloud_ess_alarm":      {Tok: resource(essMod, "Alarm")},
@@ -435,7 +437,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_nas_mount_target": {Tok: resource(nasMod, "MountTarget")},
 
 			// Oos
-			"alicloud_oos_template": {Tok: resource(oosMod, "Template")},
+			"alicloud_oos_template":  {Tok: resource(oosMod, "Template")},
+			"alicloud_oos_execution": {Tok: resource(oosMod, "Execution")},
 
 			// Oss
 			"alicloud_oss_bucket": {
@@ -504,6 +507,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_resource_manager_policy":             {Tok: resource(resourceManagerMod, "Policy")},
 			"alicloud_resource_manager_resource_directory": {Tok: resource(resourceManagerMod, "ResourceDirectory")},
 			"alicloud_resource_manager_policy_version":     {Tok: resource(resourceManagerMod, "PolicyVersion")},
+			"alicloud_resource_manager_policy_attachment":  {Tok: resource(resourceManagerMod, "PolicyAttachment")},
 
 			// RocketMQ
 			"alicloud_ons_group":    {Tok: resource(rocketMqMod, "Group")},
@@ -775,7 +779,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_nas_protocols":     {Tok: dataSource(nasMod, "getProtocols")},
 
 			// Oos
-			"alicloud_oos_templates": {Tok: dataSource(oosMod, "getTemplates")},
+			"alicloud_oos_templates":  {Tok: dataSource(oosMod, "getTemplates")},
+			"alicloud_oos_executions": {Tok: dataSource(oosMod, "getExecutions")},
 
 			// Oss
 			"alicloud_oss_bucket_objects": {Tok: dataSource(ossMod, "getBucketObjects")},
@@ -822,6 +827,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_resource_manager_policies":        {Tok: dataSource(resourceManagerMod, "getPolicies")},
 			"alicloud_resource_manager_resource_directories": {
 				Tok: dataSource(resourceManagerMod, "getResourceDirectories"),
+			},
+			"alicloud_resource_manager_policy_attachments": {
+				Tok: dataSource(resourceManagerMod, "getPolicyAttachments"),
 			},
 
 			// RocketMq

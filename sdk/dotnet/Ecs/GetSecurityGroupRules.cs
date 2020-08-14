@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Ecs
         ///         {
         ///             Direction = "ingress",
         ///             GroupId = groupsDs.Groups[0].Id,
-        ///             IpProtocol = "TCP",
+        ///             IpProtocol = "tcp",
         ///             NicType = "internet",
         ///         })));
         ///         // Pass port_range to the backend service

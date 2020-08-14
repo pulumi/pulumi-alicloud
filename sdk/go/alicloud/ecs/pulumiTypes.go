@@ -3726,7 +3726,8 @@ type GetSecurityGroupRulesRule struct {
 	// The description of the rule.
 	Description string `pulumi:"description"`
 	// Target IP address segment for egress authorization.
-	DestCidrIp  string `pulumi:"destCidrIp"`
+	DestCidrIp string `pulumi:"destCidrIp"`
+	// Target security group id for ingress authorization.
 	DestGroupId string `pulumi:"destGroupId"`
 	// Alibaba Cloud account of the target security group.
 	DestGroupOwnerAccount string `pulumi:"destGroupOwnerAccount"`
@@ -3743,7 +3744,8 @@ type GetSecurityGroupRulesRule struct {
 	// Rule priority.
 	Priority int `pulumi:"priority"`
 	// Source IP address segment for ingress authorization.
-	SourceCidrIp  string `pulumi:"sourceCidrIp"`
+	SourceCidrIp string `pulumi:"sourceCidrIp"`
+	// Source security group ID for ingress authorization.
 	SourceGroupId string `pulumi:"sourceGroupId"`
 	// Alibaba Cloud account of the source security group.
 	SourceGroupOwnerAccount string `pulumi:"sourceGroupOwnerAccount"`
@@ -3765,7 +3767,8 @@ type GetSecurityGroupRulesRuleArgs struct {
 	// The description of the rule.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Target IP address segment for egress authorization.
-	DestCidrIp  pulumi.StringInput `pulumi:"destCidrIp"`
+	DestCidrIp pulumi.StringInput `pulumi:"destCidrIp"`
+	// Target security group id for ingress authorization.
 	DestGroupId pulumi.StringInput `pulumi:"destGroupId"`
 	// Alibaba Cloud account of the target security group.
 	DestGroupOwnerAccount pulumi.StringInput `pulumi:"destGroupOwnerAccount"`
@@ -3782,7 +3785,8 @@ type GetSecurityGroupRulesRuleArgs struct {
 	// Rule priority.
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// Source IP address segment for ingress authorization.
-	SourceCidrIp  pulumi.StringInput `pulumi:"sourceCidrIp"`
+	SourceCidrIp pulumi.StringInput `pulumi:"sourceCidrIp"`
+	// Source security group ID for ingress authorization.
 	SourceGroupId pulumi.StringInput `pulumi:"sourceGroupId"`
 	// Alibaba Cloud account of the source security group.
 	SourceGroupOwnerAccount pulumi.StringInput `pulumi:"sourceGroupOwnerAccount"`
@@ -3850,6 +3854,7 @@ func (o GetSecurityGroupRulesRuleOutput) DestCidrIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.DestCidrIp }).(pulumi.StringOutput)
 }
 
+// Target security group id for ingress authorization.
 func (o GetSecurityGroupRulesRuleOutput) DestGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.DestGroupId }).(pulumi.StringOutput)
 }
@@ -3894,6 +3899,7 @@ func (o GetSecurityGroupRulesRuleOutput) SourceCidrIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.SourceCidrIp }).(pulumi.StringOutput)
 }
 
+// Source security group ID for ingress authorization.
 func (o GetSecurityGroupRulesRuleOutput) SourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.SourceGroupId }).(pulumi.StringOutput)
 }

@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const ingressRulesDs = groupsDs.apply(groupsDs => alicloud.ecs.getSecurityGroupRules({
  *     direction: "ingress",
  *     groupId: groupsDs.groups[0].id,
- *     ipProtocol: "TCP",
+ *     ipProtocol: "tcp",
  *     nicType: "internet",
  * }, { async: true }));
  * // Pass portRange to the backend service

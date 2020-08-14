@@ -7,7 +7,7 @@
     ],
     "homepage": "https://pulumi.io",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`alicloud` Terraform Provider](https://github.com/terraform-providers/terraform-provider-alicloud).",
+    "attribution": "This Pulumi package is based on the [`alicloud` Terraform Provider](https://github.com/aliyun/terraform-provider-alicloud).",
     "repository": "https://github.com/pulumi/pulumi-alicloud",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -349,6 +349,15 @@
                         }
                     }
                 },
+                "securityGroup": {
+                    "type": "string",
+                    "description": "The security group of the instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "serviceStatus": {
                     "type": "integer",
                     "description": "The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error. \n",
@@ -415,6 +424,7 @@
                 "ioMax",
                 "name",
                 "paidType",
+                "securityGroup",
                 "serviceStatus",
                 "specType",
                 "topicQuota",
@@ -10208,6 +10218,7 @@
                 },
                 "destGroupId": {
                     "type": "string",
+                    "description": "Target security group id for ingress authorization.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10288,6 +10299,7 @@
                 },
                 "sourceGroupId": {
                     "type": "string",
+                    "description": "Source security group ID for ingress authorization.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16208,6 +16220,228 @@
                 }
             }
         },
+        "alicloud:oos/getExecutionsExecution:getExecutionsExecution": {
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "description": "The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "counters": {
+                    "type": "string",
+                    "description": "The counters of OOS Execution.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createDate": {
+                    "type": "string",
+                    "description": "The time when the execution was created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endDate": {
+                    "type": "string",
+                    "description": "The time when the execution was ended.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "executedBy": {
+                    "type": "string",
+                    "description": "The user who execute the template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "executionId": {
+                    "type": "string",
+                    "description": "ID of the OOS Executions.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the OOS Executions.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isParent": {
+                    "type": "boolean",
+                    "description": "Whether to include subtasks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The mode of OOS Execution. Valid: `Automatic`, `Debug`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "outputs": {
+                    "type": "string",
+                    "description": "The outputs of OOS Executions.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parameters": {
+                    "type": "string",
+                    "description": "The parameters required by the template\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parentExecutionId": {
+                    "type": "string",
+                    "description": "The id of parent OOS Execution.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ramRole": {
+                    "type": "string",
+                    "description": "The role that executes the current template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The time when the template was started.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statusMessage": {
+                    "type": "string",
+                    "description": "The message of status.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statusReason": {
+                    "type": "string",
+                    "description": "The reason of status.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "The id of execution template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "templateName": {
+                    "type": "string",
+                    "description": "The name of execution template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "templateVersion": {
+                    "type": "string",
+                    "description": "The version of execution template.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updateDate": {
+                    "type": "string",
+                    "description": "The time when the template was updated.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "category",
+                "counters",
+                "createDate",
+                "endDate",
+                "executedBy",
+                "executionId",
+                "id",
+                "isParent",
+                "mode",
+                "outputs",
+                "parameters",
+                "parentExecutionId",
+                "ramRole",
+                "startDate",
+                "status",
+                "statusMessage",
+                "statusReason",
+                "templateId",
+                "templateName",
+                "templateVersion",
+                "updateDate"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "alicloud:oos/getTemplatesTemplate:getTemplatesTemplate": {
             "properties": {
                 "category": {
@@ -20048,6 +20282,98 @@
                 }
             }
         },
+        "alicloud:resourcemanager/getPolicyAttachmentsAttachment:getPolicyAttachmentsAttachment": {
+            "properties": {
+                "attachDate": {
+                    "type": "string",
+                    "description": "The time when the policy was attached.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the Resource Manager Policy Attachment.\n* `policy_name`- The name of the policy.\n* `policy_type`- The type of the policy.\n* `principal_name`- The name of the object to which the policy is attached.\n* `principal_type`- The type of the object to which the policy is attached.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "policyName": {
+                    "type": "string",
+                    "description": "The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "policyType": {
+                    "type": "string",
+                    "description": "The type of the policy. Valid values: `Custom` and `System`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "principalName": {
+                    "type": "string",
+                    "description": "The name of the object to which the policy is attached.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "principalType": {
+                    "type": "string",
+                    "description": "The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "attachDate",
+                "description",
+                "id",
+                "policyName",
+                "policyType",
+                "principalName",
+                "principalType",
+                "resourceGroupId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "alicloud:resourcemanager/getPolicyVersionsVersion:getPolicyVersionsVersion": {
             "properties": {
                 "createDate": {
@@ -20589,6 +20915,14 @@
         "alicloud:slb/BackendServerBackendServer:BackendServerBackendServer": {
             "properties": {
                 "serverId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverIp": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -24900,6 +25234,10 @@
                     "type": "integer",
                     "description": "Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.\n"
                 },
+                "connectionString": {
+                    "type": "string",
+                    "description": "(Available in 1.93.0+) The connection string of the ADB cluster.\n"
+                },
                 "dbClusterCategory": {
                     "type": "string",
                     "description": "Cluster category. Value options: `Basic`, `Cluster`.\n"
@@ -24964,6 +25302,7 @@
                 }
             },
             "required": [
+                "connectionString",
                 "dbClusterCategory",
                 "dbNodeClass",
                 "dbNodeCount",
@@ -25054,6 +25393,10 @@
                     "autoRenewPeriod": {
                         "type": "integer",
                         "description": "Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.\n"
+                    },
+                    "connectionString": {
+                        "type": "string",
+                        "description": "(Available in 1.93.0+) The connection string of the ADB cluster.\n"
                     },
                     "dbClusterCategory": {
                         "type": "string",
@@ -25289,6 +25632,10 @@
                     "type": "string",
                     "description": "The paid type of the instance. Support two type, \"PrePaid\": pre paid type instance, \"PostPaid\": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. \n"
                 },
+                "securityGroup": {
+                    "type": "string",
+                    "description": "（Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.\n"
+                },
                 "specType": {
                     "type": "string",
                     "description": "The spec type of the instance. Support two type, \"normal\": normal version instance, \"professional\": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.\n"
@@ -25357,6 +25704,10 @@
                     "type": "string",
                     "description": "The paid type of the instance. Support two type, \"PrePaid\": pre paid type instance, \"PostPaid\": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. \n"
                 },
+                "securityGroup": {
+                    "type": "string",
+                    "description": "（Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.\n"
+                },
                 "specType": {
                     "type": "string",
                     "description": "The spec type of the instance. Support two type, \"normal\": normal version instance, \"professional\": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.\n"
@@ -25415,6 +25766,10 @@
                     "paidType": {
                         "type": "string",
                         "description": "The paid type of the instance. Support two type, \"PrePaid\": pre paid type instance, \"PostPaid\": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. \n"
+                    },
+                    "securityGroup": {
+                        "type": "string",
+                        "description": "（Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.\n"
                     },
                     "specType": {
                         "type": "string",
@@ -34644,10 +34999,12 @@
             "description": "Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and pay_as_you_go instances to rapidly deploy clusters.\n\n\u003e **NOTE:** Available in 1.79.0+\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst config = new pulumi.Config();\nconst name = config.get(\"name\") || \"auto_provisioning_group\";\n\nconst defaultZones = pulumi.output(alicloud.getZones({\n    availableDiskCategory: \"cloud_efficiency\",\n    availableResourceCreation: \"VSwitch\",\n}, { async: true }));\nconst defaultNetwork = new alicloud.vpc.Network(\"default\", {\n    cidrBlock: \"172.16.0.0/16\",\n});\nconst defaultSwitch = new alicloud.vpc.Switch(\"default\", {\n    availabilityZone: defaultZones.zones[0].id,\n    cidrBlock: \"172.16.0.0/24\",\n    vpcId: defaultNetwork.id,\n});\nconst defaultSecurityGroup = new alicloud.ecs.SecurityGroup(\"default\", {\n    vpcId: defaultNetwork.id,\n});\nconst defaultImages = pulumi.output(alicloud.ecs.getImages({\n    mostRecent: true,\n    nameRegex: \"^ubuntu_18.*64\",\n    owners: \"system\",\n}, { async: true }));\nconst template = new alicloud.ecs.LaunchTemplate(\"template\", {\n    imageId: defaultImages.images[0].id,\n    instanceType: \"ecs.n1.tiny\",\n    securityGroupId: defaultSecurityGroup.id,\n});\nconst defaultAutoProvisioningGroup = new alicloud.ecs.AutoProvisioningGroup(\"default\", {\n    launchTemplateConfigs: [{\n        instanceType: \"ecs.n1.small\",\n        vswitchId: defaultSwitch.id,\n    }],\n    launchTemplateId: template.id,\n    payAsYouGoTargetCapacity: \"1\",\n    spotTargetCapacity: \"2\",\n    totalTargetCapacity: \"4\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nconfig = pulumi.Config()\nname = config.get(\"name\")\nif name is None:\n    name = \"auto_provisioning_group\"\ndefault_zones = alicloud.get_zones(available_disk_category=\"cloud_efficiency\",\n    available_resource_creation=\"VSwitch\")\ndefault_network = alicloud.vpc.Network(\"defaultNetwork\", cidr_block=\"172.16.0.0/16\")\ndefault_switch = alicloud.vpc.Switch(\"defaultSwitch\",\n    availability_zone=default_zones.zones[0][\"id\"],\n    cidr_block=\"172.16.0.0/24\",\n    vpc_id=default_network.id)\ndefault_security_group = alicloud.ecs.SecurityGroup(\"defaultSecurityGroup\", vpc_id=default_network.id)\ndefault_images = alicloud.ecs.get_images(most_recent=True,\n    name_regex=\"^ubuntu_18.*64\",\n    owners=\"system\")\ntemplate = alicloud.ecs.LaunchTemplate(\"template\",\n    image_id=default_images.images[0][\"id\"],\n    instance_type=\"ecs.n1.tiny\",\n    security_group_id=default_security_group.id)\ndefault_auto_provisioning_group = alicloud.ecs.AutoProvisioningGroup(\"defaultAutoProvisioningGroup\",\n    launch_template_configs=[{\n        \"instance_type\": \"ecs.n1.small\",\n        \"vswitch_id\": default_switch.id,\n    }],\n    launch_template_id=template.id,\n    pay_as_you_go_target_capacity=\"1\",\n    spot_target_capacity=\"2\",\n    total_target_capacity=\"4\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var name = config.Get(\"name\") ?? \"auto_provisioning_group\";\n        var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs\n        {\n            AvailableDiskCategory = \"cloud_efficiency\",\n            AvailableResourceCreation = \"VSwitch\",\n        }));\n        var defaultNetwork = new AliCloud.Vpc.Network(\"defaultNetwork\", new AliCloud.Vpc.NetworkArgs\n        {\n            CidrBlock = \"172.16.0.0/16\",\n        });\n        var defaultSwitch = new AliCloud.Vpc.Switch(\"defaultSwitch\", new AliCloud.Vpc.SwitchArgs\n        {\n            AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n            CidrBlock = \"172.16.0.0/24\",\n            VpcId = defaultNetwork.Id,\n        });\n        var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup(\"defaultSecurityGroup\", new AliCloud.Ecs.SecurityGroupArgs\n        {\n            VpcId = defaultNetwork.Id,\n        });\n        var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs\n        {\n            MostRecent = true,\n            NameRegex = \"^ubuntu_18.*64\",\n            Owners = \"system\",\n        }));\n        var template = new AliCloud.Ecs.LaunchTemplate(\"template\", new AliCloud.Ecs.LaunchTemplateArgs\n        {\n            ImageId = defaultImages.Apply(defaultImages =\u003e defaultImages.Images[0].Id),\n            InstanceType = \"ecs.n1.tiny\",\n            SecurityGroupId = defaultSecurityGroup.Id,\n        });\n        var defaultAutoProvisioningGroup = new AliCloud.Ecs.AutoProvisioningGroup(\"defaultAutoProvisioningGroup\", new AliCloud.Ecs.AutoProvisioningGroupArgs\n        {\n            LaunchTemplateConfigs = \n            {\n                new AliCloud.Ecs.Inputs.AutoProvisioningGroupLaunchTemplateConfigArgs\n                {\n                    InstanceType = \"ecs.n1.small\",\n                    VswitchId = defaultSwitch.Id,\n                },\n            },\n            LaunchTemplateId = template.Id,\n            PayAsYouGoTargetCapacity = \"1\",\n            SpotTargetCapacity = \"2\",\n            TotalTargetCapacity = \"4\",\n        });\n    }\n\n}\n```\n\n\n{{% /example %}}\n{{% /examples %}}\n## Block config\n\nThe config mapping supports the following:\n* `instance_type` - (Optional) The instance type of the Nth extended configurations of the launch template.\n* `max_price` - (Required) The maximum price of the instance type specified in the Nth extended configurations of the launch template.\n* `vswitch_id` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.\n* `weighted_capacity` - (Optional) The weight of the instance type specified in the Nth extended configurations of the launch template.\n* `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.\n",
             "properties": {
                 "autoProvisioningGroupName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)\n"
                 },
                 "autoProvisioningGroupType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.\n"
                 },
                 "defaultTargetCapacityType": {
                     "type": "string",
@@ -34732,10 +35089,12 @@
             ],
             "inputProperties": {
                 "autoProvisioningGroupName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)\n"
                 },
                 "autoProvisioningGroupType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.\n"
                 },
                 "defaultTargetCapacityType": {
                     "type": "string",
@@ -34822,10 +35181,12 @@
                 "description": "Input properties used for looking up and filtering AutoProvisioningGroup resources.\n",
                 "properties": {
                     "autoProvisioningGroupName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)\n"
                     },
                     "autoProvisioningGroupType": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.\n"
                     },
                     "defaultTargetCapacityType": {
                         "type": "string",
@@ -35022,7 +35383,6 @@
             }
         },
         "alicloud:ecs/dedicatedHost:DedicatedHost": {
-            "description": "This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).\n\n\u003e **NOTE:** Available in 1.91.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "actionOnMaintenance": {
                     "type": "string",
@@ -38621,6 +38981,94 @@
                             "type": "integer"
                         },
                         "description": "The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "alicloud:edas/k8sCluster:K8sCluster": {
+            "description": "Provides an EDAS K8s cluster resource. For information about EDAS K8s Cluster and how to use it, see[What is EDAS K8s Cluster](https://www.alibabacloud.com/help/en/doc-detail/85108.htm).\n\n\u003e **NOTE:** Available in 1.93.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "clusterImportStatus": {
+                    "type": "integer",
+                    "description": "The import status of cluster: \n`1`: success.\n`2`: failed.\n`3`: importing.\n`4`: deleted.\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "The name of the cluster that you want to create.\n"
+                },
+                "clusterType": {
+                    "type": "integer",
+                    "description": "The type of the cluster that you want to create. Valid values only: 5: K8s cluster. \n"
+                },
+                "csClusterId": {
+                    "type": "string",
+                    "description": "The ID of the alicloud container service kubernetes cluster that you want to import.\n"
+                },
+                "namespaceId": {
+                    "type": "string",
+                    "description": "The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.\n"
+                },
+                "networkMode": {
+                    "type": "integer",
+                    "description": "The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The ID of the Virtual Private Cloud (VPC) for the cluster.\n"
+                }
+            },
+            "required": [
+                "clusterImportStatus",
+                "clusterName",
+                "clusterType",
+                "csClusterId",
+                "networkMode",
+                "vpcId"
+            ],
+            "inputProperties": {
+                "csClusterId": {
+                    "type": "string",
+                    "description": "The ID of the alicloud container service kubernetes cluster that you want to import.\n"
+                },
+                "namespaceId": {
+                    "type": "string",
+                    "description": "The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.\n"
+                }
+            },
+            "requiredInputs": [
+                "csClusterId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering K8sCluster resources.\n",
+                "properties": {
+                    "clusterImportStatus": {
+                        "type": "integer",
+                        "description": "The import status of cluster: \n`1`: success.\n`2`: failed.\n`3`: importing.\n`4`: deleted.\n"
+                    },
+                    "clusterName": {
+                        "type": "string",
+                        "description": "The name of the cluster that you want to create.\n"
+                    },
+                    "clusterType": {
+                        "type": "integer",
+                        "description": "The type of the cluster that you want to create. Valid values only: 5: K8s cluster. \n"
+                    },
+                    "csClusterId": {
+                        "type": "string",
+                        "description": "The ID of the alicloud container service kubernetes cluster that you want to import.\n"
+                    },
+                    "namespaceId": {
+                        "type": "string",
+                        "description": "The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.\n"
+                    },
+                    "networkMode": {
+                        "type": "integer",
+                        "description": "The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.\n"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The ID of the Virtual Private Cloud (VPC) for the cluster.\n"
                     }
                 },
                 "type": "object"
@@ -45213,7 +45661,7 @@
             }
         },
         "alicloud:nas/accessGroup:AccessGroup": {
-            "description": "Provides a NAS Access Group resource.\n\nIn NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.\nFor information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/doc-detail/27534)\n\n\u003e **NOTE:** Available in v1.33.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Provides a NAS Access Group resource.\n\nIn NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.\nFor information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/doc-detail/27534)\n\n\u003e **NOTE:** Available in v1.33.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst foo = new alicloud.nas.AccessGroup(\"foo\", {\n    description: \"test_AccessG\",\n    type: \"Classic\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nfoo = alicloud.nas.AccessGroup(\"foo\",\n    description=\"test_AccessG\",\n    type=\"Classic\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new AliCloud.Nas.AccessGroup(\"foo\", new AliCloud.Nas.AccessGroupArgs\n        {\n            Description = \"test_AccessG\",\n            Type = \"Classic\",\n        });\n    }\n\n}\n```\n\nExample after v1.92.0\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst foo = new alicloud.nas.AccessGroup(\"foo\", {\n    accessGroupName: \"CreateAccessGroup\",\n    accessGroupType: \"Vpc\",\n    description: \"test_AccessG\",\n    fileSystemType: \"extreme\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nfoo = alicloud.nas.AccessGroup(\"foo\",\n    access_group_name=\"CreateAccessGroup\",\n    access_group_type=\"Vpc\",\n    description=\"test_AccessG\",\n    file_system_type=\"extreme\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new AliCloud.Nas.AccessGroup(\"foo\", new AliCloud.Nas.AccessGroupArgs\n        {\n            AccessGroupName = \"CreateAccessGroup\",\n            AccessGroupType = \"Vpc\",\n            Description = \"test_AccessG\",\n            FileSystemType = \"extreme\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "accessGroupName": {
                     "type": "string",
@@ -45520,8 +45968,232 @@
                 "type": "object"
             }
         },
+        "alicloud:oos/execution:Execution": {
+            "description": "Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).\n\n\u003e **NOTE:** Available in 1.93.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "counters": {
+                    "type": "string",
+                    "description": "The counters of OOS Execution.\n"
+                },
+                "createDate": {
+                    "type": "string",
+                    "description": "The time when the execution was created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of OOS Execution.\n"
+                },
+                "endDate": {
+                    "type": "string",
+                    "description": "The time when the execution was ended.\n"
+                },
+                "executedBy": {
+                    "type": "string",
+                    "description": "The user who execute the template.\n"
+                },
+                "isParent": {
+                    "type": "boolean",
+                    "description": "Whether to include subtasks.\n"
+                },
+                "loopMode": {
+                    "type": "string",
+                    "description": "The loop mode of OOS Execution.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.\n"
+                },
+                "outputs": {
+                    "type": "string",
+                    "description": "The outputs of OOS Execution.\n"
+                },
+                "parameters": {
+                    "type": "string",
+                    "description": "The parameters required by the template. Default to `{}`.\n"
+                },
+                "parentExecutionId": {
+                    "type": "string",
+                    "description": "The id of parent execution.\n"
+                },
+                "ramRole": {
+                    "type": "string",
+                    "description": "The role that executes the current template.\n"
+                },
+                "safetyCheck": {
+                    "type": "string",
+                    "description": "The mode of safety check.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The time when the execution was started.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of OOS Execution.\n"
+                },
+                "statusMessage": {
+                    "type": "string",
+                    "description": "The message of status.\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "The id of template.\n"
+                },
+                "templateName": {
+                    "type": "string",
+                    "description": "The name of execution template.\n"
+                },
+                "templateVersion": {
+                    "type": "string",
+                    "description": "The version of execution template.\n"
+                },
+                "updateDate": {
+                    "type": "string",
+                    "description": "The time when the execution was updated.\n"
+                }
+            },
+            "required": [
+                "counters",
+                "createDate",
+                "endDate",
+                "executedBy",
+                "isParent",
+                "outputs",
+                "ramRole",
+                "startDate",
+                "status",
+                "statusMessage",
+                "templateId",
+                "templateName",
+                "templateVersion",
+                "updateDate"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of OOS Execution.\n"
+                },
+                "loopMode": {
+                    "type": "string",
+                    "description": "The loop mode of OOS Execution.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.\n"
+                },
+                "parameters": {
+                    "type": "string",
+                    "description": "The parameters required by the template. Default to `{}`.\n"
+                },
+                "parentExecutionId": {
+                    "type": "string",
+                    "description": "The id of parent execution.\n"
+                },
+                "safetyCheck": {
+                    "type": "string",
+                    "description": "The mode of safety check.\n"
+                },
+                "templateName": {
+                    "type": "string",
+                    "description": "The name of execution template.\n"
+                },
+                "templateVersion": {
+                    "type": "string",
+                    "description": "The version of execution template.\n"
+                }
+            },
+            "requiredInputs": [
+                "templateName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Execution resources.\n",
+                "properties": {
+                    "counters": {
+                        "type": "string",
+                        "description": "The counters of OOS Execution.\n"
+                    },
+                    "createDate": {
+                        "type": "string",
+                        "description": "The time when the execution was created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of OOS Execution.\n"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "description": "The time when the execution was ended.\n"
+                    },
+                    "executedBy": {
+                        "type": "string",
+                        "description": "The user who execute the template.\n"
+                    },
+                    "isParent": {
+                        "type": "boolean",
+                        "description": "Whether to include subtasks.\n"
+                    },
+                    "loopMode": {
+                        "type": "string",
+                        "description": "The loop mode of OOS Execution.\n"
+                    },
+                    "mode": {
+                        "type": "string",
+                        "description": "The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.\n"
+                    },
+                    "outputs": {
+                        "type": "string",
+                        "description": "The outputs of OOS Execution.\n"
+                    },
+                    "parameters": {
+                        "type": "string",
+                        "description": "The parameters required by the template. Default to `{}`.\n"
+                    },
+                    "parentExecutionId": {
+                        "type": "string",
+                        "description": "The id of parent execution.\n"
+                    },
+                    "ramRole": {
+                        "type": "string",
+                        "description": "The role that executes the current template.\n"
+                    },
+                    "safetyCheck": {
+                        "type": "string",
+                        "description": "The mode of safety check.\n"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "description": "The time when the execution was started.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of OOS Execution.\n"
+                    },
+                    "statusMessage": {
+                        "type": "string",
+                        "description": "The message of status.\n"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "The id of template.\n"
+                    },
+                    "templateName": {
+                        "type": "string",
+                        "description": "The name of execution template.\n"
+                    },
+                    "templateVersion": {
+                        "type": "string",
+                        "description": "The version of execution template.\n"
+                    },
+                    "updateDate": {
+                        "type": "string",
+                        "description": "The time when the execution was updated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "alicloud:oos/template:Template": {
-            "description": "Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).\n\n\u003e **NOTE:** Available in 1.92.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).\n\n\u003e **NOTE:** Available in 1.92.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst example = new alicloud.oos.Template(\"example\", {\n    content: `  {\n    \"FormatVersion\": \"OOS-2019-06-01\",\n    \"Description\": \"Update Describe instances of given status\",\n    \"Parameters\":{\n      \"Status\":{\n        \"Type\": \"String\",\n        \"Description\": \"(Required) The status of the Ecs instance.\"\n      }\n    },\n    \"Tasks\": [\n      {\n        \"Properties\" :{\n          \"Parameters\":{\n            \"Status\": \"{{ Status }}\"\n          },\n          \"API\": \"DescribeInstances\",\n          \"Service\": \"Ecs\"\n        },\n        \"Name\": \"foo\",\n        \"Action\": \"ACS::ExecuteApi\"\n      }]\n  }\n  `,\n    tags: {\n        Created: \"TF\",\n        For: \"acceptance Test\",\n    },\n    templateName: \"test-name\",\n    versionName: \"test\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nexample = alicloud.oos.Template(\"example\",\n    content=\"\"\"  {\n    \"FormatVersion\": \"OOS-2019-06-01\",\n    \"Description\": \"Update Describe instances of given status\",\n    \"Parameters\":{\n      \"Status\":{\n        \"Type\": \"String\",\n        \"Description\": \"(Required) The status of the Ecs instance.\"\n      }\n    },\n    \"Tasks\": [\n      {\n        \"Properties\" :{\n          \"Parameters\":{\n            \"Status\": \"{{ Status }}\"\n          },\n          \"API\": \"DescribeInstances\",\n          \"Service\": \"Ecs\"\n        },\n        \"Name\": \"foo\",\n        \"Action\": \"ACS::ExecuteApi\"\n      }]\n  }\n  \n\"\"\",\n    tags={\n        \"Created\": \"TF\",\n        \"For\": \"acceptance Test\",\n    },\n    template_name=\"test-name\",\n    version_name=\"test\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AliCloud.Oos.Template(\"example\", new AliCloud.Oos.TemplateArgs\n        {\n            Content = @\"  {\n    \"\"FormatVersion\"\": \"\"OOS-2019-06-01\"\",\n    \"\"Description\"\": \"\"Update Describe instances of given status\"\",\n    \"\"Parameters\"\":{\n      \"\"Status\"\":{\n        \"\"Type\"\": \"\"String\"\",\n        \"\"Description\"\": \"\"(Required) The status of the Ecs instance.\"\"\n      }\n    },\n    \"\"Tasks\"\": [\n      {\n        \"\"Properties\"\" :{\n          \"\"Parameters\"\":{\n            \"\"Status\"\": \"\"{{ Status }}\"\"\n          },\n          \"\"API\"\": \"\"DescribeInstances\"\",\n          \"\"Service\"\": \"\"Ecs\"\"\n        },\n        \"\"Name\"\": \"\"foo\"\",\n        \"\"Action\"\": \"\"ACS::ExecuteApi\"\"\n      }]\n  }\n  \n\",\n            Tags = \n            {\n                { \"Created\", \"TF\" },\n                { \"For\", \"acceptance Test\" },\n            },\n            TemplateName = \"test-name\",\n            VersionName = \"test\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "autoDeleteExecutions": {
                     "type": "boolean",
@@ -45710,7 +46382,7 @@
             }
         },
         "alicloud:oss/bucket:Bucket": {
-            "description": "Provides a resource to create a oss bucket and set its attribution.\n\n\u003e **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.\n\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Provides a resource to create a oss bucket and set its attribution.\n\n\u003e **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nPrivate Bucket\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_acl = new alicloud.oss.Bucket(\"bucket-acl\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-acl\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_acl = alicloud.oss.Bucket(\"bucket-acl\",\n    acl=\"private\",\n    bucket=\"bucket-170309-acl\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_acl = new AliCloud.Oss.Bucket(\"bucket-acl\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-acl\",\n        });\n    }\n\n}\n```\n\nStatic Website\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_website = new alicloud.oss.Bucket(\"bucket-website\", {\n    bucket: \"bucket-170309-website\",\n    website: {\n        errorDocument: \"error.html\",\n        indexDocument: \"index.html\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_website = alicloud.oss.Bucket(\"bucket-website\",\n    bucket=\"bucket-170309-website\",\n    website={\n        \"errorDocument\": \"error.html\",\n        \"indexDocument\": \"index.html\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_website = new AliCloud.Oss.Bucket(\"bucket-website\", new AliCloud.Oss.BucketArgs\n        {\n            Bucket = \"bucket-170309-website\",\n            Website = new AliCloud.Oss.Inputs.BucketWebsiteArgs\n            {\n                ErrorDocument = \"error.html\",\n                IndexDocument = \"index.html\",\n            },\n        });\n    }\n\n}\n```\n\nEnable Logging\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_target = new alicloud.oss.Bucket(\"bucket-target\", {\n    acl: \"public-read\",\n    bucket: \"bucket-170309-acl\",\n});\nconst bucket_logging = new alicloud.oss.Bucket(\"bucket-logging\", {\n    bucket: \"bucket-170309-logging\",\n    logging: {\n        targetBucket: bucket_target.id,\n        targetPrefix: \"log/\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_target = alicloud.oss.Bucket(\"bucket-target\",\n    acl=\"public-read\",\n    bucket=\"bucket-170309-acl\")\nbucket_logging = alicloud.oss.Bucket(\"bucket-logging\",\n    bucket=\"bucket-170309-logging\",\n    logging={\n        \"targetBucket\": bucket_target.id,\n        \"targetPrefix\": \"log/\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_target = new AliCloud.Oss.Bucket(\"bucket-target\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"public-read\",\n            Bucket = \"bucket-170309-acl\",\n        });\n        var bucket_logging = new AliCloud.Oss.Bucket(\"bucket-logging\", new AliCloud.Oss.BucketArgs\n        {\n            Bucket = \"bucket-170309-logging\",\n            Logging = new AliCloud.Oss.Inputs.BucketLoggingArgs\n            {\n                TargetBucket = bucket_target.Id,\n                TargetPrefix = \"log/\",\n            },\n        });\n    }\n\n}\n```\n\nReferer configuration\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_referer = new alicloud.oss.Bucket(\"bucket-referer\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-referer\",\n    refererConfig: {\n        allowEmpty: false,\n        referers: [\n            \"http://www.aliyun.com\",\n            \"https://www.aliyun.com\",\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_referer = alicloud.oss.Bucket(\"bucket-referer\",\n    acl=\"private\",\n    bucket=\"bucket-170309-referer\",\n    referer_config={\n        \"allowEmpty\": False,\n        \"referers\": [\n            \"http://www.aliyun.com\",\n            \"https://www.aliyun.com\",\n        ],\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_referer = new AliCloud.Oss.Bucket(\"bucket-referer\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-referer\",\n            RefererConfig = new AliCloud.Oss.Inputs.BucketRefererConfigArgs\n            {\n                AllowEmpty = false,\n                Referers = \n                {\n                    \"http://www.aliyun.com\",\n                    \"https://www.aliyun.com\",\n                },\n            },\n        });\n    }\n\n}\n```\n\nSet lifecycle rule\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_lifecycle = new alicloud.oss.Bucket(\"bucket-lifecycle\", {\n    acl: \"public-read\",\n    bucket: \"bucket-170309-lifecycle\",\n    lifecycleRules: [{\n        enabled: true,\n        id: \"rule-days-transition\",\n        prefix: \"path3/\",\n        transitions: [\n            {\n                createdBeforeDate: \"2020-11-11\",\n                storageClass: \"IA\",\n            },\n            {\n                createdBeforeDate: \"2021-11-11\",\n                storageClass: \"Archive\",\n            },\n        ],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_lifecycle = alicloud.oss.Bucket(\"bucket-lifecycle\",\n    acl=\"public-read\",\n    bucket=\"bucket-170309-lifecycle\",\n    lifecycle_rules=[{\n        \"enabled\": True,\n        \"id\": \"rule-days-transition\",\n        \"prefix\": \"path3/\",\n        \"transitions\": [\n            {\n                \"createdBeforeDate\": \"2020-11-11\",\n                \"storage_class\": \"IA\",\n            },\n            {\n                \"createdBeforeDate\": \"2021-11-11\",\n                \"storage_class\": \"Archive\",\n            },\n        ],\n    }])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_lifecycle = new AliCloud.Oss.Bucket(\"bucket-lifecycle\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"public-read\",\n            Bucket = \"bucket-170309-lifecycle\",\n            LifecycleRules = \n            {\n                new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs\n                {\n                    Enabled = true,\n                    Id = \"rule-days-transition\",\n                    Prefix = \"path3/\",\n                    Transitions = \n                    {\n                        new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs\n                        {\n                            CreatedBeforeDate = \"2020-11-11\",\n                            StorageClass = \"IA\",\n                        },\n                        new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs\n                        {\n                            CreatedBeforeDate = \"2021-11-11\",\n                            StorageClass = \"Archive\",\n                        },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n\nSet bucket policy \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_policy = new alicloud.oss.Bucket(\"bucket-policy\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-policy\",\n    policy: `  {\"Statement\":\n      [{\"Action\":\n          [\"oss:PutObject\", \"oss:GetObject\", \"oss:DeleteBucket\"],\n        \"Effect\":\"Allow\",\n        \"Resource\":\n            [\"acs:oss:*:*:*\"]}],\n   \"Version\":\"1\"}\n  `,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_policy = alicloud.oss.Bucket(\"bucket-policy\",\n    acl=\"private\",\n    bucket=\"bucket-170309-policy\",\n    policy=\"\"\"  {\"Statement\":\n      [{\"Action\":\n          [\"oss:PutObject\", \"oss:GetObject\", \"oss:DeleteBucket\"],\n        \"Effect\":\"Allow\",\n        \"Resource\":\n            [\"acs:oss:*:*:*\"]}],\n   \"Version\":\"1\"}\n  \n\"\"\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_policy = new AliCloud.Oss.Bucket(\"bucket-policy\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-policy\",\n            Policy = @\"  {\"\"Statement\"\":\n      [{\"\"Action\"\":\n          [\"\"oss:PutObject\"\", \"\"oss:GetObject\"\", \"\"oss:DeleteBucket\"\"],\n        \"\"Effect\"\":\"\"Allow\"\",\n        \"\"Resource\"\":\n            [\"\"acs:oss:*:*:*\"\"]}],\n   \"\"Version\"\":\"\"1\"\"}\n  \n\",\n        });\n    }\n\n}\n```\n\nIA Bucket\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_storageclass = new alicloud.oss.Bucket(\"bucket-storageclass\", {\n    bucket: \"bucket-170309-storageclass\",\n    storageClass: \"IA\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_storageclass = alicloud.oss.Bucket(\"bucket-storageclass\",\n    bucket=\"bucket-170309-storageclass\",\n    storage_class=\"IA\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_storageclass = new AliCloud.Oss.Bucket(\"bucket-storageclass\", new AliCloud.Oss.BucketArgs\n        {\n            Bucket = \"bucket-170309-storageclass\",\n            StorageClass = \"IA\",\n        });\n    }\n\n}\n```\n\nSet bucket server-side encryption rule \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_sserule = new alicloud.oss.Bucket(\"bucket-sserule\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-sserule\",\n    serverSideEncryptionRule: {\n        kmsMasterKeyId: \"your kms key id\",\n        sseAlgorithm: \"KMS\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_sserule = alicloud.oss.Bucket(\"bucket-sserule\",\n    acl=\"private\",\n    bucket=\"bucket-170309-sserule\",\n    server_side_encryption_rule={\n        \"kmsMasterKeyId\": \"your kms key id\",\n        \"sseAlgorithm\": \"KMS\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_sserule = new AliCloud.Oss.Bucket(\"bucket-sserule\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-sserule\",\n            ServerSideEncryptionRule = new AliCloud.Oss.Inputs.BucketServerSideEncryptionRuleArgs\n            {\n                KmsMasterKeyId = \"your kms key id\",\n                SseAlgorithm = \"KMS\",\n            },\n        });\n    }\n\n}\n```\n\nSet bucket tags \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_tags = new alicloud.oss.Bucket(\"bucket-tags\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-tags\",\n    tags: {\n        key1: \"value1\",\n        key2: \"value2\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_tags = alicloud.oss.Bucket(\"bucket-tags\",\n    acl=\"private\",\n    bucket=\"bucket-170309-tags\",\n    tags={\n        \"key1\": \"value1\",\n        \"key2\": \"value2\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_tags = new AliCloud.Oss.Bucket(\"bucket-tags\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-tags\",\n            Tags = \n            {\n                { \"key1\", \"value1\" },\n                { \"key2\", \"value2\" },\n            },\n        });\n    }\n\n}\n```\n\nEnable bucket versioning \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_versioning = new alicloud.oss.Bucket(\"bucket-versioning\", {\n    acl: \"private\",\n    bucket: \"bucket-170309-versioning\",\n    versioning: {\n        status: \"Enabled\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_versioning = alicloud.oss.Bucket(\"bucket-versioning\",\n    acl=\"private\",\n    bucket=\"bucket-170309-versioning\",\n    versioning={\n        \"status\": \"Enabled\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_versioning = new AliCloud.Oss.Bucket(\"bucket-versioning\", new AliCloud.Oss.BucketArgs\n        {\n            Acl = \"private\",\n            Bucket = \"bucket-170309-versioning\",\n            Versioning = new AliCloud.Oss.Inputs.BucketVersioningArgs\n            {\n                Status = \"Enabled\",\n            },\n        });\n    }\n\n}\n```\n\nSet bucket redundancy type\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bucket_redundancytype = new alicloud.oss.Bucket(\"bucket-redundancytype\", {\n    bucket: \"bucket_name\",\n    redundancyType: \"ZRS\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbucket_redundancytype = alicloud.oss.Bucket(\"bucket-redundancytype\",\n    bucket=\"bucket_name\",\n    redundancy_type=\"ZRS\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucket_redundancytype = new AliCloud.Oss.Bucket(\"bucket-redundancytype\", new AliCloud.Oss.BucketArgs\n        {\n            Bucket = \"bucket_name\",\n            RedundancyType = \"ZRS\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "acl": {
                     "type": "string",
@@ -49399,6 +50071,7 @@
                 "securityGroupId",
                 "securityGroupIds",
                 "securityIps",
+                "sqlCollectorStatus",
                 "sslAction",
                 "sslStatus",
                 "zoneId"
@@ -50329,6 +51002,93 @@
                     "policyType": {
                         "type": "string",
                         "description": "The type of the policy. Valid values: `Custom`, `System`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "alicloud:resourcemanager/policyAttachment:PolicyAttachment": {
+            "description": "Provides a Resource Manager Policy Attachment resource to attaches a policy to an object. After you attach a policy to an object, the object has the operation permissions on the current resource group or the resources under the current account. \nFor information about Resource Manager Policy Attachment and how to use it, see [How to authorize and manage resource groups](https://www.alibabacloud.com/help/en/doc-detail/94490.htm).\n\n\u003e **NOTE:** Available in v1.93.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "policyName": {
+                    "type": "string",
+                    "description": "The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).\n"
+                },
+                "policyType": {
+                    "type": "string",
+                    "description": "- (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.\n"
+                },
+                "principalName": {
+                    "type": "string",
+                    "description": "The name of the object to which you want to attach the policy.\n"
+                },
+                "principalType": {
+                    "type": "string",
+                    "description": "The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. \n"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.\n"
+                }
+            },
+            "required": [
+                "policyName",
+                "policyType",
+                "principalName",
+                "principalType",
+                "resourceGroupId"
+            ],
+            "inputProperties": {
+                "policyName": {
+                    "type": "string",
+                    "description": "The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).\n"
+                },
+                "policyType": {
+                    "type": "string",
+                    "description": "- (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.\n"
+                },
+                "principalName": {
+                    "type": "string",
+                    "description": "The name of the object to which you want to attach the policy.\n"
+                },
+                "principalType": {
+                    "type": "string",
+                    "description": "The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. \n"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.\n"
+                }
+            },
+            "requiredInputs": [
+                "policyName",
+                "policyType",
+                "principalName",
+                "principalType",
+                "resourceGroupId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PolicyAttachment resources.\n",
+                "properties": {
+                    "policyName": {
+                        "type": "string",
+                        "description": "The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).\n"
+                    },
+                    "policyType": {
+                        "type": "string",
+                        "description": "- (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.\n"
+                    },
+                    "principalName": {
+                        "type": "string",
+                        "description": "The name of the object to which you want to attach the policy.\n"
+                    },
+                    "principalType": {
+                        "type": "string",
+                        "description": "The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. \n"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.\n"
                     }
                 },
                 "type": "object"
@@ -51882,7 +52642,7 @@
             }
         },
         "alicloud:slb/backendServer:BackendServer": {
-            "description": "Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.\n\n\u003e **NOTE:** Available in 1.53.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst config = new pulumi.Config();\nconst name = config.get(\"name\") || \"slbbackendservertest\";\n\nconst defaultZones = pulumi.output(alicloud.getZones({\n    availableDiskCategory: \"cloud_efficiency\",\n    availableResourceCreation: \"VSwitch\",\n}, { async: true }));\nconst defaultInstanceTypes = defaultZones.apply(defaultZones =\u003e alicloud.ecs.getInstanceTypes({\n    availabilityZone: defaultZones.zones[0].id,\n    cpuCoreCount: 1,\n    memorySize: 2,\n}, { async: true }));\nconst defaultImages = pulumi.output(alicloud.ecs.getImages({\n    mostRecent: true,\n    nameRegex: \"^ubuntu_18.*64\",\n    owners: \"system\",\n}, { async: true }));\nconst defaultNetwork = new alicloud.vpc.Network(\"default\", {\n    cidrBlock: \"172.16.0.0/16\",\n});\nconst defaultSwitch = new alicloud.vpc.Switch(\"default\", {\n    availabilityZone: defaultZones.zones[0].id,\n    cidrBlock: \"172.16.0.0/16\",\n    vpcId: defaultNetwork.id,\n});\nconst defaultSecurityGroup = new alicloud.ecs.SecurityGroup(\"default\", {\n    vpcId: defaultNetwork.id,\n});\nconst defaultInstance: alicloud.ecs.Instance[] = [];\nfor (let i = 0; i \u003c 2; i++) {\n    defaultInstance.push(new alicloud.ecs.Instance(`default-${i}`, {\n        availabilityZone: defaultZones.zones[0].id,\n        imageId: defaultImages.images[0].id,\n        instanceChargeType: \"PostPaid\",\n        instanceName: name,\n        instanceType: defaultInstanceTypes.instanceTypes[0].id,\n        internetChargeType: \"PayByTraffic\",\n        internetMaxBandwidthOut: 10,\n        securityGroups: defaultSecurityGroup.id,\n        systemDiskCategory: \"cloud_efficiency\",\n        vswitchId: defaultSwitch.id,\n    }));\n}\nconst defaultLoadBalancer = new alicloud.slb.LoadBalancer(\"default\", {\n    vswitchId: defaultSwitch.id,\n});\nconst defaultBackendServer = new alicloud.slb.BackendServer(\"default\", {\n    backendServers: [\n        {\n            serverId: defaultInstance[0].id,\n            weight: 100,\n        },\n        {\n            serverId: defaultInstance[1].id,\n            weight: 100,\n        },\n    ],\n    loadBalancerId: defaultLoadBalancer.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nconfig = pulumi.Config()\nname = config.get(\"name\")\nif name is None:\n    name = \"slbbackendservertest\"\ndefault_zones = alicloud.get_zones(available_disk_category=\"cloud_efficiency\",\n    available_resource_creation=\"VSwitch\")\ndefault_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0][\"id\"],\n    cpu_core_count=1,\n    memory_size=2)\ndefault_images = alicloud.ecs.get_images(most_recent=True,\n    name_regex=\"^ubuntu_18.*64\",\n    owners=\"system\")\ndefault_network = alicloud.vpc.Network(\"defaultNetwork\", cidr_block=\"172.16.0.0/16\")\ndefault_switch = alicloud.vpc.Switch(\"defaultSwitch\",\n    availability_zone=default_zones.zones[0][\"id\"],\n    cidr_block=\"172.16.0.0/16\",\n    vpc_id=default_network.id)\ndefault_security_group = alicloud.ecs.SecurityGroup(\"defaultSecurityGroup\", vpc_id=default_network.id)\ndefault_instance = []\nfor range in [{\"value\": i} for i in range(0, 2)]:\n    default_instance.append(alicloud.ecs.Instance(f\"defaultInstance-{range['value']}\",\n        availability_zone=default_zones.zones[0][\"id\"],\n        image_id=default_images.images[0][\"id\"],\n        instance_charge_type=\"PostPaid\",\n        instance_name=name,\n        instance_type=default_instance_types.instance_types[0][\"id\"],\n        internet_charge_type=\"PayByTraffic\",\n        internet_max_bandwidth_out=\"10\",\n        security_groups=[__item.id for __item in [default_security_group]],\n        system_disk_category=\"cloud_efficiency\",\n        vswitch_id=default_switch.id))\ndefault_load_balancer = alicloud.slb.LoadBalancer(\"defaultLoadBalancer\", vswitch_id=default_switch.id)\ndefault_backend_server = alicloud.slb.BackendServer(\"defaultBackendServer\",\n    backend_servers=[\n        {\n            \"serverId\": default_instance[0].id,\n            \"weight\": 100,\n        },\n        {\n            \"serverId\": default_instance[1].id,\n            \"weight\": 100,\n        },\n    ],\n    load_balancer_id=default_load_balancer.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var name = config.Get(\"name\") ?? \"slbbackendservertest\";\n        var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs\n        {\n            AvailableDiskCategory = \"cloud_efficiency\",\n            AvailableResourceCreation = \"VSwitch\",\n        }));\n        var defaultInstanceTypes = defaultZones.Apply(defaultZones =\u003e Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs\n        {\n            AvailabilityZone = defaultZones.Zones[0].Id,\n            CpuCoreCount = 1,\n            MemorySize = 2,\n        })));\n        var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs\n        {\n            MostRecent = true,\n            NameRegex = \"^ubuntu_18.*64\",\n            Owners = \"system\",\n        }));\n        var defaultNetwork = new AliCloud.Vpc.Network(\"defaultNetwork\", new AliCloud.Vpc.NetworkArgs\n        {\n            CidrBlock = \"172.16.0.0/16\",\n        });\n        var defaultSwitch = new AliCloud.Vpc.Switch(\"defaultSwitch\", new AliCloud.Vpc.SwitchArgs\n        {\n            AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n            CidrBlock = \"172.16.0.0/16\",\n            VpcId = defaultNetwork.Id,\n        });\n        var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup(\"defaultSecurityGroup\", new AliCloud.Ecs.SecurityGroupArgs\n        {\n            VpcId = defaultNetwork.Id,\n        });\n        var defaultInstance = new List\u003cAliCloud.Ecs.Instance\u003e();\n        for (var rangeIndex = 0; rangeIndex \u003c 2; rangeIndex++)\n        {\n            var range = new { Value = rangeIndex };\n            defaultInstance.Add(new AliCloud.Ecs.Instance($\"defaultInstance-{range.Value}\", new AliCloud.Ecs.InstanceArgs\n            {\n                AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n                ImageId = defaultImages.Apply(defaultImages =\u003e defaultImages.Images[0].Id),\n                InstanceChargeType = \"PostPaid\",\n                InstanceName = name,\n                InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =\u003e defaultInstanceTypes.InstanceTypes[0].Id),\n                InternetChargeType = \"PayByTraffic\",\n                InternetMaxBandwidthOut = 10,\n                SecurityGroups = \n                {\n                    defaultSecurityGroup,\n                }.Select(__item =\u003e __item.Id).ToList(),\n                SystemDiskCategory = \"cloud_efficiency\",\n                VswitchId = defaultSwitch.Id,\n            }));\n        }\n        var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer(\"defaultLoadBalancer\", new AliCloud.Slb.LoadBalancerArgs\n        {\n            VswitchId = defaultSwitch.Id,\n        });\n        var defaultBackendServer = new AliCloud.Slb.BackendServer(\"defaultBackendServer\", new AliCloud.Slb.BackendServerArgs\n        {\n            BackendServers = \n            {\n                new AliCloud.Slb.Inputs.BackendServerBackendServerArgs\n                {\n                    ServerId = defaultInstance[0].Id,\n                    Weight = 100,\n                },\n                new AliCloud.Slb.Inputs.BackendServerBackendServerArgs\n                {\n                    ServerId = defaultInstance[1].Id,\n                    Weight = 100,\n                },\n            },\n            LoadBalancerId = defaultLoadBalancer.Id,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n## Block servers\n\nThe servers mapping supports the following:\n\n* `server_id` - (Required) A list backend server ID (ECS instance ID).\n* `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. \n* `type` - (Optional) Type of the backend server. Valid value ecs, eni. Default to eni.\n",
+            "description": "Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.\n\n\u003e **NOTE:** Available in 1.53.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst config = new pulumi.Config();\nconst name = config.get(\"name\") || \"slbbackendservertest\";\n\nconst defaultZones = pulumi.output(alicloud.getZones({\n    availableDiskCategory: \"cloud_efficiency\",\n    availableResourceCreation: \"VSwitch\",\n}, { async: true }));\nconst defaultInstanceTypes = defaultZones.apply(defaultZones =\u003e alicloud.ecs.getInstanceTypes({\n    availabilityZone: defaultZones.zones[0].id,\n    cpuCoreCount: 1,\n    memorySize: 2,\n}, { async: true }));\nconst defaultImages = pulumi.output(alicloud.ecs.getImages({\n    mostRecent: true,\n    nameRegex: \"^ubuntu_18.*64\",\n    owners: \"system\",\n}, { async: true }));\nconst defaultNetwork = new alicloud.vpc.Network(\"default\", {\n    cidrBlock: \"172.16.0.0/16\",\n});\nconst defaultSwitch = new alicloud.vpc.Switch(\"default\", {\n    availabilityZone: defaultZones.zones[0].id,\n    cidrBlock: \"172.16.0.0/16\",\n    vpcId: defaultNetwork.id,\n});\nconst defaultSecurityGroup = new alicloud.ecs.SecurityGroup(\"default\", {\n    vpcId: defaultNetwork.id,\n});\nconst defaultInstance: alicloud.ecs.Instance[] = [];\nfor (let i = 0; i \u003c 2; i++) {\n    defaultInstance.push(new alicloud.ecs.Instance(`default-${i}`, {\n        availabilityZone: defaultZones.zones[0].id,\n        imageId: defaultImages.images[0].id,\n        instanceChargeType: \"PostPaid\",\n        instanceName: name,\n        instanceType: defaultInstanceTypes.instanceTypes[0].id,\n        internetChargeType: \"PayByTraffic\",\n        internetMaxBandwidthOut: 10,\n        securityGroups: defaultSecurityGroup.id,\n        systemDiskCategory: \"cloud_efficiency\",\n        vswitchId: defaultSwitch.id,\n    }));\n}\nconst defaultLoadBalancer = new alicloud.slb.LoadBalancer(\"default\", {\n    vswitchId: defaultSwitch.id,\n});\nconst defaultBackendServer = new alicloud.slb.BackendServer(\"default\", {\n    backendServers: [\n        {\n            serverId: defaultInstance[0].id,\n            weight: 100,\n        },\n        {\n            serverId: defaultInstance[1].id,\n            weight: 100,\n        },\n    ],\n    loadBalancerId: defaultLoadBalancer.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nconfig = pulumi.Config()\nname = config.get(\"name\")\nif name is None:\n    name = \"slbbackendservertest\"\ndefault_zones = alicloud.get_zones(available_disk_category=\"cloud_efficiency\",\n    available_resource_creation=\"VSwitch\")\ndefault_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0][\"id\"],\n    cpu_core_count=1,\n    memory_size=2)\ndefault_images = alicloud.ecs.get_images(most_recent=True,\n    name_regex=\"^ubuntu_18.*64\",\n    owners=\"system\")\ndefault_network = alicloud.vpc.Network(\"defaultNetwork\", cidr_block=\"172.16.0.0/16\")\ndefault_switch = alicloud.vpc.Switch(\"defaultSwitch\",\n    availability_zone=default_zones.zones[0][\"id\"],\n    cidr_block=\"172.16.0.0/16\",\n    vpc_id=default_network.id)\ndefault_security_group = alicloud.ecs.SecurityGroup(\"defaultSecurityGroup\", vpc_id=default_network.id)\ndefault_instance = []\nfor range in [{\"value\": i} for i in range(0, 2)]:\n    default_instance.append(alicloud.ecs.Instance(f\"defaultInstance-{range['value']}\",\n        availability_zone=default_zones.zones[0][\"id\"],\n        image_id=default_images.images[0][\"id\"],\n        instance_charge_type=\"PostPaid\",\n        instance_name=name,\n        instance_type=default_instance_types.instance_types[0][\"id\"],\n        internet_charge_type=\"PayByTraffic\",\n        internet_max_bandwidth_out=\"10\",\n        security_groups=[__item.id for __item in [default_security_group]],\n        system_disk_category=\"cloud_efficiency\",\n        vswitch_id=default_switch.id))\ndefault_load_balancer = alicloud.slb.LoadBalancer(\"defaultLoadBalancer\", vswitch_id=default_switch.id)\ndefault_backend_server = alicloud.slb.BackendServer(\"defaultBackendServer\",\n    backend_servers=[\n        {\n            \"serverId\": default_instance[0].id,\n            \"weight\": 100,\n        },\n        {\n            \"serverId\": default_instance[1].id,\n            \"weight\": 100,\n        },\n    ],\n    load_balancer_id=default_load_balancer.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var name = config.Get(\"name\") ?? \"slbbackendservertest\";\n        var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs\n        {\n            AvailableDiskCategory = \"cloud_efficiency\",\n            AvailableResourceCreation = \"VSwitch\",\n        }));\n        var defaultInstanceTypes = defaultZones.Apply(defaultZones =\u003e Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs\n        {\n            AvailabilityZone = defaultZones.Zones[0].Id,\n            CpuCoreCount = 1,\n            MemorySize = 2,\n        })));\n        var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs\n        {\n            MostRecent = true,\n            NameRegex = \"^ubuntu_18.*64\",\n            Owners = \"system\",\n        }));\n        var defaultNetwork = new AliCloud.Vpc.Network(\"defaultNetwork\", new AliCloud.Vpc.NetworkArgs\n        {\n            CidrBlock = \"172.16.0.0/16\",\n        });\n        var defaultSwitch = new AliCloud.Vpc.Switch(\"defaultSwitch\", new AliCloud.Vpc.SwitchArgs\n        {\n            AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n            CidrBlock = \"172.16.0.0/16\",\n            VpcId = defaultNetwork.Id,\n        });\n        var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup(\"defaultSecurityGroup\", new AliCloud.Ecs.SecurityGroupArgs\n        {\n            VpcId = defaultNetwork.Id,\n        });\n        var defaultInstance = new List\u003cAliCloud.Ecs.Instance\u003e();\n        for (var rangeIndex = 0; rangeIndex \u003c 2; rangeIndex++)\n        {\n            var range = new { Value = rangeIndex };\n            defaultInstance.Add(new AliCloud.Ecs.Instance($\"defaultInstance-{range.Value}\", new AliCloud.Ecs.InstanceArgs\n            {\n                AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n                ImageId = defaultImages.Apply(defaultImages =\u003e defaultImages.Images[0].Id),\n                InstanceChargeType = \"PostPaid\",\n                InstanceName = name,\n                InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =\u003e defaultInstanceTypes.InstanceTypes[0].Id),\n                InternetChargeType = \"PayByTraffic\",\n                InternetMaxBandwidthOut = 10,\n                SecurityGroups = \n                {\n                    defaultSecurityGroup,\n                }.Select(__item =\u003e __item.Id).ToList(),\n                SystemDiskCategory = \"cloud_efficiency\",\n                VswitchId = defaultSwitch.Id,\n            }));\n        }\n        var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer(\"defaultLoadBalancer\", new AliCloud.Slb.LoadBalancerArgs\n        {\n            VswitchId = defaultSwitch.Id,\n        });\n        var defaultBackendServer = new AliCloud.Slb.BackendServer(\"defaultBackendServer\", new AliCloud.Slb.BackendServerArgs\n        {\n            BackendServers = \n            {\n                new AliCloud.Slb.Inputs.BackendServerBackendServerArgs\n                {\n                    ServerId = defaultInstance[0].Id,\n                    Weight = 100,\n                },\n                new AliCloud.Slb.Inputs.BackendServerBackendServerArgs\n                {\n                    ServerId = defaultInstance[1].Id,\n                    Weight = 100,\n                },\n            },\n            LoadBalancerId = defaultLoadBalancer.Id,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n## Block servers\n\nThe servers mapping supports the following:\n\n* `server_id` - (Required) A list backend server ID (ECS instance ID).\n* `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. \n* `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`. Default to `ecs`.\n* `server_ip` - (Optional, Available in 1.93.0+) ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `server_ip` parameter.\n",
             "properties": {
                 "backendServers": {
                     "type": "array",
@@ -60648,7 +61408,7 @@
             }
         },
         "alicloud:ecs/getDedicatedHosts:getDedicatedHosts": {
-            "description": "This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.91.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.91.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Declare the data source\nconst dedicatedHostsDs = pulumi.output(alicloud.ecs.getDedicatedHosts({\n    dedicatedHostType: \"ddh.g5\",\n    nameRegex: \"tf-testAcc\",\n    status: \"Available\",\n}, { async: true }));\n\nexport const firstDedicatedHostsId = dedicatedHostsDs.hosts[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndedicated_hosts_ds = alicloud.ecs.get_dedicated_hosts(dedicated_host_type=\"ddh.g5\",\n    name_regex=\"tf-testAcc\",\n    status=\"Available\")\npulumi.export(\"firstDedicatedHostsId\", dedicated_hosts_ds.hosts[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var dedicatedHostsDs = Output.Create(AliCloud.Ecs.GetDedicatedHosts.InvokeAsync(new AliCloud.Ecs.GetDedicatedHostsArgs\n        {\n            DedicatedHostType = \"ddh.g5\",\n            NameRegex = \"tf-testAcc\",\n            Status = \"Available\",\n        }));\n        this.FirstDedicatedHostsId = dedicatedHostsDs.Apply(dedicatedHostsDs =\u003e dedicatedHostsDs.Hosts[0].Id);\n    }\n\n    [Output(\"firstDedicatedHostsId\")]\n    public Output\u003cstring\u003e FirstDedicatedHostsId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDedicatedHosts.\n",
                 "properties": {
@@ -61621,7 +62381,7 @@
             }
         },
         "alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules": {
-            "description": "The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.\nEach collection item represents a single `ingress` or `egress` permission rule.\nThe ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst config = new pulumi.Config();\n// Get the security group id from a variable\nconst securityGroupId = config.require(\"securityGroupId\");\n\n// Or get it from the alicloud.ecs.getSecurityGroups data source.\n// Please note that the data source arguments must be enough to filter results to one security group.\nconst groupsDs = pulumi.output(alicloud.ecs.getSecurityGroups({\n    nameRegex: \"api\",\n}, { async: true }));\n// Filter the security group rule by group\nconst ingressRulesDs = groupsDs.apply(groupsDs =\u003e alicloud.ecs.getSecurityGroupRules({\n    direction: \"ingress\",\n    groupId: groupsDs.groups[0].id,\n    ipProtocol: \"TCP\",\n    nicType: \"internet\",\n}, { async: true }));\n// Pass port_range to the backend service\nconst backend = new alicloud.ecs.Instance(\"backend\", {\n    userData: pulumi.interpolate`config_service.sh --portrange=${ingressRulesDs.rules[0].portRange}`,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nconfig = pulumi.Config()\nsecurity_group_id = config.require_object(\"securityGroupId\")\ngroups_ds = alicloud.ecs.get_security_groups(name_regex=\"api\")\ningress_rules_ds = alicloud.ecs.get_security_group_rules(direction=\"ingress\",\n    group_id=groups_ds.groups[0][\"id\"],\n    ip_protocol=\"TCP\",\n    nic_type=\"internet\")\n# Pass port_range to the backend service\nbackend = alicloud.ecs.Instance(\"backend\", user_data=f\"config_service.sh --portrange={ingress_rules_ds.rules[0]['port_range']}\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var securityGroupId = config.RequireObject\u003cdynamic\u003e(\"securityGroupId\");\n        var groupsDs = Output.Create(AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs\n        {\n            NameRegex = \"api\",\n        }));\n        var ingressRulesDs = groupsDs.Apply(groupsDs =\u003e Output.Create(AliCloud.Ecs.GetSecurityGroupRules.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupRulesArgs\n        {\n            Direction = \"ingress\",\n            GroupId = groupsDs.Groups[0].Id,\n            IpProtocol = \"TCP\",\n            NicType = \"internet\",\n        })));\n        // Pass port_range to the backend service\n        var backend = new AliCloud.Ecs.Instance(\"backend\", new AliCloud.Ecs.InstanceArgs\n        {\n            UserData = ingressRulesDs.Apply(ingressRulesDs =\u003e $\"config_service.sh --portrange={ingressRulesDs.Rules[0].PortRange}\"),\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.\nEach collection item represents a single `ingress` or `egress` permission rule.\nThe ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst config = new pulumi.Config();\n// Get the security group id from a variable\nconst securityGroupId = config.require(\"securityGroupId\");\n\n// Or get it from the alicloud.ecs.getSecurityGroups data source.\n// Please note that the data source arguments must be enough to filter results to one security group.\nconst groupsDs = pulumi.output(alicloud.ecs.getSecurityGroups({\n    nameRegex: \"api\",\n}, { async: true }));\n// Filter the security group rule by group\nconst ingressRulesDs = groupsDs.apply(groupsDs =\u003e alicloud.ecs.getSecurityGroupRules({\n    direction: \"ingress\",\n    groupId: groupsDs.groups[0].id,\n    ipProtocol: \"tcp\",\n    nicType: \"internet\",\n}, { async: true }));\n// Pass port_range to the backend service\nconst backend = new alicloud.ecs.Instance(\"backend\", {\n    userData: pulumi.interpolate`config_service.sh --portrange=${ingressRulesDs.rules[0].portRange}`,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nconfig = pulumi.Config()\nsecurity_group_id = config.require_object(\"securityGroupId\")\ngroups_ds = alicloud.ecs.get_security_groups(name_regex=\"api\")\ningress_rules_ds = alicloud.ecs.get_security_group_rules(direction=\"ingress\",\n    group_id=groups_ds.groups[0][\"id\"],\n    ip_protocol=\"tcp\",\n    nic_type=\"internet\")\n# Pass port_range to the backend service\nbackend = alicloud.ecs.Instance(\"backend\", user_data=f\"config_service.sh --portrange={ingress_rules_ds.rules[0]['port_range']}\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var securityGroupId = config.RequireObject\u003cdynamic\u003e(\"securityGroupId\");\n        var groupsDs = Output.Create(AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs\n        {\n            NameRegex = \"api\",\n        }));\n        var ingressRulesDs = groupsDs.Apply(groupsDs =\u003e Output.Create(AliCloud.Ecs.GetSecurityGroupRules.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupRulesArgs\n        {\n            Direction = \"ingress\",\n            GroupId = groupsDs.Groups[0].Id,\n            IpProtocol = \"tcp\",\n            NicType = \"internet\",\n        })));\n        // Pass port_range to the backend service\n        var backend = new AliCloud.Ecs.Instance(\"backend\", new AliCloud.Ecs.InstanceArgs\n        {\n            UserData = ingressRulesDs.Apply(ingressRulesDs =\u003e $\"config_service.sh --portrange={ingressRulesDs.Rules[0].PortRange}\"),\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSecurityGroupRules.\n",
                 "properties": {
@@ -65620,8 +66380,170 @@
                 ]
             }
         },
+        "alicloud:oos/getExecutions:getExecutions": {
+            "description": "This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.93.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getExecutions.\n",
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "description": "The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.\n"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "description": "The time when the execution was ended.\n"
+                    },
+                    "endDateAfter": {
+                        "type": "string",
+                        "description": "Execution whose end time is less than or equal to the specified time.\n"
+                    },
+                    "executedBy": {
+                        "type": "string",
+                        "description": "The user who execute the template.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of OOS Execution ids.\n"
+                    },
+                    "includeChildExecution": {
+                        "type": "boolean",
+                        "description": "Whether to include sub-execution.\n"
+                    },
+                    "mode": {
+                        "type": "string",
+                        "description": "The mode of OOS Execution. Valid: `Automatic`, `Debug`.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "parentExecutionId": {
+                        "type": "string",
+                        "description": "The id of parent OOS Execution.\n"
+                    },
+                    "ramRole": {
+                        "type": "string",
+                        "description": "The role that executes the current template.\n"
+                    },
+                    "sortField": {
+                        "type": "string",
+                        "description": "The sort field.\n"
+                    },
+                    "sortOrder": {
+                        "type": "string",
+                        "description": "The sort order.\n"
+                    },
+                    "startDateAfter": {
+                        "type": "string",
+                        "description": "The execution whose start time is greater than or equal to the specified time.\n"
+                    },
+                    "startDateBefore": {
+                        "type": "string",
+                        "description": "The execution with start time less than or equal to the specified time.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of tags to assign to the resource.\n"
+                    },
+                    "templateName": {
+                        "type": "string",
+                        "description": "The name of execution template.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getExecutions.\n",
+                "properties": {
+                    "category": {
+                        "type": "string"
+                    },
+                    "endDate": {
+                        "type": "string"
+                    },
+                    "endDateAfter": {
+                        "type": "string"
+                    },
+                    "executedBy": {
+                        "type": "string"
+                    },
+                    "executions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:oos/getExecutionsExecution:getExecutionsExecution"
+                        },
+                        "description": "A list of OOS Executions. Each element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of OOS Execution ids.\n"
+                    },
+                    "includeChildExecution": {
+                        "type": "boolean"
+                    },
+                    "mode": {
+                        "type": "string"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "parentExecutionId": {
+                        "type": "string"
+                    },
+                    "ramRole": {
+                        "type": "string"
+                    },
+                    "sortField": {
+                        "type": "string"
+                    },
+                    "sortOrder": {
+                        "type": "string"
+                    },
+                    "startDateAfter": {
+                        "type": "string"
+                    },
+                    "startDateBefore": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "templateName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "executions",
+                    "ids",
+                    "id"
+                ]
+            }
+        },
         "alicloud:oos/getTemplates:getTemplates": {
-            "description": "This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.92.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.92.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst example = pulumi.output(alicloud.oos.getTemplates({\n    hasTrigger: false,\n    nameRegex: \"test\",\n    shareType: \"Private\",\n    tags: {\n        Created: \"TF\",\n        For: \"template Test\",\n    },\n}, { async: true }));\n\nexport const firstTemplateName = example.templates[0].templateName;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nexample = alicloud.oos.get_templates(has_trigger=False,\n    name_regex=\"test\",\n    share_type=\"Private\",\n    tags={\n        \"Created\": \"TF\",\n        \"For\": \"template Test\",\n    })\npulumi.export(\"firstTemplateName\", example.templates[0][\"template_name\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AliCloud.Oos.GetTemplates.InvokeAsync(new AliCloud.Oos.GetTemplatesArgs\n        {\n            HasTrigger = false,\n            NameRegex = \"test\",\n            ShareType = \"Private\",\n            Tags = \n            {\n                { \"Created\", \"TF\" },\n                { \"For\", \"template Test\" },\n            },\n        }));\n        this.FirstTemplateName = example.Apply(example =\u003e example.Templates[0].TemplateName);\n    }\n\n    [Output(\"firstTemplateName\")]\n    public Output\u003cstring\u003e FirstTemplateName { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTemplates.\n",
                 "properties": {
@@ -67623,6 +68545,93 @@
                 ]
             }
         },
+        "alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments": {
+            "description": "This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.93.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPolicyAttachments.\n",
+                "properties": {
+                    "language": {
+                        "type": "string",
+                        "description": "The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "policyName": {
+                        "type": "string",
+                        "description": "The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).\n"
+                    },
+                    "policyType": {
+                        "type": "string",
+                        "description": "The type of the policy. Valid values: `Custom` and `System`.\n"
+                    },
+                    "principalName": {
+                        "type": "string",
+                        "description": "The name of the object to which the policy is attached.\n"
+                    },
+                    "principalType": {
+                        "type": "string",
+                        "description": "The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. \n"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPolicyAttachments.\n",
+                "properties": {
+                    "attachments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:resourcemanager/getPolicyAttachmentsAttachment:getPolicyAttachmentsAttachment"
+                        },
+                        "description": "A list of Resource Manager Policy Attachment. Each element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of Resource Manager Policy Attachment IDs.\n"
+                    },
+                    "language": {
+                        "type": "string"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "policyName": {
+                        "type": "string"
+                    },
+                    "policyType": {
+                        "type": "string"
+                    },
+                    "principalName": {
+                        "type": "string"
+                    },
+                    "principalType": {
+                        "type": "string"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "attachments",
+                    "ids",
+                    "id"
+                ]
+            }
+        },
         "alicloud:resourcemanager/getPolicyVersions:getPolicyVersions": {
             "description": "This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.85.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultPolicyVersions = pulumi.output(alicloud.resourcemanager.getPolicyVersions({\n    policyName: \"tftest\",\n    policyType: \"Custom\",\n}, { async: true }));\n\nexport const firstPolicyVersionId = defaultPolicyVersions.versions[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.resourcemanager.get_policy_versions(policy_name=\"tftest\",\n    policy_type=\"Custom\")\npulumi.export(\"firstPolicyVersionId\", default.versions[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = Output.Create(AliCloud.ResourceManager.GetPolicyVersions.InvokeAsync(new AliCloud.ResourceManager.GetPolicyVersionsArgs\n        {\n            PolicyName = \"tftest\",\n            PolicyType = \"Custom\",\n        }));\n        this.FirstPolicyVersionId = @default.Apply(@default =\u003e @default.Versions[0].Id);\n    }\n\n    [Output(\"firstPolicyVersionId\")]\n    public Output\u003cstring\u003e FirstPolicyVersionId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
@@ -68275,7 +69284,7 @@
             }
         },
         "alicloud:slb/getBackendServers:getBackendServers": {
-            "description": "This data source provides the server load balancer backend servers related to a server load balancer..\n\n\u003e **NOTE:** Available in 1.53.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides the server load balancer backend servers related to a server load balancer..\n\n\u003e **NOTE:** Available in 1.53.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst sampleDs = alicloud_slb_sample_slb.id.apply(id =\u003e alicloud.slb.getBackendServers({\n    loadBalancerId: id,\n}, { async: true }));\n\nexport const firstSlbBackendServerId = sampleDs.backendServers[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nsample_ds = alicloud.slb.get_backend_servers(load_balancer_id=alicloud_slb[\"sample_slb\"][\"id\"])\npulumi.export(\"firstSlbBackendServerId\", sample_ds.backend_servers[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var sampleDs = Output.Create(AliCloud.Slb.GetBackendServers.InvokeAsync(new AliCloud.Slb.GetBackendServersArgs\n        {\n            LoadBalancerId = alicloud_slb.Sample_slb.Id,\n        }));\n        this.FirstSlbBackendServerId = sampleDs.Apply(sampleDs =\u003e sampleDs.BackendServers[0].Id);\n    }\n\n    [Output(\"firstSlbBackendServerId\")]\n    public Output\u003cstring\u003e FirstSlbBackendServerId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getBackendServers.\n",
                 "properties": {
@@ -70685,7 +71694,7 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing AliCloud resources.",
             "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-alicloud)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-alicloud` repo](https://github.com/pulumi/pulumi-alicloud/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-alicloud` repo](https://github.com/terraform-providers/terraform-provider-alicloud/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aliyun/terraform-provider-alicloud)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-alicloud` repo](https://github.com/pulumi/pulumi-alicloud/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`aliyun/terraform-provider-alicloud` repo](https://github.com/aliyun/terraform-provider-alicloud/issues).",
             "typescriptVersion": ""
         },
         "python": {

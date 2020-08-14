@@ -766,6 +766,180 @@ func (o GetPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetPoliciesPolicy
 	}).(GetPoliciesPolicyOutput)
 }
 
+type GetPolicyAttachmentsAttachment struct {
+	// The time when the policy was attached.
+	AttachDate string `pulumi:"attachDate"`
+	// The description of the policy.
+	Description string `pulumi:"description"`
+	// The ID of the Resource Manager Policy Attachment.
+	// * `policyName`- The name of the policy.
+	// * `policyType`- The type of the policy.
+	// * `principalName`- The name of the object to which the policy is attached.
+	// * `principalType`- The type of the object to which the policy is attached.
+	Id string `pulumi:"id"`
+	// The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+	PolicyName string `pulumi:"policyName"`
+	// The type of the policy. Valid values: `Custom` and `System`.
+	PolicyType string `pulumi:"policyType"`
+	// The name of the object to which the policy is attached.
+	PrincipalName string `pulumi:"principalName"`
+	// The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
+	PrincipalType string `pulumi:"principalType"`
+	// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+}
+
+// GetPolicyAttachmentsAttachmentInput is an input type that accepts GetPolicyAttachmentsAttachmentArgs and GetPolicyAttachmentsAttachmentOutput values.
+// You can construct a concrete instance of `GetPolicyAttachmentsAttachmentInput` via:
+//
+// 		 GetPolicyAttachmentsAttachmentArgs{...}
+//
+type GetPolicyAttachmentsAttachmentInput interface {
+	pulumi.Input
+
+	ToGetPolicyAttachmentsAttachmentOutput() GetPolicyAttachmentsAttachmentOutput
+	ToGetPolicyAttachmentsAttachmentOutputWithContext(context.Context) GetPolicyAttachmentsAttachmentOutput
+}
+
+type GetPolicyAttachmentsAttachmentArgs struct {
+	// The time when the policy was attached.
+	AttachDate pulumi.StringInput `pulumi:"attachDate"`
+	// The description of the policy.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Resource Manager Policy Attachment.
+	// * `policyName`- The name of the policy.
+	// * `policyType`- The type of the policy.
+	// * `principalName`- The name of the object to which the policy is attached.
+	// * `principalType`- The type of the object to which the policy is attached.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// The type of the policy. Valid values: `Custom` and `System`.
+	PolicyType pulumi.StringInput `pulumi:"policyType"`
+	// The name of the object to which the policy is attached.
+	PrincipalName pulumi.StringInput `pulumi:"principalName"`
+	// The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
+	PrincipalType pulumi.StringInput `pulumi:"principalType"`
+	// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+}
+
+func (GetPolicyAttachmentsAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetPolicyAttachmentsAttachmentArgs) ToGetPolicyAttachmentsAttachmentOutput() GetPolicyAttachmentsAttachmentOutput {
+	return i.ToGetPolicyAttachmentsAttachmentOutputWithContext(context.Background())
+}
+
+func (i GetPolicyAttachmentsAttachmentArgs) ToGetPolicyAttachmentsAttachmentOutputWithContext(ctx context.Context) GetPolicyAttachmentsAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyAttachmentsAttachmentOutput)
+}
+
+// GetPolicyAttachmentsAttachmentArrayInput is an input type that accepts GetPolicyAttachmentsAttachmentArray and GetPolicyAttachmentsAttachmentArrayOutput values.
+// You can construct a concrete instance of `GetPolicyAttachmentsAttachmentArrayInput` via:
+//
+// 		 GetPolicyAttachmentsAttachmentArray{ GetPolicyAttachmentsAttachmentArgs{...} }
+//
+type GetPolicyAttachmentsAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicyAttachmentsAttachmentArrayOutput() GetPolicyAttachmentsAttachmentArrayOutput
+	ToGetPolicyAttachmentsAttachmentArrayOutputWithContext(context.Context) GetPolicyAttachmentsAttachmentArrayOutput
+}
+
+type GetPolicyAttachmentsAttachmentArray []GetPolicyAttachmentsAttachmentInput
+
+func (GetPolicyAttachmentsAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetPolicyAttachmentsAttachmentArray) ToGetPolicyAttachmentsAttachmentArrayOutput() GetPolicyAttachmentsAttachmentArrayOutput {
+	return i.ToGetPolicyAttachmentsAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicyAttachmentsAttachmentArray) ToGetPolicyAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetPolicyAttachmentsAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyAttachmentsAttachmentArrayOutput)
+}
+
+type GetPolicyAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyAttachmentsAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetPolicyAttachmentsAttachmentOutput) ToGetPolicyAttachmentsAttachmentOutput() GetPolicyAttachmentsAttachmentOutput {
+	return o
+}
+
+func (o GetPolicyAttachmentsAttachmentOutput) ToGetPolicyAttachmentsAttachmentOutputWithContext(ctx context.Context) GetPolicyAttachmentsAttachmentOutput {
+	return o
+}
+
+// The time when the policy was attached.
+func (o GetPolicyAttachmentsAttachmentOutput) AttachDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsAttachment) string { return v.AttachDate }).(pulumi.StringOutput)
+}
+
+// The description of the policy.
+func (o GetPolicyAttachmentsAttachmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsAttachment) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Resource Manager Policy Attachment.
+// * `policyName`- The name of the policy.
+// * `policyType`- The type of the policy.
+// * `principalName`- The name of the object to which the policy is attached.
+// * `principalType`- The type of the object to which the policy is attached.
+func (o GetPolicyAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+func (o GetPolicyAttachmentsAttachmentOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsAttachment) string { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// The type of the policy. Valid values: `Custom` and `System`.
+func (o GetPolicyAttachmentsAttachmentOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsAttachment) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// The name of the object to which the policy is attached.
+func (o GetPolicyAttachmentsAttachmentOutput) PrincipalName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsAttachment) string { return v.PrincipalName }).(pulumi.StringOutput)
+}
+
+// The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
+func (o GetPolicyAttachmentsAttachmentOutput) PrincipalType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsAttachment) string { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
+func (o GetPolicyAttachmentsAttachmentOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyAttachmentsAttachment) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+type GetPolicyAttachmentsAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyAttachmentsAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetPolicyAttachmentsAttachmentArrayOutput) ToGetPolicyAttachmentsAttachmentArrayOutput() GetPolicyAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetPolicyAttachmentsAttachmentArrayOutput) ToGetPolicyAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetPolicyAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetPolicyAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetPolicyAttachmentsAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyAttachmentsAttachment {
+		return vs[0].([]GetPolicyAttachmentsAttachment)[vs[1].(int)]
+	}).(GetPolicyAttachmentsAttachmentOutput)
+}
+
 type GetPolicyVersionsVersion struct {
 	CreateDate string `pulumi:"createDate"`
 	// The ID of the resource, the value is `<policy_name>`:`<version_id>`.
@@ -1344,6 +1518,8 @@ func init() {
 	pulumi.RegisterOutputType(GetHandshakesHandshakeArrayOutput{})
 	pulumi.RegisterOutputType(GetPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyAttachmentsAttachmentOutput{})
+	pulumi.RegisterOutputType(GetPolicyAttachmentsAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyVersionsVersionOutput{})
 	pulumi.RegisterOutputType(GetPolicyVersionsVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceDirectoriesDirectoryOutput{})

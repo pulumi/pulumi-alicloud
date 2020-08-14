@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.SlbBeckendServers({
+ * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getBackendServers({
  *     loadBalancerId: id,
  * }, { async: true }));
  *
- * export const firstSlbBackendServerId = sampleDs.backendServers.0.id;
+ * export const firstSlbBackendServerId = sampleDs.backendServers[0].id;
  * ```
  */
 export function getBackendServers(args: GetBackendServersArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServersResult> {

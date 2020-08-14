@@ -14,6 +14,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
     public sealed class BackendServerBackendServer
     {
         public readonly string ServerId;
+        public readonly string? ServerIp;
         public readonly string? Type;
         public readonly int Weight;
 
@@ -21,11 +22,14 @@ namespace Pulumi.AliCloud.Slb.Outputs
         private BackendServerBackendServer(
             string serverId,
 
+            string? serverIp,
+
             string? type,
 
             int weight)
         {
             ServerId = serverId;
+            ServerIp = serverIp;
             Type = type;
             Weight = weight;
         }

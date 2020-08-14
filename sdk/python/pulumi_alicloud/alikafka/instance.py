@@ -38,6 +38,10 @@ class Instance(pulumi.CustomResource):
     """
     The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
     """
+    security_group: pulumi.Output[str]
+    """
+    （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+    """
     spec_type: pulumi.Output[str]
     """
     The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
@@ -62,7 +66,7 @@ class Instance(pulumi.CustomResource):
     """
     The Zone to launch the kafka instance.
     """
-    def __init__(__self__, resource_name, opts=None, deploy_type=None, disk_size=None, disk_type=None, eip_max=None, io_max=None, name=None, paid_type=None, spec_type=None, tags=None, topic_quota=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, deploy_type=None, disk_size=None, disk_type=None, eip_max=None, io_max=None, name=None, paid_type=None, security_group=None, spec_type=None, tags=None, topic_quota=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an ALIKAFKA instance resource.
 
@@ -112,6 +116,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[float] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
+        :param pulumi.Input[str] security_group: （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[float] topic_quota: The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
@@ -149,6 +154,7 @@ class Instance(pulumi.CustomResource):
             __props__['io_max'] = io_max
             __props__['name'] = name
             __props__['paid_type'] = paid_type
+            __props__['security_group'] = security_group
             __props__['spec_type'] = spec_type
             __props__['tags'] = tags
             if topic_quota is None:
@@ -166,7 +172,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, deploy_type=None, disk_size=None, disk_type=None, eip_max=None, io_max=None, name=None, paid_type=None, spec_type=None, tags=None, topic_quota=None, vpc_id=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, deploy_type=None, disk_size=None, disk_type=None, eip_max=None, io_max=None, name=None, paid_type=None, security_group=None, spec_type=None, tags=None, topic_quota=None, vpc_id=None, vswitch_id=None, zone_id=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -181,6 +187,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[float] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
+        :param pulumi.Input[str] security_group: （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[float] topic_quota: The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
@@ -199,6 +206,7 @@ class Instance(pulumi.CustomResource):
         __props__["io_max"] = io_max
         __props__["name"] = name
         __props__["paid_type"] = paid_type
+        __props__["security_group"] = security_group
         __props__["spec_type"] = spec_type
         __props__["tags"] = tags
         __props__["topic_quota"] = topic_quota

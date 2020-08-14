@@ -91,9 +91,15 @@ namespace Pulumi.AliCloud.Ecs
     /// </summary>
     public partial class AutoProvisioningGroup : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
+        /// </summary>
         [Output("autoProvisioningGroupName")]
         public Output<string?> AutoProvisioningGroupName { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
+        /// </summary>
         [Output("autoProvisioningGroupType")]
         public Output<string?> AutoProvisioningGroupType { get; private set; } = null!;
 
@@ -251,9 +257,15 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class AutoProvisioningGroupArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
+        /// </summary>
         [Input("autoProvisioningGroupName")]
         public Input<string>? AutoProvisioningGroupName { get; set; }
 
+        /// <summary>
+        /// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
+        /// </summary>
         [Input("autoProvisioningGroupType")]
         public Input<string>? AutoProvisioningGroupType { get; set; }
 
@@ -378,9 +390,15 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class AutoProvisioningGroupState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
+        /// </summary>
         [Input("autoProvisioningGroupName")]
         public Input<string>? AutoProvisioningGroupName { get; set; }
 
+        /// <summary>
+        /// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
+        /// </summary>
         [Input("autoProvisioningGroupType")]
         public Input<string>? AutoProvisioningGroupType { get; set; }
 

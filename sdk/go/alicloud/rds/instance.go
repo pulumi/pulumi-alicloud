@@ -78,7 +78,7 @@ type Instance struct {
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue pulumi.IntPtrOutput `pulumi:"sqlCollectorConfigValue"`
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-	SqlCollectorStatus pulumi.StringPtrOutput `pulumi:"sqlCollectorStatus"`
+	SqlCollectorStatus pulumi.StringOutput `pulumi:"sqlCollectorStatus"`
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
 	SslAction pulumi.StringOutput `pulumi:"sslAction"`
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.

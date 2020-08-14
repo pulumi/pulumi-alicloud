@@ -70,6 +70,12 @@ namespace Pulumi.AliCloud.Adb
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.93.0+) The connection string of the ADB cluster.
+        /// </summary>
+        [Output("connectionString")]
+        public Output<string> ConnectionString { get; private set; } = null!;
+
+        /// <summary>
         /// Cluster category. Value options: `Basic`, `Cluster`.
         /// </summary>
         [Output("dbClusterCategory")]
@@ -317,6 +323,12 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// (Available in 1.93.0+) The connection string of the ADB cluster.
+        /// </summary>
+        [Input("connectionString")]
+        public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
         /// Cluster category. Value options: `Basic`, `Cluster`.

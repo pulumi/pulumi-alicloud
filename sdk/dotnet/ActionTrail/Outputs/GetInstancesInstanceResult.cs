@@ -50,6 +50,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string PaidType;
         /// <summary>
+        /// The security group of the instance.
+        /// </summary>
+        public readonly string SecurityGroup;
+        /// <summary>
         /// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error. 
         /// </summary>
         public readonly int ServiceStatus;
@@ -94,6 +98,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string paidType,
 
+            string securityGroup,
+
             int serviceStatus,
 
             string specType,
@@ -115,6 +121,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
             IoMax = ioMax;
             Name = name;
             PaidType = paidType;
+            SecurityGroup = securityGroup;
             ServiceStatus = serviceStatus;
             SpecType = specType;
             TopicQuota = topicQuota;

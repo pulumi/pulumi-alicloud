@@ -17,6 +17,37 @@ namespace Pulumi.AliCloud.Oos
         /// &gt; **NOTE:** Available in v1.92.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Oos.GetTemplates.InvokeAsync(new AliCloud.Oos.GetTemplatesArgs
+        ///         {
+        ///             HasTrigger = false,
+        ///             NameRegex = "test",
+        ///             ShareType = "Private",
+        ///             Tags = 
+        ///             {
+        ///                 { "Created", "TF" },
+        ///                 { "For", "template Test" },
+        ///             },
+        ///         }));
+        ///         this.FirstTemplateName = example.Apply(example =&gt; example.Templates[0].TemplateName);
+        ///     }
+        /// 
+        ///     [Output("firstTemplateName")]
+        ///     public Output&lt;string&gt; FirstTemplateName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTemplatesResult> InvokeAsync(GetTemplatesArgs? args = null, InvokeOptions? options = null)

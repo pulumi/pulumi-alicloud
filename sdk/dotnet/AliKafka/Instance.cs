@@ -108,6 +108,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string?> PaidType { get; private set; } = null!;
 
         /// <summary>
+        /// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+        /// </summary>
+        [Output("securityGroup")]
+        public Output<string?> SecurityGroup { get; private set; } = null!;
+
+        /// <summary>
         /// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         /// </summary>
         [Output("specType")]
@@ -232,6 +238,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? PaidType { get; set; }
 
         /// <summary>
+        /// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+        /// </summary>
+        [Input("securityGroup")]
+        public Input<string>? SecurityGroup { get; set; }
+
+        /// <summary>
         /// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         /// </summary>
         [Input("specType")]
@@ -309,6 +321,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("paidType")]
         public Input<string>? PaidType { get; set; }
+
+        /// <summary>
+        /// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+        /// </summary>
+        [Input("securityGroup")]
+        public Input<string>? SecurityGroup { get; set; }
 
         /// <summary>
         /// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.

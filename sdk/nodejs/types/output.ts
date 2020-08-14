@@ -146,6 +146,10 @@ export namespace actiontrail {
          */
         paidType: string;
         /**
+         * The security group of the instance.
+         */
+        securityGroup: string;
+        /**
          * The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error. 
          */
         serviceStatus: number;
@@ -3504,6 +3508,9 @@ export namespace ecs {
          * Target IP address segment for egress authorization.
          */
         destCidrIp: string;
+        /**
+         * Target security group id for ingress authorization.
+         */
         destGroupId: string;
         /**
          * Alibaba Cloud account of the target security group.
@@ -3537,6 +3544,9 @@ export namespace ecs {
          * Source IP address segment for ingress authorization.
          */
         sourceCidrIp: string;
+        /**
+         * Source security group ID for ingress authorization.
+         */
         sourceGroupId: string;
         /**
          * Alibaba Cloud account of the source security group.
@@ -5695,6 +5705,93 @@ export namespace nas {
 }
 
 export namespace oos {
+    export interface GetExecutionsExecution {
+        /**
+         * The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
+         */
+        category: string;
+        /**
+         * The counters of OOS Execution.
+         */
+        counters: string;
+        /**
+         * The time when the execution was created.
+         */
+        createDate: string;
+        /**
+         * The time when the execution was ended.
+         */
+        endDate: string;
+        /**
+         * The user who execute the template.
+         */
+        executedBy: string;
+        /**
+         * ID of the OOS Executions.
+         */
+        executionId: string;
+        /**
+         * ID of the OOS Executions.
+         */
+        id: string;
+        /**
+         * Whether to include subtasks.
+         */
+        isParent: boolean;
+        /**
+         * The mode of OOS Execution. Valid: `Automatic`, `Debug`.
+         */
+        mode: string;
+        /**
+         * The outputs of OOS Executions.
+         */
+        outputs: string;
+        /**
+         * The parameters required by the template
+         */
+        parameters: string;
+        /**
+         * The id of parent OOS Execution.
+         */
+        parentExecutionId: string;
+        /**
+         * The role that executes the current template.
+         */
+        ramRole: string;
+        /**
+         * The time when the template was started.
+         */
+        startDate: string;
+        /**
+         * The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
+         */
+        status: string;
+        /**
+         * The message of status.
+         */
+        statusMessage: string;
+        /**
+         * The reason of status.
+         */
+        statusReason: string;
+        /**
+         * The id of execution template.
+         */
+        templateId: string;
+        /**
+         * The name of execution template.
+         */
+        templateName: string;
+        /**
+         * The version of execution template.
+         */
+        templateVersion: string;
+        /**
+         * The time when the template was updated.
+         */
+        updateDate: string;
+    }
+
     export interface GetTemplatesTemplate {
         /**
          * The category of template.
@@ -7080,6 +7177,45 @@ export namespace resourcemanager {
         updateDate: string;
     }
 
+    export interface GetPolicyAttachmentsAttachment {
+        /**
+         * The time when the policy was attached.
+         */
+        attachDate: string;
+        /**
+         * The description of the policy.
+         */
+        description: string;
+        /**
+         * The ID of the Resource Manager Policy Attachment.
+         * * `policyName`- The name of the policy.
+         * * `policyType`- The type of the policy.
+         * * `principalName`- The name of the object to which the policy is attached.
+         * * `principalType`- The type of the object to which the policy is attached.
+         */
+        id: string;
+        /**
+         * The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+         */
+        policyName: string;
+        /**
+         * The type of the policy. Valid values: `Custom` and `System`.
+         */
+        policyType: string;
+        /**
+         * The name of the object to which the policy is attached.
+         */
+        principalName: string;
+        /**
+         * The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. 
+         */
+        principalType: string;
+        /**
+         * The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
+         */
+        resourceGroupId: string;
+    }
+
     export interface GetPolicyVersionsVersion {
         createDate: string;
         /**
@@ -7273,6 +7409,7 @@ export namespace slb {
 
     export interface BackendServerBackendServer {
         serverId: string;
+        serverIp?: string;
         type?: string;
         weight: number;
     }

@@ -105,6 +105,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly paidType!: pulumi.Output<string | undefined>;
     /**
+     * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+     */
+    public readonly securityGroup!: pulumi.Output<string | undefined>;
+    /**
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
     public readonly specType!: pulumi.Output<string | undefined>;
@@ -148,6 +152,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["ioMax"] = state ? state.ioMax : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["paidType"] = state ? state.paidType : undefined;
+            inputs["securityGroup"] = state ? state.securityGroup : undefined;
             inputs["specType"] = state ? state.specType : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["topicQuota"] = state ? state.topicQuota : undefined;
@@ -181,6 +186,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["ioMax"] = args ? args.ioMax : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["paidType"] = args ? args.paidType : undefined;
+            inputs["securityGroup"] = args ? args.securityGroup : undefined;
             inputs["specType"] = args ? args.specType : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["topicQuota"] = args ? args.topicQuota : undefined;
@@ -231,6 +237,10 @@ export interface InstanceState {
      * The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
      */
     readonly paidType?: pulumi.Input<string>;
+    /**
+     * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+     */
+    readonly securityGroup?: pulumi.Input<string>;
     /**
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
@@ -289,6 +299,10 @@ export interface InstanceArgs {
      * The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
      */
     readonly paidType?: pulumi.Input<string>;
+    /**
+     * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+     */
+    readonly securityGroup?: pulumi.Input<string>;
     /**
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */

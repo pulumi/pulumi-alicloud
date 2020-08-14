@@ -15,6 +15,7 @@ class BackendServer(pulumi.CustomResource):
     A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
 
       * `serverId` (`str`)
+      * `serverIp` (`str`)
       * `type` (`str`)
       * `weight` (`float`)
     """
@@ -92,7 +93,8 @@ class BackendServer(pulumi.CustomResource):
 
         * `server_id` - (Required) A list backend server ID (ECS instance ID).
         * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. 
-        * `type` - (Optional) Type of the backend server. Valid value ecs, eni. Default to eni.
+        * `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`. Default to `ecs`.
+        * `server_ip` - (Optional, Available in 1.93.0+) ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `server_ip` parameter.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -103,6 +105,7 @@ class BackendServer(pulumi.CustomResource):
         The **backend_servers** object supports the following:
 
           * `serverId` (`pulumi.Input[str]`)
+          * `serverIp` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
           * `weight` (`pulumi.Input[float]`)
         """
@@ -150,6 +153,7 @@ class BackendServer(pulumi.CustomResource):
         The **backend_servers** object supports the following:
 
           * `serverId` (`pulumi.Input[str]`)
+          * `serverIp` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
           * `weight` (`pulumi.Input[float]`)
         """

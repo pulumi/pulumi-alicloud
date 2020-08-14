@@ -17,6 +17,30 @@ namespace Pulumi.AliCloud.Slb
         /// &gt; **NOTE:** Available in 1.53.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetBackendServers.InvokeAsync(new AliCloud.Slb.GetBackendServersArgs
+        ///         {
+        ///             LoadBalancerId = alicloud_slb.Sample_slb.Id,
+        ///         }));
+        ///         this.FirstSlbBackendServerId = sampleDs.Apply(sampleDs =&gt; sampleDs.BackendServers[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbBackendServerId")]
+        ///     public Output&lt;string&gt; FirstSlbBackendServerId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackendServersResult> InvokeAsync(GetBackendServersArgs args, InvokeOptions? options = null)

@@ -106,6 +106,19 @@ def get_dedicated_hosts(dedicated_host_id=None,dedicated_host_name=None,dedicate
      
     > **NOTE:** Available in v1.91.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    dedicated_hosts_ds = alicloud.ecs.get_dedicated_hosts(dedicated_host_type="ddh.g5",
+        name_regex="tf-testAcc",
+        status="Available")
+    pulumi.export("firstDedicatedHostsId", dedicated_hosts_ds.hosts[0]["id"])
+    ```
 
 
 

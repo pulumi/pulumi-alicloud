@@ -13,6 +13,57 @@ namespace Pulumi.AliCloud.Oos
     /// Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.92.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.Oos.Template("example", new AliCloud.Oos.TemplateArgs
+    ///         {
+    ///             Content = @"  {
+    ///     ""FormatVersion"": ""OOS-2019-06-01"",
+    ///     ""Description"": ""Update Describe instances of given status"",
+    ///     ""Parameters"":{
+    ///       ""Status"":{
+    ///         ""Type"": ""String"",
+    ///         ""Description"": ""(Required) The status of the Ecs instance.""
+    ///       }
+    ///     },
+    ///     ""Tasks"": [
+    ///       {
+    ///         ""Properties"" :{
+    ///           ""Parameters"":{
+    ///             ""Status"": ""{{ Status }}""
+    ///           },
+    ///           ""API"": ""DescribeInstances"",
+    ///           ""Service"": ""Ecs""
+    ///         },
+    ///         ""Name"": ""foo"",
+    ///         ""Action"": ""ACS::ExecuteApi""
+    ///       }]
+    ///   }
+    ///   
+    /// ",
+    ///             Tags = 
+    ///             {
+    ///                 { "Created", "TF" },
+    ///                 { "For", "acceptance Test" },
+    ///             },
+    ///             TemplateName = "test-name",
+    ///             VersionName = "test",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Template : Pulumi.CustomResource
     {

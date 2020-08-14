@@ -15,6 +15,9 @@ namespace Pulumi.AliCloud.Slb.Inputs
         [Input("serverId", required: true)]
         public Input<string> ServerId { get; set; } = null!;
 
+        [Input("serverIp")]
+        public Input<string>? ServerIp { get; set; }
+
         [Input("type")]
         public Input<string>? Type { get; set; }
 

@@ -1408,6 +1408,7 @@ export namespace slb {
 
     export interface BackendServerBackendServer {
         serverId: pulumi.Input<string>;
+        serverIp?: pulumi.Input<string>;
         type?: pulumi.Input<string>;
         weight: pulumi.Input<number>;
     }

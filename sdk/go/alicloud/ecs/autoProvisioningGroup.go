@@ -27,7 +27,9 @@ import (
 type AutoProvisioningGroup struct {
 	pulumi.CustomResourceState
 
+	// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
 	AutoProvisioningGroupName pulumi.StringPtrOutput `pulumi:"autoProvisioningGroupName"`
+	// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
 	AutoProvisioningGroupType pulumi.StringPtrOutput `pulumi:"autoProvisioningGroupType"`
 	// The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
 	DefaultTargetCapacityType pulumi.StringPtrOutput `pulumi:"defaultTargetCapacityType"`
@@ -104,7 +106,9 @@ func GetAutoProvisioningGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AutoProvisioningGroup resources.
 type autoProvisioningGroupState struct {
+	// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
 	AutoProvisioningGroupName *string `pulumi:"autoProvisioningGroupName"`
+	// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
 	AutoProvisioningGroupType *string `pulumi:"autoProvisioningGroupType"`
 	// The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
 	DefaultTargetCapacityType *string `pulumi:"defaultTargetCapacityType"`
@@ -145,7 +149,9 @@ type autoProvisioningGroupState struct {
 }
 
 type AutoProvisioningGroupState struct {
+	// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
 	AutoProvisioningGroupName pulumi.StringPtrInput
+	// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
 	AutoProvisioningGroupType pulumi.StringPtrInput
 	// The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
 	DefaultTargetCapacityType pulumi.StringPtrInput
@@ -190,7 +196,9 @@ func (AutoProvisioningGroupState) ElementType() reflect.Type {
 }
 
 type autoProvisioningGroupArgs struct {
+	// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
 	AutoProvisioningGroupName *string `pulumi:"autoProvisioningGroupName"`
+	// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
 	AutoProvisioningGroupType *string `pulumi:"autoProvisioningGroupType"`
 	// The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
 	DefaultTargetCapacityType *string `pulumi:"defaultTargetCapacityType"`
@@ -232,7 +240,9 @@ type autoProvisioningGroupArgs struct {
 
 // The set of arguments for constructing a AutoProvisioningGroup resource.
 type AutoProvisioningGroupArgs struct {
+	// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
 	AutoProvisioningGroupName pulumi.StringPtrInput
+	// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
 	AutoProvisioningGroupType pulumi.StringPtrInput
 	// The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
 	DefaultTargetCapacityType pulumi.StringPtrInput
