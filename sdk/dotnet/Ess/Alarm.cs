@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> MetricName { get; private set; } = null!;
 
         /// <summary>
-        /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
+        /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
         /// </summary>
         [Output("metricType")]
         public Output<string?> MetricType { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of specified alarm.  
+        /// The state of specified alarm.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string> MetricName { get; set; } = null!;
 
         /// <summary>
-        /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
+        /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
         /// </summary>
         [Input("metricType")]
         public Input<string>? MetricType { get; set; }
@@ -311,7 +311,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? MetricName { get; set; }
 
         /// <summary>
-        /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
+        /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
         /// </summary>
         [Input("metricType")]
         public Input<string>? MetricType { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ScalingGroupId { get; set; }
 
         /// <summary>
-        /// The state of specified alarm.  
+        /// The state of specified alarm.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

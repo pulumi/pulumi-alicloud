@@ -21,8 +21,7 @@ type AutoProvisioningGroupLaunchTemplateConfig struct {
 // AutoProvisioningGroupLaunchTemplateConfigInput is an input type that accepts AutoProvisioningGroupLaunchTemplateConfigArgs and AutoProvisioningGroupLaunchTemplateConfigOutput values.
 // You can construct a concrete instance of `AutoProvisioningGroupLaunchTemplateConfigInput` via:
 //
-// 		 AutoProvisioningGroupLaunchTemplateConfigArgs{...}
-//
+//          AutoProvisioningGroupLaunchTemplateConfigArgs{...}
 type AutoProvisioningGroupLaunchTemplateConfigInput interface {
 	pulumi.Input
 
@@ -53,8 +52,7 @@ func (i AutoProvisioningGroupLaunchTemplateConfigArgs) ToAutoProvisioningGroupLa
 // AutoProvisioningGroupLaunchTemplateConfigArrayInput is an input type that accepts AutoProvisioningGroupLaunchTemplateConfigArray and AutoProvisioningGroupLaunchTemplateConfigArrayOutput values.
 // You can construct a concrete instance of `AutoProvisioningGroupLaunchTemplateConfigArrayInput` via:
 //
-// 		 AutoProvisioningGroupLaunchTemplateConfigArray{ AutoProvisioningGroupLaunchTemplateConfigArgs{...} }
-//
+//          AutoProvisioningGroupLaunchTemplateConfigArray{ AutoProvisioningGroupLaunchTemplateConfigArgs{...} }
 type AutoProvisioningGroupLaunchTemplateConfigArrayInput interface {
 	pulumi.Input
 
@@ -140,8 +138,7 @@ type DedicatedHostNetworkAttribute struct {
 // DedicatedHostNetworkAttributeInput is an input type that accepts DedicatedHostNetworkAttributeArgs and DedicatedHostNetworkAttributeOutput values.
 // You can construct a concrete instance of `DedicatedHostNetworkAttributeInput` via:
 //
-// 		 DedicatedHostNetworkAttributeArgs{...}
-//
+//          DedicatedHostNetworkAttributeArgs{...}
 type DedicatedHostNetworkAttributeInput interface {
 	pulumi.Input
 
@@ -171,8 +168,7 @@ func (i DedicatedHostNetworkAttributeArgs) ToDedicatedHostNetworkAttributeOutput
 // DedicatedHostNetworkAttributeArrayInput is an input type that accepts DedicatedHostNetworkAttributeArray and DedicatedHostNetworkAttributeArrayOutput values.
 // You can construct a concrete instance of `DedicatedHostNetworkAttributeArrayInput` via:
 //
-// 		 DedicatedHostNetworkAttributeArray{ DedicatedHostNetworkAttributeArgs{...} }
-//
+//          DedicatedHostNetworkAttributeArray{ DedicatedHostNetworkAttributeArgs{...} }
 type DedicatedHostNetworkAttributeArrayInput interface {
 	pulumi.Input
 
@@ -252,8 +248,7 @@ type ImageDiskDeviceMapping struct {
 // ImageDiskDeviceMappingInput is an input type that accepts ImageDiskDeviceMappingArgs and ImageDiskDeviceMappingOutput values.
 // You can construct a concrete instance of `ImageDiskDeviceMappingInput` via:
 //
-// 		 ImageDiskDeviceMappingArgs{...}
-//
+//          ImageDiskDeviceMappingArgs{...}
 type ImageDiskDeviceMappingInput interface {
 	pulumi.Input
 
@@ -287,8 +282,7 @@ func (i ImageDiskDeviceMappingArgs) ToImageDiskDeviceMappingOutputWithContext(ct
 // ImageDiskDeviceMappingArrayInput is an input type that accepts ImageDiskDeviceMappingArray and ImageDiskDeviceMappingArrayOutput values.
 // You can construct a concrete instance of `ImageDiskDeviceMappingArrayInput` via:
 //
-// 		 ImageDiskDeviceMappingArray{ ImageDiskDeviceMappingArgs{...} }
-//
+//          ImageDiskDeviceMappingArray{ ImageDiskDeviceMappingArgs{...} }
 type ImageDiskDeviceMappingArrayInput interface {
 	pulumi.Input
 
@@ -380,8 +374,7 @@ type ImageImportDiskDeviceMapping struct {
 // ImageImportDiskDeviceMappingInput is an input type that accepts ImageImportDiskDeviceMappingArgs and ImageImportDiskDeviceMappingOutput values.
 // You can construct a concrete instance of `ImageImportDiskDeviceMappingInput` via:
 //
-// 		 ImageImportDiskDeviceMappingArgs{...}
-//
+//          ImageImportDiskDeviceMappingArgs{...}
 type ImageImportDiskDeviceMappingInput interface {
 	pulumi.Input
 
@@ -417,8 +410,7 @@ func (i ImageImportDiskDeviceMappingArgs) ToImageImportDiskDeviceMappingOutputWi
 // ImageImportDiskDeviceMappingArrayInput is an input type that accepts ImageImportDiskDeviceMappingArray and ImageImportDiskDeviceMappingArrayOutput values.
 // You can construct a concrete instance of `ImageImportDiskDeviceMappingArrayInput` via:
 //
-// 		 ImageImportDiskDeviceMappingArray{ ImageImportDiskDeviceMappingArgs{...} }
-//
+//          ImageImportDiskDeviceMappingArray{ ImageImportDiskDeviceMappingArgs{...} }
 type ImageImportDiskDeviceMappingArrayInput interface {
 	pulumi.Input
 
@@ -508,7 +500,7 @@ type InstanceDataDisk struct {
 	// - `cloudSsd`: The SSD cloud disk.
 	// - `cloudEssd`: The ESSD cloud disk.
 	// - `ephemeralSsd`: The local SSD disk.
-	// Default to `cloudEfficiency`.
+	//   Default to `cloudEfficiency`.
 	Category *string `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
@@ -534,8 +526,7 @@ type InstanceDataDisk struct {
 // InstanceDataDiskInput is an input type that accepts InstanceDataDiskArgs and InstanceDataDiskOutput values.
 // You can construct a concrete instance of `InstanceDataDiskInput` via:
 //
-// 		 InstanceDataDiskArgs{...}
-//
+//          InstanceDataDiskArgs{...}
 type InstanceDataDiskInput interface {
 	pulumi.Input
 
@@ -552,7 +543,7 @@ type InstanceDataDiskArgs struct {
 	// - `cloudSsd`: The SSD cloud disk.
 	// - `cloudEssd`: The ESSD cloud disk.
 	// - `ephemeralSsd`: The local SSD disk.
-	// Default to `cloudEfficiency`.
+	//   Default to `cloudEfficiency`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
@@ -590,8 +581,7 @@ func (i InstanceDataDiskArgs) ToInstanceDataDiskOutputWithContext(ctx context.Co
 // InstanceDataDiskArrayInput is an input type that accepts InstanceDataDiskArray and InstanceDataDiskArrayOutput values.
 // You can construct a concrete instance of `InstanceDataDiskArrayInput` via:
 //
-// 		 InstanceDataDiskArray{ InstanceDataDiskArgs{...} }
-//
+//          InstanceDataDiskArray{ InstanceDataDiskArgs{...} }
 type InstanceDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -638,7 +628,7 @@ func (o InstanceDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 // - `cloudSsd`: The SSD cloud disk.
 // - `cloudEssd`: The ESSD cloud disk.
 // - `ephemeralSsd`: The local SSD disk.
-// Default to `cloudEfficiency`.
+//   Default to `cloudEfficiency`.
 func (o InstanceDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -733,8 +723,7 @@ type LaunchTemplateDataDisk struct {
 // LaunchTemplateDataDiskInput is an input type that accepts LaunchTemplateDataDiskArgs and LaunchTemplateDataDiskOutput values.
 // You can construct a concrete instance of `LaunchTemplateDataDiskInput` via:
 //
-// 		 LaunchTemplateDataDiskArgs{...}
-//
+//          LaunchTemplateDataDiskArgs{...}
 type LaunchTemplateDataDiskInput interface {
 	pulumi.Input
 
@@ -784,8 +773,7 @@ func (i LaunchTemplateDataDiskArgs) ToLaunchTemplateDataDiskOutputWithContext(ct
 // LaunchTemplateDataDiskArrayInput is an input type that accepts LaunchTemplateDataDiskArray and LaunchTemplateDataDiskArrayOutput values.
 // You can construct a concrete instance of `LaunchTemplateDataDiskArrayInput` via:
 //
-// 		 LaunchTemplateDataDiskArray{ LaunchTemplateDataDiskArgs{...} }
-//
+//          LaunchTemplateDataDiskArray{ LaunchTemplateDataDiskArgs{...} }
 type LaunchTemplateDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -902,8 +890,7 @@ type LaunchTemplateNetworkInterfaces struct {
 // LaunchTemplateNetworkInterfacesInput is an input type that accepts LaunchTemplateNetworkInterfacesArgs and LaunchTemplateNetworkInterfacesOutput values.
 // You can construct a concrete instance of `LaunchTemplateNetworkInterfacesInput` via:
 //
-// 		 LaunchTemplateNetworkInterfacesArgs{...}
-//
+//          LaunchTemplateNetworkInterfacesArgs{...}
 type LaunchTemplateNetworkInterfacesInput interface {
 	pulumi.Input
 
@@ -947,12 +934,11 @@ func (i LaunchTemplateNetworkInterfacesArgs) ToLaunchTemplateNetworkInterfacesPt
 // LaunchTemplateNetworkInterfacesPtrInput is an input type that accepts LaunchTemplateNetworkInterfacesArgs, LaunchTemplateNetworkInterfacesPtr and LaunchTemplateNetworkInterfacesPtrOutput values.
 // You can construct a concrete instance of `LaunchTemplateNetworkInterfacesPtrInput` via:
 //
-// 		 LaunchTemplateNetworkInterfacesArgs{...}
+//          LaunchTemplateNetworkInterfacesArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type LaunchTemplateNetworkInterfacesPtrInput interface {
 	pulumi.Input
 
@@ -1143,8 +1129,7 @@ type GetDedicatedHostsHost struct {
 // GetDedicatedHostsHostInput is an input type that accepts GetDedicatedHostsHostArgs and GetDedicatedHostsHostOutput values.
 // You can construct a concrete instance of `GetDedicatedHostsHostInput` via:
 //
-// 		 GetDedicatedHostsHostArgs{...}
-//
+//          GetDedicatedHostsHostArgs{...}
 type GetDedicatedHostsHostInput interface {
 	pulumi.Input
 
@@ -1212,8 +1197,7 @@ func (i GetDedicatedHostsHostArgs) ToGetDedicatedHostsHostOutputWithContext(ctx 
 // GetDedicatedHostsHostArrayInput is an input type that accepts GetDedicatedHostsHostArray and GetDedicatedHostsHostArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedHostsHostArrayInput` via:
 //
-// 		 GetDedicatedHostsHostArray{ GetDedicatedHostsHostArgs{...} }
-//
+//          GetDedicatedHostsHostArray{ GetDedicatedHostsHostArgs{...} }
 type GetDedicatedHostsHostArrayInput interface {
 	pulumi.Input
 
@@ -1410,12 +1394,27 @@ type GetDisksDisk struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
-	// ```
-	// data "ecs.getDisks" "disksDs" {
-	// tags = {
-	// tagKey1 = "tagValue1",
-	// tagKey2 = "tagValue2"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -1426,8 +1425,7 @@ type GetDisksDisk struct {
 // GetDisksDiskInput is an input type that accepts GetDisksDiskArgs and GetDisksDiskOutput values.
 // You can construct a concrete instance of `GetDisksDiskInput` via:
 //
-// 		 GetDisksDiskArgs{...}
-//
+//          GetDisksDiskArgs{...}
 type GetDisksDiskInput interface {
 	pulumi.Input
 
@@ -1471,12 +1469,27 @@ type GetDisksDiskArgs struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
-	// ```
-	// data "ecs.getDisks" "disksDs" {
-	// tags = {
-	// tagKey1 = "tagValue1",
-	// tagKey2 = "tagValue2"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
@@ -1499,8 +1512,7 @@ func (i GetDisksDiskArgs) ToGetDisksDiskOutputWithContext(ctx context.Context) G
 // GetDisksDiskArrayInput is an input type that accepts GetDisksDiskArray and GetDisksDiskArrayOutput values.
 // You can construct a concrete instance of `GetDisksDiskArrayInput` via:
 //
-// 		 GetDisksDiskArray{ GetDisksDiskArgs{...} }
-//
+//          GetDisksDiskArray{ GetDisksDiskArgs{...} }
 type GetDisksDiskArrayInput interface {
 	pulumi.Input
 
@@ -1622,12 +1634,27 @@ func (o GetDisksDiskOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the disks. It must be in the format:
-// ```
-// data "ecs.getDisks" "disksDs" {
-// tags = {
-// tagKey1 = "tagValue1",
-// tagKey2 = "tagValue2"
-// }
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
+// 			Tags: map[string]interface{}{
+// 				"tagKey1": "tagValue1",
+// 				"tagKey2": "tagValue2",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
 // }
 // ```
 func (o GetDisksDiskOutput) Tags() pulumi.MapOutput {
@@ -1681,8 +1708,7 @@ type GetEipsEip struct {
 // GetEipsEipInput is an input type that accepts GetEipsEipArgs and GetEipsEipOutput values.
 // You can construct a concrete instance of `GetEipsEipInput` via:
 //
-// 		 GetEipsEipArgs{...}
-//
+//          GetEipsEipArgs{...}
 type GetEipsEipInput interface {
 	pulumi.Input
 
@@ -1724,8 +1750,7 @@ func (i GetEipsEipArgs) ToGetEipsEipOutputWithContext(ctx context.Context) GetEi
 // GetEipsEipArrayInput is an input type that accepts GetEipsEipArray and GetEipsEipArrayOutput values.
 // You can construct a concrete instance of `GetEipsEipArrayInput` via:
 //
-// 		 GetEipsEipArray{ GetEipsEipArgs{...} }
-//
+//          GetEipsEipArray{ GetEipsEipArgs{...} }
 type GetEipsEipArrayInput interface {
 	pulumi.Input
 
@@ -1865,8 +1890,7 @@ type GetImagesImage struct {
 // GetImagesImageInput is an input type that accepts GetImagesImageArgs and GetImagesImageOutput values.
 // You can construct a concrete instance of `GetImagesImageInput` via:
 //
-// 		 GetImagesImageArgs{...}
-//
+//          GetImagesImageArgs{...}
 type GetImagesImageInput interface {
 	pulumi.Input
 
@@ -1930,8 +1954,7 @@ func (i GetImagesImageArgs) ToGetImagesImageOutputWithContext(ctx context.Contex
 // GetImagesImageArrayInput is an input type that accepts GetImagesImageArray and GetImagesImageArrayOutput values.
 // You can construct a concrete instance of `GetImagesImageArrayInput` via:
 //
-// 		 GetImagesImageArray{ GetImagesImageArgs{...} }
-//
+//          GetImagesImageArray{ GetImagesImageArgs{...} }
 type GetImagesImageArrayInput interface {
 	pulumi.Input
 
@@ -2109,8 +2132,7 @@ type GetImagesImageDiskDeviceMapping struct {
 // GetImagesImageDiskDeviceMappingInput is an input type that accepts GetImagesImageDiskDeviceMappingArgs and GetImagesImageDiskDeviceMappingOutput values.
 // You can construct a concrete instance of `GetImagesImageDiskDeviceMappingInput` via:
 //
-// 		 GetImagesImageDiskDeviceMappingArgs{...}
-//
+//          GetImagesImageDiskDeviceMappingArgs{...}
 type GetImagesImageDiskDeviceMappingInput interface {
 	pulumi.Input
 
@@ -2142,8 +2164,7 @@ func (i GetImagesImageDiskDeviceMappingArgs) ToGetImagesImageDiskDeviceMappingOu
 // GetImagesImageDiskDeviceMappingArrayInput is an input type that accepts GetImagesImageDiskDeviceMappingArray and GetImagesImageDiskDeviceMappingArrayOutput values.
 // You can construct a concrete instance of `GetImagesImageDiskDeviceMappingArrayInput` via:
 //
-// 		 GetImagesImageDiskDeviceMappingArray{ GetImagesImageDiskDeviceMappingArgs{...} }
-//
+//          GetImagesImageDiskDeviceMappingArray{ GetImagesImageDiskDeviceMappingArgs{...} }
 type GetImagesImageDiskDeviceMappingArrayInput interface {
 	pulumi.Input
 
@@ -2226,8 +2247,7 @@ type GetInstanceTypeFamiliesFamily struct {
 // GetInstanceTypeFamiliesFamilyInput is an input type that accepts GetInstanceTypeFamiliesFamilyArgs and GetInstanceTypeFamiliesFamilyOutput values.
 // You can construct a concrete instance of `GetInstanceTypeFamiliesFamilyInput` via:
 //
-// 		 GetInstanceTypeFamiliesFamilyArgs{...}
-//
+//          GetInstanceTypeFamiliesFamilyArgs{...}
 type GetInstanceTypeFamiliesFamilyInput interface {
 	pulumi.Input
 
@@ -2259,8 +2279,7 @@ func (i GetInstanceTypeFamiliesFamilyArgs) ToGetInstanceTypeFamiliesFamilyOutput
 // GetInstanceTypeFamiliesFamilyArrayInput is an input type that accepts GetInstanceTypeFamiliesFamilyArray and GetInstanceTypeFamiliesFamilyArrayOutput values.
 // You can construct a concrete instance of `GetInstanceTypeFamiliesFamilyArrayInput` via:
 //
-// 		 GetInstanceTypeFamiliesFamilyArray{ GetInstanceTypeFamiliesFamilyArgs{...} }
-//
+//          GetInstanceTypeFamiliesFamilyArray{ GetInstanceTypeFamiliesFamilyArgs{...} }
 type GetInstanceTypeFamiliesFamilyArrayInput interface {
 	pulumi.Input
 
@@ -2356,8 +2375,7 @@ type GetInstanceTypesInstanceType struct {
 // GetInstanceTypesInstanceTypeInput is an input type that accepts GetInstanceTypesInstanceTypeArgs and GetInstanceTypesInstanceTypeOutput values.
 // You can construct a concrete instance of `GetInstanceTypesInstanceTypeInput` via:
 //
-// 		 GetInstanceTypesInstanceTypeArgs{...}
-//
+//          GetInstanceTypesInstanceTypeArgs{...}
 type GetInstanceTypesInstanceTypeInput interface {
 	pulumi.Input
 
@@ -2402,8 +2420,7 @@ func (i GetInstanceTypesInstanceTypeArgs) ToGetInstanceTypesInstanceTypeOutputWi
 // GetInstanceTypesInstanceTypeArrayInput is an input type that accepts GetInstanceTypesInstanceTypeArray and GetInstanceTypesInstanceTypeArrayOutput values.
 // You can construct a concrete instance of `GetInstanceTypesInstanceTypeArrayInput` via:
 //
-// 		 GetInstanceTypesInstanceTypeArray{ GetInstanceTypesInstanceTypeArgs{...} }
-//
+//          GetInstanceTypesInstanceTypeArray{ GetInstanceTypesInstanceTypeArgs{...} }
 type GetInstanceTypesInstanceTypeArrayInput interface {
 	pulumi.Input
 
@@ -2520,8 +2537,7 @@ type GetInstanceTypesInstanceTypeBurstableInstance struct {
 // GetInstanceTypesInstanceTypeBurstableInstanceInput is an input type that accepts GetInstanceTypesInstanceTypeBurstableInstanceArgs and GetInstanceTypesInstanceTypeBurstableInstanceOutput values.
 // You can construct a concrete instance of `GetInstanceTypesInstanceTypeBurstableInstanceInput` via:
 //
-// 		 GetInstanceTypesInstanceTypeBurstableInstanceArgs{...}
-//
+//          GetInstanceTypesInstanceTypeBurstableInstanceArgs{...}
 type GetInstanceTypesInstanceTypeBurstableInstanceInput interface {
 	pulumi.Input
 
@@ -2582,8 +2598,7 @@ type GetInstanceTypesInstanceTypeGpu struct {
 // GetInstanceTypesInstanceTypeGpuInput is an input type that accepts GetInstanceTypesInstanceTypeGpuArgs and GetInstanceTypesInstanceTypeGpuOutput values.
 // You can construct a concrete instance of `GetInstanceTypesInstanceTypeGpuInput` via:
 //
-// 		 GetInstanceTypesInstanceTypeGpuArgs{...}
-//
+//          GetInstanceTypesInstanceTypeGpuArgs{...}
 type GetInstanceTypesInstanceTypeGpuInput interface {
 	pulumi.Input
 
@@ -2646,8 +2661,7 @@ type GetInstanceTypesInstanceTypeLocalStorage struct {
 // GetInstanceTypesInstanceTypeLocalStorageInput is an input type that accepts GetInstanceTypesInstanceTypeLocalStorageArgs and GetInstanceTypesInstanceTypeLocalStorageOutput values.
 // You can construct a concrete instance of `GetInstanceTypesInstanceTypeLocalStorageInput` via:
 //
-// 		 GetInstanceTypesInstanceTypeLocalStorageArgs{...}
-//
+//          GetInstanceTypesInstanceTypeLocalStorageArgs{...}
 type GetInstanceTypesInstanceTypeLocalStorageInput interface {
 	pulumi.Input
 
@@ -2749,12 +2763,27 @@ type GetInstancesInstance struct {
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// ```
-	// data "ecs.getInstances" "taggedInstances" {
-	// tags = {
-	// tagKey1 = "tagValue1",
-	// tagKey2 = "tagValue2"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -2767,8 +2796,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-// 		 GetInstancesInstanceArgs{...}
-//
+//          GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -2820,12 +2848,27 @@ type GetInstancesInstanceArgs struct {
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// ```
-	// data "ecs.getInstances" "taggedInstances" {
-	// tags = {
-	// tagKey1 = "tagValue1",
-	// tagKey2 = "tagValue2"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
@@ -2850,8 +2893,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-// 		 GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
-//
+//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -2993,12 +3035,27 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the ECS instances. It must be in the format:
-// ```
-// data "ecs.getInstances" "taggedInstances" {
-// tags = {
-// tagKey1 = "tagValue1",
-// tagKey2 = "tagValue2"
-// }
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+// 			Tags: map[string]interface{}{
+// 				"tagKey1": "tagValue1",
+// 				"tagKey2": "tagValue2",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
 // }
 // ```
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
@@ -3049,8 +3106,7 @@ type GetInstancesInstanceDiskDeviceMapping struct {
 // GetInstancesInstanceDiskDeviceMappingInput is an input type that accepts GetInstancesInstanceDiskDeviceMappingArgs and GetInstancesInstanceDiskDeviceMappingOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceDiskDeviceMappingInput` via:
 //
-// 		 GetInstancesInstanceDiskDeviceMappingArgs{...}
-//
+//          GetInstancesInstanceDiskDeviceMappingArgs{...}
 type GetInstancesInstanceDiskDeviceMappingInput interface {
 	pulumi.Input
 
@@ -3084,8 +3140,7 @@ func (i GetInstancesInstanceDiskDeviceMappingArgs) ToGetInstancesInstanceDiskDev
 // GetInstancesInstanceDiskDeviceMappingArrayInput is an input type that accepts GetInstancesInstanceDiskDeviceMappingArray and GetInstancesInstanceDiskDeviceMappingArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceDiskDeviceMappingArrayInput` via:
 //
-// 		 GetInstancesInstanceDiskDeviceMappingArray{ GetInstancesInstanceDiskDeviceMappingArgs{...} }
-//
+//          GetInstancesInstanceDiskDeviceMappingArray{ GetInstancesInstanceDiskDeviceMappingArgs{...} }
 type GetInstancesInstanceDiskDeviceMappingArrayInput interface {
 	pulumi.Input
 
@@ -3179,8 +3234,7 @@ type GetKeyPairsKeyPair struct {
 // GetKeyPairsKeyPairInput is an input type that accepts GetKeyPairsKeyPairArgs and GetKeyPairsKeyPairOutput values.
 // You can construct a concrete instance of `GetKeyPairsKeyPairInput` via:
 //
-// 		 GetKeyPairsKeyPairArgs{...}
-//
+//          GetKeyPairsKeyPairArgs{...}
 type GetKeyPairsKeyPairInput interface {
 	pulumi.Input
 
@@ -3218,8 +3272,7 @@ func (i GetKeyPairsKeyPairArgs) ToGetKeyPairsKeyPairOutputWithContext(ctx contex
 // GetKeyPairsKeyPairArrayInput is an input type that accepts GetKeyPairsKeyPairArray and GetKeyPairsKeyPairArrayOutput values.
 // You can construct a concrete instance of `GetKeyPairsKeyPairArrayInput` via:
 //
-// 		 GetKeyPairsKeyPairArray{ GetKeyPairsKeyPairArgs{...} }
-//
+//          GetKeyPairsKeyPairArray{ GetKeyPairsKeyPairArgs{...} }
 type GetKeyPairsKeyPairArrayInput interface {
 	pulumi.Input
 
@@ -3330,8 +3383,7 @@ type GetKeyPairsKeyPairInstance struct {
 // GetKeyPairsKeyPairInstanceInput is an input type that accepts GetKeyPairsKeyPairInstanceArgs and GetKeyPairsKeyPairInstanceOutput values.
 // You can construct a concrete instance of `GetKeyPairsKeyPairInstanceInput` via:
 //
-// 		 GetKeyPairsKeyPairInstanceArgs{...}
-//
+//          GetKeyPairsKeyPairInstanceArgs{...}
 type GetKeyPairsKeyPairInstanceInput interface {
 	pulumi.Input
 
@@ -3376,8 +3428,7 @@ func (i GetKeyPairsKeyPairInstanceArgs) ToGetKeyPairsKeyPairInstanceOutputWithCo
 // GetKeyPairsKeyPairInstanceArrayInput is an input type that accepts GetKeyPairsKeyPairInstanceArray and GetKeyPairsKeyPairInstanceArrayOutput values.
 // You can construct a concrete instance of `GetKeyPairsKeyPairInstanceArrayInput` via:
 //
-// 		 GetKeyPairsKeyPairInstanceArray{ GetKeyPairsKeyPairInstanceArgs{...} }
-//
+//          GetKeyPairsKeyPairInstanceArray{ GetKeyPairsKeyPairInstanceArgs{...} }
 type GetKeyPairsKeyPairInstanceArrayInput interface {
 	pulumi.Input
 
@@ -3526,8 +3577,7 @@ type GetNetworkInterfacesInterface struct {
 // GetNetworkInterfacesInterfaceInput is an input type that accepts GetNetworkInterfacesInterfaceArgs and GetNetworkInterfacesInterfaceOutput values.
 // You can construct a concrete instance of `GetNetworkInterfacesInterfaceInput` via:
 //
-// 		 GetNetworkInterfacesInterfaceArgs{...}
-//
+//          GetNetworkInterfacesInterfaceArgs{...}
 type GetNetworkInterfacesInterfaceInput interface {
 	pulumi.Input
 
@@ -3585,8 +3635,7 @@ func (i GetNetworkInterfacesInterfaceArgs) ToGetNetworkInterfacesInterfaceOutput
 // GetNetworkInterfacesInterfaceArrayInput is an input type that accepts GetNetworkInterfacesInterfaceArray and GetNetworkInterfacesInterfaceArrayOutput values.
 // You can construct a concrete instance of `GetNetworkInterfacesInterfaceArrayInput` via:
 //
-// 		 GetNetworkInterfacesInterfaceArray{ GetNetworkInterfacesInterfaceArgs{...} }
-//
+//          GetNetworkInterfacesInterfaceArray{ GetNetworkInterfacesInterfaceArgs{...} }
 type GetNetworkInterfacesInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -3754,8 +3803,7 @@ type GetSecurityGroupRulesRule struct {
 // GetSecurityGroupRulesRuleInput is an input type that accepts GetSecurityGroupRulesRuleArgs and GetSecurityGroupRulesRuleOutput values.
 // You can construct a concrete instance of `GetSecurityGroupRulesRuleInput` via:
 //
-// 		 GetSecurityGroupRulesRuleArgs{...}
-//
+//          GetSecurityGroupRulesRuleArgs{...}
 type GetSecurityGroupRulesRuleInput interface {
 	pulumi.Input
 
@@ -3807,8 +3855,7 @@ func (i GetSecurityGroupRulesRuleArgs) ToGetSecurityGroupRulesRuleOutputWithCont
 // GetSecurityGroupRulesRuleArrayInput is an input type that accepts GetSecurityGroupRulesRuleArray and GetSecurityGroupRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetSecurityGroupRulesRuleArrayInput` via:
 //
-// 		 GetSecurityGroupRulesRuleArray{ GetSecurityGroupRulesRuleArgs{...} }
-//
+//          GetSecurityGroupRulesRuleArray{ GetSecurityGroupRulesRuleArgs{...} }
 type GetSecurityGroupRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -3945,12 +3992,27 @@ type GetSecurityGroupsGroup struct {
 	// The type of the security group.
 	SecurityGroupType string `pulumi:"securityGroupType"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// ```
-	// data "ecs.getSecurityGroups" "taggedSecurityGroups" {
-	// tags = {
-	// tagKey1 = "tagValue1",
-	// tagKey2 = "tagValue2"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -3961,8 +4023,7 @@ type GetSecurityGroupsGroup struct {
 // GetSecurityGroupsGroupInput is an input type that accepts GetSecurityGroupsGroupArgs and GetSecurityGroupsGroupOutput values.
 // You can construct a concrete instance of `GetSecurityGroupsGroupInput` via:
 //
-// 		 GetSecurityGroupsGroupArgs{...}
-//
+//          GetSecurityGroupsGroupArgs{...}
 type GetSecurityGroupsGroupInput interface {
 	pulumi.Input
 
@@ -3986,12 +4047,27 @@ type GetSecurityGroupsGroupArgs struct {
 	// The type of the security group.
 	SecurityGroupType pulumi.StringInput `pulumi:"securityGroupType"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// ```
-	// data "ecs.getSecurityGroups" "taggedSecurityGroups" {
-	// tags = {
-	// tagKey1 = "tagValue1",
-	// tagKey2 = "tagValue2"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
@@ -4014,8 +4090,7 @@ func (i GetSecurityGroupsGroupArgs) ToGetSecurityGroupsGroupOutputWithContext(ct
 // GetSecurityGroupsGroupArrayInput is an input type that accepts GetSecurityGroupsGroupArray and GetSecurityGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetSecurityGroupsGroupArrayInput` via:
 //
-// 		 GetSecurityGroupsGroupArray{ GetSecurityGroupsGroupArgs{...} }
-//
+//          GetSecurityGroupsGroupArray{ GetSecurityGroupsGroupArgs{...} }
 type GetSecurityGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -4087,12 +4162,27 @@ func (o GetSecurityGroupsGroupOutput) SecurityGroupType() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the ECS instances. It must be in the format:
-// ```
-// data "ecs.getSecurityGroups" "taggedSecurityGroups" {
-// tags = {
-// tagKey1 = "tagValue1",
-// tagKey2 = "tagValue2"
-// }
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+// 			Tags: map[string]interface{}{
+// 				"tagKey1": "tagValue1",
+// 				"tagKey2": "tagValue2",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
 // }
 // ```
 func (o GetSecurityGroupsGroupOutput) Tags() pulumi.MapOutput {
@@ -4167,8 +4257,7 @@ type GetSnapshotsSnapshot struct {
 // GetSnapshotsSnapshotInput is an input type that accepts GetSnapshotsSnapshotArgs and GetSnapshotsSnapshotOutput values.
 // You can construct a concrete instance of `GetSnapshotsSnapshotInput` via:
 //
-// 		 GetSnapshotsSnapshotArgs{...}
-//
+//          GetSnapshotsSnapshotArgs{...}
 type GetSnapshotsSnapshotInput interface {
 	pulumi.Input
 
@@ -4231,8 +4320,7 @@ func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutputWithContext(ctx co
 // GetSnapshotsSnapshotArrayInput is an input type that accepts GetSnapshotsSnapshotArray and GetSnapshotsSnapshotArrayOutput values.
 // You can construct a concrete instance of `GetSnapshotsSnapshotArrayInput` via:
 //
-// 		 GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
-//
+//          GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
 type GetSnapshotsSnapshotArrayInput interface {
 	pulumi.Input
 

@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Ess
     /// &gt; **NOTE:** The load balancer of which vserver groups belongs to must be in `active` status.
     /// 
     /// &gt; **NOTE:** If scaling group's network type is `VPC`, the vserver groups must be in the same `VPC`.
-    ///  
+    /// 
     /// &gt; **NOTE:** A scaling group can have at most 5 vserver groups attached by default.
     /// 
     /// &gt; **NOTE:** Vserver groups and the default group of loadbalancer share the same backend server quota.
@@ -31,8 +31,6 @@ namespace Pulumi.AliCloud.Ess
     /// &gt; **NOTE:** Resource `alicloud.ess.ScalingGroupVServerGroups` is available in 1.53.0+.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -120,7 +118,6 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// }
     /// ```
-    /// 
     /// ## Block vserver_group
     /// 
     /// the vserver_group supports the following:

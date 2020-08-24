@@ -11,8 +11,7 @@ import (
 //
 // For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
 //
-//
-// ##  Argument Reference
+// ## Argument Reference
 //
 // The following arguments are supported:
 //

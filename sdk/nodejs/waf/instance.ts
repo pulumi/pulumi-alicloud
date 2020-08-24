@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +24,7 @@ import * as utilities from "../utilities";
  *     extDomainPackage: "1",
  *     logStorage: "3",
  *     logTime: "180",
- *     packageCode: "version3",
+ *     packageCode: "version_3",
  *     period: 1,
  *     prefessionalService: "false",
  *     resourceGroupId: "rs-abc12345",
@@ -130,7 +128,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly subscriptionType!: pulumi.Output<string>;
     /**
-     * Specify whether Log service is supported. Valid values: ["true", "false"]                                           
+     * Specify whether Log service is supported. Valid values: ["true", "false"]
      */
     public readonly wafLog!: pulumi.Output<string>;
 
@@ -293,7 +291,7 @@ export interface InstanceState {
      */
     readonly subscriptionType?: pulumi.Input<string>;
     /**
-     * Specify whether Log service is supported. Valid values: ["true", "false"]                                           
+     * Specify whether Log service is supported. Valid values: ["true", "false"]
      */
     readonly wafLog?: pulumi.Input<string>;
 }
@@ -365,7 +363,7 @@ export interface InstanceArgs {
      */
     readonly subscriptionType: pulumi.Input<string>;
     /**
-     * Specify whether Log service is supported. Valid values: ["true", "false"]                                           
+     * Specify whether Log service is supported. Valid values: ["true", "false"]
      */
     readonly wafLog: pulumi.Input<string>;
 }

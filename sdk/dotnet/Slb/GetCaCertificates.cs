@@ -34,7 +34,6 @@ namespace Pulumi.AliCloud.Slb
         ///     public Output&lt;string&gt; FirstSlbCaCertificateId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

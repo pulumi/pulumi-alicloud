@@ -11,6 +11,35 @@ import (
 // Filters support regular expression for the instance name or availability_zone.
 //
 // > **NOTE:**  Available in 1.47.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/gpdb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "cn-beijing-c"
+// 		opt1 := "gp-.+\\d+"
+// 		opt2 := "instances.txt"
+// 		gpdb, err := gpdb.GetInstances(ctx, &gpdb.GetInstancesArgs{
+// 			AvailabilityZone: &opt0,
+// 			NameRegex:        &opt1,
+// 			OutputFile:       &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("instanceId", gpdb.Instances[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
 	err := ctx.Invoke("alicloud:gpdb/getInstances:getInstances", args, &rv, opts...)

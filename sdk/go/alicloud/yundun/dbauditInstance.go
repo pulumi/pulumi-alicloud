@@ -17,6 +17,34 @@ import (
 // > **NOTE:** Available in 1.62.0+ .
 //
 // > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/yundun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := yundun.NewDBAuditInstance(ctx, "_default", &yundun.DBAuditInstanceArgs{
+// 			Description: pulumi.String("Terraform-test"),
+// 			Period:      pulumi.Int(1),
+// 			PlanCode:    pulumi.String("alpha.professional"),
+// 			VswitchId:   pulumi.String("v-testVswitch"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DBAuditInstance struct {
 	pulumi.CustomResourceState
 

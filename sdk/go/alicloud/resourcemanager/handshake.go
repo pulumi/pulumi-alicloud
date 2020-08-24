@@ -14,6 +14,31 @@ import (
 // For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
 //
 // > **NOTE:** Available in v1.82.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/resourcemanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := resourcemanager.NewHandshake(ctx, "example", &resourcemanager.HandshakeArgs{
+// 			Note:         pulumi.String("test resource manager handshake"),
+// 			TargetEntity: pulumi.String("1182775234******"),
+// 			TargetType:   pulumi.String("Account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Handshake struct {
 	pulumi.CustomResourceState
 

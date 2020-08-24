@@ -14,6 +14,84 @@ import (
 // Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
 //
 // > **NOTE:** Available in 1.78.0
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/log"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+// 			Description: pulumi.String("create by terraform"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+// 			AppendMeta:         pulumi.Bool(true),
+// 			AutoSplit:          pulumi.Bool(true),
+// 			MaxSplitShardCount: pulumi.Int(60),
+// 			Project:            exampleProject.Name,
+// 			RetentionPeriod:    pulumi.Int(3650),
+// 			ShardCount:         pulumi.Int(3),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = log.NewAlert(ctx, "exampleAlert", &log.AlertArgs{
+// 			AlertDisplayname: pulumi.String("tf-test-alert-displayname"),
+// 			AlertName:        pulumi.String("tf-test-alert"),
+// 			Condition:        pulumi.String("count> 100"),
+// 			Dashboard:        pulumi.String("tf-test-dashboard"),
+// 			NotificationLists: log.AlertNotificationListArray{
+// 				&log.AlertNotificationListArgs{
+// 					Content: pulumi.String("alert content"),
+// 					MobileLists: pulumi.StringArray{
+// 						pulumi.String("12345678"),
+// 						pulumi.String("87654321"),
+// 					},
+// 					Type: pulumi.String("SMS"),
+// 				},
+// 				&log.AlertNotificationListArgs{
+// 					Content: pulumi.String("alert content"),
+// 					EmailLists: pulumi.StringArray{
+// 						pulumi.String("aliyun@alibaba-inc.com"),
+// 						pulumi.String("tf-test@123.com"),
+// 					},
+// 					Type: pulumi.String("Email"),
+// 				},
+// 				&log.AlertNotificationListArgs{
+// 					Content:    pulumi.String("alert content"),
+// 					ServiceUri: pulumi.String("www.aliyun.com"),
+// 					Type:       pulumi.String("DingTalk"),
+// 				},
+// 			},
+// 			ProjectName: exampleProject.Name,
+// 			QueryLists: log.AlertQueryListArray{
+// 				&log.AlertQueryListArgs{
+// 					ChartTitle: pulumi.String("chart_title"),
+// 					End:        pulumi.String("20s"),
+// 					Logstore:   pulumi.String("tf-test-logstore"),
+// 					Query:      pulumi.String("* AND aliyun"),
+// 					Start:      pulumi.String("-60s"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Alert struct {
 	pulumi.CustomResourceState
 

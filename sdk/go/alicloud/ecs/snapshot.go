@@ -13,6 +13,33 @@ import (
 // Provides an ECS snapshot resource.
 //
 // For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.NewSnapshot(ctx, "snapshot", &ecs.SnapshotArgs{
+// 			Description: pulumi.String("this snapshot is created for testing"),
+// 			DiskId:      pulumi.Any(alicloud_disk_attachment.Instance - attachment.Disk_id),
+// 			Tags: pulumi.StringMap{
+// 				"version": pulumi.String("1.2"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Snapshot struct {
 	pulumi.CustomResourceState
 

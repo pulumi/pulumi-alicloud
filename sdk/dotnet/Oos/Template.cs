@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
@@ -74,7 +72,7 @@ namespace Pulumi.AliCloud.Oos
         public Output<bool?> AutoDeleteExecutions { get; private set; } = null!;
 
         /// <summary>
-        /// The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB. 
+        /// The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
@@ -216,7 +214,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<bool>? AutoDeleteExecutions { get; set; }
 
         /// <summary>
-        /// The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB. 
+        /// The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
         /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
@@ -259,7 +257,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<bool>? AutoDeleteExecutions { get; set; }
 
         /// <summary>
-        /// The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB. 
+        /// The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }

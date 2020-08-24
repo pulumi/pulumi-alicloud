@@ -21,8 +21,7 @@ type GetRegionsRegion struct {
 // GetRegionsRegionInput is an input type that accepts GetRegionsRegionArgs and GetRegionsRegionOutput values.
 // You can construct a concrete instance of `GetRegionsRegionInput` via:
 //
-// 		 GetRegionsRegionArgs{...}
-//
+//          GetRegionsRegionArgs{...}
 type GetRegionsRegionInput interface {
 	pulumi.Input
 
@@ -53,8 +52,7 @@ func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Co
 // GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
 //
-// 		 GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
-//
+//          GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
 type GetRegionsRegionArrayInput interface {
 	pulumi.Input
 
@@ -145,8 +143,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-// 		 GetZonesZoneArgs{...}
-//
+//          GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -187,8 +184,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-// 		 GetZonesZoneArray{ GetZonesZoneArgs{...} }
-//
+//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 
@@ -290,8 +286,7 @@ type ProviderAssumeRole struct {
 // ProviderAssumeRoleInput is an input type that accepts ProviderAssumeRoleArgs and ProviderAssumeRoleOutput values.
 // You can construct a concrete instance of `ProviderAssumeRoleInput` via:
 //
-// 		 ProviderAssumeRoleArgs{...}
-//
+//          ProviderAssumeRoleArgs{...}
 type ProviderAssumeRoleInput interface {
 	pulumi.Input
 
@@ -329,12 +324,11 @@ func (i ProviderAssumeRoleArgs) ToProviderAssumeRolePtrOutputWithContext(ctx con
 // ProviderAssumeRolePtrInput is an input type that accepts ProviderAssumeRoleArgs, ProviderAssumeRolePtr and ProviderAssumeRolePtrOutput values.
 // You can construct a concrete instance of `ProviderAssumeRolePtrInput` via:
 //
-// 		 ProviderAssumeRoleArgs{...}
+//          ProviderAssumeRoleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProviderAssumeRolePtrInput interface {
 	pulumi.Input
 
@@ -508,8 +502,7 @@ type ProviderEndpoint struct {
 // ProviderEndpointInput is an input type that accepts ProviderEndpointArgs and ProviderEndpointOutput values.
 // You can construct a concrete instance of `ProviderEndpointInput` via:
 //
-// 		 ProviderEndpointArgs{...}
-//
+//          ProviderEndpointArgs{...}
 type ProviderEndpointInput interface {
 	pulumi.Input
 
@@ -584,8 +577,7 @@ func (i ProviderEndpointArgs) ToProviderEndpointOutputWithContext(ctx context.Co
 // ProviderEndpointArrayInput is an input type that accepts ProviderEndpointArray and ProviderEndpointArrayOutput values.
 // You can construct a concrete instance of `ProviderEndpointArrayInput` via:
 //
-// 		 ProviderEndpointArray{ ProviderEndpointArgs{...} }
-//
+//          ProviderEndpointArray{ ProviderEndpointArgs{...} }
 type ProviderEndpointArrayInput interface {
 	pulumi.Input
 

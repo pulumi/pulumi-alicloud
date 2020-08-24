@@ -13,6 +13,36 @@ import (
 // Provides an Reserved Instance resource.
 //
 // > **NOTE:** Available in 1.65.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.NewReservedInstance(ctx, "_default", &ecs.ReservedInstanceArgs{
+// 			InstanceType:   pulumi.String("ecs.g6.large"),
+// 			InstanceAmount: pulumi.Int(1),
+// 			PeriodUnit:     pulumi.String("Year"),
+// 			OfferingType:   pulumi.String("All Upfront"),
+// 			Description:    pulumi.String("ReservedInstance"),
+// 			ZoneId:         pulumi.String("cn-shanghai-g"),
+// 			Scope:          pulumi.String("Zone"),
+// 			Period:         pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ReservedInstance struct {
 	pulumi.CustomResourceState
 

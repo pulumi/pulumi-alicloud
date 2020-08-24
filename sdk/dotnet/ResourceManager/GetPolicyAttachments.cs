@@ -17,6 +17,26 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:**  Available in 1.93.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.ResourceManager.GetPolicyAttachments.InvokeAsync());
+        ///         this.FirstAttachmentId = example.Apply(example =&gt; example.Attachments[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstAttachmentId")]
+        ///     public Output&lt;string&gt; FirstAttachmentId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyAttachmentsResult> InvokeAsync(GetPolicyAttachmentsArgs? args = null, InvokeOptions? options = null)
@@ -54,7 +74,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? PrincipalName { get; set; }
 
         /// <summary>
-        /// The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. 
+        /// The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         /// </summary>
         [Input("principalType")]
         public string? PrincipalType { get; set; }

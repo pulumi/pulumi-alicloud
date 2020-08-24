@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +21,7 @@ import * as utilities from "../utilities";
  *     accessGroupName: "tf-testAccAccessGroupsdatasource",
  *     rwAccess: "RDWR",
  *     sourceCidrIp: "168.1.1.0/16",
- *     userAccess: "noSquash",
+ *     userAccess: "no_squash",
  * }, { async: true }));
  *
  * export const alicloudNasAccessRulesId = foo.rules[0].id;
@@ -61,15 +59,15 @@ export interface GetAccessRulesArgs {
     readonly ids?: string[];
     readonly outputFile?: string;
     /**
-     * Filter results by a specific RWAccess. 
+     * Filter results by a specific RWAccess.
      */
     readonly rwAccess?: string;
     /**
-     * Filter results by a specific SourceCidrIp. 
+     * Filter results by a specific SourceCidrIp.
      */
     readonly sourceCidrIp?: string;
     /**
-     * Filter results by a specific UserAccess. 
+     * Filter results by a specific UserAccess.
      */
     readonly userAccess?: string;
 }

@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -52,11 +50,11 @@ export function getSaslAcls(args: GetSaslAclsArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetSaslAclsArgs {
     /**
-     * Get results for the specified resource name. 
+     * Get results for the specified resource name.
      */
     readonly aclResourceName: string;
     /**
-     * Get results for the specified resource type. 
+     * Get results for the specified resource type.
      */
     readonly aclResourceType: string;
     /**
@@ -65,7 +63,7 @@ export interface GetSaslAclsArgs {
     readonly instanceId: string;
     readonly outputFile?: string;
     /**
-     * Get results for the specified username. 
+     * Get results for the specified username.
      */
     readonly username: string;
 }

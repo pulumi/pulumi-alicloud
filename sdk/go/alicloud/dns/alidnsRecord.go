@@ -15,6 +15,34 @@ import (
 // > **NOTE:** Available in v1.85.0+.
 //
 // > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dns.NewAlidnsRecord(ctx, "record", &dns.AlidnsRecordArgs{
+// 			DomainName: pulumi.String("domainname"),
+// 			Remark:     pulumi.String("Test new alidns record."),
+// 			Rr:         pulumi.String("@"),
+// 			Status:     pulumi.String("ENABLE"),
+// 			Type:       pulumi.String("A"),
+// 			Value:      pulumi.String("192.168.99.99"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AlidnsRecord struct {
 	pulumi.CustomResourceState
 

@@ -6,3 +6,5 @@
 from .domain import *
 from .domain_config import *
 from .domain_new import *
+from ._inputs import *
+from . import outputs

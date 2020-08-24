@@ -10,8 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// This topic describes how to configure PrivateZone access. 
-    /// PrivateZone is a VPC-based resolution and management service for private domain names. 
+    /// This topic describes how to configure PrivateZone access.
+    /// PrivateZone is a VPC-based resolution and management service for private domain names.
     /// After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
     /// 
     /// For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/doc-detail/106693.htm).
@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +42,13 @@ namespace Pulumi.AliCloud.Cen
     ///             ChildInstanceId = defaultNetwork.Id,
     ///             ChildInstanceRegionId = "cn-hangzhou",
     ///             InstanceId = defaultInstance.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "alicloud_cen_instance.default",
+    ///                 "alicloud_vpc.default",
+    ///             },
     ///         });
     ///         var defaultPrivateZone = new AliCloud.Cen.PrivateZone("defaultPrivateZone", new AliCloud.Cen.PrivateZoneArgs
     ///         {
@@ -49,6 +56,12 @@ namespace Pulumi.AliCloud.Cen
     ///             CenId = defaultInstance.Id,
     ///             HostRegionId = "cn-hangzhou",
     ///             HostVpcId = defaultNetwork.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "alicloud_cen_instance_attachment.default",
+    ///             },
     ///         });
     ///     }
     /// 
@@ -70,7 +83,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> CenId { get; private set; } = null!;
 
         /// <summary>
-        /// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN. 
+        /// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
         /// </summary>
         [Output("hostRegionId")]
         public Output<string> HostRegionId { get; private set; } = null!;
@@ -146,7 +159,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string> CenId { get; set; } = null!;
 
         /// <summary>
-        /// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN. 
+        /// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
         /// </summary>
         [Input("hostRegionId", required: true)]
         public Input<string> HostRegionId { get; set; } = null!;
@@ -177,7 +190,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN. 
+        /// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
         /// </summary>
         [Input("hostRegionId")]
         public Input<string>? HostRegionId { get; set; }

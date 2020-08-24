@@ -33,7 +33,7 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
-     * Name of the domain group.    
+     * Name of the domain group.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -70,7 +70,7 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupState {
     /**
-     * Name of the domain group.    
+     * Name of the domain group.
      */
     readonly name?: pulumi.Input<string>;
 }
@@ -80,7 +80,7 @@ export interface GroupState {
  */
 export interface GroupArgs {
     /**
-     * Name of the domain group.    
+     * Name of the domain group.
      */
     readonly name?: pulumi.Input<string>;
 }

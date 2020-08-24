@@ -20,6 +20,44 @@ import (
 // The official website mark more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
 //
 // > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
+//
+// ## Example Usage
+// ### Create a cassandra cluster
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cassandra"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cassandra.NewCluster(ctx, "_default", &cassandra.ClusterArgs{
+// 			AutoRenew:         pulumi.Bool(false),
+// 			ClusterName:       pulumi.String("cassandra-cluster-name-tf"),
+// 			DataCenterName:    pulumi.String("dc-1"),
+// 			DiskSize:          pulumi.Int(160),
+// 			DiskType:          pulumi.String("cloud_ssd"),
+// 			InstanceType:      pulumi.String("cassandra.c.large"),
+// 			IpWhite:           pulumi.String("127.0.0.1"),
+// 			MaintainEndTime:   pulumi.String("20:00Z"),
+// 			MaintainStartTime: pulumi.String("18:00Z"),
+// 			MajorVersion:      pulumi.String("3.11"),
+// 			NodeCount:         pulumi.Int(2),
+// 			PayType:           pulumi.String("PayAsYouGo"),
+// 			VswitchId:         pulumi.String("vsw-xxxx"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
 type Cluster struct {
 	pulumi.CustomResourceState
 

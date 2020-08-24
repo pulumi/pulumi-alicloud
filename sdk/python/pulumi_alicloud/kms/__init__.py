@@ -15,3 +15,4 @@ from .get_secrets import *
 from .key import *
 from .key_version import *
 from .secret import *
+from . import outputs

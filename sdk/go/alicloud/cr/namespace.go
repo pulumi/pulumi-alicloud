@@ -15,6 +15,32 @@ import (
 // > **NOTE:** Available in v1.34.0+.
 //
 // > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cr"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cr.NewNamespace(ctx, "my_namespace", &cr.NamespaceArgs{
+// 			AutoCreate:        pulumi.Bool(false),
+// 			DefaultVisibility: pulumi.String("PUBLIC"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Namespace struct {
 	pulumi.CustomResourceState
 

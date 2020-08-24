@@ -4,6 +4,44 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
+ *
+ * ## Example Usage
+ *
+ * Basic usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ecsSg = new alicloud.ecs.SecurityGroup("ecs_sg", {
+ *     description: "New security group",
+ * });
+ * const ecsDisk = new alicloud.ecs.Disk("ecs_disk", {
+ *     availabilityZone: "cn-beijing-a",
+ *     size: 50,
+ *     tags: {
+ *         Name: "TerraformTest-disk",
+ *     },
+ * });
+ * const ecsInstance = new alicloud.ecs.Instance("ecs_instance", {
+ *     availabilityZone: "cn-beijing-a",
+ *     imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+ *     instanceName: "Hello",
+ *     instanceType: "ecs.n4.small",
+ *     internetChargeType: "PayByBandwidth",
+ *     securityGroups: [ecsSg.id],
+ *     tags: {
+ *         Name: "TerraformTest-instance",
+ *     },
+ * });
+ * const ecsDiskAtt = new alicloud.ecs.DiskAttachment("ecs_disk_att", {
+ *     diskId: ecsDisk.id,
+ *     instanceId: ecsInstance.id,
+ * });
+ * ```
+ */
 export class DiskAttachment extends pulumi.CustomResource {
     /**
      * Get an existing DiskAttachment resource's state with the given name, ID, and optional extra

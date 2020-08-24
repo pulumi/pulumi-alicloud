@@ -8,6 +8,32 @@ import (
 )
 
 // This data source provides CEN Bandwidth Limits available to the user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bwl, err := cen.GetBandwidthLimits(ctx, &cen.GetBandwidthLimitsArgs{
+// 			InstanceIds: []string{
+// 				"cen-id1",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstCenBandwidthLimitsLocalRegionId", bwl.Limits[0].LocalRegionId)
+// 		return nil
+// 	})
+// }
+// ```
 func GetBandwidthLimits(ctx *pulumi.Context, args *GetBandwidthLimitsArgs, opts ...pulumi.InvokeOption) (*GetBandwidthLimitsResult, error) {
 	var rv GetBandwidthLimitsResult
 	err := ctx.Invoke("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args, &rv, opts...)

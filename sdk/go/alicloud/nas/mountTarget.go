@@ -19,6 +19,54 @@ import (
 // > NOTE: You must grant NAS with specific RAM permissions when creating a classic mount targets,
 // and it only can be achieved by creating a classic mount target mannually.
 // See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/nas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooFileSystem, err := nas.NewFileSystem(ctx, "fooFileSystem", &nas.FileSystemArgs{
+// 			Description:  pulumi.String("tf-testAccNasConfigFs"),
+// 			ProtocolType: pulumi.String("NFS"),
+// 			StorageType:  pulumi.String("Performance"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooAccessGroup, err := nas.NewAccessGroup(ctx, "fooAccessGroup", &nas.AccessGroupArgs{
+// 			Description: pulumi.String("tf-testAccNasConfig"),
+// 			Type:        pulumi.String("Classic"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = nas.NewAccessGroup(ctx, "bar", &nas.AccessGroupArgs{
+// 			Description: pulumi.String("tf-testAccNasConfig-2"),
+// 			Type:        pulumi.String("Classic"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = nas.NewMountTarget(ctx, "fooMountTarget", &nas.MountTargetArgs{
+// 			AccessGroupName: fooAccessGroup.ID(),
+// 			FileSystemId:    fooFileSystem.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type MountTarget struct {
 	pulumi.CustomResourceState
 

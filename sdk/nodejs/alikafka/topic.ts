@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *     instanceId: defaultInstance.id,
  *     localTopic: false,
  *     partitionNum: 12,
- *     remark: "dafaultKafkaTopicRemark",
+ *     remark: "dafault_kafka_topic_remark",
  *     topic: topic,
  * });
  * ```

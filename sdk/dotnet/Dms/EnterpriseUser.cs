@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
@@ -80,7 +78,7 @@ namespace Pulumi.AliCloud.Dms
         public Output<string?> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tenant ID. 
+        /// The tenant ID.
         /// </summary>
         [Output("tid")]
         public Output<int?> Tid { get; private set; } = null!;
@@ -180,7 +178,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The tenant ID. 
+        /// The tenant ID.
         /// </summary>
         [Input("tid")]
         public Input<int>? Tid { get; set; }
@@ -241,7 +239,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The tenant ID. 
+        /// The tenant ID.
         /// </summary>
         [Input("tid")]
         public Input<int>? Tid { get; set; }

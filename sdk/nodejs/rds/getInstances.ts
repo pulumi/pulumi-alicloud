@@ -12,8 +12,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -70,7 +68,7 @@ export interface GetInstancesArgs {
      */
     readonly engine?: string;
     /**
-     * A list of RDS instance IDs. 
+     * A list of RDS instance IDs.
      */
     readonly ids?: string[];
     /**
@@ -118,7 +116,7 @@ export interface GetInstancesResult {
      */
     readonly id: string;
     /**
-     * A list of RDS instance IDs. 
+     * A list of RDS instance IDs.
      */
     readonly ids: string[];
     /**
@@ -127,7 +125,7 @@ export interface GetInstancesResult {
     readonly instances: outputs.rds.GetInstancesInstance[];
     readonly nameRegex?: string;
     /**
-     * A list of RDS instance names. 
+     * A list of RDS instance names.
      */
     readonly names: string[];
     readonly outputFile?: string;

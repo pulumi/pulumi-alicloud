@@ -23,3 +23,4 @@ from .get_resolution_lines import *
 from .group import *
 from .instance import *
 from .record import *
+from . import outputs

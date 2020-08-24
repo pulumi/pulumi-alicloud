@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.71.0+.
  *
  * ## Example Usage
- *
  * ### Create a ADB MySQL cluster
  *
  * ```typescript

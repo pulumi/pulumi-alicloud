@@ -13,6 +13,35 @@ import (
 // Provides an EDAS cluster resource.
 //
 // > **NOTE:** Available in 1.82.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/edas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := edas.NewCluster(ctx, "_default", &edas.ClusterArgs{
+// 			ClusterName:     pulumi.Any(_var.Cluster_name),
+// 			ClusterType:     pulumi.Any(_var.Cluster_type),
+// 			NetworkMode:     pulumi.Any(_var.Network_mode),
+// 			LogicalRegionId: pulumi.Any(_var.Logical_region_id),
+// 			VpcId:           pulumi.Any(_var.Vpc_id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 

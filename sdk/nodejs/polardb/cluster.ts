@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.66.0+.
  *
  * ## Example Usage
- *
  * ### Create a PolarDB MySQL cluster
  *
  * ```typescript

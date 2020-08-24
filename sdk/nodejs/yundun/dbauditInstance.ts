@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
+ *
+ * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+ *
+ * > **NOTE:** Available in 1.62.0+ .
+ *
+ * > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultDBAuditInstance = new alicloud.yundun.DBAuditInstance("default", {
+ *     description: "Terraform-test",
+ *     period: 1,
+ *     planCode: "alpha.professional",
+ *     vswitchId: "v-testVswitch",
+ * });
+ * ```
+ */
 export class DBAuditInstance extends pulumi.CustomResource {
     /**
      * Get an existing DBAuditInstance resource's state with the given name, ID, and optional extra
@@ -41,7 +66,7 @@ export class DBAuditInstance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
+     * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
      */
     public readonly planCode!: pulumi.Output<string>;
     /**
@@ -117,7 +142,7 @@ export interface DBAuditInstanceState {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
+     * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
      */
     readonly planCode?: pulumi.Input<string>;
     /**
@@ -147,7 +172,7 @@ export interface DBAuditInstanceArgs {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
+     * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
      */
     readonly planCode: pulumi.Input<string>;
     /**

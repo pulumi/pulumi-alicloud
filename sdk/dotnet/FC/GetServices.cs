@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.FC
         ///     public Output&lt;string&gt; FirstFcServiceName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

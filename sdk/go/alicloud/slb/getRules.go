@@ -8,6 +8,31 @@ import (
 )
 
 // This data source provides the rules associated with a server load balancer listener.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		sampleDs, err := slb.GetRules(ctx, &slb.GetRulesArgs{
+// 			FrontendPort:   80,
+// 			LoadBalancerId: alicloud_slb.Sample_slb.Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstSlbRuleId", sampleDs.SlbRules[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOption) (*GetRulesResult, error) {
 	var rv GetRulesResult
 	err := ctx.Invoke("alicloud:slb/getRules:getRules", args, &rv, opts...)

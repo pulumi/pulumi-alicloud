@@ -21,6 +21,40 @@ import (
 // the official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
 //
 // > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
+//
+// ## Example Usage
+// ### Create a hbase instance
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/hbase"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := hbase.NewInstance(ctx, "_default", &hbase.InstanceArgs{
+// 			ColdStorageSize:      pulumi.Int(0),
+// 			CoreDiskSize:         pulumi.Int(400),
+// 			CoreDiskType:         pulumi.String("cloud_efficiency"),
+// 			CoreInstanceQuantity: pulumi.Int(2),
+// 			CoreInstanceType:     pulumi.String("hbase.sn1.large"),
+// 			EngineVersion:        pulumi.String("2.0"),
+// 			MasterInstanceType:   pulumi.String("hbase.sn1.large"),
+// 			PayType:              pulumi.String("PostPaid"),
+// 			ZoneId:               pulumi.String("cn-shenzhen-b"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// this is a example for class netType instance. you can find more detail with the examples/hbase dir.
 type Instance struct {
 	pulumi.CustomResourceState
 

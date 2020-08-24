@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -61,12 +59,15 @@ export interface GetBastionHostInstancesArgs {
     readonly outputFile?: string;
     /**
      * A map of tags assigned to the bastionhost instance. It must be in the format:
-     * ```
-     * data "alicloud.yundun.getBastionHostInstances" "instance" {
-     * tags = {
-     * tagKey1 = "tagValue1"
-     * }
-     * }
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const instance = pulumi.output(alicloud.yundun.getBastionHostInstances({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *     },
+     * }, { async: true }));
      * ```
      */
     readonly tags?: {[key: string]: any};

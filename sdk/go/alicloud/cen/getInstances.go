@@ -8,6 +8,34 @@ import (
 )
 
 // This data source provides CEN instances available to the user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "^foo"
+// 		cenInstancesDs, err := cen.GetInstances(ctx, &cen.GetInstancesArgs{
+// 			Ids: []string{
+// 				"cen-id1",
+// 			},
+// 			NameRegex: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstCenInstanceId", cenInstancesDs.Instances[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
 	err := ctx.Invoke("alicloud:cen/getInstances:getInstances", args, &rv, opts...)

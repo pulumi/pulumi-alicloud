@@ -38,7 +38,6 @@ namespace Pulumi.AliCloud.Cen
         ///     public Output&lt;string&gt; FirstRegionRouteEntriesRouteEntryCidrBlock { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

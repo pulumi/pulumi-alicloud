@@ -13,11 +13,9 @@ namespace Pulumi.AliCloud.Dms
     /// Provides a DMS Enterprise Instance resource.
     /// 
     /// &gt; **NOTE:** API users must first register in DMS.
-    /// &gt; **NOTE:** Available in 1.81.0+.
+    /// **NOTE:** Available in 1.81.0+.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -182,7 +180,7 @@ namespace Pulumi.AliCloud.Dms
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The tenant ID. 
+        /// The tenant ID.
         /// </summary>
         [Output("tid")]
         public Output<int?> Tid { get; private set; } = null!;
@@ -363,7 +361,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Sid { get; set; }
 
         /// <summary>
-        /// The tenant ID. 
+        /// The tenant ID.
         /// </summary>
         [Input("tid")]
         public Input<int>? Tid { get; set; }
@@ -517,7 +515,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The tenant ID. 
+        /// The tenant ID.
         /// </summary>
         [Input("tid")]
         public Input<int>? Tid { get; set; }

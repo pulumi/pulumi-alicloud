@@ -11,6 +11,63 @@ import (
 )
 
 // Provides a resource to put a object(content or file) to a oss bucket.
+//
+// ## Example Usage
+// ### Uploading a file to a bucket
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := oss.NewBucketObject(ctx, "object_source", &oss.BucketObjectArgs{
+// 			Bucket: pulumi.String("your_bucket_name"),
+// 			Key:    pulumi.String("new_object_key"),
+// 			Source: pulumi.String("path/to/file"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Uploading a content to a bucket
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := oss.NewBucket(ctx, "example", &oss.BucketArgs{
+// 			Acl:    pulumi.String("public-read"),
+// 			Bucket: pulumi.String("your_bucket_name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = oss.NewBucketObject(ctx, "object_content", &oss.BucketObjectArgs{
+// 			Bucket:  example.Bucket,
+// 			Content: pulumi.String("the content that you want to upload."),
+// 			Key:     pulumi.String("new_object_key"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type BucketObject struct {
 	pulumi.CustomResourceState
 

@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +21,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "slbbackendservertest";
  *
  * const defaultZones = pulumi.output(alicloud.getZones({
- *     availableDiskCategory: "cloudEfficiency",
+ *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
  * const defaultInstanceTypes = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
@@ -58,7 +56,7 @@ import * as utilities from "../utilities";
  *         internetChargeType: "PayByTraffic",
  *         internetMaxBandwidthOut: 10,
  *         securityGroups: defaultSecurityGroup.id,
- *         systemDiskCategory: "cloudEfficiency",
+ *         systemDiskCategory: "cloud_efficiency",
  *         vswitchId: defaultSwitch.id,
  *     }));
  * }
@@ -79,13 +77,12 @@ import * as utilities from "../utilities";
  *     loadBalancerId: defaultLoadBalancer.id,
  * });
  * ```
- *
  * ## Block servers
  *
  * The servers mapping supports the following:
  *
  * * `serverId` - (Required) A list backend server ID (ECS instance ID).
- * * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. 
+ * * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100].
  * * `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`. Default to `ecs`.
  * * `serverIp` - (Optional, Available in 1.93.0+) ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
  */

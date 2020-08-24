@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.CloudConnect
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,16 +41,29 @@ namespace Pulumi.AliCloud.CloudConnect
     ///         });
     ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
     ///         {
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "alicloud.cen_account",
     ///         });
     ///         var ccn = new AliCloud.CloudConnect.Network("ccn", new AliCloud.CloudConnect.NetworkArgs
     ///         {
     ///             IsDefault = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "alicloud.ccn_account",
     ///         });
     ///         var @default = new AliCloud.CloudConnect.NetworkGrant("default", new AliCloud.CloudConnect.NetworkGrantArgs
     ///         {
     ///             CcnId = ccn.Id,
     ///             CenId = cen.Id,
     ///             CenUid = "xxxxxx",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "alicloud_cen_instance.cen",
+    ///                 "alicloud_cloud_connect_network.ccn",
+    ///             },
     ///         });
     ///     }
     /// 

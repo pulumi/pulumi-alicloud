@@ -15,6 +15,71 @@ import (
 // In addition to inheriting all SLS functions, it also enhances the real-time automatic centralized collection of audit related logs across multi cloud products under multi accounts, and provides support for storage, query and information summary required by audit. It covers actiontrail, OSS, NAS, SLB, API gateway, RDS, WAF, cloud firewall, cloud security center and other products.
 //
 // > **NOTE:** Available in 1.81.0
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/log"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := log.NewAudit(ctx, "example", &log.AuditArgs{
+// 			Aliuid:      pulumi.String("12345678"),
+// 			DisplayName: pulumi.String("tf-audit-test"),
+// 			VariableMap: pulumi.StringMap{
+// 				"actiontrail_enabled": pulumi.String("true"),
+// 				"actiontrail_ttl":     pulumi.String("180"),
+// 				"oss_access_enabled":  pulumi.String("true"),
+// 				"oss_access_ttl":      pulumi.String("180"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// Multiple accounts Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/log"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := log.NewAudit(ctx, "example", &log.AuditArgs{
+// 			Aliuid:      pulumi.String("12345678"),
+// 			DisplayName: pulumi.String("tf-audit-test"),
+// 			MultiAccounts: pulumi.StringArray{
+// 				pulumi.String("123456789123"),
+// 				pulumi.String("12345678912300123"),
+// 			},
+// 			VariableMap: pulumi.StringMap{
+// 				"actiontrail_enabled": pulumi.String("true"),
+// 				"actiontrail_ttl":     pulumi.String("180"),
+// 				"oss_access_enabled":  pulumi.String("true"),
+// 				"oss_access_ttl":      pulumi.String("180"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Audit struct {
 	pulumi.CustomResourceState
 

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services. 
+ * Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/35387.htm)
  *
  * > **NOTE:**  Available in 1.47.0+
@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
  *
  * ## Example Usage
- *
  * ### Create a Gpdb instance
  *
  * ```typescript

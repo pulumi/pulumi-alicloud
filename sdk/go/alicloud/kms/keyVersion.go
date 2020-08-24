@@ -13,6 +13,35 @@ import (
 // Provides a Alikms Key Version resource. For information about Alikms Key Version and how to use it, see [What is Resource Alikms Key Version](https://www.alibabacloud.com/help/doc-detail/133838.htm).
 //
 // > **NOTE:** Available in v1.85.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/kms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		this, err := kms.NewKey(ctx, "this", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = kms.NewKeyVersion(ctx, "keyversion", &kms.KeyVersionArgs{
+// 			KeyId: this.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type KeyVersion struct {
 	pulumi.CustomResourceState
 

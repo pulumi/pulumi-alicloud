@@ -46,7 +46,6 @@ namespace Pulumi.AliCloud.Oos
         ///     public Output&lt;string&gt; FirstTemplateName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

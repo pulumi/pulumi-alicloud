@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.Kms
         ///     public Output&lt;string&gt; FirstSecretData { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -105,7 +104,7 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of Kms Secret Version ids. 
+        /// A list of Kms Secret Version ids.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? IncludeDeprecated;

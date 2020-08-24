@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a HBase instance resource supports replica set instances only. the HBase provides stable, reliable, and automatic scalable database services. 
+ * Provides a HBase instance resource supports replica set instances only. the HBase provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
  *
@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
  *
  * ## Example Usage
- *
  * ### Create a hbase instance
  *
  * ```typescript
@@ -28,7 +27,7 @@ import * as utilities from "../utilities";
  * const defaultInstance = new alicloud.hbase.Instance("default", {
  *     coldStorageSize: 0,
  *     coreDiskSize: 400,
- *     coreDiskType: "cloudEfficiency",
+ *     coreDiskType: "cloud_efficiency",
  *     coreInstanceQuantity: 2,
  *     coreInstanceType: "hbase.sn1.large",
  *     engineVersion: "2.0",
@@ -37,6 +36,8 @@ import * as utilities from "../utilities";
  *     zoneId: "cn-shenzhen-b",
  * });
  * ```
+ *
+ * this is a example for class netType instance. you can find more detail with the examples/hbase dir.
  */
 export class Instance extends pulumi.CustomResource {
     /**
@@ -85,7 +86,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly coreDiskType!: pulumi.Output<string>;
     /**
-     * default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance. 
+     * default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
      */
     public readonly coreInstanceQuantity!: pulumi.Output<number | undefined>;
     public readonly coreInstanceType!: pulumi.Output<string>;
@@ -113,7 +114,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly maintainStartTime!: pulumi.Output<string>;
     public readonly masterInstanceType!: pulumi.Output<string>;
     /**
-     * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted. 
+     * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -230,7 +231,7 @@ export interface InstanceState {
      */
     readonly coreDiskType?: pulumi.Input<string>;
     /**
-     * default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance. 
+     * default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
      */
     readonly coreInstanceQuantity?: pulumi.Input<number>;
     readonly coreInstanceType?: pulumi.Input<string>;
@@ -258,7 +259,7 @@ export interface InstanceState {
     readonly maintainStartTime?: pulumi.Input<string>;
     readonly masterInstanceType?: pulumi.Input<string>;
     /**
-     * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted. 
+     * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -302,7 +303,7 @@ export interface InstanceArgs {
      */
     readonly coreDiskType: pulumi.Input<string>;
     /**
-     * default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance. 
+     * default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
      */
     readonly coreInstanceQuantity?: pulumi.Input<number>;
     readonly coreInstanceType: pulumi.Input<string>;
@@ -330,7 +331,7 @@ export interface InstanceArgs {
     readonly maintainStartTime?: pulumi.Input<string>;
     readonly masterInstanceType: pulumi.Input<string>;
     /**
-     * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted. 
+     * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      */
     readonly name?: pulumi.Input<string>;
     /**

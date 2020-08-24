@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.Hbase.Outputs
         /// </summary>
         public readonly string PayType;
         /// <summary>
-        /// Region ID the instance belongs to. 
+        /// Region ID the instance belongs to.
         /// </summary>
         public readonly string RegionId;
         /// <summary>

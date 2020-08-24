@@ -10,6 +10,33 @@ import (
 // This data source provides a list of KMS KeyVersions in an Alibaba Cloud account according to the specified filters.
 //
 // > NOTE: Available in v1.85.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/kms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		alicloudKmsKeyVersionsDs, err := kms.GetKeyVersions(ctx, &kms.GetKeyVersionsArgs{
+// 			Ids: []string{
+// 				"d89e8a53-b708-41aa-8c67-6873axxx",
+// 			},
+// 			KeyId: "08438c-b4d5-4d05-928c-07b7xxxx",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("allVersions", alicloudKmsKeyVersionsDs.Versions)
+// 		return nil
+// 	})
+// }
+// ```
 func GetKeyVersions(ctx *pulumi.Context, args *GetKeyVersionsArgs, opts ...pulumi.InvokeOption) (*GetKeyVersionsResult, error) {
 	var rv GetKeyVersionsResult
 	err := ctx.Invoke("alicloud:kms/getKeyVersions:getKeyVersions", args, &rv, opts...)

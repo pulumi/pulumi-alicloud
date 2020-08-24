@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.MaxCompute
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.MaxCompute
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the maxcompute project. 
+        /// The name of the maxcompute project.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.MaxCompute
     public sealed class ProjectArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the maxcompute project. 
+        /// The name of the maxcompute project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.MaxCompute
     public sealed class ProjectState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the maxcompute project. 
+        /// The name of the maxcompute project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

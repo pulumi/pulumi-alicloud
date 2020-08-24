@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +21,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "onsInstanceDatasourceName";
  *
  * const defaultInstance = new alicloud.rocketmq.Instance("default", {
- *     remark: "defaultOnsInstanceRemark",
+ *     remark: "default_ons_instance_remark",
  * });
  * const instancesDs = pulumi.all([defaultInstance.id, defaultInstance.name]).apply(([id, name]) => alicloud.rocketmq.getInstances({
  *     ids: [id],
@@ -59,7 +57,7 @@ export interface GetInstancesArgs {
      */
     readonly ids?: string[];
     /**
-     * A regex string to filter results by the instance name. 
+     * A regex string to filter results by the instance name.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;

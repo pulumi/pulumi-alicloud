@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.Ram
         ///     public Output&lt;string&gt; FirstRoleId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -55,7 +54,7 @@ namespace Pulumi.AliCloud.Ram
         private List<string>? _ids;
 
         /// <summary>
-        /// - A list of ram role IDs. 
+        /// - A list of ram role IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -98,12 +97,12 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of ram role IDs. 
+        /// A list of ram role IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of ram role names. 
+        /// A list of ram role names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int> OnDemandBaseCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
+        /// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         /// </summary>
         [Output("onDemandPercentageAboveBaseCapacity")]
         public Output<int> OnDemandPercentageAboveBaseCapacity { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int> SpotInstancePools { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
+        /// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         /// </summary>
         [Output("spotInstanceRemedy")]
         public Output<bool> SpotInstanceRemedy { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? OnDemandBaseCapacity { get; set; }
 
         /// <summary>
-        /// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
+        /// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         /// </summary>
         [Input("onDemandPercentageAboveBaseCapacity")]
         public Input<int>? OnDemandPercentageAboveBaseCapacity { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? SpotInstancePools { get; set; }
 
         /// <summary>
-        /// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
+        /// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         /// </summary>
         [Input("spotInstanceRemedy")]
         public Input<bool>? SpotInstanceRemedy { get; set; }
@@ -358,7 +358,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? OnDemandBaseCapacity { get; set; }
 
         /// <summary>
-        /// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
+        /// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         /// </summary>
         [Input("onDemandPercentageAboveBaseCapacity")]
         public Input<int>? OnDemandPercentageAboveBaseCapacity { get; set; }
@@ -392,7 +392,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? SpotInstancePools { get; set; }
 
         /// <summary>
-        /// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
+        /// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         /// </summary>
         [Input("spotInstanceRemedy")]
         public Input<bool>? SpotInstanceRemedy { get; set; }

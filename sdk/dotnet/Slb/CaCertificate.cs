@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// For information about CA Certificate and how to use it, see [Configure CA Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
     /// 
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// * using CA certificate content
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -36,6 +35,26 @@ namespace Pulumi.AliCloud.Slb
     /// MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
     /// -----END CERTIFICATE-----
     /// ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// * using CA certificate file
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo_file = new AliCloud.Slb.CaCertificate("foo-file", new AliCloud.Slb.CaCertificateArgs
+    ///         {
+    ///             CaCertificate = File.ReadAllText($"{path.Module}/ca_certificate.pem"),
     ///         });
     ///     }
     /// 

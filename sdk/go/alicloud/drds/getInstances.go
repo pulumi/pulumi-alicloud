@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-//  The `drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
+// The `drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
 // Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 //
 // > **NOTE:** Available in 1.35.0+.

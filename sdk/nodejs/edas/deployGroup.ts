@@ -9,10 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.82.0+
  *
- *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,7 +56,7 @@ export class DeployGroup extends pulumi.CustomResource {
      */
     public readonly appId!: pulumi.Output<string>;
     /**
-     * The name of the instance group that you want to create. 
+     * The name of the instance group that you want to create.
      */
     public readonly groupName!: pulumi.Output<string>;
     /**
@@ -112,7 +111,7 @@ export interface DeployGroupState {
      */
     readonly appId?: pulumi.Input<string>;
     /**
-     * The name of the instance group that you want to create. 
+     * The name of the instance group that you want to create.
      */
     readonly groupName?: pulumi.Input<string>;
     /**
@@ -130,7 +129,7 @@ export interface DeployGroupArgs {
      */
     readonly appId: pulumi.Input<string>;
     /**
-     * The name of the instance group that you want to create. 
+     * The name of the instance group that you want to create.
      */
     readonly groupName: pulumi.Input<string>;
 }

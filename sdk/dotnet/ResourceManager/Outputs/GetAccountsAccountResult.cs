@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The way in which the member account joined the resource directory. 
+        /// The way in which the member account joined the resource directory.
         /// </summary>
         public readonly string JoinMethod;
         /// <summary>
@@ -42,11 +42,11 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string ResourceDirectoryId;
         /// <summary>
-        /// The status of the member account. 
+        /// The status of the member account.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The type of the member account. 
+        /// The type of the member account.
         /// </summary>
         public readonly string Type;
 

@@ -8,6 +8,31 @@ import (
 )
 
 // This data source provides the api groups of the current Alibaba Cloud user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/apigateway"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "outgroups"
+// 		dataApigatway, err := apigateway.GetGroups(ctx, &apigateway.GetGroupsArgs{
+// 			OutputFile: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstGroupId", dataApigatway.Groups[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	var rv GetGroupsResult
 	err := ctx.Invoke("alicloud:apigateway/getGroups:getGroups", args, &rv, opts...)

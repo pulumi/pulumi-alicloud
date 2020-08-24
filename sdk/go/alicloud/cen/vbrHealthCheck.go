@@ -16,6 +16,51 @@ import (
 // For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).
 //
 // > **NOTE:** Available in 1.88.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
+// 			ChildInstanceId:       pulumi.String("vbr-xxxxx"),
+// 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
+// 			InstanceId:            defaultInstance.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewVbrHealthCheck(ctx, "defaultVbrHealthCheck", &cen.VbrHealthCheckArgs{
+// 			CenId:               defaultInstance.ID(),
+// 			HealthCheckInterval: pulumi.Int(2),
+// 			HealthCheckSourceIp: pulumi.String("192.168.1.2"),
+// 			HealthCheckTargetIp: pulumi.String("10.0.0.2"),
+// 			HealthyThreshold:    pulumi.Int(8),
+// 			VbrInstanceId:       pulumi.String("vbr-xxxxx"),
+// 			VbrInstanceRegionId: pulumi.String("cn-hangzhou"),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"alicloud_cen_instance_attachment.default",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type VbrHealthCheck struct {
 	pulumi.CustomResourceState
 

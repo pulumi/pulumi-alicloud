@@ -9,6 +9,82 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Log
 {
+    /// <summary>
+    /// The Logtail access service is a log collection agent provided by Log Service.
+    /// You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
+    /// Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
+    /// 
+    /// This resource amis to attach one logtail configure to a machine group.
+    /// 
+    /// &gt; **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var testProject = new AliCloud.Log.Project("testProject", new AliCloud.Log.ProjectArgs
+    ///         {
+    ///             Description = "create by terraform",
+    ///         });
+    ///         var testStore = new AliCloud.Log.Store("testStore", new AliCloud.Log.StoreArgs
+    ///         {
+    ///             AppendMeta = true,
+    ///             AutoSplit = true,
+    ///             MaxSplitShardCount = 60,
+    ///             Project = testProject.Name,
+    ///             RetentionPeriod = 3650,
+    ///             ShardCount = 3,
+    ///         });
+    ///         var testMachineGroup = new AliCloud.Log.MachineGroup("testMachineGroup", new AliCloud.Log.MachineGroupArgs
+    ///         {
+    ///             IdentifyLists = 
+    ///             {
+    ///                 "10.0.0.1",
+    ///                 "10.0.0.3",
+    ///                 "10.0.0.2",
+    ///             },
+    ///             Project = testProject.Name,
+    ///             Topic = "terraform",
+    ///         });
+    ///         var testLogTailConfig = new AliCloud.Log.LogTailConfig("testLogTailConfig", new AliCloud.Log.LogTailConfigArgs
+    ///         {
+    ///             InputDetail = @"  	{
+    /// 		""logPath"": ""/logPath"",
+    /// 		""filePattern"": ""access.log"",
+    /// 		""logType"": ""json_log"",
+    /// 		""topicFormat"": ""default"",
+    /// 		""discardUnmatch"": false,
+    /// 		""enableRawLog"": true,
+    /// 		""fileEncoding"": ""gbk"",
+    /// 		""maxDepth"": 10
+    /// 	}
+    /// 	
+    /// ",
+    ///             InputType = "file",
+    ///             LogSample = "test",
+    ///             Logstore = testStore.Name,
+    ///             OutputType = "LogService",
+    ///             Project = testProject.Name,
+    ///         });
+    ///         var testLogTailAttachment = new AliCloud.Log.LogTailAttachment("testLogTailAttachment", new AliCloud.Log.LogTailAttachmentArgs
+    ///         {
+    ///             LogtailConfigName = testLogTailConfig.Name,
+    ///             MachineGroupName = testMachineGroup.Name,
+    ///             Project = testProject.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class LogTailAttachment : Pulumi.CustomResource
     {
         /// <summary>

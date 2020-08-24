@@ -7,11 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides available scaling rule resources. 
+ * This data source provides available scaling rule resources.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,11 +17,11 @@ import * as utilities from "../utilities";
  *
  * const scalingrulesDs = pulumi.output(alicloud.ess.getScalingRules({
  *     ids: [
- *         "scalingRuleId1",
- *         "scalingRuleId2",
+ *         "scaling_rule_id1",
+ *         "scaling_rule_id2",
  *     ],
- *     nameRegex: "scalingRuleName",
- *     scalingGroupId: "scalingGroupId",
+ *     nameRegex: "scaling_rule_name",
+ *     scalingGroupId: "scaling_group_id",
  * }, { async: true }));
  *
  * export const firstScalingRule = scalingrulesDs.rules[0].id;

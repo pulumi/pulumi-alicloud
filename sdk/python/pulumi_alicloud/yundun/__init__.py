@@ -7,3 +7,4 @@ from .bastion_host_instance import *
 from .db_audit_instance import *
 from .get_bastion_host_instances import *
 from .get_db_audit_instance import *
+from . import outputs

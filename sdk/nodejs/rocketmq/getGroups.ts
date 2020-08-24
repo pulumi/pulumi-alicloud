@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,12 +22,12 @@ import * as utilities from "../utilities";
  * const groupId = config.get("groupId") || "GID-onsGroupDatasourceName";
  *
  * const defaultInstance = new alicloud.rocketmq.Instance("default", {
- *     remark: "defaultOnsInstanceRemark",
+ *     remark: "default_ons_instance_remark",
  * });
  * const defaultGroup = new alicloud.rocketmq.Group("default", {
  *     groupId: groupId,
  *     instanceId: defaultInstance.id,
- *     remark: "dafaultOnsGroupRemark",
+ *     remark: "dafault_ons_group_remark",
  * });
  * const groupsDs = defaultGroup.instanceId.apply(instanceId => alicloud.rocketmq.getGroups({
  *     groupIdRegex: groupId,
@@ -60,7 +58,7 @@ export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetGroupsArgs {
     /**
-     * A regex string to filter results by the group name. 
+     * A regex string to filter results by the group name.
      */
     readonly groupIdRegex?: string;
     /**

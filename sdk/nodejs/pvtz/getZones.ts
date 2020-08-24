@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -45,7 +43,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetZonesArgs {
     /**
-     * A list of zone IDs. 
+     * A list of zone IDs.
      */
     readonly ids?: string[];
     /**
@@ -64,12 +62,12 @@ export interface GetZonesResult {
      */
     readonly id: string;
     /**
-     * A list of zone IDs. 
+     * A list of zone IDs.
      */
     readonly ids: string[];
     readonly keyword?: string;
     /**
-     * A list of zone names. 
+     * A list of zone names.
      */
     readonly names: string[];
     readonly outputFile?: string;

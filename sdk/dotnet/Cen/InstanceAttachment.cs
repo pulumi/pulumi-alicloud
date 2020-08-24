@@ -9,6 +9,42 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cen
 {
+    /// <summary>
+    /// Provides a CEN child instance attachment resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "tf-testAccCenInstanceAttachmentBasic";
+    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
+    ///         {
+    ///             Description = "terraform01",
+    ///         });
+    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "192.168.0.0/16",
+    ///         });
+    ///         var foo = new AliCloud.Cen.InstanceAttachment("foo", new AliCloud.Cen.InstanceAttachmentArgs
+    ///         {
+    ///             ChildInstanceId = vpc.Id,
+    ///             ChildInstanceRegionId = "cn-beijing",
+    ///             InstanceId = cen.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class InstanceAttachment : Pulumi.CustomResource
     {
         /// <summary>

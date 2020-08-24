@@ -11,6 +11,36 @@ import (
 // main versions available in Alibaba Cloud account when create a emr cluster.
 //
 // > **NOTE:** Available in 1.59.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/emr"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "EMR-3.22.0"
+// 		_default, err := emr.GetMainVersions(ctx, &emr.GetMainVersionsArgs{
+// 			ClusterTypes: []string{
+// 				"HADOOP",
+// 				"ZOOKEEPER",
+// 			},
+// 			EmrVersion: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstMainVersion", _default.MainVersions[0].EmrVersion)
+// 		ctx.Export("thisClusterTypes", _default.MainVersions[0].ClusterTypes)
+// 		return nil
+// 	})
+// }
+// ```
 func GetMainVersions(ctx *pulumi.Context, args *GetMainVersionsArgs, opts ...pulumi.InvokeOption) (*GetMainVersionsResult, error) {
 	var rv GetMainVersionsResult
 	err := ctx.Invoke("alicloud:emr/getMainVersions:getMainVersions", args, &rv, opts...)

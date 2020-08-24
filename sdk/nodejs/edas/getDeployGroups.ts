@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -51,7 +49,7 @@ export interface GetDeployGroupsArgs {
      */
     readonly appId: string;
     /**
-     * A regex string to filter results by the deploy group name. 
+     * A regex string to filter results by the deploy group name.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;

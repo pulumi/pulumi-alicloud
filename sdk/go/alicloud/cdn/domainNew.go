@@ -15,6 +15,40 @@ import (
 // For information about Cdn Domain New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/91176.html).
 //
 // > **NOTE:** Available in v1.34.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cdn"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
+// 			CdnType:    pulumi.String("web"),
+// 			DomainName: pulumi.String("terraform.test.com"),
+// 			Scope:      pulumi.String("overseas"),
+// 			Sources: &cdn.DomainNewSourcesArgs{
+// 				Content:  pulumi.String("1.1.1.1"),
+// 				Port:     pulumi.Int(80),
+// 				Priority: pulumi.Int(20),
+// 				Type:     pulumi.String("ipaddr"),
+// 				Weight:   pulumi.Int(10),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DomainNew struct {
 	pulumi.CustomResourceState
 

@@ -47,7 +47,6 @@ namespace Pulumi.AliCloud.Cen
         ///     public Output&lt;string&gt; FirstCenRouteMapId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

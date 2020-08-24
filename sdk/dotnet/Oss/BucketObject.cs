@@ -13,7 +13,6 @@ namespace Pulumi.AliCloud.Oss
     /// Provides a resource to put a object(content or file) to a oss bucket.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Uploading a file to a bucket
     /// 
     /// ```csharp
@@ -34,7 +33,6 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// }
     /// ```
-    /// 
     /// ### Uploading a content to a bucket
     /// 
     /// ```csharp

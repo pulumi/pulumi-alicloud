@@ -47,7 +47,6 @@ namespace Pulumi.AliCloud.KVStore
         ///     public Output&lt;string&gt; FirstKvstoreInstanceClass { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -65,7 +65,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     public Output&lt;string&gt; FirstInstanceName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -89,7 +88,7 @@ namespace Pulumi.AliCloud.ActionTrail
         }
 
         /// <summary>
-        /// A regex string to filter results by the instance name. 
+        /// A regex string to filter results by the instance name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }

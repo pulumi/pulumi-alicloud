@@ -19,6 +19,34 @@ import (
 // > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
 //
 // > **NOTE:** Currently, this resource only support `Domestic Site Account`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/drds"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := drds.NewInstance(ctx, "_default", &drds.InstanceArgs{
+// 			Description:        pulumi.String("drds instance"),
+// 			InstanceChargeType: pulumi.String("PostPaid"),
+// 			InstanceSeries:     pulumi.String("drds.sn1.4c8g"),
+// 			Specification:      pulumi.String("drds.sn1.4c8g.8C16G"),
+// 			VswitchId:          pulumi.String("vsw-bp1jlu3swk8rq2yoi40ey"),
+// 			ZoneId:             pulumi.String("cn-hangzhou-e"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 

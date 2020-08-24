@@ -13,9 +13,12 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
     [OutputType]
     public sealed class ResourceGroupRegionStatus
     {
+        /// <summary>
+        /// The region ID.
+        /// </summary>
         public readonly string? RegionId;
         /// <summary>
-        /// The status of the resource group.
+        /// The status of the regional resource group.
         /// </summary>
         public readonly string? Status;
 

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Cassandra cluster resource supports replica set clusters only. The Cassandra provides stable, reliable, and automatic scalable database services. 
+ * Provides a Cassandra cluster resource supports replica set clusters only. The Cassandra provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
  *
@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
  *
  * ## Example Usage
- *
  * ### Create a cassandra cluster
  *
  * ```typescript
@@ -29,7 +28,7 @@ import * as utilities from "../utilities";
  *     clusterName: "cassandra-cluster-name-tf",
  *     dataCenterName: "dc-1",
  *     diskSize: 160,
- *     diskType: "cloudSsd",
+ *     diskType: "cloud_ssd",
  *     instanceType: "cassandra.c.large",
  *     ipWhite: "127.0.0.1",
  *     maintainEndTime: "20:00Z",
@@ -40,6 +39,8 @@ import * as utilities from "../utilities";
  *     vswitchId: "vsw-xxxx",
  * });
  * ```
+ *
+ * This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -78,11 +79,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+     * Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
     public readonly clusterName!: pulumi.Output<string | undefined>;
     /**
-     * Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+     * Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
     public readonly dataCenterName!: pulumi.Output<string | undefined>;
     /**
@@ -117,7 +118,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly majorVersion!: pulumi.Output<string>;
     /**
-     * The node count of Cassandra dataCenter-1 default to 2. 
+     * The node count of Cassandra dataCenter-1 default to 2.
      */
     public readonly nodeCount!: pulumi.Output<number>;
     public readonly password!: pulumi.Output<string | undefined>;
@@ -246,11 +247,11 @@ export interface ClusterState {
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+     * Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
     readonly clusterName?: pulumi.Input<string>;
     /**
-     * Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+     * Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
     readonly dataCenterName?: pulumi.Input<string>;
     /**
@@ -285,7 +286,7 @@ export interface ClusterState {
      */
     readonly majorVersion?: pulumi.Input<string>;
     /**
-     * The node count of Cassandra dataCenter-1 default to 2. 
+     * The node count of Cassandra dataCenter-1 default to 2.
      */
     readonly nodeCount?: pulumi.Input<number>;
     readonly password?: pulumi.Input<string>;
@@ -328,11 +329,11 @@ export interface ClusterArgs {
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+     * Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
     readonly clusterName?: pulumi.Input<string>;
     /**
-     * Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+     * Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
     readonly dataCenterName?: pulumi.Input<string>;
     /**
@@ -367,7 +368,7 @@ export interface ClusterArgs {
      */
     readonly majorVersion: pulumi.Input<string>;
     /**
-     * The node count of Cassandra dataCenter-1 default to 2. 
+     * The node count of Cassandra dataCenter-1 default to 2.
      */
     readonly nodeCount: pulumi.Input<number>;
     readonly password?: pulumi.Input<string>;

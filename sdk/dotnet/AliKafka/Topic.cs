@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;

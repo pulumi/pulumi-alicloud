@@ -34,7 +34,6 @@ namespace Pulumi.AliCloud
         ///     public Output&lt;string&gt; CurrentAccountId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

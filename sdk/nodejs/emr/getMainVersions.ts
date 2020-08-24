@@ -7,14 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * The `alicloud.emr.getMainVersions` data source provides a collection of emr 
+ * The `alicloud.emr.getMainVersions` data source provides a collection of emr
  * main versions available in Alibaba Cloud account when create a emr cluster.
  *
  * > **NOTE:** Available in 1.59.0+
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -78,7 +76,7 @@ export interface GetMainVersionsResult {
      */
     readonly id: string;
     /**
-     * A list of emr instance types IDs. 
+     * A list of emr instance types IDs.
      */
     readonly ids: string[];
     /**

@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.ApiGateway
         ///     public Output&lt;string&gt; FirstAppId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -52,7 +51,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of app IDs. 
+        /// A list of app IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -99,12 +98,12 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of app IDs. 
+        /// A list of app IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of app names. 
+        /// A list of app names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

@@ -10,6 +10,30 @@ import (
 // This data source provides the master slave server groups related to a server load balancer.
 //
 // > **NOTE:** Available in 1.54.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		sampleDs, err := slb.GetMasterSlaveServerGroups(ctx, &slb.GetMasterSlaveServerGroupsArgs{
+// 			LoadBalancerId: alicloud_slb.Sample_slb.Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstSlbServerGroupId", sampleDs.Groups[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetMasterSlaveServerGroups(ctx *pulumi.Context, args *GetMasterSlaveServerGroupsArgs, opts ...pulumi.InvokeOption) (*GetMasterSlaveServerGroupsResult, error) {
 	var rv GetMasterSlaveServerGroupsResult
 	err := ctx.Invoke("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args, &rv, opts...)

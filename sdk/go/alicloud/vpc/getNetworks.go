@@ -8,6 +8,35 @@ import (
 )
 
 // This data source provides VPCs available to the user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "172.16.0.0/12"
+// 		opt1 := "^foo"
+// 		opt2 := "Available"
+// 		vpcsDs, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// 			CidrBlock: &opt0,
+// 			NameRegex: &opt1,
+// 			Status:    &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstVpcId", vpcsDs.Vpcs[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetNetworks(ctx *pulumi.Context, args *GetNetworksArgs, opts ...pulumi.InvokeOption) (*GetNetworksResult, error) {
 	var rv GetNetworksResult
 	err := ctx.Invoke("alicloud:vpc/getNetworks:getNetworks", args, &rv, opts...)

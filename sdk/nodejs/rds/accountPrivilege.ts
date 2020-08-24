@@ -4,6 +4,58 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const creation = config.get("creation") || "Rds";
+ * const name = config.get("name") || "dbaccountprivilegebasic";
+ *
+ * const defaultZones = pulumi.output(alicloud.getZones({
+ *     availableResourceCreation: creation,
+ * }, { async: true }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const instance = new alicloud.rds.Instance("instance", {
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     instanceName: name,
+ *     instanceStorage: 10,
+ *     instanceType: "rds.mysql.s1.small",
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const db: alicloud.rds.Database[] = [];
+ * for (let i = 0; i < 2; i++) {
+ *     db.push(new alicloud.rds.Database(`db-${i}`, {
+ *         description: "from terraform",
+ *         instanceId: instance.id,
+ *     }));
+ * }
+ * const account = new alicloud.rds.Account("account", {
+ *     description: "from terraform",
+ *     instanceId: instance.id,
+ *     password: "Test12345",
+ * });
+ * const privilege = new alicloud.rds.AccountPrivilege("privilege", {
+ *     accountName: account.name,
+ *     dbNames: db.map(v => v.name),
+ *     instanceId: instance.id,
+ *     privilege: "ReadOnly",
+ * });
+ * ```
+ */
 export class AccountPrivilege extends pulumi.CustomResource {
     /**
      * Get an existing AccountPrivilege resource's state with the given name, ID, and optional extra

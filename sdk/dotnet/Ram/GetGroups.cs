@@ -39,7 +39,6 @@ namespace Pulumi.AliCloud.Ram
         ///     public Output&lt;string&gt; FirstGroupName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

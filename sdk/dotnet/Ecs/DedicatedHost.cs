@@ -9,6 +9,68 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    /// <summary>
+    /// This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
+    /// 
+    /// &gt; **NOTE:** Available in 1.91.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Ecs.DedicatedHost("default", new AliCloud.Ecs.DedicatedHostArgs
+    ///         {
+    ///             DedicatedHostName = "dedicated_host_name",
+    ///             DedicatedHostType = "ddh.g5",
+    ///             Description = "From_Terraform",
+    ///             Tags = 
+    ///             {
+    ///                 { "Create", "Terraform" },
+    ///                 { "For", "DDH" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Create Prepaid DDH
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Ecs.DedicatedHost("default", new AliCloud.Ecs.DedicatedHostArgs
+    ///         {
+    ///             DedicatedHostName = "dedicated_host_name",
+    ///             DedicatedHostType = "ddh.g5",
+    ///             Description = "From_Terraform",
+    ///             ExpiredTime = "1",
+    ///             PaymentType = "PrePaid",
+    ///             SaleCycle = "Month",
+    ///             Tags = 
+    ///             {
+    ///                 { "Create", "Terraform" },
+    ///                 { "For", "DDH" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class DedicatedHost : Pulumi.CustomResource
     {
         /// <summary>

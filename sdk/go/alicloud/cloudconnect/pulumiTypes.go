@@ -25,8 +25,7 @@ type GetNetworksNetwork struct {
 // GetNetworksNetworkInput is an input type that accepts GetNetworksNetworkArgs and GetNetworksNetworkOutput values.
 // You can construct a concrete instance of `GetNetworksNetworkInput` via:
 //
-// 		 GetNetworksNetworkArgs{...}
-//
+//          GetNetworksNetworkArgs{...}
 type GetNetworksNetworkInput interface {
 	pulumi.Input
 
@@ -61,8 +60,7 @@ func (i GetNetworksNetworkArgs) ToGetNetworksNetworkOutputWithContext(ctx contex
 // GetNetworksNetworkArrayInput is an input type that accepts GetNetworksNetworkArray and GetNetworksNetworkArrayOutput values.
 // You can construct a concrete instance of `GetNetworksNetworkArrayInput` via:
 //
-// 		 GetNetworksNetworkArray{ GetNetworksNetworkArgs{...} }
-//
+//          GetNetworksNetworkArray{ GetNetworksNetworkArgs{...} }
 type GetNetworksNetworkArrayInput interface {
 	pulumi.Input
 

@@ -15,6 +15,38 @@ import (
 // This resource will help you to manager a Swarm Cluster.
 //
 // > **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitchId`.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cs.NewSwarm(ctx, "myCluster", &cs.SwarmArgs{
+// 			CidrBlock:    pulumi.String("172.18.0.0/24"),
+// 			DiskCategory: pulumi.String("cloud_efficiency"),
+// 			DiskSize:     pulumi.Int(20),
+// 			ImageId:      pulumi.Any(_var.Image_id),
+// 			InstanceType: pulumi.String("ecs.n4.small"),
+// 			NodeNumber:   pulumi.Int(2),
+// 			Password:     pulumi.String("Yourpassword1234"),
+// 			VswitchId:    pulumi.Any(_var.Vswitch_id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Swarm struct {
 	pulumi.CustomResourceState
 

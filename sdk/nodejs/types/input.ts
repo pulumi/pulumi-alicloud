@@ -364,7 +364,7 @@ export namespace cdn {
          */
         type: pulumi.Input<string>;
         /**
-         * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. 
+         * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
          */
         weight?: pulumi.Input<number>;
     }
@@ -383,7 +383,7 @@ export namespace cdn {
 
     export interface DomainParameterFilterConfig {
         /**
-         * This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.  
+         * This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.
          */
         enable?: pulumi.Input<string>;
         /**
@@ -1020,7 +1020,7 @@ export namespace log {
          */
         content: pulumi.Input<string>;
         /**
-         * Email address list.   
+         * Email address list.
          */
         emailLists?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1181,7 +1181,6 @@ export namespace mongodb {
          */
         nodeId?: pulumi.Input<string>;
         /**
-         *
          * - Custom storage space; value range: [10, 1,000]
          * - 10-GB increments. Unit: GB.
          */
@@ -1263,7 +1262,7 @@ export namespace oss {
          */
         days?: pulumi.Input<number>;
         /**
-         * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
+         * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
          */
         storageClass?: pulumi.Input<string>;
     }
@@ -1292,7 +1291,7 @@ export namespace oss {
 
     export interface BucketServerSideEncryptionRule {
         /**
-         * The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
+         * The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
          */
         kmsMasterKeyId?: pulumi.Input<string>;
         /**
@@ -1386,9 +1385,12 @@ export namespace rds {
 
 export namespace resourcemanager {
     export interface ResourceGroupRegionStatus {
+        /**
+         * The region ID.
+         */
         regionId?: pulumi.Input<string>;
         /**
-         * The status of the resource group.
+         * The status of the regional resource group.
          */
         status?: pulumi.Input<string>;
     }

@@ -13,6 +13,48 @@ import (
 // Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/doc-detail/157481.htm).
 //
 // > **NOTE:** Available in 1.86.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ddos"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ddos.NewSchedulerRule(ctx, "example", &ddos.SchedulerRuleArgs{
+// 			RuleName: pulumi.String("tf-testacc7929727******"),
+// 			RuleType: pulumi.Int(3),
+// 			Rules: ddos.SchedulerRuleRuleArray{
+// 				&ddos.SchedulerRuleRuleArgs{
+// 					Priority:  pulumi.Int(100),
+// 					RegionId:  pulumi.String("cn-hangzhou"),
+// 					Type:      pulumi.String("A"),
+// 					Value:     pulumi.String("170.33.2.125"),
+// 					ValueType: pulumi.Int(3),
+// 				},
+// 				&ddos.SchedulerRuleRuleArgs{
+// 					Priority:  pulumi.Int(50),
+// 					RegionId:  pulumi.String("cn-hangzhou"),
+// 					Type:      pulumi.String("A"),
+// 					Value:     pulumi.String("170.33.14.193"),
+// 					ValueType: pulumi.Int(1),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type SchedulerRule struct {
 	pulumi.CustomResourceState
 

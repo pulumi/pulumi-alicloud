@@ -14,8 +14,87 @@ import (
 //
 // > **NOTE:** Available in 1.79.0+
 //
+// ## Example Usage
 //
+// ```go
+// package main
 //
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "cloud_efficiency"
+// 		opt1 := "VSwitch"
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableDiskCategory:     &opt0,
+// 			AvailableResourceCreation: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+// 			VpcId: defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt2 := true
+// 		opt3 := "^ubuntu_18.*64"
+// 		opt4 := "system"
+// 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// 			MostRecent: &opt2,
+// 			NameRegex:  &opt3,
+// 			Owners:     &opt4,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		template, err := ecs.NewLaunchTemplate(ctx, "template", &ecs.LaunchTemplateArgs{
+// 			ImageId:         pulumi.String(defaultImages.Images[0].Id),
+// 			InstanceType:    pulumi.String("ecs.n1.tiny"),
+// 			SecurityGroupId: defaultSecurityGroup.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ecs.NewAutoProvisioningGroup(ctx, "defaultAutoProvisioningGroup", &ecs.AutoProvisioningGroupArgs{
+// 			LaunchTemplateConfigs: ecs.AutoProvisioningGroupLaunchTemplateConfigArray{
+// 				&ecs.AutoProvisioningGroupLaunchTemplateConfigArgs{
+// 					InstanceType: pulumi.String("ecs.n1.small"),
+// 					VswitchId:    defaultSwitch.ID(),
+// 				},
+// 			},
+// 			LaunchTemplateId:         template.ID(),
+// 			PayAsYouGoTargetCapacity: pulumi.String("1"),
+// 			SpotTargetCapacity:       pulumi.String("2"),
+// 			TotalTargetCapacity:      pulumi.String("4"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Block config
 //
 // The config mapping supports the following:

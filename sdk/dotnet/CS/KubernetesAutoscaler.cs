@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// This resource will help you to manager cluster-autoscaler in Kubernetes Cluster. 
+    /// This resource will help you to manager cluster-autoscaler in Kubernetes Cluster.
     /// 
     /// &gt; **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
     /// 
-    /// &gt; **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group. 
+    /// &gt; **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group.
     /// 
     /// &gt; **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
     /// 
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// cluster-autoscaler in Kubernetes Cluster
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The cool_down_duration option of cluster-autoscaler.  
+        /// The cool_down_duration option of cluster-autoscaler.
         /// </summary>
         [Output("coolDownDuration")]
         public Output<string> CoolDownDuration { get; private set; } = null!;
@@ -74,7 +74,6 @@ namespace Pulumi.AliCloud.CS
         public Output<string> DeferScaleInDuration { get; private set; } = null!;
 
         /// <summary>
-        /// 
         /// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
         /// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
         /// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -147,7 +146,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The cool_down_duration option of cluster-autoscaler.  
+        /// The cool_down_duration option of cluster-autoscaler.
         /// </summary>
         [Input("coolDownDuration", required: true)]
         public Input<string> CoolDownDuration { get; set; } = null!;
@@ -162,7 +161,6 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAutoscalerNodepoolArgs>? _nodepools;
 
         /// <summary>
-        /// 
         /// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
         /// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
         /// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -199,7 +197,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The cool_down_duration option of cluster-autoscaler.  
+        /// The cool_down_duration option of cluster-autoscaler.
         /// </summary>
         [Input("coolDownDuration")]
         public Input<string>? CoolDownDuration { get; set; }
@@ -214,7 +212,6 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAutoscalerNodepoolGetArgs>? _nodepools;
 
         /// <summary>
-        /// 
         /// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
         /// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
         /// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.

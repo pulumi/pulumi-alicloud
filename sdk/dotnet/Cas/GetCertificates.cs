@@ -38,7 +38,6 @@ namespace Pulumi.AliCloud.Cas
         ///     public Output&lt;string&gt; Cert { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -93,7 +92,7 @@ namespace Pulumi.AliCloud.Cas
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of cert names. 
+        /// A list of cert names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

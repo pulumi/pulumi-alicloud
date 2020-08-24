@@ -33,7 +33,6 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

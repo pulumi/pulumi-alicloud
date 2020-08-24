@@ -10,6 +10,33 @@ import (
 // This data source provides availability zones for mongoDB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
 // > **NOTE:** Available in v1.73.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/mongodb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		zonesIds, err := mongodb.GetZones(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = mongodb.NewInstance(ctx, "mongodb", &mongodb.InstanceArgs{
+// 			ZoneId: pulumi.String(zonesIds.Zones[0].Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	var rv GetZonesResult
 	err := ctx.Invoke("alicloud:mongodb/getZones:getZones", args, &rv, opts...)

@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string TargetEntity;
         /// <summary>
-        /// The type of the invited account. 
+        /// The type of the invited account.
         /// </summary>
         public readonly string TargetType;
 

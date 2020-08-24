@@ -10,6 +10,35 @@ import (
 // This data source provides user-available access groups. Use when you can create mount points
 //
 // > NOTE: Available in 1.35.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/nas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "tf-testAccAccessGroupsdatasource"
+// 		opt1 := "^foo"
+// 		opt2 := "Classic"
+// 		ag, err := nas.GetAccessGroups(ctx, &nas.GetAccessGroupsArgs{
+// 			Description: &opt0,
+// 			NameRegex:   &opt1,
+// 			Type:        &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("alicloudNasAccessGroupsId", ag.Groups[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetAccessGroups(ctx *pulumi.Context, args *GetAccessGroupsArgs, opts ...pulumi.InvokeOption) (*GetAccessGroupsResult, error) {
 	var rv GetAccessGroupsResult
 	err := ctx.Invoke("alicloud:nas/getAccessGroups:getAccessGroups", args, &rv, opts...)

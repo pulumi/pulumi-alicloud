@@ -14,8 +14,6 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
@@ -71,11 +69,19 @@ namespace Pulumi.AliCloud.Rds
     ///             ConnectionPrefix = "t-con-123",
     ///             DistributionType = "Standard",
     ///             InstanceId = defaultInstance.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "alicloud_db_readonly_instance.default",
+    ///             },
     ///         });
     ///     }
     /// 
     /// }
     /// ```
+    /// 
+    /// &gt; **NOTE:** Resource `alicloud.rds.ReadWriteSplittingConnection` should be created after `alicloud.rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
     /// </summary>
     public partial class ReadWriteSplittingConnection : Pulumi.CustomResource
     {
@@ -92,7 +98,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
-        /// Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution. 
+        /// Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
         /// </summary>
         [Output("distributionType")]
         public Output<string> DistributionType { get; private set; } = null!;
@@ -104,7 +110,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.  
+        /// Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
         /// </summary>
         [Output("maxDelayTime")]
         public Output<int> MaxDelayTime { get; private set; } = null!;
@@ -116,7 +122,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom. 
+        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         /// </summary>
         [Output("weight")]
         public Output<ImmutableDictionary<string, object>?> Weight { get; private set; } = null!;
@@ -174,7 +180,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? ConnectionPrefix { get; set; }
 
         /// <summary>
-        /// Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution. 
+        /// Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
         /// </summary>
         [Input("distributionType", required: true)]
         public Input<string> DistributionType { get; set; } = null!;
@@ -186,7 +192,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.  
+        /// Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
         /// </summary>
         [Input("maxDelayTime")]
         public Input<int>? MaxDelayTime { get; set; }
@@ -201,7 +207,7 @@ namespace Pulumi.AliCloud.Rds
         private InputMap<object>? _weight;
 
         /// <summary>
-        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom. 
+        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         /// </summary>
         public InputMap<object> Weight
         {
@@ -229,7 +235,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
-        /// Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution. 
+        /// Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
         /// </summary>
         [Input("distributionType")]
         public Input<string>? DistributionType { get; set; }
@@ -241,7 +247,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.  
+        /// Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
         /// </summary>
         [Input("maxDelayTime")]
         public Input<int>? MaxDelayTime { get; set; }
@@ -256,7 +262,7 @@ namespace Pulumi.AliCloud.Rds
         private InputMap<object>? _weight;
 
         /// <summary>
-        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom. 
+        /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         /// </summary>
         public InputMap<object> Weight
         {

@@ -9,11 +9,9 @@ import * as utilities from "../utilities";
  *
  * For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
  *
- * > **NOTE** Only one of privateIps or privateIpsCount can be specified when assign private IPs. 
+ * > **NOTE** Only one of privateIps or privateIpsCount can be specified when assign private IPs.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

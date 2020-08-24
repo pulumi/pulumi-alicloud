@@ -13,7 +13,44 @@ import (
 // Provides a DMS Enterprise Instance resource.
 //
 // > **NOTE:** API users must first register in DMS.
-// > **NOTE:** Available in 1.81.0+.
+// **NOTE:** Available in 1.81.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dms.NewEnterpriseInstance(ctx, "_default", &dms.EnterpriseInstanceArgs{
+// 			DatabasePassword: pulumi.String("Yourpassword123"),
+// 			DatabaseUser:     pulumi.String("your_user_name"),
+// 			DbaUid:           pulumi.Int("1182725234xxxxxxx"),
+// 			EcsRegion:        pulumi.String("cn-shanghai"),
+// 			EnvType:          pulumi.String("test"),
+// 			ExportTimeout:    pulumi.Int(600),
+// 			Host:             pulumi.String("rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com"),
+// 			InstanceAlias:    pulumi.String("your_alias_name"),
+// 			InstanceSource:   pulumi.String("RDS"),
+// 			InstanceType:     pulumi.String("MySQL"),
+// 			NetworkType:      pulumi.String("VPC"),
+// 			Port:             pulumi.Int(3306),
+// 			QueryTimeout:     pulumi.Int(60),
+// 			SafeRule:         pulumi.String("自由操作"),
+// 			Tid:              pulumi.Int(12345),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type EnterpriseInstance struct {
 	pulumi.CustomResourceState
 

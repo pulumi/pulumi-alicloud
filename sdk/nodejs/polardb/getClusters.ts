@@ -14,8 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -60,7 +58,7 @@ export interface GetClustersArgs {
      */
     readonly descriptionRegex?: string;
     /**
-     * A list of PolarDB cluster IDs. 
+     * A list of PolarDB cluster IDs.
      */
     readonly ids?: string[];
     readonly outputFile?: string;
@@ -90,7 +88,7 @@ export interface GetClustersResult {
     readonly dbType?: string;
     readonly descriptionRegex?: string;
     /**
-     * A list of RDS cluster descriptions. 
+     * A list of RDS cluster descriptions.
      */
     readonly descriptions: string[];
     /**
@@ -98,7 +96,7 @@ export interface GetClustersResult {
      */
     readonly id: string;
     /**
-     * A list of RDS cluster IDs. 
+     * A list of RDS cluster IDs.
      */
     readonly ids: string[];
     readonly outputFile?: string;

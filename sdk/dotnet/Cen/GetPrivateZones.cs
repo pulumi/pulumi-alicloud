@@ -15,9 +15,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Private Zones available to the user.
         /// 
         /// &gt; **NOTE:** Available in v1.88.0+.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrivateZonesResult> InvokeAsync(GetPrivateZonesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesArgs(), options.WithVersion());

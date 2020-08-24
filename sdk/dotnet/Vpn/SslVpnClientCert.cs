@@ -11,24 +11,45 @@ namespace Pulumi.AliCloud.Vpn
 {
     public partial class SslVpnClientCert : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The client ca cert.
+        /// </summary>
         [Output("caCert")]
         public Output<string> CaCert { get; private set; } = null!;
 
+        /// <summary>
+        /// The client cert.
+        /// </summary>
         [Output("clientCert")]
         public Output<string> ClientCert { get; private set; } = null!;
 
+        /// <summary>
+        /// The vpn client config.
+        /// </summary>
         [Output("clientConfig")]
         public Output<string> ClientConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The client key.
+        /// </summary>
         [Output("clientKey")]
         public Output<string> ClientKey { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the client certificate.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the SSL-VPN server.
+        /// </summary>
         [Output("sslVpnServerId")]
         public Output<string> SslVpnServerId { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the client certificate.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -78,9 +99,15 @@ namespace Pulumi.AliCloud.Vpn
 
     public sealed class SslVpnClientCertArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the client certificate.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the SSL-VPN server.
+        /// </summary>
         [Input("sslVpnServerId", required: true)]
         public Input<string> SslVpnServerId { get; set; } = null!;
 
@@ -91,24 +118,45 @@ namespace Pulumi.AliCloud.Vpn
 
     public sealed class SslVpnClientCertState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The client ca cert.
+        /// </summary>
         [Input("caCert")]
         public Input<string>? CaCert { get; set; }
 
+        /// <summary>
+        /// The client cert.
+        /// </summary>
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
+        /// <summary>
+        /// The vpn client config.
+        /// </summary>
         [Input("clientConfig")]
         public Input<string>? ClientConfig { get; set; }
 
+        /// <summary>
+        /// The client key.
+        /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
+        /// <summary>
+        /// The name of the client certificate.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the SSL-VPN server.
+        /// </summary>
         [Input("sslVpnServerId")]
         public Input<string>? SslVpnServerId { get; set; }
 
+        /// <summary>
+        /// The status of the client certificate.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

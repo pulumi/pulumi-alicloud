@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -47,11 +45,11 @@ export function getApplications(args?: GetApplicationsArgs, opts?: pulumi.Invoke
  */
 export interface GetApplicationsArgs {
     /**
-     * An ids string to filter results by the application id. 
+     * An ids string to filter results by the application id.
      */
     readonly ids?: string[];
     /**
-     * A regex string to filter results by the application name. 
+     * A regex string to filter results by the application name.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;

@@ -37,7 +37,7 @@ export class App extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of the app. 
+     * The name of the app.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -86,7 +86,7 @@ export interface AppState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The name of the app. 
+     * The name of the app.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -104,7 +104,7 @@ export interface AppArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The name of the app. 
+     * The name of the app.
      */
     readonly name?: pulumi.Input<string>;
     /**

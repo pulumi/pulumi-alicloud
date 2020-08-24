@@ -6,6 +6,36 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a CDN Accelerated Domain resource. This resource is based on CDN's new version OpenAPI.
+ *
+ * For information about Cdn Domain New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/91176.html).
+ *
+ * > **NOTE:** Available in v1.34.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Create a new Domain.
+ * const domain = new alicloud.cdn.DomainNew("domain", {
+ *     cdnType: "web",
+ *     domainName: "terraform.test.com",
+ *     scope: "overseas",
+ *     sources: {
+ *         content: "1.1.1.1",
+ *         port: 80,
+ *         priority: 20,
+ *         type: "ipaddr",
+ *         weight: 10,
+ *     },
+ * });
+ * ```
+ */
 export class DomainNew extends pulumi.CustomResource {
     /**
      * Get an existing DomainNew resource's state with the given name, ID, and optional extra

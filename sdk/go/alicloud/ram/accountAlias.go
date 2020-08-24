@@ -11,6 +11,29 @@ import (
 )
 
 // Provides a RAM cloud account alias.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ram"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ram.NewAccountAlias(ctx, "alias", &ram.AccountAliasArgs{
+// 			AccountAlias: pulumi.String("hallo"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AccountAlias struct {
 	pulumi.CustomResourceState
 

@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.Slb
         ///     public Output&lt;string&gt; FirstSlbListenerProtocol { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

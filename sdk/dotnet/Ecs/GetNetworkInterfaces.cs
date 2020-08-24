@@ -114,7 +114,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     public Output&lt;string&gt; Eni0Name { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// ##  Argument Reference

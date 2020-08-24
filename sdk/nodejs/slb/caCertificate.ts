@@ -11,10 +11,9 @@ import * as utilities from "../utilities";
  *
  * For information about CA Certificate and how to use it, see [Configure CA Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
  *
- *
  * ## Example Usage
  *
- *
+ * * using CA certificate content
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +24,18 @@ import * as utilities from "../utilities";
  *     caCertificate: `-----BEGIN CERTIFICATE-----
  * MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
  * -----END CERTIFICATE-----`,
+ * });
+ * ```
+ *
+ * * using CA certificate file
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as fs from "fs";
+ *
+ * const foo_file = new alicloud.slb.CaCertificate("foo-file", {
+ *     caCertificate: fs.readFileSync(`./ca_certificate.pem`, "utf-8"),
  * });
  * ```
  */

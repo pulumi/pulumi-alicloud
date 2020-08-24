@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -57,13 +55,16 @@ export interface GetInstancesArgs {
     readonly outputFile?: string;
     /**
      * A map of tags assigned to the instance. It must be in the format:
-     * ```
-     * data "alicloud.oss.getInstances" "instancesDs" {
-     * tags = {
-     * tagKey1 = "tagValue1",
-     * tagKey2 = "tagValue2"
-     * }
-     * }
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const instancesDs = pulumi.output(alicloud.oss.getInstances({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * }, { async: true }));
      * ```
      */
     readonly tags?: {[key: string]: any};

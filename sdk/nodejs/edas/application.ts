@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -70,7 +70,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly buildPackId!: pulumi.Output<number | undefined>;
     /**
-     * The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter. 
+     * The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
@@ -176,7 +176,7 @@ export interface ApplicationState {
      */
     readonly buildPackId?: pulumi.Input<number>;
     /**
-     * The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter. 
+     * The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
@@ -226,7 +226,7 @@ export interface ApplicationArgs {
      */
     readonly buildPackId?: pulumi.Input<number>;
     /**
-     * The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter. 
+     * The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
      */
     readonly clusterId: pulumi.Input<string>;
     /**

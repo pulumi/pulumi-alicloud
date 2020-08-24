@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Cassandra dataCenter resource supports replica set dataCenters only. The Cassandra provides stable, reliable, and automatic scalable database services. 
+ * Provides a Cassandra dataCenter resource supports replica set dataCenters only. The Cassandra provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
  *
@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  * The official website mark  more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
  *
  * > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
+ *
+ * ## Example Usage
  */
 export class DataCenter extends pulumi.CustomResource {
     /**
@@ -55,12 +57,12 @@ export class DataCenter extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * Cassandra cluster id of dataCenter-2 belongs to.  
+     * Cassandra cluster id of dataCenter-2 belongs to.
      */
     public readonly clusterId!: pulumi.Output<string>;
     public /*out*/ readonly dataCenterId!: pulumi.Output<string>;
     /**
-     * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+     * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
     public readonly dataCenterName!: pulumi.Output<string | undefined>;
     /**
@@ -79,7 +81,7 @@ export class DataCenter extends pulumi.CustomResource {
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
-     * The node count of Cassandra dataCenter-2, default to 2. 
+     * The node count of Cassandra dataCenter-2, default to 2.
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
@@ -187,12 +189,12 @@ export interface DataCenterState {
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Cassandra cluster id of dataCenter-2 belongs to.  
+     * Cassandra cluster id of dataCenter-2 belongs to.
      */
     readonly clusterId?: pulumi.Input<string>;
     readonly dataCenterId?: pulumi.Input<string>;
     /**
-     * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+     * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
     readonly dataCenterName?: pulumi.Input<string>;
     /**
@@ -211,7 +213,7 @@ export interface DataCenterState {
      */
     readonly instanceType?: pulumi.Input<string>;
     /**
-     * The node count of Cassandra dataCenter-2, default to 2. 
+     * The node count of Cassandra dataCenter-2, default to 2.
      */
     readonly nodeCount?: pulumi.Input<number>;
     /**
@@ -245,11 +247,11 @@ export interface DataCenterArgs {
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Cassandra cluster id of dataCenter-2 belongs to.  
+     * Cassandra cluster id of dataCenter-2 belongs to.
      */
     readonly clusterId: pulumi.Input<string>;
     /**
-     * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+     * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
     readonly dataCenterName?: pulumi.Input<string>;
     /**
@@ -268,7 +270,7 @@ export interface DataCenterArgs {
      */
     readonly instanceType: pulumi.Input<string>;
     /**
-     * The node count of Cassandra dataCenter-2, default to 2. 
+     * The node count of Cassandra dataCenter-2, default to 2.
      */
     readonly nodeCount: pulumi.Input<number>;
     /**

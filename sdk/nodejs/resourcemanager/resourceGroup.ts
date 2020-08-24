@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,8 +60,6 @@ export class ResourceGroup extends pulumi.CustomResource {
     /**
      * The time when the resource group was created.
      * * `regionStatuses` -The status of the resource group in all regions.
-     * - `regionId` - The region ID.
-     * - `status` - The status of the regional resource group.
      */
     public /*out*/ readonly createDate!: pulumi.Output<string>;
     /**
@@ -74,7 +72,7 @@ export class ResourceGroup extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly regionStatuses!: pulumi.Output<outputs.resourcemanager.ResourceGroupRegionStatus[]>;
     /**
-     * The status of the resource group.
+     * The status of the regional resource group.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -130,8 +128,6 @@ export interface ResourceGroupState {
     /**
      * The time when the resource group was created.
      * * `regionStatuses` -The status of the resource group in all regions.
-     * - `regionId` - The region ID.
-     * - `status` - The status of the regional resource group.
      */
     readonly createDate?: pulumi.Input<string>;
     /**
@@ -144,7 +140,7 @@ export interface ResourceGroupState {
     readonly name?: pulumi.Input<string>;
     readonly regionStatuses?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceGroupRegionStatus>[]>;
     /**
-     * The status of the resource group.
+     * The status of the regional resource group.
      */
     readonly status?: pulumi.Input<string>;
 }

@@ -20,6 +20,76 @@ import (
 // > **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
 //
 // > **NOTE:** Please remember to add a `dependsOn` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		barNetwork, err := vpc.NewNetwork(ctx, "barNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("192.168.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		initiate, err := vpc.NewRouterInterface(ctx, "initiate", &vpc.RouterInterfaceArgs{
+// 			Description:        pulumi.String(name),
+// 			InstanceChargeType: pulumi.String("PostPaid"),
+// 			OppositeRegion:     pulumi.String(region),
+// 			Role:               pulumi.String("InitiatingSide"),
+// 			RouterId:           fooNetwork.RouterId,
+// 			RouterType:         pulumi.String("VRouter"),
+// 			Specification:      pulumi.String("Large.2"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opposite, err := vpc.NewRouterInterface(ctx, "opposite", &vpc.RouterInterfaceArgs{
+// 			Description:    pulumi.String(fmt.Sprintf("%v%v", name, "-opposite")),
+// 			OppositeRegion: pulumi.String(region),
+// 			Role:           pulumi.String("AcceptingSide"),
+// 			RouterId:       barNetwork.RouterId,
+// 			RouterType:     pulumi.String("VRouter"),
+// 			Specification:  pulumi.String("Large.1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpc.NewRouterInterfaceConnection(ctx, "fooRouterInterfaceConnection", &vpc.RouterInterfaceConnectionArgs{
+// 			InterfaceId:         initiate.ID(),
+// 			OppositeInterfaceId: opposite.ID(),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"alicloud_router_interface_connection.bar",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpc.NewRouterInterfaceConnection(ctx, "barRouterInterfaceConnection", &vpc.RouterInterfaceConnectionArgs{
+// 			InterfaceId:         opposite.ID(),
+// 			OppositeInterfaceId: initiate.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type RouterInterfaceConnection struct {
 	pulumi.CustomResourceState
 

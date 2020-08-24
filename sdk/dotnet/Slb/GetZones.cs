@@ -33,7 +33,6 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

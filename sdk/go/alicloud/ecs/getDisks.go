@@ -8,6 +8,31 @@ import (
 )
 
 // This data source provides the disks of the current Alibaba Cloud user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "sample_disk"
+// 		disksDs, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
+// 			NameRegex: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstDiskId", disksDs.Disks[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetDisks(ctx *pulumi.Context, args *GetDisksArgs, opts ...pulumi.InvokeOption) (*GetDisksResult, error) {
 	var rv GetDisksResult
 	err := ctx.Invoke("alicloud:ecs/getDisks:getDisks", args, &rv, opts...)
@@ -33,12 +58,27 @@ type GetDisksArgs struct {
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A map of tags assigned to the disks. It must be in the format:
-	// ```
-	// data "ecs.getDisks" "disksDs" {
-	// tags = {
-	// tagKey1 = "tagValue1",
-	// tagKey2 = "tagValue2"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags map[string]interface{} `pulumi:"tags"`

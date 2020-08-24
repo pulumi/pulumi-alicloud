@@ -9,6 +9,36 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Kms
 {
+    /// <summary>
+    /// This resouce used to create a secret and store its initial version.
+    /// 
+    /// &gt; **NOTE:** Available in 1.76.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Kms.Secret("default", new AliCloud.Kms.SecretArgs
+    ///         {
+    ///             Description = "from terraform",
+    ///             ForceDeleteWithoutRecovery = true,
+    ///             SecretData = "Secret data.",
+    ///             SecretName = "secret-foo",
+    ///             VersionId = "000000000001",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Secret : Pulumi.CustomResource
     {
         /// <summary>

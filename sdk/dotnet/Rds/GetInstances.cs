@@ -44,7 +44,6 @@ namespace Pulumi.AliCloud.Rds
         ///     public Output&lt;string&gt; FirstDbInstanceId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -77,7 +76,7 @@ namespace Pulumi.AliCloud.Rds
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of RDS instance IDs. 
+        /// A list of RDS instance IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -151,7 +150,7 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of RDS instance IDs. 
+        /// A list of RDS instance IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
@@ -160,7 +159,7 @@ namespace Pulumi.AliCloud.Rds
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of RDS instance names. 
+        /// A list of RDS instance names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

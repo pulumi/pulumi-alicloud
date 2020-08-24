@@ -11,6 +11,96 @@ import (
 )
 
 // Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rds"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
+// 			Engine:          pulumi.String("MySQL"),
+// 			EngineVersion:   pulumi.String("5.6"),
+// 			InstanceName:    pulumi.String(name),
+// 			InstanceStorage: pulumi.Int(10),
+// 			InstanceType:    pulumi.String("rds.mysql.s1.small"),
+// 			VswitchId:       defaultSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		var db []*rds.Database
+// 		for key0, _ := range 2 {
+// 			__res, err := rds.NewDatabase(ctx, fmt.Sprintf("db-%v", key0), &rds.DatabaseArgs{
+// 				Description: pulumi.String("from terraform"),
+// 				InstanceId:  instance.ID(),
+// 			})
+// 			if err != nil {
+// 				return err
+// 			}
+// 			db = append(db, __res)
+// 		}
+// 		account, err := rds.NewAccount(ctx, "account", &rds.AccountArgs{
+// 			Description: pulumi.String("from terraform"),
+// 			InstanceId:  instance.ID(),
+// 			Password:    pulumi.String("Test12345"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		var splat0 pulumi.StringArray
+// 		for _, val0 := range db {
+// 			splat0 = append(splat0, val0.Name)
+// 		}
+// 		_, err = rds.NewAccountPrivilege(ctx, "privilege", &rds.AccountPrivilegeArgs{
+// 			AccountName: account.Name,
+// 			DbNames:     toPulumiStringArray(splat0),
+// 			InstanceId:  instance.ID(),
+// 			Privilege:   pulumi.String("ReadOnly"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// func toPulumiStringArray(arr []string) pulumi.StringArray {
+// 	var pulumiArr pulumi.StringArray
+// 	for _, v := range arr {
+// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+// 	}
+// 	return pulumiArr
+// }
+// ```
 type AccountPrivilege struct {
 	pulumi.CustomResourceState
 

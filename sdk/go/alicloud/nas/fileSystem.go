@@ -17,6 +17,33 @@ import (
 // For information about NAS file system and how to use it, see [Manage file systems](https://www.alibabacloud.com/help/doc-detail/27530.htm)
 //
 // > **NOTE:** Available in v1.33.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/nas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
+// 			Description:  pulumi.String("tf-testAccNasConfig"),
+// 			ProtocolType: pulumi.String("NFS"),
+// 			StorageType:  pulumi.String("Performance"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type FileSystem struct {
 	pulumi.CustomResourceState
 

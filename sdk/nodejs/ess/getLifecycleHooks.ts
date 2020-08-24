@@ -7,21 +7,19 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides available lifecycle hook resources. 
+ * This data source provides available lifecycle hook resources.
  *
  * > **NOTE:** Available in 1.72.0+
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ds = pulumi.output(alicloud.ess.getLifecycleHooks({
- *     nameRegex: "lifecyclehookName",
- *     scalingGroupId: "scalingGroupId",
+ *     nameRegex: "lifecyclehook_name",
+ *     scalingGroupId: "scaling_group_id",
  * }, { async: true }));
  *
  * export const firstLifecycleHook = ds.hooks[0].id;

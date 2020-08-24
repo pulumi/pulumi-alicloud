@@ -39,7 +39,6 @@ namespace Pulumi.AliCloud.FC
         ///     public Output&lt;string&gt; FirstFcTriggerName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

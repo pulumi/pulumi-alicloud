@@ -15,9 +15,6 @@ namespace Pulumi.AliCloud.RocketMQ
         /// This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.53.0+
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());
@@ -27,7 +24,7 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class GetGroupsArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A regex string to filter results by the group name. 
+        /// A regex string to filter results by the group name.
         /// </summary>
         [Input("groupIdRegex")]
         public string? GroupIdRegex { get; set; }

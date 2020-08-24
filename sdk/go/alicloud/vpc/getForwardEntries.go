@@ -10,6 +10,75 @@ import (
 // This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
 //
 // > **NOTE:** Available in 1.37.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "VSwitch"
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNatGateway, err := vpc.NewNatGateway(ctx, "defaultNatGateway", &vpc.NatGatewayArgs{
+// 			Specification: pulumi.String("Small"),
+// 			VpcId:         defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultEip, err := ecs.NewEip(ctx, "defaultEip", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ecs.NewEipAssociation(ctx, "defaultEipAssociation", &ecs.EipAssociationArgs{
+// 			AllocationId: defaultEip.ID(),
+// 			InstanceId:   defaultNatGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultForwardEntry, err := vpc.NewForwardEntry(ctx, "defaultForwardEntry", &vpc.ForwardEntryArgs{
+// 			ExternalIp:     defaultEip.IpAddress,
+// 			ExternalPort:   pulumi.String("80"),
+// 			ForwardTableId: defaultNatGateway.ForwardTableIds,
+// 			InternalIp:     pulumi.String("172.16.0.3"),
+// 			InternalPort:   pulumi.String("8080"),
+// 			IpProtocol:     pulumi.String("tcp"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetForwardEntries(ctx *pulumi.Context, args *GetForwardEntriesArgs, opts ...pulumi.InvokeOption) (*GetForwardEntriesResult, error) {
 	var rv GetForwardEntriesResult
 	err := ctx.Invoke("alicloud:vpc/getForwardEntries:getForwardEntries", args, &rv, opts...)

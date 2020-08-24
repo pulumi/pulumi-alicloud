@@ -15,14 +15,14 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ccnAccount = new alicloud.Provider("ccnAccount", {});
- * const cenAccount = new alicloud.Provider("cenAccount", {
+ * const ccnAccount = new alicloud.Provider("ccn_account", {});
+ * const cenAccount = new alicloud.Provider("cen_account", {
  *     accessKey: "xxxxxx",
  *     region: "cn-hangzhou",
  *     secretKey: "xxxxxx",

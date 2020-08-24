@@ -10,6 +10,33 @@ import (
 // This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
 // > **NOTE:** Available in v1.73.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/kvstore"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		zonesIds, err := kvstore.GetZones(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = kvstore.NewInstance(ctx, "kvstore", &kvstore.InstanceArgs{
+// 			AvailabilityZone: pulumi.String(zonesIds.Zones[0].Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	var rv GetZonesResult
 	err := ctx.Invoke("alicloud:kvstore/getZones:getZones", args, &rv, opts...)

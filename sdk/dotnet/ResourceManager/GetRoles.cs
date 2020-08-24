@@ -39,7 +39,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     public Output&lt;string&gt; FirstRoleId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

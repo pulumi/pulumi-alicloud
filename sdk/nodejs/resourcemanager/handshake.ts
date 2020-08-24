@@ -12,8 +12,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -79,7 +77,7 @@ export class Handshake extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceDirectoryId!: pulumi.Output<string>;
     /**
-     * Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`. 
+     * Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -170,7 +168,7 @@ export interface HandshakeState {
      */
     readonly resourceDirectoryId?: pulumi.Input<string>;
     /**
-     * Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`. 
+     * Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
      */
     readonly status?: pulumi.Input<string>;
     /**

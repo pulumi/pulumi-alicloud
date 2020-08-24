@@ -4,6 +4,34 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a CEN child instance attachment resource.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * // Create a new instance-attachment and use it to attach one child instance to a new CEN
+ * const name = config.get("name") || "tf-testAccCenInstanceAttachmentBasic";
+ *
+ * const cen = new alicloud.cen.Instance("cen", {
+ *     description: "terraform01",
+ * });
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const foo = new alicloud.cen.InstanceAttachment("foo", {
+ *     childInstanceId: vpc.id,
+ *     childInstanceRegionId: "cn-beijing",
+ *     instanceId: cen.id,
+ * });
+ * ```
+ */
 export class InstanceAttachment extends pulumi.CustomResource {
     /**
      * Get an existing InstanceAttachment resource's state with the given name, ID, and optional extra

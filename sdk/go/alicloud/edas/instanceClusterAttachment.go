@@ -13,6 +13,32 @@ import (
 // Provides an EDAS instance cluster attachment resource.
 //
 // > **NOTE:** Available in 1.82.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/edas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := edas.NewInstanceClusterAttachment(ctx, "_default", &edas.InstanceClusterAttachmentArgs{
+// 			ClusterId:   pulumi.Any(_var.Cluster_id),
+// 			InstanceIds: _var.Instance_ids,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type InstanceClusterAttachment struct {
 	pulumi.CustomResourceState
 

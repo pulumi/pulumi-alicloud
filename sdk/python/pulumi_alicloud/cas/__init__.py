@@ -5,3 +5,4 @@
 # Export this package's modules as members:
 from .certificate import *
 from .get_certificates import *
+from . import outputs

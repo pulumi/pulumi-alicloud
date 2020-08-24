@@ -4,6 +4,39 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * - BLob Topic
+ * resource "alicloud_datahub_topic" "example" {
+ *   name         = "tf_datahub_topic"
+ *   project_name = "tf_datahub_project"
+ *   record_type  = "BLOB"
+ *   shard_count  = 3
+ *   life_cycle   = 7
+ *   comment      = "created by terraform"
+ * }
+ *
+ * resource "alicloud_datahub_topic" "example" {
+ *   name         = "tf_datahub_topic"
+ *   project_name = "tf_datahub_project"
+ *   record_type  = "TUPLE"
+ *   record_schema = {
+ *     bigint_field    = "BIGINT"
+ *     timestamp_field = "TIMESTAMP"
+ *     string_field    = "STRING"
+ *     double_field    = "DOUBLE"
+ *     boolean_field   = "BOOLEAN"
+ *   }
+ *   shard_count = 3
+ *   life_cycle  = 7
+ *   comment     = "created by terraform"
+ * }
+ */
 export class Topic extends pulumi.CustomResource {
     /**
      * Get an existing Topic resource's state with the given name, ID, and optional extra

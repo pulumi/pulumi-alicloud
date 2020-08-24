@@ -8,6 +8,31 @@ import (
 )
 
 // This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/mns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "tf-"
+// 		topics, err := mns.GetTopics(ctx, &mns.GetTopicsArgs{
+// 			NamePrefix: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstTopicId", topics.Topics[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOption) (*GetTopicsResult, error) {
 	var rv GetTopicsResult
 	err := ctx.Invoke("alicloud:mns/getTopics:getTopics", args, &rv, opts...)

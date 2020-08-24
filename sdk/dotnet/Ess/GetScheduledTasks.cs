@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.Ess
         ///     public Output&lt;string&gt; FirstScheduledTask { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

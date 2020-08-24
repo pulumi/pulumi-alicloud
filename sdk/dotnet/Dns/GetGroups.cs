@@ -38,7 +38,6 @@ namespace Pulumi.AliCloud.Dns
         ///     public Output&lt;string&gt; FirstGroupName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -62,7 +61,7 @@ namespace Pulumi.AliCloud.Dns
         }
 
         /// <summary>
-        /// A regex string to filter results by group name. 
+        /// A regex string to filter results by group name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -88,7 +87,7 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of group IDs. 
+        /// A list of group IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;

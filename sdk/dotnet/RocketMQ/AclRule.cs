@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<string> DestCidr { get; private set; } = null!;
 
         /// <summary>
-        /// The range of the destination port. Valid value: 80/80. 
+        /// The range of the destination port. Valid value: 80/80.
         /// </summary>
         [Output("destPortRange")]
         public Output<string> DestPortRange { get; private set; } = null!;
@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<string> Policy { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of the ACL rule. Value range: 1 to 100. 
+        /// The priority of the ACL rule. Value range: 1 to 100.
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string> DestCidr { get; set; } = null!;
 
         /// <summary>
-        /// The range of the destination port. Valid value: 80/80. 
+        /// The range of the destination port. Valid value: 80/80.
         /// </summary>
         [Input("destPortRange", required: true)]
         public Input<string> DestPortRange { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string> Policy { get; set; } = null!;
 
         /// <summary>
-        /// The priority of the ACL rule. Value range: 1 to 100. 
+        /// The priority of the ACL rule. Value range: 1 to 100.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? DestCidr { get; set; }
 
         /// <summary>
-        /// The range of the destination port. Valid value: 80/80. 
+        /// The range of the destination port. Valid value: 80/80.
         /// </summary>
         [Input("destPortRange")]
         public Input<string>? DestPortRange { get; set; }
@@ -236,7 +236,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// The priority of the ACL rule. Value range: 1 to 100. 
+        /// The priority of the ACL rule. Value range: 1 to 100.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }

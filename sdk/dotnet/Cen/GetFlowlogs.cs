@@ -45,7 +45,6 @@ namespace Pulumi.AliCloud.Cen
         ///     public Output&lt;string&gt; FirstCenFlowlogId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -139,7 +138,7 @@ namespace Pulumi.AliCloud.Cen
         public readonly string? LogStoreName;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of CEN flow log names. 
+        /// A list of CEN flow log names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

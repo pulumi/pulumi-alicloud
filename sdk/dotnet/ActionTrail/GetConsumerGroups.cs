@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     public Output&lt;string&gt; FirstGroupName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -53,7 +52,7 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class GetConsumerGroupsArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A regex string to filter results by the consumer group id. 
+        /// A regex string to filter results by the consumer group id.
         /// </summary>
         [Input("consumerIdRegex")]
         public string? ConsumerIdRegex { get; set; }

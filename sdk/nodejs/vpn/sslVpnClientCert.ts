@@ -32,12 +32,33 @@ export class SslVpnClientCert extends pulumi.CustomResource {
         return obj['__pulumiType'] === SslVpnClientCert.__pulumiType;
     }
 
+    /**
+     * The client ca cert.
+     */
     public /*out*/ readonly caCert!: pulumi.Output<string>;
+    /**
+     * The client cert.
+     */
     public /*out*/ readonly clientCert!: pulumi.Output<string>;
+    /**
+     * The vpn client config.
+     */
     public /*out*/ readonly clientConfig!: pulumi.Output<string>;
+    /**
+     * The client key.
+     */
     public /*out*/ readonly clientKey!: pulumi.Output<string>;
+    /**
+     * The name of the client certificate.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the SSL-VPN server.
+     */
     public readonly sslVpnServerId!: pulumi.Output<string>;
+    /**
+     * The status of the client certificate.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
@@ -87,12 +108,33 @@ export class SslVpnClientCert extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SslVpnClientCert resources.
  */
 export interface SslVpnClientCertState {
+    /**
+     * The client ca cert.
+     */
     readonly caCert?: pulumi.Input<string>;
+    /**
+     * The client cert.
+     */
     readonly clientCert?: pulumi.Input<string>;
+    /**
+     * The vpn client config.
+     */
     readonly clientConfig?: pulumi.Input<string>;
+    /**
+     * The client key.
+     */
     readonly clientKey?: pulumi.Input<string>;
+    /**
+     * The name of the client certificate.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the SSL-VPN server.
+     */
     readonly sslVpnServerId?: pulumi.Input<string>;
+    /**
+     * The status of the client certificate.
+     */
     readonly status?: pulumi.Input<string>;
 }
 
@@ -100,6 +142,12 @@ export interface SslVpnClientCertState {
  * The set of arguments for constructing a SslVpnClientCert resource.
  */
 export interface SslVpnClientCertArgs {
+    /**
+     * The name of the client certificate.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the SSL-VPN server.
+     */
     readonly sslVpnServerId: pulumi.Input<string>;
 }

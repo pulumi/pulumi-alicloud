@@ -38,7 +38,6 @@ namespace Pulumi.AliCloud.Oss
         ///     public Output&lt;string&gt; FirstObjectKey { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

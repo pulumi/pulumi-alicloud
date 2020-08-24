@@ -26,7 +26,7 @@ type GetPrivateZonesArgs struct {
 	// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
 	HostRegionId *string `pulumi:"hostRegionId"`
 	// A list of CEN private zone IDs.
-	// * `hostRegionId ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
+	// * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.

@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * > **NOTE:** The load balancer of which vserver groups belongs to must be in `active` status.
  *
  * > **NOTE:** If scaling group's network type is `VPC`, the vserver groups must be in the same `VPC`.
- *  
+ *
  * > **NOTE:** A scaling group can have at most 5 vserver groups attached by default.
  *
  * > **NOTE:** Vserver groups and the default group of loadbalancer share the same backend server quota.
@@ -29,8 +29,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -39,7 +37,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "testAccEssVserverGroupsAttachment";
  *
  * const defaultZones = pulumi.output(alicloud.getZones({
- *     availableDiskCategory: "cloudEfficiency",
+ *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
@@ -85,7 +83,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ## Block vserverGroup
  *
  * the vserverGroup supports the following:

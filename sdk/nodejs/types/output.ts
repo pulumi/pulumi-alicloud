@@ -150,7 +150,7 @@ export namespace actiontrail {
          */
         securityGroup: string;
         /**
-         * The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error. 
+         * The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
          */
         serviceStatus: number;
         /**
@@ -181,7 +181,7 @@ export namespace actiontrail {
          */
         aclOperationType: string;
         /**
-         * Get results for the specified resource name. 
+         * Get results for the specified resource name.
          */
         aclResourceName: string;
         /**
@@ -189,7 +189,7 @@ export namespace actiontrail {
          */
         aclResourcePatternType: string;
         /**
-         * Get results for the specified resource type. 
+         * Get results for the specified resource type.
          */
         aclResourceType: string;
         /**
@@ -197,7 +197,7 @@ export namespace actiontrail {
          */
         host: string;
         /**
-         * Get results for the specified username. 
+         * Get results for the specified username.
          */
         username: string;
     }
@@ -235,7 +235,7 @@ export namespace actiontrail {
          */
         remark: string;
         /**
-         * The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause. 
+         * The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
          */
         status: number;
         /**
@@ -927,7 +927,7 @@ export namespace cdn {
          */
         type: string;
         /**
-         * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. 
+         * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
          */
         weight?: number;
     }
@@ -946,7 +946,7 @@ export namespace cdn {
 
     export interface DomainParameterFilterConfig {
         /**
-         * This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.  
+         * This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.
          */
         enable?: string;
         /**
@@ -1262,7 +1262,7 @@ export namespace cen {
          */
         destinationInstanceIds: string[];
         /**
-         * Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition. 
+         * Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition.
          */
         destinationInstanceIdsReverseMatch: boolean;
         /**
@@ -1286,7 +1286,7 @@ export namespace cen {
          */
         matchCommunitySets: string[];
         /**
-         * The priority of the next route map that is associated with the current route map. 
+         * The priority of the next route map that is associated with the current route map.
          */
         nextPriority: number;
         /**
@@ -2001,7 +2001,7 @@ export namespace cs {
          */
         connections: outputs.cs.GetServerlessKubernetesClustersClusterConnections;
         /**
-         * Whether the cluster support delete protection.  
+         * Whether the cluster support delete protection.
          */
         deletionProtection: boolean;
         endpointPublicAccessEnabled: boolean;
@@ -2477,7 +2477,7 @@ export namespace dns {
 
     export interface GetAlidnsRecordsRecord {
         /**
-         * The domain name associated to the records. 
+         * The domain name associated to the records.
          */
         domainName: string;
         /**
@@ -2485,7 +2485,7 @@ export namespace dns {
          */
         id: string;
         /**
-         * ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
+         * ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
          */
         line: string;
         /**
@@ -2665,7 +2665,7 @@ export namespace dns {
          */
         hostRecord: string;
         /**
-         * ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
+         * ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
          */
         line: string;
         /**
@@ -2751,7 +2751,7 @@ export namespace drds {
 export namespace eci {
     export interface GetImageCachesCach {
         /**
-         * The id of container group. 
+         * The id of container group.
          */
         containerGroupId: string;
         /**
@@ -2794,24 +2794,24 @@ export namespace eci {
 
     export interface GetImageCachesCachEvent {
         /**
-         * Number of events.   
+         * Number of events.
          */
         count: number;
         /**
-         * Start time.   
+         * Start time.
          */
         firstTimestamp: string;
         /**
-         * End time.   
+         * End time.
          */
         lastTimestamp: string;
         message: string;
         /**
-         * The name of event.   
+         * The name of event.
          */
         name: string;
         /**
-         * The type of event.  
+         * The type of event.
          */
         type: string;
     }
@@ -3016,13 +3016,16 @@ export namespace ecs {
         status: string;
         /**
          * A map of tags assigned to the disks. It must be in the format:
-         * ```
-         * data "alicloud.ecs.getDisks" "disksDs" {
-         * tags = {
-         * tagKey1 = "tagValue1",
-         * tagKey2 = "tagValue2"
-         * }
-         * }
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const disksDs = pulumi.output(alicloud.ecs.getDisks({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * }, { async: true }));
          * ```
          */
         tags?: {[key: string]: any};
@@ -3153,7 +3156,7 @@ export namespace ecs {
 
     export interface GetInstanceTypeFamiliesFamily {
         /**
-         * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm). 
+         * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
          */
         generation: string;
         /**
@@ -3330,13 +3333,16 @@ export namespace ecs {
         status: string;
         /**
          * A map of tags assigned to the ECS instances. It must be in the format:
-         * ```
-         * data "alicloud.ecs.getInstances" "taggedInstances" {
-         * tags = {
-         * tagKey1 = "tagValue1",
-         * tagKey2 = "tagValue2"
-         * }
-         * }
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const taggedInstances = pulumi.output(alicloud.ecs.getInstances({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * }, { async: true }));
          * ```
          */
         tags?: {[key: string]: any};
@@ -3585,13 +3591,16 @@ export namespace ecs {
         securityGroupType: string;
         /**
          * A map of tags assigned to the ECS instances. It must be in the format:
-         * ```
-         * data "alicloud.ecs.getSecurityGroups" "taggedSecurityGroups" {
-         * tags = {
-         * tagKey1 = "tagValue1",
-         * tagKey2 = "tagValue2"
-         * }
-         * }
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const taggedSecurityGroups = pulumi.output(alicloud.ecs.getSecurityGroups({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * }, { async: true }));
          * ```
          */
         tags?: {[key: string]: any};
@@ -4139,7 +4148,7 @@ export namespace ess {
          */
         cloudMonitorGroupId: number;
         /**
-         * The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. 
+         * The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand.
          */
         comparisonOperator: string;
         /**
@@ -4147,7 +4156,7 @@ export namespace ess {
          */
         description: string;
         /**
-         * The dimension map for the alarm's associated metric. 
+         * The dimension map for the alarm's associated metric.
          */
         dimensions: {[key: string]: any};
         /**
@@ -4155,7 +4164,7 @@ export namespace ess {
          */
         enable: boolean;
         /**
-         * The number of times that needs to satisfies comparison condition before transition into ALARM state. 
+         * The number of times that needs to satisfies comparison condition before transition into ALARM state.
          */
         evaluationCount: number;
         /**
@@ -4183,11 +4192,11 @@ export namespace ess {
          */
         scalingGroupId: string;
         /**
-         * The state of alarm task. 
+         * The state of alarm task.
          */
         state: string;
         /**
-         * The statistic to apply to the alarm's associated metric. 
+         * The statistic to apply to the alarm's associated metric.
          */
         statistics: string;
         /**
@@ -4198,7 +4207,7 @@ export namespace ess {
 
     export interface GetLifecycleHooksHook {
         /**
-         * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. 
+         * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
          */
         defaultResult: string;
         /**
@@ -4237,7 +4246,7 @@ export namespace ess {
          */
         id: string;
         /**
-         * The Alibaba Cloud Resource Name (ARN) for the notification object. 
+         * The Alibaba Cloud Resource Name (ARN) for the notification object.
          */
         notificationArn: string;
         /**
@@ -4476,11 +4485,11 @@ export namespace ess {
          */
         recurrenceEndTime: string;
         /**
-         * Specifies the recurrence type of the scheduled task. 
+         * Specifies the recurrence type of the scheduled task.
          */
         recurrenceType: string;
         /**
-         * Specifies how often a scheduled task recurs. 
+         * Specifies how often a scheduled task recurs.
          */
         recurrenceValue: string;
         /**
@@ -4832,7 +4841,7 @@ export namespace hbase {
          */
         payType: string;
         /**
-         * Region ID the instance belongs to. 
+         * Region ID the instance belongs to.
          */
         regionId: string;
         /**
@@ -5100,7 +5109,7 @@ export namespace log {
          */
         content: string;
         /**
-         * Email address list.   
+         * Email address list.
          */
         emailLists?: string[];
         /**
@@ -5291,7 +5300,7 @@ export namespace marketplace {
 
     export interface GetProductsProduct {
         /**
-         * The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
+         * The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
          */
         categoryId: number;
         /**
@@ -5590,7 +5599,6 @@ export namespace mongodb {
          */
         nodeId: string;
         /**
-         *
          * - Custom storage space; value range: [10, 1,000]
          * - 10-GB increments. Unit: GB.
          */
@@ -5632,15 +5640,15 @@ export namespace nas {
          */
         priority: number;
         /**
-         * Filter results by a specific RWAccess. 
+         * Filter results by a specific RWAccess.
          */
         rwAccess: string;
         /**
-         * Filter results by a specific SourceCidrIp. 
+         * Filter results by a specific SourceCidrIp.
          */
         sourceCidrIp: string;
         /**
-         * Filter results by a specific UserAccess. 
+         * Filter results by a specific UserAccess.
          */
         userAccess: string;
     }
@@ -5663,7 +5671,7 @@ export namespace nas {
          */
         meteredSize: number;
         /**
-         * Filter results by a specific ProtocolType. 
+         * Filter results by a specific ProtocolType.
          */
         protocolType: string;
         /**
@@ -5671,7 +5679,7 @@ export namespace nas {
          */
         regionId: string;
         /**
-         * Filter results by a specific StorageType. 
+         * Filter results by a specific StorageType.
          */
         storageType: string;
     }
@@ -5924,7 +5932,7 @@ export namespace oss {
          */
         days?: number;
         /**
-         * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
+         * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
          */
         storageClass?: string;
     }
@@ -5953,7 +5961,7 @@ export namespace oss {
 
     export interface BucketServerSideEncryptionRule {
         /**
-         * The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
+         * The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
          */
         kmsMasterKeyId?: string;
         /**
@@ -6188,7 +6196,7 @@ export namespace oss {
 
     export interface GetBucketsBucketServerSideEncryptionRule {
         /**
-         * The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
+         * The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
          */
         kmsMasterKeyId: string;
         /**
@@ -6285,13 +6293,16 @@ export namespace oss {
         status: string;
         /**
          * A map of tags assigned to the instance. It must be in the format:
-         * ```
-         * data "alicloud.oss.getInstances" "instancesDs" {
-         * tags = {
-         * tagKey1 = "tagValue1",
-         * tagKey2 = "tagValue2"
-         * }
-         * }
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const instancesDs = pulumi.output(alicloud.oss.getInstances({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * }, { async: true }));
          * ```
          */
         tags: {[key: string]: any};
@@ -6390,7 +6401,7 @@ export namespace polardb {
          */
         accountPrivilege: string;
         /**
-         * The account owned database name 
+         * The account owned database name
          */
         dbName: string;
     }
@@ -7062,7 +7073,7 @@ export namespace resourcemanager {
          */
         id: string;
         /**
-         * The way in which the member account joined the resource directory. 
+         * The way in which the member account joined the resource directory.
          */
         joinMethod: string;
         /**
@@ -7078,11 +7089,11 @@ export namespace resourcemanager {
          */
         resourceDirectoryId: string;
         /**
-         * The status of the member account. 
+         * The status of the member account.
          */
         status: string;
         /**
-         * The type of the member account. 
+         * The type of the member account.
          */
         type: string;
     }
@@ -7138,7 +7149,7 @@ export namespace resourcemanager {
          */
         targetEntity: string;
         /**
-         * The type of the invited account. 
+         * The type of the invited account.
          */
         targetType: string;
     }
@@ -7207,7 +7218,7 @@ export namespace resourcemanager {
          */
         principalName: string;
         /**
-         * The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. 
+         * The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
          */
         principalType: string;
         /**
@@ -7297,9 +7308,12 @@ export namespace resourcemanager {
     }
 
     export interface ResourceGroupRegionStatus {
+        /**
+         * The region ID.
+         */
         regionId: string;
         /**
-         * The status of the resource group.
+         * The status of the regional resource group.
          */
         status: string;
     }
@@ -7741,13 +7755,16 @@ export namespace slb {
         status: string;
         /**
          * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-         * ```
-         * data "alicloud.slb.getLoadBalancers" "taggedInstances" {
-         * tags = {
-         * tagKey1 = "tagValue1",
-         * tagKey2 = "tagValue2"
-         * }
-         * }
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const taggedInstances = pulumi.output(alicloud.slb.getLoadBalancers({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * }, { async: true }));
          * ```
          */
         tags: {[key: string]: any};
@@ -8036,7 +8053,7 @@ export namespace vpc {
          */
         description: string;
         /**
-         * The forward table id. 
+         * The forward table id.
          */
         forwardTableId: string;
         /**
@@ -8573,15 +8590,15 @@ export namespace vpn {
 
     export interface GetConnectionsConnectionIkeConfig {
         /**
-         * The authentication algorithm of phase-one negotiation. 
+         * The authentication algorithm of phase-one negotiation.
          */
         ikeAuthAlg?: string;
         /**
-         * The encryption algorithm of phase-one negotiation. 
+         * The encryption algorithm of phase-one negotiation.
          */
         ikeEncAlg?: string;
         /**
-         * The SA lifecycle as the result of phase-one negotiation. 
+         * The SA lifecycle as the result of phase-one negotiation.
          */
         ikeLifetime?: number;
         /**
@@ -8589,11 +8606,11 @@ export namespace vpn {
          */
         ikeLocalId?: string;
         /**
-         * The negotiation mode of IKE phase-one. 
+         * The negotiation mode of IKE phase-one.
          */
         ikeMode?: string;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-one negotiation. 
+         * The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
          */
         ikePfs?: string;
         /**
@@ -8601,7 +8618,7 @@ export namespace vpn {
          */
         ikeRemoteId?: string;
         /**
-         * The version of the IKE protocol. 
+         * The version of the IKE protocol.
          */
         ikeVersion?: string;
         /**
@@ -8612,19 +8629,19 @@ export namespace vpn {
 
     export interface GetConnectionsConnectionIpsecConfig {
         /**
-         * The authentication algorithm of phase-two negotiation. 
+         * The authentication algorithm of phase-two negotiation.
          */
         ipsecAuthAlg?: string;
         /**
-         * The encryption algorithm of phase-two negotiation. 
+         * The encryption algorithm of phase-two negotiation.
          */
         ipsecEncAlg?: string;
         /**
-         * The SA lifecycle as the result of phase-two negotiation. 
+         * The SA lifecycle as the result of phase-two negotiation.
          */
         ipsecLifetime?: number;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-two negotiation. 
+         * The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
          */
         ipsecPfs?: string;
     }
@@ -8795,12 +8812,15 @@ export namespace yundun {
         securityGroupIds: string[];
         /**
          * A map of tags assigned to the bastionhost instance. It must be in the format:
-         * ```
-         * data "alicloud.yundun.getBastionHostInstances" "instance" {
-         * tags = {
-         * tagKey1 = "tagValue1"
-         * }
-         * }
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const instance = pulumi.output(alicloud.yundun.getBastionHostInstances({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *     },
+         * }, { async: true }));
          * ```
          */
         tags?: {[key: string]: any};

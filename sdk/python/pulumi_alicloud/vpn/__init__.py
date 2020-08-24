@@ -12,3 +12,5 @@ from .get_gateways import *
 from .route_entry import *
 from .ssl_vpn_client_cert import *
 from .ssl_vpn_server import *
+from ._inputs import *
+from . import outputs

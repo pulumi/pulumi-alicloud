@@ -8,6 +8,30 @@ import (
 )
 
 // This data source provides the VServer groups related to a server load balancer.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		sampleDs, err := slb.GetServerGroups(ctx, &slb.GetServerGroupsArgs{
+// 			LoadBalancerId: alicloud_slb.Sample_slb.Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstSlbServerGroupId", sampleDs.SlbServerGroups[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetServerGroups(ctx *pulumi.Context, args *GetServerGroupsArgs, opts ...pulumi.InvokeOption) (*GetServerGroupsResult, error) {
 	var rv GetServerGroupsResult
 	err := ctx.Invoke("alicloud:slb/getServerGroups:getServerGroups", args, &rv, opts...)

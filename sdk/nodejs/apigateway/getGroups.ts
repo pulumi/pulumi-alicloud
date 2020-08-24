@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -45,7 +43,7 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetGroupsArgs {
     /**
-     * A list of api group IDs. 
+     * A list of api group IDs.
      */
     readonly ids?: string[];
     /**
@@ -68,12 +66,12 @@ export interface GetGroupsResult {
      */
     readonly id: string;
     /**
-     * A list of api group IDs. 
+     * A list of api group IDs.
      */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of api group names. 
+     * A list of api group names.
      */
     readonly names: string[];
     readonly outputFile?: string;

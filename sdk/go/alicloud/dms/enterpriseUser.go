@@ -13,6 +13,34 @@ import (
 // Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/doc-detail/98001.htm).
 //
 // > **NOTE:** Available in 1.90.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dms.NewEnterpriseUser(ctx, "example", &dms.EnterpriseUserArgs{
+// 			Mobile:   pulumi.String("1591066xxxx"),
+// 			NickName: pulumi.String("tf-test"),
+// 			RoleNames: pulumi.StringArray{
+// 				pulumi.String("DBA"),
+// 			},
+// 			Uid: pulumi.String("uid"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type EnterpriseUser struct {
 	pulumi.CustomResourceState
 

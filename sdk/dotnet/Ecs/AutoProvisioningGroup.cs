@@ -14,10 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in 1.79.0+
     /// 
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -79,7 +76,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// }
     /// ```
-    /// 
     /// ## Block config
     /// 
     /// The config mapping supports the following:

@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const disksDs = pulumi.output(alicloud.ecs.getDisks({
- *     nameRegex: "sampleDisk",
+ *     nameRegex: "sample_disk",
  * }, { async: true }));
  *
  * export const firstDiskId = disksDs.disks[0].id;
@@ -77,13 +75,16 @@ export interface GetDisksArgs {
     readonly resourceGroupId?: string;
     /**
      * A map of tags assigned to the disks. It must be in the format:
-     * ```
-     * data "alicloud.ecs.getDisks" "disksDs" {
-     * tags = {
-     * tagKey1 = "tagValue1",
-     * tagKey2 = "tagValue2"
-     * }
-     * }
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const disksDs = pulumi.output(alicloud.ecs.getDisks({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * }, { async: true }));
      * ```
      */
     readonly tags?: {[key: string]: any};

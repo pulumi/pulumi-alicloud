@@ -13,6 +13,32 @@ import (
 // Provides an EDAS deploy group resource.
 //
 // > **NOTE:** Available in 1.82.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/edas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := edas.NewDeployGroup(ctx, "_default", &edas.DeployGroupArgs{
+// 			AppId:     pulumi.Any(_var.App_id),
+// 			GroupName: pulumi.Any(_var.Group_name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DeployGroup struct {
 	pulumi.CustomResourceState
 

@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
     /// 
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// * using server_certificate/private content as string example
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +39,28 @@ namespace Pulumi.AliCloud.Slb
     /// MIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=
     /// -----END CERTIFICATE-----
     /// ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// * using server_certificate/private file example
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // create a server certificate
+    ///         var foo = new AliCloud.Slb.ServerCertificate("foo", new AliCloud.Slb.ServerCertificateArgs
+    ///         {
+    ///             PrivateKey = File.ReadAllText($"{path.Module}/private_key.pem"),
+    ///             ServerCertificate = File.ReadAllText($"{path.Module}/server_certificate.pem"),
     ///         });
     ///     }
     /// 

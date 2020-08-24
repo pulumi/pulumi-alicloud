@@ -72,13 +72,13 @@ namespace Pulumi.AliCloud.Nas
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific ProtocolType. 
+        /// Filter results by a specific ProtocolType.
         /// </summary>
         [Input("protocolType")]
         public string? ProtocolType { get; set; }
 
         /// <summary>
-        /// Filter results by a specific StorageType. 
+        /// Filter results by a specific StorageType.
         /// </summary>
         [Input("storageType")]
         public string? StorageType { get; set; }

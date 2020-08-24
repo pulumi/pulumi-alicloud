@@ -7,11 +7,11 @@ import * as utilities from "../utilities";
 /**
  * Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
  *
- * For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm). 
+ * For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm).
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -25,8 +25,7 @@ type ShardingInstanceMongoList struct {
 // ShardingInstanceMongoListInput is an input type that accepts ShardingInstanceMongoListArgs and ShardingInstanceMongoListOutput values.
 // You can construct a concrete instance of `ShardingInstanceMongoListInput` via:
 //
-// 		 ShardingInstanceMongoListArgs{...}
-//
+//          ShardingInstanceMongoListArgs{...}
 type ShardingInstanceMongoListInput interface {
 	pulumi.Input
 
@@ -61,8 +60,7 @@ func (i ShardingInstanceMongoListArgs) ToShardingInstanceMongoListOutputWithCont
 // ShardingInstanceMongoListArrayInput is an input type that accepts ShardingInstanceMongoListArray and ShardingInstanceMongoListArrayOutput values.
 // You can construct a concrete instance of `ShardingInstanceMongoListArrayInput` via:
 //
-// 		 ShardingInstanceMongoListArray{ ShardingInstanceMongoListArgs{...} }
-//
+//          ShardingInstanceMongoListArray{ ShardingInstanceMongoListArgs{...} }
 type ShardingInstanceMongoListArrayInput interface {
 	pulumi.Input
 
@@ -144,7 +142,6 @@ type ShardingInstanceShardList struct {
 	NodeClass string `pulumi:"nodeClass"`
 	// The ID of the shard-node.
 	NodeId *string `pulumi:"nodeId"`
-	//
 	// - Custom storage space; value range: [10, 1,000]
 	// - 10-GB increments. Unit: GB.
 	NodeStorage int `pulumi:"nodeStorage"`
@@ -153,8 +150,7 @@ type ShardingInstanceShardList struct {
 // ShardingInstanceShardListInput is an input type that accepts ShardingInstanceShardListArgs and ShardingInstanceShardListOutput values.
 // You can construct a concrete instance of `ShardingInstanceShardListInput` via:
 //
-// 		 ShardingInstanceShardListArgs{...}
-//
+//          ShardingInstanceShardListArgs{...}
 type ShardingInstanceShardListInput interface {
 	pulumi.Input
 
@@ -167,7 +163,6 @@ type ShardingInstanceShardListArgs struct {
 	NodeClass pulumi.StringInput `pulumi:"nodeClass"`
 	// The ID of the shard-node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
-	//
 	// - Custom storage space; value range: [10, 1,000]
 	// - 10-GB increments. Unit: GB.
 	NodeStorage pulumi.IntInput `pulumi:"nodeStorage"`
@@ -188,8 +183,7 @@ func (i ShardingInstanceShardListArgs) ToShardingInstanceShardListOutputWithCont
 // ShardingInstanceShardListArrayInput is an input type that accepts ShardingInstanceShardListArray and ShardingInstanceShardListArrayOutput values.
 // You can construct a concrete instance of `ShardingInstanceShardListArrayInput` via:
 //
-// 		 ShardingInstanceShardListArray{ ShardingInstanceShardListArgs{...} }
-//
+//          ShardingInstanceShardListArray{ ShardingInstanceShardListArgs{...} }
 type ShardingInstanceShardListArrayInput interface {
 	pulumi.Input
 
@@ -235,7 +229,6 @@ func (o ShardingInstanceShardListOutput) NodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceShardList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
 
-//
 // - Custom storage space; value range: [10, 1,000]
 // - 10-GB increments. Unit: GB.
 func (o ShardingInstanceShardListOutput) NodeStorage() pulumi.IntOutput {
@@ -306,8 +299,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-// 		 GetInstancesInstanceArgs{...}
-//
+//          GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -371,8 +363,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-// 		 GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
-//
+//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -535,8 +526,7 @@ type GetInstancesInstanceMongo struct {
 // GetInstancesInstanceMongoInput is an input type that accepts GetInstancesInstanceMongoArgs and GetInstancesInstanceMongoOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceMongoInput` via:
 //
-// 		 GetInstancesInstanceMongoArgs{...}
-//
+//          GetInstancesInstanceMongoArgs{...}
 type GetInstancesInstanceMongoInput interface {
 	pulumi.Input
 
@@ -568,8 +558,7 @@ func (i GetInstancesInstanceMongoArgs) ToGetInstancesInstanceMongoOutputWithCont
 // GetInstancesInstanceMongoArrayInput is an input type that accepts GetInstancesInstanceMongoArray and GetInstancesInstanceMongoArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceMongoArrayInput` via:
 //
-// 		 GetInstancesInstanceMongoArray{ GetInstancesInstanceMongoArgs{...} }
-//
+//          GetInstancesInstanceMongoArray{ GetInstancesInstanceMongoArgs{...} }
 type GetInstancesInstanceMongoArrayInput interface {
 	pulumi.Input
 
@@ -654,8 +643,7 @@ type GetInstancesInstanceShard struct {
 // GetInstancesInstanceShardInput is an input type that accepts GetInstancesInstanceShardArgs and GetInstancesInstanceShardOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceShardInput` via:
 //
-// 		 GetInstancesInstanceShardArgs{...}
-//
+//          GetInstancesInstanceShardArgs{...}
 type GetInstancesInstanceShardInput interface {
 	pulumi.Input
 
@@ -689,8 +677,7 @@ func (i GetInstancesInstanceShardArgs) ToGetInstancesInstanceShardOutputWithCont
 // GetInstancesInstanceShardArrayInput is an input type that accepts GetInstancesInstanceShardArray and GetInstancesInstanceShardArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceShardArrayInput` via:
 //
-// 		 GetInstancesInstanceShardArray{ GetInstancesInstanceShardArgs{...} }
-//
+//          GetInstancesInstanceShardArray{ GetInstancesInstanceShardArgs{...} }
 type GetInstancesInstanceShardArrayInput interface {
 	pulumi.Input
 
@@ -776,8 +763,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-// 		 GetZonesZoneArgs{...}
-//
+//          GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -807,8 +793,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-// 		 GetZonesZoneArray{ GetZonesZoneArgs{...} }
-//
+//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 

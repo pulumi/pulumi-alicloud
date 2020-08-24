@@ -8,6 +8,37 @@ import (
 )
 
 // This data source provides available scaling configuration resources.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ess"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "scaling_configuration_name"
+// 		opt1 := "scaling_group_id"
+// 		scalingconfigurationsDs, err := ess.GetScalingConfigurations(ctx, &ess.GetScalingConfigurationsArgs{
+// 			Ids: []string{
+// 				"scaling_configuration_id1",
+// 				"scaling_configuration_id2",
+// 			},
+// 			NameRegex:      &opt0,
+// 			ScalingGroupId: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstScalingRule", scalingconfigurationsDs.Configurations[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetScalingConfigurations(ctx *pulumi.Context, args *GetScalingConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetScalingConfigurationsResult, error) {
 	var rv GetScalingConfigurationsResult
 	err := ctx.Invoke("alicloud:ess/getScalingConfigurations:getScalingConfigurations", args, &rv, opts...)

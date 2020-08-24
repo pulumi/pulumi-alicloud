@@ -13,6 +13,36 @@ import (
 // Binds SLB to an EDAS application.
 //
 // > **NOTE:** Available in 1.82.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/edas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := edas.NewSlbAttachment(ctx, "_default", &edas.SlbAttachmentArgs{
+// 			AppId:          pulumi.Any(_var.App_id),
+// 			SlbId:          pulumi.Any(_var.Slb_id),
+// 			SlbIp:          pulumi.Any(_var.Slb_ip),
+// 			Type:           pulumi.Any(_var.Type),
+// 			ListenerPort:   pulumi.Any(_var.Listener_port),
+// 			VserverGroupId: pulumi.Any(_var.Vserver_group_id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type SlbAttachment struct {
 	pulumi.CustomResourceState
 

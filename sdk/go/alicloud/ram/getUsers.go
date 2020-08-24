@@ -8,6 +8,39 @@ import (
 )
 
 // This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ram"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "group1"
+// 		opt1 := "^user"
+// 		opt2 := "users.txt"
+// 		opt3 := "AliyunACSDefaultAccess"
+// 		opt4 := "Custom"
+// 		usersDs, err := ram.GetUsers(ctx, &ram.GetUsersArgs{
+// 			GroupName:  &opt0,
+// 			NameRegex:  &opt1,
+// 			OutputFile: &opt2,
+// 			PolicyName: &opt3,
+// 			PolicyType: &opt4,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstUserId", usersDs.Users[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	var rv GetUsersResult
 	err := ctx.Invoke("alicloud:ram/getUsers:getUsers", args, &rv, opts...)

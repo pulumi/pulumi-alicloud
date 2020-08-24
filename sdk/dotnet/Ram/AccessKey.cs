@@ -12,11 +12,9 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM User access key resource.
     /// 
-    /// &gt; **NOTE:**  You should set the `secret_file` if you want to get the access key.  
+    /// &gt; **NOTE:**  You should set the `secret_file` if you want to get the access key.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

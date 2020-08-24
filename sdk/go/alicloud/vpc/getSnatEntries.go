@@ -10,6 +10,72 @@ import (
 // This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
 //
 // > **NOTE:** Available in 1.37.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "VSwitch"
+// 		_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(_default.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
+// 			VpcId:            fooNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooNatGateway, err := vpc.NewNatGateway(ctx, "fooNatGateway", &vpc.NatGatewayArgs{
+// 			Specification: pulumi.String("Small"),
+// 			VpcId:         fooNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooEip, err := ecs.NewEip(ctx, "fooEip", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ecs.NewEipAssociation(ctx, "fooEipAssociation", &ecs.EipAssociationArgs{
+// 			AllocationId: fooEip.ID(),
+// 			InstanceId:   fooNatGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooSnatEntry, err := vpc.NewSnatEntry(ctx, "fooSnatEntry", &vpc.SnatEntryArgs{
+// 			SnatIp:          fooEip.IpAddress,
+// 			SnatTableId:     fooNatGateway.SnatTableIds,
+// 			SourceVswitchId: fooSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetSnatEntries(ctx *pulumi.Context, args *GetSnatEntriesArgs, opts ...pulumi.InvokeOption) (*GetSnatEntriesResult, error) {
 	var rv GetSnatEntriesResult
 	err := ctx.Invoke("alicloud:vpc/getSnatEntries:getSnatEntries", args, &rv, opts...)

@@ -43,7 +43,6 @@ namespace Pulumi.AliCloud.Edas
         ///     public Output&lt;string&gt; FirstApplicationName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -58,7 +57,7 @@ namespace Pulumi.AliCloud.Edas
         private List<string>? _ids;
 
         /// <summary>
-        /// An ids string to filter results by the application id. 
+        /// An ids string to filter results by the application id.
         /// </summary>
         public List<string> Ids
         {
@@ -67,7 +66,7 @@ namespace Pulumi.AliCloud.Edas
         }
 
         /// <summary>
-        /// A regex string to filter results by the application name. 
+        /// A regex string to filter results by the application name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }

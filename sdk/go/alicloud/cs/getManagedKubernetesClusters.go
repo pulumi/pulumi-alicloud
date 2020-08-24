@@ -10,6 +10,33 @@ import (
 // This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
 //
 // > **NOTE:** Available in v1.35.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "my-first-k8s"
+// 		opt1 := "my-first-k8s-json"
+// 		k8sClusters, err := cs.GetManagedKubernetesClusters(ctx, &cs.GetManagedKubernetesClustersArgs{
+// 			NameRegex:  &opt0,
+// 			OutputFile: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("output", k8sClusters.Clusters)
+// 		return nil
+// 	})
+// }
+// ```
 func GetManagedKubernetesClusters(ctx *pulumi.Context, args *GetManagedKubernetesClustersArgs, opts ...pulumi.InvokeOption) (*GetManagedKubernetesClustersResult, error) {
 	var rv GetManagedKubernetesClustersResult
 	err := ctx.Invoke("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args, &rv, opts...)

@@ -9,6 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    /// <summary>
+    /// Provides a key pair resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basic = new AliCloud.Ecs.KeyPair("basic", new AliCloud.Ecs.KeyPairArgs
+    ///         {
+    ///             KeyName = "terraform-test-key-pair",
+    ///         });
+    ///         // Using name prefix to build key pair
+    ///         var prefix = new AliCloud.Ecs.KeyPair("prefix", new AliCloud.Ecs.KeyPairArgs
+    ///         {
+    ///             KeyNamePrefix = "terraform-test-key-pair-prefix",
+    ///         });
+    ///         // Import an existing public key to build a alicloud key pair
+    ///         var publickey = new AliCloud.Ecs.KeyPair("publickey", new AliCloud.Ecs.KeyPairArgs
+    ///         {
+    ///             KeyName = "my_public_key",
+    ///             PublicKey = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class KeyPair : Pulumi.CustomResource
     {
         [Output("fingerPrint")]

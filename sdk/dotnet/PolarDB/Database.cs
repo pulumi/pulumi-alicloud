@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;

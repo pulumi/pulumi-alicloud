@@ -33,7 +33,6 @@ namespace Pulumi.AliCloud.FC
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

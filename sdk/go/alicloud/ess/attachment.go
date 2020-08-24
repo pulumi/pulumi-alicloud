@@ -15,6 +15,148 @@ import (
 // > **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
 //
 // > **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ess"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "cloud_efficiency"
+// 		opt1 := "VSwitch"
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableDiskCategory:     &opt0,
+// 			AvailableResourceCreation: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt2 := defaultZones.Zones[0].Id
+// 		opt3 := 2
+// 		opt4 := 4
+// 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// 			AvailabilityZone: &opt2,
+// 			CpuCoreCount:     &opt3,
+// 			MemorySize:       &opt4,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt5 := true
+// 		opt6 := "^ubuntu_18.*64"
+// 		opt7 := "system"
+// 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// 			MostRecent: &opt5,
+// 			NameRegex:  &opt6,
+// 			Owners:     &opt7,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+// 			VpcId: defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ecs.NewSecurityGroupRule(ctx, "defaultSecurityGroupRule", &ecs.SecurityGroupRuleArgs{
+// 			CidrIp:          pulumi.String("172.16.0.0/24"),
+// 			IpProtocol:      pulumi.String("tcp"),
+// 			NicType:         pulumi.String("intranet"),
+// 			Policy:          pulumi.String("accept"),
+// 			PortRange:       pulumi.String("22/22"),
+// 			Priority:        pulumi.Int(1),
+// 			SecurityGroupId: defaultSecurityGroup.ID(),
+// 			Type:            pulumi.String("ingress"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
+// 			MaxSize: pulumi.Int(2),
+// 			MinSize: pulumi.Int(0),
+// 			RemovalPolicies: pulumi.StringArray{
+// 				pulumi.String("OldestInstance"),
+// 				pulumi.String("NewestInstance"),
+// 			},
+// 			ScalingGroupName: pulumi.String(name),
+// 			VswitchIds: pulumi.StringArray{
+// 				defaultSwitch.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ess.NewScalingConfiguration(ctx, "defaultScalingConfiguration", &ess.ScalingConfigurationArgs{
+// 			Active:          pulumi.Bool(true),
+// 			Enable:          pulumi.Bool(true),
+// 			ForceDelete:     pulumi.Bool(true),
+// 			ImageId:         pulumi.String(defaultImages.Images[0].Id),
+// 			InstanceType:    pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// 			ScalingGroupId:  defaultScalingGroup.ID(),
+// 			SecurityGroupId: defaultSecurityGroup.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		var defaultInstance []*ecs.Instance
+// 		for key0, _ := range 2 {
+// 			__res, err := ecs.NewInstance(ctx, fmt.Sprintf("defaultInstance-%v", key0), &ecs.InstanceArgs{
+// 				ImageId:                 pulumi.String(defaultImages.Images[0].Id),
+// 				InstanceChargeType:      pulumi.String("PostPaid"),
+// 				InstanceName:            pulumi.String(name),
+// 				InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// 				InternetChargeType:      pulumi.String("PayByTraffic"),
+// 				InternetMaxBandwidthOut: pulumi.Int(10),
+// 				SecurityGroups: pulumi.StringArray{
+// 					defaultSecurityGroup.ID(),
+// 				},
+// 				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// 				VswitchId:          defaultSwitch.ID(),
+// 			})
+// 			if err != nil {
+// 				return err
+// 			}
+// 			defaultInstance = append(defaultInstance, __res)
+// 		}
+// 		_, err = ess.NewAttachment(ctx, "defaultAttachment", &ess.AttachmentArgs{
+// 			Force: pulumi.Bool(true),
+// 			InstanceIds: pulumi.StringArray{
+// 				defaultInstance[0].ID(),
+// 				defaultInstance[1].ID(),
+// 			},
+// 			ScalingGroupId: defaultScalingGroup.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Attachment struct {
 	pulumi.CustomResourceState
 

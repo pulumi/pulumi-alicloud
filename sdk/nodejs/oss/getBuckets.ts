@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ossBucketsDs = pulumi.output(alicloud.oss.getBuckets({
- *     nameRegex: "sampleOssBucket",
+ *     nameRegex: "sample_oss_bucket",
  * }, { async: true }));
  *
  * export const firstOssBucketName = ossBucketsDs.buckets[0].name;
@@ -64,7 +62,7 @@ export interface GetBucketsResult {
     readonly id: string;
     readonly nameRegex?: string;
     /**
-     * A list of bucket names. 
+     * A list of bucket names.
      */
     readonly names: string[];
     readonly outputFile?: string;

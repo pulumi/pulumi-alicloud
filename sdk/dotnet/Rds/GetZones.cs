@@ -39,7 +39,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

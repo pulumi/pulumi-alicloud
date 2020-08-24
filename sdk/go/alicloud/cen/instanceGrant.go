@@ -13,6 +13,70 @@ import (
 // Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
 //
 // For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm).
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/providers"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := providers.Newalicloud(ctx, "account1", &providers.alicloudArgs{
+// 			AccessKey: pulumi.String("access123"),
+// 			SecretKey: pulumi.String("secret123"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = providers.Newalicloud(ctx, "account2", &providers.alicloudArgs{
+// 			AccessKey: pulumi.String("access456"),
+// 			SecretKey: pulumi.String("secret456"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider("alicloud.account2"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("192.168.0.0/16"),
+// 		}, pulumi.Provider("alicloud.account1"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewInstanceGrant(ctx, "fooInstanceGrant", &cen.InstanceGrantArgs{
+// 			CenId:           cen.ID(),
+// 			CenOwnerId:      pulumi.String("uid2"),
+// 			ChildInstanceId: vpc.ID(),
+// 		}, pulumi.Provider("alicloud.account1"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewInstanceAttachment(ctx, "fooInstanceAttachment", &cen.InstanceAttachmentArgs{
+// 			ChildInstanceId:       vpc.ID(),
+// 			ChildInstanceOwnerId:  pulumi.String("uid1"),
+// 			ChildInstanceRegionId: pulumi.String("cn-qingdao"),
+// 			InstanceId:            cen.ID(),
+// 		}, pulumi.Provider("alicloud.account2"), pulumi.DependsOn([]pulumi.Resource{
+// 			"alicloud_cen_instance_grant.foo",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type InstanceGrant struct {
 	pulumi.CustomResourceState
 

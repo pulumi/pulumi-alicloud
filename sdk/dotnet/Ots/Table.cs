@@ -9,6 +9,65 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ots
 {
+    /// <summary>
+    /// Provides an OTS table resource.
+    /// 
+    /// &gt; **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
+    /// you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "terraformtest";
+    ///         var foo = new AliCloud.Ots.Instance("foo", new AliCloud.Ots.InstanceArgs
+    ///         {
+    ///             AccessedBy = "Any",
+    ///             Description = name,
+    ///             Tags = 
+    ///             {
+    ///                 { "Created", "TF" },
+    ///                 { "For", "acceptance test" },
+    ///             },
+    ///         });
+    ///         var basic = new AliCloud.Ots.Table("basic", new AliCloud.Ots.TableArgs
+    ///         {
+    ///             DeviationCellVersionInSec = "1",
+    ///             InstanceName = foo.Name,
+    ///             MaxVersion = 1,
+    ///             PrimaryKeys = 
+    ///             {
+    ///                 new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///                 {
+    ///                     Name = "pk1",
+    ///                     Type = "Integer",
+    ///                 },
+    ///                 new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///                 {
+    ///                     Name = "pk2",
+    ///                     Type = "String",
+    ///                 },
+    ///                 new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///                 {
+    ///                     Name = "pk3",
+    ///                     Type = "Binary",
+    ///                 },
+    ///             },
+    ///             TableName = name,
+    ///             TimeToLive = -1,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Table : Pulumi.CustomResource
     {
         /// <summary>

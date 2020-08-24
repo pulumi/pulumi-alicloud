@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the app. 
+        /// The name of the app.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the app. 
+        /// The name of the app.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the app. 
+        /// The name of the app.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

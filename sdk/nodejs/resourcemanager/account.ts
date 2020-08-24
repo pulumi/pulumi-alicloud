@@ -12,8 +12,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -83,11 +81,11 @@ export class Account extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceDirectoryId!: pulumi.Output<string>;
     /**
-     * Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`. 
+     * Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Member type. The value of `ResourceAccount` indicates the resource account. 
+     * Member type. The value of `ResourceAccount` indicates the resource account.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -171,11 +169,11 @@ export interface AccountState {
      */
     readonly resourceDirectoryId?: pulumi.Input<string>;
     /**
-     * Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`. 
+     * Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * Member type. The value of `ResourceAccount` indicates the resource account. 
+     * Member type. The value of `ResourceAccount` indicates the resource account.
      */
     readonly type?: pulumi.Input<string>;
 }

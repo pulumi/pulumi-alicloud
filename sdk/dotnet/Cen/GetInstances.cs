@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.Cen
         ///     public Output&lt;string&gt; FirstCenInstanceId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -108,7 +107,7 @@ namespace Pulumi.AliCloud.Cen
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of CEN instances names. 
+        /// A list of CEN instances names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string AclOperationType;
         /// <summary>
-        /// Get results for the specified resource name. 
+        /// Get results for the specified resource name.
         /// </summary>
         public readonly string AclResourceName;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string AclResourcePatternType;
         /// <summary>
-        /// Get results for the specified resource type. 
+        /// Get results for the specified resource type.
         /// </summary>
         public readonly string AclResourceType;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Get results for the specified username. 
+        /// Get results for the specified username.
         /// </summary>
         public readonly string Username;
 

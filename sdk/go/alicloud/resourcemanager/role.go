@@ -14,6 +14,32 @@ import (
 // For information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 //
 // > **NOTE:** Available in v1.82.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/resourcemanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := resourcemanager.NewRole(ctx, "example", &resourcemanager.RoleArgs{
+// 			AssumeRolePolicyDocument: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "     {\n", "          \"Statement\": [\n", "               {\n", "                    \"Action\": \"sts:AssumeRole\",\n", "                    \"Effect\": \"Allow\",\n", "                    \"Principal\": {\n", "                        \"RAM\":[\n", "                                \"acs:ram::103755469187****:root\"，\n", "                                \"acs:ram::104408977069****:root\"\n", "                        ]\n", "                    }\n", "                }\n", "          ],\n", "          \"Version\": \"1\"\n", "     }\n", "	 \n")),
+// 			RoleName: pulumi.String("testrd"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Role struct {
 	pulumi.CustomResourceState
 

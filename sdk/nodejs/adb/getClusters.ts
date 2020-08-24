@@ -14,8 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -54,7 +52,7 @@ export interface GetClustersArgs {
      */
     readonly descriptionRegex?: string;
     /**
-     * A list of ADB cluster IDs. 
+     * A list of ADB cluster IDs.
      */
     readonly ids?: string[];
     readonly outputFile?: string;
@@ -76,7 +74,7 @@ export interface GetClustersResult {
     readonly clusters: outputs.adb.GetClustersCluster[];
     readonly descriptionRegex?: string;
     /**
-     * A list of ADB cluster descriptions. 
+     * A list of ADB cluster descriptions.
      */
     readonly descriptions: string[];
     /**
@@ -84,7 +82,7 @@ export interface GetClustersResult {
      */
     readonly id: string;
     /**
-     * A list of ADB cluster IDs. 
+     * A list of ADB cluster IDs.
      */
     readonly ids: string[];
     readonly outputFile?: string;

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
     public sealed class GetAlidnsRecordsRecordResult
     {
         /// <summary>
-        /// The domain name associated to the records. 
+        /// The domain name associated to the records.
         /// </summary>
         public readonly string DomainName;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
+        /// ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
         /// </summary>
         public readonly string Line;
         /// <summary>

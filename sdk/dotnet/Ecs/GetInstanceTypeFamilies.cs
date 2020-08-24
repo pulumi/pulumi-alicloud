@@ -42,7 +42,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     public Output&lt;string&gt; InstanceIds { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -54,7 +53,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetInstanceTypeFamiliesArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm). 
+        /// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
         /// </summary>
         [Input("generation")]
         public string? Generation { get; set; }

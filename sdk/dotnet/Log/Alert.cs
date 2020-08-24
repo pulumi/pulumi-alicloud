@@ -9,6 +9,90 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Log
 {
+    /// <summary>
+    /// Log alert is a unit of log service, which is used to monitor and alert the user's logstore status information.
+    /// Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
+    /// 
+    /// &gt; **NOTE:** Available in 1.78.0
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleProject = new AliCloud.Log.Project("exampleProject", new AliCloud.Log.ProjectArgs
+    ///         {
+    ///             Description = "create by terraform",
+    ///         });
+    ///         var exampleStore = new AliCloud.Log.Store("exampleStore", new AliCloud.Log.StoreArgs
+    ///         {
+    ///             AppendMeta = true,
+    ///             AutoSplit = true,
+    ///             MaxSplitShardCount = 60,
+    ///             Project = exampleProject.Name,
+    ///             RetentionPeriod = 3650,
+    ///             ShardCount = 3,
+    ///         });
+    ///         var exampleAlert = new AliCloud.Log.Alert("exampleAlert", new AliCloud.Log.AlertArgs
+    ///         {
+    ///             AlertDisplayname = "tf-test-alert-displayname",
+    ///             AlertName = "tf-test-alert",
+    ///             Condition = "count&gt; 100",
+    ///             Dashboard = "tf-test-dashboard",
+    ///             NotificationLists = 
+    ///             {
+    ///                 new AliCloud.Log.Inputs.AlertNotificationListArgs
+    ///                 {
+    ///                     Content = "alert content",
+    ///                     MobileLists = 
+    ///                     {
+    ///                         "12345678",
+    ///                         "87654321",
+    ///                     },
+    ///                     Type = "SMS",
+    ///                 },
+    ///                 new AliCloud.Log.Inputs.AlertNotificationListArgs
+    ///                 {
+    ///                     Content = "alert content",
+    ///                     EmailLists = 
+    ///                     {
+    ///                         "aliyun@alibaba-inc.com",
+    ///                         "tf-test@123.com",
+    ///                     },
+    ///                     Type = "Email",
+    ///                 },
+    ///                 new AliCloud.Log.Inputs.AlertNotificationListArgs
+    ///                 {
+    ///                     Content = "alert content",
+    ///                     ServiceUri = "www.aliyun.com",
+    ///                     Type = "DingTalk",
+    ///                 },
+    ///             },
+    ///             ProjectName = exampleProject.Name,
+    ///             QueryLists = 
+    ///             {
+    ///                 new AliCloud.Log.Inputs.AlertQueryListArgs
+    ///                 {
+    ///                     ChartTitle = "chart_title",
+    ///                     End = "20s",
+    ///                     Logstore = "tf-test-logstore",
+    ///                     Query = "* AND aliyun",
+    ///                     Start = "-60s",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Alert : Pulumi.CustomResource
     {
         /// <summary>

@@ -8,6 +8,33 @@ import (
 )
 
 // This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "^y[A-Za-z]+"
+// 		opt1 := "groups.txt"
+// 		groupsDs, err := dns.GetGroups(ctx, &dns.GetGroupsArgs{
+// 			NameRegex:  &opt0,
+// 			OutputFile: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstGroupName", groupsDs.Groups[0].GroupName)
+// 		return nil
+// 	})
+// }
+// ```
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	var rv GetGroupsResult
 	err := ctx.Invoke("alicloud:dns/getGroups:getGroups", args, &rv, opts...)

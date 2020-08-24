@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. 
+        /// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }

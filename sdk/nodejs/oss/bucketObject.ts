@@ -8,20 +8,18 @@ import * as utilities from "../utilities";
  * Provides a resource to put a object(content or file) to a oss bucket.
  *
  * ## Example Usage
- *
  * ### Uploading a file to a bucket
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const objectSource = new alicloud.oss.BucketObject("object-source", {
- *     bucket: "yourBucketName",
- *     key: "newObjectKey",
+ * const object_source = new alicloud.oss.BucketObject("object-source", {
+ *     bucket: "your_bucket_name",
+ *     key: "new_object_key",
  *     source: "path/to/file",
  * });
  * ```
- *
  * ### Uploading a content to a bucket
  *
  * ```typescript
@@ -30,12 +28,12 @@ import * as utilities from "../utilities";
  *
  * const example = new alicloud.oss.Bucket("example", {
  *     acl: "public-read",
- *     bucket: "yourBucketName",
+ *     bucket: "your_bucket_name",
  * });
- * const objectContent = new alicloud.oss.BucketObject("object-content", {
+ * const object_content = new alicloud.oss.BucketObject("object-content", {
  *     bucket: example.bucket,
  *     content: "the content that you want to upload.",
- *     key: "newObjectKey",
+ *     key: "new_object_key",
  * });
  * ```
  */

@@ -8,6 +8,31 @@ import (
 )
 
 // This data source provides a list of action trail of the current Alibaba Cloud user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/actiontrail"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "tf-testacc-actiontrail"
+// 		trails, err := actiontrail.GetTrails(ctx, &actiontrail.GetTrailsArgs{
+// 			NameRegex: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstTrailName", trails.Actiontrails[0].Name)
+// 		return nil
+// 	})
+// }
+// ```
 func GetTrails(ctx *pulumi.Context, args *GetTrailsArgs, opts ...pulumi.InvokeOption) (*GetTrailsResult, error) {
 	var rv GetTrailsResult
 	err := ctx.Invoke("alicloud:actiontrail/getTrails:getTrails", args, &rv, opts...)

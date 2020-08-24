@@ -22,8 +22,7 @@ type ImageCacheImageRegistryCredential struct {
 // ImageCacheImageRegistryCredentialInput is an input type that accepts ImageCacheImageRegistryCredentialArgs and ImageCacheImageRegistryCredentialOutput values.
 // You can construct a concrete instance of `ImageCacheImageRegistryCredentialInput` via:
 //
-// 		 ImageCacheImageRegistryCredentialArgs{...}
-//
+//          ImageCacheImageRegistryCredentialArgs{...}
 type ImageCacheImageRegistryCredentialInput interface {
 	pulumi.Input
 
@@ -55,8 +54,7 @@ func (i ImageCacheImageRegistryCredentialArgs) ToImageCacheImageRegistryCredenti
 // ImageCacheImageRegistryCredentialArrayInput is an input type that accepts ImageCacheImageRegistryCredentialArray and ImageCacheImageRegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `ImageCacheImageRegistryCredentialArrayInput` via:
 //
-// 		 ImageCacheImageRegistryCredentialArray{ ImageCacheImageRegistryCredentialArgs{...} }
-//
+//          ImageCacheImageRegistryCredentialArray{ ImageCacheImageRegistryCredentialArgs{...} }
 type ImageCacheImageRegistryCredentialArrayInput interface {
 	pulumi.Input
 
@@ -136,8 +134,7 @@ type OpenApiImageCacheImageRegistryCredential struct {
 // OpenApiImageCacheImageRegistryCredentialInput is an input type that accepts OpenApiImageCacheImageRegistryCredentialArgs and OpenApiImageCacheImageRegistryCredentialOutput values.
 // You can construct a concrete instance of `OpenApiImageCacheImageRegistryCredentialInput` via:
 //
-// 		 OpenApiImageCacheImageRegistryCredentialArgs{...}
-//
+//          OpenApiImageCacheImageRegistryCredentialArgs{...}
 type OpenApiImageCacheImageRegistryCredentialInput interface {
 	pulumi.Input
 
@@ -166,8 +163,7 @@ func (i OpenApiImageCacheImageRegistryCredentialArgs) ToOpenApiImageCacheImageRe
 // OpenApiImageCacheImageRegistryCredentialArrayInput is an input type that accepts OpenApiImageCacheImageRegistryCredentialArray and OpenApiImageCacheImageRegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `OpenApiImageCacheImageRegistryCredentialArrayInput` via:
 //
-// 		 OpenApiImageCacheImageRegistryCredentialArray{ OpenApiImageCacheImageRegistryCredentialArgs{...} }
-//
+//          OpenApiImageCacheImageRegistryCredentialArray{ OpenApiImageCacheImageRegistryCredentialArgs{...} }
 type OpenApiImageCacheImageRegistryCredentialArrayInput interface {
 	pulumi.Input
 
@@ -261,8 +257,7 @@ type GetImageCachesCach struct {
 // GetImageCachesCachInput is an input type that accepts GetImageCachesCachArgs and GetImageCachesCachOutput values.
 // You can construct a concrete instance of `GetImageCachesCachInput` via:
 //
-// 		 GetImageCachesCachArgs{...}
-//
+//          GetImageCachesCachArgs{...}
 type GetImageCachesCachInput interface {
 	pulumi.Input
 
@@ -308,8 +303,7 @@ func (i GetImageCachesCachArgs) ToGetImageCachesCachOutputWithContext(ctx contex
 // GetImageCachesCachArrayInput is an input type that accepts GetImageCachesCachArray and GetImageCachesCachArrayOutput values.
 // You can construct a concrete instance of `GetImageCachesCachArrayInput` via:
 //
-// 		 GetImageCachesCachArray{ GetImageCachesCachArgs{...} }
-//
+//          GetImageCachesCachArray{ GetImageCachesCachArgs{...} }
 type GetImageCachesCachArrayInput interface {
 	pulumi.Input
 
@@ -432,8 +426,7 @@ type GetImageCachesCachEvent struct {
 // GetImageCachesCachEventInput is an input type that accepts GetImageCachesCachEventArgs and GetImageCachesCachEventOutput values.
 // You can construct a concrete instance of `GetImageCachesCachEventInput` via:
 //
-// 		 GetImageCachesCachEventArgs{...}
-//
+//          GetImageCachesCachEventArgs{...}
 type GetImageCachesCachEventInput interface {
 	pulumi.Input
 
@@ -470,8 +463,7 @@ func (i GetImageCachesCachEventArgs) ToGetImageCachesCachEventOutputWithContext(
 // GetImageCachesCachEventArrayInput is an input type that accepts GetImageCachesCachEventArray and GetImageCachesCachEventArrayOutput values.
 // You can construct a concrete instance of `GetImageCachesCachEventArrayInput` via:
 //
-// 		 GetImageCachesCachEventArray{ GetImageCachesCachEventArgs{...} }
-//
+//          GetImageCachesCachEventArray{ GetImageCachesCachEventArgs{...} }
 type GetImageCachesCachEventArrayInput interface {
 	pulumi.Input
 

@@ -22,8 +22,7 @@ type ClusterBootstrapAction struct {
 // ClusterBootstrapActionInput is an input type that accepts ClusterBootstrapActionArgs and ClusterBootstrapActionOutput values.
 // You can construct a concrete instance of `ClusterBootstrapActionInput` via:
 //
-// 		 ClusterBootstrapActionArgs{...}
-//
+//          ClusterBootstrapActionArgs{...}
 type ClusterBootstrapActionInput interface {
 	pulumi.Input
 
@@ -55,8 +54,7 @@ func (i ClusterBootstrapActionArgs) ToClusterBootstrapActionOutputWithContext(ct
 // ClusterBootstrapActionArrayInput is an input type that accepts ClusterBootstrapActionArray and ClusterBootstrapActionArrayOutput values.
 // You can construct a concrete instance of `ClusterBootstrapActionArrayInput` via:
 //
-// 		 ClusterBootstrapActionArray{ ClusterBootstrapActionArgs{...} }
-//
+//          ClusterBootstrapActionArray{ ClusterBootstrapActionArgs{...} }
 type ClusterBootstrapActionArrayInput interface {
 	pulumi.Input
 
@@ -160,8 +158,7 @@ type ClusterHostGroup struct {
 // ClusterHostGroupInput is an input type that accepts ClusterHostGroupArgs and ClusterHostGroupOutput values.
 // You can construct a concrete instance of `ClusterHostGroupInput` via:
 //
-// 		 ClusterHostGroupArgs{...}
-//
+//          ClusterHostGroupArgs{...}
 type ClusterHostGroupInput interface {
 	pulumi.Input
 
@@ -214,8 +211,7 @@ func (i ClusterHostGroupArgs) ToClusterHostGroupOutputWithContext(ctx context.Co
 // ClusterHostGroupArrayInput is an input type that accepts ClusterHostGroupArray and ClusterHostGroupArrayOutput values.
 // You can construct a concrete instance of `ClusterHostGroupArrayInput` via:
 //
-// 		 ClusterHostGroupArray{ ClusterHostGroupArgs{...} }
-//
+//          ClusterHostGroupArray{ ClusterHostGroupArgs{...} }
 type ClusterHostGroupArrayInput interface {
 	pulumi.Input
 
@@ -352,8 +348,7 @@ type GetDiskTypesType struct {
 // GetDiskTypesTypeInput is an input type that accepts GetDiskTypesTypeArgs and GetDiskTypesTypeOutput values.
 // You can construct a concrete instance of `GetDiskTypesTypeInput` via:
 //
-// 		 GetDiskTypesTypeArgs{...}
-//
+//          GetDiskTypesTypeArgs{...}
 type GetDiskTypesTypeInput interface {
 	pulumi.Input
 
@@ -385,8 +380,7 @@ func (i GetDiskTypesTypeArgs) ToGetDiskTypesTypeOutputWithContext(ctx context.Co
 // GetDiskTypesTypeArrayInput is an input type that accepts GetDiskTypesTypeArray and GetDiskTypesTypeArrayOutput values.
 // You can construct a concrete instance of `GetDiskTypesTypeArrayInput` via:
 //
-// 		 GetDiskTypesTypeArray{ GetDiskTypesTypeArgs{...} }
-//
+//          GetDiskTypesTypeArray{ GetDiskTypesTypeArgs{...} }
 type GetDiskTypesTypeArrayInput interface {
 	pulumi.Input
 
@@ -469,8 +463,7 @@ type GetInstanceTypesType struct {
 // GetInstanceTypesTypeInput is an input type that accepts GetInstanceTypesTypeArgs and GetInstanceTypesTypeOutput values.
 // You can construct a concrete instance of `GetInstanceTypesTypeInput` via:
 //
-// 		 GetInstanceTypesTypeArgs{...}
-//
+//          GetInstanceTypesTypeArgs{...}
 type GetInstanceTypesTypeInput interface {
 	pulumi.Input
 
@@ -502,8 +495,7 @@ func (i GetInstanceTypesTypeArgs) ToGetInstanceTypesTypeOutputWithContext(ctx co
 // GetInstanceTypesTypeArrayInput is an input type that accepts GetInstanceTypesTypeArray and GetInstanceTypesTypeArrayOutput values.
 // You can construct a concrete instance of `GetInstanceTypesTypeArrayInput` via:
 //
-// 		 GetInstanceTypesTypeArray{ GetInstanceTypesTypeArgs{...} }
-//
+//          GetInstanceTypesTypeArray{ GetInstanceTypesTypeArgs{...} }
 type GetInstanceTypesTypeArrayInput interface {
 	pulumi.Input
 
@@ -586,8 +578,7 @@ type GetMainVersionsMainVersion struct {
 // GetMainVersionsMainVersionInput is an input type that accepts GetMainVersionsMainVersionArgs and GetMainVersionsMainVersionOutput values.
 // You can construct a concrete instance of `GetMainVersionsMainVersionInput` via:
 //
-// 		 GetMainVersionsMainVersionArgs{...}
-//
+//          GetMainVersionsMainVersionArgs{...}
 type GetMainVersionsMainVersionInput interface {
 	pulumi.Input
 
@@ -619,8 +610,7 @@ func (i GetMainVersionsMainVersionArgs) ToGetMainVersionsMainVersionOutputWithCo
 // GetMainVersionsMainVersionArrayInput is an input type that accepts GetMainVersionsMainVersionArray and GetMainVersionsMainVersionArrayOutput values.
 // You can construct a concrete instance of `GetMainVersionsMainVersionArrayInput` via:
 //
-// 		 GetMainVersionsMainVersionArray{ GetMainVersionsMainVersionArgs{...} }
-//
+//          GetMainVersionsMainVersionArray{ GetMainVersionsMainVersionArgs{...} }
 type GetMainVersionsMainVersionArrayInput interface {
 	pulumi.Input
 

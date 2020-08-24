@@ -12,11 +12,9 @@ namespace Pulumi.AliCloud.Adb
     /// <summary>
     /// Provides a [ADB](https://www.alibabacloud.com/help/product/92664.htm) account resource and used to manage databases.
     /// 
-    /// &gt; **NOTE:** Available in v1.71.0+. 
+    /// &gt; **NOTE:** Available in v1.71.0+.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

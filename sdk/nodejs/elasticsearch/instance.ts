@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     dataNodeAmount: "2",
  *     dataNodeSpec: "elasticsearch.sn2ne.large",
  *     dataNodeDiskSize: "20",
- *     dataNodeDiskType: "cloudSsd",
+ *     dataNodeDiskType: "cloud_ssd",
  *     vswitchId: "some vswitch id",
  *     password: "Your password",
  *     version: "5.5.3_with_X-Pack",
@@ -76,7 +76,6 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The single data node storage space.
      * - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
-     * - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
      */
     public readonly dataNodeDiskSize!: pulumi.Output<number>;
     /**
@@ -303,7 +302,6 @@ export interface InstanceState {
     /**
      * The single data node storage space.
      * - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
-     * - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
      */
     readonly dataNodeDiskSize?: pulumi.Input<number>;
     /**
@@ -429,7 +427,6 @@ export interface InstanceArgs {
     /**
      * The single data node storage space.
      * - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
-     * - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
      */
     readonly dataNodeDiskSize: pulumi.Input<number>;
     /**

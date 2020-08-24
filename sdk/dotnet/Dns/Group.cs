@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dns
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of the domain group.    
+        /// Name of the domain group.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Dns
     public sealed class GroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the domain group.    
+        /// Name of the domain group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Dns
     public sealed class GroupState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the domain group.    
+        /// Name of the domain group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

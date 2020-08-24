@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance. 
+    /// This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance.
     /// After you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.
     /// 
     /// For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).
@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +47,12 @@ namespace Pulumi.AliCloud.Cen
     ///             HealthyThreshold = 8,
     ///             VbrInstanceId = "vbr-xxxxx",
     ///             VbrInstanceRegionId = "cn-hangzhou",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "alicloud_cen_instance_attachment.default",
+    ///             },
     ///         });
     ///     }
     /// 

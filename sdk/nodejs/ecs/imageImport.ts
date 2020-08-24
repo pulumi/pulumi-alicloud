@@ -17,14 +17,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const thisImageImport = new alicloud.ecs.ImageImport("this", {
- *     architecture: "x8664",
+ *     architecture: "x86_64",
  *     description: "test import image",
  *     diskDeviceMappings: [{
  *         diskImageSize: 5,
@@ -37,11 +35,10 @@ import * as utilities from "../utilities";
  *     platform: "Ubuntu",
  * });
  * ```
- *
  * ## Attributes Reference0
- *  
+ *
  *  The following attributes are exported:
- *  
+ *
  * * `id` - ID of the image.
  */
 export class ImageImport extends pulumi.CustomResource {

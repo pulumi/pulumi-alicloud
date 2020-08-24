@@ -16,6 +16,34 @@ import (
 //
 // > **NOTE:** Available in 1.57.0+ .
 //
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ddos"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
+// 			Bandwidth:     pulumi.Int(201),
+// 			BaseBandwidth: pulumi.Int(20),
+// 			IpCount:       pulumi.Int(100),
+// 			IpType:        pulumi.String("IPv4"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // Deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance
 type DdosBgpInstance struct {
 	pulumi.CustomResourceState

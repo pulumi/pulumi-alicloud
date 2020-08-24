@@ -11,13 +11,13 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEdasK8sCluster = new alicloud.EdasK8sCluster("default", {
+ * const defaultK8sCluster = new alicloud.edas.K8sCluster("default", {
  *     csClusterId: "xxxx-xxx-xxx",
  * });
  * ```
@@ -63,7 +63,7 @@ export class K8sCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly clusterName!: pulumi.Output<string>;
     /**
-     * The type of the cluster that you want to create. Valid values only: 5: K8s cluster. 
+     * The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
      */
     public /*out*/ readonly clusterType!: pulumi.Output<number>;
     /**
@@ -143,7 +143,7 @@ export interface K8sClusterState {
      */
     readonly clusterName?: pulumi.Input<string>;
     /**
-     * The type of the cluster that you want to create. Valid values only: 5: K8s cluster. 
+     * The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
      */
     readonly clusterType?: pulumi.Input<number>;
     /**

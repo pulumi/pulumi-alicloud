@@ -43,7 +43,6 @@ namespace Pulumi.AliCloud.Dns
         ///     public Output&lt;string&gt; FirstLineCode { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -55,7 +54,7 @@ namespace Pulumi.AliCloud.Dns
     public sealed class GetResolutionLinesArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Domain Name. 
+        /// Domain Name.
         /// </summary>
         [Input("domainName")]
         public string? DomainName { get; set; }

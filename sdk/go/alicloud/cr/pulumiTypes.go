@@ -22,8 +22,7 @@ type RepoDomainList struct {
 // RepoDomainListInput is an input type that accepts RepoDomainListArgs and RepoDomainListOutput values.
 // You can construct a concrete instance of `RepoDomainListInput` via:
 //
-// 		 RepoDomainListArgs{...}
-//
+//          RepoDomainListArgs{...}
 type RepoDomainListInput interface {
 	pulumi.Input
 
@@ -63,12 +62,11 @@ func (i RepoDomainListArgs) ToRepoDomainListPtrOutputWithContext(ctx context.Con
 // RepoDomainListPtrInput is an input type that accepts RepoDomainListArgs, RepoDomainListPtr and RepoDomainListPtrOutput values.
 // You can construct a concrete instance of `RepoDomainListPtrInput` via:
 //
-// 		 RepoDomainListArgs{...}
+//          RepoDomainListArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type RepoDomainListPtrInput interface {
 	pulumi.Input
 
@@ -193,8 +191,7 @@ type GetNamespacesNamespace struct {
 // GetNamespacesNamespaceInput is an input type that accepts GetNamespacesNamespaceArgs and GetNamespacesNamespaceOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceInput` via:
 //
-// 		 GetNamespacesNamespaceArgs{...}
-//
+//          GetNamespacesNamespaceArgs{...}
 type GetNamespacesNamespaceInput interface {
 	pulumi.Input
 
@@ -226,8 +223,7 @@ func (i GetNamespacesNamespaceArgs) ToGetNamespacesNamespaceOutputWithContext(ct
 // GetNamespacesNamespaceArrayInput is an input type that accepts GetNamespacesNamespaceArray and GetNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceArrayInput` via:
 //
-// 		 GetNamespacesNamespaceArray{ GetNamespacesNamespaceArgs{...} }
-//
+//          GetNamespacesNamespaceArray{ GetNamespacesNamespaceArgs{...} }
 type GetNamespacesNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -316,8 +312,7 @@ type GetReposRepo struct {
 // GetReposRepoInput is an input type that accepts GetReposRepoArgs and GetReposRepoOutput values.
 // You can construct a concrete instance of `GetReposRepoInput` via:
 //
-// 		 GetReposRepoArgs{...}
-//
+//          GetReposRepoArgs{...}
 type GetReposRepoInput interface {
 	pulumi.Input
 
@@ -355,8 +350,7 @@ func (i GetReposRepoArgs) ToGetReposRepoOutputWithContext(ctx context.Context) G
 // GetReposRepoArrayInput is an input type that accepts GetReposRepoArray and GetReposRepoArrayOutput values.
 // You can construct a concrete instance of `GetReposRepoArrayInput` via:
 //
-// 		 GetReposRepoArray{ GetReposRepoArgs{...} }
-//
+//          GetReposRepoArray{ GetReposRepoArgs{...} }
 type GetReposRepoArrayInput interface {
 	pulumi.Input
 
@@ -454,8 +448,7 @@ type GetReposRepoDomainList struct {
 // GetReposRepoDomainListInput is an input type that accepts GetReposRepoDomainListArgs and GetReposRepoDomainListOutput values.
 // You can construct a concrete instance of `GetReposRepoDomainListInput` via:
 //
-// 		 GetReposRepoDomainListArgs{...}
-//
+//          GetReposRepoDomainListArgs{...}
 type GetReposRepoDomainListInput interface {
 	pulumi.Input
 
@@ -533,8 +526,7 @@ type GetReposRepoTag struct {
 // GetReposRepoTagInput is an input type that accepts GetReposRepoTagArgs and GetReposRepoTagOutput values.
 // You can construct a concrete instance of `GetReposRepoTagInput` via:
 //
-// 		 GetReposRepoTagArgs{...}
-//
+//          GetReposRepoTagArgs{...}
 type GetReposRepoTagInput interface {
 	pulumi.Input
 
@@ -574,8 +566,7 @@ func (i GetReposRepoTagArgs) ToGetReposRepoTagOutputWithContext(ctx context.Cont
 // GetReposRepoTagArrayInput is an input type that accepts GetReposRepoTagArray and GetReposRepoTagArrayOutput values.
 // You can construct a concrete instance of `GetReposRepoTagArrayInput` via:
 //
-// 		 GetReposRepoTagArray{ GetReposRepoTagArgs{...} }
-//
+//          GetReposRepoTagArray{ GetReposRepoTagArgs{...} }
 type GetReposRepoTagArrayInput interface {
 	pulumi.Input
 

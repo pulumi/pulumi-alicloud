@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.RocketMQ
 {
     /// <summary>
-    /// Provides a Sag qos policy resource. 
+    /// Provides a Sag qos policy resource.
     /// You need to create a QoS policy to set priorities, rate limits, and quintuple rules for different messages.
     /// 
     /// For information about Sag Qos Policy and how to use it, see [What is Qos Policy](https://www.alibabacloud.com/help/doc-detail/140065.htm).
@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<string> DestPortRange { get; private set; } = null!;
 
         /// <summary>
-        /// The expiration time of the quintuple rule. 
+        /// The expiration time of the quintuple rule.
         /// </summary>
         [Output("endTime")]
         public Output<string?> EndTime { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string> DestPortRange { get; set; } = null!;
 
         /// <summary>
-        /// The expiration time of the quintuple rule. 
+        /// The expiration time of the quintuple rule.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
@@ -258,7 +258,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? DestPortRange { get; set; }
 
         /// <summary>
-        /// The expiration time of the quintuple rule. 
+        /// The expiration time of the quintuple rule.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }

@@ -17,6 +17,132 @@ import (
 // For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/doc-detail/124157.htm).
 //
 // > **NOTE:** Available in 1.82.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/providers"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = providers.Newalicloud(ctx, "vpc00Region", &providers.alicloudArgs{
+// 			Region: pulumi.String("cn-hangzhou"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = providers.Newalicloud(ctx, "vpc01Region", &providers.alicloudArgs{
+// 			Region: pulumi.String("cn-shanghai"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpc00, err := vpc.NewNetwork(ctx, "vpc00", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		}, pulumi.Provider("alicloud.vpc00_region"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpc01, err := vpc.NewNetwork(ctx, "vpc01", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		}, pulumi.Provider("alicloud.vpc01_region"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewInstanceAttachment(ctx, "default00", &cen.InstanceAttachmentArgs{
+// 			ChildInstanceId:       vpc00.ID(),
+// 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
+// 			InstanceId:            defaultInstance.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewInstanceAttachment(ctx, "default01", &cen.InstanceAttachmentArgs{
+// 			ChildInstanceId:       vpc01.ID(),
+// 			ChildInstanceRegionId: pulumi.String("cn-shanghai"),
+// 			InstanceId:            defaultInstance.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewRouteMap(ctx, "defaultRouteMap", &cen.RouteMapArgs{
+// 			AsPathMatchMode:      pulumi.String("Include"),
+// 			CenId:                pulumi.Any(alicloud_cen_instance.Cen.Id),
+// 			CenRegionId:          pulumi.String("cn-hangzhou"),
+// 			CidrMatchMode:        pulumi.String("Include"),
+// 			CommunityMatchMode:   pulumi.String("Include"),
+// 			CommunityOperateMode: pulumi.String("Additive"),
+// 			Description:          pulumi.String("test-desc"),
+// 			DestinationChildInstanceTypes: pulumi.StringArray{
+// 				pulumi.String("VPC"),
+// 			},
+// 			DestinationCidrBlocks: pulumi.StringArray{
+// 				vpc01.CidrBlock,
+// 			},
+// 			DestinationInstanceIds: pulumi.StringArray{
+// 				vpc01.ID(),
+// 			},
+// 			DestinationInstanceIdsReverseMatch: pulumi.Bool(false),
+// 			DestinationRouteTableIds: pulumi.StringArray{
+// 				vpc01.RouteTableId,
+// 			},
+// 			MapResult: pulumi.String("Permit"),
+// 			MatchAsns: pulumi.StringArray{
+// 				pulumi.String("65501"),
+// 			},
+// 			MatchCommunitySets: pulumi.StringArray{
+// 				pulumi.String("65501:1"),
+// 			},
+// 			NextPriority: pulumi.Int(1),
+// 			OperateCommunitySets: pulumi.StringArray{
+// 				pulumi.String("65501:1"),
+// 			},
+// 			Preference: pulumi.Int(20),
+// 			PrependAsPaths: pulumi.StringArray{
+// 				pulumi.String("65501"),
+// 			},
+// 			Priority: pulumi.Int(1),
+// 			RouteTypes: pulumi.StringArray{
+// 				pulumi.String("System"),
+// 			},
+// 			SourceChildInstanceTypes: pulumi.StringArray{
+// 				pulumi.String("VPC"),
+// 			},
+// 			SourceInstanceIds: pulumi.StringArray{
+// 				vpc00.ID(),
+// 			},
+// 			SourceInstanceIdsReverseMatch: pulumi.Bool(false),
+// 			SourceRegionIds: pulumi.StringArray{
+// 				pulumi.String("cn-hangzhou"),
+// 			},
+// 			SourceRouteTableIds: pulumi.StringArray{
+// 				vpc00.RouteTableId,
+// 			},
+// 			TransmitDirection: pulumi.String("RegionIn"),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"alicloud_cen_instance_attachment.default00",
+// 			"alicloud_cen_instance_attachment.default01",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type RouteMap struct {
 	pulumi.CustomResourceState
 

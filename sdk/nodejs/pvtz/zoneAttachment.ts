@@ -43,7 +43,7 @@ export class ZoneAttachment extends pulumi.CustomResource {
      */
     public readonly userClientIp!: pulumi.Output<string | undefined>;
     /**
-     * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+     * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
      */
     public readonly vpcIds!: pulumi.Output<string[]>;
     /**
@@ -107,7 +107,7 @@ export interface ZoneAttachmentState {
      */
     readonly userClientIp?: pulumi.Input<string>;
     /**
-     * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+     * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
      */
     readonly vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -133,7 +133,7 @@ export interface ZoneAttachmentArgs {
      */
     readonly userClientIp?: pulumi.Input<string>;
     /**
-     * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+     * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
      */
     readonly vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

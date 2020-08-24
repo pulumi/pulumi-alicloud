@@ -55,7 +55,6 @@ namespace Pulumi.AliCloud.RocketMQ
         ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -79,7 +78,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
 
         /// <summary>
-        /// A regex string to filter results by the instance name. 
+        /// A regex string to filter results by the instance name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }

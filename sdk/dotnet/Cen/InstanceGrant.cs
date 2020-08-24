@@ -12,11 +12,11 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
     /// 
-    /// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm). 
+    /// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm).
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,16 +41,25 @@ namespace Pulumi.AliCloud.Cen
     ///         var name = config.Get("name") ?? "tf-testAccCenInstanceGrantBasic";
     ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
     ///         {
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "alicloud.account2",
     ///         });
     ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
     ///         {
     ///             CidrBlock = "192.168.0.0/16",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "alicloud.account1",
     ///         });
     ///         var fooInstanceGrant = new AliCloud.Cen.InstanceGrant("fooInstanceGrant", new AliCloud.Cen.InstanceGrantArgs
     ///         {
     ///             CenId = cen.Id,
     ///             CenOwnerId = "uid2",
     ///             ChildInstanceId = vpc.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "alicloud.account1",
     ///         });
     ///         var fooInstanceAttachment = new AliCloud.Cen.InstanceAttachment("fooInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
@@ -58,6 +67,13 @@ namespace Pulumi.AliCloud.Cen
     ///             ChildInstanceOwnerId = "uid1",
     ///             ChildInstanceRegionId = "cn-qingdao",
     ///             InstanceId = cen.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "alicloud.account2",
+    ///             DependsOn = 
+    ///             {
+    ///                 "alicloud_cen_instance_grant.foo",
+    ///             },
     ///         });
     ///     }
     /// 

@@ -17,8 +17,6 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
@@ -78,7 +76,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> ResourceDirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`. 
+        /// Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -203,7 +201,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? ResourceDirectoryId { get; set; }
 
         /// <summary>
-        /// Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`. 
+        /// Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

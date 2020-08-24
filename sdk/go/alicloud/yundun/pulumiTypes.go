@@ -27,11 +27,26 @@ type GetBastionHostInstancesInstance struct {
 	// The instance's security group configuration.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A map of tags assigned to the bastionhost instance. It must be in the format:
-	// ```
-	// data "yundun.getBastionHostInstances" "instance" {
-	// tags = {
-	// tagKey1 = "tagValue1"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/yundun"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := yundun.GetBastionHostInstances(ctx, &yundun.GetBastionHostInstancesArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -42,8 +57,7 @@ type GetBastionHostInstancesInstance struct {
 // GetBastionHostInstancesInstanceInput is an input type that accepts GetBastionHostInstancesInstanceArgs and GetBastionHostInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetBastionHostInstancesInstanceInput` via:
 //
-// 		 GetBastionHostInstancesInstanceArgs{...}
-//
+//          GetBastionHostInstancesInstanceArgs{...}
 type GetBastionHostInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -68,11 +82,26 @@ type GetBastionHostInstancesInstanceArgs struct {
 	// The instance's security group configuration.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
 	// A map of tags assigned to the bastionhost instance. It must be in the format:
-	// ```
-	// data "yundun.getBastionHostInstances" "instance" {
-	// tags = {
-	// tagKey1 = "tagValue1"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/yundun"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := yundun.GetBastionHostInstances(ctx, &yundun.GetBastionHostInstancesArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
@@ -95,8 +124,7 @@ func (i GetBastionHostInstancesInstanceArgs) ToGetBastionHostInstancesInstanceOu
 // GetBastionHostInstancesInstanceArrayInput is an input type that accepts GetBastionHostInstancesInstanceArray and GetBastionHostInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetBastionHostInstancesInstanceArrayInput` via:
 //
-// 		 GetBastionHostInstancesInstanceArray{ GetBastionHostInstancesInstanceArgs{...} }
-//
+//          GetBastionHostInstancesInstanceArray{ GetBastionHostInstancesInstanceArgs{...} }
 type GetBastionHostInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -172,11 +200,26 @@ func (o GetBastionHostInstancesInstanceOutput) SecurityGroupIds() pulumi.StringA
 }
 
 // A map of tags assigned to the bastionhost instance. It must be in the format:
-// ```
-// data "yundun.getBastionHostInstances" "instance" {
-// tags = {
-// tagKey1 = "tagValue1"
-// }
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/yundun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := yundun.GetBastionHostInstances(ctx, &yundun.GetBastionHostInstancesArgs{
+// 			Tags: map[string]interface{}{
+// 				"tagKey1": "tagValue1",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
 // }
 // ```
 func (o GetBastionHostInstancesInstanceOutput) Tags() pulumi.MapOutput {
@@ -223,8 +266,7 @@ type GetDBAuditInstanceInstance struct {
 // GetDBAuditInstanceInstanceInput is an input type that accepts GetDBAuditInstanceInstanceArgs and GetDBAuditInstanceInstanceOutput values.
 // You can construct a concrete instance of `GetDBAuditInstanceInstanceInput` via:
 //
-// 		 GetDBAuditInstanceInstanceArgs{...}
-//
+//          GetDBAuditInstanceInstanceArgs{...}
 type GetDBAuditInstanceInstanceInput interface {
 	pulumi.Input
 
@@ -259,8 +301,7 @@ func (i GetDBAuditInstanceInstanceArgs) ToGetDBAuditInstanceInstanceOutputWithCo
 // GetDBAuditInstanceInstanceArrayInput is an input type that accepts GetDBAuditInstanceInstanceArray and GetDBAuditInstanceInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDBAuditInstanceInstanceArrayInput` via:
 //
-// 		 GetDBAuditInstanceInstanceArray{ GetDBAuditInstanceInstanceArgs{...} }
-//
+//          GetDBAuditInstanceInstanceArray{ GetDBAuditInstanceInstanceArgs{...} }
 type GetDBAuditInstanceInstanceArrayInput interface {
 	pulumi.Input
 

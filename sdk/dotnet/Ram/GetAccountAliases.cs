@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.Ram
         ///     public Output&lt;string&gt; AccountAlias { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

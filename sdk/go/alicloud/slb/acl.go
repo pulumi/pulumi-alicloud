@@ -33,8 +33,38 @@ import (
 //
 // For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/85978.htm).
 //
+// ## Example Usage
 //
+// ```go
+// package main
 //
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := slb.NewAcl(ctx, "_default", &slb.AclArgs{
+// 			EntryLists: slb.AclEntryListArray{
+// 				&slb.AclEntryListArgs{
+// 					Comment: pulumi.String("first"),
+// 					Entry:   pulumi.String("10.10.10.0/24"),
+// 				},
+// 				&slb.AclEntryListArgs{
+// 					Comment: pulumi.String("second"),
+// 					Entry:   pulumi.String("168.10.10.0/24"),
+// 				},
+// 			},
+// 			IpVersion: pulumi.String(ipVersion),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Entry Block
 //
 // The entry mapping supports the following:

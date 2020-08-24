@@ -39,7 +39,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     public Output&lt;string&gt; FirstImageId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -57,7 +56,7 @@ namespace Pulumi.AliCloud.Ecs
         public bool? MostRecent { get; set; }
 
         /// <summary>
-        /// A regex string to filter resulting images by name. 
+        /// A regex string to filter resulting images by name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }

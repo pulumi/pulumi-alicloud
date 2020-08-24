@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.Cen
         ///     public Output&lt;string&gt; FirstCenBandwidthLimitsLocalRegionId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

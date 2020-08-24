@@ -30,7 +30,6 @@ import (
 //
 // > **NOTE:** Resource `ess.ScalingGroupVServerGroups` is available in 1.53.0+.
 //
-//
 // ## Block vserverGroup
 //
 // the vserverGroup supports the following:

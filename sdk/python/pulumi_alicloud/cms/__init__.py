@@ -5,3 +5,5 @@
 # Export this package's modules as members:
 from .alarm import *
 from .site_monitor import *
+from ._inputs import *
+from . import outputs

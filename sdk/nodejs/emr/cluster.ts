@@ -7,12 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a EMR Cluster resource. With this you can create, read, and release  EMR Cluster. 
+ * Provides a EMR Cluster resource. With this you can create, read, and release  EMR Cluster.
  *
  * > **NOTE:** Available in 1.57.0+.
  *
  * ## Example Usage
- *
  * ### 1. Create A Cluster
  *
  * ```typescript
@@ -86,9 +85,9 @@ import * as utilities from "../utilities";
  * const defaultCluster = new alicloud.emr.Cluster("defaultCluster", {
  *     emrVer: defaultMainVersions.then(defaultMainVersions => defaultMainVersions.mainVersions[0].emrVersion),
  *     clusterType: defaultMainVersions.then(defaultMainVersions => defaultMainVersions.mainVersions[0].clusterTypes[0]),
- *     host_group: [
+ *     hostGroups: [
  *         {
- *             hostGroupName: "masterGroup",
+ *             hostGroupName: "master_group",
  *             hostGroupType: "MASTER",
  *             nodeCount: "2",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].id),
@@ -99,7 +98,7 @@ import * as utilities from "../utilities";
  *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types[0].min > 160 ? systemDisk1.types[0].min : 160),
  *         },
  *         {
- *             hostGroupName: "coreGroup",
+ *             hostGroupName: "core_group",
  *             hostGroupType: "CORE",
  *             nodeCount: "3",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].id),
@@ -110,7 +109,7 @@ import * as utilities from "../utilities";
  *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types[0].min > 160 ? systemDisk1.types[0].min : 160),
  *         },
  *         {
- *             hostGroupName: "taskGroup",
+ *             hostGroupName: "task_group",
  *             hostGroupType: "TASK",
  *             nodeCount: "2",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].id),
@@ -132,8 +131,15 @@ import * as utilities from "../utilities";
  *     masterPwd: "ABCtest1234!",
  * });
  * ```
- *
  * ### 2. Scale Up
+ * The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
+ *
+ * In the case of scaling up cluster, we should add the nodeCount of some host group.
+ *
+ * > **NOTE:** Scaling up is only applicable to CORE and TASK group. Cost time of scaling up will vary with the number of scaling-up nodes.
+ * Scaling down is only applicable to TASK group. If you want to scale down CORE group, please submit tickets or contact EMR support team.
+ *
+ * As the following case, we scale up the TASK group 2 nodes by increasing host_group.node_count by 2.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -206,9 +212,9 @@ import * as utilities from "../utilities";
  * const defaultCluster = new alicloud.emr.Cluster("defaultCluster", {
  *     emrVer: defaultMainVersions.then(defaultMainVersions => defaultMainVersions.mainVersions[0].emrVersion),
  *     clusterType: defaultMainVersions.then(defaultMainVersions => defaultMainVersions.mainVersions[0].clusterTypes[0]),
- *     host_group: [
+ *     hostGroups: [
  *         {
- *             hostGroupName: "masterGroup",
+ *             hostGroupName: "master_group",
  *             hostGroupType: "MASTER",
  *             nodeCount: "2",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].id),
@@ -219,7 +225,7 @@ import * as utilities from "../utilities";
  *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types[0].min > 160 ? systemDisk1.types[0].min : 160),
  *         },
  *         {
- *             hostGroupName: "coreGroup",
+ *             hostGroupName: "core_group",
  *             hostGroupType: "CORE",
  *             nodeCount: "2",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].id),
@@ -230,7 +236,7 @@ import * as utilities from "../utilities";
  *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types[0].min > 160 ? systemDisk1.types[0].min : 160),
  *         },
  *         {
- *             hostGroupName: "taskGroup",
+ *             hostGroupName: "task_group",
  *             hostGroupType: "TASK",
  *             nodeCount: "4",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].id),
@@ -252,8 +258,11 @@ import * as utilities from "../utilities";
  *     masterPwd: "ABCtest1234!",
  * });
  * ```
- *
  * ### 3. Scale Down
+ *
+ * In the case of scaling down a cluster, we need to specified the host group and the instance list.
+ *
+ * The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -326,9 +335,9 @@ import * as utilities from "../utilities";
  * const defaultCluster = new alicloud.emr.Cluster("defaultCluster", {
  *     emrVer: defaultMainVersions.then(defaultMainVersions => defaultMainVersions.mainVersions[0].emrVersion),
  *     clusterType: defaultMainVersions.then(defaultMainVersions => defaultMainVersions.mainVersions[0].clusterTypes[0]),
- *     host_group: [
+ *     hostGroups: [
  *         {
- *             hostGroupName: "masterGroup",
+ *             hostGroupName: "master_group",
  *             hostGroupType: "MASTER",
  *             nodeCount: "2",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].id),
@@ -339,7 +348,7 @@ import * as utilities from "../utilities";
  *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types[0].min > 160 ? systemDisk1.types[0].min : 160),
  *         },
  *         {
- *             hostGroupName: "coreGroup",
+ *             hostGroupName: "core_group",
  *             hostGroupType: "CORE",
  *             nodeCount: "2",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].id),
@@ -350,7 +359,7 @@ import * as utilities from "../utilities";
  *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types[0].min > 160 ? systemDisk1.types[0].min : 160),
  *         },
  *         {
- *             hostGroupName: "taskGroup",
+ *             hostGroupName: "task_group",
  *             hostGroupType: "TASK",
  *             nodeCount: "2",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].id),

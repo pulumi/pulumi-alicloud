@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -46,7 +44,7 @@ export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetAppsArgs {
     /**
-     * A list of app IDs. 
+     * A list of app IDs.
      */
     readonly ids?: string[];
     /**
@@ -73,12 +71,12 @@ export interface GetAppsResult {
      */
     readonly id: string;
     /**
-     * A list of app IDs. 
+     * A list of app IDs.
      */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of app names. 
+     * A list of app names.
      */
     readonly names: string[];
     readonly outputFile?: string;

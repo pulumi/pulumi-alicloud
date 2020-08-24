@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.Vpn
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

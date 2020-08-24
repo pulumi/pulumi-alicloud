@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,10 +37,10 @@ import * as utilities from "../utilities";
  * const config = new alicloud.cdn.DomainConfig("config", {
  *     domainName: domain.domainName,
  *     functionArgs: [{
- *         argName: "ipList",
+ *         argName: "ip_list",
  *         argValue: "110.110.110.110",
  *     }],
- *     functionName: "ipAllowListSet",
+ *     functionName: "ip_allow_list_set",
  * });
  * ```
  */

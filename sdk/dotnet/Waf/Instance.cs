@@ -18,8 +18,6 @@ namespace Pulumi.AliCloud.Waf
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
@@ -147,7 +145,7 @@ namespace Pulumi.AliCloud.Waf
         public Output<string> SubscriptionType { get; private set; } = null!;
 
         /// <summary>
-        /// Specify whether Log service is supported. Valid values: ["true", "false"]                                           
+        /// Specify whether Log service is supported. Valid values: ["true", "false"]
         /// </summary>
         [Output("wafLog")]
         public Output<string> WafLog { get; private set; } = null!;
@@ -289,7 +287,7 @@ namespace Pulumi.AliCloud.Waf
         public Input<string> SubscriptionType { get; set; } = null!;
 
         /// <summary>
-        /// Specify whether Log service is supported. Valid values: ["true", "false"]                                           
+        /// Specify whether Log service is supported. Valid values: ["true", "false"]
         /// </summary>
         [Input("wafLog", required: true)]
         public Input<string> WafLog { get; set; } = null!;
@@ -398,7 +396,7 @@ namespace Pulumi.AliCloud.Waf
         public Input<string>? SubscriptionType { get; set; }
 
         /// <summary>
-        /// Specify whether Log service is supported. Valid values: ["true", "false"]                                           
+        /// Specify whether Log service is supported. Valid values: ["true", "false"]
         /// </summary>
         [Input("wafLog")]
         public Input<string>? WafLog { get; set; }

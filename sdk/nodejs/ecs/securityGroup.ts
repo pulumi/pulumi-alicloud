@@ -65,7 +65,7 @@ export class SecurityGroup extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The VPC ID.	
+     * The VPC ID.
      */
     public readonly vpcId!: pulumi.Output<string | undefined>;
 
@@ -148,7 +148,7 @@ export interface SecurityGroupState {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The VPC ID.	
+     * The VPC ID.
      */
     readonly vpcId?: pulumi.Input<string>;
 }
@@ -190,7 +190,7 @@ export interface SecurityGroupArgs {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The VPC ID.	
+     * The VPC ID.
      */
     readonly vpcId?: pulumi.Input<string>;
 }

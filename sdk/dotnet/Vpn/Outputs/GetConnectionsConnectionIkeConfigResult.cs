@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GetConnectionsConnectionIkeConfigResult
     {
         /// <summary>
-        /// The authentication algorithm of phase-one negotiation. 
+        /// The authentication algorithm of phase-one negotiation.
         /// </summary>
         public readonly string? IkeAuthAlg;
         /// <summary>
-        /// The encryption algorithm of phase-one negotiation. 
+        /// The encryption algorithm of phase-one negotiation.
         /// </summary>
         public readonly string? IkeEncAlg;
         /// <summary>
-        /// The SA lifecycle as the result of phase-one negotiation. 
+        /// The SA lifecycle as the result of phase-one negotiation.
         /// </summary>
         public readonly int? IkeLifetime;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? IkeLocalId;
         /// <summary>
-        /// The negotiation mode of IKE phase-one. 
+        /// The negotiation mode of IKE phase-one.
         /// </summary>
         public readonly string? IkeMode;
         /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. 
+        /// The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
         /// </summary>
         public readonly string? IkePfs;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? IkeRemoteId;
         /// <summary>
-        /// The version of the IKE protocol. 
+        /// The version of the IKE protocol.
         /// </summary>
         public readonly string? IkeVersion;
         /// <summary>

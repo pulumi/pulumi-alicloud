@@ -19,8 +19,6 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;

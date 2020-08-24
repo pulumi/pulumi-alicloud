@@ -43,7 +43,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -17,6 +17,56 @@ import (
 // For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/doc-detail/123006.htm).
 //
 // > **NOTE:** Available in 1.73.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/log"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultProject, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
+// 			Description: pulumi.String("create by terraform"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+// 			Project:            defaultProject.Name,
+// 			RetentionPeriod:    pulumi.Int(3650),
+// 			ShardCount:         pulumi.Int(3),
+// 			AutoSplit:          pulumi.Bool(true),
+// 			MaxSplitShardCount: pulumi.Int(60),
+// 			AppendMeta:         pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewFlowLog(ctx, "defaultFlowLog", &cen.FlowLogArgs{
+// 			FlowLogName:  pulumi.String("my-flowlog"),
+// 			CenId:        defaultInstance.ID(),
+// 			ProjectName:  defaultProject.Name,
+// 			LogStoreName: defaultStore.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type FlowLog struct {
 	pulumi.CustomResourceState
 

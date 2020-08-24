@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -61,7 +59,7 @@ export interface GetDomainsArgs {
      */
     readonly aliDomain?: boolean;
     /**
-     * A regex string to filter results by the domain name. 
+     * A regex string to filter results by the domain name.
      */
     readonly domainNameRegex?: string;
     /**

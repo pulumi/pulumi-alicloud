@@ -22,15 +22,15 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly int Priority;
         /// <summary>
-        /// Filter results by a specific RWAccess. 
+        /// Filter results by a specific RWAccess.
         /// </summary>
         public readonly string RwAccess;
         /// <summary>
-        /// Filter results by a specific SourceCidrIp. 
+        /// Filter results by a specific SourceCidrIp.
         /// </summary>
         public readonly string SourceCidrIp;
         /// <summary>
-        /// Filter results by a specific UserAccess. 
+        /// Filter results by a specific UserAccess.
         /// </summary>
         public readonly string UserAccess;
 

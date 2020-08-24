@@ -26,3 +26,5 @@ from .master_slave_server_group import *
 from .rule import *
 from .server_certificate import *
 from .server_group import *
+from ._inputs import *
+from . import outputs

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cassandra
 {
     /// <summary>
-    /// Provides a Cassandra dataCenter resource supports replica set dataCenters only. The Cassandra provides stable, reliable, and automatic scalable database services. 
+    /// Provides a Cassandra dataCenter resource supports replica set dataCenters only. The Cassandra provides stable, reliable, and automatic scalable database services.
     /// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
     /// You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
     /// 
@@ -22,6 +22,8 @@ namespace Pulumi.AliCloud.Cassandra
     /// The official website mark  more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
     /// 
     /// &gt; **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
+    /// 
+    /// ## Example Usage
     /// </summary>
     public partial class DataCenter : Pulumi.CustomResource
     {
@@ -38,7 +40,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Cassandra cluster id of dataCenter-2 belongs to.  
+        /// Cassandra cluster id of dataCenter-2 belongs to.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
@@ -47,7 +49,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Output<string> DataCenterId { get; private set; } = null!;
 
         /// <summary>
-        /// Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+        /// Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         /// </summary>
         [Output("dataCenterName")]
         public Output<string?> DataCenterName { get; private set; } = null!;
@@ -76,7 +78,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The node count of Cassandra dataCenter-2, default to 2. 
+        /// The node count of Cassandra dataCenter-2, default to 2.
         /// </summary>
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -170,13 +172,13 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Cassandra cluster id of dataCenter-2 belongs to.  
+        /// Cassandra cluster id of dataCenter-2 belongs to.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+        /// Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         /// </summary>
         [Input("dataCenterName")]
         public Input<string>? DataCenterName { get; set; }
@@ -205,7 +207,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// The node count of Cassandra dataCenter-2, default to 2. 
+        /// The node count of Cassandra dataCenter-2, default to 2.
         /// </summary>
         [Input("nodeCount", required: true)]
         public Input<int> NodeCount { get; set; } = null!;
@@ -254,7 +256,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Cassandra cluster id of dataCenter-2 belongs to.  
+        /// Cassandra cluster id of dataCenter-2 belongs to.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -263,7 +265,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<string>? DataCenterId { get; set; }
 
         /// <summary>
-        /// Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. 
+        /// Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         /// </summary>
         [Input("dataCenterName")]
         public Input<string>? DataCenterName { get; set; }
@@ -292,7 +294,7 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The node count of Cassandra dataCenter-2, default to 2. 
+        /// The node count of Cassandra dataCenter-2, default to 2.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }

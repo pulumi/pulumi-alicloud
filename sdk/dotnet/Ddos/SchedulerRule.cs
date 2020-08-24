@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;

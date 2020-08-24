@@ -10,6 +10,34 @@ import (
 // This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.63.0+ .
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/yundun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := yundun.GetBastionHostInstances(ctx, &yundun.GetBastionHostInstancesArgs{
+// 			NameRegex: "^bastionhost",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		var splat0 []interface{}
+// 		for _, val0 := range alicloud_yundun_bastionhost_instances.Instance {
+// 			splat0 = append(splat0, val0.Id)
+// 		}
+// 		ctx.Export("instance", splat0)
+// 		return nil
+// 	})
+// }
+// ```
 func GetBastionHostInstances(ctx *pulumi.Context, args *GetBastionHostInstancesArgs, opts ...pulumi.InvokeOption) (*GetBastionHostInstancesResult, error) {
 	var rv GetBastionHostInstancesResult
 	err := ctx.Invoke("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args, &rv, opts...)
@@ -28,11 +56,26 @@ type GetBastionHostInstancesArgs struct {
 	// File name to persist data source output.
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the bastionhost instance. It must be in the format:
-	// ```
-	// data "yundun.getBastionHostInstances" "instance" {
-	// tags = {
-	// tagKey1 = "tagValue1"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/yundun"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := yundun.GetBastionHostInstances(ctx, &yundun.GetBastionHostInstancesArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags map[string]interface{} `pulumi:"tags"`

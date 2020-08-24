@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a backup policy for ApsaraDB Redis / Memcache instance resource. 
+ * Provides a backup policy for ApsaraDB Redis / Memcache instance resource.
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

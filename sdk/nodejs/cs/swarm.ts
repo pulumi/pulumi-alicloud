@@ -15,15 +15,15 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const myCluster = new alicloud.cs.Swarm("myCluster", {
+ * const myCluster = new alicloud.cs.Swarm("my_cluster", {
  *     cidrBlock: "172.18.0.0/24",
- *     diskCategory: "cloudEfficiency",
+ *     diskCategory: "cloud_efficiency",
  *     diskSize: 20,
  *     imageId: var_image_id,
  *     instanceType: "ecs.n4.small",

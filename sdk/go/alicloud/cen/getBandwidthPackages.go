@@ -8,6 +8,33 @@ import (
 )
 
 // This data source provides CEN Bandwidth Packages available to the user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "cen-id1"
+// 		opt1 := "^foo"
+// 		bwp, err := cen.GetBandwidthPackages(ctx, &cen.GetBandwidthPackagesArgs{
+// 			InstanceId: &opt0,
+// 			NameRegex:  &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstCenBandwidthPackageId", bwp.Packages[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetBandwidthPackages(ctx *pulumi.Context, args *GetBandwidthPackagesArgs, opts ...pulumi.InvokeOption) (*GetBandwidthPackagesResult, error) {
 	var rv GetBandwidthPackagesResult
 	err := ctx.Invoke("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args, &rv, opts...)

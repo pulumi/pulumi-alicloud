@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This topic describes how to configure PrivateZone access. 
- * PrivateZone is a VPC-based resolution and management service for private domain names. 
+ * This topic describes how to configure PrivateZone access.
+ * PrivateZone is a VPC-based resolution and management service for private domain names.
  * After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
  *
  * For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/doc-detail/106693.htm).
@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -75,7 +75,7 @@ export class PrivateZone extends pulumi.CustomResource {
      */
     public readonly cenId!: pulumi.Output<string>;
     /**
-     * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN. 
+     * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
      */
     public readonly hostRegionId!: pulumi.Output<string>;
     /**
@@ -148,7 +148,7 @@ export interface PrivateZoneState {
      */
     readonly cenId?: pulumi.Input<string>;
     /**
-     * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN. 
+     * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
      */
     readonly hostRegionId?: pulumi.Input<string>;
     /**
@@ -174,7 +174,7 @@ export interface PrivateZoneArgs {
      */
     readonly cenId: pulumi.Input<string>;
     /**
-     * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN. 
+     * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
      */
     readonly hostRegionId: pulumi.Input<string>;
     /**

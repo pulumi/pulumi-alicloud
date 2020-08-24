@@ -10,3 +10,5 @@ from .get_buckets import *
 from .get_instance_attachments import *
 from .get_instances import *
 from .get_tables import *
+from ._inputs import *
+from . import outputs

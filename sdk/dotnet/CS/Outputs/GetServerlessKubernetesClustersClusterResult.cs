@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly Outputs.GetServerlessKubernetesClustersClusterConnectionsResult Connections;
         /// <summary>
-        /// Whether the cluster support delete protection.  
+        /// Whether the cluster support delete protection.
         /// </summary>
         public readonly bool DeletionProtection;
         public readonly bool EndpointPublicAccessEnabled;

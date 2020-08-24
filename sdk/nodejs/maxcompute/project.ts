@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +52,7 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the maxcompute project. 
+     * The name of the maxcompute project.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -107,7 +107,7 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * The name of the maxcompute project. 
+     * The name of the maxcompute project.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -125,7 +125,7 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * The name of the maxcompute project. 
+     * The name of the maxcompute project.
      */
     readonly name?: pulumi.Input<string>;
     /**

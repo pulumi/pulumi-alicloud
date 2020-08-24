@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.CloudConnect
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;

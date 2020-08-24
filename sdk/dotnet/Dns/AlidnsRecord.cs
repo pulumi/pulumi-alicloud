@@ -18,8 +18,6 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
@@ -52,13 +50,13 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// User language. 
+        /// User language.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value. 
+        /// The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value.
         /// </summary>
         [Output("line")]
         public Output<string?> Line { get; private set; } = null!;
@@ -70,7 +68,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<int?> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// The remark of the domain record. 
+        /// The remark of the domain record.
         /// </summary>
         [Output("remark")]
         public Output<string?> Remark { get; private set; } = null!;
@@ -82,7 +80,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> Rr { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the domain record. Valid values: `ENABLE`,`DISABLE`. 
+        /// The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
         /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
@@ -100,7 +98,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address of the client. 
+        /// The IP address of the client.
         /// </summary>
         [Output("userClientIp")]
         public Output<string?> UserClientIp { get; private set; } = null!;
@@ -164,13 +162,13 @@ namespace Pulumi.AliCloud.Dns
         public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
-        /// User language. 
+        /// User language.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value. 
+        /// The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value.
         /// </summary>
         [Input("line")]
         public Input<string>? Line { get; set; }
@@ -182,7 +180,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The remark of the domain record. 
+        /// The remark of the domain record.
         /// </summary>
         [Input("remark")]
         public Input<string>? Remark { get; set; }
@@ -194,7 +192,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string> Rr { get; set; } = null!;
 
         /// <summary>
-        /// The status of the domain record. Valid values: `ENABLE`,`DISABLE`. 
+        /// The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -212,7 +210,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The IP address of the client. 
+        /// The IP address of the client.
         /// </summary>
         [Input("userClientIp")]
         public Input<string>? UserClientIp { get; set; }
@@ -237,13 +235,13 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// User language. 
+        /// User language.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value. 
+        /// The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value.
         /// </summary>
         [Input("line")]
         public Input<string>? Line { get; set; }
@@ -255,7 +253,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The remark of the domain record. 
+        /// The remark of the domain record.
         /// </summary>
         [Input("remark")]
         public Input<string>? Remark { get; set; }
@@ -267,7 +265,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Rr { get; set; }
 
         /// <summary>
-        /// The status of the domain record. Valid values: `ENABLE`,`DISABLE`. 
+        /// The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -285,7 +283,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The IP address of the client. 
+        /// The IP address of the client.
         /// </summary>
         [Input("userClientIp")]
         public Input<string>? UserClientIp { get; set; }

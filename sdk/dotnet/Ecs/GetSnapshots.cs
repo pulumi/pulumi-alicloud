@@ -42,7 +42,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// ##  Argument Reference

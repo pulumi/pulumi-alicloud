@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Bacis Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

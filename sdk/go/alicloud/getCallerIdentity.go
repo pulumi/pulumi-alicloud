@@ -10,6 +10,28 @@ import (
 // This data source provides the identity of the current user.
 //
 // > **NOTE:** Available in 1.65.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		current, err := alicloud.GetCallerIdentity(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("currentUserArn", current.Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetCallerIdentity(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCallerIdentityResult, error) {
 	var rv GetCallerIdentityResult
 	err := ctx.Invoke("alicloud:index/getCallerIdentity:getCallerIdentity", nil, &rv, opts...)

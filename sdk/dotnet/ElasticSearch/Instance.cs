@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.ElasticSearch
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -68,7 +68,6 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// <summary>
         /// The single data node storage space.
         /// - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
-        /// - `cloud_efficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
         /// </summary>
         [Output("dataNodeDiskSize")]
         public Output<int> DataNodeDiskSize { get; private set; } = null!;
@@ -292,7 +291,6 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// <summary>
         /// The single data node storage space.
         /// - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
-        /// - `cloud_efficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
         /// </summary>
         [Input("dataNodeDiskSize", required: true)]
         public Input<int> DataNodeDiskSize { get; set; } = null!;
@@ -483,7 +481,6 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// <summary>
         /// The single data node storage space.
         /// - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
-        /// - `cloud_efficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
         /// </summary>
         [Input("dataNodeDiskSize")]
         public Input<int>? DataNodeDiskSize { get; set; }

@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud
         ///     public Output&lt;string&gt; CurrentRegionId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

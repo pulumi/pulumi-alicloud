@@ -8,6 +8,31 @@ import (
 )
 
 // This data source provides an alias for the Alibaba Cloud account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ram"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "alias.txt"
+// 		aliasDs, err := ram.GetAccountAliases(ctx, &ram.GetAccountAliasesArgs{
+// 			OutputFile: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("accountAlias", aliasDs.AccountAlias)
+// 		return nil
+// 	})
+// }
+// ```
 func GetAccountAliases(ctx *pulumi.Context, args *GetAccountAliasesArgs, opts ...pulumi.InvokeOption) (*GetAccountAliasesResult, error) {
 	var rv GetAccountAliasesResult
 	err := ctx.Invoke("alicloud:ram/getAccountAliases:getAccountAliases", args, &rv, opts...)

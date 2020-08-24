@@ -4,6 +4,32 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Cloud Bastionhost instance resource ("Yundun_bastionhost" is the short term of this product).
+ *
+ * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+ *
+ * > **NOTE:** Available in 1.63.0+ .
+ *
+ * > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultBastionHostInstance = new alicloud.yundun.BastionHostInstance("default", {
+ *     description: "Terraform-test",
+ *     period: 1,
+ *     planCode: "alpha.professional",
+ *     securityGroupIds: "sg-test",
+ *     vswitchId: "v-testVswitch",
+ * });
+ * ```
+ */
 export class BastionHostInstance extends pulumi.CustomResource {
     /**
      * Get an existing BastionHostInstance resource's state with the given name, ID, and optional extra

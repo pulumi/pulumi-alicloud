@@ -26,8 +26,7 @@ type GetAccessGroupsGroup struct {
 // GetAccessGroupsGroupInput is an input type that accepts GetAccessGroupsGroupArgs and GetAccessGroupsGroupOutput values.
 // You can construct a concrete instance of `GetAccessGroupsGroupInput` via:
 //
-// 		 GetAccessGroupsGroupArgs{...}
-//
+//          GetAccessGroupsGroupArgs{...}
 type GetAccessGroupsGroupInput interface {
 	pulumi.Input
 
@@ -63,8 +62,7 @@ func (i GetAccessGroupsGroupArgs) ToGetAccessGroupsGroupOutputWithContext(ctx co
 // GetAccessGroupsGroupArrayInput is an input type that accepts GetAccessGroupsGroupArray and GetAccessGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetAccessGroupsGroupArrayInput` via:
 //
-// 		 GetAccessGroupsGroupArray{ GetAccessGroupsGroupArgs{...} }
-//
+//          GetAccessGroupsGroupArray{ GetAccessGroupsGroupArgs{...} }
 type GetAccessGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -161,8 +159,7 @@ type GetAccessRulesRule struct {
 // GetAccessRulesRuleInput is an input type that accepts GetAccessRulesRuleArgs and GetAccessRulesRuleOutput values.
 // You can construct a concrete instance of `GetAccessRulesRuleInput` via:
 //
-// 		 GetAccessRulesRuleArgs{...}
-//
+//          GetAccessRulesRuleArgs{...}
 type GetAccessRulesRuleInput interface {
 	pulumi.Input
 
@@ -198,8 +195,7 @@ func (i GetAccessRulesRuleArgs) ToGetAccessRulesRuleOutputWithContext(ctx contex
 // GetAccessRulesRuleArrayInput is an input type that accepts GetAccessRulesRuleArray and GetAccessRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetAccessRulesRuleArrayInput` via:
 //
-// 		 GetAccessRulesRuleArray{ GetAccessRulesRuleArgs{...} }
-//
+//          GetAccessRulesRuleArray{ GetAccessRulesRuleArgs{...} }
 type GetAccessRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -300,8 +296,7 @@ type GetFileSystemsSystem struct {
 // GetFileSystemsSystemInput is an input type that accepts GetFileSystemsSystemArgs and GetFileSystemsSystemOutput values.
 // You can construct a concrete instance of `GetFileSystemsSystemInput` via:
 //
-// 		 GetFileSystemsSystemArgs{...}
-//
+//          GetFileSystemsSystemArgs{...}
 type GetFileSystemsSystemInput interface {
 	pulumi.Input
 
@@ -341,8 +336,7 @@ func (i GetFileSystemsSystemArgs) ToGetFileSystemsSystemOutputWithContext(ctx co
 // GetFileSystemsSystemArrayInput is an input type that accepts GetFileSystemsSystemArray and GetFileSystemsSystemArrayOutput values.
 // You can construct a concrete instance of `GetFileSystemsSystemArrayInput` via:
 //
-// 		 GetFileSystemsSystemArray{ GetFileSystemsSystemArgs{...} }
-//
+//          GetFileSystemsSystemArray{ GetFileSystemsSystemArgs{...} }
 type GetFileSystemsSystemArrayInput interface {
 	pulumi.Input
 
@@ -451,8 +445,7 @@ type GetMountTargetsTarget struct {
 // GetMountTargetsTargetInput is an input type that accepts GetMountTargetsTargetArgs and GetMountTargetsTargetOutput values.
 // You can construct a concrete instance of `GetMountTargetsTargetInput` via:
 //
-// 		 GetMountTargetsTargetArgs{...}
-//
+//          GetMountTargetsTargetArgs{...}
 type GetMountTargetsTargetInput interface {
 	pulumi.Input
 
@@ -490,8 +483,7 @@ func (i GetMountTargetsTargetArgs) ToGetMountTargetsTargetOutputWithContext(ctx 
 // GetMountTargetsTargetArrayInput is an input type that accepts GetMountTargetsTargetArray and GetMountTargetsTargetArrayOutput values.
 // You can construct a concrete instance of `GetMountTargetsTargetArrayInput` via:
 //
-// 		 GetMountTargetsTargetArray{ GetMountTargetsTargetArgs{...} }
-//
+//          GetMountTargetsTargetArray{ GetMountTargetsTargetArgs{...} }
 type GetMountTargetsTargetArrayInput interface {
 	pulumi.Input
 

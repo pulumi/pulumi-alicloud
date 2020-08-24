@@ -16,6 +16,66 @@ import (
 //  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 //
 // > **NOTE:** Available in v1.81.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/adb"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cluster, err := adb.NewCluster(ctx, "cluster", &adb.ClusterArgs{
+// 			DbClusterCategory: pulumi.String("Cluster"),
+// 			DbClusterVersion:  pulumi.String("3.0"),
+// 			DbNodeClass:       pulumi.String("C8"),
+// 			DbNodeCount:       pulumi.Int(2),
+// 			DbNodeStorage:     pulumi.Int(200),
+// 			Description:       pulumi.String(name),
+// 			PayType:           pulumi.String("PostPaid"),
+// 			VswitchId:         defaultSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = adb.NewConnection(ctx, "connection", &adb.ConnectionArgs{
+// 			ConnectionPrefix: pulumi.String("testabc"),
+// 			DbClusterId:      cluster.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Connection struct {
 	pulumi.CustomResourceState
 

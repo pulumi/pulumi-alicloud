@@ -13,6 +13,94 @@ import (
 // Provides a ESS notification resource. More about Ess notification, see [Autoscaling Notification](https://www.alibabacloud.com/help/doc-detail/71114.htm).
 //
 // > **NOTE:** Available in 1.55.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ess"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/mns"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := true
+// 		defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+// 			Current: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := "cloud_efficiency"
+// 		opt2 := "VSwitch"
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableDiskCategory:     &opt1,
+// 			AvailableResourceCreation: &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
+// 			MaxSize: pulumi.Int(1),
+// 			MinSize: pulumi.Int(1),
+// 			RemovalPolicies: pulumi.StringArray{
+// 				pulumi.String("OldestInstance"),
+// 				pulumi.String("NewestInstance"),
+// 			},
+// 			ScalingGroupName: pulumi.String(name),
+// 			VswitchIds: pulumi.StringArray{
+// 				defaultSwitch.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultQueue, err := mns.NewQueue(ctx, "defaultQueue", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ess.NewNotification(ctx, "defaultNotification", &ess.NotificationArgs{
+// 			NotificationArn: defaultQueue.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("%v%v%v%v%v%v", "acs:ess:", defaultRegions.Regions[0].Id, ":", defaultAccount.Id, ":queue/", name), nil
+// 			}).(pulumi.StringOutput),
+// 			NotificationTypes: pulumi.StringArray{
+// 				pulumi.String("AUTOSCALING:SCALE_OUT_SUCCESS"),
+// 				pulumi.String("AUTOSCALING:SCALE_OUT_ERROR"),
+// 			},
+// 			ScalingGroupId: defaultScalingGroup.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Notification struct {
 	pulumi.CustomResourceState
 

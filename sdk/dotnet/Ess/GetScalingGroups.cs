@@ -42,7 +42,6 @@ namespace Pulumi.AliCloud.Ess
         ///     public Output&lt;string&gt; FirstScalingGroup { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

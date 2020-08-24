@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the vpc authorization. 
+        /// The name of the vpc authorization.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// The vpc id of the vpc authorization. 
+        /// The vpc id of the vpc authorization.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the vpc authorization. 
+        /// The name of the vpc authorization.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
-        /// The vpc id of the vpc authorization. 
+        /// The vpc id of the vpc authorization.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The name of the vpc authorization. 
+        /// The name of the vpc authorization.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The vpc id of the vpc authorization. 
+        /// The vpc id of the vpc authorization.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

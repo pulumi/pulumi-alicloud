@@ -17,6 +17,37 @@ import (
 // > **NOTE:** Available in 1.63.0+
 //
 // > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rocketmq"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rocketmq.NewDnatEntry(ctx, "_default", &rocketmq.DnatEntryArgs{
+// 			ExternalIp:   pulumi.String("1.0.0.2"),
+// 			ExternalPort: pulumi.String("1"),
+// 			InternalIp:   pulumi.String("10.0.0.2"),
+// 			InternalPort: pulumi.String("20"),
+// 			IpProtocol:   pulumi.String("tcp"),
+// 			SagId:        pulumi.String("sag-3rb1t3iagy3w0zgwy9"),
+// 			Type:         pulumi.String("Intranet"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DnatEntry struct {
 	pulumi.CustomResourceState
 

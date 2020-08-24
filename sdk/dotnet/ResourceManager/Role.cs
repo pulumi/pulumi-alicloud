@@ -17,8 +17,6 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;

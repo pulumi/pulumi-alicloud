@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,12 +22,12 @@ import * as utilities from "../utilities";
  * const topic = config.get("topic") || "onsTopicDatasourceName";
  *
  * const defaultInstance = new alicloud.rocketmq.Instance("default", {
- *     remark: "defaultOnsInstanceRemark",
+ *     remark: "default_ons_instance_remark",
  * });
  * const defaultTopic = new alicloud.rocketmq.Topic("default", {
  *     instanceId: defaultInstance.id,
  *     messageType: 0,
- *     remark: "dafaultOnsTopicRemark",
+ *     remark: "dafault_ons_topic_remark",
  *     topic: topic,
  * });
  * const topicsDs = defaultTopic.instanceId.apply(instanceId => alicloud.rocketmq.getTopics({
@@ -65,7 +63,7 @@ export interface GetTopicsArgs {
      */
     readonly instanceId: string;
     /**
-     * A regex string to filter results by the topic name. 
+     * A regex string to filter results by the topic name.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;

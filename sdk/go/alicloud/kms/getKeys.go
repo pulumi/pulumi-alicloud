@@ -8,6 +8,33 @@ import (
 )
 
 // This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/kms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "Hello KMS"
+// 		opt1 := "kms_keys.json"
+// 		kmsKeysDs, err := kms.GetKeys(ctx, &kms.GetKeysArgs{
+// 			DescriptionRegex: &opt0,
+// 			OutputFile:       &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstKeyId", kmsKeysDs.Keys[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetKeys(ctx *pulumi.Context, args *GetKeysArgs, opts ...pulumi.InvokeOption) (*GetKeysResult, error) {
 	var rv GetKeysResult
 	err := ctx.Invoke("alicloud:kms/getKeys:getKeys", args, &rv, opts...)

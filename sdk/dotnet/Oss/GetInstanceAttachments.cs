@@ -39,7 +39,6 @@ namespace Pulumi.AliCloud.Oss
         ///     public Output&lt;string&gt; FirstOtsAttachmentId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

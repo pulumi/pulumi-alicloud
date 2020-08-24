@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,16 +44,16 @@ import * as utilities from "../utilities";
  *         "China",
  *     ],
  * });
- * const bwpAttach = new alicloud.cen.BandwidthPackageAttachment("bwpAttach", {
+ * const bwpAttach = new alicloud.cen.BandwidthPackageAttachment("bwp_attach", {
  *     bandwidthPackageId: bwp.id,
  *     instanceId: cen.id,
  * });
- * const vpcAttach1 = new alicloud.cen.InstanceAttachment("vpcAttach1", {
+ * const vpcAttach1 = new alicloud.cen.InstanceAttachment("vpc_attach_1", {
  *     childInstanceId: vpc1.id,
  *     childInstanceRegionId: "eu-central-1",
  *     instanceId: cen.id,
  * });
- * const vpcAttach2 = new alicloud.cen.InstanceAttachment("vpcAttach2", {
+ * const vpcAttach2 = new alicloud.cen.InstanceAttachment("vpc_attach_2", {
  *     childInstanceId: vpc2.id,
  *     childInstanceRegionId: "cn-shanghai",
  *     instanceId: cen.id,

@@ -11,6 +11,64 @@ import (
 )
 
 // Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
+//
+// ## Example Usage
+//
+// Basic usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ecsSg, err := ecs.NewSecurityGroup(ctx, "ecsSg", &ecs.SecurityGroupArgs{
+// 			Description: pulumi.String("New security group"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ecsDisk, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
+// 			AvailabilityZone: pulumi.String("cn-beijing-a"),
+// 			Size:             pulumi.Int(50),
+// 			Tags: pulumi.StringMap{
+// 				"Name": pulumi.String("TerraformTest-disk"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ecsInstance, err := ecs.NewInstance(ctx, "ecsInstance", &ecs.InstanceArgs{
+// 			AvailabilityZone:   pulumi.String("cn-beijing-a"),
+// 			ImageId:            pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
+// 			InstanceName:       pulumi.String("Hello"),
+// 			InstanceType:       pulumi.String("ecs.n4.small"),
+// 			InternetChargeType: pulumi.String("PayByBandwidth"),
+// 			SecurityGroups: pulumi.StringArray{
+// 				ecsSg.ID(),
+// 			},
+// 			Tags: pulumi.StringMap{
+// 				"Name": pulumi.String("TerraformTest-instance"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ecs.NewDiskAttachment(ctx, "ecsDiskAtt", &ecs.DiskAttachmentArgs{
+// 			DiskId:     ecsDisk.ID(),
+// 			InstanceId: ecsInstance.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DiskAttachment struct {
 	pulumi.CustomResourceState
 

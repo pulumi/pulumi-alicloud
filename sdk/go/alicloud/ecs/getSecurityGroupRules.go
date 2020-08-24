@@ -10,6 +10,52 @@ import (
 // The `ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
 // Each collection item represents a single `ingress` or `egress` permission rule.
 // The ID of the security group can be provided via a variable or the result from the other data source `ecs.getSecurityGroups`.
+//
+// ## Example Usage
+//
+// The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "api"
+// 		groupsDs, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+// 			NameRegex: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := "ingress"
+// 		opt2 := "tcp"
+// 		opt3 := "internet"
+// 		ingressRulesDs, err := ecs.GetSecurityGroupRules(ctx, &ecs.GetSecurityGroupRulesArgs{
+// 			Direction:  &opt1,
+// 			GroupId:    groupsDs.Groups[0].Id,
+// 			IpProtocol: &opt2,
+// 			NicType:    &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ecs.NewInstance(ctx, "backend", &ecs.InstanceArgs{
+// 			UserData: pulumi.String(fmt.Sprintf("%v%v", "config_service.sh --portrange=", ingressRulesDs.Rules[0].PortRange)),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetSecurityGroupRules(ctx *pulumi.Context, args *GetSecurityGroupRulesArgs, opts ...pulumi.InvokeOption) (*GetSecurityGroupRulesResult, error) {
 	var rv GetSecurityGroupRulesResult
 	err := ctx.Invoke("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", args, &rv, opts...)

@@ -3,6 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to v1.93.0 of the AliCloud Terraform Provider
+* Upgrade to pulumi-terraform-bridge v2.7.0
+* Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
 
 ---
 

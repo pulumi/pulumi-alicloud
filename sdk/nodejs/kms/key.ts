@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -95,7 +95,7 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly keyUsage!: pulumi.Output<string | undefined>;
     /**
-     * The date and time the last rotation was performed. The time is displayed in UTC. 
+     * The date and time the last rotation was performed. The time is displayed in UTC.
      */
     public /*out*/ readonly lastRotationDate!: pulumi.Output<string>;
     /**
@@ -103,7 +103,7 @@ export class Key extends pulumi.CustomResource {
      */
     public /*out*/ readonly materialExpireTime!: pulumi.Output<string>;
     /**
-     * The time the next rotation is scheduled for execution. 
+     * The time the next rotation is scheduled for execution.
      */
     public /*out*/ readonly nextRotationDate!: pulumi.Output<string>;
     /**
@@ -115,7 +115,7 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly pendingWindowInDays!: pulumi.Output<number | undefined>;
     /**
-     * The ID of the current primary key version of the symmetric CMK. 
+     * The ID of the current primary key version of the symmetric CMK.
      */
     public /*out*/ readonly primaryKeyVersion!: pulumi.Output<string>;
     /**
@@ -123,7 +123,7 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly protectionLevel!: pulumi.Output<string | undefined>;
     /**
-     * The period of automatic key rotation. Unit: seconds. 
+     * The period of automatic key rotation. Unit: seconds.
      */
     public readonly rotationInterval!: pulumi.Output<string | undefined>;
 
@@ -238,7 +238,7 @@ export interface KeyState {
      */
     readonly keyUsage?: pulumi.Input<string>;
     /**
-     * The date and time the last rotation was performed. The time is displayed in UTC. 
+     * The date and time the last rotation was performed. The time is displayed in UTC.
      */
     readonly lastRotationDate?: pulumi.Input<string>;
     /**
@@ -246,7 +246,7 @@ export interface KeyState {
      */
     readonly materialExpireTime?: pulumi.Input<string>;
     /**
-     * The time the next rotation is scheduled for execution. 
+     * The time the next rotation is scheduled for execution.
      */
     readonly nextRotationDate?: pulumi.Input<string>;
     /**
@@ -258,7 +258,7 @@ export interface KeyState {
      */
     readonly pendingWindowInDays?: pulumi.Input<number>;
     /**
-     * The ID of the current primary key version of the symmetric CMK. 
+     * The ID of the current primary key version of the symmetric CMK.
      */
     readonly primaryKeyVersion?: pulumi.Input<string>;
     /**
@@ -266,7 +266,7 @@ export interface KeyState {
      */
     readonly protectionLevel?: pulumi.Input<string>;
     /**
-     * The period of automatic key rotation. Unit: seconds. 
+     * The period of automatic key rotation. Unit: seconds.
      */
     readonly rotationInterval?: pulumi.Input<string>;
 }
@@ -320,7 +320,7 @@ export interface KeyArgs {
      */
     readonly protectionLevel?: pulumi.Input<string>;
     /**
-     * The period of automatic key rotation. Unit: seconds. 
+     * The period of automatic key rotation. Unit: seconds.
      */
     readonly rotationInterval?: pulumi.Input<string>;
 }

@@ -22,8 +22,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
@@ -41,11 +39,10 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// }
     /// ```
-    /// 
     /// ## Attributes Reference0
-    ///  
+    /// 
     ///  The following attributes are exported:
-    ///  
+    /// 
     /// * `id` - ID of the image. It formats as `&lt;image_id&gt;:&lt;account_id&gt;`
     /// </summary>
     public partial class ImageSharePermission : Pulumi.CustomResource

@@ -57,13 +57,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> CpuPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Enable login to the node through SSH. default: false 
+        /// Enable login to the node through SSH. default: false
         /// </summary>
         [Output("enableSsh")]
         public Output<bool?> EnableSsh { get; private set; } = null!;
 
         /// <summary>
-        /// Exclude autoscaler nodes from `worker_nodes`. default: false 
+        /// Exclude autoscaler nodes from `worker_nodes`. default: false
         /// </summary>
         [Output("excludeAutoscalerNodes")]
         public Output<bool?> ExcludeAutoscalerNodes { get; private set; } = null!;
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: true 
+        /// Install cloud monitor agent on ECS. default: true
         /// </summary>
         [Output("installCloudMonitor")]
         public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> NodeCidrMask { get; private set; } = null!;
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
         /// </summary>
         [Output("nodeNameMode")]
         public Output<string?> NodeNameMode { get; private set; } = null!;
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
+        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
         /// </summary>
         [Output("podCidr")]
         public Output<string?> PodCidr { get; private set; } = null!;
@@ -468,13 +468,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? CpuPolicy { get; set; }
 
         /// <summary>
-        /// Enable login to the node through SSH. default: false 
+        /// Enable login to the node through SSH. default: false
         /// </summary>
         [Input("enableSsh")]
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
-        /// Exclude autoscaler nodes from `worker_nodes`. default: false 
+        /// Exclude autoscaler nodes from `worker_nodes`. default: false
         /// </summary>
         [Input("excludeAutoscalerNodes")]
         public Input<bool>? ExcludeAutoscalerNodes { get; set; }
@@ -486,7 +486,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: true 
+        /// Install cloud monitor agent on ECS. default: true
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -611,7 +611,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCidrMask { get; set; }
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
         /// </summary>
         [Input("nodeNameMode")]
         public Input<string>? NodeNameMode { get; set; }
@@ -623,7 +623,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
+        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
@@ -844,13 +844,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? CpuPolicy { get; set; }
 
         /// <summary>
-        /// Enable login to the node through SSH. default: false 
+        /// Enable login to the node through SSH. default: false
         /// </summary>
         [Input("enableSsh")]
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
-        /// Exclude autoscaler nodes from `worker_nodes`. default: false 
+        /// Exclude autoscaler nodes from `worker_nodes`. default: false
         /// </summary>
         [Input("excludeAutoscalerNodes")]
         public Input<bool>? ExcludeAutoscalerNodes { get; set; }
@@ -862,7 +862,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: true 
+        /// Install cloud monitor agent on ECS. default: true
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -1005,7 +1005,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCidrMask { get; set; }
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
         /// </summary>
         [Input("nodeNameMode")]
         public Input<string>? NodeNameMode { get; set; }
@@ -1017,7 +1017,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
+        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }

@@ -4,6 +4,52 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides an Application Load Balancer resource.
+ *
+ * > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
+ *
+ * > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
+ * For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraformtestslbconfig";
+ *
+ * const defaultZones = pulumi.output(alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * }, { async: true }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("default", {
+ *     specification: "slb.s2.small",
+ *     tags: {
+ *         tag_a: 1,
+ *         tag_b: 2,
+ *         tag_c: 3,
+ *         tag_d: 4,
+ *         tag_e: 5,
+ *         tag_f: 6,
+ *         tag_g: 7,
+ *         tag_h: 8,
+ *         tag_i: 9,
+ *         tag_j: 10,
+ *     },
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * ```
+ */
 export class LoadBalancer extends pulumi.CustomResource {
     /**
      * Get an existing LoadBalancer resource's state with the given name, ID, and optional extra
@@ -52,7 +98,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly bandwidth!: pulumi.Output<number | undefined>;
     /**
-     * Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+     * Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
      */
     public readonly deleteProtection!: pulumi.Output<string | undefined>;
     /**
@@ -185,7 +231,7 @@ export interface LoadBalancerState {
      */
     readonly bandwidth?: pulumi.Input<number>;
     /**
-     * Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+     * Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
      */
     readonly deleteProtection?: pulumi.Input<string>;
     /**
@@ -261,7 +307,7 @@ export interface LoadBalancerArgs {
      */
     readonly bandwidth?: pulumi.Input<number>;
     /**
-     * Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+     * Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
      */
     readonly deleteProtection?: pulumi.Input<string>;
     /**

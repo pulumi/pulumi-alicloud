@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a key pair resource.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const basic = new alicloud.ecs.KeyPair("basic", {
+ *     keyName: "terraform-test-key-pair",
+ * });
+ * // Using name prefix to build key pair
+ * const prefix = new alicloud.ecs.KeyPair("prefix", {
+ *     keyNamePrefix: "terraform-test-key-pair-prefix",
+ * });
+ * // Import an existing public key to build a alicloud key pair
+ * const publickey = new alicloud.ecs.KeyPair("publickey", {
+ *     keyName: "my_public_key",
+ *     publicKey: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+ * });
+ * ```
+ */
 export class KeyPair extends pulumi.CustomResource {
     /**
      * Get an existing KeyPair resource's state with the given name, ID, and optional extra

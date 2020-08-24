@@ -8,6 +8,30 @@ import (
 )
 
 // This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		sampleDs, err := slb.GetAttachments(ctx, &slb.GetAttachmentsArgs{
+// 			LoadBalancerId: alicloud_slb.Sample_slb.Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstSlbAttachmentInstanceId", sampleDs.SlbAttachments[0].InstanceId)
+// 		return nil
+// 	})
+// }
+// ```
 func GetAttachments(ctx *pulumi.Context, args *GetAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetAttachmentsResult, error) {
 	var rv GetAttachmentsResult
 	err := ctx.Invoke("alicloud:slb/getAttachments:getAttachments", args, &rv, opts...)

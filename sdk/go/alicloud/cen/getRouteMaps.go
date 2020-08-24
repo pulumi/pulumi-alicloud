@@ -10,6 +10,41 @@ import (
 // This data source provides CEN Route Maps available to the user.
 //
 // > **NOTE:** Available in v1.87.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "cn-hangzhou"
+// 		opt1 := "datasource_test"
+// 		opt2 := "Active"
+// 		opt3 := "RegionIn"
+// 		this, err := cen.GetRouteMaps(ctx, &cen.GetRouteMapsArgs{
+// 			CenId:            "cen-ihdlgo87ai********",
+// 			CenRegionId:      &opt0,
+// 			DescriptionRegex: &opt1,
+// 			Ids: []string{
+// 				"cenrmap-bnh97kb3mn********",
+// 			},
+// 			Status:            &opt2,
+// 			TransmitDirection: &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstCenRouteMapId", this.Maps[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetRouteMaps(ctx *pulumi.Context, args *GetRouteMapsArgs, opts ...pulumi.InvokeOption) (*GetRouteMapsResult, error) {
 	var rv GetRouteMapsResult
 	err := ctx.Invoke("alicloud:cen/getRouteMaps:getRouteMaps", args, &rv, opts...)

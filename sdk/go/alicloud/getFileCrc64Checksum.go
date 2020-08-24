@@ -10,6 +10,30 @@ import (
 // This data source compute file crc64 checksum.
 //
 // > **NOTE:** Available in 1.59.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := alicloud.GetFileCrc64Checksum(ctx, &alicloud.GetFileCrc64ChecksumArgs{
+// 			Filename: "exampleFileName",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("fileCrc64Checksum", data.Alicloud_file_crc64_checksum.Defualt.Checksum)
+// 		return nil
+// 	})
+// }
+// ```
 func GetFileCrc64Checksum(ctx *pulumi.Context, args *GetFileCrc64ChecksumArgs, opts ...pulumi.InvokeOption) (*GetFileCrc64ChecksumResult, error) {
 	var rv GetFileCrc64ChecksumResult
 	err := ctx.Invoke("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", args, &rv, opts...)

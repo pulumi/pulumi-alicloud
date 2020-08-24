@@ -14,3 +14,4 @@ from .get_deploy_groups import *
 from .instance_cluster_attachment import *
 from .k8s_cluster import *
 from .slb_attachment import *
+from . import outputs

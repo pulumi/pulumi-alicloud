@@ -23,8 +23,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
@@ -93,34 +91,33 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// }
     /// ```
-    /// 
     /// ## Listener fields and protocol mapping
     /// 
     /// load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
     /// 
     /// listener parameter | support protocol | value range |
-    /// ------------- | ------------- | ------------- | 
-    /// backend_port | http &amp; https &amp; tcp &amp; udp | 1-65535 | 
+    /// ------------- | ------------- | ------------- |
+    /// backend_port | http &amp; https &amp; tcp &amp; udp | 1-65535 |
     /// frontend_port | http &amp; https &amp; tcp &amp; udp | 1-65535 |
     /// protocol | http &amp; https &amp; tcp &amp; udp |
     /// bandwidth | http &amp; https &amp; tcp &amp; udp | -1 / 1-1000 |
     /// scheduler | http &amp; https &amp; tcp &amp; udp | wrr rr or wlc |
     /// sticky_session | http &amp; https | on or off |
-    /// sticky_session_type | http &amp; https | insert or server | 
-    /// cookie_timeout | http &amp; https | 1-86400  | 
-    /// cookie | http &amp; https |   | 
-    /// persistence_timeout | tcp &amp; udp | 0-3600 | 
-    /// health_check | http &amp; https | on or off | 
-    /// health_check_type | tcp | tcp or http | 
-    /// health_check_domain | http &amp; https &amp; tcp | 
-    /// health_check_method | http &amp; https &amp; tcp | 
-    /// health_check_uri | http &amp; https &amp; tcp |  | 
-    /// health_check_connect_port | http &amp; https &amp; tcp &amp; udp | 1-65535 or -520 | 
-    /// healthy_threshold | http &amp; https &amp; tcp &amp; udp | 1-10 | 
-    /// unhealthy_threshold | http &amp; https &amp; tcp &amp; udp | 1-10 | 
+    /// sticky_session_type | http &amp; https | insert or server |
+    /// cookie_timeout | http &amp; https | 1-86400  |
+    /// cookie | http &amp; https |   |
+    /// persistence_timeout | tcp &amp; udp | 0-3600 |
+    /// health_check | http &amp; https | on or off |
+    /// health_check_type | tcp | tcp or http |
+    /// health_check_domain | http &amp; https &amp; tcp |
+    /// health_check_method | http &amp; https &amp; tcp |
+    /// health_check_uri | http &amp; https &amp; tcp |  |
+    /// health_check_connect_port | http &amp; https &amp; tcp &amp; udp | 1-65535 or -520 |
+    /// healthy_threshold | http &amp; https &amp; tcp &amp; udp | 1-10 |
+    /// unhealthy_threshold | http &amp; https &amp; tcp &amp; udp | 1-10 |
     /// health_check_timeout | http &amp; https &amp; tcp &amp; udp | 1-300 |
     /// health_check_interval | http &amp; https &amp; tcp &amp; udp | 1-50 |
-    /// health_check_http_code | http &amp; https &amp; tcp | http_2xx,http_3xx,http_4xx,http_5xx | 
+    /// health_check_http_code | http &amp; https &amp; tcp | http_2xx,http_3xx,http_4xx,http_5xx |
     /// server_certificate_id | https |  |
     /// gzip | http &amp; https | true or false  |
     /// x_forwarded_for | http &amp; https |  |
@@ -349,7 +346,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> ServerGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from 1.59.0 and using `server_certificate_id` instead. 
+        /// It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         /// </summary>
         [Output("sslCertificateId")]
         public Output<string> SslCertificateId { get; private set; } = null!;
@@ -641,7 +638,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// It has been deprecated from 1.59.0 and using `server_certificate_id` instead. 
+        /// It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         /// </summary>
         [Input("sslCertificateId")]
         public Input<string>? SslCertificateId { get; set; }
@@ -894,7 +891,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// It has been deprecated from 1.59.0 and using `server_certificate_id` instead. 
+        /// It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         /// </summary>
         [Input("sslCertificateId")]
         public Input<string>? SslCertificateId { get; set; }

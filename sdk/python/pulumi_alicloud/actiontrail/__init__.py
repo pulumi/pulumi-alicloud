@@ -10,3 +10,4 @@ from .get_sasl_users import *
 from .get_topics import *
 from .get_trails import *
 from .trail import *
+from . import outputs

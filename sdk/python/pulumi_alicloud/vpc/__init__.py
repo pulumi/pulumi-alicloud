@@ -34,3 +34,5 @@ from .router_interface_connection import *
 from .snat_entry import *
 from .subnet import *
 from .switch import *
+from ._inputs import *
+from . import outputs

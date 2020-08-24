@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
     public sealed class GetLifecycleHooksHookResult
     {
         /// <summary>
-        /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. 
+        /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
         /// </summary>
         public readonly string DefaultResult;
         /// <summary>

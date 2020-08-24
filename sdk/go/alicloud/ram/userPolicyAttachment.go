@@ -11,6 +11,51 @@ import (
 )
 
 // Provides a RAM User Policy attachment resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ram"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+// 			Comments:    pulumi.String("yoyoyo"),
+// 			DisplayName: pulumi.String("user_display_name"),
+// 			Email:       pulumi.String("hello.uuu@aaa.com"),
+// 			Force:       pulumi.Bool(true),
+// 			Mobile:      pulumi.String("86-18688888888"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+// 			Description: pulumi.String("this is a policy test"),
+// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": [\n", "          \"oss:ListObjects\",\n", "          \"oss:GetObject\"\n", "        ],\n", "        \"Effect\": \"Allow\",\n", "        \"Resource\": [\n", "          \"acs:oss:*:*:mybucket\",\n", "          \"acs:oss:*:*:mybucket/*\"\n", "        ]\n", "      }\n", "    ],\n", "      \"Version\": \"1\"\n", "  }\n", "  \n")),
+// 			Force:       pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ram.NewUserPolicyAttachment(ctx, "attach", &ram.UserPolicyAttachmentArgs{
+// 			PolicyName: policy.Name,
+// 			PolicyType: policy.Type,
+// 			UserName:   user.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type UserPolicyAttachment struct {
 	pulumi.CustomResourceState
 

@@ -4,6 +4,68 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * The Logtail access service is a log collection agent provided by Log Service.
+ * You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
+ * Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
+ *
+ * This resource amis to attach one logtail configure to a machine group.
+ *
+ * > **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const testProject = new alicloud.log.Project("test", {
+ *     description: "create by terraform",
+ * });
+ * const testStore = new alicloud.log.Store("test", {
+ *     appendMeta: true,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     project: testProject.name,
+ *     retentionPeriod: 3650,
+ *     shardCount: 3,
+ * });
+ * const testMachineGroup = new alicloud.log.MachineGroup("test", {
+ *     identifyLists: [
+ *         "10.0.0.1",
+ *         "10.0.0.3",
+ *         "10.0.0.2",
+ *     ],
+ *     project: testProject.name,
+ *     topic: "terraform",
+ * });
+ * const testLogTailConfig = new alicloud.log.LogTailConfig("test", {
+ *     inputDetail: `  	{
+ * 		"logPath": "/logPath",
+ * 		"filePattern": "access.log",
+ * 		"logType": "json_log",
+ * 		"topicFormat": "default",
+ * 		"discardUnmatch": false,
+ * 		"enableRawLog": true,
+ * 		"fileEncoding": "gbk",
+ * 		"maxDepth": 10
+ * 	}
+ * 	`,
+ *     inputType: "file",
+ *     logSample: "test",
+ *     logstore: testStore.name,
+ *     outputType: "LogService",
+ *     project: testProject.name,
+ * });
+ * const testLogTailAttachment = new alicloud.log.LogTailAttachment("test", {
+ *     logtailConfigName: testLogTailConfig.name,
+ *     machineGroupName: testMachineGroup.name,
+ *     project: testProject.name,
+ * });
+ * ```
+ */
 export class LogTailAttachment extends pulumi.CustomResource {
     /**
      * Get an existing LogTailAttachment resource's state with the given name, ID, and optional extra

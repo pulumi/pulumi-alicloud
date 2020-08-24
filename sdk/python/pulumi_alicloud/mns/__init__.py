@@ -9,3 +9,4 @@ from .get_topics import *
 from .queue import *
 from .topic import *
 from .topic_subscription import *
+from . import outputs

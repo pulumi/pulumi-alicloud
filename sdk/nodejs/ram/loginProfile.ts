@@ -7,10 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM User Login Profile resource.
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,7 +16,7 @@ import * as utilities from "../utilities";
  * // Create a RAM login profile.
  * const user = new alicloud.ram.User("user", {
  *     comments: "yoyoyo",
- *     displayName: "userDisplayName",
+ *     displayName: "user_display_name",
  *     email: "hello.uuu@aaa.com",
  *     force: true,
  *     mobile: "86-18688888888",

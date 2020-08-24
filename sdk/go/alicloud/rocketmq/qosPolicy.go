@@ -18,6 +18,44 @@ import (
 // > **NOTE:** Available in 1.60.0+
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rocketmq"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultQos, err := rocketmq.NewQos(ctx, "defaultQos", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rocketmq.NewQosPolicy(ctx, "defaultQosPolicy", &rocketmq.QosPolicyArgs{
+// 			Description:     pulumi.String("tf-testSagQosPolicyDescription"),
+// 			DestCidr:        pulumi.String("10.10.0.0/24"),
+// 			DestPortRange:   pulumi.String("-1/-1"),
+// 			EndTime:         pulumi.String("2019-10-26T16:41:33+0800"),
+// 			IpProtocol:      pulumi.String("ALL"),
+// 			Priority:        pulumi.Int(1),
+// 			QosId:           defaultQos.ID(),
+// 			SourceCidr:      pulumi.String("192.168.0.0/24"),
+// 			SourcePortRange: pulumi.String("-1/-1"),
+// 			StartTime:       pulumi.String("2019-10-25T16:41:33+0800"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type QosPolicy struct {
 	pulumi.CustomResourceState
 

@@ -40,11 +40,11 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string RecurrenceEndTime;
         /// <summary>
-        /// Specifies the recurrence type of the scheduled task. 
+        /// Specifies the recurrence type of the scheduled task.
         /// </summary>
         public readonly string RecurrenceType;
         /// <summary>
-        /// Specifies how often a scheduled task recurs. 
+        /// Specifies how often a scheduled task recurs.
         /// </summary>
         public readonly string RecurrenceValue;
         /// <summary>

@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -77,7 +77,7 @@ export interface GetAclsResult {
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of Sag Acls names. 
+     * A list of Sag Acls names.
      */
     readonly names: string[];
     readonly outputFile?: string;

@@ -15,8 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,8 +24,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "tf-testAcc-snapshot",
  * }, { async: true }));
  * ```
- *
- * ##  Argument Reference
+ * ## Argument Reference
  *
  * The following arguments are supported:
  *
@@ -58,7 +55,7 @@ import * as utilities from "../utilities";
  * * `sourceDiskType` - (Optional) The type of source disk:
  *   * System: The snapshots are created for system disks.
  *   * Data: The snapshots are created for data disks.
- *   
+ *
  * * `usage` - (Optional) The usage of the snapshot:
  *   * image: The snapshots are used to create custom images.
  *   * disk: The snapshots are used to CreateDisk.

@@ -27,8 +27,7 @@ type ScalingConfigurationDataDisk struct {
 // ScalingConfigurationDataDiskInput is an input type that accepts ScalingConfigurationDataDiskArgs and ScalingConfigurationDataDiskOutput values.
 // You can construct a concrete instance of `ScalingConfigurationDataDiskInput` via:
 //
-// 		 ScalingConfigurationDataDiskArgs{...}
-//
+//          ScalingConfigurationDataDiskArgs{...}
 type ScalingConfigurationDataDiskInput interface {
 	pulumi.Input
 
@@ -65,8 +64,7 @@ func (i ScalingConfigurationDataDiskArgs) ToScalingConfigurationDataDiskOutputWi
 // ScalingConfigurationDataDiskArrayInput is an input type that accepts ScalingConfigurationDataDiskArray and ScalingConfigurationDataDiskArrayOutput values.
 // You can construct a concrete instance of `ScalingConfigurationDataDiskArrayInput` via:
 //
-// 		 ScalingConfigurationDataDiskArray{ ScalingConfigurationDataDiskArgs{...} }
-//
+//          ScalingConfigurationDataDiskArray{ ScalingConfigurationDataDiskArgs{...} }
 type ScalingConfigurationDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -171,8 +169,7 @@ type ScalingGroupVServerGroupsVserverGroup struct {
 // ScalingGroupVServerGroupsVserverGroupInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupArgs and ScalingGroupVServerGroupsVserverGroupOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsVserverGroupInput` via:
 //
-// 		 ScalingGroupVServerGroupsVserverGroupArgs{...}
-//
+//          ScalingGroupVServerGroupsVserverGroupArgs{...}
 type ScalingGroupVServerGroupsVserverGroupInput interface {
 	pulumi.Input
 
@@ -200,8 +197,7 @@ func (i ScalingGroupVServerGroupsVserverGroupArgs) ToScalingGroupVServerGroupsVs
 // ScalingGroupVServerGroupsVserverGroupArrayInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupArray and ScalingGroupVServerGroupsVserverGroupArrayOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsVserverGroupArrayInput` via:
 //
-// 		 ScalingGroupVServerGroupsVserverGroupArray{ ScalingGroupVServerGroupsVserverGroupArgs{...} }
-//
+//          ScalingGroupVServerGroupsVserverGroupArray{ ScalingGroupVServerGroupsVserverGroupArgs{...} }
 type ScalingGroupVServerGroupsVserverGroupArrayInput interface {
 	pulumi.Input
 
@@ -276,8 +272,7 @@ type ScalingGroupVServerGroupsVserverGroupVserverAttribute struct {
 // ScalingGroupVServerGroupsVserverGroupVserverAttributeInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs and ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsVserverGroupVserverAttributeInput` via:
 //
-// 		 ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs{...}
-//
+//          ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs{...}
 type ScalingGroupVServerGroupsVserverGroupVserverAttributeInput interface {
 	pulumi.Input
 
@@ -306,8 +301,7 @@ func (i ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs) ToScalingGrou
 // ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupVserverAttributeArray and ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput` via:
 //
-// 		 ScalingGroupVServerGroupsVserverGroupVserverAttributeArray{ ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs{...} }
-//
+//          ScalingGroupVServerGroupsVserverGroupVserverAttributeArray{ ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs{...} }
 type ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput interface {
 	pulumi.Input
 
@@ -384,8 +378,7 @@ type ScalingRuleStepAdjustment struct {
 // ScalingRuleStepAdjustmentInput is an input type that accepts ScalingRuleStepAdjustmentArgs and ScalingRuleStepAdjustmentOutput values.
 // You can construct a concrete instance of `ScalingRuleStepAdjustmentInput` via:
 //
-// 		 ScalingRuleStepAdjustmentArgs{...}
-//
+//          ScalingRuleStepAdjustmentArgs{...}
 type ScalingRuleStepAdjustmentInput interface {
 	pulumi.Input
 
@@ -414,8 +407,7 @@ func (i ScalingRuleStepAdjustmentArgs) ToScalingRuleStepAdjustmentOutputWithCont
 // ScalingRuleStepAdjustmentArrayInput is an input type that accepts ScalingRuleStepAdjustmentArray and ScalingRuleStepAdjustmentArrayOutput values.
 // You can construct a concrete instance of `ScalingRuleStepAdjustmentArrayInput` via:
 //
-// 		 ScalingRuleStepAdjustmentArray{ ScalingRuleStepAdjustmentArgs{...} }
-//
+//          ScalingRuleStepAdjustmentArray{ ScalingRuleStepAdjustmentArgs{...} }
 type ScalingRuleStepAdjustmentArrayInput interface {
 	pulumi.Input
 
@@ -521,8 +513,7 @@ type GetAlarmsAlarm struct {
 // GetAlarmsAlarmInput is an input type that accepts GetAlarmsAlarmArgs and GetAlarmsAlarmOutput values.
 // You can construct a concrete instance of `GetAlarmsAlarmInput` via:
 //
-// 		 GetAlarmsAlarmArgs{...}
-//
+//          GetAlarmsAlarmArgs{...}
 type GetAlarmsAlarmInput interface {
 	pulumi.Input
 
@@ -580,8 +571,7 @@ func (i GetAlarmsAlarmArgs) ToGetAlarmsAlarmOutputWithContext(ctx context.Contex
 // GetAlarmsAlarmArrayInput is an input type that accepts GetAlarmsAlarmArray and GetAlarmsAlarmArrayOutput values.
 // You can construct a concrete instance of `GetAlarmsAlarmArrayInput` via:
 //
-// 		 GetAlarmsAlarmArray{ GetAlarmsAlarmArgs{...} }
-//
+//          GetAlarmsAlarmArray{ GetAlarmsAlarmArgs{...} }
 type GetAlarmsAlarmArrayInput interface {
 	pulumi.Input
 
@@ -739,8 +729,7 @@ type GetLifecycleHooksHook struct {
 // GetLifecycleHooksHookInput is an input type that accepts GetLifecycleHooksHookArgs and GetLifecycleHooksHookOutput values.
 // You can construct a concrete instance of `GetLifecycleHooksHookInput` via:
 //
-// 		 GetLifecycleHooksHookArgs{...}
-//
+//          GetLifecycleHooksHookArgs{...}
 type GetLifecycleHooksHookInput interface {
 	pulumi.Input
 
@@ -782,8 +771,7 @@ func (i GetLifecycleHooksHookArgs) ToGetLifecycleHooksHookOutputWithContext(ctx 
 // GetLifecycleHooksHookArrayInput is an input type that accepts GetLifecycleHooksHookArray and GetLifecycleHooksHookArrayOutput values.
 // You can construct a concrete instance of `GetLifecycleHooksHookArrayInput` via:
 //
-// 		 GetLifecycleHooksHookArray{ GetLifecycleHooksHookArgs{...} }
-//
+//          GetLifecycleHooksHookArray{ GetLifecycleHooksHookArgs{...} }
 type GetLifecycleHooksHookArrayInput interface {
 	pulumi.Input
 
@@ -893,8 +881,7 @@ type GetNotificationsNotification struct {
 // GetNotificationsNotificationInput is an input type that accepts GetNotificationsNotificationArgs and GetNotificationsNotificationOutput values.
 // You can construct a concrete instance of `GetNotificationsNotificationInput` via:
 //
-// 		 GetNotificationsNotificationArgs{...}
-//
+//          GetNotificationsNotificationArgs{...}
 type GetNotificationsNotificationInput interface {
 	pulumi.Input
 
@@ -928,8 +915,7 @@ func (i GetNotificationsNotificationArgs) ToGetNotificationsNotificationOutputWi
 // GetNotificationsNotificationArrayInput is an input type that accepts GetNotificationsNotificationArray and GetNotificationsNotificationArrayOutput values.
 // You can construct a concrete instance of `GetNotificationsNotificationArrayInput` via:
 //
-// 		 GetNotificationsNotificationArray{ GetNotificationsNotificationArgs{...} }
-//
+//          GetNotificationsNotificationArray{ GetNotificationsNotificationArgs{...} }
 type GetNotificationsNotificationArrayInput interface {
 	pulumi.Input
 
@@ -1039,8 +1025,7 @@ type GetScalingConfigurationsConfiguration struct {
 // GetScalingConfigurationsConfigurationInput is an input type that accepts GetScalingConfigurationsConfigurationArgs and GetScalingConfigurationsConfigurationOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationInput` via:
 //
-// 		 GetScalingConfigurationsConfigurationArgs{...}
-//
+//          GetScalingConfigurationsConfigurationArgs{...}
 type GetScalingConfigurationsConfigurationInput interface {
 	pulumi.Input
 
@@ -1094,8 +1079,7 @@ func (i GetScalingConfigurationsConfigurationArgs) ToGetScalingConfigurationsCon
 // GetScalingConfigurationsConfigurationArrayInput is an input type that accepts GetScalingConfigurationsConfigurationArray and GetScalingConfigurationsConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationArrayInput` via:
 //
-// 		 GetScalingConfigurationsConfigurationArray{ GetScalingConfigurationsConfigurationArgs{...} }
-//
+//          GetScalingConfigurationsConfigurationArray{ GetScalingConfigurationsConfigurationArgs{...} }
 type GetScalingConfigurationsConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -1239,8 +1223,7 @@ type GetScalingConfigurationsConfigurationDataDisk struct {
 // GetScalingConfigurationsConfigurationDataDiskInput is an input type that accepts GetScalingConfigurationsConfigurationDataDiskArgs and GetScalingConfigurationsConfigurationDataDiskOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationDataDiskInput` via:
 //
-// 		 GetScalingConfigurationsConfigurationDataDiskArgs{...}
-//
+//          GetScalingConfigurationsConfigurationDataDiskArgs{...}
 type GetScalingConfigurationsConfigurationDataDiskInput interface {
 	pulumi.Input
 
@@ -1276,8 +1259,7 @@ func (i GetScalingConfigurationsConfigurationDataDiskArgs) ToGetScalingConfigura
 // GetScalingConfigurationsConfigurationDataDiskArrayInput is an input type that accepts GetScalingConfigurationsConfigurationDataDiskArray and GetScalingConfigurationsConfigurationDataDiskArrayOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationDataDiskArrayInput` via:
 //
-// 		 GetScalingConfigurationsConfigurationDataDiskArray{ GetScalingConfigurationsConfigurationDataDiskArgs{...} }
-//
+//          GetScalingConfigurationsConfigurationDataDiskArray{ GetScalingConfigurationsConfigurationDataDiskArgs{...} }
 type GetScalingConfigurationsConfigurationDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -1402,8 +1384,7 @@ type GetScalingGroupsGroup struct {
 // GetScalingGroupsGroupInput is an input type that accepts GetScalingGroupsGroupArgs and GetScalingGroupsGroupOutput values.
 // You can construct a concrete instance of `GetScalingGroupsGroupInput` via:
 //
-// 		 GetScalingGroupsGroupArgs{...}
-//
+//          GetScalingGroupsGroupArgs{...}
 type GetScalingGroupsGroupInput interface {
 	pulumi.Input
 
@@ -1467,8 +1448,7 @@ func (i GetScalingGroupsGroupArgs) ToGetScalingGroupsGroupOutputWithContext(ctx 
 // GetScalingGroupsGroupArrayInput is an input type that accepts GetScalingGroupsGroupArray and GetScalingGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetScalingGroupsGroupArrayInput` via:
 //
-// 		 GetScalingGroupsGroupArray{ GetScalingGroupsGroupArgs{...} }
-//
+//          GetScalingGroupsGroupArray{ GetScalingGroupsGroupArgs{...} }
 type GetScalingGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -1643,8 +1623,7 @@ type GetScalingRulesRule struct {
 // GetScalingRulesRuleInput is an input type that accepts GetScalingRulesRuleArgs and GetScalingRulesRuleOutput values.
 // You can construct a concrete instance of `GetScalingRulesRuleInput` via:
 //
-// 		 GetScalingRulesRuleArgs{...}
-//
+//          GetScalingRulesRuleArgs{...}
 type GetScalingRulesRuleInput interface {
 	pulumi.Input
 
@@ -1688,8 +1667,7 @@ func (i GetScalingRulesRuleArgs) ToGetScalingRulesRuleOutputWithContext(ctx cont
 // GetScalingRulesRuleArrayInput is an input type that accepts GetScalingRulesRuleArray and GetScalingRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetScalingRulesRuleArrayInput` via:
 //
-// 		 GetScalingRulesRuleArray{ GetScalingRulesRuleArgs{...} }
-//
+//          GetScalingRulesRuleArray{ GetScalingRulesRuleArgs{...} }
 type GetScalingRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -1817,8 +1795,7 @@ type GetScheduledTasksTask struct {
 // GetScheduledTasksTaskInput is an input type that accepts GetScheduledTasksTaskArgs and GetScheduledTasksTaskOutput values.
 // You can construct a concrete instance of `GetScheduledTasksTaskInput` via:
 //
-// 		 GetScheduledTasksTaskArgs{...}
-//
+//          GetScheduledTasksTaskArgs{...}
 type GetScheduledTasksTaskInput interface {
 	pulumi.Input
 
@@ -1865,8 +1842,7 @@ func (i GetScheduledTasksTaskArgs) ToGetScheduledTasksTaskOutputWithContext(ctx 
 // GetScheduledTasksTaskArrayInput is an input type that accepts GetScheduledTasksTaskArray and GetScheduledTasksTaskArrayOutput values.
 // You can construct a concrete instance of `GetScheduledTasksTaskArrayInput` via:
 //
-// 		 GetScheduledTasksTaskArray{ GetScheduledTasksTaskArgs{...} }
-//
+//          GetScheduledTasksTaskArray{ GetScheduledTasksTaskArgs{...} }
 type GetScheduledTasksTaskArrayInput interface {
 	pulumi.Input
 

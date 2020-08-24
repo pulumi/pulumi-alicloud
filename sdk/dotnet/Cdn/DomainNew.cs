@@ -9,6 +9,45 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cdn
 {
+    /// <summary>
+    /// Provides a CDN Accelerated Domain resource. This resource is based on CDN's new version OpenAPI.
+    /// 
+    /// For information about Cdn Domain New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/91176.html).
+    /// 
+    /// &gt; **NOTE:** Available in v1.34.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Domain.
+    ///         var domain = new AliCloud.Cdn.DomainNew("domain", new AliCloud.Cdn.DomainNewArgs
+    ///         {
+    ///             CdnType = "web",
+    ///             DomainName = "terraform.test.com",
+    ///             Scope = "overseas",
+    ///             Sources = new AliCloud.Cdn.Inputs.DomainNewSourcesArgs
+    ///             {
+    ///                 Content = "1.1.1.1",
+    ///                 Port = 80,
+    ///                 Priority = 20,
+    ///                 Type = "ipaddr",
+    ///                 Weight = 10,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class DomainNew : Pulumi.CustomResource
     {
         /// <summary>

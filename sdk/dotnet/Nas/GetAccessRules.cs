@@ -15,9 +15,6 @@ namespace Pulumi.AliCloud.Nas
         /// This data source provides AccessRule available to the user.
         /// 
         /// &gt; NOTE: Available in 1.35.0+
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessRulesResult> InvokeAsync(GetAccessRulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesArgs(), options.WithVersion());
@@ -48,19 +45,19 @@ namespace Pulumi.AliCloud.Nas
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific RWAccess. 
+        /// Filter results by a specific RWAccess.
         /// </summary>
         [Input("rwAccess")]
         public string? RwAccess { get; set; }
 
         /// <summary>
-        /// Filter results by a specific SourceCidrIp. 
+        /// Filter results by a specific SourceCidrIp.
         /// </summary>
         [Input("sourceCidrIp")]
         public string? SourceCidrIp { get; set; }
 
         /// <summary>
-        /// Filter results by a specific UserAccess. 
+        /// Filter results by a specific UserAccess.
         /// </summary>
         [Input("userAccess")]
         public string? UserAccess { get; set; }

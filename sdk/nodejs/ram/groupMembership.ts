@@ -5,11 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM Group membership resource. 
+ * Provides a RAM Group membership resource.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,14 +20,14 @@ import * as utilities from "../utilities";
  * });
  * const user = new alicloud.ram.User("user", {
  *     comments: "yoyoyo",
- *     displayName: "userDisplayName",
+ *     displayName: "user_display_name",
  *     email: "hello.uuu@aaa.com",
  *     force: true,
  *     mobile: "86-18688888888",
  * });
  * const user1 = new alicloud.ram.User("user1", {
  *     comments: "yoyoyo",
- *     displayName: "userDisplayName1",
+ *     displayName: "user_display_name1",
  *     email: "hello.uuu@aaa.com",
  *     force: true,
  *     mobile: "86-18688888889",

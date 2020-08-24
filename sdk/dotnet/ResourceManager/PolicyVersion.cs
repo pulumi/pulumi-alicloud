@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> CreateDate { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `false`. 
+        /// Specifies whether to set the policy version as the default version. Default to `false`.
         /// </summary>
         [Output("isDefaultVersion")]
         public Output<bool?> IsDefaultVersion { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class PolicyVersionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `false`. 
+        /// Specifies whether to set the policy version as the default version. Default to `false`.
         /// </summary>
         [Input("isDefaultVersion")]
         public Input<bool>? IsDefaultVersion { get; set; }
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? CreateDate { get; set; }
 
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `false`. 
+        /// Specifies whether to set the policy version as the default version. Default to `false`.
         /// </summary>
         [Input("isDefaultVersion")]
         public Input<bool>? IsDefaultVersion { get; set; }

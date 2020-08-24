@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -110,7 +110,7 @@ export interface GetFlowlogsResult {
     readonly logStoreName?: string;
     readonly nameRegex?: string;
     /**
-     * A list of CEN flow log names. 
+     * A list of CEN flow log names.
      */
     readonly names: string[];
     readonly outputFile?: string;

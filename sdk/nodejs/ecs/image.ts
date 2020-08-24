@@ -19,14 +19,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const defaultImage = new alicloud.ecs.Image("default", {
- *     architecture: "x8664",
+ *     architecture: "x86_64",
  *     description: "test-image",
  *     imageName: "test-image",
  *     instanceId: "i-bp1g6zv0ce8oghu7k***",

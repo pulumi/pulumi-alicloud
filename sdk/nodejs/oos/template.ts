@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -83,7 +81,7 @@ export class Template extends pulumi.CustomResource {
      */
     public readonly autoDeleteExecutions!: pulumi.Output<boolean | undefined>;
     /**
-     * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB. 
+     * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
      */
     public readonly content!: pulumi.Output<string>;
     /**
@@ -216,7 +214,7 @@ export interface TemplateState {
      */
     readonly autoDeleteExecutions?: pulumi.Input<boolean>;
     /**
-     * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB. 
+     * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
      */
     readonly content?: pulumi.Input<string>;
     /**
@@ -286,7 +284,7 @@ export interface TemplateArgs {
      */
     readonly autoDeleteExecutions?: pulumi.Input<boolean>;
     /**
-     * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB. 
+     * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
      */
     readonly content: pulumi.Input<string>;
     /**

@@ -37,7 +37,7 @@ export class PolicyVersion extends pulumi.CustomResource {
      */
     public /*out*/ readonly createDate!: pulumi.Output<string>;
     /**
-     * Specifies whether to set the policy version as the default version. Default to `false`. 
+     * Specifies whether to set the policy version as the default version. Default to `false`.
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
@@ -106,7 +106,7 @@ export interface PolicyVersionState {
      */
     readonly createDate?: pulumi.Input<string>;
     /**
-     * Specifies whether to set the policy version as the default version. Default to `false`. 
+     * Specifies whether to set the policy version as the default version. Default to `false`.
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
@@ -130,7 +130,7 @@ export interface PolicyVersionState {
  */
 export interface PolicyVersionArgs {
     /**
-     * Specifies whether to set the policy version as the default version. Default to `false`. 
+     * Specifies whether to set the policy version as the default version. Default to `false`.
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */

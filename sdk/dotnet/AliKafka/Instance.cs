@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`]
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
+        /// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
         /// </summary>
         [Output("paidType")]
         public Output<string?> PaidType { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
+        /// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
         /// </summary>
         [Input("paidType")]
         public Input<string>? PaidType { get; set; }
@@ -317,7 +317,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
+        /// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
         /// </summary>
         [Input("paidType")]
         public Input<string>? PaidType { get; set; }

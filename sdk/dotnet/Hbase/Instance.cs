@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hbase
 {
     /// <summary>
-    /// Provides a HBase instance resource supports replica set instances only. the HBase provides stable, reliable, and automatic scalable database services. 
+    /// Provides a HBase instance resource supports replica set instances only. the HBase provides stable, reliable, and automatic scalable database services.
     /// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
     /// You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
     /// 
@@ -23,7 +23,6 @@ namespace Pulumi.AliCloud.Hbase
     /// &gt; **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a hbase instance
     /// 
     /// ```csharp
@@ -50,6 +49,8 @@ namespace Pulumi.AliCloud.Hbase
     /// 
     /// }
     /// ```
+    /// 
+    /// this is a example for class netType instance. you can find more detail with the examples/hbase dir.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
@@ -80,7 +81,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string> CoreDiskType { get; private set; } = null!;
 
         /// <summary>
-        /// default=2. if core_instance_quantity &gt; 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance. 
+        /// default=2. if core_instance_quantity &gt; 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
         /// </summary>
         [Output("coreInstanceQuantity")]
         public Output<int?> CoreInstanceQuantity { get; private set; } = null!;
@@ -126,7 +127,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string> MasterInstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted. 
+        /// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -228,7 +229,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string> CoreDiskType { get; set; } = null!;
 
         /// <summary>
-        /// default=2. if core_instance_quantity &gt; 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance. 
+        /// default=2. if core_instance_quantity &gt; 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
         /// </summary>
         [Input("coreInstanceQuantity")]
         public Input<int>? CoreInstanceQuantity { get; set; }
@@ -274,7 +275,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string> MasterInstanceType { get; set; } = null!;
 
         /// <summary>
-        /// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted. 
+        /// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -343,7 +344,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? CoreDiskType { get; set; }
 
         /// <summary>
-        /// default=2. if core_instance_quantity &gt; 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance. 
+        /// default=2. if core_instance_quantity &gt; 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
         /// </summary>
         [Input("coreInstanceQuantity")]
         public Input<int>? CoreInstanceQuantity { get; set; }
@@ -389,7 +390,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? MasterInstanceType { get; set; }
 
         /// <summary>
-        /// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted. 
+        /// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

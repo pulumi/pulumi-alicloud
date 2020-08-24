@@ -8,6 +8,37 @@ import (
 )
 
 // The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "^foo"
+// 		opt1 := "/tmp/clientcert"
+// 		opt2 := "fake-server-id"
+// 		_, err := vpc.GetSslVpnClientCerts(ctx, &vpc.GetSslVpnClientCertsArgs{
+// 			Ids: []string{
+// 				"fake-cert-id",
+// 			},
+// 			NameRegex:      &opt0,
+// 			OutputFile:     &opt1,
+// 			SslVpnServerId: &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetSslVpnClientCerts(ctx *pulumi.Context, args *GetSslVpnClientCertsArgs, opts ...pulumi.InvokeOption) (*GetSslVpnClientCertsResult, error) {
 	var rv GetSslVpnClientCertsResult
 	err := ctx.Invoke("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", args, &rv, opts...)

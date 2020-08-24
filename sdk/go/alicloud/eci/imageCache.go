@@ -15,6 +15,37 @@ import (
 // > **NOTE:** Available in v1.89.0+.
 //
 // > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/eci"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := eci.NewImageCache(ctx, "example", &eci.ImageCacheArgs{
+// 			EipInstanceId:  pulumi.String("eip-uf60c7cqb2pcrkgxhxxxx"),
+// 			ImageCacheName: pulumi.String("tf-test"),
+// 			Images: pulumi.StringArray{
+// 				pulumi.String("registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest"),
+// 			},
+// 			SecurityGroupId: pulumi.String("sg-2zeef68b66fxxxx"),
+// 			VswitchId:       pulumi.String("vsw-2zef9k7ng82xxxx"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ImageCache struct {
 	pulumi.CustomResourceState
 

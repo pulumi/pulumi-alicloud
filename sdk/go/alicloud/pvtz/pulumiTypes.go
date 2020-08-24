@@ -20,8 +20,7 @@ type ZoneAttachmentVpc struct {
 // ZoneAttachmentVpcInput is an input type that accepts ZoneAttachmentVpcArgs and ZoneAttachmentVpcOutput values.
 // You can construct a concrete instance of `ZoneAttachmentVpcInput` via:
 //
-// 		 ZoneAttachmentVpcArgs{...}
-//
+//          ZoneAttachmentVpcArgs{...}
 type ZoneAttachmentVpcInput interface {
 	pulumi.Input
 
@@ -51,8 +50,7 @@ func (i ZoneAttachmentVpcArgs) ToZoneAttachmentVpcOutputWithContext(ctx context.
 // ZoneAttachmentVpcArrayInput is an input type that accepts ZoneAttachmentVpcArray and ZoneAttachmentVpcArrayOutput values.
 // You can construct a concrete instance of `ZoneAttachmentVpcArrayInput` via:
 //
-// 		 ZoneAttachmentVpcArray{ ZoneAttachmentVpcArgs{...} }
-//
+//          ZoneAttachmentVpcArray{ ZoneAttachmentVpcArgs{...} }
 type ZoneAttachmentVpcArrayInput interface {
 	pulumi.Input
 
@@ -137,8 +135,7 @@ type GetZoneRecordsRecord struct {
 // GetZoneRecordsRecordInput is an input type that accepts GetZoneRecordsRecordArgs and GetZoneRecordsRecordOutput values.
 // You can construct a concrete instance of `GetZoneRecordsRecordInput` via:
 //
-// 		 GetZoneRecordsRecordArgs{...}
-//
+//          GetZoneRecordsRecordArgs{...}
 type GetZoneRecordsRecordInput interface {
 	pulumi.Input
 
@@ -177,8 +174,7 @@ func (i GetZoneRecordsRecordArgs) ToGetZoneRecordsRecordOutputWithContext(ctx co
 // GetZoneRecordsRecordArrayInput is an input type that accepts GetZoneRecordsRecordArray and GetZoneRecordsRecordArrayOutput values.
 // You can construct a concrete instance of `GetZoneRecordsRecordArrayInput` via:
 //
-// 		 GetZoneRecordsRecordArray{ GetZoneRecordsRecordArgs{...} }
-//
+//          GetZoneRecordsRecordArray{ GetZoneRecordsRecordArgs{...} }
 type GetZoneRecordsRecordArrayInput interface {
 	pulumi.Input
 
@@ -290,8 +286,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-// 		 GetZonesZoneArgs{...}
-//
+//          GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -333,8 +328,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-// 		 GetZonesZoneArray{ GetZonesZoneArgs{...} }
-//
+//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 
@@ -439,8 +433,7 @@ type GetZonesZoneBindVpc struct {
 // GetZonesZoneBindVpcInput is an input type that accepts GetZonesZoneBindVpcArgs and GetZonesZoneBindVpcOutput values.
 // You can construct a concrete instance of `GetZonesZoneBindVpcInput` via:
 //
-// 		 GetZonesZoneBindVpcArgs{...}
-//
+//          GetZonesZoneBindVpcArgs{...}
 type GetZonesZoneBindVpcInput interface {
 	pulumi.Input
 
@@ -469,8 +462,7 @@ func (i GetZonesZoneBindVpcArgs) ToGetZonesZoneBindVpcOutputWithContext(ctx cont
 // GetZonesZoneBindVpcArrayInput is an input type that accepts GetZonesZoneBindVpcArray and GetZonesZoneBindVpcArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneBindVpcArrayInput` via:
 //
-// 		 GetZonesZoneBindVpcArray{ GetZonesZoneBindVpcArgs{...} }
-//
+//          GetZonesZoneBindVpcArray{ GetZonesZoneBindVpcArgs{...} }
 type GetZonesZoneBindVpcArrayInput interface {
 	pulumi.Input
 

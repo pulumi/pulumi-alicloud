@@ -18,8 +18,7 @@ type SiteMonitorIspCity struct {
 // SiteMonitorIspCityInput is an input type that accepts SiteMonitorIspCityArgs and SiteMonitorIspCityOutput values.
 // You can construct a concrete instance of `SiteMonitorIspCityInput` via:
 //
-// 		 SiteMonitorIspCityArgs{...}
-//
+//          SiteMonitorIspCityArgs{...}
 type SiteMonitorIspCityInput interface {
 	pulumi.Input
 
@@ -47,8 +46,7 @@ func (i SiteMonitorIspCityArgs) ToSiteMonitorIspCityOutputWithContext(ctx contex
 // SiteMonitorIspCityArrayInput is an input type that accepts SiteMonitorIspCityArray and SiteMonitorIspCityArrayOutput values.
 // You can construct a concrete instance of `SiteMonitorIspCityArrayInput` via:
 //
-// 		 SiteMonitorIspCityArray{ SiteMonitorIspCityArgs{...} }
-//
+//          SiteMonitorIspCityArray{ SiteMonitorIspCityArgs{...} }
 type SiteMonitorIspCityArrayInput interface {
 	pulumi.Input
 

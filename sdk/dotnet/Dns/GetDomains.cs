@@ -38,7 +38,6 @@ namespace Pulumi.AliCloud.Dns
         ///     public Output&lt;string&gt; FirstDomainId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.Dns
         public bool? AliDomain { get; set; }
 
         /// <summary>
-        /// A regex string to filter results by the domain name. 
+        /// A regex string to filter results by the domain name.
         /// </summary>
         [Input("domainNameRegex")]
         public string? DomainNameRegex { get; set; }

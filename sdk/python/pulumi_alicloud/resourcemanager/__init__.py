@@ -21,3 +21,5 @@ from .policy_version import *
 from .resource_directory import *
 from .resource_group import *
 from .role import *
+from ._inputs import *
+from . import outputs

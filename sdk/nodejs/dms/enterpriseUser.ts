@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -78,7 +76,7 @@ export class EnterpriseUser extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
-     * The tenant ID. 
+     * The tenant ID.
      */
     public readonly tid!: pulumi.Output<number | undefined>;
     /**
@@ -160,7 +158,7 @@ export interface EnterpriseUserState {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * The tenant ID. 
+     * The tenant ID.
      */
     readonly tid?: pulumi.Input<number>;
     /**
@@ -198,7 +196,7 @@ export interface EnterpriseUserArgs {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * The tenant ID. 
+     * The tenant ID.
      */
     readonly tid?: pulumi.Input<number>;
     /**

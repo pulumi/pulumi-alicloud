@@ -39,7 +39,6 @@ namespace Pulumi.AliCloud.Hbase
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

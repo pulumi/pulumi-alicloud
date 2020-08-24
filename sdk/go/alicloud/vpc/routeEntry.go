@@ -20,12 +20,6 @@ type RouteEntry struct {
 	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId pulumi.StringPtrOutput `pulumi:"nexthopId"`
 	// The next hop type. Available values:
-	// - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
-	// - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
-	// - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
-	// - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
-	// - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
-	// - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
 	NexthopType pulumi.StringPtrOutput `pulumi:"nexthopType"`
 	// The ID of the route table.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
@@ -73,12 +67,6 @@ type routeEntryState struct {
 	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId *string `pulumi:"nexthopId"`
 	// The next hop type. Available values:
-	// - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
-	// - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
-	// - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
-	// - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
-	// - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
-	// - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
 	NexthopType *string `pulumi:"nexthopType"`
 	// The ID of the route table.
 	RouteTableId *string `pulumi:"routeTableId"`
@@ -96,12 +84,6 @@ type RouteEntryState struct {
 	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId pulumi.StringPtrInput
 	// The next hop type. Available values:
-	// - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
-	// - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
-	// - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
-	// - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
-	// - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
-	// - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
 	NexthopType pulumi.StringPtrInput
 	// The ID of the route table.
 	RouteTableId pulumi.StringPtrInput
@@ -123,12 +105,6 @@ type routeEntryArgs struct {
 	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId *string `pulumi:"nexthopId"`
 	// The next hop type. Available values:
-	// - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
-	// - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
-	// - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
-	// - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
-	// - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
-	// - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
 	NexthopType *string `pulumi:"nexthopType"`
 	// The ID of the route table.
 	RouteTableId string `pulumi:"routeTableId"`
@@ -147,12 +123,6 @@ type RouteEntryArgs struct {
 	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId pulumi.StringPtrInput
 	// The next hop type. Available values:
-	// - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
-	// - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
-	// - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
-	// - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
-	// - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
-	// - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
 	NexthopType pulumi.StringPtrInput
 	// The ID of the route table.
 	RouteTableId pulumi.StringInput

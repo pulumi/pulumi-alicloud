@@ -39,7 +39,6 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

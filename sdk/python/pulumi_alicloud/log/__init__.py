@@ -12,3 +12,5 @@ from .machine_group import *
 from .project import *
 from .store import *
 from .store_index import *
+from ._inputs import *
+from . import outputs

@@ -213,7 +213,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
     /**
-     * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. 
+     * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */
     public readonly systemDiskSize!: pulumi.Output<number | undefined>;
     /**
@@ -545,7 +545,7 @@ export interface InstanceState {
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
     /**
-     * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. 
+     * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */
     readonly systemDiskSize?: pulumi.Input<number>;
     /**
@@ -749,7 +749,7 @@ export interface InstanceArgs {
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
     /**
-     * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. 
+     * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */
     readonly systemDiskSize?: pulumi.Input<number>;
     /**

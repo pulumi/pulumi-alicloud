@@ -15,6 +15,55 @@ import (
 // For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
 //
 // > **NOTE:** Available in v1.34.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cdn"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		domain, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
+// 			CdnType:    pulumi.String("web"),
+// 			DomainName: pulumi.String(fmt.Sprintf("%v%v%v", "tf-testacc", "%", "d.xiaozhu.com")),
+// 			Scope:      pulumi.String("overseas"),
+// 			Sources: &cdn.DomainNewSourcesArgs{
+// 				Content:  pulumi.String("1.1.1.1"),
+// 				Port:     pulumi.Int(80),
+// 				Priority: pulumi.Int(20),
+// 				Type:     pulumi.String("ipaddr"),
+// 				Weight:   pulumi.Int(15),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cdn.NewDomainConfig(ctx, "config", &cdn.DomainConfigArgs{
+// 			DomainName: domain.DomainName,
+// 			FunctionArgs: cdn.DomainConfigFunctionArgArray{
+// 				&cdn.DomainConfigFunctionArgArgs{
+// 					ArgName:  pulumi.String("ip_list"),
+// 					ArgValue: pulumi.String("110.110.110.110"),
+// 				},
+// 			},
+// 			FunctionName: pulumi.String("ip_allow_list_set"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DomainConfig struct {
 	pulumi.CustomResourceState
 

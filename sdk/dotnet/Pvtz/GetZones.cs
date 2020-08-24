@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.Pvtz
         ///     public Output&lt;string&gt; FirstZoneId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -52,7 +51,7 @@ namespace Pulumi.AliCloud.Pvtz
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of zone IDs. 
+        /// A list of zone IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -83,12 +82,12 @@ namespace Pulumi.AliCloud.Pvtz
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of zone IDs. 
+        /// A list of zone IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? Keyword;
         /// <summary>
-        /// A list of zone names. 
+        /// A list of zone names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

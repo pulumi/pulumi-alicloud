@@ -13,6 +13,37 @@ import (
 // Provides a ECS disk resource.
 //
 // > **NOTE:** One of `size` or `snapshotId` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshotId` represents. Currently, `ecs.Disk` doesn't resize disk.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
+// 			AvailabilityZone: pulumi.String("cn-beijing-b"),
+// 			Category:         pulumi.String("cloud_efficiency"),
+// 			Description:      pulumi.String("Hello ecs disk."),
+// 			Encrypted:        pulumi.Bool(true),
+// 			KmsKeyId:         pulumi.String("2a6767f0-a16c-4679-a60f-13bf*****"),
+// 			Size:             pulumi.Int(30),
+// 			Tags: pulumi.StringMap{
+// 				"Name": pulumi.String("TerraformTest"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Disk struct {
 	pulumi.CustomResourceState
 

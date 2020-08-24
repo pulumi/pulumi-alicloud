@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class GetBucketsBucketServerSideEncryptionRuleResult
     {
         /// <summary>
-        /// The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
+        /// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
         /// </summary>
         public readonly string KmsMasterKeyId;
         /// <summary>

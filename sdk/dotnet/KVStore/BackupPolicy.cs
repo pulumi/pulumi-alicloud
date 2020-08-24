@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.KVStore
 {
     /// <summary>
-    /// Provides a backup policy for ApsaraDB Redis / Memcache instance resource. 
+    /// Provides a backup policy for ApsaraDB Redis / Memcache instance resource.
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;

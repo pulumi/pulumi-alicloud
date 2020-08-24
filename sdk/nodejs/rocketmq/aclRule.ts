@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -79,7 +79,7 @@ export class AclRule extends pulumi.CustomResource {
      */
     public readonly destCidr!: pulumi.Output<string>;
     /**
-     * The range of the destination port. Valid value: 80/80. 
+     * The range of the destination port. Valid value: 80/80.
      */
     public readonly destPortRange!: pulumi.Output<string>;
     /**
@@ -95,7 +95,7 @@ export class AclRule extends pulumi.CustomResource {
      */
     public readonly policy!: pulumi.Output<string>;
     /**
-     * The priority of the ACL rule. Value range: 1 to 100. 
+     * The priority of the ACL rule. Value range: 1 to 100.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
@@ -194,7 +194,7 @@ export interface AclRuleState {
      */
     readonly destCidr?: pulumi.Input<string>;
     /**
-     * The range of the destination port. Valid value: 80/80. 
+     * The range of the destination port. Valid value: 80/80.
      */
     readonly destPortRange?: pulumi.Input<string>;
     /**
@@ -210,7 +210,7 @@ export interface AclRuleState {
      */
     readonly policy?: pulumi.Input<string>;
     /**
-     * The priority of the ACL rule. Value range: 1 to 100. 
+     * The priority of the ACL rule. Value range: 1 to 100.
      */
     readonly priority?: pulumi.Input<number>;
     /**
@@ -240,7 +240,7 @@ export interface AclRuleArgs {
      */
     readonly destCidr: pulumi.Input<string>;
     /**
-     * The range of the destination port. Valid value: 80/80. 
+     * The range of the destination port. Valid value: 80/80.
      */
     readonly destPortRange: pulumi.Input<string>;
     /**
@@ -256,7 +256,7 @@ export interface AclRuleArgs {
      */
     readonly policy: pulumi.Input<string>;
     /**
-     * The priority of the ACL rule. Value range: 1 to 100. 
+     * The priority of the ACL rule. Value range: 1 to 100.
      */
     readonly priority?: pulumi.Input<number>;
     /**

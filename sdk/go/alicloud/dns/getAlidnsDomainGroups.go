@@ -10,6 +10,32 @@ import (
 // This data source provides a list of Alidns Domain Groups in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:**  Available in 1.85.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := dns.GetAlidnsDomainGroups(ctx, &dns.GetAlidnsDomainGroupsArgs{
+// 			Ids: []string{
+// 				"c5ef2bc43064445787adf182af2****",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstDomainGroupId", example.Groups[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetAlidnsDomainGroups(ctx *pulumi.Context, args *GetAlidnsDomainGroupsArgs, opts ...pulumi.InvokeOption) (*GetAlidnsDomainGroupsResult, error) {
 	var rv GetAlidnsDomainGroupsResult
 	err := ctx.Invoke("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args, &rv, opts...)

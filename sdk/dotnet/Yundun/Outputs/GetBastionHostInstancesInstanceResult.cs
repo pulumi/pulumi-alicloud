@@ -44,11 +44,23 @@ namespace Pulumi.AliCloud.Yundun.Outputs
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
         /// A map of tags assigned to the bastionhost instance. It must be in the format:
-        /// ```
-        /// data "alicloud.yundun.getBastionHostInstances" "instance" {
-        /// tags = {
-        /// tagKey1 = "tagValue1"
-        /// }
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var instance = Output.Create(AliCloud.Yundun.GetBastionHostInstances.InvokeAsync(new AliCloud.Yundun.GetBastionHostInstancesArgs
+        ///         {
+        ///             Tags = 
+        ///             {
+        ///                 { "tagKey1", "tagValue1" },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
         /// }
         /// ```
         /// </summary>

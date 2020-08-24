@@ -13,6 +13,36 @@ import (
 // Create an alias for the master key (CMK).
 //
 // > **NOTE:** Available in v1.77.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/kms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		thisKey, err := kms.NewKey(ctx, "thisKey", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = kms.NewAlias(ctx, "thisAlias", &kms.AliasArgs{
+// 			AliasName: pulumi.String("alias/test_kms_alias"),
+// 			KeyId:     thisKey.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Alias struct {
 	pulumi.CustomResourceState
 
