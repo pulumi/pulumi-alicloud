@@ -7,11 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource will help you to manager cluster-autoscaler in Kubernetes Cluster. 
+ * This resource will help you to manager cluster-autoscaler in Kubernetes Cluster.
  *
  * > **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
  *
- * > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group. 
+ * > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group.
  *
  * > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
  *
@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * cluster-autoscaler in Kubernetes Cluster
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     coolDownDuration: var_cool_down_duration,
  *     deferScaleInDuration: var_defer_scale_in_duration,
  *     nodepools: [{
- *         id: "scalingGroupId",
+ *         id: "scaling_group_id",
  *         labels: "a=b",
  *         taints: "c=d:NoSchedule",
  *     }],
@@ -71,7 +71,7 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * The coolDownDuration option of cluster-autoscaler.  
+     * The coolDownDuration option of cluster-autoscaler.
      */
     public readonly coolDownDuration!: pulumi.Output<string>;
     /**
@@ -79,7 +79,6 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
      */
     public readonly deferScaleInDuration!: pulumi.Output<string>;
     /**
-     *
      * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
      * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
      * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -153,7 +152,7 @@ export interface KubernetesAutoscalerState {
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
-     * The coolDownDuration option of cluster-autoscaler.  
+     * The coolDownDuration option of cluster-autoscaler.
      */
     readonly coolDownDuration?: pulumi.Input<string>;
     /**
@@ -161,7 +160,6 @@ export interface KubernetesAutoscalerState {
      */
     readonly deferScaleInDuration?: pulumi.Input<string>;
     /**
-     *
      * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
      * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
      * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -186,7 +184,7 @@ export interface KubernetesAutoscalerArgs {
      */
     readonly clusterId: pulumi.Input<string>;
     /**
-     * The coolDownDuration option of cluster-autoscaler.  
+     * The coolDownDuration option of cluster-autoscaler.
      */
     readonly coolDownDuration: pulumi.Input<string>;
     /**
@@ -194,7 +192,6 @@ export interface KubernetesAutoscalerArgs {
      */
     readonly deferScaleInDuration: pulumi.Input<string>;
     /**
-     *
      * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
      * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
      * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.

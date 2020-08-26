@@ -10,6 +10,28 @@ import (
 // This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
 //
 // > **NOTE:**  Available in 1.93.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/resourcemanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := resourcemanager.GetPolicyAttachments(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstAttachmentId", example.Attachments[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetPolicyAttachments(ctx *pulumi.Context, args *GetPolicyAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetPolicyAttachmentsResult, error) {
 	var rv GetPolicyAttachmentsResult
 	err := ctx.Invoke("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args, &rv, opts...)

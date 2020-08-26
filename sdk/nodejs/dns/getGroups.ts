@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -50,7 +48,7 @@ export interface GetGroupsArgs {
      */
     readonly ids?: string[];
     /**
-     * A regex string to filter results by group name. 
+     * A regex string to filter results by group name.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
@@ -69,7 +67,7 @@ export interface GetGroupsResult {
      */
     readonly id: string;
     /**
-     * A list of group IDs. 
+     * A list of group IDs.
      */
     readonly ids: string[];
     readonly nameRegex?: string;

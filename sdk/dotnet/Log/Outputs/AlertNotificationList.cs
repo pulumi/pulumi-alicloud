@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly string Content;
         /// <summary>
-        /// Email address list.   
+        /// Email address list.
         /// </summary>
         public readonly ImmutableArray<string> EmailLists;
         /// <summary>

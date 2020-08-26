@@ -10,6 +10,34 @@ import (
 // Provide  a data source to retrieve the type of protocol used to create NAS file system.
 //
 // > **NOTE:** Available in 1.42.0
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/nas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "protocols.txt"
+// 		opt1 := "cn-beijing-e"
+// 		_default, err := nas.GetProtocols(ctx, &nas.GetProtocolsArgs{
+// 			OutputFile: &opt0,
+// 			Type:       "Performance",
+// 			ZoneId:     &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("nasProtocolsProtocol", _default.Protocols[0])
+// 		return nil
+// 	})
+// }
+// ```
 func GetProtocols(ctx *pulumi.Context, args *GetProtocolsArgs, opts ...pulumi.InvokeOption) (*GetProtocolsResult, error) {
 	var rv GetProtocolsResult
 	err := ctx.Invoke("alicloud:nas/getProtocols:getProtocols", args, &rv, opts...)

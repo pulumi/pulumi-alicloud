@@ -65,7 +65,7 @@ type Instance struct {
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -158,7 +158,7 @@ type instanceState struct {
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -215,7 +215,7 @@ type InstanceState struct {
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -270,7 +270,7 @@ type instanceArgs struct {
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -322,7 +322,7 @@ type InstanceArgs struct {
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringPtrInput
 }
 

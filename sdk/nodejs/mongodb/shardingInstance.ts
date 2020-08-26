@@ -47,7 +47,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly backupTime!: pulumi.Output<string>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -196,7 +196,7 @@ export interface ShardingInstanceState {
      */
     readonly backupTime?: pulumi.Input<string>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
      */
     readonly engineVersion?: pulumi.Input<string>;
     /**
@@ -275,7 +275,7 @@ export interface ShardingInstanceArgs {
      */
     readonly backupTime?: pulumi.Input<string>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
      */
     readonly engineVersion: pulumi.Input<string>;
     /**

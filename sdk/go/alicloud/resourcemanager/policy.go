@@ -10,10 +10,38 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Resource Manager Policy resource.
+// Provides a Resource Manager Policy resource.\
 // For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
 //
 // > **NOTE:** Available in v1.83.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/resourcemanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := resourcemanager.NewPolicy(ctx, "example", &resourcemanager.PolicyArgs{
+// 			PolicyDocument: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v", "		{\n", "			\"Statement\": [{\n", "				\"Action\": [\"oss:*\"],\n", "				\"Effect\": \"Allow\",\n", "				\"Resource\": [\"acs:oss:*:*:*\"]\n", "			}],\n", "			\"Version\": \"1\"\n", "		}\n", "    \n")),
+// 			PolicyName: pulumi.String("abc12345"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Policy struct {
 	pulumi.CustomResourceState
 

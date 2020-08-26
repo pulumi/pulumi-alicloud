@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     public Output&lt;string&gt; FirstTrailName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

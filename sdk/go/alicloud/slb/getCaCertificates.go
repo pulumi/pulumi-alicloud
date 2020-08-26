@@ -8,6 +8,28 @@ import (
 )
 
 // This data source provides the CA certificate list.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		sampleDs, err := slb.GetCaCertificates(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstSlbCaCertificateId", sampleDs.Certificates[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetCaCertificates(ctx *pulumi.Context, args *GetCaCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCaCertificatesResult, error) {
 	var rv GetCaCertificatesResult
 	err := ctx.Invoke("alicloud:slb/getCaCertificates:getCaCertificates", args, &rv, opts...)

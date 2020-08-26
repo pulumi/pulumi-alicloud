@@ -20,3 +20,5 @@ from .scaling_group_v_server_groups import *
 from .scaling_rule import *
 from .schedule import *
 from .scheduled_task import *
+from ._inputs import *
+from . import outputs

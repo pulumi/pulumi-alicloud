@@ -13,6 +13,68 @@ import (
 // Provides a [ADB](https://www.alibabacloud.com/help/product/92664.htm) account resource and used to manage databases.
 //
 // > **NOTE:** Available in v1.71.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/adb"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cluster, err := adb.NewCluster(ctx, "cluster", &adb.ClusterArgs{
+// 			DbClusterCategory: pulumi.String("Cluster"),
+// 			DbClusterVersion:  pulumi.String("3.0"),
+// 			DbNodeClass:       pulumi.String("C8"),
+// 			DbNodeCount:       pulumi.Int(2),
+// 			DbNodeStorage:     pulumi.Int(200),
+// 			Description:       pulumi.String(name),
+// 			PayType:           pulumi.String("PostPaid"),
+// 			VswitchId:         defaultSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = adb.NewAccount(ctx, "account", &adb.AccountArgs{
+// 			AccountDescription: pulumi.String(name),
+// 			AccountName:        pulumi.String("tftestnormal"),
+// 			AccountPassword:    pulumi.String("Test12345"),
+// 			DbClusterId:        cluster.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Account struct {
 	pulumi.CustomResourceState
 

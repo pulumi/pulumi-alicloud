@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         /// </summary>
         public readonly string AccountPrivilege;
         /// <summary>
-        /// The account owned database name 
+        /// The account owned database name
         /// </summary>
         public readonly string DbName;
 

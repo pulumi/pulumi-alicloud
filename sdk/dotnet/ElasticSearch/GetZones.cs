@@ -33,7 +33,6 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

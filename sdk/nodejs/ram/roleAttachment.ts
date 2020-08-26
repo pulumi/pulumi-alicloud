@@ -9,8 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -19,7 +17,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "ecsInstanceVPCExample";
  *
  * const defaultZones = pulumi.output(alicloud.getZones({
- *     availableDiskCategory: "cloudEfficiency",
+ *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
  * const defaultInstanceTypes = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
@@ -60,7 +58,7 @@ import * as utilities from "../utilities";
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 5,
  *     securityGroups: [defaultSecurityGroup.id],
- *     systemDiskCategory: "cloudEfficiency",
+ *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: defaultSwitch.id,
  * });
  * const role = new alicloud.ram.Role("role", {

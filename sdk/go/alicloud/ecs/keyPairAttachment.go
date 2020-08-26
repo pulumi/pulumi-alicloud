@@ -13,6 +13,126 @@ import (
 // Provides a key pair attachment resource to bind key pair for several ECS instances.
 //
 // > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "cloud_ssd"
+// 		opt1 := "VSwitch"
+// 		_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableDiskCategory:     &opt0,
+// 			AvailableResourceCreation: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt2 := _default.Zones[0].Id
+// 		opt3 := 1
+// 		opt4 := 2
+// 		_type, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// 			AvailabilityZone: &opt2,
+// 			CpuCoreCount:     &opt3,
+// 			MemorySize:       &opt4,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt5 := true
+// 		opt6 := "^ubuntu_18.*64"
+// 		opt7 := "system"
+// 		images, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// 			MostRecent: &opt5,
+// 			NameRegex:  &opt6,
+// 			Owners:     &opt7,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("10.1.0.0/21"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(_default.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("10.1.1.0/24"),
+// 			VpcId:            vpc.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+// 			Description: pulumi.String("New security group"),
+// 			VpcId:       vpc.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		var instance []*ecs.Instance
+// 		for key0, val0 := range 2 {
+// 			__res, err := ecs.NewInstance(ctx, fmt.Sprintf("instance-%v", key0), &ecs.InstanceArgs{
+// 				ImageId:                 pulumi.String(images.Images[0].Id),
+// 				InstanceChargeType:      pulumi.String("PostPaid"),
+// 				InstanceName:            pulumi.String(fmt.Sprintf("%v%v%v", name, "-", val0+1)),
+// 				InstanceType:            pulumi.String(_type.InstanceTypes[0].Id),
+// 				InternetChargeType:      pulumi.String("PayByTraffic"),
+// 				InternetMaxBandwidthOut: pulumi.Int(5),
+// 				Password:                pulumi.String("Test12345"),
+// 				SecurityGroups: pulumi.StringArray{
+// 					group.ID(),
+// 				},
+// 				SystemDiskCategory: pulumi.String("cloud_ssd"),
+// 				VswitchId:          vswitch.ID(),
+// 			})
+// 			if err != nil {
+// 				return err
+// 			}
+// 			instance = append(instance, __res)
+// 		}
+// 		pair, err := ecs.NewKeyPair(ctx, "pair", &ecs.KeyPairArgs{
+// 			KeyName: pulumi.String(name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		var splat0 pulumi.StringArray
+// 		for _, val0 := range instance {
+// 			splat0 = append(splat0, val0.ID())
+// 		}
+// 		_, err = ecs.NewKeyPairAttachment(ctx, "attachment", &ecs.KeyPairAttachmentArgs{
+// 			InstanceIds: toPulumiStringArray(splat0),
+// 			KeyName:     pair.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// func toPulumiStringArray(arr []string) pulumi.StringArray {
+// 	var pulumiArr pulumi.StringArray
+// 	for _, v := range arr {
+// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+// 	}
+// 	return pulumiArr
+// }
+// ```
 type KeyPairAttachment struct {
 	pulumi.CustomResourceState
 

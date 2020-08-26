@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestinationInstanceIds;
         /// <summary>
-        /// Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition. 
+        /// Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition.
         /// </summary>
         public readonly bool DestinationInstanceIdsReverseMatch;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MatchCommunitySets;
         /// <summary>
-        /// The priority of the next route map that is associated with the current route map. 
+        /// The priority of the next route map that is associated with the current route map.
         /// </summary>
         public readonly int NextPriority;
         /// <summary>

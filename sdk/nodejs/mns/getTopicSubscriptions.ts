@@ -11,15 +11,13 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const subscriptions = pulumi.output(alicloud.mns.getTopicSubscriptions({
  *     namePrefix: "tf-",
- *     topicName: "topicName",
+ *     topicName: "topic_name",
  * }, { async: true }));
  *
  * export const firstTopicSubscriptionId = subscriptions.subscriptions[0].id;

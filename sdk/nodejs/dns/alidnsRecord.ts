@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -63,11 +61,11 @@ export class AlidnsRecord extends pulumi.CustomResource {
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
-     * User language. 
+     * User language.
      */
     public readonly lang!: pulumi.Output<string | undefined>;
     /**
-     * The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value. 
+     * The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value.
      */
     public readonly line!: pulumi.Output<string | undefined>;
     /**
@@ -75,7 +73,7 @@ export class AlidnsRecord extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
-     * The remark of the domain record. 
+     * The remark of the domain record.
      */
     public readonly remark!: pulumi.Output<string | undefined>;
     /**
@@ -83,7 +81,7 @@ export class AlidnsRecord extends pulumi.CustomResource {
      */
     public readonly rr!: pulumi.Output<string>;
     /**
-     * The status of the domain record. Valid values: `ENABLE`,`DISABLE`. 
+     * The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
@@ -95,7 +93,7 @@ export class AlidnsRecord extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The IP address of the client. 
+     * The IP address of the client.
      */
     public readonly userClientIp!: pulumi.Output<string | undefined>;
     /**
@@ -172,11 +170,11 @@ export interface AlidnsRecordState {
      */
     readonly domainName?: pulumi.Input<string>;
     /**
-     * User language. 
+     * User language.
      */
     readonly lang?: pulumi.Input<string>;
     /**
-     * The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value. 
+     * The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value.
      */
     readonly line?: pulumi.Input<string>;
     /**
@@ -184,7 +182,7 @@ export interface AlidnsRecordState {
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The remark of the domain record. 
+     * The remark of the domain record.
      */
     readonly remark?: pulumi.Input<string>;
     /**
@@ -192,7 +190,7 @@ export interface AlidnsRecordState {
      */
     readonly rr?: pulumi.Input<string>;
     /**
-     * The status of the domain record. Valid values: `ENABLE`,`DISABLE`. 
+     * The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
      */
     readonly status?: pulumi.Input<string>;
     /**
@@ -204,7 +202,7 @@ export interface AlidnsRecordState {
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * The IP address of the client. 
+     * The IP address of the client.
      */
     readonly userClientIp?: pulumi.Input<string>;
     /**
@@ -222,11 +220,11 @@ export interface AlidnsRecordArgs {
      */
     readonly domainName: pulumi.Input<string>;
     /**
-     * User language. 
+     * User language.
      */
     readonly lang?: pulumi.Input<string>;
     /**
-     * The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value. 
+     * The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value.
      */
     readonly line?: pulumi.Input<string>;
     /**
@@ -234,7 +232,7 @@ export interface AlidnsRecordArgs {
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The remark of the domain record. 
+     * The remark of the domain record.
      */
     readonly remark?: pulumi.Input<string>;
     /**
@@ -242,7 +240,7 @@ export interface AlidnsRecordArgs {
      */
     readonly rr: pulumi.Input<string>;
     /**
-     * The status of the domain record. Valid values: `ENABLE`,`DISABLE`. 
+     * The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
      */
     readonly status?: pulumi.Input<string>;
     /**
@@ -254,7 +252,7 @@ export interface AlidnsRecordArgs {
      */
     readonly type: pulumi.Input<string>;
     /**
-     * The IP address of the client. 
+     * The IP address of the client.
      */
     readonly userClientIp?: pulumi.Input<string>;
     /**

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// <summary>
     /// Provides a PolarDB account resource and used to manage databases.
     /// 
-    /// &gt; **NOTE:** Available in v1.67.0+. 
+    /// &gt; **NOTE:** Available in v1.67.0+.
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

@@ -39,7 +39,6 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

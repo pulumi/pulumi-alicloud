@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;

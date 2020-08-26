@@ -11,6 +11,31 @@ import (
 // Filters support regular expression for the cluster name or ids.
 //
 // > **NOTE:**  Available in 1.88.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cassandra"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "tf_testAccCassandra_dc"
+// 		_, err := cassandra.GetDataCenters(ctx, &cassandra.GetDataCentersArgs{
+// 			ClusterId: "cds-xxxxx",
+// 			NameRegex: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetDataCenters(ctx *pulumi.Context, args *GetDataCentersArgs, opts ...pulumi.InvokeOption) (*GetDataCentersResult, error) {
 	var rv GetDataCentersResult
 	err := ctx.Invoke("alicloud:cassandra/getDataCenters:getDataCenters", args, &rv, opts...)

@@ -11,6 +11,40 @@ import (
 // instance types available in Alibaba Cloud account when create a emr cluster.
 //
 // > **NOTE:** Available in 1.59.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/emr"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "ecs.g5.2xlarge"
+// 		opt1 := false
+// 		_default, err := emr.GetInstanceTypes(ctx, &emr.GetInstanceTypesArgs{
+// 			ClusterType:         "HADOOP",
+// 			DestinationResource: "InstanceType",
+// 			InstanceChargeType:  "PostPaid",
+// 			InstanceType:        &opt0,
+// 			SupportLocalStorage: &opt1,
+// 			SupportNodeTypes: []string{
+// 				"MASTER",
+// 				"CORE",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstInstanceType", _default.Types[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypesResult, error) {
 	var rv GetInstanceTypesResult
 	err := ctx.Invoke("alicloud:emr/getInstanceTypes:getInstanceTypes", args, &rv, opts...)

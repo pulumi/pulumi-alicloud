@@ -16,6 +16,64 @@ import (
 //
 // > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
 //  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/gpdb"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultInstance, err := gpdb.NewInstance(ctx, "defaultInstance", &gpdb.InstanceArgs{
+// 			Description:        pulumi.String(name),
+// 			Engine:             pulumi.String("gpdb"),
+// 			EngineVersion:      pulumi.String("4.3"),
+// 			InstanceClass:      pulumi.String("gpdb.group.segsdx2"),
+// 			InstanceGroupCount: pulumi.String("2"),
+// 			VswitchId:          defaultSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gpdb.NewConnection(ctx, "defaultConnection", &gpdb.ConnectionArgs{
+// 			ConnectionPrefix: pulumi.String("testAbc"),
+// 			InstanceId:       defaultInstance.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Connection struct {
 	pulumi.CustomResourceState
 

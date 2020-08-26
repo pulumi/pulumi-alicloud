@@ -9,6 +9,56 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cen
 {
+    /// <summary>
+    /// This resource used to create a flow log function in Cloud Enterprise Network (CEN).
+    /// By using the flow log function, you can capture the traffic data of the network instances in different regions of a CEN.
+    /// You can also use the data aggregated in flow logs to analyze cross-region traffic flows, minimize traffic costs, and troubleshoot network faults.
+    /// 
+    /// For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/doc-detail/123006.htm).
+    /// 
+    /// &gt; **NOTE:** Available in 1.73.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
+    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
+    ///         {
+    ///         });
+    ///         var defaultProject = new AliCloud.Log.Project("defaultProject", new AliCloud.Log.ProjectArgs
+    ///         {
+    ///             Description = "create by terraform",
+    ///         });
+    ///         var defaultStore = new AliCloud.Log.Store("defaultStore", new AliCloud.Log.StoreArgs
+    ///         {
+    ///             Project = defaultProject.Name,
+    ///             RetentionPeriod = 3650,
+    ///             ShardCount = 3,
+    ///             AutoSplit = true,
+    ///             MaxSplitShardCount = 60,
+    ///             AppendMeta = true,
+    ///         });
+    ///         var defaultFlowLog = new AliCloud.Cen.FlowLog("defaultFlowLog", new AliCloud.Cen.FlowLogArgs
+    ///         {
+    ///             FlowLogName = "my-flowlog",
+    ///             CenId = defaultInstance.Id,
+    ///             ProjectName = defaultProject.Name,
+    ///             LogStoreName = defaultStore.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class FlowLog : Pulumi.CustomResource
     {
         /// <summary>

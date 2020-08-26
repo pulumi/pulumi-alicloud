@@ -8,6 +8,33 @@ import (
 )
 
 // This data source provides the ots instances of the current Alibaba Cloud user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "sample-instance"
+// 		opt1 := "instances.txt"
+// 		instancesDs, err := oss.GetInstances(ctx, &oss.GetInstancesArgs{
+// 			NameRegex:  &opt0,
+// 			OutputFile: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstInstanceId", instancesDs.Instances[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
 	err := ctx.Invoke("alicloud:oss/getInstances:getInstances", args, &rv, opts...)
@@ -25,12 +52,27 @@ type GetInstancesArgs struct {
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the instance. It must be in the format:
-	// ```
-	// data "oss.getInstances" "instancesDs" {
-	// tags = {
-	// tagKey1 = "tagValue1",
-	// tagKey2 = "tagValue2"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := oss.GetInstances(ctx, &oss.GetInstancesArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags map[string]interface{} `pulumi:"tags"`

@@ -15,6 +15,44 @@ import (
 // > **NOTE:** Only one operation is supported in a request. So if `dataNodeSpec` and `dataNodeDiskSize` are both changed, system will respond error.
 //
 // > **NOTE:** At present, `version` can not be modified once instance has been created.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/elasticsearch"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := elasticsearch.NewInstance(ctx, "instance", &elasticsearch.InstanceArgs{
+// 			InstanceChargeType: pulumi.String("PostPaid"),
+// 			DataNodeAmount:     pulumi.Int(2),
+// 			DataNodeSpec:       pulumi.String("elasticsearch.sn2ne.large"),
+// 			DataNodeDiskSize:   pulumi.Int(20),
+// 			DataNodeDiskType:   pulumi.String("cloud_ssd"),
+// 			VswitchId:          pulumi.String("some vswitch id"),
+// 			Password:           pulumi.String("Your password"),
+// 			Version:            pulumi.String("5.5.3_with_X-Pack"),
+// 			Description:        pulumi.String("description"),
+// 			ZoneCount:          pulumi.Int(2),
+// 			Tags: pulumi.StringMap{
+// 				"key1": pulumi.String("value1"),
+// 				"key2": pulumi.String("value2"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +62,6 @@ type Instance struct {
 	DataNodeDiskEncrypted pulumi.BoolPtrOutput `pulumi:"dataNodeDiskEncrypted"`
 	// The single data node storage space.
 	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
-	// - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
 	DataNodeDiskSize pulumi.IntOutput `pulumi:"dataNodeDiskSize"`
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
 	DataNodeDiskType pulumi.StringOutput `pulumi:"dataNodeDiskType"`
@@ -134,7 +171,6 @@ type instanceState struct {
 	DataNodeDiskEncrypted *bool `pulumi:"dataNodeDiskEncrypted"`
 	// The single data node storage space.
 	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
-	// - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
 	DataNodeDiskSize *int `pulumi:"dataNodeDiskSize"`
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
 	DataNodeDiskType *string `pulumi:"dataNodeDiskType"`
@@ -199,7 +235,6 @@ type InstanceState struct {
 	DataNodeDiskEncrypted pulumi.BoolPtrInput
 	// The single data node storage space.
 	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
-	// - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
 	DataNodeDiskSize pulumi.IntPtrInput
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
 	DataNodeDiskType pulumi.StringPtrInput
@@ -268,7 +303,6 @@ type instanceArgs struct {
 	DataNodeDiskEncrypted *bool `pulumi:"dataNodeDiskEncrypted"`
 	// The single data node storage space.
 	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
-	// - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
 	DataNodeDiskSize int `pulumi:"dataNodeDiskSize"`
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
 	DataNodeDiskType string `pulumi:"dataNodeDiskType"`
@@ -324,7 +358,6 @@ type InstanceArgs struct {
 	DataNodeDiskEncrypted pulumi.BoolPtrInput
 	// The single data node storage space.
 	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
-	// - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
 	DataNodeDiskSize pulumi.IntInput
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
 	DataNodeDiskType pulumi.StringInput

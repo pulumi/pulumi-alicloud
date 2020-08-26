@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;

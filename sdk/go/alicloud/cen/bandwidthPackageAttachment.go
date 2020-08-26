@@ -11,6 +11,48 @@ import (
 )
 
 // Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+// 			Description: pulumi.String("tf-testAccCenBandwidthPackageAttachmentDescription"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bwp, err := cen.NewBandwidthPackage(ctx, "bwp", &cen.BandwidthPackageArgs{
+// 			Bandwidth: pulumi.Int(20),
+// 			GeographicRegionIds: pulumi.StringArray{
+// 				pulumi.String("China"),
+// 				pulumi.String("Asia-Pacific"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewBandwidthPackageAttachment(ctx, "foo", &cen.BandwidthPackageAttachmentArgs{
+// 			BandwidthPackageId: bwp.ID(),
+// 			InstanceId:         cen.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type BandwidthPackageAttachment struct {
 	pulumi.CustomResourceState
 

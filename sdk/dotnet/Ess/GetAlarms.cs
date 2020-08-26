@@ -15,9 +15,6 @@ namespace Pulumi.AliCloud.Ess
         /// This data source provides available alarm resources. 
         /// 
         /// &gt; **NOTE** Available in 1.72.0+
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlarmsResult> InvokeAsync(GetAlarmsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? new GetAlarmsArgs(), options.WithVersion());
@@ -81,7 +78,7 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// The type for the alarm's associated metric. 
+        /// The type for the alarm's associated metric.
         /// </summary>
         public readonly string? MetricType;
         public readonly string? NameRegex;

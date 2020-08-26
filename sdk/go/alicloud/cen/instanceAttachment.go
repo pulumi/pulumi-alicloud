@@ -11,6 +11,46 @@ import (
 )
 
 // Provides a CEN child instance attachment resource.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+// 			Description: pulumi.String("terraform01"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("192.168.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewInstanceAttachment(ctx, "foo", &cen.InstanceAttachmentArgs{
+// 			ChildInstanceId:       vpc.ID(),
+// 			ChildInstanceRegionId: pulumi.String("cn-beijing"),
+// 			InstanceId:            cen.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type InstanceAttachment struct {
 	pulumi.CustomResourceState
 

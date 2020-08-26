@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int CloudMonitorGroupId;
         /// <summary>
-        /// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. 
+        /// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand.
         /// </summary>
         public readonly string ComparisonOperator;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The dimension map for the alarm's associated metric. 
+        /// The dimension map for the alarm's associated metric.
         /// </summary>
         public readonly ImmutableDictionary<string, object> Dimensions;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly bool Enable;
         /// <summary>
-        /// The number of times that needs to satisfies comparison condition before transition into ALARM state. 
+        /// The number of times that needs to satisfies comparison condition before transition into ALARM state.
         /// </summary>
         public readonly int EvaluationCount;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string ScalingGroupId;
         /// <summary>
-        /// The state of alarm task. 
+        /// The state of alarm task.
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The statistic to apply to the alarm's associated metric. 
+        /// The statistic to apply to the alarm's associated metric.
         /// </summary>
         public readonly string Statistics;
         /// <summary>

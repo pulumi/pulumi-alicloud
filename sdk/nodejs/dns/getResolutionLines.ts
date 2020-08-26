@@ -13,14 +13,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const resolutionLinesDs = pulumi.output(alicloud.dns.getResolutionLines({
- *     lineCodes: ["cnUnicomShanxi"],
+ *     lineCodes: ["cn_unicom_shanxi"],
  *     outputFile: "support_lines.txt",
  * }, { async: true }));
  *
@@ -52,7 +50,7 @@ export function getResolutionLines(args?: GetResolutionLinesArgs, opts?: pulumi.
  */
 export interface GetResolutionLinesArgs {
     /**
-     * Domain Name. 
+     * Domain Name.
      */
     readonly domainName?: string;
     /**

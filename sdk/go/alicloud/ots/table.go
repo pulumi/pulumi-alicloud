@@ -14,6 +14,58 @@ import (
 //
 // > **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
 // you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foo, err := ots.NewInstance(ctx, "foo", &ots.InstanceArgs{
+// 			AccessedBy:  pulumi.String("Any"),
+// 			Description: pulumi.String(name),
+// 			Tags: pulumi.StringMap{
+// 				"Created": pulumi.String("TF"),
+// 				"For":     pulumi.String("acceptance test"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ots.NewTable(ctx, "basic", &ots.TableArgs{
+// 			DeviationCellVersionInSec: pulumi.String("1"),
+// 			InstanceName:              foo.Name,
+// 			MaxVersion:                pulumi.Int(1),
+// 			PrimaryKeys: ots.TablePrimaryKeyArray{
+// 				&ots.TablePrimaryKeyArgs{
+// 					Name: pulumi.String("pk1"),
+// 					Type: pulumi.String("Integer"),
+// 				},
+// 				&ots.TablePrimaryKeyArgs{
+// 					Name: pulumi.String("pk2"),
+// 					Type: pulumi.String("String"),
+// 				},
+// 				&ots.TablePrimaryKeyArgs{
+// 					Name: pulumi.String("pk3"),
+// 					Type: pulumi.String("Binary"),
+// 				},
+// 			},
+// 			TableName:  pulumi.String(name),
+// 			TimeToLive: pulumi.Int(-1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Table struct {
 	pulumi.CustomResourceState
 

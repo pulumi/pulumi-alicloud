@@ -7,13 +7,13 @@ import * as utilities from "../utilities";
 /**
  * Provides an ONS group resource.
  *
- * For more information about how to use it, see [RocketMQ Group Management API](https://www.alibabacloud.com/help/doc-detail/29616.html). 
+ * For more information about how to use it, see [RocketMQ Group Management API](https://www.alibabacloud.com/help/doc-detail/29616.html).
  *
  * > **NOTE:** Available in 1.53.0+
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,12 +24,12 @@ import * as utilities from "../utilities";
  * const groupId = config.get("groupId") || "GID-onsGroupDatasourceName";
  *
  * const defaultInstance = new alicloud.rocketmq.Instance("default", {
- *     remark: "defaultOnsInstanceRemark",
+ *     remark: "default_ons_instance_remark",
  * });
  * const defaultGroup = new alicloud.rocketmq.Group("default", {
  *     groupId: groupId,
  *     instanceId: defaultInstance.id,
- *     remark: "dafaultOnsGroupRemark",
+ *     remark: "dafault_ons_group_remark",
  * });
  * ```
  */

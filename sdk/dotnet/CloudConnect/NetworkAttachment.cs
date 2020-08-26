@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.CloudConnect
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,6 +38,12 @@ namespace Pulumi.AliCloud.CloudConnect
     ///         {
     ///             CcnId = ccn.Id,
     ///             SagId = "sag-xxxxx",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "alicloud_cloud_connect_network.ccn",
+    ///             },
     ///         });
     ///     }
     /// 

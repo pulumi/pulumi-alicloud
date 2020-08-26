@@ -11,6 +11,48 @@ import (
 )
 
 // Provides a RAM Group Policy attachment resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ram"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
+// 			Comments: pulumi.String("this is a group comments."),
+// 			Force:    pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+// 			Description: pulumi.String("this is a policy test"),
+// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "    {\n", "      \"Statement\": [\n", "        {\n", "          \"Action\": [\n", "            \"oss:ListObjects\",\n", "            \"oss:GetObject\"\n", "          ],\n", "          \"Effect\": \"Allow\",\n", "          \"Resource\": [\n", "            \"acs:oss:*:*:mybucket\",\n", "            \"acs:oss:*:*:mybucket/*\"\n", "          ]\n", "        }\n", "      ],\n", "        \"Version\": \"1\"\n", "    }\n", "  \n")),
+// 			Force:       pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ram.NewGroupPolicyAttachment(ctx, "attach", &ram.GroupPolicyAttachmentArgs{
+// 			GroupName:  group.Name,
+// 			PolicyName: policy.Name,
+// 			PolicyType: policy.Type,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type GroupPolicyAttachment struct {
 	pulumi.CustomResourceState
 

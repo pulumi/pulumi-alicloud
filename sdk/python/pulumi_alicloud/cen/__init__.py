@@ -22,3 +22,4 @@ from .private_zone import *
 from .route_entry import *
 from .route_map import *
 from .vbr_health_check import *
+from . import outputs

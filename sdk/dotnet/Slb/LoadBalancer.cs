@@ -9,6 +9,63 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Slb
 {
+    /// <summary>
+    /// Provides an Application Load Balancer resource.
+    /// 
+    /// &gt; **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
+    /// 
+    /// &gt; **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
+    /// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "terraformtestslbconfig";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/21",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+    ///         {
+    ///             Specification = "slb.s2.small",
+    ///             Tags = 
+    ///             {
+    ///                 { "tag_a", 1 },
+    ///                 { "tag_b", 2 },
+    ///                 { "tag_c", 3 },
+    ///                 { "tag_d", 4 },
+    ///                 { "tag_e", 5 },
+    ///                 { "tag_f", 6 },
+    ///                 { "tag_g", 7 },
+    ///                 { "tag_h", 8 },
+    ///                 { "tag_i", 9 },
+    ///                 { "tag_j", 10 },
+    ///             },
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class LoadBalancer : Pulumi.CustomResource
     {
         /// <summary>
@@ -39,7 +96,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<int?> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+        /// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         /// </summary>
         [Output("deleteProtection")]
         public Output<string?> DeleteProtection { get; private set; } = null!;
@@ -185,7 +242,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+        /// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         /// </summary>
         [Input("deleteProtection")]
         public Input<string>? DeleteProtection { get; set; }
@@ -298,7 +355,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+        /// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         /// </summary>
         [Input("deleteProtection")]
         public Input<string>? DeleteProtection { get; set; }

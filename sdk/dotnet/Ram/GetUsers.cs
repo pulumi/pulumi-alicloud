@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.Ram
         ///     public Output&lt;string&gt; FirstUserId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -53,7 +52,7 @@ namespace Pulumi.AliCloud.Ram
     public sealed class GetUsersArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter results by a specific group name. Returned users are in the specified group. 
+        /// Filter results by a specific group name. Returned users are in the specified group.
         /// </summary>
         [Input("groupName")]
         public string? GroupName { get; set; }
@@ -62,7 +61,7 @@ namespace Pulumi.AliCloud.Ram
         private List<string>? _ids;
 
         /// <summary>
-        /// - A list of ram user IDs. 
+        /// - A list of ram user IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -106,12 +105,12 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of ram user IDs. 
+        /// A list of ram user IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of ram user names. 
+        /// A list of ram user names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

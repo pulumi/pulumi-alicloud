@@ -17,8 +17,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,11 +31,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ## Attributes Reference0
- *  
+ *
  *  The following attributes are exported:
- *  
+ *
  * * `id` - ID of the image.
  */
 export class ImageCopy extends pulumi.CustomResource {

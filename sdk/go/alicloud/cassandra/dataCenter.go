@@ -22,6 +22,8 @@ import (
 // The official website mark  more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
 //
 // > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
+//
+// ## Example Usage
 type DataCenter struct {
 	pulumi.CustomResourceState
 

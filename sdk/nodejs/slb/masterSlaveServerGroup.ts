@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,7 +34,7 @@ import * as utilities from "../utilities";
  * const number = config.get("number") || "1";
  *
  * const defaultZones = pulumi.output(alicloud.getZones({
- *     availableDiskCategory: "cloudEfficiency",
+ *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
  * const defaultInstanceTypes = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
@@ -70,7 +68,7 @@ import * as utilities from "../utilities";
  *         internetChargeType: "PayByTraffic",
  *         internetMaxBandwidthOut: 10,
  *         securityGroups: [groupSecurityGroup.id],
- *         systemDiskCategory: "cloudEfficiency",
+ *         systemDiskCategory: "cloud_efficiency",
  *         vswitchId: mainSwitch.id,
  *     }));
  * }
@@ -114,7 +112,7 @@ import * as utilities from "../utilities";
  *     establishedTimeout: 600,
  *     frontendPort: 22,
  *     healthCheckConnectPort: 20,
- *     healthCheckHttpCode: "http2xx",
+ *     healthCheckHttpCode: "http_2xx",
  *     healthCheckInterval: 5,
  *     healthCheckTimeout: 8,
  *     healthCheckType: "tcp",
@@ -127,7 +125,6 @@ import * as utilities from "../utilities";
  *     unhealthyThreshold: 8,
  * });
  * ```
- *
  * ## Block servers
  *
  * The servers mapping supports the following:
@@ -137,7 +134,7 @@ import * as utilities from "../utilities";
  * * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
  * * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
  * * `serverType` - (Optional) The server type of the backend server. Valid value Master, Slave.
- * * `isBackup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1. 
+ * * `isBackup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1.
  */
 export class MasterSlaveServerGroup extends pulumi.CustomResource {
     /**
@@ -176,7 +173,7 @@ export class MasterSlaveServerGroup extends pulumi.CustomResource {
      */
     public readonly loadBalancerId!: pulumi.Output<string>;
     /**
-     * Name of the master slave server group. 
+     * Name of the master slave server group.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -234,7 +231,7 @@ export interface MasterSlaveServerGroupState {
      */
     readonly loadBalancerId?: pulumi.Input<string>;
     /**
-     * Name of the master slave server group. 
+     * Name of the master slave server group.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -256,7 +253,7 @@ export interface MasterSlaveServerGroupArgs {
      */
     readonly loadBalancerId: pulumi.Input<string>;
     /**
-     * Name of the master slave server group. 
+     * Name of the master slave server group.
      */
     readonly name?: pulumi.Input<string>;
     /**

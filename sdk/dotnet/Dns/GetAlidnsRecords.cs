@@ -15,9 +15,6 @@ namespace Pulumi.AliCloud.Dns
         /// This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:**  Available in 1.86.0+.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlidnsRecordsResult> InvokeAsync(GetAlidnsRecordsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsRecordsResult>("alicloud:dns/getAlidnsRecords:getAlidnsRecords", args ?? new GetAlidnsRecordsArgs(), options.WithVersion());
@@ -33,7 +30,7 @@ namespace Pulumi.AliCloud.Dns
         public string? Direction { get; set; }
 
         /// <summary>
-        /// The domain name associated to the records. 
+        /// The domain name associated to the records.
         /// </summary>
         [Input("domainName", required: true)]
         public string DomainName { get; set; } = null!;
@@ -69,7 +66,7 @@ namespace Pulumi.AliCloud.Dns
         public string? Lang { get; set; }
 
         /// <summary>
-        /// ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
+        /// ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
         /// </summary>
         [Input("line")]
         public string? Line { get; set; }
@@ -90,7 +87,7 @@ namespace Pulumi.AliCloud.Dns
         public string? RrKeyWord { get; set; }
 
         /// <summary>
-        /// Host record regex. 
+        /// Host record regex.
         /// </summary>
         [Input("rrRegex")]
         public string? RrRegex { get; set; }
@@ -126,7 +123,7 @@ namespace Pulumi.AliCloud.Dns
         public string? ValueKeyWord { get; set; }
 
         /// <summary>
-        /// Host record value regex. 
+        /// Host record value regex.
         /// </summary>
         [Input("valueRegex")]
         public string? ValueRegex { get; set; }
@@ -151,13 +148,13 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of record IDs. 
+        /// A list of record IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? KeyWord;
         public readonly string? Lang;
         /// <summary>
-        /// ISP line of the record. 
+        /// ISP line of the record.
         /// </summary>
         public readonly string? Line;
         public readonly string? OrderBy;

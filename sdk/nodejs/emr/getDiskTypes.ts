@@ -7,14 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and 
+ * The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and
  * system disk types available in Alibaba Cloud account when create a emr cluster.
  *
  * > **NOTE:** Available in 1.60.0+
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,7 +85,7 @@ export interface GetDiskTypesResult {
      */
     readonly id: string;
     /**
-     * A list of data disk and system disk type IDs. 
+     * A list of data disk and system disk type IDs.
      */
     readonly ids: string[];
     readonly instanceChargeType: string;

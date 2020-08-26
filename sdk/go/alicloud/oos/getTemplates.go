@@ -10,6 +10,39 @@ import (
 // This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in v1.92.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oos"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := false
+// 		opt1 := "test"
+// 		opt2 := "Private"
+// 		example, err := oos.GetTemplates(ctx, &oos.GetTemplatesArgs{
+// 			HasTrigger: &opt0,
+// 			NameRegex:  &opt1,
+// 			ShareType:  &opt2,
+// 			Tags: map[string]interface{}{
+// 				"Created": "TF",
+// 				"For":     "template Test",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstTemplateName", example.Templates[0].TemplateName)
+// 		return nil
+// 	})
+// }
+// ```
 func GetTemplates(ctx *pulumi.Context, args *GetTemplatesArgs, opts ...pulumi.InvokeOption) (*GetTemplatesResult, error) {
 	var rv GetTemplatesResult
 	err := ctx.Invoke("alicloud:oos/getTemplates:getTemplates", args, &rv, opts...)

@@ -70,7 +70,7 @@ export class ScalingRule extends pulumi.CustomResource {
      */
     public readonly scalingGroupId!: pulumi.Output<string>;
     /**
-     * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+     * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
      */
     public readonly scalingRuleName!: pulumi.Output<string>;
     /**
@@ -179,7 +179,7 @@ export interface ScalingRuleState {
      */
     readonly scalingGroupId?: pulumi.Input<string>;
     /**
-     * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+     * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
      */
     readonly scalingRuleName?: pulumi.Input<string>;
     /**
@@ -235,7 +235,7 @@ export interface ScalingRuleArgs {
      */
     readonly scalingGroupId: pulumi.Input<string>;
     /**
-     * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+     * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
      */
     readonly scalingRuleName?: pulumi.Input<string>;
     /**

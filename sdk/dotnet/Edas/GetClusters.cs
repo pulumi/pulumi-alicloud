@@ -44,7 +44,6 @@ namespace Pulumi.AliCloud.Edas
         ///     public Output&lt;string&gt; FirstClusterName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.Edas
         private List<string>? _ids;
 
         /// <summary>
-        /// An ids string to filter results by the cluster id. 
+        /// An ids string to filter results by the cluster id.
         /// </summary>
         public List<string> Ids
         {
@@ -74,7 +73,7 @@ namespace Pulumi.AliCloud.Edas
         public string LogicalRegionId { get; set; } = null!;
 
         /// <summary>
-        /// A regex string to filter results by the cluster name. 
+        /// A regex string to filter results by the cluster name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }

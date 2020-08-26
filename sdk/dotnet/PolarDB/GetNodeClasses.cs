@@ -46,7 +46,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     public Output&lt;string&gt; FirstPolardbNodeClass { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

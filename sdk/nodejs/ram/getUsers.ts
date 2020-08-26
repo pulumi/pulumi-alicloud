@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -52,11 +50,11 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetUsersArgs {
     /**
-     * Filter results by a specific group name. Returned users are in the specified group. 
+     * Filter results by a specific group name. Returned users are in the specified group.
      */
     readonly groupName?: string;
     /**
-     * - A list of ram user IDs. 
+     * - A list of ram user IDs.
      */
     readonly ids?: string[];
     /**
@@ -84,12 +82,12 @@ export interface GetUsersResult {
      */
     readonly id: string;
     /**
-     * A list of ram user IDs. 
+     * A list of ram user IDs.
      */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of ram user names. 
+     * A list of ram user names.
      */
     readonly names: string[];
     readonly outputFile?: string;

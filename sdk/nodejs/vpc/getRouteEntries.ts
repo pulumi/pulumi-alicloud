@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -43,7 +41,7 @@ import * as utilities from "../utilities";
  *     cidrBlock: "10.1.1.0/24",
  *     vpcId: fooNetwork.id,
  * });
- * const tfTestFoo = new alicloud.ecs.SecurityGroup("tfTestFoo", {
+ * const tfTestFoo = new alicloud.ecs.SecurityGroup("tf_test_foo", {
  *     description: "foo",
  *     vpcId: fooNetwork.id,
  * });
@@ -58,7 +56,7 @@ import * as utilities from "../utilities";
  *     internetMaxBandwidthOut: 5,
  *     // cn-beijing
  *     securityGroups: [tfTestFoo.id],
- *     systemDiskCategory: "cloudEfficiency",
+ *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: fooSwitch.id,
  * });
  * const fooRouteEntry = new alicloud.vpc.RouteEntry("foo", {

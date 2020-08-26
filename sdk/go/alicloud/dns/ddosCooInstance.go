@@ -18,6 +18,36 @@ import (
 //
 // > **NOTE:** Available in 1.37.0+ .
 //
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ddos"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ddos.NewDdosCooInstance(ctx, "newInstance", &ddos.DdosCooInstanceArgs{
+// 			Bandwidth:        pulumi.String("30"),
+// 			BaseBandwidth:    pulumi.String("30"),
+// 			DomainCount:      pulumi.String("50"),
+// 			Period:           pulumi.Int(1),
+// 			PortCount:        pulumi.String("50"),
+// 			ServiceBandwidth: pulumi.String("100"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // Deprecated: alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance
 type DdosCooInstance struct {
 	pulumi.CustomResourceState

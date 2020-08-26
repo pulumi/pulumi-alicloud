@@ -20,8 +20,7 @@ type ServiceLogConfig struct {
 // ServiceLogConfigInput is an input type that accepts ServiceLogConfigArgs and ServiceLogConfigOutput values.
 // You can construct a concrete instance of `ServiceLogConfigInput` via:
 //
-// 		 ServiceLogConfigArgs{...}
-//
+//          ServiceLogConfigArgs{...}
 type ServiceLogConfigInput interface {
 	pulumi.Input
 
@@ -59,12 +58,11 @@ func (i ServiceLogConfigArgs) ToServiceLogConfigPtrOutputWithContext(ctx context
 // ServiceLogConfigPtrInput is an input type that accepts ServiceLogConfigArgs, ServiceLogConfigPtr and ServiceLogConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceLogConfigPtrInput` via:
 //
-// 		 ServiceLogConfigArgs{...}
+//          ServiceLogConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceLogConfigPtrInput interface {
 	pulumi.Input
 
@@ -173,8 +171,7 @@ type ServiceVpcConfig struct {
 // ServiceVpcConfigInput is an input type that accepts ServiceVpcConfigArgs and ServiceVpcConfigOutput values.
 // You can construct a concrete instance of `ServiceVpcConfigInput` via:
 //
-// 		 ServiceVpcConfigArgs{...}
-//
+//          ServiceVpcConfigArgs{...}
 type ServiceVpcConfigInput interface {
 	pulumi.Input
 
@@ -213,12 +210,11 @@ func (i ServiceVpcConfigArgs) ToServiceVpcConfigPtrOutputWithContext(ctx context
 // ServiceVpcConfigPtrInput is an input type that accepts ServiceVpcConfigArgs, ServiceVpcConfigPtr and ServiceVpcConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceVpcConfigPtrInput` via:
 //
-// 		 ServiceVpcConfigArgs{...}
+//          ServiceVpcConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServiceVpcConfigPtrInput interface {
 	pulumi.Input
 
@@ -359,8 +355,7 @@ type GetFunctionsFunction struct {
 // GetFunctionsFunctionInput is an input type that accepts GetFunctionsFunctionArgs and GetFunctionsFunctionOutput values.
 // You can construct a concrete instance of `GetFunctionsFunctionInput` via:
 //
-// 		 GetFunctionsFunctionArgs{...}
-//
+//          GetFunctionsFunctionArgs{...}
 type GetFunctionsFunctionInput interface {
 	pulumi.Input
 
@@ -410,8 +405,7 @@ func (i GetFunctionsFunctionArgs) ToGetFunctionsFunctionOutputWithContext(ctx co
 // GetFunctionsFunctionArrayInput is an input type that accepts GetFunctionsFunctionArray and GetFunctionsFunctionArrayOutput values.
 // You can construct a concrete instance of `GetFunctionsFunctionArrayInput` via:
 //
-// 		 GetFunctionsFunctionArray{ GetFunctionsFunctionArgs{...} }
-//
+//          GetFunctionsFunctionArray{ GetFunctionsFunctionArgs{...} }
 type GetFunctionsFunctionArrayInput interface {
 	pulumi.Input
 
@@ -551,8 +545,7 @@ type GetServicesService struct {
 // GetServicesServiceInput is an input type that accepts GetServicesServiceArgs and GetServicesServiceOutput values.
 // You can construct a concrete instance of `GetServicesServiceInput` via:
 //
-// 		 GetServicesServiceArgs{...}
-//
+//          GetServicesServiceArgs{...}
 type GetServicesServiceInput interface {
 	pulumi.Input
 
@@ -596,8 +589,7 @@ func (i GetServicesServiceArgs) ToGetServicesServiceOutputWithContext(ctx contex
 // GetServicesServiceArrayInput is an input type that accepts GetServicesServiceArray and GetServicesServiceArrayOutput values.
 // You can construct a concrete instance of `GetServicesServiceArrayInput` via:
 //
-// 		 GetServicesServiceArray{ GetServicesServiceArgs{...} }
-//
+//          GetServicesServiceArray{ GetServicesServiceArgs{...} }
 type GetServicesServiceArrayInput interface {
 	pulumi.Input
 
@@ -708,8 +700,7 @@ type GetServicesServiceLogConfig struct {
 // GetServicesServiceLogConfigInput is an input type that accepts GetServicesServiceLogConfigArgs and GetServicesServiceLogConfigOutput values.
 // You can construct a concrete instance of `GetServicesServiceLogConfigInput` via:
 //
-// 		 GetServicesServiceLogConfigArgs{...}
-//
+//          GetServicesServiceLogConfigArgs{...}
 type GetServicesServiceLogConfigInput interface {
 	pulumi.Input
 
@@ -772,8 +763,7 @@ type GetServicesServiceVpcConfig struct {
 // GetServicesServiceVpcConfigInput is an input type that accepts GetServicesServiceVpcConfigArgs and GetServicesServiceVpcConfigOutput values.
 // You can construct a concrete instance of `GetServicesServiceVpcConfigInput` via:
 //
-// 		 GetServicesServiceVpcConfigArgs{...}
-//
+//          GetServicesServiceVpcConfigArgs{...}
 type GetServicesServiceVpcConfigInput interface {
 	pulumi.Input
 
@@ -853,8 +843,7 @@ type GetTriggersTrigger struct {
 // GetTriggersTriggerInput is an input type that accepts GetTriggersTriggerArgs and GetTriggersTriggerOutput values.
 // You can construct a concrete instance of `GetTriggersTriggerInput` via:
 //
-// 		 GetTriggersTriggerArgs{...}
-//
+//          GetTriggersTriggerArgs{...}
 type GetTriggersTriggerInput interface {
 	pulumi.Input
 
@@ -896,8 +885,7 @@ func (i GetTriggersTriggerArgs) ToGetTriggersTriggerOutputWithContext(ctx contex
 // GetTriggersTriggerArrayInput is an input type that accepts GetTriggersTriggerArray and GetTriggersTriggerArrayOutput values.
 // You can construct a concrete instance of `GetTriggersTriggerArrayInput` via:
 //
-// 		 GetTriggersTriggerArray{ GetTriggersTriggerArgs{...} }
-//
+//          GetTriggersTriggerArray{ GetTriggersTriggerArgs{...} }
 type GetTriggersTriggerArrayInput interface {
 	pulumi.Input
 
@@ -1001,8 +989,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-// 		 GetZonesZoneArgs{...}
-//
+//          GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -1030,8 +1017,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-// 		 GetZonesZoneArray{ GetZonesZoneArgs{...} }
-//
+//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 

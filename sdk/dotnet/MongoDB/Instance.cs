@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// The Zone to launch the DB instance. it supports multiple zone.
         /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
+        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// The Zone to launch the DB instance. it supports multiple zone.
         /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
+        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -551,7 +551,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// The Zone to launch the DB instance. it supports multiple zone.
         /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
+        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

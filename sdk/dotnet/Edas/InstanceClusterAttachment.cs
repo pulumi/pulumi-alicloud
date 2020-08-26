@@ -14,10 +14,9 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// &gt; **NOTE:** Available in 1.82.0+
     /// 
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;

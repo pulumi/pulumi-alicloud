@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +23,7 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * const defaultAccount = pulumi.output(alicloud.getAccount({ async: true }));
  * const defaultZones = pulumi.output(alicloud.getZones({
- *     availableDiskCategory: "cloudEfficiency",
+ *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {

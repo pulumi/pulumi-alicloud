@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,27 @@ import * as utilities from "../utilities";
  * const example = new alicloud.log.Audit("example", {
  *     aliuid: "12345678",
  *     displayName: "tf-audit-test",
+ *     variableMap: {
+ *         actiontrail_enabled: "true",
+ *         actiontrail_ttl: "180",
+ *         oss_access_enabled: "true",
+ *         oss_access_ttl: "180",
+ *     },
+ * });
+ * ```
+ * Multiple accounts Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.log.Audit("example", {
+ *     aliuid: "12345678",
+ *     displayName: "tf-audit-test",
+ *     multiAccounts: [
+ *         "123456789123",
+ *         "12345678912300123",
+ *     ],
  *     variableMap: {
  *         actiontrail_enabled: "true",
  *         actiontrail_ttl: "180",

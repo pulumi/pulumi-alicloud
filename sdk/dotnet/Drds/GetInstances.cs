@@ -12,13 +12,10 @@ namespace Pulumi.AliCloud.Drds
     public static class GetInstances
     {
         /// <summary>
-        ///  The `alicloud.drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
+        /// The `alicloud.drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
         /// &gt; **NOTE:** Available in 1.35.0+.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:drds/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
@@ -65,7 +62,7 @@ namespace Pulumi.AliCloud.Drds
     {
         public readonly string? DescriptionRegex;
         /// <summary>
-        /// A list of DRDS descriptions. 
+        /// A list of DRDS descriptions.
         /// </summary>
         public readonly ImmutableArray<string> Descriptions;
         /// <summary>

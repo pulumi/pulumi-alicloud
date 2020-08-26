@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.Ram
         ///     public Output&lt;string&gt; FirstPolicyName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

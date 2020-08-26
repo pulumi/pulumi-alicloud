@@ -4,6 +4,37 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
+ * Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const basic = new alicloud.cms.Alarm("basic", {
+ *     contactGroups: ["test-group"],
+ *     dimensions: {
+ *         device: "/dev/vda1,/dev/vdb1",
+ *         instanceId: "i-bp1247,i-bp11gd",
+ *     },
+ *     effectiveInterval: "0:00-2:00",
+ *     metric: "disk_writebytes",
+ *     notifyType: 1,
+ *     operator: "<=",
+ *     period: 900,
+ *     project: "acs_ecs_dashboard",
+ *     statistics: "Average",
+ *     threshold: "35",
+ *     triggeredCount: 2,
+ *     webhook: pulumi.interpolate`https://${alicloud_account_current.id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/`,
+ * });
+ * ```
+ */
 export class Alarm extends pulumi.CustomResource {
     /**
      * Get an existing Alarm resource's state with the given name, ID, and optional extra

@@ -20,8 +20,7 @@ type TablePrimaryKey struct {
 // TablePrimaryKeyInput is an input type that accepts TablePrimaryKeyArgs and TablePrimaryKeyOutput values.
 // You can construct a concrete instance of `TablePrimaryKeyInput` via:
 //
-// 		 TablePrimaryKeyArgs{...}
-//
+//          TablePrimaryKeyArgs{...}
 type TablePrimaryKeyInput interface {
 	pulumi.Input
 
@@ -51,8 +50,7 @@ func (i TablePrimaryKeyArgs) ToTablePrimaryKeyOutputWithContext(ctx context.Cont
 // TablePrimaryKeyArrayInput is an input type that accepts TablePrimaryKeyArray and TablePrimaryKeyArrayOutput values.
 // You can construct a concrete instance of `TablePrimaryKeyArrayInput` via:
 //
-// 		 TablePrimaryKeyArray{ TablePrimaryKeyArgs{...} }
-//
+//          TablePrimaryKeyArray{ TablePrimaryKeyArgs{...} }
 type TablePrimaryKeyArrayInput interface {
 	pulumi.Input
 

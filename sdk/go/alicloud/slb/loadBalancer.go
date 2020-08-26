@@ -15,6 +15,65 @@ import (
 //
 // > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
 // For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "VSwitch"
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = slb.NewLoadBalancer(ctx, "defaultLoadBalancer", &slb.LoadBalancerArgs{
+// 			Specification: pulumi.String("slb.s2.small"),
+// 			Tags: pulumi.Float64Map{
+// 				"tag_a": pulumi.Float64(1),
+// 				"tag_b": pulumi.Float64(2),
+// 				"tag_c": pulumi.Float64(3),
+// 				"tag_d": pulumi.Float64(4),
+// 				"tag_e": pulumi.Float64(5),
+// 				"tag_f": pulumi.Float64(6),
+// 				"tag_g": pulumi.Float64(7),
+// 				"tag_h": pulumi.Float64(8),
+// 				"tag_i": pulumi.Float64(9),
+// 				"tag_j": pulumi.Float64(10),
+// 			},
+// 			VswitchId: defaultSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 

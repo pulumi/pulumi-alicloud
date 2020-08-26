@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -52,7 +50,7 @@ import * as utilities from "../utilities";
  *     instanceType: "ecs.e3.xlarge",
  *     internetMaxBandwidthOut: 10,
  *     securityGroups: [group.id],
- *     systemDiskCategory: "cloudEfficiency",
+ *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: vswitch.id,
  * });
  * const attachment = new alicloud.vpc.NetworkInterfaceAttachment("attachment", {
@@ -75,8 +73,7 @@ import * as utilities from "../utilities";
  *
  * export const eni0Name = defaultNetworkInterfaces.interfaces[0].name;
  * ```
- *
- * ##  Argument Reference
+ * ## Argument Reference
  *
  * The following arguments are supported:
  *

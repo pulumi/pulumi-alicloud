@@ -15,6 +15,58 @@ import (
 // databases.
 //
 // > **NOTE:** Available in v1.66.0+.
+//
+// ## Example Usage
+// ### Create a PolarDB MySQL cluster
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/polardb"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = polardb.NewCluster(ctx, "defaultCluster", &polardb.ClusterArgs{
+// 			DbNodeClass: pulumi.String("rds.mysql.s2.large"),
+// 			DbType:      pulumi.String("MySQL"),
+// 			DbVersion:   pulumi.String("5.6"),
+// 			Description: pulumi.String(name),
+// 			PayType:     pulumi.String("PostPaid"),
+// 			VswitchId:   defaultSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 

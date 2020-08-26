@@ -17,6 +17,60 @@ import (
 // > **NOTE:** Available in 1.63.0+
 //
 // > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cloudconnect"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/providers"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := providers.Newalicloud(ctx, "ccnAccount", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = providers.Newalicloud(ctx, "cenAccount", &providers.alicloudArgs{
+// 			AccessKey: pulumi.String("xxxxxx"),
+// 			Region:    pulumi.String("cn-hangzhou"),
+// 			SecretKey: pulumi.String("xxxxxx"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider("alicloud.cen_account"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ccn, err := cloudconnect.NewNetwork(ctx, "ccn", &cloudconnect.NetworkArgs{
+// 			IsDefault: pulumi.Bool(true),
+// 		}, pulumi.Provider("alicloud.ccn_account"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudconnect.NewNetworkGrant(ctx, "_default", &cloudconnect.NetworkGrantArgs{
+// 			CcnId:  ccn.ID(),
+// 			CenId:  cen.ID(),
+// 			CenUid: pulumi.String("xxxxxx"),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"alicloud_cen_instance.cen",
+// 			"alicloud_cloud_connect_network.ccn",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type NetworkGrant struct {
 	pulumi.CustomResourceState
 

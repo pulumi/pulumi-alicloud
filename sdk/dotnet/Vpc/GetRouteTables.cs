@@ -53,7 +53,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     public Output&lt;string&gt; RouteTableIds { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -9,3 +9,4 @@ from .cluster import *
 from .connection import *
 from .get_clusters import *
 from .get_zones import *
+from . import outputs

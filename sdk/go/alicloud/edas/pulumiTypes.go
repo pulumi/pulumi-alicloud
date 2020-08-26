@@ -44,8 +44,7 @@ type GetApplicationsApplication struct {
 // GetApplicationsApplicationInput is an input type that accepts GetApplicationsApplicationArgs and GetApplicationsApplicationOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationInput` via:
 //
-// 		 GetApplicationsApplicationArgs{...}
-//
+//          GetApplicationsApplicationArgs{...}
 type GetApplicationsApplicationInput interface {
 	pulumi.Input
 
@@ -99,8 +98,7 @@ func (i GetApplicationsApplicationArgs) ToGetApplicationsApplicationOutputWithCo
 // GetApplicationsApplicationArrayInput is an input type that accepts GetApplicationsApplicationArray and GetApplicationsApplicationArrayOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationArrayInput` via:
 //
-// 		 GetApplicationsApplicationArray{ GetApplicationsApplicationArgs{...} }
-//
+//          GetApplicationsApplicationArray{ GetApplicationsApplicationArgs{...} }
 type GetApplicationsApplicationArrayInput interface {
 	pulumi.Input
 
@@ -258,8 +256,7 @@ type GetClustersCluster struct {
 // GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
 // You can construct a concrete instance of `GetClustersClusterInput` via:
 //
-// 		 GetClustersClusterArgs{...}
-//
+//          GetClustersClusterArgs{...}
 type GetClustersClusterInput interface {
 	pulumi.Input
 
@@ -311,8 +308,7 @@ func (i GetClustersClusterArgs) ToGetClustersClusterOutputWithContext(ctx contex
 // GetClustersClusterArrayInput is an input type that accepts GetClustersClusterArray and GetClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterArrayInput` via:
 //
-// 		 GetClustersClusterArray{ GetClustersClusterArgs{...} }
-//
+//          GetClustersClusterArray{ GetClustersClusterArgs{...} }
 type GetClustersClusterArrayInput interface {
 	pulumi.Input
 
@@ -457,8 +453,7 @@ type GetDeployGroupsGroup struct {
 // GetDeployGroupsGroupInput is an input type that accepts GetDeployGroupsGroupArgs and GetDeployGroupsGroupOutput values.
 // You can construct a concrete instance of `GetDeployGroupsGroupInput` via:
 //
-// 		 GetDeployGroupsGroupArgs{...}
-//
+//          GetDeployGroupsGroupArgs{...}
 type GetDeployGroupsGroupInput interface {
 	pulumi.Input
 
@@ -502,8 +497,7 @@ func (i GetDeployGroupsGroupArgs) ToGetDeployGroupsGroupOutputWithContext(ctx co
 // GetDeployGroupsGroupArrayInput is an input type that accepts GetDeployGroupsGroupArray and GetDeployGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetDeployGroupsGroupArrayInput` via:
 //
-// 		 GetDeployGroupsGroupArray{ GetDeployGroupsGroupArgs{...} }
-//
+//          GetDeployGroupsGroupArray{ GetDeployGroupsGroupArgs{...} }
 type GetDeployGroupsGroupArrayInput interface {
 	pulumi.Input
 

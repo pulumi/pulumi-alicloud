@@ -44,7 +44,6 @@ namespace Pulumi.AliCloud.Edas
         ///     public Output&lt;string&gt; FirstGroupName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -62,7 +61,7 @@ namespace Pulumi.AliCloud.Edas
         public string AppId { get; set; } = null!;
 
         /// <summary>
-        /// A regex string to filter results by the deploy group name. 
+        /// A regex string to filter results by the deploy group name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }

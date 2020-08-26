@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     public Output&lt;string&gt; FirstDiskId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -98,12 +97,24 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A map of tags assigned to the disks. It must be in the format:
-        /// ```
-        /// data "alicloud.ecs.getDisks" "disks_ds" {
-        /// tags = {
-        /// tagKey1 = "tagValue1",
-        /// tagKey2 = "tagValue2"
-        /// }
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var disksDs = Output.Create(AliCloud.Ecs.GetDisks.InvokeAsync(new AliCloud.Ecs.GetDisksArgs
+        ///         {
+        ///             Tags = 
+        ///             {
+        ///                 { "tagKey1", "tagValue1" },
+        ///                 { "tagKey2", "tagValue2" },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
         /// }
         /// ```
         /// </summary>

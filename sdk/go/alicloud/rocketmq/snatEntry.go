@@ -17,6 +17,33 @@ import (
 // > **NOTE:** Available in 1.61.0+
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rocketmq"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rocketmq.NewSnatEntry(ctx, "_default", &rocketmq.SnatEntryArgs{
+// 			CidrBlock: pulumi.String("192.168.7.0/24"),
+// 			SagId:     pulumi.String("sag-3rb1t3iagy3w0zgwy9"),
+// 			SnatIp:    pulumi.String("192.0.0.2"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type SnatEntry struct {
 	pulumi.CustomResourceState
 

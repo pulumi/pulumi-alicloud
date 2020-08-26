@@ -17,6 +17,36 @@ import (
 // > **NOTE:** Available in 1.65.0+
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rocketmq"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rocketmq.NewClientUser(ctx, "_default", &rocketmq.ClientUserArgs{
+// 			Bandwidth: pulumi.Int(20),
+// 			ClientIp:  pulumi.String("192.1.10.0"),
+// 			Password:  pulumi.String("xxxxxxx"),
+// 			SagId:     pulumi.String("sag-xxxxx"),
+// 			UserMail:  pulumi.String("tftest-xxxxx@test.com"),
+// 			UserName:  pulumi.String("th-username-xxxxx"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ClientUser struct {
 	pulumi.CustomResourceState
 

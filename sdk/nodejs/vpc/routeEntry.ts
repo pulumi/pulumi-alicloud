@@ -46,12 +46,6 @@ export class RouteEntry extends pulumi.CustomResource {
     public readonly nexthopId!: pulumi.Output<string | undefined>;
     /**
      * The next hop type. Available values:
-     * - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
-     * - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
-     * - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
-     * - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
-     * - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
-     * - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
      */
     public readonly nexthopType!: pulumi.Output<string | undefined>;
     /**
@@ -124,12 +118,6 @@ export interface RouteEntryState {
     readonly nexthopId?: pulumi.Input<string>;
     /**
      * The next hop type. Available values:
-     * - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
-     * - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
-     * - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
-     * - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
-     * - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
-     * - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
      */
     readonly nexthopType?: pulumi.Input<string>;
     /**
@@ -162,12 +150,6 @@ export interface RouteEntryArgs {
     readonly nexthopId?: pulumi.Input<string>;
     /**
      * The next hop type. Available values:
-     * - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
-     * - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
-     * - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
-     * - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
-     * - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
-     * - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
      */
     readonly nexthopType?: pulumi.Input<string>;
     /**

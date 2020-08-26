@@ -13,6 +13,61 @@ namespace Pulumi.AliCloud.Oos
     /// Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.93.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Oos.Template("default", new AliCloud.Oos.TemplateArgs
+    ///         {
+    ///             Content = @"  {
+    ///     ""FormatVersion"": ""OOS-2019-06-01"",
+    ///     ""Description"": ""Update Describe instances of given status"",
+    ///     ""Parameters"":{
+    ///       ""Status"":{
+    ///         ""Type"": ""String"",
+    ///         ""Description"": ""(Required) The status of the Ecs instance.""
+    ///       }
+    ///     },
+    ///     ""Tasks"": [
+    ///       {
+    ///         ""Properties"" :{
+    ///           ""Parameters"":{
+    ///             ""Status"": ""{{ Status }}""
+    ///           },
+    ///           ""API"": ""DescribeInstances"",
+    ///           ""Service"": ""Ecs""
+    ///         },
+    ///         ""Name"": ""foo"",
+    ///         ""Action"": ""ACS::ExecuteApi""
+    ///       }]
+    ///   }
+    /// ",
+    ///             TemplateName = "test-name",
+    ///             VersionName = "test",
+    ///             Tags = 
+    ///             {
+    ///                 { "Created", "TF" },
+    ///                 { "For", "acceptance Test" },
+    ///             },
+    ///         });
+    ///         var example = new AliCloud.Oos.Execution("example", new AliCloud.Oos.ExecutionArgs
+    ///         {
+    ///             TemplateName = @default.TemplateName,
+    ///             Description = "From TF Test",
+    ///             Parameters = @"				{""Status"":""Running""}
+    /// ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Execution : Pulumi.CustomResource
     {

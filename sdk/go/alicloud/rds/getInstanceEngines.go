@@ -10,6 +10,37 @@ import (
 // This data source provides the RDS instance engines resource available info of Alibaba Cloud.
 //
 // > **NOTE:** Available in v1.46.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rds"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "MySQL"
+// 		opt1 := "5.6"
+// 		opt2 := "PostPaid"
+// 		opt3 := "./engines.txt"
+// 		resources, err := rds.GetInstanceEngines(ctx, &rds.GetInstanceEnginesArgs{
+// 			Engine:             &opt0,
+// 			EngineVersion:      &opt1,
+// 			InstanceChargeType: &opt2,
+// 			OutputFile:         &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstDbCategory", resources.InstanceEngines[0].Category)
+// 		return nil
+// 	})
+// }
+// ```
 func GetInstanceEngines(ctx *pulumi.Context, args *GetInstanceEnginesArgs, opts ...pulumi.InvokeOption) (*GetInstanceEnginesResult, error) {
 	var rv GetInstanceEnginesResult
 	err := ctx.Invoke("alicloud:rds/getInstanceEngines:getInstanceEngines", args, &rv, opts...)

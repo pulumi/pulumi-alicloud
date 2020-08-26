@@ -10,6 +10,32 @@ import (
 // This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.52.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rocketmq"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rocketmq.NewInstance(ctx, "_default", &rocketmq.InstanceArgs{
+// 			Remark: pulumi.String("default_ons_instance_remark"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstInstanceId", instancesDs.ApplyT(func(instancesDs rocketmq.GetInstancesResult) (string, error) {
+// 			return instancesDs.Instances[0].InstanceId, nil
+// 		}).(pulumi.StringOutput))
+// 		return nil
+// 	})
+// }
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
 	err := ctx.Invoke("alicloud:rocketmq/getInstances:getInstances", args, &rv, opts...)

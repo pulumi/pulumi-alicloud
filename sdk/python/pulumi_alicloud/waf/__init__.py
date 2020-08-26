@@ -7,3 +7,5 @@ from .domain import *
 from .get_domains import *
 from .get_instances import *
 from .instance import *
+from ._inputs import *
+from . import outputs

@@ -10,6 +10,42 @@ import (
 // This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.
 //
 // > **NOTE:** Available in v1.90.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "test-namespace"
+// 		opt1 := "test-repo"
+// 		opt2 := "cri-yyy"
+// 		opt3 := "test-rule"
+// 		mySyncRules, err := cs.GetRegistryEnterpriseSyncRules(ctx, &cs.GetRegistryEnterpriseSyncRulesArgs{
+// 			InstanceId:       "cri-xxx",
+// 			NamespaceName:    &opt0,
+// 			RepoName:         &opt1,
+// 			TargetInstanceId: &opt2,
+// 			NameRegex:        &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		var splat0 []string
+// 		for _, val0 := range mySyncRules.Rules {
+// 			splat0 = append(splat0, val0.Id)
+// 		}
+// 		ctx.Export("output", splat0)
+// 		return nil
+// 	})
+// }
+// ```
 func GetRegistryEnterpriseSyncRules(ctx *pulumi.Context, args *GetRegistryEnterpriseSyncRulesArgs, opts ...pulumi.InvokeOption) (*GetRegistryEnterpriseSyncRulesResult, error) {
 	var rv GetRegistryEnterpriseSyncRulesResult
 	err := ctx.Invoke("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args, &rv, opts...)

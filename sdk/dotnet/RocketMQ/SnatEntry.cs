@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;

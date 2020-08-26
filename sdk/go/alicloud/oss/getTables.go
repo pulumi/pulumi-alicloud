@@ -10,6 +10,34 @@ import (
 // This data source provides the ots tables of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.40.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "sample-table"
+// 		opt1 := "tables.txt"
+// 		tablesDs, err := oss.GetTables(ctx, &oss.GetTablesArgs{
+// 			InstanceName: "sample-instance",
+// 			NameRegex:    &opt0,
+// 			OutputFile:   &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstTableId", tablesDs.Tables[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetTables(ctx *pulumi.Context, args *GetTablesArgs, opts ...pulumi.InvokeOption) (*GetTablesResult, error) {
 	var rv GetTablesResult
 	err := ctx.Invoke("alicloud:oss/getTables:getTables", args, &rv, opts...)

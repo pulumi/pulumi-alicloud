@@ -17,6 +17,40 @@ import (
 // > **NOTE:** Available in 1.64.0+
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cloudconnect"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ccn, err := cloudconnect.NewNetwork(ctx, "ccn", &cloudconnect.NetworkArgs{
+// 			IsDefault: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudconnect.NewNetworkAttachment(ctx, "_default", &cloudconnect.NetworkAttachmentArgs{
+// 			CcnId: ccn.ID(),
+// 			SagId: pulumi.String("sag-xxxxx"),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"alicloud_cloud_connect_network.ccn",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type NetworkAttachment struct {
 	pulumi.CustomResourceState
 

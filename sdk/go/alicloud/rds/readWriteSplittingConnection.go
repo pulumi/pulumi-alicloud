@@ -11,6 +11,88 @@ import (
 )
 
 // Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rds"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
+// 			Engine:             pulumi.String("MySQL"),
+// 			EngineVersion:      pulumi.String("5.6"),
+// 			InstanceChargeType: pulumi.String("Postpaid"),
+// 			InstanceName:       pulumi.String(name),
+// 			InstanceStorage:    pulumi.Int(20),
+// 			InstanceType:       pulumi.String("rds.mysql.t1.small"),
+// 			SecurityIps: pulumi.StringArray{
+// 				pulumi.String("10.168.1.12"),
+// 				pulumi.String("100.69.7.112"),
+// 			},
+// 			VswitchId: defaultSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rds.NewReadOnlyInstance(ctx, "defaultReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
+// 			EngineVersion:      defaultInstance.EngineVersion,
+// 			InstanceName:       pulumi.String(fmt.Sprintf("%v%v", name, "ro")),
+// 			InstanceStorage:    pulumi.Int(30),
+// 			InstanceType:       defaultInstance.InstanceType,
+// 			MasterDbInstanceId: defaultInstance.ID(),
+// 			VswitchId:          defaultSwitch.ID(),
+// 			ZoneId:             defaultInstance.ZoneId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rds.NewReadWriteSplittingConnection(ctx, "defaultReadWriteSplittingConnection", &rds.ReadWriteSplittingConnectionArgs{
+// 			ConnectionPrefix: pulumi.String("t-con-123"),
+// 			DistributionType: pulumi.String("Standard"),
+// 			InstanceId:       defaultInstance.ID(),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"alicloud_db_readonly_instance.default",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `dependsOn` statement is necessary.
 type ReadWriteSplittingConnection struct {
 	pulumi.CustomResourceState
 

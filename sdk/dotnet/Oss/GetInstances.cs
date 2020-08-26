@@ -38,7 +38,6 @@ namespace Pulumi.AliCloud.Oss
         ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -75,12 +74,24 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// A map of tags assigned to the instance. It must be in the format:
-        /// ```
-        /// data "alicloud.oss.getInstances" "instances_ds" {
-        /// tags = {
-        /// tagKey1 = "tagValue1",
-        /// tagKey2 = "tagValue2"
-        /// }
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var instancesDs = Output.Create(AliCloud.Oss.GetInstances.InvokeAsync(new AliCloud.Oss.GetInstancesArgs
+        ///         {
+        ///             Tags = 
+        ///             {
+        ///                 { "tagKey1", "tagValue1" },
+        ///                 { "tagKey2", "tagValue2" },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
         /// }
         /// ```
         /// </summary>

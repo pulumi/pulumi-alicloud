@@ -10,6 +10,36 @@ import (
 // This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in v1.93.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oos"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "Success"
+// 		opt1 := "name"
+// 		example, err := oos.GetExecutions(ctx, &oos.GetExecutionsArgs{
+// 			Ids: []string{
+// 				"execution_id",
+// 			},
+// 			Status:       &opt0,
+// 			TemplateName: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstExecutionId", example.Executions[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetExecutions(ctx *pulumi.Context, args *GetExecutionsArgs, opts ...pulumi.InvokeOption) (*GetExecutionsResult, error) {
 	var rv GetExecutionsResult
 	err := ctx.Invoke("alicloud:oos/getExecutions:getExecutions", args, &rv, opts...)

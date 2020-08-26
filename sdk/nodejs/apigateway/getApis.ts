@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -57,7 +55,7 @@ export interface GetApisArgs {
      */
     readonly groupId?: string;
     /**
-     * A list of api IDs. 
+     * A list of api IDs.
      */
     readonly ids?: string[];
     /**
@@ -88,12 +86,12 @@ export interface GetApisResult {
      */
     readonly id: string;
     /**
-     * A list of api IDs. 
+     * A list of api IDs.
      */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of api names. 
+     * A list of api names.
      */
     readonly names: string[];
     readonly outputFile?: string;

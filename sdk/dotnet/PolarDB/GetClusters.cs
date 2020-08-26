@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     public Output&lt;string&gt; FirstPolardbClusterId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -68,7 +67,7 @@ namespace Pulumi.AliCloud.PolarDB
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of PolarDB cluster IDs. 
+        /// A list of PolarDB cluster IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -118,7 +117,7 @@ namespace Pulumi.AliCloud.PolarDB
         public readonly string? DbType;
         public readonly string? DescriptionRegex;
         /// <summary>
-        /// A list of RDS cluster descriptions. 
+        /// A list of RDS cluster descriptions.
         /// </summary>
         public readonly ImmutableArray<string> Descriptions;
         /// <summary>
@@ -126,7 +125,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of RDS cluster IDs. 
+        /// A list of RDS cluster IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;

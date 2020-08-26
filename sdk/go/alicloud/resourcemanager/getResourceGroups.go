@@ -10,6 +10,31 @@ import (
 // This data source provides resource groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.84.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/resourcemanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "tftest"
+// 		example, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+// 			NameRegex: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstResourceGroupId", example.Groups[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetResourceGroups(ctx *pulumi.Context, args *GetResourceGroupsArgs, opts ...pulumi.InvokeOption) (*GetResourceGroupsResult, error) {
 	var rv GetResourceGroupsResult
 	err := ctx.Invoke("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args, &rv, opts...)

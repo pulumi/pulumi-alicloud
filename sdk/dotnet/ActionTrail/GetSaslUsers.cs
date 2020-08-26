@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     public Output&lt;string&gt; FirstSaslUsername { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public string InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// A regex string to filter results by the username. 
+        /// A regex string to filter results by the username.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }

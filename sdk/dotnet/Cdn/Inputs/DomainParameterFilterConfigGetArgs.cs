@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Cdn.Inputs
     public sealed class DomainParameterFilterConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.  
+        /// This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.
         /// </summary>
         [Input("enable")]
         public Input<string>? Enable { get; set; }

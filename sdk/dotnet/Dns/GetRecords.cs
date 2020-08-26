@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.Dns
         ///     public Output&lt;string&gt; FirstRecordId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.Dns
         public string DomainName { get; set; } = null!;
 
         /// <summary>
-        /// Host record regex. 
+        /// Host record regex.
         /// </summary>
         [Input("hostRecordRegex")]
         public string? HostRecordRegex { get; set; }
@@ -83,7 +82,7 @@ namespace Pulumi.AliCloud.Dns
         public bool? IsLocked { get; set; }
 
         /// <summary>
-        /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
+        /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
         /// </summary>
         [Input("line")]
         public string? Line { get; set; }
@@ -104,7 +103,7 @@ namespace Pulumi.AliCloud.Dns
         public string? Type { get; set; }
 
         /// <summary>
-        /// Host record value regex. 
+        /// Host record value regex.
         /// </summary>
         [Input("valueRegex")]
         public string? ValueRegex { get; set; }
@@ -128,12 +127,12 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of record IDs. 
+        /// A list of record IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly bool? IsLocked;
         /// <summary>
-        /// ISP line of the record. 
+        /// ISP line of the record.
         /// </summary>
         public readonly string? Line;
         public readonly string? OutputFile;

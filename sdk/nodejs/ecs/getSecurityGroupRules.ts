@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * // Get the security group id from a variable
  * const securityGroupId = config.require("securityGroupId");
  *
- * // Or get it from the alicloud.ecs.getSecurityGroups data source.
+ * // Or get it from the alicloud_security_groups data source.
  * // Please note that the data source arguments must be enough to filter results to one security group.
  * const groupsDs = pulumi.output(alicloud.ecs.getSecurityGroups({
  *     nameRegex: "api",
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     ipProtocol: "tcp",
  *     nicType: "internet",
  * }, { async: true }));
- * // Pass portRange to the backend service
+ * // Pass port_range to the backend service
  * const backend = new alicloud.ecs.Instance("backend", {
  *     userData: pulumi.interpolate`config_service.sh --portrange=${ingressRulesDs.rules[0].portRange}`,
  * });

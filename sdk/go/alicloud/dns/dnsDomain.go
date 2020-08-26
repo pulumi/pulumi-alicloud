@@ -15,6 +15,34 @@ import (
 // > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
 //
 // > **NOTE:** Available in v1.81.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dns.NewDnsDomain(ctx, "dns", &dns.DnsDomainArgs{
+// 			DomainName: pulumi.String("starmove.com"),
+// 			GroupId:    pulumi.String("85ab8713-4a30-4de4-9d20-155ff830****"),
+// 			Tags: pulumi.StringMap{
+// 				"Created":     pulumi.String("Terraform"),
+// 				"Environment": pulumi.String("test"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DnsDomain struct {
 	pulumi.CustomResourceState
 

@@ -15,6 +15,40 @@ import (
 // For more information about how to use it, see [RocketMQ Topic Management API](https://www.alibabacloud.com/help/doc-detail/29591.html).
 //
 // > **NOTE:** Available in 1.53.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rocketmq"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
+// 			Remark: pulumi.String("default_ons_instance_remark"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rocketmq.NewTopic(ctx, "defaultTopic", &rocketmq.TopicArgs{
+// 			InstanceId:  defaultInstance.ID(),
+// 			MessageType: pulumi.Int(0),
+// 			Remark:      pulumi.String("dafault_ons_topic_remark"),
+// 			Topic:       pulumi.String(topic),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Topic struct {
 	pulumi.CustomResourceState
 

@@ -8,12 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
- *  
+ *
  * > **NOTE:** Available in v1.86.0+.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,7 +20,7 @@ import * as utilities from "../utilities";
  * // Declare the data source
  * const kmsSecretsDs = pulumi.output(alicloud.kms.getSecrets({
  *     fetchTags: true,
- *     nameRegex: "nameRegex",
+ *     nameRegex: "name_regex",
  *     tags: {
  *         "k-aa": "v-aa",
  *         "k-bb": "v-bb",
@@ -83,7 +81,7 @@ export interface GetSecretsResult {
      */
     readonly id: string;
     /**
-     * A list of Kms Secret ids. The value is same as KMS secret_name. 
+     * A list of Kms Secret ids. The value is same as KMS secret_name.
      */
     readonly ids: string[];
     readonly nameRegex?: string;

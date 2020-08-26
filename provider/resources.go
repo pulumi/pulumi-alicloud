@@ -892,14 +892,14 @@ func Provider() tfbridge.ProviderInfo {
 				"@pulumi/pulumi": "^2.0.0",
 			},
 			Overlay: &tfbridge.OverlayInfo{
-				Files:   []string{},
 				Modules: map[string]*tfbridge.OverlayInfo{},
 			},
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=2.0.0,<3.0.0",
+				"pulumi": ">=2.9.0,<3.0.0",
 			},
+			UsesIOClasses: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{

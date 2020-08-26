@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Alibaba Cloud Resource Name (ARN) for the notification object. 
+        /// The Alibaba Cloud Resource Name (ARN) for the notification object.
         /// </summary>
         public readonly string NotificationArn;
         /// <summary>

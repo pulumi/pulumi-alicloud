@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.Slb
         ///     public Output&lt;string&gt; FirstSlbAttachmentInstanceId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

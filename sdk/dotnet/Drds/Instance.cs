@@ -22,8 +22,6 @@ namespace Pulumi.AliCloud.Drds
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;

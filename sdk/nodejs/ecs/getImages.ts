@@ -7,12 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
- * other public images and the ones available on the image market. 
+ * This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
+ * other public images and the ones available on the image market.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +50,7 @@ export interface GetImagesArgs {
      */
     readonly mostRecent?: boolean;
     /**
-     * A regex string to filter resulting images by name. 
+     * A regex string to filter resulting images by name.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;

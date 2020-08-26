@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,11 +26,10 @@ import * as utilities from "../utilities";
  *     nameRegex: "^tf-testAcc.*",
  * }, { async: true }));
  * ```
- *
  * ## Public ip addresses Block
- *   
+ *
  *   The public ip addresses mapping supports the following:
- *   
+ *
  *   * `ipAddress`   - The address of the EIP.
  *   * `allocationId` - The ID of the EIP instance.
  */

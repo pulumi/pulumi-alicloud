@@ -43,7 +43,6 @@ namespace Pulumi.AliCloud.Ess
         ///     public Output&lt;string&gt; FirstScalingRule { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

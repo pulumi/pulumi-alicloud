@@ -4,6 +4,28 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * This resouce used to create a secret and store its initial version.
+ *
+ * > **NOTE:** Available in 1.76.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultSecret = new alicloud.kms.Secret("default", {
+ *     description: "from terraform",
+ *     forceDeleteWithoutRecovery: true,
+ *     secretData: "Secret data.",
+ *     secretName: "secret-foo",
+ *     versionId: "000000000001",
+ * });
+ * ```
+ */
 export class Secret extends pulumi.CustomResource {
     /**
      * Get an existing Secret resource's state with the given name, ID, and optional extra

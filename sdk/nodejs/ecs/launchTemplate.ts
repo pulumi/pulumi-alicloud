@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -59,7 +57,7 @@ import * as utilities from "../utilities";
  *     securityGroupId: "sg-zxcvj0lasdf102350asdf9a",
  *     spotPriceLimit: 5,
  *     spotStrategy: "SpotWithPriceLimit",
- *     systemDiskCategory: "cloudSsd",
+ *     systemDiskCategory: "cloud_ssd",
  *     systemDiskDescription: "test disk",
  *     systemDiskName: "hello",
  *     systemDiskSize: 40,

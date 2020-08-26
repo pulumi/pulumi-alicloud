@@ -7,11 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a [ADB](https://www.alibabacloud.com/help/product/92664.htm) account resource and used to manage databases.
  *
- * > **NOTE:** Available in v1.71.0+. 
+ * > **NOTE:** Available in v1.71.0+.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

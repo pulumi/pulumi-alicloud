@@ -5,11 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM User Policy attachment resource. 
+ * Provides a RAM User Policy attachment resource.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -18,7 +16,7 @@ import * as utilities from "../utilities";
  * // Create a RAM User Policy attachment.
  * const user = new alicloud.ram.User("user", {
  *     comments: "yoyoyo",
- *     displayName: "userDisplayName",
+ *     displayName: "user_display_name",
  *     email: "hello.uuu@aaa.com",
  *     force: true,
  *     mobile: "86-18688888888",

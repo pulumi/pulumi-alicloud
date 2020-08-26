@@ -13,6 +13,68 @@ import (
 // Provides a kvstore account resource and used to manage databases.
 //
 // > **NOTE:** Available in 1.66.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/kvstore"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
+// 			EngineVersion: pulumi.String("4.0"),
+// 			InstanceClass: pulumi.String("redis.master.small.default"),
+// 			InstanceName:  pulumi.String(name),
+// 			InstanceType:  pulumi.String("Redis"),
+// 			PrivateIp:     pulumi.String("172.16.0.10"),
+// 			SecurityIps: pulumi.StringArray{
+// 				pulumi.String("10.0.0.1"),
+// 			},
+// 			VswitchId: defaultSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = kvstore.NewAccount(ctx, "account", &kvstore.AccountArgs{
+// 			AccountName:     pulumi.String("tftestnormal"),
+// 			AccountPassword: pulumi.String("Test12345"),
+// 			InstanceId:      defaultInstance.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Account struct {
 	pulumi.CustomResourceState
 
@@ -24,11 +86,11 @@ type Account struct {
 	// - RoleReadOnly: This value is only for Redis and Memcache
 	// - RoleReadWrite: This value is only for Redis and Memcache
 	// - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-	// Only for Redis which engine version is 4.0 and architecture type is standard
+	//   Only for Redis which engine version is 4.0 and architecture type is standard
 	AccountPrivilege pulumi.StringPtrOutput `pulumi:"accountPrivilege"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
-	// Default to Normal.
+	//   Default to Normal.
 	AccountType pulumi.StringPtrOutput `pulumi:"accountType"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -82,11 +144,11 @@ type accountState struct {
 	// - RoleReadOnly: This value is only for Redis and Memcache
 	// - RoleReadWrite: This value is only for Redis and Memcache
 	// - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-	// Only for Redis which engine version is 4.0 and architecture type is standard
+	//   Only for Redis which engine version is 4.0 and architecture type is standard
 	AccountPrivilege *string `pulumi:"accountPrivilege"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
-	// Default to Normal.
+	//   Default to Normal.
 	AccountType *string `pulumi:"accountType"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	Description *string `pulumi:"description"`
@@ -107,11 +169,11 @@ type AccountState struct {
 	// - RoleReadOnly: This value is only for Redis and Memcache
 	// - RoleReadWrite: This value is only for Redis and Memcache
 	// - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-	// Only for Redis which engine version is 4.0 and architecture type is standard
+	//   Only for Redis which engine version is 4.0 and architecture type is standard
 	AccountPrivilege pulumi.StringPtrInput
 	// Privilege type of account.
 	// - Normal: Common privilege.
-	// Default to Normal.
+	//   Default to Normal.
 	AccountType pulumi.StringPtrInput
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	Description pulumi.StringPtrInput
@@ -136,11 +198,11 @@ type accountArgs struct {
 	// - RoleReadOnly: This value is only for Redis and Memcache
 	// - RoleReadWrite: This value is only for Redis and Memcache
 	// - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-	// Only for Redis which engine version is 4.0 and architecture type is standard
+	//   Only for Redis which engine version is 4.0 and architecture type is standard
 	AccountPrivilege *string `pulumi:"accountPrivilege"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
-	// Default to Normal.
+	//   Default to Normal.
 	AccountType *string `pulumi:"accountType"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	Description *string `pulumi:"description"`
@@ -162,11 +224,11 @@ type AccountArgs struct {
 	// - RoleReadOnly: This value is only for Redis and Memcache
 	// - RoleReadWrite: This value is only for Redis and Memcache
 	// - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-	// Only for Redis which engine version is 4.0 and architecture type is standard
+	//   Only for Redis which engine version is 4.0 and architecture type is standard
 	AccountPrivilege pulumi.StringPtrInput
 	// Privilege type of account.
 	// - Normal: Common privilege.
-	// Default to Normal.
+	//   Default to Normal.
 	AccountType pulumi.StringPtrInput
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	Description pulumi.StringPtrInput

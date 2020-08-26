@@ -43,7 +43,6 @@ namespace Pulumi.AliCloud.Kms
         ///     public Output&lt;string&gt; AllVersions { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

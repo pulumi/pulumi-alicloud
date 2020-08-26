@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,10 +41,16 @@ namespace Pulumi.AliCloud.Cen
     ///         var vpc1 = new AliCloud.Vpc.Network("vpc1", new AliCloud.Vpc.NetworkArgs
     ///         {
     ///             CidrBlock = "192.168.0.0/16",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "alicloud.fra",
     ///         });
     ///         var vpc2 = new AliCloud.Vpc.Network("vpc2", new AliCloud.Vpc.NetworkArgs
     ///         {
     ///             CidrBlock = "172.16.0.0/12",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "alicloud.sh",
     ///         });
     ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
     ///         {
@@ -84,6 +90,14 @@ namespace Pulumi.AliCloud.Cen
     ///             {
     ///                 "eu-central-1",
     ///                 "cn-shanghai",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "alicloud_cen_bandwidth_package_attachment.bwp_attach",
+    ///                 "alicloud_cen_instance_attachment.vpc_attach_1",
+    ///                 "alicloud_cen_instance_attachment.vpc_attach_2",
     ///             },
     ///         });
     ///     }

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +33,28 @@ namespace Pulumi.AliCloud.Nas
     ///         {
     ///             Description = "test_AccessG",
     ///             Type = "Classic",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Example after v1.92.0
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.Nas.AccessGroup("foo", new AliCloud.Nas.AccessGroupArgs
+    ///         {
+    ///             AccessGroupName = "CreateAccessGroup",
+    ///             AccessGroupType = "Vpc",
+    ///             Description = "test_AccessG",
+    ///             FileSystemType = "extreme",
     ///         });
     ///     }
     /// 

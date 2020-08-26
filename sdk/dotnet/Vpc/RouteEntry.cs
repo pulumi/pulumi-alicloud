@@ -31,12 +31,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The next hop type. Available values:
-        /// - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
-        /// - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
-        /// - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
-        /// - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
-        /// - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
-        /// - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
         /// </summary>
         [Output("nexthopType")]
         public Output<string?> NexthopType { get; private set; } = null!;
@@ -119,12 +113,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The next hop type. Available values:
-        /// - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
-        /// - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
-        /// - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
-        /// - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
-        /// - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
-        /// - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
         /// </summary>
         [Input("nexthopType")]
         public Input<string>? NexthopType { get; set; }
@@ -168,12 +156,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The next hop type. Available values:
-        /// - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
-        /// - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
-        /// - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
-        /// - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
-        /// - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
-        /// - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
         /// </summary>
         [Input("nexthopType")]
         public Input<string>? NexthopType { get; set; }

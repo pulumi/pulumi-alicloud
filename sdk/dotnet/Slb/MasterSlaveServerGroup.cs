@@ -28,8 +28,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -165,7 +163,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// }
     /// ```
-    /// 
     /// ## Block servers
     /// 
     /// The servers mapping supports the following:
@@ -175,7 +172,7 @@ namespace Pulumi.AliCloud.Slb
     /// * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
     /// * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
     /// * `server_type` - (Optional) The server type of the backend server. Valid value Master, Slave.
-    /// * `is_backup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1. 
+    /// * `is_backup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1.
     /// </summary>
     public partial class MasterSlaveServerGroup : Pulumi.CustomResource
     {
@@ -192,7 +189,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> LoadBalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the master slave server group. 
+        /// Name of the master slave server group.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -262,7 +259,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string> LoadBalancerId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the master slave server group. 
+        /// Name of the master slave server group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -299,7 +296,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? LoadBalancerId { get; set; }
 
         /// <summary>
-        /// Name of the master slave server group. 
+        /// Name of the master slave server group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -11,6 +11,34 @@ import (
 
 // This resource will help you to manager a [Table Store](https://www.alibabacloud.com/help/doc-detail/27280.htm) Instance.
 // It is foundation of creating data table.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ots.NewInstance(ctx, "foo", &ots.InstanceArgs{
+// 			AccessedBy:  pulumi.String("Vpc"),
+// 			Description: pulumi.String("for table"),
+// 			Tags: pulumi.StringMap{
+// 				"Created": pulumi.String("TF"),
+// 				"For":     pulumi.String("Building table"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 

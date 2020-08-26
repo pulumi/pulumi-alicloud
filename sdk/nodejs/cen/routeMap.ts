@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * This topic provides an overview of the route map function of Cloud Enterprise Networks (CENs).
  * You can use the route map function to filter routes and modify route attributes.
- * By doing so, you can manage the communication between networks attached to a CEN. 
+ * By doing so, you can manage the communication between networks attached to a CEN.
  *
  * For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/doc-detail/124157.htm).
  *
@@ -15,17 +15,17 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const defaultInstance = new alicloud.cen.Instance("default", {});
- * const vpc00Region = new alicloud.Provider("vpc00Region", {
+ * const vpc00Region = new alicloud.Provider("vpc00_region", {
  *     region: "cn-hangzhou",
  * });
- * const vpc01Region = new alicloud.Provider("vpc01Region", {
+ * const vpc01Region = new alicloud.Provider("vpc01_region", {
  *     region: "cn-shanghai",
  * });
  * const vpc00 = new alicloud.vpc.Network("vpc00", {
@@ -136,7 +136,7 @@ export class RouteMap extends pulumi.CustomResource {
      */
     public readonly destinationChildInstanceTypes!: pulumi.Output<string[] | undefined>;
     /**
-     * A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks. 
+     * A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
      */
     public readonly destinationCidrBlocks!: pulumi.Output<string[] | undefined>;
     /**
@@ -148,7 +148,7 @@ export class RouteMap extends pulumi.CustomResource {
      */
     public readonly destinationInstanceIdsReverseMatch!: pulumi.Output<boolean | undefined>;
     /**
-     * A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs. 
+     * A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
      */
     public readonly destinationRouteTableIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -156,11 +156,11 @@ export class RouteMap extends pulumi.CustomResource {
      */
     public readonly mapResult!: pulumi.Output<string>;
     /**
-     * A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission. 
+     * A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
      */
     public readonly matchAsns!: pulumi.Output<string[] | undefined>;
     /**
-     * A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+     * A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
     public readonly matchCommunitySets!: pulumi.Output<string[] | undefined>;
     /**
@@ -168,11 +168,11 @@ export class RouteMap extends pulumi.CustomResource {
      */
     public readonly nextPriority!: pulumi.Output<number | undefined>;
     /**
-     * An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+     * An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
     public readonly operateCommunitySets!: pulumi.Output<string[] | undefined>;
     /**
-     * An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference. 
+     * An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
      */
     public readonly preference!: pulumi.Output<number | undefined>;
     /**
@@ -193,7 +193,7 @@ export class RouteMap extends pulumi.CustomResource {
      */
     public readonly sourceChildInstanceTypes!: pulumi.Output<string[] | undefined>;
     /**
-     * A match statement that indicates the list of IDs of the source instances. 
+     * A match statement that indicates the list of IDs of the source instances.
      */
     public readonly sourceInstanceIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -205,7 +205,7 @@ export class RouteMap extends pulumi.CustomResource {
      */
     public readonly sourceRegionIds!: pulumi.Output<string[] | undefined>;
     /**
-     * A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs. 
+     * A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
      */
     public readonly sourceRouteTableIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -353,7 +353,7 @@ export interface RouteMapState {
      */
     readonly destinationChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks. 
+     * A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
      */
     readonly destinationCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -365,7 +365,7 @@ export interface RouteMapState {
      */
     readonly destinationInstanceIdsReverseMatch?: pulumi.Input<boolean>;
     /**
-     * A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs. 
+     * A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
      */
     readonly destinationRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -373,11 +373,11 @@ export interface RouteMapState {
      */
     readonly mapResult?: pulumi.Input<string>;
     /**
-     * A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission. 
+     * A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
      */
     readonly matchAsns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+     * A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
     readonly matchCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -385,11 +385,11 @@ export interface RouteMapState {
      */
     readonly nextPriority?: pulumi.Input<number>;
     /**
-     * An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+     * An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
     readonly operateCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference. 
+     * An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
      */
     readonly preference?: pulumi.Input<number>;
     /**
@@ -410,7 +410,7 @@ export interface RouteMapState {
      */
     readonly sourceChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A match statement that indicates the list of IDs of the source instances. 
+     * A match statement that indicates the list of IDs of the source instances.
      */
     readonly sourceInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -422,7 +422,7 @@ export interface RouteMapState {
      */
     readonly sourceRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs. 
+     * A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
      */
     readonly sourceRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -472,7 +472,7 @@ export interface RouteMapArgs {
      */
     readonly destinationChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks. 
+     * A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
      */
     readonly destinationCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -484,7 +484,7 @@ export interface RouteMapArgs {
      */
     readonly destinationInstanceIdsReverseMatch?: pulumi.Input<boolean>;
     /**
-     * A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs. 
+     * A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
      */
     readonly destinationRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -492,11 +492,11 @@ export interface RouteMapArgs {
      */
     readonly mapResult: pulumi.Input<string>;
     /**
-     * A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission. 
+     * A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
      */
     readonly matchAsns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+     * A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
     readonly matchCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -504,11 +504,11 @@ export interface RouteMapArgs {
      */
     readonly nextPriority?: pulumi.Input<number>;
     /**
-     * An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+     * An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
     readonly operateCommunitySets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference. 
+     * An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
      */
     readonly preference?: pulumi.Input<number>;
     /**
@@ -528,7 +528,7 @@ export interface RouteMapArgs {
      */
     readonly sourceChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A match statement that indicates the list of IDs of the source instances. 
+     * A match statement that indicates the list of IDs of the source instances.
      */
     readonly sourceInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -540,7 +540,7 @@ export interface RouteMapArgs {
      */
     readonly sourceRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs. 
+     * A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
      */
     readonly sourceRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

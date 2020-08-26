@@ -49,7 +49,7 @@ export interface GetAlidnsRecordsArgs {
      */
     readonly direction?: string;
     /**
-     * The domain name associated to the records. 
+     * The domain name associated to the records.
      */
     readonly domainName: string;
     /**
@@ -69,7 +69,7 @@ export interface GetAlidnsRecordsArgs {
      */
     readonly lang?: string;
     /**
-     * ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
+     * ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
      */
     readonly line?: string;
     /**
@@ -82,7 +82,7 @@ export interface GetAlidnsRecordsArgs {
      */
     readonly rrKeyWord?: string;
     /**
-     * Host record regex. 
+     * Host record regex.
      */
     readonly rrRegex?: string;
     /**
@@ -106,7 +106,7 @@ export interface GetAlidnsRecordsArgs {
      */
     readonly valueKeyWord?: string;
     /**
-     * Host record value regex. 
+     * Host record value regex.
      */
     readonly valueRegex?: string;
 }
@@ -126,13 +126,13 @@ export interface GetAlidnsRecordsResult {
      */
     readonly id: string;
     /**
-     * A list of record IDs. 
+     * A list of record IDs.
      */
     readonly ids: string[];
     readonly keyWord?: string;
     readonly lang?: string;
     /**
-     * ISP line of the record. 
+     * ISP line of the record.
      */
     readonly line?: string;
     readonly orderBy?: string;

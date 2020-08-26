@@ -14,8 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -49,7 +47,7 @@ export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetAccountsArgs {
     /**
-     * The polarDB cluster ID. 
+     * The polarDB cluster ID.
      */
     readonly dbClusterId: string;
     /**

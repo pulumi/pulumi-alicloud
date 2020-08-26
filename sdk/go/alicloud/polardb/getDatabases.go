@@ -11,6 +11,39 @@ import (
 // Filters support regular expression for the database name, searches by clusterId.
 //
 // > **NOTE:** Available in v1.70.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/polardb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "pc-\\w+"
+// 		opt1 := "Running"
+// 		polardbClustersDs, err := polardb.GetClusters(ctx, &polardb.GetClustersArgs{
+// 			DescriptionRegex: &opt0,
+// 			Status:           &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_default, err := polardb.GetDatabases(ctx, &polardb.GetDatabasesArgs{
+// 			DbClusterId: polardbClustersDs.Clusters[0].Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("ends", _default.Databases[0].DbName)
+// 		return nil
+// 	})
+// }
+// ```
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
 	var rv GetDatabasesResult
 	err := ctx.Invoke("alicloud:polardb/getDatabases:getDatabases", args, &rv, opts...)

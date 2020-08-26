@@ -42,7 +42,6 @@ namespace Pulumi.AliCloud.Dns
         ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of instance IDs. 
+        /// A list of instance IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>

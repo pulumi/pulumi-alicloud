@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -57,7 +55,7 @@ export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetProductsArgs {
     /**
-     * The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
+     * The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
      */
     readonly categoryId?: string;
     /**

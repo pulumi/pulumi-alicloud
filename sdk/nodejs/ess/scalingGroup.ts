@@ -72,7 +72,7 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly onDemandBaseCapacity!: pulumi.Output<number>;
     /**
-     * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
+     * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
      */
     public readonly onDemandPercentageAboveBaseCapacity!: pulumi.Output<number>;
     /**
@@ -92,7 +92,7 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly spotInstancePools!: pulumi.Output<number>;
     /**
-     * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
+     * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
      */
     public readonly spotInstanceRemedy!: pulumi.Output<boolean>;
     /**
@@ -212,7 +212,7 @@ export interface ScalingGroupState {
      */
     readonly onDemandBaseCapacity?: pulumi.Input<number>;
     /**
-     * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
+     * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
      */
     readonly onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
     /**
@@ -232,7 +232,7 @@ export interface ScalingGroupState {
      */
     readonly spotInstancePools?: pulumi.Input<number>;
     /**
-     * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
+     * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
      */
     readonly spotInstanceRemedy?: pulumi.Input<boolean>;
     /**
@@ -291,7 +291,7 @@ export interface ScalingGroupArgs {
      */
     readonly onDemandBaseCapacity?: pulumi.Input<number>;
     /**
-     * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
+     * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
      */
     readonly onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
     /**
@@ -311,7 +311,7 @@ export interface ScalingGroupArgs {
      */
     readonly spotInstancePools?: pulumi.Input<number>;
     /**
-     * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
+     * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
      */
     readonly spotInstanceRemedy?: pulumi.Input<boolean>;
     /**

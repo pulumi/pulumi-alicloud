@@ -26,7 +26,6 @@ import (
 //
 // > **NOTE:** Available in 1.54.0+
 //
-//
 // ## Block servers
 //
 // The servers mapping supports the following:

@@ -8,6 +8,30 @@ import (
 )
 
 // This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		sampleDs, err := slb.GetListeners(ctx, &slb.GetListenersArgs{
+// 			LoadBalancerId: alicloud_slb.Sample_slb.Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstSlbListenerProtocol", sampleDs.SlbListeners[0].Protocol)
+// 		return nil
+// 	})
+// }
+// ```
 func GetListeners(ctx *pulumi.Context, args *GetListenersArgs, opts ...pulumi.InvokeOption) (*GetListenersResult, error) {
 	var rv GetListenersResult
 	err := ctx.Invoke("alicloud:slb/getListeners:getListeners", args, &rv, opts...)

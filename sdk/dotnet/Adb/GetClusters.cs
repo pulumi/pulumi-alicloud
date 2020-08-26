@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.Adb
         ///     public Output&lt;string&gt; FirstAdbClusterId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -62,7 +61,7 @@ namespace Pulumi.AliCloud.Adb
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of ADB cluster IDs. 
+        /// A list of ADB cluster IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -102,7 +101,7 @@ namespace Pulumi.AliCloud.Adb
         public readonly ImmutableArray<Outputs.GetClustersClusterResult> Clusters;
         public readonly string? DescriptionRegex;
         /// <summary>
-        /// A list of ADB cluster descriptions. 
+        /// A list of ADB cluster descriptions.
         /// </summary>
         public readonly ImmutableArray<string> Descriptions;
         /// <summary>
@@ -110,7 +109,7 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of ADB cluster IDs. 
+        /// A list of ADB cluster IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;

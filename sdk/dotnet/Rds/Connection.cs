@@ -17,8 +17,6 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;

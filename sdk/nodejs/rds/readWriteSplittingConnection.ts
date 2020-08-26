@@ -9,8 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -58,6 +56,8 @@ import * as utilities from "../utilities";
  *     instanceId: defaultInstance.id,
  * }, { dependsOn: [defaultReadOnlyInstance] });
  * ```
+ *
+ * > **NOTE:** Resource `alicloud.rds.ReadWriteSplittingConnection` should be created after `alicloud.rds.ReadOnlyInstance`, so the `dependsOn` statement is necessary.
  */
 export class ReadWriteSplittingConnection extends pulumi.CustomResource {
     /**
@@ -96,7 +96,7 @@ export class ReadWriteSplittingConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
-     * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution. 
+     * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
      */
     public readonly distributionType!: pulumi.Output<string>;
     /**
@@ -104,7 +104,7 @@ export class ReadWriteSplittingConnection extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.  
+     * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
      */
     public readonly maxDelayTime!: pulumi.Output<number>;
     /**
@@ -112,7 +112,7 @@ export class ReadWriteSplittingConnection extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number>;
     /**
-     * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom. 
+     * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
      */
     public readonly weight!: pulumi.Output<{[key: string]: any} | undefined>;
 
@@ -175,7 +175,7 @@ export interface ReadWriteSplittingConnectionState {
      */
     readonly connectionString?: pulumi.Input<string>;
     /**
-     * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution. 
+     * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
      */
     readonly distributionType?: pulumi.Input<string>;
     /**
@@ -183,7 +183,7 @@ export interface ReadWriteSplittingConnectionState {
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
-     * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.  
+     * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
      */
     readonly maxDelayTime?: pulumi.Input<number>;
     /**
@@ -191,7 +191,7 @@ export interface ReadWriteSplittingConnectionState {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom. 
+     * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
      */
     readonly weight?: pulumi.Input<{[key: string]: any}>;
 }
@@ -205,7 +205,7 @@ export interface ReadWriteSplittingConnectionArgs {
      */
     readonly connectionPrefix?: pulumi.Input<string>;
     /**
-     * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution. 
+     * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
      */
     readonly distributionType: pulumi.Input<string>;
     /**
@@ -213,7 +213,7 @@ export interface ReadWriteSplittingConnectionArgs {
      */
     readonly instanceId: pulumi.Input<string>;
     /**
-     * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.  
+     * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
      */
     readonly maxDelayTime?: pulumi.Input<number>;
     /**
@@ -221,7 +221,7 @@ export interface ReadWriteSplittingConnectionArgs {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom. 
+     * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
      */
     readonly weight?: pulumi.Input<{[key: string]: any}>;
 }

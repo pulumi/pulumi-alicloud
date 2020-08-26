@@ -14,24 +14,24 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class GetImageCachesCachEventResult
     {
         /// <summary>
-        /// Number of events.   
+        /// Number of events.
         /// </summary>
         public readonly int Count;
         /// <summary>
-        /// Start time.   
+        /// Start time.
         /// </summary>
         public readonly string FirstTimestamp;
         /// <summary>
-        /// End time.   
+        /// End time.
         /// </summary>
         public readonly string LastTimestamp;
         public readonly string Message;
         /// <summary>
-        /// The name of event.   
+        /// The name of event.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The type of event.  
+        /// The type of event.
         /// </summary>
         public readonly string Type;
 

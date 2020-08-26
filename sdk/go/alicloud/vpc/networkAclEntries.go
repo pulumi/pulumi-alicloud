@@ -17,6 +17,93 @@ import (
 // > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
 //
 // > **NOTE:** Using this resource need to open a whitelist.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "VSwitch"
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetworkAcl, err := vpc.NewNetworkAcl(ctx, "defaultNetworkAcl", &vpc.NetworkAclArgs{
+// 			VpcId: defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpc.NewNetworkAclAttachment(ctx, "defaultNetworkAclAttachment", &vpc.NetworkAclAttachmentArgs{
+// 			NetworkAclId: defaultNetworkAcl.ID(),
+// 			Resources: vpc.NetworkAclAttachmentResourceArray{
+// 				&vpc.NetworkAclAttachmentResourceArgs{
+// 					ResourceId:   defaultSwitch.ID(),
+// 					ResourceType: pulumi.String("VSwitch"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpc.NewNetworkAclEntries(ctx, "defaultNetworkAclEntries", &vpc.NetworkAclEntriesArgs{
+// 			Egresses: vpc.NetworkAclEntriesEgressArray{
+// 				&vpc.NetworkAclEntriesEgressArgs{
+// 					Description:       pulumi.String(name),
+// 					DestinationCidrIp: pulumi.String("0.0.0.0/32"),
+// 					EntryType:         pulumi.String("custom"),
+// 					Name:              pulumi.String(name),
+// 					Policy:            pulumi.String("accept"),
+// 					Port:              pulumi.String("-1/-1"),
+// 					Protocol:          pulumi.String("all"),
+// 				},
+// 			},
+// 			Ingresses: vpc.NetworkAclEntriesIngressArray{
+// 				&vpc.NetworkAclEntriesIngressArgs{
+// 					Description:  pulumi.String(name),
+// 					EntryType:    pulumi.String("custom"),
+// 					Name:         pulumi.String(name),
+// 					Policy:       pulumi.String("accept"),
+// 					Port:         pulumi.String("-1/-1"),
+// 					Protocol:     pulumi.String("all"),
+// 					SourceCidrIp: pulumi.String("0.0.0.0/32"),
+// 				},
+// 			},
+// 			NetworkAclId: defaultNetworkAcl.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type NetworkAclEntries struct {
 	pulumi.CustomResourceState
 

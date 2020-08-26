@@ -14,11 +14,9 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
     /// 
-    /// &gt; **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs. 
+    /// &gt; **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

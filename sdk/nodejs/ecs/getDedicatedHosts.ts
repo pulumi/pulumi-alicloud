@@ -8,12 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
- *  
+ *
  * > **NOTE:** Available in v1.91.0+.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -123,7 +121,7 @@ export interface GetDedicatedHostsResult {
      */
     readonly id: string;
     /**
-     * A list of ECS Dedicated Host ids. 
+     * A list of ECS Dedicated Host ids.
      */
     readonly ids: string[];
     readonly nameRegex?: string;

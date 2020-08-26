@@ -65,7 +65,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly metricName!: pulumi.Output<string>;
     /**
-     * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
+     * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
      */
     public readonly metricType!: pulumi.Output<string | undefined>;
     /**
@@ -81,7 +81,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly scalingGroupId!: pulumi.Output<string>;
     /**
-     * The state of specified alarm.  
+     * The state of specified alarm.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -198,7 +198,7 @@ export interface AlarmState {
      */
     readonly metricName?: pulumi.Input<string>;
     /**
-     * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
+     * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
      */
     readonly metricType?: pulumi.Input<string>;
     /**
@@ -214,7 +214,7 @@ export interface AlarmState {
      */
     readonly scalingGroupId?: pulumi.Input<string>;
     /**
-     * The state of specified alarm.  
+     * The state of specified alarm.
      */
     readonly state?: pulumi.Input<string>;
     /**
@@ -264,7 +264,7 @@ export interface AlarmArgs {
      */
     readonly metricName: pulumi.Input<string>;
     /**
-     * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
+     * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
      */
     readonly metricType?: pulumi.Input<string>;
     /**

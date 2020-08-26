@@ -15,3 +15,5 @@ from .get_zones import *
 from .instance import *
 from .read_only_instance import *
 from .read_write_splitting_connection import *
+from ._inputs import *
+from . import outputs

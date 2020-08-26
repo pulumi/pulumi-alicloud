@@ -13,6 +13,37 @@ import (
 // Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).
 //
 // > **NOTE:** Available in 1.92.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oos"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := oos.NewTemplate(ctx, "example", &oos.TemplateArgs{
+// 			Content: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"FormatVersion\": \"OOS-2019-06-01\",\n", "    \"Description\": \"Update Describe instances of given status\",\n", "    \"Parameters\":{\n", "      \"Status\":{\n", "        \"Type\": \"String\",\n", "        \"Description\": \"(Required) The status of the Ecs instance.\"\n", "      }\n", "    },\n", "    \"Tasks\": [\n", "      {\n", "        \"Properties\" :{\n", "          \"Parameters\":{\n", "            \"Status\": \"{{ Status }}\"\n", "          },\n", "          \"API\": \"DescribeInstances\",\n", "          \"Service\": \"Ecs\"\n", "        },\n", "        \"Name\": \"foo\",\n", "        \"Action\": \"ACS::ExecuteApi\"\n", "      }]\n", "  }\n", "  \n")),
+// 			Tags: pulumi.StringMap{
+// 				"Created": pulumi.String("TF"),
+// 				"For":     pulumi.String("acceptance Test"),
+// 			},
+// 			TemplateName: pulumi.String("test-name"),
+// 			VersionName:  pulumi.String("test"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Template struct {
 	pulumi.CustomResourceState
 

@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -74,7 +72,7 @@ export interface GetCertificatesResult {
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of cert names. 
+     * A list of cert names.
      */
     readonly names: string[];
     readonly outputFile?: string;

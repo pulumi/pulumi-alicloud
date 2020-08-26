@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.Nas
         ///     public Output&lt;string&gt; AlicloudNasMountTargetsId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -8,6 +8,31 @@ import (
 )
 
 // This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/pvtz"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := alicloud_pvtz_zone.Basic.Zone_name
+// 		pvtzZonesDs, err := pvtz.GetZones(ctx, &pvtz.GetZonesArgs{
+// 			Keyword: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstZoneId", pvtzZonesDs.Zones[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	var rv GetZonesResult
 	err := ctx.Invoke("alicloud:pvtz/getZones:getZones", args, &rv, opts...)

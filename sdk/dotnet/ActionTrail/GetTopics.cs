@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     public Output&lt;string&gt; FirstTopicName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public string InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// A regex string to filter results by the topic name. 
+        /// A regex string to filter results by the topic name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }

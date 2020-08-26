@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     cidrBlock: "172.16.0.0/12",
  * });
  * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("default", {
- *     description: "networkAcl",
+ *     description: "network_acl",
  *     vpcId: defaultNetwork.id,
  * });
  * ```

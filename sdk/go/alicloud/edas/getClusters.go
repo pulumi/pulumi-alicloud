@@ -10,6 +10,35 @@ import (
 // This data source provides a list of EDAS clusters in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.82.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/edas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "clusters.txt"
+// 		_, err := edas.GetClusters(ctx, &edas.GetClustersArgs{
+// 			LogicalRegionId: "cn-shenzhen:xxx",
+// 			Ids: []string{
+// 				"addfs-dfsasd",
+// 			},
+// 			OutputFile: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstClusterName", data.Alicloud_alikafka_consumer_groups.Clusters.Clusters[0].Cluster_name)
+// 		return nil
+// 	})
+// }
+// ```
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	var rv GetClustersResult
 	err := ctx.Invoke("alicloud:edas/getClusters:getClusters", args, &rv, opts...)

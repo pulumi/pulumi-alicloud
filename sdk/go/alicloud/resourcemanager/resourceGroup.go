@@ -14,6 +14,31 @@ import (
 // For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
 //
 // > **NOTE:** Available in v1.82.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/resourcemanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := resourcemanager.NewResourceGroup(ctx, "example", &resourcemanager.ResourceGroupArgs{
+// 			DisplayName: pulumi.String("testrd"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 
@@ -21,15 +46,13 @@ type ResourceGroup struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The time when the resource group was created.
 	// * `regionStatuses` -The status of the resource group in all regions.
-	// - `regionId` - The region ID.
-	// - `status` - The status of the regional resource group.
 	CreateDate pulumi.StringOutput `pulumi:"createDate"`
 	// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
 	Name           pulumi.StringOutput                  `pulumi:"name"`
 	RegionStatuses ResourceGroupRegionStatusArrayOutput `pulumi:"regionStatuses"`
-	// The status of the resource group.
+	// The status of the regional resource group.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -68,15 +91,13 @@ type resourceGroupState struct {
 	AccountId *string `pulumi:"accountId"`
 	// The time when the resource group was created.
 	// * `regionStatuses` -The status of the resource group in all regions.
-	// - `regionId` - The region ID.
-	// - `status` - The status of the regional resource group.
 	CreateDate *string `pulumi:"createDate"`
 	// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
 	DisplayName *string `pulumi:"displayName"`
 	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
 	Name           *string                     `pulumi:"name"`
 	RegionStatuses []ResourceGroupRegionStatus `pulumi:"regionStatuses"`
-	// The status of the resource group.
+	// The status of the regional resource group.
 	Status *string `pulumi:"status"`
 }
 
@@ -85,15 +106,13 @@ type ResourceGroupState struct {
 	AccountId pulumi.StringPtrInput
 	// The time when the resource group was created.
 	// * `regionStatuses` -The status of the resource group in all regions.
-	// - `regionId` - The region ID.
-	// - `status` - The status of the regional resource group.
 	CreateDate pulumi.StringPtrInput
 	// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
 	DisplayName pulumi.StringPtrInput
 	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
 	Name           pulumi.StringPtrInput
 	RegionStatuses ResourceGroupRegionStatusArrayInput
-	// The status of the resource group.
+	// The status of the regional resource group.
 	Status pulumi.StringPtrInput
 }
 

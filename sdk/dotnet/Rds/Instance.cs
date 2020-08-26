@@ -15,7 +15,6 @@ namespace Pulumi.AliCloud.Rds
     /// databases.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a RDS MySQL instance
     /// 
     /// ```csharp
@@ -153,7 +152,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
-        /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
+        /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         /// </summary>
         [Output("monitoringPeriod")]
         public Output<int> MonitoringPeriod { get; private set; } = null!;
@@ -195,7 +194,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
+        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
         /// </summary>
         [Output("securityIpMode")]
         public Output<string?> SecurityIpMode { get; private set; } = null!;
@@ -253,7 +252,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
         /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
+        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -390,7 +389,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
-        /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
+        /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         /// </summary>
         [Input("monitoringPeriod")]
         public Input<int>? MonitoringPeriod { get; set; }
@@ -438,7 +437,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
+        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
         /// </summary>
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }
@@ -502,7 +501,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
         /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
+        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -606,7 +605,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
-        /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
+        /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         /// </summary>
         [Input("monitoringPeriod")]
         public Input<int>? MonitoringPeriod { get; set; }
@@ -660,7 +659,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
+        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
         /// </summary>
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }
@@ -730,7 +729,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
         /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
+        /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

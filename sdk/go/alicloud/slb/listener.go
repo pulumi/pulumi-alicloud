@@ -21,7 +21,77 @@ import (
 // * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
 // * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
 //
+// ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultLoadBalancer, err := slb.NewLoadBalancer(ctx, "defaultLoadBalancer", &slb.LoadBalancerArgs{
+// 			Internet:           pulumi.Bool(true),
+// 			InternetChargeType: pulumi.String("PayByTraffic"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultAcl, err := slb.NewAcl(ctx, "defaultAcl", &slb.AclArgs{
+// 			EntryLists: slb.AclEntryListArray{
+// 				&slb.AclEntryListArgs{
+// 					Comment: pulumi.String("first"),
+// 					Entry:   pulumi.String("10.10.10.0/24"),
+// 				},
+// 				&slb.AclEntryListArgs{
+// 					Comment: pulumi.String("second"),
+// 					Entry:   pulumi.String("168.10.10.0/24"),
+// 				},
+// 			},
+// 			IpVersion: pulumi.String(ipVersion),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = slb.NewListener(ctx, "defaultListener", &slb.ListenerArgs{
+// 			AclId:                  defaultAcl.ID(),
+// 			AclStatus:              pulumi.String("on"),
+// 			AclType:                pulumi.String("white"),
+// 			BackendPort:            pulumi.Int(80),
+// 			Bandwidth:              pulumi.Int(10),
+// 			Cookie:                 pulumi.String("testslblistenercookie"),
+// 			CookieTimeout:          pulumi.Int(86400),
+// 			FrontendPort:           pulumi.Int(80),
+// 			HealthCheck:            pulumi.String("on"),
+// 			HealthCheckConnectPort: pulumi.Int(20),
+// 			HealthCheckDomain:      pulumi.String("ali.com"),
+// 			HealthCheckHttpCode:    pulumi.String("http_2xx,http_3xx"),
+// 			HealthCheckInterval:    pulumi.Int(5),
+// 			HealthCheckTimeout:     pulumi.Int(8),
+// 			HealthCheckUri:         pulumi.String("/cons"),
+// 			HealthyThreshold:       pulumi.Int(8),
+// 			IdleTimeout:            pulumi.Int(30),
+// 			LoadBalancerId:         defaultLoadBalancer.ID(),
+// 			Protocol:               pulumi.String("http"),
+// 			RequestTimeout:         pulumi.Int(80),
+// 			StickySession:          pulumi.String("on"),
+// 			StickySessionType:      pulumi.String("insert"),
+// 			UnhealthyThreshold:     pulumi.Int(8),
+// 			XForwardedFor: &slb.ListenerXForwardedForArgs{
+// 				RetriveSlbId: pulumi.Bool(true),
+// 				RetriveSlbIp: pulumi.Bool(true),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Listener fields and protocol mapping
 //
 // load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:

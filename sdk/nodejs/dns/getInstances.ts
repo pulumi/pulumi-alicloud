@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -61,7 +59,7 @@ export interface GetInstancesResult {
      */
     readonly id: string;
     /**
-     * A list of instance IDs. 
+     * A list of instance IDs.
      */
     readonly ids: string[];
     /**

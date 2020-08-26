@@ -17,6 +17,34 @@ namespace Pulumi.AliCloud.Oos
         /// &gt; **NOTE:** Available in v1.93.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Oos.GetExecutions.InvokeAsync(new AliCloud.Oos.GetExecutionsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "execution_id",
+        ///             },
+        ///             Status = "Success",
+        ///             TemplateName = "name",
+        ///         }));
+        ///         this.FirstExecutionId = example.Apply(example =&gt; example.Executions[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstExecutionId")]
+        ///     public Output&lt;string&gt; FirstExecutionId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetExecutionsResult> InvokeAsync(GetExecutionsArgs? args = null, InvokeOptions? options = null)

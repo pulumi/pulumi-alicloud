@@ -47,7 +47,6 @@ namespace Pulumi.AliCloud.KVStore
         ///     public Output&lt;string&gt; FirstKvstoreInstanceClass { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -104,7 +103,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? PackageType { get; set; }
 
         /// <summary>
-        /// It has been deprecated from 1.68.0. 
+        /// It has been deprecated from 1.68.0.
         /// </summary>
         [Input("performanceType")]
         public string? PerformanceType { get; set; }
@@ -125,7 +124,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? SortedBy { get; set; }
 
         /// <summary>
-        /// It has been deprecated from 1.68.0. 
+        /// It has been deprecated from 1.68.0.
         /// </summary>
         [Input("storageType")]
         public string? StorageType { get; set; }

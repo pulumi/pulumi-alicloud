@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.Nas
         ///     public Output&lt;string&gt; AlicloudNasAccessGroupsId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.Nas
         public string? Description { get; set; }
 
         /// <summary>
-        /// A regex string to filter AccessGroups by name. 
+        /// A regex string to filter AccessGroups by name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }

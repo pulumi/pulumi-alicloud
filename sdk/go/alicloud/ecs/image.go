@@ -18,6 +18,37 @@ import (
 // > **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
 //
 // > **NOTE:**  Available in 1.64.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.NewImage(ctx, "_default", &ecs.ImageArgs{
+// 			Architecture:    pulumi.String("x86_64"),
+// 			Description:     pulumi.String("test-image"),
+// 			ImageName:       pulumi.String("test-image"),
+// 			InstanceId:      pulumi.String("i-bp1g6zv0ce8oghu7k***"),
+// 			Platform:        pulumi.String("CentOS"),
+// 			ResourceGroupId: pulumi.String("rg-bp67acfmxazb4ph***"),
+// 			Tags: pulumi.StringMap{
+// 				"FinanceDept": pulumi.String("FinanceDeptJoshua"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Image struct {
 	pulumi.CustomResourceState
 

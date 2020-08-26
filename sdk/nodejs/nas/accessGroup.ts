@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,20 @@ import * as utilities from "../utilities";
  * const foo = new alicloud.nas.AccessGroup("foo", {
  *     description: "test_AccessG",
  *     type: "Classic",
+ * });
+ * ```
+ *
+ * Example after v1.92.0
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = new alicloud.nas.AccessGroup("foo", {
+ *     accessGroupName: "CreateAccessGroup",
+ *     accessGroupType: "Vpc",
+ *     description: "test_AccessG",
+ *     fileSystemType: "extreme",
  * });
  * ```
  */

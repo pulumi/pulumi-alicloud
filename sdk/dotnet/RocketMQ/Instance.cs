@@ -12,15 +12,15 @@ namespace Pulumi.AliCloud.RocketMQ
     /// <summary>
     /// Provides an ONS instance resource.
     /// 
-    /// For more information about how to use it, see [RocketMQ Instance Management API](https://www.alibabacloud.com/help/doc-detail/106354.html). 
+    /// For more information about how to use it, see [RocketMQ Instance Management API](https://www.alibabacloud.com/help/doc-detail/106354.html).
     /// 
-    /// &gt; **NOTE:** The number of instances in the same region cannot exceed 8. At present, the resource does not support region "mq-internet-access" and "ap-southeast-5". 
+    /// &gt; **NOTE:** The number of instances in the same region cannot exceed 8. At present, the resource does not support region "mq-internet-access" and "ap-southeast-5".
     /// 
     /// &gt; **NOTE:** Available in 1.51.0+
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;

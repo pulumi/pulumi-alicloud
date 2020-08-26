@@ -64,11 +64,11 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly cpuPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Enable login to the node through SSH. default: false 
+     * Enable login to the node through SSH. default: false
      */
     public readonly enableSsh!: pulumi.Output<boolean | undefined>;
     /**
-     * Exclude autoscaler nodes from `workerNodes`. default: false 
+     * Exclude autoscaler nodes from `workerNodes`. default: false
      */
     public readonly excludeAutoscalerNodes!: pulumi.Output<boolean | undefined>;
     /**
@@ -76,7 +76,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
-     * Install cloud monitor agent on ECS. default: true 
+     * Install cloud monitor agent on ECS. default: true
      */
     public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
     /**
@@ -157,7 +157,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly nodeCidrMask!: pulumi.Output<number | undefined>;
     /**
-     * Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+     * Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
      */
     public readonly nodeNameMode!: pulumi.Output<string | undefined>;
     /**
@@ -165,7 +165,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * [Flannel Specific] The CIDR block for the pod network when using Flannel. 
+     * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
     public readonly podCidr!: pulumi.Output<string | undefined>;
     /**
@@ -476,11 +476,11 @@ export interface KubernetesState {
      */
     readonly cpuPolicy?: pulumi.Input<string>;
     /**
-     * Enable login to the node through SSH. default: false 
+     * Enable login to the node through SSH. default: false
      */
     readonly enableSsh?: pulumi.Input<boolean>;
     /**
-     * Exclude autoscaler nodes from `workerNodes`. default: false 
+     * Exclude autoscaler nodes from `workerNodes`. default: false
      */
     readonly excludeAutoscalerNodes?: pulumi.Input<boolean>;
     /**
@@ -488,7 +488,7 @@ export interface KubernetesState {
      */
     readonly imageId?: pulumi.Input<string>;
     /**
-     * Install cloud monitor agent on ECS. default: true 
+     * Install cloud monitor agent on ECS. default: true
      */
     readonly installCloudMonitor?: pulumi.Input<boolean>;
     /**
@@ -569,7 +569,7 @@ export interface KubernetesState {
      */
     readonly nodeCidrMask?: pulumi.Input<number>;
     /**
-     * Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+     * Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
      */
     readonly nodeNameMode?: pulumi.Input<string>;
     /**
@@ -577,7 +577,7 @@ export interface KubernetesState {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * [Flannel Specific] The CIDR block for the pod network when using Flannel. 
+     * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
     readonly podCidr?: pulumi.Input<string>;
     /**
@@ -718,11 +718,11 @@ export interface KubernetesArgs {
      */
     readonly cpuPolicy?: pulumi.Input<string>;
     /**
-     * Enable login to the node through SSH. default: false 
+     * Enable login to the node through SSH. default: false
      */
     readonly enableSsh?: pulumi.Input<boolean>;
     /**
-     * Exclude autoscaler nodes from `workerNodes`. default: false 
+     * Exclude autoscaler nodes from `workerNodes`. default: false
      */
     readonly excludeAutoscalerNodes?: pulumi.Input<boolean>;
     /**
@@ -730,7 +730,7 @@ export interface KubernetesArgs {
      */
     readonly imageId?: pulumi.Input<string>;
     /**
-     * Install cloud monitor agent on ECS. default: true 
+     * Install cloud monitor agent on ECS. default: true
      */
     readonly installCloudMonitor?: pulumi.Input<boolean>;
     /**
@@ -803,7 +803,7 @@ export interface KubernetesArgs {
      */
     readonly nodeCidrMask?: pulumi.Input<number>;
     /**
-     * Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+     * Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
      */
     readonly nodeNameMode?: pulumi.Input<string>;
     /**
@@ -811,7 +811,7 @@ export interface KubernetesArgs {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * [Flannel Specific] The CIDR block for the pod network when using Flannel. 
+     * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
     readonly podCidr?: pulumi.Input<string>;
     /**

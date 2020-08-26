@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,7 +83,7 @@ export class DdosBgpInstance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
+     * Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -168,7 +168,7 @@ export interface DdosBgpInstanceState {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
+     * Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -202,7 +202,7 @@ export interface DdosBgpInstanceArgs {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
+     * Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
      */
     readonly type?: pulumi.Input<string>;
 }

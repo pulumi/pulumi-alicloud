@@ -47,7 +47,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

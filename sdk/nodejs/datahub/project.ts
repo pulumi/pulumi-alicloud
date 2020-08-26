@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * The project is the basic unit of resource management in Datahub Service and is used to isolate and control resources. It contains a set of Topics. You can manage the datahub sources of an application by using projects. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+ *
+ * > **NOTE:** Currently Datahub service only can be supported in the regions: cn-beijing, cn-hangzhou, cn-shanghai, cn-shenzhen,  ap-southeast-1.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.datahub.Project("example", {
+ *     comment: "created by terraform",
+ * });
+ * ```
+ */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra

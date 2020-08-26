@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
     public sealed class BucketServerSideEncryptionRuleGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
+        /// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
         /// </summary>
         [Input("kmsMasterKeyId")]
         public Input<string>? KmsMasterKeyId { get; set; }

@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -49,7 +47,7 @@ export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pro
 export interface GetTopicsArgs {
     readonly instanceId: string;
     /**
-     * A regex string to filter results by the topic name. 
+     * A regex string to filter results by the topic name.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;

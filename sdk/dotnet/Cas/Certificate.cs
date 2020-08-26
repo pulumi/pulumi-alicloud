@@ -20,8 +20,6 @@ namespace Pulumi.AliCloud.Cas
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using System.IO;
     /// using Pulumi;

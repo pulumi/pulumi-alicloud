@@ -39,7 +39,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     public Output&lt;string&gt; FirstRouterInterfaceId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

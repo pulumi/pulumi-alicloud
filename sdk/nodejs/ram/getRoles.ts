@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -50,7 +48,7 @@ export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetRolesArgs {
     /**
-     * - A list of ram role IDs. 
+     * - A list of ram role IDs.
      */
     readonly ids?: string[];
     /**
@@ -77,12 +75,12 @@ export interface GetRolesResult {
      */
     readonly id: string;
     /**
-     * A list of ram role IDs. 
+     * A list of ram role IDs.
      */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of ram role names. 
+     * A list of ram role names.
      */
     readonly names: string[];
     readonly outputFile?: string;

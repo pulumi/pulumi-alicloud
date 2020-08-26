@@ -10,6 +10,37 @@ import (
 // This data source provides the RDS instance classes resource available info of Alibaba Cloud.
 //
 // > **NOTE:** Available in v1.46.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rds"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "MySQL"
+// 		opt1 := "5.6"
+// 		opt2 := "PostPaid"
+// 		opt3 := "./classes.txt"
+// 		resources, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+// 			Engine:             &opt0,
+// 			EngineVersion:      &opt1,
+// 			InstanceChargeType: &opt2,
+// 			OutputFile:         &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstDbInstanceClass", resources.InstanceClasses[0].InstanceClass)
+// 		return nil
+// 	})
+// }
+// ```
 func GetInstanceClasses(ctx *pulumi.Context, args *GetInstanceClassesArgs, opts ...pulumi.InvokeOption) (*GetInstanceClassesResult, error) {
 	var rv GetInstanceClassesResult
 	err := ctx.Invoke("alicloud:rds/getInstanceClasses:getInstanceClasses", args, &rv, opts...)

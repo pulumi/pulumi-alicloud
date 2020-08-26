@@ -20,8 +20,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -30,7 +28,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "slbrulebasicconfig";
  *
  * const defaultZones = pulumi.output(alicloud.getZones({
- *     availableDiskCategory: "cloudEfficiency",
+ *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
  * const defaultInstanceTypes = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
@@ -63,7 +61,7 @@ import * as utilities from "../utilities";
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 10,
  *     securityGroups: defaultSecurityGroup.id,
- *     systemDiskCategory: "cloudEfficiency",
+ *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: defaultSwitch.id,
  * });
  * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("default", {
@@ -93,7 +91,7 @@ import * as utilities from "../utilities";
  *     healthCheck: "on",
  *     healthCheckConnectPort: 80,
  *     healthCheckDomain: "test",
- *     healthCheckHttpCode: "http2xx",
+ *     healthCheckHttpCode: "http_2xx",
  *     healthCheckInterval: 10,
  *     healthCheckTimeout: 30,
  *     healthCheckUri: "/test",
@@ -213,7 +211,7 @@ export class Rule extends pulumi.CustomResource {
      */
     public readonly serverGroupId!: pulumi.Output<string>;
     /**
-     * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+     * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
      */
     public readonly stickySession!: pulumi.Output<string | undefined>;
     /**
@@ -389,7 +387,7 @@ export interface RuleState {
      */
     readonly serverGroupId?: pulumi.Input<string>;
     /**
-     * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+     * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
      */
     readonly stickySession?: pulumi.Input<string>;
     /**
@@ -487,7 +485,7 @@ export interface RuleArgs {
      */
     readonly serverGroupId: pulumi.Input<string>;
     /**
-     * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+     * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
      */
     readonly stickySession?: pulumi.Input<string>;
     /**

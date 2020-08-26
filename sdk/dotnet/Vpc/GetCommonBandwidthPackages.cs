@@ -45,7 +45,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// ## Public ip addresses Block

@@ -36,7 +36,6 @@ namespace Pulumi.AliCloud
         ///     public Output&lt;string&gt; CurrentUserArn { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

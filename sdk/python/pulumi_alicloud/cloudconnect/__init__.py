@@ -7,3 +7,4 @@ from .get_networks import *
 from .network import *
 from .network_attachment import *
 from .network_grant import *
+from . import outputs

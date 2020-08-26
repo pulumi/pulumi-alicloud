@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.Ess
         ///     public Output&lt;string&gt; FirstLifecycleHook { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

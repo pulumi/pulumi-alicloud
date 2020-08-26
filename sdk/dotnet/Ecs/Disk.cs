@@ -9,6 +9,40 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    /// <summary>
+    /// Provides a ECS disk resource.
+    /// 
+    /// &gt; **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new ECS disk.
+    ///         var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new AliCloud.Ecs.DiskArgs
+    ///         {
+    ///             AvailabilityZone = "cn-beijing-b",
+    ///             Category = "cloud_efficiency",
+    ///             Description = "Hello ecs disk.",
+    ///             Encrypted = true,
+    ///             KmsKeyId = "2a6767f0-a16c-4679-a60f-13bf*****",
+    ///             Size = 30,
+    ///             Tags = 
+    ///             {
+    ///                 { "Name", "TerraformTest" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Disk : Pulumi.CustomResource
     {
         /// <summary>

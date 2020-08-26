@@ -15,9 +15,6 @@ namespace Pulumi.AliCloud.Dms
         /// This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.88.0+
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEnterpriseInstancesResult> InvokeAsync(GetEnterpriseInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseInstancesResult>("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args ?? new GetEnterpriseInstancesArgs(), options.WithVersion());

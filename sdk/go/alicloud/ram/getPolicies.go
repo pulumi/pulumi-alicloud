@@ -8,6 +8,37 @@ import (
 )
 
 // This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ram"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "group1"
+// 		opt1 := "policies.txt"
+// 		opt2 := "System"
+// 		opt3 := "user1"
+// 		policiesDs, err := ram.GetPolicies(ctx, &ram.GetPoliciesArgs{
+// 			GroupName:  &opt0,
+// 			OutputFile: &opt1,
+// 			Type:       &opt2,
+// 			UserName:   &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstPolicyName", policiesDs.Policies[0].Name)
+// 		return nil
+// 	})
+// }
+// ```
 func GetPolicies(ctx *pulumi.Context, args *GetPoliciesArgs, opts ...pulumi.InvokeOption) (*GetPoliciesResult, error) {
 	var rv GetPoliciesResult
 	err := ctx.Invoke("alicloud:ram/getPolicies:getPolicies", args, &rv, opts...)

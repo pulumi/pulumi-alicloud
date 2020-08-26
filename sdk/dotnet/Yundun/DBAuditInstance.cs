@@ -9,6 +9,39 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Yundun
 {
+    /// <summary>
+    /// Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
+    /// 
+    /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+    /// 
+    /// &gt; **NOTE:** Available in 1.62.0+ .
+    /// 
+    /// &gt; **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Yundun.DBAuditInstance("default", new AliCloud.Yundun.DBAuditInstanceArgs
+    ///         {
+    ///             Description = "Terraform-test",
+    ///             Period = 1,
+    ///             PlanCode = "alpha.professional",
+    ///             VswitchId = "v-testVswitch",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class DBAuditInstance : Pulumi.CustomResource
     {
         /// <summary>
@@ -24,7 +57,7 @@ namespace Pulumi.AliCloud.Yundun
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
+        /// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         /// </summary>
         [Output("planCode")]
         public Output<string> PlanCode { get; private set; } = null!;
@@ -106,7 +139,7 @@ namespace Pulumi.AliCloud.Yundun
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
+        /// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         /// </summary>
         [Input("planCode", required: true)]
         public Input<string> PlanCode { get; set; } = null!;
@@ -155,7 +188,7 @@ namespace Pulumi.AliCloud.Yundun
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
+        /// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         /// </summary>
         [Input("planCode")]
         public Input<string>? PlanCode { get; set; }

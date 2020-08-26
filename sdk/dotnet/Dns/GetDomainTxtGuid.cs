@@ -43,7 +43,6 @@ namespace Pulumi.AliCloud.Dns
         ///     public Output&lt;string&gt; Value { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

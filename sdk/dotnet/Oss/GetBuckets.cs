@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.Oss
         ///     public Output&lt;string&gt; FirstOssBucketName { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.Oss
         public readonly string Id;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of bucket names. 
+        /// A list of bucket names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

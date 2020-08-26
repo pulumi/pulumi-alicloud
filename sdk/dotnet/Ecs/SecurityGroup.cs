@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC ID.	
+        /// The VPC ID.
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The VPC ID.	
+        /// The VPC ID.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The VPC ID.	
+        /// The VPC ID.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

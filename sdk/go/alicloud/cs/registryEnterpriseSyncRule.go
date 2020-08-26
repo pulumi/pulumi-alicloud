@@ -17,6 +17,38 @@ import (
 // > **NOTE:** Available in v1.90.0+.
 //
 // > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cs.NewRegistryEnterpriseSyncRule(ctx, "_default", &cs.RegistryEnterpriseSyncRuleArgs{
+// 			InstanceId:          pulumi.String("my-source-instance-id"),
+// 			NamespaceName:       pulumi.String("my-source-namespace"),
+// 			RepoName:            pulumi.String("my-source-repo"),
+// 			TagFilter:           pulumi.String(".*"),
+// 			TargetInstanceId:    pulumi.String("my-target-instance-id"),
+// 			TargetNamespaceName: pulumi.String("my-target-namespace"),
+// 			TargetRegionId:      pulumi.String("cn-hangzhou"),
+// 			TargetRepoName:      pulumi.String("my-target-repo"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type RegistryEnterpriseSyncRule struct {
 	pulumi.CustomResourceState
 

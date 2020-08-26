@@ -9,8 +9,40 @@ import (
 
 // This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
-//
 // > **NOTE:** If one zone is sold out, it will not be exported.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "cloud_ssd"
+// 		opt1 := "ecs.n4.large"
+// 		zonesDs, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableDiskCategory: &opt0,
+// 			AvailableInstanceType: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
+// 			AvailabilityZone: pulumi.String(zonesDs.Zones[0].Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	var rv GetZonesResult
 	err := ctx.Invoke("alicloud:index/getZones:getZones", args, &rv, opts...)

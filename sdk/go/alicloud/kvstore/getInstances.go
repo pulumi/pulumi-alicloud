@@ -49,7 +49,7 @@ type GetInstancesResult struct {
 	InstanceClass *string  `pulumi:"instanceClass"`
 	// (Optional) Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	// * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
-	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+	//   For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 	InstanceType *string `pulumi:"instanceType"`
 	// A list of RKV instances. Its every element contains the following attributes:
 	Instances  []GetInstancesInstance `pulumi:"instances"`

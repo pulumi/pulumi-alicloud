@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +32,37 @@ namespace Pulumi.AliCloud.Log
     ///         {
     ///             Aliuid = "12345678",
     ///             DisplayName = "tf-audit-test",
+    ///             VariableMap = 
+    ///             {
+    ///                 { "actiontrail_enabled", "true" },
+    ///                 { "actiontrail_ttl", "180" },
+    ///                 { "oss_access_enabled", "true" },
+    ///                 { "oss_access_ttl", "180" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// Multiple accounts Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.Log.Audit("example", new AliCloud.Log.AuditArgs
+    ///         {
+    ///             Aliuid = "12345678",
+    ///             DisplayName = "tf-audit-test",
+    ///             MultiAccounts = 
+    ///             {
+    ///                 "123456789123",
+    ///                 "12345678912300123",
+    ///             },
     ///             VariableMap = 
     ///             {
     ///                 { "actiontrail_enabled", "true" },

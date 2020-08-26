@@ -20,3 +20,5 @@ from .registry_enterprise_repo import *
 from .registry_enterprise_sync_rule import *
 from .serverless_kubernetes import *
 from .swarm import *
+from ._inputs import *
+from . import outputs

@@ -15,8 +15,6 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;

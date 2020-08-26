@@ -14,8 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -102,7 +100,7 @@ export interface GetInstanceTypesResult {
      */
     readonly id: string;
     /**
-     * A list of emr instance types IDs. 
+     * A list of emr instance types IDs.
      */
     readonly ids: string[];
     readonly instanceChargeType: string;

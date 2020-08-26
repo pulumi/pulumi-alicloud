@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.Mns
         ///     public Output&lt;string&gt; FirstTopicId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

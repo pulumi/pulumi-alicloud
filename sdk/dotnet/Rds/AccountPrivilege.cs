@@ -9,6 +9,75 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Rds
 {
+    /// <summary>
+    /// Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "Rds";
+    ///         var name = config.Get("name") ?? "dbaccountprivilegebasic";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
+    ///         {
+    ///             Engine = "MySQL",
+    ///             EngineVersion = "5.6",
+    ///             InstanceName = name,
+    ///             InstanceStorage = 10,
+    ///             InstanceType = "rds.mysql.s1.small",
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var db = new List&lt;AliCloud.Rds.Database&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             db.Add(new AliCloud.Rds.Database($"db-{range.Value}", new AliCloud.Rds.DatabaseArgs
+    ///             {
+    ///                 Description = "from terraform",
+    ///                 InstanceId = instance.Id,
+    ///             }));
+    ///         }
+    ///         var account = new AliCloud.Rds.Account("account", new AliCloud.Rds.AccountArgs
+    ///         {
+    ///             Description = "from terraform",
+    ///             InstanceId = instance.Id,
+    ///             Password = "Test12345",
+    ///         });
+    ///         var privilege = new AliCloud.Rds.AccountPrivilege("privilege", new AliCloud.Rds.AccountPrivilegeArgs
+    ///         {
+    ///             AccountName = account.Name,
+    ///             DbNames = db.Select(__item =&gt; __item.Name).ToList(),
+    ///             InstanceId = instance.Id,
+    ///             Privilege = "ReadOnly",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class AccountPrivilege : Pulumi.CustomResource
     {
         /// <summary>

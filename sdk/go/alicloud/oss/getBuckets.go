@@ -8,6 +8,31 @@ import (
 )
 
 // This data source provides the OSS buckets of the current Alibaba Cloud user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "sample_oss_bucket"
+// 		ossBucketsDs, err := oss.GetBuckets(ctx, &oss.GetBucketsArgs{
+// 			NameRegex: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstOssBucketName", ossBucketsDs.Buckets[0].Name)
+// 		return nil
+// 	})
+// }
+// ```
 func GetBuckets(ctx *pulumi.Context, args *GetBucketsArgs, opts ...pulumi.InvokeOption) (*GetBucketsResult, error) {
 	var rv GetBucketsResult
 	err := ctx.Invoke("alicloud:oss/getBuckets:getBuckets", args, &rv, opts...)

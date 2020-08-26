@@ -37,7 +37,7 @@ export class VpcAccess extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The name of the vpc authorization. 
+     * The name of the vpc authorization.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -45,7 +45,7 @@ export class VpcAccess extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number>;
     /**
-     * The vpc id of the vpc authorization. 
+     * The vpc id of the vpc authorization.
      */
     public readonly vpcId!: pulumi.Output<string>;
 
@@ -101,7 +101,7 @@ export interface VpcAccessState {
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
-     * The name of the vpc authorization. 
+     * The name of the vpc authorization.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -109,7 +109,7 @@ export interface VpcAccessState {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * The vpc id of the vpc authorization. 
+     * The vpc id of the vpc authorization.
      */
     readonly vpcId?: pulumi.Input<string>;
 }
@@ -123,7 +123,7 @@ export interface VpcAccessArgs {
      */
     readonly instanceId: pulumi.Input<string>;
     /**
-     * The name of the vpc authorization. 
+     * The name of the vpc authorization.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -131,7 +131,7 @@ export interface VpcAccessArgs {
      */
     readonly port: pulumi.Input<number>;
     /**
-     * The vpc id of the vpc authorization. 
+     * The vpc id of the vpc authorization.
      */
     readonly vpcId: pulumi.Input<string>;
 }

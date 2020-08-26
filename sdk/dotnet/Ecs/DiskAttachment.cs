@@ -9,6 +9,60 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    /// <summary>
+    /// Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ecsSg = new AliCloud.Ecs.SecurityGroup("ecsSg", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             Description = "New security group",
+    ///         });
+    ///         var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new AliCloud.Ecs.DiskArgs
+    ///         {
+    ///             AvailabilityZone = "cn-beijing-a",
+    ///             Size = 50,
+    ///             Tags = 
+    ///             {
+    ///                 { "Name", "TerraformTest-disk" },
+    ///             },
+    ///         });
+    ///         var ecsInstance = new AliCloud.Ecs.Instance("ecsInstance", new AliCloud.Ecs.InstanceArgs
+    ///         {
+    ///             AvailabilityZone = "cn-beijing-a",
+    ///             ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+    ///             InstanceName = "Hello",
+    ///             InstanceType = "ecs.n4.small",
+    ///             InternetChargeType = "PayByBandwidth",
+    ///             SecurityGroups = 
+    ///             {
+    ///                 ecsSg.Id,
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 { "Name", "TerraformTest-instance" },
+    ///             },
+    ///         });
+    ///         var ecsDiskAtt = new AliCloud.Ecs.DiskAttachment("ecsDiskAtt", new AliCloud.Ecs.DiskAttachmentArgs
+    ///         {
+    ///             DiskId = ecsDisk.Id,
+    ///             InstanceId = ecsInstance.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class DiskAttachment : Pulumi.CustomResource
     {
         /// <summary>

@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +21,7 @@ import * as utilities from "../utilities";
  *     outputFile: "web_access.json",
  * }, { async: true }));
  * // In conjunction with a VPC
- * const primaryVpcDs = new alicloud.vpc.Network("primaryVpcDs", {});
+ * const primaryVpcDs = new alicloud.vpc.Network("primary_vpc_ds", {});
  * const primarySecGroupsDs = primaryVpcDs.id.apply(id => alicloud.ecs.getSecurityGroups({
  *     vpcId: id,
  * }, { async: true }));
@@ -69,13 +67,16 @@ export interface GetSecurityGroupsArgs {
     readonly resourceGroupId?: string;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
-     * ```
-     * data "alicloud.ecs.getSecurityGroups" "taggedSecurityGroups" {
-     * tags = {
-     * tagKey1 = "tagValue1",
-     * tagKey2 = "tagValue2"
-     * }
-     * }
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const taggedSecurityGroups = pulumi.output(alicloud.ecs.getSecurityGroups({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * }, { async: true }));
      * ```
      */
     readonly tags?: {[key: string]: any};

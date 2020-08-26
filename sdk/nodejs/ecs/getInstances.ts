@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const instancesDs = pulumi.output(alicloud.ecs.getInstances({
- *     nameRegex: "webServer",
+ *     nameRegex: "web_server",
  *     status: "Running",
  * }, { async: true }));
  *
@@ -85,13 +83,16 @@ export interface GetInstancesArgs {
     readonly status?: string;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
-     * ```
-     * data "alicloud.ecs.getInstances" "taggedInstances" {
-     * tags = {
-     * tagKey1 = "tagValue1",
-     * tagKey2 = "tagValue2"
-     * }
-     * }
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const taggedInstances = pulumi.output(alicloud.ecs.getInstances({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * }, { async: true }));
      * ```
      */
     readonly tags?: {[key: string]: any};
@@ -131,7 +132,7 @@ export interface GetInstancesResult {
     readonly instances: outputs.ecs.GetInstancesInstance[];
     readonly nameRegex?: string;
     /**
-     * A list of instances names. 
+     * A list of instances names.
      */
     readonly names: string[];
     readonly outputFile?: string;

@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -49,11 +47,11 @@ export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions
 export interface GetProtocolsArgs {
     readonly outputFile?: string;
     /**
-     * The file system type. Valid Values: Performance and Capacity.  
+     * The file system type. Valid Values: Performance and Capacity.
      */
     readonly type: string;
     /**
-     * String to filter results by zone id. 
+     * String to filter results by zone id.
      */
     readonly zoneId?: string;
 }

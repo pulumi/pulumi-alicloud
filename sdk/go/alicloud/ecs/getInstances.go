@@ -8,6 +8,34 @@ import (
 )
 
 // The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "web_server"
+// 		opt1 := "Running"
+// 		instancesDs, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+// 			NameRegex: &opt0,
+// 			Status:    &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstInstanceId", instancesDs.Instances[0].Id)
+// 		ctx.Export("instanceIds", instancesDs.Ids)
+// 		return nil
+// 	})
+// }
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
 	err := ctx.Invoke("alicloud:ecs/getInstances:getInstances", args, &rv, opts...)
@@ -35,12 +63,27 @@ type GetInstancesArgs struct {
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// ```
-	// data "ecs.getInstances" "taggedInstances" {
-	// tags = {
-	// tagKey1 = "tagValue1",
-	// tagKey2 = "tagValue2"
-	// }
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
 	// }
 	// ```
 	Tags map[string]interface{} `pulumi:"tags"`

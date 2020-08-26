@@ -44,8 +44,7 @@ type GetCertificatesCertificate struct {
 // GetCertificatesCertificateInput is an input type that accepts GetCertificatesCertificateArgs and GetCertificatesCertificateOutput values.
 // You can construct a concrete instance of `GetCertificatesCertificateInput` via:
 //
-// 		 GetCertificatesCertificateArgs{...}
-//
+//          GetCertificatesCertificateArgs{...}
 type GetCertificatesCertificateInput interface {
 	pulumi.Input
 
@@ -99,8 +98,7 @@ func (i GetCertificatesCertificateArgs) ToGetCertificatesCertificateOutputWithCo
 // GetCertificatesCertificateArrayInput is an input type that accepts GetCertificatesCertificateArray and GetCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetCertificatesCertificateArrayInput` via:
 //
-// 		 GetCertificatesCertificateArray{ GetCertificatesCertificateArgs{...} }
-//
+//          GetCertificatesCertificateArray{ GetCertificatesCertificateArgs{...} }
 type GetCertificatesCertificateArrayInput interface {
 	pulumi.Input
 

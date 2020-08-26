@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -48,7 +46,7 @@ export function getClusters(args: GetClustersArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetClustersArgs {
     /**
-     * An ids string to filter results by the cluster id. 
+     * An ids string to filter results by the cluster id.
      */
     readonly ids?: string[];
     /**
@@ -56,7 +54,7 @@ export interface GetClustersArgs {
      */
     readonly logicalRegionId: string;
     /**
-     * A regex string to filter results by the cluster name. 
+     * A regex string to filter results by the cluster name.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;

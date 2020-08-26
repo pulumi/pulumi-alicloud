@@ -6,6 +6,52 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Provides an OTS table resource.
+ *
+ * > **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
+ * you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraformtest";
+ *
+ * const foo = new alicloud.ots.Instance("foo", {
+ *     accessedBy: "Any",
+ *     description: name,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "acceptance test",
+ *     },
+ * });
+ * const basic = new alicloud.ots.Table("basic", {
+ *     deviationCellVersionInSec: "1",
+ *     instanceName: foo.name,
+ *     maxVersion: 1,
+ *     primaryKeys: [
+ *         {
+ *             name: "pk1",
+ *             type: "Integer",
+ *         },
+ *         {
+ *             name: "pk2",
+ *             type: "String",
+ *         },
+ *         {
+ *             name: "pk3",
+ *             type: "Binary",
+ *         },
+ *     ],
+ *     tableName: name,
+ *     timeToLive: -1,
+ * });
+ * ```
+ */
 export class Table extends pulumi.CustomResource {
     /**
      * Get an existing Table resource's state with the given name, ID, and optional extra

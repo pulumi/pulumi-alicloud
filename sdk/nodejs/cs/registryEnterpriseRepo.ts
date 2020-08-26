@@ -15,18 +15,18 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const myNamespace = new alicloud.cs.RegistryEnterpriseNamespace("my-namespace", {
+ * const my_namespace = new alicloud.cs.RegistryEnterpriseNamespace("my-namespace", {
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  *     instanceId: "cri-xxx",
  * });
- * const myRepo = new alicloud.cs.RegistryEnterpriseRepo("my-repo", {
+ * const my_repo = new alicloud.cs.RegistryEnterpriseRepo("my-repo", {
  *     detail: "this is a public repo",
  *     instanceId: my_namespace.instanceId,
  *     namespace: my_namespace.name,

@@ -14,10 +14,9 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// &gt; **NOTE:** Available in 1.82.0+
     /// 
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.Edas
         public Output<string> AppId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the instance group that you want to create. 
+        /// The name of the instance group that you want to create.
         /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
@@ -110,7 +109,7 @@ namespace Pulumi.AliCloud.Edas
         public Input<string> AppId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the instance group that you want to create. 
+        /// The name of the instance group that you want to create.
         /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
@@ -129,7 +128,7 @@ namespace Pulumi.AliCloud.Edas
         public Input<string>? AppId { get; set; }
 
         /// <summary>
-        /// The name of the instance group that you want to create. 
+        /// The name of the instance group that you want to create.
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }

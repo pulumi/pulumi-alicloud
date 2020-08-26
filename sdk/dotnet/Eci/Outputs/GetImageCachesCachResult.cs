@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class GetImageCachesCachResult
     {
         /// <summary>
-        /// The id of container group. 
+        /// The id of container group.
         /// </summary>
         public readonly string ContainerGroupId;
         /// <summary>

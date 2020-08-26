@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.Cassandra
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

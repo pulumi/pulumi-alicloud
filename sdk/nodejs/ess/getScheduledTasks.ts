@@ -7,21 +7,19 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides available scheduled task resources. 
+ * This data source provides available scheduled task resources.
  *
  * > **NOTE:** Available in 1.72.0+
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ds = pulumi.output(alicloud.ess.getScheduledTasks({
- *     nameRegex: "scheduledTaskName",
- *     scheduledTaskId: "scheduledTaskId",
+ *     nameRegex: "scheduled_task_name",
+ *     scheduledTaskId: "scheduled_task_id",
  * }, { async: true }));
  *
  * export const firstScheduledTask = ds.tasks[0].id;

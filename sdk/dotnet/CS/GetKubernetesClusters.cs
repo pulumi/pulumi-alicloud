@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.CS
         ///     public Output&lt;string&gt; Output { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

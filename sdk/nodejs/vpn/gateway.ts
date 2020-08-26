@@ -63,7 +63,7 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+     * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
@@ -177,7 +177,7 @@ export interface GatewayState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+     * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
      */
     readonly period?: pulumi.Input<number>;
     /**
@@ -226,7 +226,7 @@ export interface GatewayArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+     * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
      */
     readonly period?: pulumi.Input<number>;
     /**

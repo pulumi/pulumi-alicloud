@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Edas
         public Output<int?> BuildPackId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter. 
+        /// The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.Edas
         public Input<int>? BuildPackId { get; set; }
 
         /// <summary>
-        /// The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter. 
+        /// The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.Edas
         public Input<int>? BuildPackId { get; set; }
 
         /// <summary>
-        /// The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter. 
+        /// The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }

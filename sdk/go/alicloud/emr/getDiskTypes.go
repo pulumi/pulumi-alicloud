@@ -11,6 +11,35 @@ import (
 // system disk types available in Alibaba Cloud account when create a emr cluster.
 //
 // > **NOTE:** Available in 1.60.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/emr"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "cn-huhehaote-a"
+// 		_default, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+// 			ClusterType:         "HADOOP",
+// 			DestinationResource: "DataDisk",
+// 			InstanceChargeType:  "PostPaid",
+// 			InstanceType:        "ecs.g5.xlarge",
+// 			ZoneId:              &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("dataDiskType", _default.Types[0].Value)
+// 		return nil
+// 	})
+// }
+// ```
 func GetDiskTypes(ctx *pulumi.Context, args *GetDiskTypesArgs, opts ...pulumi.InvokeOption) (*GetDiskTypesResult, error) {
 	var rv GetDiskTypesResult
 	err := ctx.Invoke("alicloud:emr/getDiskTypes:getDiskTypes", args, &rv, opts...)

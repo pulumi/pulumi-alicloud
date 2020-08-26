@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MarketPlace.Outputs
     public sealed class GetProductsProductResult
     {
         /// <summary>
-        /// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
+        /// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
         /// </summary>
         public readonly int CategoryId;
         /// <summary>

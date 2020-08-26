@@ -10,11 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Provides an RDS readonly instance resource. 
+    /// Provides an RDS readonly instance resource.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

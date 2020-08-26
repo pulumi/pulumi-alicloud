@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -52,7 +50,7 @@ export interface GetSaslUsersArgs {
      */
     readonly instanceId: string;
     /**
-     * A regex string to filter results by the username. 
+     * A regex string to filter results by the username.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;

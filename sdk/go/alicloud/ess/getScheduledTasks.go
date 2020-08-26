@@ -10,6 +10,33 @@ import (
 // This data source provides available scheduled task resources.
 //
 // > **NOTE:** Available in 1.72.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ess"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "scheduled_task_name"
+// 		opt1 := "scheduled_task_id"
+// 		ds, err := ess.GetScheduledTasks(ctx, &ess.GetScheduledTasksArgs{
+// 			NameRegex:       &opt0,
+// 			ScheduledTaskId: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstScheduledTask", ds.Tasks[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetScheduledTasks(ctx *pulumi.Context, args *GetScheduledTasksArgs, opts ...pulumi.InvokeOption) (*GetScheduledTasksResult, error) {
 	var rv GetScheduledTasksResult
 	err := ctx.Invoke("alicloud:ess/getScheduledTasks:getScheduledTasks", args, &rv, opts...)

@@ -6,6 +6,70 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Log alert is a unit of log service, which is used to monitor and alert the user's logstore status information.
+ * Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
+ *
+ * > **NOTE:** Available in 1.78.0
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleProject = new alicloud.log.Project("example", {
+ *     description: "create by terraform",
+ * });
+ * const exampleStore = new alicloud.log.Store("example", {
+ *     appendMeta: true,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     project: exampleProject.name,
+ *     retentionPeriod: 3650,
+ *     shardCount: 3,
+ * });
+ * const exampleAlert = new alicloud.log.Alert("example", {
+ *     alertDisplayname: "tf-test-alert-displayname",
+ *     alertName: "tf-test-alert",
+ *     condition: "count> 100",
+ *     dashboard: "tf-test-dashboard",
+ *     notificationLists: [
+ *         {
+ *             content: "alert content",
+ *             mobileLists: [
+ *                 "12345678",
+ *                 "87654321",
+ *             ],
+ *             type: "SMS",
+ *         },
+ *         {
+ *             content: "alert content",
+ *             emailLists: [
+ *                 "aliyun@alibaba-inc.com",
+ *                 "tf-test@123.com",
+ *             ],
+ *             type: "Email",
+ *         },
+ *         {
+ *             content: "alert content",
+ *             serviceUri: "www.aliyun.com",
+ *             type: "DingTalk",
+ *         },
+ *     ],
+ *     projectName: exampleProject.name,
+ *     queryLists: [{
+ *         chartTitle: "chart_title",
+ *         end: "20s",
+ *         logstore: "tf-test-logstore",
+ *         query: "* AND aliyun",
+ *         start: "-60s",
+ *     }],
+ * });
+ * ```
+ */
 export class Alert extends pulumi.CustomResource {
     /**
      * Get an existing Alert resource's state with the given name, ID, and optional extra

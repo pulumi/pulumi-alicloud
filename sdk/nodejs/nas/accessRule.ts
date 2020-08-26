@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     priority: 2,
  *     rwAccessType: "RDWR",
  *     sourceCidrIp: "168.1.1.0/16",
- *     userAccessType: "noSquash",
+ *     userAccessType: "no_squash",
  * });
  * ```
  */

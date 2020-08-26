@@ -45,7 +45,6 @@ namespace Pulumi.AliCloud.Kms
         ///     public Output&lt;string&gt; FirstSecretId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -110,7 +109,7 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of Kms Secret ids. The value is same as KMS secret_name. 
+        /// A list of Kms Secret ids. The value is same as KMS secret_name.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;

@@ -43,7 +43,6 @@ namespace Pulumi.AliCloud.Kms
         ///     public Output&lt;string&gt; FirstKeyId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -93,7 +92,7 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of kms aliases IDs. The value is same as KMS alias_name. 
+        /// A list of kms aliases IDs. The value is same as KMS alias_name.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;

@@ -6,3 +6,4 @@
 from .get_product import *
 from .get_products import *
 from .order import *
+from . import outputs

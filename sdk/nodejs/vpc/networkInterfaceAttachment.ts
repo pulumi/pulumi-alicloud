@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Bacis Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *         instanceType: instanceType.instanceTypes[0].id,
  *         internetMaxBandwidthOut: 10,
  *         securityGroups: [group.id],
- *         systemDiskCategory: "cloudEfficiency",
+ *         systemDiskCategory: "cloud_efficiency",
  *         vswitchId: vswitch.id,
  *     }));
  * }

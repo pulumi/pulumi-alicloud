@@ -15,8 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -77,7 +75,7 @@ export interface GetNetworksResult {
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of CCN instances names. 
+     * A list of CCN instances names.
      */
     readonly names: string[];
     /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ResourceManager
 {
     /// <summary>
-    /// Provides a Resource Manager Policy Attachment resource to attaches a policy to an object. After you attach a policy to an object, the object has the operation permissions on the current resource group or the resources under the current account. 
+    /// Provides a Resource Manager Policy Attachment resource to attaches a policy to an object. After you attach a policy to an object, the object has the operation permissions on the current resource group or the resources under the current account.
     /// For information about Resource Manager Policy Attachment and how to use it, see [How to authorize and manage resource groups](https://www.alibabacloud.com/help/en/doc-detail/94490.htm).
     /// 
     /// &gt; **NOTE:** Available in v1.93.0+.
@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> PrincipalName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. 
+        /// The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         /// </summary>
         [Output("principalType")]
         public Output<string> PrincipalType { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string> PrincipalName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. 
+        /// The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         /// </summary>
         [Input("principalType", required: true)]
         public Input<string> PrincipalType { get; set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? PrincipalName { get; set; }
 
         /// <summary>
-        /// The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. 
+        /// The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         /// </summary>
         [Input("principalType")]
         public Input<string>? PrincipalType { get; set; }

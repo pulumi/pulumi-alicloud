@@ -17,6 +17,75 @@ import (
 // This resource amis to attach one logtail configure to a machine group.
 //
 // > **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/log"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		testProject, err := log.NewProject(ctx, "testProject", &log.ProjectArgs{
+// 			Description: pulumi.String("create by terraform"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		testStore, err := log.NewStore(ctx, "testStore", &log.StoreArgs{
+// 			AppendMeta:         pulumi.Bool(true),
+// 			AutoSplit:          pulumi.Bool(true),
+// 			MaxSplitShardCount: pulumi.Int(60),
+// 			Project:            testProject.Name,
+// 			RetentionPeriod:    pulumi.Int(3650),
+// 			ShardCount:         pulumi.Int(3),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		testMachineGroup, err := log.NewMachineGroup(ctx, "testMachineGroup", &log.MachineGroupArgs{
+// 			IdentifyLists: pulumi.StringArray{
+// 				pulumi.String("10.0.0.1"),
+// 				pulumi.String("10.0.0.3"),
+// 				pulumi.String("10.0.0.2"),
+// 			},
+// 			Project: testProject.Name,
+// 			Topic:   pulumi.String("terraform"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		testLogTailConfig, err := log.NewLogTailConfig(ctx, "testLogTailConfig", &log.LogTailConfigArgs{
+// 			InputDetail: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v", "  	{\n", "		\"logPath\": \"/logPath\",\n", "		\"filePattern\": \"access.log\",\n", "		\"logType\": \"json_log\",\n", "		\"topicFormat\": \"default\",\n", "		\"discardUnmatch\": false,\n", "		\"enableRawLog\": true,\n", "		\"fileEncoding\": \"gbk\",\n", "		\"maxDepth\": 10\n", "	}\n", "	\n")),
+// 			InputType:  pulumi.String("file"),
+// 			LogSample:  pulumi.String("test"),
+// 			Logstore:   testStore.Name,
+// 			OutputType: pulumi.String("LogService"),
+// 			Project:    testProject.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = log.NewLogTailAttachment(ctx, "testLogTailAttachment", &log.LogTailAttachmentArgs{
+// 			LogtailConfigName: testLogTailConfig.Name,
+// 			MachineGroupName:  testMachineGroup.Name,
+// 			Project:           testProject.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type LogTailAttachment struct {
 	pulumi.CustomResourceState
 

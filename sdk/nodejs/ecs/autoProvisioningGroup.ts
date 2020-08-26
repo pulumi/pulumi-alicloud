@@ -11,20 +11,17 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.79.0+
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "autoProvisioningGroup";
+ * const name = config.get("name") || "auto_provisioning_group";
  *
  * const defaultZones = pulumi.output(alicloud.getZones({
- *     availableDiskCategory: "cloudEfficiency",
+ *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
@@ -59,7 +56,6 @@ import * as utilities from "../utilities";
  *     totalTargetCapacity: "4",
  * });
  * ```
- *
  * ## Block config
  *
  * The config mapping supports the following:

@@ -10,6 +10,34 @@ import (
 // This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.56.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/actiontrail"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "alikafkaTopicName"
+// 		opt1 := "topics.txt"
+// 		topicsDs, err := actiontrail.GetTopics(ctx, &actiontrail.GetTopicsArgs{
+// 			InstanceId: "xxx",
+// 			NameRegex:  &opt0,
+// 			OutputFile: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstTopicName", topicsDs.Topics[0].Topic)
+// 		return nil
+// 	})
+// }
+// ```
 func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOption) (*GetTopicsResult, error) {
 	var rv GetTopicsResult
 	err := ctx.Invoke("alicloud:actiontrail/getTopics:getTopics", args, &rv, opts...)

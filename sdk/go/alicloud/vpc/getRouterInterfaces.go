@@ -9,6 +9,33 @@ import (
 
 // This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
 // that connect VPCs together.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "^testenv"
+// 		opt1 := "Active"
+// 		routerInterfacesDs, err := vpc.GetRouterInterfaces(ctx, &vpc.GetRouterInterfacesArgs{
+// 			NameRegex: &opt0,
+// 			Status:    &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstRouterInterfaceId", routerInterfacesDs.Interfaces[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetRouterInterfaces(ctx *pulumi.Context, args *GetRouterInterfacesArgs, opts ...pulumi.InvokeOption) (*GetRouterInterfacesResult, error) {
 	var rv GetRouterInterfacesResult
 	err := ctx.Invoke("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args, &rv, opts...)

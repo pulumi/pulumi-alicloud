@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.Mns
         ///     public Output&lt;string&gt; FirstQueueId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -72,7 +71,7 @@ namespace Pulumi.AliCloud.Mns
         public readonly string Id;
         public readonly string? NamePrefix;
         /// <summary>
-        /// A list of queue names. 
+        /// A list of queue names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

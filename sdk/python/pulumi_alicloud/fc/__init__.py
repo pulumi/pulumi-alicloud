@@ -10,3 +10,5 @@ from .get_triggers import *
 from .get_zones import *
 from .service import *
 from .trigger import *
+from ._inputs import *
+from . import outputs

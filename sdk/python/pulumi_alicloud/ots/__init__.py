@@ -6,3 +6,5 @@
 from .instance import *
 from .instance_attachment import *
 from .table import *
+from ._inputs import *
+from . import outputs

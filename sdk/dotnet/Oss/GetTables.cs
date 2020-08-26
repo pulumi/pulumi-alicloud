@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.Oss
         ///     public Output&lt;string&gt; FirstTableId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

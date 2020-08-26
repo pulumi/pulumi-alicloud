@@ -22,7 +22,6 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? NodeId;
         /// <summary>
-        /// 
         /// - Custom storage space; value range: [10, 1,000]
         /// - 10-GB increments. Unit: GB.
         /// </summary>

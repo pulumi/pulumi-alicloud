@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     public Output&lt;string&gt; FirstDedicatedHostsId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -154,7 +153,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of ECS Dedicated Host ids. 
+        /// A list of ECS Dedicated Host ids.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;

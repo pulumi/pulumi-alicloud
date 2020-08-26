@@ -10,6 +10,34 @@ import (
 // This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.66.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/actiontrail"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "username"
+// 		opt1 := "saslUsers.txt"
+// 		saslUsersDs, err := actiontrail.GetSaslUsers(ctx, &actiontrail.GetSaslUsersArgs{
+// 			InstanceId: "xxx",
+// 			NameRegex:  &opt0,
+// 			OutputFile: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstSaslUsername", saslUsersDs.Users[0].Username)
+// 		return nil
+// 	})
+// }
+// ```
 func GetSaslUsers(ctx *pulumi.Context, args *GetSaslUsersArgs, opts ...pulumi.InvokeOption) (*GetSaslUsersResult, error) {
 	var rv GetSaslUsersResult
 	err := ctx.Invoke("alicloud:actiontrail/getSaslUsers:getSaslUsers", args, &rv, opts...)

@@ -11,6 +11,65 @@ import (
 )
 
 // This resource will help you to bind a VPC to an OTS instance.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooInstance, err := ots.NewInstance(ctx, "fooInstance", &ots.InstanceArgs{
+// 			AccessedBy:  pulumi.String("Vpc"),
+// 			Description: pulumi.String("for table"),
+// 			Tags: pulumi.StringMap{
+// 				"Created": pulumi.String("TF"),
+// 				"For":     pulumi.String("Building table"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "VSwitch"
+// 		fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(fooZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.1.0/24"),
+// 			VpcId:            fooNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ots.NewInstanceAttachment(ctx, "fooInstanceAttachment", &ots.InstanceAttachmentArgs{
+// 			InstanceName: fooInstance.Name,
+// 			VpcName:      pulumi.String("attachment1"),
+// 			VswitchId:    fooSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type InstanceAttachment struct {
 	pulumi.CustomResourceState
 

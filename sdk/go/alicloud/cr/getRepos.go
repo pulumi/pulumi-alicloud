@@ -10,6 +10,33 @@ import (
 // This data source provides a list Container Registry repositories on Alibaba Cloud.
 //
 // > **NOTE:** Available in v1.35.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cr"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "my-repos"
+// 		opt1 := "my-repo-json"
+// 		myRepos, err := cr.GetRepos(ctx, &cr.GetReposArgs{
+// 			NameRegex:  &opt0,
+// 			OutputFile: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("output", myRepos.Repos)
+// 		return nil
+// 	})
+// }
+// ```
 func GetRepos(ctx *pulumi.Context, args *GetReposArgs, opts ...pulumi.InvokeOption) (*GetReposResult, error) {
 	var rv GetReposResult
 	err := ctx.Invoke("alicloud:cr/getRepos:getRepos", args, &rv, opts...)

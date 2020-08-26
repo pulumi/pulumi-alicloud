@@ -45,7 +45,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     public Output&lt;string&gt; Ends { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -57,7 +56,7 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class GetEndpointsArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// PolarDB cluster ID. 
+        /// PolarDB cluster ID.
         /// </summary>
         [Input("dbClusterId", required: true)]
         public string DbClusterId { get; set; } = null!;

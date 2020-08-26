@@ -15,9 +15,6 @@ namespace Pulumi.AliCloud.MarketPlace
         /// This data source provides the Market product items of Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in 1.64.0+
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProductsResult> InvokeAsync(GetProductsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:marketplace/getProducts:getProducts", args ?? new GetProductsArgs(), options.WithVersion());
@@ -27,7 +24,7 @@ namespace Pulumi.AliCloud.MarketPlace
     public sealed class GetProductsArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
+        /// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
         /// </summary>
         [Input("categoryId")]
         public string? CategoryId { get; set; }

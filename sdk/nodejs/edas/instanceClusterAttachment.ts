@@ -9,10 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.82.0+
  *
- *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

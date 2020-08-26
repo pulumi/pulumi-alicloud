@@ -13,15 +13,13 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.ResourceManagerPolicyAttachments({ async: true }));
+ * const example = pulumi.output(alicloud.resourcemanager.getPolicyAttachments({ async: true }));
  *
- * export const firstAttachmentId = example.attachments.0.id;
+ * export const firstAttachmentId = example.attachments[0].id;
  * ```
  */
 export function getPolicyAttachments(args?: GetPolicyAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyAttachmentsResult> {
@@ -66,7 +64,7 @@ export interface GetPolicyAttachmentsArgs {
      */
     readonly principalName?: string;
     /**
-     * The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role. 
+     * The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
      */
     readonly principalType?: string;
     /**

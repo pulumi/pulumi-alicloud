@@ -7,13 +7,13 @@ import * as utilities from "../utilities";
 /**
  * Provides an ONS topic resource.
  *
- * For more information about how to use it, see [RocketMQ Topic Management API](https://www.alibabacloud.com/help/doc-detail/29591.html). 
+ * For more information about how to use it, see [RocketMQ Topic Management API](https://www.alibabacloud.com/help/doc-detail/29591.html).
  *
  * > **NOTE:** Available in 1.53.0+
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,12 +24,12 @@ import * as utilities from "../utilities";
  * const topic = config.get("topic") || "onsTopicName";
  *
  * const defaultInstance = new alicloud.rocketmq.Instance("default", {
- *     remark: "defaultOnsInstanceRemark",
+ *     remark: "default_ons_instance_remark",
  * });
  * const defaultTopic = new alicloud.rocketmq.Topic("default", {
  *     instanceId: defaultInstance.id,
  *     messageType: 0,
- *     remark: "dafaultOnsTopicRemark",
+ *     remark: "dafault_ons_topic_remark",
  *     topic: topic,
  * });
  * ```

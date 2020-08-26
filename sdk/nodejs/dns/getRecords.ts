@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -58,7 +56,7 @@ export interface GetRecordsArgs {
      */
     readonly domainName: string;
     /**
-     * Host record regex. 
+     * Host record regex.
      */
     readonly hostRecordRegex?: string;
     /**
@@ -70,7 +68,7 @@ export interface GetRecordsArgs {
      */
     readonly isLocked?: boolean;
     /**
-     * ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
+     * ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
      */
     readonly line?: string;
     readonly outputFile?: string;
@@ -83,7 +81,7 @@ export interface GetRecordsArgs {
      */
     readonly type?: string;
     /**
-     * Host record value regex. 
+     * Host record value regex.
      */
     readonly valueRegex?: string;
 }
@@ -102,12 +100,12 @@ export interface GetRecordsResult {
      */
     readonly id: string;
     /**
-     * A list of record IDs. 
+     * A list of record IDs.
      */
     readonly ids: string[];
     readonly isLocked?: boolean;
     /**
-     * ISP line of the record. 
+     * ISP line of the record.
      */
     readonly line?: string;
     readonly outputFile?: string;

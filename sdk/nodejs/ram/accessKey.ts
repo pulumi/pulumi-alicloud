@@ -7,11 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM User access key resource.
  *
- * > **NOTE:**  You should set the `secretFile` if you want to get the access key.  
+ * > **NOTE:**  You should set the `secretFile` if you want to get the access key.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,7 +18,7 @@ import * as utilities from "../utilities";
  * // Create a new RAM access key for user.
  * const user = new alicloud.ram.User("user", {
  *     comments: "yoyoyo",
- *     displayName: "userDisplayName",
+ *     displayName: "user_display_name",
  *     email: "hello.uuu@aaa.com",
  *     force: true,
  *     mobile: "86-18688888888",

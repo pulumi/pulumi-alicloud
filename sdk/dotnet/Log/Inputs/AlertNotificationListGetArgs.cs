@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         private InputList<string>? _emailLists;
 
         /// <summary>
-        /// Email address list.   
+        /// Email address list.
         /// </summary>
         public InputList<string> EmailLists
         {

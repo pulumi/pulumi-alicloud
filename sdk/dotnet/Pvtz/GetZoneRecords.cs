@@ -38,7 +38,6 @@ namespace Pulumi.AliCloud.Pvtz
         ///     public Output&lt;string&gt; FirstRecordId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

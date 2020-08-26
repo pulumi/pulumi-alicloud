@@ -15,17 +15,17 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const myNamespace = new alicloud.cr.Namespace("my-namespace", {
+ * const my_namespace = new alicloud.cr.Namespace("my-namespace", {
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
- * const myRepo = new alicloud.cr.Repo("my-repo", {
+ * const my_repo = new alicloud.cr.Repo("my-repo", {
  *     detail: "this is a public repo",
  *     namespace: my_namespace.name,
  *     repoType: "PUBLIC",

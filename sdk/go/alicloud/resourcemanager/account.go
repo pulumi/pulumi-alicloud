@@ -14,6 +14,36 @@ import (
 // For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 //
 // > **NOTE:** Available in v1.83.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/resourcemanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		f1, err := resourcemanager.NewFolder(ctx, "f1", &resourcemanager.FolderArgs{
+// 			FolderName: pulumi.String("test1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = resourcemanager.NewAccount(ctx, "example", &resourcemanager.AccountArgs{
+// 			DisplayName: pulumi.String("RDAccount"),
+// 			FolderId:    f1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Account struct {
 	pulumi.CustomResourceState
 

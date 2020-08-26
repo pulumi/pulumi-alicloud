@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const slbsDs = pulumi.output(alicloud.slb.getLoadBalancers({
- *     nameRegex: "sampleSlb",
+ *     nameRegex: "sample_slb",
  * }, { async: true }));
  *
  * export const firstSlbId = slbsDs.slbs[0].id;
@@ -83,13 +81,16 @@ export interface GetLoadBalancersArgs {
     readonly slaveAvailabilityZone?: string;
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * ```
-     * data "alicloud.slb.getLoadBalancers" "taggedInstances" {
-     * tags = {
-     * tagKey1 = "tagValue1",
-     * tagKey2 = "tagValue2"
-     * }
-     * }
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const taggedInstances = pulumi.output(alicloud.slb.getLoadBalancers({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * }, { async: true }));
      * ```
      */
     readonly tags?: {[key: string]: any};

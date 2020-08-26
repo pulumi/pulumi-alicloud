@@ -11,16 +11,14 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const fcTriggersDs = pulumi.output(alicloud.fc.getTriggers({
- *     functionName: "sampleFunction",
- *     nameRegex: "sampleFcTrigger",
- *     serviceName: "sampleService",
+ *     functionName: "sample_function",
+ *     nameRegex: "sample_fc_trigger",
+ *     serviceName: "sample_service",
  * }, { async: true }));
  *
  * export const firstFcTriggerName = fcTriggersDs.triggers[0].name;

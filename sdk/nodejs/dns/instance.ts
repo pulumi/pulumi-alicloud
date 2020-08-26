@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     period: 1,
  *     renewPeriod: 1,
  *     renewalStatus: "ManualRenewal",
- *     versionCode: "versionPersonal",
+ *     versionCode: "version_personal",
  * });
  * ```
  */

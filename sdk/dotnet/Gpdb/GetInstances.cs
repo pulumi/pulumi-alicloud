@@ -42,7 +42,6 @@ namespace Pulumi.AliCloud.Gpdb
         ///     public Output&lt;string&gt; InstanceId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

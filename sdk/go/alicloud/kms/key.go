@@ -12,6 +12,33 @@ import (
 // A kms key can help user to protect data security in the transmission process. For information about Alikms Key and how to use it, see [What is Resource Alikms Key](https://www.alibabacloud.com/help/doc-detail/28947.htm).
 //
 // > **NOTE:** Available in v1.85.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/kms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := kms.NewKey(ctx, "key", &kms.KeyArgs{
+// 			Description:         pulumi.String("Hello KMS"),
+// 			KeyState:            pulumi.String("Enabled"),
+// 			PendingWindowInDays: pulumi.Int(7),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Key struct {
 	pulumi.CustomResourceState
 

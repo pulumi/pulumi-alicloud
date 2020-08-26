@@ -20,8 +20,7 @@ type GetAclsAcl struct {
 // GetAclsAclInput is an input type that accepts GetAclsAclArgs and GetAclsAclOutput values.
 // You can construct a concrete instance of `GetAclsAclInput` via:
 //
-// 		 GetAclsAclArgs{...}
-//
+//          GetAclsAclArgs{...}
 type GetAclsAclInput interface {
 	pulumi.Input
 
@@ -51,8 +50,7 @@ func (i GetAclsAclArgs) ToGetAclsAclOutputWithContext(ctx context.Context) GetAc
 // GetAclsAclArrayInput is an input type that accepts GetAclsAclArray and GetAclsAclArrayOutput values.
 // You can construct a concrete instance of `GetAclsAclArrayInput` via:
 //
-// 		 GetAclsAclArray{ GetAclsAclArgs{...} }
-//
+//          GetAclsAclArray{ GetAclsAclArgs{...} }
 type GetAclsAclArrayInput interface {
 	pulumi.Input
 

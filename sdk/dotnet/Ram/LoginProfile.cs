@@ -12,10 +12,7 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM User Login Profile resource.
     /// 
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

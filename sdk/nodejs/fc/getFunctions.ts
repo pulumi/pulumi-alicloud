@@ -11,15 +11,13 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const functionsDs = pulumi.output(alicloud.fc.getFunctions({
- *     nameRegex: "sampleFcFunction",
- *     serviceName: "sampleService",
+ *     nameRegex: "sample_fc_function",
+ *     serviceName: "sample_service",
  * }, { async: true }));
  *
  * export const firstFcFunctionName = functionsDs.functions[0].name;

@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     public Output&lt;string&gt; FirstPolicyVersionId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

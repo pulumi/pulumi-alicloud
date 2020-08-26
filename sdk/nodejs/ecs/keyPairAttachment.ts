@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "keyPairAttachmentName";
  *
  * const defaultZones = pulumi.output(alicloud.getZones({
- *     availableDiskCategory: "cloudSsd",
+ *     availableDiskCategory: "cloud_ssd",
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
  * const type = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *         internetMaxBandwidthOut: 5,
  *         password: "Test12345",
  *         securityGroups: [group.id],
- *         systemDiskCategory: "cloudSsd",
+ *         systemDiskCategory: "cloud_ssd",
  *         vswitchId: vswitch.id,
  *     }));
  * }

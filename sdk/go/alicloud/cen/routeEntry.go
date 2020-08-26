@@ -13,6 +13,135 @@ import (
 // Provides a CEN route entry resource. Cloud Enterprise Network (CEN) supports publishing and withdrawing route entries of attached networks. You can publish a route entry of an attached VPC or VBR to a CEN instance, then other attached networks can learn the route if there is no route conflict. You can withdraw a published route entry when CEN does not need it any more.
 //
 // For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/providers"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := providers.Newalicloud(ctx, "hz", &providers.alicloudArgs{
+// 			Region: pulumi.String("cn-hangzhou"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "cloud_efficiency"
+// 		opt1 := "VSwitch"
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableDiskCategory:     &opt0,
+// 			AvailableResourceCreation: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt2 := defaultZones.Zones[0].Id
+// 		opt3 := 1
+// 		opt4 := 2
+// 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// 			AvailabilityZone: &opt2,
+// 			CpuCoreCount:     &opt3,
+// 			MemorySize:       &opt4,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt5 := true
+// 		opt6 := "^ubuntu_18.*64"
+// 		opt7 := "system"
+// 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// 			MostRecent: &opt5,
+// 			NameRegex:  &opt6,
+// 			Owners:     &opt7,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		}, pulumi.Provider("alicloud.hz"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
+// 			VpcId:            vpc.ID(),
+// 		}, pulumi.Provider("alicloud.hz"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+// 			Description: pulumi.String("foo"),
+// 			VpcId:       vpc.ID(),
+// 		}, pulumi.Provider("alicloud.hz"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+// 			ImageId:                 pulumi.String(defaultImages.Images[0].Id),
+// 			InstanceName:            pulumi.String(name),
+// 			InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// 			InternetChargeType:      pulumi.String("PayByTraffic"),
+// 			InternetMaxBandwidthOut: pulumi.Int(5),
+// 			SecurityGroups: pulumi.StringArray{
+// 				defaultSecurityGroup.ID(),
+// 			},
+// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// 			VswitchId:          defaultSwitch.ID(),
+// 		}, pulumi.Provider("alicloud.hz"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cen, err := cen.NewInstance(ctx, "cen", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewInstanceAttachment(ctx, "attach", &cen.InstanceAttachmentArgs{
+// 			ChildInstanceId:       vpc.ID(),
+// 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
+// 			InstanceId:            cen.ID(),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"alicloud_vswitch.default",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		route, err := vpc.NewRouteEntry(ctx, "route", &vpc.RouteEntryArgs{
+// 			DestinationCidrblock: pulumi.String("11.0.0.0/16"),
+// 			NexthopId:            defaultInstance.ID(),
+// 			NexthopType:          pulumi.String("Instance"),
+// 			RouteTableId:         vpc.RouteTableId,
+// 		}, pulumi.Provider("alicloud.hz"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewRouteEntry(ctx, "foo", &cen.RouteEntryArgs{
+// 			CidrBlock:    route.DestinationCidrblock,
+// 			InstanceId:   cen.ID(),
+// 			RouteTableId: vpc.RouteTableId,
+// 		}, pulumi.Provider("alicloud.hz"), pulumi.DependsOn([]pulumi.Resource{
+// 			"alicloud_cen_instance_attachment.attach",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type RouteEntry struct {
 	pulumi.CustomResourceState
 

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> KeyUsage { get; private set; } = null!;
 
         /// <summary>
-        /// The date and time the last rotation was performed. The time is displayed in UTC. 
+        /// The date and time the last rotation was performed. The time is displayed in UTC.
         /// </summary>
         [Output("lastRotationDate")]
         public Output<string> LastRotationDate { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> MaterialExpireTime { get; private set; } = null!;
 
         /// <summary>
-        /// The time the next rotation is scheduled for execution. 
+        /// The time the next rotation is scheduled for execution.
         /// </summary>
         [Output("nextRotationDate")]
         public Output<string> NextRotationDate { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<int?> PendingWindowInDays { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the current primary key version of the symmetric CMK. 
+        /// The ID of the current primary key version of the symmetric CMK.
         /// </summary>
         [Output("primaryKeyVersion")]
         public Output<string> PrimaryKeyVersion { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> ProtectionLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The period of automatic key rotation. Unit: seconds. 
+        /// The period of automatic key rotation. Unit: seconds.
         /// </summary>
         [Output("rotationInterval")]
         public Output<string?> RotationInterval { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? ProtectionLevel { get; set; }
 
         /// <summary>
-        /// The period of automatic key rotation. Unit: seconds. 
+        /// The period of automatic key rotation. Unit: seconds.
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }
@@ -327,7 +327,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? KeyUsage { get; set; }
 
         /// <summary>
-        /// The date and time the last rotation was performed. The time is displayed in UTC. 
+        /// The date and time the last rotation was performed. The time is displayed in UTC.
         /// </summary>
         [Input("lastRotationDate")]
         public Input<string>? LastRotationDate { get; set; }
@@ -339,7 +339,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? MaterialExpireTime { get; set; }
 
         /// <summary>
-        /// The time the next rotation is scheduled for execution. 
+        /// The time the next rotation is scheduled for execution.
         /// </summary>
         [Input("nextRotationDate")]
         public Input<string>? NextRotationDate { get; set; }
@@ -357,7 +357,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? PendingWindowInDays { get; set; }
 
         /// <summary>
-        /// The ID of the current primary key version of the symmetric CMK. 
+        /// The ID of the current primary key version of the symmetric CMK.
         /// </summary>
         [Input("primaryKeyVersion")]
         public Input<string>? PrimaryKeyVersion { get; set; }
@@ -369,7 +369,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? ProtectionLevel { get; set; }
 
         /// <summary>
-        /// The period of automatic key rotation. Unit: seconds. 
+        /// The period of automatic key rotation. Unit: seconds.
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }

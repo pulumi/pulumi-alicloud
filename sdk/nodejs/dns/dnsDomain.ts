@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a DNS domain resource.
+ *
+ * > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
+ *
+ * > **NOTE:** Available in v1.81.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Add a new Domain.
+ * const dns = new alicloud.dns.DnsDomain("dns", {
+ *     domainName: "starmove.com",
+ *     groupId: "85ab8713-4a30-4de4-9d20-155ff830****",
+ *     tags: {
+ *         Created: "Terraform",
+ *         Environment: "test",
+ *     },
+ * });
+ * ```
+ */
 export class DnsDomain extends pulumi.CustomResource {
     /**
      * Get an existing DnsDomain resource's state with the given name, ID, and optional extra

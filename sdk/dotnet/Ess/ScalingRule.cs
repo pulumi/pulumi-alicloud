@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+        /// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         /// </summary>
         [Output("scalingRuleName")]
         public Output<string> ScalingRuleName { get; private set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string> ScalingGroupId { get; set; } = null!;
 
         /// <summary>
-        /// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+        /// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         /// </summary>
         [Input("scalingRuleName")]
         public Input<string>? ScalingRuleName { get; set; }
@@ -269,7 +269,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ScalingGroupId { get; set; }
 
         /// <summary>
-        /// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+        /// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         /// </summary>
         [Input("scalingRuleName")]
         public Input<string>? ScalingRuleName { get; set; }

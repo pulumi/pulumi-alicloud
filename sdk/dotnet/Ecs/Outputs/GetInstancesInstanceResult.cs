@@ -99,12 +99,24 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string Status;
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
-        /// ```
-        /// data "alicloud.ecs.getInstances" "taggedInstances" {
-        /// tags = {
-        /// tagKey1 = "tagValue1",
-        /// tagKey2 = "tagValue2"
-        /// }
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var taggedInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+        ///         {
+        ///             Tags = 
+        ///             {
+        ///                 { "tagKey1", "tagValue1" },
+        ///                 { "tagKey2", "tagValue2" },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
         /// }
         /// ```
         /// </summary>

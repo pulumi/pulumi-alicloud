@@ -18,8 +18,6 @@ namespace Pulumi.AliCloud.Waf
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;

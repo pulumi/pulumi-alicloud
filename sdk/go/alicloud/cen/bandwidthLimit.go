@@ -15,6 +15,105 @@ import (
 // For example, a CEN instance is bound to a bandwidth package of 20 Mbps and  the interconnection areas are Mainland China and North America. You can set the cross-region interconnection bandwidth between US West 1 and China East 1, China East 2, China South 1, and so on. However, the total bandwidth set for all the interconnected regions cannot exceed 20  Mbps.
 //
 // For information about CEN and how to use it, see [Cross-region interconnection bandwidth](https://www.alibabacloud.com/help/doc-detail/65983.htm)
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/providers"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := providers.Newalicloud(ctx, "fra", &providers.alicloudArgs{
+// 			Region: pulumi.String("eu-central-1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = providers.Newalicloud(ctx, "sh", &providers.alicloudArgs{
+// 			Region: pulumi.String("cn-shanghai"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpc1, err := vpc.NewNetwork(ctx, "vpc1", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("192.168.0.0/16"),
+// 		}, pulumi.Provider("alicloud.fra"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpc2, err := vpc.NewNetwork(ctx, "vpc2", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		}, pulumi.Provider("alicloud.sh"))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+// 			Description: pulumi.String("tf-testAccCenBandwidthLimitConfigDescription"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bwp, err := cen.NewBandwidthPackage(ctx, "bwp", &cen.BandwidthPackageArgs{
+// 			Bandwidth: pulumi.Int(5),
+// 			GeographicRegionIds: pulumi.StringArray{
+// 				pulumi.String("Europe"),
+// 				pulumi.String("China"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewBandwidthPackageAttachment(ctx, "bwpAttach", &cen.BandwidthPackageAttachmentArgs{
+// 			BandwidthPackageId: bwp.ID(),
+// 			InstanceId:         cen.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewInstanceAttachment(ctx, "vpcAttach1", &cen.InstanceAttachmentArgs{
+// 			ChildInstanceId:       vpc1.ID(),
+// 			ChildInstanceRegionId: pulumi.String("eu-central-1"),
+// 			InstanceId:            cen.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewInstanceAttachment(ctx, "vpcAttach2", &cen.InstanceAttachmentArgs{
+// 			ChildInstanceId:       vpc2.ID(),
+// 			ChildInstanceRegionId: pulumi.String("cn-shanghai"),
+// 			InstanceId:            cen.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewBandwidthLimit(ctx, "foo", &cen.BandwidthLimitArgs{
+// 			BandwidthLimit: pulumi.Int(4),
+// 			InstanceId:     cen.ID(),
+// 			RegionIds: pulumi.StringArray{
+// 				pulumi.String("eu-central-1"),
+// 				pulumi.String("cn-shanghai"),
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"alicloud_cen_bandwidth_package_attachment.bwp_attach",
+// 			"alicloud_cen_instance_attachment.vpc_attach_1",
+// 			"alicloud_cen_instance_attachment.vpc_attach_2",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type BandwidthLimit struct {
 	pulumi.CustomResourceState
 

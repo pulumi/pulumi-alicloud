@@ -23,8 +23,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
@@ -68,6 +66,12 @@ namespace Pulumi.AliCloud.Vpc
     ///         {
     ///             InterfaceId = initiate.Id,
     ///             OppositeInterfaceId = opposite.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "alicloud_router_interface_connection.bar",
+    ///             },
     ///         });
     ///         var barRouterInterfaceConnection = new AliCloud.Vpc.RouterInterfaceConnection("barRouterInterfaceConnection", new AliCloud.Vpc.RouterInterfaceConnectionArgs
     ///         {

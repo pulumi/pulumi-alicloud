@@ -10,6 +10,34 @@ import (
 // This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.60.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "support_lines.txt"
+// 		resolutionLinesDs, err := dns.GetResolutionLines(ctx, &dns.GetResolutionLinesArgs{
+// 			LineCodes: []string{
+// 				"cn_unicom_shanxi",
+// 			},
+// 			OutputFile: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstLineCode", resolutionLinesDs.Lines[0].LineCode)
+// 		return nil
+// 	})
+// }
+// ```
 func GetResolutionLines(ctx *pulumi.Context, args *GetResolutionLinesArgs, opts ...pulumi.InvokeOption) (*GetResolutionLinesResult, error) {
 	var rv GetResolutionLinesResult
 	err := ctx.Invoke("alicloud:dns/getResolutionLines:getResolutionLines", args, &rv, opts...)

@@ -4,6 +4,32 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a ECS disk resource.
+ *
+ * > **NOTE:** One of `size` or `snapshotId` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshotId` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Create a new ECS disk.
+ * const ecsDisk = new alicloud.ecs.Disk("ecs_disk", {
+ *     // cn-beijing
+ *     availabilityZone: "cn-beijing-b",
+ *     category: "cloud_efficiency",
+ *     description: "Hello ecs disk.",
+ *     encrypted: true,
+ *     kmsKeyId: "2a6767f0-a16c-4679-a60f-13bf*****",
+ *     size: 30,
+ *     tags: {
+ *         Name: "TerraformTest",
+ *     },
+ * });
+ * ```
+ */
 export class Disk extends pulumi.CustomResource {
     /**
      * Get an existing Disk resource's state with the given name, ID, and optional extra

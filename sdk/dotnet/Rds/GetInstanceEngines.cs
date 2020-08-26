@@ -42,7 +42,6 @@ namespace Pulumi.AliCloud.Rds
         ///     public Output&lt;string&gt; FirstDbCategory { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

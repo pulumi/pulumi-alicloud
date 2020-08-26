@@ -47,7 +47,6 @@ namespace Pulumi.AliCloud.Waf
         ///     public Output&lt;string&gt; TheFirstWafInstanceId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -62,7 +61,7 @@ namespace Pulumi.AliCloud.Waf
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of WAF instance IDs. 
+        /// A list of WAF instance IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -105,7 +104,7 @@ namespace Pulumi.AliCloud.Waf
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Optional) A list of WAF instance IDs. 
+        /// (Optional) A list of WAF instance IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? InstanceSource;

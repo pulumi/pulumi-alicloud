@@ -15,6 +15,40 @@ import (
 // For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 //
 // > **NOTE:** Available in 1.83.0+ .
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/waf"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := waf.NewInstance(ctx, "_default", &waf.InstanceArgs{
+// 			BigScreen:           pulumi.String("0"),
+// 			ExclusiveIpPackage:  pulumi.String("1"),
+// 			ExtBandwidth:        pulumi.String("50"),
+// 			ExtDomainPackage:    pulumi.String("1"),
+// 			LogStorage:          pulumi.String("3"),
+// 			LogTime:             pulumi.String("180"),
+// 			PackageCode:         pulumi.String("version_3"),
+// 			Period:              pulumi.Int(1),
+// 			PrefessionalService: pulumi.String("false"),
+// 			ResourceGroupId:     pulumi.String("rs-abc12345"),
+// 			SubscriptionType:    pulumi.String("Subscription"),
+// 			WafLog:              pulumi.String("false"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 

@@ -44,7 +44,6 @@ namespace Pulumi.AliCloud.Dms
         ///     public Output&lt;string&gt; FirstUserId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

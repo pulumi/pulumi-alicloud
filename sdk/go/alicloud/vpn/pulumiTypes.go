@@ -34,8 +34,7 @@ type ConnectionIkeConfig struct {
 // ConnectionIkeConfigInput is an input type that accepts ConnectionIkeConfigArgs and ConnectionIkeConfigOutput values.
 // You can construct a concrete instance of `ConnectionIkeConfigInput` via:
 //
-// 		 ConnectionIkeConfigArgs{...}
-//
+//          ConnectionIkeConfigArgs{...}
 type ConnectionIkeConfigInput interface {
 	pulumi.Input
 
@@ -79,8 +78,7 @@ func (i ConnectionIkeConfigArgs) ToConnectionIkeConfigOutputWithContext(ctx cont
 // ConnectionIkeConfigArrayInput is an input type that accepts ConnectionIkeConfigArray and ConnectionIkeConfigArrayOutput values.
 // You can construct a concrete instance of `ConnectionIkeConfigArrayInput` via:
 //
-// 		 ConnectionIkeConfigArray{ ConnectionIkeConfigArgs{...} }
-//
+//          ConnectionIkeConfigArray{ ConnectionIkeConfigArgs{...} }
 type ConnectionIkeConfigArrayInput interface {
 	pulumi.Input
 
@@ -195,8 +193,7 @@ type ConnectionIpsecConfig struct {
 // ConnectionIpsecConfigInput is an input type that accepts ConnectionIpsecConfigArgs and ConnectionIpsecConfigOutput values.
 // You can construct a concrete instance of `ConnectionIpsecConfigInput` via:
 //
-// 		 ConnectionIpsecConfigArgs{...}
-//
+//          ConnectionIpsecConfigArgs{...}
 type ConnectionIpsecConfigInput interface {
 	pulumi.Input
 
@@ -230,8 +227,7 @@ func (i ConnectionIpsecConfigArgs) ToConnectionIpsecConfigOutputWithContext(ctx 
 // ConnectionIpsecConfigArrayInput is an input type that accepts ConnectionIpsecConfigArray and ConnectionIpsecConfigArrayOutput values.
 // You can construct a concrete instance of `ConnectionIpsecConfigArrayInput` via:
 //
-// 		 ConnectionIpsecConfigArray{ ConnectionIpsecConfigArgs{...} }
-//
+//          ConnectionIpsecConfigArray{ ConnectionIpsecConfigArgs{...} }
 type ConnectionIpsecConfigArrayInput interface {
 	pulumi.Input
 
@@ -333,8 +329,7 @@ type GetConnectionsConnection struct {
 // GetConnectionsConnectionInput is an input type that accepts GetConnectionsConnectionArgs and GetConnectionsConnectionOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionInput` via:
 //
-// 		 GetConnectionsConnectionArgs{...}
-//
+//          GetConnectionsConnectionArgs{...}
 type GetConnectionsConnectionInput interface {
 	pulumi.Input
 
@@ -380,8 +375,7 @@ func (i GetConnectionsConnectionArgs) ToGetConnectionsConnectionOutputWithContex
 // GetConnectionsConnectionArrayInput is an input type that accepts GetConnectionsConnectionArray and GetConnectionsConnectionArrayOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionArrayInput` via:
 //
-// 		 GetConnectionsConnectionArray{ GetConnectionsConnectionArgs{...} }
-//
+//          GetConnectionsConnectionArray{ GetConnectionsConnectionArgs{...} }
 type GetConnectionsConnectionArrayInput interface {
 	pulumi.Input
 
@@ -514,8 +508,7 @@ type GetConnectionsConnectionIkeConfig struct {
 // GetConnectionsConnectionIkeConfigInput is an input type that accepts GetConnectionsConnectionIkeConfigArgs and GetConnectionsConnectionIkeConfigOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionIkeConfigInput` via:
 //
-// 		 GetConnectionsConnectionIkeConfigArgs{...}
-//
+//          GetConnectionsConnectionIkeConfigArgs{...}
 type GetConnectionsConnectionIkeConfigInput interface {
 	pulumi.Input
 
@@ -559,8 +552,7 @@ func (i GetConnectionsConnectionIkeConfigArgs) ToGetConnectionsConnectionIkeConf
 // GetConnectionsConnectionIkeConfigArrayInput is an input type that accepts GetConnectionsConnectionIkeConfigArray and GetConnectionsConnectionIkeConfigArrayOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionIkeConfigArrayInput` via:
 //
-// 		 GetConnectionsConnectionIkeConfigArray{ GetConnectionsConnectionIkeConfigArgs{...} }
-//
+//          GetConnectionsConnectionIkeConfigArray{ GetConnectionsConnectionIkeConfigArgs{...} }
 type GetConnectionsConnectionIkeConfigArrayInput interface {
 	pulumi.Input
 
@@ -675,8 +667,7 @@ type GetConnectionsConnectionIpsecConfig struct {
 // GetConnectionsConnectionIpsecConfigInput is an input type that accepts GetConnectionsConnectionIpsecConfigArgs and GetConnectionsConnectionIpsecConfigOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionIpsecConfigInput` via:
 //
-// 		 GetConnectionsConnectionIpsecConfigArgs{...}
-//
+//          GetConnectionsConnectionIpsecConfigArgs{...}
 type GetConnectionsConnectionIpsecConfigInput interface {
 	pulumi.Input
 
@@ -710,8 +701,7 @@ func (i GetConnectionsConnectionIpsecConfigArgs) ToGetConnectionsConnectionIpsec
 // GetConnectionsConnectionIpsecConfigArrayInput is an input type that accepts GetConnectionsConnectionIpsecConfigArray and GetConnectionsConnectionIpsecConfigArrayOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionIpsecConfigArrayInput` via:
 //
-// 		 GetConnectionsConnectionIpsecConfigArray{ GetConnectionsConnectionIpsecConfigArgs{...} }
-//
+//          GetConnectionsConnectionIpsecConfigArray{ GetConnectionsConnectionIpsecConfigArgs{...} }
 type GetConnectionsConnectionIpsecConfigArrayInput interface {
 	pulumi.Input
 
@@ -803,8 +793,7 @@ type GetCustomerGatewaysGateway struct {
 // GetCustomerGatewaysGatewayInput is an input type that accepts GetCustomerGatewaysGatewayArgs and GetCustomerGatewaysGatewayOutput values.
 // You can construct a concrete instance of `GetCustomerGatewaysGatewayInput` via:
 //
-// 		 GetCustomerGatewaysGatewayArgs{...}
-//
+//          GetCustomerGatewaysGatewayArgs{...}
 type GetCustomerGatewaysGatewayInput interface {
 	pulumi.Input
 
@@ -840,8 +829,7 @@ func (i GetCustomerGatewaysGatewayArgs) ToGetCustomerGatewaysGatewayOutputWithCo
 // GetCustomerGatewaysGatewayArrayInput is an input type that accepts GetCustomerGatewaysGatewayArray and GetCustomerGatewaysGatewayArrayOutput values.
 // You can construct a concrete instance of `GetCustomerGatewaysGatewayArrayInput` via:
 //
-// 		 GetCustomerGatewaysGatewayArray{ GetCustomerGatewaysGatewayArgs{...} }
-//
+//          GetCustomerGatewaysGatewayArray{ GetCustomerGatewaysGatewayArgs{...} }
 type GetCustomerGatewaysGatewayArrayInput interface {
 	pulumi.Input
 
@@ -956,8 +944,7 @@ type GetGatewaysGateway struct {
 // GetGatewaysGatewayInput is an input type that accepts GetGatewaysGatewayArgs and GetGatewaysGatewayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayInput` via:
 //
-// 		 GetGatewaysGatewayArgs{...}
-//
+//          GetGatewaysGatewayArgs{...}
 type GetGatewaysGatewayInput interface {
 	pulumi.Input
 
@@ -1011,8 +998,7 @@ func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutputWithContext(ctx contex
 // GetGatewaysGatewayArrayInput is an input type that accepts GetGatewaysGatewayArray and GetGatewaysGatewayArrayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayArrayInput` via:
 //
-// 		 GetGatewaysGatewayArray{ GetGatewaysGatewayArgs{...} }
-//
+//          GetGatewaysGatewayArray{ GetGatewaysGatewayArgs{...} }
 type GetGatewaysGatewayArrayInput interface {
 	pulumi.Input
 

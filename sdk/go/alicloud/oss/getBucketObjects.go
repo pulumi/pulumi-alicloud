@@ -8,6 +8,32 @@ import (
 )
 
 // This data source provides the objects of an OSS bucket.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "sample/sample_object.txt"
+// 		bucketObjectsDs, err := oss.GetBucketObjects(ctx, &oss.GetBucketObjectsArgs{
+// 			BucketName: "sample_bucket",
+// 			KeyRegex:   &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstObjectKey", bucketObjectsDs.Objects[0].Key)
+// 		return nil
+// 	})
+// }
+// ```
 func GetBucketObjects(ctx *pulumi.Context, args *GetBucketObjectsArgs, opts ...pulumi.InvokeOption) (*GetBucketObjectsResult, error) {
 	var rv GetBucketObjectsResult
 	err := ctx.Invoke("alicloud:oss/getBucketObjects:getBucketObjects", args, &rv, opts...)

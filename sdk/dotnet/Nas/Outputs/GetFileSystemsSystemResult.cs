@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly int MeteredSize;
         /// <summary>
-        /// Filter results by a specific ProtocolType. 
+        /// Filter results by a specific ProtocolType.
         /// </summary>
         public readonly string ProtocolType;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// Filter results by a specific StorageType. 
+        /// Filter results by a specific StorageType.
         /// </summary>
         public readonly string StorageType;
 

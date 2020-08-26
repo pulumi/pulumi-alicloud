@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.ActionTrail
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;

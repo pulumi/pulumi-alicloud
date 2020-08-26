@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.ApiGateway
         ///     public Output&lt;string&gt; FirstGroupId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -52,7 +51,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of api group IDs. 
+        /// A list of api group IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -87,12 +86,12 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of api group IDs. 
+        /// A list of api group IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of api group names. 
+        /// A list of api group names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

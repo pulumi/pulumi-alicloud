@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Sag qos policy resource. 
+ * Provides a Sag qos policy resource.
  * You need to create a QoS policy to set priorities, rate limits, and quintuple rules for different messages.
  *
  * For information about Sag Qos Policy and how to use it, see [What is Qos Policy](https://www.alibabacloud.com/help/doc-detail/140065.htm).
@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -78,7 +78,7 @@ export class QosPolicy extends pulumi.CustomResource {
      */
     public readonly destPortRange!: pulumi.Output<string>;
     /**
-     * The expiration time of the quintuple rule. 
+     * The expiration time of the quintuple rule.
      */
     public readonly endTime!: pulumi.Output<string | undefined>;
     /**
@@ -196,7 +196,7 @@ export interface QosPolicyState {
      */
     readonly destPortRange?: pulumi.Input<string>;
     /**
-     * The expiration time of the quintuple rule. 
+     * The expiration time of the quintuple rule.
      */
     readonly endTime?: pulumi.Input<string>;
     /**
@@ -246,7 +246,7 @@ export interface QosPolicyArgs {
      */
     readonly destPortRange: pulumi.Input<string>;
     /**
-     * The expiration time of the quintuple rule. 
+     * The expiration time of the quintuple rule.
      */
     readonly endTime?: pulumi.Input<string>;
     /**

@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string?> UserClientIp { get; private set; } = null!;
 
         /// <summary>
-        /// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+        /// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
         /// </summary>
         [Output("vpcIds")]
         public Output<ImmutableArray<string>> VpcIds { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<string>? _vpcIds;
 
         /// <summary>
-        /// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+        /// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
         /// </summary>
         public InputList<string> VpcIds
         {
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<string>? _vpcIds;
 
         /// <summary>
-        /// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+        /// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
         /// </summary>
         public InputList<string> VpcIds
         {

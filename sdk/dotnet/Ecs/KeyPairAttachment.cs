@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

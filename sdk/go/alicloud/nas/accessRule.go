@@ -15,6 +15,42 @@ import (
 // When NAS is activated, the Default VPC Permission Group is automatically generated. It allows all IP addresses in a VPC to access the mount point with full permissions. Full permissions include Read/Write permission with no restriction on root users.
 //
 // > **NOTE:** Available in v1.34.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/nas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooAccessGroup, err := nas.NewAccessGroup(ctx, "fooAccessGroup", &nas.AccessGroupArgs{
+// 			Description: pulumi.String("tf-testAccNasConfig"),
+// 			Type:        pulumi.String("Vpc"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = nas.NewAccessRule(ctx, "fooAccessRule", &nas.AccessRuleArgs{
+// 			AccessGroupName: fooAccessGroup.ID(),
+// 			Priority:        pulumi.Int(2),
+// 			RwAccessType:    pulumi.String("RDWR"),
+// 			SourceCidrIp:    pulumi.String("168.1.1.0/16"),
+// 			UserAccessType:  pulumi.String("no_squash"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AccessRule struct {
 	pulumi.CustomResourceState
 

@@ -10,6 +10,31 @@ import (
 // This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
 //
 // > **NOTE:**  Available in 1.86.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/resourcemanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "tftest"
+// 		example, err := resourcemanager.GetRoles(ctx, &resourcemanager.GetRolesArgs{
+// 			NameRegex: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstRoleId", example.Roles[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetRoles(ctx *pulumi.Context, args *GetRolesArgs, opts ...pulumi.InvokeOption) (*GetRolesResult, error) {
 	var rv GetRolesResult
 	err := ctx.Invoke("alicloud:resourcemanager/getRoles:getRoles", args, &rv, opts...)

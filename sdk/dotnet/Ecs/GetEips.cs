@@ -34,7 +34,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     public Output&lt;string&gt; FirstEipId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

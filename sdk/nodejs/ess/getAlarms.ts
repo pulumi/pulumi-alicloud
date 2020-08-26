@@ -7,13 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides available alarm resources. 
+ * This data source provides available alarm resources.
  *
  * > **NOTE** Available in 1.72.0+
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,11 +19,11 @@ import * as utilities from "../utilities";
  *
  * const alarmDs = pulumi.output(alicloud.EssAlarm({
  *     ids: [
- *         "alarmId1",
- *         "alarmId2",
+ *         "alarm_id1",
+ *         "alarm_id2",
  *     ],
- *     nameRegex: "alarmName",
- *     scalingGroupId: "scalingGroupId",
+ *     nameRegex: "alarm_name",
+ *     scalingGroupId: "scaling_group_id",
  * }, { async: true }));
  *
  * export const firstScalingRule = alicloud_alarms_alarm_ds.configurations.0.id;
@@ -89,7 +87,7 @@ export interface GetAlarmsResult {
      */
     readonly ids: string[];
     /**
-     * The type for the alarm's associated metric. 
+     * The type for the alarm's associated metric.
      */
     readonly metricType?: string;
     readonly nameRegex?: string;

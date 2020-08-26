@@ -8,6 +8,42 @@ import (
 )
 
 // This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultZones, err := alicloud.GetZones(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            vpc.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetSwitches(ctx *pulumi.Context, args *GetSwitchesArgs, opts ...pulumi.InvokeOption) (*GetSwitchesResult, error) {
 	var rv GetSwitchesResult
 	err := ctx.Invoke("alicloud:vpc/getSwitches:getSwitches", args, &rv, opts...)

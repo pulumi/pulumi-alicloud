@@ -7,10 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM cloud account alias.
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Sag
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of Sag Acls names. 
+        /// A list of Sag Acls names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

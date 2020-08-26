@@ -10,6 +10,34 @@ import (
 // This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.56.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/actiontrail"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "CID-alikafkaGroupDatasourceName"
+// 		opt1 := "consumerGroups.txt"
+// 		consumerGroupsDs, err := actiontrail.GetConsumerGroups(ctx, &actiontrail.GetConsumerGroupsArgs{
+// 			ConsumerIdRegex: &opt0,
+// 			InstanceId:      "xxx",
+// 			OutputFile:      &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstGroupName", consumerGroupsDs.ConsumerIds[0])
+// 		return nil
+// 	})
+// }
+// ```
 func GetConsumerGroups(ctx *pulumi.Context, args *GetConsumerGroupsArgs, opts ...pulumi.InvokeOption) (*GetConsumerGroupsResult, error) {
 	var rv GetConsumerGroupsResult
 	err := ctx.Invoke("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args, &rv, opts...)

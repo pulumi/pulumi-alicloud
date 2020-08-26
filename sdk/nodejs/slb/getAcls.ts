@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * export const firstSlbAclId = sampleDs.acls[0].id;
  * ```
- *
  * ## Entry Block
  *
  * The entry mapping supports the following:

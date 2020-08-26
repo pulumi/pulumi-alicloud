@@ -10,6 +10,34 @@ import (
 // This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.
 //
 // > **NOTE:** Available in v1.86.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "my-namespace"
+// 		opt1 := "my-namespace-json"
+// 		myNamespaces, err := cs.GetRegistryEnterpriseNamespaces(ctx, &cs.GetRegistryEnterpriseNamespacesArgs{
+// 			InstanceId: "cri-xxx",
+// 			NameRegex:  &opt0,
+// 			OutputFile: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("output", myNamespaces.Namespaces)
+// 		return nil
+// 	})
+// }
+// ```
 func GetRegistryEnterpriseNamespaces(ctx *pulumi.Context, args *GetRegistryEnterpriseNamespacesArgs, opts ...pulumi.InvokeOption) (*GetRegistryEnterpriseNamespacesResult, error) {
 	var rv GetRegistryEnterpriseNamespacesResult
 	err := ctx.Invoke("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args, &rv, opts...)

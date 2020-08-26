@@ -20,7 +20,34 @@ import (
 //
 // > **NOTE:** Available in 1.66.0+.
 //
+// ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.NewImageCopy(ctx, "_default", &ecs.ImageCopyArgs{
+// 			Description:    pulumi.String("test-image"),
+// 			ImageName:      pulumi.String("test-image"),
+// 			SourceImageId:  pulumi.String("m-bp1gxyhdswlsn18tu***"),
+// 			SourceRegionId: pulumi.String("cn-hangzhou"),
+// 			Tags: pulumi.StringMap{
+// 				"FinanceDept": pulumi.String("FinanceDeptJoshua"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Attributes Reference0
 //
 //  The following attributes are exported:

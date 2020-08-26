@@ -8,11 +8,9 @@ import * as utilities from "../utilities";
  * Provides a DMS Enterprise Instance resource.
  *
  * > **NOTE:** API users must first register in DMS.
- * > **NOTE:** Available in 1.81.0+.
+ * **NOTE:** Available in 1.81.0+.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,13 +18,13 @@ import * as utilities from "../utilities";
  *
  * const defaultEnterpriseInstance = new alicloud.dms.EnterpriseInstance("default", {
  *     databasePassword: "Yourpassword123",
- *     databaseUser: "yourUserName",
+ *     databaseUser: "your_user_name",
  *     dbaUid: Number.parseFloat("1182725234xxxxxxx"),
  *     ecsRegion: "cn-shanghai",
  *     envType: "test",
  *     exportTimeout: 600,
  *     host: "rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com",
- *     instanceAlias: "yourAliasName",
+ *     instanceAlias: "your_alias_name",
  *     instanceSource: "RDS",
  *     instanceType: "MySQL",
  *     networkType: "VPC",
@@ -149,7 +147,7 @@ export class EnterpriseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The tenant ID. 
+     * The tenant ID.
      */
     public readonly tid!: pulumi.Output<number | undefined>;
     /**
@@ -366,7 +364,7 @@ export interface EnterpriseInstanceState {
      */
     readonly state?: pulumi.Input<string>;
     /**
-     * The tenant ID. 
+     * The tenant ID.
      */
     readonly tid?: pulumi.Input<number>;
     /**
@@ -459,7 +457,7 @@ export interface EnterpriseInstanceArgs {
      */
     readonly sid?: pulumi.Input<string>;
     /**
-     * The tenant ID. 
+     * The tenant ID.
      */
     readonly tid?: pulumi.Input<number>;
     /**

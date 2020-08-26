@@ -13,6 +13,69 @@ import (
 // This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
 //
 // > **NOTE:** Available in 1.91.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.NewDedicatedHost(ctx, "_default", &ecs.DedicatedHostArgs{
+// 			DedicatedHostName: pulumi.String("dedicated_host_name"),
+// 			DedicatedHostType: pulumi.String("ddh.g5"),
+// 			Description:       pulumi.String("From_Terraform"),
+// 			Tags: pulumi.StringMap{
+// 				"Create": pulumi.String("Terraform"),
+// 				"For":    pulumi.String("DDH"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Create Prepaid DDH
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.NewDedicatedHost(ctx, "_default", &ecs.DedicatedHostArgs{
+// 			DedicatedHostName: pulumi.String("dedicated_host_name"),
+// 			DedicatedHostType: pulumi.String("ddh.g5"),
+// 			Description:       pulumi.String("From_Terraform"),
+// 			ExpiredTime:       pulumi.String("1"),
+// 			PaymentType:       pulumi.String("PrePaid"),
+// 			SaleCycle:         pulumi.String("Month"),
+// 			Tags: pulumi.StringMap{
+// 				"Create": pulumi.String("Terraform"),
+// 				"For":    pulumi.String("DDH"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DedicatedHost struct {
 	pulumi.CustomResourceState
 

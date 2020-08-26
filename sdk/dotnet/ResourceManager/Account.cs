@@ -17,8 +17,6 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
@@ -87,13 +85,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> ResourceDirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`. 
+        /// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Member type. The value of `ResourceAccount` indicates the resource account. 
+        /// Member type. The value of `ResourceAccount` indicates the resource account.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -212,13 +210,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? ResourceDirectoryId { get; set; }
 
         /// <summary>
-        /// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`. 
+        /// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Member type. The value of `ResourceAccount` indicates the resource account. 
+        /// Member type. The value of `ResourceAccount` indicates the resource account.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

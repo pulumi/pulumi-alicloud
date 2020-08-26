@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     public Output&lt;string&gt; FirstFolderId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

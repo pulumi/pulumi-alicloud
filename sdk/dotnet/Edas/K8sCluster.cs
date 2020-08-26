@@ -13,6 +13,27 @@ namespace Pulumi.AliCloud.Edas
     /// Provides an EDAS K8s cluster resource. For information about EDAS K8s Cluster and how to use it, see[What is EDAS K8s Cluster](https://www.alibabacloud.com/help/en/doc-detail/85108.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.93.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Edas.K8sCluster("default", new AliCloud.Edas.K8sClusterArgs
+    ///         {
+    ///             CsClusterId = "xxxx-xxx-xxx",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class K8sCluster : Pulumi.CustomResource
     {
@@ -33,7 +54,7 @@ namespace Pulumi.AliCloud.Edas
         public Output<string> ClusterName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the cluster that you want to create. Valid values only: 5: K8s cluster. 
+        /// The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
         /// </summary>
         [Output("clusterType")]
         public Output<int> ClusterType { get; private set; } = null!;
@@ -144,7 +165,7 @@ namespace Pulumi.AliCloud.Edas
         public Input<string>? ClusterName { get; set; }
 
         /// <summary>
-        /// The type of the cluster that you want to create. Valid values only: 5: K8s cluster. 
+        /// The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
         /// </summary>
         [Input("clusterType")]
         public Input<int>? ClusterType { get; set; }

@@ -13,6 +13,60 @@ import (
 // Provides an RDS instance resource. A DB instance is an isolated database
 // environment in the cloud. A DB instance can contain multiple user-created
 // databases.
+//
+// ## Example Usage
+// ### Create a RDS MySQL instance
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rds"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			VpcId:            defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
+// 			Engine:             pulumi.String("MySQL"),
+// 			EngineVersion:      pulumi.String("5.6"),
+// 			InstanceChargeType: pulumi.String("Postpaid"),
+// 			InstanceName:       pulumi.String(name),
+// 			InstanceStorage:    pulumi.Int(30),
+// 			InstanceType:       pulumi.String("rds.mysql.s2.large"),
+// 			MonitoringPeriod:   pulumi.Int(60),
+// 			VswitchId:          defaultSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -48,8 +102,8 @@ type Instance struct {
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
-	// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-	// Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
+	//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage pulumi.IntOutput `pulumi:"instanceStorage"`
 	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
@@ -93,7 +147,7 @@ type Instance struct {
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -169,8 +223,8 @@ type instanceState struct {
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
-	// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-	// Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
+	//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage *int `pulumi:"instanceStorage"`
 	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	InstanceType *string `pulumi:"instanceType"`
@@ -214,7 +268,7 @@ type instanceState struct {
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -251,8 +305,8 @@ type InstanceState struct {
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
-	// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-	// Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
+	//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage pulumi.IntPtrInput
 	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	InstanceType pulumi.StringPtrInput
@@ -296,7 +350,7 @@ type InstanceState struct {
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -335,8 +389,8 @@ type instanceArgs struct {
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
-	// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-	// Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
+	//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage int `pulumi:"instanceStorage"`
 	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	InstanceType string `pulumi:"instanceType"`
@@ -376,7 +430,7 @@ type instanceArgs struct {
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -412,8 +466,8 @@ type InstanceArgs struct {
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
-	// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-	// Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
+	//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage pulumi.IntInput
 	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	InstanceType pulumi.StringInput
@@ -453,7 +507,7 @@ type InstanceArgs struct {
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringPtrInput
 }
 

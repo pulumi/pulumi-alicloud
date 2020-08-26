@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- *  The `alicloud.drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
+ * The `alicloud.drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
  *
  * > **NOTE:** Available in 1.35.0+.
@@ -56,7 +56,7 @@ export interface GetInstancesArgs {
 export interface GetInstancesResult {
     readonly descriptionRegex?: string;
     /**
-     * A list of DRDS descriptions. 
+     * A list of DRDS descriptions.
      */
     readonly descriptions: string[];
     /**

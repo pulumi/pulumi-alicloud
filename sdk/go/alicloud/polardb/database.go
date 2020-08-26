@@ -13,6 +13,41 @@ import (
 // Provides a PolarDB database resource. A DB database deployed in a DB cluster. A DB cluster can own multiple databases.
 //
 // > **NOTE:** Available in v1.66.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/polardb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
+// 			DbNodeClass: pulumi.Any(_var.Clusterclass),
+// 			DbType:      pulumi.String("MySQL"),
+// 			DbVersion:   pulumi.String("8.0"),
+// 			Description: pulumi.String("testDB"),
+// 			PayType:     pulumi.String("PostPaid"),
+// 			VswitchId:   pulumi.String("polar.mysql.x4.large"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = polardb.NewDatabase(ctx, "_default", &polardb.DatabaseArgs{
+// 			DbClusterId: cluster.ID(),
+// 			DbName:      pulumi.String("tftestdatabase"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Database struct {
 	pulumi.CustomResourceState
 

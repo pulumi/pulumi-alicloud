@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;

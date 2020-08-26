@@ -8,12 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
- *  
+ *
  * > **NOTE:** Available in v1.79.0+.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -72,7 +70,7 @@ export interface GetAliasesResult {
      */
     readonly id: string;
     /**
-     * A list of kms aliases IDs. The value is same as KMS alias_name. 
+     * A list of kms aliases IDs. The value is same as KMS alias_name.
      */
     readonly ids: string[];
     readonly nameRegex?: string;

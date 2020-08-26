@@ -133,7 +133,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The Zone to launch the DB instance. it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
-     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
+     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -327,7 +327,7 @@ export interface InstanceState {
     /**
      * The Zone to launch the DB instance. it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
-     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
+     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -425,7 +425,7 @@ export interface InstanceArgs {
     /**
      * The Zone to launch the DB instance. it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
-     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
+     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
     readonly zoneId?: pulumi.Input<string>;
 }

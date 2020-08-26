@@ -19,8 +19,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;

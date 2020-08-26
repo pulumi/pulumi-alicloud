@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     public Output&lt;string&gt; InstanceIds { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -108,12 +107,24 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
-        /// ```
-        /// data "alicloud.ecs.getInstances" "taggedInstances" {
-        /// tags = {
-        /// tagKey1 = "tagValue1",
-        /// tagKey2 = "tagValue2"
-        /// }
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var taggedInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+        ///         {
+        ///             Tags = 
+        ///             {
+        ///                 { "tagKey1", "tagValue1" },
+        ///                 { "tagKey2", "tagValue2" },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
         /// }
         /// ```
         /// </summary>
@@ -166,7 +177,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of instances names. 
+        /// A list of instances names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

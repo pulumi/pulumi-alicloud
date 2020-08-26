@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ResourceManager
 {
     /// <summary>
-    /// Provides a Resource Manager Policy resource.  
+    /// Provides a Resource Manager Policy resource.\
     /// For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
     /// 
     /// &gt; **NOTE:** Available in v1.83.0+.
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;

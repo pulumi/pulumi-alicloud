@@ -44,7 +44,6 @@ namespace Pulumi.AliCloud.Emr
         ///     public Output&lt;string&gt; DataDiskType { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -104,7 +103,7 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of data disk and system disk type IDs. 
+        /// A list of data disk and system disk type IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string InstanceChargeType;

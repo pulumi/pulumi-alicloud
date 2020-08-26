@@ -10,6 +10,41 @@ import (
 // This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.53.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rocketmq"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
+// 			Remark: pulumi.String("default_ons_instance_remark"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultTopic, err := rocketmq.NewTopic(ctx, "defaultTopic", &rocketmq.TopicArgs{
+// 			InstanceId:  defaultInstance.ID(),
+// 			MessageType: pulumi.Int(0),
+// 			Remark:      pulumi.String("dafault_ons_topic_remark"),
+// 			Topic:       pulumi.String(topic),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstTopicName", topicsDs.ApplyT(func(topicsDs rocketmq.GetTopicsResult) (string, error) {
+// 			return topicsDs.Topics[0].Topic, nil
+// 		}).(pulumi.StringOutput))
+// 		return nil
+// 	})
+// }
+// ```
 func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOption) (*GetTopicsResult, error) {
 	var rv GetTopicsResult
 	err := ctx.Invoke("alicloud:rocketmq/getTopics:getTopics", args, &rv, opts...)

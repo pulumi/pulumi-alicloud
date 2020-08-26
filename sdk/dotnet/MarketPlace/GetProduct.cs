@@ -45,7 +45,6 @@ namespace Pulumi.AliCloud.MarketPlace
         ///     public Output&lt;string&gt; FirstProductPackageVersion { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

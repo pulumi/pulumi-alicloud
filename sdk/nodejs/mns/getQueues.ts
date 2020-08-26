@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -60,7 +58,7 @@ export interface GetQueuesResult {
     readonly id: string;
     readonly namePrefix?: string;
     /**
-     * A list of queue names. 
+     * A list of queue names.
      */
     readonly names: string[];
     readonly outputFile?: string;

@@ -11,6 +11,32 @@ import (
 // Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 //
 // > **NOTE:** Available in v1.71.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/adb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "am-\\w+"
+// 		adbClustersDs, err := adb.GetClusters(ctx, &adb.GetClustersArgs{
+// 			DescriptionRegex: &opt0,
+// 			Status:           "Running",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstAdbClusterId", adbClustersDs.Clusters[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	var rv GetClustersResult
 	err := ctx.Invoke("alicloud:adb/getClusters:getClusters", args, &rv, opts...)

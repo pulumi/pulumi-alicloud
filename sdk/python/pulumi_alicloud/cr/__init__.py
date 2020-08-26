@@ -7,3 +7,5 @@ from .get_namespaces import *
 from .get_repos import *
 from .namespace import *
 from .repo import *
+from ._inputs import *
+from . import outputs

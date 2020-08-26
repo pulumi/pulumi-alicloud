@@ -43,7 +43,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     public Output&lt;string&gt; FirstSaslAclUsername { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -55,13 +54,13 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class GetSaslAclsArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Get results for the specified resource name. 
+        /// Get results for the specified resource name.
         /// </summary>
         [Input("aclResourceName", required: true)]
         public string AclResourceName { get; set; } = null!;
 
         /// <summary>
-        /// Get results for the specified resource type. 
+        /// Get results for the specified resource type.
         /// </summary>
         [Input("aclResourceType", required: true)]
         public string AclResourceType { get; set; } = null!;
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Get results for the specified username. 
+        /// Get results for the specified username.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;

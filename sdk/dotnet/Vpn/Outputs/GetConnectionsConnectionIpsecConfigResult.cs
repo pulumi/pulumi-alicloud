@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GetConnectionsConnectionIpsecConfigResult
     {
         /// <summary>
-        /// The authentication algorithm of phase-two negotiation. 
+        /// The authentication algorithm of phase-two negotiation.
         /// </summary>
         public readonly string? IpsecAuthAlg;
         /// <summary>
-        /// The encryption algorithm of phase-two negotiation. 
+        /// The encryption algorithm of phase-two negotiation.
         /// </summary>
         public readonly string? IpsecEncAlg;
         /// <summary>
-        /// The SA lifecycle as the result of phase-two negotiation. 
+        /// The SA lifecycle as the result of phase-two negotiation.
         /// </summary>
         public readonly int? IpsecLifetime;
         /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. 
+        /// The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
         /// </summary>
         public readonly string? IpsecPfs;
 

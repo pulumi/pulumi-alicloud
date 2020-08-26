@@ -12,10 +12,7 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM cloud account alias.
     /// 
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

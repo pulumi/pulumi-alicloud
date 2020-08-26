@@ -11,6 +11,32 @@ import (
 // Filters support regular expression for the instance name, ids or availability_zone.
 //
 // > **NOTE:**  Available in 1.67.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/hbase"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "cn-shenzhen-b"
+// 		opt1 := "tf_testAccHBase"
+// 		_, err := hbase.GetInstances(ctx, &hbase.GetInstancesArgs{
+// 			AvailabilityZone: &opt0,
+// 			NameRegex:        &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
 	err := ctx.Invoke("alicloud:hbase/getInstances:getInstances", args, &rv, opts...)

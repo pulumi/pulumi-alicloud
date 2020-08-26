@@ -38,7 +38,6 @@ namespace Pulumi.AliCloud.Kms
         ///     public Output&lt;string&gt; FirstKeyId { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

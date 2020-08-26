@@ -15,9 +15,6 @@ namespace Pulumi.AliCloud.Eci
         /// Provides a collection of ECI Image Cache to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.90.0+.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageCachesResult> InvokeAsync(GetImageCachesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageCachesResult>("alicloud:eci/getImageCaches:getImageCaches", args ?? new GetImageCachesArgs(), options.WithVersion());

@@ -8,6 +8,42 @@ import (
 )
 
 // The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpn"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "Normal"
+// 		opt1 := "testAcc*"
+// 		opt2 := "/tmp/vpns"
+// 		opt3 := "active"
+// 		opt4 := "fake-vpc-id"
+// 		_, err := vpn.GetGateways(ctx, &vpn.GetGatewaysArgs{
+// 			BusinessStatus: &opt0,
+// 			Ids: []string{
+// 				"fake-vpn-id1",
+// 				"fake-vpn-id2",
+// 			},
+// 			NameRegex:  &opt1,
+// 			OutputFile: &opt2,
+// 			Status:     &opt3,
+// 			VpcId:      &opt4,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetGateways(ctx *pulumi.Context, args *GetGatewaysArgs, opts ...pulumi.InvokeOption) (*GetGatewaysResult, error) {
 	var rv GetGatewaysResult
 	err := ctx.Invoke("alicloud:vpn/getGateways:getGateways", args, &rv, opts...)

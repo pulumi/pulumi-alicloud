@@ -11,6 +11,40 @@ import (
 )
 
 // Provides a RAM User Login Profile resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ram"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+// 			Comments:    pulumi.String("yoyoyo"),
+// 			DisplayName: pulumi.String("user_display_name"),
+// 			Email:       pulumi.String("hello.uuu@aaa.com"),
+// 			Force:       pulumi.Bool(true),
+// 			Mobile:      pulumi.String("86-18688888888"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ram.NewLoginProfile(ctx, "profile", &ram.LoginProfileArgs{
+// 			Password: pulumi.String("Yourpassword1234"),
+// 			UserName: user.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type LoginProfile struct {
 	pulumi.CustomResourceState
 

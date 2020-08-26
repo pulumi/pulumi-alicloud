@@ -8,6 +8,36 @@ import (
 )
 
 // The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpn"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "testAcc*"
+// 		opt1 := "/tmp/cgws"
+// 		_, err := vpn.GetCustomerGateways(ctx, &vpn.GetCustomerGatewaysArgs{
+// 			Ids: []string{
+// 				"fake-id1",
+// 				"fake-id2",
+// 			},
+// 			NameRegex:  &opt0,
+// 			OutputFile: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetCustomerGateways(ctx *pulumi.Context, args *GetCustomerGatewaysArgs, opts ...pulumi.InvokeOption) (*GetCustomerGatewaysResult, error) {
 	var rv GetCustomerGatewaysResult
 	err := ctx.Invoke("alicloud:vpn/getCustomerGateways:getCustomerGateways", args, &rv, opts...)

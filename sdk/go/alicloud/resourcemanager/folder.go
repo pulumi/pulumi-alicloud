@@ -16,6 +16,31 @@ import (
 // > **NOTE:** Available in v1.82.0+.
 //
 // > **NOTE:** A maximum of five levels of folders can be created under the root folder.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/resourcemanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := resourcemanager.NewFolder(ctx, "example", &resourcemanager.FolderArgs{
+// 			FolderName: pulumi.String("test"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Folder struct {
 	pulumi.CustomResourceState
 

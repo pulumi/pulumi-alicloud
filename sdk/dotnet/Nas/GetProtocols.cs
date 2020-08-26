@@ -41,7 +41,6 @@ namespace Pulumi.AliCloud.Nas
         ///     public Output&lt;string&gt; NasProtocolsProtocol { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -56,13 +55,13 @@ namespace Pulumi.AliCloud.Nas
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The file system type. Valid Values: Performance and Capacity.  
+        /// The file system type. Valid Values: Performance and Capacity.
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
 
         /// <summary>
-        /// String to filter results by zone id. 
+        /// String to filter results by zone id.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }

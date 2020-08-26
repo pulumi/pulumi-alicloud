@@ -10,11 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
-    /// Provides a RAM Group membership resource. 
+    /// Provides a RAM Group membership resource.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

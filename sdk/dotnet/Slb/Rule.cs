@@ -25,8 +25,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using System.Linq;
     /// using Pulumi;
@@ -256,7 +254,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> ServerGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+        /// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
         /// </summary>
         [Output("stickySession")]
         public Output<string?> StickySession { get; private set; } = null!;
@@ -438,7 +436,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string> ServerGroupId { get; set; } = null!;
 
         /// <summary>
-        /// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+        /// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
         /// </summary>
         [Input("stickySession")]
         public Input<string>? StickySession { get; set; }
@@ -581,7 +579,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+        /// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
         /// </summary>
         [Input("stickySession")]
         public Input<string>? StickySession { get; set; }

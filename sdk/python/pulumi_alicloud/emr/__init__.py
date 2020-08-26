@@ -7,3 +7,5 @@ from .cluster import *
 from .get_disk_types import *
 from .get_instance_types import *
 from .get_main_versions import *
+from ._inputs import *
+from . import outputs

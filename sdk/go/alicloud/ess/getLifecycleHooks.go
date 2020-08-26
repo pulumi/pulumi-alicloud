@@ -10,6 +10,33 @@ import (
 // This data source provides available lifecycle hook resources.
 //
 // > **NOTE:** Available in 1.72.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ess"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "lifecyclehook_name"
+// 		opt1 := "scaling_group_id"
+// 		ds, err := ess.GetLifecycleHooks(ctx, &ess.GetLifecycleHooksArgs{
+// 			NameRegex:      &opt0,
+// 			ScalingGroupId: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstLifecycleHook", ds.Hooks[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetLifecycleHooks(ctx *pulumi.Context, args *GetLifecycleHooksArgs, opts ...pulumi.InvokeOption) (*GetLifecycleHooksResult, error) {
 	var rv GetLifecycleHooksResult
 	err := ctx.Invoke("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args, &rv, opts...)

@@ -11,6 +11,60 @@ import (
 )
 
 // Provides a RAM Group membership resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ram"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
+// 			Comments: pulumi.String("this is a group comments."),
+// 			Force:    pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+// 			Comments:    pulumi.String("yoyoyo"),
+// 			DisplayName: pulumi.String("user_display_name"),
+// 			Email:       pulumi.String("hello.uuu@aaa.com"),
+// 			Force:       pulumi.Bool(true),
+// 			Mobile:      pulumi.String("86-18688888888"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		user1, err := ram.NewUser(ctx, "user1", &ram.UserArgs{
+// 			Comments:    pulumi.String("yoyoyo"),
+// 			DisplayName: pulumi.String("user_display_name1"),
+// 			Email:       pulumi.String("hello.uuu@aaa.com"),
+// 			Force:       pulumi.Bool(true),
+// 			Mobile:      pulumi.String("86-18688888889"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ram.NewGroupMembership(ctx, "membership", &ram.GroupMembershipArgs{
+// 			GroupName: group.Name,
+// 			UserNames: pulumi.StringArray{
+// 				user.Name,
+// 				user1.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type GroupMembership struct {
 	pulumi.CustomResourceState
 

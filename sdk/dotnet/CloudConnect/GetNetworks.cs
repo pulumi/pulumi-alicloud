@@ -48,7 +48,6 @@ namespace Pulumi.AliCloud.CloudConnect
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -99,7 +98,7 @@ namespace Pulumi.AliCloud.CloudConnect
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of CCN instances names. 
+        /// A list of CCN instances names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         /// <summary>

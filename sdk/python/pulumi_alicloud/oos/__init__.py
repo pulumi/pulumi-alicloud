@@ -7,3 +7,4 @@ from .execution import *
 from .get_executions import *
 from .get_templates import *
 from .template import *
+from . import outputs

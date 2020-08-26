@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// This topic provides an overview of the route map function of Cloud Enterprise Networks (CENs).
     /// You can use the route map function to filter routes and modify route attributes.
-    /// By doing so, you can manage the communication between networks attached to a CEN. 
+    /// By doing so, you can manage the communication between networks attached to a CEN.
     /// 
     /// For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/doc-detail/124157.htm).
     /// 
@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,10 +44,16 @@ namespace Pulumi.AliCloud.Cen
     ///         var vpc00 = new AliCloud.Vpc.Network("vpc00", new AliCloud.Vpc.NetworkArgs
     ///         {
     ///             CidrBlock = "172.16.0.0/12",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "alicloud.vpc00_region",
     ///         });
     ///         var vpc01 = new AliCloud.Vpc.Network("vpc01", new AliCloud.Vpc.NetworkArgs
     ///         {
     ///             CidrBlock = "172.16.0.0/12",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "alicloud.vpc01_region",
     ///         });
     ///         var default00 = new AliCloud.Cen.InstanceAttachment("default00", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
@@ -129,6 +135,13 @@ namespace Pulumi.AliCloud.Cen
     ///                 vpc00.RouteTableId,
     ///             },
     ///             TransmitDirection = "RegionIn",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "alicloud_cen_instance_attachment.default00",
+    ///                 "alicloud_cen_instance_attachment.default01",
+    ///             },
     ///         });
     ///     }
     /// 
@@ -186,7 +199,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<ImmutableArray<string>> DestinationChildInstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks. 
+        /// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
         /// </summary>
         [Output("destinationCidrBlocks")]
         public Output<ImmutableArray<string>> DestinationCidrBlocks { get; private set; } = null!;
@@ -204,7 +217,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<bool?> DestinationInstanceIdsReverseMatch { get; private set; } = null!;
 
         /// <summary>
-        /// A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs. 
+        /// A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
         /// </summary>
         [Output("destinationRouteTableIds")]
         public Output<ImmutableArray<string>> DestinationRouteTableIds { get; private set; } = null!;
@@ -216,13 +229,13 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> MapResult { get; private set; } = null!;
 
         /// <summary>
-        /// A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission. 
+        /// A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
         /// </summary>
         [Output("matchAsns")]
         public Output<ImmutableArray<string>> MatchAsns { get; private set; } = null!;
 
         /// <summary>
-        /// A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+        /// A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         /// </summary>
         [Output("matchCommunitySets")]
         public Output<ImmutableArray<string>> MatchCommunitySets { get; private set; } = null!;
@@ -234,13 +247,13 @@ namespace Pulumi.AliCloud.Cen
         public Output<int?> NextPriority { get; private set; } = null!;
 
         /// <summary>
-        /// An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+        /// An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         /// </summary>
         [Output("operateCommunitySets")]
         public Output<ImmutableArray<string>> OperateCommunitySets { get; private set; } = null!;
 
         /// <summary>
-        /// An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference. 
+        /// An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
         /// </summary>
         [Output("preference")]
         public Output<int?> Preference { get; private set; } = null!;
@@ -273,7 +286,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<ImmutableArray<string>> SourceChildInstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// A match statement that indicates the list of IDs of the source instances. 
+        /// A match statement that indicates the list of IDs of the source instances.
         /// </summary>
         [Output("sourceInstanceIds")]
         public Output<ImmutableArray<string>> SourceInstanceIds { get; private set; } = null!;
@@ -291,7 +304,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<ImmutableArray<string>> SourceRegionIds { get; private set; } = null!;
 
         /// <summary>
-        /// A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs. 
+        /// A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
         /// </summary>
         [Output("sourceRouteTableIds")]
         public Output<ImmutableArray<string>> SourceRouteTableIds { get; private set; } = null!;
@@ -412,7 +425,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _destinationCidrBlocks;
 
         /// <summary>
-        /// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks. 
+        /// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
         /// </summary>
         public InputList<string> DestinationCidrBlocks
         {
@@ -442,7 +455,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _destinationRouteTableIds;
 
         /// <summary>
-        /// A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs. 
+        /// A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
         /// </summary>
         public InputList<string> DestinationRouteTableIds
         {
@@ -460,7 +473,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _matchAsns;
 
         /// <summary>
-        /// A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission. 
+        /// A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
         /// </summary>
         public InputList<string> MatchAsns
         {
@@ -472,7 +485,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _matchCommunitySets;
 
         /// <summary>
-        /// A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+        /// A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         /// </summary>
         public InputList<string> MatchCommunitySets
         {
@@ -490,7 +503,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _operateCommunitySets;
 
         /// <summary>
-        /// An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+        /// An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         /// </summary>
         public InputList<string> OperateCommunitySets
         {
@@ -499,7 +512,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference. 
+        /// An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
         /// </summary>
         [Input("preference")]
         public Input<int>? Preference { get; set; }
@@ -550,7 +563,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _sourceInstanceIds;
 
         /// <summary>
-        /// A match statement that indicates the list of IDs of the source instances. 
+        /// A match statement that indicates the list of IDs of the source instances.
         /// </summary>
         public InputList<string> SourceInstanceIds
         {
@@ -580,7 +593,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _sourceRouteTableIds;
 
         /// <summary>
-        /// A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs. 
+        /// A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
         /// </summary>
         public InputList<string> SourceRouteTableIds
         {
@@ -659,7 +672,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _destinationCidrBlocks;
 
         /// <summary>
-        /// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks. 
+        /// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
         /// </summary>
         public InputList<string> DestinationCidrBlocks
         {
@@ -689,7 +702,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _destinationRouteTableIds;
 
         /// <summary>
-        /// A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs. 
+        /// A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
         /// </summary>
         public InputList<string> DestinationRouteTableIds
         {
@@ -707,7 +720,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _matchAsns;
 
         /// <summary>
-        /// A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission. 
+        /// A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
         /// </summary>
         public InputList<string> MatchAsns
         {
@@ -719,7 +732,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _matchCommunitySets;
 
         /// <summary>
-        /// A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+        /// A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         /// </summary>
         public InputList<string> MatchCommunitySets
         {
@@ -737,7 +750,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _operateCommunitySets;
 
         /// <summary>
-        /// An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported. 
+        /// An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         /// </summary>
         public InputList<string> OperateCommunitySets
         {
@@ -746,7 +759,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference. 
+        /// An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
         /// </summary>
         [Input("preference")]
         public Input<int>? Preference { get; set; }
@@ -800,7 +813,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _sourceInstanceIds;
 
         /// <summary>
-        /// A match statement that indicates the list of IDs of the source instances. 
+        /// A match statement that indicates the list of IDs of the source instances.
         /// </summary>
         public InputList<string> SourceInstanceIds
         {
@@ -830,7 +843,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _sourceRouteTableIds;
 
         /// <summary>
-        /// A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs. 
+        /// A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
         /// </summary>
         public InputList<string> SourceRouteTableIds
         {

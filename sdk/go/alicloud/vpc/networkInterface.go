@@ -15,6 +15,63 @@ import (
 // For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
 //
 // > **NOTE** Only one of privateIps or privateIpsCount can be specified when assign private IPs.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("192.168.0.0/24"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "VSwitch"
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			CidrBlock:        pulumi.String("192.168.0.0/24"),
+// 			VpcId:            vpc.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+// 			VpcId: vpc.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpc.NewNetworkInterface(ctx, "defaultNetworkInterface", &vpc.NetworkInterfaceArgs{
+// 			PrivateIp:       pulumi.String("192.168.0.2"),
+// 			PrivateIpsCount: pulumi.Int(3),
+// 			SecurityGroups: pulumi.StringArray{
+// 				group.ID(),
+// 			},
+// 			VswitchId: vswitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 

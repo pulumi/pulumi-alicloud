@@ -20,8 +20,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -77,34 +75,33 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ## Listener fields and protocol mapping
  *
  * load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
  *
  * listener parameter | support protocol | value range |
- * ------------- | ------------- | ------------- | 
- * backendPort | http & https & tcp & udp | 1-65535 | 
+ * ------------- | ------------- | ------------- |
+ * backendPort | http & https & tcp & udp | 1-65535 |
  * frontendPort | http & https & tcp & udp | 1-65535 |
  * protocol | http & https & tcp & udp |
  * bandwidth | http & https & tcp & udp | -1 / 1-1000 |
  * scheduler | http & https & tcp & udp | wrr rr or wlc |
  * stickySession | http & https | on or off |
- * stickySessionType | http & https | insert or server | 
- * cookieTimeout | http & https | 1-86400  | 
- * cookie | http & https |   | 
- * persistenceTimeout | tcp & udp | 0-3600 | 
- * healthCheck | http & https | on or off | 
- * healthCheckType | tcp | tcp or http | 
- * healthCheckDomain | http & https & tcp | 
- * healthCheckMethod | http & https & tcp | 
- * healthCheckUri | http & https & tcp |  | 
- * healthCheckConnectPort | http & https & tcp & udp | 1-65535 or -520 | 
- * healthyThreshold | http & https & tcp & udp | 1-10 | 
- * unhealthyThreshold | http & https & tcp & udp | 1-10 | 
+ * stickySessionType | http & https | insert or server |
+ * cookieTimeout | http & https | 1-86400  |
+ * cookie | http & https |   |
+ * persistenceTimeout | tcp & udp | 0-3600 |
+ * healthCheck | http & https | on or off |
+ * healthCheckType | tcp | tcp or http |
+ * healthCheckDomain | http & https & tcp |
+ * healthCheckMethod | http & https & tcp |
+ * healthCheckUri | http & https & tcp |  |
+ * healthCheckConnectPort | http & https & tcp & udp | 1-65535 or -520 |
+ * healthyThreshold | http & https & tcp & udp | 1-10 |
+ * unhealthyThreshold | http & https & tcp & udp | 1-10 |
  * healthCheckTimeout | http & https & tcp & udp | 1-300 |
  * healthCheckInterval | http & https & tcp & udp | 1-50 |
- * healthCheckHttpCode | http & https & tcp | http_2xx,http_3xx,http_4xx,http_5xx | 
+ * healthCheckHttpCode | http & https & tcp | http_2xx,http_3xx,http_4xx,http_5xx |
  * serverCertificateId | https |  |
  * gzip | http & https | true or false  |
  * xForwardedFor | http & https |  |
@@ -294,7 +291,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly serverGroupId!: pulumi.Output<string | undefined>;
     /**
-     * It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+     * It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
      *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
@@ -591,7 +588,7 @@ export interface ListenerState {
      */
     readonly serverGroupId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+     * It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
      *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
@@ -768,7 +765,7 @@ export interface ListenerArgs {
      */
     readonly serverGroupId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+     * It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
      *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */

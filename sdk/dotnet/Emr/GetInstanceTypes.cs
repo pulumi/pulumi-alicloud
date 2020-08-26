@@ -49,7 +49,6 @@ namespace Pulumi.AliCloud.Emr
         ///     public Output&lt;string&gt; FirstInstanceType { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -128,7 +127,7 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of emr instance types IDs. 
+        /// A list of emr instance types IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string InstanceChargeType;

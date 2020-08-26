@@ -18,6 +18,43 @@ import (
 // > **NOTE:** Available in 1.60.0+
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rocketmq"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultQos, err := rocketmq.NewQos(ctx, "defaultQos", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rocketmq.NewQosCar(ctx, "defaultQosCar", &rocketmq.QosCarArgs{
+// 			Description:         pulumi.String("tf-testSagQosCarDescription"),
+// 			LimitType:           pulumi.String("Absolute"),
+// 			MaxBandwidthAbs:     pulumi.Int(20),
+// 			MaxBandwidthPercent: pulumi.Int(20),
+// 			MinBandwidthAbs:     pulumi.Int(10),
+// 			MinBandwidthPercent: pulumi.Int(10),
+// 			PercentSourceType:   pulumi.String("InternetUpBandwidth"),
+// 			Priority:            pulumi.Int(1),
+// 			QosId:               defaultQos.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type QosCar struct {
 	pulumi.CustomResourceState
 

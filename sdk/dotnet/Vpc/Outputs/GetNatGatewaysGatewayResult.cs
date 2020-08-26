@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The forward table id. 
+        /// The forward table id.
         /// </summary>
         public readonly string ForwardTableId;
         /// <summary>

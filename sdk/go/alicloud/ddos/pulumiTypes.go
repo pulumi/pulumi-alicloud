@@ -22,8 +22,7 @@ type SchedulerRuleRule struct {
 // SchedulerRuleRuleInput is an input type that accepts SchedulerRuleRuleArgs and SchedulerRuleRuleOutput values.
 // You can construct a concrete instance of `SchedulerRuleRuleInput` via:
 //
-// 		 SchedulerRuleRuleArgs{...}
-//
+//          SchedulerRuleRuleArgs{...}
 type SchedulerRuleRuleInput interface {
 	pulumi.Input
 
@@ -55,8 +54,7 @@ func (i SchedulerRuleRuleArgs) ToSchedulerRuleRuleOutputWithContext(ctx context.
 // SchedulerRuleRuleArrayInput is an input type that accepts SchedulerRuleRuleArray and SchedulerRuleRuleArrayOutput values.
 // You can construct a concrete instance of `SchedulerRuleRuleArrayInput` via:
 //
-// 		 SchedulerRuleRuleArray{ SchedulerRuleRuleArgs{...} }
-//
+//          SchedulerRuleRuleArray{ SchedulerRuleRuleArgs{...} }
 type SchedulerRuleRuleArrayInput interface {
 	pulumi.Input
 
@@ -158,8 +156,7 @@ type GetDdosBgpInstancesInstance struct {
 // GetDdosBgpInstancesInstanceInput is an input type that accepts GetDdosBgpInstancesInstanceArgs and GetDdosBgpInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetDdosBgpInstancesInstanceInput` via:
 //
-// 		 GetDdosBgpInstancesInstanceArgs{...}
-//
+//          GetDdosBgpInstancesInstanceArgs{...}
 type GetDdosBgpInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -201,8 +198,7 @@ func (i GetDdosBgpInstancesInstanceArgs) ToGetDdosBgpInstancesInstanceOutputWith
 // GetDdosBgpInstancesInstanceArrayInput is an input type that accepts GetDdosBgpInstancesInstanceArray and GetDdosBgpInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDdosBgpInstancesInstanceArrayInput` via:
 //
-// 		 GetDdosBgpInstancesInstanceArray{ GetDdosBgpInstancesInstanceArgs{...} }
-//
+//          GetDdosBgpInstancesInstanceArray{ GetDdosBgpInstancesInstanceArgs{...} }
 type GetDdosBgpInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -318,8 +314,7 @@ type GetDdosCooInstancesInstance struct {
 // GetDdosCooInstancesInstanceInput is an input type that accepts GetDdosCooInstancesInstanceArgs and GetDdosCooInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetDdosCooInstancesInstanceInput` via:
 //
-// 		 GetDdosCooInstancesInstanceArgs{...}
-//
+//          GetDdosCooInstancesInstanceArgs{...}
 type GetDdosCooInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -359,8 +354,7 @@ func (i GetDdosCooInstancesInstanceArgs) ToGetDdosCooInstancesInstanceOutputWith
 // GetDdosCooInstancesInstanceArrayInput is an input type that accepts GetDdosCooInstancesInstanceArray and GetDdosCooInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDdosCooInstancesInstanceArrayInput` via:
 //
-// 		 GetDdosCooInstancesInstanceArray{ GetDdosCooInstancesInstanceArgs{...} }
-//
+//          GetDdosCooInstancesInstanceArray{ GetDdosCooInstancesInstanceArgs{...} }
 type GetDdosCooInstancesInstanceArrayInput interface {
 	pulumi.Input
 

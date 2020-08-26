@@ -7,11 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides available scaling group resources. 
+ * This data source provides available scaling group resources.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,10 +17,10 @@ import * as utilities from "../utilities";
  *
  * const scalinggroupsDs = pulumi.output(alicloud.ess.getScalingGroups({
  *     ids: [
- *         "scalingGroupId1",
- *         "scalingGroupId2",
+ *         "scaling_group_id1",
+ *         "scaling_group_id2",
  *     ],
- *     nameRegex: "scalingGroupName",
+ *     nameRegex: "scaling_group_name",
  * }, { async: true }));
  *
  * export const firstScalingGroup = scalinggroupsDs.groups[0].id;

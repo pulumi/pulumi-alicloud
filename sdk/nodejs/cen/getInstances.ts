@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -79,7 +77,7 @@ export interface GetInstancesResult {
     readonly instances: outputs.cen.GetInstancesInstance[];
     readonly nameRegex?: string;
     /**
-     * A list of CEN instances names. 
+     * A list of CEN instances names.
      */
     readonly names: string[];
     readonly outputFile?: string;

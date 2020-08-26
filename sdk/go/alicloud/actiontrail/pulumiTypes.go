@@ -48,8 +48,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-// 		 GetInstancesInstanceArgs{...}
-//
+//          GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -107,8 +106,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-// 		 GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
-//
+//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -262,8 +260,7 @@ type GetSaslAclsAcl struct {
 // GetSaslAclsAclInput is an input type that accepts GetSaslAclsAclArgs and GetSaslAclsAclOutput values.
 // You can construct a concrete instance of `GetSaslAclsAclInput` via:
 //
-// 		 GetSaslAclsAclArgs{...}
-//
+//          GetSaslAclsAclArgs{...}
 type GetSaslAclsAclInput interface {
 	pulumi.Input
 
@@ -301,8 +298,7 @@ func (i GetSaslAclsAclArgs) ToGetSaslAclsAclOutputWithContext(ctx context.Contex
 // GetSaslAclsAclArrayInput is an input type that accepts GetSaslAclsAclArray and GetSaslAclsAclArrayOutput values.
 // You can construct a concrete instance of `GetSaslAclsAclArrayInput` via:
 //
-// 		 GetSaslAclsAclArray{ GetSaslAclsAclArgs{...} }
-//
+//          GetSaslAclsAclArray{ GetSaslAclsAclArgs{...} }
 type GetSaslAclsAclArrayInput interface {
 	pulumi.Input
 
@@ -398,8 +394,7 @@ type GetSaslUsersUser struct {
 // GetSaslUsersUserInput is an input type that accepts GetSaslUsersUserArgs and GetSaslUsersUserOutput values.
 // You can construct a concrete instance of `GetSaslUsersUserInput` via:
 //
-// 		 GetSaslUsersUserArgs{...}
-//
+//          GetSaslUsersUserArgs{...}
 type GetSaslUsersUserInput interface {
 	pulumi.Input
 
@@ -429,8 +424,7 @@ func (i GetSaslUsersUserArgs) ToGetSaslUsersUserOutputWithContext(ctx context.Co
 // GetSaslUsersUserArrayInput is an input type that accepts GetSaslUsersUserArray and GetSaslUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetSaslUsersUserArrayInput` via:
 //
-// 		 GetSaslUsersUserArray{ GetSaslUsersUserArgs{...} }
-//
+//          GetSaslUsersUserArray{ GetSaslUsersUserArgs{...} }
 type GetSaslUsersUserArrayInput interface {
 	pulumi.Input
 
@@ -516,8 +510,7 @@ type GetTopicsTopic struct {
 // GetTopicsTopicInput is an input type that accepts GetTopicsTopicArgs and GetTopicsTopicOutput values.
 // You can construct a concrete instance of `GetTopicsTopicInput` via:
 //
-// 		 GetTopicsTopicArgs{...}
-//
+//          GetTopicsTopicArgs{...}
 type GetTopicsTopicInput interface {
 	pulumi.Input
 
@@ -557,8 +550,7 @@ func (i GetTopicsTopicArgs) ToGetTopicsTopicOutputWithContext(ctx context.Contex
 // GetTopicsTopicArrayInput is an input type that accepts GetTopicsTopicArray and GetTopicsTopicArrayOutput values.
 // You can construct a concrete instance of `GetTopicsTopicArrayInput` via:
 //
-// 		 GetTopicsTopicArray{ GetTopicsTopicArgs{...} }
-//
+//          GetTopicsTopicArray{ GetTopicsTopicArgs{...} }
 type GetTopicsTopicArrayInput interface {
 	pulumi.Input
 
@@ -669,8 +661,7 @@ type GetTrailsActiontrail struct {
 // GetTrailsActiontrailInput is an input type that accepts GetTrailsActiontrailArgs and GetTrailsActiontrailOutput values.
 // You can construct a concrete instance of `GetTrailsActiontrailInput` via:
 //
-// 		 GetTrailsActiontrailArgs{...}
-//
+//          GetTrailsActiontrailArgs{...}
 type GetTrailsActiontrailInput interface {
 	pulumi.Input
 
@@ -710,8 +701,7 @@ func (i GetTrailsActiontrailArgs) ToGetTrailsActiontrailOutputWithContext(ctx co
 // GetTrailsActiontrailArrayInput is an input type that accepts GetTrailsActiontrailArray and GetTrailsActiontrailArrayOutput values.
 // You can construct a concrete instance of `GetTrailsActiontrailArrayInput` via:
 //
-// 		 GetTrailsActiontrailArray{ GetTrailsActiontrailArgs{...} }
-//
+//          GetTrailsActiontrailArray{ GetTrailsActiontrailArgs{...} }
 type GetTrailsActiontrailArrayInput interface {
 	pulumi.Input
 

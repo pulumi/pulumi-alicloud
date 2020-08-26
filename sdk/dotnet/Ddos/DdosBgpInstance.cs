@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
+        /// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
+        /// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
+        /// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

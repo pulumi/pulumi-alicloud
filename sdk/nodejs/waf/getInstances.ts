@@ -15,8 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -53,7 +51,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  */
 export interface GetInstancesArgs {
     /**
-     * A list of WAF instance IDs. 
+     * A list of WAF instance IDs.
      */
     readonly ids?: string[];
     /**
@@ -80,7 +78,7 @@ export interface GetInstancesResult {
      */
     readonly id: string;
     /**
-     * (Optional) A list of WAF instance IDs. 
+     * (Optional) A list of WAF instance IDs.
      */
     readonly ids: string[];
     readonly instanceSource?: string;

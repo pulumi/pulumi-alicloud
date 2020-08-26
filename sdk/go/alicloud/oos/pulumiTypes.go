@@ -58,8 +58,7 @@ type GetExecutionsExecution struct {
 // GetExecutionsExecutionInput is an input type that accepts GetExecutionsExecutionArgs and GetExecutionsExecutionOutput values.
 // You can construct a concrete instance of `GetExecutionsExecutionInput` via:
 //
-// 		 GetExecutionsExecutionArgs{...}
-//
+//          GetExecutionsExecutionArgs{...}
 type GetExecutionsExecutionInput interface {
 	pulumi.Input
 
@@ -127,8 +126,7 @@ func (i GetExecutionsExecutionArgs) ToGetExecutionsExecutionOutputWithContext(ct
 // GetExecutionsExecutionArrayInput is an input type that accepts GetExecutionsExecutionArray and GetExecutionsExecutionArrayOutput values.
 // You can construct a concrete instance of `GetExecutionsExecutionArrayInput` via:
 //
-// 		 GetExecutionsExecutionArray{ GetExecutionsExecutionArgs{...} }
-//
+//          GetExecutionsExecutionArray{ GetExecutionsExecutionArgs{...} }
 type GetExecutionsExecutionArrayInput interface {
 	pulumi.Input
 
@@ -325,8 +323,7 @@ type GetTemplatesTemplate struct {
 // GetTemplatesTemplateInput is an input type that accepts GetTemplatesTemplateArgs and GetTemplatesTemplateOutput values.
 // You can construct a concrete instance of `GetTemplatesTemplateInput` via:
 //
-// 		 GetTemplatesTemplateArgs{...}
-//
+//          GetTemplatesTemplateArgs{...}
 type GetTemplatesTemplateInput interface {
 	pulumi.Input
 
@@ -382,8 +379,7 @@ func (i GetTemplatesTemplateArgs) ToGetTemplatesTemplateOutputWithContext(ctx co
 // GetTemplatesTemplateArrayInput is an input type that accepts GetTemplatesTemplateArray and GetTemplatesTemplateArrayOutput values.
 // You can construct a concrete instance of `GetTemplatesTemplateArrayInput` via:
 //
-// 		 GetTemplatesTemplateArray{ GetTemplatesTemplateArgs{...} }
-//
+//          GetTemplatesTemplateArray{ GetTemplatesTemplateArgs{...} }
 type GetTemplatesTemplateArrayInput interface {
 	pulumi.Input
 

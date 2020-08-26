@@ -10,6 +10,34 @@ import (
 // This data source provides a list of EDAS application in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.82.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/edas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "application.txt"
+// 		applications, err := edas.GetApplications(ctx, &edas.GetApplicationsArgs{
+// 			Ids: []string{
+// 				"xxx",
+// 			},
+// 			OutputFile: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstApplicationName", applications.Applications[0].AppName)
+// 		return nil
+// 	})
+// }
+// ```
 func GetApplications(ctx *pulumi.Context, args *GetApplicationsArgs, opts ...pulumi.InvokeOption) (*GetApplicationsResult, error) {
 	var rv GetApplicationsResult
 	err := ctx.Invoke("alicloud:edas/getApplications:getApplications", args, &rv, opts...)

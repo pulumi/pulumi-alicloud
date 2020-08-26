@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;

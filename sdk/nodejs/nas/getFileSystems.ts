@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -59,11 +57,11 @@ export interface GetFileSystemsArgs {
     readonly ids?: string[];
     readonly outputFile?: string;
     /**
-     * Filter results by a specific ProtocolType. 
+     * Filter results by a specific ProtocolType.
      */
     readonly protocolType?: string;
     /**
-     * Filter results by a specific StorageType. 
+     * Filter results by a specific StorageType.
      */
     readonly storageType?: string;
 }

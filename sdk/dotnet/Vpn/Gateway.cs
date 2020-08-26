@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+        /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+        /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+        /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

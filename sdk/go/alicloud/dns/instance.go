@@ -13,6 +13,36 @@ import (
 // Create an DNS Instance resource.
 //
 // > **NOTE:** Available in v1.80.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dns.NewInstance(ctx, "this", &dns.InstanceArgs{
+// 			DnsSecurity:   pulumi.String("no"),
+// 			DomainNumbers: pulumi.String("2"),
+// 			Period:        pulumi.Int(1),
+// 			RenewPeriod:   pulumi.Int(1),
+// 			RenewalStatus: pulumi.String("ManualRenewal"),
+// 			VersionCode:   pulumi.String("version_personal"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 

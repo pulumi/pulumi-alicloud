@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;

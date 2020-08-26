@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -52,11 +50,11 @@ export class DomainGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Name of the domain group. 
+     * Name of the domain group.
      */
     public readonly groupName!: pulumi.Output<string>;
     /**
-     * User language. 
+     * User language.
      */
     public readonly lang!: pulumi.Output<string | undefined>;
 
@@ -98,11 +96,11 @@ export class DomainGroup extends pulumi.CustomResource {
  */
 export interface DomainGroupState {
     /**
-     * Name of the domain group. 
+     * Name of the domain group.
      */
     readonly groupName?: pulumi.Input<string>;
     /**
-     * User language. 
+     * User language.
      */
     readonly lang?: pulumi.Input<string>;
 }
@@ -112,11 +110,11 @@ export interface DomainGroupState {
  */
 export interface DomainGroupArgs {
     /**
-     * Name of the domain group. 
+     * Name of the domain group.
      */
     readonly groupName: pulumi.Input<string>;
     /**
-     * User language. 
+     * User language.
      */
     readonly lang?: pulumi.Input<string>;
 }

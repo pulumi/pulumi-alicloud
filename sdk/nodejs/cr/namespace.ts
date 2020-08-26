@@ -13,13 +13,13 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const myNamespace = new alicloud.cr.Namespace("my-namespace", {
+ * const my_namespace = new alicloud.cr.Namespace("my-namespace", {
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });

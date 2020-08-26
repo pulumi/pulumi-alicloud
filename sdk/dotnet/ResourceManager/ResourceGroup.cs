@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,8 +47,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// The time when the resource group was created.
         /// * `region_statuses` -The status of the resource group in all regions.
-        /// - `region_id` - The region ID.
-        /// - `status` - The status of the regional resource group.
         /// </summary>
         [Output("createDate")]
         public Output<string> CreateDate { get; private set; } = null!;
@@ -69,7 +67,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<ImmutableArray<Outputs.ResourceGroupRegionStatus>> RegionStatuses { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource group.
+        /// The status of the regional resource group.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -148,8 +146,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// The time when the resource group was created.
         /// * `region_statuses` -The status of the resource group in all regions.
-        /// - `region_id` - The region ID.
-        /// - `status` - The status of the regional resource group.
         /// </summary>
         [Input("createDate")]
         public Input<string>? CreateDate { get; set; }
@@ -175,7 +171,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
 
         /// <summary>
-        /// The status of the resource group.
+        /// The status of the regional resource group.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

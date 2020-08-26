@@ -12,6 +12,86 @@ import (
 // Provides an ECS Launch Template resource.
 //
 // For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "system"
+// 		images, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// 			Owners: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instances, err := ecs.GetInstances(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ecs.NewLaunchTemplate(ctx, "template", &ecs.LaunchTemplateArgs{
+// 			DataDisks: ecs.LaunchTemplateDataDiskArray{
+// 				&ecs.LaunchTemplateDataDiskArgs{
+// 					Description: pulumi.String("test1"),
+// 					Name:        pulumi.String("disk1"),
+// 				},
+// 				&ecs.LaunchTemplateDataDiskArgs{
+// 					Description: pulumi.String("test2"),
+// 					Name:        pulumi.String("disk2"),
+// 				},
+// 			},
+// 			Description:             pulumi.String("test1"),
+// 			HostName:                pulumi.String("tf-test-host"),
+// 			ImageId:                 pulumi.String(images.Images[0].Id),
+// 			InstanceChargeType:      pulumi.String("PrePaid"),
+// 			InstanceName:            pulumi.String("tf-instance-name"),
+// 			InstanceType:            pulumi.String(instances.Instances[0].InstanceType),
+// 			InternetChargeType:      pulumi.String("PayByBandwidth"),
+// 			InternetMaxBandwidthIn:  pulumi.Int(5),
+// 			InternetMaxBandwidthOut: pulumi.Int(0),
+// 			IoOptimized:             pulumi.String("none"),
+// 			KeyPairName:             pulumi.String("test-key-pair"),
+// 			NetworkInterfaces: &ecs.LaunchTemplateNetworkInterfacesArgs{
+// 				Description:     pulumi.String("hello1"),
+// 				Name:            pulumi.String("eth0"),
+// 				PrimaryIp:       pulumi.String("10.0.0.2"),
+// 				SecurityGroupId: pulumi.String("xxxx"),
+// 				VswitchId:       pulumi.String("xxxxxxx"),
+// 			},
+// 			NetworkType:                 pulumi.String("vpc"),
+// 			RamRoleName:                 pulumi.String("xxxxx"),
+// 			ResourceGroupId:             pulumi.String("rg-zkdfjahg9zxncv0"),
+// 			SecurityEnhancementStrategy: pulumi.String("Active"),
+// 			SecurityGroupId:             pulumi.String("sg-zxcvj0lasdf102350asdf9a"),
+// 			SpotPriceLimit:              pulumi.Float64(5),
+// 			SpotStrategy:                pulumi.String("SpotWithPriceLimit"),
+// 			SystemDiskCategory:          pulumi.String("cloud_ssd"),
+// 			SystemDiskDescription:       pulumi.String("test disk"),
+// 			SystemDiskName:              pulumi.String("hello"),
+// 			SystemDiskSize:              pulumi.Int(40),
+// 			Tags: pulumi.StringMap{
+// 				"tag1": pulumi.String("hello"),
+// 				"tag2": pulumi.String("world"),
+// 			},
+// 			Userdata:  pulumi.String("xxxxxxxxxxxxxx"),
+// 			VpcId:     pulumi.String("vpc-asdfnbg0as8dfk1nb2"),
+// 			VswitchId: pulumi.String("sw-ljkngaksdjfj0nnasdf"),
+// 			ZoneId:    pulumi.String("beijing-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type LaunchTemplate struct {
 	pulumi.CustomResourceState
 

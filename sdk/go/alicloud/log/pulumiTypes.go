@@ -26,8 +26,7 @@ type AlertNotificationList struct {
 // AlertNotificationListInput is an input type that accepts AlertNotificationListArgs and AlertNotificationListOutput values.
 // You can construct a concrete instance of `AlertNotificationListInput` via:
 //
-// 		 AlertNotificationListArgs{...}
-//
+//          AlertNotificationListArgs{...}
 type AlertNotificationListInput interface {
 	pulumi.Input
 
@@ -63,8 +62,7 @@ func (i AlertNotificationListArgs) ToAlertNotificationListOutputWithContext(ctx 
 // AlertNotificationListArrayInput is an input type that accepts AlertNotificationListArray and AlertNotificationListArrayOutput values.
 // You can construct a concrete instance of `AlertNotificationListArrayInput` via:
 //
-// 		 AlertNotificationListArray{ AlertNotificationListArgs{...} }
-//
+//          AlertNotificationListArray{ AlertNotificationListArgs{...} }
 type AlertNotificationListArrayInput interface {
 	pulumi.Input
 
@@ -163,8 +161,7 @@ type AlertQueryList struct {
 // AlertQueryListInput is an input type that accepts AlertQueryListArgs and AlertQueryListOutput values.
 // You can construct a concrete instance of `AlertQueryListInput` via:
 //
-// 		 AlertQueryListArgs{...}
-//
+//          AlertQueryListArgs{...}
 type AlertQueryListInput interface {
 	pulumi.Input
 
@@ -202,8 +199,7 @@ func (i AlertQueryListArgs) ToAlertQueryListOutputWithContext(ctx context.Contex
 // AlertQueryListArrayInput is an input type that accepts AlertQueryListArray and AlertQueryListArrayOutput values.
 // You can construct a concrete instance of `AlertQueryListArrayInput` via:
 //
-// 		 AlertQueryListArray{ AlertQueryListArgs{...} }
-//
+//          AlertQueryListArray{ AlertQueryListArgs{...} }
 type AlertQueryListArrayInput interface {
 	pulumi.Input
 
@@ -311,8 +307,7 @@ type StoreIndexFieldSearch struct {
 // StoreIndexFieldSearchInput is an input type that accepts StoreIndexFieldSearchArgs and StoreIndexFieldSearchOutput values.
 // You can construct a concrete instance of `StoreIndexFieldSearchInput` via:
 //
-// 		 StoreIndexFieldSearchArgs{...}
-//
+//          StoreIndexFieldSearchArgs{...}
 type StoreIndexFieldSearchInput interface {
 	pulumi.Input
 
@@ -354,8 +349,7 @@ func (i StoreIndexFieldSearchArgs) ToStoreIndexFieldSearchOutputWithContext(ctx 
 // StoreIndexFieldSearchArrayInput is an input type that accepts StoreIndexFieldSearchArray and StoreIndexFieldSearchArrayOutput values.
 // You can construct a concrete instance of `StoreIndexFieldSearchArrayInput` via:
 //
-// 		 StoreIndexFieldSearchArray{ StoreIndexFieldSearchArgs{...} }
-//
+//          StoreIndexFieldSearchArray{ StoreIndexFieldSearchArgs{...} }
 type StoreIndexFieldSearchArrayInput interface {
 	pulumi.Input
 
@@ -465,8 +459,7 @@ type StoreIndexFieldSearchJsonKey struct {
 // StoreIndexFieldSearchJsonKeyInput is an input type that accepts StoreIndexFieldSearchJsonKeyArgs and StoreIndexFieldSearchJsonKeyOutput values.
 // You can construct a concrete instance of `StoreIndexFieldSearchJsonKeyInput` via:
 //
-// 		 StoreIndexFieldSearchJsonKeyArgs{...}
-//
+//          StoreIndexFieldSearchJsonKeyArgs{...}
 type StoreIndexFieldSearchJsonKeyInput interface {
 	pulumi.Input
 
@@ -500,8 +493,7 @@ func (i StoreIndexFieldSearchJsonKeyArgs) ToStoreIndexFieldSearchJsonKeyOutputWi
 // StoreIndexFieldSearchJsonKeyArrayInput is an input type that accepts StoreIndexFieldSearchJsonKeyArray and StoreIndexFieldSearchJsonKeyArrayOutput values.
 // You can construct a concrete instance of `StoreIndexFieldSearchJsonKeyArrayInput` via:
 //
-// 		 StoreIndexFieldSearchJsonKeyArray{ StoreIndexFieldSearchJsonKeyArgs{...} }
-//
+//          StoreIndexFieldSearchJsonKeyArray{ StoreIndexFieldSearchJsonKeyArgs{...} }
 type StoreIndexFieldSearchJsonKeyArrayInput interface {
 	pulumi.Input
 
@@ -589,8 +581,7 @@ type StoreIndexFullText struct {
 // StoreIndexFullTextInput is an input type that accepts StoreIndexFullTextArgs and StoreIndexFullTextOutput values.
 // You can construct a concrete instance of `StoreIndexFullTextInput` via:
 //
-// 		 StoreIndexFullTextArgs{...}
-//
+//          StoreIndexFullTextArgs{...}
 type StoreIndexFullTextInput interface {
 	pulumi.Input
 
@@ -630,12 +621,11 @@ func (i StoreIndexFullTextArgs) ToStoreIndexFullTextPtrOutputWithContext(ctx con
 // StoreIndexFullTextPtrInput is an input type that accepts StoreIndexFullTextArgs, StoreIndexFullTextPtr and StoreIndexFullTextPtrOutput values.
 // You can construct a concrete instance of `StoreIndexFullTextPtrInput` via:
 //
-// 		 StoreIndexFullTextArgs{...}
+//          StoreIndexFullTextArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type StoreIndexFullTextPtrInput interface {
 	pulumi.Input
 
@@ -759,8 +749,7 @@ type StoreShard struct {
 // StoreShardInput is an input type that accepts StoreShardArgs and StoreShardOutput values.
 // You can construct a concrete instance of `StoreShardInput` via:
 //
-// 		 StoreShardArgs{...}
-//
+//          StoreShardArgs{...}
 type StoreShardInput interface {
 	pulumi.Input
 
@@ -791,8 +780,7 @@ func (i StoreShardArgs) ToStoreShardOutputWithContext(ctx context.Context) Store
 // StoreShardArrayInput is an input type that accepts StoreShardArray and StoreShardArrayOutput values.
 // You can construct a concrete instance of `StoreShardArrayInput` via:
 //
-// 		 StoreShardArray{ StoreShardArgs{...} }
-//
+//          StoreShardArray{ StoreShardArgs{...} }
 type StoreShardArrayInput interface {
 	pulumi.Input
 

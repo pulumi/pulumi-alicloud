@@ -11,6 +11,33 @@ import (
 // Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 //
 // > **NOTE:** Available in v1.66.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/polardb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "pc-\\w+"
+// 		opt1 := "Running"
+// 		polardbClustersDs, err := polardb.GetClusters(ctx, &polardb.GetClustersArgs{
+// 			DescriptionRegex: &opt0,
+// 			Status:           &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstPolardbClusterId", polardbClustersDs.Clusters[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	var rv GetClustersResult
 	err := ctx.Invoke("alicloud:polardb/getClusters:getClusters", args, &rv, opts...)

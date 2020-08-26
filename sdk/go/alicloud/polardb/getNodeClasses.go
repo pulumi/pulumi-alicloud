@@ -10,6 +10,44 @@ import (
 // This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
 //
 // > **NOTE:** Available in v1.81.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/polardb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "PolarDB"
+// 		resourcesZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := "MySQL"
+// 		opt2 := "5.6"
+// 		opt3 := resourcesZones.Zones[0].Id
+// 		resourcesNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+// 			DbType:    &opt1,
+// 			DbVersion: &opt2,
+// 			PayType:   "Postpaid",
+// 			ZoneId:    &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstPolardbNodeClass", resourcesNodeClasses.Classes)
+// 		return nil
+// 	})
+// }
+// ```
 func GetNodeClasses(ctx *pulumi.Context, args *GetNodeClassesArgs, opts ...pulumi.InvokeOption) (*GetNodeClassesResult, error) {
 	var rv GetNodeClassesResult
 	err := ctx.Invoke("alicloud:polardb/getNodeClasses:getNodeClasses", args, &rv, opts...)

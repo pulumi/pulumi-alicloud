@@ -19,6 +19,41 @@ import (
 // > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
 //
 // > **NOTE:** Available in 1.65.0+.
+//
+// ## Example Usage
+//
+// cluster-autoscaler in Kubernetes Cluster
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cs.NewKubernetesAutoscaler(ctx, "_default", &cs.KubernetesAutoscalerArgs{
+// 			ClusterId:            pulumi.Any(_var.Cluster_id),
+// 			CoolDownDuration:     pulumi.Any(_var.Cool_down_duration),
+// 			DeferScaleInDuration: pulumi.Any(_var.Defer_scale_in_duration),
+// 			Nodepools: cs.KubernetesAutoscalerNodepoolArray{
+// 				&cs.KubernetesAutoscalerNodepoolArgs{
+// 					Id:     pulumi.String("scaling_group_id"),
+// 					Labels: pulumi.String("a=b"),
+// 					Taints: pulumi.String("c=d:NoSchedule"),
+// 				},
+// 			},
+// 			Utilization: pulumi.Any(_var.Utilization),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type KubernetesAutoscaler struct {
 	pulumi.CustomResourceState
 
@@ -28,7 +63,6 @@ type KubernetesAutoscaler struct {
 	CoolDownDuration pulumi.StringOutput `pulumi:"coolDownDuration"`
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration pulumi.StringOutput `pulumi:"deferScaleInDuration"`
-	//
 	// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -85,7 +119,6 @@ type kubernetesAutoscalerState struct {
 	CoolDownDuration *string `pulumi:"coolDownDuration"`
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration *string `pulumi:"deferScaleInDuration"`
-	//
 	// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -103,7 +136,6 @@ type KubernetesAutoscalerState struct {
 	CoolDownDuration pulumi.StringPtrInput
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration pulumi.StringPtrInput
-	//
 	// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -125,7 +157,6 @@ type kubernetesAutoscalerArgs struct {
 	CoolDownDuration string `pulumi:"coolDownDuration"`
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration string `pulumi:"deferScaleInDuration"`
-	//
 	// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -144,7 +175,6 @@ type KubernetesAutoscalerArgs struct {
 	CoolDownDuration pulumi.StringInput
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration pulumi.StringInput
-	//
 	// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.

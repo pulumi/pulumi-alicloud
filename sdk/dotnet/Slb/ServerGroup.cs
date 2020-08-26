@@ -25,8 +25,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -122,7 +120,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// }
     /// ```
-    /// 
     /// ## Block servers
     /// 
     /// The servers mapping supports the following:

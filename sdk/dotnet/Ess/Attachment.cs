@@ -18,8 +18,6 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;

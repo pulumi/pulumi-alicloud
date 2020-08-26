@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.Ddos
         ///     public Output&lt;string&gt; Instance { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,7 +93,7 @@ export interface GetInstanceClassesArgs {
      */
     readonly packageType?: string;
     /**
-     * It has been deprecated from 1.68.0. 
+     * It has been deprecated from 1.68.0.
      *
      * @deprecated The parameter 'performance_type' has been deprecated from 1.68.0.
      */
@@ -110,7 +108,7 @@ export interface GetInstanceClassesArgs {
     readonly shardNumber?: number;
     readonly sortedBy?: string;
     /**
-     * It has been deprecated from 1.68.0. 
+     * It has been deprecated from 1.68.0.
      *
      * @deprecated The parameter 'storage_type' has been deprecated from 1.68.0.
      */
