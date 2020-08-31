@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceStatus")
-    def instance_status(self) -> float:
+    def instance_status(self) -> pulumi.Output[float]:
         """
         The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
         """
@@ -116,7 +116,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> float:
+    def instance_type(self) -> pulumi.Output[float]:
         """
         The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
         """
@@ -124,7 +124,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
         """
@@ -132,7 +132,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="releaseTime")
-    def release_time(self) -> str:
+    def release_time(self) -> pulumi.Output[str]:
         """
         Platinum edition instance expiration time.
         """
@@ -140,7 +140,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def remark(self) -> Optional[str]:
+    def remark(self) -> pulumi.Output[Optional[str]]:
         """
         This attribute is a concise description of instance. The length cannot exceed 128.
         """

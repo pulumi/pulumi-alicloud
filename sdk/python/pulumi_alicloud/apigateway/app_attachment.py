@@ -13,7 +13,7 @@ __all__ = ['AppAttachment']
 
 class AppAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_id: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
@@ -98,7 +98,7 @@ class AppAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="apiId")
-    def api_id(self) -> str:
+    def api_id(self) -> pulumi.Output[str]:
         """
         The api_id that app apply to access.
         """
@@ -106,7 +106,7 @@ class AppAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appId")
-    def app_id(self) -> str:
+    def app_id(self) -> pulumi.Output[str]:
         """
         The app that apply to the authorization.
         """
@@ -114,7 +114,7 @@ class AppAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> str:
+    def group_id(self) -> pulumi.Output[str]:
         """
         The group that the api belongs to.
         """
@@ -122,7 +122,7 @@ class AppAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stageName")
-    def stage_name(self) -> str:
+    def stage_name(self) -> pulumi.Output[str]:
         """
         Stage that the app apply to access.
         """

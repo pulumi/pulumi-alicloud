@@ -13,7 +13,7 @@ __all__ = ['InstanceClusterAttachment']
 
 class InstanceClusterAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -110,7 +110,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The ID of the cluster that you want to create the application.
         """
@@ -118,7 +118,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterMemberIds")
-    def cluster_member_ids(self) -> Mapping[str, str]:
+    def cluster_member_ids(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
         """
@@ -126,7 +126,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ecuMap")
-    def ecu_map(self) -> Mapping[str, str]:
+    def ecu_map(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
         """
@@ -134,7 +134,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> List[str]:
+    def instance_ids(self) -> pulumi.Output[List[str]]:
         """
         The ID of instance. Type: list.
         """
@@ -142,7 +142,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="statusMap")
-    def status_map(self) -> Mapping[str, float]:
+    def status_map(self) -> pulumi.Output[Mapping[str, float]]:
         """
         The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
         """

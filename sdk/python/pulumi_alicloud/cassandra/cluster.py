@@ -13,7 +13,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[float]] = None,
@@ -239,7 +239,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[bool]:
+    def auto_renew(self) -> pulumi.Output[Optional[bool]]:
         """
         Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
         """
@@ -247,7 +247,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[float]:
+    def auto_renew_period(self) -> pulumi.Output[Optional[float]]:
         """
         Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         """
@@ -255,7 +255,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[str]:
+    def cluster_name(self) -> pulumi.Output[Optional[str]]:
         """
         Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         """
@@ -263,7 +263,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataCenterName")
-    def data_center_name(self) -> Optional[str]:
+    def data_center_name(self) -> pulumi.Output[Optional[str]]:
         """
         Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         """
@@ -271,7 +271,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[float]:
+    def disk_size(self) -> pulumi.Output[Optional[float]]:
         """
         User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
         - Custom storage space; value range: [160, 2000].
@@ -281,7 +281,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[str]:
+    def disk_type(self) -> pulumi.Output[Optional[str]]:
         """
         The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
         """
@@ -289,12 +289,12 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enablePublic")
-    def enable_public(self) -> Optional[bool]:
+    def enable_public(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "enable_public")
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> str:
+    def instance_type(self) -> pulumi.Output[str]:
         """
         Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
         """
@@ -302,7 +302,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipWhite")
-    def ip_white(self) -> str:
+    def ip_white(self) -> pulumi.Output[str]:
         """
         Set the instance's IP whitelist in VPC network.
         """
@@ -310,7 +310,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintainEndTime")
-    def maintain_end_time(self) -> Optional[str]:
+    def maintain_end_time(self) -> pulumi.Output[Optional[str]]:
         """
         The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         """
@@ -318,7 +318,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintainStartTime")
-    def maintain_start_time(self) -> Optional[str]:
+    def maintain_start_time(self) -> pulumi.Output[Optional[str]]:
         """
         The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         """
@@ -326,7 +326,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="majorVersion")
-    def major_version(self) -> str:
+    def major_version(self) -> pulumi.Output[str]:
         """
         Cassandra major version. Now only support version `3.11`.
         """
@@ -334,7 +334,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> float:
+    def node_count(self) -> pulumi.Output[float]:
         """
         The node count of Cassandra dataCenter-1 default to 2.
         """
@@ -342,12 +342,12 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> str:
+    def pay_type(self) -> pulumi.Output[str]:
         """
         The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
         """
@@ -355,22 +355,22 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "period")
 
     @property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[str]:
+    def period_unit(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "period_unit")
 
     @property
     @pulumi.getter(name="publicPoints")
-    def public_points(self) -> List[str]:
+    def public_points(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "public_points")
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> List[str]:
+    def security_groups(self) -> pulumi.Output[List[str]]:
         """
         A list of security group ids to associate with.
         """
@@ -378,12 +378,12 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -391,7 +391,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The vswitch_id of dataCenter-1, can not empty.
         """
@@ -399,7 +399,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """

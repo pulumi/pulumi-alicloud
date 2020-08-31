@@ -15,7 +15,7 @@ __all__ = ['DomainConfig']
 
 class DomainConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  function_args: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
@@ -126,7 +126,7 @@ class DomainConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> str:
+    def domain_name(self) -> pulumi.Output[str]:
         """
         Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
@@ -134,7 +134,7 @@ class DomainConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="functionArgs")
-    def function_args(self) -> List['outputs.DomainConfigFunctionArg']:
+    def function_args(self) -> pulumi.Output[List['outputs.DomainConfigFunctionArg']]:
         """
         The args of the domain config.
         """
@@ -142,7 +142,7 @@ class DomainConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> str:
+    def function_name(self) -> pulumi.Output[str]:
         """
         The name of the domain config.
         """

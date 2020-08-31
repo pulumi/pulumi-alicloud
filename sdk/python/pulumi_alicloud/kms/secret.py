@@ -13,7 +13,7 @@ __all__ = ['Secret']
 
 class Secret(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
@@ -159,7 +159,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         The Alicloud Resource Name (ARN) of the secret.
         """
@@ -167,7 +167,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the secret.
         """
@@ -175,7 +175,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="encryptionKeyId")
-    def encryption_key_id(self) -> Optional[str]:
+    def encryption_key_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         """
@@ -183,7 +183,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDeleteWithoutRecovery")
-    def force_delete_without_recovery(self) -> Optional[bool]:
+    def force_delete_without_recovery(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         """
@@ -191,7 +191,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="plannedDeleteTime")
-    def planned_delete_time(self) -> str:
+    def planned_delete_time(self) -> pulumi.Output[str]:
         """
         The time when the secret is scheduled to be deleted.
         """
@@ -199,7 +199,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recoveryWindowInDays")
-    def recovery_window_in_days(self) -> Optional[float]:
+    def recovery_window_in_days(self) -> pulumi.Output[Optional[float]]:
         """
         Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
         """
@@ -207,7 +207,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretData")
-    def secret_data(self) -> str:
+    def secret_data(self) -> pulumi.Output[str]:
         """
         The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
         """
@@ -215,7 +215,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretDataType")
-    def secret_data_type(self) -> Optional[str]:
+    def secret_data_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of the secret value. Valid values: text, binary. Default to "text".
         """
@@ -223,7 +223,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretName")
-    def secret_name(self) -> str:
+    def secret_name(self) -> pulumi.Output[str]:
         """
         The name of the secret.
         """
@@ -231,7 +231,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -239,7 +239,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> str:
+    def version_id(self) -> pulumi.Output[str]:
         """
         The version number of the initial version. Version numbers are unique in each secret object.
         """
@@ -247,7 +247,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionStages")
-    def version_stages(self) -> List[str]:
+    def version_stages(self) -> pulumi.Output[List[str]]:
         """
         ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """

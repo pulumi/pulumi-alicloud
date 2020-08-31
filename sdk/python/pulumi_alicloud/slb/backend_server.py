@@ -15,7 +15,7 @@ __all__ = ['BackendServer']
 
 class BackendServer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_servers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BackendServerBackendServerArgs']]]]] = None,
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
@@ -151,7 +151,7 @@ class BackendServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendServers")
-    def backend_servers(self) -> Optional[List['outputs.BackendServerBackendServer']]:
+    def backend_servers(self) -> pulumi.Output[Optional[List['outputs.BackendServerBackendServer']]]:
         """
         A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         """
@@ -159,7 +159,7 @@ class BackendServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[bool]:
+    def delete_protection_validation(self) -> pulumi.Output[Optional[bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
@@ -167,7 +167,7 @@ class BackendServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> str:
+    def load_balancer_id(self) -> pulumi.Output[str]:
         """
         ID of the load balancer.
         """

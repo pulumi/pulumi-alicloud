@@ -15,7 +15,7 @@ __all__ = ['Api']
 
 class Api(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_type: Optional[pulumi.Input[str]] = None,
                  constant_parameters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]]] = None,
@@ -166,7 +166,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="apiId")
-    def api_id(self) -> str:
+    def api_id(self) -> pulumi.Output[str]:
         """
         The ID of the api of api gateway.
         """
@@ -174,7 +174,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authType")
-    def auth_type(self) -> str:
+    def auth_type(self) -> pulumi.Output[str]:
         """
         The authorization Type including APP and ANONYMOUS. Defaults to null.
         """
@@ -182,7 +182,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="constantParameters")
-    def constant_parameters(self) -> Optional[List['outputs.ApiConstantParameter']]:
+    def constant_parameters(self) -> pulumi.Output[Optional[List['outputs.ApiConstantParameter']]]:
         """
         constant_parameters defines the constant parameters of the api.
         """
@@ -190,7 +190,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of Constant parameter.
         """
@@ -198,7 +198,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fcServiceConfig")
-    def fc_service_config(self) -> Optional['outputs.ApiFcServiceConfig']:
+    def fc_service_config(self) -> pulumi.Output[Optional['outputs.ApiFcServiceConfig']]:
         """
         fc_service_config defines the config when service_type selected 'FunctionCompute'.
         """
@@ -206,7 +206,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> str:
+    def group_id(self) -> pulumi.Output[str]:
         """
         The api gateway that the api belongs to. Defaults to null.
         """
@@ -214,7 +214,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpServiceConfig")
-    def http_service_config(self) -> Optional['outputs.ApiHttpServiceConfig']:
+    def http_service_config(self) -> pulumi.Output[Optional['outputs.ApiHttpServiceConfig']]:
         """
         http_service_config defines the config when service_type selected 'HTTP'.
         """
@@ -222,7 +222,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpVpcServiceConfig")
-    def http_vpc_service_config(self) -> Optional['outputs.ApiHttpVpcServiceConfig']:
+    def http_vpc_service_config(self) -> pulumi.Output[Optional['outputs.ApiHttpVpcServiceConfig']]:
         """
         http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
         """
@@ -230,7 +230,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mockServiceConfig")
-    def mock_service_config(self) -> Optional['outputs.ApiMockServiceConfig']:
+    def mock_service_config(self) -> pulumi.Output[Optional['outputs.ApiMockServiceConfig']]:
         """
         http_service_config defines the config when service_type selected 'MOCK'.
         """
@@ -238,7 +238,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
         """
@@ -246,7 +246,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestConfig")
-    def request_config(self) -> 'outputs.ApiRequestConfig':
+    def request_config(self) -> pulumi.Output['outputs.ApiRequestConfig']:
         """
         Request_config defines how users can send requests to your API.
         """
@@ -254,7 +254,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestParameters")
-    def request_parameters(self) -> Optional[List['outputs.ApiRequestParameter']]:
+    def request_parameters(self) -> pulumi.Output[Optional[List['outputs.ApiRequestParameter']]]:
         """
         request_parameters defines the request parameters of the api.
         """
@@ -262,7 +262,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceType")
-    def service_type(self) -> str:
+    def service_type(self) -> pulumi.Output[str]:
         """
         The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
         """
@@ -270,7 +270,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stageNames")
-    def stage_names(self) -> Optional[List[str]]:
+    def stage_names(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
         """
@@ -278,7 +278,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemParameters")
-    def system_parameters(self) -> Optional[List['outputs.ApiSystemParameter']]:
+    def system_parameters(self) -> pulumi.Output[Optional[List['outputs.ApiSystemParameter']]]:
         """
         system_parameters defines the system parameters of the api.
         """

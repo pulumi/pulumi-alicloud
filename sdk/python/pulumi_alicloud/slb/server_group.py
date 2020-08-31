@@ -15,7 +15,7 @@ __all__ = ['ServerGroup']
 
 class ServerGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
@@ -171,7 +171,7 @@ class ServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[bool]:
+    def delete_protection_validation(self) -> pulumi.Output[Optional[bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
@@ -179,7 +179,7 @@ class ServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> str:
+    def load_balancer_id(self) -> pulumi.Output[str]:
         """
         The Load Balancer ID which is used to launch a new virtual server group.
         """
@@ -187,7 +187,7 @@ class ServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
         """
@@ -195,7 +195,7 @@ class ServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def servers(self) -> List['outputs.ServerGroupServer']:
+    def servers(self) -> pulumi.Output[List['outputs.ServerGroupServer']]:
         """
         A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
         """

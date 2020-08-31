@@ -13,7 +13,7 @@ __all__ = ['HAVipAttachment']
 
 class HAVipAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  havip_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -82,7 +82,7 @@ class HAVipAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="havipId")
-    def havip_id(self) -> str:
+    def havip_id(self) -> pulumi.Output[str]:
         """
         The havip_id of the havip attachment, the field can't be changed.
         """
@@ -90,7 +90,7 @@ class HAVipAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The instance_id of the havip attachment, the field can't be changed.
         """

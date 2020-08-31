@@ -15,7 +15,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  disk_category: Optional[pulumi.Input[str]] = None,
@@ -150,97 +150,97 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="agentVersion")
-    def agent_version(self) -> str:
+    def agent_version(self) -> pulumi.Output[str]:
         return pulumi.get(self, "agent_version")
 
     @property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> str:
+    def cidr_block(self) -> pulumi.Output[str]:
         return pulumi.get(self, "cidr_block")
 
     @property
     @pulumi.getter(name="diskCategory")
-    def disk_category(self) -> Optional[str]:
+    def disk_category(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "disk_category")
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[float]:
+    def disk_size(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[str]:
+    def image_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> str:
+    def instance_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="isOutdated")
-    def is_outdated(self) -> Optional[bool]:
+    def is_outdated(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "is_outdated")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[str]:
+    def name_prefix(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "name_prefix")
 
     @property
     @pulumi.getter(name="needSlb")
-    def need_slb(self) -> Optional[bool]:
+    def need_slb(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "need_slb")
 
     @property
     @pulumi.getter(name="nodeNumber")
-    def node_number(self) -> Optional[float]:
+    def node_number(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "node_number")
 
     @property
     @pulumi.getter
-    def nodes(self) -> List['outputs.ClusterNode']:
+    def nodes(self) -> pulumi.Output[List['outputs.ClusterNode']]:
         return pulumi.get(self, "nodes")
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="releaseEip")
-    def release_eip(self) -> Optional[bool]:
+    def release_eip(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "release_eip")
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "security_group_id")
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[float]:
+    def size(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="slbId")
-    def slb_id(self) -> str:
+    def slb_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "slb_id")
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "vswitch_id")
 
     def translate_output_property(self, prop):

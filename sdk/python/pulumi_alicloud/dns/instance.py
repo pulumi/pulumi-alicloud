@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dns_security: Optional[pulumi.Input[str]] = None,
                  domain_numbers: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsSecurity")
-    def dns_security(self) -> str:
+    def dns_security(self) -> pulumi.Output[str]:
         """
         DNS security level. Valid values: `no`, `basic`, `advanced`.
         """
@@ -140,7 +140,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainNumbers")
-    def domain_numbers(self) -> str:
+    def domain_numbers(self) -> pulumi.Output[str]:
         """
         Number of domain names bound.
         """
@@ -148,7 +148,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
         """
@@ -156,7 +156,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[float]:
+    def renew_period(self) -> pulumi.Output[Optional[float]]:
         """
         Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
         """
@@ -164,7 +164,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[str]:
+    def renewal_status(self) -> pulumi.Output[Optional[str]]:
         """
         Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
         """
@@ -172,7 +172,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionCode")
-    def version_code(self) -> str:
+    def version_code(self) -> pulumi.Output[str]:
         """
         Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
         """
@@ -180,7 +180,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionName")
-    def version_name(self) -> str:
+    def version_name(self) -> pulumi.Output[str]:
         """
         Paid package version name.
         """

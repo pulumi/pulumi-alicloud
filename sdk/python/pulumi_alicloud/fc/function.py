@@ -13,7 +13,7 @@ __all__ = ['Function']
 
 class Function(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_checksum: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -158,7 +158,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="codeChecksum")
-    def code_checksum(self) -> str:
+    def code_checksum(self) -> pulumi.Output[str]:
         """
         The checksum (crc64) of the function code.
         """
@@ -166,7 +166,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The Function Compute function description.
         """
@@ -174,7 +174,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[Mapping[str, Any]]:
+    def environment_variables(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A map that defines environment variables for the function.
         """
@@ -182,7 +182,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filename(self) -> Optional[str]:
+    def filename(self) -> pulumi.Output[Optional[str]]:
         """
         The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
         """
@@ -190,7 +190,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="functionId")
-    def function_id(self) -> str:
+    def function_id(self) -> pulumi.Output[str]:
         """
         The Function Compute service ID.
         """
@@ -198,7 +198,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def handler(self) -> str:
+    def handler(self) -> pulumi.Output[str]:
         """
         The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
         """
@@ -206,7 +206,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> str:
+    def last_modified(self) -> pulumi.Output[str]:
         """
         The date this resource was last modified.
         """
@@ -214,7 +214,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memorySize")
-    def memory_size(self) -> Optional[float]:
+    def memory_size(self) -> pulumi.Output[Optional[float]]:
         """
         Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
         """
@@ -222,7 +222,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
         """
@@ -230,7 +230,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[str]:
+    def name_prefix(self) -> pulumi.Output[Optional[str]]:
         """
         Setting a prefix to get a only function name. It is conflict with "name".
         """
@@ -238,7 +238,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ossBucket")
-    def oss_bucket(self) -> Optional[str]:
+    def oss_bucket(self) -> pulumi.Output[Optional[str]]:
         """
         The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
         """
@@ -246,7 +246,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ossKey")
-    def oss_key(self) -> Optional[str]:
+    def oss_key(self) -> pulumi.Output[Optional[str]]:
         """
         The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
         """
@@ -254,7 +254,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def runtime(self) -> str:
+    def runtime(self) -> pulumi.Output[str]:
         """
         See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
         """
@@ -262,7 +262,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         The Function Compute service name.
         """
@@ -270,7 +270,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[float]:
+    def timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of time your Function has to run in seconds.
         """

@@ -13,7 +13,7 @@ __all__ = ['RouterInterfaceConnection']
 
 class RouterInterfaceConnection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  interface_id: Optional[pulumi.Input[str]] = None,
                  opposite_interface_id: Optional[pulumi.Input[str]] = None,
@@ -148,7 +148,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="interfaceId")
-    def interface_id(self) -> str:
+    def interface_id(self) -> pulumi.Output[str]:
         """
         One side router interface ID.
         """
@@ -156,7 +156,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oppositeInterfaceId")
-    def opposite_interface_id(self) -> str:
+    def opposite_interface_id(self) -> pulumi.Output[str]:
         """
         Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
         """
@@ -164,12 +164,12 @@ class RouterInterfaceConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oppositeInterfaceOwnerId")
-    def opposite_interface_owner_id(self) -> str:
+    def opposite_interface_owner_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "opposite_interface_owner_id")
 
     @property
     @pulumi.getter(name="oppositeRouterId")
-    def opposite_router_id(self) -> str:
+    def opposite_router_id(self) -> pulumi.Output[str]:
         """
         Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
         """
@@ -177,7 +177,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oppositeRouterType")
-    def opposite_router_type(self) -> Optional[str]:
+    def opposite_router_type(self) -> pulumi.Output[Optional[str]]:
         """
         Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
         """

@@ -13,7 +13,7 @@ __all__ = ['DiskAttachment']
 
 class DiskAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[str]] = None,
@@ -122,7 +122,7 @@ class DiskAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deviceName")
-    def device_name(self) -> str:
+    def device_name(self) -> pulumi.Output[str]:
         """
         The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
         """
@@ -130,7 +130,7 @@ class DiskAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> str:
+    def disk_id(self) -> pulumi.Output[str]:
         """
         ID of the Disk to be attached.
         """
@@ -138,7 +138,7 @@ class DiskAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         ID of the Instance to attach to.
         """

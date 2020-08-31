@@ -15,7 +15,7 @@ __all__ = ['LaunchTemplate']
 
 class LaunchTemplate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]]] = None,
@@ -347,7 +347,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoReleaseTime")
-    def auto_release_time(self) -> Optional[str]:
+    def auto_release_time(self) -> pulumi.Output[Optional[str]]:
         """
         Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         """
@@ -355,7 +355,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[List['outputs.LaunchTemplateDataDisk']]:
+    def data_disks(self) -> pulumi.Output[Optional[List['outputs.LaunchTemplateDataDisk']]]:
         """
         The list of data disks created with instance.
         """
@@ -363,7 +363,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the data disk.
         """
@@ -371,7 +371,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[str]:
+    def host_name(self) -> pulumi.Output[Optional[str]]:
         """
         Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         """
@@ -379,7 +379,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[str]:
+    def image_id(self) -> pulumi.Output[Optional[str]]:
         """
         Image ID.
         """
@@ -387,12 +387,12 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageOwnerAlias")
-    def image_owner_alias(self) -> Optional[str]:
+    def image_owner_alias(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "image_owner_alias")
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[str]:
+    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Billing methods. Optional values:
         - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -402,7 +402,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[str]:
+    def instance_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         """
@@ -410,7 +410,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[str]:
+    def instance_type(self) -> pulumi.Output[Optional[str]]:
         """
         Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         """
@@ -418,7 +418,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[str]:
+    def internet_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
         """
@@ -426,7 +426,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthIn")
-    def internet_max_bandwidth_in(self) -> float:
+    def internet_max_bandwidth_in(self) -> pulumi.Output[float]:
         """
         The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
         """
@@ -434,7 +434,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> Optional[float]:
+    def internet_max_bandwidth_out(self) -> pulumi.Output[Optional[float]]:
         """
         Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
         """
@@ -442,7 +442,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ioOptimized")
-    def io_optimized(self) -> Optional[str]:
+    def io_optimized(self) -> pulumi.Output[Optional[str]]:
         """
         Whether it is an I/O-optimized instance or not. Optional values:
         - none
@@ -452,7 +452,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[str]:
+    def key_pair_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the key pair.
         - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
@@ -462,7 +462,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the data disk.
         """
@@ -470,7 +470,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional['outputs.LaunchTemplateNetworkInterfaces']:
+    def network_interfaces(self) -> pulumi.Output[Optional['outputs.LaunchTemplateNetworkInterfaces']]:
         """
         The list of network interfaces created with instance.
         """
@@ -478,7 +478,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[str]:
+    def network_type(self) -> pulumi.Output[Optional[str]]:
         """
         Network type of the instance. Value options: `classic` | `vpc`.
         """
@@ -486,7 +486,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ramRoleName")
-    def ram_role_name(self) -> Optional[str]:
+    def ram_role_name(self) -> pulumi.Output[Optional[str]]:
         """
         The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         """
@@ -494,12 +494,12 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="securityEnhancementStrategy")
-    def security_enhancement_strategy(self) -> Optional[str]:
+    def security_enhancement_strategy(self) -> pulumi.Output[Optional[str]]:
         """
         Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         """
@@ -507,7 +507,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[str]:
+    def security_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The security group ID must be one in the same VPC.
         """
@@ -515,7 +515,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotPriceLimit")
-    def spot_price_limit(self) -> Optional[float]:
+    def spot_price_limit(self) -> pulumi.Output[Optional[float]]:
         """
         -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
         """
@@ -523,7 +523,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> Optional[str]:
+    def spot_strategy(self) -> pulumi.Output[Optional[str]]:
         """
         The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
         - NoSpot: Normal Pay-As-You-Go instance.
@@ -534,7 +534,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskCategory")
-    def system_disk_category(self) -> Optional[str]:
+    def system_disk_category(self) -> pulumi.Output[Optional[str]]:
         """
         The category of the system disk. System disk type. Optional values:
         - cloud: Basic cloud disk.
@@ -547,7 +547,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskDescription")
-    def system_disk_description(self) -> Optional[str]:
+    def system_disk_description(self) -> pulumi.Output[Optional[str]]:
         """
         System disk description. It cannot begin with http:// or https://.
         """
@@ -555,7 +555,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskName")
-    def system_disk_name(self) -> Optional[str]:
+    def system_disk_name(self) -> pulumi.Output[Optional[str]]:
         """
         System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         """
@@ -563,7 +563,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> Optional[float]:
+    def system_disk_size(self) -> pulumi.Output[Optional[float]]:
         """
         Size of the system disk, measured in GB. Value range: [20, 500].
         """
@@ -571,7 +571,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -581,7 +581,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def userdata(self) -> Optional[str]:
+    def userdata(self) -> pulumi.Output[Optional[str]]:
         """
         User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         """
@@ -589,12 +589,12 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[str]:
+    def vpc_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
@@ -602,7 +602,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[str]:
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
         The zone ID of the instance.
         """

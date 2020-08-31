@@ -13,7 +13,7 @@ __all__ = ['FlowLog']
 
 class FlowLog(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -140,7 +140,7 @@ class FlowLog(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> str:
+    def cen_id(self) -> pulumi.Output[str]:
         """
         The ID of the CEN Instance.
         """
@@ -148,7 +148,7 @@ class FlowLog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of flowlog.
         """
@@ -156,7 +156,7 @@ class FlowLog(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="flowLogName")
-    def flow_log_name(self) -> Optional[str]:
+    def flow_log_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of flowlog.
         """
@@ -164,7 +164,7 @@ class FlowLog(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logStoreName")
-    def log_store_name(self) -> str:
+    def log_store_name(self) -> pulumi.Output[str]:
         """
         The name of the log store which is in the  `project_name` SLS project.
         """
@@ -172,7 +172,7 @@ class FlowLog(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> str:
+    def project_name(self) -> pulumi.Output[str]:
         """
         The name of the SLS project.
         """
@@ -180,7 +180,7 @@ class FlowLog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[str]:
+    def status(self) -> pulumi.Output[Optional[str]]:
         """
         The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
         """

@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  cold_storage_size: Optional[pulumi.Input[float]] = None,
@@ -214,7 +214,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> bool:
+    def auto_renew(self) -> pulumi.Output[bool]:
         """
         `true`, `false`, System default to `false`, valid when pay_type = PrePaid.
         """
@@ -222,7 +222,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coldStorageSize")
-    def cold_storage_size(self) -> float:
+    def cold_storage_size(self) -> pulumi.Output[float]:
         """
         0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
         """
@@ -230,7 +230,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coreDiskSize")
-    def core_disk_size(self) -> Optional[float]:
+    def core_disk_size(self) -> pulumi.Output[Optional[float]]:
         """
         User-defined HBase instance one core node's storage space.Unit: GB. Value range:
         - Custom storage space; value range: [400, 8000]
@@ -240,7 +240,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coreDiskType")
-    def core_disk_type(self) -> str:
+    def core_disk_type(self) -> pulumi.Output[str]:
         """
         Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`. local_disk size is fixed.
         """
@@ -248,7 +248,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coreInstanceQuantity")
-    def core_instance_quantity(self) -> Optional[float]:
+    def core_instance_quantity(self) -> pulumi.Output[Optional[float]]:
         """
         default=2. if core_instance_quantity > 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
         """
@@ -256,12 +256,12 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coreInstanceType")
-    def core_instance_type(self) -> str:
+    def core_instance_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "core_instance_type")
 
     @property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[bool]:
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
         the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
         """
@@ -269,7 +269,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def duration(self) -> float:
+    def duration(self) -> pulumi.Output[float]:
         """
         1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
         """
@@ -277,12 +277,12 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def engine(self) -> Optional[str]:
+    def engine(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "engine")
 
     @property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> str:
+    def engine_version(self) -> pulumi.Output[str]:
         """
         hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
         * `master_instance_type`、`core_instance_type` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
@@ -291,7 +291,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintainEndTime")
-    def maintain_end_time(self) -> str:
+    def maintain_end_time(self) -> pulumi.Output[str]:
         """
         The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         """
@@ -299,7 +299,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintainStartTime")
-    def maintain_start_time(self) -> str:
+    def maintain_start_time(self) -> pulumi.Output[str]:
         """
         The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         """
@@ -307,12 +307,12 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterInstanceType")
-    def master_instance_type(self) -> str:
+    def master_instance_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "master_instance_type")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
         """
@@ -320,7 +320,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> Optional[str]:
+    def pay_type(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         """
@@ -328,7 +328,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -336,7 +336,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         if vswitch_id is not empty, that mean net_type = vpc and has a same region. if vswitch_id is empty, net_type_classic
         """
@@ -344,7 +344,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The Zone to launch the HBase instance. if vswitch_id is not empty, this zone_id can be "" or consistent.
         """

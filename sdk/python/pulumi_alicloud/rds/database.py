@@ -13,7 +13,7 @@ __all__ = ['Database']
 
 class Database(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  character_set: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="characterSet")
-    def character_set(self) -> Optional[str]:
+    def character_set(self) -> pulumi.Output[Optional[str]]:
         """
         Character set. The value range is limited to the following:
         - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
@@ -143,7 +143,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         """
@@ -151,7 +151,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The Id of instance that can run database.
         """
@@ -159,7 +159,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
         and have no more than 64 characters.

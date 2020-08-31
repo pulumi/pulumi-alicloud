@@ -13,7 +13,7 @@ __all__ = ['MountTarget']
 
 class MountTarget(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_name: Optional[pulumi.Input[str]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
@@ -126,7 +126,7 @@ class MountTarget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessGroupName")
-    def access_group_name(self) -> str:
+    def access_group_name(self) -> pulumi.Output[str]:
         """
         Permission group name.
         """
@@ -134,7 +134,7 @@ class MountTarget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> str:
+    def file_system_id(self) -> pulumi.Output[str]:
         """
         File system ID.
         """
@@ -142,7 +142,7 @@ class MountTarget(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
         """
@@ -150,7 +150,7 @@ class MountTarget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         VSwitch ID.
         """

@@ -13,7 +13,7 @@ __all__ = ['DomainExtension']
 
 class DomainExtension(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
@@ -196,7 +196,7 @@ class DomainExtension(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[bool]:
+    def delete_protection_validation(self) -> pulumi.Output[Optional[bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
@@ -204,7 +204,7 @@ class DomainExtension(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> str:
+    def domain(self) -> pulumi.Output[str]:
         """
         The domain name,
         """
@@ -212,7 +212,7 @@ class DomainExtension(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="frontendPort")
-    def frontend_port(self) -> float:
+    def frontend_port(self) -> pulumi.Output[float]:
         """
         The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
         """
@@ -220,7 +220,7 @@ class DomainExtension(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> str:
+    def load_balancer_id(self) -> pulumi.Output[str]:
         """
         The ID of the SLB instance.
         """
@@ -228,7 +228,7 @@ class DomainExtension(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverCertificateId")
-    def server_certificate_id(self) -> str:
+    def server_certificate_id(self) -> pulumi.Output[str]:
         """
         The ID of the certificate used by the domain name.
         """

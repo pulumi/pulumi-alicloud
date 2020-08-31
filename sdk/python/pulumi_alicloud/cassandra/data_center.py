@@ -13,7 +13,7 @@ __all__ = ['DataCenter']
 
 class DataCenter(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[float]] = None,
@@ -181,7 +181,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[bool]:
+    def auto_renew(self) -> pulumi.Output[Optional[bool]]:
         """
         Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
         """
@@ -189,7 +189,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[float]:
+    def auto_renew_period(self) -> pulumi.Output[Optional[float]]:
         """
         Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         """
@@ -197,7 +197,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         Cassandra cluster id of dataCenter-2 belongs to.
         """
@@ -205,12 +205,12 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataCenterId")
-    def data_center_id(self) -> str:
+    def data_center_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "data_center_id")
 
     @property
     @pulumi.getter(name="dataCenterName")
-    def data_center_name(self) -> Optional[str]:
+    def data_center_name(self) -> pulumi.Output[Optional[str]]:
         """
         Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         """
@@ -218,7 +218,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[float]:
+    def disk_size(self) -> pulumi.Output[Optional[float]]:
         """
         User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
         - Custom storage space; value range: [160, 2000].
@@ -228,7 +228,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[str]:
+    def disk_type(self) -> pulumi.Output[Optional[str]]:
         """
         The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
         """
@@ -236,12 +236,12 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enablePublic")
-    def enable_public(self) -> Optional[bool]:
+    def enable_public(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "enable_public")
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> str:
+    def instance_type(self) -> pulumi.Output[str]:
         """
         Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
         """
@@ -249,7 +249,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> float:
+    def node_count(self) -> pulumi.Output[float]:
         """
         The node count of Cassandra dataCenter-2, default to 2.
         """
@@ -257,7 +257,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> str:
+    def pay_type(self) -> pulumi.Output[str]:
         """
         The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
         """
@@ -265,27 +265,27 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "period")
 
     @property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[str]:
+    def period_unit(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "period_unit")
 
     @property
     @pulumi.getter(name="publicPoints")
-    def public_points(self) -> List[str]:
+    def public_points(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "public_points")
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
         """
@@ -293,7 +293,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """

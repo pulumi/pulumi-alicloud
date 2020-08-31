@@ -13,7 +13,7 @@ __all__ = ['Ciphertext']
 
 class Ciphertext(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class Ciphertext(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ciphertextBlob")
-    def ciphertext_blob(self) -> str:
+    def ciphertext_blob(self) -> pulumi.Output[str]:
         """
         The ciphertext of the data key encrypted with the primary CMK version.
         """
@@ -102,7 +102,7 @@ class Ciphertext(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="encryptionContext")
-    def encryption_context(self) -> Optional[Mapping[str, str]]:
+    def encryption_context(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         -
         (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
@@ -111,7 +111,7 @@ class Ciphertext(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> str:
+    def key_id(self) -> pulumi.Output[str]:
         """
         The globally unique ID of the CMK.
         """
@@ -119,7 +119,7 @@ class Ciphertext(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def plaintext(self) -> str:
+    def plaintext(self) -> pulumi.Output[str]:
         """
         The plaintext to be encrypted which must be encoded in Base64.
         """

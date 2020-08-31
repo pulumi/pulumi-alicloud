@@ -13,7 +13,7 @@ __all__ = ['LoadBalancer']
 
 class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
@@ -216,7 +216,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
         """
@@ -224,7 +224,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="addressIpVersion")
-    def address_ip_version(self) -> Optional[str]:
+    def address_ip_version(self) -> pulumi.Output[Optional[str]]:
         """
         The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
         """
@@ -232,7 +232,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="addressType")
-    def address_type(self) -> str:
+    def address_type(self) -> pulumi.Output[str]:
         """
         The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
         - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
@@ -242,7 +242,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> Optional[float]:
+    def bandwidth(self) -> pulumi.Output[Optional[float]]:
         """
         Valid
         value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
@@ -251,7 +251,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteProtection")
-    def delete_protection(self) -> Optional[str]:
+    def delete_protection(self) -> pulumi.Output[Optional[str]]:
         """
         Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         """
@@ -259,7 +259,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[str]:
+    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
@@ -267,7 +267,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def internet(self) -> bool:
+    def internet(self) -> pulumi.Output[bool]:
         """
         Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
         """
@@ -275,7 +275,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[str]:
+    def internet_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Valid
         values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
@@ -285,7 +285,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterZoneId")
-    def master_zone_id(self) -> str:
+    def master_zone_id(self) -> pulumi.Output[str]:
         """
         The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         """
@@ -293,12 +293,12 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
         """
@@ -306,7 +306,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The Id of resource group which the SLB belongs.
         """
@@ -314,7 +314,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slaveZoneId")
-    def slave_zone_id(self) -> str:
+    def slave_zone_id(self) -> pulumi.Output[str]:
         """
         The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         """
@@ -322,7 +322,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def specification(self) -> Optional[str]:
+    def specification(self) -> pulumi.Output[Optional[str]]:
         """
         The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
         Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
@@ -332,7 +332,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         """
@@ -340,7 +340,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """

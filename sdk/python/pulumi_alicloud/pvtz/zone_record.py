@@ -13,7 +13,7 @@ __all__ = ['ZoneRecord']
 
 class ZoneRecord(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  priority: Optional[pulumi.Input[float]] = None,
                  resource_record: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
         """
@@ -122,7 +122,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recordId")
-    def record_id(self) -> float:
+    def record_id(self) -> pulumi.Output[float]:
         """
         The Private Zone Record ID.
         """
@@ -130,7 +130,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceRecord")
-    def resource_record(self) -> str:
+    def resource_record(self) -> pulumi.Output[str]:
         """
         The resource record of the Private Zone Record.
         """
@@ -138,7 +138,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[float]:
+    def ttl(self) -> pulumi.Output[Optional[float]]:
         """
         The ttl of the Private Zone Record.
         """
@@ -146,7 +146,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
         """
@@ -154,7 +154,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         The value of the Private Zone Record.
         """
@@ -162,7 +162,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The name of the Private Zone Record.
         """

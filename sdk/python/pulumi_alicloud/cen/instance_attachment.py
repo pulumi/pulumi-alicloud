@@ -13,7 +13,7 @@ __all__ = ['InstanceAttachment']
 
 class InstanceAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  child_instance_id: Optional[pulumi.Input[str]] = None,
                  child_instance_owner_id: Optional[pulumi.Input[str]] = None,
@@ -117,7 +117,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="childInstanceId")
-    def child_instance_id(self) -> str:
+    def child_instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the child instance to attach.
         """
@@ -125,7 +125,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="childInstanceOwnerId")
-    def child_instance_owner_id(self) -> str:
+    def child_instance_owner_id(self) -> pulumi.Output[str]:
         """
         The uid of the child instance. Only used when attach a child instance of other account.
         """
@@ -133,7 +133,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="childInstanceRegionId")
-    def child_instance_region_id(self) -> str:
+    def child_instance_region_id(self) -> pulumi.Output[str]:
         """
         The region ID of the child instance to attach.
         """
@@ -141,7 +141,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the CEN.
         """

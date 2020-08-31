@@ -13,7 +13,7 @@ __all__ = ['Attachment']
 
 class Attachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_servers: Optional[pulumi.Input[str]] = None,
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
@@ -106,7 +106,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendServers")
-    def backend_servers(self) -> str:
+    def backend_servers(self) -> pulumi.Output[str]:
         """
         The backend servers of the load balancer.
         """
@@ -114,7 +114,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[bool]:
+    def delete_protection_validation(self) -> pulumi.Output[Optional[bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
@@ -122,7 +122,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> List[str]:
+    def instance_ids(self) -> pulumi.Output[List[str]]:
         """
         A list of instance ids to added backend server in the SLB.
         """
@@ -130,7 +130,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> str:
+    def load_balancer_id(self) -> pulumi.Output[str]:
         """
         ID of the load balancer.
         """
@@ -138,7 +138,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverType")
-    def server_type(self) -> Optional[str]:
+    def server_type(self) -> pulumi.Output[Optional[str]]:
         """
         Type of the instances. Valid value ecs, eni. Default to ecs.
         """
@@ -146,7 +146,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[float]:
+    def weight(self) -> pulumi.Output[Optional[float]]:
         """
         Weight of the instances. Valid value range: [0-100]. Default to 100.
         """

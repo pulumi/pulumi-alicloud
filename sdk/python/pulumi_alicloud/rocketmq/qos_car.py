@@ -13,7 +13,7 @@ __all__ = ['QosCar']
 
 class QosCar(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  limit_type: Optional[pulumi.Input[str]] = None,
@@ -161,7 +161,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the QoS speed limiting rule.
         """
@@ -169,7 +169,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="limitType")
-    def limit_type(self) -> str:
+    def limit_type(self) -> pulumi.Output[str]:
         """
         The speed limiting method. Valid values: Absolute, Percent.
         """
@@ -177,7 +177,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxBandwidthAbs")
-    def max_bandwidth_abs(self) -> Optional[float]:
+    def max_bandwidth_abs(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
         """
@@ -185,7 +185,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxBandwidthPercent")
-    def max_bandwidth_percent(self) -> Optional[float]:
+    def max_bandwidth_percent(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
         """
@@ -193,7 +193,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minBandwidthAbs")
-    def min_bandwidth_abs(self) -> Optional[float]:
+    def min_bandwidth_abs(self) -> pulumi.Output[Optional[float]]:
         """
         The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
         """
@@ -201,7 +201,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minBandwidthPercent")
-    def min_bandwidth_percent(self) -> Optional[float]:
+    def min_bandwidth_percent(self) -> pulumi.Output[Optional[float]]:
         """
         The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
         """
@@ -209,7 +209,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the QoS speed limiting rule..
         """
@@ -217,7 +217,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="percentSourceType")
-    def percent_source_type(self) -> Optional[str]:
+    def percent_source_type(self) -> pulumi.Output[Optional[str]]:
         """
         The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
         """
@@ -225,7 +225,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> pulumi.Output[float]:
         """
         The priority of the specified stream.
         """
@@ -233,7 +233,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="qosId")
-    def qos_id(self) -> str:
+    def qos_id(self) -> pulumi.Output[str]:
         """
         The instance ID of the QoS.
         """

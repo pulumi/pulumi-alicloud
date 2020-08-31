@@ -15,7 +15,7 @@ __all__ = ['DedicatedHost']
 
 class DedicatedHost(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action_on_maintenance: Optional[pulumi.Input[str]] = None,
                  auto_placement: Optional[pulumi.Input[str]] = None,
@@ -216,7 +216,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="actionOnMaintenance")
-    def action_on_maintenance(self) -> Optional[str]:
+    def action_on_maintenance(self) -> pulumi.Output[Optional[str]]:
         """
         The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
         """
@@ -224,7 +224,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoPlacement")
-    def auto_placement(self) -> Optional[str]:
+    def auto_placement(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
         """
@@ -232,7 +232,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoReleaseTime")
-    def auto_release_time(self) -> Optional[str]:
+    def auto_release_time(self) -> pulumi.Output[Optional[str]]:
         """
         The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         """
@@ -240,7 +240,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[bool]:
+    def auto_renew(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to automatically renew the subscription dedicated host.
         """
@@ -248,7 +248,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[float]:
+    def auto_renew_period(self) -> pulumi.Output[Optional[float]]:
         """
         The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
         """
@@ -256,7 +256,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dedicatedHostName")
-    def dedicated_host_name(self) -> Optional[str]:
+    def dedicated_host_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         """
@@ -264,7 +264,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dedicatedHostType")
-    def dedicated_host_type(self) -> str:
+    def dedicated_host_type(self) -> pulumi.Output[str]:
         """
         The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
         """
@@ -272,7 +272,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
@@ -280,7 +280,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="detailFee")
-    def detail_fee(self) -> Optional[bool]:
+    def detail_fee(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
         """
@@ -288,7 +288,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[bool]:
+    def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to only validate the request. Default: `false`.
         """
@@ -296,7 +296,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expiredTime")
-    def expired_time(self) -> str:
+    def expired_time(self) -> pulumi.Output[str]:
         """
         The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
         """
@@ -304,7 +304,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkAttributes")
-    def network_attributes(self) -> Optional[List['outputs.DedicatedHostNetworkAttribute']]:
+    def network_attributes(self) -> pulumi.Output[Optional[List['outputs.DedicatedHostNetworkAttribute']]]:
         """
         dedicated host network parameters. contains the following attributes:
         """
@@ -312,7 +312,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[str]:
+    def payment_type(self) -> pulumi.Output[Optional[str]]:
         """
         The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         """
@@ -320,7 +320,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the resource group to which the dedicated host belongs.
         """
@@ -328,7 +328,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="saleCycle")
-    def sale_cycle(self) -> str:
+    def sale_cycle(self) -> pulumi.Output[str]:
         """
         The unit of the subscription period of the dedicated host.
         """
@@ -336,7 +336,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the dedicated host.
         """
@@ -344,7 +344,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -352,7 +352,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
         """

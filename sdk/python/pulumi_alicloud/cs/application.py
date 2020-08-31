@@ -15,7 +15,7 @@ __all__ = ['Application']
 
 class Application(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blue_green: Optional[pulumi.Input[bool]] = None,
                  blue_green_confirm: Optional[pulumi.Input[bool]] = None,
@@ -160,7 +160,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blueGreen")
-    def blue_green(self) -> Optional[bool]:
+    def blue_green(self) -> pulumi.Output[Optional[bool]]:
         """
         Wherther to use "Blue Green" method when release a new version. Default to false.
         """
@@ -168,7 +168,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blueGreenConfirm")
-    def blue_green_confirm(self) -> Optional[bool]:
+    def blue_green_confirm(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blue_green` is false.
         """
@@ -176,7 +176,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> str:
+    def cluster_name(self) -> pulumi.Output[str]:
         """
         The swarm cluster's name.
         """
@@ -184,7 +184,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultDomain")
-    def default_domain(self) -> str:
+    def default_domain(self) -> pulumi.Output[str]:
         """
         The application default domain and it can be used to configure routing service.
         """
@@ -192,7 +192,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of application.
         """
@@ -200,7 +200,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[Mapping[str, Any]]:
+    def environment(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A key/value map used to replace the variable parameter in the Compose template.
         """
@@ -208,7 +208,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="latestImage")
-    def latest_image(self) -> Optional[bool]:
+    def latest_image(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to use latest docker image while each updating application. Default to false.
         """
@@ -216,7 +216,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
         """
@@ -224,7 +224,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def services(self) -> List['outputs.ApplicationService']:
+    def services(self) -> pulumi.Output[List['outputs.ApplicationService']]:
         """
         List of services in the application. It contains several attributes to `Block Nodes`.
         """
@@ -232,7 +232,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def template(self) -> str:
+    def template(self) -> pulumi.Output[str]:
         """
         The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
         """
@@ -240,7 +240,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> Optional[str]:
+    def version(self) -> pulumi.Output[Optional[str]]:
         """
         The application deploying version. Each updating, it must be different with current. Default to "1.0"
         """

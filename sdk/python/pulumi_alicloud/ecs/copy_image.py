@@ -13,7 +13,7 @@ __all__ = ['CopyImage']
 
 class CopyImage(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
@@ -109,47 +109,47 @@ class CopyImage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
-    def encrypted(self) -> Optional[bool]:
+    def encrypted(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[bool]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "force")
 
     @property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> str:
+    def image_name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[str]:
+    def kms_key_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="sourceImageId")
-    def source_image_id(self) -> str:
+    def source_image_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "source_image_id")
 
     @property
     @pulumi.getter(name="sourceRegionId")
-    def source_region_id(self) -> str:
+    def source_region_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "source_region_id")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

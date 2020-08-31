@@ -13,7 +13,7 @@ __all__ = ['CaCertificate']
 
 class CaCertificate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class CaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> str:
+    def ca_certificate(self) -> pulumi.Output[str]:
         """
         the content of the CA certificate.
         """
@@ -129,7 +129,7 @@ class CaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the CA Certificate.
         """
@@ -137,7 +137,7 @@ class CaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The Id of resource group which the slb_ca certificate belongs.
         """
@@ -145,7 +145,7 @@ class CaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """

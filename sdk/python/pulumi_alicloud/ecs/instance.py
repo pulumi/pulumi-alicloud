@@ -15,7 +15,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocate_public_ip: Optional[pulumi.Input[bool]] = None,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
@@ -392,7 +392,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allocatePublicIp")
-    def allocate_public_ip(self) -> Optional[bool]:
+    def allocate_public_ip(self) -> pulumi.Output[Optional[bool]]:
         """
         It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         """
@@ -400,7 +400,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoReleaseTime")
-    def auto_release_time(self) -> Optional[str]:
+    def auto_release_time(self) -> pulumi.Output[Optional[str]]:
         """
         The automatic release time of the `PostPaid` instance. 
         The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -410,7 +410,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[float]:
+    def auto_renew_period(self) -> pulumi.Output[Optional[float]]:
         """
         Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
         - [1, 2, 3, 6, 12] when `period_unit` in "Month"
@@ -420,7 +420,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> str:
+    def availability_zone(self) -> pulumi.Output[str]:
         """
         The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         """
@@ -428,7 +428,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creditSpecification")
-    def credit_specification(self) -> str:
+    def credit_specification(self) -> pulumi.Output[str]:
         """
         Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         """
@@ -436,7 +436,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[List['outputs.InstanceDataDisk']]:
+    def data_disks(self) -> pulumi.Output[Optional[List['outputs.InstanceDataDisk']]]:
         """
         The list of data disks created with instance.
         """
@@ -444,7 +444,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[bool]:
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether enable the deletion protection or not. Default value: `false`.
         - true: Enable deletion protection.
@@ -454,7 +454,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the data disk.
         """
@@ -462,7 +462,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[bool]:
+    def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to send a dry-run request. Default to false. 
         - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -472,7 +472,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[bool]:
+    def force_delete(self) -> pulumi.Output[Optional[bool]]:
         """
         If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
         However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
@@ -481,7 +481,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> str:
+    def host_name(self) -> pulumi.Output[str]:
         """
         Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
         On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
@@ -490,7 +490,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> str:
+    def image_id(self) -> pulumi.Output[str]:
         """
         The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -498,7 +498,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="includeDataDisks")
-    def include_data_disks(self) -> Optional[bool]:
+    def include_data_disks(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to change instance disks charge type when changing instance charge type.
         """
@@ -506,7 +506,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[str]:
+    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
         """
@@ -514,12 +514,12 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[str]:
+    def instance_name(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "instance_name")
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> str:
+    def instance_type(self) -> pulumi.Output[str]:
         """
         The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -527,7 +527,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[str]:
+    def internet_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
         """
@@ -535,7 +535,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthIn")
-    def internet_max_bandwidth_in(self) -> float:
+    def internet_max_bandwidth_in(self) -> pulumi.Output[float]:
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         """
@@ -543,7 +543,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> Optional[float]:
+    def internet_max_bandwidth_out(self) -> pulumi.Output[Optional[float]]:
         """
         Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
         """
@@ -551,7 +551,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ioOptimized")
-    def io_optimized(self) -> Optional[str]:
+    def io_optimized(self) -> pulumi.Output[Optional[str]]:
         """
         It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
@@ -559,7 +559,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isOutdated")
-    def is_outdated(self) -> Optional[bool]:
+    def is_outdated(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to use outdated instance type. Default to false.
         """
@@ -567,7 +567,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> str:
+    def key_name(self) -> pulumi.Output[str]:
         """
         The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         """
@@ -575,7 +575,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[str]:
+    def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
         """
         An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -583,7 +583,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[Mapping[str, Any]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -591,7 +591,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -599,7 +599,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
         - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
@@ -609,7 +609,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[str]:
+    def period_unit(self) -> pulumi.Output[Optional[str]]:
         """
         The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         """
@@ -617,7 +617,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> str:
+    def private_ip(self) -> pulumi.Output[str]:
         """
         Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -625,7 +625,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> str:
+    def public_ip(self) -> pulumi.Output[str]:
         """
         The instance public ip.
         """
@@ -633,7 +633,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[str]:
+    def renewal_status(self) -> pulumi.Output[Optional[str]]:
         """
         Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
         - `AutoRenewal`: Enable auto renewal.
@@ -644,7 +644,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Id of resource group which the instance belongs.
         """
@@ -652,7 +652,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> str:
+    def role_name(self) -> pulumi.Output[str]:
         """
         Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         """
@@ -660,7 +660,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityEnhancementStrategy")
-    def security_enhancement_strategy(self) -> Optional[str]:
+    def security_enhancement_strategy(self) -> pulumi.Output[Optional[str]]:
         """
         The security enhancement strategy.
         - Active: Enable security enhancement strategy, it only works on system images.
@@ -670,7 +670,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> List[str]:
+    def security_groups(self) -> pulumi.Output[List[str]]:
         """
         A list of security group ids to associate with.
         """
@@ -678,7 +678,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotPriceLimit")
-    def spot_price_limit(self) -> Optional[float]:
+    def spot_price_limit(self) -> pulumi.Output[Optional[float]]:
         """
         The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         """
@@ -686,7 +686,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> Optional[str]:
+    def spot_strategy(self) -> pulumi.Output[Optional[str]]:
         """
         The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
         - NoSpot: A regular Pay-As-You-Go instance.
@@ -697,7 +697,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[str]:
+    def status(self) -> pulumi.Output[Optional[str]]:
         """
         The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         """
@@ -705,12 +705,12 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> str:
+    def subnet_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="systemDiskAutoSnapshotPolicyId")
-    def system_disk_auto_snapshot_policy_id(self) -> Optional[str]:
+    def system_disk_auto_snapshot_policy_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the automatic snapshot policy applied to the system disk.
         """
@@ -718,7 +718,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskCategory")
-    def system_disk_category(self) -> Optional[str]:
+    def system_disk_category(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         """
@@ -726,7 +726,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> Optional[float]:
+    def system_disk_size(self) -> pulumi.Output[Optional[float]]:
         """
         Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         """
@@ -734,7 +734,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -744,7 +744,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[str]:
+    def user_data(self) -> pulumi.Output[Optional[str]]:
         """
         User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         """
@@ -752,7 +752,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeTags")
-    def volume_tags(self) -> Mapping[str, Any]:
+    def volume_tags(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         A mapping of tags to assign to the devices created by the instance at launch time.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -762,7 +762,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         """

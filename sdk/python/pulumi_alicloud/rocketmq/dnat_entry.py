@@ -13,7 +13,7 @@ __all__ = ['DnatEntry']
 
 class DnatEntry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  external_ip: Optional[pulumi.Input[str]] = None,
                  external_port: Optional[pulumi.Input[str]] = None,
@@ -145,7 +145,7 @@ class DnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalIp")
-    def external_ip(self) -> Optional[str]:
+    def external_ip(self) -> pulumi.Output[Optional[str]]:
         """
         The external public IP address.when "type" is "Internet",automatically identify the external ip.
         """
@@ -153,7 +153,7 @@ class DnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalPort")
-    def external_port(self) -> str:
+    def external_port(self) -> pulumi.Output[str]:
         """
         The public port.Value range: 1 to 65535 or "any".
         """
@@ -161,7 +161,7 @@ class DnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internalIp")
-    def internal_ip(self) -> str:
+    def internal_ip(self) -> pulumi.Output[str]:
         """
         The destination private IP address.
         """
@@ -169,7 +169,7 @@ class DnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internalPort")
-    def internal_port(self) -> str:
+    def internal_port(self) -> pulumi.Output[str]:
         """
         The destination private port.Value range: 1 to 65535 or "any".
         """
@@ -177,7 +177,7 @@ class DnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> str:
+    def ip_protocol(self) -> pulumi.Output[str]:
         """
         The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
         """
@@ -185,7 +185,7 @@ class DnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sagId")
-    def sag_id(self) -> str:
+    def sag_id(self) -> pulumi.Output[str]:
         """
         The ID of the SAG instance.
         """
@@ -193,7 +193,7 @@ class DnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
         """

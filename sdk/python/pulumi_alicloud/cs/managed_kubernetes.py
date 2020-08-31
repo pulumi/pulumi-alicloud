@@ -15,7 +15,7 @@ __all__ = ['ManagedKubernetes']
 
 class ManagedKubernetes(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedKubernetesAddonArgs']]]]] = None,
                  api_audiences: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -376,12 +376,12 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def addons(self) -> Optional[List['outputs.ManagedKubernetesAddon']]:
+    def addons(self) -> pulumi.Output[Optional[List['outputs.ManagedKubernetesAddon']]]:
         return pulumi.get(self, "addons")
 
     @property
     @pulumi.getter(name="apiAudiences")
-    def api_audiences(self) -> Optional[List[str]]:
+    def api_audiences(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
         """
@@ -389,7 +389,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> str:
+    def availability_zone(self) -> pulumi.Output[str]:
         """
         The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         """
@@ -397,7 +397,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
+    def client_cert(self) -> pulumi.Output[Optional[str]]:
         """
         The path of client certificate, like `~/.kube/client-cert.pem`.
         """
@@ -405,7 +405,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
+    def client_key(self) -> pulumi.Output[Optional[str]]:
         """
         The path of client key, like `~/.kube/client-key.pem`.
         """
@@ -413,7 +413,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterCaCert")
-    def cluster_ca_cert(self) -> Optional[str]:
+    def cluster_ca_cert(self) -> pulumi.Output[Optional[str]]:
         """
         The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         """
@@ -421,7 +421,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def connections(self) -> 'outputs.ManagedKubernetesConnections':
+    def connections(self) -> pulumi.Output['outputs.ManagedKubernetesConnections']:
         """
         Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         """
@@ -429,7 +429,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuPolicy")
-    def cpu_policy(self) -> Optional[str]:
+    def cpu_policy(self) -> pulumi.Output[Optional[str]]:
         """
         kubelet cpu policy. options: static|none. default: none.
         """
@@ -437,7 +437,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableSsh")
-    def enable_ssh(self) -> Optional[bool]:
+    def enable_ssh(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable login to the node through SSH. default: false
         """
@@ -445,7 +445,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="excludeAutoscalerNodes")
-    def exclude_autoscaler_nodes(self) -> Optional[bool]:
+    def exclude_autoscaler_nodes(self) -> pulumi.Output[Optional[bool]]:
         """
         Exclude autoscaler nodes from `worker_nodes`. default: false
         """
@@ -453,7 +453,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[str]:
+    def image_id(self) -> pulumi.Output[Optional[str]]:
         """
         Custom Image support. Must based on CentOS7 or AliyunLinux2.
         """
@@ -461,7 +461,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="installCloudMonitor")
-    def install_cloud_monitor(self) -> Optional[bool]:
+    def install_cloud_monitor(self) -> pulumi.Output[Optional[bool]]:
         """
         Install cloud monitor agent on ECS. default: true
         """
@@ -469,7 +469,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isEnterpriseSecurityGroup")
-    def is_enterprise_security_group(self) -> bool:
+    def is_enterprise_security_group(self) -> pulumi.Output[bool]:
         """
         Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         """
@@ -477,7 +477,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> Optional[str]:
+    def key_name(self) -> pulumi.Output[Optional[str]]:
         """
         The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         """
@@ -485,7 +485,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[str]:
+    def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
         """
         An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         """
@@ -493,7 +493,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[Mapping[str, Any]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
@@ -501,7 +501,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubeConfig")
-    def kube_config(self) -> Optional[str]:
+    def kube_config(self) -> pulumi.Output[Optional[str]]:
         """
         The path of kube config, like `~/.kube/config`.
         """
@@ -509,7 +509,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The kubernetes cluster's name. It is unique in one Alicloud account.
         """
@@ -517,12 +517,12 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[str]:
+    def name_prefix(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "name_prefix")
 
     @property
     @pulumi.getter(name="natGatewayId")
-    def nat_gateway_id(self) -> str:
+    def nat_gateway_id(self) -> pulumi.Output[str]:
         """
         The ID of nat gateway used to launch kubernetes cluster.
         """
@@ -530,7 +530,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="newNatGateway")
-    def new_nat_gateway(self) -> Optional[bool]:
+    def new_nat_gateway(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         """
@@ -538,7 +538,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeCidrMask")
-    def node_cidr_mask(self) -> Optional[float]:
+    def node_cidr_mask(self) -> pulumi.Output[Optional[float]]:
         """
         The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         """
@@ -546,7 +546,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeNameMode")
-    def node_name_mode(self) -> Optional[str]:
+    def node_name_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
         """
@@ -554,7 +554,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         """
@@ -562,7 +562,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="podCidr")
-    def pod_cidr(self) -> Optional[str]:
+    def pod_cidr(self) -> pulumi.Output[Optional[str]]:
         """
         [Flannel Specific] The CIDR block for the pod network when using Flannel.
         """
@@ -570,7 +570,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="podVswitchIds")
-    def pod_vswitch_ids(self) -> Optional[List[str]]:
+    def pod_vswitch_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         """
@@ -578,7 +578,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyMode")
-    def proxy_mode(self) -> Optional[str]:
+    def proxy_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         """
@@ -586,7 +586,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         """
@@ -594,7 +594,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccountIssuer")
-    def service_account_issuer(self) -> Optional[str]:
+    def service_account_issuer(self) -> pulumi.Output[Optional[str]]:
         """
         The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
         """
@@ -602,7 +602,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceCidr")
-    def service_cidr(self) -> Optional[str]:
+    def service_cidr(self) -> pulumi.Output[Optional[str]]:
         """
         The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         """
@@ -610,17 +610,17 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slbId")
-    def slb_id(self) -> str:
+    def slb_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "slb_id")
 
     @property
     @pulumi.getter(name="slbInternet")
-    def slb_internet(self) -> str:
+    def slb_internet(self) -> pulumi.Output[str]:
         return pulumi.get(self, "slb_internet")
 
     @property
     @pulumi.getter(name="slbInternetEnabled")
-    def slb_internet_enabled(self) -> Optional[bool]:
+    def slb_internet_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to create internet load balancer for API Server. Default to true.
         """
@@ -628,7 +628,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slbIntranet")
-    def slb_intranet(self) -> str:
+    def slb_intranet(self) -> pulumi.Output[str]:
         """
         The ID of private load balancer where the current cluster master node is located.
         """
@@ -636,7 +636,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userCa")
-    def user_ca(self) -> Optional[str]:
+    def user_ca(self) -> pulumi.Output[Optional[str]]:
         """
         The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         """
@@ -644,7 +644,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[str]:
+    def user_data(self) -> pulumi.Output[Optional[str]]:
         """
         Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         """
@@ -652,7 +652,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> str:
+    def version(self) -> pulumi.Output[str]:
         """
         Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         """
@@ -660,7 +660,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The ID of VPC where the current cluster is located.
         """
@@ -668,7 +668,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerAutoRenew")
-    def worker_auto_renew(self) -> Optional[bool]:
+    def worker_auto_renew(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable worker payment auto-renew, defaults to false.
         """
@@ -676,7 +676,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerAutoRenewPeriod")
-    def worker_auto_renew_period(self) -> Optional[float]:
+    def worker_auto_renew_period(self) -> pulumi.Output[Optional[float]]:
         """
         Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
         """
@@ -684,17 +684,17 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerDataDiskCategory")
-    def worker_data_disk_category(self) -> Optional[str]:
+    def worker_data_disk_category(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "worker_data_disk_category")
 
     @property
     @pulumi.getter(name="workerDataDiskSize")
-    def worker_data_disk_size(self) -> Optional[float]:
+    def worker_data_disk_size(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "worker_data_disk_size")
 
     @property
     @pulumi.getter(name="workerDataDisks")
-    def worker_data_disks(self) -> Optional[List['outputs.ManagedKubernetesWorkerDataDisk']]:
+    def worker_data_disks(self) -> pulumi.Output[Optional[List['outputs.ManagedKubernetesWorkerDataDisk']]]:
         """
         The data disk configurations of worker nodes, such as the disk type and disk size. 
         - category: the type of the data disks. Valid values:
@@ -708,7 +708,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerDiskCategory")
-    def worker_disk_category(self) -> Optional[str]:
+    def worker_disk_category(self) -> pulumi.Output[Optional[str]]:
         """
         The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
@@ -716,7 +716,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerDiskSize")
-    def worker_disk_size(self) -> Optional[float]:
+    def worker_disk_size(self) -> pulumi.Output[Optional[float]]:
         """
         The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         """
@@ -724,7 +724,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerInstanceChargeType")
-    def worker_instance_charge_type(self) -> Optional[str]:
+    def worker_instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
         """
@@ -732,7 +732,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerInstanceTypes")
-    def worker_instance_types(self) -> List[str]:
+    def worker_instance_types(self) -> pulumi.Output[List[str]]:
         """
         The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         """
@@ -740,7 +740,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerNodes")
-    def worker_nodes(self) -> List['outputs.ManagedKubernetesWorkerNode']:
+    def worker_nodes(self) -> pulumi.Output[List['outputs.ManagedKubernetesWorkerNode']]:
         """
         List of cluster worker nodes. It contains several attributes to `Block Nodes`.
         """
@@ -748,7 +748,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerNumber")
-    def worker_number(self) -> float:
+    def worker_number(self) -> pulumi.Output[float]:
         """
         The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         """
@@ -756,7 +756,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerPeriod")
-    def worker_period(self) -> Optional[float]:
+    def worker_period(self) -> pulumi.Output[Optional[float]]:
         """
         Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
         """
@@ -764,7 +764,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerPeriodUnit")
-    def worker_period_unit(self) -> Optional[str]:
+    def worker_period_unit(self) -> pulumi.Output[Optional[str]]:
         """
         Worker payment period unit. `Month` or `Week`, defaults to `Month`.
         """
@@ -772,7 +772,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerRamRoleName")
-    def worker_ram_role_name(self) -> str:
+    def worker_ram_role_name(self) -> pulumi.Output[str]:
         """
         The RamRole Name attached to worker node.
         """
@@ -780,7 +780,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerVswitchIds")
-    def worker_vswitch_ids(self) -> List[str]:
+    def worker_vswitch_ids(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "worker_vswitch_ids")
 
     def translate_output_property(self, prop):

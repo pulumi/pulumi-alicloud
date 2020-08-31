@@ -13,7 +13,7 @@ __all__ = ['RouteEntry']
 
 class RouteEntry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_cidrblock: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -107,7 +107,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationCidrblock")
-    def destination_cidrblock(self) -> Optional[str]:
+    def destination_cidrblock(self) -> pulumi.Output[Optional[str]]:
         """
         The RouteEntry's target network segment.
         """
@@ -115,7 +115,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         """
@@ -123,7 +123,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nexthopId")
-    def nexthop_id(self) -> Optional[str]:
+    def nexthop_id(self) -> pulumi.Output[Optional[str]]:
         """
         The route entry's next hop. ECS instance ID or VPC router interface ID.
         """
@@ -131,7 +131,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nexthopType")
-    def nexthop_type(self) -> Optional[str]:
+    def nexthop_type(self) -> pulumi.Output[Optional[str]]:
         """
         The next hop type. Available values:
         """
@@ -139,7 +139,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> str:
+    def route_table_id(self) -> pulumi.Output[str]:
         """
         The ID of the route table.
         """
@@ -147,7 +147,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> str:
+    def router_id(self) -> pulumi.Output[str]:
         """
         This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
         """

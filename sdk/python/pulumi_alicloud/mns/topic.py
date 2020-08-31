@@ -13,7 +13,7 @@ __all__ = ['Topic']
 
 class Topic(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  logging_enabled: Optional[pulumi.Input[bool]] = None,
                  maximum_message_size: Optional[pulumi.Input[float]] = None,
@@ -84,7 +84,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loggingEnabled")
-    def logging_enabled(self) -> Optional[bool]:
+    def logging_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Is logging enabled? true or false. Default value to false.
         """
@@ -92,7 +92,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maximumMessageSize")
-    def maximum_message_size(self) -> Optional[float]:
+    def maximum_message_size(self) -> pulumi.Output[Optional[float]]:
         """
         This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         """
@@ -100,7 +100,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """

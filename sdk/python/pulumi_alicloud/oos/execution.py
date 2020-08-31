@@ -13,7 +13,7 @@ __all__ = ['Execution']
 
 class Execution(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  loop_mode: Optional[pulumi.Input[str]] = None,
@@ -209,7 +209,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def counters(self) -> str:
+    def counters(self) -> pulumi.Output[str]:
         """
         The counters of OOS Execution.
         """
@@ -217,7 +217,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createDate")
-    def create_date(self) -> str:
+    def create_date(self) -> pulumi.Output[str]:
         """
         The time when the execution was created.
         """
@@ -225,7 +225,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of OOS Execution.
         """
@@ -233,7 +233,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> str:
+    def end_date(self) -> pulumi.Output[str]:
         """
         The time when the execution was ended.
         """
@@ -241,7 +241,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="executedBy")
-    def executed_by(self) -> str:
+    def executed_by(self) -> pulumi.Output[str]:
         """
         The user who execute the template.
         """
@@ -249,7 +249,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isParent")
-    def is_parent(self) -> bool:
+    def is_parent(self) -> pulumi.Output[bool]:
         """
         Whether to include subtasks.
         """
@@ -257,7 +257,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loopMode")
-    def loop_mode(self) -> Optional[str]:
+    def loop_mode(self) -> pulumi.Output[Optional[str]]:
         """
         The loop mode of OOS Execution.
         """
@@ -265,7 +265,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[str]:
+    def mode(self) -> pulumi.Output[Optional[str]]:
         """
         The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
         """
@@ -273,7 +273,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def outputs(self) -> str:
+    def outputs(self) -> pulumi.Output[str]:
         """
         The outputs of OOS Execution.
         """
@@ -281,7 +281,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[str]:
+    def parameters(self) -> pulumi.Output[Optional[str]]:
         """
         The parameters required by the template. Default to `{}`.
         """
@@ -289,7 +289,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parentExecutionId")
-    def parent_execution_id(self) -> Optional[str]:
+    def parent_execution_id(self) -> pulumi.Output[Optional[str]]:
         """
         The id of parent execution.
         """
@@ -297,7 +297,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ramRole")
-    def ram_role(self) -> str:
+    def ram_role(self) -> pulumi.Output[str]:
         """
         The role that executes the current template.
         """
@@ -305,7 +305,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="safetyCheck")
-    def safety_check(self) -> Optional[str]:
+    def safety_check(self) -> pulumi.Output[Optional[str]]:
         """
         The mode of safety check.
         """
@@ -313,7 +313,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> str:
+    def start_date(self) -> pulumi.Output[str]:
         """
         The time when the execution was started.
         """
@@ -321,7 +321,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of OOS Execution.
         """
@@ -329,7 +329,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="statusMessage")
-    def status_message(self) -> str:
+    def status_message(self) -> pulumi.Output[str]:
         """
         The message of status.
         """
@@ -337,7 +337,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateId")
-    def template_id(self) -> str:
+    def template_id(self) -> pulumi.Output[str]:
         """
         The id of template.
         """
@@ -345,7 +345,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> str:
+    def template_name(self) -> pulumi.Output[str]:
         """
         The name of execution template.
         """
@@ -353,7 +353,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateVersion")
-    def template_version(self) -> str:
+    def template_version(self) -> pulumi.Output[str]:
         """
         The version of execution template.
         """
@@ -361,7 +361,7 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateDate")
-    def update_date(self) -> str:
+    def update_date(self) -> pulumi.Output[str]:
         """
         The time when the execution was updated.
         """

@@ -13,7 +13,7 @@ __all__ = ['RouteTableAttachment']
 
 class RouteTableAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  route_table_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -82,7 +82,7 @@ class RouteTableAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> str:
+    def route_table_id(self) -> pulumi.Output[str]:
         """
         The route_table_id of the route table attachment, the field can't be changed.
         """
@@ -90,7 +90,7 @@ class RouteTableAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The vswitch_id of the route table attachment, the field can't be changed.
         """

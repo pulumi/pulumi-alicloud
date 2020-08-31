@@ -13,7 +13,7 @@ __all__ = ['Template']
 
 class Template(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_delete_executions: Optional[pulumi.Input[bool]] = None,
                  content: Optional[pulumi.Input[str]] = None,
@@ -186,7 +186,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoDeleteExecutions")
-    def auto_delete_executions(self) -> Optional[bool]:
+    def auto_delete_executions(self) -> pulumi.Output[Optional[bool]]:
         """
         When deleting a template, whether to delete its related executions. Default to `false`.
         """
@@ -194,7 +194,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def content(self) -> str:
+    def content(self) -> pulumi.Output[str]:
         """
         The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
         """
@@ -202,7 +202,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> str:
+    def created_by(self) -> pulumi.Output[str]:
         """
         The creator of the template.
         """
@@ -210,7 +210,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdDate")
-    def created_date(self) -> str:
+    def created_date(self) -> pulumi.Output[str]:
         """
         The time when the template is created.
         """
@@ -218,7 +218,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of the template.
         """
@@ -226,7 +226,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hasTrigger")
-    def has_trigger(self) -> bool:
+    def has_trigger(self) -> pulumi.Output[bool]:
         """
         Is it triggered successfully.
         """
@@ -234,7 +234,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shareType")
-    def share_type(self) -> str:
+    def share_type(self) -> pulumi.Output[str]:
         """
         The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
         """
@@ -242,7 +242,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -250,7 +250,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateFormat")
-    def template_format(self) -> str:
+    def template_format(self) -> pulumi.Output[str]:
         """
         The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
         """
@@ -258,7 +258,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateId")
-    def template_id(self) -> str:
+    def template_id(self) -> pulumi.Output[str]:
         """
         The id of OOS Template.
         """
@@ -266,7 +266,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> str:
+    def template_name(self) -> pulumi.Output[str]:
         """
         The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
         """
@@ -274,7 +274,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateType")
-    def template_type(self) -> str:
+    def template_type(self) -> pulumi.Output[str]:
         """
         The type of OOS Template. `Automation` means the implementation of Alibaba Cloud API template, `Package` means represents a template for installing software.
         """
@@ -282,7 +282,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateVersion")
-    def template_version(self) -> str:
+    def template_version(self) -> pulumi.Output[str]:
         """
         The version of OOS Template.
         """
@@ -290,7 +290,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> str:
+    def updated_by(self) -> pulumi.Output[str]:
         """
         The user who updated the template.
         """
@@ -298,7 +298,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedDate")
-    def updated_date(self) -> str:
+    def updated_date(self) -> pulumi.Output[str]:
         """
         The time when the template was updated.
         """
@@ -306,7 +306,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionName")
-    def version_name(self) -> Optional[str]:
+    def version_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of template version.
         """

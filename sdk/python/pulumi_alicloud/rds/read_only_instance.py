@@ -15,7 +15,7 @@ __all__ = ['ReadOnlyInstance']
 
 class ReadOnlyInstance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -194,7 +194,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> str:
+    def connection_string(self) -> pulumi.Output[str]:
         """
         RDS database connection string.
         """
@@ -202,7 +202,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def engine(self) -> str:
+    def engine(self) -> pulumi.Output[str]:
         """
         Database type.
         """
@@ -210,7 +210,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> str:
+    def engine_version(self) -> pulumi.Output[str]:
         """
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         """
@@ -218,7 +218,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> str:
+    def instance_name(self) -> pulumi.Output[str]:
         """
         The name of DB instance. It a string of 2 to 256 characters.
         """
@@ -226,7 +226,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceStorage")
-    def instance_storage(self) -> float:
+    def instance_storage(self) -> pulumi.Output[float]:
         """
         User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         """
@@ -234,7 +234,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> str:
+    def instance_type(self) -> pulumi.Output[str]:
         """
         DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         """
@@ -242,7 +242,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterDbInstanceId")
-    def master_db_instance_id(self) -> str:
+    def master_db_instance_id(self) -> pulumi.Output[str]:
         """
         ID of the master instance.
         """
@@ -250,7 +250,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parameters(self) -> List['outputs.ReadOnlyInstanceParameter']:
+    def parameters(self) -> pulumi.Output[List['outputs.ReadOnlyInstanceParameter']]:
         """
         Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         """
@@ -258,7 +258,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> str:
+    def port(self) -> pulumi.Output[str]:
         """
         RDS database connection port.
         """
@@ -266,7 +266,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The ID of resource group which the DB read-only instance belongs.
         """
@@ -274,7 +274,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -284,7 +284,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """
@@ -292,7 +292,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The Zone to launch the DB instance.
         """

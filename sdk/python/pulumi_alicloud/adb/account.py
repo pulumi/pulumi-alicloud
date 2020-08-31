@@ -13,7 +13,7 @@ __all__ = ['Account']
 
 class Account(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_description: Optional[pulumi.Input[str]] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
@@ -144,7 +144,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountDescription")
-    def account_description(self) -> Optional[str]:
+    def account_description(self) -> pulumi.Output[Optional[str]]:
         """
         Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         """
@@ -152,7 +152,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> str:
+    def account_name(self) -> pulumi.Output[str]:
         """
         Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
         """
@@ -160,7 +160,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[str]:
+    def account_password(self) -> pulumi.Output[Optional[str]]:
         """
         Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         """
@@ -168,7 +168,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> str:
+    def db_cluster_id(self) -> pulumi.Output[str]:
         """
         The Id of cluster in which account belongs.
         """
@@ -176,7 +176,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[str]:
+    def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
         """
         An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         """
@@ -184,7 +184,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[Mapping[str, Any]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """

@@ -13,7 +13,7 @@ __all__ = ['RegistryEnterpriseNamespace']
 
 class RegistryEnterpriseNamespace(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_create: Optional[pulumi.Input[bool]] = None,
                  default_visibility: Optional[pulumi.Input[str]] = None,
@@ -117,7 +117,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoCreate")
-    def auto_create(self) -> bool:
+    def auto_create(self) -> pulumi.Output[bool]:
         """
         Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
         """
@@ -125,7 +125,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultVisibility")
-    def default_visibility(self) -> str:
+    def default_visibility(self) -> pulumi.Output[str]:
         """
         `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
         """
@@ -133,7 +133,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         ID of Container Registry Enterprise Edition instance.
         """
@@ -141,7 +141,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
         """

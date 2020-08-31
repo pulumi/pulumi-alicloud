@@ -13,7 +13,7 @@ __all__ = ['SecurityGroupRule']
 
 class SecurityGroupRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_ip: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -140,7 +140,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cidrIp")
-    def cidr_ip(self) -> Optional[str]:
+    def cidr_ip(self) -> pulumi.Output[Optional[str]]:
         """
         The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
         """
@@ -148,7 +148,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
         """
@@ -156,7 +156,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> str:
+    def ip_protocol(self) -> pulumi.Output[str]:
         """
         The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
         """
@@ -164,7 +164,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nicType")
-    def nic_type(self) -> str:
+    def nic_type(self) -> pulumi.Output[str]:
         """
         Network type, can be either `internet` or `intranet`, the default value is `internet`.
         """
@@ -172,7 +172,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policy(self) -> Optional[str]:
+    def policy(self) -> pulumi.Output[Optional[str]]:
         """
         Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
         """
@@ -180,7 +180,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portRange")
-    def port_range(self) -> Optional[str]:
+    def port_range(self) -> pulumi.Output[Optional[str]]:
         """
         The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
         For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
@@ -189,7 +189,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         Authorization policy priority, with parameter values: `1-100`, default value: 1.
         """
@@ -197,7 +197,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         """
         The security group to apply this rule to.
         """
@@ -205,7 +205,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceGroupOwnerAccount")
-    def source_group_owner_account(self) -> Optional[str]:
+    def source_group_owner_account(self) -> pulumi.Output[Optional[str]]:
         """
         The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
         """
@@ -213,7 +213,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceSecurityGroupId")
-    def source_security_group_id(self) -> Optional[str]:
+    def source_security_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
         """
@@ -221,7 +221,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
         """

@@ -13,7 +13,7 @@ __all__ = ['ResourceDirectory']
 
 class ResourceDirectory(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  __props__=None,
                  __name__=None,
@@ -100,7 +100,7 @@ class ResourceDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterAccountId")
-    def master_account_id(self) -> str:
+    def master_account_id(self) -> pulumi.Output[str]:
         """
         The ID of the master account.
         """
@@ -108,7 +108,7 @@ class ResourceDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterAccountName")
-    def master_account_name(self) -> str:
+    def master_account_name(self) -> pulumi.Output[str]:
         """
         The name of the master account.
         """
@@ -116,7 +116,7 @@ class ResourceDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rootFolderId")
-    def root_folder_id(self) -> str:
+    def root_folder_id(self) -> pulumi.Output[str]:
         """
         The ID of the root folder.
         """

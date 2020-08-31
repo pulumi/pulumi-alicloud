@@ -15,7 +15,7 @@ __all__ = ['KubernetesAutoscaler']
 
 class KubernetesAutoscaler(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cool_down_duration: Optional[pulumi.Input[str]] = None,
@@ -145,7 +145,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The id of kubernetes cluster.
         """
@@ -153,7 +153,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coolDownDuration")
-    def cool_down_duration(self) -> str:
+    def cool_down_duration(self) -> pulumi.Output[str]:
         """
         The cool_down_duration option of cluster-autoscaler.
         """
@@ -161,7 +161,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deferScaleInDuration")
-    def defer_scale_in_duration(self) -> str:
+    def defer_scale_in_duration(self) -> pulumi.Output[str]:
         """
         The defer_scale_in_duration option of cluster-autoscaler.
         """
@@ -169,7 +169,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def nodepools(self) -> Optional[List['outputs.KubernetesAutoscalerNodepool']]:
+    def nodepools(self) -> pulumi.Output[Optional[List['outputs.KubernetesAutoscalerNodepool']]]:
         """
         * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
         * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
@@ -179,7 +179,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useEcsRamRoleToken")
-    def use_ecs_ram_role_token(self) -> Optional[bool]:
+    def use_ecs_ram_role_token(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         """
@@ -187,7 +187,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def utilization(self) -> str:
+    def utilization(self) -> pulumi.Output[str]:
         """
         The utilization option of cluster-autoscaler.
         """

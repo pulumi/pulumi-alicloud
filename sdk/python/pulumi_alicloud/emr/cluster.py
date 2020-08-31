@@ -15,7 +15,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bootstrap_actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]]] = None,
                  charge_type: Optional[pulumi.Input[str]] = None,
@@ -201,12 +201,12 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bootstrapActions")
-    def bootstrap_actions(self) -> Optional[List['outputs.ClusterBootstrapAction']]:
+    def bootstrap_actions(self) -> pulumi.Output[Optional[List['outputs.ClusterBootstrapAction']]]:
         return pulumi.get(self, "bootstrap_actions")
 
     @property
     @pulumi.getter(name="chargeType")
-    def charge_type(self) -> Optional[str]:
+    def charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         """
@@ -214,7 +214,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> str:
+    def cluster_type(self) -> pulumi.Output[str]:
         """
         EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         """
@@ -222,7 +222,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="depositType")
-    def deposit_type(self) -> Optional[str]:
+    def deposit_type(self) -> pulumi.Output[Optional[str]]:
         """
         Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         """
@@ -230,7 +230,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="easEnable")
-    def eas_enable(self) -> Optional[bool]:
+    def eas_enable(self) -> pulumi.Output[Optional[bool]]:
         """
         High security cluster (true) or not. Default value is false.
         """
@@ -238,7 +238,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="emrVer")
-    def emr_ver(self) -> str:
+    def emr_ver(self) -> pulumi.Output[str]:
         """
         EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         """
@@ -246,7 +246,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="highAvailabilityEnable")
-    def high_availability_enable(self) -> Optional[bool]:
+    def high_availability_enable(self) -> pulumi.Output[Optional[bool]]:
         """
         High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
         """
@@ -254,7 +254,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> Optional[List['outputs.ClusterHostGroup']]:
+    def host_groups(self) -> pulumi.Output[Optional[List['outputs.ClusterHostGroup']]]:
         """
         Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
         """
@@ -262,12 +262,12 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isOpenPublicIp")
-    def is_open_public_ip(self) -> Optional[bool]:
+    def is_open_public_ip(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "is_open_public_ip")
 
     @property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[str]:
+    def key_pair_name(self) -> pulumi.Output[Optional[str]]:
         """
         Ssh key pair.
         """
@@ -275,7 +275,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterPwd")
-    def master_pwd(self) -> Optional[str]:
+    def master_pwd(self) -> pulumi.Output[Optional[str]]:
         """
         Master ssh password.
         """
@@ -283,7 +283,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         bootstrap action name.
         """
@@ -291,7 +291,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="optionSoftwareLists")
-    def option_software_lists(self) -> Optional[List[str]]:
+    def option_software_lists(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Optional software list.
         """
@@ -299,7 +299,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="relatedClusterId")
-    def related_cluster_id(self) -> Optional[str]:
+    def related_cluster_id(self) -> pulumi.Output[Optional[str]]:
         """
         This specify the related cluster id, if this cluster is a Gateway.
         """
@@ -307,7 +307,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[str]:
+    def security_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         Security Group ID for Cluster, you can also specify this key for each host group.
         """
@@ -315,7 +315,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sshEnable")
-    def ssh_enable(self) -> Optional[bool]:
+    def ssh_enable(self) -> pulumi.Output[Optional[bool]]:
         """
         If this is set true, we can ssh into cluster. Default value is false.
         """
@@ -323,7 +323,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -331,7 +331,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useLocalMetadb")
-    def use_local_metadb(self) -> Optional[bool]:
+    def use_local_metadb(self) -> pulumi.Output[Optional[bool]]:
         """
         Use local metadb. Default is false.
         """
@@ -339,7 +339,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userDefinedEmrEcsRole")
-    def user_defined_emr_ecs_role(self) -> Optional[str]:
+    def user_defined_emr_ecs_role(self) -> pulumi.Output[Optional[str]]:
         """
         Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
         """
@@ -347,7 +347,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         Global vswitch id, you can also specify it in host group.
         """
@@ -355,7 +355,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         Zone ID, e.g. cn-huhehaote-a
         """

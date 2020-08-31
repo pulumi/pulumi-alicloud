@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  big_screen: Optional[pulumi.Input[str]] = None,
                  exclusive_ip_package: Optional[pulumi.Input[str]] = None,
@@ -218,7 +218,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bigScreen")
-    def big_screen(self) -> str:
+    def big_screen(self) -> pulumi.Output[str]:
         """
         Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
         """
@@ -226,7 +226,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="exclusiveIpPackage")
-    def exclusive_ip_package(self) -> str:
+    def exclusive_ip_package(self) -> pulumi.Output[str]:
         """
         Specify the number of exclusive WAF IP addresses.
         """
@@ -234,7 +234,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="extBandwidth")
-    def ext_bandwidth(self) -> str:
+    def ext_bandwidth(self) -> pulumi.Output[str]:
         """
         The extra bandwidth. Unit: Mbit/s.
         """
@@ -242,7 +242,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="extDomainPackage")
-    def ext_domain_package(self) -> str:
+    def ext_domain_package(self) -> pulumi.Output[str]:
         """
         The number of extra domains.
         """
@@ -250,7 +250,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logStorage")
-    def log_storage(self) -> str:
+    def log_storage(self) -> pulumi.Output[str]:
         """
         Log storage size. Unit: T. Valid values: [3, 5, 10, 20, 50].
         """
@@ -258,7 +258,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logTime")
-    def log_time(self) -> str:
+    def log_time(self) -> pulumi.Output[str]:
         """
         Log storage period. Unit: day. Valid values: [180, 360].
         """
@@ -266,7 +266,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[str]:
+    def modify_type(self) -> pulumi.Output[Optional[str]]:
         """
         Type of configuration change. Valid value: Upgrade.
         """
@@ -274,7 +274,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packageCode")
-    def package_code(self) -> str:
+    def package_code(self) -> pulumi.Output[str]:
         """
         Subscription plan:
         * China site customers can purchase the following versions of China Mainland region, valid values: ["version_3", "version_4", "version_5"].
@@ -286,7 +286,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         Service time of Web Application Firewall.
         """
@@ -294,7 +294,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="prefessionalService")
-    def prefessional_service(self) -> str:
+    def prefessional_service(self) -> pulumi.Output[str]:
         """
         Specify whether professional service is supported. Valid values: ["true", "false"]
         """
@@ -302,7 +302,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[float]:
+    def renew_period(self) -> pulumi.Output[Optional[float]]:
         """
         Renewal period of WAF service. Unit: month
         """
@@ -310,7 +310,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[str]:
+    def renewal_status(self) -> pulumi.Output[Optional[str]]:
         """
         Renewal status of WAF service. Valid values: 
         * AutoRenewal: The service time of WAF is renewed automatically.
@@ -320,7 +320,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The resource group ID.
         """
@@ -328,7 +328,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> float:
+    def status(self) -> pulumi.Output[float]:
         """
         The status of the instance.
         """
@@ -336,7 +336,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subscriptionType")
-    def subscription_type(self) -> str:
+    def subscription_type(self) -> pulumi.Output[str]:
         """
         Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
         """
@@ -344,7 +344,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="wafLog")
-    def waf_log(self) -> str:
+    def waf_log(self) -> pulumi.Output[str]:
         """
         Specify whether Log service is supported. Valid values: ["true", "false"]
         """

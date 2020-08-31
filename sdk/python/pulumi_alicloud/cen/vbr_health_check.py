@@ -13,7 +13,7 @@ __all__ = ['VbrHealthCheck']
 
 class VbrHealthCheck(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  health_check_interval: Optional[pulumi.Input[float]] = None,
@@ -152,7 +152,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> str:
+    def cen_id(self) -> pulumi.Output[str]:
         """
         The ID of the CEN instance.
         """
@@ -160,7 +160,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckInterval")
-    def health_check_interval(self) -> Optional[float]:
+    def health_check_interval(self) -> pulumi.Output[Optional[float]]:
         """
         Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
         """
@@ -168,7 +168,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckSourceIp")
-    def health_check_source_ip(self) -> Optional[str]:
+    def health_check_source_ip(self) -> pulumi.Output[Optional[str]]:
         """
         The source IP address of health checks.
         """
@@ -176,7 +176,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckTargetIp")
-    def health_check_target_ip(self) -> str:
+    def health_check_target_ip(self) -> pulumi.Output[str]:
         """
         The destination IP address of health checks.
         """
@@ -184,7 +184,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[float]:
+    def healthy_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
         """
@@ -192,7 +192,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vbrInstanceId")
-    def vbr_instance_id(self) -> str:
+    def vbr_instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the VBR.
         """
@@ -200,7 +200,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vbrInstanceOwnerId")
-    def vbr_instance_owner_id(self) -> Optional[float]:
+    def vbr_instance_owner_id(self) -> pulumi.Output[Optional[float]]:
         """
         The ID of the account to which the VBR belongs.
         """
@@ -208,7 +208,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vbrInstanceRegionId")
-    def vbr_instance_region_id(self) -> str:
+    def vbr_instance_region_id(self) -> pulumi.Output[str]:
         """
         The ID of the region to which the VBR belongs.
         """

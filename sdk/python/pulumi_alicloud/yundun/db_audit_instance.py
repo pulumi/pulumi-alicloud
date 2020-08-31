@@ -13,7 +13,7 @@ __all__ = ['DBAuditInstance']
 
 class DBAuditInstance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[float]] = None,
@@ -130,7 +130,7 @@ class DBAuditInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         Description of the instance. This name can have a string of 1 to 63 characters.
         """
@@ -138,7 +138,7 @@ class DBAuditInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         """
@@ -146,7 +146,7 @@ class DBAuditInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="planCode")
-    def plan_code(self) -> str:
+    def plan_code(self) -> pulumi.Output[str]:
         """
         Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         """
@@ -154,7 +154,7 @@ class DBAuditInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
         """
@@ -162,7 +162,7 @@ class DBAuditInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -170,7 +170,7 @@ class DBAuditInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         vSwtich ID configured to audit
         """

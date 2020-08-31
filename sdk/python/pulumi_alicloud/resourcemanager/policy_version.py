@@ -13,7 +13,7 @@ __all__ = ['PolicyVersion']
 
 class PolicyVersion(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  is_default_version: Optional[pulumi.Input[bool]] = None,
                  policy_document: Optional[pulumi.Input[str]] = None,
@@ -99,7 +99,7 @@ class PolicyVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createDate")
-    def create_date(self) -> str:
+    def create_date(self) -> pulumi.Output[str]:
         """
         The time when the policy version was created.
         """
@@ -107,7 +107,7 @@ class PolicyVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isDefaultVersion")
-    def is_default_version(self) -> Optional[bool]:
+    def is_default_version(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to set the policy version as the default version. Default to `false`.
         """
@@ -115,7 +115,7 @@ class PolicyVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyDocument")
-    def policy_document(self) -> str:
+    def policy_document(self) -> pulumi.Output[str]:
         """
         The content of the policy. The content must be 1 to 2,048 characters in length.
         """
@@ -123,7 +123,7 @@ class PolicyVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> str:
+    def policy_name(self) -> pulumi.Output[str]:
         """
         The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
@@ -131,7 +131,7 @@ class PolicyVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> str:
+    def version_id(self) -> pulumi.Output[str]:
         """
         The ID of the policy version.
         """

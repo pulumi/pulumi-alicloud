@@ -13,7 +13,7 @@ __all__ = ['ImageSharePermission']
 
 class ImageSharePermission(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -107,7 +107,7 @@ class ImageSharePermission(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         """
         Alibaba Cloud Account ID. It is used to share images.
         """
@@ -115,7 +115,7 @@ class ImageSharePermission(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> str:
+    def image_id(self) -> pulumi.Output[str]:
         """
         The source image ID.
         """

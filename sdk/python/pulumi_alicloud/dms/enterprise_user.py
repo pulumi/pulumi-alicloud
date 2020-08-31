@@ -13,7 +13,7 @@ __all__ = ['EnterpriseUser']
 
 class EnterpriseUser(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  max_execute_count: Optional[pulumi.Input[float]] = None,
                  max_result_count: Optional[pulumi.Input[float]] = None,
@@ -132,7 +132,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxExecuteCount")
-    def max_execute_count(self) -> Optional[float]:
+    def max_execute_count(self) -> pulumi.Output[Optional[float]]:
         """
         Maximum number of inquiries on the day.
         """
@@ -140,7 +140,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxResultCount")
-    def max_result_count(self) -> Optional[float]:
+    def max_result_count(self) -> pulumi.Output[Optional[float]]:
         """
         Query the maximum number of rows on the day.
         """
@@ -148,7 +148,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mobile(self) -> Optional[str]:
+    def mobile(self) -> pulumi.Output[Optional[str]]:
         """
         The DingTalk number or mobile number of the user.
         """
@@ -156,7 +156,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nickName")
-    def nick_name(self) -> Optional[str]:
+    def nick_name(self) -> pulumi.Output[Optional[str]]:
         """
         The nickname of the user.
         """
@@ -164,7 +164,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleNames")
-    def role_names(self) -> Optional[List[str]]:
+    def role_names(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The roles that the user plays.
         """
@@ -172,7 +172,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[str]:
+    def status(self) -> pulumi.Output[Optional[str]]:
         """
         The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
         """
@@ -180,7 +180,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tid(self) -> Optional[float]:
+    def tid(self) -> pulumi.Output[Optional[float]]:
         """
         The tenant ID.
         """
@@ -188,7 +188,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def uid(self) -> str:
+    def uid(self) -> pulumi.Output[str]:
         """
         The Alibaba Cloud unique ID (UID) of the user to add.
         """

@@ -13,7 +13,7 @@ __all__ = ['MachineGroup']
 
 class MachineGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  identify_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  identify_type: Optional[pulumi.Input[str]] = None,
@@ -100,7 +100,7 @@ class MachineGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="identifyLists")
-    def identify_lists(self) -> List[str]:
+    def identify_lists(self) -> pulumi.Output[List[str]]:
         """
         The specific machine identification, which can be an IP address or user-defined identity.
         """
@@ -108,7 +108,7 @@ class MachineGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="identifyType")
-    def identify_type(self) -> Optional[str]:
+    def identify_type(self) -> pulumi.Output[Optional[str]]:
         """
         The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
         """
@@ -116,7 +116,7 @@ class MachineGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The machine group name, which is unique in the same project.
         """
@@ -124,7 +124,7 @@ class MachineGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project name to the machine group belongs.
         """
@@ -132,7 +132,7 @@ class MachineGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def topic(self) -> Optional[str]:
+    def topic(self) -> pulumi.Output[Optional[str]]:
         """
         The topic of a machine group.
         """

@@ -13,7 +13,7 @@ __all__ = ['LogTailConfig']
 
 class LogTailConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  input_detail: Optional[pulumi.Input[str]] = None,
                  input_type: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class LogTailConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="inputDetail")
-    def input_detail(self) -> str:
+    def input_detail(self) -> pulumi.Output[str]:
         """
         The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
         """
@@ -126,7 +126,7 @@ class LogTailConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="inputType")
-    def input_type(self) -> str:
+    def input_type(self) -> pulumi.Output[str]:
         """
         The input type. Currently only two types of files and plugin are supported.
         """
@@ -134,7 +134,7 @@ class LogTailConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logSample")
-    def log_sample(self) -> Optional[str]:
+    def log_sample(self) -> pulumi.Output[Optional[str]]:
         """
         （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
         """
@@ -142,7 +142,7 @@ class LogTailConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def logstore(self) -> str:
+    def logstore(self) -> pulumi.Output[str]:
         """
         The log store name to the query index belongs.
         """
@@ -150,7 +150,7 @@ class LogTailConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The Logtail configuration name, which is unique in the same project.
         """
@@ -158,7 +158,7 @@ class LogTailConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="outputType")
-    def output_type(self) -> str:
+    def output_type(self) -> pulumi.Output[str]:
         """
         The output type. Currently, only LogService is supported.
         """
@@ -166,7 +166,7 @@ class LogTailConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project name to the log store belongs.
         """

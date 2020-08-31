@@ -13,7 +13,7 @@ __all__ = ['InstanceAttachment']
 
 class InstanceAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  vpc_name: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> str:
+    def instance_name(self) -> pulumi.Output[str]:
         """
         The name of the OTS instance.
         """
@@ -129,7 +129,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The ID of attaching VPC to instance.
         """
@@ -137,7 +137,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcName")
-    def vpc_name(self) -> str:
+    def vpc_name(self) -> pulumi.Output[str]:
         """
         The name of attaching VPC to instance.
         """
@@ -145,7 +145,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The ID of attaching VSwitch to instance.
         """

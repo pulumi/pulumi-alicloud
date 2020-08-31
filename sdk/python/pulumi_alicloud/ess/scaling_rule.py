@@ -15,7 +15,7 @@ __all__ = ['ScalingRule']
 
 class ScalingRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adjustment_type: Optional[pulumi.Input[str]] = None,
                  adjustment_value: Optional[pulumi.Input[float]] = None,
@@ -151,7 +151,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adjustmentType")
-    def adjustment_type(self) -> Optional[str]:
+    def adjustment_type(self) -> pulumi.Output[Optional[str]]:
         """
         Adjustment mode of a scaling rule. Optional values:
         - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
@@ -162,7 +162,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adjustmentValue")
-    def adjustment_value(self) -> Optional[float]:
+    def adjustment_value(self) -> pulumi.Output[Optional[float]]:
         """
         Adjusted value of a scaling rule. Value range:
         - QuantityChangeInCapacity：(0, 500] U (-500, 0]
@@ -173,12 +173,12 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ari(self) -> str:
+    def ari(self) -> pulumi.Output[str]:
         return pulumi.get(self, "ari")
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[float]:
+    def cooldown(self) -> pulumi.Output[Optional[float]]:
         """
         Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         """
@@ -186,7 +186,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableScaleIn")
-    def disable_scale_in(self) -> Optional[bool]:
+    def disable_scale_in(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether scale in by the target tracking policy is disabled. Default to false.
         """
@@ -194,7 +194,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="estimatedInstanceWarmup")
-    def estimated_instance_warmup(self) -> float:
+    def estimated_instance_warmup(self) -> pulumi.Output[float]:
         """
         The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         """
@@ -202,7 +202,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metricName")
-    def metric_name(self) -> Optional[str]:
+    def metric_name(self) -> pulumi.Output[Optional[str]]:
         """
         A CloudMonitor metric name.
         """
@@ -210,7 +210,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> str:
+    def scaling_group_id(self) -> pulumi.Output[str]:
         """
         ID of the scaling group of a scaling rule.
         """
@@ -218,7 +218,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingRuleName")
-    def scaling_rule_name(self) -> str:
+    def scaling_rule_name(self) -> pulumi.Output[str]:
         """
         Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         """
@@ -226,7 +226,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingRuleType")
-    def scaling_rule_type(self) -> Optional[str]:
+    def scaling_rule_type(self) -> pulumi.Output[Optional[str]]:
         """
         The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
         """
@@ -234,7 +234,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stepAdjustments")
-    def step_adjustments(self) -> Optional[List['outputs.ScalingRuleStepAdjustment']]:
+    def step_adjustments(self) -> pulumi.Output[Optional[List['outputs.ScalingRuleStepAdjustment']]]:
         """
         Steps for StepScalingRule. See Block stepAdjustment below for details.
         """
@@ -242,7 +242,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetValue")
-    def target_value(self) -> Optional[float]:
+    def target_value(self) -> pulumi.Output[Optional[float]]:
         """
         The target value for the metric.
         """

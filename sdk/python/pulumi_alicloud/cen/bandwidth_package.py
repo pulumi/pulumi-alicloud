@@ -13,7 +13,7 @@ __all__ = ['BandwidthPackage']
 
 class BandwidthPackage(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth: Optional[pulumi.Input[float]] = None,
                  charge_type: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> float:
+    def bandwidth(self) -> pulumi.Output[float]:
         """
         The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         """
@@ -141,7 +141,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="chargeType")
-    def charge_type(self) -> Optional[str]:
+    def charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         """
@@ -149,7 +149,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the bandwidth package. Default to null.
         """
@@ -157,7 +157,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expiredTime")
-    def expired_time(self) -> str:
+    def expired_time(self) -> pulumi.Output[str]:
         """
         The time of the bandwidth package to expire.
         """
@@ -165,7 +165,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="geographicRegionIds")
-    def geographic_region_ids(self) -> List[str]:
+    def geographic_region_ids(self) -> pulumi.Output[List[str]]:
         """
         List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
         """
@@ -173,7 +173,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the bandwidth package. Defaults to null.
         """
@@ -181,7 +181,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
         """
@@ -189,7 +189,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the bandwidth, including "InUse" and "Idle".
         """

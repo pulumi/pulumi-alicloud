@@ -13,7 +13,7 @@ __all__ = ['Trigger']
 
 class Trigger(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  config_mns: Optional[pulumi.Input[str]] = None,
@@ -134,7 +134,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[str]:
+    def config(self) -> pulumi.Output[Optional[str]]:
         """
         The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
         """
@@ -142,7 +142,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configMns")
-    def config_mns(self) -> Optional[str]:
+    def config_mns(self) -> pulumi.Output[Optional[str]]:
         """
         The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
         """
@@ -150,7 +150,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def function(self) -> str:
+    def function(self) -> pulumi.Output[str]:
         """
         The Function Compute function name.
         """
@@ -158,7 +158,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> str:
+    def last_modified(self) -> pulumi.Output[str]:
         """
         The date this resource was last modified.
         """
@@ -166,7 +166,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
         """
@@ -174,7 +174,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[str]:
+    def name_prefix(self) -> pulumi.Output[Optional[str]]:
         """
         Setting a prefix to get a only trigger name. It is conflict with "name".
         """
@@ -182,7 +182,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> Optional[str]:
+    def role(self) -> pulumi.Output[Optional[str]]:
         """
         RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         """
@@ -190,7 +190,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         The Function Compute service name.
         """
@@ -198,7 +198,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceArn")
-    def source_arn(self) -> Optional[str]:
+    def source_arn(self) -> pulumi.Output[Optional[str]]:
         """
         Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         """
@@ -206,7 +206,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="triggerId")
-    def trigger_id(self) -> str:
+    def trigger_id(self) -> pulumi.Output[str]:
         """
         The Function Compute trigger ID.
         """
@@ -214,7 +214,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events"].
         """

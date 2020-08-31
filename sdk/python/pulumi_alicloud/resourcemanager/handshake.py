@@ -13,7 +13,7 @@ __all__ = ['Handshake']
 
 class Handshake(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  note: Optional[pulumi.Input[str]] = None,
                  target_entity: Optional[pulumi.Input[str]] = None,
@@ -129,7 +129,7 @@ class Handshake(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> str:
+    def expire_time(self) -> pulumi.Output[str]:
         """
         The expiration time of the invitation.
         """
@@ -137,7 +137,7 @@ class Handshake(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterAccountId")
-    def master_account_id(self) -> str:
+    def master_account_id(self) -> pulumi.Output[str]:
         """
         Resource account master account ID.
         """
@@ -145,7 +145,7 @@ class Handshake(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterAccountName")
-    def master_account_name(self) -> str:
+    def master_account_name(self) -> pulumi.Output[str]:
         """
         The name of the main account of the resource directory.
         """
@@ -153,7 +153,7 @@ class Handshake(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="modifyTime")
-    def modify_time(self) -> str:
+    def modify_time(self) -> pulumi.Output[str]:
         """
         The modification time of the invitation.
         """
@@ -161,7 +161,7 @@ class Handshake(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def note(self) -> Optional[str]:
+    def note(self) -> pulumi.Output[Optional[str]]:
         """
         Remarks. The maximum length is 1024 characters.
         """
@@ -169,7 +169,7 @@ class Handshake(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceDirectoryId")
-    def resource_directory_id(self) -> str:
+    def resource_directory_id(self) -> pulumi.Output[str]:
         """
         Resource directory ID.
         """
@@ -177,7 +177,7 @@ class Handshake(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
         """
@@ -185,7 +185,7 @@ class Handshake(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetEntity")
-    def target_entity(self) -> str:
+    def target_entity(self) -> pulumi.Output[str]:
         """
         Invited account ID or login email.
         """
@@ -193,7 +193,7 @@ class Handshake(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> str:
+    def target_type(self) -> pulumi.Output[str]:
         """
         Type of account being invited. Valid values: `Account`, `Email`.
         """

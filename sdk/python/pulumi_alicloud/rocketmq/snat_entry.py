@@ -13,7 +13,7 @@ __all__ = ['SnatEntry']
 
 class SnatEntry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  sag_id: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class SnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> str:
+    def cidr_block(self) -> pulumi.Output[str]:
         """
         The destination CIDR block.
         """
@@ -119,7 +119,7 @@ class SnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sagId")
-    def sag_id(self) -> str:
+    def sag_id(self) -> pulumi.Output[str]:
         """
         The ID of the SAG instance.
         """
@@ -127,7 +127,7 @@ class SnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snatIp")
-    def snat_ip(self) -> str:
+    def snat_ip(self) -> pulumi.Output[str]:
         """
         The public IP address.
         """

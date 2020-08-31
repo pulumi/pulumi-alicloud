@@ -13,7 +13,7 @@ __all__ = ['BackupPolicy']
 
 class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_periods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
@@ -128,7 +128,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupPeriods")
-    def backup_periods(self) -> List[str]:
+    def backup_periods(self) -> pulumi.Output[List[str]]:
         """
         Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
         """
@@ -136,7 +136,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupTime")
-    def backup_time(self) -> Optional[str]:
+    def backup_time(self) -> pulumi.Output[Optional[str]]:
         """
         Backup time, in the format of HH:mmZ- HH:mm Z
         """
@@ -144,7 +144,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The id of ApsaraDB for Redis or Memcache intance.
         """

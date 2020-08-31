@@ -13,7 +13,7 @@ __all__ = ['Endpoint']
 
 class Endpoint(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -110,7 +110,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoAddNewNodes")
-    def auto_add_new_nodes(self) -> Optional[str]:
+    def auto_add_new_nodes(self) -> pulumi.Output[Optional[str]]:
         """
         Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. Default to `Disable`.
         """
@@ -118,7 +118,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> str:
+    def db_cluster_id(self) -> pulumi.Output[str]:
         """
         The Id of cluster that can run database.
         """
@@ -126,7 +126,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointConfig")
-    def endpoint_config(self) -> Mapping[str, Any]:
+    def endpoint_config(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Advanced configuration of the cluster address.
         """
@@ -134,7 +134,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> str:
+    def endpoint_type(self) -> pulumi.Output[str]:
         """
         Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
         """
@@ -142,7 +142,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def nodes(self) -> List[str]:
+    def nodes(self) -> pulumi.Output[List[str]]:
         """
         Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         """
@@ -150,7 +150,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="readWriteMode")
-    def read_write_mode(self) -> Optional[str]:
+    def read_write_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. Default to `ReadOnly`.
         """

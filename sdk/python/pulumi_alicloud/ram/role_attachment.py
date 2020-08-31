@@ -13,7 +13,7 @@ __all__ = ['RoleAttachment']
 
 class RoleAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
@@ -149,7 +149,7 @@ class RoleAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> List[str]:
+    def instance_ids(self) -> pulumi.Output[List[str]]:
         """
         The list of ECS instance's IDs.
         """
@@ -157,7 +157,7 @@ class RoleAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> str:
+    def role_name(self) -> pulumi.Output[str]:
         """
         The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """

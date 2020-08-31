@@ -13,7 +13,7 @@ __all__ = ['Connection']
 
 class Connection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_prefix: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -131,7 +131,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionPrefix")
-    def connection_prefix(self) -> str:
+    def connection_prefix(self) -> pulumi.Output[str]:
         """
         Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_cluster_id> + 'tf'.
         """
@@ -139,7 +139,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> str:
+    def connection_string(self) -> pulumi.Output[str]:
         """
         Connection cluster string.
         """
@@ -147,7 +147,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> str:
+    def db_cluster_id(self) -> pulumi.Output[str]:
         """
         The Id of cluster that can run database.
         """
@@ -155,7 +155,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> str:
+    def ip_address(self) -> pulumi.Output[str]:
         """
         The ip address of connection string.
         """
@@ -163,7 +163,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> str:
+    def port(self) -> pulumi.Output[str]:
         """
         Connection cluster port.
         """

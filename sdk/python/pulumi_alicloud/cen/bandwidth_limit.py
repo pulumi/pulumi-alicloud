@@ -13,7 +13,7 @@ __all__ = ['BandwidthLimit']
 
 class BandwidthLimit(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth_limit: Optional[pulumi.Input[float]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -146,7 +146,7 @@ class BandwidthLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandwidthLimit")
-    def bandwidth_limit(self) -> float:
+    def bandwidth_limit(self) -> pulumi.Output[float]:
         """
         The bandwidth configured for the interconnected regions communication.
         """
@@ -154,7 +154,7 @@ class BandwidthLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the CEN.
         """
@@ -162,7 +162,7 @@ class BandwidthLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="regionIds")
-    def region_ids(self) -> List[str]:
+    def region_ids(self) -> pulumi.Output[List[str]]:
         """
         List of the two regions to interconnect. Must be two different regions.
         """

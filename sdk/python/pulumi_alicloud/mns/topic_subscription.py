@@ -13,7 +13,7 @@ __all__ = ['TopicSubscription']
 
 class TopicSubscription(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  filter_tag: Optional[pulumi.Input[str]] = None,
@@ -112,7 +112,7 @@ class TopicSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoint(self) -> str:
+    def endpoint(self) -> pulumi.Output[str]:
         """
         The endpoint has three format. Available values format:
         - HTTP Format: http://xxx.com/xxx
@@ -123,7 +123,7 @@ class TopicSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="filterTag")
-    def filter_tag(self) -> Optional[str]:
+    def filter_tag(self) -> pulumi.Output[Optional[str]]:
         """
         The length should be shorter than 16.
         """
@@ -131,7 +131,7 @@ class TopicSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
@@ -139,7 +139,7 @@ class TopicSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notifyContentFormat")
-    def notify_content_format(self) -> Optional[str]:
+    def notify_content_format(self) -> pulumi.Output[Optional[str]]:
         """
         The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
         """
@@ -147,7 +147,7 @@ class TopicSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notifyStrategy")
-    def notify_strategy(self) -> Optional[str]:
+    def notify_strategy(self) -> pulumi.Output[Optional[str]]:
         """
         The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
         """
@@ -155,7 +155,7 @@ class TopicSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="topicName")
-    def topic_name(self) -> str:
+    def topic_name(self) -> pulumi.Output[str]:
         """
         The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """

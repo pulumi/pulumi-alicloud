@@ -13,7 +13,7 @@ __all__ = ['Project']
 
 class Project(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
@@ -104,7 +104,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the maxcompute project.
         """
@@ -112,7 +112,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> str:
+    def order_type(self) -> pulumi.Output[str]:
         """
         The type of payment, only `PayAsYouGo` supported currently.
         """
@@ -120,7 +120,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="specificationType")
-    def specification_type(self) -> str:
+    def specification_type(self) -> pulumi.Output[str]:
         """
         The type of resource Specification, only `OdpsStandard` supported currently.
         """

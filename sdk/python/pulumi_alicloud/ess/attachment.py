@@ -13,7 +13,7 @@ __all__ = ['Attachment']
 
 class Attachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -164,7 +164,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[bool]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
         """
@@ -172,7 +172,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> List[str]:
+    def instance_ids(self) -> pulumi.Output[List[str]]:
         """
         ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         """
@@ -180,7 +180,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> str:
+    def scaling_group_id(self) -> pulumi.Output[str]:
         """
         ID of the scaling group of a scaling configuration.
         """

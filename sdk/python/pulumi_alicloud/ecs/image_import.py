@@ -15,7 +15,7 @@ __all__ = ['ImageImport']
 
 class ImageImport(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  architecture: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -144,7 +144,7 @@ class ImageImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def architecture(self) -> Optional[str]:
+    def architecture(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
         """
@@ -152,7 +152,7 @@ class ImageImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
         """
@@ -160,7 +160,7 @@ class ImageImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskDeviceMappings")
-    def disk_device_mappings(self) -> List['outputs.ImageImportDiskDeviceMapping']:
+    def disk_device_mappings(self) -> pulumi.Output[List['outputs.ImageImportDiskDeviceMapping']]:
         """
         Description of the system with disks and snapshots under the image.
         """
@@ -168,7 +168,7 @@ class ImageImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[str]:
+    def image_name(self) -> pulumi.Output[Optional[str]]:
         """
         The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         """
@@ -176,7 +176,7 @@ class ImageImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="licenseType")
-    def license_type(self) -> Optional[str]:
+    def license_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
         """
@@ -184,7 +184,7 @@ class ImageImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="osType")
-    def os_type(self) -> Optional[str]:
+    def os_type(self) -> pulumi.Output[Optional[str]]:
         """
         Operating system platform type. Valid values: `windows`, Default is `linux`.
         """
@@ -192,7 +192,7 @@ class ImageImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def platform(self) -> Optional[str]:
+    def platform(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
         """

@@ -13,7 +13,7 @@ __all__ = ['Trail']
 
 class Trail(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  event_rw: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -129,7 +129,7 @@ class Trail(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventRw")
-    def event_rw(self) -> Optional[str]:
+    def event_rw(self) -> pulumi.Output[Optional[str]]:
         """
         Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         """
@@ -137,7 +137,7 @@ class Trail(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the trail to be created, which must be unique for an account.
         """
@@ -145,7 +145,7 @@ class Trail(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> str:
+    def oss_bucket_name(self) -> pulumi.Output[str]:
         """
         The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
         """
@@ -153,7 +153,7 @@ class Trail(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ossKeyPrefix")
-    def oss_key_prefix(self) -> Optional[str]:
+    def oss_key_prefix(self) -> pulumi.Output[Optional[str]]:
         """
         The prefix of the specified OSS bucket name. This parameter can be left empty.
         """
@@ -161,7 +161,7 @@ class Trail(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> str:
+    def role_name(self) -> pulumi.Output[str]:
         """
         The RAM role in ActionTrail permitted by the user.
         """
@@ -169,7 +169,7 @@ class Trail(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slsProjectArn")
-    def sls_project_arn(self) -> Optional[str]:
+    def sls_project_arn(self) -> pulumi.Output[Optional[str]]:
         """
         The unique ARN of the Log Service project.
         """
@@ -177,7 +177,7 @@ class Trail(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slsWriteRoleArn")
-    def sls_write_role_arn(self) -> Optional[str]:
+    def sls_write_role_arn(self) -> pulumi.Output[Optional[str]]:
         """
         The unique ARN of the Log Service role.
         """

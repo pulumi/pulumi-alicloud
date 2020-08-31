@@ -13,7 +13,7 @@ __all__ = ['NetworkAttachment']
 
 class NetworkAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ccn_id: Optional[pulumi.Input[str]] = None,
                  sag_id: Optional[pulumi.Input[str]] = None,
@@ -104,7 +104,7 @@ class NetworkAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ccnId")
-    def ccn_id(self) -> str:
+    def ccn_id(self) -> pulumi.Output[str]:
         """
         The ID of the CCN instance.
         """
@@ -112,7 +112,7 @@ class NetworkAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sagId")
-    def sag_id(self) -> str:
+    def sag_id(self) -> pulumi.Output[str]:
         """
         The ID of the Smart Access Gateway instance.
         """

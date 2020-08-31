@@ -13,7 +13,7 @@ __all__ = ['ScheduledTask']
 
 class ScheduledTask(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[float]] = None,
@@ -168,7 +168,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
         """
@@ -176,7 +176,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[float]:
+    def desired_capacity(self) -> pulumi.Output[Optional[float]]:
         """
         The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
         """
@@ -184,7 +184,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launchExpirationTime")
-    def launch_expiration_time(self) -> Optional[float]:
+    def launch_expiration_time(self) -> pulumi.Output[Optional[float]]:
         """
         The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
         """
@@ -192,7 +192,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launchTime")
-    def launch_time(self) -> Optional[str]:
+    def launch_time(self) -> pulumi.Output[Optional[str]]:
         """
         The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
         The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
@@ -203,7 +203,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxValue")
-    def max_value(self) -> Optional[float]:
+    def max_value(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         """
@@ -211,7 +211,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minValue")
-    def min_value(self) -> Optional[float]:
+    def min_value(self) -> pulumi.Output[Optional[float]]:
         """
         The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         """
@@ -219,7 +219,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recurrenceEndTime")
-    def recurrence_end_time(self) -> str:
+    def recurrence_end_time(self) -> pulumi.Output[str]:
         """
         Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
         The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
@@ -228,7 +228,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recurrenceType")
-    def recurrence_type(self) -> str:
+    def recurrence_type(self) -> pulumi.Output[str]:
         """
         Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
         - Daily: The scheduled task is executed once every specified number of days.
@@ -240,7 +240,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recurrenceValue")
-    def recurrence_value(self) -> str:
+    def recurrence_value(self) -> pulumi.Output[str]:
         """
         Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
         - Daily: You can enter one value. Valid values: 1 to 31.
@@ -252,7 +252,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> str:
+    def scaling_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
         """
@@ -260,7 +260,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduledAction")
-    def scheduled_action(self) -> Optional[str]:
+    def scheduled_action(self) -> pulumi.Output[Optional[str]]:
         """
         The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
         """
@@ -268,7 +268,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduledTaskName")
-    def scheduled_task_name(self) -> Optional[str]:
+    def scheduled_task_name(self) -> pulumi.Output[Optional[str]]:
         """
         Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
         """
@@ -276,7 +276,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="taskEnabled")
-    def task_enabled(self) -> Optional[bool]:
+    def task_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to start the scheduled task. Default to true.
         """

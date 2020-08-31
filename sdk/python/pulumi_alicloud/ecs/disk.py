@@ -13,7 +13,7 @@ __all__ = ['Disk']
 
 class Disk(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
@@ -176,7 +176,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> str:
+    def availability_zone(self) -> pulumi.Output[str]:
         """
         The Zone to create the disk in.
         """
@@ -184,7 +184,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def category(self) -> Optional[str]:
+    def category(self) -> pulumi.Output[Optional[str]]:
         """
         Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. Default is `cloud_efficiency`.
         """
@@ -192,7 +192,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteAutoSnapshot")
-    def delete_auto_snapshot(self) -> Optional[bool]:
+    def delete_auto_snapshot(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
         """
@@ -200,7 +200,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteWithInstance")
-    def delete_with_instance(self) -> Optional[bool]:
+    def delete_with_instance(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether the disk is released together with the instance: Default value: false.
         """
@@ -208,7 +208,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         """
@@ -216,7 +216,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableAutoSnapshot")
-    def enable_auto_snapshot(self) -> Optional[bool]:
+    def enable_auto_snapshot(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
         """
@@ -224,7 +224,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def encrypted(self) -> Optional[bool]:
+    def encrypted(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, the disk will be encrypted, conflict with `snapshot_id`.
         """
@@ -232,7 +232,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[str]:
+    def kms_key_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         """
@@ -240,7 +240,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         """
@@ -248,7 +248,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Id of resource group which the disk belongs.
         > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
@@ -257,7 +257,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         """
@@ -265,7 +265,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[str]:
+    def snapshot_id(self) -> pulumi.Output[Optional[str]]:
         """
         A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         """
@@ -273,7 +273,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The disk status.
         """
@@ -281,7 +281,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """

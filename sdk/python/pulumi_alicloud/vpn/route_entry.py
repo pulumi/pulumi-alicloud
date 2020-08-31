@@ -13,7 +13,7 @@ __all__ = ['RouteEntry']
 
 class RouteEntry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  next_hop: Optional[pulumi.Input[str]] = None,
                  publish_vpc: Optional[pulumi.Input[bool]] = None,
@@ -106,7 +106,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> str:
+    def next_hop(self) -> pulumi.Output[str]:
         """
         The next hop of the destination route.
         """
@@ -114,7 +114,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publishVpc")
-    def publish_vpc(self) -> bool:
+    def publish_vpc(self) -> pulumi.Output[bool]:
         """
         Whether to issue the destination route to the VPC.
         """
@@ -122,7 +122,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeDest")
-    def route_dest(self) -> str:
+    def route_dest(self) -> pulumi.Output[str]:
         """
         The destination network segment of the destination route.
         """
@@ -130,7 +130,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpnGatewayId")
-    def vpn_gateway_id(self) -> str:
+    def vpn_gateway_id(self) -> pulumi.Output[str]:
         """
         The id of the vpn gateway.
         """
@@ -138,7 +138,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> pulumi.Output[float]:
         """
         The value should be 0 or 100.
         """

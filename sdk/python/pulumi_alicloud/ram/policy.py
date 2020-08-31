@@ -15,7 +15,7 @@ __all__ = ['Policy']
 
 class Policy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  document: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="attachmentCount")
-    def attachment_count(self) -> float:
+    def attachment_count(self) -> pulumi.Output[float]:
         """
         The policy attachment count.
         """
@@ -126,7 +126,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the RAM policy. This name can have a string of 1 to 1024 characters.
         """
@@ -134,7 +134,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def document(self) -> str:
+    def document(self) -> pulumi.Output[str]:
         """
         Document of the RAM policy. It is required when the `statement` is not specified.
         """
@@ -142,7 +142,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[bool]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
         This parameter is used for resource destroy. Default value is `false`.
         """
@@ -150,7 +150,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         """
@@ -158,7 +158,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def statements(self) -> List['outputs.PolicyStatement']:
+    def statements(self) -> pulumi.Output[List['outputs.PolicyStatement']]:
         """
         (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
         """
@@ -166,7 +166,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The policy type.
         """
@@ -174,7 +174,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> Optional[str]:
+    def version(self) -> pulumi.Output[Optional[str]]:
         """
         (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """

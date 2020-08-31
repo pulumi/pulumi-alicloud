@@ -13,7 +13,7 @@ __all__ = ['Group']
 
 class Group(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -88,7 +88,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of the api gateway group. Defaults to null.
         """
@@ -96,7 +96,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the api gateway group. Defaults to null.
         """
@@ -104,7 +104,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subDomain")
-    def sub_domain(self) -> str:
+    def sub_domain(self) -> pulumi.Output[str]:
         """
         (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
         """
@@ -112,7 +112,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcDomain")
-    def vpc_domain(self) -> str:
+    def vpc_domain(self) -> pulumi.Output[str]:
         """
         (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
         """

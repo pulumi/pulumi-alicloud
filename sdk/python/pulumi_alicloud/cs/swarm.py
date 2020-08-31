@@ -15,7 +15,7 @@ __all__ = ['Swarm']
 
 class Swarm(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  disk_category: Optional[pulumi.Input[str]] = None,
@@ -213,7 +213,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="agentVersion")
-    def agent_version(self) -> str:
+    def agent_version(self) -> pulumi.Output[str]:
         """
         The nodes agent version.
         """
@@ -221,7 +221,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> str:
+    def cidr_block(self) -> pulumi.Output[str]:
         """
         The CIDR block for the Container. It can not be same as the CIDR used by the VPC.
         Valid value:
@@ -233,7 +233,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskCategory")
-    def disk_category(self) -> Optional[str]:
+    def disk_category(self) -> pulumi.Output[Optional[str]]:
         """
         The data disk category of ECS instance node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd`, `ephemeral_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
@@ -241,7 +241,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[float]:
+    def disk_size(self) -> pulumi.Output[Optional[float]]:
         """
         The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
         """
@@ -249,7 +249,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[str]:
+    def image_id(self) -> pulumi.Output[Optional[str]]:
         """
         The image ID of ECS instance node used. Default to System automate allocated.
         """
@@ -257,7 +257,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> str:
+    def instance_type(self) -> pulumi.Output[str]:
         """
         The type of ECS instance node.
         """
@@ -265,7 +265,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isOutdated")
-    def is_outdated(self) -> Optional[bool]:
+    def is_outdated(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to use outdated instance type. Default to false.
         """
@@ -273,7 +273,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The container cluster's name. It is the only in one Alicloud account.
         """
@@ -281,12 +281,12 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[str]:
+    def name_prefix(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "name_prefix")
 
     @property
     @pulumi.getter(name="needSlb")
-    def need_slb(self) -> Optional[bool]:
+    def need_slb(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
         """
@@ -294,7 +294,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeNumber")
-    def node_number(self) -> Optional[float]:
+    def node_number(self) -> pulumi.Output[Optional[float]]:
         """
         The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
         """
@@ -302,7 +302,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def nodes(self) -> List['outputs.SwarmNode']:
+    def nodes(self) -> pulumi.Output[List['outputs.SwarmNode']]:
         """
         List of cluster nodes. It contains several attributes to `Block Nodes`.
         """
@@ -310,7 +310,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         The password of ECS instance node.
         """
@@ -318,7 +318,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="releaseEip")
-    def release_eip(self) -> Optional[bool]:
+    def release_eip(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to release EIP after creating swarm cluster successfully. Default to false.
         """
@@ -326,7 +326,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         """
         The ID of security group where the current cluster worker node is located.
         """
@@ -334,7 +334,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[float]:
+    def size(self) -> pulumi.Output[Optional[float]]:
         """
         Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
         """
@@ -342,7 +342,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slbId")
-    def slb_id(self) -> str:
+    def slb_id(self) -> pulumi.Output[str]:
         """
         The ID of load balancer where the current cluster worker node is located.
         """
@@ -350,7 +350,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The ID of VPC where the current cluster is located.
         """
@@ -358,7 +358,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
         """

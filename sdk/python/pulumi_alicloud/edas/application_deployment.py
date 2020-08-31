@@ -13,7 +13,7 @@ __all__ = ['ApplicationDeployment']
 
 class ApplicationDeployment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
@@ -100,7 +100,7 @@ class ApplicationDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appId")
-    def app_id(self) -> str:
+    def app_id(self) -> pulumi.Output[str]:
         """
         The ID of the application that you want to deploy.
         """
@@ -108,7 +108,7 @@ class ApplicationDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> str:
+    def group_id(self) -> pulumi.Output[str]:
         """
         The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
         """
@@ -116,7 +116,7 @@ class ApplicationDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastPackageVersion")
-    def last_package_version(self) -> str:
+    def last_package_version(self) -> pulumi.Output[str]:
         """
         Last package version deployed.
         """
@@ -124,7 +124,7 @@ class ApplicationDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packageVersion")
-    def package_version(self) -> Optional[str]:
+    def package_version(self) -> pulumi.Output[Optional[str]]:
         """
         The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
         """
@@ -132,7 +132,7 @@ class ApplicationDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="warUrl")
-    def war_url(self) -> str:
+    def war_url(self) -> pulumi.Output[str]:
         """
         The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """

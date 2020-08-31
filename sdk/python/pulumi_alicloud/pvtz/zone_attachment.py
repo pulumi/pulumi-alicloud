@@ -15,7 +15,7 @@ __all__ = ['ZoneAttachment']
 
 class ZoneAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  user_client_ip: Optional[pulumi.Input[str]] = None,
@@ -100,7 +100,7 @@ class ZoneAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def lang(self) -> Optional[str]:
+    def lang(self) -> pulumi.Output[Optional[str]]:
         """
         The language of code.
         """
@@ -108,7 +108,7 @@ class ZoneAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userClientIp")
-    def user_client_ip(self) -> Optional[str]:
+    def user_client_ip(self) -> pulumi.Output[Optional[str]]:
         """
         The user custom IP address.
         """
@@ -116,7 +116,7 @@ class ZoneAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcIds")
-    def vpc_ids(self) -> List[str]:
+    def vpc_ids(self) -> pulumi.Output[List[str]]:
         """
         The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
         """
@@ -124,7 +124,7 @@ class ZoneAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def vpcs(self) -> List['outputs.ZoneAttachmentVpc']:
+    def vpcs(self) -> pulumi.Output[List['outputs.ZoneAttachmentVpc']]:
         """
         The List of the VPC:
         """
@@ -132,7 +132,7 @@ class ZoneAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The name of the Private Zone Record.
         """

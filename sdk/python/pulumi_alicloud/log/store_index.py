@@ -15,7 +15,7 @@ __all__ = ['StoreIndex']
 
 class StoreIndex(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  field_searches: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]]] = None,
                  full_text: Optional[pulumi.Input[pulumi.InputType['StoreIndexFullTextArgs']]] = None,
@@ -96,7 +96,7 @@ class StoreIndex(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fieldSearches")
-    def field_searches(self) -> Optional[List['outputs.StoreIndexFieldSearch']]:
+    def field_searches(self) -> pulumi.Output[Optional[List['outputs.StoreIndexFieldSearch']]]:
         """
         List configurations of field search index. Valid item as follows:
         """
@@ -104,7 +104,7 @@ class StoreIndex(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fullText")
-    def full_text(self) -> Optional['outputs.StoreIndexFullText']:
+    def full_text(self) -> pulumi.Output[Optional['outputs.StoreIndexFullText']]:
         """
         The configuration of full text index. Valid item as follows:
         """
@@ -112,7 +112,7 @@ class StoreIndex(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def logstore(self) -> str:
+    def logstore(self) -> pulumi.Output[str]:
         """
         The log store name to the query index belongs.
         """
@@ -120,7 +120,7 @@ class StoreIndex(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project name to the log store belongs.
         """

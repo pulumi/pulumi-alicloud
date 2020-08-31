@@ -13,7 +13,7 @@ __all__ = ['RegistryEnterpriseSyncRule']
 
 class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -170,7 +170,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         ID of Container Registry Enterprise Edition source instance.
         """
@@ -178,7 +178,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of Container Registry Enterprise Edition sync rule.
         """
@@ -186,7 +186,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceName")
-    def namespace_name(self) -> str:
+    def namespace_name(self) -> pulumi.Output[str]:
         """
         Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
         """
@@ -194,7 +194,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repoName")
-    def repo_name(self) -> Optional[str]:
+    def repo_name(self) -> pulumi.Output[Optional[str]]:
         """
         Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
         """
@@ -202,7 +202,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> str:
+    def rule_id(self) -> pulumi.Output[str]:
         """
         The uuid of Container Registry Enterprise Edition sync rule.
         """
@@ -210,7 +210,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="syncDirection")
-    def sync_direction(self) -> str:
+    def sync_direction(self) -> pulumi.Output[str]:
         """
         `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
         """
@@ -218,7 +218,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="syncScope")
-    def sync_scope(self) -> str:
+    def sync_scope(self) -> pulumi.Output[str]:
         """
         `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
         """
@@ -226,7 +226,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tagFilter")
-    def tag_filter(self) -> str:
+    def tag_filter(self) -> pulumi.Output[str]:
         """
         The regular expression used to filter image tags for synchronization in the source repository.
         """
@@ -234,7 +234,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetInstanceId")
-    def target_instance_id(self) -> str:
+    def target_instance_id(self) -> pulumi.Output[str]:
         """
         ID of Container Registry Enterprise Edition target instance to be synchronized.
         """
@@ -242,7 +242,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetNamespaceName")
-    def target_namespace_name(self) -> str:
+    def target_namespace_name(self) -> pulumi.Output[str]:
         """
         Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
         """
@@ -250,7 +250,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetRegionId")
-    def target_region_id(self) -> str:
+    def target_region_id(self) -> pulumi.Output[str]:
         """
         The target region to be synchronized.
         """
@@ -258,7 +258,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetRepoName")
-    def target_repo_name(self) -> Optional[str]:
+    def target_repo_name(self) -> pulumi.Output[Optional[str]]:
         """
         Name of the target repository.
         """

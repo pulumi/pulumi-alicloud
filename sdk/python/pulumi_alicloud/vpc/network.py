@@ -13,7 +13,7 @@ __all__ = ['Network']
 
 class Network(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> str:
+    def cidr_block(self) -> pulumi.Output[str]:
         """
         The CIDR block for the VPC.
         """
@@ -117,7 +117,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The VPC description. Defaults to null.
         """
@@ -125,7 +125,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the VPC. Defaults to null.
         """
@@ -133,7 +133,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The Id of resource group which the VPC belongs.
         """
@@ -141,7 +141,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> str:
+    def route_table_id(self) -> pulumi.Output[str]:
         """
         The route table ID of the router created by default on VPC creation.
         """
@@ -149,7 +149,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> str:
+    def router_id(self) -> pulumi.Output[str]:
         """
         The ID of the router created by default on VPC creation.
         """
@@ -157,12 +157,12 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routerTableId")
-    def router_table_id(self) -> str:
+    def router_table_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "router_table_id")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """

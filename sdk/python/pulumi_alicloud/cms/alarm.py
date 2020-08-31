@@ -13,7 +13,7 @@ __all__ = ['Alarm']
 
 class Alarm(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contact_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -184,7 +184,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contactGroups")
-    def contact_groups(self) -> List[str]:
+    def contact_groups(self) -> pulumi.Output[List[str]]:
         """
         List contact groups of the alarm rule, which must have been created on the console.
         """
@@ -192,7 +192,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Mapping[str, Any]:
+    def dimensions(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
@@ -200,7 +200,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveInterval")
-    def effective_interval(self) -> Optional[str]:
+    def effective_interval(self) -> pulumi.Output[Optional[str]]:
         """
         The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         """
@@ -208,7 +208,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to enable alarm rule. Default to true.
         """
@@ -216,7 +216,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[float]:
+    def end_time(self) -> pulumi.Output[Optional[float]]:
         """
         It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         """
@@ -224,7 +224,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metric(self) -> str:
+    def metric(self) -> pulumi.Output[str]:
         """
         Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
@@ -232,7 +232,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The alarm rule name.
         """
@@ -240,7 +240,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def operator(self) -> Optional[str]:
+    def operator(self) -> pulumi.Output[Optional[str]]:
         """
         Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
         """
@@ -248,7 +248,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
         """
@@ -256,7 +256,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
@@ -264,7 +264,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="silenceTime")
-    def silence_time(self) -> Optional[float]:
+    def silence_time(self) -> pulumi.Output[Optional[float]]:
         """
         Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
         """
@@ -272,7 +272,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[float]:
+    def start_time(self) -> pulumi.Output[Optional[float]]:
         """
         It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         """
@@ -280,7 +280,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def statistics(self) -> Optional[str]:
+    def statistics(self) -> pulumi.Output[Optional[str]]:
         """
         Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         """
@@ -288,7 +288,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The current alarm rule status.
         """
@@ -296,7 +296,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def threshold(self) -> str:
+    def threshold(self) -> pulumi.Output[str]:
         """
         Alarm threshold value, which must be a numeric value currently.
         """
@@ -304,7 +304,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="triggeredCount")
-    def triggered_count(self) -> Optional[float]:
+    def triggered_count(self) -> pulumi.Output[Optional[float]]:
         """
         Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
         """
@@ -312,7 +312,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def webhook(self) -> Optional[str]:
+    def webhook(self) -> pulumi.Output[Optional[str]]:
         """
         The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
