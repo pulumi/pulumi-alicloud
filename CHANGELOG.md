@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.14.0 (2020-08-31)
 * Upgrade to v1.93.0 of the AliCloud Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.7.3
 * Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
-
----
 
 ## 2.13.0 (2020-08-02)
 * Upgrade to v1.92.0 of the AliCloud Terraform Provider
