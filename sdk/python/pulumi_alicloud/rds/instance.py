@@ -15,7 +15,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[float]] = None,
@@ -321,7 +321,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[bool]:
+    def auto_renew(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
         """
@@ -329,7 +329,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[float]:
+    def auto_renew_period(self) -> pulumi.Output[Optional[float]]:
         """
         Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
         """
@@ -337,7 +337,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoUpgradeMinorVersion")
-    def auto_upgrade_minor_version(self) -> str:
+    def auto_upgrade_minor_version(self) -> pulumi.Output[str]:
         """
         The upgrade method to use. Valid values:
         - Auto: Instances are automatically upgraded to a higher minor version.
@@ -347,7 +347,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> str:
+    def connection_string(self) -> pulumi.Output[str]:
         """
         RDS database connection string.
         """
@@ -355,7 +355,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbInstanceStorageType")
-    def db_instance_storage_type(self) -> str:
+    def db_instance_storage_type(self) -> pulumi.Output[str]:
         """
         The storage type of the instance. Valid values:
         - local_ssd: specifies to use local SSDs. This value is recommended.
@@ -368,7 +368,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def engine(self) -> str:
+    def engine(self) -> pulumi.Output[str]:
         """
         Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         """
@@ -376,7 +376,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> str:
+    def engine_version(self) -> pulumi.Output[str]:
         """
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         """
@@ -384,7 +384,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceRestart")
-    def force_restart(self) -> Optional[bool]:
+    def force_restart(self) -> pulumi.Output[Optional[bool]]:
         """
         Set it to true to make some parameter efficient when modifying them. Default to false.
         """
@@ -392,7 +392,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[str]:
+    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         """
@@ -400,7 +400,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[str]:
+    def instance_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of DB instance. It a string of 2 to 256 characters.
         """
@@ -408,7 +408,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceStorage")
-    def instance_storage(self) -> float:
+    def instance_storage(self) -> pulumi.Output[float]:
         """
         User-defined DB instance storage space. Value range:
         - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
@@ -422,7 +422,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> str:
+    def instance_type(self) -> pulumi.Output[str]:
         """
         DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         """
@@ -430,7 +430,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintainTime")
-    def maintain_time(self) -> str:
+    def maintain_time(self) -> pulumi.Output[str]:
         """
         Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         """
@@ -438,7 +438,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="monitoringPeriod")
-    def monitoring_period(self) -> float:
+    def monitoring_period(self) -> pulumi.Output[float]:
         """
         The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         """
@@ -446,7 +446,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parameters(self) -> List['outputs.InstanceParameter']:
+    def parameters(self) -> pulumi.Output[List['outputs.InstanceParameter']]:
         """
         Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         """
@@ -454,7 +454,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         """
@@ -462,7 +462,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> str:
+    def port(self) -> pulumi.Output[str]:
         """
         RDS database connection port.
         """
@@ -470,7 +470,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The ID of resource group which the DB instance belongs.
         """
@@ -478,7 +478,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         """
         It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         """
@@ -486,7 +486,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> List[str]:
+    def security_group_ids(self) -> pulumi.Output[List[str]]:
         """
         , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         """
@@ -494,7 +494,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityIpMode")
-    def security_ip_mode(self) -> Optional[str]:
+    def security_ip_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
         """
@@ -502,7 +502,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> List[str]:
+    def security_ips(self) -> pulumi.Output[List[str]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
@@ -510,7 +510,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sqlCollectorConfigValue")
-    def sql_collector_config_value(self) -> Optional[float]:
+    def sql_collector_config_value(self) -> pulumi.Output[Optional[float]]:
         """
         The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         """
@@ -518,7 +518,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sqlCollectorStatus")
-    def sql_collector_status(self) -> str:
+    def sql_collector_status(self) -> pulumi.Output[str]:
         """
         The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         """
@@ -526,7 +526,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslAction")
-    def ssl_action(self) -> str:
+    def ssl_action(self) -> pulumi.Output[str]:
         """
         Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         """
@@ -534,7 +534,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslStatus")
-    def ssl_status(self) -> str:
+    def ssl_status(self) -> pulumi.Output[str]:
         """
         Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
         """
@@ -542,7 +542,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -552,7 +552,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tdeStatus")
-    def tde_status(self) -> Optional[str]:
+    def tde_status(self) -> pulumi.Output[Optional[str]]:
         """
         The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         """
@@ -560,7 +560,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         """
@@ -568,7 +568,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.

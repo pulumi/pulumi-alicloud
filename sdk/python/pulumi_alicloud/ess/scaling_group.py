@@ -13,7 +13,7 @@ __all__ = ['ScalingGroup']
 
 class ScalingGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  default_cooldown: Optional[pulumi.Input[float]] = None,
@@ -185,7 +185,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbInstanceIds")
-    def db_instance_ids(self) -> Optional[List[str]]:
+    def db_instance_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
         - The specified RDS instance must be in running status.
@@ -195,7 +195,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultCooldown")
-    def default_cooldown(self) -> Optional[float]:
+    def default_cooldown(self) -> pulumi.Output[Optional[float]]:
         """
         Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         """
@@ -203,7 +203,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[float]:
+    def desired_capacity(self) -> pulumi.Output[Optional[float]]:
         """
         Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         """
@@ -211,7 +211,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadbalancerIds")
-    def loadbalancer_ids(self) -> Optional[List[str]]:
+    def loadbalancer_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         - The Server Load Balancer instance must be enabled.
@@ -224,7 +224,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> float:
+    def max_size(self) -> pulumi.Output[float]:
         """
         Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
         """
@@ -232,7 +232,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> float:
+    def min_size(self) -> pulumi.Output[float]:
         """
         Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
         """
@@ -240,7 +240,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multiAzPolicy")
-    def multi_az_policy(self) -> Optional[str]:
+    def multi_az_policy(self) -> pulumi.Output[Optional[str]]:
         """
         Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
         """
@@ -248,7 +248,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onDemandBaseCapacity")
-    def on_demand_base_capacity(self) -> float:
+    def on_demand_base_capacity(self) -> pulumi.Output[float]:
         """
         The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         """
@@ -256,7 +256,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
-    def on_demand_percentage_above_base_capacity(self) -> float:
+    def on_demand_percentage_above_base_capacity(self) -> pulumi.Output[float]:
         """
         Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         """
@@ -264,7 +264,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="removalPolicies")
-    def removal_policies(self) -> List[str]:
+    def removal_policies(self) -> pulumi.Output[List[str]]:
         """
         RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
         - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -276,7 +276,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingGroupName")
-    def scaling_group_name(self) -> Optional[str]:
+    def scaling_group_name(self) -> pulumi.Output[Optional[str]]:
         """
         Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
         """
@@ -284,7 +284,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotInstancePools")
-    def spot_instance_pools(self) -> float:
+    def spot_instance_pools(self) -> pulumi.Output[float]:
         """
         The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         """
@@ -292,7 +292,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotInstanceRemedy")
-    def spot_instance_remedy(self) -> bool:
+    def spot_instance_remedy(self) -> pulumi.Output[bool]:
         """
         Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         """
@@ -300,7 +300,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         """
@@ -308,7 +308,7 @@ class ScalingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[List[str]]:
+    def vswitch_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of virtual switch IDs in which the ecs instances to be launched.
         """

@@ -13,7 +13,7 @@ __all__ = ['RouteMap']
 
 class RouteMap(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  as_path_match_mode: Optional[pulumi.Input[str]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
@@ -310,7 +310,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="asPathMatchMode")
-    def as_path_match_mode(self) -> Optional[str]:
+    def as_path_match_mode(self) -> pulumi.Output[Optional[str]]:
         """
         A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
         """
@@ -318,7 +318,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> str:
+    def cen_id(self) -> pulumi.Output[str]:
         """
         The ID of the CEN instance.
         """
@@ -326,7 +326,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cenRegionId")
-    def cen_region_id(self) -> str:
+    def cen_region_id(self) -> pulumi.Output[str]:
         """
         The ID of the region to which the CEN instance belongs.
         """
@@ -334,7 +334,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cidrMatchMode")
-    def cidr_match_mode(self) -> Optional[str]:
+    def cidr_match_mode(self) -> pulumi.Output[Optional[str]]:
         """
         A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: ["Include", "Complete"].
         """
@@ -342,7 +342,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="communityMatchMode")
-    def community_match_mode(self) -> Optional[str]:
+    def community_match_mode(self) -> pulumi.Output[Optional[str]]:
         """
         A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
         """
@@ -350,7 +350,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="communityOperateMode")
-    def community_operate_mode(self) -> Optional[str]:
+    def community_operate_mode(self) -> pulumi.Output[Optional[str]]:
         """
         An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
         """
@@ -358,7 +358,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the route map.
         """
@@ -366,7 +366,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationChildInstanceTypes")
-    def destination_child_instance_types(self) -> Optional[List[str]]:
+    def destination_child_instance_types(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
         """
@@ -374,7 +374,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationCidrBlocks")
-    def destination_cidr_blocks(self) -> Optional[List[str]]:
+    def destination_cidr_blocks(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
         """
@@ -382,7 +382,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationInstanceIds")
-    def destination_instance_ids(self) -> Optional[List[str]]:
+    def destination_instance_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A match statement that indicates the list of IDs of the destination instances.
         """
@@ -390,7 +390,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationInstanceIdsReverseMatch")
-    def destination_instance_ids_reverse_match(self) -> Optional[bool]:
+    def destination_instance_ids_reverse_match(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
         """
@@ -398,7 +398,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationRouteTableIds")
-    def destination_route_table_ids(self) -> Optional[List[str]]:
+    def destination_route_table_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
         """
@@ -406,7 +406,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mapResult")
-    def map_result(self) -> str:
+    def map_result(self) -> pulumi.Output[str]:
         """
         The action that is performed to a route if the route matches all the match conditions. Valid values: ["Permit", "Deny"].
         """
@@ -414,7 +414,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="matchAsns")
-    def match_asns(self) -> Optional[List[str]]:
+    def match_asns(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
         """
@@ -422,7 +422,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="matchCommunitySets")
-    def match_community_sets(self) -> Optional[List[str]]:
+    def match_community_sets(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         """
@@ -430,7 +430,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextPriority")
-    def next_priority(self) -> Optional[float]:
+    def next_priority(self) -> pulumi.Output[Optional[float]]:
         """
         The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
         """
@@ -438,7 +438,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="operateCommunitySets")
-    def operate_community_sets(self) -> Optional[List[str]]:
+    def operate_community_sets(self) -> pulumi.Output[Optional[List[str]]]:
         """
         An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         """
@@ -446,7 +446,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def preference(self) -> Optional[float]:
+    def preference(self) -> pulumi.Output[Optional[float]]:
         """
         An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
         """
@@ -454,7 +454,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="prependAsPaths")
-    def prepend_as_paths(self) -> Optional[List[str]]:
+    def prepend_as_paths(self) -> pulumi.Output[Optional[List[str]]]:
         """
         An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
         """
@@ -462,7 +462,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> pulumi.Output[float]:
         """
         The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
         """
@@ -470,12 +470,12 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeMapId")
-    def route_map_id(self) -> str:
+    def route_map_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "route_map_id")
 
     @property
     @pulumi.getter(name="routeTypes")
-    def route_types(self) -> Optional[List[str]]:
+    def route_types(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
         """
@@ -483,7 +483,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceChildInstanceTypes")
-    def source_child_instance_types(self) -> Optional[List[str]]:
+    def source_child_instance_types(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
         """
@@ -491,7 +491,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceInstanceIds")
-    def source_instance_ids(self) -> Optional[List[str]]:
+    def source_instance_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A match statement that indicates the list of IDs of the source instances.
         """
@@ -499,7 +499,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceInstanceIdsReverseMatch")
-    def source_instance_ids_reverse_match(self) -> Optional[bool]:
+    def source_instance_ids_reverse_match(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
         """
@@ -507,7 +507,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceRegionIds")
-    def source_region_ids(self) -> Optional[List[str]]:
+    def source_region_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
         """
@@ -515,7 +515,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceRouteTableIds")
-    def source_route_table_ids(self) -> Optional[List[str]]:
+    def source_route_table_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
         """
@@ -523,7 +523,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
         """
@@ -531,7 +531,7 @@ class RouteMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="transmitDirection")
-    def transmit_direction(self) -> str:
+    def transmit_direction(self) -> pulumi.Output[str]:
         """
         The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
         """

@@ -13,7 +13,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[float]] = None,
@@ -121,7 +121,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> str:
+    def cluster_name(self) -> pulumi.Output[str]:
         """
         The name of the cluster that you want to create.
         """
@@ -129,7 +129,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> float:
+    def cluster_type(self) -> pulumi.Output[float]:
         """
         The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
         """
@@ -137,7 +137,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logicalRegionId")
-    def logical_region_id(self) -> Optional[str]:
+    def logical_region_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
         """
@@ -145,7 +145,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkMode")
-    def network_mode(self) -> float:
+    def network_mode(self) -> pulumi.Output[float]:
         """
         The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
         """
@@ -153,7 +153,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[str]:
+    def vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the Virtual Private Cloud (VPC) for the cluster.
         """

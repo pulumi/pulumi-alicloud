@@ -13,7 +13,7 @@ __all__ = ['AccountPrivilege']
 
 class AccountPrivilege(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  db_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -149,7 +149,7 @@ class AccountPrivilege(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> str:
+    def account_name(self) -> pulumi.Output[str]:
         """
         A specified account name.
         """
@@ -157,7 +157,7 @@ class AccountPrivilege(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbNames")
-    def db_names(self) -> List[str]:
+    def db_names(self) -> pulumi.Output[List[str]]:
         """
         List of specified database name.
         """
@@ -165,7 +165,7 @@ class AccountPrivilege(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The Id of instance in which account belongs.
         """
@@ -173,7 +173,7 @@ class AccountPrivilege(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def privilege(self) -> Optional[str]:
+    def privilege(self) -> pulumi.Output[Optional[str]]:
         """
         The privilege of one account access database. Valid values: 
         - ReadOnly: This value is only for MySQL, MariaDB and SQL Server

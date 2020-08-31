@@ -13,7 +13,7 @@ __all__ = ['QosPolicy']
 
 class QosPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_cidr: Optional[pulumi.Input[str]] = None,
@@ -176,7 +176,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the QoS policy.
         """
@@ -184,7 +184,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destCidr")
-    def dest_cidr(self) -> str:
+    def dest_cidr(self) -> pulumi.Output[str]:
         """
         The destination CIDR block.
         """
@@ -192,7 +192,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destPortRange")
-    def dest_port_range(self) -> str:
+    def dest_port_range(self) -> pulumi.Output[str]:
         """
         The destination port range.
         """
@@ -200,7 +200,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[str]:
+    def end_time(self) -> pulumi.Output[Optional[str]]:
         """
         The expiration time of the quintuple rule.
         """
@@ -208,7 +208,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> str:
+    def ip_protocol(self) -> pulumi.Output[str]:
         """
         The transport layer protocol.
         """
@@ -216,7 +216,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the QoS policy.
         """
@@ -224,7 +224,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> pulumi.Output[float]:
         """
         The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
         """
@@ -232,7 +232,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="qosId")
-    def qos_id(self) -> str:
+    def qos_id(self) -> pulumi.Output[str]:
         """
         The instance ID of the QoS policy to which the quintuple rule is created.
         """
@@ -240,7 +240,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceCidr")
-    def source_cidr(self) -> str:
+    def source_cidr(self) -> pulumi.Output[str]:
         """
         The source CIDR block.
         """
@@ -248,7 +248,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourcePortRange")
-    def source_port_range(self) -> str:
+    def source_port_range(self) -> pulumi.Output[str]:
         """
         The source port range of the transport layer.
         """
@@ -256,7 +256,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[str]:
+    def start_time(self) -> pulumi.Output[Optional[str]]:
         """
         The time when the quintuple rule takes effect.
         """

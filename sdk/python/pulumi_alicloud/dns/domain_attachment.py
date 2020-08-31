@@ -13,7 +13,7 @@ __all__ = ['DomainAttachment']
 
 class DomainAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -99,7 +99,7 @@ class DomainAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainNames")
-    def domain_names(self) -> List[str]:
+    def domain_names(self) -> pulumi.Output[List[str]]:
         """
         The domain names bound to the DNS instance.
         """
@@ -107,7 +107,7 @@ class DomainAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The id of the DNS instance.
         """

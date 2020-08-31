@@ -13,7 +13,7 @@ __all__ = ['KeyPair']
 
 class KeyPair(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_file: Optional[pulumi.Input[str]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
@@ -119,12 +119,12 @@ class KeyPair(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fingerPrint")
-    def finger_print(self) -> str:
+    def finger_print(self) -> pulumi.Output[str]:
         return pulumi.get(self, "finger_print")
 
     @property
     @pulumi.getter(name="keyFile")
-    def key_file(self) -> Optional[str]:
+    def key_file(self) -> pulumi.Output[Optional[str]]:
         """
         The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         """
@@ -132,7 +132,7 @@ class KeyPair(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> str:
+    def key_name(self) -> pulumi.Output[str]:
         """
         The key pair's name. It is the only in one Alicloud account.
         """
@@ -140,12 +140,12 @@ class KeyPair(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyNamePrefix")
-    def key_name_prefix(self) -> Optional[str]:
+    def key_name_prefix(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "key_name_prefix")
 
     @property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[str]:
+    def public_key(self) -> pulumi.Output[Optional[str]]:
         """
         You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         """
@@ -153,7 +153,7 @@ class KeyPair(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Id of resource group which the key pair belongs.
         """
@@ -161,7 +161,7 @@ class KeyPair(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

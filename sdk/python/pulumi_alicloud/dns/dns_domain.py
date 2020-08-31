@@ -13,7 +13,7 @@ __all__ = ['DnsDomain']
 
 class DnsDomain(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
@@ -136,12 +136,12 @@ class DnsDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> List[str]:
+    def dns_servers(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "dns_servers")
 
     @property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> str:
+    def domain_id(self) -> pulumi.Output[str]:
         """
         The domain ID.
         """
@@ -149,7 +149,7 @@ class DnsDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> str:
+    def domain_name(self) -> pulumi.Output[str]:
         """
         Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
@@ -157,7 +157,7 @@ class DnsDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[str]:
+    def group_id(self) -> pulumi.Output[Optional[str]]:
         """
         Id of the group in which the domain will add. If not supplied, then use default group.
         """
@@ -165,7 +165,7 @@ class DnsDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def lang(self) -> Optional[str]:
+    def lang(self) -> pulumi.Output[Optional[str]]:
         """
         User language.
         """
@@ -173,7 +173,7 @@ class DnsDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def remark(self) -> Optional[str]:
+    def remark(self) -> pulumi.Output[Optional[str]]:
         """
         Remarks information for your domain name.
         """
@@ -181,7 +181,7 @@ class DnsDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Id of resource group which the dns domain belongs.
         """
@@ -189,7 +189,7 @@ class DnsDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

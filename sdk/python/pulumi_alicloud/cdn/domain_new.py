@@ -15,7 +15,7 @@ __all__ = ['DomainNew']
 
 class DomainNew(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cdn_type: Optional[pulumi.Input[str]] = None,
                  certificate_config: Optional[pulumi.Input[pulumi.InputType['DomainNewCertificateConfigArgs']]] = None,
@@ -147,7 +147,7 @@ class DomainNew(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cdnType")
-    def cdn_type(self) -> str:
+    def cdn_type(self) -> pulumi.Output[str]:
         """
         Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
         """
@@ -155,7 +155,7 @@ class DomainNew(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateConfig")
-    def certificate_config(self) -> 'outputs.DomainNewCertificateConfig':
+    def certificate_config(self) -> pulumi.Output['outputs.DomainNewCertificateConfig']:
         """
         Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
         """
@@ -163,7 +163,7 @@ class DomainNew(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cname(self) -> str:
+    def cname(self) -> pulumi.Output[str]:
         """
         (Available in v1.90.0+) The CNAME of the CDN domain.
         """
@@ -171,7 +171,7 @@ class DomainNew(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> str:
+    def domain_name(self) -> pulumi.Output[str]:
         """
         Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
@@ -179,7 +179,7 @@ class DomainNew(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         Resource group ID.
         """
@@ -187,7 +187,7 @@ class DomainNew(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scope(self) -> str:
+    def scope(self) -> pulumi.Output[str]:
         """
         Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
         """
@@ -195,7 +195,7 @@ class DomainNew(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def sources(self) -> 'outputs.DomainNewSources':
+    def sources(self) -> pulumi.Output['outputs.DomainNewSources']:
         """
         The source address list of the accelerated domain. Defaults to null. See Block Sources.
         """
@@ -203,7 +203,7 @@ class DomainNew(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """

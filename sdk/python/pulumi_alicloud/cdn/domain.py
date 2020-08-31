@@ -15,7 +15,7 @@ __all__ = ['Domain']
 
 class Domain(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_config: Optional[pulumi.Input[pulumi.InputType['DomainAuthConfigArgs']]] = None,
                  block_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -221,7 +221,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authConfig")
-    def auth_config(self) -> Optional['outputs.DomainAuthConfig']:
+    def auth_config(self) -> pulumi.Output[Optional['outputs.DomainAuthConfig']]:
         """
         The auth config of the accelerated domain.
         """
@@ -229,12 +229,12 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blockIps")
-    def block_ips(self) -> Optional[List[str]]:
+    def block_ips(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "block_ips")
 
     @property
     @pulumi.getter(name="cacheConfigs")
-    def cache_configs(self) -> Optional[List['outputs.DomainCacheConfig']]:
+    def cache_configs(self) -> pulumi.Output[Optional[List['outputs.DomainCacheConfig']]]:
         """
         The cache configs of the accelerated domain.
         """
@@ -242,7 +242,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cdnType")
-    def cdn_type(self) -> str:
+    def cdn_type(self) -> pulumi.Output[str]:
         """
         Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
         """
@@ -250,12 +250,12 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateConfig")
-    def certificate_config(self) -> Optional['outputs.DomainCertificateConfig']:
+    def certificate_config(self) -> pulumi.Output[Optional['outputs.DomainCertificateConfig']]:
         return pulumi.get(self, "certificate_config")
 
     @property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> str:
+    def domain_name(self) -> pulumi.Output[str]:
         """
         Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
@@ -263,7 +263,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpHeaderConfigs")
-    def http_header_configs(self) -> Optional[List['outputs.DomainHttpHeaderConfig']]:
+    def http_header_configs(self) -> pulumi.Output[Optional[List['outputs.DomainHttpHeaderConfig']]]:
         """
         The http header configs of the accelerated domain.
         """
@@ -271,7 +271,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="optimizeEnable")
-    def optimize_enable(self) -> Optional[str]:
+    def optimize_enable(self) -> pulumi.Output[Optional[str]]:
         """
         Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
         """
@@ -279,7 +279,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="page404Config")
-    def page404_config(self) -> Optional['outputs.DomainPage404Config']:
+    def page404_config(self) -> pulumi.Output[Optional['outputs.DomainPage404Config']]:
         """
         The error page config of the accelerated domain.
         """
@@ -287,7 +287,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pageCompressEnable")
-    def page_compress_enable(self) -> Optional[str]:
+    def page_compress_enable(self) -> pulumi.Output[Optional[str]]:
         """
         Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
         """
@@ -295,7 +295,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parameterFilterConfig")
-    def parameter_filter_config(self) -> Optional['outputs.DomainParameterFilterConfig']:
+    def parameter_filter_config(self) -> pulumi.Output[Optional['outputs.DomainParameterFilterConfig']]:
         """
         The parameter filter config of the accelerated domain.
         """
@@ -303,7 +303,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rangeEnable")
-    def range_enable(self) -> Optional[str]:
+    def range_enable(self) -> pulumi.Output[Optional[str]]:
         """
         Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
         """
@@ -311,7 +311,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="referConfig")
-    def refer_config(self) -> Optional['outputs.DomainReferConfig']:
+    def refer_config(self) -> pulumi.Output[Optional['outputs.DomainReferConfig']]:
         """
         The refer config of the accelerated domain.
         """
@@ -319,7 +319,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scope(self) -> str:
+    def scope(self) -> pulumi.Output[str]:
         """
         Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
         """
@@ -327,7 +327,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourcePort")
-    def source_port(self) -> Optional[float]:
+    def source_port(self) -> pulumi.Output[Optional[float]]:
         """
         Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
         """
@@ -335,7 +335,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[str]:
+    def source_type(self) -> pulumi.Output[Optional[str]]:
         """
         Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
         """
@@ -343,7 +343,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[List[str]]:
+    def sources(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
         """
@@ -351,7 +351,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="videoSeekEnable")
-    def video_seek_enable(self) -> Optional[str]:
+    def video_seek_enable(self) -> pulumi.Output[Optional[str]]:
         """
         Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
         """

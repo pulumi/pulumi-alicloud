@@ -13,7 +13,7 @@ __all__ = ['ForwardEntry']
 
 class ForwardEntry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  external_ip: Optional[pulumi.Input[str]] = None,
                  external_port: Optional[pulumi.Input[str]] = None,
@@ -159,7 +159,7 @@ class ForwardEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalIp")
-    def external_ip(self) -> str:
+    def external_ip(self) -> pulumi.Output[str]:
         """
         The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
         """
@@ -167,7 +167,7 @@ class ForwardEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalPort")
-    def external_port(self) -> str:
+    def external_port(self) -> pulumi.Output[str]:
         """
         The external port, valid value is 1~65535|any.
         """
@@ -175,7 +175,7 @@ class ForwardEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forwardEntryId")
-    def forward_entry_id(self) -> str:
+    def forward_entry_id(self) -> pulumi.Output[str]:
         """
         The id of the forward entry on the server.
         """
@@ -183,7 +183,7 @@ class ForwardEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forwardTableId")
-    def forward_table_id(self) -> str:
+    def forward_table_id(self) -> pulumi.Output[str]:
         """
         The value can get from `vpc.NatGateway` Attributes "forward_table_ids".
         """
@@ -191,7 +191,7 @@ class ForwardEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internalIp")
-    def internal_ip(self) -> str:
+    def internal_ip(self) -> pulumi.Output[str]:
         """
         The internal ip, must a private ip.
         """
@@ -199,7 +199,7 @@ class ForwardEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internalPort")
-    def internal_port(self) -> str:
+    def internal_port(self) -> pulumi.Output[str]:
         """
         The internal port, valid value is 1~65535|any.
         """
@@ -207,7 +207,7 @@ class ForwardEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> str:
+    def ip_protocol(self) -> pulumi.Output[str]:
         """
         The ip protocal, valid value is tcp|udp|any.
         """
@@ -215,7 +215,7 @@ class ForwardEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of forward entry.
         """

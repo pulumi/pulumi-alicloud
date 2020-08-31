@@ -15,7 +15,7 @@ __all__ = ['NetworkAclAttachment']
 
 class NetworkAclAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_acl_id: Optional[pulumi.Input[str]] = None,
                  resources: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]]] = None,
@@ -114,7 +114,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkAclId")
-    def network_acl_id(self) -> str:
+    def network_acl_id(self) -> pulumi.Output[str]:
         """
         The id of the network acl, the field can't be changed.
         """
@@ -122,7 +122,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def resources(self) -> List['outputs.NetworkAclAttachmentResource']:
+    def resources(self) -> pulumi.Output[List['outputs.NetworkAclAttachmentResource']]:
         """
         List of the resources associated with the network acl. The details see Block Resources.
         """

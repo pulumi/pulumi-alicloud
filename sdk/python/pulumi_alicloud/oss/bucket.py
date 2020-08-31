@@ -15,7 +15,7 @@ __all__ = ['Bucket']
 
 class Bucket(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[str]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
@@ -356,7 +356,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acl(self) -> Optional[str]:
+    def acl(self) -> pulumi.Output[Optional[str]]:
         """
         The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
         """
@@ -364,12 +364,12 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bucket(self) -> Optional[str]:
+    def bucket(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter(name="corsRules")
-    def cors_rules(self) -> Optional[List['outputs.BucketCorsRule']]:
+    def cors_rules(self) -> pulumi.Output[Optional[List['outputs.BucketCorsRule']]]:
         """
         A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
         """
@@ -377,7 +377,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> str:
+    def creation_date(self) -> pulumi.Output[str]:
         """
         The creation date of the bucket.
         """
@@ -385,7 +385,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="extranetEndpoint")
-    def extranet_endpoint(self) -> str:
+    def extranet_endpoint(self) -> pulumi.Output[str]:
         """
         The extranet access endpoint of the bucket.
         """
@@ -393,7 +393,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[bool]:
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
         """
@@ -401,7 +401,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="intranetEndpoint")
-    def intranet_endpoint(self) -> str:
+    def intranet_endpoint(self) -> pulumi.Output[str]:
         """
         The intranet access endpoint of the bucket.
         """
@@ -409,7 +409,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> Optional[List['outputs.BucketLifecycleRule']]:
+    def lifecycle_rules(self) -> pulumi.Output[Optional[List['outputs.BucketLifecycleRule']]]:
         """
         A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
         """
@@ -417,7 +417,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The location of the bucket.
         """
@@ -425,7 +425,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def logging(self) -> Optional['outputs.BucketLogging']:
+    def logging(self) -> pulumi.Output[Optional['outputs.BucketLogging']]:
         """
         A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
         """
@@ -433,7 +433,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loggingIsenable")
-    def logging_isenable(self) -> Optional[bool]:
+    def logging_isenable(self) -> pulumi.Output[Optional[bool]]:
         """
         The flag of using logging enable container. Defaults true.
         """
@@ -441,7 +441,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def owner(self) -> str:
+    def owner(self) -> pulumi.Output[str]:
         """
         The bucket owner.
         """
@@ -449,7 +449,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policy(self) -> Optional[str]:
+    def policy(self) -> pulumi.Output[Optional[str]]:
         """
         Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
         """
@@ -457,7 +457,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="redundancyType")
-    def redundancy_type(self) -> Optional[str]:
+    def redundancy_type(self) -> pulumi.Output[Optional[str]]:
         """
         The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         """
@@ -465,7 +465,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="refererConfig")
-    def referer_config(self) -> Optional['outputs.BucketRefererConfig']:
+    def referer_config(self) -> pulumi.Output[Optional['outputs.BucketRefererConfig']]:
         """
         The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
         """
@@ -473,7 +473,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverSideEncryptionRule")
-    def server_side_encryption_rule(self) -> Optional['outputs.BucketServerSideEncryptionRule']:
+    def server_side_encryption_rule(self) -> pulumi.Output[Optional['outputs.BucketServerSideEncryptionRule']]:
         """
         A configuration of server-side encryption (documented below).
         """
@@ -481,7 +481,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[str]:
+    def storage_class(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
         """
@@ -489,7 +489,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         """
@@ -497,7 +497,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def versioning(self) -> Optional['outputs.BucketVersioning']:
+    def versioning(self) -> pulumi.Output[Optional['outputs.BucketVersioning']]:
         """
         A state of versioning (documented below).
         """
@@ -505,7 +505,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def website(self) -> Optional['outputs.BucketWebsite']:
+    def website(self) -> pulumi.Output[Optional['outputs.BucketWebsite']]:
         """
         A website object(documented below).
         """

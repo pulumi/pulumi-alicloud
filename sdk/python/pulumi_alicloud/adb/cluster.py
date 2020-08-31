@@ -13,7 +13,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_period: Optional[pulumi.Input[float]] = None,
                  db_cluster_category: Optional[pulumi.Input[str]] = None,
@@ -210,7 +210,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[float]:
+    def auto_renew_period(self) -> pulumi.Output[Optional[float]]:
         """
         Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         """
@@ -218,7 +218,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> str:
+    def connection_string(self) -> pulumi.Output[str]:
         """
         (Available in 1.93.0+) The connection string of the ADB cluster.
         """
@@ -226,7 +226,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbClusterCategory")
-    def db_cluster_category(self) -> str:
+    def db_cluster_category(self) -> pulumi.Output[str]:
         """
         Cluster category. Value options: `Basic`, `Cluster`.
         """
@@ -234,7 +234,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbClusterVersion")
-    def db_cluster_version(self) -> Optional[str]:
+    def db_cluster_version(self) -> pulumi.Output[Optional[str]]:
         """
         Cluster version. Value options: `3.0`, Default to `3.0`.
         """
@@ -242,7 +242,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbNodeClass")
-    def db_node_class(self) -> str:
+    def db_node_class(self) -> pulumi.Output[str]:
         """
         The db_node_class of cluster node.
         """
@@ -250,7 +250,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbNodeCount")
-    def db_node_count(self) -> float:
+    def db_node_count(self) -> pulumi.Output[float]:
         """
         The db_node_count of cluster node.
         """
@@ -258,7 +258,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbNodeStorage")
-    def db_node_storage(self) -> float:
+    def db_node_storage(self) -> pulumi.Output[float]:
         """
         The db_node_storage of cluster node.
         """
@@ -266,7 +266,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of cluster.
         """
@@ -274,7 +274,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintainTime")
-    def maintain_time(self) -> str:
+    def maintain_time(self) -> pulumi.Output[str]:
         """
         Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         """
@@ -282,7 +282,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> Optional[str]:
+    def pay_type(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
         """
@@ -290,7 +290,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         """
@@ -298,7 +298,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[str]:
+    def renewal_status(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         """
@@ -306,7 +306,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> List[str]:
+    def security_ips(self) -> pulumi.Output[List[str]]:
         """
         List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
@@ -314,7 +314,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -324,7 +324,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """
@@ -332,7 +332,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The Zone to launch the DB cluster.
         """

@@ -13,7 +13,7 @@ __all__ = ['K8sCluster']
 
 class K8sCluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cs_cluster_id: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class K8sCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterImportStatus")
-    def cluster_import_status(self) -> float:
+    def cluster_import_status(self) -> pulumi.Output[float]:
         """
         The import status of cluster: 
         `1`: success.
@@ -130,7 +130,7 @@ class K8sCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> str:
+    def cluster_name(self) -> pulumi.Output[str]:
         """
         The name of the cluster that you want to create.
         """
@@ -138,7 +138,7 @@ class K8sCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> float:
+    def cluster_type(self) -> pulumi.Output[float]:
         """
         The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
         """
@@ -146,7 +146,7 @@ class K8sCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="csClusterId")
-    def cs_cluster_id(self) -> str:
+    def cs_cluster_id(self) -> pulumi.Output[str]:
         """
         The ID of the alicloud container service kubernetes cluster that you want to import.
         """
@@ -154,7 +154,7 @@ class K8sCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[str]:
+    def namespace_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
         """
@@ -162,7 +162,7 @@ class K8sCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkMode")
-    def network_mode(self) -> float:
+    def network_mode(self) -> pulumi.Output[float]:
         """
         The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
         """
@@ -170,7 +170,7 @@ class K8sCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The ID of the Virtual Private Cloud (VPC) for the cluster.
         """

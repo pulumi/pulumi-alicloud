@@ -15,7 +15,7 @@ __all__ = ['ServerlessKubernetes']
 
 class ServerlessKubernetes(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServerlessKubernetesAddonArgs']]]]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
@@ -175,12 +175,12 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def addons(self) -> List['outputs.ServerlessKubernetesAddon']:
+    def addons(self) -> pulumi.Output[List['outputs.ServerlessKubernetesAddon']]:
         return pulumi.get(self, "addons")
 
     @property
     @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[str]:
+    def client_cert(self) -> pulumi.Output[Optional[str]]:
         """
         The path of client certificate, like `~/.kube/client-cert.pem`.
         """
@@ -188,7 +188,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[str]:
+    def client_key(self) -> pulumi.Output[Optional[str]]:
         """
         The path of client key, like `~/.kube/client-key.pem`.
         """
@@ -196,7 +196,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterCaCert")
-    def cluster_ca_cert(self) -> Optional[str]:
+    def cluster_ca_cert(self) -> pulumi.Output[Optional[str]]:
         """
         The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         """
@@ -204,7 +204,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[bool]:
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether enable the deletion protection or not.
         - true: Enable deletion protection.
@@ -214,7 +214,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointPublicAccessEnabled")
-    def endpoint_public_access_enabled(self) -> Optional[bool]:
+    def endpoint_public_access_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to create internet  eip for API Server. Default to false.
         """
@@ -222,7 +222,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[bool]:
+    def force_update(self) -> pulumi.Output[Optional[bool]]:
         """
         Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         """
@@ -230,7 +230,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubeConfig")
-    def kube_config(self) -> Optional[str]:
+    def kube_config(self) -> pulumi.Output[Optional[str]]:
         """
         The path of kube config, like `~/.kube/config`.
         """
@@ -238,7 +238,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The kubernetes cluster's name. It is the only in one Alicloud account.
         """
@@ -246,12 +246,12 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[str]:
+    def name_prefix(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "name_prefix")
 
     @property
     @pulumi.getter(name="newNatGateway")
-    def new_nat_gateway(self) -> Optional[bool]:
+    def new_nat_gateway(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
         """
@@ -259,7 +259,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateZone")
-    def private_zone(self) -> Optional[bool]:
+    def private_zone(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
         """
@@ -267,7 +267,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         """
@@ -275,7 +275,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Default nil, A map of tags assigned to the kubernetes cluster .
         """
@@ -283,7 +283,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
         """
@@ -291,7 +291,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         """
@@ -299,7 +299,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> List[str]:
+    def vswitch_ids(self) -> pulumi.Output[List[str]]:
         """
         The vswitches where new kubernetes cluster will be located.
         """

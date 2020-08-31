@@ -13,7 +13,7 @@ __all__ = ['SslVpnClientCert']
 
 class SslVpnClientCert(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ssl_vpn_server_id: Optional[pulumi.Input[str]] = None,
@@ -100,7 +100,7 @@ class SslVpnClientCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> str:
+    def ca_cert(self) -> pulumi.Output[str]:
         """
         The client ca cert.
         """
@@ -108,7 +108,7 @@ class SslVpnClientCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientCert")
-    def client_cert(self) -> str:
+    def client_cert(self) -> pulumi.Output[str]:
         """
         The client cert.
         """
@@ -116,7 +116,7 @@ class SslVpnClientCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientConfig")
-    def client_config(self) -> str:
+    def client_config(self) -> pulumi.Output[str]:
         """
         The vpn client config.
         """
@@ -124,7 +124,7 @@ class SslVpnClientCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> str:
+    def client_key(self) -> pulumi.Output[str]:
         """
         The client key.
         """
@@ -132,7 +132,7 @@ class SslVpnClientCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the client certificate.
         """
@@ -140,7 +140,7 @@ class SslVpnClientCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslVpnServerId")
-    def ssl_vpn_server_id(self) -> str:
+    def ssl_vpn_server_id(self) -> pulumi.Output[str]:
         """
         The ID of the SSL-VPN server.
         """
@@ -148,7 +148,7 @@ class SslVpnClientCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the client certificate.
         """

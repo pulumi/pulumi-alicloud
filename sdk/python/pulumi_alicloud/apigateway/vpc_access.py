@@ -13,7 +13,7 @@ __all__ = ['VpcAccess']
 
 class VpcAccess(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -96,7 +96,7 @@ class VpcAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         ID of the instance in VPC (ECS/Server Load Balance).
         """
@@ -104,7 +104,7 @@ class VpcAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the vpc authorization.
         """
@@ -112,7 +112,7 @@ class VpcAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         ID of the port corresponding to the instance.
         """
@@ -120,7 +120,7 @@ class VpcAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The vpc id of the vpc authorization.
         """

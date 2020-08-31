@@ -13,7 +13,7 @@ __all__ = ['SslVpnServer']
 
 class SslVpnServer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cipher: Optional[pulumi.Input[str]] = None,
                  client_ip_pool: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cipher(self) -> Optional[str]:
+    def cipher(self) -> pulumi.Output[Optional[str]]:
         """
         The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
         """
@@ -140,7 +140,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientIpPool")
-    def client_ip_pool(self) -> str:
+    def client_ip_pool(self) -> pulumi.Output[str]:
         """
         The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
         """
@@ -148,7 +148,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def compress(self) -> Optional[bool]:
+    def compress(self) -> pulumi.Output[Optional[bool]]:
         """
         Specify whether to compress the communication. Valid value: true (default) | false
         """
@@ -156,7 +156,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def connections(self) -> float:
+    def connections(self) -> pulumi.Output[float]:
         """
         The number of current connections.
         """
@@ -164,7 +164,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetIp")
-    def internet_ip(self) -> str:
+    def internet_ip(self) -> pulumi.Output[str]:
         """
         The internet IP of the SSL-VPN server.
         """
@@ -172,7 +172,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localSubnet")
-    def local_subnet(self) -> str:
+    def local_subnet(self) -> pulumi.Output[str]:
         """
         The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         """
@@ -180,7 +180,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxConnections")
-    def max_connections(self) -> float:
+    def max_connections(self) -> pulumi.Output[float]:
         """
         The maximum number of connections.
         """
@@ -188,7 +188,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the SSL-VPN server.
         """
@@ -196,7 +196,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         """
         The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         """
@@ -204,7 +204,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> Optional[str]:
+    def protocol(self) -> pulumi.Output[Optional[str]]:
         """
         The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         """
@@ -212,7 +212,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpnGatewayId")
-    def vpn_gateway_id(self) -> str:
+    def vpn_gateway_id(self) -> pulumi.Output[str]:
         """
         The ID of the VPN gateway.
         """

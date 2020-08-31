@@ -15,7 +15,7 @@ __all__ = ['NetworkAclEntries']
 
 class NetworkAclEntries(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  egresses: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkAclEntriesEgressArgs']]]]] = None,
                  ingresses: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkAclEntriesIngressArgs']]]]] = None,
@@ -142,7 +142,7 @@ class NetworkAclEntries(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def egresses(self) -> Optional[List['outputs.NetworkAclEntriesEgress']]:
+    def egresses(self) -> pulumi.Output[Optional[List['outputs.NetworkAclEntriesEgress']]]:
         """
         List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
         """
@@ -150,7 +150,7 @@ class NetworkAclEntries(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ingresses(self) -> Optional[List['outputs.NetworkAclEntriesIngress']]:
+    def ingresses(self) -> pulumi.Output[Optional[List['outputs.NetworkAclEntriesIngress']]]:
         """
         List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
         """
@@ -158,7 +158,7 @@ class NetworkAclEntries(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkAclId")
-    def network_acl_id(self) -> str:
+    def network_acl_id(self) -> pulumi.Output[str]:
         """
         The id of the network acl, the field can't be changed.
         """

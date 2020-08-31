@@ -13,7 +13,7 @@ __all__ = ['SnapshotPolicy']
 
 class SnapshotPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -133,7 +133,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The snapshot policy name.
         """
@@ -141,7 +141,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repeatWeekdays")
-    def repeat_weekdays(self) -> List[str]:
+    def repeat_weekdays(self) -> pulumi.Output[List[str]]:
         """
         The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
         - A maximum of seven time points can be selected.
@@ -151,7 +151,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> float:
+    def retention_days(self) -> pulumi.Output[float]:
         """
         The snapshot retention time, and the unit of measurement is day. Optional values:
         - -1: The automatic snapshots are retained permanently.
@@ -161,7 +161,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timePoints")
-    def time_points(self) -> List[str]:
+    def time_points(self) -> pulumi.Output[List[str]]:
         """
         The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
         - A maximum of 24 time points can be selected.

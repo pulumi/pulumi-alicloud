@@ -13,7 +13,7 @@ __all__ = ['LifecycleHook']
 
 class LifecycleHook(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_result: Optional[pulumi.Input[str]] = None,
                  heartbeat_timeout: Optional[pulumi.Input[float]] = None,
@@ -112,7 +112,7 @@ class LifecycleHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultResult")
-    def default_result(self) -> Optional[str]:
+    def default_result(self) -> pulumi.Output[Optional[str]]:
         """
         Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
         """
@@ -120,7 +120,7 @@ class LifecycleHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="heartbeatTimeout")
-    def heartbeat_timeout(self) -> Optional[float]:
+    def heartbeat_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
         """
@@ -128,7 +128,7 @@ class LifecycleHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifecycleTransition")
-    def lifecycle_transition(self) -> str:
+    def lifecycle_transition(self) -> pulumi.Output[str]:
         """
         Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
         """
@@ -136,7 +136,7 @@ class LifecycleHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the lifecycle hook, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is lifecycle hook id.
         """
@@ -144,7 +144,7 @@ class LifecycleHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationArn")
-    def notification_arn(self) -> str:
+    def notification_arn(self) -> pulumi.Output[str]:
         """
         The Arn of notification target.
         """
@@ -152,7 +152,7 @@ class LifecycleHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationMetadata")
-    def notification_metadata(self) -> str:
+    def notification_metadata(self) -> pulumi.Output[str]:
         """
         Additional information that you want to include when Auto Scaling sends a message to the notification target.
         """
@@ -160,7 +160,7 @@ class LifecycleHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> str:
+    def scaling_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
         """

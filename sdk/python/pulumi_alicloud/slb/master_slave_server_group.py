@@ -15,7 +15,7 @@ __all__ = ['MasterSlaveServerGroup']
 
 class MasterSlaveServerGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
@@ -205,7 +205,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[bool]:
+    def delete_protection_validation(self) -> pulumi.Output[Optional[bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
@@ -213,7 +213,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> str:
+    def load_balancer_id(self) -> pulumi.Output[str]:
         """
         The Load Balancer ID which is used to launch a new master slave server group.
         """
@@ -221,7 +221,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the master slave server group.
         """
@@ -229,7 +229,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def servers(self) -> Optional[List['outputs.MasterSlaveServerGroupServer']]:
+    def servers(self) -> pulumi.Output[Optional[List['outputs.MasterSlaveServerGroupServer']]]:
         """
         A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
         """

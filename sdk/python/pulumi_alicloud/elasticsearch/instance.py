@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_node_amount: Optional[pulumi.Input[float]] = None,
                  data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
@@ -278,7 +278,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataNodeAmount")
-    def data_node_amount(self) -> float:
+    def data_node_amount(self) -> pulumi.Output[float]:
         """
         The Elasticsearch cluster's data node quantity, between 2 and 50.
         """
@@ -286,7 +286,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataNodeDiskEncrypted")
-    def data_node_disk_encrypted(self) -> Optional[bool]:
+    def data_node_disk_encrypted(self) -> pulumi.Output[Optional[bool]]:
         """
         If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         """
@@ -294,7 +294,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataNodeDiskSize")
-    def data_node_disk_size(self) -> float:
+    def data_node_disk_size(self) -> pulumi.Output[float]:
         """
         The single data node storage space.
         - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
@@ -303,7 +303,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataNodeDiskType")
-    def data_node_disk_type(self) -> str:
+    def data_node_disk_type(self) -> pulumi.Output[str]:
         """
         The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         """
@@ -311,7 +311,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataNodeSpec")
-    def data_node_spec(self) -> str:
+    def data_node_spec(self) -> pulumi.Output[str]:
         """
         The data node specifications of the Elasticsearch instance.
         """
@@ -319,7 +319,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of instance. It a string of 0 to 30 characters.
         """
@@ -327,7 +327,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> str:
+    def domain(self) -> pulumi.Output[str]:
         """
         Instance connection domain (only VPC network access supported).
         """
@@ -335,7 +335,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableKibanaPrivateNetwork")
-    def enable_kibana_private_network(self) -> Optional[bool]:
+    def enable_kibana_private_network(self) -> pulumi.Output[Optional[bool]]:
         """
         Bool, default to false. When it set to true, the instance can close kibana private network access。
         """
@@ -343,7 +343,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableKibanaPublicNetwork")
-    def enable_kibana_public_network(self) -> Optional[bool]:
+    def enable_kibana_public_network(self) -> pulumi.Output[Optional[bool]]:
         """
         Bool, default to true. When it set to false, the instance can enable kibana public network access。
         """
@@ -351,7 +351,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enablePublic")
-    def enable_public(self) -> Optional[bool]:
+    def enable_public(self) -> pulumi.Output[Optional[bool]]:
         """
         Bool, default to false. When it set to true, the instance can enable public network access。
         """
@@ -359,7 +359,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[str]:
+    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         """
@@ -367,7 +367,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kibanaDomain")
-    def kibana_domain(self) -> str:
+    def kibana_domain(self) -> pulumi.Output[str]:
         """
         Kibana console domain (Internet access supported).
         """
@@ -375,7 +375,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kibanaPort")
-    def kibana_port(self) -> float:
+    def kibana_port(self) -> pulumi.Output[float]:
         """
         Kibana console port.
         """
@@ -383,7 +383,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kibanaPrivateWhitelists")
-    def kibana_private_whitelists(self) -> List[str]:
+    def kibana_private_whitelists(self) -> pulumi.Output[List[str]]:
         """
         Set the Kibana's IP whitelist in private network.
         """
@@ -391,7 +391,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kibanaWhitelists")
-    def kibana_whitelists(self) -> List[str]:
+    def kibana_whitelists(self) -> pulumi.Output[List[str]]:
         """
         Set the Kibana's IP whitelist in internet network.
         """
@@ -399,7 +399,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[str]:
+    def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
         """
         An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         """
@@ -407,7 +407,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[Mapping[str, Any]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
@@ -415,7 +415,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterNodeSpec")
-    def master_node_spec(self) -> Optional[str]:
+    def master_node_spec(self) -> pulumi.Output[Optional[str]]:
         """
         The dedicated master node spec. If specified, dedicated master node will be created.
         """
@@ -423,7 +423,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         """
@@ -431,7 +431,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         """
@@ -439,7 +439,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         Instance connection port.
         """
@@ -447,7 +447,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateWhitelists")
-    def private_whitelists(self) -> List[str]:
+    def private_whitelists(self) -> pulumi.Output[List[str]]:
         """
         Set the instance's IP whitelist in VPC network.
         """
@@ -455,7 +455,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicWhitelists")
-    def public_whitelists(self) -> List[str]:
+    def public_whitelists(self) -> pulumi.Output[List[str]]:
         """
         Set the instance's IP whitelist in internet network.
         """
@@ -463,7 +463,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The Id of resource group which the Elasticsearch instance belongs.
         """
@@ -471,7 +471,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
         """
@@ -479,7 +479,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource. 
         - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
@@ -489,7 +489,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> str:
+    def version(self) -> pulumi.Output[str]:
         """
         Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
         """
@@ -497,7 +497,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The ID of VSwitch.
         """
@@ -505,7 +505,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneCount")
-    def zone_count(self) -> Optional[float]:
+    def zone_count(self) -> pulumi.Output[Optional[float]]:
         """
         The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """

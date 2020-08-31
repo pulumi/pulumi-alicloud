@@ -13,7 +13,7 @@ __all__ = ['KeyVersion']
 
 class KeyVersion(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -97,7 +97,7 @@ class KeyVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> str:
+    def creation_date(self) -> pulumi.Output[str]:
         """
         The date and time (UTC time) when the Alikms key version was created.
         """
@@ -105,7 +105,7 @@ class KeyVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> str:
+    def key_id(self) -> pulumi.Output[str]:
         """
         The id of the master key (CMK).
         """
@@ -113,7 +113,7 @@ class KeyVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyVersionId")
-    def key_version_id(self) -> str:
+    def key_version_id(self) -> pulumi.Output[str]:
         """
         The id of the Alikms key version.
         """

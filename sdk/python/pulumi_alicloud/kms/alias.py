@@ -13,7 +13,7 @@ __all__ = ['Alias']
 
 class Alias(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias_name: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
@@ -99,7 +99,7 @@ class Alias(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aliasName")
-    def alias_name(self) -> str:
+    def alias_name(self) -> pulumi.Output[str]:
         """
         The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
         """
@@ -107,7 +107,7 @@ class Alias(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> str:
+    def key_id(self) -> pulumi.Output[str]:
         """
         The id of the key.
         """

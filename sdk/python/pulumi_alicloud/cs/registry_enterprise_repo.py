@@ -13,7 +13,7 @@ __all__ = ['RegistryEnterpriseRepo']
 
 class RegistryEnterpriseRepo(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  detail: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -141,7 +141,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def detail(self) -> Optional[str]:
+    def detail(self) -> pulumi.Output[Optional[str]]:
         """
         The repository specific information. MarkDown format is supported, and the length limit is 2000.
         """
@@ -149,7 +149,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         ID of Container Registry Enterprise Edition instance.
         """
@@ -157,7 +157,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
         """
@@ -165,7 +165,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def namespace(self) -> str:
+    def namespace(self) -> pulumi.Output[str]:
         """
         Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
         """
@@ -173,7 +173,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repoId")
-    def repo_id(self) -> str:
+    def repo_id(self) -> pulumi.Output[str]:
         """
         The uuid of Container Registry Enterprise Edition repository.
         """
@@ -181,7 +181,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repoType")
-    def repo_type(self) -> str:
+    def repo_type(self) -> pulumi.Output[str]:
         """
         `PUBLIC` or `PRIVATE`, repo's visibility.
         """
@@ -189,7 +189,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def summary(self) -> str:
+    def summary(self) -> pulumi.Output[str]:
         """
         The repository general information. It can contain 1 to 100 characters.
         """

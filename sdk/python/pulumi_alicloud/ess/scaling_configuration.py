@@ -15,7 +15,7 @@ __all__ = ['ScalingConfiguration']
 
 class ScalingConfiguration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]]] = None,
@@ -284,7 +284,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def active(self) -> bool:
+    def active(self) -> pulumi.Output[bool]:
         """
         Whether active current scaling configuration in the specified scaling group. Default to `false`.
         """
@@ -292,7 +292,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[List['outputs.ScalingConfigurationDataDisk']]:
+    def data_disks(self) -> pulumi.Output[Optional[List['outputs.ScalingConfigurationDataDisk']]]:
         """
         DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         """
@@ -300,7 +300,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enable(self) -> Optional[bool]:
+    def enable(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         """
@@ -308,7 +308,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[bool]:
+    def force_delete(self) -> pulumi.Output[Optional[bool]]:
         """
         The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         """
@@ -316,7 +316,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[str]:
+    def image_id(self) -> pulumi.Output[Optional[str]]:
         """
         ID of an image file, indicating the image resource selected when an instance is enabled.
         """
@@ -324,7 +324,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[str]:
+    def image_name(self) -> pulumi.Output[Optional[str]]:
         """
         Name of an image file, indicating the image resource selected when an instance is enabled.
         """
@@ -332,7 +332,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Optional[List[str]]:
+    def instance_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         """
@@ -340,7 +340,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[str]:
+    def instance_name(self) -> pulumi.Output[Optional[str]]:
         """
         Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         """
@@ -348,7 +348,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[str]:
+    def instance_type(self) -> pulumi.Output[Optional[str]]:
         """
         Resource type of an ECS instance.
         """
@@ -356,7 +356,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> Optional[List[str]]:
+    def instance_types(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Resource types of an ECS instance.
         """
@@ -364,7 +364,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[str]:
+    def internet_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         """
@@ -372,7 +372,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthIn")
-    def internet_max_bandwidth_in(self) -> float:
+    def internet_max_bandwidth_in(self) -> pulumi.Output[float]:
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
         """
@@ -380,7 +380,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> Optional[float]:
+    def internet_max_bandwidth_out(self) -> pulumi.Output[Optional[float]]:
         """
         Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
         """
@@ -388,7 +388,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ioOptimized")
-    def io_optimized(self) -> Optional[str]:
+    def io_optimized(self) -> pulumi.Output[Optional[str]]:
         """
         It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
@@ -396,7 +396,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isOutdated")
-    def is_outdated(self) -> Optional[bool]:
+    def is_outdated(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to use outdated instance type. Default to false.
         """
@@ -404,7 +404,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> Optional[str]:
+    def key_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         """
@@ -412,7 +412,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[str]:
+    def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
         """
         An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         """
@@ -420,7 +420,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[Mapping[str, Any]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
@@ -428,7 +428,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def override(self) -> Optional[bool]:
+    def override(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether to overwrite the existing data. Default to false.
         """
@@ -436,7 +436,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         """
@@ -444,7 +444,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="passwordInherit")
-    def password_inherit(self) -> Optional[bool]:
+    def password_inherit(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
         """
@@ -452,7 +452,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> Optional[str]:
+    def role_name(self) -> pulumi.Output[Optional[str]]:
         """
         Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         """
@@ -460,7 +460,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingConfigurationName")
-    def scaling_configuration_name(self) -> str:
+    def scaling_configuration_name(self) -> pulumi.Output[str]:
         """
         Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         """
@@ -468,7 +468,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> str:
+    def scaling_group_id(self) -> pulumi.Output[str]:
         """
         ID of the scaling group of a scaling configuration.
         """
@@ -476,7 +476,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[str]:
+    def security_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         """
@@ -484,7 +484,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[List[str]]:
+    def security_group_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         """
@@ -492,7 +492,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def substitute(self) -> str:
+    def substitute(self) -> pulumi.Output[str]:
         """
         The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         """
@@ -500,7 +500,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskAutoSnapshotPolicyId")
-    def system_disk_auto_snapshot_policy_id(self) -> Optional[str]:
+    def system_disk_auto_snapshot_policy_id(self) -> pulumi.Output[Optional[str]]:
         """
         The id of auto snapshot policy for system disk.
         """
@@ -508,7 +508,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskCategory")
-    def system_disk_category(self) -> Optional[str]:
+    def system_disk_category(self) -> pulumi.Output[Optional[str]]:
         """
         Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         """
@@ -516,7 +516,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskDescription")
-    def system_disk_description(self) -> Optional[str]:
+    def system_disk_description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
@@ -524,7 +524,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskName")
-    def system_disk_name(self) -> Optional[str]:
+    def system_disk_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         """
@@ -532,7 +532,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> Optional[float]:
+    def system_disk_size(self) -> pulumi.Output[Optional[float]]:
         """
         Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
         """
@@ -540,7 +540,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
@@ -550,7 +550,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[str]:
+    def user_data(self) -> pulumi.Output[Optional[str]]:
         """
         User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
         """

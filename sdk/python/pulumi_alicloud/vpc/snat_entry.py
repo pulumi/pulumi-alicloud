@@ -13,7 +13,7 @@ __all__ = ['SnatEntry']
 
 class SnatEntry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  snat_entry_name: Optional[pulumi.Input[str]] = None,
                  snat_ip: Optional[pulumi.Input[str]] = None,
@@ -105,7 +105,7 @@ class SnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snatEntryId")
-    def snat_entry_id(self) -> str:
+    def snat_entry_id(self) -> pulumi.Output[str]:
         """
         The id of the snat entry on the server.
         """
@@ -113,7 +113,7 @@ class SnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snatEntryName")
-    def snat_entry_name(self) -> Optional[str]:
+    def snat_entry_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of snat entry.
         """
@@ -121,7 +121,7 @@ class SnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snatIp")
-    def snat_ip(self) -> str:
+    def snat_ip(self) -> pulumi.Output[str]:
         """
         The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
         """
@@ -129,7 +129,7 @@ class SnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snatTableId")
-    def snat_table_id(self) -> str:
+    def snat_table_id(self) -> pulumi.Output[str]:
         """
         The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
         """
@@ -137,7 +137,7 @@ class SnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceCidr")
-    def source_cidr(self) -> Optional[str]:
+    def source_cidr(self) -> pulumi.Output[Optional[str]]:
         """
         The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
         """
@@ -145,7 +145,7 @@ class SnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceVswitchId")
-    def source_vswitch_id(self) -> Optional[str]:
+    def source_vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         The vswitch ID.
         """

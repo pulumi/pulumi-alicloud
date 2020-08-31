@@ -13,7 +13,7 @@ __all__ = ['ReadWriteSplittingConnection']
 
 class ReadWriteSplittingConnection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_prefix: Optional[pulumi.Input[str]] = None,
                  distribution_type: Optional[pulumi.Input[str]] = None,
@@ -159,7 +159,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionPrefix")
-    def connection_prefix(self) -> Optional[str]:
+    def connection_prefix(self) -> pulumi.Output[Optional[str]]:
         """
         Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
         """
@@ -167,7 +167,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> str:
+    def connection_string(self) -> pulumi.Output[str]:
         """
         Connection instance string.
         """
@@ -175,7 +175,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="distributionType")
-    def distribution_type(self) -> str:
+    def distribution_type(self) -> pulumi.Output[str]:
         """
         Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
         """
@@ -183,7 +183,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The Id of instance that can run database.
         """
@@ -191,7 +191,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxDelayTime")
-    def max_delay_time(self) -> float:
+    def max_delay_time(self) -> pulumi.Output[float]:
         """
         Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
         """
@@ -199,7 +199,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         Intranet connection port. Valid value: [3001-3999]. Default to 3306.
         """
@@ -207,7 +207,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[Mapping[str, Any]]:
+    def weight(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """

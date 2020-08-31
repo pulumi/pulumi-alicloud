@@ -13,7 +13,7 @@ __all__ = ['ServerCertificate']
 
 class ServerCertificate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alicloud_certifacte_id: Optional[pulumi.Input[str]] = None,
                  alicloud_certifacte_name: Optional[pulumi.Input[str]] = None,
@@ -165,17 +165,17 @@ class ServerCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alicloudCertifacteId")
-    def alicloud_certifacte_id(self) -> Optional[str]:
+    def alicloud_certifacte_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "alicloud_certifacte_id")
 
     @property
     @pulumi.getter(name="alicloudCertifacteName")
-    def alicloud_certifacte_name(self) -> Optional[str]:
+    def alicloud_certifacte_name(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "alicloud_certifacte_name")
 
     @property
     @pulumi.getter(name="alicloudCertificateId")
-    def alicloud_certificate_id(self) -> Optional[str]:
+    def alicloud_certificate_id(self) -> pulumi.Output[Optional[str]]:
         """
         an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
         """
@@ -183,7 +183,7 @@ class ServerCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alicloudCertificateName")
-    def alicloud_certificate_name(self) -> Optional[str]:
+    def alicloud_certificate_name(self) -> pulumi.Output[Optional[str]]:
         """
         the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         """
@@ -191,7 +191,7 @@ class ServerCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alicloudCertificateRegionId")
-    def alicloud_certificate_region_id(self) -> Optional[str]:
+    def alicloud_certificate_region_id(self) -> pulumi.Output[Optional[str]]:
         """
         the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
         """
@@ -199,7 +199,7 @@ class ServerCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the Server Certificate.
         """
@@ -207,7 +207,7 @@ class ServerCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[str]:
+    def private_key(self) -> pulumi.Output[Optional[str]]:
         """
         the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         """
@@ -215,7 +215,7 @@ class ServerCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The Id of resource group which the slb server certificate belongs.
         """
@@ -223,7 +223,7 @@ class ServerCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverCertificate")
-    def server_certificate(self) -> Optional[str]:
+    def server_certificate(self) -> pulumi.Output[Optional[str]]:
         """
         the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         """
@@ -231,7 +231,7 @@ class ServerCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """

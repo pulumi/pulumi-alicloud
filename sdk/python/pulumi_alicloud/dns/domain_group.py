@@ -13,7 +13,7 @@ __all__ = ['DomainGroup']
 
 class DomainGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
@@ -93,7 +93,7 @@ class DomainGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> str:
+    def group_name(self) -> pulumi.Output[str]:
         """
         Name of the domain group.
         """
@@ -101,7 +101,7 @@ class DomainGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def lang(self) -> Optional[str]:
+    def lang(self) -> pulumi.Output[Optional[str]]:
         """
         User language.
         """

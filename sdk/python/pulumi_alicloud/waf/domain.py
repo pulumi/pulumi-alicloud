@@ -15,7 +15,7 @@ __all__ = ['Domain']
 
 class Domain(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  connection_time: Optional[pulumi.Input[float]] = None,
@@ -214,7 +214,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> Optional[str]:
+    def cluster_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
         """
@@ -222,7 +222,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cname(self) -> str:
+    def cname(self) -> pulumi.Output[str]:
         """
         The CNAME record assigned by the WAF instance to the specified domain.
         """
@@ -230,7 +230,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionTime")
-    def connection_time(self) -> Optional[float]:
+    def connection_time(self) -> pulumi.Output[Optional[float]]:
         """
         The connection timeout for WAF exclusive clusters. Unit: seconds.
         """
@@ -238,7 +238,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> str:
+    def domain(self) -> pulumi.Output[str]:
         """
         The domain that you want to add to WAF.
         """
@@ -246,7 +246,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="http2Ports")
-    def http2_ports(self) -> Optional[List[str]]:
+    def http2_ports(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of the HTTP 2.0 ports.
         """
@@ -254,7 +254,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpPorts")
-    def http_ports(self) -> Optional[List[str]]:
+    def http_ports(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of the HTTP ports
         """
@@ -262,7 +262,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpToUserIp")
-    def http_to_user_ip(self) -> Optional[str]:
+    def http_to_user_ip(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
         By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
@@ -271,7 +271,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpsPorts")
-    def https_ports(self) -> Optional[List[str]]:
+    def https_ports(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of the HTTPS ports
         """
@@ -279,7 +279,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpsRedirect")
-    def https_redirect(self) -> Optional[str]:
+    def https_redirect(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
         """
@@ -287,7 +287,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the WAF instance.
         """
@@ -295,7 +295,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isAccessProduct")
-    def is_access_product(self) -> str:
+    def is_access_product(self) -> pulumi.Output[str]:
         """
         Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         """
@@ -303,7 +303,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancing")
-    def load_balancing(self) -> Optional[str]:
+    def load_balancing(self) -> pulumi.Output[Optional[str]]:
         """
         The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
         """
@@ -311,7 +311,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logHeaders")
-    def log_headers(self) -> Optional[List['outputs.DomainLogHeader']]:
+    def log_headers(self) -> pulumi.Output[Optional[List['outputs.DomainLogHeader']]]:
         """
         The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
         * key: The key of label
@@ -321,7 +321,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="readTime")
-    def read_time(self) -> Optional[float]:
+    def read_time(self) -> pulumi.Output[Optional[float]]:
         """
         The read timeout of a WAF exclusive cluster. Unit: seconds.
         """
@@ -329,7 +329,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
         """
@@ -337,7 +337,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceIps")
-    def source_ips(self) -> List[str]:
+    def source_ips(self) -> pulumi.Output[List[str]]:
         """
         List of the IP address or domain of the origin server to which the specified domain points.
         """
@@ -345,12 +345,12 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> float:
+    def status(self) -> pulumi.Output[float]:
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="writeTime")
-    def write_time(self) -> Optional[float]:
+    def write_time(self) -> pulumi.Output[Optional[float]]:
         """
         The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
         """

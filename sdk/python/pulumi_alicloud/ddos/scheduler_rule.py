@@ -15,7 +15,7 @@ __all__ = ['SchedulerRule']
 
 class SchedulerRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  param: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -166,7 +166,7 @@ class SchedulerRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cname(self) -> str:
+    def cname(self) -> pulumi.Output[str]:
         """
         The cname is the traffic scheduler corresponding to rules.
         """
@@ -174,12 +174,12 @@ class SchedulerRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def param(self) -> Optional[str]:
+    def param(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "param")
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
         """
@@ -187,7 +187,7 @@ class SchedulerRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> str:
+    def rule_name(self) -> pulumi.Output[str]:
         """
         The name of the rule.
         """
@@ -195,7 +195,7 @@ class SchedulerRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ruleType")
-    def rule_type(self) -> float:
+    def rule_type(self) -> pulumi.Output[float]:
         """
         The rule type. Valid values:
         `2`: tiered protection.
@@ -206,7 +206,7 @@ class SchedulerRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> List['outputs.SchedulerRuleRule']:
+    def rules(self) -> pulumi.Output[List['outputs.SchedulerRuleRule']]:
         """
         The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
         `Type`: String type, required, the address format of the linkage resource. Valid values:

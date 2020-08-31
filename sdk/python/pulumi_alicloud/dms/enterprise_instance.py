@@ -13,7 +13,7 @@ __all__ = ['EnterpriseInstance']
 
 class EnterpriseInstance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_link_name: Optional[pulumi.Input[str]] = None,
                  database_password: Optional[pulumi.Input[str]] = None,
@@ -266,7 +266,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataLinkName")
-    def data_link_name(self) -> Optional[str]:
+    def data_link_name(self) -> pulumi.Output[Optional[str]]:
         """
         Cross-database query datalink name.
         """
@@ -274,7 +274,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="databasePassword")
-    def database_password(self) -> str:
+    def database_password(self) -> pulumi.Output[str]:
         """
         Database access password.
         """
@@ -282,7 +282,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="databaseUser")
-    def database_user(self) -> str:
+    def database_user(self) -> pulumi.Output[str]:
         """
         Database access account.
         """
@@ -290,12 +290,12 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbaId")
-    def dba_id(self) -> str:
+    def dba_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "dba_id")
 
     @property
     @pulumi.getter(name="dbaNickName")
-    def dba_nick_name(self) -> str:
+    def dba_nick_name(self) -> pulumi.Output[str]:
         """
         The instance dba nickname.
         """
@@ -303,7 +303,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbaUid")
-    def dba_uid(self) -> float:
+    def dba_uid(self) -> pulumi.Output[float]:
         """
         The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
         """
@@ -311,7 +311,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ddlOnline")
-    def ddl_online(self) -> Optional[float]:
+    def ddl_online(self) -> pulumi.Output[Optional[float]]:
         """
         Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
         """
@@ -319,7 +319,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ecsInstanceId")
-    def ecs_instance_id(self) -> str:
+    def ecs_instance_id(self) -> pulumi.Output[str]:
         """
         ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
         """
@@ -327,7 +327,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ecsRegion")
-    def ecs_region(self) -> Optional[str]:
+    def ecs_region(self) -> pulumi.Output[Optional[str]]:
         """
         The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
         """
@@ -335,7 +335,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="envType")
-    def env_type(self) -> str:
+    def env_type(self) -> pulumi.Output[str]:
         """
         Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
         """
@@ -343,7 +343,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="exportTimeout")
-    def export_timeout(self) -> float:
+    def export_timeout(self) -> pulumi.Output[float]:
         """
         Export timeout, unit: s (seconds).
         """
@@ -351,7 +351,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> str:
+    def host(self) -> pulumi.Output[str]:
         """
         Host address of the target database.
         """
@@ -359,7 +359,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceAlias")
-    def instance_alias(self) -> str:
+    def instance_alias(self) -> pulumi.Output[str]:
         """
         Instance alias, to help users quickly distinguish positioning.
         """
@@ -367,12 +367,12 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="instanceSource")
-    def instance_source(self) -> str:
+    def instance_source(self) -> pulumi.Output[str]:
         """
         The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
         """
@@ -380,7 +380,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> str:
+    def instance_type(self) -> pulumi.Output[str]:
         """
         Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
         """
@@ -388,7 +388,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> str:
+    def network_type(self) -> pulumi.Output[str]:
         """
         Network type. Valid values: `CLASSIC`, `VPC`.
         """
@@ -396,7 +396,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         Access port of the target database.
         """
@@ -404,7 +404,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="queryTimeout")
-    def query_timeout(self) -> float:
+    def query_timeout(self) -> pulumi.Output[float]:
         """
         Query timeout time, unit: s (seconds).
         """
@@ -412,7 +412,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="safeRule")
-    def safe_rule(self) -> str:
+    def safe_rule(self) -> pulumi.Output[str]:
         """
         The security rule of the instance is passed into the name of the security rule in the enterprise.
         """
@@ -420,12 +420,12 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="safeRuleId")
-    def safe_rule_id(self) -> str:
+    def safe_rule_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "safe_rule_id")
 
     @property
     @pulumi.getter
-    def sid(self) -> Optional[str]:
+    def sid(self) -> pulumi.Output[Optional[str]]:
         """
         The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
         """
@@ -433,7 +433,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         The instance status.
         """
@@ -441,7 +441,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tid(self) -> Optional[float]:
+    def tid(self) -> pulumi.Output[Optional[float]]:
         """
         The tenant ID.
         """
@@ -449,7 +449,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useDsql")
-    def use_dsql(self) -> Optional[float]:
+    def use_dsql(self) -> pulumi.Output[Optional[float]]:
         """
         Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         """
@@ -457,7 +457,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[str]:
+    def vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
         VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
         """

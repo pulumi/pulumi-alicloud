@@ -13,7 +13,7 @@ __all__ = ['SaslAcl']
 
 class SaslAcl(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_operation_type: Optional[pulumi.Input[str]] = None,
                  acl_resource_name: Optional[pulumi.Input[str]] = None,
@@ -169,7 +169,7 @@ class SaslAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclOperationType")
-    def acl_operation_type(self) -> str:
+    def acl_operation_type(self) -> pulumi.Output[str]:
         """
         Operation type for this acl. The operation type can only be "Write" and "Read".
         """
@@ -177,7 +177,7 @@ class SaslAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclResourceName")
-    def acl_resource_name(self) -> str:
+    def acl_resource_name(self) -> pulumi.Output[str]:
         """
         Resource name for this acl. The resource name should be a topic or consumer group name.
         """
@@ -185,7 +185,7 @@ class SaslAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclResourcePatternType")
-    def acl_resource_pattern_type(self) -> str:
+    def acl_resource_pattern_type(self) -> pulumi.Output[str]:
         """
         Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
         """
@@ -193,7 +193,7 @@ class SaslAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclResourceType")
-    def acl_resource_type(self) -> str:
+    def acl_resource_type(self) -> pulumi.Output[str]:
         """
         Resource type for this acl. The resource type can only be "Topic" and "Group".
         """
@@ -201,7 +201,7 @@ class SaslAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> str:
+    def host(self) -> pulumi.Output[str]:
         """
         The host of the acl.
         """
@@ -209,7 +209,7 @@ class SaslAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         ID of the ALIKAFKA Instance that owns the groups.
         """
@@ -217,7 +217,7 @@ class SaslAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> pulumi.Output[str]:
         """
         Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
         """

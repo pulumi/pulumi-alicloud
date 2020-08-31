@@ -13,7 +13,7 @@ __all__ = ['BandwidthPackageAttachment']
 
 class BandwidthPackageAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -104,7 +104,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
-    def bandwidth_package_id(self) -> str:
+    def bandwidth_package_id(self) -> pulumi.Output[str]:
         """
         The ID of the bandwidth package.
         """
@@ -112,7 +112,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the CEN.
         """

@@ -15,7 +15,7 @@ __all__ = ['ResourceGroup']
 
 class ResourceGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class ResourceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         """
         The ID of the Alibaba Cloud account to which the resource group belongs.
         """
@@ -121,7 +121,7 @@ class ResourceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createDate")
-    def create_date(self) -> str:
+    def create_date(self) -> pulumi.Output[str]:
         """
         The time when the resource group was created.
         * `region_statuses` -The status of the resource group in all regions.
@@ -130,7 +130,7 @@ class ResourceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
         """
@@ -138,7 +138,7 @@ class ResourceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
         """
@@ -146,12 +146,12 @@ class ResourceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="regionStatuses")
-    def region_statuses(self) -> List['outputs.ResourceGroupRegionStatus']:
+    def region_statuses(self) -> pulumi.Output[List['outputs.ResourceGroupRegionStatus']]:
         return pulumi.get(self, "region_statuses")
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the regional resource group.
         """

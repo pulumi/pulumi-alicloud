@@ -15,7 +15,7 @@ __all__ = ['ScalingGroupVServerGroups']
 
 class ScalingGroupVServerGroups(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
@@ -166,7 +166,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[bool]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
         If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
         """
@@ -174,7 +174,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> str:
+    def scaling_group_id(self) -> pulumi.Output[str]:
         """
         ID of the scaling group.
         """
@@ -182,7 +182,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vserverGroups")
-    def vserver_groups(self) -> List['outputs.ScalingGroupVServerGroupsVserverGroup']:
+    def vserver_groups(self) -> pulumi.Output[List['outputs.ScalingGroupVServerGroupsVserverGroup']]:
         """
         A list of vserver groups attached on scaling group. See Block vserver_group below for details.
         """

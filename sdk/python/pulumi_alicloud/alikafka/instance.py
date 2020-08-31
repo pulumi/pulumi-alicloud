@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deploy_type: Optional[pulumi.Input[float]] = None,
                  disk_size: Optional[pulumi.Input[float]] = None,
@@ -195,7 +195,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deployType")
-    def deploy_type(self) -> float:
+    def deploy_type(self) -> pulumi.Output[float]:
         """
         The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
         """
@@ -203,7 +203,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> float:
+    def disk_size(self) -> pulumi.Output[float]:
         """
         The disk size of the instance. When modify this value, it only support adjust to a greater value.
         """
@@ -211,7 +211,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> float:
+    def disk_type(self) -> pulumi.Output[float]:
         """
         The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         """
@@ -219,7 +219,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eipMax")
-    def eip_max(self) -> Optional[float]:
+    def eip_max(self) -> pulumi.Output[Optional[float]]:
         """
         The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
         """
@@ -227,7 +227,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ioMax")
-    def io_max(self) -> float:
+    def io_max(self) -> pulumi.Output[float]:
         """
         The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         """
@@ -235,7 +235,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         """
@@ -243,7 +243,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="paidType")
-    def paid_type(self) -> Optional[str]:
+    def paid_type(self) -> pulumi.Output[Optional[str]]:
         """
         The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
         """
@@ -251,7 +251,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroup")
-    def security_group(self) -> Optional[str]:
+    def security_group(self) -> pulumi.Output[Optional[str]]:
         """
         （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
         """
@@ -259,7 +259,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="specType")
-    def spec_type(self) -> Optional[str]:
+    def spec_type(self) -> pulumi.Output[Optional[str]]:
         """
         The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         """
@@ -267,7 +267,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -275,7 +275,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="topicQuota")
-    def topic_quota(self) -> float:
+    def topic_quota(self) -> pulumi.Output[float]:
         """
         The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
         """
@@ -283,7 +283,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The ID of attaching VPC to instance.
         """
@@ -291,7 +291,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The ID of attaching vswitch to instance.
         """
@@ -299,7 +299,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The Zone to launch the kafka instance.
         """

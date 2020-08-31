@@ -13,7 +13,7 @@ __all__ = ['FileSystem']
 
 class FileSystem(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class FileSystem(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The File System description.
         """
@@ -117,7 +117,7 @@ class FileSystem(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> str:
+    def protocol_type(self) -> pulumi.Output[str]:
         """
         The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
         """
@@ -125,7 +125,7 @@ class FileSystem(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageType")
-    def storage_type(self) -> str:
+    def storage_type(self) -> pulumi.Output[str]:
         """
         The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
         """

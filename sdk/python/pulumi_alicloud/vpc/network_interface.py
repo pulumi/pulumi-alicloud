@@ -13,7 +13,7 @@ __all__ = ['NetworkInterface']
 
 class NetworkInterface(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -157,7 +157,7 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         """
@@ -165,7 +165,7 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mac(self) -> str:
+    def mac(self) -> pulumi.Output[str]:
         """
         (Available in 1.54.0+) The MAC address of an ENI.
         """
@@ -173,7 +173,7 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         """
@@ -181,7 +181,7 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> str:
+    def private_ip(self) -> pulumi.Output[str]:
         """
         The primary private IP of the ENI.
         """
@@ -189,7 +189,7 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIps")
-    def private_ips(self) -> List[str]:
+    def private_ips(self) -> pulumi.Output[List[str]]:
         """
         List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         """
@@ -197,7 +197,7 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIpsCount")
-    def private_ips_count(self) -> float:
+    def private_ips_count(self) -> pulumi.Output[float]:
         """
         Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         """
@@ -205,7 +205,7 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Id of resource group which the network interface belongs.
         """
@@ -213,7 +213,7 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> List[str]:
+    def security_groups(self) -> pulumi.Output[List[str]]:
         """
         A list of security group ids to associate with.
         """
@@ -221,7 +221,7 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -229,7 +229,7 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The VSwitch to create the ENI in.
         """

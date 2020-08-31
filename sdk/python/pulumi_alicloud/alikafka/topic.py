@@ -13,7 +13,7 @@ __all__ = ['Topic']
 
 class Topic(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compact_topic: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -154,7 +154,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="compactTopic")
-    def compact_topic(self) -> Optional[bool]:
+    def compact_topic(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the topic is compactTopic or not. Compact topic must be a localTopic.
         """
@@ -162,7 +162,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         InstanceId of your Kafka resource, the topic will create in this instance.
         """
@@ -170,7 +170,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localTopic")
-    def local_topic(self) -> Optional[bool]:
+    def local_topic(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the topic is localTopic or not.
         """
@@ -178,7 +178,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="partitionNum")
-    def partition_num(self) -> Optional[float]:
+    def partition_num(self) -> pulumi.Output[Optional[float]]:
         """
         The number of partitions of the topic. The number should between 1 and 48.
         """
@@ -186,7 +186,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def remark(self) -> str:
+    def remark(self) -> pulumi.Output[str]:
         """
         This attribute is a concise description of topic. The length cannot exceed 64.
         """
@@ -194,7 +194,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -202,7 +202,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def topic(self) -> str:
+    def topic(self) -> pulumi.Output[str]:
         """
         Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
         """

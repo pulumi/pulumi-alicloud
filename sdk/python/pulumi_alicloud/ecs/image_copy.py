@@ -13,7 +13,7 @@ __all__ = ['ImageCopy']
 
 class ImageCopy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
@@ -159,7 +159,7 @@ class ImageCopy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         """
@@ -167,7 +167,7 @@ class ImageCopy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def encrypted(self) -> Optional[bool]:
+    def encrypted(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether to encrypt the image.
         """
@@ -175,7 +175,7 @@ class ImageCopy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[bool]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether to force delete the custom image, Default is `false`. 
         - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
@@ -185,7 +185,7 @@ class ImageCopy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> str:
+    def image_name(self) -> pulumi.Output[str]:
         """
         The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         """
@@ -193,7 +193,7 @@ class ImageCopy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[str]:
+    def kms_key_id(self) -> pulumi.Output[Optional[str]]:
         """
         Key ID used to encrypt the image.
         """
@@ -201,12 +201,12 @@ class ImageCopy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="sourceImageId")
-    def source_image_id(self) -> str:
+    def source_image_id(self) -> pulumi.Output[str]:
         """
         The source image ID.
         """
@@ -214,7 +214,7 @@ class ImageCopy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceRegionId")
-    def source_region_id(self) -> str:
+    def source_region_id(self) -> pulumi.Output[str]:
         """
         The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
         """
@@ -222,7 +222,7 @@ class ImageCopy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         The tag value of an image. The value of N ranges from 1 to 20.
         """

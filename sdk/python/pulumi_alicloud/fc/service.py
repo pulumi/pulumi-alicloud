@@ -15,7 +15,7 @@ __all__ = ['Service']
 
 class Service(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  internet_access: Optional[pulumi.Input[bool]] = None,
@@ -118,7 +118,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The function compute service description.
         """
@@ -126,7 +126,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetAccess")
-    def internet_access(self) -> Optional[bool]:
+    def internet_access(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to allow the service to access Internet. Default to "true".
         """
@@ -134,7 +134,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> str:
+    def last_modified(self) -> pulumi.Output[str]:
         """
         The date this resource was last modified.
         """
@@ -142,7 +142,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional['outputs.ServiceLogConfig']:
+    def log_config(self) -> pulumi.Output[Optional['outputs.ServiceLogConfig']]:
         """
         Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
         """
@@ -150,7 +150,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The Function Compute service name. It is the only in one Alicloud account and is conflict with "name_prefix".
         """
@@ -158,7 +158,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[str]:
+    def name_prefix(self) -> pulumi.Output[Optional[str]]:
         """
         Setting a prefix to get a only name. It is conflict with "name".
         """
@@ -166,7 +166,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> Optional[str]:
+    def role(self) -> pulumi.Output[Optional[str]]:
         """
         RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         """
@@ -174,7 +174,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> str:
+    def service_id(self) -> pulumi.Output[str]:
         """
         The Function Compute service ID.
         """
@@ -182,7 +182,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcConfig")
-    def vpc_config(self) -> Optional['outputs.ServiceVpcConfig']:
+    def vpc_config(self) -> pulumi.Output[Optional['outputs.ServiceVpcConfig']]:
         """
         Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
         """

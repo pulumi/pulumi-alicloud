@@ -13,7 +13,7 @@ __all__ = ['Role']
 
 class Role(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assume_role_policy_document: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -141,7 +141,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         The resource descriptor of the role.
         """
@@ -149,7 +149,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="assumeRolePolicyDocument")
-    def assume_role_policy_document(self) -> str:
+    def assume_role_policy_document(self) -> pulumi.Output[str]:
         """
         The content of the permissions strategy that plays a role.
         """
@@ -157,7 +157,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createDate")
-    def create_date(self) -> str:
+    def create_date(self) -> pulumi.Output[str]:
         """
         Role creation time.
         """
@@ -165,7 +165,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the Resource Manager role.
         """
@@ -173,7 +173,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSessionDuration")
-    def max_session_duration(self) -> Optional[float]:
+    def max_session_duration(self) -> pulumi.Output[Optional[float]]:
         """
         Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         """
@@ -181,12 +181,12 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> str:
+    def role_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "role_id")
 
     @property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> str:
+    def role_name(self) -> pulumi.Output[str]:
         """
         Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
         """
@@ -194,7 +194,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateDate")
-    def update_date(self) -> str:
+    def update_date(self) -> pulumi.Output[str]:
         """
         Role update time.
         """

@@ -15,7 +15,7 @@ __all__ = ['ImageCache']
 
 class ImageCache(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  image_cache_name: Optional[pulumi.Input[str]] = None,
@@ -165,7 +165,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerGroupId")
-    def container_group_id(self) -> str:
+    def container_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the container group job that is used to create the image cache.
         * `status` -The status of the image cache.
@@ -174,7 +174,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eipInstanceId")
-    def eip_instance_id(self) -> Optional[str]:
+    def eip_instance_id(self) -> pulumi.Output[Optional[str]]:
         """
         The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         """
@@ -182,7 +182,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageCacheName")
-    def image_cache_name(self) -> str:
+    def image_cache_name(self) -> pulumi.Output[str]:
         """
         The name of the image cache.
         """
@@ -190,7 +190,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageCacheSize")
-    def image_cache_size(self) -> Optional[float]:
+    def image_cache_size(self) -> pulumi.Output[Optional[float]]:
         """
         The size of the image cache. Default to `20`. Unit: GiB.
         """
@@ -198,7 +198,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageRegistryCredentials")
-    def image_registry_credentials(self) -> Optional[List['outputs.ImageCacheImageRegistryCredential']]:
+    def image_registry_credentials(self) -> pulumi.Output[Optional[List['outputs.ImageCacheImageRegistryCredential']]]:
         """
         The Image Registry parameters about the image to be cached.
         """
@@ -206,7 +206,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def images(self) -> List[str]:
+    def images(self) -> pulumi.Output[List[str]]:
         """
         The images to be cached. The image name must be versioned.
         """
@@ -214,7 +214,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the resource group.
         """
@@ -222,7 +222,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[float]:
+    def retention_days(self) -> pulumi.Output[Optional[float]]:
         """
         The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
         """
@@ -230,7 +230,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the security group. You do not need to specify the same security group as the container group.
         """
@@ -238,12 +238,12 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
         """
@@ -251,7 +251,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[str]:
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
         The zone id to cache image.
         """

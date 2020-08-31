@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -160,7 +160,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         """
@@ -168,7 +168,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[str]:
+    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         """
@@ -176,7 +176,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceSeries")
-    def instance_series(self) -> str:
+    def instance_series(self) -> pulumi.Output[str]:
         """
         User-defined DRDS instance node spec. Value range:
         - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -188,7 +188,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def specification(self) -> str:
+    def specification(self) -> pulumi.Output[str]:
         """
         User-defined DRDS instance specification. Value range:
         - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -204,7 +204,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The VSwitch ID to launch in.
         """
@@ -212,7 +212,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The Zone to launch the DRDS instance.
         """

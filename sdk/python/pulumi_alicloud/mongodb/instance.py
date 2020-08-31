@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -224,7 +224,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[str]:
+    def account_password(self) -> pulumi.Output[Optional[str]]:
         """
         Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         """
@@ -232,7 +232,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupPeriods")
-    def backup_periods(self) -> List[str]:
+    def backup_periods(self) -> pulumi.Output[List[str]]:
         """
         MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         """
@@ -240,7 +240,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupTime")
-    def backup_time(self) -> str:
+    def backup_time(self) -> pulumi.Output[str]:
         """
         MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         """
@@ -248,7 +248,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbInstanceClass")
-    def db_instance_class(self) -> str:
+    def db_instance_class(self) -> pulumi.Output[str]:
         """
         Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         """
@@ -256,7 +256,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbInstanceStorage")
-    def db_instance_storage(self) -> float:
+    def db_instance_storage(self) -> pulumi.Output[float]:
         """
         User-defined DB instance storage space.Unit: GB. Value range:
         - Custom storage space; value range: [10,2000]
@@ -266,7 +266,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> str:
+    def engine_version(self) -> pulumi.Output[str]:
         """
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
         """
@@ -274,7 +274,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[str]:
+    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         """
@@ -282,7 +282,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[str]:
+    def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
         """
         An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         """
@@ -290,7 +290,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[Mapping[str, Any]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
@@ -298,7 +298,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintainEndTime")
-    def maintain_end_time(self) -> str:
+    def maintain_end_time(self) -> pulumi.Output[str]:
         """
         The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         """
@@ -306,7 +306,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintainStartTime")
-    def maintain_start_time(self) -> str:
+    def maintain_start_time(self) -> pulumi.Output[str]:
         """
         The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         """
@@ -314,7 +314,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of DB instance. It a string of 2 to 256 characters.
         """
@@ -322,7 +322,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> float:
+    def period(self) -> pulumi.Output[float]:
         """
         The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         """
@@ -330,7 +330,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="replicaSetName")
-    def replica_set_name(self) -> str:
+    def replica_set_name(self) -> pulumi.Output[str]:
         """
         The name of the mongo replica set
         """
@@ -338,7 +338,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="replicationFactor")
-    def replication_factor(self) -> float:
+    def replication_factor(self) -> pulumi.Output[float]:
         """
         Number of replica set nodes. Valid values: [3, 5, 7]
         """
@@ -346,7 +346,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> float:
+    def retention_period(self) -> pulumi.Output[float]:
         """
         Instance log backup retention days. Available in 1.42.0+.
         """
@@ -354,7 +354,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         """
         The Security Group ID of ECS.
         """
@@ -362,7 +362,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityIpLists")
-    def security_ip_lists(self) -> List[str]:
+    def security_ip_lists(self) -> pulumi.Output[List[str]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
@@ -370,7 +370,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslAction")
-    def ssl_action(self) -> str:
+    def ssl_action(self) -> pulumi.Output[str]:
         """
         Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
         """
@@ -378,7 +378,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslStatus")
-    def ssl_status(self) -> str:
+    def ssl_status(self) -> pulumi.Output[str]:
         """
         Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
         """
@@ -386,7 +386,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageEngine")
-    def storage_engine(self) -> str:
+    def storage_engine(self) -> pulumi.Output[str]:
         """
         Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         """
@@ -394,7 +394,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -402,7 +402,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tdeStatus")
-    def tde_status(self) -> Optional[str]:
+    def tde_status(self) -> pulumi.Output[Optional[str]]:
         """
         The TDE(Transparent Data Encryption) status.
         """
@@ -410,7 +410,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """
@@ -418,7 +418,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The Zone to launch the DB instance. it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.

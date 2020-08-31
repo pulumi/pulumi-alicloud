@@ -13,7 +13,7 @@ __all__ = ['AccessGroup']
 
 class AccessGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_name: Optional[pulumi.Input[str]] = None,
                  access_group_type: Optional[pulumi.Input[str]] = None,
@@ -134,7 +134,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessGroupName")
-    def access_group_name(self) -> str:
+    def access_group_name(self) -> pulumi.Output[str]:
         """
         A Name of one Access Group.
         """
@@ -142,7 +142,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessGroupType")
-    def access_group_type(self) -> str:
+    def access_group_type(self) -> pulumi.Output[str]:
         """
         A Type of one Access Group. Valid values: `Vpc` and `Classic`.
         """
@@ -150,7 +150,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The Access Group description.
         """
@@ -158,7 +158,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fileSystemType")
-    def file_system_type(self) -> Optional[str]:
+    def file_system_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
         """
@@ -166,7 +166,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Replaced by `access_group_name` after version 1.92.0.
         """
@@ -174,7 +174,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         Replaced by `access_group_type` after version 1.92.0.
         """

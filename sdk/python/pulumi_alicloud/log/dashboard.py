@@ -13,7 +13,7 @@ __all__ = ['Dashboard']
 
 class Dashboard(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  char_list: Optional[pulumi.Input[str]] = None,
                  dashboard_name: Optional[pulumi.Input[str]] = None,
@@ -100,7 +100,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="charList")
-    def char_list(self) -> str:
+    def char_list(self) -> pulumi.Output[str]:
         """
         Configuration of charts in the dashboard.
         """
@@ -108,7 +108,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dashboardName")
-    def dashboard_name(self) -> str:
+    def dashboard_name(self) -> pulumi.Output[str]:
         """
         The name of the Log Dashboard.
         """
@@ -116,7 +116,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Dashboard alias.
         """
@@ -124,7 +124,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> str:
+    def project_name(self) -> pulumi.Output[str]:
         """
         The name of the log project. It is the only in one Alicloud account.
         """

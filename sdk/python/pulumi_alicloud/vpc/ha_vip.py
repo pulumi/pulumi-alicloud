@@ -13,7 +13,7 @@ __all__ = ['HAVip']
 
 class HAVip(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
@@ -86,7 +86,7 @@ class HAVip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the HaVip instance.
         """
@@ -94,7 +94,7 @@ class HAVip(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> str:
+    def ip_address(self) -> pulumi.Output[str]:
         """
         The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         """
@@ -102,7 +102,7 @@ class HAVip(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The vswitch_id of the HaVip, the field can't be changed.
         """

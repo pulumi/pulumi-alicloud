@@ -13,7 +13,7 @@ __all__ = ['DeployGroup']
 
 class DeployGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
@@ -102,7 +102,7 @@ class DeployGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appId")
-    def app_id(self) -> str:
+    def app_id(self) -> pulumi.Output[str]:
         """
         The ID of the application that you want to deploy.
         """
@@ -110,7 +110,7 @@ class DeployGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> str:
+    def group_name(self) -> pulumi.Output[str]:
         """
         The name of the instance group that you want to create.
         """
@@ -118,7 +118,7 @@ class DeployGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupType")
-    def group_type(self) -> float:
+    def group_type(self) -> pulumi.Output[float]:
         """
         The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
         """

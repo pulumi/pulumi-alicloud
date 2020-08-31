@@ -13,7 +13,7 @@ __all__ = ['PrivateZone']
 
 class PrivateZone(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_region_id: Optional[pulumi.Input[str]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
@@ -135,7 +135,7 @@ class PrivateZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessRegionId")
-    def access_region_id(self) -> str:
+    def access_region_id(self) -> pulumi.Output[str]:
         """
         The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
         """
@@ -143,7 +143,7 @@ class PrivateZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> str:
+    def cen_id(self) -> pulumi.Output[str]:
         """
         The ID of the CEN instance.
         """
@@ -151,7 +151,7 @@ class PrivateZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostRegionId")
-    def host_region_id(self) -> str:
+    def host_region_id(self) -> pulumi.Output[str]:
         """
         The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
         """
@@ -159,7 +159,7 @@ class PrivateZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostVpcId")
-    def host_vpc_id(self) -> str:
+    def host_vpc_id(self) -> pulumi.Output[str]:
         """
         The VPC that belongs to the service region.
         """
@@ -167,7 +167,7 @@ class PrivateZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
         """

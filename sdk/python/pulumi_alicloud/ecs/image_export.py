@@ -13,7 +13,7 @@ __all__ = ['ImageExport']
 
 class ImageExport(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  oss_bucket: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class ImageExport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> str:
+    def image_id(self) -> pulumi.Output[str]:
         """
         The source image ID.
         """
@@ -122,7 +122,7 @@ class ImageExport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ossBucket")
-    def oss_bucket(self) -> str:
+    def oss_bucket(self) -> pulumi.Output[str]:
         """
         Save the exported OSS bucket.
         """
@@ -130,7 +130,7 @@ class ImageExport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ossPrefix")
-    def oss_prefix(self) -> Optional[str]:
+    def oss_prefix(self) -> pulumi.Output[Optional[str]]:
         """
         The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
         """

@@ -15,7 +15,7 @@ __all__ = ['SiteMonitor']
 
 class SiteMonitor(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  alert_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -129,7 +129,7 @@ class SiteMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The URL or IP address monitored by the site monitoring task.
         """
@@ -137,7 +137,7 @@ class SiteMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alertIds")
-    def alert_ids(self) -> Optional[List[str]]:
+    def alert_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The IDs of existing alert rules to be associated with the site monitoring task.
         """
@@ -145,12 +145,12 @@ class SiteMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[float]:
+    def interval(self) -> pulumi.Output[Optional[float]]:
         """
         The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
         """
@@ -158,7 +158,7 @@ class SiteMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ispCities")
-    def isp_cities(self) -> Optional[List['outputs.SiteMonitorIspCity']]:
+    def isp_cities(self) -> pulumi.Output[Optional[List['outputs.SiteMonitorIspCity']]]:
         """
         The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
         """
@@ -166,7 +166,7 @@ class SiteMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="optionsJson")
-    def options_json(self) -> Optional[str]:
+    def options_json(self) -> pulumi.Output[Optional[str]]:
         """
         The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
         """
@@ -174,7 +174,7 @@ class SiteMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="taskName")
-    def task_name(self) -> str:
+    def task_name(self) -> pulumi.Output[str]:
         """
         The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
         """
@@ -182,12 +182,12 @@ class SiteMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="taskState")
-    def task_state(self) -> str:
+    def task_state(self) -> pulumi.Output[str]:
         return pulumi.get(self, "task_state")
 
     @property
     @pulumi.getter(name="taskType")
-    def task_type(self) -> str:
+    def task_type(self) -> pulumi.Output[str]:
         """
         The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
         """
@@ -195,7 +195,7 @@ class SiteMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):

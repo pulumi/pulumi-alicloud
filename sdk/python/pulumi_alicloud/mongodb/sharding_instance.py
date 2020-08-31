@@ -15,7 +15,7 @@ __all__ = ['ShardingInstance']
 
 class ShardingInstance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -182,7 +182,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[str]:
+    def account_password(self) -> pulumi.Output[Optional[str]]:
         """
         Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         """
@@ -190,7 +190,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupPeriods")
-    def backup_periods(self) -> List[str]:
+    def backup_periods(self) -> pulumi.Output[List[str]]:
         """
         MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         """
@@ -198,7 +198,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupTime")
-    def backup_time(self) -> str:
+    def backup_time(self) -> pulumi.Output[str]:
         """
         MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         """
@@ -206,7 +206,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> str:
+    def engine_version(self) -> pulumi.Output[str]:
         """
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
         """
@@ -214,7 +214,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> str:
+    def instance_charge_type(self) -> pulumi.Output[str]:
         """
         Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         """
@@ -222,7 +222,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[str]:
+    def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
         """
         An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         """
@@ -230,7 +230,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[Mapping[str, Any]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
@@ -238,7 +238,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mongoLists")
-    def mongo_lists(self) -> List['outputs.ShardingInstanceMongoList']:
+    def mongo_lists(self) -> pulumi.Output[List['outputs.ShardingInstanceMongoList']]:
         """
         The mongo-node count can be purchased is in range of [2, 32].
         """
@@ -246,7 +246,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of DB instance. It a string of 2 to 256 characters.
         """
@@ -254,7 +254,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> float:
+    def period(self) -> pulumi.Output[float]:
         """
         The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         """
@@ -262,7 +262,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> float:
+    def retention_period(self) -> pulumi.Output[float]:
         """
         Instance log backup retention days. Available in 1.42.0+.
         """
@@ -270,7 +270,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         """
         The Security Group ID of ECS.
         """
@@ -278,7 +278,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityIpLists")
-    def security_ip_lists(self) -> List[str]:
+    def security_ip_lists(self) -> pulumi.Output[List[str]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
@@ -286,7 +286,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shardLists")
-    def shard_lists(self) -> List['outputs.ShardingInstanceShardList']:
+    def shard_lists(self) -> pulumi.Output[List['outputs.ShardingInstanceShardList']]:
         """
         the shard-node count can be purchased is in range of [2, 32].
         """
@@ -294,7 +294,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageEngine")
-    def storage_engine(self) -> str:
+    def storage_engine(self) -> pulumi.Output[str]:
         """
         Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         """
@@ -302,7 +302,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tdeStatus")
-    def tde_status(self) -> Optional[str]:
+    def tde_status(self) -> pulumi.Output[Optional[str]]:
         """
         The TDE(Transparent Data Encryption) status.
         """
@@ -310,7 +310,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """
@@ -318,7 +318,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[str]:
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.

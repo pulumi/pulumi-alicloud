@@ -13,7 +13,7 @@ __all__ = ['ApplicationScale']
 
 class ApplicationScale(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  deploy_group: Optional[pulumi.Input[str]] = None,
@@ -100,7 +100,7 @@ class ApplicationScale(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appId")
-    def app_id(self) -> str:
+    def app_id(self) -> pulumi.Output[str]:
         """
         The ID of the application that you want to deploy.
         """
@@ -108,7 +108,7 @@ class ApplicationScale(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deployGroup")
-    def deploy_group(self) -> str:
+    def deploy_group(self) -> pulumi.Output[str]:
         """
         The ID of the instance group to which you want to add ECS instances to scale out the application.
         """
@@ -116,7 +116,7 @@ class ApplicationScale(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eccInfo")
-    def ecc_info(self) -> str:
+    def ecc_info(self) -> pulumi.Output[str]:
         """
         The ecc information of the resource supplied above. The value is formulated as `<ecc1,ecc2>`.
         """
@@ -124,7 +124,7 @@ class ApplicationScale(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ecuInfos")
-    def ecu_infos(self) -> List[str]:
+    def ecu_infos(self) -> pulumi.Output[List[str]]:
         """
         The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         """
@@ -132,7 +132,7 @@ class ApplicationScale(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceStatus")
-    def force_status(self) -> Optional[bool]:
+    def force_status(self) -> pulumi.Output[Optional[bool]]:
         """
         This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
         """

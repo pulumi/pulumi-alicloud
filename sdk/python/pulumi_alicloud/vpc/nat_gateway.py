@@ -15,7 +15,7 @@ __all__ = ['NatGateway']
 
 class NatGateway(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth_packages: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NatGatewayBandwidthPackageArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandwidthPackageIds")
-    def bandwidth_package_ids(self) -> str:
+    def bandwidth_package_ids(self) -> pulumi.Output[str]:
         """
         A list ID of the bandwidth packages, and split them with commas.
         """
@@ -141,7 +141,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandwidthPackages")
-    def bandwidth_packages(self) -> Optional[List['outputs.NatGatewayBandwidthPackage']]:
+    def bandwidth_packages(self) -> pulumi.Output[Optional[List['outputs.NatGatewayBandwidthPackage']]]:
         """
         A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
         """
@@ -149,7 +149,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         """
@@ -157,7 +157,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forwardTableIds")
-    def forward_table_ids(self) -> str:
+    def forward_table_ids(self) -> pulumi.Output[str]:
         """
         The nat gateway will auto create a snap and forward item, the `forward_table_ids` is the created one.
         """
@@ -165,7 +165,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> str:
+    def instance_charge_type(self) -> pulumi.Output[str]:
         """
         The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
@@ -173,7 +173,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         """
@@ -181,7 +181,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         """
@@ -189,7 +189,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snatTableIds")
-    def snat_table_ids(self) -> str:
+    def snat_table_ids(self) -> pulumi.Output[str]:
         """
         The nat gateway will auto create a snap and forward item, the `snat_table_ids` is the created one.
         """
@@ -197,7 +197,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[str]:
+    def spec(self) -> pulumi.Output[Optional[str]]:
         """
         It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
         """
@@ -205,7 +205,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def specification(self) -> Optional[str]:
+    def specification(self) -> pulumi.Output[Optional[str]]:
         """
         The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         """
@@ -213,7 +213,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The VPC ID.
         """

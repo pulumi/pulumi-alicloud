@@ -13,7 +13,7 @@ __all__ = ['Subscription']
 
 class Subscription(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def comment(self) -> Optional[str]:
+    def comment(self) -> pulumi.Output[Optional[str]]:
         """
         Comment of the datahub subscription. It cannot be longer than 255 characters.
         """
@@ -123,7 +123,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Create time of the datahub subscription. It is a human-readable string rather than 64-bits UTC.
         """
@@ -131,7 +131,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModifyTime")
-    def last_modify_time(self) -> str:
+    def last_modify_time(self) -> pulumi.Output[str]:
         """
         Last modify time of the datahub subscription. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
         """
@@ -139,7 +139,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> str:
+    def project_name(self) -> pulumi.Output[str]:
         """
         The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         """
@@ -147,7 +147,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subId")
-    def sub_id(self) -> str:
+    def sub_id(self) -> pulumi.Output[str]:
         """
         The identidy of the subscritpion, generate from server side.
         """
@@ -155,7 +155,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="topicName")
-    def topic_name(self) -> str:
+    def topic_name(self) -> pulumi.Output[str]:
         """
         The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         """

@@ -13,7 +13,7 @@ __all__ = ['AccessKey']
 
 class AccessKey(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  pgp_key: Optional[pulumi.Input[str]] = None,
                  secret_file: Optional[pulumi.Input[str]] = None,
@@ -118,12 +118,12 @@ class AccessKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="encryptedSecret")
-    def encrypted_secret(self) -> str:
+    def encrypted_secret(self) -> pulumi.Output[str]:
         return pulumi.get(self, "encrypted_secret")
 
     @property
     @pulumi.getter(name="keyFingerprint")
-    def key_fingerprint(self) -> str:
+    def key_fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint of the PGP key used to encrypt the secret
         """
@@ -131,7 +131,7 @@ class AccessKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pgpKey")
-    def pgp_key(self) -> Optional[str]:
+    def pgp_key(self) -> pulumi.Output[Optional[str]]:
         """
         Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
         """
@@ -139,7 +139,7 @@ class AccessKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretFile")
-    def secret_file(self) -> Optional[str]:
+    def secret_file(self) -> pulumi.Output[Optional[str]]:
         """
         The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
         """
@@ -147,7 +147,7 @@ class AccessKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[str]:
+    def status(self) -> pulumi.Output[Optional[str]]:
         """
         Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
         """
@@ -155,7 +155,7 @@ class AccessKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[str]:
+    def user_name(self) -> pulumi.Output[Optional[str]]:
         """
         Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """

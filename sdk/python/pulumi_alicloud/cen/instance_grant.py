@@ -13,7 +13,7 @@ __all__ = ['InstanceGrant']
 
 class InstanceGrant(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  cen_owner_id: Optional[pulumi.Input[str]] = None,
@@ -130,7 +130,7 @@ class InstanceGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> str:
+    def cen_id(self) -> pulumi.Output[str]:
         """
         The ID of the CEN.
         """
@@ -138,7 +138,7 @@ class InstanceGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> str:
+    def cen_owner_id(self) -> pulumi.Output[str]:
         """
         The owner UID of the  CEN which the child instance granted to.
         """
@@ -146,7 +146,7 @@ class InstanceGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="childInstanceId")
-    def child_instance_id(self) -> str:
+    def child_instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the child instance to grant.
         """

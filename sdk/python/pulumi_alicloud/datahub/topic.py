@@ -13,7 +13,7 @@ __all__ = ['Topic']
 
 class Topic(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  life_cycle: Optional[pulumi.Input[float]] = None,
@@ -159,7 +159,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def comment(self) -> Optional[str]:
+    def comment(self) -> pulumi.Output[Optional[str]]:
         """
         Comment of the datahub topic. It cannot be longer than 255 characters.
         """
@@ -167,7 +167,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
         """
@@ -175,7 +175,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModifyTime")
-    def last_modify_time(self) -> str:
+    def last_modify_time(self) -> pulumi.Output[str]:
         """
         Last modify time of the datahub topic. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
         """
@@ -183,7 +183,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifeCycle")
-    def life_cycle(self) -> Optional[float]:
+    def life_cycle(self) -> pulumi.Output[Optional[float]]:
         """
         How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         """
@@ -191,7 +191,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         """
@@ -199,7 +199,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> str:
+    def project_name(self) -> pulumi.Output[str]:
         """
         The name of the datahub project that this topic belongs to. It is case-insensitive.
         """
@@ -207,7 +207,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recordSchema")
-    def record_schema(self) -> Optional[Mapping[str, Any]]:
+    def record_schema(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
         - BIGINT
@@ -220,7 +220,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[str]:
+    def record_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
         """
@@ -228,7 +228,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[float]:
+    def shard_count(self) -> pulumi.Output[Optional[float]]:
         """
         The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
         """

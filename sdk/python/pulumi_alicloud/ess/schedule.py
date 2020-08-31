@@ -13,7 +13,7 @@ __all__ = ['Schedule']
 
 class Schedule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[float]] = None,
@@ -118,67 +118,67 @@ class Schedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[float]:
+    def desired_capacity(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "desired_capacity")
 
     @property
     @pulumi.getter(name="launchExpirationTime")
-    def launch_expiration_time(self) -> Optional[float]:
+    def launch_expiration_time(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "launch_expiration_time")
 
     @property
     @pulumi.getter(name="launchTime")
-    def launch_time(self) -> Optional[str]:
+    def launch_time(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "launch_time")
 
     @property
     @pulumi.getter(name="maxValue")
-    def max_value(self) -> Optional[float]:
+    def max_value(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "max_value")
 
     @property
     @pulumi.getter(name="minValue")
-    def min_value(self) -> Optional[float]:
+    def min_value(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "min_value")
 
     @property
     @pulumi.getter(name="recurrenceEndTime")
-    def recurrence_end_time(self) -> str:
+    def recurrence_end_time(self) -> pulumi.Output[str]:
         return pulumi.get(self, "recurrence_end_time")
 
     @property
     @pulumi.getter(name="recurrenceType")
-    def recurrence_type(self) -> str:
+    def recurrence_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "recurrence_type")
 
     @property
     @pulumi.getter(name="recurrenceValue")
-    def recurrence_value(self) -> str:
+    def recurrence_value(self) -> pulumi.Output[str]:
         return pulumi.get(self, "recurrence_value")
 
     @property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> str:
+    def scaling_group_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "scaling_group_id")
 
     @property
     @pulumi.getter(name="scheduledAction")
-    def scheduled_action(self) -> Optional[str]:
+    def scheduled_action(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "scheduled_action")
 
     @property
     @pulumi.getter(name="scheduledTaskName")
-    def scheduled_task_name(self) -> Optional[str]:
+    def scheduled_task_name(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "scheduled_task_name")
 
     @property
     @pulumi.getter(name="taskEnabled")
-    def task_enabled(self) -> Optional[bool]:
+    def task_enabled(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "task_enabled")
 
     def translate_output_property(self, prop):

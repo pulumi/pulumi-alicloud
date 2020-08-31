@@ -13,7 +13,7 @@ __all__ = ['Alarm']
 
 class Alarm(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alarm_actions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  cloud_monitor_group_id: Optional[pulumi.Input[float]] = None,
@@ -162,7 +162,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alarmActions")
-    def alarm_actions(self) -> List[str]:
+    def alarm_actions(self) -> pulumi.Output[List[str]]:
         """
         The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
         """
@@ -170,7 +170,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cloudMonitorGroupId")
-    def cloud_monitor_group_id(self) -> Optional[float]:
+    def cloud_monitor_group_id(self) -> pulumi.Output[Optional[float]]:
         """
         Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         """
@@ -178,7 +178,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[str]:
+    def comparison_operator(self) -> pulumi.Output[Optional[str]]:
         """
         The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         """
@@ -186,7 +186,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description for the alarm.
         """
@@ -194,7 +194,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Mapping[str, Any]:
+    def dimensions(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
         """
@@ -202,7 +202,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enable(self) -> Optional[bool]:
+    def enable(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to enable specific ess alarm. Default to true.
         """
@@ -210,7 +210,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="evaluationCount")
-    def evaluation_count(self) -> Optional[float]:
+    def evaluation_count(self) -> pulumi.Output[Optional[float]]:
         """
         The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         """
@@ -218,7 +218,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metricName")
-    def metric_name(self) -> str:
+    def metric_name(self) -> pulumi.Output[str]:
         """
         The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
         """
@@ -226,7 +226,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metricType")
-    def metric_type(self) -> Optional[str]:
+    def metric_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
         """
@@ -234,7 +234,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name for ess alarm.
         """
@@ -242,7 +242,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
         """
@@ -250,7 +250,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> str:
+    def scaling_group_id(self) -> pulumi.Output[str]:
         """
         The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
         """
@@ -258,7 +258,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         The state of specified alarm.
         """
@@ -266,7 +266,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def statistics(self) -> Optional[str]:
+    def statistics(self) -> pulumi.Output[Optional[str]]:
         """
         The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         """
@@ -274,7 +274,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def threshold(self) -> str:
+    def threshold(self) -> pulumi.Output[str]:
         """
         The value against which the specified statistics is compared.
         """

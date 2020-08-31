@@ -13,7 +13,7 @@ __all__ = ['SecurityGroup']
 
 class SecurityGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  inner_access: Optional[pulumi.Input[bool]] = None,
@@ -121,7 +121,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The security group description. Defaults to null.
         """
@@ -129,7 +129,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="innerAccess")
-    def inner_access(self) -> bool:
+    def inner_access(self) -> pulumi.Output[bool]:
         """
         Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         """
@@ -137,7 +137,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="innerAccessPolicy")
-    def inner_access_policy(self) -> str:
+    def inner_access_policy(self) -> pulumi.Output[str]:
         """
         Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
         """
@@ -145,7 +145,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the security group. Defaults to null.
         """
@@ -153,7 +153,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Id of resource group which the security_group belongs.
         """
@@ -161,7 +161,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupType")
-    def security_group_type(self) -> Optional[str]:
+    def security_group_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of the security group. Valid values:
         `normal`: basic security group.
@@ -171,7 +171,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -179,7 +179,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[str]:
+    def vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
         The VPC ID.
         """

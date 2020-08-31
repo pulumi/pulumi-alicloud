@@ -15,7 +15,7 @@ __all__ = ['OpenApiImageCache']
 
 class OpenApiImageCache(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  image_cache_name: Optional[pulumi.Input[str]] = None,
@@ -122,62 +122,62 @@ class OpenApiImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerGroupId")
-    def container_group_id(self) -> str:
+    def container_group_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "container_group_id")
 
     @property
     @pulumi.getter(name="eipInstanceId")
-    def eip_instance_id(self) -> Optional[str]:
+    def eip_instance_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "eip_instance_id")
 
     @property
     @pulumi.getter(name="imageCacheName")
-    def image_cache_name(self) -> str:
+    def image_cache_name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "image_cache_name")
 
     @property
     @pulumi.getter(name="imageCacheSize")
-    def image_cache_size(self) -> Optional[float]:
+    def image_cache_size(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "image_cache_size")
 
     @property
     @pulumi.getter(name="imageRegistryCredentials")
-    def image_registry_credentials(self) -> Optional[List['outputs.OpenApiImageCacheImageRegistryCredential']]:
+    def image_registry_credentials(self) -> pulumi.Output[Optional[List['outputs.OpenApiImageCacheImageRegistryCredential']]]:
         return pulumi.get(self, "image_registry_credentials")
 
     @property
     @pulumi.getter
-    def images(self) -> List[str]:
+    def images(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "images")
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[float]:
+    def retention_days(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "retention_days")
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "security_group_id")
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "vswitch_id")
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[str]:
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "zone_id")
 
     def translate_output_property(self, prop):

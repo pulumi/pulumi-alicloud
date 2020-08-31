@@ -13,7 +13,7 @@ __all__ = ['Order']
 
 class Order(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  coupon_id: Optional[pulumi.Input[str]] = None,
@@ -120,7 +120,7 @@ class Order(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def components(self) -> Optional[Mapping[str, Any]]:
+    def components(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Service providers customize additional components.
         """
@@ -128,7 +128,7 @@ class Order(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="couponId")
-    def coupon_id(self) -> Optional[str]:
+    def coupon_id(self) -> pulumi.Output[Optional[str]]:
         """
         The coupon id of the market product.
         """
@@ -136,7 +136,7 @@ class Order(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def duration(self) -> Optional[float]:
+    def duration(self) -> pulumi.Output[Optional[float]]:
         """
         The number of purchase cycles.
         """
@@ -144,7 +144,7 @@ class Order(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packageVersion")
-    def package_version(self) -> str:
+    def package_version(self) -> pulumi.Output[str]:
         """
         The package version of the market product.
         """
@@ -152,7 +152,7 @@ class Order(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> Optional[str]:
+    def pay_type(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         """
@@ -160,7 +160,7 @@ class Order(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> str:
+    def pricing_cycle(self) -> pulumi.Output[str]:
         """
         The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
         """
@@ -168,7 +168,7 @@ class Order(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="productCode")
-    def product_code(self) -> str:
+    def product_code(self) -> pulumi.Output[str]:
         """
         The product_code of market place product.
         """
@@ -176,7 +176,7 @@ class Order(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def quantity(self) -> Optional[float]:
+    def quantity(self) -> pulumi.Output[Optional[float]]:
         """
         The quantity of the market product will be purchased.
         """

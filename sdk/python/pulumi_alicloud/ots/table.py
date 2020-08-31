@@ -15,7 +15,7 @@ __all__ = ['Table']
 
 class Table(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -157,7 +157,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deviationCellVersionInSec")
-    def deviation_cell_version_in_sec(self) -> Optional[str]:
+    def deviation_cell_version_in_sec(self) -> pulumi.Output[Optional[str]]:
         """
         The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         """
@@ -165,7 +165,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> str:
+    def instance_name(self) -> pulumi.Output[str]:
         """
         The name of the OTS instance in which table will located.
         """
@@ -173,7 +173,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxVersion")
-    def max_version(self) -> float:
+    def max_version(self) -> pulumi.Output[float]:
         """
         The maximum number of versions stored in this table. The valid value is 1-2147483647.
         """
@@ -181,7 +181,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="primaryKeys")
-    def primary_keys(self) -> List['outputs.TablePrimaryKey']:
+    def primary_keys(self) -> pulumi.Output[List['outputs.TablePrimaryKey']]:
         """
         The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
         """
@@ -189,7 +189,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tableName")
-    def table_name(self) -> str:
+    def table_name(self) -> pulumi.Output[str]:
         """
         The table name of the OTS instance. If changed, a new table would be created.
         """
@@ -197,7 +197,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeToLive")
-    def time_to_live(self) -> float:
+    def time_to_live(self) -> pulumi.Output[float]:
         """
         The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """

@@ -15,7 +15,7 @@ __all__ = ['AutoProvisioningGroup']
 
 class AutoProvisioningGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_provisioning_group_name: Optional[pulumi.Input[str]] = None,
                  auto_provisioning_group_type: Optional[pulumi.Input[str]] = None,
@@ -241,7 +241,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoProvisioningGroupName")
-    def auto_provisioning_group_name(self) -> Optional[str]:
+    def auto_provisioning_group_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
         """
@@ -249,7 +249,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoProvisioningGroupType")
-    def auto_provisioning_group_type(self) -> Optional[str]:
+    def auto_provisioning_group_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
         """
@@ -257,7 +257,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultTargetCapacityType")
-    def default_target_capacity_type(self) -> Optional[str]:
+    def default_target_capacity_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
         """
@@ -265,7 +265,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the auto provisioning group.
         """
@@ -273,7 +273,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="excessCapacityTerminationPolicy")
-    def excess_capacity_termination_policy(self) -> Optional[str]:
+    def excess_capacity_termination_policy(self) -> pulumi.Output[Optional[str]]:
         """
         The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
         """
@@ -281,7 +281,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launchTemplateConfigs")
-    def launch_template_configs(self) -> List['outputs.AutoProvisioningGroupLaunchTemplateConfig']:
+    def launch_template_configs(self) -> pulumi.Output[List['outputs.AutoProvisioningGroupLaunchTemplateConfig']]:
         """
         DataDisk mappings to attach to ecs instance. See Block config below for details.
         """
@@ -289,7 +289,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launchTemplateId")
-    def launch_template_id(self) -> str:
+    def launch_template_id(self) -> pulumi.Output[str]:
         """
         The ID of the instance launch template associated with the auto provisioning group.
         """
@@ -297,7 +297,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launchTemplateVersion")
-    def launch_template_version(self) -> Optional[str]:
+    def launch_template_version(self) -> pulumi.Output[Optional[str]]:
         """
         The version of the instance launch template associated with the auto provisioning group.
         """
@@ -305,7 +305,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSpotPrice")
-    def max_spot_price(self) -> Optional[float]:
+    def max_spot_price(self) -> pulumi.Output[Optional[float]]:
         """
         The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
         """
@@ -313,7 +313,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="payAsYouGoAllocationStrategy")
-    def pay_as_you_go_allocation_strategy(self) -> Optional[str]:
+    def pay_as_you_go_allocation_strategy(self) -> pulumi.Output[Optional[str]]:
         """
         The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
         """
@@ -321,7 +321,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="payAsYouGoTargetCapacity")
-    def pay_as_you_go_target_capacity(self) -> Optional[str]:
+    def pay_as_you_go_target_capacity(self) -> pulumi.Output[Optional[str]]:
         """
         The target capacity of pay-as-you-go instances in the auto provisioning group.
         """
@@ -329,7 +329,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotAllocationStrategy")
-    def spot_allocation_strategy(self) -> Optional[str]:
+    def spot_allocation_strategy(self) -> pulumi.Output[Optional[str]]:
         """
         The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
         """
@@ -337,7 +337,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotInstanceInterruptionBehavior")
-    def spot_instance_interruption_behavior(self) -> Optional[str]:
+    def spot_instance_interruption_behavior(self) -> pulumi.Output[Optional[str]]:
         """
         The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
         """
@@ -345,7 +345,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotInstancePoolsToUseCount")
-    def spot_instance_pools_to_use_count(self) -> Optional[float]:
+    def spot_instance_pools_to_use_count(self) -> pulumi.Output[Optional[float]]:
         """
         This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         """
@@ -353,7 +353,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotTargetCapacity")
-    def spot_target_capacity(self) -> Optional[str]:
+    def spot_target_capacity(self) -> pulumi.Output[Optional[str]]:
         """
         The target capacity of preemptible instances in the auto provisioning group.
         """
@@ -361,7 +361,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="terminateInstances")
-    def terminate_instances(self) -> Optional[bool]:
+    def terminate_instances(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
         """
@@ -369,7 +369,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="terminateInstancesWithExpiration")
-    def terminate_instances_with_expiration(self) -> Optional[bool]:
+    def terminate_instances_with_expiration(self) -> pulumi.Output[Optional[bool]]:
         """
         The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
         """
@@ -377,7 +377,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="totalTargetCapacity")
-    def total_target_capacity(self) -> str:
+    def total_target_capacity(self) -> pulumi.Output[str]:
         """
         The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
         """
@@ -385,7 +385,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validFrom")
-    def valid_from(self) -> Optional[str]:
+    def valid_from(self) -> pulumi.Output[Optional[str]]:
         """
         The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
         """
@@ -393,7 +393,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validUntil")
-    def valid_until(self) -> Optional[str]:
+    def valid_until(self) -> pulumi.Output[Optional[str]]:
         """
         The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
         """

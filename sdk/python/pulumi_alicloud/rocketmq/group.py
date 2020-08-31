@@ -13,7 +13,7 @@ __all__ = ['Group']
 
 class Group(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> str:
+    def group_id(self) -> pulumi.Output[str]:
         """
         Name of the group. Two groups on a single instance cannot have the same name. A `group_id` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
         """
@@ -129,7 +129,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         ID of the ONS Instance that owns the groups.
         """
@@ -137,7 +137,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="readEnable")
-    def read_enable(self) -> Optional[bool]:
+    def read_enable(self) -> pulumi.Output[Optional[bool]]:
         """
         This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
         """
@@ -145,7 +145,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def remark(self) -> Optional[str]:
+    def remark(self) -> pulumi.Output[Optional[str]]:
         """
         This attribute is a concise description of group. The length cannot exceed 256.
         """

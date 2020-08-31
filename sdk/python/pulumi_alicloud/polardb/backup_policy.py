@@ -13,7 +13,7 @@ __all__ = ['BackupPolicy']
 
 class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -90,7 +90,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> str:
+    def backup_retention_period(self) -> pulumi.Output[str]:
         """
         Cluster backup retention days, Fixed for 7 days, not modified.
         """
@@ -98,7 +98,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> str:
+    def db_cluster_id(self) -> pulumi.Output[str]:
         """
         The Id of cluster that can run database.
         """
@@ -106,7 +106,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preferredBackupPeriods")
-    def preferred_backup_periods(self) -> List[str]:
+    def preferred_backup_periods(self) -> pulumi.Output[List[str]]:
         """
         PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
         """
@@ -114,7 +114,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preferredBackupTime")
-    def preferred_backup_time(self) -> Optional[str]:
+    def preferred_backup_time(self) -> pulumi.Output[Optional[str]]:
         """
         PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """

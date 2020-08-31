@@ -13,7 +13,7 @@ __all__ = ['Topic']
 
 class Topic(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  message_type: Optional[pulumi.Input[float]] = None,
@@ -130,7 +130,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         ID of the ONS Instance that owns the topics.
         """
@@ -138,7 +138,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="messageType")
-    def message_type(self) -> float:
+    def message_type(self) -> pulumi.Output[float]:
         """
         The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
         """
@@ -146,7 +146,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def perm(self) -> Optional[float]:
+    def perm(self) -> pulumi.Output[Optional[float]]:
         """
         This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
         """
@@ -154,7 +154,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def remark(self) -> Optional[str]:
+    def remark(self) -> pulumi.Output[Optional[str]]:
         """
         This attribute is a concise description of topic. The length cannot exceed 128.
         """
@@ -162,7 +162,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def topic(self) -> str:
+    def topic(self) -> pulumi.Output[str]:
         """
         Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """

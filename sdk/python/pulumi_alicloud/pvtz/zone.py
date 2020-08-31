@@ -13,7 +13,7 @@ __all__ = ['Zone']
 
 class Zone(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -119,17 +119,17 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> str:
+    def creation_time(self) -> pulumi.Output[str]:
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="isPtr")
-    def is_ptr(self) -> bool:
+    def is_ptr(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "is_ptr")
 
     @property
     @pulumi.getter
-    def lang(self) -> Optional[str]:
+    def lang(self) -> pulumi.Output[Optional[str]]:
         """
         The language. Valid values: "zh", "en", "jp".
         """
@@ -137,7 +137,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the Private Zone.
         """
@@ -145,7 +145,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyPattern")
-    def proxy_pattern(self) -> Optional[str]:
+    def proxy_pattern(self) -> pulumi.Output[Optional[str]]:
         """
         The recursive DNS proxy. Valid values:
         - ZONE: indicates that the recursive DNS proxy is disabled.
@@ -155,7 +155,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recordCount")
-    def record_count(self) -> float:
+    def record_count(self) -> pulumi.Output[float]:
         """
         The count of the Private Zone Record.
         """
@@ -163,7 +163,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def remark(self) -> Optional[str]:
+    def remark(self) -> pulumi.Output[Optional[str]]:
         """
         The remark of the Private Zone.
         """
@@ -171,7 +171,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The Id of resource group which the Private Zone belongs.
         """
@@ -179,12 +179,12 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         return pulumi.get(self, "update_time")
 
     @property
     @pulumi.getter(name="userClientIp")
-    def user_client_ip(self) -> Optional[str]:
+    def user_client_ip(self) -> pulumi.Output[Optional[str]]:
         """
         The IP address of the client.
         """

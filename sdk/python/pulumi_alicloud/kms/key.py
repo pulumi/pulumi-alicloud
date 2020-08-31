@@ -13,7 +13,7 @@ __all__ = ['Key']
 
 class Key(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automatic_rotation: Optional[pulumi.Input[str]] = None,
                  deletion_window_in_days: Optional[pulumi.Input[float]] = None,
@@ -187,7 +187,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         The Alicloud Resource Name (ARN) of the key.
         * `creation_date` -The date and time when the CMK was created. The time is displayed in UTC.
@@ -198,7 +198,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="automaticRotation")
-    def automatic_rotation(self) -> Optional[str]:
+    def automatic_rotation(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies whether to enable automatic key rotation. Default:"Disabled".
         """
@@ -206,22 +206,22 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> str:
+    def creation_date(self) -> pulumi.Output[str]:
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
-    def creator(self) -> str:
+    def creator(self) -> pulumi.Output[str]:
         return pulumi.get(self, "creator")
 
     @property
     @pulumi.getter(name="deleteDate")
-    def delete_date(self) -> str:
+    def delete_date(self) -> pulumi.Output[str]:
         return pulumi.get(self, "delete_date")
 
     @property
     @pulumi.getter(name="deletionWindowInDays")
-    def deletion_window_in_days(self) -> Optional[float]:
+    def deletion_window_in_days(self) -> pulumi.Output[Optional[float]]:
         """
         Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
         """
@@ -229,7 +229,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the key as viewed in Alicloud console.
         """
@@ -237,7 +237,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[bool]:
+    def is_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
         """
@@ -245,7 +245,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keySpec")
-    def key_spec(self) -> str:
+    def key_spec(self) -> pulumi.Output[str]:
         """
         The type of the CMK.
         """
@@ -253,7 +253,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyState")
-    def key_state(self) -> Optional[str]:
+    def key_state(self) -> pulumi.Output[Optional[str]]:
         """
         The status of CMK. Defaults to Enabled.
         """
@@ -261,7 +261,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyUsage")
-    def key_usage(self) -> Optional[str]:
+    def key_usage(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
         """
@@ -269,7 +269,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastRotationDate")
-    def last_rotation_date(self) -> str:
+    def last_rotation_date(self) -> pulumi.Output[str]:
         """
         The date and time the last rotation was performed. The time is displayed in UTC.
         """
@@ -277,7 +277,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="materialExpireTime")
-    def material_expire_time(self) -> str:
+    def material_expire_time(self) -> pulumi.Output[str]:
         """
         The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
         """
@@ -285,7 +285,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextRotationDate")
-    def next_rotation_date(self) -> str:
+    def next_rotation_date(self) -> pulumi.Output[str]:
         """
         The time the next rotation is scheduled for execution.
         """
@@ -293,7 +293,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def origin(self) -> Optional[str]:
+    def origin(self) -> pulumi.Output[Optional[str]]:
         """
         The source of the key material for the CMK. Defaults to "Aliyun_KMS".
         """
@@ -301,7 +301,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pendingWindowInDays")
-    def pending_window_in_days(self) -> Optional[float]:
+    def pending_window_in_days(self) -> pulumi.Output[Optional[float]]:
         """
         Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
         """
@@ -309,7 +309,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="primaryKeyVersion")
-    def primary_key_version(self) -> str:
+    def primary_key_version(self) -> pulumi.Output[str]:
         """
         The ID of the current primary key version of the symmetric CMK.
         """
@@ -317,7 +317,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="protectionLevel")
-    def protection_level(self) -> Optional[str]:
+    def protection_level(self) -> pulumi.Output[Optional[str]]:
         """
         The protection level of the CMK. Defaults to "SOFTWARE".
         """
@@ -325,7 +325,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rotationInterval")
-    def rotation_interval(self) -> Optional[str]:
+    def rotation_interval(self) -> pulumi.Output[Optional[str]]:
         """
         The period of automatic key rotation. Unit: seconds.
         """

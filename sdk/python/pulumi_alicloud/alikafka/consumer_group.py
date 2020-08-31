@@ -13,7 +13,7 @@ __all__ = ['ConsumerGroup']
 
 class ConsumerGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  consumer_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,7 @@ class ConsumerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="consumerId")
-    def consumer_id(self) -> str:
+    def consumer_id(self) -> pulumi.Output[str]:
         """
         ID of the consumer group. The length cannot exceed 64 characters.
         """
@@ -132,7 +132,7 @@ class ConsumerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         ID of the ALIKAFKA Instance that owns the groups.
         """
@@ -140,7 +140,7 @@ class ConsumerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """

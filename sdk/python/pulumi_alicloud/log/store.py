@@ -15,7 +15,7 @@ __all__ = ['Store']
 
 class Store(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  append_meta: Optional[pulumi.Input[bool]] = None,
                  auto_split: Optional[pulumi.Input[bool]] = None,
@@ -121,7 +121,7 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appendMeta")
-    def append_meta(self) -> Optional[bool]:
+    def append_meta(self) -> pulumi.Output[Optional[bool]]:
         """
         Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
         """
@@ -129,7 +129,7 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoSplit")
-    def auto_split(self) -> Optional[bool]:
+    def auto_split(self) -> pulumi.Output[Optional[bool]]:
         """
         Determines whether to automatically split a shard. Default to true.
         """
@@ -137,7 +137,7 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableWebTracking")
-    def enable_web_tracking(self) -> Optional[bool]:
+    def enable_web_tracking(self) -> pulumi.Output[Optional[bool]]:
         """
         Determines whether to enable Web Tracking. Default false.
         """
@@ -145,7 +145,7 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSplitShardCount")
-    def max_split_shard_count(self) -> Optional[float]:
+    def max_split_shard_count(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         """
@@ -153,7 +153,7 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The log store, which is unique in the same project.
         """
@@ -161,7 +161,7 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project name to the log store belongs.
         """
@@ -169,7 +169,7 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> Optional[float]:
+    def retention_period(self) -> pulumi.Output[Optional[float]]:
         """
         The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
         """
@@ -177,7 +177,7 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[float]:
+    def shard_count(self) -> pulumi.Output[Optional[float]]:
         """
         The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
         """
@@ -185,7 +185,7 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def shards(self) -> List['outputs.StoreShard']:
+    def shards(self) -> pulumi.Output[List['outputs.StoreShard']]:
         return pulumi.get(self, "shards")
 
     def translate_output_property(self, prop):

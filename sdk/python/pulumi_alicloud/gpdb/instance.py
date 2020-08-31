@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -163,12 +163,12 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> str:
+    def availability_zone(self) -> pulumi.Output[str]:
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The name of DB instance. It a string of 2 to 256 characters.
         """
@@ -176,7 +176,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def engine(self) -> str:
+    def engine(self) -> pulumi.Output[str]:
         """
         Database engine: gpdb. System Default value: gpdb.
         """
@@ -184,7 +184,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> str:
+    def engine_version(self) -> pulumi.Output[str]:
         """
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
         """
@@ -192,7 +192,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> str:
+    def instance_charge_type(self) -> pulumi.Output[str]:
         """
         Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         """
@@ -200,7 +200,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> str:
+    def instance_class(self) -> pulumi.Output[str]:
         """
         Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
         """
@@ -208,7 +208,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceGroupCount")
-    def instance_group_count(self) -> str:
+    def instance_group_count(self) -> pulumi.Output[str]:
         """
         The number of groups. Valid values: [2,4,8,16,32]
         """
@@ -216,7 +216,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityIpLists")
-    def security_ip_lists(self) -> List[str]:
+    def security_ip_lists(self) -> pulumi.Output[List[str]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
@@ -224,7 +224,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -232,7 +232,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """

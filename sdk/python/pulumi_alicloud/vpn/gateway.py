@@ -13,7 +13,7 @@ __all__ = ['Gateway']
 
 class Gateway(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth: Optional[pulumi.Input[float]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -144,12 +144,12 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> float:
+    def bandwidth(self) -> pulumi.Output[float]:
         return pulumi.get(self, "bandwidth")
 
     @property
     @pulumi.getter(name="businessStatus")
-    def business_status(self) -> str:
+    def business_status(self) -> pulumi.Output[str]:
         """
         The business status of the VPN gateway.
         """
@@ -157,7 +157,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the VPN instance.
         """
@@ -165,7 +165,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableIpsec")
-    def enable_ipsec(self) -> Optional[bool]:
+    def enable_ipsec(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         """
@@ -173,7 +173,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableSsl")
-    def enable_ssl(self) -> Optional[bool]:
+    def enable_ssl(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
         """
@@ -181,7 +181,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[str]:
+    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
         Default to PostPaid.
@@ -190,7 +190,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetIp")
-    def internet_ip(self) -> str:
+    def internet_ip(self) -> pulumi.Output[str]:
         """
         The internet ip of the VPN.
         """
@@ -198,7 +198,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the VPN. Defaults to null.
         """
@@ -206,7 +206,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         """
@@ -214,7 +214,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslConnections")
-    def ssl_connections(self) -> Optional[float]:
+    def ssl_connections(self) -> pulumi.Output[Optional[float]]:
         """
         The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
         This field is ignored when enable_ssl is false.
@@ -223,7 +223,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the VPN gateway.
         """
@@ -231,7 +231,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The VPN belongs the vpc_id, the field can't be changed.
         """
@@ -239,7 +239,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The VPN belongs the vswitch_id, the field can't be changed.
         """

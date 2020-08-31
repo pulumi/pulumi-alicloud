@@ -13,7 +13,7 @@ __all__ = ['GroupMembership']
 
 class GroupMembership(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
                  user_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -113,7 +113,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> str:
+    def group_name(self) -> pulumi.Output[str]:
         """
         Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         """
@@ -121,7 +121,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userNames")
-    def user_names(self) -> List[str]:
+    def user_names(self) -> pulumi.Output[List[str]]:
         """
         Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """

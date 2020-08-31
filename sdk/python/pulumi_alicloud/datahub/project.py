@@ -13,7 +13,7 @@ __all__ = ['Project']
 
 class Project(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -100,7 +100,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def comment(self) -> Optional[str]:
+    def comment(self) -> pulumi.Output[Optional[str]]:
         """
         Comment of the datahub project. It cannot be longer than 255 characters.
         """
@@ -108,7 +108,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
         """
@@ -116,7 +116,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModifyTime")
-    def last_modify_time(self) -> str:
+    def last_modify_time(self) -> pulumi.Output[str]:
         """
         Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
         """
@@ -124,7 +124,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         """

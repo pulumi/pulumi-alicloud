@@ -13,7 +13,7 @@ __all__ = ['CommonBandwithPackageAttachment']
 
 class CommonBandwithPackageAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -82,7 +82,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
-    def bandwidth_package_id(self) -> str:
+    def bandwidth_package_id(self) -> pulumi.Output[str]:
         """
         The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         """
@@ -90,7 +90,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The instance_id of the common bandwidth package attachment, the field can't be changed.
         """

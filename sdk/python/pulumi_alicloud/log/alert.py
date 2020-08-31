@@ -15,7 +15,7 @@ __all__ = ['Alert']
 
 class Alert(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alert_description: Optional[pulumi.Input[str]] = None,
                  alert_displayname: Optional[pulumi.Input[str]] = None,
@@ -216,7 +216,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alertDescription")
-    def alert_description(self) -> Optional[str]:
+    def alert_description(self) -> pulumi.Output[Optional[str]]:
         """
         Alert description.
         """
@@ -224,7 +224,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alertDisplayname")
-    def alert_displayname(self) -> str:
+    def alert_displayname(self) -> pulumi.Output[str]:
         """
         Alert displayname.
         """
@@ -232,7 +232,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alertName")
-    def alert_name(self) -> str:
+    def alert_name(self) -> pulumi.Output[str]:
         """
         Name of logstore for configuring alarm service.
         """
@@ -240,7 +240,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> str:
+    def condition(self) -> pulumi.Output[str]:
         """
         Conditional expression, such as: count> 100.
         """
@@ -248,12 +248,12 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dashboard(self) -> str:
+    def dashboard(self) -> pulumi.Output[str]:
         return pulumi.get(self, "dashboard")
 
     @property
     @pulumi.getter(name="muteUntil")
-    def mute_until(self) -> Optional[float]:
+    def mute_until(self) -> pulumi.Output[Optional[float]]:
         """
         Timestamp, notifications before closing again.
         """
@@ -261,7 +261,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationLists")
-    def notification_lists(self) -> List['outputs.AlertNotificationList']:
+    def notification_lists(self) -> pulumi.Output[List['outputs.AlertNotificationList']]:
         """
         Alarm information notification list.
         """
@@ -269,7 +269,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notifyThreshold")
-    def notify_threshold(self) -> Optional[float]:
+    def notify_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
         """
@@ -277,7 +277,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> str:
+    def project_name(self) -> pulumi.Output[str]:
         """
         The project name.
         """
@@ -285,7 +285,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="queryLists")
-    def query_lists(self) -> List['outputs.AlertQueryList']:
+    def query_lists(self) -> pulumi.Output[List['outputs.AlertQueryList']]:
         """
         Multiple conditions for configured alarm query.
         """
@@ -293,7 +293,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduleInterval")
-    def schedule_interval(self) -> Optional[str]:
+    def schedule_interval(self) -> pulumi.Output[Optional[str]]:
         """
         Execution interval. 60 seconds minimum, such as 60s, 1h.
         """
@@ -301,7 +301,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduleType")
-    def schedule_type(self) -> Optional[str]:
+    def schedule_type(self) -> pulumi.Output[Optional[str]]:
         """
         Default FixedRate. No need to configure this parameter.
         """
@@ -309,7 +309,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def throttling(self) -> Optional[str]:
+    def throttling(self) -> pulumi.Output[Optional[str]]:
         """
         Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
         """

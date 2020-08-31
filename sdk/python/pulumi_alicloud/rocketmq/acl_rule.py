@@ -13,7 +13,7 @@ __all__ = ['AclRule']
 
 class AclRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -149,7 +149,7 @@ class AclRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclId")
-    def acl_id(self) -> str:
+    def acl_id(self) -> pulumi.Output[str]:
         """
         The ID of the ACL.
         """
@@ -157,7 +157,7 @@ class AclRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the ACL rule. It must be 1 to 512 characters in length.
         """
@@ -165,7 +165,7 @@ class AclRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destCidr")
-    def dest_cidr(self) -> str:
+    def dest_cidr(self) -> pulumi.Output[str]:
         """
         The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
         """
@@ -173,7 +173,7 @@ class AclRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destPortRange")
-    def dest_port_range(self) -> str:
+    def dest_port_range(self) -> pulumi.Output[str]:
         """
         The range of the destination port. Valid value: 80/80.
         """
@@ -181,7 +181,7 @@ class AclRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def direction(self) -> str:
+    def direction(self) -> pulumi.Output[str]:
         """
         The direction of the ACL rule. Valid values: in|out.
         """
@@ -189,7 +189,7 @@ class AclRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> str:
+    def ip_protocol(self) -> pulumi.Output[str]:
         """
         The protocol used by the ACL rule. The value is not case sensitive.
         """
@@ -197,7 +197,7 @@ class AclRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policy(self) -> str:
+    def policy(self) -> pulumi.Output[str]:
         """
         The policy used by the ACL rule. Valid values: accept|drop.
         """
@@ -205,7 +205,7 @@ class AclRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         The priority of the ACL rule. Value range: 1 to 100.
         """
@@ -213,7 +213,7 @@ class AclRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceCidr")
-    def source_cidr(self) -> str:
+    def source_cidr(self) -> pulumi.Output[str]:
         """
         The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
         """
@@ -221,7 +221,7 @@ class AclRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourcePortRange")
-    def source_port_range(self) -> str:
+    def source_port_range(self) -> pulumi.Output[str]:
         """
         The range of the source port. Valid value: 80/80.
         """

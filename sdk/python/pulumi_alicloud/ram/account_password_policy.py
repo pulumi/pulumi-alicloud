@@ -13,7 +13,7 @@ __all__ = ['AccountPasswordPolicy']
 
 class AccountPasswordPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  hard_expiry: Optional[pulumi.Input[bool]] = None,
                  max_login_attempts: Optional[pulumi.Input[float]] = None,
@@ -120,7 +120,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hardExpiry")
-    def hard_expiry(self) -> Optional[bool]:
+    def hard_expiry(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies if a password can expire in a hard way. Default to false.
         """
@@ -128,7 +128,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxLoginAttempts")
-    def max_login_attempts(self) -> Optional[float]:
+    def max_login_attempts(self) -> pulumi.Output[Optional[float]]:
         """
         Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
         """
@@ -136,7 +136,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxPasswordAge")
-    def max_password_age(self) -> Optional[float]:
+    def max_password_age(self) -> pulumi.Output[Optional[float]]:
         """
         The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
         """
@@ -144,7 +144,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minimumPasswordLength")
-    def minimum_password_length(self) -> Optional[float]:
+    def minimum_password_length(self) -> pulumi.Output[Optional[float]]:
         """
         Minimal required length of password for a user. Valid value range: [8-32]. Default to 12.
         """
@@ -152,7 +152,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="passwordReusePrevention")
-    def password_reuse_prevention(self) -> Optional[float]:
+    def password_reuse_prevention(self) -> pulumi.Output[Optional[float]]:
         """
         User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
         """
@@ -160,7 +160,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requireLowercaseCharacters")
-    def require_lowercase_characters(self) -> Optional[bool]:
+    def require_lowercase_characters(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
         """
@@ -168,7 +168,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requireNumbers")
-    def require_numbers(self) -> Optional[bool]:
+    def require_numbers(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies if the occurrence of a number in the password is mandatory. Default to true.
         """
@@ -176,7 +176,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requireSymbols")
-    def require_symbols(self) -> Optional[bool]:
+    def require_symbols(self) -> pulumi.Output[Optional[bool]]:
         """
         (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         """
@@ -184,7 +184,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requireUppercaseCharacters")
-    def require_uppercase_characters(self) -> Optional[bool]:
+    def require_uppercase_characters(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
         """

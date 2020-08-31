@@ -13,7 +13,7 @@ __all__ = ['BucketObject']
 
 class BucketObject(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[str]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
@@ -188,7 +188,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acl(self) -> Optional[str]:
+    def acl(self) -> pulumi.Output[Optional[str]]:
         """
         The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
         """
@@ -196,7 +196,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bucket(self) -> str:
+    def bucket(self) -> pulumi.Output[str]:
         """
         The name of the bucket to put the file in.
         """
@@ -204,7 +204,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cacheControl")
-    def cache_control(self) -> Optional[str]:
+    def cache_control(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         """
@@ -212,7 +212,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def content(self) -> Optional[str]:
+    def content(self) -> pulumi.Output[Optional[str]]:
         """
         The literal content being uploaded to the bucket.
         """
@@ -220,7 +220,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentDisposition")
-    def content_disposition(self) -> Optional[str]:
+    def content_disposition(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         """
@@ -228,7 +228,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[str]:
+    def content_encoding(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         """
@@ -236,7 +236,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentLength")
-    def content_length(self) -> str:
+    def content_length(self) -> pulumi.Output[str]:
         """
         the content length of request.
         """
@@ -244,7 +244,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentMd5")
-    def content_md5(self) -> Optional[str]:
+    def content_md5(self) -> pulumi.Output[Optional[str]]:
         """
         The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
         """
@@ -252,7 +252,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> str:
+    def content_type(self) -> pulumi.Output[str]:
         """
         A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         """
@@ -260,7 +260,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         the ETag generated for the object (an MD5 sum of the object content).
         """
@@ -268,7 +268,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def expires(self) -> Optional[str]:
+    def expires(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         """
@@ -276,7 +276,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         The name of the object once it is in the bucket.
         """
@@ -284,7 +284,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[str]:
+    def kms_key_id(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
         """
@@ -292,7 +292,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverSideEncryption")
-    def server_side_encryption(self) -> Optional[str]:
+    def server_side_encryption(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
         """
@@ -300,7 +300,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def source(self) -> Optional[str]:
+    def source(self) -> pulumi.Output[Optional[str]]:
         """
         The path to the source file being uploaded to the bucket.
         """
@@ -308,7 +308,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> str:
+    def version_id(self) -> pulumi.Output[str]:
         """
         A unique version ID value for the object, if bucket versioning is enabled.
         """

@@ -15,7 +15,7 @@ __all__ = ['Image']
 
 class Image(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  architecture: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -166,7 +166,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def architecture(self) -> Optional[str]:
+    def architecture(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
         """
@@ -174,7 +174,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         """
@@ -182,7 +182,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskDeviceMappings")
-    def disk_device_mappings(self) -> List['outputs.ImageDiskDeviceMapping']:
+    def disk_device_mappings(self) -> pulumi.Output[List['outputs.ImageDiskDeviceMapping']]:
         """
         Description of the system with disks and snapshots under the image.
         """
@@ -190,7 +190,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[bool]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether to force delete the custom image, Default is `false`. 
         - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
@@ -200,7 +200,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> str:
+    def image_name(self) -> pulumi.Output[str]:
         """
         The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         """
@@ -208,7 +208,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[str]:
+    def instance_id(self) -> pulumi.Output[Optional[str]]:
         """
         The instance ID.
         """
@@ -216,12 +216,12 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def platform(self) -> Optional[str]:
+    def platform(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
         """
@@ -229,7 +229,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the enterprise resource group to which a custom image belongs
         """
@@ -237,7 +237,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[str]:
+    def snapshot_id(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies a snapshot that is used to create a combined custom image.
         """
@@ -245,7 +245,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         The tag value of an image. The value of N ranges from 1 to 20.
         """

@@ -13,7 +13,7 @@ __all__ = ['Record']
 
 class Record(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  host_record: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostRecord")
-    def host_record(self) -> str:
+    def host_record(self) -> pulumi.Output[str]:
         """
         Host record for the domain record. This host_record can have at most 253 characters, and each part split with "." can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as "-",".","*","@",  and must not begin or end with "-".
         """
@@ -129,12 +129,12 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def locked(self) -> bool:
+    def locked(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "locked")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
@@ -142,7 +142,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         The priority of domain record. Valid values are `[1-10]`. When the `type` is `MX`, this parameter is required.
         """
@@ -150,7 +150,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def routing(self) -> Optional[str]:
+    def routing(self) -> pulumi.Output[Optional[str]]:
         """
         The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
         """
@@ -158,7 +158,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The record status. `Enable` or `Disable`.
         """
@@ -166,7 +166,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[float]:
+    def ttl(self) -> pulumi.Output[Optional[float]]:
         """
         The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
         """
@@ -174,7 +174,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of domain record. Valid values are `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
         """
@@ -182,7 +182,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
         """

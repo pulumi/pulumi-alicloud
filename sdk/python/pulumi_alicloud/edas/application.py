@@ -13,7 +13,7 @@ __all__ = ['Application']
 
 class Application(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_name: Optional[pulumi.Input[str]] = None,
                  build_pack_id: Optional[pulumi.Input[float]] = None,
@@ -141,7 +141,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationName")
-    def application_name(self) -> str:
+    def application_name(self) -> pulumi.Output[str]:
         """
         Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
         """
@@ -149,7 +149,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="buildPackId")
-    def build_pack_id(self) -> Optional[float]:
+    def build_pack_id(self) -> pulumi.Output[Optional[float]]:
         """
         The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
         """
@@ -157,7 +157,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
         """
@@ -165,7 +165,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def descriotion(self) -> Optional[str]:
+    def descriotion(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the application that you want to create.
         """
@@ -173,7 +173,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ecuInfos")
-    def ecu_infos(self) -> Optional[List[str]]:
+    def ecu_infos(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         """
@@ -181,7 +181,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[str]:
+    def group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
         """
@@ -189,7 +189,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckUrl")
-    def health_check_url(self) -> Optional[str]:
+    def health_check_url(self) -> pulumi.Output[Optional[str]]:
         """
         The URL for health checking of the application.
         """
@@ -197,7 +197,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logicalRegionId")
-    def logical_region_id(self) -> Optional[str]:
+    def logical_region_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
         """
@@ -205,7 +205,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packageType")
-    def package_type(self) -> str:
+    def package_type(self) -> pulumi.Output[str]:
         """
         The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
         """
@@ -213,7 +213,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packageVersion")
-    def package_version(self) -> Optional[str]:
+    def package_version(self) -> pulumi.Output[Optional[str]]:
         """
         The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
         """
@@ -221,7 +221,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="warUrl")
-    def war_url(self) -> Optional[str]:
+    def war_url(self) -> pulumi.Output[Optional[str]]:
         """
         The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """

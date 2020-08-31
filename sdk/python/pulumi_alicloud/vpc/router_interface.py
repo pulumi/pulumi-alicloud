@@ -13,7 +13,7 @@ __all__ = ['RouterInterface']
 
 class RouterInterface(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  health_check_source_ip: Optional[pulumi.Input[str]] = None,
@@ -171,7 +171,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessPointId")
-    def access_point_id(self) -> str:
+    def access_point_id(self) -> pulumi.Output[str]:
         """
         It has been deprecated from version 1.11.0.
         """
@@ -179,7 +179,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
         """
@@ -187,7 +187,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckSourceIp")
-    def health_check_source_ip(self) -> Optional[str]:
+    def health_check_source_ip(self) -> pulumi.Output[Optional[str]]:
         """
         Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
         """
@@ -195,7 +195,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckTargetIp")
-    def health_check_target_ip(self) -> Optional[str]:
+    def health_check_target_ip(self) -> pulumi.Output[Optional[str]]:
         """
         Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
         """
@@ -203,7 +203,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[str]:
+    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and opposite_region are the same.
         """
@@ -211,7 +211,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
         If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
@@ -220,7 +220,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oppositeAccessPointId")
-    def opposite_access_point_id(self) -> Optional[str]:
+    def opposite_access_point_id(self) -> pulumi.Output[Optional[str]]:
         """
         It has been deprecated from version 1.11.0.
         """
@@ -228,7 +228,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oppositeInterfaceId")
-    def opposite_interface_id(self) -> str:
+    def opposite_interface_id(self) -> pulumi.Output[str]:
         """
         It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         """
@@ -236,7 +236,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oppositeInterfaceOwnerId")
-    def opposite_interface_owner_id(self) -> str:
+    def opposite_interface_owner_id(self) -> pulumi.Output[str]:
         """
         It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
         """
@@ -244,7 +244,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oppositeRegion")
-    def opposite_region(self) -> str:
+    def opposite_region(self) -> pulumi.Output[str]:
         """
         The Region of peer side.
         """
@@ -252,7 +252,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oppositeRouterId")
-    def opposite_router_id(self) -> str:
+    def opposite_router_id(self) -> pulumi.Output[str]:
         """
         It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         """
@@ -260,7 +260,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oppositeRouterType")
-    def opposite_router_type(self) -> str:
+    def opposite_router_type(self) -> pulumi.Output[str]:
         """
         It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
         """
@@ -268,7 +268,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         """
@@ -276,7 +276,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
         """
@@ -284,7 +284,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> str:
+    def router_id(self) -> pulumi.Output[str]:
         """
         The Router ID.
         """
@@ -292,7 +292,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routerType")
-    def router_type(self) -> str:
+    def router_type(self) -> pulumi.Output[str]:
         """
         Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
         """
@@ -300,7 +300,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def specification(self) -> Optional[str]:
+    def specification(self) -> pulumi.Output[Optional[str]]:
         """
         Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
         """

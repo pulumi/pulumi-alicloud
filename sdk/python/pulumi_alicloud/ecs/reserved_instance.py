@@ -13,7 +13,7 @@ __all__ = ['ReservedInstance']
 
 class ReservedInstance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_amount: Optional[pulumi.Input[float]] = None,
@@ -152,7 +152,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
         """
@@ -160,7 +160,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceAmount")
-    def instance_amount(self) -> float:
+    def instance_amount(self) -> pulumi.Output[float]:
         """
         Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         """
@@ -168,7 +168,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> str:
+    def instance_type(self) -> pulumi.Output[str]:
         """
         Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
         """
@@ -176,7 +176,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
         """
@@ -184,7 +184,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="offeringType")
-    def offering_type(self) -> Optional[str]:
+    def offering_type(self) -> pulumi.Output[Optional[str]]:
         """
         Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
         """
@@ -192,12 +192,12 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "period")
 
     @property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[str]:
+    def period_unit(self) -> pulumi.Output[Optional[str]]:
         """
         Term unit. Optional value: Year.
         """
@@ -205,7 +205,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def platform(self) -> str:
+    def platform(self) -> pulumi.Output[str]:
         """
         The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
         """
@@ -213,7 +213,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         Resource group ID.
         """
@@ -221,7 +221,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scope(self) -> Optional[str]:
+    def scope(self) -> pulumi.Output[Optional[str]]:
         """
         Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
         """
@@ -229,7 +229,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[str]:
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
         ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
         """

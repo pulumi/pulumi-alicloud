@@ -13,7 +13,7 @@ __all__ = ['AccessRule']
 
 class AccessRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[float]] = None,
@@ -128,7 +128,7 @@ class AccessRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessGroupName")
-    def access_group_name(self) -> str:
+    def access_group_name(self) -> pulumi.Output[str]:
         """
         Permission group name.
         """
@@ -136,7 +136,7 @@ class AccessRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessRuleId")
-    def access_rule_id(self) -> str:
+    def access_rule_id(self) -> pulumi.Output[str]:
         """
         The nas access rule ID.
         """
@@ -144,7 +144,7 @@ class AccessRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         Priority level. Range: 1-100. Default value: 1.
         """
@@ -152,7 +152,7 @@ class AccessRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rwAccessType")
-    def rw_access_type(self) -> Optional[str]:
+    def rw_access_type(self) -> pulumi.Output[Optional[str]]:
         """
         Read-write permission type: RDWR (default), RDONLY.
         """
@@ -160,7 +160,7 @@ class AccessRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceCidrIp")
-    def source_cidr_ip(self) -> str:
+    def source_cidr_ip(self) -> pulumi.Output[str]:
         """
         Address or address segment.
         """
@@ -168,7 +168,7 @@ class AccessRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userAccessType")
-    def user_access_type(self) -> Optional[str]:
+    def user_access_type(self) -> pulumi.Output[Optional[str]]:
         """
         User permission type: no_squash (default), root_squash, all_squash.
         """

@@ -17,7 +17,7 @@ class DdosCooInstance(pulumi.CustomResource):
     warnings.warn("alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  base_bandwidth: Optional[pulumi.Input[str]] = None,
@@ -147,7 +147,7 @@ class DdosCooInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> str:
+    def bandwidth(self) -> pulumi.Output[str]:
         """
         Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
         """
@@ -155,7 +155,7 @@ class DdosCooInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="baseBandwidth")
-    def base_bandwidth(self) -> str:
+    def base_bandwidth(self) -> pulumi.Output[str]:
         """
         Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
         """
@@ -163,7 +163,7 @@ class DdosCooInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainCount")
-    def domain_count(self) -> str:
+    def domain_count(self) -> pulumi.Output[str]:
         """
         Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         """
@@ -171,7 +171,7 @@ class DdosCooInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the instance. This name can have a string of 1 to 63 characters.
         """
@@ -179,7 +179,7 @@ class DdosCooInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         """
@@ -187,7 +187,7 @@ class DdosCooInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portCount")
-    def port_count(self) -> str:
+    def port_count(self) -> pulumi.Output[str]:
         """
         Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         """
@@ -195,7 +195,7 @@ class DdosCooInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceBandwidth")
-    def service_bandwidth(self) -> str:
+    def service_bandwidth(self) -> pulumi.Output[str]:
         """
         Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """

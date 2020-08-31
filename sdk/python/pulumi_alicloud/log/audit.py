@@ -13,7 +13,7 @@ __all__ = ['Audit']
 
 class Audit(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aliuid: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class Audit(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def aliuid(self) -> str:
+    def aliuid(self) -> pulumi.Output[str]:
         """
         Aliuid value of your account.
         """
@@ -146,7 +146,7 @@ class Audit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         Name of SLS log audit.
         """
@@ -154,7 +154,7 @@ class Audit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multiAccounts")
-    def multi_accounts(self) -> Optional[List[str]]:
+    def multi_accounts(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Multi-account configuration, please fill in multiple aliuid.
         """
@@ -162,7 +162,7 @@ class Audit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="variableMap")
-    def variable_map(self) -> Optional[Mapping[str, Any]]:
+    def variable_map(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Log audit detailed configuration.
         """

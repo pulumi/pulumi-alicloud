@@ -15,7 +15,7 @@ __all__ = ['Connection']
 
 class Connection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer_gateway_id: Optional[pulumi.Input[str]] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
@@ -128,7 +128,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customerGatewayId")
-    def customer_gateway_id(self) -> str:
+    def customer_gateway_id(self) -> pulumi.Output[str]:
         """
         The ID of the customer gateway.
         """
@@ -136,7 +136,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectImmediately")
-    def effect_immediately(self) -> Optional[bool]:
+    def effect_immediately(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
         """
@@ -144,7 +144,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ikeConfigs")
-    def ike_configs(self) -> List['outputs.ConnectionIkeConfig']:
+    def ike_configs(self) -> pulumi.Output[List['outputs.ConnectionIkeConfig']]:
         """
         The configurations of phase-one negotiation.
         """
@@ -152,7 +152,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipsecConfigs")
-    def ipsec_configs(self) -> List['outputs.ConnectionIpsecConfig']:
+    def ipsec_configs(self) -> pulumi.Output[List['outputs.ConnectionIpsecConfig']]:
         """
         The configurations of phase-two negotiation.
         """
@@ -160,7 +160,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localSubnets")
-    def local_subnets(self) -> List[str]:
+    def local_subnets(self) -> pulumi.Output[List[str]]:
         """
         The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         """
@@ -168,7 +168,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the IPsec connection.
         """
@@ -176,7 +176,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="remoteSubnets")
-    def remote_subnets(self) -> List[str]:
+    def remote_subnets(self) -> pulumi.Output[List[str]]:
         """
         The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         """
@@ -184,7 +184,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of VPN connection.
         """
@@ -192,7 +192,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpnGatewayId")
-    def vpn_gateway_id(self) -> str:
+    def vpn_gateway_id(self) -> pulumi.Output[str]:
         """
         The ID of the VPN gateway.
         """

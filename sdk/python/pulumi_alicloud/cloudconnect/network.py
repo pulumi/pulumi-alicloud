@@ -13,7 +13,7 @@ __all__ = ['Network']
 
 class Network(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> Optional[str]:
+    def cidr_block(self) -> pulumi.Output[Optional[str]]:
         """
         The CidrBlock of the CCN instance. Defaults to null.
         """
@@ -121,7 +121,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
         """
@@ -129,7 +129,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> bool:
+    def is_default(self) -> pulumi.Output[bool]:
         """
         Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
         """
@@ -137,7 +137,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
         """

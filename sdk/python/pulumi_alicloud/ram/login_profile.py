@@ -13,7 +13,7 @@ __all__ = ['LoginProfile']
 
 class LoginProfile(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  mfa_bind_required: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class LoginProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mfaBindRequired")
-    def mfa_bind_required(self) -> Optional[bool]:
+    def mfa_bind_required(self) -> pulumi.Output[Optional[bool]]:
         """
         This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
         """
@@ -121,7 +121,7 @@ class LoginProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         Password of the RAM user.
         """
@@ -129,7 +129,7 @@ class LoginProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="passwordResetRequired")
-    def password_reset_required(self) -> Optional[bool]:
+    def password_reset_required(self) -> pulumi.Output[Optional[bool]]:
         """
         This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
         """
@@ -137,7 +137,7 @@ class LoginProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userName")
-    def user_name(self) -> str:
+    def user_name(self) -> pulumi.Output[str]:
         """
         Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """

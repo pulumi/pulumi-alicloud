@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accessed_by: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessedBy")
-    def accessed_by(self) -> Optional[str]:
+    def accessed_by(self) -> pulumi.Output[Optional[str]]:
         """
         The network limitation of accessing instance. Valid values:
         """
@@ -122,7 +122,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the instance. Currently, it does not support modifying.
         """
@@ -130,7 +130,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[str]:
+    def instance_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
         """
@@ -138,7 +138,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the instance.
         """
@@ -146,7 +146,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the instance.
         """

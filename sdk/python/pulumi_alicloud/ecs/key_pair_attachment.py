@@ -13,7 +13,7 @@ __all__ = ['KeyPairAttachment']
 
 class KeyPairAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -138,7 +138,7 @@ class KeyPairAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[bool]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
         Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         """
@@ -146,7 +146,7 @@ class KeyPairAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> List[str]:
+    def instance_ids(self) -> pulumi.Output[List[str]]:
         """
         The list of ECS instance's IDs.
         """
@@ -154,7 +154,7 @@ class KeyPairAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> str:
+    def key_name(self) -> pulumi.Output[str]:
         """
         The name of key pair used to bind.
         """

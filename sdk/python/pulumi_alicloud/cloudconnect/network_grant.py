@@ -13,7 +13,7 @@ __all__ = ['NetworkGrant']
 
 class NetworkGrant(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ccn_id: Optional[pulumi.Input[str]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,7 @@ class NetworkGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ccnId")
-    def ccn_id(self) -> str:
+    def ccn_id(self) -> pulumi.Output[str]:
         """
         The ID of the CCN instance.
         """
@@ -132,7 +132,7 @@ class NetworkGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> str:
+    def cen_id(self) -> pulumi.Output[str]:
         """
         The ID of the CEN instance.
         """
@@ -140,7 +140,7 @@ class NetworkGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cenUid")
-    def cen_uid(self) -> str:
+    def cen_uid(self) -> pulumi.Output[str]:
         """
         The ID of the account to which the CEN instance belongs.
         """

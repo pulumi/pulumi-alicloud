@@ -15,7 +15,7 @@ __all__ = ['Acl']
 
 class Acl(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entry_lists: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
@@ -154,7 +154,7 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entryLists")
-    def entry_lists(self) -> Optional[List['outputs.AclEntryList']]:
+    def entry_lists(self) -> pulumi.Output[Optional[List['outputs.AclEntryList']]]:
         """
         A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
         """
@@ -162,7 +162,7 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[str]:
+    def ip_version(self) -> pulumi.Output[Optional[str]]:
         """
         The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
         """
@@ -170,7 +170,7 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the access control list.
         """
@@ -178,7 +178,7 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         Resource group ID.
         """
@@ -186,7 +186,7 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """

@@ -13,7 +13,7 @@ __all__ = ['EipAssociation']
 
 class EipAssociation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocation_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class EipAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allocationId")
-    def allocation_id(self) -> str:
+    def allocation_id(self) -> pulumi.Output[str]:
         """
         The allocation EIP ID.
         """
@@ -102,7 +102,7 @@ class EipAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the ECS or SLB instance or Nat Gateway.
         """
@@ -110,7 +110,7 @@ class EipAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> str:
+    def instance_type(self) -> pulumi.Output[str]:
         """
         The type of cloud product that the eip instance to bind.
         """
@@ -118,7 +118,7 @@ class EipAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIpAddress")
-    def private_ip_address(self) -> str:
+    def private_ip_address(self) -> pulumi.Output[str]:
         """
         The private IP address in the network segment of the vswitch which has been assigned.
         """

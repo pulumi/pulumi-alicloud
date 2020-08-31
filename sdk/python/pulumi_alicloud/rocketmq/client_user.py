@@ -13,7 +13,7 @@ __all__ = ['ClientUser']
 
 class ClientUser(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth: Optional[pulumi.Input[float]] = None,
                  client_ip: Optional[pulumi.Input[str]] = None,
@@ -140,7 +140,7 @@ class ClientUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> float:
+    def bandwidth(self) -> pulumi.Output[float]:
         """
         The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
         """
@@ -148,7 +148,7 @@ class ClientUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientIp")
-    def client_ip(self) -> Optional[str]:
+    def client_ip(self) -> pulumi.Output[Optional[str]]:
         """
         The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
         """
@@ -156,17 +156,17 @@ class ClientUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[str]:
+    def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "kms_encrypted_password")
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[Mapping[str, Any]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         return pulumi.get(self, "kms_encryption_context")
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         """
@@ -174,7 +174,7 @@ class ClientUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sagId")
-    def sag_id(self) -> str:
+    def sag_id(self) -> pulumi.Output[str]:
         """
         The ID of the SAG instance created for the SAG APP.
         """
@@ -182,7 +182,7 @@ class ClientUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userMail")
-    def user_mail(self) -> str:
+    def user_mail(self) -> pulumi.Output[str]:
         """
         The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
         """
@@ -190,7 +190,7 @@ class ClientUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userName")
-    def user_name(self) -> str:
+    def user_name(self) -> pulumi.Output[str]:
         """
         The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         """

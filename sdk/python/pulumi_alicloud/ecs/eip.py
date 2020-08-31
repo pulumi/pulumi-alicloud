@@ -13,7 +13,7 @@ __all__ = ['Eip']
 
 class Eip(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth: Optional[pulumi.Input[float]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -130,7 +130,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> Optional[float]:
+    def bandwidth(self) -> pulumi.Output[Optional[float]]:
         """
         Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         """
@@ -138,7 +138,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         """
@@ -146,7 +146,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[str]:
+    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
@@ -154,7 +154,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[str]:
+    def internet_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
         """
@@ -162,7 +162,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> str:
+    def ip_address(self) -> pulumi.Output[str]:
         """
         The elastic ip address
         """
@@ -170,7 +170,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def isp(self) -> str:
+    def isp(self) -> pulumi.Output[str]:
         """
         The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         """
@@ -178,7 +178,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         """
@@ -186,7 +186,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
         Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
@@ -195,7 +195,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> str:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The Id of resource group which the eip belongs.
         """
@@ -203,7 +203,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The EIP current status.
         """
@@ -211,7 +211,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """

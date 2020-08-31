@@ -13,7 +13,7 @@ __all__ = ['LogTailAttachment']
 
 class LogTailAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  logtail_config_name: Optional[pulumi.Input[str]] = None,
                  machine_group_name: Optional[pulumi.Input[str]] = None,
@@ -145,7 +145,7 @@ class LogTailAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logtailConfigName")
-    def logtail_config_name(self) -> str:
+    def logtail_config_name(self) -> pulumi.Output[str]:
         """
         The Logtail configuration name, which is unique in the same project.
         """
@@ -153,7 +153,7 @@ class LogTailAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="machineGroupName")
-    def machine_group_name(self) -> str:
+    def machine_group_name(self) -> pulumi.Output[str]:
         """
         The machine group name, which is unique in the same project.
         """
@@ -161,7 +161,7 @@ class LogTailAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project name to the log store belongs.
         """

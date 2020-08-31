@@ -13,7 +13,7 @@ __all__ = ['User']
 
 class User(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comments: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -102,7 +102,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def comments(self) -> Optional[str]:
+    def comments(self) -> pulumi.Output[Optional[str]]:
         """
         Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
         """
@@ -110,7 +110,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
         """
@@ -118,7 +118,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[str]:
+    def email(self) -> pulumi.Output[Optional[str]]:
         """
         Email of the RAM user.
         """
@@ -126,7 +126,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[bool]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
         This parameter is used for resource destroy. Default value is `false`.
         """
@@ -134,7 +134,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mobile(self) -> Optional[str]:
+    def mobile(self) -> pulumi.Output[Optional[str]]:
         """
         Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         """
@@ -142,7 +142,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """

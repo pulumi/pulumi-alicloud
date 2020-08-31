@@ -13,7 +13,7 @@ __all__ = ['RolePolicyAttachment']
 
 class RolePolicyAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy_name: Optional[pulumi.Input[str]] = None,
                  policy_type: Optional[pulumi.Input[str]] = None,
@@ -145,7 +145,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> str:
+    def policy_name(self) -> pulumi.Output[str]:
         """
         Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         """
@@ -153,7 +153,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> str:
+    def policy_type(self) -> pulumi.Output[str]:
         """
         Type of the RAM policy. It must be `Custom` or `System`.
         """
@@ -161,7 +161,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> str:
+    def role_name(self) -> pulumi.Output[str]:
         """
         Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """

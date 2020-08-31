@@ -13,7 +13,7 @@ __all__ = ['Folder']
 
 class Folder(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  folder_name: Optional[pulumi.Input[str]] = None,
                  parent_folder_id: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="folderName")
-    def folder_name(self) -> str:
+    def folder_name(self) -> pulumi.Output[str]:
         """
         The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
         """
@@ -105,7 +105,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parentFolderId")
-    def parent_folder_id(self) -> str:
+    def parent_folder_id(self) -> pulumi.Output[str]:
         """
         The ID of the parent folder. If not set, the system default value will be used.
         """

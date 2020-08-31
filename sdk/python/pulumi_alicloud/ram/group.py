@@ -13,7 +13,7 @@ __all__ = ['Group']
 
 class Group(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comments: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -84,7 +84,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def comments(self) -> Optional[str]:
+    def comments(self) -> pulumi.Output[Optional[str]]:
         """
         Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
         """
@@ -92,7 +92,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[bool]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
         This parameter is used for resource destroy. Default value is `false`.
         """
@@ -100,7 +100,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         """

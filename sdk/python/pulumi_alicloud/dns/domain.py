@@ -17,7 +17,7 @@ class Domain(pulumi.CustomResource):
     warnings.warn("This resource has been deprecated in favour of DnsDomain", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> List[str]:
+    def dns_servers(self) -> pulumi.Output[List[str]]:
         """
         A list of the dns server name.
         """
@@ -105,7 +105,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> str:
+    def domain_id(self) -> pulumi.Output[str]:
         """
         The domain ID.
         """
@@ -113,7 +113,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[str]:
+    def group_id(self) -> pulumi.Output[Optional[str]]:
         """
         Id of the group in which the domain will add. If not supplied, then use default group.
         """
@@ -121,7 +121,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
@@ -129,7 +129,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Id of resource group which the dns belongs.
         """

@@ -13,7 +13,7 @@ __all__ = ['SlbAttachment']
 
 class SlbAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  listener_port: Optional[pulumi.Input[float]] = None,
@@ -138,7 +138,7 @@ class SlbAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appId")
-    def app_id(self) -> str:
+    def app_id(self) -> pulumi.Output[str]:
         """
         The ID of the applicaton to which you want to bind an SLB instance.
         """
@@ -146,7 +146,7 @@ class SlbAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="listenerPort")
-    def listener_port(self) -> Optional[float]:
+    def listener_port(self) -> pulumi.Output[Optional[float]]:
         """
         The listening port for the bound SLB instance.
         """
@@ -154,7 +154,7 @@ class SlbAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slbId")
-    def slb_id(self) -> str:
+    def slb_id(self) -> pulumi.Output[str]:
         """
         The ID of the SLB instance that is going to be bound.
         """
@@ -162,7 +162,7 @@ class SlbAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slbIp")
-    def slb_ip(self) -> str:
+    def slb_ip(self) -> pulumi.Output[str]:
         """
         The IP address that is allocated to the bound SLB instance.
         """
@@ -170,7 +170,7 @@ class SlbAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slbStatus")
-    def slb_status(self) -> str:
+    def slb_status(self) -> pulumi.Output[str]:
         """
         Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
         """
@@ -178,7 +178,7 @@ class SlbAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of the bound SLB instance.
         """
@@ -186,7 +186,7 @@ class SlbAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vserverGroupId")
-    def vserver_group_id(self) -> Optional[str]:
+    def vserver_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the virtual server (VServer) group associated with the intranet SLB instance.
         """
@@ -194,7 +194,7 @@ class SlbAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         VPC related vswitch ID.
         """

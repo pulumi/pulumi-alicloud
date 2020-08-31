@@ -13,7 +13,7 @@ __all__ = ['Policy']
 
 class Policy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -131,7 +131,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createDate")
-    def create_date(self) -> str:
+    def create_date(self) -> pulumi.Output[str]:
         """
         The time when the policy was created.
         """
@@ -139,7 +139,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultVersion")
-    def default_version(self) -> str:
+    def default_version(self) -> pulumi.Output[str]:
         """
         The version of the policy. Default to v1.
         """
@@ -147,7 +147,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the policy. The description must be 1 to 1,024 characters in length.
         """
@@ -155,7 +155,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyDocument")
-    def policy_document(self) -> str:
+    def policy_document(self) -> pulumi.Output[str]:
         """
         The content of the policy. The content must be 1 to 2,048 characters in length.
         """
@@ -163,7 +163,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> str:
+    def policy_name(self) -> pulumi.Output[str]:
         """
         The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
@@ -171,7 +171,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> str:
+    def policy_type(self) -> pulumi.Output[str]:
         """
         The type of the policy. Valid values: `Custom`, `System`.
         """

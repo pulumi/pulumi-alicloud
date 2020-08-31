@@ -13,7 +13,7 @@ __all__ = ['Account']
 
 class Account(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         """
@@ -135,7 +135,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> Optional[str]:
+    def folder_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the parent folder.
         """
@@ -143,7 +143,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="joinMethod")
-    def join_method(self) -> str:
+    def join_method(self) -> pulumi.Output[str]:
         """
         Ways for members to join the resource directory. Valid values: `invited`, `created`.
         """
@@ -151,7 +151,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="joinTime")
-    def join_time(self) -> str:
+    def join_time(self) -> pulumi.Output[str]:
         """
         The time when the member joined the resource directory.
         """
@@ -159,7 +159,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="modifyTime")
-    def modify_time(self) -> str:
+    def modify_time(self) -> pulumi.Output[str]:
         """
         The modification time of the invitation.
         """
@@ -167,7 +167,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="payerAccountId")
-    def payer_account_id(self) -> Optional[str]:
+    def payer_account_id(self) -> pulumi.Output[Optional[str]]:
         """
         Settlement account ID. If the value is empty, the current account will be used for settlement.
         """
@@ -175,7 +175,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceDirectoryId")
-    def resource_directory_id(self) -> str:
+    def resource_directory_id(self) -> pulumi.Output[str]:
         """
         Resource directory ID.
         """
@@ -183,7 +183,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
         """
@@ -191,7 +191,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         Member type. The value of `ResourceAccount` indicates the resource account.
         """

@@ -13,7 +13,7 @@ __all__ = ['BastionHostInstance']
 
 class BastionHostInstance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class BastionHostInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         Description of the instance. This name can have a string of 1 to 63 characters.
         """
@@ -129,12 +129,12 @@ class BastionHostInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="licenseCode")
-    def license_code(self) -> str:
+    def license_code(self) -> pulumi.Output[str]:
         return pulumi.get(self, "license_code")
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> pulumi.Output[Optional[float]]:
         """
         Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         """
@@ -142,7 +142,7 @@ class BastionHostInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         """
@@ -150,7 +150,7 @@ class BastionHostInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> List[str]:
+    def security_group_ids(self) -> pulumi.Output[List[str]]:
         """
         security group IDs configured to bastionhost
         """
@@ -158,7 +158,7 @@ class BastionHostInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -166,7 +166,7 @@ class BastionHostInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         vSwtich ID configured to bastionhost
         """
