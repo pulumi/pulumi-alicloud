@@ -17,30 +17,64 @@ import (
 // Basic Usage
 //
 // - BLob Topic
-// resource "alicloud_datahub_topic" "example" {
-//   name         = "tf_datahub_topic"
-//   project_name = "tf_datahub_project"
-//   record_type  = "BLOB"
-//   shard_count  = 3
-//   life_cycle   = 7
-//   comment      = "created by terraform"
-// }
 //
-// resource "alicloud_datahub_topic" "example" {
-//   name         = "tf_datahub_topic"
-//   project_name = "tf_datahub_project"
-//   record_type  = "TUPLE"
-//   record_schema = {
-//     bigint_field    = "BIGINT"
-//     timestamp_field = "TIMESTAMP"
-//     string_field    = "STRING"
-//     double_field    = "DOUBLE"
-//     boolean_field   = "BOOLEAN"
-//   }
-//   shard_count = 3
-//   life_cycle  = 7
-//   comment     = "created by terraform"
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/datahub"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
+// 			Comment:     pulumi.String("created by terraform"),
+// 			LifeCycle:   pulumi.Int(7),
+// 			ProjectName: pulumi.String("tf_datahub_project"),
+// 			RecordType:  pulumi.String("BLOB"),
+// 			ShardCount:  pulumi.Int(3),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
 // }
+// ```
+// - Tuple Topic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/datahub"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
+// 			Comment:     pulumi.String("created by terraform"),
+// 			LifeCycle:   pulumi.Int(7),
+// 			ProjectName: pulumi.String("tf_datahub_project"),
+// 			RecordSchema: pulumi.StringMap{
+// 				"bigint_field":    pulumi.String("BIGINT"),
+// 				"boolean_field":   pulumi.String("BOOLEAN"),
+// 				"double_field":    pulumi.String("DOUBLE"),
+// 				"string_field":    pulumi.String("STRING"),
+// 				"timestamp_field": pulumi.String("TIMESTAMP"),
+// 			},
+// 			RecordType: pulumi.String("TUPLE"),
+// 			ShardCount: pulumi.Int(3),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Topic struct {
 	pulumi.CustomResourceState
 

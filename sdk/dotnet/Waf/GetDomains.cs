@@ -48,6 +48,12 @@ namespace Pulumi.AliCloud.Waf
 
     public sealed class GetDomainsArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to false and only output `id`, `domain_name`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -66,8 +72,20 @@ namespace Pulumi.AliCloud.Waf
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// A regex string to filter results by domain name.
+        /// </summary>
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group to which the queried domain belongs in Resource Management.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public string? ResourceGroupId { get; set; }
 
         public GetDomainsArgs()
         {
@@ -82,20 +100,32 @@ namespace Pulumi.AliCloud.Waf
         /// A list of Domains. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Optional) A list of WAF domain names. Each item is domain name.
+        /// A list of WAF domain self ID, value as `domain_name`.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string InstanceId;
+        public readonly string? NameRegex;
+        /// <summary>
+        /// A list of WAF domain names.
+        /// </summary>
+        public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the resource group to which the queried domain belongs in Resource Management.
+        /// </summary>
+        public readonly string? ResourceGroupId;
 
         [OutputConstructor]
         private GetDomainsResult(
             ImmutableArray<Outputs.GetDomainsDomainResult> domains,
+
+            bool? enableDetails,
 
             string id,
 
@@ -103,13 +133,23 @@ namespace Pulumi.AliCloud.Waf
 
             string instanceId,
 
-            string? outputFile)
+            string? nameRegex,
+
+            ImmutableArray<string> names,
+
+            string? outputFile,
+
+            string? resourceGroupId)
         {
             Domains = domains;
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             InstanceId = instanceId;
+            NameRegex = nameRegex;
+            Names = names;
             OutputFile = outputFile;
+            ResourceGroupId = resourceGroupId;
         }
     }
 }

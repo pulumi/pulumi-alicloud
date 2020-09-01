@@ -28,6 +28,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Cr;
         public readonly string? Cs;
         public readonly string? Datahub;
+        public readonly string? Dcdn;
         public readonly string? Ddosbgp;
         public readonly string? Ddoscoo;
         public readonly string? Dds;
@@ -48,6 +49,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Market;
         public readonly string? Maxcompute;
         public readonly string? Mns;
+        public readonly string? Mse;
         public readonly string? Nas;
         public readonly string? Ons;
         public readonly string? Oos;
@@ -95,6 +97,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? datahub,
 
+            string? dcdn,
+
             string? ddosbgp,
 
             string? ddoscoo,
@@ -134,6 +138,8 @@ namespace Pulumi.AliCloud.Outputs
             string? maxcompute,
 
             string? mns,
+
+            string? mse,
 
             string? nas,
 
@@ -178,6 +184,7 @@ namespace Pulumi.AliCloud.Outputs
             Cr = cr;
             Cs = cs;
             Datahub = datahub;
+            Dcdn = dcdn;
             Ddosbgp = ddosbgp;
             Ddoscoo = ddoscoo;
             Dds = dds;
@@ -198,6 +205,7 @@ namespace Pulumi.AliCloud.Outputs
             Market = market;
             Maxcompute = maxcompute;
             Mns = mns;
+            Mse = mse;
             Nas = nas;
             Ons = ons;
             Oos = oos;

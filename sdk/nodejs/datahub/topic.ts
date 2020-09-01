@@ -12,30 +12,40 @@ import * as utilities from "../utilities";
  * Basic Usage
  *
  * - BLob Topic
- * resource "alicloud_datahub_topic" "example" {
- *   name         = "tf_datahub_topic"
- *   project_name = "tf_datahub_project"
- *   record_type  = "BLOB"
- *   shard_count  = 3
- *   life_cycle   = 7
- *   comment      = "created by terraform"
- * }
  *
- * resource "alicloud_datahub_topic" "example" {
- *   name         = "tf_datahub_topic"
- *   project_name = "tf_datahub_project"
- *   record_type  = "TUPLE"
- *   record_schema = {
- *     bigint_field    = "BIGINT"
- *     timestamp_field = "TIMESTAMP"
- *     string_field    = "STRING"
- *     double_field    = "DOUBLE"
- *     boolean_field   = "BOOLEAN"
- *   }
- *   shard_count = 3
- *   life_cycle  = 7
- *   comment     = "created by terraform"
- * }
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.datahub.Topic("example", {
+ *     comment: "created by terraform",
+ *     lifeCycle: 7,
+ *     projectName: "tf_datahub_project",
+ *     recordType: "BLOB",
+ *     shardCount: 3,
+ * });
+ * ```
+ * - Tuple Topic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.datahub.Topic("example", {
+ *     comment: "created by terraform",
+ *     lifeCycle: 7,
+ *     projectName: "tf_datahub_project",
+ *     recordSchema: {
+ *         bigint_field: "BIGINT",
+ *         boolean_field: "BOOLEAN",
+ *         double_field: "DOUBLE",
+ *         string_field: "STRING",
+ *         timestamp_field: "TIMESTAMP",
+ *     },
+ *     recordType: "TUPLE",
+ *     shardCount: 3,
+ * });
+ * ```
  */
 export class Topic extends pulumi.CustomResource {
     /**

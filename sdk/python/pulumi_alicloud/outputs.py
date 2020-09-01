@@ -194,6 +194,7 @@ class ProviderEndpoint(dict):
                  cr: Optional[str] = None,
                  cs: Optional[str] = None,
                  datahub: Optional[str] = None,
+                 dcdn: Optional[str] = None,
                  ddosbgp: Optional[str] = None,
                  ddoscoo: Optional[str] = None,
                  dds: Optional[str] = None,
@@ -214,6 +215,7 @@ class ProviderEndpoint(dict):
                  market: Optional[str] = None,
                  maxcompute: Optional[str] = None,
                  mns: Optional[str] = None,
+                 mse: Optional[str] = None,
                  nas: Optional[str] = None,
                  ons: Optional[str] = None,
                  oos: Optional[str] = None,
@@ -258,6 +260,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "cs", cs)
         if datahub is not None:
             pulumi.set(__self__, "datahub", datahub)
+        if dcdn is not None:
+            pulumi.set(__self__, "dcdn", dcdn)
         if ddosbgp is not None:
             pulumi.set(__self__, "ddosbgp", ddosbgp)
         if ddoscoo is not None:
@@ -298,6 +302,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "maxcompute", maxcompute)
         if mns is not None:
             pulumi.set(__self__, "mns", mns)
+        if mse is not None:
+            pulumi.set(__self__, "mse", mse)
         if nas is not None:
             pulumi.set(__self__, "nas", nas)
         if ons is not None:
@@ -404,6 +410,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def dcdn(self) -> Optional[str]:
+        return pulumi.get(self, "dcdn")
+
+    @property
+    @pulumi.getter
     def ddosbgp(self) -> Optional[str]:
         return pulumi.get(self, "ddosbgp")
 
@@ -501,6 +512,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def mns(self) -> Optional[str]:
         return pulumi.get(self, "mns")
+
+    @property
+    @pulumi.getter
+    def mse(self) -> Optional[str]:
+        return pulumi.get(self, "mse")
 
     @property
     @pulumi.getter

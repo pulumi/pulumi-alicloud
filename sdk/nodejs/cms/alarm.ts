@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -86,6 +88,18 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
+     * A configuration of critical alarm (documented below).
+     */
+    public readonly escalationsCritical!: pulumi.Output<outputs.cms.AlarmEscalationsCritical | undefined>;
+    /**
+     * A configuration of critical info (documented below).
+     */
+    public readonly escalationsInfo!: pulumi.Output<outputs.cms.AlarmEscalationsInfo | undefined>;
+    /**
+     * A configuration of critical warn (documented below).
+     */
+    public readonly escalationsWarn!: pulumi.Output<outputs.cms.AlarmEscalationsWarn | undefined>;
+    /**
      * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     public readonly metric!: pulumi.Output<string>;
@@ -94,9 +108,11 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+     *
+     * @deprecated Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
      */
-    public readonly operator!: pulumi.Output<string | undefined>;
+    public readonly operator!: pulumi.Output<string>;
     /**
      * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
      */
@@ -116,21 +132,27 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
-     * Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+     * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+     *
+     * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */
-    public readonly statistics!: pulumi.Output<string | undefined>;
+    public readonly statistics!: pulumi.Output<string>;
     /**
      * The current alarm rule status.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Alarm threshold value, which must be a numeric value currently.
+     * Critical level alarm threshold value, which must be a numeric value currently.
+     *
+     * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
      */
     public readonly threshold!: pulumi.Output<string>;
     /**
-     * Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+     *
+     * @deprecated Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
      */
-    public readonly triggeredCount!: pulumi.Output<number | undefined>;
+    public readonly triggeredCount!: pulumi.Output<number>;
     /**
      * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
@@ -153,6 +175,9 @@ export class Alarm extends pulumi.CustomResource {
             inputs["effectiveInterval"] = state ? state.effectiveInterval : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["endTime"] = state ? state.endTime : undefined;
+            inputs["escalationsCritical"] = state ? state.escalationsCritical : undefined;
+            inputs["escalationsInfo"] = state ? state.escalationsInfo : undefined;
+            inputs["escalationsWarn"] = state ? state.escalationsWarn : undefined;
             inputs["metric"] = state ? state.metric : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["operator"] = state ? state.operator : undefined;
@@ -179,14 +204,14 @@ export class Alarm extends pulumi.CustomResource {
             if (!args || args.project === undefined) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.threshold === undefined) {
-                throw new Error("Missing required property 'threshold'");
-            }
             inputs["contactGroups"] = args ? args.contactGroups : undefined;
             inputs["dimensions"] = args ? args.dimensions : undefined;
             inputs["effectiveInterval"] = args ? args.effectiveInterval : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
+            inputs["escalationsCritical"] = args ? args.escalationsCritical : undefined;
+            inputs["escalationsInfo"] = args ? args.escalationsInfo : undefined;
+            inputs["escalationsWarn"] = args ? args.escalationsWarn : undefined;
             inputs["metric"] = args ? args.metric : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["operator"] = args ? args.operator : undefined;
@@ -238,6 +263,18 @@ export interface AlarmState {
      */
     readonly endTime?: pulumi.Input<number>;
     /**
+     * A configuration of critical alarm (documented below).
+     */
+    readonly escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical>;
+    /**
+     * A configuration of critical info (documented below).
+     */
+    readonly escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo>;
+    /**
+     * A configuration of critical warn (documented below).
+     */
+    readonly escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
+    /**
      * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     readonly metric?: pulumi.Input<string>;
@@ -246,7 +283,9 @@ export interface AlarmState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+     *
+     * @deprecated Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
      */
     readonly operator?: pulumi.Input<string>;
     /**
@@ -268,7 +307,9 @@ export interface AlarmState {
      */
     readonly startTime?: pulumi.Input<number>;
     /**
-     * Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+     * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+     *
+     * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */
     readonly statistics?: pulumi.Input<string>;
     /**
@@ -276,11 +317,15 @@ export interface AlarmState {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * Alarm threshold value, which must be a numeric value currently.
+     * Critical level alarm threshold value, which must be a numeric value currently.
+     *
+     * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
      */
     readonly threshold?: pulumi.Input<string>;
     /**
-     * Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+     *
+     * @deprecated Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
      */
     readonly triggeredCount?: pulumi.Input<number>;
     /**
@@ -316,6 +361,18 @@ export interface AlarmArgs {
      */
     readonly endTime?: pulumi.Input<number>;
     /**
+     * A configuration of critical alarm (documented below).
+     */
+    readonly escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical>;
+    /**
+     * A configuration of critical info (documented below).
+     */
+    readonly escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo>;
+    /**
+     * A configuration of critical warn (documented below).
+     */
+    readonly escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
+    /**
      * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     readonly metric: pulumi.Input<string>;
@@ -324,7 +381,9 @@ export interface AlarmArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+     *
+     * @deprecated Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
      */
     readonly operator?: pulumi.Input<string>;
     /**
@@ -346,15 +405,21 @@ export interface AlarmArgs {
      */
     readonly startTime?: pulumi.Input<number>;
     /**
-     * Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+     * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+     *
+     * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */
     readonly statistics?: pulumi.Input<string>;
     /**
-     * Alarm threshold value, which must be a numeric value currently.
+     * Critical level alarm threshold value, which must be a numeric value currently.
+     *
+     * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
      */
-    readonly threshold: pulumi.Input<string>;
+    readonly threshold?: pulumi.Input<string>;
     /**
-     * Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+     *
+     * @deprecated Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
      */
     readonly triggeredCount?: pulumi.Input<number>;
     /**

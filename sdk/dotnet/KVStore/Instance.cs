@@ -92,6 +92,24 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> ConnectionDomain { get; private set; } = null!;
 
         /// <summary>
+        /// The connection address of the instance.
+        /// </summary>
+        [Output("connectionString")]
+        public Output<string> ConnectionString { get; private set; } = null!;
+
+        /// <summary>
+        /// The prefix of the external network connection address.
+        /// </summary>
+        [Output("connectionStringPrefix")]
+        public Output<string?> ConnectionStringPrefix { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to open the public network. Default to: `false`.
+        /// </summary>
+        [Output("enablePublic")]
+        public Output<bool?> EnablePublic { get; private set; } = null!;
+
+        /// <summary>
         /// Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
         /// </summary>
         [Output("engineVersion")]
@@ -159,6 +177,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
+
+        /// <summary>
+        /// The port of redis.
+        /// </summary>
+        [Output("port")]
+        public Output<string?> Port { get; private set; } = null!;
 
         /// <summary>
         /// Set the instance's private IP.
@@ -273,6 +297,18 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? BackupId { get; set; }
 
         /// <summary>
+        /// The prefix of the external network connection address.
+        /// </summary>
+        [Input("connectionStringPrefix")]
+        public Input<string>? ConnectionStringPrefix { get; set; }
+
+        /// <summary>
+        /// Whether to open the public network. Default to: `false`.
+        /// </summary>
+        [Input("enablePublic")]
+        public Input<bool>? EnablePublic { get; set; }
+
+        /// <summary>
         /// Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
         /// </summary>
         [Input("engineVersion")]
@@ -352,6 +388,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The port of redis.
+        /// </summary>
+        [Input("port")]
+        public Input<string>? Port { get; set; }
 
         /// <summary>
         /// Set the instance's private IP.
@@ -445,6 +487,24 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ConnectionDomain { get; set; }
 
         /// <summary>
+        /// The connection address of the instance.
+        /// </summary>
+        [Input("connectionString")]
+        public Input<string>? ConnectionString { get; set; }
+
+        /// <summary>
+        /// The prefix of the external network connection address.
+        /// </summary>
+        [Input("connectionStringPrefix")]
+        public Input<string>? ConnectionStringPrefix { get; set; }
+
+        /// <summary>
+        /// Whether to open the public network. Default to: `false`.
+        /// </summary>
+        [Input("enablePublic")]
+        public Input<bool>? EnablePublic { get; set; }
+
+        /// <summary>
         /// Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
         /// </summary>
         [Input("engineVersion")]
@@ -524,6 +584,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The port of redis.
+        /// </summary>
+        [Input("port")]
+        public Input<string>? Port { get; set; }
 
         /// <summary>
         /// Set the instance's private IP.

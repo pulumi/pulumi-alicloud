@@ -33,9 +33,12 @@ export function getDomains(args: GetDomainsArgs, opts?: pulumi.InvokeOptions): P
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:waf/getDomains:getDomains", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
     }, opts);
 }
 
@@ -44,6 +47,10 @@ export function getDomains(args: GetDomainsArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetDomainsArgs {
     /**
+     * Default to false and only output `id`, `domainName`. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
+    /**
      * A list of WAF domain names. Each item is domain name.
      */
     readonly ids?: string[];
@@ -51,7 +58,15 @@ export interface GetDomainsArgs {
      * The Id of waf instance to which waf domain belongs.
      */
     readonly instanceId: string;
+    /**
+     * A regex string to filter results by domain name.
+     */
+    readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * The ID of the resource group to which the queried domain belongs in Resource Management.
+     */
+    readonly resourceGroupId?: string;
 }
 
 /**
@@ -62,14 +77,24 @@ export interface GetDomainsResult {
      * A list of Domains. Each element contains the following attributes:
      */
     readonly domains: outputs.waf.GetDomainsDomain[];
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * (Optional) A list of WAF domain names. Each item is domain name.
+     * A list of WAF domain self ID, value as `domainName`.
      */
     readonly ids: string[];
     readonly instanceId: string;
+    readonly nameRegex?: string;
+    /**
+     * A list of WAF domain names.
+     */
+    readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the resource group to which the queried domain belongs in Resource Management.
+     */
+    readonly resourceGroupId?: string;
 }

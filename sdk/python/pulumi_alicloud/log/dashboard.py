@@ -28,6 +28,52 @@ class Dashboard(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.86.0
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_project = alicloud.log.Project("defaultProject", description="tf unit test")
+        default_store = alicloud.log.Store("defaultStore",
+            project="tf-project",
+            retention_period=3000,
+            shard_count=1)
+        example = alicloud.log.Dashboard("example",
+            char_list=\"\"\"  [
+            {
+              "title":"new_title",
+              "type":"map",
+              "search":{
+                "logstore":"tf-logstore",
+                "topic":"new_topic",
+                "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
+                "start":"-86400s",
+                "end":"now"
+              },
+              "display":{
+                "xAxis":[
+                  "ct_name"
+                ],
+                "yAxis":[
+                  "ct_product"
+                ],
+                "xPos":0,
+                "yPos":0,
+                "width":10,
+                "height":12,
+                "displayName":"xixihaha911"
+              }
+            }
+          ]
+
+        \"\"\",
+            dashboard_name="tf-dashboard",
+            project_name="tf-project")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] char_list: Configuration of charts in the dashboard.

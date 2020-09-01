@@ -10,6 +10,570 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type AlarmEscalationsCritical struct {
+	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	Statistics *string `pulumi:"statistics"`
+	// Critical level alarm threshold value, which must be a numeric value currently.
+	Threshold *string `pulumi:"threshold"`
+	// Critical level alarm retry times. Default to 3.
+	Times *int `pulumi:"times"`
+}
+
+// AlarmEscalationsCriticalInput is an input type that accepts AlarmEscalationsCriticalArgs and AlarmEscalationsCriticalOutput values.
+// You can construct a concrete instance of `AlarmEscalationsCriticalInput` via:
+//
+//          AlarmEscalationsCriticalArgs{...}
+type AlarmEscalationsCriticalInput interface {
+	pulumi.Input
+
+	ToAlarmEscalationsCriticalOutput() AlarmEscalationsCriticalOutput
+	ToAlarmEscalationsCriticalOutputWithContext(context.Context) AlarmEscalationsCriticalOutput
+}
+
+type AlarmEscalationsCriticalArgs struct {
+	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// Critical level alarm threshold value, which must be a numeric value currently.
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+	// Critical level alarm retry times. Default to 3.
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (AlarmEscalationsCriticalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEscalationsCritical)(nil)).Elem()
+}
+
+func (i AlarmEscalationsCriticalArgs) ToAlarmEscalationsCriticalOutput() AlarmEscalationsCriticalOutput {
+	return i.ToAlarmEscalationsCriticalOutputWithContext(context.Background())
+}
+
+func (i AlarmEscalationsCriticalArgs) ToAlarmEscalationsCriticalOutputWithContext(ctx context.Context) AlarmEscalationsCriticalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsCriticalOutput)
+}
+
+func (i AlarmEscalationsCriticalArgs) ToAlarmEscalationsCriticalPtrOutput() AlarmEscalationsCriticalPtrOutput {
+	return i.ToAlarmEscalationsCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i AlarmEscalationsCriticalArgs) ToAlarmEscalationsCriticalPtrOutputWithContext(ctx context.Context) AlarmEscalationsCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsCriticalOutput).ToAlarmEscalationsCriticalPtrOutputWithContext(ctx)
+}
+
+// AlarmEscalationsCriticalPtrInput is an input type that accepts AlarmEscalationsCriticalArgs, AlarmEscalationsCriticalPtr and AlarmEscalationsCriticalPtrOutput values.
+// You can construct a concrete instance of `AlarmEscalationsCriticalPtrInput` via:
+//
+//          AlarmEscalationsCriticalArgs{...}
+//
+//  or:
+//
+//          nil
+type AlarmEscalationsCriticalPtrInput interface {
+	pulumi.Input
+
+	ToAlarmEscalationsCriticalPtrOutput() AlarmEscalationsCriticalPtrOutput
+	ToAlarmEscalationsCriticalPtrOutputWithContext(context.Context) AlarmEscalationsCriticalPtrOutput
+}
+
+type alarmEscalationsCriticalPtrType AlarmEscalationsCriticalArgs
+
+func AlarmEscalationsCriticalPtr(v *AlarmEscalationsCriticalArgs) AlarmEscalationsCriticalPtrInput {
+	return (*alarmEscalationsCriticalPtrType)(v)
+}
+
+func (*alarmEscalationsCriticalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmEscalationsCritical)(nil)).Elem()
+}
+
+func (i *alarmEscalationsCriticalPtrType) ToAlarmEscalationsCriticalPtrOutput() AlarmEscalationsCriticalPtrOutput {
+	return i.ToAlarmEscalationsCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i *alarmEscalationsCriticalPtrType) ToAlarmEscalationsCriticalPtrOutputWithContext(ctx context.Context) AlarmEscalationsCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsCriticalPtrOutput)
+}
+
+type AlarmEscalationsCriticalOutput struct{ *pulumi.OutputState }
+
+func (AlarmEscalationsCriticalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEscalationsCritical)(nil)).Elem()
+}
+
+func (o AlarmEscalationsCriticalOutput) ToAlarmEscalationsCriticalOutput() AlarmEscalationsCriticalOutput {
+	return o
+}
+
+func (o AlarmEscalationsCriticalOutput) ToAlarmEscalationsCriticalOutputWithContext(ctx context.Context) AlarmEscalationsCriticalOutput {
+	return o
+}
+
+func (o AlarmEscalationsCriticalOutput) ToAlarmEscalationsCriticalPtrOutput() AlarmEscalationsCriticalPtrOutput {
+	return o.ToAlarmEscalationsCriticalPtrOutputWithContext(context.Background())
+}
+
+func (o AlarmEscalationsCriticalOutput) ToAlarmEscalationsCriticalPtrOutputWithContext(ctx context.Context) AlarmEscalationsCriticalPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsCritical) *AlarmEscalationsCritical {
+		return &v
+	}).(AlarmEscalationsCriticalPtrOutput)
+}
+
+// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+func (o AlarmEscalationsCriticalOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+func (o AlarmEscalationsCriticalOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm threshold value, which must be a numeric value currently.
+func (o AlarmEscalationsCriticalOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm retry times. Default to 3.
+func (o AlarmEscalationsCriticalOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsCritical) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type AlarmEscalationsCriticalPtrOutput struct{ *pulumi.OutputState }
+
+func (AlarmEscalationsCriticalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmEscalationsCritical)(nil)).Elem()
+}
+
+func (o AlarmEscalationsCriticalPtrOutput) ToAlarmEscalationsCriticalPtrOutput() AlarmEscalationsCriticalPtrOutput {
+	return o
+}
+
+func (o AlarmEscalationsCriticalPtrOutput) ToAlarmEscalationsCriticalPtrOutputWithContext(ctx context.Context) AlarmEscalationsCriticalPtrOutput {
+	return o
+}
+
+func (o AlarmEscalationsCriticalPtrOutput) Elem() AlarmEscalationsCriticalOutput {
+	return o.ApplyT(func(v *AlarmEscalationsCritical) AlarmEscalationsCritical { return *v }).(AlarmEscalationsCriticalOutput)
+}
+
+// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+func (o AlarmEscalationsCriticalPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+func (o AlarmEscalationsCriticalPtrOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Statistics
+	}).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm threshold value, which must be a numeric value currently.
+func (o AlarmEscalationsCriticalPtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm retry times. Default to 3.
+func (o AlarmEscalationsCriticalPtrOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsCritical) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Times
+	}).(pulumi.IntPtrOutput)
+}
+
+type AlarmEscalationsInfo struct {
+	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	Statistics *string `pulumi:"statistics"`
+	// Critical level alarm threshold value, which must be a numeric value currently.
+	Threshold *string `pulumi:"threshold"`
+	// Critical level alarm retry times. Default to 3.
+	Times *int `pulumi:"times"`
+}
+
+// AlarmEscalationsInfoInput is an input type that accepts AlarmEscalationsInfoArgs and AlarmEscalationsInfoOutput values.
+// You can construct a concrete instance of `AlarmEscalationsInfoInput` via:
+//
+//          AlarmEscalationsInfoArgs{...}
+type AlarmEscalationsInfoInput interface {
+	pulumi.Input
+
+	ToAlarmEscalationsInfoOutput() AlarmEscalationsInfoOutput
+	ToAlarmEscalationsInfoOutputWithContext(context.Context) AlarmEscalationsInfoOutput
+}
+
+type AlarmEscalationsInfoArgs struct {
+	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// Critical level alarm threshold value, which must be a numeric value currently.
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+	// Critical level alarm retry times. Default to 3.
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (AlarmEscalationsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEscalationsInfo)(nil)).Elem()
+}
+
+func (i AlarmEscalationsInfoArgs) ToAlarmEscalationsInfoOutput() AlarmEscalationsInfoOutput {
+	return i.ToAlarmEscalationsInfoOutputWithContext(context.Background())
+}
+
+func (i AlarmEscalationsInfoArgs) ToAlarmEscalationsInfoOutputWithContext(ctx context.Context) AlarmEscalationsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsInfoOutput)
+}
+
+func (i AlarmEscalationsInfoArgs) ToAlarmEscalationsInfoPtrOutput() AlarmEscalationsInfoPtrOutput {
+	return i.ToAlarmEscalationsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i AlarmEscalationsInfoArgs) ToAlarmEscalationsInfoPtrOutputWithContext(ctx context.Context) AlarmEscalationsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsInfoOutput).ToAlarmEscalationsInfoPtrOutputWithContext(ctx)
+}
+
+// AlarmEscalationsInfoPtrInput is an input type that accepts AlarmEscalationsInfoArgs, AlarmEscalationsInfoPtr and AlarmEscalationsInfoPtrOutput values.
+// You can construct a concrete instance of `AlarmEscalationsInfoPtrInput` via:
+//
+//          AlarmEscalationsInfoArgs{...}
+//
+//  or:
+//
+//          nil
+type AlarmEscalationsInfoPtrInput interface {
+	pulumi.Input
+
+	ToAlarmEscalationsInfoPtrOutput() AlarmEscalationsInfoPtrOutput
+	ToAlarmEscalationsInfoPtrOutputWithContext(context.Context) AlarmEscalationsInfoPtrOutput
+}
+
+type alarmEscalationsInfoPtrType AlarmEscalationsInfoArgs
+
+func AlarmEscalationsInfoPtr(v *AlarmEscalationsInfoArgs) AlarmEscalationsInfoPtrInput {
+	return (*alarmEscalationsInfoPtrType)(v)
+}
+
+func (*alarmEscalationsInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmEscalationsInfo)(nil)).Elem()
+}
+
+func (i *alarmEscalationsInfoPtrType) ToAlarmEscalationsInfoPtrOutput() AlarmEscalationsInfoPtrOutput {
+	return i.ToAlarmEscalationsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *alarmEscalationsInfoPtrType) ToAlarmEscalationsInfoPtrOutputWithContext(ctx context.Context) AlarmEscalationsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsInfoPtrOutput)
+}
+
+type AlarmEscalationsInfoOutput struct{ *pulumi.OutputState }
+
+func (AlarmEscalationsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEscalationsInfo)(nil)).Elem()
+}
+
+func (o AlarmEscalationsInfoOutput) ToAlarmEscalationsInfoOutput() AlarmEscalationsInfoOutput {
+	return o
+}
+
+func (o AlarmEscalationsInfoOutput) ToAlarmEscalationsInfoOutputWithContext(ctx context.Context) AlarmEscalationsInfoOutput {
+	return o
+}
+
+func (o AlarmEscalationsInfoOutput) ToAlarmEscalationsInfoPtrOutput() AlarmEscalationsInfoPtrOutput {
+	return o.ToAlarmEscalationsInfoPtrOutputWithContext(context.Background())
+}
+
+func (o AlarmEscalationsInfoOutput) ToAlarmEscalationsInfoPtrOutputWithContext(ctx context.Context) AlarmEscalationsInfoPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsInfo) *AlarmEscalationsInfo {
+		return &v
+	}).(AlarmEscalationsInfoPtrOutput)
+}
+
+// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+func (o AlarmEscalationsInfoOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+func (o AlarmEscalationsInfoOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm threshold value, which must be a numeric value currently.
+func (o AlarmEscalationsInfoOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm retry times. Default to 3.
+func (o AlarmEscalationsInfoOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsInfo) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type AlarmEscalationsInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (AlarmEscalationsInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmEscalationsInfo)(nil)).Elem()
+}
+
+func (o AlarmEscalationsInfoPtrOutput) ToAlarmEscalationsInfoPtrOutput() AlarmEscalationsInfoPtrOutput {
+	return o
+}
+
+func (o AlarmEscalationsInfoPtrOutput) ToAlarmEscalationsInfoPtrOutputWithContext(ctx context.Context) AlarmEscalationsInfoPtrOutput {
+	return o
+}
+
+func (o AlarmEscalationsInfoPtrOutput) Elem() AlarmEscalationsInfoOutput {
+	return o.ApplyT(func(v *AlarmEscalationsInfo) AlarmEscalationsInfo { return *v }).(AlarmEscalationsInfoOutput)
+}
+
+// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+func (o AlarmEscalationsInfoPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+func (o AlarmEscalationsInfoPtrOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Statistics
+	}).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm threshold value, which must be a numeric value currently.
+func (o AlarmEscalationsInfoPtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm retry times. Default to 3.
+func (o AlarmEscalationsInfoPtrOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Times
+	}).(pulumi.IntPtrOutput)
+}
+
+type AlarmEscalationsWarn struct {
+	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	Statistics *string `pulumi:"statistics"`
+	// Critical level alarm threshold value, which must be a numeric value currently.
+	Threshold *string `pulumi:"threshold"`
+	// Critical level alarm retry times. Default to 3.
+	Times *int `pulumi:"times"`
+}
+
+// AlarmEscalationsWarnInput is an input type that accepts AlarmEscalationsWarnArgs and AlarmEscalationsWarnOutput values.
+// You can construct a concrete instance of `AlarmEscalationsWarnInput` via:
+//
+//          AlarmEscalationsWarnArgs{...}
+type AlarmEscalationsWarnInput interface {
+	pulumi.Input
+
+	ToAlarmEscalationsWarnOutput() AlarmEscalationsWarnOutput
+	ToAlarmEscalationsWarnOutputWithContext(context.Context) AlarmEscalationsWarnOutput
+}
+
+type AlarmEscalationsWarnArgs struct {
+	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// Critical level alarm threshold value, which must be a numeric value currently.
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+	// Critical level alarm retry times. Default to 3.
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (AlarmEscalationsWarnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEscalationsWarn)(nil)).Elem()
+}
+
+func (i AlarmEscalationsWarnArgs) ToAlarmEscalationsWarnOutput() AlarmEscalationsWarnOutput {
+	return i.ToAlarmEscalationsWarnOutputWithContext(context.Background())
+}
+
+func (i AlarmEscalationsWarnArgs) ToAlarmEscalationsWarnOutputWithContext(ctx context.Context) AlarmEscalationsWarnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsWarnOutput)
+}
+
+func (i AlarmEscalationsWarnArgs) ToAlarmEscalationsWarnPtrOutput() AlarmEscalationsWarnPtrOutput {
+	return i.ToAlarmEscalationsWarnPtrOutputWithContext(context.Background())
+}
+
+func (i AlarmEscalationsWarnArgs) ToAlarmEscalationsWarnPtrOutputWithContext(ctx context.Context) AlarmEscalationsWarnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsWarnOutput).ToAlarmEscalationsWarnPtrOutputWithContext(ctx)
+}
+
+// AlarmEscalationsWarnPtrInput is an input type that accepts AlarmEscalationsWarnArgs, AlarmEscalationsWarnPtr and AlarmEscalationsWarnPtrOutput values.
+// You can construct a concrete instance of `AlarmEscalationsWarnPtrInput` via:
+//
+//          AlarmEscalationsWarnArgs{...}
+//
+//  or:
+//
+//          nil
+type AlarmEscalationsWarnPtrInput interface {
+	pulumi.Input
+
+	ToAlarmEscalationsWarnPtrOutput() AlarmEscalationsWarnPtrOutput
+	ToAlarmEscalationsWarnPtrOutputWithContext(context.Context) AlarmEscalationsWarnPtrOutput
+}
+
+type alarmEscalationsWarnPtrType AlarmEscalationsWarnArgs
+
+func AlarmEscalationsWarnPtr(v *AlarmEscalationsWarnArgs) AlarmEscalationsWarnPtrInput {
+	return (*alarmEscalationsWarnPtrType)(v)
+}
+
+func (*alarmEscalationsWarnPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmEscalationsWarn)(nil)).Elem()
+}
+
+func (i *alarmEscalationsWarnPtrType) ToAlarmEscalationsWarnPtrOutput() AlarmEscalationsWarnPtrOutput {
+	return i.ToAlarmEscalationsWarnPtrOutputWithContext(context.Background())
+}
+
+func (i *alarmEscalationsWarnPtrType) ToAlarmEscalationsWarnPtrOutputWithContext(ctx context.Context) AlarmEscalationsWarnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsWarnPtrOutput)
+}
+
+type AlarmEscalationsWarnOutput struct{ *pulumi.OutputState }
+
+func (AlarmEscalationsWarnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmEscalationsWarn)(nil)).Elem()
+}
+
+func (o AlarmEscalationsWarnOutput) ToAlarmEscalationsWarnOutput() AlarmEscalationsWarnOutput {
+	return o
+}
+
+func (o AlarmEscalationsWarnOutput) ToAlarmEscalationsWarnOutputWithContext(ctx context.Context) AlarmEscalationsWarnOutput {
+	return o
+}
+
+func (o AlarmEscalationsWarnOutput) ToAlarmEscalationsWarnPtrOutput() AlarmEscalationsWarnPtrOutput {
+	return o.ToAlarmEscalationsWarnPtrOutputWithContext(context.Background())
+}
+
+func (o AlarmEscalationsWarnOutput) ToAlarmEscalationsWarnPtrOutputWithContext(ctx context.Context) AlarmEscalationsWarnPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsWarn) *AlarmEscalationsWarn {
+		return &v
+	}).(AlarmEscalationsWarnPtrOutput)
+}
+
+// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+func (o AlarmEscalationsWarnOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+func (o AlarmEscalationsWarnOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm threshold value, which must be a numeric value currently.
+func (o AlarmEscalationsWarnOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm retry times. Default to 3.
+func (o AlarmEscalationsWarnOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlarmEscalationsWarn) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type AlarmEscalationsWarnPtrOutput struct{ *pulumi.OutputState }
+
+func (AlarmEscalationsWarnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmEscalationsWarn)(nil)).Elem()
+}
+
+func (o AlarmEscalationsWarnPtrOutput) ToAlarmEscalationsWarnPtrOutput() AlarmEscalationsWarnPtrOutput {
+	return o
+}
+
+func (o AlarmEscalationsWarnPtrOutput) ToAlarmEscalationsWarnPtrOutputWithContext(ctx context.Context) AlarmEscalationsWarnPtrOutput {
+	return o
+}
+
+func (o AlarmEscalationsWarnPtrOutput) Elem() AlarmEscalationsWarnOutput {
+	return o.ApplyT(func(v *AlarmEscalationsWarn) AlarmEscalationsWarn { return *v }).(AlarmEscalationsWarnOutput)
+}
+
+// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+func (o AlarmEscalationsWarnPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsWarn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+func (o AlarmEscalationsWarnPtrOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsWarn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Statistics
+	}).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm threshold value, which must be a numeric value currently.
+func (o AlarmEscalationsWarnPtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsWarn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Critical level alarm retry times. Default to 3.
+func (o AlarmEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlarmEscalationsWarn) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Times
+	}).(pulumi.IntPtrOutput)
+}
+
 type SiteMonitorIspCity struct {
 	City string `pulumi:"city"`
 	Isp  string `pulumi:"isp"`
@@ -111,6 +675,12 @@ func (o SiteMonitorIspCityArrayOutput) Index(i pulumi.IntInput) SiteMonitorIspCi
 }
 
 func init() {
+	pulumi.RegisterOutputType(AlarmEscalationsCriticalOutput{})
+	pulumi.RegisterOutputType(AlarmEscalationsCriticalPtrOutput{})
+	pulumi.RegisterOutputType(AlarmEscalationsInfoOutput{})
+	pulumi.RegisterOutputType(AlarmEscalationsInfoPtrOutput{})
+	pulumi.RegisterOutputType(AlarmEscalationsWarnOutput{})
+	pulumi.RegisterOutputType(AlarmEscalationsWarnPtrOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityArrayOutput{})
 }

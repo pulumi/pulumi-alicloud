@@ -14,6 +14,49 @@ import (
 // [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
 //
 // > **NOTE:** Available in 1.86.0
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/log"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
+// 			Description: pulumi.String("tf unit test"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+// 			Project:         pulumi.String("tf-project"),
+// 			RetentionPeriod: pulumi.Int(3000),
+// 			ShardCount:      pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = log.NewDashboard(ctx, "example", &log.DashboardArgs{
+// 			CharList:      pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  [\n", "    {\n", "      \"title\":\"new_title\",\n", "      \"type\":\"map\",\n", "      \"search\":{\n", "        \"logstore\":\"tf-logstore\",\n", "        \"topic\":\"new_topic\",\n", "        \"query\":\"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product\",\n", "        \"start\":\"-86400s\",\n", "        \"end\":\"now\"\n", "      },\n", "      \"display\":{\n", "        \"xAxis\":[\n", "          \"ct_name\"\n", "        ],\n", "        \"yAxis\":[\n", "          \"ct_product\"\n", "        ],\n", "        \"xPos\":0,\n", "        \"yPos\":0,\n", "        \"width\":10,\n", "        \"height\":12,\n", "        \"displayName\":\"xixihaha911\"\n", "      }\n", "    }\n", "  ]\n", "\n")),
+// 			DashboardName: pulumi.String("tf-dashboard"),
+// 			ProjectName:   pulumi.String("tf-project"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Dashboard struct {
 	pulumi.CustomResourceState
 

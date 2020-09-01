@@ -111,8 +111,46 @@ func (o DomainLogHeaderArrayOutput) Index(i pulumi.IntInput) DomainLogHeaderOutp
 }
 
 type GetDomainsDomain struct {
-	// Name of the domain.
+	// The type of the WAF cluster.
+	ClusterType string `pulumi:"clusterType"`
+	// The CNAME record assigned by the WAF instance to the specified domain.
+	Cname string `pulumi:"cname"`
+	// The connection timeout for WAF exclusive clusters. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
+	ConnectionTime int `pulumi:"connectionTime"`
+	// Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
 	Domain string `pulumi:"domain"`
+	// Name of the domain.
+	DomainName string `pulumi:"domainName"`
+	// List of the HTTP 2.0 ports.
+	Http2Ports []string `pulumi:"http2Ports"`
+	// List of the HTTP ports.
+	HttpPorts []string `pulumi:"httpPorts"`
+	// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
+	HttpToUserIp string `pulumi:"httpToUserIp"`
+	// List of the HTTPS ports.
+	HttpsPorts []string `pulumi:"httpsPorts"`
+	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: `On` and `Off`. Default to `Off`.
+	HttpsRedirect string `pulumi:"httpsRedirect"`
+	// The ID of domain self ID, value as `domainName`.
+	Id string `pulumi:"id"`
+	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and "Off". Default to `Off`.
+	IsAccessProduct string `pulumi:"isAccessProduct"`
+	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
+	LoadBalancing string `pulumi:"loadBalancing"`
+	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
+	// * `key`: The key of label.
+	// * `value`: The value of label.
+	LogHeaders []GetDomainsDomainLogHeader `pulumi:"logHeaders"`
+	// The read timeout of a WAF exclusive cluster. Unit: seconds.
+	ReadTime int `pulumi:"readTime"`
+	// The ID of the resource group to which the queried domain belongs in Resource Management.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// List of the IP address or domain of the origin server to which the specified domain points.
+	SourceIps []string `pulumi:"sourceIps"`
+	// The system data identifier that is used to control optimistic locking.
+	Version int `pulumi:"version"`
+	// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
+	WriteTime int `pulumi:"writeTime"`
 }
 
 // GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
@@ -127,8 +165,46 @@ type GetDomainsDomainInput interface {
 }
 
 type GetDomainsDomainArgs struct {
-	// Name of the domain.
+	// The type of the WAF cluster.
+	ClusterType pulumi.StringInput `pulumi:"clusterType"`
+	// The CNAME record assigned by the WAF instance to the specified domain.
+	Cname pulumi.StringInput `pulumi:"cname"`
+	// The connection timeout for WAF exclusive clusters. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
+	ConnectionTime pulumi.IntInput `pulumi:"connectionTime"`
+	// Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
 	Domain pulumi.StringInput `pulumi:"domain"`
+	// Name of the domain.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// List of the HTTP 2.0 ports.
+	Http2Ports pulumi.StringArrayInput `pulumi:"http2Ports"`
+	// List of the HTTP ports.
+	HttpPorts pulumi.StringArrayInput `pulumi:"httpPorts"`
+	// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
+	HttpToUserIp pulumi.StringInput `pulumi:"httpToUserIp"`
+	// List of the HTTPS ports.
+	HttpsPorts pulumi.StringArrayInput `pulumi:"httpsPorts"`
+	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: `On` and `Off`. Default to `Off`.
+	HttpsRedirect pulumi.StringInput `pulumi:"httpsRedirect"`
+	// The ID of domain self ID, value as `domainName`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and "Off". Default to `Off`.
+	IsAccessProduct pulumi.StringInput `pulumi:"isAccessProduct"`
+	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
+	LoadBalancing pulumi.StringInput `pulumi:"loadBalancing"`
+	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
+	// * `key`: The key of label.
+	// * `value`: The value of label.
+	LogHeaders GetDomainsDomainLogHeaderArrayInput `pulumi:"logHeaders"`
+	// The read timeout of a WAF exclusive cluster. Unit: seconds.
+	ReadTime pulumi.IntInput `pulumi:"readTime"`
+	// The ID of the resource group to which the queried domain belongs in Resource Management.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// List of the IP address or domain of the origin server to which the specified domain points.
+	SourceIps pulumi.StringArrayInput `pulumi:"sourceIps"`
+	// The system data identifier that is used to control optimistic locking.
+	Version pulumi.IntInput `pulumi:"version"`
+	// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
+	WriteTime pulumi.IntInput `pulumi:"writeTime"`
 }
 
 func (GetDomainsDomainArgs) ElementType() reflect.Type {
@@ -182,9 +258,101 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.
 	return o
 }
 
-// Name of the domain.
+// The type of the WAF cluster.
+func (o GetDomainsDomainOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// The CNAME record assigned by the WAF instance to the specified domain.
+func (o GetDomainsDomainOutput) Cname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Cname }).(pulumi.StringOutput)
+}
+
+// The connection timeout for WAF exclusive clusters. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
+func (o GetDomainsDomainOutput) ConnectionTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDomainsDomain) int { return v.ConnectionTime }).(pulumi.IntOutput)
+}
+
+// Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
 func (o GetDomainsDomainOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Name of the domain.
+func (o GetDomainsDomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// List of the HTTP 2.0 ports.
+func (o GetDomainsDomainOutput) Http2Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []string { return v.Http2Ports }).(pulumi.StringArrayOutput)
+}
+
+// List of the HTTP ports.
+func (o GetDomainsDomainOutput) HttpPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []string { return v.HttpPorts }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
+func (o GetDomainsDomainOutput) HttpToUserIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.HttpToUserIp }).(pulumi.StringOutput)
+}
+
+// List of the HTTPS ports.
+func (o GetDomainsDomainOutput) HttpsPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []string { return v.HttpsPorts }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: `On` and `Off`. Default to `Off`.
+func (o GetDomainsDomainOutput) HttpsRedirect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.HttpsRedirect }).(pulumi.StringOutput)
+}
+
+// The ID of domain self ID, value as `domainName`.
+func (o GetDomainsDomainOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and "Off". Default to `Off`.
+func (o GetDomainsDomainOutput) IsAccessProduct() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.IsAccessProduct }).(pulumi.StringOutput)
+}
+
+// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
+func (o GetDomainsDomainOutput) LoadBalancing() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.LoadBalancing }).(pulumi.StringOutput)
+}
+
+// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
+// * `key`: The key of label.
+// * `value`: The value of label.
+func (o GetDomainsDomainOutput) LogHeaders() GetDomainsDomainLogHeaderArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []GetDomainsDomainLogHeader { return v.LogHeaders }).(GetDomainsDomainLogHeaderArrayOutput)
+}
+
+// The read timeout of a WAF exclusive cluster. Unit: seconds.
+func (o GetDomainsDomainOutput) ReadTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDomainsDomain) int { return v.ReadTime }).(pulumi.IntOutput)
+}
+
+// The ID of the resource group to which the queried domain belongs in Resource Management.
+func (o GetDomainsDomainOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// List of the IP address or domain of the origin server to which the specified domain points.
+func (o GetDomainsDomainOutput) SourceIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []string { return v.SourceIps }).(pulumi.StringArrayOutput)
+}
+
+// The system data identifier that is used to control optimistic locking.
+func (o GetDomainsDomainOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDomainsDomain) int { return v.Version }).(pulumi.IntOutput)
+}
+
+// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
+func (o GetDomainsDomainOutput) WriteTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDomainsDomain) int { return v.WriteTime }).(pulumi.IntOutput)
 }
 
 type GetDomainsDomainArrayOutput struct{ *pulumi.OutputState }
@@ -207,6 +375,106 @@ func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOu
 	}).(GetDomainsDomainOutput)
 }
 
+type GetDomainsDomainLogHeader struct {
+	Key   string `pulumi:"key"`
+	Value string `pulumi:"value"`
+}
+
+// GetDomainsDomainLogHeaderInput is an input type that accepts GetDomainsDomainLogHeaderArgs and GetDomainsDomainLogHeaderOutput values.
+// You can construct a concrete instance of `GetDomainsDomainLogHeaderInput` via:
+//
+//          GetDomainsDomainLogHeaderArgs{...}
+type GetDomainsDomainLogHeaderInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainLogHeaderOutput() GetDomainsDomainLogHeaderOutput
+	ToGetDomainsDomainLogHeaderOutputWithContext(context.Context) GetDomainsDomainLogHeaderOutput
+}
+
+type GetDomainsDomainLogHeaderArgs struct {
+	Key   pulumi.StringInput `pulumi:"key"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetDomainsDomainLogHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomainLogHeader)(nil)).Elem()
+}
+
+func (i GetDomainsDomainLogHeaderArgs) ToGetDomainsDomainLogHeaderOutput() GetDomainsDomainLogHeaderOutput {
+	return i.ToGetDomainsDomainLogHeaderOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainLogHeaderArgs) ToGetDomainsDomainLogHeaderOutputWithContext(ctx context.Context) GetDomainsDomainLogHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainLogHeaderOutput)
+}
+
+// GetDomainsDomainLogHeaderArrayInput is an input type that accepts GetDomainsDomainLogHeaderArray and GetDomainsDomainLogHeaderArrayOutput values.
+// You can construct a concrete instance of `GetDomainsDomainLogHeaderArrayInput` via:
+//
+//          GetDomainsDomainLogHeaderArray{ GetDomainsDomainLogHeaderArgs{...} }
+type GetDomainsDomainLogHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainLogHeaderArrayOutput() GetDomainsDomainLogHeaderArrayOutput
+	ToGetDomainsDomainLogHeaderArrayOutputWithContext(context.Context) GetDomainsDomainLogHeaderArrayOutput
+}
+
+type GetDomainsDomainLogHeaderArray []GetDomainsDomainLogHeaderInput
+
+func (GetDomainsDomainLogHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomainLogHeader)(nil)).Elem()
+}
+
+func (i GetDomainsDomainLogHeaderArray) ToGetDomainsDomainLogHeaderArrayOutput() GetDomainsDomainLogHeaderArrayOutput {
+	return i.ToGetDomainsDomainLogHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainLogHeaderArray) ToGetDomainsDomainLogHeaderArrayOutputWithContext(ctx context.Context) GetDomainsDomainLogHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainLogHeaderArrayOutput)
+}
+
+type GetDomainsDomainLogHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainLogHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomainLogHeader)(nil)).Elem()
+}
+
+func (o GetDomainsDomainLogHeaderOutput) ToGetDomainsDomainLogHeaderOutput() GetDomainsDomainLogHeaderOutput {
+	return o
+}
+
+func (o GetDomainsDomainLogHeaderOutput) ToGetDomainsDomainLogHeaderOutputWithContext(ctx context.Context) GetDomainsDomainLogHeaderOutput {
+	return o
+}
+
+func (o GetDomainsDomainLogHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomainLogHeader) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetDomainsDomainLogHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomainLogHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetDomainsDomainLogHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainLogHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomainLogHeader)(nil)).Elem()
+}
+
+func (o GetDomainsDomainLogHeaderArrayOutput) ToGetDomainsDomainLogHeaderArrayOutput() GetDomainsDomainLogHeaderArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainLogHeaderArrayOutput) ToGetDomainsDomainLogHeaderArrayOutputWithContext(ctx context.Context) GetDomainsDomainLogHeaderArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainLogHeaderArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainLogHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomainLogHeader {
+		return vs[0].([]GetDomainsDomainLogHeader)[vs[1].(int)]
+	}).(GetDomainsDomainLogHeaderOutput)
+}
+
 type GetInstancesInstance struct {
 	// The timestamp (in seconds) indicating when the WAF instance expires.
 	EndDate int `pulumi:"endDate"`
@@ -216,8 +484,6 @@ type GetInstancesInstance struct {
 	InDebt int `pulumi:"inDebt"`
 	// The ID of WAF the instance.
 	InstanceId string `pulumi:"instanceId"`
-	// The region where the WAF instance is located.
-	Region string `pulumi:"region"`
 	// The number of days before the trial period of the WAF instance expires.
 	RemainDay int `pulumi:"remainDay"`
 	// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
@@ -247,8 +513,6 @@ type GetInstancesInstanceArgs struct {
 	InDebt pulumi.IntInput `pulumi:"inDebt"`
 	// The ID of WAF the instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// The region where the WAF instance is located.
-	Region pulumi.StringInput `pulumi:"region"`
 	// The number of days before the trial period of the WAF instance expires.
 	RemainDay pulumi.IntInput `pulumi:"remainDay"`
 	// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
@@ -329,11 +593,6 @@ func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The region where the WAF instance is located.
-func (o GetInstancesInstanceOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancesInstance) string { return v.Region }).(pulumi.StringOutput)
-}
-
 // The number of days before the trial period of the WAF instance expires.
 func (o GetInstancesInstanceOutput) RemainDay() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.RemainDay }).(pulumi.IntOutput)
@@ -378,6 +637,8 @@ func init() {
 	pulumi.RegisterOutputType(DomainLogHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainLogHeaderOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainLogHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 }

@@ -27,12 +27,20 @@ type Alarm struct {
 	//
 	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
+	// A configuration of critical alarm (documented below).
+	EscalationsCritical AlarmEscalationsCriticalPtrOutput `pulumi:"escalationsCritical"`
+	// A configuration of critical info (documented below).
+	EscalationsInfo AlarmEscalationsInfoPtrOutput `pulumi:"escalationsInfo"`
+	// A configuration of critical warn (documented below).
+	EscalationsWarn AlarmEscalationsWarnPtrOutput `pulumi:"escalationsWarn"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringOutput `pulumi:"metric"`
 	// The alarm rule name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
-	Operator pulumi.StringPtrOutput `pulumi:"operator"`
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+	//
+	// Deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
+	Operator pulumi.StringOutput `pulumi:"operator"`
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
@@ -43,14 +51,20 @@ type Alarm struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
-	Statistics pulumi.StringPtrOutput `pulumi:"statistics"`
+	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	//
+	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
+	Statistics pulumi.StringOutput `pulumi:"statistics"`
 	// The current alarm rule status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Alarm threshold value, which must be a numeric value currently.
+	// Critical level alarm threshold value, which must be a numeric value currently.
+	//
+	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
 	Threshold pulumi.StringOutput `pulumi:"threshold"`
-	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
-	TriggeredCount pulumi.IntPtrOutput `pulumi:"triggeredCount"`
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+	//
+	// Deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
+	TriggeredCount pulumi.IntOutput `pulumi:"triggeredCount"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook pulumi.StringPtrOutput `pulumi:"webhook"`
 }
@@ -69,9 +83,6 @@ func NewAlarm(ctx *pulumi.Context,
 	}
 	if args == nil || args.Project == nil {
 		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Threshold == nil {
-		return nil, errors.New("missing required argument 'Threshold'")
 	}
 	if args == nil {
 		args = &AlarmArgs{}
@@ -110,11 +121,19 @@ type alarmState struct {
 	//
 	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime *int `pulumi:"endTime"`
+	// A configuration of critical alarm (documented below).
+	EscalationsCritical *AlarmEscalationsCritical `pulumi:"escalationsCritical"`
+	// A configuration of critical info (documented below).
+	EscalationsInfo *AlarmEscalationsInfo `pulumi:"escalationsInfo"`
+	// A configuration of critical warn (documented below).
+	EscalationsWarn *AlarmEscalationsWarn `pulumi:"escalationsWarn"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric *string `pulumi:"metric"`
 	// The alarm rule name.
 	Name *string `pulumi:"name"`
-	// Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+	//
+	// Deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
 	Operator *string `pulumi:"operator"`
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period *int `pulumi:"period"`
@@ -126,13 +145,19 @@ type alarmState struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
-	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	//
+	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics *string `pulumi:"statistics"`
 	// The current alarm rule status.
 	Status *string `pulumi:"status"`
-	// Alarm threshold value, which must be a numeric value currently.
+	// Critical level alarm threshold value, which must be a numeric value currently.
+	//
+	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
 	Threshold *string `pulumi:"threshold"`
-	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+	//
+	// Deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
 	TriggeredCount *int `pulumi:"triggeredCount"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook *string `pulumi:"webhook"`
@@ -151,11 +176,19 @@ type AlarmState struct {
 	//
 	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime pulumi.IntPtrInput
+	// A configuration of critical alarm (documented below).
+	EscalationsCritical AlarmEscalationsCriticalPtrInput
+	// A configuration of critical info (documented below).
+	EscalationsInfo AlarmEscalationsInfoPtrInput
+	// A configuration of critical warn (documented below).
+	EscalationsWarn AlarmEscalationsWarnPtrInput
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringPtrInput
 	// The alarm rule name.
 	Name pulumi.StringPtrInput
-	// Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+	//
+	// Deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
 	Operator pulumi.StringPtrInput
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period pulumi.IntPtrInput
@@ -167,13 +200,19 @@ type AlarmState struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
-	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	//
+	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringPtrInput
 	// The current alarm rule status.
 	Status pulumi.StringPtrInput
-	// Alarm threshold value, which must be a numeric value currently.
+	// Critical level alarm threshold value, which must be a numeric value currently.
+	//
+	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
 	Threshold pulumi.StringPtrInput
-	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+	//
+	// Deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
 	TriggeredCount pulumi.IntPtrInput
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook pulumi.StringPtrInput
@@ -196,11 +235,19 @@ type alarmArgs struct {
 	//
 	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime *int `pulumi:"endTime"`
+	// A configuration of critical alarm (documented below).
+	EscalationsCritical *AlarmEscalationsCritical `pulumi:"escalationsCritical"`
+	// A configuration of critical info (documented below).
+	EscalationsInfo *AlarmEscalationsInfo `pulumi:"escalationsInfo"`
+	// A configuration of critical warn (documented below).
+	EscalationsWarn *AlarmEscalationsWarn `pulumi:"escalationsWarn"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric string `pulumi:"metric"`
 	// The alarm rule name.
 	Name *string `pulumi:"name"`
-	// Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+	//
+	// Deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
 	Operator *string `pulumi:"operator"`
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period *int `pulumi:"period"`
@@ -212,11 +259,17 @@ type alarmArgs struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
-	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	//
+	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics *string `pulumi:"statistics"`
-	// Alarm threshold value, which must be a numeric value currently.
-	Threshold string `pulumi:"threshold"`
-	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+	// Critical level alarm threshold value, which must be a numeric value currently.
+	//
+	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
+	Threshold *string `pulumi:"threshold"`
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+	//
+	// Deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
 	TriggeredCount *int `pulumi:"triggeredCount"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook *string `pulumi:"webhook"`
@@ -236,11 +289,19 @@ type AlarmArgs struct {
 	//
 	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime pulumi.IntPtrInput
+	// A configuration of critical alarm (documented below).
+	EscalationsCritical AlarmEscalationsCriticalPtrInput
+	// A configuration of critical info (documented below).
+	EscalationsInfo AlarmEscalationsInfoPtrInput
+	// A configuration of critical warn (documented below).
+	EscalationsWarn AlarmEscalationsWarnPtrInput
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringInput
 	// The alarm rule name.
 	Name pulumi.StringPtrInput
-	// Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+	//
+	// Deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
 	Operator pulumi.StringPtrInput
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period pulumi.IntPtrInput
@@ -252,11 +313,17 @@ type AlarmArgs struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
-	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+	//
+	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringPtrInput
-	// Alarm threshold value, which must be a numeric value currently.
-	Threshold pulumi.StringInput
-	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+	// Critical level alarm threshold value, which must be a numeric value currently.
+	//
+	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
+	Threshold pulumi.StringPtrInput
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+	//
+	// Deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
 	TriggeredCount pulumi.IntPtrInput
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook pulumi.StringPtrInput

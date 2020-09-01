@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  *             "Effect": "Allow",
  *             "Principal": {
  *             "Service": [
- *                 "emr.aliyuncs.com", 
+ *                 "emr.aliyuncs.com",
  *                 "ecs.aliyuncs.com"
  *             ]
  *             }
@@ -197,7 +197,7 @@ import * as utilities from "../utilities";
  *             "Effect": "Allow",
  *             "Principal": {
  *             "Service": [
- *                 "emr.aliyuncs.com", 
+ *                 "emr.aliyuncs.com",
  *                 "ecs.aliyuncs.com"
  *             ]
  *             }
@@ -320,7 +320,7 @@ import * as utilities from "../utilities";
  *             "Effect": "Allow",
  *             "Principal": {
  *             "Service": [
- *                 "emr.aliyuncs.com", 
+ *                 "emr.aliyuncs.com",
  *                 "ecs.aliyuncs.com"
  *             ]
  *             }
@@ -379,6 +379,98 @@ import * as utilities from "../utilities";
  *     userDefinedEmrEcsRole: defaultRole.name,
  *     sshEnable: true,
  *     masterPwd: "ABCtest1234!",
+ * });
+ * ```
+ * ### 4. Create a emr gateway cluster
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultMainVersions = alicloud.emr.getMainVersions({});
+ * const defaultInstanceTypes = defaultMainVersions.then(defaultMainVersions => alicloud.emr.getInstanceTypes({
+ *     destinationResource: "InstanceType",
+ *     clusterType: defaultMainVersions.mainVersions[0].clusterTypes[0],
+ *     supportLocalStorage: false,
+ *     instanceChargeType: "PostPaid",
+ *     supportNodeTypes: ["GATEWAY"],
+ * }));
+ * const dataDisk = Promise.all([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes]).then(([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ *     destinationResource: "DataDisk",
+ *     clusterType: defaultMainVersions.mainVersions[0].clusterTypes[0],
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: defaultInstanceTypes.types[0].id,
+ *     zoneId: defaultInstanceTypes1.types[0].zoneId,
+ * }));
+ * const systemDisk = Promise.all([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes]).then(([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ *     destinationResource: "SystemDisk",
+ *     clusterType: defaultMainVersions.mainVersions[0].clusterTypes[0],
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: defaultInstanceTypes.types[0].id,
+ *     zoneId: defaultInstanceTypes1.types[0].zoneId,
+ * }));
+ * const vpc: alicloud.vpc.Network[];
+ * for (const range = {value: 0}; range.value < (_var.vpc_id == "" ? 1 : 0 == true); range.value++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {cidrBlock: _var.vpc_cidr}));
+ * }
+ * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[];
+ * for (const range = {value: 0}; range.value < (_var.security_group_id == "" ? 1 : 0 == true); range.value++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`defaultSecurityGroup-${range.value}`, {vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id}));
+ * }
+ * // VSwitch Resource for Module
+ * const vswitch: alicloud.vpc.Switch[];
+ * for (const range = {value: 0}; range.value < (_var.vswitch_id == "" ? 1 : 0 == true); range.value++) {
+ *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ *         availabilityZone: _var.availability_zone == "" ? defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId) : _var.availability_zone,
+ *         cidrBlock: _var.vswitch_cidr,
+ *         vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id,
+ *     }));
+ * }
+ * // Ram role Resource for Module
+ * const defaultRole = new alicloud.ram.Role("defaultRole", {
+ *     document: `    {
+ *         "Statement": [
+ *         {
+ *             "Action": "sts:AssumeRole",
+ *             "Effect": "Allow",
+ *             "Principal": {
+ *             "Service": [
+ *                 "emr.aliyuncs.com",
+ *                 "ecs.aliyuncs.com"
+ *             ]
+ *             }
+ *         }
+ *         ],
+ *         "Version": "1"
+ *     }
+ * `,
+ *     description: "this is a role test.",
+ *     force: true,
+ * });
+ * const gateway = new alicloud.emr.Cluster("gateway", {
+ *     emrVer: defaultMainVersions.then(defaultMainVersions => defaultMainVersions.mainVersions[0].emrVersion),
+ *     clusterType: "GATEWAY",
+ *     hostGroups: [{
+ *         hostGroupName: "master_group",
+ *         hostGroupType: "GATEWAY",
+ *         nodeCount: "1",
+ *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].id),
+ *         diskType: dataDisk.then(dataDisk => dataDisk.types[0].value),
+ *         diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types[0].min > 160 ? dataDisk1.types[0].min : 160),
+ *         diskCount: "1",
+ *         sysDiskType: systemDisk.then(systemDisk => systemDisk.types[0].value),
+ *         sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types[0].min > 160 ? systemDisk1.types[0].min : 160),
+ *     }],
+ *     highAvailabilityEnable: true,
+ *     zoneId: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId),
+ *     securityGroupId: _var.security_group_id == "" ? defaultSecurityGroup.id : _var.security_group_id,
+ *     isOpenPublicIp: true,
+ *     chargeType: "PostPaid",
+ *     vswitchId: _var.vswitch_id == "" ? vswitch.id : _var.vswitch_id,
+ *     userDefinedEmrEcsRole: defaultRole.name,
+ *     sshEnable: true,
+ *     masterPwd: "ABCtest1234!",
+ *     relatedClusterId: related_cluster_id,
  * });
  * ```
  */

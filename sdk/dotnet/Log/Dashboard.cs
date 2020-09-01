@@ -14,6 +14,66 @@ namespace Pulumi.AliCloud.Log
     /// [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.86.0
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultProject = new AliCloud.Log.Project("defaultProject", new AliCloud.Log.ProjectArgs
+    ///         {
+    ///             Description = "tf unit test",
+    ///         });
+    ///         var defaultStore = new AliCloud.Log.Store("defaultStore", new AliCloud.Log.StoreArgs
+    ///         {
+    ///             Project = "tf-project",
+    ///             RetentionPeriod = 3000,
+    ///             ShardCount = 1,
+    ///         });
+    ///         var example = new AliCloud.Log.Dashboard("example", new AliCloud.Log.DashboardArgs
+    ///         {
+    ///             CharList = @"  [
+    ///     {
+    ///       ""title"":""new_title"",
+    ///       ""type"":""map"",
+    ///       ""search"":{
+    ///         ""logstore"":""tf-logstore"",
+    ///         ""topic"":""new_topic"",
+    ///         ""query"":""* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product"",
+    ///         ""start"":""-86400s"",
+    ///         ""end"":""now""
+    ///       },
+    ///       ""display"":{
+    ///         ""xAxis"":[
+    ///           ""ct_name""
+    ///         ],
+    ///         ""yAxis"":[
+    ///           ""ct_product""
+    ///         ],
+    ///         ""xPos"":0,
+    ///         ""yPos"":0,
+    ///         ""width"":10,
+    ///         ""height"":12,
+    ///         ""displayName"":""xixihaha911""
+    ///       }
+    ///     }
+    ///   ]
+    /// 
+    /// ",
+    ///             DashboardName = "tf-dashboard",
+    ///             ProjectName = "tf-project",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Dashboard : Pulumi.CustomResource
     {

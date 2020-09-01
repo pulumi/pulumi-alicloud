@@ -7,10 +7,12 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
 
 __all__ = [
     'DomainLogHeader',
     'GetDomainsDomainResult',
+    'GetDomainsDomainLogHeaderResult',
     'GetInstancesInstanceResult',
 ]
 
@@ -41,19 +43,240 @@ class DomainLogHeader(dict):
 @pulumi.output_type
 class GetDomainsDomainResult(dict):
     def __init__(__self__, *,
-                 domain: str):
+                 cluster_type: str,
+                 cname: str,
+                 connection_time: float,
+                 domain: str,
+                 domain_name: str,
+                 http2_ports: List[str],
+                 http_ports: List[str],
+                 http_to_user_ip: str,
+                 https_ports: List[str],
+                 https_redirect: str,
+                 id: str,
+                 is_access_product: str,
+                 load_balancing: str,
+                 log_headers: List['outputs.GetDomainsDomainLogHeaderResult'],
+                 read_time: float,
+                 resource_group_id: str,
+                 source_ips: List[str],
+                 version: float,
+                 write_time: float):
         """
-        :param str domain: Name of the domain.
+        :param str cluster_type: The type of the WAF cluster.
+        :param str cname: The CNAME record assigned by the WAF instance to the specified domain.
+        :param float connection_time: The connection timeout for WAF exclusive clusters. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
+        :param str domain: Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+        :param str domain_name: Name of the domain.
+        :param List[str] http2_ports: List of the HTTP 2.0 ports.
+        :param List[str] http_ports: List of the HTTP ports.
+        :param str http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
+        :param List[str] https_ports: List of the HTTPS ports.
+        :param str https_redirect: Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: `On` and `Off`. Default to `Off`.
+        :param str id: The ID of domain self ID, value as `domain_name`.
+        :param str is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and "Off". Default to `Off`.
+        :param str load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
+        :param List['GetDomainsDomainLogHeaderArgs'] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
+               * `key`: The key of label.
+               * `value`: The value of label.
+        :param float read_time: The read timeout of a WAF exclusive cluster. Unit: seconds.
+        :param str resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management.
+        :param List[str] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
+        :param float version: The system data identifier that is used to control optimistic locking.
+        :param float write_time: The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
         """
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "cname", cname)
+        pulumi.set(__self__, "connection_time", connection_time)
         pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "http2_ports", http2_ports)
+        pulumi.set(__self__, "http_ports", http_ports)
+        pulumi.set(__self__, "http_to_user_ip", http_to_user_ip)
+        pulumi.set(__self__, "https_ports", https_ports)
+        pulumi.set(__self__, "https_redirect", https_redirect)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_access_product", is_access_product)
+        pulumi.set(__self__, "load_balancing", load_balancing)
+        pulumi.set(__self__, "log_headers", log_headers)
+        pulumi.set(__self__, "read_time", read_time)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "source_ips", source_ips)
+        pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "write_time", write_time)
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> str:
+        """
+        The type of the WAF cluster.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @property
+    @pulumi.getter
+    def cname(self) -> str:
+        """
+        The CNAME record assigned by the WAF instance to the specified domain.
+        """
+        return pulumi.get(self, "cname")
+
+    @property
+    @pulumi.getter(name="connectionTime")
+    def connection_time(self) -> float:
+        """
+        The connection timeout for WAF exclusive clusters. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
+        """
+        return pulumi.get(self, "connection_time")
 
     @property
     @pulumi.getter
     def domain(self) -> str:
         """
-        Name of the domain.
+        Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         """
         return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        Name of the domain.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter(name="http2Ports")
+    def http2_ports(self) -> List[str]:
+        """
+        List of the HTTP 2.0 ports.
+        """
+        return pulumi.get(self, "http2_ports")
+
+    @property
+    @pulumi.getter(name="httpPorts")
+    def http_ports(self) -> List[str]:
+        """
+        List of the HTTP ports.
+        """
+        return pulumi.get(self, "http_ports")
+
+    @property
+    @pulumi.getter(name="httpToUserIp")
+    def http_to_user_ip(self) -> str:
+        """
+        Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
+        """
+        return pulumi.get(self, "http_to_user_ip")
+
+    @property
+    @pulumi.getter(name="httpsPorts")
+    def https_ports(self) -> List[str]:
+        """
+        List of the HTTPS ports.
+        """
+        return pulumi.get(self, "https_ports")
+
+    @property
+    @pulumi.getter(name="httpsRedirect")
+    def https_redirect(self) -> str:
+        """
+        Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: `On` and `Off`. Default to `Off`.
+        """
+        return pulumi.get(self, "https_redirect")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of domain self ID, value as `domain_name`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isAccessProduct")
+    def is_access_product(self) -> str:
+        """
+        Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and "Off". Default to `Off`.
+        """
+        return pulumi.get(self, "is_access_product")
+
+    @property
+    @pulumi.getter(name="loadBalancing")
+    def load_balancing(self) -> str:
+        """
+        The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
+        """
+        return pulumi.get(self, "load_balancing")
+
+    @property
+    @pulumi.getter(name="logHeaders")
+    def log_headers(self) -> List['outputs.GetDomainsDomainLogHeaderResult']:
+        """
+        The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
+        * `key`: The key of label.
+        * `value`: The value of label.
+        """
+        return pulumi.get(self, "log_headers")
+
+    @property
+    @pulumi.getter(name="readTime")
+    def read_time(self) -> float:
+        """
+        The read timeout of a WAF exclusive cluster. Unit: seconds.
+        """
+        return pulumi.get(self, "read_time")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group to which the queried domain belongs in Resource Management.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="sourceIps")
+    def source_ips(self) -> List[str]:
+        """
+        List of the IP address or domain of the origin server to which the specified domain points.
+        """
+        return pulumi.get(self, "source_ips")
+
+    @property
+    @pulumi.getter
+    def version(self) -> float:
+        """
+        The system data identifier that is used to control optimistic locking.
+        """
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="writeTime")
+    def write_time(self) -> float:
+        """
+        The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
+        """
+        return pulumi.get(self, "write_time")
+
+
+@pulumi.output_type
+class GetDomainsDomainLogHeaderResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -63,7 +286,6 @@ class GetInstancesInstanceResult(dict):
                  id: str,
                  in_debt: float,
                  instance_id: str,
-                 region: str,
                  remain_day: float,
                  status: float,
                  subscription_type: str,
@@ -73,7 +295,6 @@ class GetInstancesInstanceResult(dict):
         :param str id: The ID of the WAF instance.
         :param float in_debt: Indicates whether the WAF instance has overdue payments.
         :param str instance_id: The ID of WAF the instance.
-        :param str region: The region where the WAF instance is located.
         :param float remain_day: The number of days before the trial period of the WAF instance expires.
         :param float status: The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
         :param float trial: Indicates whether this is a trial instance.
@@ -82,7 +303,6 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "in_debt", in_debt)
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "remain_day", remain_day)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "subscription_type", subscription_type)
@@ -119,14 +339,6 @@ class GetInstancesInstanceResult(dict):
         The ID of WAF the instance.
         """
         return pulumi.get(self, "instance_id")
-
-    @property
-    @pulumi.getter
-    def region(self) -> str:
-        """
-        The region where the WAF instance is located.
-        """
-        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="remainDay")

@@ -18,6 +18,7 @@ class Snapshot(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None,
                  __name__=None,
@@ -46,6 +47,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] disk_id: The source disk ID.
         :param pulumi.Input[str] name: Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
@@ -70,6 +72,7 @@ class Snapshot(pulumi.CustomResource):
                 raise TypeError("Missing required property 'disk_id'")
             __props__['disk_id'] = disk_id
             __props__['name'] = name
+            __props__['resource_group_id'] = resource_group_id
             __props__['tags'] = tags
         super(Snapshot, __self__).__init__(
             'alicloud:ecs/snapshot:Snapshot',
@@ -84,6 +87,7 @@ class Snapshot(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disk_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Snapshot':
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
@@ -95,6 +99,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] disk_id: The source disk ID.
         :param pulumi.Input[str] name: Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -104,6 +109,7 @@ class Snapshot(pulumi.CustomResource):
         __props__["description"] = description
         __props__["disk_id"] = disk_id
         __props__["name"] = name
+        __props__["resource_group_id"] = resource_group_id
         __props__["tags"] = tags
         return Snapshot(resource_name, opts=opts, __props__=__props__)
 
@@ -130,6 +136,14 @@ class Snapshot(pulumi.CustomResource):
         Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter

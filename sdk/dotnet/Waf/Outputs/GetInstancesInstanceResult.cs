@@ -30,10 +30,6 @@ namespace Pulumi.AliCloud.Waf.Outputs
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// The region where the WAF instance is located.
-        /// </summary>
-        public readonly string Region;
-        /// <summary>
         /// The number of days before the trial period of the WAF instance expires.
         /// </summary>
         public readonly int RemainDay;
@@ -57,8 +53,6 @@ namespace Pulumi.AliCloud.Waf.Outputs
 
             string instanceId,
 
-            string region,
-
             int remainDay,
 
             int status,
@@ -71,7 +65,6 @@ namespace Pulumi.AliCloud.Waf.Outputs
             Id = id;
             InDebt = inDebt;
             InstanceId = instanceId;
-            Region = region;
             RemainDay = remainDay;
             Status = status;
             SubscriptionType = subscriptionType;

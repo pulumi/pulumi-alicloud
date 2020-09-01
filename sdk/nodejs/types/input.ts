@@ -28,6 +28,7 @@ export interface ProviderEndpoint {
     cr?: pulumi.Input<string>;
     cs?: pulumi.Input<string>;
     datahub?: pulumi.Input<string>;
+    dcdn?: pulumi.Input<string>;
     ddosbgp?: pulumi.Input<string>;
     ddoscoo?: pulumi.Input<string>;
     dds?: pulumi.Input<string>;
@@ -48,6 +49,7 @@ export interface ProviderEndpoint {
     market?: pulumi.Input<string>;
     maxcompute?: pulumi.Input<string>;
     mns?: pulumi.Input<string>;
+    mse?: pulumi.Input<string>;
     nas?: pulumi.Input<string>;
     ons?: pulumi.Input<string>;
     oos?: pulumi.Input<string>;
@@ -415,6 +417,63 @@ export namespace cloudconnect {
 }
 
 export namespace cms {
+    export interface AlarmEscalationsCritical {
+        /**
+         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         */
+        comparisonOperator?: pulumi.Input<string>;
+        /**
+         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         */
+        statistics?: pulumi.Input<string>;
+        /**
+         * Critical level alarm threshold value, which must be a numeric value currently.
+         */
+        threshold?: pulumi.Input<string>;
+        /**
+         * Critical level alarm retry times. Default to 3.
+         */
+        times?: pulumi.Input<number>;
+    }
+
+    export interface AlarmEscalationsInfo {
+        /**
+         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         */
+        comparisonOperator?: pulumi.Input<string>;
+        /**
+         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         */
+        statistics?: pulumi.Input<string>;
+        /**
+         * Critical level alarm threshold value, which must be a numeric value currently.
+         */
+        threshold?: pulumi.Input<string>;
+        /**
+         * Critical level alarm retry times. Default to 3.
+         */
+        times?: pulumi.Input<number>;
+    }
+
+    export interface AlarmEscalationsWarn {
+        /**
+         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         */
+        comparisonOperator?: pulumi.Input<string>;
+        /**
+         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         */
+        statistics?: pulumi.Input<string>;
+        /**
+         * Critical level alarm threshold value, which must be a numeric value currently.
+         */
+        threshold?: pulumi.Input<string>;
+        /**
+         * Critical level alarm retry times. Default to 3.
+         */
+        times?: pulumi.Input<number>;
+    }
+
     export interface SiteMonitorIspCity {
         city: pulumi.Input<string>;
         isp: pulumi.Input<string>;
@@ -632,6 +691,35 @@ export namespace cs {
          */
         status?: pulumi.Input<string>;
     }
+}
+
+export namespace dcdn {
+    export interface DomainSource {
+        /**
+         * The origin address.
+         */
+        content: pulumi.Input<string>;
+        /**
+         * The port number. Valid values: `443` and `80`. Default to `80`.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The priority of the origin if multiple origins are specified. Default to `20`.
+         */
+        priority?: pulumi.Input<string>;
+        /**
+         * The type of the origin. Valid values:
+         * `ipaddr`: The origin is configured using an IP address.
+         * `domain`: The origin is configured using a domain name.
+         * `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
+         */
+        type: pulumi.Input<string>;
+        /**
+         * The weight of the origin if multiple origins are specified. Default to `10`.
+         */
+        weight?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace ddos {
@@ -1186,6 +1274,9 @@ export namespace mongodb {
          */
         nodeStorage: pulumi.Input<number>;
     }
+}
+
+export namespace mse {
 }
 
 export namespace nas {

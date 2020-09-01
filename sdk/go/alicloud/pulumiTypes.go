@@ -463,6 +463,7 @@ type ProviderEndpoint struct {
 	Cr              *string `pulumi:"cr"`
 	Cs              *string `pulumi:"cs"`
 	Datahub         *string `pulumi:"datahub"`
+	Dcdn            *string `pulumi:"dcdn"`
 	Ddosbgp         *string `pulumi:"ddosbgp"`
 	Ddoscoo         *string `pulumi:"ddoscoo"`
 	Dds             *string `pulumi:"dds"`
@@ -483,6 +484,7 @@ type ProviderEndpoint struct {
 	Market          *string `pulumi:"market"`
 	Maxcompute      *string `pulumi:"maxcompute"`
 	Mns             *string `pulumi:"mns"`
+	Mse             *string `pulumi:"mse"`
 	Nas             *string `pulumi:"nas"`
 	Ons             *string `pulumi:"ons"`
 	Oos             *string `pulumi:"oos"`
@@ -526,6 +528,7 @@ type ProviderEndpointArgs struct {
 	Cr              pulumi.StringPtrInput `pulumi:"cr"`
 	Cs              pulumi.StringPtrInput `pulumi:"cs"`
 	Datahub         pulumi.StringPtrInput `pulumi:"datahub"`
+	Dcdn            pulumi.StringPtrInput `pulumi:"dcdn"`
 	Ddosbgp         pulumi.StringPtrInput `pulumi:"ddosbgp"`
 	Ddoscoo         pulumi.StringPtrInput `pulumi:"ddoscoo"`
 	Dds             pulumi.StringPtrInput `pulumi:"dds"`
@@ -546,6 +549,7 @@ type ProviderEndpointArgs struct {
 	Market          pulumi.StringPtrInput `pulumi:"market"`
 	Maxcompute      pulumi.StringPtrInput `pulumi:"maxcompute"`
 	Mns             pulumi.StringPtrInput `pulumi:"mns"`
+	Mse             pulumi.StringPtrInput `pulumi:"mse"`
 	Nas             pulumi.StringPtrInput `pulumi:"nas"`
 	Ons             pulumi.StringPtrInput `pulumi:"ons"`
 	Oos             pulumi.StringPtrInput `pulumi:"oos"`
@@ -673,6 +677,10 @@ func (o ProviderEndpointOutput) Datahub() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Datahub }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Dcdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dcdn }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Ddosbgp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ddosbgp }).(pulumi.StringPtrOutput)
 }
@@ -751,6 +759,10 @@ func (o ProviderEndpointOutput) Maxcompute() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Mns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Mns }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Mse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Mse }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Nas() pulumi.StringPtrOutput {

@@ -65,6 +65,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The ID of the resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -84,6 +88,7 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["diskId"] = state ? state.diskId : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
@@ -93,6 +98,7 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["diskId"] = args ? args.diskId : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
         if (!opts) {
@@ -123,6 +129,10 @@ export interface SnapshotState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The ID of the resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
@@ -144,6 +154,10 @@ export interface SnapshotArgs {
      * Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

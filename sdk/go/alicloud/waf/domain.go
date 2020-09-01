@@ -15,33 +15,84 @@ import (
 // For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 //
 // > **NOTE:** Available in 1.82.0+ .
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/waf"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := waf.NewDomain(ctx, "domain", &waf.DomainArgs{
+// 			ClusterType: pulumi.String("PhysicalCluster"),
+// 			Domain:      pulumi.String("www.aliyun.com"),
+// 			Http2Ports: pulumi.StringArray{
+// 				pulumi.String("443"),
+// 			},
+// 			HttpPorts: pulumi.StringArray{
+// 				pulumi.String("80"),
+// 			},
+// 			HttpToUserIp: pulumi.String("Off"),
+// 			HttpsPorts: pulumi.StringArray{
+// 				pulumi.String("443"),
+// 			},
+// 			HttpsRedirect:   pulumi.String("Off"),
+// 			InstanceId:      pulumi.String("waf-123455"),
+// 			IsAccessProduct: pulumi.String("On"),
+// 			LoadBalancing:   pulumi.String("IpHash"),
+// 			LogHeaders: waf.DomainLogHeaderArray{
+// 				&waf.DomainLogHeaderArgs{
+// 					Key:   pulumi.String("foo"),
+// 					Value: pulumi.String("http"),
+// 				},
+// 			},
+// 			SourceIps: pulumi.StringArray{
+// 				pulumi.String("1.1.1.1"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Domain struct {
 	pulumi.CustomResourceState
 
-	// The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+	// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
 	ClusterType pulumi.StringPtrOutput `pulumi:"clusterType"`
 	// The CNAME record assigned by the WAF instance to the specified domain.
 	Cname pulumi.StringOutput `pulumi:"cname"`
 	// The connection timeout for WAF exclusive clusters. Unit: seconds.
 	ConnectionTime pulumi.IntPtrOutput `pulumi:"connectionTime"`
-	// The domain that you want to add to WAF.
+	// Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
+	//
+	// Deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
 	Domain pulumi.StringOutput `pulumi:"domain"`
+	// The domain that you want to add to WAF.
+	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// List of the HTTP 2.0 ports.
 	Http2Ports pulumi.StringArrayOutput `pulumi:"http2Ports"`
-	// List of the HTTP ports
+	// List of the HTTP ports.
 	HttpPorts pulumi.StringArrayOutput `pulumi:"httpPorts"`
 	// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
-	// By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+	// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
 	HttpToUserIp pulumi.StringPtrOutput `pulumi:"httpToUserIp"`
-	// List of the HTTPS ports
+	// List of the HTTPS ports.
 	HttpsPorts pulumi.StringArrayOutput `pulumi:"httpsPorts"`
-	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
 	HttpsRedirect pulumi.StringPtrOutput `pulumi:"httpsRedirect"`
 	// The ID of the WAF instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
 	IsAccessProduct pulumi.StringOutput `pulumi:"isAccessProduct"`
-	// The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing pulumi.StringPtrOutput `pulumi:"loadBalancing"`
 	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
 	// * key: The key of label
@@ -53,7 +104,6 @@ type Domain struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// List of the IP address or domain of the origin server to which the specified domain points.
 	SourceIps pulumi.StringArrayOutput `pulumi:"sourceIps"`
-	Status    pulumi.IntOutput         `pulumi:"status"`
 	// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
 	WriteTime pulumi.IntPtrOutput `pulumi:"writeTime"`
 }
@@ -61,9 +111,6 @@ type Domain struct {
 // NewDomain registers a new resource with the given unique name, arguments, and options.
 func NewDomain(ctx *pulumi.Context,
 	name string, args *DomainArgs, opts ...pulumi.ResourceOption) (*Domain, error) {
-	if args == nil || args.Domain == nil {
-		return nil, errors.New("missing required argument 'Domain'")
-	}
 	if args == nil || args.InstanceId == nil {
 		return nil, errors.New("missing required argument 'InstanceId'")
 	}
@@ -98,30 +145,34 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+	// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
 	ClusterType *string `pulumi:"clusterType"`
 	// The CNAME record assigned by the WAF instance to the specified domain.
 	Cname *string `pulumi:"cname"`
 	// The connection timeout for WAF exclusive clusters. Unit: seconds.
 	ConnectionTime *int `pulumi:"connectionTime"`
-	// The domain that you want to add to WAF.
+	// Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
+	//
+	// Deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
 	Domain *string `pulumi:"domain"`
+	// The domain that you want to add to WAF.
+	DomainName *string `pulumi:"domainName"`
 	// List of the HTTP 2.0 ports.
 	Http2Ports []string `pulumi:"http2Ports"`
-	// List of the HTTP ports
+	// List of the HTTP ports.
 	HttpPorts []string `pulumi:"httpPorts"`
 	// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
-	// By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+	// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
 	HttpToUserIp *string `pulumi:"httpToUserIp"`
-	// List of the HTTPS ports
+	// List of the HTTPS ports.
 	HttpsPorts []string `pulumi:"httpsPorts"`
-	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
 	HttpsRedirect *string `pulumi:"httpsRedirect"`
 	// The ID of the WAF instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
 	IsAccessProduct *string `pulumi:"isAccessProduct"`
-	// The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing *string `pulumi:"loadBalancing"`
 	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
 	// * key: The key of label
@@ -133,36 +184,39 @@ type domainState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// List of the IP address or domain of the origin server to which the specified domain points.
 	SourceIps []string `pulumi:"sourceIps"`
-	Status    *int     `pulumi:"status"`
 	// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
 	WriteTime *int `pulumi:"writeTime"`
 }
 
 type DomainState struct {
-	// The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+	// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
 	ClusterType pulumi.StringPtrInput
 	// The CNAME record assigned by the WAF instance to the specified domain.
 	Cname pulumi.StringPtrInput
 	// The connection timeout for WAF exclusive clusters. Unit: seconds.
 	ConnectionTime pulumi.IntPtrInput
-	// The domain that you want to add to WAF.
+	// Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
+	//
+	// Deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
 	Domain pulumi.StringPtrInput
+	// The domain that you want to add to WAF.
+	DomainName pulumi.StringPtrInput
 	// List of the HTTP 2.0 ports.
 	Http2Ports pulumi.StringArrayInput
-	// List of the HTTP ports
+	// List of the HTTP ports.
 	HttpPorts pulumi.StringArrayInput
 	// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
-	// By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+	// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
 	HttpToUserIp pulumi.StringPtrInput
-	// List of the HTTPS ports
+	// List of the HTTPS ports.
 	HttpsPorts pulumi.StringArrayInput
-	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
 	HttpsRedirect pulumi.StringPtrInput
 	// The ID of the WAF instance.
 	InstanceId pulumi.StringPtrInput
-	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
 	IsAccessProduct pulumi.StringPtrInput
-	// The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing pulumi.StringPtrInput
 	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
 	// * key: The key of label
@@ -174,7 +228,6 @@ type DomainState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// List of the IP address or domain of the origin server to which the specified domain points.
 	SourceIps pulumi.StringArrayInput
-	Status    pulumi.IntPtrInput
 	// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
 	WriteTime pulumi.IntPtrInput
 }
@@ -184,28 +237,32 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+	// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
 	ClusterType *string `pulumi:"clusterType"`
 	// The connection timeout for WAF exclusive clusters. Unit: seconds.
 	ConnectionTime *int `pulumi:"connectionTime"`
+	// Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
+	//
+	// Deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
+	Domain *string `pulumi:"domain"`
 	// The domain that you want to add to WAF.
-	Domain string `pulumi:"domain"`
+	DomainName *string `pulumi:"domainName"`
 	// List of the HTTP 2.0 ports.
 	Http2Ports []string `pulumi:"http2Ports"`
-	// List of the HTTP ports
+	// List of the HTTP ports.
 	HttpPorts []string `pulumi:"httpPorts"`
 	// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
-	// By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+	// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
 	HttpToUserIp *string `pulumi:"httpToUserIp"`
-	// List of the HTTPS ports
+	// List of the HTTPS ports.
 	HttpsPorts []string `pulumi:"httpsPorts"`
-	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
 	HttpsRedirect *string `pulumi:"httpsRedirect"`
 	// The ID of the WAF instance.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
 	IsAccessProduct string `pulumi:"isAccessProduct"`
-	// The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing *string `pulumi:"loadBalancing"`
 	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
 	// * key: The key of label
@@ -223,28 +280,32 @@ type domainArgs struct {
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+	// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
 	ClusterType pulumi.StringPtrInput
 	// The connection timeout for WAF exclusive clusters. Unit: seconds.
 	ConnectionTime pulumi.IntPtrInput
+	// Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
+	//
+	// Deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
+	Domain pulumi.StringPtrInput
 	// The domain that you want to add to WAF.
-	Domain pulumi.StringInput
+	DomainName pulumi.StringPtrInput
 	// List of the HTTP 2.0 ports.
 	Http2Ports pulumi.StringArrayInput
-	// List of the HTTP ports
+	// List of the HTTP ports.
 	HttpPorts pulumi.StringArrayInput
 	// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
-	// By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+	// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
 	HttpToUserIp pulumi.StringPtrInput
-	// List of the HTTPS ports
+	// List of the HTTPS ports.
 	HttpsPorts pulumi.StringArrayInput
-	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+	// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
 	HttpsRedirect pulumi.StringPtrInput
 	// The ID of the WAF instance.
 	InstanceId pulumi.StringInput
-	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+	// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
 	IsAccessProduct pulumi.StringInput
-	// The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing pulumi.StringPtrInput
 	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
 	// * key: The key of label

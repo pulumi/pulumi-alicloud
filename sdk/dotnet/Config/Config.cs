@@ -105,6 +105,7 @@ namespace Pulumi.AliCloud
                 public string? Cr { get; set; } = null!;
                 public string? Cs { get; set; } = null!;
                 public string? Datahub { get; set; } = null!;
+                public string? Dcdn { get; set; } = null!;
                 public string? Ddosbgp { get; set; } = null!;
                 public string? Ddoscoo { get; set; } = null!;
                 public string? Dds { get; set; } = null!;
@@ -125,6 +126,7 @@ namespace Pulumi.AliCloud
                 public string? Market { get; set; } = null!;
                 public string? Maxcompute { get; set; } = null!;
                 public string? Mns { get; set; } = null!;
+                public string? Mse { get; set; } = null!;
                 public string? Nas { get; set; } = null!;
                 public string? Ons { get; set; } = null!;
                 public string? Oos { get; set; } = null!;
