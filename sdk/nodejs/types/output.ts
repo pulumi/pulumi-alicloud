@@ -72,6 +72,7 @@ export interface ProviderEndpoint {
     cr?: string;
     cs?: string;
     datahub?: string;
+    dcdn?: string;
     ddosbgp?: string;
     ddoscoo?: string;
     dds?: string;
@@ -92,6 +93,7 @@ export interface ProviderEndpoint {
     market?: string;
     maxcompute?: string;
     mns?: string;
+    mse?: string;
     nas?: string;
     ons?: string;
     oos?: string;
@@ -1367,6 +1369,63 @@ export namespace cloudconnect {
 }
 
 export namespace cms {
+    export interface AlarmEscalationsCritical {
+        /**
+         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         */
+        comparisonOperator?: string;
+        /**
+         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         */
+        statistics?: string;
+        /**
+         * Critical level alarm threshold value, which must be a numeric value currently.
+         */
+        threshold?: string;
+        /**
+         * Critical level alarm retry times. Default to 3.
+         */
+        times?: number;
+    }
+
+    export interface AlarmEscalationsInfo {
+        /**
+         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         */
+        comparisonOperator?: string;
+        /**
+         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         */
+        statistics?: string;
+        /**
+         * Critical level alarm threshold value, which must be a numeric value currently.
+         */
+        threshold?: string;
+        /**
+         * Critical level alarm retry times. Default to 3.
+         */
+        times?: number;
+    }
+
+    export interface AlarmEscalationsWarn {
+        /**
+         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         */
+        comparisonOperator?: string;
+        /**
+         * Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+         */
+        statistics?: string;
+        /**
+         * Critical level alarm threshold value, which must be a numeric value currently.
+         */
+        threshold?: string;
+        /**
+         * Critical level alarm retry times. Default to 3.
+         */
+        times?: number;
+    }
+
     export interface SiteMonitorIspCity {
         city: string;
         isp: string;
@@ -1397,6 +1456,7 @@ export namespace config {
         cr?: string;
         cs?: string;
         datahub?: string;
+        dcdn?: string;
         ddosbgp?: string;
         ddoscoo?: string;
         dds?: string;
@@ -1417,6 +1477,7 @@ export namespace config {
         market?: string;
         maxcompute?: string;
         mns?: string;
+        mse?: string;
         nas?: string;
         ons?: string;
         oos?: string;
@@ -2209,6 +2270,112 @@ export namespace cs {
          * The node current status. It is different with instance status.
          */
         status: string;
+    }
+}
+
+export namespace dcdn {
+    export interface DomainSource {
+        /**
+         * The origin address.
+         */
+        content: string;
+        /**
+         * The port number. Valid values: `443` and `80`. Default to `80`.
+         */
+        port?: number;
+        /**
+         * The priority of the origin if multiple origins are specified. Default to `20`.
+         */
+        priority?: string;
+        /**
+         * The type of the origin. Valid values:
+         * `ipaddr`: The origin is configured using an IP address.
+         * `domain`: The origin is configured using a domain name.
+         * `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
+         */
+        type: string;
+        /**
+         * The weight of the origin if multiple origins are specified. Default to `10`.
+         */
+        weight?: string;
+    }
+
+    export interface GetDomainsDomain {
+        /**
+         * Indicates the name of the certificate.
+         */
+        certName: string;
+        /**
+         * The canonical name (CNAME) of the accelerated domain.
+         */
+        cname: string;
+        /**
+         * The reason that causes the review failure.
+         */
+        description: string;
+        /**
+         * The name of the DCDN Domain.
+         */
+        domainName: string;
+        /**
+         * The time when the accelerated domain was last modified.
+         */
+        gmtModified: string;
+        /**
+         * The ID of the DCDN Domain.
+         */
+        id: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The acceleration region.
+         */
+        scope: string;
+        /**
+         * The origin information.
+         */
+        sources: outputs.dcdn.GetDomainsDomainSource[];
+        /**
+         * Indicates whether the SSL certificate is enabled.
+         */
+        sslProtocol: string;
+        /**
+         * Indicates the public key of the certificate.
+         */
+        sslPub: string;
+        /**
+         * The status of DCDN Domain.
+         */
+        status: string;
+    }
+
+    export interface GetDomainsDomainSource {
+        /**
+         * The origin address.
+         */
+        content: string;
+        /**
+         * The status of the origin.
+         */
+        enabled: string;
+        /**
+         * The port number.
+         */
+        port: number;
+        /**
+         * The priority of the origin if multiple origins are specified.
+         */
+        priority: string;
+        /**
+         * The type of the origin. Valid values:
+         */
+        type: string;
+        /**
+         * The weight of the origin if multiple origins are specified.
+         */
+        weight: string;
     }
 }
 
@@ -5606,6 +5773,113 @@ export namespace mongodb {
     }
 }
 
+export namespace mse {
+    export interface GetClustersCluster {
+        /**
+         * The id of acl.
+         */
+        aclId: string;
+        /**
+         * The version of app.
+         */
+        appVersion: string;
+        /**
+         * ID of the MSE Cluster.
+         */
+        clusterId: string;
+        /**
+         * ID of the OOS Executions.
+         */
+        clusterName: string;
+        /**
+         * The type of MSE Cluster.
+         */
+        clusterType: string;
+        /**
+         * The num of cpu.
+         */
+        cpu: number;
+        /**
+         * The health status of MSE Cluster.
+         */
+        healthStatus: string;
+        /**
+         * ID of the MSE Cluster.
+         */
+        id: string;
+        /**
+         * Time-consuming to create.
+         */
+        initCostTime: number;
+        /**
+         * The count of instance.
+         */
+        instanceCount: number;
+        /**
+         * ID of the MSE Cluster.
+         */
+        instanceId: string;
+        /**
+         * The list of instances.
+         */
+        instanceModels: outputs.mse.GetClustersClusterInstanceModel[];
+        /**
+         * The address of public network.
+         */
+        internetAddress: string;
+        /**
+         * The domain of public network.
+         */
+        internetDomain: string;
+        /**
+         * The port of public network.
+         */
+        internetPort: string;
+        /**
+         * The address of private network.
+         */
+        intranetAddress: string;
+        /**
+         * The domain of private network.
+         */
+        intranetDomain: string;
+        /**
+         * The port of private network.
+         */
+        intranetPort: string;
+        /**
+         * The memory size.
+         */
+        memoryCapacity: number;
+        /**
+         * The type of payment.
+         */
+        payInfo: string;
+        /**
+         * The public network bandwidth.
+         */
+        pubNetworkFlow: string;
+        /**
+         * The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
+         */
+        status: string;
+    }
+
+    export interface GetClustersClusterInstanceModel {
+        /**
+         * The health status of MSE Cluster.
+         */
+        healthStatus: string;
+        instanceType: string;
+        internetIp: string;
+        ip: string;
+        podName: string;
+        role: string;
+        singleTunnelVip: string;
+        vip: string;
+    }
+}
+
 export namespace nas {
     export interface GetAccessGroupsGroup {
         /**
@@ -8737,9 +9011,88 @@ export namespace waf {
 
     export interface GetDomainsDomain {
         /**
-         * Name of the domain.
+         * The type of the WAF cluster.
+         */
+        clusterType: string;
+        /**
+         * The CNAME record assigned by the WAF instance to the specified domain.
+         */
+        cname: string;
+        /**
+         * The connection timeout for WAF exclusive clusters. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
+         */
+        connectionTime: number;
+        /**
+         * Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
          */
         domain: string;
+        /**
+         * Name of the domain.
+         */
+        domainName: string;
+        /**
+         * List of the HTTP 2.0 ports.
+         */
+        http2Ports: string[];
+        /**
+         * List of the HTTP ports.
+         */
+        httpPorts: string[];
+        /**
+         * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
+         */
+        httpToUserIp: string;
+        /**
+         * List of the HTTPS ports.
+         */
+        httpsPorts: string[];
+        /**
+         * Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: `On` and `Off`. Default to `Off`.
+         */
+        httpsRedirect: string;
+        /**
+         * The ID of domain self ID, value as `domainName`.
+         */
+        id: string;
+        /**
+         * Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and "Off". Default to `Off`.
+         */
+        isAccessProduct: string;
+        /**
+         * The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
+         */
+        loadBalancing: string;
+        /**
+         * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
+         * * `key`: The key of label.
+         * * `value`: The value of label.
+         */
+        logHeaders: outputs.waf.GetDomainsDomainLogHeader[];
+        /**
+         * The read timeout of a WAF exclusive cluster. Unit: seconds.
+         */
+        readTime: number;
+        /**
+         * The ID of the resource group to which the queried domain belongs in Resource Management.
+         */
+        resourceGroupId: string;
+        /**
+         * List of the IP address or domain of the origin server to which the specified domain points.
+         */
+        sourceIps: string[];
+        /**
+         * The system data identifier that is used to control optimistic locking.
+         */
+        version: number;
+        /**
+         * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
+         */
+        writeTime: number;
+    }
+
+    export interface GetDomainsDomainLogHeader {
+        key: string;
+        value: string;
     }
 
     export interface GetInstancesInstance {
@@ -8759,10 +9112,6 @@ export namespace waf {
          * The ID of WAF the instance.
          */
         instanceId: string;
-        /**
-         * The region where the WAF instance is located.
-         */
-        region: string;
         /**
          * The number of days before the trial period of the WAF instance expires.
          */

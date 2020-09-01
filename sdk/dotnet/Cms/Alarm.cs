@@ -46,6 +46,24 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
+        /// A configuration of critical alarm (documented below).
+        /// </summary>
+        [Output("escalationsCritical")]
+        public Output<Outputs.AlarmEscalationsCritical?> EscalationsCritical { get; private set; } = null!;
+
+        /// <summary>
+        /// A configuration of critical info (documented below).
+        /// </summary>
+        [Output("escalationsInfo")]
+        public Output<Outputs.AlarmEscalationsInfo?> EscalationsInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// A configuration of critical warn (documented below).
+        /// </summary>
+        [Output("escalationsWarn")]
+        public Output<Outputs.AlarmEscalationsWarn?> EscalationsWarn { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// </summary>
         [Output("metric")]
@@ -58,10 +76,10 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm comparison operator. Valid values: ["&lt;=", "&lt;", "&gt;", "&gt;=", "==", "!="]. Default to "==".
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         /// </summary>
         [Output("operator")]
-        public Output<string?> Operator { get; private set; } = null!;
+        public Output<string> Operator { get; private set; } = null!;
 
         /// <summary>
         /// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
@@ -88,10 +106,10 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+        /// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         /// </summary>
         [Output("statistics")]
-        public Output<string?> Statistics { get; private set; } = null!;
+        public Output<string> Statistics { get; private set; } = null!;
 
         /// <summary>
         /// The current alarm rule status.
@@ -100,16 +118,16 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm threshold value, which must be a numeric value currently.
+        /// Critical level alarm threshold value, which must be a numeric value currently.
         /// </summary>
         [Output("threshold")]
         public Output<string> Threshold { get; private set; } = null!;
 
         /// <summary>
-        /// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         /// </summary>
         [Output("triggeredCount")]
-        public Output<int?> TriggeredCount { get; private set; } = null!;
+        public Output<int> TriggeredCount { get; private set; } = null!;
 
         /// <summary>
         /// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -206,6 +224,24 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
+        /// A configuration of critical alarm (documented below).
+        /// </summary>
+        [Input("escalationsCritical")]
+        public Input<Inputs.AlarmEscalationsCriticalArgs>? EscalationsCritical { get; set; }
+
+        /// <summary>
+        /// A configuration of critical info (documented below).
+        /// </summary>
+        [Input("escalationsInfo")]
+        public Input<Inputs.AlarmEscalationsInfoArgs>? EscalationsInfo { get; set; }
+
+        /// <summary>
+        /// A configuration of critical warn (documented below).
+        /// </summary>
+        [Input("escalationsWarn")]
+        public Input<Inputs.AlarmEscalationsWarnArgs>? EscalationsWarn { get; set; }
+
+        /// <summary>
         /// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// </summary>
         [Input("metric", required: true)]
@@ -218,7 +254,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Alarm comparison operator. Valid values: ["&lt;=", "&lt;", "&gt;", "&gt;=", "==", "!="]. Default to "==".
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
@@ -248,19 +284,19 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+        /// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         /// </summary>
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }
 
         /// <summary>
-        /// Alarm threshold value, which must be a numeric value currently.
+        /// Critical level alarm threshold value, which must be a numeric value currently.
         /// </summary>
-        [Input("threshold", required: true)]
-        public Input<string> Threshold { get; set; } = null!;
+        [Input("threshold")]
+        public Input<string>? Threshold { get; set; }
 
         /// <summary>
-        /// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         /// </summary>
         [Input("triggeredCount")]
         public Input<int>? TriggeredCount { get; set; }
@@ -321,6 +357,24 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
+        /// A configuration of critical alarm (documented below).
+        /// </summary>
+        [Input("escalationsCritical")]
+        public Input<Inputs.AlarmEscalationsCriticalGetArgs>? EscalationsCritical { get; set; }
+
+        /// <summary>
+        /// A configuration of critical info (documented below).
+        /// </summary>
+        [Input("escalationsInfo")]
+        public Input<Inputs.AlarmEscalationsInfoGetArgs>? EscalationsInfo { get; set; }
+
+        /// <summary>
+        /// A configuration of critical warn (documented below).
+        /// </summary>
+        [Input("escalationsWarn")]
+        public Input<Inputs.AlarmEscalationsWarnGetArgs>? EscalationsWarn { get; set; }
+
+        /// <summary>
         /// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// </summary>
         [Input("metric")]
@@ -333,7 +387,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Alarm comparison operator. Valid values: ["&lt;=", "&lt;", "&gt;", "&gt;=", "==", "!="]. Default to "==".
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
@@ -363,7 +417,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+        /// Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         /// </summary>
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }
@@ -375,13 +429,13 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Alarm threshold value, which must be a numeric value currently.
+        /// Critical level alarm threshold value, which must be a numeric value currently.
         /// </summary>
         [Input("threshold")]
         public Input<string>? Threshold { get; set; }
 
         /// <summary>
-        /// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         /// </summary>
         [Input("triggeredCount")]
         public Input<int>? TriggeredCount { get; set; }

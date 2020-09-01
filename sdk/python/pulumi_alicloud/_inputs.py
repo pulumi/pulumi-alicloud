@@ -83,6 +83,7 @@ class ProviderEndpointArgs:
                  cr: Optional[pulumi.Input[str]] = None,
                  cs: Optional[pulumi.Input[str]] = None,
                  datahub: Optional[pulumi.Input[str]] = None,
+                 dcdn: Optional[pulumi.Input[str]] = None,
                  ddosbgp: Optional[pulumi.Input[str]] = None,
                  ddoscoo: Optional[pulumi.Input[str]] = None,
                  dds: Optional[pulumi.Input[str]] = None,
@@ -103,6 +104,7 @@ class ProviderEndpointArgs:
                  market: Optional[pulumi.Input[str]] = None,
                  maxcompute: Optional[pulumi.Input[str]] = None,
                  mns: Optional[pulumi.Input[str]] = None,
+                 mse: Optional[pulumi.Input[str]] = None,
                  nas: Optional[pulumi.Input[str]] = None,
                  ons: Optional[pulumi.Input[str]] = None,
                  oos: Optional[pulumi.Input[str]] = None,
@@ -147,6 +149,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "cs", cs)
         if datahub is not None:
             pulumi.set(__self__, "datahub", datahub)
+        if dcdn is not None:
+            pulumi.set(__self__, "dcdn", dcdn)
         if ddosbgp is not None:
             pulumi.set(__self__, "ddosbgp", ddosbgp)
         if ddoscoo is not None:
@@ -187,6 +191,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "maxcompute", maxcompute)
         if mns is not None:
             pulumi.set(__self__, "mns", mns)
+        if mse is not None:
+            pulumi.set(__self__, "mse", mse)
         if nas is not None:
             pulumi.set(__self__, "nas", nas)
         if ons is not None:
@@ -350,6 +356,15 @@ class ProviderEndpointArgs:
     @datahub.setter
     def datahub(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "datahub", value)
+
+    @property
+    @pulumi.getter
+    def dcdn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dcdn")
+
+    @dcdn.setter
+    def dcdn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dcdn", value)
 
     @property
     @pulumi.getter
@@ -530,6 +545,15 @@ class ProviderEndpointArgs:
     @mns.setter
     def mns(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mns", value)
+
+    @property
+    @pulumi.getter
+    def mse(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mse")
+
+    @mse.setter
+    def mse(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mse", value)
 
     @property
     @pulumi.getter

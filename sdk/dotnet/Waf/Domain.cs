@@ -30,10 +30,19 @@ namespace Pulumi.AliCloud.Waf
     ///         {
     ///             ClusterType = "PhysicalCluster",
     ///             Domain = "www.aliyun.com",
-    ///             Http2Ports = 443,
-    ///             HttpPorts = 80,
+    ///             Http2Ports = 
+    ///             {
+    ///                 "443",
+    ///             },
+    ///             HttpPorts = 
+    ///             {
+    ///                 "80",
+    ///             },
     ///             HttpToUserIp = "Off",
-    ///             HttpsPorts = 443,
+    ///             HttpsPorts = 
+    ///             {
+    ///                 "443",
+    ///             },
     ///             HttpsRedirect = "Off",
     ///             InstanceId = "waf-123455",
     ///             IsAccessProduct = "On",
@@ -59,7 +68,7 @@ namespace Pulumi.AliCloud.Waf
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+        /// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
         /// </summary>
         [Output("clusterType")]
         public Output<string?> ClusterType { get; private set; } = null!;
@@ -77,9 +86,15 @@ namespace Pulumi.AliCloud.Waf
         public Output<int?> ConnectionTime { get; private set; } = null!;
 
         /// <summary>
-        /// The domain that you want to add to WAF.
+        /// Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         /// </summary>
         [Output("domain")]
+        public Output<string> DomainDeprecated { get; private set; } = null!;
+
+        /// <summary>
+        /// The domain that you want to add to WAF.
+        /// </summary>
+        [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
@@ -89,26 +104,26 @@ namespace Pulumi.AliCloud.Waf
         public Output<ImmutableArray<string>> Http2Ports { get; private set; } = null!;
 
         /// <summary>
-        /// List of the HTTP ports
+        /// List of the HTTP ports.
         /// </summary>
         [Output("httpPorts")]
         public Output<ImmutableArray<string>> HttpPorts { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
-        /// By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+        /// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         /// </summary>
         [Output("httpToUserIp")]
         public Output<string?> HttpToUserIp { get; private set; } = null!;
 
         /// <summary>
-        /// List of the HTTPS ports
+        /// List of the HTTPS ports.
         /// </summary>
         [Output("httpsPorts")]
         public Output<ImmutableArray<string>> HttpsPorts { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+        /// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
         /// </summary>
         [Output("httpsRedirect")]
         public Output<string?> HttpsRedirect { get; private set; } = null!;
@@ -120,13 +135,13 @@ namespace Pulumi.AliCloud.Waf
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+        /// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
         /// </summary>
         [Output("isAccessProduct")]
         public Output<string> IsAccessProduct { get; private set; } = null!;
 
         /// <summary>
-        /// The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+        /// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
         /// </summary>
         [Output("loadBalancing")]
         public Output<string?> LoadBalancing { get; private set; } = null!;
@@ -156,9 +171,6 @@ namespace Pulumi.AliCloud.Waf
         /// </summary>
         [Output("sourceIps")]
         public Output<ImmutableArray<string>> SourceIps { get; private set; } = null!;
-
-        [Output("status")]
-        public Output<int> Status { get; private set; } = null!;
 
         /// <summary>
         /// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
@@ -213,7 +225,7 @@ namespace Pulumi.AliCloud.Waf
     public sealed class DomainArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+        /// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
         /// </summary>
         [Input("clusterType")]
         public Input<string>? ClusterType { get; set; }
@@ -225,10 +237,16 @@ namespace Pulumi.AliCloud.Waf
         public Input<int>? ConnectionTime { get; set; }
 
         /// <summary>
+        /// Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+        /// </summary>
+        [Input("domain")]
+        public Input<string>? DomainDeprecated { get; set; }
+
+        /// <summary>
         /// The domain that you want to add to WAF.
         /// </summary>
-        [Input("domain", required: true)]
-        public Input<string> DomainName { get; set; } = null!;
+        [Input("domainName")]
+        public Input<string>? DomainName { get; set; }
 
         [Input("http2Ports")]
         private InputList<string>? _http2Ports;
@@ -246,7 +264,7 @@ namespace Pulumi.AliCloud.Waf
         private InputList<string>? _httpPorts;
 
         /// <summary>
-        /// List of the HTTP ports
+        /// List of the HTTP ports.
         /// </summary>
         public InputList<string> HttpPorts
         {
@@ -256,7 +274,7 @@ namespace Pulumi.AliCloud.Waf
 
         /// <summary>
         /// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
-        /// By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+        /// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         /// </summary>
         [Input("httpToUserIp")]
         public Input<string>? HttpToUserIp { get; set; }
@@ -265,7 +283,7 @@ namespace Pulumi.AliCloud.Waf
         private InputList<string>? _httpsPorts;
 
         /// <summary>
-        /// List of the HTTPS ports
+        /// List of the HTTPS ports.
         /// </summary>
         public InputList<string> HttpsPorts
         {
@@ -274,7 +292,7 @@ namespace Pulumi.AliCloud.Waf
         }
 
         /// <summary>
-        /// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+        /// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
         /// </summary>
         [Input("httpsRedirect")]
         public Input<string>? HttpsRedirect { get; set; }
@@ -286,13 +304,13 @@ namespace Pulumi.AliCloud.Waf
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+        /// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
         /// </summary>
         [Input("isAccessProduct", required: true)]
         public Input<string> IsAccessProduct { get; set; } = null!;
 
         /// <summary>
-        /// The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+        /// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
         /// </summary>
         [Input("loadBalancing")]
         public Input<string>? LoadBalancing { get; set; }
@@ -349,7 +367,7 @@ namespace Pulumi.AliCloud.Waf
     public sealed class DomainState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+        /// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
         /// </summary>
         [Input("clusterType")]
         public Input<string>? ClusterType { get; set; }
@@ -367,9 +385,15 @@ namespace Pulumi.AliCloud.Waf
         public Input<int>? ConnectionTime { get; set; }
 
         /// <summary>
-        /// The domain that you want to add to WAF.
+        /// Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         /// </summary>
         [Input("domain")]
+        public Input<string>? DomainDeprecated { get; set; }
+
+        /// <summary>
+        /// The domain that you want to add to WAF.
+        /// </summary>
+        [Input("domainName")]
         public Input<string>? DomainName { get; set; }
 
         [Input("http2Ports")]
@@ -388,7 +412,7 @@ namespace Pulumi.AliCloud.Waf
         private InputList<string>? _httpPorts;
 
         /// <summary>
-        /// List of the HTTP ports
+        /// List of the HTTP ports.
         /// </summary>
         public InputList<string> HttpPorts
         {
@@ -398,7 +422,7 @@ namespace Pulumi.AliCloud.Waf
 
         /// <summary>
         /// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
-        /// By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+        /// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         /// </summary>
         [Input("httpToUserIp")]
         public Input<string>? HttpToUserIp { get; set; }
@@ -407,7 +431,7 @@ namespace Pulumi.AliCloud.Waf
         private InputList<string>? _httpsPorts;
 
         /// <summary>
-        /// List of the HTTPS ports
+        /// List of the HTTPS ports.
         /// </summary>
         public InputList<string> HttpsPorts
         {
@@ -416,7 +440,7 @@ namespace Pulumi.AliCloud.Waf
         }
 
         /// <summary>
-        /// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+        /// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
         /// </summary>
         [Input("httpsRedirect")]
         public Input<string>? HttpsRedirect { get; set; }
@@ -428,13 +452,13 @@ namespace Pulumi.AliCloud.Waf
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+        /// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
         /// </summary>
         [Input("isAccessProduct")]
         public Input<string>? IsAccessProduct { get; set; }
 
         /// <summary>
-        /// The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+        /// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
         /// </summary>
         [Input("loadBalancing")]
         public Input<string>? LoadBalancing { get; set; }
@@ -476,9 +500,6 @@ namespace Pulumi.AliCloud.Waf
             get => _sourceIps ?? (_sourceIps = new InputList<string>());
             set => _sourceIps = value;
         }
-
-        [Input("status")]
-        public Input<int>? Status { get; set; }
 
         /// <summary>
         /// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.

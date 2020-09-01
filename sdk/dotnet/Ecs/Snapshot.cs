@@ -59,6 +59,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
@@ -128,6 +134,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -164,6 +176,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

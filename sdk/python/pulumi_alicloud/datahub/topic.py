@@ -33,30 +33,38 @@ class Topic(pulumi.CustomResource):
         Basic Usage
 
         - BLob Topic
-        resource "alicloud_datahub_topic" "example" {
-          name         = "tf_datahub_topic"
-          project_name = "tf_datahub_project"
-          record_type  = "BLOB"
-          shard_count  = 3
-          life_cycle   = 7
-          comment      = "created by terraform"
-        }
 
-        resource "alicloud_datahub_topic" "example" {
-          name         = "tf_datahub_topic"
-          project_name = "tf_datahub_project"
-          record_type  = "TUPLE"
-          record_schema = {
-            bigint_field    = "BIGINT"
-            timestamp_field = "TIMESTAMP"
-            string_field    = "STRING"
-            double_field    = "DOUBLE"
-            boolean_field   = "BOOLEAN"
-          }
-          shard_count = 3
-          life_cycle  = 7
-          comment     = "created by terraform"
-        }
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.datahub.Topic("example",
+            comment="created by terraform",
+            life_cycle=7,
+            project_name="tf_datahub_project",
+            record_type="BLOB",
+            shard_count=3)
+        ```
+        - Tuple Topic
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.datahub.Topic("example",
+            comment="created by terraform",
+            life_cycle=7,
+            project_name="tf_datahub_project",
+            record_schema={
+                "bigint_field": "BIGINT",
+                "boolean_field": "BOOLEAN",
+                "double_field": "DOUBLE",
+                "string_field": "STRING",
+                "timestamp_field": "TIMESTAMP",
+            },
+            record_type="TUPLE",
+            shard_count=3)
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

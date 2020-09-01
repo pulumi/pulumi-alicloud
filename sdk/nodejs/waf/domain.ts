@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  * const domain = new alicloud.waf.Domain("domain", {
  *     clusterType: "PhysicalCluster",
  *     domain: "www.aliyun.com",
- *     http2Ports: "443",
- *     httpPorts: "80",
+ *     http2Ports: ["443"],
+ *     httpPorts: ["80"],
  *     httpToUserIp: "Off",
- *     httpsPorts: "443",
+ *     httpsPorts: ["443"],
  *     httpsRedirect: "Off",
  *     instanceId: "waf-123455",
  *     isAccessProduct: "On",
@@ -67,7 +67,7 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /**
-     * The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+     * The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
      */
     public readonly clusterType!: pulumi.Output<string | undefined>;
     /**
@@ -79,28 +79,34 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly connectionTime!: pulumi.Output<number | undefined>;
     /**
-     * The domain that you want to add to WAF.
+     * Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
+     *
+     * @deprecated Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
      */
     public readonly domain!: pulumi.Output<string>;
+    /**
+     * The domain that you want to add to WAF.
+     */
+    public readonly domainName!: pulumi.Output<string>;
     /**
      * List of the HTTP 2.0 ports.
      */
     public readonly http2Ports!: pulumi.Output<string[] | undefined>;
     /**
-     * List of the HTTP ports
+     * List of the HTTP ports.
      */
     public readonly httpPorts!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
-     * By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+     * By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
      */
     public readonly httpToUserIp!: pulumi.Output<string | undefined>;
     /**
-     * List of the HTTPS ports
+     * List of the HTTPS ports.
      */
     public readonly httpsPorts!: pulumi.Output<string[] | undefined>;
     /**
-     * Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+     * Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
      */
     public readonly httpsRedirect!: pulumi.Output<string | undefined>;
     /**
@@ -108,11 +114,11 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+     * Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
      */
     public readonly isAccessProduct!: pulumi.Output<string>;
     /**
-     * The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+     * The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
      */
     public readonly loadBalancing!: pulumi.Output<string | undefined>;
     /**
@@ -133,7 +139,6 @@ export class Domain extends pulumi.CustomResource {
      * List of the IP address or domain of the origin server to which the specified domain points.
      */
     public readonly sourceIps!: pulumi.Output<string[]>;
-    public /*out*/ readonly status!: pulumi.Output<number>;
     /**
      * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
      */
@@ -155,6 +160,7 @@ export class Domain extends pulumi.CustomResource {
             inputs["cname"] = state ? state.cname : undefined;
             inputs["connectionTime"] = state ? state.connectionTime : undefined;
             inputs["domain"] = state ? state.domain : undefined;
+            inputs["domainName"] = state ? state.domainName : undefined;
             inputs["http2Ports"] = state ? state.http2Ports : undefined;
             inputs["httpPorts"] = state ? state.httpPorts : undefined;
             inputs["httpToUserIp"] = state ? state.httpToUserIp : undefined;
@@ -167,13 +173,9 @@ export class Domain extends pulumi.CustomResource {
             inputs["readTime"] = state ? state.readTime : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["sourceIps"] = state ? state.sourceIps : undefined;
-            inputs["status"] = state ? state.status : undefined;
             inputs["writeTime"] = state ? state.writeTime : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if (!args || args.domain === undefined) {
-                throw new Error("Missing required property 'domain'");
-            }
             if (!args || args.instanceId === undefined) {
                 throw new Error("Missing required property 'instanceId'");
             }
@@ -186,6 +188,7 @@ export class Domain extends pulumi.CustomResource {
             inputs["clusterType"] = args ? args.clusterType : undefined;
             inputs["connectionTime"] = args ? args.connectionTime : undefined;
             inputs["domain"] = args ? args.domain : undefined;
+            inputs["domainName"] = args ? args.domainName : undefined;
             inputs["http2Ports"] = args ? args.http2Ports : undefined;
             inputs["httpPorts"] = args ? args.httpPorts : undefined;
             inputs["httpToUserIp"] = args ? args.httpToUserIp : undefined;
@@ -200,7 +203,6 @@ export class Domain extends pulumi.CustomResource {
             inputs["sourceIps"] = args ? args.sourceIps : undefined;
             inputs["writeTime"] = args ? args.writeTime : undefined;
             inputs["cname"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -218,7 +220,7 @@ export class Domain extends pulumi.CustomResource {
  */
 export interface DomainState {
     /**
-     * The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+     * The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
      */
     readonly clusterType?: pulumi.Input<string>;
     /**
@@ -230,28 +232,34 @@ export interface DomainState {
      */
     readonly connectionTime?: pulumi.Input<number>;
     /**
-     * The domain that you want to add to WAF.
+     * Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
+     *
+     * @deprecated Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
      */
     readonly domain?: pulumi.Input<string>;
+    /**
+     * The domain that you want to add to WAF.
+     */
+    readonly domainName?: pulumi.Input<string>;
     /**
      * List of the HTTP 2.0 ports.
      */
     readonly http2Ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of the HTTP ports
+     * List of the HTTP ports.
      */
     readonly httpPorts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
-     * By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+     * By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
      */
     readonly httpToUserIp?: pulumi.Input<string>;
     /**
-     * List of the HTTPS ports
+     * List of the HTTPS ports.
      */
     readonly httpsPorts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+     * Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
      */
     readonly httpsRedirect?: pulumi.Input<string>;
     /**
@@ -259,11 +267,11 @@ export interface DomainState {
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
-     * Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+     * Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
      */
     readonly isAccessProduct?: pulumi.Input<string>;
     /**
-     * The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+     * The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
      */
     readonly loadBalancing?: pulumi.Input<string>;
     /**
@@ -284,7 +292,6 @@ export interface DomainState {
      * List of the IP address or domain of the origin server to which the specified domain points.
      */
     readonly sourceIps?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly status?: pulumi.Input<number>;
     /**
      * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
      */
@@ -296,7 +303,7 @@ export interface DomainState {
  */
 export interface DomainArgs {
     /**
-     * The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+     * The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
      */
     readonly clusterType?: pulumi.Input<string>;
     /**
@@ -304,28 +311,34 @@ export interface DomainArgs {
      */
     readonly connectionTime?: pulumi.Input<number>;
     /**
+     * Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
+     *
+     * @deprecated Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
+     */
+    readonly domain?: pulumi.Input<string>;
+    /**
      * The domain that you want to add to WAF.
      */
-    readonly domain: pulumi.Input<string>;
+    readonly domainName?: pulumi.Input<string>;
     /**
      * List of the HTTP 2.0 ports.
      */
     readonly http2Ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of the HTTP ports
+     * List of the HTTP ports.
      */
     readonly httpPorts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
-     * By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+     * By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
      */
     readonly httpToUserIp?: pulumi.Input<string>;
     /**
-     * List of the HTTPS ports
+     * List of the HTTPS ports.
      */
     readonly httpsPorts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+     * Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
      */
     readonly httpsRedirect?: pulumi.Input<string>;
     /**
@@ -333,11 +346,11 @@ export interface DomainArgs {
      */
     readonly instanceId: pulumi.Input<string>;
     /**
-     * Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+     * Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
      */
     readonly isAccessProduct: pulumi.Input<string>;
     /**
-     * The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+     * The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
      */
     readonly loadBalancing?: pulumi.Input<string>;
     /**

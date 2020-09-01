@@ -20,6 +20,7 @@ class Domain(pulumi.CustomResource):
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  connection_time: Optional[pulumi.Input[float]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
                  http2_ports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  http_ports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  http_to_user_ip: Optional[pulumi.Input[str]] = None,
@@ -52,10 +53,10 @@ class Domain(pulumi.CustomResource):
         domain = alicloud.waf.Domain("domain",
             cluster_type="PhysicalCluster",
             domain="www.aliyun.com",
-            http2_ports=443,
-            http_ports=80,
+            http2_ports=["443"],
+            http_ports=["80"],
             http_to_user_ip="Off",
-            https_ports=443,
+            https_ports=["443"],
             https_redirect="Off",
             instance_id="waf-123455",
             is_access_product="On",
@@ -69,18 +70,19 @@ class Domain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_type: The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+        :param pulumi.Input[str] cluster_type: The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
         :param pulumi.Input[float] connection_time: The connection timeout for WAF exclusive clusters. Unit: seconds.
-        :param pulumi.Input[str] domain: The domain that you want to add to WAF.
+        :param pulumi.Input[str] domain: Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+        :param pulumi.Input[str] domain_name: The domain that you want to add to WAF.
         :param pulumi.Input[List[pulumi.Input[str]]] http2_ports: List of the HTTP 2.0 ports.
-        :param pulumi.Input[List[pulumi.Input[str]]] http_ports: List of the HTTP ports
+        :param pulumi.Input[List[pulumi.Input[str]]] http_ports: List of the HTTP ports.
         :param pulumi.Input[str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
-               By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
-        :param pulumi.Input[List[pulumi.Input[str]]] https_ports: List of the HTTPS ports
-        :param pulumi.Input[str] https_redirect: Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+               By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
+        :param pulumi.Input[List[pulumi.Input[str]]] https_ports: List of the HTTPS ports.
+        :param pulumi.Input[str] https_redirect: Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
         :param pulumi.Input[str] instance_id: The ID of the WAF instance.
-        :param pulumi.Input[str] is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
-        :param pulumi.Input[str] load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+        :param pulumi.Input[str] is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
+        :param pulumi.Input[str] load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainLogHeaderArgs']]]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
                * key: The key of label
                * value: The value of label
@@ -108,9 +110,11 @@ class Domain(pulumi.CustomResource):
 
             __props__['cluster_type'] = cluster_type
             __props__['connection_time'] = connection_time
-            if domain is None:
-                raise TypeError("Missing required property 'domain'")
+            if domain is not None:
+                warnings.warn("Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.", DeprecationWarning)
+                pulumi.log.warn("domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.")
             __props__['domain'] = domain
+            __props__['domain_name'] = domain_name
             __props__['http2_ports'] = http2_ports
             __props__['http_ports'] = http_ports
             __props__['http_to_user_ip'] = http_to_user_ip
@@ -131,7 +135,6 @@ class Domain(pulumi.CustomResource):
             __props__['source_ips'] = source_ips
             __props__['write_time'] = write_time
             __props__['cname'] = None
-            __props__['status'] = None
         super(Domain, __self__).__init__(
             'alicloud:waf/domain:Domain',
             resource_name,
@@ -146,6 +149,7 @@ class Domain(pulumi.CustomResource):
             cname: Optional[pulumi.Input[str]] = None,
             connection_time: Optional[pulumi.Input[float]] = None,
             domain: Optional[pulumi.Input[str]] = None,
+            domain_name: Optional[pulumi.Input[str]] = None,
             http2_ports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             http_ports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             http_to_user_ip: Optional[pulumi.Input[str]] = None,
@@ -158,7 +162,6 @@ class Domain(pulumi.CustomResource):
             read_time: Optional[pulumi.Input[float]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             source_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            status: Optional[pulumi.Input[float]] = None,
             write_time: Optional[pulumi.Input[float]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
@@ -167,19 +170,20 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_type: The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+        :param pulumi.Input[str] cluster_type: The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
         :param pulumi.Input[str] cname: The CNAME record assigned by the WAF instance to the specified domain.
         :param pulumi.Input[float] connection_time: The connection timeout for WAF exclusive clusters. Unit: seconds.
-        :param pulumi.Input[str] domain: The domain that you want to add to WAF.
+        :param pulumi.Input[str] domain: Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+        :param pulumi.Input[str] domain_name: The domain that you want to add to WAF.
         :param pulumi.Input[List[pulumi.Input[str]]] http2_ports: List of the HTTP 2.0 ports.
-        :param pulumi.Input[List[pulumi.Input[str]]] http_ports: List of the HTTP ports
+        :param pulumi.Input[List[pulumi.Input[str]]] http_ports: List of the HTTP ports.
         :param pulumi.Input[str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
-               By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
-        :param pulumi.Input[List[pulumi.Input[str]]] https_ports: List of the HTTPS ports
-        :param pulumi.Input[str] https_redirect: Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+               By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
+        :param pulumi.Input[List[pulumi.Input[str]]] https_ports: List of the HTTPS ports.
+        :param pulumi.Input[str] https_redirect: Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
         :param pulumi.Input[str] instance_id: The ID of the WAF instance.
-        :param pulumi.Input[str] is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
-        :param pulumi.Input[str] load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+        :param pulumi.Input[str] is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
+        :param pulumi.Input[str] load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainLogHeaderArgs']]]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
                * key: The key of label
                * value: The value of label
@@ -196,6 +200,7 @@ class Domain(pulumi.CustomResource):
         __props__["cname"] = cname
         __props__["connection_time"] = connection_time
         __props__["domain"] = domain
+        __props__["domain_name"] = domain_name
         __props__["http2_ports"] = http2_ports
         __props__["http_ports"] = http_ports
         __props__["http_to_user_ip"] = http_to_user_ip
@@ -208,7 +213,6 @@ class Domain(pulumi.CustomResource):
         __props__["read_time"] = read_time
         __props__["resource_group_id"] = resource_group_id
         __props__["source_ips"] = source_ips
-        __props__["status"] = status
         __props__["write_time"] = write_time
         return Domain(resource_name, opts=opts, __props__=__props__)
 
@@ -216,7 +220,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of the WAF cluster. Valid values: "PhysicalCluster" and "VirtualCluster". Default to "PhysicalCluster".
+        The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
         """
         return pulumi.get(self, "cluster_type")
 
@@ -240,9 +244,17 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        The domain that you want to add to WAF.
+        Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         """
         return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Output[str]:
+        """
+        The domain that you want to add to WAF.
+        """
+        return pulumi.get(self, "domain_name")
 
     @property
     @pulumi.getter(name="http2Ports")
@@ -256,7 +268,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="httpPorts")
     def http_ports(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        List of the HTTP ports
+        List of the HTTP ports.
         """
         return pulumi.get(self, "http_ports")
 
@@ -265,7 +277,7 @@ class Domain(pulumi.CustomResource):
     def http_to_user_ip(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
-        By default, port 80 is used to forward the requests to the origin server. Valid values: "On" and "Off". Default to "Off".
+        By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         """
         return pulumi.get(self, "http_to_user_ip")
 
@@ -273,7 +285,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="httpsPorts")
     def https_ports(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        List of the HTTPS ports
+        List of the HTTPS ports.
         """
         return pulumi.get(self, "https_ports")
 
@@ -281,7 +293,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="httpsRedirect")
     def https_redirect(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and "Off". Default to "Off".
+        Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
         """
         return pulumi.get(self, "https_redirect")
 
@@ -297,7 +309,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="isAccessProduct")
     def is_access_product(self) -> pulumi.Output[str]:
         """
-        Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+        Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
         """
         return pulumi.get(self, "is_access_product")
 
@@ -305,7 +317,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancing")
     def load_balancing(self) -> pulumi.Output[Optional[str]]:
         """
-        The load balancing algorithm that is used to forward requests to the origin. Valid values: "IpHash" and "RoundRobin". Default to "IpHash".
+        The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
         """
         return pulumi.get(self, "load_balancing")
 
@@ -342,11 +354,6 @@ class Domain(pulumi.CustomResource):
         List of the IP address or domain of the origin server to which the specified domain points.
         """
         return pulumi.get(self, "source_ips")
-
-    @property
-    @pulumi.getter
-    def status(self) -> pulumi.Output[float]:
-        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="writeTime")

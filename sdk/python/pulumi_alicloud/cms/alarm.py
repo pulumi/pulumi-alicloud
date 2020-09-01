@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 __all__ = ['Alarm']
 
@@ -20,6 +22,9 @@ class Alarm(pulumi.CustomResource):
                  effective_interval: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[float]] = None,
+                 escalations_critical: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']]] = None,
+                 escalations_info: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']]] = None,
+                 escalations_warn: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']]] = None,
                  metric: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
@@ -45,16 +50,19 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
         :param pulumi.Input[float] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']] escalations_critical: A configuration of critical alarm (documented below).
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info (documented below).
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn (documented below).
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
-        :param pulumi.Input[str] operator: Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+        :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         :param pulumi.Input[float] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
         :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[float] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
         :param pulumi.Input[float] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-        :param pulumi.Input[str] statistics: Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
-        :param pulumi.Input[str] threshold: Alarm threshold value, which must be a numeric value currently.
-        :param pulumi.Input[float] triggered_count: Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+        :param pulumi.Input[str] statistics: Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+        :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
+        :param pulumi.Input[float] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         if __name__ is not None:
@@ -86,10 +94,16 @@ class Alarm(pulumi.CustomResource):
                 warnings.warn("Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.", DeprecationWarning)
                 pulumi.log.warn("end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.")
             __props__['end_time'] = end_time
+            __props__['escalations_critical'] = escalations_critical
+            __props__['escalations_info'] = escalations_info
+            __props__['escalations_warn'] = escalations_warn
             if metric is None:
                 raise TypeError("Missing required property 'metric'")
             __props__['metric'] = metric
             __props__['name'] = name
+            if operator is not None:
+                warnings.warn("Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.", DeprecationWarning)
+                pulumi.log.warn("operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.")
             __props__['operator'] = operator
             __props__['period'] = period
             if project is None:
@@ -100,10 +114,17 @@ class Alarm(pulumi.CustomResource):
                 warnings.warn("Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.", DeprecationWarning)
                 pulumi.log.warn("start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.")
             __props__['start_time'] = start_time
+            if statistics is not None:
+                warnings.warn("Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.", DeprecationWarning)
+                pulumi.log.warn("statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.")
             __props__['statistics'] = statistics
-            if threshold is None:
-                raise TypeError("Missing required property 'threshold'")
+            if threshold is not None:
+                warnings.warn("Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.", DeprecationWarning)
+                pulumi.log.warn("threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.")
             __props__['threshold'] = threshold
+            if triggered_count is not None:
+                warnings.warn("Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.", DeprecationWarning)
+                pulumi.log.warn("triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.")
             __props__['triggered_count'] = triggered_count
             __props__['webhook'] = webhook
             __props__['status'] = None
@@ -122,6 +143,9 @@ class Alarm(pulumi.CustomResource):
             effective_interval: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             end_time: Optional[pulumi.Input[float]] = None,
+            escalations_critical: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']]] = None,
+            escalations_info: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']]] = None,
+            escalations_warn: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']]] = None,
             metric: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             operator: Optional[pulumi.Input[str]] = None,
@@ -146,17 +170,20 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
         :param pulumi.Input[float] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']] escalations_critical: A configuration of critical alarm (documented below).
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info (documented below).
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn (documented below).
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
-        :param pulumi.Input[str] operator: Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+        :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         :param pulumi.Input[float] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
         :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[float] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
         :param pulumi.Input[float] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-        :param pulumi.Input[str] statistics: Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+        :param pulumi.Input[str] statistics: Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         :param pulumi.Input[str] status: The current alarm rule status.
-        :param pulumi.Input[str] threshold: Alarm threshold value, which must be a numeric value currently.
-        :param pulumi.Input[float] triggered_count: Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+        :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
+        :param pulumi.Input[float] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -168,6 +195,9 @@ class Alarm(pulumi.CustomResource):
         __props__["effective_interval"] = effective_interval
         __props__["enabled"] = enabled
         __props__["end_time"] = end_time
+        __props__["escalations_critical"] = escalations_critical
+        __props__["escalations_info"] = escalations_info
+        __props__["escalations_warn"] = escalations_warn
         __props__["metric"] = metric
         __props__["name"] = name
         __props__["operator"] = operator
@@ -223,6 +253,30 @@ class Alarm(pulumi.CustomResource):
         return pulumi.get(self, "end_time")
 
     @property
+    @pulumi.getter(name="escalationsCritical")
+    def escalations_critical(self) -> pulumi.Output[Optional['outputs.AlarmEscalationsCritical']]:
+        """
+        A configuration of critical alarm (documented below).
+        """
+        return pulumi.get(self, "escalations_critical")
+
+    @property
+    @pulumi.getter(name="escalationsInfo")
+    def escalations_info(self) -> pulumi.Output[Optional['outputs.AlarmEscalationsInfo']]:
+        """
+        A configuration of critical info (documented below).
+        """
+        return pulumi.get(self, "escalations_info")
+
+    @property
+    @pulumi.getter(name="escalationsWarn")
+    def escalations_warn(self) -> pulumi.Output[Optional['outputs.AlarmEscalationsWarn']]:
+        """
+        A configuration of critical warn (documented below).
+        """
+        return pulumi.get(self, "escalations_warn")
+
+    @property
     @pulumi.getter
     def metric(self) -> pulumi.Output[str]:
         """
@@ -240,9 +294,9 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def operator(self) -> pulumi.Output[Optional[str]]:
+    def operator(self) -> pulumi.Output[str]:
         """
-        Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+        It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         """
         return pulumi.get(self, "operator")
 
@@ -280,9 +334,9 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def statistics(self) -> pulumi.Output[Optional[str]]:
+    def statistics(self) -> pulumi.Output[str]:
         """
-        Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+        Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         """
         return pulumi.get(self, "statistics")
 
@@ -298,15 +352,15 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def threshold(self) -> pulumi.Output[str]:
         """
-        Alarm threshold value, which must be a numeric value currently.
+        Critical level alarm threshold value, which must be a numeric value currently.
         """
         return pulumi.get(self, "threshold")
 
     @property
     @pulumi.getter(name="triggeredCount")
-    def triggered_count(self) -> pulumi.Output[Optional[float]]:
+    def triggered_count(self) -> pulumi.Output[float]:
         """
-        Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+        It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         """
         return pulumi.get(self, "triggered_count")
 

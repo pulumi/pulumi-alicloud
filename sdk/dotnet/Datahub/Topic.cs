@@ -17,30 +17,57 @@ namespace Pulumi.AliCloud.Datahub
     /// Basic Usage
     /// 
     /// - BLob Topic
-    /// resource "alicloud_datahub_topic" "example" {
-    ///   name         = "tf_datahub_topic"
-    ///   project_name = "tf_datahub_project"
-    ///   record_type  = "BLOB"
-    ///   shard_count  = 3
-    ///   life_cycle   = 7
-    ///   comment      = "created by terraform"
-    /// }
     /// 
-    /// resource "alicloud_datahub_topic" "example" {
-    ///   name         = "tf_datahub_topic"
-    ///   project_name = "tf_datahub_project"
-    ///   record_type  = "TUPLE"
-    ///   record_schema = {
-    ///     bigint_field    = "BIGINT"
-    ///     timestamp_field = "TIMESTAMP"
-    ///     string_field    = "STRING"
-    ///     double_field    = "DOUBLE"
-    ///     boolean_field   = "BOOLEAN"
-    ///   }
-    ///   shard_count = 3
-    ///   life_cycle  = 7
-    ///   comment     = "created by terraform"
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.Datahub.Topic("example", new AliCloud.Datahub.TopicArgs
+    ///         {
+    ///             Comment = "created by terraform",
+    ///             LifeCycle = 7,
+    ///             ProjectName = "tf_datahub_project",
+    ///             RecordType = "BLOB",
+    ///             ShardCount = 3,
+    ///         });
+    ///     }
+    /// 
     /// }
+    /// ```
+    /// - Tuple Topic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.Datahub.Topic("example", new AliCloud.Datahub.TopicArgs
+    ///         {
+    ///             Comment = "created by terraform",
+    ///             LifeCycle = 7,
+    ///             ProjectName = "tf_datahub_project",
+    ///             RecordSchema = 
+    ///             {
+    ///                 { "bigint_field", "BIGINT" },
+    ///                 { "boolean_field", "BOOLEAN" },
+    ///                 { "double_field", "DOUBLE" },
+    ///                 { "string_field", "STRING" },
+    ///                 { "timestamp_field", "TIMESTAMP" },
+    ///             },
+    ///             RecordType = "TUPLE",
+    ///             ShardCount = 3,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Topic : Pulumi.CustomResource
     {

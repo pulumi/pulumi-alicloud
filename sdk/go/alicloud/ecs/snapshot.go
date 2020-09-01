@@ -49,6 +49,8 @@ type Snapshot struct {
 	DiskId pulumi.StringOutput `pulumi:"diskId"`
 	// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
@@ -90,6 +92,8 @@ type snapshotState struct {
 	DiskId *string `pulumi:"diskId"`
 	// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name *string `pulumi:"name"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -101,6 +105,8 @@ type SnapshotState struct {
 	DiskId pulumi.StringPtrInput
 	// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
@@ -116,6 +122,8 @@ type snapshotArgs struct {
 	DiskId string `pulumi:"diskId"`
 	// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name *string `pulumi:"name"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -128,6 +136,8 @@ type SnapshotArgs struct {
 	DiskId pulumi.StringInput
 	// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

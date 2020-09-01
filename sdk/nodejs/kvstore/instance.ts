@@ -92,6 +92,18 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionDomain!: pulumi.Output<string>;
     /**
+     * The connection address of the instance.
+     */
+    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    /**
+     * The prefix of the external network connection address.
+     */
+    public readonly connectionStringPrefix!: pulumi.Output<string | undefined>;
+    /**
+     * Whether to open the public network. Default to: `false`.
+     */
+    public readonly enablePublic!: pulumi.Output<boolean | undefined>;
+    /**
      * Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
      */
     public readonly engineVersion!: pulumi.Output<string | undefined>;
@@ -136,6 +148,10 @@ export class Instance extends pulumi.CustomResource {
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
     public readonly period!: pulumi.Output<number | undefined>;
+    /**
+     * The port of redis.
+     */
+    public readonly port!: pulumi.Output<string | undefined>;
     /**
      * Set the instance's private IP.
      */
@@ -182,6 +198,9 @@ export class Instance extends pulumi.CustomResource {
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["backupId"] = state ? state.backupId : undefined;
             inputs["connectionDomain"] = state ? state.connectionDomain : undefined;
+            inputs["connectionString"] = state ? state.connectionString : undefined;
+            inputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
+            inputs["enablePublic"] = state ? state.enablePublic : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["instanceClass"] = state ? state.instanceClass : undefined;
@@ -194,6 +213,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["parameters"] = state ? state.parameters : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["period"] = state ? state.period : undefined;
+            inputs["port"] = state ? state.port : undefined;
             inputs["privateIp"] = state ? state.privateIp : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
@@ -210,6 +230,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             inputs["backupId"] = args ? args.backupId : undefined;
+            inputs["connectionStringPrefix"] = args ? args.connectionStringPrefix : undefined;
+            inputs["enablePublic"] = args ? args.enablePublic : undefined;
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             inputs["instanceClass"] = args ? args.instanceClass : undefined;
@@ -222,6 +244,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["period"] = args ? args.period : undefined;
+            inputs["port"] = args ? args.port : undefined;
             inputs["privateIp"] = args ? args.privateIp : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
@@ -230,6 +253,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["vpcAuthMode"] = args ? args.vpcAuthMode : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["connectionDomain"] = undefined /*out*/;
+            inputs["connectionString"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -266,6 +290,18 @@ export interface InstanceState {
      * Instance connection domain (only Intranet access supported).
      */
     readonly connectionDomain?: pulumi.Input<string>;
+    /**
+     * The connection address of the instance.
+     */
+    readonly connectionString?: pulumi.Input<string>;
+    /**
+     * The prefix of the external network connection address.
+     */
+    readonly connectionStringPrefix?: pulumi.Input<string>;
+    /**
+     * Whether to open the public network. Default to: `false`.
+     */
+    readonly enablePublic?: pulumi.Input<boolean>;
     /**
      * Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
      */
@@ -311,6 +347,10 @@ export interface InstanceState {
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
     readonly period?: pulumi.Input<number>;
+    /**
+     * The port of redis.
+     */
+    readonly port?: pulumi.Input<string>;
     /**
      * Set the instance's private IP.
      */
@@ -362,6 +402,14 @@ export interface InstanceArgs {
      */
     readonly backupId?: pulumi.Input<string>;
     /**
+     * The prefix of the external network connection address.
+     */
+    readonly connectionStringPrefix?: pulumi.Input<string>;
+    /**
+     * Whether to open the public network. Default to: `false`.
+     */
+    readonly enablePublic?: pulumi.Input<boolean>;
+    /**
      * Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
      */
     readonly engineVersion?: pulumi.Input<string>;
@@ -406,6 +454,10 @@ export interface InstanceArgs {
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
     readonly period?: pulumi.Input<number>;
+    /**
+     * The port of redis.
+     */
+    readonly port?: pulumi.Input<string>;
     /**
      * Set the instance's private IP.
      */

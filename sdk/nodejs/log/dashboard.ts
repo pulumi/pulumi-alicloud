@@ -9,6 +9,55 @@ import * as utilities from "../utilities";
  * [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
  *
  * > **NOTE:** Available in 1.86.0
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultProject = new alicloud.log.Project("default", {
+ *     description: "tf unit test",
+ * });
+ * const defaultStore = new alicloud.log.Store("default", {
+ *     project: "tf-project",
+ *     retentionPeriod: 3000,
+ *     shardCount: 1,
+ * });
+ * const example = new alicloud.log.Dashboard("example", {
+ *     charList: `  [
+ *     {
+ *       "title":"new_title",
+ *       "type":"map",
+ *       "search":{
+ *         "logstore":"tf-logstore",
+ *         "topic":"new_topic",
+ *         "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
+ *         "start":"-86400s",
+ *         "end":"now"
+ *       },
+ *       "display":{
+ *         "xAxis":[
+ *           "ct_name"
+ *         ],
+ *         "yAxis":[
+ *           "ct_product"
+ *         ],
+ *         "xPos":0,
+ *         "yPos":0,
+ *         "width":10,
+ *         "height":12,
+ *         "displayName":"xixihaha911"
+ *       }
+ *     }
+ *   ]
+ * `,
+ *     dashboardName: "tf-dashboard",
+ *     projectName: "tf-project",
+ * });
+ * ```
  */
 export class Dashboard extends pulumi.CustomResource {
     /**

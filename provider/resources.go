@@ -43,6 +43,7 @@ const (
 	crMod              = "CR"
 	csMod              = "CS"
 	datahubMod         = "Datahub"
+	dcdnMod            = "Dcdn"
 	ddsMod             = "Dds"
 	ddosMod            = "Ddos"
 	dmsMod             = "Dms"
@@ -64,6 +65,7 @@ const (
 	maxComputeMod      = "MaxCompute"
 	mongoDbMod         = "MongoDB"
 	mnsMod             = "Mns"
+	mseMod             = "Mse"
 	nasMod             = "Nas"
 	oosMod             = "Oos"
 	ossMod             = "Oss"
@@ -285,6 +287,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_db_read_write_splitting_connection": {Tok: resource(rdsMod, "ReadWriteSplittingConnection")},
 			"alicloud_db_readonly_instance":               {Tok: resource(rdsMod, "ReadOnlyInstance")},
 
+			// DCDN
+			"alicloud_dcdn_domain": {Tok: resource(dcdnMod, "Domain")},
+
 			// DDOS
 			"alicloud_ddoscoo_scheduler_rule": {Tok: resource(ddosMod, "SchedulerRule")},
 
@@ -429,6 +434,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_mns_queue":              {Tok: resource(mnsMod, "Queue")},
 			"alicloud_mns_topic":              {Tok: resource(mnsMod, "Topic")},
 			"alicloud_mns_topic_subscription": {Tok: resource(mnsMod, "TopicSubscription")},
+
+			// Mse
+			"alicloud_mse_cluster": {Tok: resource(mseMod, "Cluster")},
 
 			// Nas
 			"alicloud_nas_access_group": {Tok: resource(nasMod, "AccessGroup")},
@@ -598,7 +606,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: resource(wafMod, "Domain"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"domain": {
-						CSharpName: "DomainName",
+						CSharpName: "DomainDeprecated",
 					},
 				},
 			},
@@ -663,6 +671,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cr_ee_namespaces":                  {Tok: dataSource(csMod, "getRegistryEnterpriseNamespaces")},
 			"alicloud_cr_ee_repos":                       {Tok: dataSource(csMod, "getRegistryEnterpriseRepos")},
 			"alicloud_cr_ee_sync_rules":                  {Tok: dataSource(csMod, "getRegistryEnterpriseSyncRules")},
+
+			// Dcdn
+			"alicloud_dcdn_domains": {Tok: dataSource(dcdnMod, "getDomains")},
 
 			// Dds
 			"alicloud_mongo_instances": {Tok: dataSource(ddsMod, "getMongoInstances")},
@@ -770,6 +781,9 @@ func Provider() tfbridge.ProviderInfo {
 			// Mongo
 			"alicloud_mongodb_instances": {Tok: dataSource(mongoDbMod, "getInstances")},
 			"alicloud_mongodb_zones":     {Tok: dataSource(mongoDbMod, "getZones")},
+
+			// Mse
+			"alicloud_mse_clusters": {Tok: dataSource(mseMod, "getClusters")},
 
 			// Nas
 			"alicloud_nas_access_groups": {Tok: dataSource(nasMod, "getAccessGroups")},

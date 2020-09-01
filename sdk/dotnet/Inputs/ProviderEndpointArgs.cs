@@ -57,6 +57,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("datahub")]
         public Input<string>? Datahub { get; set; }
 
+        [Input("dcdn")]
+        public Input<string>? Dcdn { get; set; }
+
         [Input("ddosbgp")]
         public Input<string>? Ddosbgp { get; set; }
 
@@ -116,6 +119,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("mns")]
         public Input<string>? Mns { get; set; }
+
+        [Input("mse")]
+        public Input<string>? Mse { get; set; }
 
         [Input("nas")]
         public Input<string>? Nas { get; set; }

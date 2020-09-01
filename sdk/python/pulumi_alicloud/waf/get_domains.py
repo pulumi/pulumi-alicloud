@@ -20,10 +20,13 @@ class GetDomainsResult:
     """
     A collection of values returned by getDomains.
     """
-    def __init__(__self__, domains=None, id=None, ids=None, instance_id=None, output_file=None):
+    def __init__(__self__, domains=None, enable_details=None, id=None, ids=None, instance_id=None, name_regex=None, names=None, output_file=None, resource_group_id=None):
         if domains and not isinstance(domains, list):
             raise TypeError("Expected argument 'domains' to be a list")
         pulumi.set(__self__, "domains", domains)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -33,9 +36,18 @@ class GetDomainsResult:
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
+        if name_regex and not isinstance(name_regex, str):
+            raise TypeError("Expected argument 'name_regex' to be a str")
+        pulumi.set(__self__, "name_regex", name_regex)
+        if names and not isinstance(names, list):
+            raise TypeError("Expected argument 'names' to be a list")
+        pulumi.set(__self__, "names", names)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if resource_group_id and not isinstance(resource_group_id, str):
+            raise TypeError("Expected argument 'resource_group_id' to be a str")
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter
@@ -44,6 +56,11 @@ class GetDomainsResult:
         A list of Domains. Each element contains the following attributes:
         """
         return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -57,7 +74,7 @@ class GetDomainsResult:
     @pulumi.getter
     def ids(self) -> List[str]:
         """
-        (Optional) A list of WAF domain names. Each item is domain name.
+        A list of WAF domain self ID, value as `domain_name`.
         """
         return pulumi.get(self, "ids")
 
@@ -67,9 +84,30 @@ class GetDomainsResult:
         return pulumi.get(self, "instance_id")
 
     @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[str]:
+        return pulumi.get(self, "name_regex")
+
+    @property
+    @pulumi.getter
+    def names(self) -> List[str]:
+        """
+        A list of WAF domain names.
+        """
+        return pulumi.get(self, "names")
+
+    @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[str]:
+        """
+        The ID of the resource group to which the queried domain belongs in Resource Management.
+        """
+        return pulumi.get(self, "resource_group_id")
 
 
 class AwaitableGetDomainsResult(GetDomainsResult):
@@ -79,15 +117,22 @@ class AwaitableGetDomainsResult(GetDomainsResult):
             yield self
         return GetDomainsResult(
             domains=self.domains,
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
             instance_id=self.instance_id,
-            output_file=self.output_file)
+            name_regex=self.name_regex,
+            names=self.names,
+            output_file=self.output_file,
+            resource_group_id=self.resource_group_id)
 
 
-def get_domains(ids: Optional[List[str]] = None,
+def get_domains(enable_details: Optional[bool] = None,
+                ids: Optional[List[str]] = None,
                 instance_id: Optional[str] = None,
+                name_regex: Optional[str] = None,
                 output_file: Optional[str] = None,
+                resource_group_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
     Provides a WAF datasource to retrieve domains.
@@ -106,13 +151,19 @@ def get_domains(ids: Optional[List[str]] = None,
     ```
 
 
+    :param bool enable_details: Default to false and only output `id`, `domain_name`. Set it to true can output more details.
     :param List[str] ids: A list of WAF domain names. Each item is domain name.
     :param str instance_id: The Id of waf instance to which waf domain belongs.
+    :param str name_regex: A regex string to filter results by domain name.
+    :param str resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['instanceId'] = instance_id
+    __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -121,7 +172,11 @@ def get_domains(ids: Optional[List[str]] = None,
 
     return AwaitableGetDomainsResult(
         domains=__ret__.domains,
+        enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
         instance_id=__ret__.instance_id,
-        output_file=__ret__.output_file)
+        name_regex=__ret__.name_regex,
+        names=__ret__.names,
+        output_file=__ret__.output_file,
+        resource_group_id=__ret__.resource_group_id)
