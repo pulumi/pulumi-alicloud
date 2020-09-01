@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.94.0 of the AliCloud Terraform Provider
+_(none)_
 
 ---
+
+## 2.15.0 (2020-09-01)
+* Upgrade to v1.94.0 of the AliCloud Terraform Provider
 
 ## 2.14.0 (2020-08-31)
 * Upgrade to v1.93.0 of the AliCloud Terraform Provider
