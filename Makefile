@@ -10,8 +10,7 @@ TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
 
-LATEST_RESOURCE_PROVIDER_VERSION := $(shell pulumictl get latest-plugin pulumi-${PACK})
-PROVIDER_VERSION := ${LATEST_RESOURCE_PROVIDER_VERSION:v%=%}
+TESTPARALLELISM := 10
 
 WORKING_DIR     := $(shell pwd)
 
@@ -84,7 +83,6 @@ clean::
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource $(PACK) $(PROVIDER_VERSION)
 
 install_dotnet_sdk::
 	mkdir -p $(WORKING_DIR)/nuget
@@ -98,3 +96,6 @@ install_nodejs_sdk::
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
 install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk
+
+test::
+	cd examples && go test -v -tags=all -parallel ${TESTPARALLELISM} -timeout 2h
