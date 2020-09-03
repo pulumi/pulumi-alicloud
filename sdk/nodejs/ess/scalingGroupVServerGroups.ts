@@ -35,50 +35,43 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "testAccEssVserverGroupsAttachment";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("default", {
- *     vswitchId: defaultSwitch.id,
- * });
- * const defaultServerGroup = new alicloud.slb.ServerGroup("default", {
- *     loadBalancerId: defaultLoadBalancer.id,
- * });
- * const defaultListener: alicloud.slb.Listener[] = [];
- * for (let i = 0; i < 2; i++) {
- *     defaultListener.push(new alicloud.slb.Listener(`default-${i}`, {
- *         backendPort: 22,
- *         bandwidth: 10,
- *         frontendPort: 22,
- *         healthCheckType: "tcp",
- *         loadBalancerId: defaultLoadBalancer.id.apply(id => id[i]),
+ * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {vswitchId: defaultSwitch.id});
+ * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultLoadBalancer.id});
+ * const defaultListener: alicloud.slb.Listener[];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultListener.push(new alicloud.slb.Listener(`defaultListener-${range.value}`, {
+ *         loadBalancerId: [defaultLoadBalancer].map(__item => __item.id)[range.value],
+ *         backendPort: "22",
+ *         frontendPort: "22",
  *         protocol: "tcp",
+ *         bandwidth: "10",
+ *         healthCheckType: "tcp",
  *     }));
  * }
- * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
- *     maxSize: 2,
- *     minSize: 2,
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
+ *     minSize: "2",
+ *     maxSize: "2",
  *     scalingGroupName: name,
  *     vswitchIds: [defaultSwitch.id],
  * });
- * const defaultScalingGroupVServerGroups = new alicloud.ess.ScalingGroupVServerGroups("default", {
+ * const defaultScalingGroupVServerGroups = new alicloud.ess.ScalingGroupVServerGroups("defaultScalingGroupVServerGroups", {
  *     scalingGroupId: defaultScalingGroup.id,
  *     vserverGroups: [{
  *         loadbalancerId: defaultLoadBalancer.id,
  *         vserverAttributes: [{
- *             port: 100,
  *             vserverGroupId: defaultServerGroup.id,
- *             weight: 60,
+ *             port: "100",
+ *             weight: "60",
  *         }],
  *     }],
  * });

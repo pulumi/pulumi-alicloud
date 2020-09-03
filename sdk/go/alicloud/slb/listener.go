@@ -34,56 +34,56 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		defaultLoadBalancer, err := slb.NewLoadBalancer(ctx, "defaultLoadBalancer", &slb.LoadBalancerArgs{
-// 			Internet:           pulumi.Bool(true),
 // 			InternetChargeType: pulumi.String("PayByTraffic"),
+// 			Internet:           pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultAcl, err := slb.NewAcl(ctx, "defaultAcl", &slb.AclArgs{
+// 			IpVersion: pulumi.String(ipVersion),
 // 			EntryLists: slb.AclEntryListArray{
 // 				&slb.AclEntryListArgs{
-// 					Comment: pulumi.String("first"),
 // 					Entry:   pulumi.String("10.10.10.0/24"),
+// 					Comment: pulumi.String("first"),
 // 				},
 // 				&slb.AclEntryListArgs{
-// 					Comment: pulumi.String("second"),
 // 					Entry:   pulumi.String("168.10.10.0/24"),
+// 					Comment: pulumi.String("second"),
 // 				},
 // 			},
-// 			IpVersion: pulumi.String(ipVersion),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = slb.NewListener(ctx, "defaultListener", &slb.ListenerArgs{
-// 			AclId:                  defaultAcl.ID(),
-// 			AclStatus:              pulumi.String("on"),
-// 			AclType:                pulumi.String("white"),
-// 			BackendPort:            pulumi.Int(80),
-// 			Bandwidth:              pulumi.Int(10),
-// 			Cookie:                 pulumi.String("testslblistenercookie"),
-// 			CookieTimeout:          pulumi.Int(86400),
-// 			FrontendPort:           pulumi.Int(80),
-// 			HealthCheck:            pulumi.String("on"),
-// 			HealthCheckConnectPort: pulumi.Int(20),
-// 			HealthCheckDomain:      pulumi.String("ali.com"),
-// 			HealthCheckHttpCode:    pulumi.String("http_2xx,http_3xx"),
-// 			HealthCheckInterval:    pulumi.Int(5),
-// 			HealthCheckTimeout:     pulumi.Int(8),
-// 			HealthCheckUri:         pulumi.String("/cons"),
-// 			HealthyThreshold:       pulumi.Int(8),
-// 			IdleTimeout:            pulumi.Int(30),
 // 			LoadBalancerId:         defaultLoadBalancer.ID(),
+// 			BackendPort:            pulumi.Int(80),
+// 			FrontendPort:           pulumi.Int(80),
 // 			Protocol:               pulumi.String("http"),
-// 			RequestTimeout:         pulumi.Int(80),
+// 			Bandwidth:              pulumi.Int(10),
 // 			StickySession:          pulumi.String("on"),
 // 			StickySessionType:      pulumi.String("insert"),
+// 			CookieTimeout:          pulumi.Int(86400),
+// 			Cookie:                 pulumi.String("testslblistenercookie"),
+// 			HealthCheck:            pulumi.String("on"),
+// 			HealthCheckDomain:      pulumi.String("ali.com"),
+// 			HealthCheckUri:         pulumi.String("/cons"),
+// 			HealthCheckConnectPort: pulumi.Int(20),
+// 			HealthyThreshold:       pulumi.Int(8),
 // 			UnhealthyThreshold:     pulumi.Int(8),
+// 			HealthCheckTimeout:     pulumi.Int(8),
+// 			HealthCheckInterval:    pulumi.Int(5),
+// 			HealthCheckHttpCode:    pulumi.String("http_2xx,http_3xx"),
 // 			XForwardedFor: &slb.ListenerXForwardedForArgs{
-// 				RetriveSlbId: pulumi.Bool(true),
 // 				RetriveSlbIp: pulumi.Bool(true),
+// 				RetriveSlbId: pulumi.Bool(true),
 // 			},
+// 			AclStatus:      pulumi.String("on"),
+// 			AclType:        pulumi.String("white"),
+// 			AclId:          defaultAcl.ID(),
+// 			RequestTimeout: pulumi.Int(80),
+// 			IdleTimeout:    pulumi.Int(30),
 // 		})
 // 		if err != nil {
 // 			return err

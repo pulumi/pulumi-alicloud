@@ -32,8 +32,8 @@ class InstanceAttachment(pulumi.CustomResource):
 
         # Create an OTS instance
         foo_instance = alicloud.ots.Instance("fooInstance",
-            accessed_by="Vpc",
             description="for table",
+            accessed_by="Vpc",
             tags={
                 "Created": "TF",
                 "For": "Building table",
@@ -41,9 +41,9 @@ class InstanceAttachment(pulumi.CustomResource):
         foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/16")
         foo_switch = alicloud.vpc.Switch("fooSwitch",
-            availability_zone=foo_zones.zones[0].id,
+            vpc_id=foo_network.id,
             cidr_block="172.16.1.0/24",
-            vpc_id=foo_network.id)
+            availability_zone=foo_zones.zones[0].id)
         foo_instance_attachment = alicloud.ots.InstanceAttachment("fooInstanceAttachment",
             instance_name=foo_instance.name,
             vpc_name="attachment1",

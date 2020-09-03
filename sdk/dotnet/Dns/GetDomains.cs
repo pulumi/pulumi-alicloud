@@ -11,36 +11,6 @@ namespace Pulumi.AliCloud.Dns
 {
     public static class GetDomains
     {
-        /// <summary>
-        /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var domainsDs = Output.Create(AliCloud.Dns.GetDomains.InvokeAsync(new AliCloud.Dns.GetDomainsArgs
-        ///         {
-        ///             DomainNameRegex = "^hegu",
-        ///             OutputFile = "domains.txt",
-        ///         }));
-        ///         this.FirstDomainId = domainsDs.Apply(domainsDs =&gt; domainsDs.Domains[0].DomainId);
-        ///     }
-        /// 
-        ///     [Output("firstDomainId")]
-        ///     public Output&lt;string&gt; FirstDomainId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithVersion());
     }
@@ -59,6 +29,9 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         [Input("domainNameRegex")]
         public string? DomainNameRegex { get; set; }
+
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
 
         /// <summary>
         /// Domain group ID, if not filled, the default is all groups.
@@ -159,6 +132,7 @@ namespace Pulumi.AliCloud.Dns
         /// A list of domains. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// Id of group that contains the domain.
         /// </summary>
@@ -203,6 +177,8 @@ namespace Pulumi.AliCloud.Dns
 
             ImmutableArray<Outputs.GetDomainsDomainResult> domains,
 
+            bool? enableDetails,
+
             string? groupId,
 
             string? groupNameRegex,
@@ -234,6 +210,7 @@ namespace Pulumi.AliCloud.Dns
             AliDomain = aliDomain;
             DomainNameRegex = domainNameRegex;
             Domains = domains;
+            EnableDetails = enableDetails;
             GroupId = groupId;
             GroupNameRegex = groupNameRegex;
             Id = id;

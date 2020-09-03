@@ -40,19 +40,19 @@ namespace Pulumi.AliCloud.Adb
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultCluster = new AliCloud.Adb.Cluster("defaultCluster", new AliCloud.Adb.ClusterArgs
     ///         {
-    ///             DbClusterCategory = "Cluster",
     ///             DbClusterVersion = "3.0",
+    ///             DbClusterCategory = "Cluster",
     ///             DbNodeClass = "C8",
     ///             DbNodeCount = 2,
     ///             DbNodeStorage = 200,
-    ///             Description = name,
     ///             PayType = "PostPaid",
+    ///             Description = name,
     ///             VswitchId = defaultSwitch.Id,
     ///         });
     ///     }

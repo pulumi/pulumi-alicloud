@@ -39,14 +39,14 @@ class AccessRule(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         foo_access_group = alicloud.nas.AccessGroup("fooAccessGroup",
-            description="tf-testAccNasConfig",
-            type="Vpc")
+            type="Vpc",
+            description="tf-testAccNasConfig")
         foo_access_rule = alicloud.nas.AccessRule("fooAccessRule",
             access_group_name=foo_access_group.id,
-            priority=2,
-            rw_access_type="RDWR",
             source_cidr_ip="168.1.1.0/16",
-            user_access_type="no_squash")
+            rw_access_type="RDWR",
+            user_access_type="no_squash",
+            priority=2)
         ```
 
         :param str resource_name: The name of the resource.

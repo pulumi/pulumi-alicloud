@@ -31,18 +31,18 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		fooAccessGroup, err := nas.NewAccessGroup(ctx, "fooAccessGroup", &nas.AccessGroupArgs{
-// 			Description: pulumi.String("tf-testAccNasConfig"),
 // 			Type:        pulumi.String("Vpc"),
+// 			Description: pulumi.String("tf-testAccNasConfig"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = nas.NewAccessRule(ctx, "fooAccessRule", &nas.AccessRuleArgs{
 // 			AccessGroupName: fooAccessGroup.ID(),
-// 			Priority:        pulumi.Int(2),
-// 			RwAccessType:    pulumi.String("RDWR"),
 // 			SourceCidrIp:    pulumi.String("168.1.1.0/16"),
+// 			RwAccessType:    pulumi.String("RDWR"),
 // 			UserAccessType:  pulumi.String("no_squash"),
+// 			Priority:        pulumi.Int(2),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -48,15 +48,15 @@ class QosCar(pulumi.CustomResource):
 
         default_qos = alicloud.rocketmq.Qos("defaultQos")
         default_qos_car = alicloud.rocketmq.QosCar("defaultQosCar",
+            qos_id=default_qos.id,
             description="tf-testSagQosCarDescription",
-            limit_type="Absolute",
-            max_bandwidth_abs=20,
-            max_bandwidth_percent=20,
-            min_bandwidth_abs=10,
-            min_bandwidth_percent=10,
-            percent_source_type="InternetUpBandwidth",
             priority=1,
-            qos_id=default_qos.id)
+            limit_type="Absolute",
+            min_bandwidth_abs=10,
+            max_bandwidth_abs=20,
+            min_bandwidth_percent=10,
+            max_bandwidth_percent=20,
+            percent_source_type="InternetUpBandwidth")
         ```
 
         :param str resource_name: The name of the resource.

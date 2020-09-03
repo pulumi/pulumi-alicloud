@@ -42,23 +42,23 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
-// 			EngineVersion: pulumi.String("4.0"),
 // 			InstanceClass: pulumi.String("redis.master.small.default"),
 // 			InstanceName:  pulumi.String(name),
-// 			InstanceType:  pulumi.String("Redis"),
+// 			VswitchId:     defaultSwitch.ID(),
 // 			PrivateIp:     pulumi.String("172.16.0.10"),
 // 			SecurityIps: pulumi.StringArray{
 // 				pulumi.String("10.0.0.1"),
 // 			},
-// 			VswitchId: defaultSwitch.ID(),
+// 			InstanceType:  pulumi.String("Redis"),
+// 			EngineVersion: pulumi.String("4.0"),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -37,6 +37,10 @@ export class EipAssociation extends pulumi.CustomResource {
      */
     public readonly allocationId!: pulumi.Output<string>;
     /**
+     * When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+     */
+    public readonly force!: pulumi.Output<boolean | undefined>;
+    /**
      * The ID of the ECS or SLB instance or Nat Gateway.
      */
     public readonly instanceId!: pulumi.Output<string>;
@@ -62,6 +66,7 @@ export class EipAssociation extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as EipAssociationState | undefined;
             inputs["allocationId"] = state ? state.allocationId : undefined;
+            inputs["force"] = state ? state.force : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
             inputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
@@ -74,6 +79,7 @@ export class EipAssociation extends pulumi.CustomResource {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["allocationId"] = args ? args.allocationId : undefined;
+            inputs["force"] = args ? args.force : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
@@ -98,6 +104,10 @@ export interface EipAssociationState {
      */
     readonly allocationId?: pulumi.Input<string>;
     /**
+     * When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+     */
+    readonly force?: pulumi.Input<boolean>;
+    /**
      * The ID of the ECS or SLB instance or Nat Gateway.
      */
     readonly instanceId?: pulumi.Input<string>;
@@ -119,6 +129,10 @@ export interface EipAssociationArgs {
      * The allocation EIP ID.
      */
     readonly allocationId: pulumi.Input<string>;
+    /**
+     * When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+     */
+    readonly force?: pulumi.Input<boolean>;
     /**
      * The ID of the ECS or SLB instance or Nat Gateway.
      */

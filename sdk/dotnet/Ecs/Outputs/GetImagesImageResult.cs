@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetImagesImageResult
     {
         /// <summary>
-        /// Platform type of the image system: i386 or x86_64.
+        /// The image architecture. Valid values: `i386` and `x86_64`.
         /// </summary>
         public readonly string Architecture;
         /// <summary>
@@ -48,6 +48,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
         /// </summary>
         public readonly bool IsSubscribed;
+        /// <summary>
+        /// Specifies whether the image can be used on I/O optimized instances.
+        /// </summary>
         public readonly bool IsSupportIoOptimized;
         public readonly string Name;
         /// <summary>
@@ -58,6 +61,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Display English name of the OS.
         /// </summary>
         public readonly string OsNameEn;
+        /// <summary>
+        /// The operating system type of the image. Valid values: `windows` and `linux`.
+        /// </summary>
         public readonly string OsType;
         public readonly string Platform;
         /// <summary>
@@ -74,10 +80,24 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly int Size;
         public readonly string State;
         /// <summary>
-        /// Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        /// * `Creating`: The image is being created.
+        /// * `Waiting`: The image is waiting to be processed.
+        /// * `Available`: The image is available.
+        /// * `UnAvailable`: The image is unavailable.
+        /// * `CreateFailed`: The image failed to be created.
+        /// * `Deprecated`: The image is discontinued.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
+        /// <summary>
+        /// Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
+        /// * `instance`: The image is already in use and running on an ECS instance.
+        /// * `none`: The image is not in use.
+        /// </summary>
         public readonly string Usage;
 
         [OutputConstructor]

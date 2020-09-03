@@ -14,6 +14,9 @@ __all__ = [
     'GetSaslUsersUserResult',
     'GetTopicsTopicResult',
     'GetTrailsActiontrailResult',
+    'GetTrailsDeprecatedActiontrailResult',
+    'GetTrailsDeprecatedTrailResult',
+    'GetTrailsTrailResult',
 ]
 
 @pulumi.output_type
@@ -389,28 +392,37 @@ class GetTopicsTopicResult(dict):
 class GetTrailsActiontrailResult(dict):
     def __init__(__self__, *,
                  event_rw: str,
-                 name: str,
+                 id: str,
                  oss_bucket_name: str,
                  oss_key_prefix: str,
                  role_name: str,
                  sls_project_arn: str,
-                 sls_write_role_arn: str):
+                 sls_write_role_arn: str,
+                 status: str,
+                 trail_name: str,
+                 trail_region: str):
         """
         :param str event_rw: Indicates whether the event is a read or a write event.
-        :param str name: The name of the trail.
+        :param str id: The id of the ActionTrail Trail. It is the same as trail name.
         :param str oss_bucket_name: The name of the specified OSS bucket.
         :param str oss_key_prefix: The prefix of the specified OSS bucket name.
-        :param str role_name: The role in ActionTrail.
+        :param str role_name: The role in ActionTrail Trail.
         :param str sls_project_arn: The unique ARN of the Log Service project.
         :param str sls_write_role_arn: The unique ARN of the Log Service role.
+        :param str status: Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+        :param str trail_name: The name of the ActionTrail Trail.
+        :param str trail_region: The regions to which the trail is applied.
         """
         pulumi.set(__self__, "event_rw", event_rw)
-        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
         pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
         pulumi.set(__self__, "role_name", role_name)
         pulumi.set(__self__, "sls_project_arn", sls_project_arn)
         pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "trail_name", trail_name)
+        pulumi.set(__self__, "trail_region", trail_region)
 
     @property
     @pulumi.getter(name="eventRw")
@@ -422,11 +434,121 @@ class GetTrailsActiontrailResult(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def id(self) -> str:
         """
-        The name of the trail.
+        The id of the ActionTrail Trail. It is the same as trail name.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ossBucketName")
+    def oss_bucket_name(self) -> str:
+        """
+        The name of the specified OSS bucket.
+        """
+        return pulumi.get(self, "oss_bucket_name")
+
+    @property
+    @pulumi.getter(name="ossKeyPrefix")
+    def oss_key_prefix(self) -> str:
+        """
+        The prefix of the specified OSS bucket name.
+        """
+        return pulumi.get(self, "oss_key_prefix")
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> str:
+        """
+        The role in ActionTrail Trail.
+        """
+        return pulumi.get(self, "role_name")
+
+    @property
+    @pulumi.getter(name="slsProjectArn")
+    def sls_project_arn(self) -> str:
+        """
+        The unique ARN of the Log Service project.
+        """
+        return pulumi.get(self, "sls_project_arn")
+
+    @property
+    @pulumi.getter(name="slsWriteRoleArn")
+    def sls_write_role_arn(self) -> str:
+        """
+        The unique ARN of the Log Service role.
+        """
+        return pulumi.get(self, "sls_write_role_arn")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trailName")
+    def trail_name(self) -> str:
+        """
+        The name of the ActionTrail Trail.
+        """
+        return pulumi.get(self, "trail_name")
+
+    @property
+    @pulumi.getter(name="trailRegion")
+    def trail_region(self) -> str:
+        """
+        The regions to which the trail is applied.
+        """
+        return pulumi.get(self, "trail_region")
+
+
+@pulumi.output_type
+class GetTrailsDeprecatedActiontrailResult(dict):
+    def __init__(__self__, *,
+                 event_rw: str,
+                 id: str,
+                 oss_bucket_name: str,
+                 oss_key_prefix: str,
+                 role_name: str,
+                 sls_project_arn: str,
+                 sls_write_role_arn: str,
+                 status: str,
+                 trail_name: str,
+                 trail_region: str):
+        """
+        :param str event_rw: Indicates whether the event is a read or a write event.
+        :param str oss_bucket_name: The name of the specified OSS bucket.
+        :param str oss_key_prefix: The prefix of the specified OSS bucket name.
+        :param str role_name: The role in ActionTrail.
+        :param str sls_project_arn: The unique ARN of the Log Service project.
+        :param str sls_write_role_arn: The unique ARN of the Log Service role.
+        """
+        pulumi.set(__self__, "event_rw", event_rw)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+        pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
+        pulumi.set(__self__, "role_name", role_name)
+        pulumi.set(__self__, "sls_project_arn", sls_project_arn)
+        pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "trail_name", trail_name)
+        pulumi.set(__self__, "trail_region", trail_region)
+
+    @property
+    @pulumi.getter(name="eventRw")
+    def event_rw(self) -> str:
+        """
+        Indicates whether the event is a read or a write event.
+        """
+        return pulumi.get(self, "event_rw")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ossBucketName")
@@ -467,5 +589,238 @@ class GetTrailsActiontrailResult(dict):
         The unique ARN of the Log Service role.
         """
         return pulumi.get(self, "sls_write_role_arn")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trailName")
+    def trail_name(self) -> str:
+        return pulumi.get(self, "trail_name")
+
+    @property
+    @pulumi.getter(name="trailRegion")
+    def trail_region(self) -> str:
+        return pulumi.get(self, "trail_region")
+
+
+@pulumi.output_type
+class GetTrailsDeprecatedTrailResult(dict):
+    def __init__(__self__, *,
+                 event_rw: str,
+                 id: str,
+                 oss_bucket_name: str,
+                 oss_key_prefix: str,
+                 role_name: str,
+                 sls_project_arn: str,
+                 sls_write_role_arn: str,
+                 status: str,
+                 trail_name: str,
+                 trail_region: str):
+        """
+        :param str event_rw: Indicates whether the event is a read or a write event.
+        :param str oss_bucket_name: The name of the specified OSS bucket.
+        :param str oss_key_prefix: The prefix of the specified OSS bucket name.
+        :param str role_name: The role in ActionTrail.
+        :param str sls_project_arn: The unique ARN of the Log Service project.
+        :param str sls_write_role_arn: The unique ARN of the Log Service role.
+        """
+        pulumi.set(__self__, "event_rw", event_rw)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+        pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
+        pulumi.set(__self__, "role_name", role_name)
+        pulumi.set(__self__, "sls_project_arn", sls_project_arn)
+        pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "trail_name", trail_name)
+        pulumi.set(__self__, "trail_region", trail_region)
+
+    @property
+    @pulumi.getter(name="eventRw")
+    def event_rw(self) -> str:
+        """
+        Indicates whether the event is a read or a write event.
+        """
+        return pulumi.get(self, "event_rw")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ossBucketName")
+    def oss_bucket_name(self) -> str:
+        """
+        The name of the specified OSS bucket.
+        """
+        return pulumi.get(self, "oss_bucket_name")
+
+    @property
+    @pulumi.getter(name="ossKeyPrefix")
+    def oss_key_prefix(self) -> str:
+        """
+        The prefix of the specified OSS bucket name.
+        """
+        return pulumi.get(self, "oss_key_prefix")
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> str:
+        """
+        The role in ActionTrail.
+        """
+        return pulumi.get(self, "role_name")
+
+    @property
+    @pulumi.getter(name="slsProjectArn")
+    def sls_project_arn(self) -> str:
+        """
+        The unique ARN of the Log Service project.
+        """
+        return pulumi.get(self, "sls_project_arn")
+
+    @property
+    @pulumi.getter(name="slsWriteRoleArn")
+    def sls_write_role_arn(self) -> str:
+        """
+        The unique ARN of the Log Service role.
+        """
+        return pulumi.get(self, "sls_write_role_arn")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trailName")
+    def trail_name(self) -> str:
+        return pulumi.get(self, "trail_name")
+
+    @property
+    @pulumi.getter(name="trailRegion")
+    def trail_region(self) -> str:
+        return pulumi.get(self, "trail_region")
+
+
+@pulumi.output_type
+class GetTrailsTrailResult(dict):
+    def __init__(__self__, *,
+                 event_rw: str,
+                 id: str,
+                 oss_bucket_name: str,
+                 oss_key_prefix: str,
+                 role_name: str,
+                 sls_project_arn: str,
+                 sls_write_role_arn: str,
+                 status: str,
+                 trail_name: str,
+                 trail_region: str):
+        """
+        :param str event_rw: Indicates whether the event is a read or a write event.
+        :param str id: The id of the ActionTrail Trail. It is the same as trail name.
+        :param str oss_bucket_name: The name of the specified OSS bucket.
+        :param str oss_key_prefix: The prefix of the specified OSS bucket name.
+        :param str role_name: The role in ActionTrail Trail.
+        :param str sls_project_arn: The unique ARN of the Log Service project.
+        :param str sls_write_role_arn: The unique ARN of the Log Service role.
+        :param str status: Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+        :param str trail_name: The name of the ActionTrail Trail.
+        :param str trail_region: The regions to which the trail is applied.
+        """
+        pulumi.set(__self__, "event_rw", event_rw)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+        pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
+        pulumi.set(__self__, "role_name", role_name)
+        pulumi.set(__self__, "sls_project_arn", sls_project_arn)
+        pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "trail_name", trail_name)
+        pulumi.set(__self__, "trail_region", trail_region)
+
+    @property
+    @pulumi.getter(name="eventRw")
+    def event_rw(self) -> str:
+        """
+        Indicates whether the event is a read or a write event.
+        """
+        return pulumi.get(self, "event_rw")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the ActionTrail Trail. It is the same as trail name.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ossBucketName")
+    def oss_bucket_name(self) -> str:
+        """
+        The name of the specified OSS bucket.
+        """
+        return pulumi.get(self, "oss_bucket_name")
+
+    @property
+    @pulumi.getter(name="ossKeyPrefix")
+    def oss_key_prefix(self) -> str:
+        """
+        The prefix of the specified OSS bucket name.
+        """
+        return pulumi.get(self, "oss_key_prefix")
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> str:
+        """
+        The role in ActionTrail Trail.
+        """
+        return pulumi.get(self, "role_name")
+
+    @property
+    @pulumi.getter(name="slsProjectArn")
+    def sls_project_arn(self) -> str:
+        """
+        The unique ARN of the Log Service project.
+        """
+        return pulumi.get(self, "sls_project_arn")
+
+    @property
+    @pulumi.getter(name="slsWriteRoleArn")
+    def sls_write_role_arn(self) -> str:
+        """
+        The unique ARN of the Log Service role.
+        """
+        return pulumi.get(self, "sls_write_role_arn")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trailName")
+    def trail_name(self) -> str:
+        """
+        The name of the ActionTrail Trail.
+        """
+        return pulumi.get(self, "trail_name")
+
+    @property
+    @pulumi.getter(name="trailRegion")
+    def trail_region(self) -> str:
+        """
+        The regions to which the trail is applied.
+        """
+        return pulumi.get(self, "trail_region")
 
 

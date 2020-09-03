@@ -16,19 +16,24 @@ class Trail(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  event_rw: Optional[pulumi.Input[str]] = None,
+                 is_organization_trail: Optional[pulumi.Input[bool]] = None,
+                 mns_topic_arn: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oss_bucket_name: Optional[pulumi.Input[str]] = None,
                  oss_key_prefix: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  sls_project_arn: Optional[pulumi.Input[str]] = None,
                  sls_write_role_arn: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 trail_name: Optional[pulumi.Input[str]] = None,
+                 trail_region: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
-        Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+        Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
 
-        > **NOTE:** Available in 1.35.0+
+        > **NOTE:** Available in 1.95.0+
 
         ## Example Usage
 
@@ -36,23 +41,28 @@ class Trail(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a new action trail.
-        foo = alicloud.actiontrail.Trail("foo",
-            event_rw="Write-test",
-            oss_bucket_name=alicloud_oss_bucket["bucket"]["id"],
-            oss_key_prefix="at-product-account-audit-B",
-            role_name=alicloud_ram_role_policy_attachment["attach"]["role_name"])
+        # Create a new actiontrail trail.
+        default = alicloud.actiontrail.Trail("default",
+            event_rw="All",
+            oss_bucket_name="bucket_name",
+            role_name="aliyunserviceroleforactiontrail",
+            trail_name="action-trail",
+            trail_region="cn-hangzhou")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
-        :param pulumi.Input[str] name: The name of the trail to be created, which must be unique for an account.
+        :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+        :param pulumi.Input[str] mns_topic_arn: The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         :param pulumi.Input[str] oss_bucket_name: The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
         :param pulumi.Input[str] oss_key_prefix: The prefix of the specified OSS bucket name. This parameter can be left empty.
         :param pulumi.Input[str] role_name: The RAM role in ActionTrail permitted by the user.
         :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
+        :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+        :param pulumi.Input[str] trail_name: The name of the trail to be created, which must be unique for an account.
+        :param pulumi.Input[str] trail_region: The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -72,16 +82,20 @@ class Trail(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['event_rw'] = event_rw
+            __props__['is_organization_trail'] = is_organization_trail
+            __props__['mns_topic_arn'] = mns_topic_arn
+            if name is not None:
+                warnings.warn("Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.", DeprecationWarning)
+                pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.")
             __props__['name'] = name
-            if oss_bucket_name is None:
-                raise TypeError("Missing required property 'oss_bucket_name'")
             __props__['oss_bucket_name'] = oss_bucket_name
             __props__['oss_key_prefix'] = oss_key_prefix
-            if role_name is None:
-                raise TypeError("Missing required property 'role_name'")
             __props__['role_name'] = role_name
             __props__['sls_project_arn'] = sls_project_arn
             __props__['sls_write_role_arn'] = sls_write_role_arn
+            __props__['status'] = status
+            __props__['trail_name'] = trail_name
+            __props__['trail_region'] = trail_region
         super(Trail, __self__).__init__(
             'alicloud:actiontrail/trail:Trail',
             resource_name,
@@ -93,12 +107,17 @@ class Trail(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             event_rw: Optional[pulumi.Input[str]] = None,
+            is_organization_trail: Optional[pulumi.Input[bool]] = None,
+            mns_topic_arn: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             oss_bucket_name: Optional[pulumi.Input[str]] = None,
             oss_key_prefix: Optional[pulumi.Input[str]] = None,
             role_name: Optional[pulumi.Input[str]] = None,
             sls_project_arn: Optional[pulumi.Input[str]] = None,
-            sls_write_role_arn: Optional[pulumi.Input[str]] = None) -> 'Trail':
+            sls_write_role_arn: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            trail_name: Optional[pulumi.Input[str]] = None,
+            trail_region: Optional[pulumi.Input[str]] = None) -> 'Trail':
         """
         Get an existing Trail resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -106,46 +125,68 @@ class Trail(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
-        :param pulumi.Input[str] name: The name of the trail to be created, which must be unique for an account.
+        :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+        :param pulumi.Input[str] mns_topic_arn: The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         :param pulumi.Input[str] oss_bucket_name: The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
         :param pulumi.Input[str] oss_key_prefix: The prefix of the specified OSS bucket name. This parameter can be left empty.
         :param pulumi.Input[str] role_name: The RAM role in ActionTrail permitted by the user.
         :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
+        :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+        :param pulumi.Input[str] trail_name: The name of the trail to be created, which must be unique for an account.
+        :param pulumi.Input[str] trail_region: The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
         __props__["event_rw"] = event_rw
+        __props__["is_organization_trail"] = is_organization_trail
+        __props__["mns_topic_arn"] = mns_topic_arn
         __props__["name"] = name
         __props__["oss_bucket_name"] = oss_bucket_name
         __props__["oss_key_prefix"] = oss_key_prefix
         __props__["role_name"] = role_name
         __props__["sls_project_arn"] = sls_project_arn
         __props__["sls_write_role_arn"] = sls_write_role_arn
+        __props__["status"] = status
+        __props__["trail_name"] = trail_name
+        __props__["trail_region"] = trail_region
         return Trail(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="eventRw")
     def event_rw(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+        Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
         """
         return pulumi.get(self, "event_rw")
+
+    @property
+    @pulumi.getter(name="isOrganizationTrail")
+    def is_organization_trail(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "is_organization_trail")
+
+    @property
+    @pulumi.getter(name="mnsTopicArn")
+    def mns_topic_arn(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+        """
+        return pulumi.get(self, "mns_topic_arn")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the trail to be created, which must be unique for an account.
+        Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> pulumi.Output[str]:
+    def oss_bucket_name(self) -> pulumi.Output[Optional[str]]:
         """
         The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
         """
@@ -182,6 +223,30 @@ class Trail(pulumi.CustomResource):
         The unique ARN of the Log Service role.
         """
         return pulumi.get(self, "sls_write_role_arn")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[Optional[str]]:
+        """
+        The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trailName")
+    def trail_name(self) -> pulumi.Output[str]:
+        """
+        The name of the trail to be created, which must be unique for an account.
+        """
+        return pulumi.get(self, "trail_name")
+
+    @property
+    @pulumi.getter(name="trailRegion")
+    def trail_region(self) -> pulumi.Output[Optional[str]]:
+        """
+        The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        """
+        return pulumi.get(self, "trail_region")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

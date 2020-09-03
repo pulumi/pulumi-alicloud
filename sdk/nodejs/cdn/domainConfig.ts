@@ -23,24 +23,24 @@ import * as utilities from "../utilities";
  *
  * // Create a new Domain config.
  * const domain = new alicloud.cdn.DomainNew("domain", {
+ *     domainName: `tf-testacc%d.xiaozhu.com`,
  *     cdnType: "web",
- *     domainName: "tf-testacc%d.xiaozhu.com",
  *     scope: "overseas",
  *     sources: {
  *         content: "1.1.1.1",
- *         port: 80,
- *         priority: 20,
  *         type: "ipaddr",
- *         weight: 15,
+ *         priority: "20",
+ *         port: 80,
+ *         weight: "15",
  *     },
  * });
  * const config = new alicloud.cdn.DomainConfig("config", {
  *     domainName: domain.domainName,
+ *     functionName: "ip_allow_list_set",
  *     functionArgs: [{
  *         argName: "ip_list",
  *         argValue: "110.110.110.110",
  *     }],
- *     functionName: "ip_allow_list_set",
  * });
  * ```
  */

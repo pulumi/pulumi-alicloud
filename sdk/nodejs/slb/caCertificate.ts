@@ -32,11 +32,9 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as fs from "fs";
+ * import * from "fs";
  *
- * const foo_file = new alicloud.slb.CaCertificate("foo-file", {
- *     caCertificate: fs.readFileSync(`./ca_certificate.pem`, "utf-8"),
- * });
+ * const foo_file = new alicloud.slb.CaCertificate("foo-file", {caCertificate: fs.readFileSync(`${path.module}/ca_certificate.pem`)});
  * ```
  */
 export class CaCertificate extends pulumi.CustomResource {

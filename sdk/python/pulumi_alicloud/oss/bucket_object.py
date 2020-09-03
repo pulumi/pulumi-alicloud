@@ -53,12 +53,12 @@ class BucketObject(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.oss.Bucket("example",
-            acl="public-read",
-            bucket="your_bucket_name")
+            bucket="your_bucket_name",
+            acl="public-read")
         object_content = alicloud.oss.BucketObject("object-content",
             bucket=example.bucket,
-            content="the content that you want to upload.",
-            key="new_object_key")
+            key="new_object_key",
+            content="the content that you want to upload.")
         ```
 
         :param str resource_name: The name of the resource.

@@ -43,31 +43,31 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/24")
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         vswitch = alicloud.vpc.Switch("vswitch",
-            availability_zone=default_zones.zones[0].id,
             cidr_block="192.168.0.0/24",
+            availability_zone=default_zones.zones[0].id,
             vpc_id=vpc.id)
         group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
         instance_type = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
             eni_amount=2)
-        default_images = alicloud.ecs.get_images(most_recent=True,
-            name_regex="^ubuntu_18.*64",
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
             owners="system")
         instance = []
         for range in [{"value": i} for i in range(0, number)]:
             instance.append(alicloud.ecs.Instance(f"instance-{range['value']}",
                 availability_zone=default_zones.zones[0].id,
+                security_groups=[group.id],
+                instance_type=instance_type.instance_types[0].id,
+                system_disk_category="cloud_efficiency",
                 image_id=default_images.images[0].id,
                 instance_name=name,
-                instance_type=instance_type.instance_types[0].id,
-                internet_max_bandwidth_out=10,
-                security_groups=[group.id],
-                system_disk_category="cloud_efficiency",
-                vswitch_id=vswitch.id))
+                vswitch_id=vswitch.id,
+                internet_max_bandwidth_out=10))
         interface = []
         for range in [{"value": i} for i in range(0, number)]:
             interface.append(alicloud.vpc.NetworkInterface(f"interface-{range['value']}",
-                security_groups=[group.id],
-                vswitch_id=vswitch.id))
+                vswitch_id=vswitch.id,
+                security_groups=[group.id]))
         attachment = []
         for range in [{"value": i} for i in range(0, number)]:
             attachment.append(alicloud.vpc.NetworkInterfaceAttachment(f"attachment-{range['value']}",

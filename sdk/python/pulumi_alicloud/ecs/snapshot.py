@@ -35,8 +35,8 @@ class Snapshot(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         snapshot = alicloud.ecs.Snapshot("snapshot",
-            description="this snapshot is created for testing",
             disk_id=alicloud_disk_attachment["instance-attachment"]["disk_id"],
+            description="this snapshot is created for testing",
             tags={
                 "version": "1.2",
             })

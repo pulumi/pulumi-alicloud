@@ -35,24 +35,24 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
+// 		defaultInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
+// 			InstanceId:            defaultInstance.ID(),
 // 			ChildInstanceId:       pulumi.String("vbr-xxxxx"),
 // 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
-// 			InstanceId:            defaultInstance.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = cen.NewVbrHealthCheck(ctx, "defaultVbrHealthCheck", &cen.VbrHealthCheckArgs{
 // 			CenId:               defaultInstance.ID(),
-// 			HealthCheckInterval: pulumi.Int(2),
 // 			HealthCheckSourceIp: pulumi.String("192.168.1.2"),
 // 			HealthCheckTargetIp: pulumi.String("10.0.0.2"),
-// 			HealthyThreshold:    pulumi.Int(8),
 // 			VbrInstanceId:       pulumi.String("vbr-xxxxx"),
 // 			VbrInstanceRegionId: pulumi.String("cn-hangzhou"),
+// 			HealthCheckInterval: pulumi.Int(2),
+// 			HealthyThreshold:    pulumi.Int(8),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_cen_instance_attachment.default",
+// 			defaultInstanceAttachment,
 // 		}))
 // 		if err != nil {
 // 			return err

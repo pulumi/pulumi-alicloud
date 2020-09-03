@@ -18,33 +18,30 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "ADB";
  * const name = config.get("name") || "adbaccountmysql";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: creation,
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
  * const cluster = new alicloud.adb.Cluster("cluster", {
- *     dbClusterCategory: "Cluster",
  *     dbClusterVersion: "3.0",
+ *     dbClusterCategory: "Cluster",
  *     dbNodeClass: "C8",
  *     dbNodeCount: 2,
  *     dbNodeStorage: 200,
- *     description: name,
  *     payType: "PostPaid",
  *     vswitchId: defaultSwitch.id,
+ *     description: name,
  * });
  * const account = new alicloud.adb.Account("account", {
- *     accountDescription: name,
+ *     dbClusterId: cluster.id,
  *     accountName: "tftestnormal",
  *     accountPassword: "Test12345",
- *     dbClusterId: cluster.id,
+ *     accountDescription: name,
  * });
  * ```
  */

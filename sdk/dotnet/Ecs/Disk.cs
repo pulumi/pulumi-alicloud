@@ -100,6 +100,15 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// </summary>
+        [Output("performanceLevel")]
+        public Output<string?> PerformanceLevel { get; private set; } = null!;
+
+        /// <summary>
         /// The Id of resource group which the disk belongs.
         /// &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         /// </summary>
@@ -231,6 +240,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// </summary>
+        [Input("performanceLevel")]
+        public Input<string>? PerformanceLevel { get; set; }
+
+        /// <summary>
         /// The Id of resource group which the disk belongs.
         /// &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         /// </summary>
@@ -321,6 +339,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// </summary>
+        [Input("performanceLevel")]
+        public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
         /// The Id of resource group which the disk belongs.

@@ -58,23 +58,23 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
         default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_load_balancer.id)
         default_listener = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_listener.append(alicloud.slb.Listener(f"defaultListener-{range['value']}",
-                backend_port=22,
-                bandwidth=10,
-                frontend_port=22,
-                health_check_type="tcp",
                 load_balancer_id=[__item.id for __item in [default_load_balancer]][range["value"]],
-                protocol="tcp"))
+                backend_port=22,
+                frontend_port=22,
+                protocol="tcp",
+                bandwidth=10,
+                health_check_type="tcp"))
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            max_size=2,
             min_size=2,
+            max_size=2,
             scaling_group_name=name,
             vswitch_ids=[default_switch.id])
         default_scaling_group_v_server_groups = alicloud.ess.ScalingGroupVServerGroups("defaultScalingGroupVServerGroups",
@@ -82,8 +82,8 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
             vserver_groups=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupArgs(
                 loadbalancer_id=default_load_balancer.id,
                 vserver_attributes=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs(
-                    port=100,
                     vserver_group_id=default_server_group.id,
+                    port=100,
                     weight=60,
                 )],
             )])

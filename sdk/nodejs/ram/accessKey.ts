@@ -17,15 +17,15 @@ import * as utilities from "../utilities";
  *
  * // Create a new RAM access key for user.
  * const user = new alicloud.ram.User("user", {
- *     comments: "yoyoyo",
  *     displayName: "user_display_name",
- *     email: "hello.uuu@aaa.com",
- *     force: true,
  *     mobile: "86-18688888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ *     force: true,
  * });
  * const ak = new alicloud.ram.AccessKey("ak", {
- *     secretFile: "/xxx/xxx/xxx.txt",
  *     userName: user.name,
+ *     secretFile: "/xxx/xxx/xxx.txt",
  * });
  * ```
  */

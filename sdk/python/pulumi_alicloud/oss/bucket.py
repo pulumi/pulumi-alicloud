@@ -74,8 +74,8 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         bucket_target = alicloud.oss.Bucket("bucket-target",
-            acl="public-read",
-            bucket="bucket-170309-acl")
+            bucket="bucket-170309-acl",
+            acl="public-read")
         bucket_logging = alicloud.oss.Bucket("bucket-logging",
             bucket="bucket-170309-logging",
             logging=alicloud.oss.BucketLoggingArgs(

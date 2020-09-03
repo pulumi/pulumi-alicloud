@@ -31,20 +31,20 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := elasticsearch.NewInstance(ctx, "instance", &elasticsearch.InstanceArgs{
-// 			InstanceChargeType: pulumi.String("PostPaid"),
 // 			DataNodeAmount:     pulumi.Int(2),
-// 			DataNodeSpec:       pulumi.String("elasticsearch.sn2ne.large"),
 // 			DataNodeDiskSize:   pulumi.Int(20),
 // 			DataNodeDiskType:   pulumi.String("cloud_ssd"),
-// 			VswitchId:          pulumi.String("some vswitch id"),
-// 			Password:           pulumi.String("Your password"),
-// 			Version:            pulumi.String("5.5.3_with_X-Pack"),
+// 			DataNodeSpec:       pulumi.String("elasticsearch.sn2ne.large"),
 // 			Description:        pulumi.String("description"),
-// 			ZoneCount:          pulumi.Int(2),
+// 			InstanceChargeType: pulumi.String("PostPaid"),
+// 			Password:           pulumi.String("Your password"),
 // 			Tags: pulumi.StringMap{
 // 				"key1": pulumi.String("value1"),
 // 				"key2": pulumi.String("value2"),
 // 			},
+// 			Version:   pulumi.String("5.5.3_with_X-Pack"),
+// 			VswitchId: pulumi.String("some vswitch id"),
+// 			ZoneCount: pulumi.Int(2),
 // 		})
 // 		if err != nil {
 // 			return err

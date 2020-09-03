@@ -63,52 +63,53 @@ class RouteMap(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_pulumi as pulumi
 
+        # Create a cen Route map resource and use it.
         default_instance = alicloud.cen.Instance("defaultInstance")
         vpc00_region = pulumi.providers.Alicloud("vpc00Region", region="cn-hangzhou")
         vpc01_region = pulumi.providers.Alicloud("vpc01Region", region="cn-shanghai")
         vpc00 = alicloud.vpc.Network("vpc00", cidr_block="172.16.0.0/12",
-        opts=ResourceOptions(provider="alicloud.vpc00_region"))
+        opts=ResourceOptions(provider=alicloud["vpc00_region"]))
         vpc01 = alicloud.vpc.Network("vpc01", cidr_block="172.16.0.0/12",
-        opts=ResourceOptions(provider="alicloud.vpc01_region"))
+        opts=ResourceOptions(provider=alicloud["vpc01_region"]))
         default00 = alicloud.cen.InstanceAttachment("default00",
+            instance_id=default_instance.id,
             child_instance_id=vpc00.id,
-            child_instance_region_id="cn-hangzhou",
-            instance_id=default_instance.id)
+            child_instance_region_id="cn-hangzhou")
         default01 = alicloud.cen.InstanceAttachment("default01",
+            instance_id=default_instance.id,
             child_instance_id=vpc01.id,
-            child_instance_region_id="cn-shanghai",
-            instance_id=default_instance.id)
+            child_instance_region_id="cn-shanghai")
         default_route_map = alicloud.cen.RouteMap("defaultRouteMap",
-            as_path_match_mode="Include",
-            cen_id=alicloud_cen_instance["cen"]["id"],
             cen_region_id="cn-hangzhou",
-            cidr_match_mode="Include",
-            community_match_mode="Include",
-            community_operate_mode="Additive",
+            cen_id=alicloud_cen_instance["cen"]["id"],
             description="test-desc",
-            destination_child_instance_types=["VPC"],
-            destination_cidr_blocks=[vpc01.cidr_block],
+            priority=1,
+            transmit_direction="RegionIn",
+            map_result="Permit",
+            next_priority=1,
+            source_region_ids=["cn-hangzhou"],
+            source_instance_ids=[vpc00.id],
+            source_instance_ids_reverse_match=False,
             destination_instance_ids=[vpc01.id],
             destination_instance_ids_reverse_match=False,
+            source_route_table_ids=[vpc00.route_table_id],
             destination_route_table_ids=[vpc01.route_table_id],
-            map_result="Permit",
+            source_child_instance_types=["VPC"],
+            destination_child_instance_types=["VPC"],
+            destination_cidr_blocks=[vpc01.cidr_block],
+            cidr_match_mode="Include",
+            route_types=["System"],
             match_asns=["65501"],
+            as_path_match_mode="Include",
             match_community_sets=["65501:1"],
-            next_priority=1,
+            community_match_mode="Include",
+            community_operate_mode="Additive",
             operate_community_sets=["65501:1"],
             preference=20,
             prepend_as_paths=["65501"],
-            priority=1,
-            route_types=["System"],
-            source_child_instance_types=["VPC"],
-            source_instance_ids=[vpc00.id],
-            source_instance_ids_reverse_match=False,
-            source_region_ids=["cn-hangzhou"],
-            source_route_table_ids=[vpc00.route_table_id],
-            transmit_direction="RegionIn",
             opts=ResourceOptions(depends_on=[
-                    "alicloud_cen_instance_attachment.default00",
-                    "alicloud_cen_instance_attachment.default01",
+                    default00,
+                    default01,
                 ]))
         ```
 

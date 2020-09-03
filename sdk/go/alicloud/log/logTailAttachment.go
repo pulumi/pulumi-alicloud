@@ -41,43 +41,43 @@ import (
 // 			return err
 // 		}
 // 		testStore, err := log.NewStore(ctx, "testStore", &log.StoreArgs{
-// 			AppendMeta:         pulumi.Bool(true),
-// 			AutoSplit:          pulumi.Bool(true),
-// 			MaxSplitShardCount: pulumi.Int(60),
 // 			Project:            testProject.Name,
 // 			RetentionPeriod:    pulumi.Int(3650),
 // 			ShardCount:         pulumi.Int(3),
+// 			AutoSplit:          pulumi.Bool(true),
+// 			MaxSplitShardCount: pulumi.Int(60),
+// 			AppendMeta:         pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		testMachineGroup, err := log.NewMachineGroup(ctx, "testMachineGroup", &log.MachineGroupArgs{
+// 			Project: testProject.Name,
+// 			Topic:   pulumi.String("terraform"),
 // 			IdentifyLists: pulumi.StringArray{
 // 				pulumi.String("10.0.0.1"),
 // 				pulumi.String("10.0.0.3"),
 // 				pulumi.String("10.0.0.2"),
 // 			},
-// 			Project: testProject.Name,
-// 			Topic:   pulumi.String("terraform"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		testLogTailConfig, err := log.NewLogTailConfig(ctx, "testLogTailConfig", &log.LogTailConfigArgs{
-// 			InputDetail: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v", "  	{\n", "		\"logPath\": \"/logPath\",\n", "		\"filePattern\": \"access.log\",\n", "		\"logType\": \"json_log\",\n", "		\"topicFormat\": \"default\",\n", "		\"discardUnmatch\": false,\n", "		\"enableRawLog\": true,\n", "		\"fileEncoding\": \"gbk\",\n", "		\"maxDepth\": 10\n", "	}\n", "	\n")),
+// 			Project:    testProject.Name,
+// 			Logstore:   testStore.Name,
 // 			InputType:  pulumi.String("file"),
 // 			LogSample:  pulumi.String("test"),
-// 			Logstore:   testStore.Name,
 // 			OutputType: pulumi.String("LogService"),
-// 			Project:    testProject.Name,
+// 			InputDetail: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v", "  	{\n", "		\"logPath\": \"/logPath\",\n", "		\"filePattern\": \"access.log\",\n", "		\"logType\": \"json_log\",\n", "		\"topicFormat\": \"default\",\n", "		\"discardUnmatch\": false,\n", "		\"enableRawLog\": true,\n", "		\"fileEncoding\": \"gbk\",\n", "		\"maxDepth\": 10\n", "	}\n", "	\n")),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = log.NewLogTailAttachment(ctx, "testLogTailAttachment", &log.LogTailAttachmentArgs{
+// 			Project:           testProject.Name,
 // 			LogtailConfigName: testLogTailConfig.Name,
 // 			MachineGroupName:  testMachineGroup.Name,
-// 			Project:           testProject.Name,
 // 		})
 // 		if err != nil {
 // 			return err

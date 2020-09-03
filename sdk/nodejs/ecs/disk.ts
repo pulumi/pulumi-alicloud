@@ -95,6 +95,13 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     */
+    public readonly performanceLevel!: pulumi.Output<string | undefined>;
+    /**
      * The Id of resource group which the disk belongs.
      * > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      */
@@ -137,6 +144,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["encrypted"] = state ? state.encrypted : undefined;
             inputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["performanceLevel"] = state ? state.performanceLevel : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
@@ -159,6 +167,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["encrypted"] = args ? args.encrypted : undefined;
             inputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["performanceLevel"] = args ? args.performanceLevel : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["snapshotId"] = args ? args.snapshotId : undefined;
@@ -216,6 +225,13 @@ export interface DiskState {
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     */
+    readonly performanceLevel?: pulumi.Input<string>;
     /**
      * The Id of resource group which the disk belongs.
      * > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
@@ -279,6 +295,13 @@ export interface DiskArgs {
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     */
+    readonly performanceLevel?: pulumi.Input<string>;
     /**
      * The Id of resource group which the disk belongs.
      * > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.

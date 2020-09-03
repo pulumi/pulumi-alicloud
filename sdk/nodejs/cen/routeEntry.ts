@@ -17,65 +17,76 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Create a cen_route_entry resource and use it to publish a route entry pointing to an ECS.
+ * const hz = new alicloud.Provider("hz", {region: "cn-hangzhou"});
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccCenRouteEntryConfig";
- *
- * const hz = new alicloud.Provider("hz", {
- *     region: "cn-hangzhou",
- * });
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
- * }, { provider: hz, async: true }));
- * const defaultInstanceTypes = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: defaultZones.zones[0].id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
- * }, { provider: hz, async: true }));
- * const defaultImages = pulumi.output(alicloud.ecs.getImages({
- *     mostRecent: true,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
  *     owners: "system",
- * }, { provider: hz, async: true }));
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "172.16.0.0/12",
- * }, { provider: hz });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/21",
+ * });
+ * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "172.16.0.0/12"}, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: vpc.id,
- * }, { provider: hz });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     cidrBlock: "172.16.0.0/21",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
  *     description: "foo",
  *     vpcId: vpc.id,
- * }, { provider: hz });
- * const defaultInstance = new alicloud.ecs.Instance("default", {
- *     imageId: defaultImages.images[0].id,
- *     instanceName: name,
- *     instanceType: defaultInstanceTypes.instanceTypes[0].id,
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
+ *     vswitchId: defaultSwitch.id,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
+ *     systemDiskCategory: "cloud_efficiency",
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 5,
  *     securityGroups: [defaultSecurityGroup.id],
- *     systemDiskCategory: "cloud_efficiency",
- *     vswitchId: defaultSwitch.id,
- * }, { provider: hz });
+ *     instanceName: name,
+ * }, {
+ *     provider: alicloud.hz,
+ * });
  * const cen = new alicloud.cen.Instance("cen", {});
  * const attach = new alicloud.cen.InstanceAttachment("attach", {
+ *     instanceId: cen.id,
  *     childInstanceId: vpc.id,
  *     childInstanceRegionId: "cn-hangzhou",
- *     instanceId: cen.id,
- * }, { dependsOn: [defaultSwitch] });
+ * }, {
+ *     dependsOn: [defaultSwitch],
+ * });
  * const route = new alicloud.vpc.RouteEntry("route", {
- *     destinationCidrblock: "11.0.0.0/16",
- *     nexthopId: defaultInstance.id,
- *     nexthopType: "Instance",
  *     routeTableId: vpc.routeTableId,
- * }, { provider: hz });
+ *     destinationCidrblock: "11.0.0.0/16",
+ *     nexthopType: "Instance",
+ *     nexthopId: defaultInstance.id,
+ * }, {
+ *     provider: alicloud.hz,
+ * });
  * const foo = new alicloud.cen.RouteEntry("foo", {
- *     cidrBlock: route.destinationCidrblock,
  *     instanceId: cen.id,
  *     routeTableId: vpc.routeTableId,
- * }, { provider: hz, dependsOn: [attach] });
+ *     cidrBlock: route.destinationCidrblock,
+ * }, {
+ *     provider: alicloud.hz,
+ *     dependsOn: [attach],
+ * });
  * ```
  */
 export class RouteEntry extends pulumi.CustomResource {

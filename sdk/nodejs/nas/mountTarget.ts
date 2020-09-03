@@ -5,7 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Nas Mount Target resource.
+ * Provides a NAS Mount Target resource.
+ * For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
  *
  * > NOTE: Available in v1.34.0+.
  *
@@ -23,22 +24,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fooFileSystem = new alicloud.nas.FileSystem("foo", {
- *     description: "tf-testAccNasConfigFs",
+ * const exampleFileSystem = new alicloud.nas.FileSystem("exampleFileSystem", {
  *     protocolType: "NFS",
  *     storageType: "Performance",
+ *     description: "test file system",
  * });
- * const fooAccessGroup = new alicloud.nas.AccessGroup("foo", {
- *     description: "tf-testAccNasConfig",
- *     type: "Classic",
+ * const exampleAccessGroup = new alicloud.nas.AccessGroup("exampleAccessGroup", {
+ *     accessGroupName: "test_name",
+ *     accessGroupType: "Classic",
+ *     description: "test access group",
  * });
- * const bar = new alicloud.nas.AccessGroup("bar", {
- *     description: "tf-testAccNasConfig-2",
- *     type: "Classic",
- * });
- * const fooMountTarget = new alicloud.nas.MountTarget("foo", {
- *     accessGroupName: fooAccessGroup.id,
- *     fileSystemId: fooFileSystem.id,
+ * const exampleMountTarget = new alicloud.nas.MountTarget("exampleMountTarget", {
+ *     fileSystemId: exampleFileSystem.id,
+ *     accessGroupName: exampleAccessGroup.accessGroupName,
  * });
  * ```
  */
@@ -71,19 +69,23 @@ export class MountTarget extends pulumi.CustomResource {
     }
 
     /**
-     * Permission group name.
+     * The name of the permission group that applies to the mount target.
      */
     public readonly accessGroupName!: pulumi.Output<string>;
     /**
-     * File system ID.
+     * The ID of the file system.
      */
     public readonly fileSystemId!: pulumi.Output<string>;
     /**
-     * Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
+     * The ID of security group.
+     */
+    public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    /**
+     * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * VSwitch ID.
+     * The ID of the VSwitch in the VPC where the mount target resides.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
 
@@ -101,6 +103,7 @@ export class MountTarget extends pulumi.CustomResource {
             const state = argsOrState as MountTargetState | undefined;
             inputs["accessGroupName"] = state ? state.accessGroupName : undefined;
             inputs["fileSystemId"] = state ? state.fileSystemId : undefined;
+            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
@@ -113,6 +116,7 @@ export class MountTarget extends pulumi.CustomResource {
             }
             inputs["accessGroupName"] = args ? args.accessGroupName : undefined;
             inputs["fileSystemId"] = args ? args.fileSystemId : undefined;
+            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
@@ -132,19 +136,23 @@ export class MountTarget extends pulumi.CustomResource {
  */
 export interface MountTargetState {
     /**
-     * Permission group name.
+     * The name of the permission group that applies to the mount target.
      */
     readonly accessGroupName?: pulumi.Input<string>;
     /**
-     * File system ID.
+     * The ID of the file system.
      */
     readonly fileSystemId?: pulumi.Input<string>;
     /**
-     * Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
+     * The ID of security group.
+     */
+    readonly securityGroupId?: pulumi.Input<string>;
+    /**
+     * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * VSwitch ID.
+     * The ID of the VSwitch in the VPC where the mount target resides.
      */
     readonly vswitchId?: pulumi.Input<string>;
 }
@@ -154,19 +162,23 @@ export interface MountTargetState {
  */
 export interface MountTargetArgs {
     /**
-     * Permission group name.
+     * The name of the permission group that applies to the mount target.
      */
     readonly accessGroupName: pulumi.Input<string>;
     /**
-     * File system ID.
+     * The ID of the file system.
      */
     readonly fileSystemId: pulumi.Input<string>;
     /**
-     * Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
+     * The ID of security group.
+     */
+    readonly securityGroupId?: pulumi.Input<string>;
+    /**
+     * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * VSwitch ID.
+     * The ID of the VSwitch in the VPC where the mount target resides.
      */
     readonly vswitchId?: pulumi.Input<string>;
 }

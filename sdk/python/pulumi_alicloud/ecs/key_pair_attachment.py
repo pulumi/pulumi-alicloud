@@ -39,8 +39,8 @@ class KeyPairAttachment(pulumi.CustomResource):
         type = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        images = alicloud.ecs.get_images(most_recent=True,
-            name_regex="^ubuntu_18.*64",
+        images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
             owners="system")
         config = pulumi.Config()
         name = config.get("name")
@@ -48,29 +48,29 @@ class KeyPairAttachment(pulumi.CustomResource):
             name = "keyPairAttachmentName"
         vpc = alicloud.vpc.Network("vpc", cidr_block="10.1.0.0/21")
         vswitch = alicloud.vpc.Switch("vswitch",
-            availability_zone=default.zones[0].id,
+            vpc_id=vpc.id,
             cidr_block="10.1.1.0/24",
-            vpc_id=vpc.id)
+            availability_zone=default.zones[0].id)
         group = alicloud.ecs.SecurityGroup("group",
             description="New security group",
             vpc_id=vpc.id)
         instance = []
         for range in [{"value": i} for i in range(0, 2)]:
             instance.append(alicloud.ecs.Instance(f"instance-{range['value']}",
-                image_id=images.images[0].id,
-                instance_charge_type="PostPaid",
                 instance_name=f"{name}-{range['value'] + 1}",
+                image_id=images.images[0].id,
                 instance_type=type.instance_types[0].id,
+                security_groups=[group.id],
+                vswitch_id=vswitch.id,
                 internet_charge_type="PayByTraffic",
                 internet_max_bandwidth_out=5,
                 password="Test12345",
-                security_groups=[group.id],
-                system_disk_category="cloud_ssd",
-                vswitch_id=vswitch.id))
+                instance_charge_type="PostPaid",
+                system_disk_category="cloud_ssd"))
         pair = alicloud.ecs.KeyPair("pair", key_name=name)
         attachment = alicloud.ecs.KeyPairAttachment("attachment",
-            instance_ids=[__item.id for __item in instance],
-            key_name=pair.id)
+            key_name=pair.id,
+            instance_ids=[__item.id for __item in instance])
         ```
 
         :param str resource_name: The name of the resource.

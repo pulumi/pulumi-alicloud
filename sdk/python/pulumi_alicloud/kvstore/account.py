@@ -47,21 +47,21 @@ class Account(pulumi.CustomResource):
         default_zones = alicloud.get_zones(available_resource_creation=creation)
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_instance = alicloud.kvstore.Instance("defaultInstance",
-            engine_version="4.0",
             instance_class="redis.master.small.default",
             instance_name=name,
-            instance_type="Redis",
+            vswitch_id=default_switch.id,
             private_ip="172.16.0.10",
             security_ips=["10.0.0.1"],
-            vswitch_id=default_switch.id)
+            instance_type="Redis",
+            engine_version="4.0")
         account = alicloud.kvstore.Account("account",
+            instance_id=default_instance.id,
             account_name="tftestnormal",
-            account_password="Test12345",
-            instance_id=default_instance.id)
+            account_password="Test12345")
         ```
 
         :param str resource_name: The name of the resource.

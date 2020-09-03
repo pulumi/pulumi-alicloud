@@ -65,6 +65,11 @@ type Disk struct {
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	PerformanceLevel pulumi.StringPtrOutput `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
@@ -130,6 +135,11 @@ type diskState struct {
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name *string `pulumi:"name"`
+	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -162,6 +172,11 @@ type DiskState struct {
 	KmsKeyId pulumi.StringPtrInput
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name pulumi.StringPtrInput
+	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	PerformanceLevel pulumi.StringPtrInput
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	ResourceGroupId pulumi.StringPtrInput
@@ -198,6 +213,11 @@ type diskArgs struct {
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name *string `pulumi:"name"`
+	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -229,6 +249,11 @@ type DiskArgs struct {
 	KmsKeyId pulumi.StringPtrInput
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name pulumi.StringPtrInput
+	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	PerformanceLevel pulumi.StringPtrInput
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	ResourceGroupId pulumi.StringPtrInput

@@ -53,9 +53,9 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -73,29 +73,29 @@ import (
 // 			return err
 // 		}
 // 		_, err = vpc.NewNetworkAclEntries(ctx, "defaultNetworkAclEntries", &vpc.NetworkAclEntriesArgs{
-// 			Egresses: vpc.NetworkAclEntriesEgressArray{
-// 				&vpc.NetworkAclEntriesEgressArgs{
-// 					Description:       pulumi.String(name),
-// 					DestinationCidrIp: pulumi.String("0.0.0.0/32"),
-// 					EntryType:         pulumi.String("custom"),
-// 					Name:              pulumi.String(name),
-// 					Policy:            pulumi.String("accept"),
-// 					Port:              pulumi.String("-1/-1"),
-// 					Protocol:          pulumi.String("all"),
-// 				},
-// 			},
+// 			NetworkAclId: defaultNetworkAcl.ID(),
 // 			Ingresses: vpc.NetworkAclEntriesIngressArray{
 // 				&vpc.NetworkAclEntriesIngressArgs{
-// 					Description:  pulumi.String(name),
-// 					EntryType:    pulumi.String("custom"),
-// 					Name:         pulumi.String(name),
-// 					Policy:       pulumi.String("accept"),
-// 					Port:         pulumi.String("-1/-1"),
 // 					Protocol:     pulumi.String("all"),
+// 					Port:         pulumi.String("-1/-1"),
 // 					SourceCidrIp: pulumi.String("0.0.0.0/32"),
+// 					Name:         pulumi.String(name),
+// 					EntryType:    pulumi.String("custom"),
+// 					Policy:       pulumi.String("accept"),
+// 					Description:  pulumi.String(name),
 // 				},
 // 			},
-// 			NetworkAclId: defaultNetworkAcl.ID(),
+// 			Egresses: vpc.NetworkAclEntriesEgressArray{
+// 				&vpc.NetworkAclEntriesEgressArgs{
+// 					Protocol:          pulumi.String("all"),
+// 					Port:              pulumi.String("-1/-1"),
+// 					DestinationCidrIp: pulumi.String("0.0.0.0/32"),
+// 					Name:              pulumi.String(name),
+// 					EntryType:         pulumi.String("custom"),
+// 					Policy:            pulumi.String("accept"),
+// 					Description:       pulumi.String(name),
+// 				},
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err

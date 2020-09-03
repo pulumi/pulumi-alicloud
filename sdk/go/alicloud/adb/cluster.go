@@ -45,21 +45,21 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = adb.NewCluster(ctx, "defaultCluster", &adb.ClusterArgs{
-// 			DbClusterCategory: pulumi.String("Cluster"),
 // 			DbClusterVersion:  pulumi.String("3.0"),
+// 			DbClusterCategory: pulumi.String("Cluster"),
 // 			DbNodeClass:       pulumi.String("C8"),
 // 			DbNodeCount:       pulumi.Int(2),
 // 			DbNodeStorage:     pulumi.Int(200),
-// 			Description:       pulumi.String(name),
 // 			PayType:           pulumi.String("PostPaid"),
+// 			Description:       pulumi.String(name),
 // 			VswitchId:         defaultSwitch.ID(),
 // 		})
 // 		if err != nil {

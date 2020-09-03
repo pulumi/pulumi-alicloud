@@ -15,10 +15,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getListeners({
+ * const _default = new alicloud.slb.LoadBalancer("default", {});
+ * const tcp = new alicloud.slb.Listener("tcp", {
+ *     loadBalancerId: _default.id,
+ *     backendPort: "22",
+ *     frontendPort: "22",
+ *     protocol: "tcp",
+ *     bandwidth: "10",
+ *     healthCheckType: "tcp",
+ *     persistenceTimeout: 3600,
+ *     healthyThreshold: 8,
+ *     unhealthyThreshold: 8,
+ *     healthCheckTimeout: 8,
+ *     healthCheckInterval: 5,
+ *     healthCheckHttpCode: "http_2xx",
+ *     healthCheckConnectPort: 20,
+ *     healthCheckUri: "/console",
+ *     establishedTimeout: 600,
+ * });
+ * const sampleDs = _default.id.apply(id => alicloud.slb.getListeners({
  *     loadBalancerId: id,
- * }, { async: true }));
- *
+ * }));
  * export const firstSlbListenerProtocol = sampleDs.slbListeners[0].protocol;
  * ```
  */

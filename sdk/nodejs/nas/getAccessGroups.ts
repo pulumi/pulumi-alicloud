@@ -17,13 +17,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ag = pulumi.output(alicloud.nas.getAccessGroups({
- *     description: "tf-testAccAccessGroupsdatasource",
+ * const example = alicloud.nas.getAccessGroups({
  *     nameRegex: "^foo",
- *     type: "Classic",
- * }, { async: true }));
- *
- * export const alicloudNasAccessGroupsId = ag.groups[0].id;
+ *     accessGroupType: "Classic",
+ *     description: "tf-testAccAccessGroupsdatasource",
+ * });
+ * export const alicloudNasAccessGroupsId = example.then(example => example.groups[0].id);
  * ```
  */
 export function getAccessGroups(args?: GetAccessGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessGroupsResult> {
@@ -36,10 +35,14 @@ export function getAccessGroups(args?: GetAccessGroupsArgs, opts?: pulumi.Invoke
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:nas/getAccessGroups:getAccessGroups", {
+        "accessGroupName": args.accessGroupName,
+        "accessGroupType": args.accessGroupType,
         "description": args.description,
+        "fileSystemType": args.fileSystemType,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "type": args.type,
+        "useutcDateTime": args.useutcDateTime,
     }, opts);
 }
 
@@ -48,18 +51,36 @@ export function getAccessGroups(args?: GetAccessGroupsArgs, opts?: pulumi.Invoke
  */
 export interface GetAccessGroupsArgs {
     /**
+     * The name of access group.
+     */
+    readonly accessGroupName?: string;
+    /**
+     * Filter results by a specific AccessGroupType.
+     */
+    readonly accessGroupType?: string;
+    /**
      * Filter results by a specific Description.
      */
     readonly description?: string;
+    /**
+     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+     */
+    readonly fileSystemType?: string;
     /**
      * A regex string to filter AccessGroups by name.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
     /**
-     * Filter results by a specific AccessGroupType.
+     * Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
+     *
+     * @deprecated Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.
      */
     readonly type?: string;
+    /**
+     * Specifies whether the time to return is in UTC. Valid values: true and false.
+     */
+    readonly useutcDateTime?: boolean;
 }
 
 /**
@@ -67,9 +88,18 @@ export interface GetAccessGroupsArgs {
  */
 export interface GetAccessGroupsResult {
     /**
-     * Destription of the AccessGroup.
+     * (Available in 1.95.0+) The name of the AccessGroup.
+     */
+    readonly accessGroupName?: string;
+    /**
+     * (Available in 1.95.0+) The type of the AccessGroup.
+     */
+    readonly accessGroupType?: string;
+    /**
+     * Description of the AccessGroup.
      */
     readonly description?: string;
+    readonly fileSystemType?: string;
     /**
      * A list of AccessGroups. Each element contains the following attributes:
      */
@@ -79,7 +109,7 @@ export interface GetAccessGroupsResult {
      */
     readonly id: string;
     /**
-     * A list of AccessGroup IDs, the value is set to `names` .
+     * A list of AccessGroup IDs, the value is set to `names`. After version 1.95.0 the item value as `<access_group_id>:<file_system_type>`.
      */
     readonly ids: string[];
     readonly nameRegex?: string;
@@ -89,7 +119,10 @@ export interface GetAccessGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * AccessGroupType of the AccessGroup.
+     * (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `accessGroupType` after version 1.95.0.
+     *
+     * @deprecated Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.
      */
     readonly type?: string;
+    readonly useutcDateTime?: boolean;
 }

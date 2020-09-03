@@ -17,6 +17,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dns_security: Optional[pulumi.Input[str]] = None,
                  domain_numbers: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[float]] = None,
                  renew_period: Optional[pulumi.Input[float]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -25,27 +26,7 @@ class Instance(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create an DNS Instance resource.
-
-        > **NOTE:** Available in v1.80.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        this = alicloud.dns.Instance("this",
-            dns_security="no",
-            domain_numbers="2",
-            period=1,
-            renew_period=1,
-            renewal_status="ManualRenewal",
-            version_code="version_personal")
-        ```
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dns_security: DNS security level. Valid values: `no`, `basic`, `advanced`.
@@ -78,6 +59,7 @@ class Instance(pulumi.CustomResource):
             if domain_numbers is None:
                 raise TypeError("Missing required property 'domain_numbers'")
             __props__['domain_numbers'] = domain_numbers
+            __props__['payment_type'] = payment_type
             __props__['period'] = period
             __props__['renew_period'] = renew_period
             __props__['renewal_status'] = renewal_status
@@ -97,6 +79,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             dns_security: Optional[pulumi.Input[str]] = None,
             domain_numbers: Optional[pulumi.Input[str]] = None,
+            payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[float]] = None,
             renew_period: Optional[pulumi.Input[float]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
@@ -123,6 +106,7 @@ class Instance(pulumi.CustomResource):
 
         __props__["dns_security"] = dns_security
         __props__["domain_numbers"] = domain_numbers
+        __props__["payment_type"] = payment_type
         __props__["period"] = period
         __props__["renew_period"] = renew_period
         __props__["renewal_status"] = renewal_status
@@ -145,6 +129,11 @@ class Instance(pulumi.CustomResource):
         Number of domain names bound.
         """
         return pulumi.get(self, "domain_numbers")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter

@@ -33,19 +33,19 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cs.NewRegistryEnterpriseNamespace(ctx, "my_namespace", &cs.RegistryEnterpriseNamespaceArgs{
+// 			InstanceId:        pulumi.String("cri-xxx"),
 // 			AutoCreate:        pulumi.Bool(false),
 // 			DefaultVisibility: pulumi.String("PUBLIC"),
-// 			InstanceId:        pulumi.String("cri-xxx"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = cs.NewRegistryEnterpriseRepo(ctx, "my_repo", &cs.RegistryEnterpriseRepoArgs{
-// 			Detail:     pulumi.String("this is a public repo"),
 // 			InstanceId: my_namespace.InstanceId,
 // 			Namespace:  my_namespace.Name,
-// 			RepoType:   pulumi.String("PUBLIC"),
 // 			Summary:    pulumi.String("this is summary of my new repo"),
+// 			RepoType:   pulumi.String("PUBLIC"),
+// 			Detail:     pulumi.String("this is a public repo"),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -30,16 +30,16 @@ namespace Pulumi.AliCloud.Nas
     ///     {
     ///         var fooAccessGroup = new AliCloud.Nas.AccessGroup("fooAccessGroup", new AliCloud.Nas.AccessGroupArgs
     ///         {
-    ///             Description = "tf-testAccNasConfig",
     ///             Type = "Vpc",
+    ///             Description = "tf-testAccNasConfig",
     ///         });
     ///         var fooAccessRule = new AliCloud.Nas.AccessRule("fooAccessRule", new AliCloud.Nas.AccessRuleArgs
     ///         {
     ///             AccessGroupName = fooAccessGroup.Id,
-    ///             Priority = 2,
-    ///             RwAccessType = "RDWR",
     ///             SourceCidrIp = "168.1.1.0/16",
+    ///             RwAccessType = "RDWR",
     ///             UserAccessType = "no_squash",
+    ///             Priority = 2,
     ///         });
     ///     }
     /// 

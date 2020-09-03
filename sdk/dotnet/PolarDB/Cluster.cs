@@ -40,17 +40,17 @@ namespace Pulumi.AliCloud.PolarDB
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new AliCloud.PolarDB.ClusterArgs
     ///         {
-    ///             DbNodeClass = "rds.mysql.s2.large",
     ///             DbType = "MySQL",
     ///             DbVersion = "5.6",
-    ///             Description = name,
+    ///             DbNodeClass = "rds.mysql.s2.large",
     ///             PayType = "PostPaid",
+    ///             Description = name,
     ///             VswitchId = defaultSwitch.Id,
     ///         });
     ///     }
@@ -79,6 +79,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbNodeClass { get; private set; } = null!;
 
         /// <summary>
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        /// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        /// </summary>
+        [Output("dbNodeCount")]
+        public Output<int?> DbNodeCount { get; private set; } = null!;
+
+        /// <summary>
         /// Database type. Value options: MySQL, Oracle, PostgreSQL.
         /// </summary>
         [Output("dbType")]
@@ -103,7 +110,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
-        /// Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         /// </summary>
         [Output("modifyType")]
         public Output<string?> ModifyType { get; private set; } = null!;
@@ -217,6 +224,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> DbNodeClass { get; set; } = null!;
 
         /// <summary>
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        /// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        /// </summary>
+        [Input("dbNodeCount")]
+        public Input<int>? DbNodeCount { get; set; }
+
+        /// <summary>
         /// Database type. Value options: MySQL, Oracle, PostgreSQL.
         /// </summary>
         [Input("dbType", required: true)]
@@ -241,7 +255,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
-        /// Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
@@ -340,6 +354,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbNodeClass { get; set; }
 
         /// <summary>
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        /// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        /// </summary>
+        [Input("dbNodeCount")]
+        public Input<int>? DbNodeCount { get; set; }
+
+        /// <summary>
         /// Database type. Value options: MySQL, Oracle, PostgreSQL.
         /// </summary>
         [Input("dbType")]
@@ -364,7 +385,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
-        /// Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }

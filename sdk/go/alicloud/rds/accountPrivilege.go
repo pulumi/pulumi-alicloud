@@ -40,9 +40,9 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -50,10 +50,10 @@ import (
 // 		instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
 // 			Engine:          pulumi.String("MySQL"),
 // 			EngineVersion:   pulumi.String("5.6"),
-// 			InstanceName:    pulumi.String(name),
-// 			InstanceStorage: pulumi.Int(10),
 // 			InstanceType:    pulumi.String("rds.mysql.s1.small"),
+// 			InstanceStorage: pulumi.Int(10),
 // 			VswitchId:       defaultSwitch.ID(),
+// 			InstanceName:    pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -61,8 +61,8 @@ import (
 // 		var db []*rds.Database
 // 		for key0, _ := range 2 {
 // 			__res, err := rds.NewDatabase(ctx, fmt.Sprintf("db-%v", key0), &rds.DatabaseArgs{
-// 				Description: pulumi.String("from terraform"),
 // 				InstanceId:  instance.ID(),
+// 				Description: pulumi.String("from terraform"),
 // 			})
 // 			if err != nil {
 // 				return err
@@ -70,9 +70,9 @@ import (
 // 			db = append(db, __res)
 // 		}
 // 		account, err := rds.NewAccount(ctx, "account", &rds.AccountArgs{
-// 			Description: pulumi.String("from terraform"),
 // 			InstanceId:  instance.ID(),
 // 			Password:    pulumi.String("Test12345"),
+// 			Description: pulumi.String("from terraform"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -82,10 +82,10 @@ import (
 // 			splat0 = append(splat0, val0.Name)
 // 		}
 // 		_, err = rds.NewAccountPrivilege(ctx, "privilege", &rds.AccountPrivilegeArgs{
-// 			AccountName: account.Name,
-// 			DbNames:     toPulumiStringArray(splat0),
 // 			InstanceId:  instance.ID(),
+// 			AccountName: account.Name,
 // 			Privilege:   pulumi.String("ReadOnly"),
+// 			DbNames:     toPulumiStringArray(splat0),
 // 		})
 // 		if err != nil {
 // 			return err

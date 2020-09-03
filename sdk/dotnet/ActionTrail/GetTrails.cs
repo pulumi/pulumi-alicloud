@@ -12,7 +12,9 @@ namespace Pulumi.AliCloud.ActionTrail
     public static class GetTrails
     {
         /// <summary>
-        /// This data source provides a list of action trail of the current Alibaba Cloud user.
+        /// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.95.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -26,15 +28,15 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {
         ///     public MyStack()
         ///     {
-        ///         var trails = Output.Create(AliCloud.ActionTrail.GetTrails.InvokeAsync(new AliCloud.ActionTrail.GetTrailsArgs
+        ///         var @default = Output.Create(AliCloud.ActionTrail.GetTrails.InvokeAsync(new AliCloud.ActionTrail.GetTrailsArgs
         ///         {
         ///             NameRegex = "tf-testacc-actiontrail",
         ///         }));
-        ///         this.FirstTrailName = trails.Apply(trails =&gt; trails.Actiontrails[0].Name);
+        ///         this.TrailName = @default.Apply(@default =&gt; @default.Trails[0].Id);
         ///     }
         /// 
-        ///     [Output("firstTrailName")]
-        ///     public Output&lt;string&gt; FirstTrailName { get; set; }
+        ///     [Output("trailName")]
+        ///     public Output&lt;string&gt; TrailName { get; set; }
         /// }
         /// ```
         /// {{% /example %}}
@@ -47,14 +49,38 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class GetTrailsArgs : Pulumi.InvokeArgs
     {
+        [Input("ids")]
+        private List<string>? _ids;
+
         /// <summary>
-        /// A regex string to filter results action trail name.
+        /// A list of ActionTrail Trail IDs. It is the same as trail name.
+        /// </summary>
+        public List<string> Ids
+        {
+            get => _ids ?? (_ids = new List<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Whether to show shadow tracking. Default to `false`.
+        /// </summary>
+        [Input("includeShadowTrails")]
+        public bool? IncludeShadowTrails { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by trail name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
 
         public GetTrailsArgs()
         {
@@ -66,19 +92,32 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class GetTrailsResult
     {
         /// <summary>
-        /// A list of actiontrails. Each element contains the following attributes:
+        /// Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTrailsActiontrailResult> Actiontrails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of ActionTrail Trail ids. It is the same as trail name.
+        /// </summary>
+        public readonly ImmutableArray<string> Ids;
+        public readonly bool? IncludeShadowTrails;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of trail names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the ActionTrail Trail.
+        /// </summary>
+        public readonly string? Status;
+        /// <summary>
+        /// A list of ActionTrail Trails. Each element contains the following attributes:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTrailsTrailResult> Trails;
 
         [OutputConstructor]
         private GetTrailsResult(
@@ -86,17 +125,29 @@ namespace Pulumi.AliCloud.ActionTrail
 
             string id,
 
+            ImmutableArray<string> ids,
+
+            bool? includeShadowTrails,
+
             string? nameRegex,
 
             ImmutableArray<string> names,
 
-            string? outputFile)
+            string? outputFile,
+
+            string? status,
+
+            ImmutableArray<Outputs.GetTrailsTrailResult> trails)
         {
             Actiontrails = actiontrails;
             Id = id;
+            Ids = ids;
+            IncludeShadowTrails = includeShadowTrails;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            Status = status;
+            Trails = trails;
         }
     }
 }

@@ -32,17 +32,17 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         var my_namespace = new AliCloud.CS.RegistryEnterpriseNamespace("my-namespace", new AliCloud.CS.RegistryEnterpriseNamespaceArgs
     ///         {
+    ///             InstanceId = "cri-xxx",
     ///             AutoCreate = false,
     ///             DefaultVisibility = "PUBLIC",
-    ///             InstanceId = "cri-xxx",
     ///         });
     ///         var my_repo = new AliCloud.CS.RegistryEnterpriseRepo("my-repo", new AliCloud.CS.RegistryEnterpriseRepoArgs
     ///         {
-    ///             Detail = "this is a public repo",
     ///             InstanceId = my_namespace.InstanceId,
     ///             Namespace = my_namespace.Name,
-    ///             RepoType = "PUBLIC",
     ///             Summary = "this is summary of my new repo",
+    ///             RepoType = "PUBLIC",
+    ///             Detail = "this is a public repo",
     ///         });
     ///     }
     /// 

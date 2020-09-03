@@ -40,21 +40,26 @@ class LogTailAttachment(pulumi.CustomResource):
 
         test_project = alicloud.log.Project("testProject", description="create by terraform")
         test_store = alicloud.log.Store("testStore",
-            append_meta=True,
-            auto_split=True,
-            max_split_shard_count=60,
             project=test_project.name,
             retention_period=3650,
-            shard_count=3)
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
         test_machine_group = alicloud.log.MachineGroup("testMachineGroup",
+            project=test_project.name,
+            topic="terraform",
             identify_lists=[
                 "10.0.0.1",
                 "10.0.0.3",
                 "10.0.0.2",
-            ],
-            project=test_project.name,
-            topic="terraform")
+            ])
         test_log_tail_config = alicloud.log.LogTailConfig("testLogTailConfig",
+            project=test_project.name,
+            logstore=test_store.name,
+            input_type="file",
+            log_sample="test",
+            output_type="LogService",
             input_detail=\"\"\"  	{
         		"logPath": "/logPath",
         		"filePattern": "access.log",
@@ -66,16 +71,11 @@ class LogTailAttachment(pulumi.CustomResource):
         		"maxDepth": 10
         	}
         	
-        \"\"\",
-            input_type="file",
-            log_sample="test",
-            logstore=test_store.name,
-            output_type="LogService",
-            project=test_project.name)
+        \"\"\")
         test_log_tail_attachment = alicloud.log.LogTailAttachment("testLogTailAttachment",
+            project=test_project.name,
             logtail_config_name=test_log_tail_config.name,
-            machine_group_name=test_machine_group.name,
-            project=test_project.name)
+            machine_group_name=test_machine_group.name)
         ```
 
         :param str resource_name: The name of the resource.

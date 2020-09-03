@@ -18,11 +18,33 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Create a new load balancer and domain extension
  * const instance = new alicloud.slb.LoadBalancer("instance", {
- *     internet: true,
  *     internetChargeType: "PayByTraffic",
+ *     internet: "true",
  * });
  * const foo = new alicloud.slb.ServerCertificate("foo", {
+ *     serverCertificate: `-----BEGIN CERTIFICATE-----
+ * MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
+ * bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
+ * bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0LmNvbTEaMBgGCSqGSIb3
+ * DQEJARYLMTIzQDEyMy5jb20wHhcNMTkwNDI2MDM0ODAxWhcNMjQwNDI1MDM0ODAx
+ * WjB9MQswCQYDVQQGEwJjbjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcx
+ * DzANBgNVBAoMBmFsaXl1bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0
+ * LmNvbTEaMBgGCSqGSIb3DQEJARYLMTIzQDEyMy5jb20wggEiMA0GCSqGSIb3DQEB
+ * AQUAA4IBDwAwggEKAoIBAQDKMKF5qmN/uoMjdH3D8aPRcUOA0s8rZpYhG8zbkF1j
+ * 8gHYoB/FDvM7G7dfVsyjbMwLOxKvAhWvHHSpEz/t7gB+QdwrAMiMJwGmtCnXrh2E
+ * WiXgalMe1y4a/T5R7q+m4T1zFATf+kbnHWfkSGF4W7b6UBoaH+9StQ95CnqzNf/2
+ * p/Of7+S0XzCxFXw8GIVzZk0xFe6lHJzaq06f3mvzrD+4rpO56tTUvrgTY/n61gsF
+ * ZP7f0CJ2JQh6eNRFOEUSfxKu/Dy/+IsQxorCJY2Q59ZAf3rXrqDN104jw9PlwnLl
+ * qfZz3RMODN6BWjxE8rvRtT0qMfuAfv1gjBdWZN0hUYBRAgMBAAEwDQYJKoZIhvcN
+ * AQELBQADggEBAABzo82TxGp5poVkd5pLWj5ACgcBv8Cs6oH9D+4Jz9BmyuBUsQXh
+ * 2aG0hQAe1mU61C9konsl/GTW8umJQ4M4lYEztXXwMf5PlBMGwebM0ZbSGg6jKtZg
+ * WCgJ3eP/FMmyXGL5Jji5+e09eObhUDVle4tdi0On97zBoz85W02rgWFAqZJwiEAP
+ * t+c7jX7uOSBq2/38iGStlrX5yB1at/gJXXiA5CL5OtlR3Okvb0/QH37efO1Nu39m
+ * lFi0ODPAVyXjVypAiLguDxPn6AtDTdk9Iw9B19OD4NrzNRWgSSX5vuxo/VcRcgWk
+ * 3gEe9Ca0ZKN20q9XgthAiFFjl1S9ZgdA6Zc=
+ * -----END CERTIFICATE-----`,
  *     privateKey: `-----BEGIN RSA PRIVATE KEY-----
  * MIIEowIBAAKCAQEAyjCheapjf7qDI3R9w/Gj0XFDgNLPK2aWIRvM25BdY/IB2KAf
  * xQ7zOxu3X1bMo2zMCzsSrwIVrxx0qRM/7e4AfkHcKwDIjCcBprQp164dhFol4GpT
@@ -50,52 +72,31 @@ import * as utilities from "../utilities";
  * ZzMASNyytVt12yXE4/Emv6/pYqigbDLfL1zQJSLJ3EHJYTh2RxjR+AaGDudYFG/T
  * liQ9YXhV5Iu2x1pNwrtFnssDdaaGpfA7l3xC00BL7Z+SAJyI4QKA
  * -----END RSA PRIVATE KEY-----`,
- *     serverCertificate: `-----BEGIN CERTIFICATE-----
- * MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
- * bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
- * bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0LmNvbTEaMBgGCSqGSIb3
- * DQEJARYLMTIzQDEyMy5jb20wHhcNMTkwNDI2MDM0ODAxWhcNMjQwNDI1MDM0ODAx
- * WjB9MQswCQYDVQQGEwJjbjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcx
- * DzANBgNVBAoMBmFsaXl1bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0
- * LmNvbTEaMBgGCSqGSIb3DQEJARYLMTIzQDEyMy5jb20wggEiMA0GCSqGSIb3DQEB
- * AQUAA4IBDwAwggEKAoIBAQDKMKF5qmN/uoMjdH3D8aPRcUOA0s8rZpYhG8zbkF1j
- * 8gHYoB/FDvM7G7dfVsyjbMwLOxKvAhWvHHSpEz/t7gB+QdwrAMiMJwGmtCnXrh2E
- * WiXgalMe1y4a/T5R7q+m4T1zFATf+kbnHWfkSGF4W7b6UBoaH+9StQ95CnqzNf/2
- * p/Of7+S0XzCxFXw8GIVzZk0xFe6lHJzaq06f3mvzrD+4rpO56tTUvrgTY/n61gsF
- * ZP7f0CJ2JQh6eNRFOEUSfxKu/Dy/+IsQxorCJY2Q59ZAf3rXrqDN104jw9PlwnLl
- * qfZz3RMODN6BWjxE8rvRtT0qMfuAfv1gjBdWZN0hUYBRAgMBAAEwDQYJKoZIhvcN
- * AQELBQADggEBAABzo82TxGp5poVkd5pLWj5ACgcBv8Cs6oH9D+4Jz9BmyuBUsQXh
- * 2aG0hQAe1mU61C9konsl/GTW8umJQ4M4lYEztXXwMf5PlBMGwebM0ZbSGg6jKtZg
- * WCgJ3eP/FMmyXGL5Jji5+e09eObhUDVle4tdi0On97zBoz85W02rgWFAqZJwiEAP
- * t+c7jX7uOSBq2/38iGStlrX5yB1at/gJXXiA5CL5OtlR3Okvb0/QH37efO1Nu39m
- * lFi0ODPAVyXjVypAiLguDxPn6AtDTdk9Iw9B19OD4NrzNRWgSSX5vuxo/VcRcgWk
- * 3gEe9Ca0ZKN20q9XgthAiFFjl1S9ZgdA6Zc=
- * -----END CERTIFICATE-----`,
  * });
  * const https = new alicloud.slb.Listener("https", {
- *     backendPort: 80,
- *     bandwidth: 10,
- *     cookie: "testslblistenercookie",
- *     cookieTimeout: 86400,
- *     frontendPort: 443,
- *     healthCheck: "on",
- *     healthCheckConnectPort: 20,
- *     healthCheckHttpCode: "http_2xx,http_3xx",
- *     healthCheckInterval: 5,
- *     healthCheckTimeout: 8,
- *     healthCheckUri: "/cons",
- *     healthyThreshold: 8,
  *     loadBalancerId: instance.id,
+ *     backendPort: 80,
+ *     frontendPort: 443,
  *     protocol: "https",
- *     sslCertificateId: foo.id,
  *     stickySession: "on",
  *     stickySessionType: "insert",
+ *     cookie: "testslblistenercookie",
+ *     cookieTimeout: 86400,
+ *     healthCheck: "on",
+ *     healthCheckUri: "/cons",
+ *     healthCheckConnectPort: 20,
+ *     healthyThreshold: 8,
  *     unhealthyThreshold: 8,
+ *     healthCheckTimeout: 8,
+ *     healthCheckInterval: 5,
+ *     healthCheckHttpCode: "http_2xx,http_3xx",
+ *     bandwidth: 10,
+ *     sslCertificateId: foo.id,
  * });
  * const example1 = new alicloud.slb.DomainExtension("example1", {
- *     domain: "www.test.com",
- *     frontendPort: https.frontendPort,
  *     loadBalancerId: instance.id,
+ *     frontendPort: https.frontendPort,
+ *     domain: "www.test.com",
  *     serverCertificateId: foo.id,
  * });
  * ```

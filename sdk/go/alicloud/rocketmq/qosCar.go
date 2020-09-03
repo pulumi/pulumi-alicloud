@@ -38,15 +38,15 @@ import (
 // 			return err
 // 		}
 // 		_, err = rocketmq.NewQosCar(ctx, "defaultQosCar", &rocketmq.QosCarArgs{
-// 			Description:         pulumi.String("tf-testSagQosCarDescription"),
-// 			LimitType:           pulumi.String("Absolute"),
-// 			MaxBandwidthAbs:     pulumi.Int(20),
-// 			MaxBandwidthPercent: pulumi.Int(20),
-// 			MinBandwidthAbs:     pulumi.Int(10),
-// 			MinBandwidthPercent: pulumi.Int(10),
-// 			PercentSourceType:   pulumi.String("InternetUpBandwidth"),
-// 			Priority:            pulumi.Int(1),
 // 			QosId:               defaultQos.ID(),
+// 			Description:         pulumi.String("tf-testSagQosCarDescription"),
+// 			Priority:            pulumi.Int(1),
+// 			LimitType:           pulumi.String("Absolute"),
+// 			MinBandwidthAbs:     pulumi.Int(10),
+// 			MaxBandwidthAbs:     pulumi.Int(20),
+// 			MinBandwidthPercent: pulumi.Int(10),
+// 			MaxBandwidthPercent: pulumi.Int(20),
+// 			PercentSourceType:   pulumi.String("InternetUpBandwidth"),
 // 		})
 // 		if err != nil {
 // 			return err

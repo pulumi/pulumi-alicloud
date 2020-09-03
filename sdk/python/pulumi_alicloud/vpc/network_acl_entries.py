@@ -48,9 +48,9 @@ class NetworkAclEntries(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
         default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl", vpc_id=default_network.id)
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment",
             network_acl_id=default_network_acl.id,
             resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
@@ -58,25 +58,25 @@ class NetworkAclEntries(pulumi.CustomResource):
                 resource_type="VSwitch",
             )])
         default_network_acl_entries = alicloud.vpc.NetworkAclEntries("defaultNetworkAclEntries",
-            egresses=[alicloud.vpc.NetworkAclEntriesEgressArgs(
-                description=name,
-                destination_cidr_ip="0.0.0.0/32",
-                entry_type="custom",
-                name=name,
-                policy="accept",
-                port="-1/-1",
-                protocol="all",
-            )],
+            network_acl_id=default_network_acl.id,
             ingresses=[alicloud.vpc.NetworkAclEntriesIngressArgs(
-                description=name,
-                entry_type="custom",
-                name=name,
-                policy="accept",
-                port="-1/-1",
                 protocol="all",
+                port="-1/-1",
                 source_cidr_ip="0.0.0.0/32",
+                name=name,
+                entry_type="custom",
+                policy="accept",
+                description=name,
             )],
-            network_acl_id=default_network_acl.id)
+            egresses=[alicloud.vpc.NetworkAclEntriesEgressArgs(
+                protocol="all",
+                port="-1/-1",
+                destination_cidr_ip="0.0.0.0/32",
+                name=name,
+                entry_type="custom",
+                policy="accept",
+                description=name,
+            )])
         ```
 
         :param str resource_name: The name of the resource.

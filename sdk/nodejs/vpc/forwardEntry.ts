@@ -17,34 +17,31 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "forward-entry-example-name";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/12",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     vpcId: defaultNetwork.id,
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultNatGateway = new alicloud.vpc.NatGateway("default", {
+ * const defaultNatGateway = new alicloud.vpc.NatGateway("defaultNatGateway", {
+ *     vpcId: defaultNetwork.id,
  *     specification: "Small",
- *     vpcId: defaultNetwork.id,
  * });
- * const defaultEip = new alicloud.ecs.Eip("default", {});
- * const defaultEipAssociation = new alicloud.ecs.EipAssociation("default", {
+ * const defaultEip = new alicloud.ecs.Eip("defaultEip", {});
+ * const defaultEipAssociation = new alicloud.ecs.EipAssociation("defaultEipAssociation", {
  *     allocationId: defaultEip.id,
  *     instanceId: defaultNatGateway.id,
  * });
- * const defaultForwardEntry = new alicloud.vpc.ForwardEntry("default", {
+ * const defaultForwardEntry = new alicloud.vpc.ForwardEntry("defaultForwardEntry", {
+ *     forwardTableId: defaultNatGateway.forwardTableIds,
  *     externalIp: defaultEip.ipAddress,
  *     externalPort: "80",
- *     forwardTableId: defaultNatGateway.forwardTableIds,
+ *     ipProtocol: "tcp",
  *     internalIp: "172.16.0.3",
  *     internalPort: "8080",
- *     ipProtocol: "tcp",
  * });
  * ```
  */

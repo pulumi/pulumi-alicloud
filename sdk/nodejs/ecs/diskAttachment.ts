@@ -15,28 +15,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ecsSg = new alicloud.ecs.SecurityGroup("ecs_sg", {
- *     description: "New security group",
- * });
- * const ecsDisk = new alicloud.ecs.Disk("ecs_disk", {
+ * // Create a new ECS disk-attachment and use it attach one disk to a new instance.
+ * const ecsSg = new alicloud.ecs.SecurityGroup("ecsSg", {description: "New security group"});
+ * const ecsDisk = new alicloud.ecs.Disk("ecsDisk", {
  *     availabilityZone: "cn-beijing-a",
- *     size: 50,
+ *     size: "50",
  *     tags: {
  *         Name: "TerraformTest-disk",
  *     },
  * });
- * const ecsInstance = new alicloud.ecs.Instance("ecs_instance", {
- *     availabilityZone: "cn-beijing-a",
+ * const ecsInstance = new alicloud.ecs.Instance("ecsInstance", {
  *     imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
- *     instanceName: "Hello",
  *     instanceType: "ecs.n4.small",
- *     internetChargeType: "PayByBandwidth",
+ *     availabilityZone: "cn-beijing-a",
  *     securityGroups: [ecsSg.id],
+ *     instanceName: "Hello",
+ *     internetChargeType: "PayByBandwidth",
  *     tags: {
  *         Name: "TerraformTest-instance",
  *     },
  * });
- * const ecsDiskAtt = new alicloud.ecs.DiskAttachment("ecs_disk_att", {
+ * const ecsDiskAtt = new alicloud.ecs.DiskAttachment("ecsDiskAtt", {
  *     diskId: ecsDisk.id,
  *     instanceId: ecsInstance.id,
  * });

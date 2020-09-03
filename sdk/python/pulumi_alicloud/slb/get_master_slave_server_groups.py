@@ -122,7 +122,59 @@ def get_master_slave_server_groups(ids: Optional[List[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    sample_ds = alicloud.slb.get_master_slave_server_groups(load_balancer_id=alicloud_slb["sample_slb"]["id"])
+    default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        available_resource_creation="VSwitch")
+    default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        eni_amount=2)
+    image = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        most_recent=True,
+        owners="system")
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-testAccSlbMasterSlaveServerGroupVpc"
+    number = config.get("number")
+    if number is None:
+        number = "1"
+    main_network = alicloud.vpc.Network("mainNetwork", cidr_block="172.16.0.0/16")
+    main_switch = alicloud.vpc.Switch("mainSwitch",
+        vpc_id=main_network.id,
+        availability_zone=default_zones.zones[0].id,
+        cidr_block="172.16.0.0/16")
+    group_security_group = alicloud.ecs.SecurityGroup("groupSecurityGroup", vpc_id=main_network.id)
+    instance_instance = []
+    for range in [{"value": i} for i in range(0, 2)]:
+        instance_instance.append(alicloud.ecs.Instance(f"instanceInstance-{range['value']}",
+            image_id=image.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            instance_name=name,
+            security_groups=[group_security_group.id],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_zones.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=main_switch.id))
+    instance_load_balancer = alicloud.slb.LoadBalancer("instanceLoadBalancer",
+        vswitch_id=main_switch.id,
+        specification="slb.s2.small")
+    group_master_slave_server_group = alicloud.slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup",
+        load_balancer_id=instance_load_balancer.id,
+        servers=[
+            alicloud.slb.MasterSlaveServerGroupServerArgs(
+                server_id=instance_instance[0].id,
+                port=100,
+                weight=100,
+                server_type="Master",
+            ),
+            alicloud.slb.MasterSlaveServerGroupServerArgs(
+                server_id=instance_instance[1].id,
+                port=100,
+                weight=100,
+                server_type="Slave",
+            ),
+        ])
+    sample_ds = instance_load_balancer.id.apply(lambda id: alicloud.slb.get_master_slave_server_groups(load_balancer_id=id))
     pulumi.export("firstSlbServerGroupId", sample_ds.groups[0].id)
     ```
 

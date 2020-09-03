@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./alidnsDomain";
+export * from "./alidnsInstance";
 export * from "./alidnsRecord";
 export * from "./ddosBgpInstance";
 export * from "./ddosCooInstance";
@@ -10,6 +12,8 @@ export * from "./domain";
 export * from "./domainAttachment";
 export * from "./domainGroup";
 export * from "./getAlidnsDomainGroups";
+export * from "./getAlidnsDomains";
+export * from "./getAlidnsInstances";
 export * from "./getAlidnsRecords";
 export * from "./getDomainGroups";
 export * from "./getDomainRecords";

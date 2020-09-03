@@ -9,5 +9,7 @@ from .get_sasl_acls import *
 from .get_sasl_users import *
 from .get_topics import *
 from .get_trails import *
+from .get_trails_deprecated import *
 from .trail import *
+from .trail_deprecated import *
 from . import outputs

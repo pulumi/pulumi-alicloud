@@ -6,23 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const domainsDs = pulumi.output(alicloud.dns.getDomains({
- *     domainNameRegex: "^hegu",
- *     outputFile: "domains.txt",
- * }, { async: true }));
- *
- * export const firstDomainId = domainsDs.domains[0].domainId;
- * ```
- */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
     if (!opts) {
@@ -35,6 +18,7 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
     return pulumi.runtime.invoke("alicloud:dns/getDomains:getDomains", {
         "aliDomain": args.aliDomain,
         "domainNameRegex": args.domainNameRegex,
+        "enableDetails": args.enableDetails,
         "groupId": args.groupId,
         "groupNameRegex": args.groupNameRegex,
         "ids": args.ids,
@@ -62,6 +46,7 @@ export interface GetDomainsArgs {
      * A regex string to filter results by the domain name.
      */
     readonly domainNameRegex?: string;
+    readonly enableDetails?: boolean;
     /**
      * Domain group ID, if not filled, the default is all groups.
      */
@@ -122,6 +107,7 @@ export interface GetDomainsResult {
      * A list of domains. Each element contains the following attributes:
      */
     readonly domains: outputs.dns.GetDomainsDomain[];
+    readonly enableDetails?: boolean;
     /**
      * Id of group that contains the domain.
      */

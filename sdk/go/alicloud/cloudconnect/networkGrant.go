@@ -39,20 +39,20 @@ import (
 // 			return err
 // 		}
 // 		_, err = providers.Newalicloud(ctx, "cenAccount", &providers.alicloudArgs{
-// 			AccessKey: pulumi.String("xxxxxx"),
 // 			Region:    pulumi.String("cn-hangzhou"),
+// 			AccessKey: pulumi.String("xxxxxx"),
 // 			SecretKey: pulumi.String("xxxxxx"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider("alicloud.cen_account"))
+// 		cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider(alicloud.Cen_account))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ccn, err := cloudconnect.NewNetwork(ctx, "ccn", &cloudconnect.NetworkArgs{
 // 			IsDefault: pulumi.Bool(true),
-// 		}, pulumi.Provider("alicloud.ccn_account"))
+// 		}, pulumi.Provider(alicloud.Ccn_account))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -61,8 +61,8 @@ import (
 // 			CenId:  cen.ID(),
 // 			CenUid: pulumi.String("xxxxxx"),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_cen_instance.cen",
-// 			"alicloud_cloud_connect_network.ccn",
+// 			ccn,
+// 			cen,
 // 		}))
 // 		if err != nil {
 // 			return err

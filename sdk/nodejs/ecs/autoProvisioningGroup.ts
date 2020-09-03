@@ -19,41 +19,36 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "auto_provisioning_group";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     vpcId: defaultNetwork.id,
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     vpcId: defaultNetwork.id,
- * });
- * const defaultImages = pulumi.output(alicloud.ecs.getImages({
- *     mostRecent: true,
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
  *     owners: "system",
- * }, { async: true }));
+ * });
  * const template = new alicloud.ecs.LaunchTemplate("template", {
- *     imageId: defaultImages.images[0].id,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
  *     instanceType: "ecs.n1.tiny",
  *     securityGroupId: defaultSecurityGroup.id,
  * });
- * const defaultAutoProvisioningGroup = new alicloud.ecs.AutoProvisioningGroup("default", {
+ * const defaultAutoProvisioningGroup = new alicloud.ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup", {
+ *     launchTemplateId: template.id,
+ *     totalTargetCapacity: "4",
+ *     payAsYouGoTargetCapacity: "1",
+ *     spotTargetCapacity: "2",
  *     launchTemplateConfigs: [{
  *         instanceType: "ecs.n1.small",
  *         vswitchId: defaultSwitch.id,
  *     }],
- *     launchTemplateId: template.id,
- *     payAsYouGoTargetCapacity: "1",
- *     spotTargetCapacity: "2",
- *     totalTargetCapacity: "4",
  * });
  * ```
  * ## Block config

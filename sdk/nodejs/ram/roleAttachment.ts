@@ -13,56 +13,50 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "ecsInstanceVPCExample";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const defaultInstanceTypes = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: defaultZones.zones[0].id,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
- * }, { async: true }));
- * const defaultImages = pulumi.output(alicloud.ecs.getImages({
- *     mostRecent: true,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
  *     owners: "system",
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     vpcId: defaultNetwork.id,
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     vpcId: defaultNetwork.id,
- * });
- * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("default", {
- *     cidrIp: "172.16.0.0/24",
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
+ *     type: "ingress",
  *     ipProtocol: "tcp",
  *     nicType: "intranet",
  *     policy: "accept",
  *     portRange: "22/22",
  *     priority: 1,
  *     securityGroupId: defaultSecurityGroup.id,
- *     type: "ingress",
+ *     cidrIp: "172.16.0.0/24",
  * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "ecsInstanceVPCExample";
  * const foo = new alicloud.ecs.Instance("foo", {
- *     imageId: defaultImages.images[0].id,
- *     instanceName: name,
- *     instanceType: defaultInstanceTypes.instanceTypes[0].id,
+ *     vswitchId: defaultSwitch.id,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
+ *     systemDiskCategory: "cloud_efficiency",
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 5,
  *     securityGroups: [defaultSecurityGroup.id],
- *     systemDiskCategory: "cloud_efficiency",
- *     vswitchId: defaultSwitch.id,
+ *     instanceName: name,
  * });
  * const role = new alicloud.ram.Role("role", {
- *     description: "this is a test",
  *     document: `  {
  *     "Statement": [
  *       {
@@ -77,12 +71,14 @@ import * as utilities from "../utilities";
  *     ],
  *     "Version": "1"
  *   }
- *   `,
+ *   
+ * `,
+ *     description: "this is a test",
  *     force: true,
  * });
  * const attach = new alicloud.ram.RoleAttachment("attach", {
- *     instanceIds: [foo.id],
  *     roleName: role.name,
+ *     instanceIds: [foo].map(__item => __item.id),
  * });
  * ```
  */

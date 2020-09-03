@@ -46,9 +46,9 @@ namespace Pulumi.AliCloud.Vpc
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/21",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/21",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultNetworkAclAttachment = new AliCloud.Vpc.NetworkAclAttachment("defaultNetworkAclAttachment", new AliCloud.Vpc.NetworkAclAttachmentArgs
     ///         {
@@ -64,33 +64,33 @@ namespace Pulumi.AliCloud.Vpc
     ///         });
     ///         var defaultNetworkAclEntries = new AliCloud.Vpc.NetworkAclEntries("defaultNetworkAclEntries", new AliCloud.Vpc.NetworkAclEntriesArgs
     ///         {
-    ///             Egresses = 
-    ///             {
-    ///                 new AliCloud.Vpc.Inputs.NetworkAclEntriesEgressArgs
-    ///                 {
-    ///                     Description = name,
-    ///                     DestinationCidrIp = "0.0.0.0/32",
-    ///                     EntryType = "custom",
-    ///                     Name = name,
-    ///                     Policy = "accept",
-    ///                     Port = "-1/-1",
-    ///                     Protocol = "all",
-    ///                 },
-    ///             },
+    ///             NetworkAclId = defaultNetworkAcl.Id,
     ///             Ingresses = 
     ///             {
     ///                 new AliCloud.Vpc.Inputs.NetworkAclEntriesIngressArgs
     ///                 {
-    ///                     Description = name,
-    ///                     EntryType = "custom",
-    ///                     Name = name,
-    ///                     Policy = "accept",
-    ///                     Port = "-1/-1",
     ///                     Protocol = "all",
+    ///                     Port = "-1/-1",
     ///                     SourceCidrIp = "0.0.0.0/32",
+    ///                     Name = name,
+    ///                     EntryType = "custom",
+    ///                     Policy = "accept",
+    ///                     Description = name,
     ///                 },
     ///             },
-    ///             NetworkAclId = defaultNetworkAcl.Id,
+    ///             Egresses = 
+    ///             {
+    ///                 new AliCloud.Vpc.Inputs.NetworkAclEntriesEgressArgs
+    ///                 {
+    ///                     Protocol = "all",
+    ///                     Port = "-1/-1",
+    ///                     DestinationCidrIp = "0.0.0.0/32",
+    ///                     Name = name,
+    ///                     EntryType = "custom",
+    ///                     Policy = "accept",
+    ///                     Description = name,
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 

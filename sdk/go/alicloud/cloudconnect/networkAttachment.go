@@ -42,7 +42,7 @@ import (
 // 			CcnId: ccn.ID(),
 // 			SagId: pulumi.String("sag-xxxxx"),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_cloud_connect_network.ccn",
+// 			ccn,
 // 		}))
 // 		if err != nil {
 // 			return err

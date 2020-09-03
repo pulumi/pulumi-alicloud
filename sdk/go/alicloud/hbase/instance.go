@@ -74,8 +74,9 @@ type Instance struct {
 	// the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
-	Duration pulumi.IntOutput       `pulumi:"duration"`
-	Engine   pulumi.StringPtrOutput `pulumi:"engine"`
+	Duration pulumi.IntOutput `pulumi:"duration"`
+	// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and ` bds  `
+	Engine pulumi.StringPtrOutput `pulumi:"engine"`
 	// hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
@@ -152,8 +153,9 @@ type instanceState struct {
 	// the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
-	Duration *int    `pulumi:"duration"`
-	Engine   *string `pulumi:"engine"`
+	Duration *int `pulumi:"duration"`
+	// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and ` bds  `
+	Engine *string `pulumi:"engine"`
 	// hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
 	EngineVersion *string `pulumi:"engineVersion"`
@@ -192,7 +194,8 @@ type InstanceState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
 	Duration pulumi.IntPtrInput
-	Engine   pulumi.StringPtrInput
+	// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and ` bds  `
+	Engine pulumi.StringPtrInput
 	// hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
 	EngineVersion pulumi.StringPtrInput
@@ -234,8 +237,9 @@ type instanceArgs struct {
 	// the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
-	Duration *int    `pulumi:"duration"`
-	Engine   *string `pulumi:"engine"`
+	Duration *int `pulumi:"duration"`
+	// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and ` bds  `
+	Engine *string `pulumi:"engine"`
 	// hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
 	EngineVersion string `pulumi:"engineVersion"`
@@ -275,7 +279,8 @@ type InstanceArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
 	Duration pulumi.IntPtrInput
-	Engine   pulumi.StringPtrInput
+	// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and ` bds  `
+	Engine pulumi.StringPtrInput
 	// hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
 	EngineVersion pulumi.StringInput

@@ -24,6 +24,7 @@ class Disk(pulumi.CustomResource):
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[float]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
@@ -66,6 +67,10 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs.
                > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         :param pulumi.Input[float] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
@@ -100,6 +105,7 @@ class Disk(pulumi.CustomResource):
             __props__['encrypted'] = encrypted
             __props__['kms_key_id'] = kms_key_id
             __props__['name'] = name
+            __props__['performance_level'] = performance_level
             __props__['resource_group_id'] = resource_group_id
             if size is None:
                 raise TypeError("Missing required property 'size'")
@@ -126,6 +132,7 @@ class Disk(pulumi.CustomResource):
             encrypted: Optional[pulumi.Input[bool]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            performance_level: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[float]] = None,
             snapshot_id: Optional[pulumi.Input[str]] = None,
@@ -147,6 +154,10 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs.
                > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         :param pulumi.Input[float] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
@@ -167,6 +178,7 @@ class Disk(pulumi.CustomResource):
         __props__["encrypted"] = encrypted
         __props__["kms_key_id"] = kms_key_id
         __props__["name"] = name
+        __props__["performance_level"] = performance_level
         __props__["resource_group_id"] = resource_group_id
         __props__["size"] = size
         __props__["snapshot_id"] = snapshot_id
@@ -245,6 +257,17 @@ class Disk(pulumi.CustomResource):
         Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        """
+        return pulumi.get(self, "performance_level")
 
     @property
     @pulumi.getter(name="resourceGroupId")

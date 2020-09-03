@@ -101,6 +101,9 @@ namespace Pulumi.AliCloud.Hbase
         [Output("duration")]
         public Output<int> Duration { get; private set; } = null!;
 
+        /// <summary>
+        /// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+        /// </summary>
         [Output("engine")]
         public Output<string?> Engine { get; private set; } = null!;
 
@@ -249,6 +252,9 @@ namespace Pulumi.AliCloud.Hbase
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
+        /// <summary>
+        /// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+        /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
@@ -364,6 +370,9 @@ namespace Pulumi.AliCloud.Hbase
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
+        /// <summary>
+        /// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+        /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 

@@ -23,16 +23,16 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as fs from "fs";
+ * import * from "fs";
  *
  * const app = new alicloud.cs.Application("app", {
  *     clusterName: "my-first-swarm",
+ *     version: "1.2",
+ *     template: fs.readFileSync("wordpress.yml"),
+ *     latestImage: true,
  *     environment: {
  *         EXTERNAL_URL: "123.123.123.123:8080",
  *     },
- *     latestImage: true,
- *     template: fs.readFileSync("wordpress.yml", "utf-8"),
- *     version: "1.2",
  * });
  * ```
  */

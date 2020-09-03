@@ -11,6 +11,26 @@ import * as utilities from "../utilities";
  * Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
  *
  * Available in 1.72.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const basic = new alicloud.cms.SiteMonitor("basic", {
+ *     address: "http://www.alibabacloud.com",
+ *     interval: 5,
+ *     ispCities: [{
+ *         city: "546",
+ *         isp: "465",
+ *     }],
+ *     taskName: "tf-testAccCmsSiteMonitor_basic",
+ *     taskType: "HTTP",
+ * });
+ * ```
  */
 export class SiteMonitor extends pulumi.CustomResource {
     /**

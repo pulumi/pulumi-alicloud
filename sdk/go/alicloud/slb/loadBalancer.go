@@ -44,15 +44,16 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = slb.NewLoadBalancer(ctx, "defaultLoadBalancer", &slb.LoadBalancerArgs{
 // 			Specification: pulumi.String("slb.s2.small"),
+// 			VswitchId:     defaultSwitch.ID(),
 // 			Tags: pulumi.Float64Map{
 // 				"tag_a": pulumi.Float64(1),
 // 				"tag_b": pulumi.Float64(2),
@@ -65,7 +66,6 @@ import (
 // 				"tag_i": pulumi.Float64(9),
 // 				"tag_j": pulumi.Float64(10),
 // 			},
-// 			VswitchId: defaultSwitch.ID(),
 // 		})
 // 		if err != nil {
 // 			return err

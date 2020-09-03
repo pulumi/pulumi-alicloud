@@ -9,39 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
-    /// <summary>
-    /// Provides a DNS domain resource.
-    /// 
-    /// &gt; **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
-    /// 
-    /// &gt; **NOTE:** Available in v1.81.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Add a new Domain.
-    ///         var dns = new AliCloud.Dns.DnsDomain("dns", new AliCloud.Dns.DnsDomainArgs
-    ///         {
-    ///             DomainName = "starmove.com",
-    ///             GroupId = "85ab8713-4a30-4de4-9d20-155ff830****",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "Terraform" },
-    ///                 { "Environment", "test" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class DnsDomain : Pulumi.CustomResource
     {
         [Output("dnsServers")]
@@ -65,11 +32,17 @@ namespace Pulumi.AliCloud.Dns
         [Output("groupId")]
         public Output<string?> GroupId { get; private set; } = null!;
 
+        [Output("groupName")]
+        public Output<string> GroupName { get; private set; } = null!;
+
         /// <summary>
         /// User language.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
+
+        [Output("punyCode")]
+        public Output<string> PunyCode { get; private set; } = null!;
 
         /// <summary>
         /// Remarks information for your domain name.
@@ -214,11 +187,17 @@ namespace Pulumi.AliCloud.Dns
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
         /// <summary>
         /// User language.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
+
+        [Input("punyCode")]
+        public Input<string>? PunyCode { get; set; }
 
         /// <summary>
         /// Remarks information for your domain name.

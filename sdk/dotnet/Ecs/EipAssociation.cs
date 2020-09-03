@@ -18,6 +18,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AllocationId { get; private set; } = null!;
 
         /// <summary>
+        /// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+        /// </summary>
+        [Output("force")]
+        public Output<bool?> Force { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the ECS or SLB instance or Nat Gateway.
         /// </summary>
         [Output("instanceId")]
@@ -88,6 +94,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> AllocationId { get; set; } = null!;
 
         /// <summary>
+        /// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
         /// The ID of the ECS or SLB instance or Nat Gateway.
         /// </summary>
         [Input("instanceId", required: true)]
@@ -117,6 +129,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("allocationId")]
         public Input<string>? AllocationId { get; set; }
+
+        /// <summary>
+        /// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
 
         /// <summary>
         /// The ID of the ECS or SLB instance or Nat Gateway.

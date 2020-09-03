@@ -9,37 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
-    /// <summary>
-    /// Create an DNS Instance resource.
-    /// 
-    /// &gt; **NOTE:** Available in v1.80.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @this = new AliCloud.Dns.Instance("this", new AliCloud.Dns.InstanceArgs
-    ///         {
-    ///             DnsSecurity = "no",
-    ///             DomainNumbers = "2",
-    ///             Period = 1,
-    ///             RenewPeriod = 1,
-    ///             RenewalStatus = "ManualRenewal",
-    ///             VersionCode = "version_personal",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
@@ -53,6 +22,9 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         [Output("domainNumbers")]
         public Output<string> DomainNumbers { get; private set; } = null!;
+
+        [Output("paymentType")]
+        public Output<string?> PaymentType { get; private set; } = null!;
 
         /// <summary>
         /// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
@@ -142,6 +114,9 @@ namespace Pulumi.AliCloud.Dns
         [Input("domainNumbers", required: true)]
         public Input<string> DomainNumbers { get; set; } = null!;
 
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
         /// <summary>
         /// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
         /// </summary>
@@ -184,6 +159,9 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         [Input("domainNumbers")]
         public Input<string>? DomainNumbers { get; set; }
+
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.

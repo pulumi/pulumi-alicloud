@@ -22,15 +22,12 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceName";
  * const topic = config.get("topic") || "onsTopicName";
- *
- * const defaultInstance = new alicloud.rocketmq.Instance("default", {
- *     remark: "default_ons_instance_remark",
- * });
- * const defaultTopic = new alicloud.rocketmq.Topic("default", {
+ * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {remark: "default_ons_instance_remark"});
+ * const defaultTopic = new alicloud.rocketmq.Topic("defaultTopic", {
+ *     topic: topic,
  *     instanceId: defaultInstance.id,
  *     messageType: 0,
  *     remark: "dafault_ons_topic_remark",
- *     topic: topic,
  * });
  * ```
  */

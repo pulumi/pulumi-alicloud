@@ -19,6 +19,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_period: Optional[pulumi.Input[float]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
+                 db_node_count: Optional[pulumi.Input[float]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -59,15 +60,15 @@ class Cluster(pulumi.CustomResource):
         default_zones = alicloud.get_zones(available_resource_creation=creation)
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_cluster = alicloud.polardb.Cluster("defaultCluster",
-            db_node_class="rds.mysql.s2.large",
             db_type="MySQL",
             db_version="5.6",
-            description=name,
+            db_node_class="rds.mysql.s2.large",
             pay_type="PostPaid",
+            description=name,
             vswitch_id=default_switch.id)
         ```
 
@@ -75,11 +76,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
+        :param pulumi.Input[float] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+               **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
-        :param pulumi.Input[str] modify_type: Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
         :param pulumi.Input[float] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
@@ -112,6 +115,7 @@ class Cluster(pulumi.CustomResource):
             if db_node_class is None:
                 raise TypeError("Missing required property 'db_node_class'")
             __props__['db_node_class'] = db_node_class
+            __props__['db_node_count'] = db_node_count
             if db_type is None:
                 raise TypeError("Missing required property 'db_type'")
             __props__['db_type'] = db_type
@@ -143,6 +147,7 @@ class Cluster(pulumi.CustomResource):
             auto_renew_period: Optional[pulumi.Input[float]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             db_node_class: Optional[pulumi.Input[str]] = None,
+            db_node_count: Optional[pulumi.Input[float]] = None,
             db_type: Optional[pulumi.Input[str]] = None,
             db_version: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -166,11 +171,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[float] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
+        :param pulumi.Input[float] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+               **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
-        :param pulumi.Input[str] modify_type: Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
         :param pulumi.Input[float] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
@@ -189,6 +196,7 @@ class Cluster(pulumi.CustomResource):
         __props__["auto_renew_period"] = auto_renew_period
         __props__["connection_string"] = connection_string
         __props__["db_node_class"] = db_node_class
+        __props__["db_node_count"] = db_node_count
         __props__["db_type"] = db_type
         __props__["db_version"] = db_version
         __props__["description"] = description
@@ -229,6 +237,15 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "db_node_class")
 
     @property
+    @pulumi.getter(name="dbNodeCount")
+    def db_node_count(self) -> pulumi.Output[Optional[float]]:
+        """
+        Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        """
+        return pulumi.get(self, "db_node_count")
+
+    @property
     @pulumi.getter(name="dbType")
     def db_type(self) -> pulumi.Output[str]:
         """
@@ -264,7 +281,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         """
         return pulumi.get(self, "modify_type")
 

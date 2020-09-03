@@ -46,21 +46,21 @@ class InstanceGrant(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-testAccCenInstanceGrantBasic"
-        cen = alicloud.cen.Instance("cen", opts=ResourceOptions(provider="alicloud.account2"))
+        cen = alicloud.cen.Instance("cen", opts=ResourceOptions(provider=alicloud["account2"]))
         vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/16",
-        opts=ResourceOptions(provider="alicloud.account1"))
+        opts=ResourceOptions(provider=alicloud["account1"]))
         foo_instance_grant = alicloud.cen.InstanceGrant("fooInstanceGrant",
             cen_id=cen.id,
+            child_instance_id=vpc.id,
             cen_owner_id="uid2",
-            child_instance_id=vpc.id,
-            opts=ResourceOptions(provider="alicloud.account1"))
+            opts=ResourceOptions(provider=alicloud["account1"]))
         foo_instance_attachment = alicloud.cen.InstanceAttachment("fooInstanceAttachment",
-            child_instance_id=vpc.id,
-            child_instance_owner_id="uid1",
-            child_instance_region_id="cn-qingdao",
             instance_id=cen.id,
-            opts=ResourceOptions(provider="alicloud.account2",
-                depends_on=["alicloud_cen_instance_grant.foo"]))
+            child_instance_id=vpc.id,
+            child_instance_region_id="cn-qingdao",
+            child_instance_owner_id="uid1",
+            opts=ResourceOptions(provider=alicloud["account2"],
+                depends_on=[foo_instance_grant]))
         ```
 
         :param str resource_name: The name of the resource.

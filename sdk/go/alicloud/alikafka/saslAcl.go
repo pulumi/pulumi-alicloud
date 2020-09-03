@@ -47,19 +47,19 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-// 			DeployType: pulumi.Int(5),
-// 			DiskSize:   pulumi.Int(500),
-// 			DiskType:   pulumi.Int(1),
-// 			IoMax:      pulumi.Int(20),
 // 			TopicQuota: pulumi.Int(50),
+// 			DiskType:   pulumi.Int(1),
+// 			DiskSize:   pulumi.Int(500),
+// 			DeployType: pulumi.Int(5),
+// 			IoMax:      pulumi.Int(20),
 // 			VswitchId:  defaultSwitch.ID(),
 // 		})
 // 		if err != nil {
@@ -67,27 +67,27 @@ import (
 // 		}
 // 		defaultTopic, err := alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
 // 			InstanceId: defaultInstance.ID(),
-// 			Remark:     pulumi.String("topic-remark"),
 // 			Topic:      pulumi.String("test-topic"),
+// 			Remark:     pulumi.String("topic-remark"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultSaslUser, err := alikafka.NewSaslUser(ctx, "defaultSaslUser", &alikafka.SaslUserArgs{
 // 			InstanceId: defaultInstance.ID(),
-// 			Password:   pulumi.String(password),
 // 			Username:   pulumi.String(username),
+// 			Password:   pulumi.String(password),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = alikafka.NewSaslAcl(ctx, "defaultSaslAcl", &alikafka.SaslAclArgs{
-// 			AclOperationType:       pulumi.String("Write"),
-// 			AclResourceName:        defaultTopic.Topic,
-// 			AclResourcePatternType: pulumi.String("LITERAL"),
-// 			AclResourceType:        pulumi.String("Topic"),
 // 			InstanceId:             defaultInstance.ID(),
 // 			Username:               defaultSaslUser.Username,
+// 			AclResourceType:        pulumi.String("Topic"),
+// 			AclResourceName:        defaultTopic.Topic,
+// 			AclResourcePatternType: pulumi.String("LITERAL"),
+// 			AclOperationType:       pulumi.String("Write"),
 // 		})
 // 		if err != nil {
 // 			return err

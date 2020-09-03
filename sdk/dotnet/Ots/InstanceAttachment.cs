@@ -25,8 +25,8 @@ namespace Pulumi.AliCloud.Ots
     ///         // Create an OTS instance
     ///         var fooInstance = new AliCloud.Ots.Instance("fooInstance", new AliCloud.Ots.InstanceArgs
     ///         {
-    ///             AccessedBy = "Vpc",
     ///             Description = "for table",
+    ///             AccessedBy = "Vpc",
     ///             Tags = 
     ///             {
     ///                 { "Created", "TF" },
@@ -43,9 +43,9 @@ namespace Pulumi.AliCloud.Ots
     ///         });
     ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = fooZones.Apply(fooZones =&gt; fooZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.1.0/24",
     ///             VpcId = fooNetwork.Id,
+    ///             CidrBlock = "172.16.1.0/24",
+    ///             AvailabilityZone = fooZones.Apply(fooZones =&gt; fooZones.Zones[0].Id),
     ///         });
     ///         var fooInstanceAttachment = new AliCloud.Ots.InstanceAttachment("fooInstanceAttachment", new AliCloud.Ots.InstanceAttachmentArgs
     ///         {

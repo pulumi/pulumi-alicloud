@@ -14,11 +14,19 @@ namespace Pulumi.AliCloud.Nas.Outputs
     public sealed class GetAccessGroupsGroupResult
     {
         /// <summary>
+        /// The name of access group.
+        /// </summary>
+        public readonly string AccessGroupName;
+        /// <summary>
+        /// Filter results by a specific AccessGroupType.
+        /// </summary>
+        public readonly string AccessGroupType;
+        /// <summary>
         /// Filter results by a specific Description.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// AccessGroupName of the AccessGroup.
+        /// This ID of this AccessGroup. It is formatted to ``&lt;access_group_id&gt;:&lt;file_system_type&gt;``. Before version 1.95.0, the value is `access_group_name`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -30,12 +38,16 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly int RuleCount;
         /// <summary>
-        /// Filter results by a specific AccessGroupType.
+        /// Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
         /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
         private GetAccessGroupsGroupResult(
+            string accessGroupName,
+
+            string accessGroupType,
+
             string description,
 
             string id,
@@ -46,6 +58,8 @@ namespace Pulumi.AliCloud.Nas.Outputs
 
             string type)
         {
+            AccessGroupName = accessGroupName;
+            AccessGroupType = accessGroupType;
             Description = description;
             Id = id;
             MountTargetCount = mountTargetCount;

@@ -50,8 +50,8 @@ namespace Pulumi.AliCloud.Slb
     ///         })));
     ///         var image = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
     ///         {
-    ///             MostRecent = true,
     ///             NameRegex = "^ubuntu_18.*64",
+    ///             MostRecent = true,
     ///             Owners = "system",
     ///         }));
     ///         var config = new Config();
@@ -63,39 +63,39 @@ namespace Pulumi.AliCloud.Slb
     ///         });
     ///         var mainSwitch = new AliCloud.Vpc.Switch("mainSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/16",
     ///             VpcId = mainNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/16",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var groupSecurityGroup = new AliCloud.Ecs.SecurityGroup("groupSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
     ///         {
     ///             VpcId = mainNetwork.Id,
     ///         });
     ///         var instanceInstance = new List&lt;AliCloud.Ecs.Instance&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///         for (var rangeIndex = 0; rangeIndex &lt; "2"; rangeIndex++)
     ///         {
     ///             var range = new { Value = rangeIndex };
     ///             instanceInstance.Add(new AliCloud.Ecs.Instance($"instanceInstance-{range.Value}", new AliCloud.Ecs.InstanceArgs
     ///             {
-    ///                 AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///                 ImageId = image.Apply(image =&gt; image.Images[0].Id),
-    ///                 InstanceChargeType = "PostPaid",
-    ///                 InstanceName = name,
     ///                 InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
-    ///                 InternetChargeType = "PayByTraffic",
-    ///                 InternetMaxBandwidthOut = 10,
+    ///                 InstanceName = name,
     ///                 SecurityGroups = 
     ///                 {
     ///                     groupSecurityGroup.Id,
     ///                 },
+    ///                 InternetChargeType = "PayByTraffic",
+    ///                 InternetMaxBandwidthOut = 10,
+    ///                 AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///                 InstanceChargeType = "PostPaid",
     ///                 SystemDiskCategory = "cloud_efficiency",
     ///                 VswitchId = mainSwitch.Id,
     ///             }));
     ///         }
     ///         var instanceLoadBalancer = new AliCloud.Slb.LoadBalancer("instanceLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
     ///         {
-    ///             Specification = "slb.s2.small",
     ///             VswitchId = mainSwitch.Id,
+    ///             Specification = "slb.s2.small",
     ///         });
     ///         var defaultNetworkInterface = new List&lt;AliCloud.Vpc.NetworkInterface&gt;();
     ///         for (var rangeIndex = 0; rangeIndex &lt; number; rangeIndex++)
@@ -103,11 +103,11 @@ namespace Pulumi.AliCloud.Slb
     ///             var range = new { Value = rangeIndex };
     ///             defaultNetworkInterface.Add(new AliCloud.Vpc.NetworkInterface($"defaultNetworkInterface-{range.Value}", new AliCloud.Vpc.NetworkInterfaceArgs
     ///             {
+    ///                 VswitchId = mainSwitch.Id,
     ///                 SecurityGroups = 
     ///                 {
     ///                     groupSecurityGroup.Id,
     ///                 },
-    ///                 VswitchId = mainSwitch.Id,
     ///             }));
     ///         }
     ///         var defaultNetworkInterfaceAttachment = new List&lt;AliCloud.Vpc.NetworkInterfaceAttachment&gt;();
@@ -127,37 +127,37 @@ namespace Pulumi.AliCloud.Slb
     ///             {
     ///                 new AliCloud.Slb.Inputs.MasterSlaveServerGroupServerArgs
     ///                 {
-    ///                     Port = 100,
     ///                     ServerId = instanceInstance[0].Id,
-    ///                     ServerType = "Master",
+    ///                     Port = 100,
     ///                     Weight = 100,
+    ///                     ServerType = "Master",
     ///                 },
     ///                 new AliCloud.Slb.Inputs.MasterSlaveServerGroupServerArgs
     ///                 {
-    ///                     Port = 100,
     ///                     ServerId = instanceInstance[1].Id,
-    ///                     ServerType = "Slave",
+    ///                     Port = 100,
     ///                     Weight = 100,
+    ///                     ServerType = "Slave",
     ///                 },
     ///             },
     ///         });
     ///         var tcp = new AliCloud.Slb.Listener("tcp", new AliCloud.Slb.ListenerArgs
     ///         {
-    ///             Bandwidth = 10,
-    ///             EstablishedTimeout = 600,
-    ///             FrontendPort = 22,
-    ///             HealthCheckConnectPort = 20,
-    ///             HealthCheckHttpCode = "http_2xx",
-    ///             HealthCheckInterval = 5,
-    ///             HealthCheckTimeout = 8,
-    ///             HealthCheckType = "tcp",
-    ///             HealthCheckUri = "/console",
-    ///             HealthyThreshold = 8,
     ///             LoadBalancerId = instanceLoadBalancer.Id,
     ///             MasterSlaveServerGroupId = groupMasterSlaveServerGroup.Id,
-    ///             PersistenceTimeout = 3600,
+    ///             FrontendPort = 22,
     ///             Protocol = "tcp",
+    ///             Bandwidth = 10,
+    ///             HealthCheckType = "tcp",
+    ///             PersistenceTimeout = 3600,
+    ///             HealthyThreshold = 8,
     ///             UnhealthyThreshold = 8,
+    ///             HealthCheckTimeout = 8,
+    ///             HealthCheckInterval = 5,
+    ///             HealthCheckHttpCode = "http_2xx",
+    ///             HealthCheckConnectPort = 20,
+    ///             HealthCheckUri = "/console",
+    ///             EstablishedTimeout = 600,
     ///         });
     ///     }
     /// 

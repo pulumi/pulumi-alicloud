@@ -34,10 +34,23 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:ecs/getImages:getImages", {
+        "actionType": args.actionType,
+        "architecture": args.architecture,
+        "dryRun": args.dryRun,
+        "imageFamily": args.imageFamily,
+        "instanceType": args.instanceType,
+        "isSupportCloudInit": args.isSupportCloudInit,
+        "isSupportIoOptimized": args.isSupportIoOptimized,
         "mostRecent": args.mostRecent,
         "nameRegex": args.nameRegex,
+        "osType": args.osType,
         "outputFile": args.outputFile,
         "owners": args.owners,
+        "resourceGroupId": args.resourceGroupId,
+        "snapshotId": args.snapshotId,
+        "status": args.status,
+        "tags": args.tags,
+        "usage": args.usage,
     }, opts);
 }
 
@@ -46,6 +59,38 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetImagesArgs {
     /**
+     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+     * * `CreateEcs`: instance creation.
+     * * `ChangeOS`: replacement of the system disk or operating system.
+     */
+    readonly actionType?: string;
+    /**
+     * The image architecture. Valid values: `i386` and `x8664`.
+     */
+    readonly architecture?: string;
+    /**
+     * Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
+     * * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
+     * * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+     */
+    readonly dryRun?: boolean;
+    /**
+     * The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
+     */
+    readonly imageFamily?: string;
+    /**
+     * The instance type for which the image can be used.
+     */
+    readonly instanceType?: string;
+    /**
+     * Specifies whether the image supports cloud-init.
+     */
+    readonly isSupportCloudInit?: boolean;
+    /**
+     * Specifies whether the image can be used on I/O optimized instances.
+     */
+    readonly isSupportIoOptimized?: boolean;
+    /**
      * If more than one result are returned, select the most recent one.
      */
     readonly mostRecent?: boolean;
@@ -53,17 +98,55 @@ export interface GetImagesArgs {
      * A regex string to filter resulting images by name.
      */
     readonly nameRegex?: string;
+    /**
+     * The operating system type of the image. Valid values: `windows` and `linux`.
+     */
+    readonly osType?: string;
     readonly outputFile?: string;
     /**
      * Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
      */
     readonly owners?: string;
+    /**
+     * The ID of the resource group to which the custom image belongs.
+     */
+    readonly resourceGroupId?: string;
+    /**
+     * The ID of the snapshot used to create the custom image.
+     */
+    readonly snapshotId?: string;
+    /**
+     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+     * * `Creating`: The image is being created.
+     * * `Waiting`: The image is waiting to be processed.
+     * * `Available`: The image is available.
+     * * `UnAvailable`: The image is unavailable.
+     * * `CreateFailed`: The image failed to be created.
+     * * `Deprecated`: The image is discontinued.
+     */
+    readonly status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: {[key: string]: any};
+    /**
+     * Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
+     * * `instance`: The image is already in use and running on an ECS instance.
+     * * `none`: The image is not in use.
+     */
+    readonly usage?: string;
 }
 
 /**
  * A collection of values returned by getImages.
  */
 export interface GetImagesResult {
+    readonly actionType?: string;
+    /**
+     * Platform type of the image system: i386 or x86_64.
+     */
+    readonly architecture?: string;
+    readonly dryRun?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -72,12 +155,28 @@ export interface GetImagesResult {
      * A list of image IDs.
      */
     readonly ids: string[];
+    readonly imageFamily?: string;
     /**
      * A list of images. Each element contains the following attributes:
      */
     readonly images: outputs.ecs.GetImagesImage[];
+    readonly instanceType?: string;
+    readonly isSupportCloudInit?: boolean;
+    readonly isSupportIoOptimized?: boolean;
     readonly mostRecent?: boolean;
     readonly nameRegex?: string;
+    readonly osType?: string;
     readonly outputFile?: string;
     readonly owners?: string;
+    readonly resourceGroupId?: string;
+    /**
+     * Snapshot ID.
+     */
+    readonly snapshotId?: string;
+    /**
+     * Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+     */
+    readonly status?: string;
+    readonly tags?: {[key: string]: any};
+    readonly usage?: string;
 }

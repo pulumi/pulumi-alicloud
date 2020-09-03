@@ -26,9 +26,30 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     public MyStack()
         ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetListeners.InvokeAsync(new AliCloud.Slb.GetListenersArgs
+        ///         var @default = new AliCloud.Slb.LoadBalancer("default", new AliCloud.Slb.LoadBalancerArgs
         ///         {
-        ///             LoadBalancerId = alicloud_slb.Sample_slb.Id,
+        ///         });
+        ///         var tcp = new AliCloud.Slb.Listener("tcp", new AliCloud.Slb.ListenerArgs
+        ///         {
+        ///             LoadBalancerId = @default.Id,
+        ///             BackendPort = 22,
+        ///             FrontendPort = 22,
+        ///             Protocol = "tcp",
+        ///             Bandwidth = 10,
+        ///             HealthCheckType = "tcp",
+        ///             PersistenceTimeout = 3600,
+        ///             HealthyThreshold = 8,
+        ///             UnhealthyThreshold = 8,
+        ///             HealthCheckTimeout = 8,
+        ///             HealthCheckInterval = 5,
+        ///             HealthCheckHttpCode = "http_2xx",
+        ///             HealthCheckConnectPort = 20,
+        ///             HealthCheckUri = "/console",
+        ///             EstablishedTimeout = 600,
+        ///         });
+        ///         var sampleDs = @default.Id.Apply(id =&gt; AliCloud.Slb.GetListeners.InvokeAsync(new AliCloud.Slb.GetListenersArgs
+        ///         {
+        ///             LoadBalancerId = id,
         ///         }));
         ///         this.FirstSlbListenerProtocol = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbListeners[0].Protocol);
         ///     }

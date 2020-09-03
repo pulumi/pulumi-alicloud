@@ -30,6 +30,7 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     public MyStack()
     ///     {
+    ///         // Create a cen Private Zone resource and use it.
     ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
     ///         {
     ///         });
@@ -39,15 +40,15 @@ namespace Pulumi.AliCloud.Cen
     ///         });
     ///         var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
+    ///             InstanceId = defaultInstance.Id,
     ///             ChildInstanceId = defaultNetwork.Id,
     ///             ChildInstanceRegionId = "cn-hangzhou",
-    ///             InstanceId = defaultInstance.Id,
     ///         }, new CustomResourceOptions
     ///         {
     ///             DependsOn = 
     ///             {
-    ///                 "alicloud_cen_instance.default",
-    ///                 "alicloud_vpc.default",
+    ///                 defaultInstance,
+    ///                 defaultNetwork,
     ///             },
     ///         });
     ///         var defaultPrivateZone = new AliCloud.Cen.PrivateZone("defaultPrivateZone", new AliCloud.Cen.PrivateZoneArgs
@@ -60,7 +61,7 @@ namespace Pulumi.AliCloud.Cen
     ///         {
     ///             DependsOn = 
     ///             {
-    ///                 "alicloud_cen_instance_attachment.default",
+    ///                 defaultInstanceAttachment,
     ///             },
     ///         });
     ///     }

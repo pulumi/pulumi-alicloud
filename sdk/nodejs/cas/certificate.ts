@@ -18,12 +18,12 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as fs from "fs";
+ * import * from "fs";
  *
  * // Add a new Certificate.
  * const cert = new alicloud.cas.Certificate("cert", {
- *     cert: fs.readFileSync(`./test.crt`, "utf-8"),
- *     key: fs.readFileSync(`./test.key`, "utf-8"),
+ *     cert: fs.readFileSync(`${path.module}/test.crt`),
+ *     key: fs.readFileSync(`${path.module}/test.key`),
  * });
  * ```
  */

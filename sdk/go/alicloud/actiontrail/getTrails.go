@@ -7,7 +7,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// This data source provides a list of action trail of the current Alibaba Cloud user.
+// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+//
+// > **NOTE:** Available in 1.95.0+
 //
 // ## Example Usage
 //
@@ -22,13 +24,13 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "tf-testacc-actiontrail"
-// 		trails, err := actiontrail.GetTrails(ctx, &actiontrail.GetTrailsArgs{
+// 		_default, err := actiontrail.GetTrails(ctx, &actiontrail.GetTrailsArgs{
 // 			NameRegex: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("firstTrailName", trails.Actiontrails[0].Name)
+// 		ctx.Export("trailName", _default.Trails[0].Id)
 // 		return nil
 // 	})
 // }
@@ -44,19 +46,34 @@ func GetTrails(ctx *pulumi.Context, args *GetTrailsArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getTrails.
 type GetTrailsArgs struct {
-	// A regex string to filter results action trail name.
+	// A list of ActionTrail Trail IDs. It is the same as trail name.
+	Ids []string `pulumi:"ids"`
+	// Whether to show shadow tracking. Default to `false`.
+	IncludeShadowTrails *bool `pulumi:"includeShadowTrails"`
+	// A regex string to filter results by trail name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getTrails.
 type GetTrailsResult struct {
-	// A list of actiontrails. Each element contains the following attributes:
+	// Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."
+	//
+	// Deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.
 	Actiontrails []GetTrailsActiontrail `pulumi:"actiontrails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string  `pulumi:"id"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Id string `pulumi:"id"`
+	// A list of ActionTrail Trail ids. It is the same as trail name.
+	Ids                 []string `pulumi:"ids"`
+	IncludeShadowTrails *bool    `pulumi:"includeShadowTrails"`
+	NameRegex           *string  `pulumi:"nameRegex"`
 	// A list of trail names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the ActionTrail Trail.
+	Status *string `pulumi:"status"`
+	// A list of ActionTrail Trails. Each element contains the following attributes:
+	Trails []GetTrailsTrail `pulumi:"trails"`
 }

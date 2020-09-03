@@ -7,34 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^hegu"
-// 		opt1 := "domains.txt"
-// 		domainsDs, err := dns.GetDomains(ctx, &dns.GetDomainsArgs{
-// 			DomainNameRegex: &opt0,
-// 			OutputFile:      &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstDomainId", domainsDs.Domains[0].DomainId)
-// 		return nil
-// 	})
-// }
-// ```
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	var rv GetDomainsResult
 	err := ctx.Invoke("alicloud:dns/getDomains:getDomains", args, &rv, opts...)
@@ -50,6 +22,7 @@ type GetDomainsArgs struct {
 	AliDomain *bool `pulumi:"aliDomain"`
 	// A regex string to filter results by the domain name.
 	DomainNameRegex *string `pulumi:"domainNameRegex"`
+	EnableDetails   *bool   `pulumi:"enableDetails"`
 	// Domain group ID, if not filled, the default is all groups.
 	GroupId *string `pulumi:"groupId"`
 	// A regex string to filter results by the group name.
@@ -81,7 +54,8 @@ type GetDomainsResult struct {
 	AliDomain       *bool   `pulumi:"aliDomain"`
 	DomainNameRegex *string `pulumi:"domainNameRegex"`
 	// A list of domains. Each element contains the following attributes:
-	Domains []GetDomainsDomain `pulumi:"domains"`
+	Domains       []GetDomainsDomain `pulumi:"domains"`
+	EnableDetails *bool              `pulumi:"enableDetails"`
 	// Id of group that contains the domain.
 	GroupId        *string `pulumi:"groupId"`
 	GroupNameRegex *string `pulumi:"groupNameRegex"`

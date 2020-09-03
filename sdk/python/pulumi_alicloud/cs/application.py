@@ -49,12 +49,12 @@ class Application(pulumi.CustomResource):
 
         app = alicloud.cs.Application("app",
             cluster_name="my-first-swarm",
+            version="1.2",
+            template=(lambda path: open(path).read())("wordpress.yml"),
+            latest_image=True,
             environment={
                 "EXTERNAL_URL": "123.123.123.123:8080",
-            },
-            latest_image=True,
-            template=(lambda path: open(path).read())("wordpress.yml"),
-            version="1.2")
+            })
         ```
 
         :param str resource_name: The name of the resource.

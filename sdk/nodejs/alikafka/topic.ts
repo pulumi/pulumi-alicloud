@@ -20,35 +20,32 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const topic = config.get("topic") || "alikafkaTopicName";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/12",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultInstance = new alicloud.alikafka.Instance("default", {
- *     deployType: 5,
- *     diskSize: 500,
- *     diskType: 1,
- *     ioMax: 20,
- *     topicQuota: 50,
+ * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
+ *     topicQuota: "50",
+ *     diskType: "1",
+ *     diskSize: "500",
+ *     deployType: "5",
+ *     ioMax: "20",
  *     vswitchId: defaultSwitch.id,
  * });
- * const defaultTopic = new alicloud.alikafka.Topic("default", {
- *     compactTopic: false,
+ * const config = new pulumi.Config();
+ * const topic = config.get("topic") || "alikafkaTopicName";
+ * const defaultTopic = new alicloud.alikafka.Topic("defaultTopic", {
  *     instanceId: defaultInstance.id,
- *     localTopic: false,
- *     partitionNum: 12,
- *     remark: "dafault_kafka_topic_remark",
  *     topic: topic,
+ *     localTopic: "false",
+ *     compactTopic: "false",
+ *     partitionNum: "12",
+ *     remark: "dafault_kafka_topic_remark",
  * });
  * ```
  */

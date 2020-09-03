@@ -43,14 +43,14 @@ import (
 // 			return err
 // 		}
 // 		ecsInstance, err := ecs.NewInstance(ctx, "ecsInstance", &ecs.InstanceArgs{
-// 			AvailabilityZone:   pulumi.String("cn-beijing-a"),
-// 			ImageId:            pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
-// 			InstanceName:       pulumi.String("Hello"),
-// 			InstanceType:       pulumi.String("ecs.n4.small"),
-// 			InternetChargeType: pulumi.String("PayByBandwidth"),
+// 			ImageId:          pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
+// 			InstanceType:     pulumi.String("ecs.n4.small"),
+// 			AvailabilityZone: pulumi.String("cn-beijing-a"),
 // 			SecurityGroups: pulumi.StringArray{
 // 				ecsSg.ID(),
 // 			},
+// 			InstanceName:       pulumi.String("Hello"),
+// 			InternetChargeType: pulumi.String("PayByBandwidth"),
 // 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("TerraformTest-instance"),
 // 			},

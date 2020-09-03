@@ -43,16 +43,15 @@ class Table(pulumi.CustomResource):
         if name is None:
             name = "terraformtest"
         foo = alicloud.ots.Instance("foo",
-            accessed_by="Any",
             description=name,
+            accessed_by="Any",
             tags={
                 "Created": "TF",
                 "For": "acceptance test",
             })
         basic = alicloud.ots.Table("basic",
-            deviation_cell_version_in_sec="1",
             instance_name=foo.name,
-            max_version=1,
+            table_name=name,
             primary_keys=[
                 alicloud.ots.TablePrimaryKeyArgs(
                     name="pk1",
@@ -67,8 +66,9 @@ class Table(pulumi.CustomResource):
                     type="Binary",
                 ),
             ],
-            table_name=name,
-            time_to_live=-1)
+            time_to_live=-1,
+            max_version=1,
+            deviation_cell_version_in_sec="1")
         ```
 
         :param str resource_name: The name of the resource.

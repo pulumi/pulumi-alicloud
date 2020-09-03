@@ -63,8 +63,8 @@ class ServerCertificate(pulumi.CustomResource):
 
         # create a server certificate
         foo = alicloud.slb.ServerCertificate("foo",
-            private_key=(lambda path: open(path).read())(f"{path['module']}/private_key.pem"),
-            server_certificate=(lambda path: open(path).read())(f"{path['module']}/server_certificate.pem"))
+            server_certificate=(lambda path: open(path).read())(f"{path['module']}/server_certificate.pem"),
+            private_key=(lambda path: open(path).read())(f"{path['module']}/private_key.pem"))
         ```
 
         :param str resource_name: The name of the resource.

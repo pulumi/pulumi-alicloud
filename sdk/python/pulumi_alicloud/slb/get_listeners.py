@@ -121,7 +121,24 @@ def get_listeners(description_regex: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    sample_ds = alicloud.slb.get_listeners(load_balancer_id=alicloud_slb["sample_slb"]["id"])
+    default = alicloud.slb.LoadBalancer("default")
+    tcp = alicloud.slb.Listener("tcp",
+        load_balancer_id=default.id,
+        backend_port=22,
+        frontend_port=22,
+        protocol="tcp",
+        bandwidth=10,
+        health_check_type="tcp",
+        persistence_timeout=3600,
+        healthy_threshold=8,
+        unhealthy_threshold=8,
+        health_check_timeout=8,
+        health_check_interval=5,
+        health_check_http_code="http_2xx",
+        health_check_connect_port=20,
+        health_check_uri="/console",
+        established_timeout=600)
+    sample_ds = default.id.apply(lambda id: alicloud.slb.get_listeners(load_balancer_id=id))
     pulumi.export("firstSlbListenerProtocol", sample_ds.slb_listeners[0].protocol)
     ```
 

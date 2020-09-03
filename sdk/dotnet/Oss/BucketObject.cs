@@ -45,14 +45,14 @@ namespace Pulumi.AliCloud.Oss
     ///     {
     ///         var example = new AliCloud.Oss.Bucket("example", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Acl = "public-read",
     ///             Bucket = "your_bucket_name",
+    ///             Acl = "public-read",
     ///         });
     ///         var object_content = new AliCloud.Oss.BucketObject("object-content", new AliCloud.Oss.BucketObjectArgs
     ///         {
     ///             Bucket = example.BucketName,
-    ///             Content = "the content that you want to upload.",
     ///             Key = "new_object_key",
+    ///             Content = "the content that you want to upload.",
     ///         });
     ///     }
     /// 

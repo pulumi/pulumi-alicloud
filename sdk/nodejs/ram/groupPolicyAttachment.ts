@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * const policy = new alicloud.ram.Policy("policy", {
- *     description: "this is a policy test",
  *     document: `    {
  *       "Statement": [
  *         {
@@ -36,13 +35,14 @@ import * as utilities from "../utilities";
  *       ],
  *         "Version": "1"
  *     }
- *   `,
+ * `,
+ *     description: "this is a policy test",
  *     force: true,
  * });
  * const attach = new alicloud.ram.GroupPolicyAttachment("attach", {
- *     groupName: group.name,
  *     policyName: policy.name,
  *     policyType: policy.type,
+ *     groupName: group.name,
  * });
  * ```
  */

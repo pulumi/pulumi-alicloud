@@ -45,19 +45,19 @@ class Connection(pulumi.CustomResource):
         default_zones = alicloud.get_zones(available_resource_creation=creation)
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_instance = alicloud.gpdb.Instance("defaultInstance",
-            description=name,
+            vswitch_id=default_switch.id,
             engine="gpdb",
             engine_version="4.3",
             instance_class="gpdb.group.segsdx2",
             instance_group_count="2",
-            vswitch_id=default_switch.id)
+            description=name)
         default_connection = alicloud.gpdb.Connection("defaultConnection",
-            connection_prefix="testAbc",
-            instance_id=default_instance.id)
+            instance_id=default_instance.id,
+            connection_prefix="testAbc")
         ```
 
         :param str resource_name: The name of the resource.

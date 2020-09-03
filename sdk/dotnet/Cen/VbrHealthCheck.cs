@@ -29,29 +29,30 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     public MyStack()
     ///     {
+    ///         // Create a cen vbr HealrhCheck resource and use it.
     ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
     ///         {
     ///         });
     ///         var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
+    ///             InstanceId = defaultInstance.Id,
     ///             ChildInstanceId = "vbr-xxxxx",
     ///             ChildInstanceRegionId = "cn-hangzhou",
-    ///             InstanceId = defaultInstance.Id,
     ///         });
     ///         var defaultVbrHealthCheck = new AliCloud.Cen.VbrHealthCheck("defaultVbrHealthCheck", new AliCloud.Cen.VbrHealthCheckArgs
     ///         {
     ///             CenId = defaultInstance.Id,
-    ///             HealthCheckInterval = 2,
     ///             HealthCheckSourceIp = "192.168.1.2",
     ///             HealthCheckTargetIp = "10.0.0.2",
-    ///             HealthyThreshold = 8,
     ///             VbrInstanceId = "vbr-xxxxx",
     ///             VbrInstanceRegionId = "cn-hangzhou",
+    ///             HealthCheckInterval = 2,
+    ///             HealthyThreshold = 8,
     ///         }, new CustomResourceOptions
     ///         {
     ///             DependsOn = 
     ///             {
-    ///                 "alicloud_cen_instance_attachment.default",
+    ///                 defaultInstanceAttachment,
     ///             },
     ///         });
     ///     }

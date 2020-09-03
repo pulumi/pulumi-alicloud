@@ -37,10 +37,32 @@ class DomainExtension(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        # Create a new load balancer and domain extension
         instance = alicloud.slb.LoadBalancer("instance",
-            internet=True,
-            internet_charge_type="PayByTraffic")
+            internet_charge_type="PayByTraffic",
+            internet=True)
         foo = alicloud.slb.ServerCertificate("foo",
+            server_certificate=\"\"\"-----BEGIN CERTIFICATE-----
+        MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
+        bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
+        bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0LmNvbTEaMBgGCSqGSIb3
+        DQEJARYLMTIzQDEyMy5jb20wHhcNMTkwNDI2MDM0ODAxWhcNMjQwNDI1MDM0ODAx
+        WjB9MQswCQYDVQQGEwJjbjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcx
+        DzANBgNVBAoMBmFsaXl1bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0
+        LmNvbTEaMBgGCSqGSIb3DQEJARYLMTIzQDEyMy5jb20wggEiMA0GCSqGSIb3DQEB
+        AQUAA4IBDwAwggEKAoIBAQDKMKF5qmN/uoMjdH3D8aPRcUOA0s8rZpYhG8zbkF1j
+        8gHYoB/FDvM7G7dfVsyjbMwLOxKvAhWvHHSpEz/t7gB+QdwrAMiMJwGmtCnXrh2E
+        WiXgalMe1y4a/T5R7q+m4T1zFATf+kbnHWfkSGF4W7b6UBoaH+9StQ95CnqzNf/2
+        p/Of7+S0XzCxFXw8GIVzZk0xFe6lHJzaq06f3mvzrD+4rpO56tTUvrgTY/n61gsF
+        ZP7f0CJ2JQh6eNRFOEUSfxKu/Dy/+IsQxorCJY2Q59ZAf3rXrqDN104jw9PlwnLl
+        qfZz3RMODN6BWjxE8rvRtT0qMfuAfv1gjBdWZN0hUYBRAgMBAAEwDQYJKoZIhvcN
+        AQELBQADggEBAABzo82TxGp5poVkd5pLWj5ACgcBv8Cs6oH9D+4Jz9BmyuBUsQXh
+        2aG0hQAe1mU61C9konsl/GTW8umJQ4M4lYEztXXwMf5PlBMGwebM0ZbSGg6jKtZg
+        WCgJ3eP/FMmyXGL5Jji5+e09eObhUDVle4tdi0On97zBoz85W02rgWFAqZJwiEAP
+        t+c7jX7uOSBq2/38iGStlrX5yB1at/gJXXiA5CL5OtlR3Okvb0/QH37efO1Nu39m
+        lFi0ODPAVyXjVypAiLguDxPn6AtDTdk9Iw9B19OD4NrzNRWgSSX5vuxo/VcRcgWk
+        3gEe9Ca0ZKN20q9XgthAiFFjl1S9ZgdA6Zc=
+        -----END CERTIFICATE-----\"\"\",
             private_key=\"\"\"-----BEGIN RSA PRIVATE KEY-----
         MIIEowIBAAKCAQEAyjCheapjf7qDI3R9w/Gj0XFDgNLPK2aWIRvM25BdY/IB2KAf
         xQ7zOxu3X1bMo2zMCzsSrwIVrxx0qRM/7e4AfkHcKwDIjCcBprQp164dhFol4GpT
@@ -67,53 +89,30 @@ class DomainExtension(pulumi.CustomResource):
         y0zN3wKBgGDS6YttCN6aI4EOABYE8fI1EYQ7vhfiYsaWGWSR1l6bQey7KR6M1ACz
         ZzMASNyytVt12yXE4/Emv6/pYqigbDLfL1zQJSLJ3EHJYTh2RxjR+AaGDudYFG/T
         liQ9YXhV5Iu2x1pNwrtFnssDdaaGpfA7l3xC00BL7Z+SAJyI4QKA
-        -----END RSA PRIVATE KEY-----
-        \"\"\",
-            server_certificate=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
-        bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
-        bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0LmNvbTEaMBgGCSqGSIb3
-        DQEJARYLMTIzQDEyMy5jb20wHhcNMTkwNDI2MDM0ODAxWhcNMjQwNDI1MDM0ODAx
-        WjB9MQswCQYDVQQGEwJjbjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcx
-        DzANBgNVBAoMBmFsaXl1bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0
-        LmNvbTEaMBgGCSqGSIb3DQEJARYLMTIzQDEyMy5jb20wggEiMA0GCSqGSIb3DQEB
-        AQUAA4IBDwAwggEKAoIBAQDKMKF5qmN/uoMjdH3D8aPRcUOA0s8rZpYhG8zbkF1j
-        8gHYoB/FDvM7G7dfVsyjbMwLOxKvAhWvHHSpEz/t7gB+QdwrAMiMJwGmtCnXrh2E
-        WiXgalMe1y4a/T5R7q+m4T1zFATf+kbnHWfkSGF4W7b6UBoaH+9StQ95CnqzNf/2
-        p/Of7+S0XzCxFXw8GIVzZk0xFe6lHJzaq06f3mvzrD+4rpO56tTUvrgTY/n61gsF
-        ZP7f0CJ2JQh6eNRFOEUSfxKu/Dy/+IsQxorCJY2Q59ZAf3rXrqDN104jw9PlwnLl
-        qfZz3RMODN6BWjxE8rvRtT0qMfuAfv1gjBdWZN0hUYBRAgMBAAEwDQYJKoZIhvcN
-        AQELBQADggEBAABzo82TxGp5poVkd5pLWj5ACgcBv8Cs6oH9D+4Jz9BmyuBUsQXh
-        2aG0hQAe1mU61C9konsl/GTW8umJQ4M4lYEztXXwMf5PlBMGwebM0ZbSGg6jKtZg
-        WCgJ3eP/FMmyXGL5Jji5+e09eObhUDVle4tdi0On97zBoz85W02rgWFAqZJwiEAP
-        t+c7jX7uOSBq2/38iGStlrX5yB1at/gJXXiA5CL5OtlR3Okvb0/QH37efO1Nu39m
-        lFi0ODPAVyXjVypAiLguDxPn6AtDTdk9Iw9B19OD4NrzNRWgSSX5vuxo/VcRcgWk
-        3gEe9Ca0ZKN20q9XgthAiFFjl1S9ZgdA6Zc=
-        -----END CERTIFICATE-----
-        \"\"\")
+        -----END RSA PRIVATE KEY-----\"\"\")
         https = alicloud.slb.Listener("https",
-            backend_port=80,
-            bandwidth=10,
-            cookie="testslblistenercookie",
-            cookie_timeout=86400,
-            frontend_port=443,
-            health_check="on",
-            health_check_connect_port=20,
-            health_check_http_code="http_2xx,http_3xx",
-            health_check_interval=5,
-            health_check_timeout=8,
-            health_check_uri="/cons",
-            healthy_threshold=8,
             load_balancer_id=instance.id,
+            backend_port=80,
+            frontend_port=443,
             protocol="https",
-            ssl_certificate_id=foo.id,
             sticky_session="on",
             sticky_session_type="insert",
-            unhealthy_threshold=8)
+            cookie="testslblistenercookie",
+            cookie_timeout=86400,
+            health_check="on",
+            health_check_uri="/cons",
+            health_check_connect_port=20,
+            healthy_threshold=8,
+            unhealthy_threshold=8,
+            health_check_timeout=8,
+            health_check_interval=5,
+            health_check_http_code="http_2xx,http_3xx",
+            bandwidth=10,
+            ssl_certificate_id=foo.id)
         example1 = alicloud.slb.DomainExtension("example1",
-            domain="www.test.com",
-            frontend_port=https.frontend_port,
             load_balancer_id=instance.id,
+            frontend_port=https.frontend_port,
+            domain="www.test.com",
             server_certificate_id=foo.id)
         ```
 

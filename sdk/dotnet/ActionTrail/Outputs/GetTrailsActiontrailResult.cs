@@ -18,9 +18,9 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string EventRw;
         /// <summary>
-        /// The name of the trail.
+        /// The id of the ActionTrail Trail. It is the same as trail name.
         /// </summary>
-        public readonly string Name;
+        public readonly string Id;
         /// <summary>
         /// The name of the specified OSS bucket.
         /// </summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string OssKeyPrefix;
         /// <summary>
-        /// The role in ActionTrail.
+        /// The role in ActionTrail Trail.
         /// </summary>
         public readonly string RoleName;
         /// <summary>
@@ -41,12 +41,24 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// The unique ARN of the Log Service role.
         /// </summary>
         public readonly string SlsWriteRoleArn;
+        /// <summary>
+        /// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
+        /// The name of the ActionTrail Trail.
+        /// </summary>
+        public readonly string TrailName;
+        /// <summary>
+        /// The regions to which the trail is applied.
+        /// </summary>
+        public readonly string TrailRegion;
 
         [OutputConstructor]
         private GetTrailsActiontrailResult(
             string eventRw,
 
-            string name,
+            string id,
 
             string ossBucketName,
 
@@ -56,15 +68,24 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string slsProjectArn,
 
-            string slsWriteRoleArn)
+            string slsWriteRoleArn,
+
+            string status,
+
+            string trailName,
+
+            string trailRegion)
         {
             EventRw = eventRw;
-            Name = name;
+            Id = id;
             OssBucketName = ossBucketName;
             OssKeyPrefix = ossKeyPrefix;
             RoleName = roleName;
             SlsProjectArn = slsProjectArn;
             SlsWriteRoleArn = slsWriteRoleArn;
+            Status = status;
+            TrailName = trailName;
+            TrailRegion = trailRegion;
         }
     }
 }

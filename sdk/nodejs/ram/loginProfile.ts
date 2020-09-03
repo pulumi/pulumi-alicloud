@@ -15,15 +15,15 @@ import * as utilities from "../utilities";
  *
  * // Create a RAM login profile.
  * const user = new alicloud.ram.User("user", {
- *     comments: "yoyoyo",
  *     displayName: "user_display_name",
- *     email: "hello.uuu@aaa.com",
- *     force: true,
  *     mobile: "86-18688888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ *     force: true,
  * });
  * const profile = new alicloud.ram.LoginProfile("profile", {
- *     password: "Yourpassword1234",
  *     userName: user.name,
+ *     password: "Yourpassword1234",
  * });
  * ```
  */

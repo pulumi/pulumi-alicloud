@@ -40,9 +40,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = cen.NewInstanceAttachment(ctx, "foo", &cen.InstanceAttachmentArgs{
+// 			InstanceId:            cen.ID(),
 // 			ChildInstanceId:       vpc.ID(),
 // 			ChildInstanceRegionId: pulumi.String("cn-beijing"),
-// 			InstanceId:            cen.ID(),
 // 		})
 // 		if err != nil {
 // 			return err

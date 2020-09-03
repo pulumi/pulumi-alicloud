@@ -29,8 +29,8 @@ namespace Pulumi.AliCloud.Ots
     ///         var name = config.Get("name") ?? "terraformtest";
     ///         var foo = new AliCloud.Ots.Instance("foo", new AliCloud.Ots.InstanceArgs
     ///         {
-    ///             AccessedBy = "Any",
     ///             Description = name,
+    ///             AccessedBy = "Any",
     ///             Tags = 
     ///             {
     ///                 { "Created", "TF" },
@@ -39,9 +39,8 @@ namespace Pulumi.AliCloud.Ots
     ///         });
     ///         var basic = new AliCloud.Ots.Table("basic", new AliCloud.Ots.TableArgs
     ///         {
-    ///             DeviationCellVersionInSec = "1",
     ///             InstanceName = foo.Name,
-    ///             MaxVersion = 1,
+    ///             TableName = name,
     ///             PrimaryKeys = 
     ///             {
     ///                 new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
@@ -60,8 +59,9 @@ namespace Pulumi.AliCloud.Ots
     ///                     Type = "Binary",
     ///                 },
     ///             },
-    ///             TableName = name,
     ///             TimeToLive = -1,
+    ///             MaxVersion = 1,
+    ///             DeviationCellVersionInSec = "1",
     ///         });
     ///     }
     /// 

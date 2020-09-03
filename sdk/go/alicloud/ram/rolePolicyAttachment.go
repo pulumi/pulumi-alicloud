@@ -27,16 +27,16 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
+// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "    {\n", "      \"Statement\": [\n", "        {\n", "          \"Action\": \"sts:AssumeRole\",\n", "          \"Effect\": \"Allow\",\n", "          \"Principal\": {\n", "            \"Service\": [\n", "              \"apigateway.aliyuncs.com\", \n", "              \"ecs.aliyuncs.com\"\n", "            ]\n", "          }\n", "        }\n", "      ],\n", "      \"Version\": \"1\"\n", "    }\n")),
 // 			Description: pulumi.String("this is a role test."),
-// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "    {\n", "      \"Statement\": [\n", "        {\n", "          \"Action\": \"sts:AssumeRole\",\n", "          \"Effect\": \"Allow\",\n", "          \"Principal\": {\n", "            \"Service\": [\n", "              \"apigateway.aliyuncs.com\", \n", "              \"ecs.aliyuncs.com\"\n", "            ]\n", "          }\n", "        }\n", "      ],\n", "      \"Version\": \"1\"\n", "    }\n", "    \n")),
 // 			Force:       pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": [\n", "          \"oss:ListObjects\",\n", "          \"oss:GetObject\"\n", "        ],\n", "        \"Effect\": \"Allow\",\n", "        \"Resource\": [\n", "          \"acs:oss:*:*:mybucket\",\n", "          \"acs:oss:*:*:mybucket/*\"\n", "        ]\n", "      }\n", "    ],\n", "      \"Version\": \"1\"\n", "  }\n")),
 // 			Description: pulumi.String("this is a policy test"),
-// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": [\n", "          \"oss:ListObjects\",\n", "          \"oss:GetObject\"\n", "        ],\n", "        \"Effect\": \"Allow\",\n", "        \"Resource\": [\n", "          \"acs:oss:*:*:mybucket\",\n", "          \"acs:oss:*:*:mybucket/*\"\n", "        ]\n", "      }\n", "    ],\n", "      \"Version\": \"1\"\n", "  }\n", "  \n")),
 // 			Force:       pulumi.Bool(true),
 // 		})
 // 		if err != nil {

@@ -50,16 +50,16 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		example, err := oss.NewBucket(ctx, "example", &oss.BucketArgs{
-// 			Acl:    pulumi.String("public-read"),
 // 			Bucket: pulumi.String("your_bucket_name"),
+// 			Acl:    pulumi.String("public-read"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = oss.NewBucketObject(ctx, "object_content", &oss.BucketObjectArgs{
 // 			Bucket:  example.Bucket,
-// 			Content: pulumi.String("the content that you want to upload."),
 // 			Key:     pulumi.String("new_object_key"),
+// 			Content: pulumi.String("the content that you want to upload."),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -33,14 +33,14 @@ class LoginProfile(pulumi.CustomResource):
 
         # Create a RAM login profile.
         user = alicloud.ram.User("user",
-            comments="yoyoyo",
             display_name="user_display_name",
+            mobile="86-18688888888",
             email="hello.uuu@aaa.com",
-            force=True,
-            mobile="86-18688888888")
+            comments="yoyoyo",
+            force=True)
         profile = alicloud.ram.LoginProfile("profile",
-            password="Yourpassword1234",
-            user_name=user.name)
+            user_name=user.name,
+            password="Yourpassword1234")
         ```
 
         :param str resource_name: The name of the resource.

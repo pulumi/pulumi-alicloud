@@ -30,13 +30,13 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         var myCluster = new AliCloud.CS.Swarm("myCluster", new AliCloud.CS.SwarmArgs
     ///         {
-    ///             CidrBlock = "172.18.0.0/24",
-    ///             DiskCategory = "cloud_efficiency",
-    ///             DiskSize = 20,
-    ///             ImageId = @var.Image_id,
+    ///             Password = "Yourpassword1234",
     ///             InstanceType = "ecs.n4.small",
     ///             NodeNumber = 2,
-    ///             Password = "Yourpassword1234",
+    ///             DiskCategory = "cloud_efficiency",
+    ///             DiskSize = 20,
+    ///             CidrBlock = "172.18.0.0/24",
+    ///             ImageId = @var.Image_id,
     ///             VswitchId = @var.Vswitch_id,
     ///         });
     ///     }

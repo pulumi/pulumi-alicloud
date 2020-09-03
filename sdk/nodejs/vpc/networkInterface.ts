@@ -19,26 +19,21 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "networkInterfaceName";
- *
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "192.168.0.0/24",
- * });
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "192.168.0.0/24"});
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
+ * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     availabilityZone: defaultZones.zones[0].id,
  *     cidrBlock: "192.168.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  *     vpcId: vpc.id,
  * });
- * const group = new alicloud.ecs.SecurityGroup("group", {
- *     vpcId: vpc.id,
- * });
- * const defaultNetworkInterface = new alicloud.vpc.NetworkInterface("default", {
+ * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
+ * const defaultNetworkInterface = new alicloud.vpc.NetworkInterface("defaultNetworkInterface", {
+ *     vswitchId: vswitch.id,
+ *     securityGroups: [group.id],
  *     privateIp: "192.168.0.2",
  *     privateIpsCount: 3,
- *     securityGroups: [group.id],
- *     vswitchId: vswitch.id,
  * });
  * ```
  */

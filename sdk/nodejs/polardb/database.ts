@@ -16,14 +16,14 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const cluster = new alicloud.polardb.Cluster("cluster", {
- *     dbNodeClass: var_clusterclass,
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
- *     description: "testDB",
  *     payType: "PostPaid",
+ *     dbNodeClass: _var.clusterclass,
  *     vswitchId: "polar.mysql.x4.large",
+ *     description: "testDB",
  * });
- * const defaultDatabase = new alicloud.polardb.Database("default", {
+ * const _default = new alicloud.polardb.Database("default", {
  *     dbClusterId: cluster.id,
  *     dbName: "tftestdatabase",
  * });

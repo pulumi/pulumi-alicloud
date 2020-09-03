@@ -59,8 +59,8 @@ namespace Pulumi.AliCloud.Slb
     ///         // create a server certificate
     ///         var foo = new AliCloud.Slb.ServerCertificate("foo", new AliCloud.Slb.ServerCertificateArgs
     ///         {
-    ///             PrivateKey = File.ReadAllText($"{path.Module}/private_key.pem"),
     ///             ServerCertificate = File.ReadAllText($"{path.Module}/server_certificate.pem"),
+    ///             PrivateKey = File.ReadAllText($"{path.Module}/private_key.pem"),
     ///         });
     ///     }
     /// 

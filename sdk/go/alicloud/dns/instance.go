@@ -10,46 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Create an DNS Instance resource.
-//
-// > **NOTE:** Available in v1.80.0+.
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewInstance(ctx, "this", &dns.InstanceArgs{
-// 			DnsSecurity:   pulumi.String("no"),
-// 			DomainNumbers: pulumi.String("2"),
-// 			Period:        pulumi.Int(1),
-// 			RenewPeriod:   pulumi.Int(1),
-// 			RenewalStatus: pulumi.String("ManualRenewal"),
-// 			VersionCode:   pulumi.String("version_personal"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Instance struct {
 	pulumi.CustomResourceState
 
 	// DNS security level. Valid values: `no`, `basic`, `advanced`.
 	DnsSecurity pulumi.StringOutput `pulumi:"dnsSecurity"`
 	// Number of domain names bound.
-	DomainNumbers pulumi.StringOutput `pulumi:"domainNumbers"`
+	DomainNumbers pulumi.StringOutput    `pulumi:"domainNumbers"`
+	PaymentType   pulumi.StringPtrOutput `pulumi:"paymentType"`
 	// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
@@ -103,6 +71,7 @@ type instanceState struct {
 	DnsSecurity *string `pulumi:"dnsSecurity"`
 	// Number of domain names bound.
 	DomainNumbers *string `pulumi:"domainNumbers"`
+	PaymentType   *string `pulumi:"paymentType"`
 	// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
 	Period *int `pulumi:"period"`
 	// Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
@@ -120,6 +89,7 @@ type InstanceState struct {
 	DnsSecurity pulumi.StringPtrInput
 	// Number of domain names bound.
 	DomainNumbers pulumi.StringPtrInput
+	PaymentType   pulumi.StringPtrInput
 	// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
 	Period pulumi.IntPtrInput
 	// Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
@@ -140,7 +110,8 @@ type instanceArgs struct {
 	// DNS security level. Valid values: `no`, `basic`, `advanced`.
 	DnsSecurity string `pulumi:"dnsSecurity"`
 	// Number of domain names bound.
-	DomainNumbers string `pulumi:"domainNumbers"`
+	DomainNumbers string  `pulumi:"domainNumbers"`
+	PaymentType   *string `pulumi:"paymentType"`
 	// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
 	Period *int `pulumi:"period"`
 	// Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
@@ -157,6 +128,7 @@ type InstanceArgs struct {
 	DnsSecurity pulumi.StringInput
 	// Number of domain names bound.
 	DomainNumbers pulumi.StringInput
+	PaymentType   pulumi.StringPtrInput
 	// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
 	Period pulumi.IntPtrInput
 	// Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.

@@ -35,14 +35,14 @@ class AccessKey(pulumi.CustomResource):
 
         # Create a new RAM access key for user.
         user = alicloud.ram.User("user",
-            comments="yoyoyo",
             display_name="user_display_name",
+            mobile="86-18688888888",
             email="hello.uuu@aaa.com",
-            force=True,
-            mobile="86-18688888888")
+            comments="yoyoyo",
+            force=True)
         ak = alicloud.ram.AccessKey("ak",
-            secret_file="/xxx/xxx/xxx.txt",
-            user_name=user.name)
+            user_name=user.name,
+            secret_file="/xxx/xxx/xxx.txt")
         ```
 
         :param str resource_name: The name of the resource.

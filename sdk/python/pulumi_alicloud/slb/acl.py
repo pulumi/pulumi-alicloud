@@ -64,17 +64,17 @@ class Acl(pulumi.CustomResource):
         if ip_version is None:
             ip_version = "ipv4"
         default = alicloud.slb.Acl("default",
+            ip_version=ip_version,
             entry_lists=[
                 alicloud.slb.AclEntryListArgs(
-                    comment="first",
                     entry="10.10.10.0/24",
+                    comment="first",
                 ),
                 alicloud.slb.AclEntryListArgs(
-                    comment="second",
                     entry="168.10.10.0/24",
+                    comment="second",
                 ),
-            ],
-            ip_version=ip_version)
+            ])
         ```
         ## Entry Block
 

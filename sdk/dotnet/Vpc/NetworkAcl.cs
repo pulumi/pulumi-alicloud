@@ -32,8 +32,8 @@ namespace Pulumi.AliCloud.Vpc
     ///         });
     ///         var defaultNetworkAcl = new AliCloud.Vpc.NetworkAcl("defaultNetworkAcl", new AliCloud.Vpc.NetworkAclArgs
     ///         {
-    ///             Description = "network_acl",
     ///             VpcId = defaultNetwork.Id,
+    ///             Description = "network_acl",
     ///         });
     ///     }
     /// 

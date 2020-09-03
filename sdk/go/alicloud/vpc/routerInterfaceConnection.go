@@ -43,30 +43,37 @@ import (
 // 		}
 // 		barNetwork, err := vpc.NewNetwork(ctx, "barNetwork", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("192.168.0.0/16"),
-// 		})
+// 		}, pulumi.Provider(alicloud))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		initiate, err := vpc.NewRouterInterface(ctx, "initiate", &vpc.RouterInterfaceArgs{
+// 			OppositeRegion:     pulumi.String(region),
+// 			RouterType:         pulumi.String("VRouter"),
+// 			RouterId:           fooNetwork.RouterId,
+// 			Role:               pulumi.String("InitiatingSide"),
+// 			Specification:      pulumi.String("Large.2"),
 // 			Description:        pulumi.String(name),
 // 			InstanceChargeType: pulumi.String("PostPaid"),
-// 			OppositeRegion:     pulumi.String(region),
-// 			Role:               pulumi.String("InitiatingSide"),
-// 			RouterId:           fooNetwork.RouterId,
-// 			RouterType:         pulumi.String("VRouter"),
-// 			Specification:      pulumi.String("Large.2"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opposite, err := vpc.NewRouterInterface(ctx, "opposite", &vpc.RouterInterfaceArgs{
-// 			Description:    pulumi.String(fmt.Sprintf("%v%v", name, "-opposite")),
 // 			OppositeRegion: pulumi.String(region),
-// 			Role:           pulumi.String("AcceptingSide"),
-// 			RouterId:       barNetwork.RouterId,
 // 			RouterType:     pulumi.String("VRouter"),
+// 			RouterId:       barNetwork.RouterId,
+// 			Role:           pulumi.String("AcceptingSide"),
 // 			Specification:  pulumi.String("Large.1"),
-// 		})
+// 			Description:    pulumi.String(fmt.Sprintf("%v%v", name, "-opposite")),
+// 		}, pulumi.Provider(alicloud))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		barRouterInterfaceConnection, err := vpc.NewRouterInterfaceConnection(ctx, "barRouterInterfaceConnection", &vpc.RouterInterfaceConnectionArgs{
+// 			InterfaceId:         opposite.ID(),
+// 			OppositeInterfaceId: initiate.ID(),
+// 		}, pulumi.Provider(alicloud))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -74,15 +81,8 @@ import (
 // 			InterfaceId:         initiate.ID(),
 // 			OppositeInterfaceId: opposite.ID(),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_router_interface_connection.bar",
+// 			barRouterInterfaceConnection,
 // 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewRouterInterfaceConnection(ctx, "barRouterInterfaceConnection", &vpc.RouterInterfaceConnectionArgs{
-// 			InterfaceId:         opposite.ID(),
-// 			OppositeInterfaceId: initiate.ID(),
-// 		})
 // 		if err != nil {
 // 			return err
 // 		}

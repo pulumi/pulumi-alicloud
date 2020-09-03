@@ -43,13 +43,13 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
+// 		defaultInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
+// 			InstanceId:            defaultInstance.ID(),
 // 			ChildInstanceId:       defaultNetwork.ID(),
 // 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
-// 			InstanceId:            defaultInstance.ID(),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_cen_instance.default",
-// 			"alicloud_vpc.default",
+// 			defaultInstance,
+// 			defaultNetwork,
 // 		}))
 // 		if err != nil {
 // 			return err
@@ -60,7 +60,7 @@ import (
 // 			HostRegionId:   pulumi.String("cn-hangzhou"),
 // 			HostVpcId:      defaultNetwork.ID(),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_cen_instance_attachment.default",
+// 			defaultInstanceAttachment,
 // 		}))
 // 		if err != nil {
 // 			return err

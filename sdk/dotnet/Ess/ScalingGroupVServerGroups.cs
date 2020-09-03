@@ -55,9 +55,9 @@ namespace Pulumi.AliCloud.Ess
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
     ///         {
@@ -73,21 +73,21 @@ namespace Pulumi.AliCloud.Ess
     ///             var range = new { Value = rangeIndex };
     ///             defaultListener.Add(new AliCloud.Slb.Listener($"defaultListener-{range.Value}", new AliCloud.Slb.ListenerArgs
     ///             {
-    ///                 BackendPort = 22,
-    ///                 Bandwidth = 10,
-    ///                 FrontendPort = 22,
-    ///                 HealthCheckType = "tcp",
     ///                 LoadBalancerId = 
     ///                 {
     ///                     defaultLoadBalancer,
     ///                 }.Select(__item =&gt; __item.Id).ToList()[range.Value],
+    ///                 BackendPort = 22,
+    ///                 FrontendPort = 22,
     ///                 Protocol = "tcp",
+    ///                 Bandwidth = 10,
+    ///                 HealthCheckType = "tcp",
     ///             }));
     ///         }
     ///         var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new AliCloud.Ess.ScalingGroupArgs
     ///         {
-    ///             MaxSize = 2,
     ///             MinSize = 2,
+    ///             MaxSize = 2,
     ///             ScalingGroupName = name,
     ///             VswitchIds = 
     ///             {
@@ -106,8 +106,8 @@ namespace Pulumi.AliCloud.Ess
     ///                     {
     ///                         new AliCloud.Ess.Inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs
     ///                         {
-    ///                             Port = 100,
     ///                             VserverGroupId = defaultServerGroup.Id,
+    ///                             Port = 100,
     ///                             Weight = 60,
     ///                         },
     ///                     },

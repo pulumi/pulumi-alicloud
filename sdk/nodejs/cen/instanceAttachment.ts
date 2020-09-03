@@ -16,19 +16,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * // Create a new instance-attachment and use it to attach one child instance to a new CEN
  * const name = config.get("name") || "tf-testAccCenInstanceAttachmentBasic";
- *
- * const cen = new alicloud.cen.Instance("cen", {
- *     description: "terraform01",
- * });
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "192.168.0.0/16",
- * });
+ * const cen = new alicloud.cen.Instance("cen", {description: "terraform01"});
+ * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "192.168.0.0/16"});
  * const foo = new alicloud.cen.InstanceAttachment("foo", {
+ *     instanceId: cen.id,
  *     childInstanceId: vpc.id,
  *     childInstanceRegionId: "cn-beijing",
- *     instanceId: cen.id,
  * });
  * ```
  */

@@ -27,13 +27,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.oss.Bucket("example", {
- *     acl: "public-read",
  *     bucket: "your_bucket_name",
+ *     acl: "public-read",
  * });
  * const object_content = new alicloud.oss.BucketObject("object-content", {
  *     bucket: example.bucket,
- *     content: "the content that you want to upload.",
  *     key: "new_object_key",
+ *     content: "the content that you want to upload.",
  * });
  * ```
  */

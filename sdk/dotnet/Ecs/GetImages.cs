@@ -50,6 +50,52 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetImagesArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+        /// * `CreateEcs`: instance creation.
+        /// * `ChangeOS`: replacement of the system disk or operating system.
+        /// </summary>
+        [Input("actionType")]
+        public string? ActionType { get; set; }
+
+        /// <summary>
+        /// The image architecture. Valid values: `i386` and `x86_64`.
+        /// </summary>
+        [Input("architecture")]
+        public string? Architecture { get; set; }
+
+        /// <summary>
+        /// Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
+        /// * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
+        /// * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+        /// </summary>
+        [Input("dryRun")]
+        public bool? DryRun { get; set; }
+
+        /// <summary>
+        /// The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
+        /// </summary>
+        [Input("imageFamily")]
+        public string? ImageFamily { get; set; }
+
+        /// <summary>
+        /// The instance type for which the image can be used.
+        /// </summary>
+        [Input("instanceType")]
+        public string? InstanceType { get; set; }
+
+        /// <summary>
+        /// Specifies whether the image supports cloud-init.
+        /// </summary>
+        [Input("isSupportCloudInit")]
+        public bool? IsSupportCloudInit { get; set; }
+
+        /// <summary>
+        /// Specifies whether the image can be used on I/O optimized instances.
+        /// </summary>
+        [Input("isSupportIoOptimized")]
+        public bool? IsSupportIoOptimized { get; set; }
+
+        /// <summary>
         /// If more than one result are returned, select the most recent one.
         /// </summary>
         [Input("mostRecent")]
@@ -61,6 +107,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// The operating system type of the image. Valid values: `windows` and `linux`.
+        /// </summary>
+        [Input("osType")]
+        public string? OsType { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -69,6 +121,50 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("owners")]
         public string? Owners { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group to which the custom image belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public string? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The ID of the snapshot used to create the custom image.
+        /// </summary>
+        [Input("snapshotId")]
+        public string? SnapshotId { get; set; }
+
+        /// <summary>
+        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        /// * `Creating`: The image is being created.
+        /// * `Waiting`: The image is waiting to be processed.
+        /// * `Available`: The image is available.
+        /// * `UnAvailable`: The image is unavailable.
+        /// * `CreateFailed`: The image failed to be created.
+        /// * `Deprecated`: The image is discontinued.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
+        [Input("tags")]
+        private Dictionary<string, object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public Dictionary<string, object> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
+        /// * `instance`: The image is already in use and running on an ECS instance.
+        /// * `none`: The image is not in use.
+        /// </summary>
+        [Input("usage")]
+        public string? Usage { get; set; }
 
         public GetImagesArgs()
         {
@@ -79,6 +175,12 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetImagesResult
     {
+        public readonly string? ActionType;
+        /// <summary>
+        /// Platform type of the image system: i386 or x86_64.
+        /// </summary>
+        public readonly string? Architecture;
+        public readonly bool? DryRun;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -87,38 +189,93 @@ namespace Pulumi.AliCloud.Ecs
         /// A list of image IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly string? ImageFamily;
         /// <summary>
         /// A list of images. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImagesImageResult> Images;
+        public readonly string? InstanceType;
+        public readonly bool? IsSupportCloudInit;
+        public readonly bool? IsSupportIoOptimized;
         public readonly bool? MostRecent;
         public readonly string? NameRegex;
+        public readonly string? OsType;
         public readonly string? OutputFile;
         public readonly string? Owners;
+        public readonly string? ResourceGroupId;
+        /// <summary>
+        /// Snapshot ID.
+        /// </summary>
+        public readonly string? SnapshotId;
+        /// <summary>
+        /// Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+        /// </summary>
+        public readonly string? Status;
+        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly string? Usage;
 
         [OutputConstructor]
         private GetImagesResult(
+            string? actionType,
+
+            string? architecture,
+
+            bool? dryRun,
+
             string id,
 
             ImmutableArray<string> ids,
 
+            string? imageFamily,
+
             ImmutableArray<Outputs.GetImagesImageResult> images,
+
+            string? instanceType,
+
+            bool? isSupportCloudInit,
+
+            bool? isSupportIoOptimized,
 
             bool? mostRecent,
 
             string? nameRegex,
 
+            string? osType,
+
             string? outputFile,
 
-            string? owners)
+            string? owners,
+
+            string? resourceGroupId,
+
+            string? snapshotId,
+
+            string? status,
+
+            ImmutableDictionary<string, object>? tags,
+
+            string? usage)
         {
+            ActionType = actionType;
+            Architecture = architecture;
+            DryRun = dryRun;
             Id = id;
             Ids = ids;
+            ImageFamily = imageFamily;
             Images = images;
+            InstanceType = instanceType;
+            IsSupportCloudInit = isSupportCloudInit;
+            IsSupportIoOptimized = isSupportIoOptimized;
             MostRecent = mostRecent;
             NameRegex = nameRegex;
+            OsType = osType;
             OutputFile = outputFile;
             Owners = owners;
+            ResourceGroupId = resourceGroupId;
+            SnapshotId = snapshotId;
+            Status = status;
+            Tags = tags;
+            Usage = usage;
         }
     }
 }

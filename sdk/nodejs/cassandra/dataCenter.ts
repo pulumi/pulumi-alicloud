@@ -19,6 +19,41 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
  *
  * ## Example Usage
+ * ### Create a cassandra dataCenter
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultCluster = new alicloud.cassandra.Cluster("defaultCluster", {
+ *     clusterName: "cassandra-cluster-name-tf",
+ *     dataCenterName: "dc-1",
+ *     autoRenew: "false",
+ *     instanceType: "cassandra.c.large",
+ *     majorVersion: "3.11",
+ *     nodeCount: "2",
+ *     payType: "PayAsYouGo",
+ *     vswitchId: "vsw-xxxx1",
+ *     diskSize: "160",
+ *     diskType: "cloud_ssd",
+ *     maintainStartTime: "18:00Z",
+ *     maintainEndTime: "20:00Z",
+ *     ipWhite: "127.0.0.1",
+ * });
+ * const defaultDataCenter = new alicloud.cassandra.DataCenter("defaultDataCenter", {
+ *     clusterId: defaultCluster.id,
+ *     dataCenterName: "dc-2",
+ *     autoRenew: "false",
+ *     instanceType: "cassandra.c.large",
+ *     nodeCount: "2",
+ *     payType: "PayAsYouGo",
+ *     vswitchId: "vsw-xxxx2",
+ *     diskSize: "160",
+ *     diskType: "cloud_ssd",
+ * });
+ * ```
+ *
+ * This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
  */
 export class DataCenter extends pulumi.CustomResource {
     /**

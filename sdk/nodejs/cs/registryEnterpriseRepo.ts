@@ -22,16 +22,16 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const my_namespace = new alicloud.cs.RegistryEnterpriseNamespace("my-namespace", {
+ *     instanceId: "cri-xxx",
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
- *     instanceId: "cri-xxx",
  * });
  * const my_repo = new alicloud.cs.RegistryEnterpriseRepo("my-repo", {
- *     detail: "this is a public repo",
  *     instanceId: my_namespace.instanceId,
  *     namespace: my_namespace.name,
- *     repoType: "PUBLIC",
  *     summary: "this is summary of my new repo",
+ *     repoType: "PUBLIC",
+ *     detail: "this is a public repo",
  * });
  * ```
  */

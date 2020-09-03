@@ -32,13 +32,12 @@ class UserPolicyAttachment(pulumi.CustomResource):
 
         # Create a RAM User Policy attachment.
         user = alicloud.ram.User("user",
-            comments="yoyoyo",
             display_name="user_display_name",
+            mobile="86-18688888888",
             email="hello.uuu@aaa.com",
-            force=True,
-            mobile="86-18688888888")
+            comments="yoyoyo",
+            force=True)
         policy = alicloud.ram.Policy("policy",
-            description="this is a policy test",
             document=\"\"\"  {
             "Statement": [
               {
@@ -55,8 +54,8 @@ class UserPolicyAttachment(pulumi.CustomResource):
             ],
               "Version": "1"
           }
-          
         \"\"\",
+            description="this is a policy test",
             force=True)
         attach = alicloud.ram.UserPolicyAttachment("attach",
             policy_name=policy.name,

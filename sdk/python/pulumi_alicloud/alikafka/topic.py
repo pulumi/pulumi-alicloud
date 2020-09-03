@@ -44,27 +44,27 @@ class Topic(pulumi.CustomResource):
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_instance = alicloud.alikafka.Instance("defaultInstance",
-            deploy_type=5,
-            disk_size=500,
-            disk_type=1,
-            io_max=20,
             topic_quota=50,
+            disk_type=1,
+            disk_size=500,
+            deploy_type=5,
+            io_max=20,
             vswitch_id=default_switch.id)
         config = pulumi.Config()
         topic = config.get("topic")
         if topic is None:
             topic = "alikafkaTopicName"
         default_topic = alicloud.alikafka.Topic("defaultTopic",
-            compact_topic=False,
             instance_id=default_instance.id,
+            topic=topic,
             local_topic=False,
+            compact_topic=False,
             partition_num=12,
-            remark="dafault_kafka_topic_remark",
-            topic=topic)
+            remark="dafault_kafka_topic_remark")
         ```
 
         :param str resource_name: The name of the resource.

@@ -35,18 +35,18 @@ namespace Pulumi.AliCloud.CS
     ///         var @default = new AliCloud.CS.KubernetesAutoscaler("default", new AliCloud.CS.KubernetesAutoscalerArgs
     ///         {
     ///             ClusterId = @var.Cluster_id,
-    ///             CoolDownDuration = @var.Cool_down_duration,
-    ///             DeferScaleInDuration = @var.Defer_scale_in_duration,
     ///             Nodepools = 
     ///             {
     ///                 new AliCloud.CS.Inputs.KubernetesAutoscalerNodepoolArgs
     ///                 {
     ///                     Id = "scaling_group_id",
-    ///                     Labels = "a=b",
     ///                     Taints = "c=d:NoSchedule",
+    ///                     Labels = "a=b",
     ///                 },
     ///             },
     ///             Utilization = @var.Utilization,
+    ///             CoolDownDuration = @var.Cool_down_duration,
+    ///             DeferScaleInDuration = @var.Defer_scale_in_duration,
     ///         });
     ///     }
     /// 

@@ -43,14 +43,14 @@ namespace Pulumi.AliCloud.Cen
     ///             CidrBlock = "192.168.0.0/16",
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = "alicloud.fra",
+    ///             Provider = alicloud.Fra,
     ///         });
     ///         var vpc2 = new AliCloud.Vpc.Network("vpc2", new AliCloud.Vpc.NetworkArgs
     ///         {
     ///             CidrBlock = "172.16.0.0/12",
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = "alicloud.sh",
+    ///             Provider = alicloud.Sh,
     ///         });
     ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
     ///         {
@@ -67,37 +67,37 @@ namespace Pulumi.AliCloud.Cen
     ///         });
     ///         var bwpAttach = new AliCloud.Cen.BandwidthPackageAttachment("bwpAttach", new AliCloud.Cen.BandwidthPackageAttachmentArgs
     ///         {
-    ///             BandwidthPackageId = bwp.Id,
     ///             InstanceId = cen.Id,
+    ///             BandwidthPackageId = bwp.Id,
     ///         });
     ///         var vpcAttach1 = new AliCloud.Cen.InstanceAttachment("vpcAttach1", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
+    ///             InstanceId = cen.Id,
     ///             ChildInstanceId = vpc1.Id,
     ///             ChildInstanceRegionId = "eu-central-1",
-    ///             InstanceId = cen.Id,
     ///         });
     ///         var vpcAttach2 = new AliCloud.Cen.InstanceAttachment("vpcAttach2", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
+    ///             InstanceId = cen.Id,
     ///             ChildInstanceId = vpc2.Id,
     ///             ChildInstanceRegionId = "cn-shanghai",
-    ///             InstanceId = cen.Id,
     ///         });
     ///         var foo = new AliCloud.Cen.BandwidthLimit("foo", new AliCloud.Cen.BandwidthLimitArgs
     ///         {
-    ///             BandwidthLimit = 4,
     ///             InstanceId = cen.Id,
     ///             RegionIds = 
     ///             {
     ///                 "eu-central-1",
     ///                 "cn-shanghai",
     ///             },
+    ///             BandwidthLimit = 4,
     ///         }, new CustomResourceOptions
     ///         {
     ///             DependsOn = 
     ///             {
-    ///                 "alicloud_cen_bandwidth_package_attachment.bwp_attach",
-    ///                 "alicloud_cen_instance_attachment.vpc_attach_1",
-    ///                 "alicloud_cen_instance_attachment.vpc_attach_2",
+    ///                 bwpAttach,
+    ///                 vpcAttach1,
+    ///                 vpcAttach2,
     ///             },
     ///         });
     ///     }

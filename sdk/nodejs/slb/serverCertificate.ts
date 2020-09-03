@@ -35,12 +35,12 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as fs from "fs";
+ * import * from "fs";
  *
  * // create a server certificate
  * const foo = new alicloud.slb.ServerCertificate("foo", {
- *     privateKey: fs.readFileSync(`./private_key.pem`, "utf-8"),
- *     serverCertificate: fs.readFileSync(`./server_certificate.pem`, "utf-8"),
+ *     serverCertificate: fs.readFileSync(`${path.module}/server_certificate.pem`),
+ *     privateKey: fs.readFileSync(`${path.module}/private_key.pem`),
  * });
  * ```
  */

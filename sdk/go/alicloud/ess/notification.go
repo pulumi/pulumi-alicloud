@@ -58,21 +58,21 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
-// 			MaxSize: pulumi.Int(1),
-// 			MinSize: pulumi.Int(1),
+// 			MinSize:          pulumi.Int(1),
+// 			MaxSize:          pulumi.Int(1),
+// 			ScalingGroupName: pulumi.String(name),
 // 			RemovalPolicies: pulumi.StringArray{
 // 				pulumi.String("OldestInstance"),
 // 				pulumi.String("NewestInstance"),
 // 			},
-// 			ScalingGroupName: pulumi.String(name),
 // 			VswitchIds: pulumi.StringArray{
 // 				defaultSwitch.ID(),
 // 			},
@@ -85,14 +85,14 @@ import (
 // 			return err
 // 		}
 // 		_, err = ess.NewNotification(ctx, "defaultNotification", &ess.NotificationArgs{
-// 			NotificationArn: defaultQueue.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v%v%v", "acs:ess:", defaultRegions.Regions[0].Id, ":", defaultAccount.Id, ":queue/", name), nil
-// 			}).(pulumi.StringOutput),
+// 			ScalingGroupId: defaultScalingGroup.ID(),
 // 			NotificationTypes: pulumi.StringArray{
 // 				pulumi.String("AUTOSCALING:SCALE_OUT_SUCCESS"),
 // 				pulumi.String("AUTOSCALING:SCALE_OUT_ERROR"),
 // 			},
-// 			ScalingGroupId: defaultScalingGroup.ID(),
+// 			NotificationArn: defaultQueue.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("%v%v%v%v%v%v", "acs:ess:", defaultRegions.Regions[0].Id, ":", defaultAccount.Id, ":queue/", name), nil
+// 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
 // 			return err

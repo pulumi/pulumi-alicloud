@@ -27,8 +27,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		fooInstance, err := ots.NewInstance(ctx, "fooInstance", &ots.InstanceArgs{
-// 			AccessedBy:  pulumi.String("Vpc"),
 // 			Description: pulumi.String("for table"),
+// 			AccessedBy:  pulumi.String("Vpc"),
 // 			Tags: pulumi.StringMap{
 // 				"Created": pulumi.String("TF"),
 // 				"For":     pulumi.String("Building table"),
@@ -51,9 +51,9 @@ import (
 // 			return err
 // 		}
 // 		fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(fooZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.1.0/24"),
 // 			VpcId:            fooNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.1.0/24"),
+// 			AvailabilityZone: pulumi.String(fooZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err

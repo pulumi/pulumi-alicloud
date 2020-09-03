@@ -39,13 +39,14 @@ namespace Pulumi.AliCloud.Slb
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/21",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/21",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
     ///         {
     ///             Specification = "slb.s2.small",
+    ///             VswitchId = defaultSwitch.Id,
     ///             Tags = 
     ///             {
     ///                 { "tag_a", 1 },
@@ -59,7 +60,6 @@ namespace Pulumi.AliCloud.Slb
     ///                 { "tag_i", 9 },
     ///                 { "tag_j", 10 },
     ///             },
-    ///             VswitchId = defaultSwitch.Id,
     ///         });
     ///     }
     /// 

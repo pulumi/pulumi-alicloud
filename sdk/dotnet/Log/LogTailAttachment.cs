@@ -36,26 +36,31 @@ namespace Pulumi.AliCloud.Log
     ///         });
     ///         var testStore = new AliCloud.Log.Store("testStore", new AliCloud.Log.StoreArgs
     ///         {
-    ///             AppendMeta = true,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
     ///             Project = testProject.Name,
     ///             RetentionPeriod = 3650,
     ///             ShardCount = 3,
+    ///             AutoSplit = true,
+    ///             MaxSplitShardCount = 60,
+    ///             AppendMeta = true,
     ///         });
     ///         var testMachineGroup = new AliCloud.Log.MachineGroup("testMachineGroup", new AliCloud.Log.MachineGroupArgs
     ///         {
+    ///             Project = testProject.Name,
+    ///             Topic = "terraform",
     ///             IdentifyLists = 
     ///             {
     ///                 "10.0.0.1",
     ///                 "10.0.0.3",
     ///                 "10.0.0.2",
     ///             },
-    ///             Project = testProject.Name,
-    ///             Topic = "terraform",
     ///         });
     ///         var testLogTailConfig = new AliCloud.Log.LogTailConfig("testLogTailConfig", new AliCloud.Log.LogTailConfigArgs
     ///         {
+    ///             Project = testProject.Name,
+    ///             Logstore = testStore.Name,
+    ///             InputType = "file",
+    ///             LogSample = "test",
+    ///             OutputType = "LogService",
     ///             InputDetail = @"  	{
     /// 		""logPath"": ""/logPath"",
     /// 		""filePattern"": ""access.log"",
@@ -68,17 +73,12 @@ namespace Pulumi.AliCloud.Log
     /// 	}
     /// 	
     /// ",
-    ///             InputType = "file",
-    ///             LogSample = "test",
-    ///             Logstore = testStore.Name,
-    ///             OutputType = "LogService",
-    ///             Project = testProject.Name,
     ///         });
     ///         var testLogTailAttachment = new AliCloud.Log.LogTailAttachment("testLogTailAttachment", new AliCloud.Log.LogTailAttachmentArgs
     ///         {
+    ///             Project = testProject.Name,
     ///             LogtailConfigName = testLogTailConfig.Name,
     ///             MachineGroupName = testMachineGroup.Name,
-    ///             Project = testProject.Name,
     ///         });
     ///     }
     /// 

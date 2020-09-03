@@ -17,56 +17,51 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "keyPairAttachmentName";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_ssd",
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const type = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones[0].id,
+ * });
+ * const type = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones[0].id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
- * }, { async: true }));
- * const images = pulumi.output(alicloud.ecs.getImages({
- *     mostRecent: true,
+ * }));
+ * const images = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
  *     owners: "system",
- * }, { async: true }));
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "10.1.0.0/21",
  * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "keyPairAttachmentName";
+ * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "10.1.0.0/21"});
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "10.1.1.0/24",
  *     vpcId: vpc.id,
+ *     cidrBlock: "10.1.1.0/24",
+ *     availabilityZone: _default.then(_default => _default.zones[0].id),
  * });
  * const group = new alicloud.ecs.SecurityGroup("group", {
  *     description: "New security group",
  *     vpcId: vpc.id,
  * });
- * const instance: alicloud.ecs.Instance[] = [];
- * for (let i = 0; i < 2; i++) {
- *     instance.push(new alicloud.ecs.Instance(`instance-${i}`, {
- *         imageId: images.images[0].id,
- *         instanceChargeType: "PostPaid",
- *         instanceName: `${name}-${(i + 1)}`,
- *         instanceType: type.instanceTypes[0].id,
+ * const instance: alicloud.ecs.Instance[];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     instance.push(new alicloud.ecs.Instance(`instance-${range.value}`, {
+ *         instanceName: `${name}-${range.value + 1}`,
+ *         imageId: images.then(images => images.images[0].id),
+ *         instanceType: type.then(type => type.instanceTypes[0].id),
+ *         securityGroups: [group.id],
+ *         vswitchId: vswitch.id,
  *         internetChargeType: "PayByTraffic",
  *         internetMaxBandwidthOut: 5,
  *         password: "Test12345",
- *         securityGroups: [group.id],
+ *         instanceChargeType: "PostPaid",
  *         systemDiskCategory: "cloud_ssd",
- *         vswitchId: vswitch.id,
  *     }));
  * }
- * const pair = new alicloud.ecs.KeyPair("pair", {
- *     keyName: name,
- * });
+ * const pair = new alicloud.ecs.KeyPair("pair", {keyName: name});
  * const attachment = new alicloud.ecs.KeyPairAttachment("attachment", {
- *     instanceIds: instance.map(v => v.id),
  *     keyName: pair.id,
+ *     instanceIds: instance.map(__item => __item.id),
  * });
  * ```
  */

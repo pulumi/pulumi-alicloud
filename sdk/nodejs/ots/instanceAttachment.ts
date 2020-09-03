@@ -14,26 +14,24 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Create an OTS instance
- * const fooInstance = new alicloud.ots.Instance("foo", {
- *     accessedBy: "Vpc",
+ * const fooInstance = new alicloud.ots.Instance("fooInstance", {
  *     description: "for table",
+ *     accessedBy: "Vpc",
  *     tags: {
  *         Created: "TF",
  *         For: "Building table",
  *     },
  * });
- * const fooZones = pulumi.output(alicloud.getZones({
+ * const fooZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const fooNetwork = new alicloud.vpc.Network("foo", {
- *     cidrBlock: "172.16.0.0/16",
  * });
- * const fooSwitch = new alicloud.vpc.Switch("foo", {
- *     availabilityZone: fooZones.zones[0].id,
- *     cidrBlock: "172.16.1.0/24",
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
  *     vpcId: fooNetwork.id,
+ *     cidrBlock: "172.16.1.0/24",
+ *     availabilityZone: fooZones.then(fooZones => fooZones.zones[0].id),
  * });
- * const fooInstanceAttachment = new alicloud.ots.InstanceAttachment("foo", {
+ * const fooInstanceAttachment = new alicloud.ots.InstanceAttachment("fooInstanceAttachment", {
  *     instanceName: fooInstance.name,
  *     vpcName: "attachment1",
  *     vswitchId: fooSwitch.id,

@@ -36,8 +36,8 @@ class NetworkAcl(pulumi.CustomResource):
 
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
         default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl",
-            description="network_acl",
-            vpc_id=default_network.id)
+            vpc_id=default_network.id,
+            description="network_acl")
         ```
 
         :param str resource_name: The name of the resource.

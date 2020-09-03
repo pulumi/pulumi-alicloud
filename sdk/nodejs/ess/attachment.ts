@@ -19,82 +19,77 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "essattachmentconfig";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const defaultInstanceTypes = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: defaultZones.zones[0].id,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
- * }, { async: true }));
- * const defaultImages = pulumi.output(alicloud.ecs.getImages({
- *     mostRecent: true,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
  *     owners: "system",
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     vpcId: defaultNetwork.id,
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     vpcId: defaultNetwork.id,
- * });
- * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("default", {
- *     cidrIp: "172.16.0.0/24",
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
+ *     type: "ingress",
  *     ipProtocol: "tcp",
  *     nicType: "intranet",
  *     policy: "accept",
  *     portRange: "22/22",
  *     priority: 1,
  *     securityGroupId: defaultSecurityGroup.id,
- *     type: "ingress",
+ *     cidrIp: "172.16.0.0/24",
  * });
- * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
- *     maxSize: 2,
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
  *     minSize: 0,
+ *     maxSize: 2,
+ *     scalingGroupName: name,
  *     removalPolicies: [
  *         "OldestInstance",
  *         "NewestInstance",
  *     ],
- *     scalingGroupName: name,
  *     vswitchIds: [defaultSwitch.id],
  * });
- * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("default", {
+ * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("defaultScalingConfiguration", {
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     forceDelete: true,
  *     active: true,
  *     enable: true,
- *     forceDelete: true,
- *     imageId: defaultImages.images[0].id,
- *     instanceType: defaultInstanceTypes.instanceTypes[0].id,
- *     scalingGroupId: defaultScalingGroup.id,
- *     securityGroupId: defaultSecurityGroup.id,
  * });
- * const defaultInstance: alicloud.ecs.Instance[] = [];
- * for (let i = 0; i < 2; i++) {
- *     defaultInstance.push(new alicloud.ecs.Instance(`default-${i}`, {
- *         imageId: defaultImages.images[0].id,
- *         instanceChargeType: "PostPaid",
- *         instanceName: name,
- *         instanceType: defaultInstanceTypes.instanceTypes[0].id,
- *         internetChargeType: "PayByTraffic",
- *         internetMaxBandwidthOut: 10,
+ * const defaultInstance: alicloud.ecs.Instance[];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultInstance.push(new alicloud.ecs.Instance(`defaultInstance-${range.value}`, {
+ *         imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
+ *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
  *         securityGroups: [defaultSecurityGroup.id],
+ *         internetChargeType: "PayByTraffic",
+ *         internetMaxBandwidthOut: "10",
+ *         instanceChargeType: "PostPaid",
  *         systemDiskCategory: "cloud_efficiency",
  *         vswitchId: defaultSwitch.id,
+ *         instanceName: name,
  *     }));
  * }
- * const defaultAttachment = new alicloud.ess.Attachment("default", {
- *     force: true,
+ * const defaultAttachment = new alicloud.ess.Attachment("defaultAttachment", {
+ *     scalingGroupId: defaultScalingGroup.id,
  *     instanceIds: [
  *         defaultInstance[0].id,
  *         defaultInstance[1].id,
  *     ],
- *     scalingGroupId: defaultScalingGroup.id,
+ *     force: true,
  * });
  * ```
  */

@@ -35,34 +35,34 @@ namespace Pulumi.AliCloud.Rds
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new AliCloud.Rds.InstanceArgs
     ///         {
     ///             Engine = "MySQL",
     ///             EngineVersion = "5.6",
+    ///             InstanceType = "rds.mysql.t1.small",
+    ///             InstanceStorage = 20,
     ///             InstanceChargeType = "Postpaid",
     ///             InstanceName = name,
-    ///             InstanceStorage = 20,
-    ///             InstanceType = "rds.mysql.t1.small",
+    ///             VswitchId = defaultSwitch.Id,
     ///             SecurityIps = 
     ///             {
     ///                 "10.168.1.12",
     ///                 "100.69.7.112",
     ///             },
-    ///             VswitchId = defaultSwitch.Id,
     ///         });
     ///         var defaultReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("defaultReadOnlyInstance", new AliCloud.Rds.ReadOnlyInstanceArgs
     ///         {
-    ///             EngineVersion = defaultInstance.EngineVersion,
-    ///             InstanceName = $"{name}ro",
-    ///             InstanceStorage = 30,
-    ///             InstanceType = defaultInstance.InstanceType,
     ///             MasterDbInstanceId = defaultInstance.Id,
-    ///             VswitchId = defaultSwitch.Id,
     ///             ZoneId = defaultInstance.ZoneId,
+    ///             EngineVersion = defaultInstance.EngineVersion,
+    ///             InstanceType = defaultInstance.InstanceType,
+    ///             InstanceStorage = 30,
+    ///             InstanceName = $"{name}ro",
+    ///             VswitchId = defaultSwitch.Id,
     ///         });
     ///     }
     /// 

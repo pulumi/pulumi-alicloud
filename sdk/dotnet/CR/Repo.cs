@@ -35,10 +35,10 @@ namespace Pulumi.AliCloud.CR
     ///         });
     ///         var my_repo = new AliCloud.CR.Repo("my-repo", new AliCloud.CR.RepoArgs
     ///         {
-    ///             Detail = "this is a public repo",
     ///             Namespace = my_namespace.Name,
-    ///             RepoType = "PUBLIC",
     ///             Summary = "this is summary of my new repo",
+    ///             RepoType = "PUBLIC",
+    ///             Detail = "this is a public repo",
     ///         });
     ///     }
     /// 

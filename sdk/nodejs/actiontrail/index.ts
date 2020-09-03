@@ -8,4 +8,6 @@ export * from "./getSaslAcls";
 export * from "./getSaslUsers";
 export * from "./getTopics";
 export * from "./getTrails";
+export * from "./getTrailsDeprecated";
 export * from "./trail";
+export * from "./trailDeprecated";

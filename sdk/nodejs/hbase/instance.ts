@@ -98,6 +98,9 @@ export class Instance extends pulumi.CustomResource {
      * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
      */
     public readonly duration!: pulumi.Output<number>;
+    /**
+     * "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+     */
     public readonly engine!: pulumi.Output<string | undefined>;
     /**
      * hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
@@ -243,6 +246,9 @@ export interface InstanceState {
      * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
      */
     readonly duration?: pulumi.Input<number>;
+    /**
+     * "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+     */
     readonly engine?: pulumi.Input<string>;
     /**
      * hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
@@ -315,6 +321,9 @@ export interface InstanceArgs {
      * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
      */
     readonly duration?: pulumi.Input<number>;
+    /**
+     * "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+     */
     readonly engine?: pulumi.Input<string>;
     /**
      * hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).

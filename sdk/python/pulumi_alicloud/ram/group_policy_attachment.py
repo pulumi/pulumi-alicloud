@@ -35,7 +35,6 @@ class GroupPolicyAttachment(pulumi.CustomResource):
             comments="this is a group comments.",
             force=True)
         policy = alicloud.ram.Policy("policy",
-            description="this is a policy test",
             document=\"\"\"    {
               "Statement": [
                 {
@@ -52,13 +51,13 @@ class GroupPolicyAttachment(pulumi.CustomResource):
               ],
                 "Version": "1"
             }
-          
         \"\"\",
+            description="this is a policy test",
             force=True)
         attach = alicloud.ram.GroupPolicyAttachment("attach",
-            group_name=group.name,
             policy_name=policy.name,
-            policy_type=policy.type)
+            policy_type=policy.type,
+            group_name=group.name)
         ```
 
         :param str resource_name: The name of the resource.

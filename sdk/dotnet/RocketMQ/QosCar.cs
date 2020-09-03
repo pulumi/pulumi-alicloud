@@ -36,15 +36,15 @@ namespace Pulumi.AliCloud.RocketMQ
     ///         });
     ///         var defaultQosCar = new AliCloud.RocketMQ.QosCar("defaultQosCar", new AliCloud.RocketMQ.QosCarArgs
     ///         {
-    ///             Description = "tf-testSagQosCarDescription",
-    ///             LimitType = "Absolute",
-    ///             MaxBandwidthAbs = 20,
-    ///             MaxBandwidthPercent = 20,
-    ///             MinBandwidthAbs = 10,
-    ///             MinBandwidthPercent = 10,
-    ///             PercentSourceType = "InternetUpBandwidth",
-    ///             Priority = 1,
     ///             QosId = defaultQos.Id,
+    ///             Description = "tf-testSagQosCarDescription",
+    ///             Priority = 1,
+    ///             LimitType = "Absolute",
+    ///             MinBandwidthAbs = 10,
+    ///             MaxBandwidthAbs = 20,
+    ///             MinBandwidthPercent = 10,
+    ///             MaxBandwidthPercent = 20,
+    ///             PercentSourceType = "InternetUpBandwidth",
     ///         });
     ///     }
     /// 

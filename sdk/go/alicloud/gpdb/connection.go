@@ -45,27 +45,27 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultInstance, err := gpdb.NewInstance(ctx, "defaultInstance", &gpdb.InstanceArgs{
-// 			Description:        pulumi.String(name),
+// 			VswitchId:          defaultSwitch.ID(),
 // 			Engine:             pulumi.String("gpdb"),
 // 			EngineVersion:      pulumi.String("4.3"),
 // 			InstanceClass:      pulumi.String("gpdb.group.segsdx2"),
 // 			InstanceGroupCount: pulumi.String("2"),
-// 			VswitchId:          defaultSwitch.ID(),
+// 			Description:        pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = gpdb.NewConnection(ctx, "defaultConnection", &gpdb.ConnectionArgs{
-// 			ConnectionPrefix: pulumi.String("testAbc"),
 // 			InstanceId:       defaultInstance.ID(),
+// 			ConnectionPrefix: pulumi.String("testAbc"),
 // 		})
 // 		if err != nil {
 // 			return err

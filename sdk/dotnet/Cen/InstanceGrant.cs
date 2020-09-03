@@ -43,36 +43,36 @@ namespace Pulumi.AliCloud.Cen
     ///         {
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = "alicloud.account2",
+    ///             Provider = alicloud.Account2,
     ///         });
     ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
     ///         {
     ///             CidrBlock = "192.168.0.0/16",
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = "alicloud.account1",
+    ///             Provider = alicloud.Account1,
     ///         });
     ///         var fooInstanceGrant = new AliCloud.Cen.InstanceGrant("fooInstanceGrant", new AliCloud.Cen.InstanceGrantArgs
     ///         {
     ///             CenId = cen.Id,
-    ///             CenOwnerId = "uid2",
     ///             ChildInstanceId = vpc.Id,
+    ///             CenOwnerId = "uid2",
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = "alicloud.account1",
+    ///             Provider = alicloud.Account1,
     ///         });
     ///         var fooInstanceAttachment = new AliCloud.Cen.InstanceAttachment("fooInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
-    ///             ChildInstanceId = vpc.Id,
-    ///             ChildInstanceOwnerId = "uid1",
-    ///             ChildInstanceRegionId = "cn-qingdao",
     ///             InstanceId = cen.Id,
+    ///             ChildInstanceId = vpc.Id,
+    ///             ChildInstanceRegionId = "cn-qingdao",
+    ///             ChildInstanceOwnerId = "uid1",
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = "alicloud.account2",
+    ///             Provider = alicloud.Account2,
     ///             DependsOn = 
     ///             {
-    ///                 "alicloud_cen_instance_grant.foo",
+    ///                 fooInstanceGrant,
     ///             },
     ///         });
     ///     }

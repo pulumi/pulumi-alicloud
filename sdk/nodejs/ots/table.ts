@@ -20,19 +20,17 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraformtest";
- *
  * const foo = new alicloud.ots.Instance("foo", {
- *     accessedBy: "Any",
  *     description: name,
+ *     accessedBy: "Any",
  *     tags: {
  *         Created: "TF",
  *         For: "acceptance test",
  *     },
  * });
  * const basic = new alicloud.ots.Table("basic", {
- *     deviationCellVersionInSec: "1",
  *     instanceName: foo.name,
- *     maxVersion: 1,
+ *     tableName: name,
  *     primaryKeys: [
  *         {
  *             name: "pk1",
@@ -47,8 +45,9 @@ import * as utilities from "../utilities";
  *             type: "Binary",
  *         },
  *     ],
- *     tableName: name,
  *     timeToLive: -1,
+ *     maxVersion: 1,
+ *     deviationCellVersionInSec: 1,
  * });
  * ```
  */

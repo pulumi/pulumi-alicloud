@@ -40,23 +40,23 @@ class DomainConfig(pulumi.CustomResource):
 
         # Create a new Domain config.
         domain = alicloud.cdn.DomainNew("domain",
-            cdn_type="web",
             domain_name="tf-testacc%d.xiaozhu.com",
+            cdn_type="web",
             scope="overseas",
             sources=alicloud.cdn.DomainNewSourcesArgs(
                 content="1.1.1.1",
-                port=80,
-                priority=20,
                 type="ipaddr",
+                priority=20,
+                port=80,
                 weight=15,
             ))
         config = alicloud.cdn.DomainConfig("config",
             domain_name=domain.domain_name,
+            function_name="ip_allow_list_set",
             function_args=[alicloud.cdn.DomainConfigFunctionArgArgs(
                 arg_name="ip_list",
                 arg_value="110.110.110.110",
-            )],
-            function_name="ip_allow_list_set")
+            )])
         ```
 
         :param str resource_name: The name of the resource.

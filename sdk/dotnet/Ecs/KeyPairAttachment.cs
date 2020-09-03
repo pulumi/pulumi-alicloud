@@ -41,8 +41,8 @@ namespace Pulumi.AliCloud.Ecs
     ///         })));
     ///         var images = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
     ///         {
-    ///             MostRecent = true,
     ///             NameRegex = "^ubuntu_18.*64",
+    ///             MostRecent = true,
     ///             Owners = "system",
     ///         }));
     ///         var config = new Config();
@@ -53,9 +53,9 @@ namespace Pulumi.AliCloud.Ecs
     ///         });
     ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Zones[0].Id),
-    ///             CidrBlock = "10.1.1.0/24",
     ///             VpcId = vpc.Id,
+    ///             CidrBlock = "10.1.1.0/24",
+    ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Zones[0].Id),
     ///         });
     ///         var @group = new AliCloud.Ecs.SecurityGroup("group", new AliCloud.Ecs.SecurityGroupArgs
     ///         {
@@ -68,19 +68,19 @@ namespace Pulumi.AliCloud.Ecs
     ///             var range = new { Value = rangeIndex };
     ///             instance.Add(new AliCloud.Ecs.Instance($"instance-{range.Value}", new AliCloud.Ecs.InstanceArgs
     ///             {
-    ///                 ImageId = images.Apply(images =&gt; images.Images[0].Id),
-    ///                 InstanceChargeType = "PostPaid",
     ///                 InstanceName = $"{name}-{range.Value + 1}",
+    ///                 ImageId = images.Apply(images =&gt; images.Images[0].Id),
     ///                 InstanceType = type.Apply(type =&gt; type.InstanceTypes[0].Id),
-    ///                 InternetChargeType = "PayByTraffic",
-    ///                 InternetMaxBandwidthOut = 5,
-    ///                 Password = "Test12345",
     ///                 SecurityGroups = 
     ///                 {
     ///                     @group.Id,
     ///                 },
-    ///                 SystemDiskCategory = "cloud_ssd",
     ///                 VswitchId = vswitch.Id,
+    ///                 InternetChargeType = "PayByTraffic",
+    ///                 InternetMaxBandwidthOut = 5,
+    ///                 Password = "Test12345",
+    ///                 InstanceChargeType = "PostPaid",
+    ///                 SystemDiskCategory = "cloud_ssd",
     ///             }));
     ///         }
     ///         var pair = new AliCloud.Ecs.KeyPair("pair", new AliCloud.Ecs.KeyPairArgs
@@ -89,8 +89,8 @@ namespace Pulumi.AliCloud.Ecs
     ///         });
     ///         var attachment = new AliCloud.Ecs.KeyPairAttachment("attachment", new AliCloud.Ecs.KeyPairAttachmentArgs
     ///         {
-    ///             InstanceIds = instance.Select(__item =&gt; __item.Id).ToList(),
     ///             KeyName = pair.Id,
+    ///             InstanceIds = instance.Select(__item =&gt; __item.Id).ToList(),
     ///         });
     ///     }
     /// 

@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.CloudConnect
     ///         {
     ///             DependsOn = 
     ///             {
-    ///                 "alicloud_cloud_connect_network.ccn",
+    ///                 ccn,
     ///             },
     ///         });
     ///     }

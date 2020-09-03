@@ -37,10 +37,10 @@ namespace Pulumi.AliCloud.RocketMQ
     ///         });
     ///         var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new AliCloud.RocketMQ.TopicArgs
     ///         {
+    ///             Topic = topic,
     ///             InstanceId = defaultInstance.Id,
     ///             MessageType = 0,
     ///             Remark = "dafault_ons_topic_remark",
-    ///             Topic = topic,
     ///         });
     ///     }
     /// 

@@ -46,13 +46,13 @@ import (
 // 		}
 // 		vpc1, err := vpc.NewNetwork(ctx, "vpc1", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("192.168.0.0/16"),
-// 		}, pulumi.Provider("alicloud.fra"))
+// 		}, pulumi.Provider(alicloud.Fra))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		vpc2, err := vpc.NewNetwork(ctx, "vpc2", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		}, pulumi.Provider("alicloud.sh"))
+// 		}, pulumi.Provider(alicloud.Sh))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -72,40 +72,40 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cen.NewBandwidthPackageAttachment(ctx, "bwpAttach", &cen.BandwidthPackageAttachmentArgs{
-// 			BandwidthPackageId: bwp.ID(),
+// 		bwpAttach, err := cen.NewBandwidthPackageAttachment(ctx, "bwpAttach", &cen.BandwidthPackageAttachmentArgs{
 // 			InstanceId:         cen.ID(),
+// 			BandwidthPackageId: bwp.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cen.NewInstanceAttachment(ctx, "vpcAttach1", &cen.InstanceAttachmentArgs{
+// 		vpcAttach1, err := cen.NewInstanceAttachment(ctx, "vpcAttach1", &cen.InstanceAttachmentArgs{
+// 			InstanceId:            cen.ID(),
 // 			ChildInstanceId:       vpc1.ID(),
 // 			ChildInstanceRegionId: pulumi.String("eu-central-1"),
-// 			InstanceId:            cen.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cen.NewInstanceAttachment(ctx, "vpcAttach2", &cen.InstanceAttachmentArgs{
+// 		vpcAttach2, err := cen.NewInstanceAttachment(ctx, "vpcAttach2", &cen.InstanceAttachmentArgs{
+// 			InstanceId:            cen.ID(),
 // 			ChildInstanceId:       vpc2.ID(),
 // 			ChildInstanceRegionId: pulumi.String("cn-shanghai"),
-// 			InstanceId:            cen.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = cen.NewBandwidthLimit(ctx, "foo", &cen.BandwidthLimitArgs{
-// 			BandwidthLimit: pulumi.Int(4),
-// 			InstanceId:     cen.ID(),
+// 			InstanceId: cen.ID(),
 // 			RegionIds: pulumi.StringArray{
 // 				pulumi.String("eu-central-1"),
 // 				pulumi.String("cn-shanghai"),
 // 			},
+// 			BandwidthLimit: pulumi.Int(4),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_cen_bandwidth_package_attachment.bwp_attach",
-// 			"alicloud_cen_instance_attachment.vpc_attach_1",
-// 			"alicloud_cen_instance_attachment.vpc_attach_2",
+// 			bwpAttach,
+// 			vpcAttach1,
+// 			vpcAttach2,
 // 		}))
 // 		if err != nil {
 // 			return err

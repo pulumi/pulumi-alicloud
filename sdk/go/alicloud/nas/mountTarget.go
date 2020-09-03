@@ -10,7 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Nas Mount Target resource.
+// Provides a NAS Mount Target resource.
+// For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
 //
 // > NOTE: Available in v1.34.0+.
 //
@@ -34,31 +35,25 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooFileSystem, err := nas.NewFileSystem(ctx, "fooFileSystem", &nas.FileSystemArgs{
-// 			Description:  pulumi.String("tf-testAccNasConfigFs"),
+// 		exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
 // 			ProtocolType: pulumi.String("NFS"),
 // 			StorageType:  pulumi.String("Performance"),
+// 			Description:  pulumi.String("test file system"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		fooAccessGroup, err := nas.NewAccessGroup(ctx, "fooAccessGroup", &nas.AccessGroupArgs{
-// 			Description: pulumi.String("tf-testAccNasConfig"),
-// 			Type:        pulumi.String("Classic"),
+// 		exampleAccessGroup, err := nas.NewAccessGroup(ctx, "exampleAccessGroup", &nas.AccessGroupArgs{
+// 			AccessGroupName: pulumi.String("test_name"),
+// 			AccessGroupType: pulumi.String("Classic"),
+// 			Description:     pulumi.String("test access group"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = nas.NewAccessGroup(ctx, "bar", &nas.AccessGroupArgs{
-// 			Description: pulumi.String("tf-testAccNasConfig-2"),
-// 			Type:        pulumi.String("Classic"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = nas.NewMountTarget(ctx, "fooMountTarget", &nas.MountTargetArgs{
-// 			AccessGroupName: fooAccessGroup.ID(),
-// 			FileSystemId:    fooFileSystem.ID(),
+// 		_, err = nas.NewMountTarget(ctx, "exampleMountTarget", &nas.MountTargetArgs{
+// 			FileSystemId:    exampleFileSystem.ID(),
+// 			AccessGroupName: exampleAccessGroup.AccessGroupName,
 // 		})
 // 		if err != nil {
 // 			return err
@@ -70,13 +65,15 @@ import (
 type MountTarget struct {
 	pulumi.CustomResourceState
 
-	// Permission group name.
+	// The name of the permission group that applies to the mount target.
 	AccessGroupName pulumi.StringOutput `pulumi:"accessGroupName"`
-	// File system ID.
+	// The ID of the file system.
 	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
-	// Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
+	// The ID of security group.
+	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
+	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// VSwitch ID.
+	// The ID of the VSwitch in the VPC where the mount target resides.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 }
 
@@ -114,24 +111,28 @@ func GetMountTarget(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MountTarget resources.
 type mountTargetState struct {
-	// Permission group name.
+	// The name of the permission group that applies to the mount target.
 	AccessGroupName *string `pulumi:"accessGroupName"`
-	// File system ID.
+	// The ID of the file system.
 	FileSystemId *string `pulumi:"fileSystemId"`
-	// Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
+	// The ID of security group.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
 	Status *string `pulumi:"status"`
-	// VSwitch ID.
+	// The ID of the VSwitch in the VPC where the mount target resides.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type MountTargetState struct {
-	// Permission group name.
+	// The name of the permission group that applies to the mount target.
 	AccessGroupName pulumi.StringPtrInput
-	// File system ID.
+	// The ID of the file system.
 	FileSystemId pulumi.StringPtrInput
-	// Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
+	// The ID of security group.
+	SecurityGroupId pulumi.StringPtrInput
+	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
 	Status pulumi.StringPtrInput
-	// VSwitch ID.
+	// The ID of the VSwitch in the VPC where the mount target resides.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -140,25 +141,29 @@ func (MountTargetState) ElementType() reflect.Type {
 }
 
 type mountTargetArgs struct {
-	// Permission group name.
+	// The name of the permission group that applies to the mount target.
 	AccessGroupName string `pulumi:"accessGroupName"`
-	// File system ID.
+	// The ID of the file system.
 	FileSystemId string `pulumi:"fileSystemId"`
-	// Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
+	// The ID of security group.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
 	Status *string `pulumi:"status"`
-	// VSwitch ID.
+	// The ID of the VSwitch in the VPC where the mount target resides.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 // The set of arguments for constructing a MountTarget resource.
 type MountTargetArgs struct {
-	// Permission group name.
+	// The name of the permission group that applies to the mount target.
 	AccessGroupName pulumi.StringInput
-	// File system ID.
+	// The ID of the file system.
 	FileSystemId pulumi.StringInput
-	// Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
+	// The ID of security group.
+	SecurityGroupId pulumi.StringPtrInput
+	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
 	Status pulumi.StringPtrInput
-	// VSwitch ID.
+	// The ID of the VSwitch in the VPC where the mount target resides.
 	VswitchId pulumi.StringPtrInput
 }
 

@@ -134,6 +134,561 @@ func (o GetAlidnsDomainGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetAlidn
 	}).(GetAlidnsDomainGroupsGroupOutput)
 }
 
+type GetAlidnsDomainsDomain struct {
+	// Specifies whether the domain is from Alibaba Cloud or not.
+	AliDomain bool `pulumi:"aliDomain"`
+	// List of available TTLs.
+	AvailableTtls []int `pulumi:"availableTtls"`
+	// DNS list of domain names in the resolution system.
+	DnsServers []string `pulumi:"dnsServers"`
+	// ID of the domain.
+	DomainId string `pulumi:"domainId"`
+	// Name of the domain.
+	DomainName string `pulumi:"domainName"`
+	// Domain group ID, if not filled, the default is all groups.
+	GroupId string `pulumi:"groupId"`
+	// Name of group that contains the domain.
+	GroupName string `pulumi:"groupName"`
+	// The Id of resource.
+	Id string `pulumi:"id"`
+	// Whether it is in black hole.
+	InBlackHole bool `pulumi:"inBlackHole"`
+	// Whether it is cleaning.
+	InClean bool `pulumi:"inClean"`
+	// Cloud analysis product ID.
+	InstanceId string `pulumi:"instanceId"`
+	LineType   string `pulumi:"lineType"`
+	// Minimum TTL.
+	MinTtl int `pulumi:"minTtl"`
+	// Punycode of the Chinese domain.
+	PunyCode string `pulumi:"punyCode"`
+	// Tree-like analytical line list.
+	RecordLineTreeJson string `pulumi:"recordLineTreeJson"`
+	// Parse the line data list.
+	RecordLines []GetAlidnsDomainsDomainRecordLine `pulumi:"recordLines"`
+	// Whether it is a regional route.
+	RegionLines bool `pulumi:"regionLines"`
+	// The Id of resource group which the dns belongs.
+	Remark string `pulumi:"remark"`
+	// The Id of resource group which the dns belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Whether to allow auxiliary dns.
+	SlaveDns bool `pulumi:"slaveDns"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// Cloud analysis version code.
+	VersionCode string `pulumi:"versionCode"`
+	VersionName string `pulumi:"versionName"`
+}
+
+// GetAlidnsDomainsDomainInput is an input type that accepts GetAlidnsDomainsDomainArgs and GetAlidnsDomainsDomainOutput values.
+// You can construct a concrete instance of `GetAlidnsDomainsDomainInput` via:
+//
+//          GetAlidnsDomainsDomainArgs{...}
+type GetAlidnsDomainsDomainInput interface {
+	pulumi.Input
+
+	ToGetAlidnsDomainsDomainOutput() GetAlidnsDomainsDomainOutput
+	ToGetAlidnsDomainsDomainOutputWithContext(context.Context) GetAlidnsDomainsDomainOutput
+}
+
+type GetAlidnsDomainsDomainArgs struct {
+	// Specifies whether the domain is from Alibaba Cloud or not.
+	AliDomain pulumi.BoolInput `pulumi:"aliDomain"`
+	// List of available TTLs.
+	AvailableTtls pulumi.IntArrayInput `pulumi:"availableTtls"`
+	// DNS list of domain names in the resolution system.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// ID of the domain.
+	DomainId pulumi.StringInput `pulumi:"domainId"`
+	// Name of the domain.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Domain group ID, if not filled, the default is all groups.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// Name of group that contains the domain.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// The Id of resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether it is in black hole.
+	InBlackHole pulumi.BoolInput `pulumi:"inBlackHole"`
+	// Whether it is cleaning.
+	InClean pulumi.BoolInput `pulumi:"inClean"`
+	// Cloud analysis product ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	LineType   pulumi.StringInput `pulumi:"lineType"`
+	// Minimum TTL.
+	MinTtl pulumi.IntInput `pulumi:"minTtl"`
+	// Punycode of the Chinese domain.
+	PunyCode pulumi.StringInput `pulumi:"punyCode"`
+	// Tree-like analytical line list.
+	RecordLineTreeJson pulumi.StringInput `pulumi:"recordLineTreeJson"`
+	// Parse the line data list.
+	RecordLines GetAlidnsDomainsDomainRecordLineArrayInput `pulumi:"recordLines"`
+	// Whether it is a regional route.
+	RegionLines pulumi.BoolInput `pulumi:"regionLines"`
+	// The Id of resource group which the dns belongs.
+	Remark pulumi.StringInput `pulumi:"remark"`
+	// The Id of resource group which the dns belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Whether to allow auxiliary dns.
+	SlaveDns pulumi.BoolInput `pulumi:"slaveDns"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Cloud analysis version code.
+	VersionCode pulumi.StringInput `pulumi:"versionCode"`
+	VersionName pulumi.StringInput `pulumi:"versionName"`
+}
+
+func (GetAlidnsDomainsDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsDomainsDomain)(nil)).Elem()
+}
+
+func (i GetAlidnsDomainsDomainArgs) ToGetAlidnsDomainsDomainOutput() GetAlidnsDomainsDomainOutput {
+	return i.ToGetAlidnsDomainsDomainOutputWithContext(context.Background())
+}
+
+func (i GetAlidnsDomainsDomainArgs) ToGetAlidnsDomainsDomainOutputWithContext(ctx context.Context) GetAlidnsDomainsDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlidnsDomainsDomainOutput)
+}
+
+// GetAlidnsDomainsDomainArrayInput is an input type that accepts GetAlidnsDomainsDomainArray and GetAlidnsDomainsDomainArrayOutput values.
+// You can construct a concrete instance of `GetAlidnsDomainsDomainArrayInput` via:
+//
+//          GetAlidnsDomainsDomainArray{ GetAlidnsDomainsDomainArgs{...} }
+type GetAlidnsDomainsDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetAlidnsDomainsDomainArrayOutput() GetAlidnsDomainsDomainArrayOutput
+	ToGetAlidnsDomainsDomainArrayOutputWithContext(context.Context) GetAlidnsDomainsDomainArrayOutput
+}
+
+type GetAlidnsDomainsDomainArray []GetAlidnsDomainsDomainInput
+
+func (GetAlidnsDomainsDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlidnsDomainsDomain)(nil)).Elem()
+}
+
+func (i GetAlidnsDomainsDomainArray) ToGetAlidnsDomainsDomainArrayOutput() GetAlidnsDomainsDomainArrayOutput {
+	return i.ToGetAlidnsDomainsDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlidnsDomainsDomainArray) ToGetAlidnsDomainsDomainArrayOutputWithContext(ctx context.Context) GetAlidnsDomainsDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlidnsDomainsDomainArrayOutput)
+}
+
+type GetAlidnsDomainsDomainOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsDomainsDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsDomainsDomain)(nil)).Elem()
+}
+
+func (o GetAlidnsDomainsDomainOutput) ToGetAlidnsDomainsDomainOutput() GetAlidnsDomainsDomainOutput {
+	return o
+}
+
+func (o GetAlidnsDomainsDomainOutput) ToGetAlidnsDomainsDomainOutputWithContext(ctx context.Context) GetAlidnsDomainsDomainOutput {
+	return o
+}
+
+// Specifies whether the domain is from Alibaba Cloud or not.
+func (o GetAlidnsDomainsDomainOutput) AliDomain() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) bool { return v.AliDomain }).(pulumi.BoolOutput)
+}
+
+// List of available TTLs.
+func (o GetAlidnsDomainsDomainOutput) AvailableTtls() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) []int { return v.AvailableTtls }).(pulumi.IntArrayOutput)
+}
+
+// DNS list of domain names in the resolution system.
+func (o GetAlidnsDomainsDomainOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// ID of the domain.
+func (o GetAlidnsDomainsDomainOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// Name of the domain.
+func (o GetAlidnsDomainsDomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Domain group ID, if not filled, the default is all groups.
+func (o GetAlidnsDomainsDomainOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// Name of group that contains the domain.
+func (o GetAlidnsDomainsDomainOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The Id of resource.
+func (o GetAlidnsDomainsDomainOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether it is in black hole.
+func (o GetAlidnsDomainsDomainOutput) InBlackHole() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) bool { return v.InBlackHole }).(pulumi.BoolOutput)
+}
+
+// Whether it is cleaning.
+func (o GetAlidnsDomainsDomainOutput) InClean() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) bool { return v.InClean }).(pulumi.BoolOutput)
+}
+
+// Cloud analysis product ID.
+func (o GetAlidnsDomainsDomainOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetAlidnsDomainsDomainOutput) LineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.LineType }).(pulumi.StringOutput)
+}
+
+// Minimum TTL.
+func (o GetAlidnsDomainsDomainOutput) MinTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) int { return v.MinTtl }).(pulumi.IntOutput)
+}
+
+// Punycode of the Chinese domain.
+func (o GetAlidnsDomainsDomainOutput) PunyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.PunyCode }).(pulumi.StringOutput)
+}
+
+// Tree-like analytical line list.
+func (o GetAlidnsDomainsDomainOutput) RecordLineTreeJson() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.RecordLineTreeJson }).(pulumi.StringOutput)
+}
+
+// Parse the line data list.
+func (o GetAlidnsDomainsDomainOutput) RecordLines() GetAlidnsDomainsDomainRecordLineArrayOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) []GetAlidnsDomainsDomainRecordLine { return v.RecordLines }).(GetAlidnsDomainsDomainRecordLineArrayOutput)
+}
+
+// Whether it is a regional route.
+func (o GetAlidnsDomainsDomainOutput) RegionLines() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) bool { return v.RegionLines }).(pulumi.BoolOutput)
+}
+
+// The Id of resource group which the dns belongs.
+func (o GetAlidnsDomainsDomainOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.Remark }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which the dns belongs.
+func (o GetAlidnsDomainsDomainOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Whether to allow auxiliary dns.
+func (o GetAlidnsDomainsDomainOutput) SlaveDns() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) bool { return v.SlaveDns }).(pulumi.BoolOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetAlidnsDomainsDomainOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Cloud analysis version code.
+func (o GetAlidnsDomainsDomainOutput) VersionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.VersionCode }).(pulumi.StringOutput)
+}
+
+func (o GetAlidnsDomainsDomainOutput) VersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.VersionName }).(pulumi.StringOutput)
+}
+
+type GetAlidnsDomainsDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsDomainsDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlidnsDomainsDomain)(nil)).Elem()
+}
+
+func (o GetAlidnsDomainsDomainArrayOutput) ToGetAlidnsDomainsDomainArrayOutput() GetAlidnsDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetAlidnsDomainsDomainArrayOutput) ToGetAlidnsDomainsDomainArrayOutputWithContext(ctx context.Context) GetAlidnsDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetAlidnsDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetAlidnsDomainsDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlidnsDomainsDomain {
+		return vs[0].([]GetAlidnsDomainsDomain)[vs[1].(int)]
+	}).(GetAlidnsDomainsDomainOutput)
+}
+
+type GetAlidnsDomainsDomainRecordLine struct {
+	// The code of the parent line, or empty if there is none.
+	FatherCode string `pulumi:"fatherCode"`
+	// Sub-line Code.
+	LineCode string `pulumi:"lineCode"`
+	// Parent line display name.
+	LineDisplayName string `pulumi:"lineDisplayName"`
+	// Sub-line display name.
+	LineName string `pulumi:"lineName"`
+}
+
+// GetAlidnsDomainsDomainRecordLineInput is an input type that accepts GetAlidnsDomainsDomainRecordLineArgs and GetAlidnsDomainsDomainRecordLineOutput values.
+// You can construct a concrete instance of `GetAlidnsDomainsDomainRecordLineInput` via:
+//
+//          GetAlidnsDomainsDomainRecordLineArgs{...}
+type GetAlidnsDomainsDomainRecordLineInput interface {
+	pulumi.Input
+
+	ToGetAlidnsDomainsDomainRecordLineOutput() GetAlidnsDomainsDomainRecordLineOutput
+	ToGetAlidnsDomainsDomainRecordLineOutputWithContext(context.Context) GetAlidnsDomainsDomainRecordLineOutput
+}
+
+type GetAlidnsDomainsDomainRecordLineArgs struct {
+	// The code of the parent line, or empty if there is none.
+	FatherCode pulumi.StringInput `pulumi:"fatherCode"`
+	// Sub-line Code.
+	LineCode pulumi.StringInput `pulumi:"lineCode"`
+	// Parent line display name.
+	LineDisplayName pulumi.StringInput `pulumi:"lineDisplayName"`
+	// Sub-line display name.
+	LineName pulumi.StringInput `pulumi:"lineName"`
+}
+
+func (GetAlidnsDomainsDomainRecordLineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsDomainsDomainRecordLine)(nil)).Elem()
+}
+
+func (i GetAlidnsDomainsDomainRecordLineArgs) ToGetAlidnsDomainsDomainRecordLineOutput() GetAlidnsDomainsDomainRecordLineOutput {
+	return i.ToGetAlidnsDomainsDomainRecordLineOutputWithContext(context.Background())
+}
+
+func (i GetAlidnsDomainsDomainRecordLineArgs) ToGetAlidnsDomainsDomainRecordLineOutputWithContext(ctx context.Context) GetAlidnsDomainsDomainRecordLineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlidnsDomainsDomainRecordLineOutput)
+}
+
+// GetAlidnsDomainsDomainRecordLineArrayInput is an input type that accepts GetAlidnsDomainsDomainRecordLineArray and GetAlidnsDomainsDomainRecordLineArrayOutput values.
+// You can construct a concrete instance of `GetAlidnsDomainsDomainRecordLineArrayInput` via:
+//
+//          GetAlidnsDomainsDomainRecordLineArray{ GetAlidnsDomainsDomainRecordLineArgs{...} }
+type GetAlidnsDomainsDomainRecordLineArrayInput interface {
+	pulumi.Input
+
+	ToGetAlidnsDomainsDomainRecordLineArrayOutput() GetAlidnsDomainsDomainRecordLineArrayOutput
+	ToGetAlidnsDomainsDomainRecordLineArrayOutputWithContext(context.Context) GetAlidnsDomainsDomainRecordLineArrayOutput
+}
+
+type GetAlidnsDomainsDomainRecordLineArray []GetAlidnsDomainsDomainRecordLineInput
+
+func (GetAlidnsDomainsDomainRecordLineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlidnsDomainsDomainRecordLine)(nil)).Elem()
+}
+
+func (i GetAlidnsDomainsDomainRecordLineArray) ToGetAlidnsDomainsDomainRecordLineArrayOutput() GetAlidnsDomainsDomainRecordLineArrayOutput {
+	return i.ToGetAlidnsDomainsDomainRecordLineArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlidnsDomainsDomainRecordLineArray) ToGetAlidnsDomainsDomainRecordLineArrayOutputWithContext(ctx context.Context) GetAlidnsDomainsDomainRecordLineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlidnsDomainsDomainRecordLineArrayOutput)
+}
+
+type GetAlidnsDomainsDomainRecordLineOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsDomainsDomainRecordLineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsDomainsDomainRecordLine)(nil)).Elem()
+}
+
+func (o GetAlidnsDomainsDomainRecordLineOutput) ToGetAlidnsDomainsDomainRecordLineOutput() GetAlidnsDomainsDomainRecordLineOutput {
+	return o
+}
+
+func (o GetAlidnsDomainsDomainRecordLineOutput) ToGetAlidnsDomainsDomainRecordLineOutputWithContext(ctx context.Context) GetAlidnsDomainsDomainRecordLineOutput {
+	return o
+}
+
+// The code of the parent line, or empty if there is none.
+func (o GetAlidnsDomainsDomainRecordLineOutput) FatherCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomainRecordLine) string { return v.FatherCode }).(pulumi.StringOutput)
+}
+
+// Sub-line Code.
+func (o GetAlidnsDomainsDomainRecordLineOutput) LineCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomainRecordLine) string { return v.LineCode }).(pulumi.StringOutput)
+}
+
+// Parent line display name.
+func (o GetAlidnsDomainsDomainRecordLineOutput) LineDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomainRecordLine) string { return v.LineDisplayName }).(pulumi.StringOutput)
+}
+
+// Sub-line display name.
+func (o GetAlidnsDomainsDomainRecordLineOutput) LineName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomainRecordLine) string { return v.LineName }).(pulumi.StringOutput)
+}
+
+type GetAlidnsDomainsDomainRecordLineArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsDomainsDomainRecordLineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlidnsDomainsDomainRecordLine)(nil)).Elem()
+}
+
+func (o GetAlidnsDomainsDomainRecordLineArrayOutput) ToGetAlidnsDomainsDomainRecordLineArrayOutput() GetAlidnsDomainsDomainRecordLineArrayOutput {
+	return o
+}
+
+func (o GetAlidnsDomainsDomainRecordLineArrayOutput) ToGetAlidnsDomainsDomainRecordLineArrayOutputWithContext(ctx context.Context) GetAlidnsDomainsDomainRecordLineArrayOutput {
+	return o
+}
+
+func (o GetAlidnsDomainsDomainRecordLineArrayOutput) Index(i pulumi.IntInput) GetAlidnsDomainsDomainRecordLineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlidnsDomainsDomainRecordLine {
+		return vs[0].([]GetAlidnsDomainsDomainRecordLine)[vs[1].(int)]
+	}).(GetAlidnsDomainsDomainRecordLineOutput)
+}
+
+type GetAlidnsInstancesInstance struct {
+	// DNS security level.
+	DnsSecurity string `pulumi:"dnsSecurity"`
+	// Number of domain names bound.
+	DomainNumbers string `pulumi:"domainNumbers"`
+	// Id of the instance.
+	Id string `pulumi:"id"`
+	// Id of the instance resource.
+	InstanceId string `pulumi:"instanceId"`
+	// Paid package version.
+	VersionCode string `pulumi:"versionCode"`
+	// Paid package version name.
+	VersionName string `pulumi:"versionName"`
+}
+
+// GetAlidnsInstancesInstanceInput is an input type that accepts GetAlidnsInstancesInstanceArgs and GetAlidnsInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetAlidnsInstancesInstanceInput` via:
+//
+//          GetAlidnsInstancesInstanceArgs{...}
+type GetAlidnsInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetAlidnsInstancesInstanceOutput() GetAlidnsInstancesInstanceOutput
+	ToGetAlidnsInstancesInstanceOutputWithContext(context.Context) GetAlidnsInstancesInstanceOutput
+}
+
+type GetAlidnsInstancesInstanceArgs struct {
+	// DNS security level.
+	DnsSecurity pulumi.StringInput `pulumi:"dnsSecurity"`
+	// Number of domain names bound.
+	DomainNumbers pulumi.StringInput `pulumi:"domainNumbers"`
+	// Id of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Id of the instance resource.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Paid package version.
+	VersionCode pulumi.StringInput `pulumi:"versionCode"`
+	// Paid package version name.
+	VersionName pulumi.StringInput `pulumi:"versionName"`
+}
+
+func (GetAlidnsInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsInstancesInstance)(nil)).Elem()
+}
+
+func (i GetAlidnsInstancesInstanceArgs) ToGetAlidnsInstancesInstanceOutput() GetAlidnsInstancesInstanceOutput {
+	return i.ToGetAlidnsInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetAlidnsInstancesInstanceArgs) ToGetAlidnsInstancesInstanceOutputWithContext(ctx context.Context) GetAlidnsInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlidnsInstancesInstanceOutput)
+}
+
+// GetAlidnsInstancesInstanceArrayInput is an input type that accepts GetAlidnsInstancesInstanceArray and GetAlidnsInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetAlidnsInstancesInstanceArrayInput` via:
+//
+//          GetAlidnsInstancesInstanceArray{ GetAlidnsInstancesInstanceArgs{...} }
+type GetAlidnsInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetAlidnsInstancesInstanceArrayOutput() GetAlidnsInstancesInstanceArrayOutput
+	ToGetAlidnsInstancesInstanceArrayOutputWithContext(context.Context) GetAlidnsInstancesInstanceArrayOutput
+}
+
+type GetAlidnsInstancesInstanceArray []GetAlidnsInstancesInstanceInput
+
+func (GetAlidnsInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlidnsInstancesInstance)(nil)).Elem()
+}
+
+func (i GetAlidnsInstancesInstanceArray) ToGetAlidnsInstancesInstanceArrayOutput() GetAlidnsInstancesInstanceArrayOutput {
+	return i.ToGetAlidnsInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlidnsInstancesInstanceArray) ToGetAlidnsInstancesInstanceArrayOutputWithContext(ctx context.Context) GetAlidnsInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlidnsInstancesInstanceArrayOutput)
+}
+
+type GetAlidnsInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsInstancesInstance)(nil)).Elem()
+}
+
+func (o GetAlidnsInstancesInstanceOutput) ToGetAlidnsInstancesInstanceOutput() GetAlidnsInstancesInstanceOutput {
+	return o
+}
+
+func (o GetAlidnsInstancesInstanceOutput) ToGetAlidnsInstancesInstanceOutputWithContext(ctx context.Context) GetAlidnsInstancesInstanceOutput {
+	return o
+}
+
+// DNS security level.
+func (o GetAlidnsInstancesInstanceOutput) DnsSecurity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesInstance) string { return v.DnsSecurity }).(pulumi.StringOutput)
+}
+
+// Number of domain names bound.
+func (o GetAlidnsInstancesInstanceOutput) DomainNumbers() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesInstance) string { return v.DomainNumbers }).(pulumi.StringOutput)
+}
+
+// Id of the instance.
+func (o GetAlidnsInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Id of the instance resource.
+func (o GetAlidnsInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Paid package version.
+func (o GetAlidnsInstancesInstanceOutput) VersionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesInstance) string { return v.VersionCode }).(pulumi.StringOutput)
+}
+
+// Paid package version name.
+func (o GetAlidnsInstancesInstanceOutput) VersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesInstance) string { return v.VersionName }).(pulumi.StringOutput)
+}
+
+type GetAlidnsInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlidnsInstancesInstance)(nil)).Elem()
+}
+
+func (o GetAlidnsInstancesInstanceArrayOutput) ToGetAlidnsInstancesInstanceArrayOutput() GetAlidnsInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetAlidnsInstancesInstanceArrayOutput) ToGetAlidnsInstancesInstanceArrayOutputWithContext(ctx context.Context) GetAlidnsInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetAlidnsInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetAlidnsInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlidnsInstancesInstance {
+		return vs[0].([]GetAlidnsInstancesInstance)[vs[1].(int)]
+	}).(GetAlidnsInstancesInstanceOutput)
+}
+
 type GetAlidnsRecordsRecord struct {
 	// The domain name associated to the records.
 	DomainName string `pulumi:"domainName"`
@@ -571,7 +1126,8 @@ func (o GetDomainRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetDomainRec
 
 type GetDomainsDomain struct {
 	// Specifies whether the domain is from Alibaba Cloud or not.
-	AliDomain bool `pulumi:"aliDomain"`
+	AliDomain     bool  `pulumi:"aliDomain"`
+	AvailableTtls []int `pulumi:"availableTtls"`
 	// DNS list of domain names in the resolution system.
 	DnsServers []string `pulumi:"dnsServers"`
 	// ID of the domain.
@@ -596,11 +1152,14 @@ type GetDomainsDomain struct {
 	// Punycode of the Chinese domain.
 	PunyCode string `pulumi:"punyCode"`
 	// Tree-like analytical line list.
-	RecordLineTreeJson string `pulumi:"recordLineTreeJson"`
+	RecordLineTreeJson string                       `pulumi:"recordLineTreeJson"`
+	RecordLines        []GetDomainsDomainRecordLine `pulumi:"recordLines"`
 	// Whether it is a regional route.
 	RegionLines bool `pulumi:"regionLines"`
 	// The Id of resource group which the dns belongs.
 	Remark string `pulumi:"remark"`
+	// The Id of resource group which the dns belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// Whether to allow auxiliary dns.
 	SlaveDns bool `pulumi:"slaveDns"`
 	// A mapping of tags to assign to the resource.
@@ -623,7 +1182,8 @@ type GetDomainsDomainInput interface {
 
 type GetDomainsDomainArgs struct {
 	// Specifies whether the domain is from Alibaba Cloud or not.
-	AliDomain pulumi.BoolInput `pulumi:"aliDomain"`
+	AliDomain     pulumi.BoolInput     `pulumi:"aliDomain"`
+	AvailableTtls pulumi.IntArrayInput `pulumi:"availableTtls"`
 	// DNS list of domain names in the resolution system.
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// ID of the domain.
@@ -648,11 +1208,14 @@ type GetDomainsDomainArgs struct {
 	// Punycode of the Chinese domain.
 	PunyCode pulumi.StringInput `pulumi:"punyCode"`
 	// Tree-like analytical line list.
-	RecordLineTreeJson pulumi.StringInput `pulumi:"recordLineTreeJson"`
+	RecordLineTreeJson pulumi.StringInput                   `pulumi:"recordLineTreeJson"`
+	RecordLines        GetDomainsDomainRecordLineArrayInput `pulumi:"recordLines"`
 	// Whether it is a regional route.
 	RegionLines pulumi.BoolInput `pulumi:"regionLines"`
 	// The Id of resource group which the dns belongs.
 	Remark pulumi.StringInput `pulumi:"remark"`
+	// The Id of resource group which the dns belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// Whether to allow auxiliary dns.
 	SlaveDns pulumi.BoolInput `pulumi:"slaveDns"`
 	// A mapping of tags to assign to the resource.
@@ -716,6 +1279,10 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.
 // Specifies whether the domain is from Alibaba Cloud or not.
 func (o GetDomainsDomainOutput) AliDomain() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDomainsDomain) bool { return v.AliDomain }).(pulumi.BoolOutput)
+}
+
+func (o GetDomainsDomainOutput) AvailableTtls() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []int { return v.AvailableTtls }).(pulumi.IntArrayOutput)
 }
 
 // DNS list of domain names in the resolution system.
@@ -782,6 +1349,10 @@ func (o GetDomainsDomainOutput) RecordLineTreeJson() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.RecordLineTreeJson }).(pulumi.StringOutput)
 }
 
+func (o GetDomainsDomainOutput) RecordLines() GetDomainsDomainRecordLineArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []GetDomainsDomainRecordLine { return v.RecordLines }).(GetDomainsDomainRecordLineArrayOutput)
+}
+
 // Whether it is a regional route.
 func (o GetDomainsDomainOutput) RegionLines() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDomainsDomain) bool { return v.RegionLines }).(pulumi.BoolOutput)
@@ -790,6 +1361,11 @@ func (o GetDomainsDomainOutput) RegionLines() pulumi.BoolOutput {
 // The Id of resource group which the dns belongs.
 func (o GetDomainsDomainOutput) Remark() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Remark }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which the dns belongs.
+func (o GetDomainsDomainOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // Whether to allow auxiliary dns.
@@ -829,6 +1405,118 @@ func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomain {
 		return vs[0].([]GetDomainsDomain)[vs[1].(int)]
 	}).(GetDomainsDomainOutput)
+}
+
+type GetDomainsDomainRecordLine struct {
+	FatherCode      string `pulumi:"fatherCode"`
+	LineCode        string `pulumi:"lineCode"`
+	LineDisplayName string `pulumi:"lineDisplayName"`
+	LineName        string `pulumi:"lineName"`
+}
+
+// GetDomainsDomainRecordLineInput is an input type that accepts GetDomainsDomainRecordLineArgs and GetDomainsDomainRecordLineOutput values.
+// You can construct a concrete instance of `GetDomainsDomainRecordLineInput` via:
+//
+//          GetDomainsDomainRecordLineArgs{...}
+type GetDomainsDomainRecordLineInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainRecordLineOutput() GetDomainsDomainRecordLineOutput
+	ToGetDomainsDomainRecordLineOutputWithContext(context.Context) GetDomainsDomainRecordLineOutput
+}
+
+type GetDomainsDomainRecordLineArgs struct {
+	FatherCode      pulumi.StringInput `pulumi:"fatherCode"`
+	LineCode        pulumi.StringInput `pulumi:"lineCode"`
+	LineDisplayName pulumi.StringInput `pulumi:"lineDisplayName"`
+	LineName        pulumi.StringInput `pulumi:"lineName"`
+}
+
+func (GetDomainsDomainRecordLineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomainRecordLine)(nil)).Elem()
+}
+
+func (i GetDomainsDomainRecordLineArgs) ToGetDomainsDomainRecordLineOutput() GetDomainsDomainRecordLineOutput {
+	return i.ToGetDomainsDomainRecordLineOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainRecordLineArgs) ToGetDomainsDomainRecordLineOutputWithContext(ctx context.Context) GetDomainsDomainRecordLineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainRecordLineOutput)
+}
+
+// GetDomainsDomainRecordLineArrayInput is an input type that accepts GetDomainsDomainRecordLineArray and GetDomainsDomainRecordLineArrayOutput values.
+// You can construct a concrete instance of `GetDomainsDomainRecordLineArrayInput` via:
+//
+//          GetDomainsDomainRecordLineArray{ GetDomainsDomainRecordLineArgs{...} }
+type GetDomainsDomainRecordLineArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainRecordLineArrayOutput() GetDomainsDomainRecordLineArrayOutput
+	ToGetDomainsDomainRecordLineArrayOutputWithContext(context.Context) GetDomainsDomainRecordLineArrayOutput
+}
+
+type GetDomainsDomainRecordLineArray []GetDomainsDomainRecordLineInput
+
+func (GetDomainsDomainRecordLineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomainRecordLine)(nil)).Elem()
+}
+
+func (i GetDomainsDomainRecordLineArray) ToGetDomainsDomainRecordLineArrayOutput() GetDomainsDomainRecordLineArrayOutput {
+	return i.ToGetDomainsDomainRecordLineArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainRecordLineArray) ToGetDomainsDomainRecordLineArrayOutputWithContext(ctx context.Context) GetDomainsDomainRecordLineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainRecordLineArrayOutput)
+}
+
+type GetDomainsDomainRecordLineOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainRecordLineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomainRecordLine)(nil)).Elem()
+}
+
+func (o GetDomainsDomainRecordLineOutput) ToGetDomainsDomainRecordLineOutput() GetDomainsDomainRecordLineOutput {
+	return o
+}
+
+func (o GetDomainsDomainRecordLineOutput) ToGetDomainsDomainRecordLineOutputWithContext(ctx context.Context) GetDomainsDomainRecordLineOutput {
+	return o
+}
+
+func (o GetDomainsDomainRecordLineOutput) FatherCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomainRecordLine) string { return v.FatherCode }).(pulumi.StringOutput)
+}
+
+func (o GetDomainsDomainRecordLineOutput) LineCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomainRecordLine) string { return v.LineCode }).(pulumi.StringOutput)
+}
+
+func (o GetDomainsDomainRecordLineOutput) LineDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomainRecordLine) string { return v.LineDisplayName }).(pulumi.StringOutput)
+}
+
+func (o GetDomainsDomainRecordLineOutput) LineName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomainRecordLine) string { return v.LineName }).(pulumi.StringOutput)
+}
+
+type GetDomainsDomainRecordLineArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainRecordLineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomainRecordLine)(nil)).Elem()
+}
+
+func (o GetDomainsDomainRecordLineArrayOutput) ToGetDomainsDomainRecordLineArrayOutput() GetDomainsDomainRecordLineArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainRecordLineArrayOutput) ToGetDomainsDomainRecordLineArrayOutputWithContext(ctx context.Context) GetDomainsDomainRecordLineArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainRecordLineArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainRecordLineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomainRecordLine {
+		return vs[0].([]GetDomainsDomainRecordLine)[vs[1].(int)]
+	}).(GetDomainsDomainRecordLineOutput)
 }
 
 type GetGroupsGroup struct {
@@ -1372,6 +2060,12 @@ func (o GetResolutionLinesLineArrayOutput) Index(i pulumi.IntInput) GetResolutio
 func init() {
 	pulumi.RegisterOutputType(GetAlidnsDomainGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAlidnsDomainGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetAlidnsDomainsDomainOutput{})
+	pulumi.RegisterOutputType(GetAlidnsDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetAlidnsDomainsDomainRecordLineOutput{})
+	pulumi.RegisterOutputType(GetAlidnsDomainsDomainRecordLineArrayOutput{})
+	pulumi.RegisterOutputType(GetAlidnsInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetAlidnsInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetAlidnsRecordsRecordOutput{})
 	pulumi.RegisterOutputType(GetAlidnsRecordsRecordArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainGroupsGroupOutput{})
@@ -1380,6 +2074,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDomainRecordsRecordArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainRecordLineOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainRecordLineArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})

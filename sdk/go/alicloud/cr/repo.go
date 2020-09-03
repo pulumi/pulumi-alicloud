@@ -38,10 +38,10 @@ import (
 // 			return err
 // 		}
 // 		_, err = cr.NewRepo(ctx, "my_repo", &cr.RepoArgs{
-// 			Detail:    pulumi.String("this is a public repo"),
 // 			Namespace: my_namespace.Name,
-// 			RepoType:  pulumi.String("PUBLIC"),
 // 			Summary:   pulumi.String("this is summary of my new repo"),
+// 			RepoType:  pulumi.String("PUBLIC"),
+// 			Detail:    pulumi.String("this is a public repo"),
 // 		})
 // 		if err != nil {
 // 			return err

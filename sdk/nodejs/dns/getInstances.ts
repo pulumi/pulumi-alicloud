@@ -6,24 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
- *
- * > **NOTE:**  Available in 1.84.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = pulumi.output(alicloud.dns.getInstances({
- *     ids: ["dns-cn-oew1npk****"],
- * }, { async: true }));
- *
- * export const firstInstanceId = example.instances[0].id;
- * ```
- */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
     if (!opts) {
@@ -35,7 +17,9 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
     }
     return pulumi.runtime.invoke("alicloud:dns/getInstances:getInstances", {
         "ids": args.ids,
+        "lang": args.lang,
         "outputFile": args.outputFile,
+        "userClientIp": args.userClientIp,
     }, opts);
 }
 
@@ -47,7 +31,9 @@ export interface GetInstancesArgs {
      * A list of instance IDs.
      */
     readonly ids?: string[];
+    readonly lang?: string;
     readonly outputFile?: string;
+    readonly userClientIp?: string;
 }
 
 /**
@@ -66,5 +52,7 @@ export interface GetInstancesResult {
      * A list of instances. Each element contains the following attributes:
      */
     readonly instances: outputs.dns.GetInstancesInstance[];
+    readonly lang?: string;
     readonly outputFile?: string;
+    readonly userClientIp?: string;
 }

@@ -28,16 +28,16 @@ namespace Pulumi.AliCloud.Nas
         /// {
         ///     public MyStack()
         ///     {
-        ///         var mt = Output.Create(AliCloud.Nas.GetMountTargets.InvokeAsync(new AliCloud.Nas.GetMountTargetsArgs
+        ///         var example = Output.Create(AliCloud.Nas.GetMountTargets.InvokeAsync(new AliCloud.Nas.GetMountTargetsArgs
         ///         {
-        ///             AccessGroupName = "tf-testAccNasConfig",
         ///             FileSystemId = "1a2sc4d",
+        ///             AccessGroupName = "tf-testAccNasConfig",
         ///         }));
-        ///         this.AlicloudNasMountTargetsId = mt.Apply(mt =&gt; mt.Targets[0].Id);
+        ///         this.TheFirstMountTargetDomain = example.Apply(example =&gt; example.Targets[0].Id);
         ///     }
         /// 
-        ///     [Output("alicloudNasMountTargetsId")]
-        ///     public Output&lt;string&gt; AlicloudNasMountTargetsId { get; set; }
+        ///     [Output("theFirstMountTargetDomain")]
+        ///     public Output&lt;string&gt; TheFirstMountTargetDomain { get; set; }
         /// }
         /// ```
         /// {{% /example %}}
@@ -75,16 +75,28 @@ namespace Pulumi.AliCloud.Nas
         }
 
         /// <summary>
-        /// Filter results by a specific MountTargetDomain.
+        /// Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
         /// </summary>
         [Input("mountTargetDomain")]
         public string? MountTargetDomain { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific NetworkType.
+        /// </summary>
+        [Input("networkType")]
+        public string? NetworkType { get; set; }
 
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific NetworkType.
+        /// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -125,10 +137,14 @@ namespace Pulumi.AliCloud.Nas
         public readonly ImmutableArray<string> Ids;
         /// <summary>
         /// MountTargetDomain of the MountTarget.
-        /// * `type`- NetworkType of The MountTarget.
+        /// * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+        /// * `network_type`- (Available 1.95.0+) NetworkType of The MountTarget.
+        /// * `status`- (Available 1.95.0+) The status of the mount target.
         /// </summary>
         public readonly string? MountTargetDomain;
+        public readonly string? NetworkType;
         public readonly string? OutputFile;
+        public readonly string? Status;
         /// <summary>
         /// A list of MountTargetDomains. Each element contains the following attributes:
         /// </summary>
@@ -155,7 +171,11 @@ namespace Pulumi.AliCloud.Nas
 
             string? mountTargetDomain,
 
+            string? networkType,
+
             string? outputFile,
+
+            string? status,
 
             ImmutableArray<Outputs.GetMountTargetsTargetResult> targets,
 
@@ -170,7 +190,9 @@ namespace Pulumi.AliCloud.Nas
             Id = id;
             Ids = ids;
             MountTargetDomain = mountTargetDomain;
+            NetworkType = networkType;
             OutputFile = outputFile;
+            Status = status;
             Targets = targets;
             Type = type;
             VpcId = vpcId;

@@ -38,16 +38,16 @@ import (
 // 			return err
 // 		}
 // 		_, err = rocketmq.NewQosPolicy(ctx, "defaultQosPolicy", &rocketmq.QosPolicyArgs{
-// 			Description:     pulumi.String("tf-testSagQosPolicyDescription"),
-// 			DestCidr:        pulumi.String("10.10.0.0/24"),
-// 			DestPortRange:   pulumi.String("-1/-1"),
-// 			EndTime:         pulumi.String("2019-10-26T16:41:33+0800"),
-// 			IpProtocol:      pulumi.String("ALL"),
-// 			Priority:        pulumi.Int(1),
 // 			QosId:           defaultQos.ID(),
+// 			Description:     pulumi.String("tf-testSagQosPolicyDescription"),
+// 			Priority:        pulumi.Int(1),
+// 			IpProtocol:      pulumi.String("ALL"),
 // 			SourceCidr:      pulumi.String("192.168.0.0/24"),
 // 			SourcePortRange: pulumi.String("-1/-1"),
+// 			DestCidr:        pulumi.String("10.10.0.0/24"),
+// 			DestPortRange:   pulumi.String("-1/-1"),
 // 			StartTime:       pulumi.String("2019-10-25T16:41:33+0800"),
+// 			EndTime:         pulumi.String("2019-10-26T16:41:33+0800"),
 // 		})
 // 		if err != nil {
 // 			return err

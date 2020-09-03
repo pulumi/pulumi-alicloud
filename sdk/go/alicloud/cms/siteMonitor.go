@@ -14,6 +14,40 @@ import (
 // Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
 //
 // Available in 1.72.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cms.NewSiteMonitor(ctx, "basic", &cms.SiteMonitorArgs{
+// 			Address:  pulumi.String("http://www.alibabacloud.com"),
+// 			Interval: pulumi.Int(5),
+// 			IspCities: cms.SiteMonitorIspCityArray{
+// 				&cms.SiteMonitorIspCityArgs{
+// 					City: pulumi.String("546"),
+// 					Isp:  pulumi.String("465"),
+// 				},
+// 			},
+// 			TaskName: pulumi.String("tf-testAccCmsSiteMonitor_basic"),
+// 			TaskType: pulumi.String("HTTP"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type SiteMonitor struct {
 	pulumi.CustomResourceState
 

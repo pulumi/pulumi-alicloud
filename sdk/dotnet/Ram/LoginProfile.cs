@@ -25,16 +25,16 @@ namespace Pulumi.AliCloud.Ram
     ///         // Create a RAM login profile.
     ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
     ///         {
-    ///             Comments = "yoyoyo",
     ///             DisplayName = "user_display_name",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Force = true,
     ///             Mobile = "86-18688888888",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Comments = "yoyoyo",
+    ///             Force = true,
     ///         });
     ///         var profile = new AliCloud.Ram.LoginProfile("profile", new AliCloud.Ram.LoginProfileArgs
     ///         {
-    ///             Password = "Yourpassword1234",
     ///             UserName = user.Name,
+    ///             Password = "Yourpassword1234",
     ///         });
     ///     }
     /// 
