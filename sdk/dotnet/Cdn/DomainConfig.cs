@@ -31,21 +31,22 @@ namespace Pulumi.AliCloud.Cdn
     ///         // Create a new Domain config.
     ///         var domain = new AliCloud.Cdn.DomainNew("domain", new AliCloud.Cdn.DomainNewArgs
     ///         {
-    ///             CdnType = "web",
     ///             DomainName = "tf-testacc%d.xiaozhu.com",
+    ///             CdnType = "web",
     ///             Scope = "overseas",
     ///             Sources = new AliCloud.Cdn.Inputs.DomainNewSourcesArgs
     ///             {
     ///                 Content = "1.1.1.1",
-    ///                 Port = 80,
-    ///                 Priority = 20,
     ///                 Type = "ipaddr",
+    ///                 Priority = 20,
+    ///                 Port = 80,
     ///                 Weight = 15,
     ///             },
     ///         });
     ///         var config = new AliCloud.Cdn.DomainConfig("config", new AliCloud.Cdn.DomainConfigArgs
     ///         {
     ///             DomainName = domain.DomainName,
+    ///             FunctionName = "ip_allow_list_set",
     ///             FunctionArgs = 
     ///             {
     ///                 new AliCloud.Cdn.Inputs.DomainConfigFunctionArgArgs
@@ -54,7 +55,6 @@ namespace Pulumi.AliCloud.Cdn
     ///                     ArgValue = "110.110.110.110",
     ///                 },
     ///             },
-    ///             FunctionName = "ip_allow_list_set",
     ///         });
     ///     }
     /// 

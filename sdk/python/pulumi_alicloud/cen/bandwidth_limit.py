@@ -44,9 +44,9 @@ class BandwidthLimit(pulumi.CustomResource):
         fra = pulumi.providers.Alicloud("fra", region="eu-central-1")
         sh = pulumi.providers.Alicloud("sh", region="cn-shanghai")
         vpc1 = alicloud.vpc.Network("vpc1", cidr_block="192.168.0.0/16",
-        opts=ResourceOptions(provider="alicloud.fra"))
+        opts=ResourceOptions(provider=alicloud["fra"]))
         vpc2 = alicloud.vpc.Network("vpc2", cidr_block="172.16.0.0/12",
-        opts=ResourceOptions(provider="alicloud.sh"))
+        opts=ResourceOptions(provider=alicloud["sh"]))
         cen = alicloud.cen.Instance("cen", description="tf-testAccCenBandwidthLimitConfigDescription")
         bwp = alicloud.cen.BandwidthPackage("bwp",
             bandwidth=5,
@@ -55,27 +55,27 @@ class BandwidthLimit(pulumi.CustomResource):
                 "China",
             ])
         bwp_attach = alicloud.cen.BandwidthPackageAttachment("bwpAttach",
-            bandwidth_package_id=bwp.id,
-            instance_id=cen.id)
+            instance_id=cen.id,
+            bandwidth_package_id=bwp.id)
         vpc_attach1 = alicloud.cen.InstanceAttachment("vpcAttach1",
+            instance_id=cen.id,
             child_instance_id=vpc1.id,
-            child_instance_region_id="eu-central-1",
-            instance_id=cen.id)
+            child_instance_region_id="eu-central-1")
         vpc_attach2 = alicloud.cen.InstanceAttachment("vpcAttach2",
+            instance_id=cen.id,
             child_instance_id=vpc2.id,
-            child_instance_region_id="cn-shanghai",
-            instance_id=cen.id)
+            child_instance_region_id="cn-shanghai")
         foo = alicloud.cen.BandwidthLimit("foo",
-            bandwidth_limit=4,
             instance_id=cen.id,
             region_ids=[
                 "eu-central-1",
                 "cn-shanghai",
             ],
+            bandwidth_limit=4,
             opts=ResourceOptions(depends_on=[
-                    "alicloud_cen_bandwidth_package_attachment.bwp_attach",
-                    "alicloud_cen_instance_attachment.vpc_attach_1",
-                    "alicloud_cen_instance_attachment.vpc_attach_2",
+                    bwp_attach,
+                    vpc_attach1,
+                    vpc_attach2,
                 ]))
         ```
 

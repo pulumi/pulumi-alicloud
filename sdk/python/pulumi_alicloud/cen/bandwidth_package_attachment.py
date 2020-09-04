@@ -40,8 +40,8 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
                 "Asia-Pacific",
             ])
         foo = alicloud.cen.BandwidthPackageAttachment("foo",
-            bandwidth_package_id=bwp.id,
-            instance_id=cen.id)
+            instance_id=cen.id,
+            bandwidth_package_id=bwp.id)
         ```
 
         :param str resource_name: The name of the resource.

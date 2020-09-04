@@ -20,53 +20,51 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleProject = new alicloud.log.Project("example", {
- *     description: "create by terraform",
- * });
- * const exampleStore = new alicloud.log.Store("example", {
- *     appendMeta: true,
- *     autoSplit: true,
- *     maxSplitShardCount: 60,
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "create by terraform"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
  *     project: exampleProject.name,
  *     retentionPeriod: 3650,
  *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
  * });
- * const exampleAlert = new alicloud.log.Alert("example", {
- *     alertDisplayname: "tf-test-alert-displayname",
+ * const exampleAlert = new alicloud.log.Alert("exampleAlert", {
+ *     projectName: exampleProject.name,
  *     alertName: "tf-test-alert",
+ *     alertDisplayname: "tf-test-alert-displayname",
  *     condition: "count> 100",
  *     dashboard: "tf-test-dashboard",
+ *     queryLists: [{
+ *         logstore: "tf-test-logstore",
+ *         chartTitle: "chart_title",
+ *         start: "-60s",
+ *         end: "20s",
+ *         query: "* AND aliyun",
+ *     }],
  *     notificationLists: [
  *         {
- *             content: "alert content",
+ *             type: "SMS",
  *             mobileLists: [
  *                 "12345678",
  *                 "87654321",
  *             ],
- *             type: "SMS",
+ *             content: "alert content",
  *         },
  *         {
- *             content: "alert content",
+ *             type: "Email",
  *             emailLists: [
  *                 "aliyun@alibaba-inc.com",
  *                 "tf-test@123.com",
  *             ],
- *             type: "Email",
+ *             content: "alert content",
  *         },
  *         {
- *             content: "alert content",
- *             serviceUri: "www.aliyun.com",
  *             type: "DingTalk",
+ *             serviceUri: "www.aliyun.com",
+ *             content: "alert content",
  *         },
  *     ],
- *     projectName: exampleProject.name,
- *     queryLists: [{
- *         chartTitle: "chart_title",
- *         end: "20s",
- *         logstore: "tf-test-logstore",
- *         query: "* AND aliyun",
- *         start: "-60s",
- *     }],
  * });
  * ```
  */

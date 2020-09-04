@@ -22,11 +22,19 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Filter results by a specific MountTargetDomain.
+        /// Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
         /// </summary>
         public readonly string MountTargetDomain;
         /// <summary>
         /// Filter results by a specific NetworkType.
+        /// </summary>
+        public readonly string NetworkType;
+        /// <summary>
+        /// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
+        /// Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -46,6 +54,10 @@ namespace Pulumi.AliCloud.Nas.Outputs
 
             string mountTargetDomain,
 
+            string networkType,
+
+            string status,
+
             string type,
 
             string vpcId,
@@ -55,6 +67,8 @@ namespace Pulumi.AliCloud.Nas.Outputs
             AccessGroupName = accessGroupName;
             Id = id;
             MountTargetDomain = mountTargetDomain;
+            NetworkType = networkType;
+            Status = status;
             Type = type;
             VpcId = vpcId;
             VswitchId = vswitchId;

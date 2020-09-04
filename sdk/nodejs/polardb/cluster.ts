@@ -23,24 +23,21 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "polardbClusterconfig";
  * const creation = config.get("creation") || "PolarDB";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: creation,
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultCluster = new alicloud.polardb.Cluster("default", {
- *     dbNodeClass: "rds.mysql.s2.large",
+ * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
  *     dbType: "MySQL",
  *     dbVersion: "5.6",
- *     description: name,
+ *     dbNodeClass: "rds.mysql.s2.large",
  *     payType: "PostPaid",
+ *     description: name,
  *     vswitchId: defaultSwitch.id,
  * });
  * ```
@@ -86,6 +83,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly dbNodeClass!: pulumi.Output<string>;
     /**
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+     */
+    public readonly dbNodeCount!: pulumi.Output<number | undefined>;
+    /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
     public readonly dbType!: pulumi.Output<string>;
@@ -102,7 +104,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly maintainTime!: pulumi.Output<string>;
     /**
-     * Use as `dbNodeClass` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
      */
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
@@ -155,6 +157,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
             inputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
+            inputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
             inputs["dbType"] = state ? state.dbType : undefined;
             inputs["dbVersion"] = state ? state.dbVersion : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -181,6 +184,7 @@ export class Cluster extends pulumi.CustomResource {
             }
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
+            inputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
             inputs["dbType"] = args ? args.dbType : undefined;
             inputs["dbVersion"] = args ? args.dbVersion : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -224,6 +228,11 @@ export interface ClusterState {
      */
     readonly dbNodeClass?: pulumi.Input<string>;
     /**
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+     */
+    readonly dbNodeCount?: pulumi.Input<number>;
+    /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
     readonly dbType?: pulumi.Input<string>;
@@ -240,7 +249,7 @@ export interface ClusterState {
      */
     readonly maintainTime?: pulumi.Input<string>;
     /**
-     * Use as `dbNodeClass` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
      */
     readonly modifyType?: pulumi.Input<string>;
     /**
@@ -292,6 +301,11 @@ export interface ClusterArgs {
      */
     readonly dbNodeClass: pulumi.Input<string>;
     /**
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+     */
+    readonly dbNodeCount?: pulumi.Input<number>;
+    /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
     readonly dbType: pulumi.Input<string>;
@@ -308,7 +322,7 @@ export interface ClusterArgs {
      */
     readonly maintainTime?: pulumi.Input<string>;
     /**
-     * Use as `dbNodeClass` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
      */
     readonly modifyType?: pulumi.Input<string>;
     /**

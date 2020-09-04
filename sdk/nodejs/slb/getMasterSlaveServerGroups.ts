@@ -17,10 +17,68 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getMasterSlaveServerGroups({
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     eniAmount: 2,
+ * }));
+ * const image = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testAccSlbMasterSlaveServerGroupVpc";
+ * const number = config.get("number") || "1";
+ * const mainNetwork = new alicloud.vpc.Network("mainNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const mainSwitch = new alicloud.vpc.Switch("mainSwitch", {
+ *     vpcId: mainNetwork.id,
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const groupSecurityGroup = new alicloud.ecs.SecurityGroup("groupSecurityGroup", {vpcId: mainNetwork.id});
+ * const instanceInstance: alicloud.ecs.Instance[];
+ * for (const range = {value: 0}; range.value < "2"; range.value++) {
+ *     instanceInstance.push(new alicloud.ecs.Instance(`instanceInstance-${range.value}`, {
+ *         imageId: image.then(image => image.images[0].id),
+ *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
+ *         instanceName: name,
+ *         securityGroups: [groupSecurityGroup.id],
+ *         internetChargeType: "PayByTraffic",
+ *         internetMaxBandwidthOut: "10",
+ *         availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *         instanceChargeType: "PostPaid",
+ *         systemDiskCategory: "cloud_efficiency",
+ *         vswitchId: mainSwitch.id,
+ *     }));
+ * }
+ * const instanceLoadBalancer = new alicloud.slb.LoadBalancer("instanceLoadBalancer", {
+ *     vswitchId: mainSwitch.id,
+ *     specification: "slb.s2.small",
+ * });
+ * const groupMasterSlaveServerGroup = new alicloud.slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup", {
+ *     loadBalancerId: instanceLoadBalancer.id,
+ *     servers: [
+ *         {
+ *             serverId: instanceInstance[0].id,
+ *             port: 100,
+ *             weight: 100,
+ *             serverType: "Master",
+ *         },
+ *         {
+ *             serverId: instanceInstance[1].id,
+ *             port: 100,
+ *             weight: 100,
+ *             serverType: "Slave",
+ *         },
+ *     ],
+ * });
+ * const sampleDs = instanceLoadBalancer.id.apply(id => alicloud.slb.getMasterSlaveServerGroups({
  *     loadBalancerId: id,
- * }, { async: true }));
- *
+ * }));
  * export const firstSlbServerGroupId = sampleDs.groups[0].id;
  * ```
  */

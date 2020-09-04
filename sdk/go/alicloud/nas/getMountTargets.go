@@ -24,14 +24,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "tf-testAccNasConfig"
-// 		mt, err := nas.GetMountTargets(ctx, &nas.GetMountTargetsArgs{
-// 			AccessGroupName: &opt0,
+// 		example, err := nas.GetMountTargets(ctx, &nas.GetMountTargetsArgs{
 // 			FileSystemId:    "1a2sc4d",
+// 			AccessGroupName: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("alicloudNasMountTargetsId", mt.Targets[0].Id)
+// 		ctx.Export("theFirstMountTargetDomain", example.Targets[0].Id)
 // 		return nil
 // 	})
 // }
@@ -53,12 +53,18 @@ type GetMountTargetsArgs struct {
 	FileSystemId string `pulumi:"fileSystemId"`
 	// A list of MountTargetDomain.
 	Ids []string `pulumi:"ids"`
-	// Filter results by a specific MountTargetDomain.
+	// Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
 	//
 	// Deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
 	MountTargetDomain *string `pulumi:"mountTargetDomain"`
-	OutputFile        *string `pulumi:"outputFile"`
 	// Filter results by a specific NetworkType.
+	NetworkType *string `pulumi:"networkType"`
+	OutputFile  *string `pulumi:"outputFile"`
+	// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+	Status *string `pulumi:"status"`
+	// Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
 	Type *string `pulumi:"type"`
 	// Filter results by a specific VpcId.
 	VpcId *string `pulumi:"vpcId"`
@@ -76,14 +82,19 @@ type GetMountTargetsResult struct {
 	// A list of MountTargetDomain.
 	Ids []string `pulumi:"ids"`
 	// MountTargetDomain of the MountTarget.
-	// * `type`- NetworkType of The MountTarget.
+	// * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
+	// * `networkType`- (Available 1.95.0+) NetworkType of The MountTarget.
+	// * `status`- (Available 1.95.0+) The status of the mount target.
 	//
 	// Deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
 	MountTargetDomain *string `pulumi:"mountTargetDomain"`
+	NetworkType       *string `pulumi:"networkType"`
 	OutputFile        *string `pulumi:"outputFile"`
+	Status            *string `pulumi:"status"`
 	// A list of MountTargetDomains. Each element contains the following attributes:
 	Targets []GetMountTargetsTarget `pulumi:"targets"`
-	Type    *string                 `pulumi:"type"`
+	// Deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
+	Type *string `pulumi:"type"`
 	// VpcId of The MountTarget.
 	VpcId *string `pulumi:"vpcId"`
 	// VSwitchId of The MountTarget.

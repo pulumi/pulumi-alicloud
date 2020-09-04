@@ -41,7 +41,7 @@ class NetworkAttachment(pulumi.CustomResource):
         default = alicloud.cloudconnect.NetworkAttachment("default",
             ccn_id=ccn.id,
             sag_id="sag-xxxxx",
-            opts=ResourceOptions(depends_on=["alicloud_cloud_connect_network.ccn"]))
+            opts=ResourceOptions(depends_on=[ccn]))
         ```
 
         :param str resource_name: The name of the resource.

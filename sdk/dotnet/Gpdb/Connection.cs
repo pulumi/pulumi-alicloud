@@ -40,23 +40,23 @@ namespace Pulumi.AliCloud.Gpdb
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultInstance = new AliCloud.Gpdb.Instance("defaultInstance", new AliCloud.Gpdb.InstanceArgs
     ///         {
-    ///             Description = name,
+    ///             VswitchId = defaultSwitch.Id,
     ///             Engine = "gpdb",
     ///             EngineVersion = "4.3",
     ///             InstanceClass = "gpdb.group.segsdx2",
     ///             InstanceGroupCount = "2",
-    ///             VswitchId = defaultSwitch.Id,
+    ///             Description = name,
     ///         });
     ///         var defaultConnection = new AliCloud.Gpdb.Connection("defaultConnection", new AliCloud.Gpdb.ConnectionArgs
     ///         {
-    ///             ConnectionPrefix = "testAbc",
     ///             InstanceId = defaultInstance.Id,
+    ///             ConnectionPrefix = "testAbc",
     ///         });
     ///     }
     /// 

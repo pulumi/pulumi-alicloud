@@ -52,61 +52,79 @@ import (
 // 		}
 // 		vpc00, err := vpc.NewNetwork(ctx, "vpc00", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		}, pulumi.Provider("alicloud.vpc00_region"))
+// 		}, pulumi.Provider(alicloud.Vpc00_region))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		vpc01, err := vpc.NewNetwork(ctx, "vpc01", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		}, pulumi.Provider("alicloud.vpc01_region"))
+// 		}, pulumi.Provider(alicloud.Vpc01_region))
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cen.NewInstanceAttachment(ctx, "default00", &cen.InstanceAttachmentArgs{
+// 		default00, err := cen.NewInstanceAttachment(ctx, "default00", &cen.InstanceAttachmentArgs{
+// 			InstanceId:            defaultInstance.ID(),
 // 			ChildInstanceId:       vpc00.ID(),
 // 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
-// 			InstanceId:            defaultInstance.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cen.NewInstanceAttachment(ctx, "default01", &cen.InstanceAttachmentArgs{
+// 		default01, err := cen.NewInstanceAttachment(ctx, "default01", &cen.InstanceAttachmentArgs{
+// 			InstanceId:            defaultInstance.ID(),
 // 			ChildInstanceId:       vpc01.ID(),
 // 			ChildInstanceRegionId: pulumi.String("cn-shanghai"),
-// 			InstanceId:            defaultInstance.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = cen.NewRouteMap(ctx, "defaultRouteMap", &cen.RouteMapArgs{
-// 			AsPathMatchMode:      pulumi.String("Include"),
-// 			CenId:                pulumi.Any(alicloud_cen_instance.Cen.Id),
-// 			CenRegionId:          pulumi.String("cn-hangzhou"),
-// 			CidrMatchMode:        pulumi.String("Include"),
-// 			CommunityMatchMode:   pulumi.String("Include"),
-// 			CommunityOperateMode: pulumi.String("Additive"),
-// 			Description:          pulumi.String("test-desc"),
+// 			CenRegionId:       pulumi.String("cn-hangzhou"),
+// 			CenId:             pulumi.Any(alicloud_cen_instance.Cen.Id),
+// 			Description:       pulumi.String("test-desc"),
+// 			Priority:          pulumi.Int(1),
+// 			TransmitDirection: pulumi.String("RegionIn"),
+// 			MapResult:         pulumi.String("Permit"),
+// 			NextPriority:      pulumi.Int(1),
+// 			SourceRegionIds: pulumi.StringArray{
+// 				pulumi.String("cn-hangzhou"),
+// 			},
+// 			SourceInstanceIds: pulumi.StringArray{
+// 				vpc00.ID(),
+// 			},
+// 			SourceInstanceIdsReverseMatch: pulumi.Bool(false),
+// 			DestinationInstanceIds: pulumi.StringArray{
+// 				vpc01.ID(),
+// 			},
+// 			DestinationInstanceIdsReverseMatch: pulumi.Bool(false),
+// 			SourceRouteTableIds: pulumi.StringArray{
+// 				vpc00.RouteTableId,
+// 			},
+// 			DestinationRouteTableIds: pulumi.StringArray{
+// 				vpc01.RouteTableId,
+// 			},
+// 			SourceChildInstanceTypes: pulumi.StringArray{
+// 				pulumi.String("VPC"),
+// 			},
 // 			DestinationChildInstanceTypes: pulumi.StringArray{
 // 				pulumi.String("VPC"),
 // 			},
 // 			DestinationCidrBlocks: pulumi.StringArray{
 // 				vpc01.CidrBlock,
 // 			},
-// 			DestinationInstanceIds: pulumi.StringArray{
-// 				vpc01.ID(),
+// 			CidrMatchMode: pulumi.String("Include"),
+// 			RouteTypes: pulumi.StringArray{
+// 				pulumi.String("System"),
 // 			},
-// 			DestinationInstanceIdsReverseMatch: pulumi.Bool(false),
-// 			DestinationRouteTableIds: pulumi.StringArray{
-// 				vpc01.RouteTableId,
-// 			},
-// 			MapResult: pulumi.String("Permit"),
 // 			MatchAsns: pulumi.StringArray{
 // 				pulumi.String("65501"),
 // 			},
+// 			AsPathMatchMode: pulumi.String("Include"),
 // 			MatchCommunitySets: pulumi.StringArray{
 // 				pulumi.String("65501:1"),
 // 			},
-// 			NextPriority: pulumi.Int(1),
+// 			CommunityMatchMode:   pulumi.String("Include"),
+// 			CommunityOperateMode: pulumi.String("Additive"),
 // 			OperateCommunitySets: pulumi.StringArray{
 // 				pulumi.String("65501:1"),
 // 			},
@@ -114,27 +132,9 @@ import (
 // 			PrependAsPaths: pulumi.StringArray{
 // 				pulumi.String("65501"),
 // 			},
-// 			Priority: pulumi.Int(1),
-// 			RouteTypes: pulumi.StringArray{
-// 				pulumi.String("System"),
-// 			},
-// 			SourceChildInstanceTypes: pulumi.StringArray{
-// 				pulumi.String("VPC"),
-// 			},
-// 			SourceInstanceIds: pulumi.StringArray{
-// 				vpc00.ID(),
-// 			},
-// 			SourceInstanceIdsReverseMatch: pulumi.Bool(false),
-// 			SourceRegionIds: pulumi.StringArray{
-// 				pulumi.String("cn-hangzhou"),
-// 			},
-// 			SourceRouteTableIds: pulumi.StringArray{
-// 				vpc00.RouteTableId,
-// 			},
-// 			TransmitDirection: pulumi.String("RegionIn"),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_cen_instance_attachment.default00",
-// 			"alicloud_cen_instance_attachment.default01",
+// 			default00,
+// 			default01,
 // 		}))
 // 		if err != nil {
 // 			return err

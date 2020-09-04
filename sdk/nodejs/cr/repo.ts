@@ -26,10 +26,10 @@ import * as utilities from "../utilities";
  *     defaultVisibility: "PUBLIC",
  * });
  * const my_repo = new alicloud.cr.Repo("my-repo", {
- *     detail: "this is a public repo",
  *     namespace: my_namespace.name,
- *     repoType: "PUBLIC",
  *     summary: "this is summary of my new repo",
+ *     repoType: "PUBLIC",
+ *     detail: "this is a public repo",
  * });
  * ```
  */

@@ -35,17 +35,17 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cs.NewKubernetesAutoscaler(ctx, "_default", &cs.KubernetesAutoscalerArgs{
-// 			ClusterId:            pulumi.Any(_var.Cluster_id),
-// 			CoolDownDuration:     pulumi.Any(_var.Cool_down_duration),
-// 			DeferScaleInDuration: pulumi.Any(_var.Defer_scale_in_duration),
+// 			ClusterId: pulumi.Any(_var.Cluster_id),
 // 			Nodepools: cs.KubernetesAutoscalerNodepoolArray{
 // 				&cs.KubernetesAutoscalerNodepoolArgs{
 // 					Id:     pulumi.String("scaling_group_id"),
-// 					Labels: pulumi.String("a=b"),
 // 					Taints: pulumi.String("c=d:NoSchedule"),
+// 					Labels: pulumi.String("a=b"),
 // 				},
 // 			},
-// 			Utilization: pulumi.Any(_var.Utilization),
+// 			Utilization:          pulumi.Any(_var.Utilization),
+// 			CoolDownDuration:     pulumi.Any(_var.Cool_down_duration),
+// 			DeferScaleInDuration: pulumi.Any(_var.Defer_scale_in_duration),
 // 		})
 // 		if err != nil {
 // 			return err

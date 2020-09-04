@@ -27,16 +27,16 @@ namespace Pulumi.AliCloud.Ram
     ///         // Create a new RAM access key for user.
     ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
     ///         {
-    ///             Comments = "yoyoyo",
     ///             DisplayName = "user_display_name",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Force = true,
     ///             Mobile = "86-18688888888",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Comments = "yoyoyo",
+    ///             Force = true,
     ///         });
     ///         var ak = new AliCloud.Ram.AccessKey("ak", new AliCloud.Ram.AccessKeyArgs
     ///         {
-    ///             SecretFile = "/xxx/xxx/xxx.txt",
     ///             UserName = user.Name,
+    ///             SecretFile = "/xxx/xxx/xxx.txt",
     ///         });
     ///     }
     /// 

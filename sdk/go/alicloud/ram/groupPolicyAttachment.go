@@ -34,17 +34,17 @@ import (
 // 			return err
 // 		}
 // 		policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "    {\n", "      \"Statement\": [\n", "        {\n", "          \"Action\": [\n", "            \"oss:ListObjects\",\n", "            \"oss:GetObject\"\n", "          ],\n", "          \"Effect\": \"Allow\",\n", "          \"Resource\": [\n", "            \"acs:oss:*:*:mybucket\",\n", "            \"acs:oss:*:*:mybucket/*\"\n", "          ]\n", "        }\n", "      ],\n", "        \"Version\": \"1\"\n", "    }\n")),
 // 			Description: pulumi.String("this is a policy test"),
-// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "    {\n", "      \"Statement\": [\n", "        {\n", "          \"Action\": [\n", "            \"oss:ListObjects\",\n", "            \"oss:GetObject\"\n", "          ],\n", "          \"Effect\": \"Allow\",\n", "          \"Resource\": [\n", "            \"acs:oss:*:*:mybucket\",\n", "            \"acs:oss:*:*:mybucket/*\"\n", "          ]\n", "        }\n", "      ],\n", "        \"Version\": \"1\"\n", "    }\n", "  \n")),
 // 			Force:       pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = ram.NewGroupPolicyAttachment(ctx, "attach", &ram.GroupPolicyAttachmentArgs{
-// 			GroupName:  group.Name,
 // 			PolicyName: policy.Name,
 // 			PolicyType: policy.Type,
+// 			GroupName:  group.Name,
 // 		})
 // 		if err != nil {
 // 			return err

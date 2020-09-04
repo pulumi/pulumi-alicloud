@@ -32,6 +32,7 @@ class DiskAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        # Create a new ECS disk-attachment and use it attach one disk to a new instance.
         ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
         ecs_disk = alicloud.ecs.Disk("ecsDisk",
             availability_zone="cn-beijing-a",
@@ -40,12 +41,12 @@ class DiskAttachment(pulumi.CustomResource):
                 "Name": "TerraformTest-disk",
             })
         ecs_instance = alicloud.ecs.Instance("ecsInstance",
-            availability_zone="cn-beijing-a",
             image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
-            instance_name="Hello",
             instance_type="ecs.n4.small",
-            internet_charge_type="PayByBandwidth",
+            availability_zone="cn-beijing-a",
             security_groups=[ecs_sg.id],
+            instance_name="Hello",
+            internet_charge_type="PayByBandwidth",
             tags={
                 "Name": "TerraformTest-instance",
             })

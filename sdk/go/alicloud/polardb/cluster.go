@@ -45,19 +45,19 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = polardb.NewCluster(ctx, "defaultCluster", &polardb.ClusterArgs{
-// 			DbNodeClass: pulumi.String("rds.mysql.s2.large"),
 // 			DbType:      pulumi.String("MySQL"),
 // 			DbVersion:   pulumi.String("5.6"),
-// 			Description: pulumi.String(name),
+// 			DbNodeClass: pulumi.String("rds.mysql.s2.large"),
 // 			PayType:     pulumi.String("PostPaid"),
+// 			Description: pulumi.String(name),
 // 			VswitchId:   defaultSwitch.ID(),
 // 		})
 // 		if err != nil {
@@ -76,6 +76,9 @@ type Cluster struct {
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+	DbNodeCount pulumi.IntPtrOutput `pulumi:"dbNodeCount"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringOutput `pulumi:"dbType"`
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
@@ -84,7 +87,7 @@ type Cluster struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
-	// Use as `dbNodeClass` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters ClusterParameterArrayOutput `pulumi:"parameters"`
@@ -149,6 +152,9 @@ type clusterState struct {
 	ConnectionString *string `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass *string `pulumi:"dbNodeClass"`
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType *string `pulumi:"dbType"`
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
@@ -157,7 +163,7 @@ type clusterState struct {
 	Description *string `pulumi:"description"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
-	// Use as `dbNodeClass` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType *string `pulumi:"modifyType"`
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters []ClusterParameter `pulumi:"parameters"`
@@ -186,6 +192,9 @@ type ClusterState struct {
 	ConnectionString pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringPtrInput
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+	DbNodeCount pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
@@ -194,7 +203,7 @@ type ClusterState struct {
 	Description pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
-	// Use as `dbNodeClass` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters ClusterParameterArrayInput
@@ -225,6 +234,9 @@ type clusterArgs struct {
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass string `pulumi:"dbNodeClass"`
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType string `pulumi:"dbType"`
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
@@ -233,7 +245,7 @@ type clusterArgs struct {
 	Description *string `pulumi:"description"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
-	// Use as `dbNodeClass` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType *string `pulumi:"modifyType"`
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters []ClusterParameter `pulumi:"parameters"`
@@ -261,6 +273,9 @@ type ClusterArgs struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringInput
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+	DbNodeCount pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringInput
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
@@ -269,7 +284,7 @@ type ClusterArgs struct {
 	Description pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
-	// Use as `dbNodeClass` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters ClusterParameterArrayInput

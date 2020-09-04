@@ -16,9 +16,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Create a new bandwidth package attachment and use it to attach a bandwidth package to a new CEN
- * const cen = new alicloud.cen.Instance("cen", {
- *     description: "tf-testAccCenBandwidthPackageAttachmentDescription",
- * });
+ * const cen = new alicloud.cen.Instance("cen", {description: "tf-testAccCenBandwidthPackageAttachmentDescription"});
  * const bwp = new alicloud.cen.BandwidthPackage("bwp", {
  *     bandwidth: 20,
  *     geographicRegionIds: [
@@ -27,8 +25,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * const foo = new alicloud.cen.BandwidthPackageAttachment("foo", {
- *     bandwidthPackageId: bwp.id,
  *     instanceId: cen.id,
+ *     bandwidthPackageId: bwp.id,
  * });
  * ```
  */

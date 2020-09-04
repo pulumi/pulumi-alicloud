@@ -79,8 +79,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := oss.NewBucket(ctx, "bucket_target", &oss.BucketArgs{
-// 			Acl:    pulumi.String("public-read"),
 // 			Bucket: pulumi.String("bucket-170309-acl"),
+// 			Acl:    pulumi.String("public-read"),
 // 		})
 // 		if err != nil {
 // 			return err

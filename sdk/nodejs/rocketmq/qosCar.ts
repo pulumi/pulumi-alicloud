@@ -22,17 +22,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultQos = new alicloud.rocketmq.Qos("default", {});
- * const defaultQosCar = new alicloud.rocketmq.QosCar("default", {
- *     description: "tf-testSagQosCarDescription",
- *     limitType: "Absolute",
- *     maxBandwidthAbs: 20,
- *     maxBandwidthPercent: 20,
- *     minBandwidthAbs: 10,
- *     minBandwidthPercent: 10,
- *     percentSourceType: "InternetUpBandwidth",
- *     priority: 1,
+ * const defaultQos = new alicloud.rocketmq.Qos("defaultQos", {});
+ * const defaultQosCar = new alicloud.rocketmq.QosCar("defaultQosCar", {
  *     qosId: defaultQos.id,
+ *     description: "tf-testSagQosCarDescription",
+ *     priority: "1",
+ *     limitType: "Absolute",
+ *     minBandwidthAbs: "10",
+ *     maxBandwidthAbs: "20",
+ *     minBandwidthPercent: "10",
+ *     maxBandwidthPercent: "20",
+ *     percentSourceType: "InternetUpBandwidth",
  * });
  * ```
  */

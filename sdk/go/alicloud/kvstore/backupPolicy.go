@@ -42,34 +42,34 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
-// 			EngineVersion: pulumi.String("2.8"),
 // 			InstanceClass: pulumi.String("Memcache"),
 // 			InstanceName:  pulumi.String(name),
-// 			InstanceType:  pulumi.String("memcache.master.small.default"),
+// 			VswitchId:     defaultSwitch.ID(),
 // 			PrivateIp:     pulumi.String("172.16.0.10"),
 // 			SecurityIps: pulumi.StringArray{
 // 				pulumi.String("10.0.0.1"),
 // 			},
-// 			VswitchId: defaultSwitch.ID(),
+// 			InstanceType:  pulumi.String("memcache.master.small.default"),
+// 			EngineVersion: pulumi.String("2.8"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = kvstore.NewBackupPolicy(ctx, "defaultBackupPolicy", &kvstore.BackupPolicyArgs{
+// 			InstanceId: defaultInstance.ID(),
 // 			BackupPeriods: pulumi.StringArray{
 // 				pulumi.String("Tuesday"),
 // 				pulumi.String("Wednesday"),
 // 			},
 // 			BackupTime: pulumi.String("10:00Z-11:00Z"),
-// 			InstanceId: defaultInstance.ID(),
 // 		})
 // 		if err != nil {
 // 			return err

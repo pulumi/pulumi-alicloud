@@ -21,27 +21,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const testProject = new alicloud.log.Project("test", {
- *     description: "create by terraform",
- * });
- * const testStore = new alicloud.log.Store("test", {
- *     appendMeta: true,
- *     autoSplit: true,
- *     maxSplitShardCount: 60,
+ * const testProject = new alicloud.log.Project("testProject", {description: "create by terraform"});
+ * const testStore = new alicloud.log.Store("testStore", {
  *     project: testProject.name,
  *     retentionPeriod: 3650,
  *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
  * });
- * const testMachineGroup = new alicloud.log.MachineGroup("test", {
+ * const testMachineGroup = new alicloud.log.MachineGroup("testMachineGroup", {
+ *     project: testProject.name,
+ *     topic: "terraform",
  *     identifyLists: [
  *         "10.0.0.1",
  *         "10.0.0.3",
  *         "10.0.0.2",
  *     ],
- *     project: testProject.name,
- *     topic: "terraform",
  * });
- * const testLogTailConfig = new alicloud.log.LogTailConfig("test", {
+ * const testLogTailConfig = new alicloud.log.LogTailConfig("testLogTailConfig", {
+ *     project: testProject.name,
+ *     logstore: testStore.name,
+ *     inputType: "file",
+ *     logSample: "test",
+ *     outputType: "LogService",
  *     inputDetail: `  	{
  * 		"logPath": "/logPath",
  * 		"filePattern": "access.log",
@@ -52,17 +55,13 @@ import * as utilities from "../utilities";
  * 		"fileEncoding": "gbk",
  * 		"maxDepth": 10
  * 	}
- * 	`,
- *     inputType: "file",
- *     logSample: "test",
- *     logstore: testStore.name,
- *     outputType: "LogService",
- *     project: testProject.name,
+ * 	
+ * `,
  * });
- * const testLogTailAttachment = new alicloud.log.LogTailAttachment("test", {
+ * const testLogTailAttachment = new alicloud.log.LogTailAttachment("testLogTailAttachment", {
+ *     project: testProject.name,
  *     logtailConfigName: testLogTailConfig.name,
  *     machineGroupName: testMachineGroup.name,
- *     project: testProject.name,
  * });
  * ```
  */

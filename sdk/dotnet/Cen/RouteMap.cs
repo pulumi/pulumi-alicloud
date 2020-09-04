@@ -30,6 +30,7 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     public MyStack()
     ///     {
+    ///         // Create a cen Route map resource and use it.
     ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
     ///         {
     ///         });
@@ -46,36 +47,62 @@ namespace Pulumi.AliCloud.Cen
     ///             CidrBlock = "172.16.0.0/12",
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = "alicloud.vpc00_region",
+    ///             Provider = alicloud.Vpc00_region,
     ///         });
     ///         var vpc01 = new AliCloud.Vpc.Network("vpc01", new AliCloud.Vpc.NetworkArgs
     ///         {
     ///             CidrBlock = "172.16.0.0/12",
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = "alicloud.vpc01_region",
+    ///             Provider = alicloud.Vpc01_region,
     ///         });
     ///         var default00 = new AliCloud.Cen.InstanceAttachment("default00", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
+    ///             InstanceId = defaultInstance.Id,
     ///             ChildInstanceId = vpc00.Id,
     ///             ChildInstanceRegionId = "cn-hangzhou",
-    ///             InstanceId = defaultInstance.Id,
     ///         });
     ///         var default01 = new AliCloud.Cen.InstanceAttachment("default01", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
+    ///             InstanceId = defaultInstance.Id,
     ///             ChildInstanceId = vpc01.Id,
     ///             ChildInstanceRegionId = "cn-shanghai",
-    ///             InstanceId = defaultInstance.Id,
     ///         });
     ///         var defaultRouteMap = new AliCloud.Cen.RouteMap("defaultRouteMap", new AliCloud.Cen.RouteMapArgs
     ///         {
-    ///             AsPathMatchMode = "Include",
-    ///             CenId = alicloud_cen_instance.Cen.Id,
     ///             CenRegionId = "cn-hangzhou",
-    ///             CidrMatchMode = "Include",
-    ///             CommunityMatchMode = "Include",
-    ///             CommunityOperateMode = "Additive",
+    ///             CenId = alicloud_cen_instance.Cen.Id,
     ///             Description = "test-desc",
+    ///             Priority = 1,
+    ///             TransmitDirection = "RegionIn",
+    ///             MapResult = "Permit",
+    ///             NextPriority = 1,
+    ///             SourceRegionIds = 
+    ///             {
+    ///                 "cn-hangzhou",
+    ///             },
+    ///             SourceInstanceIds = 
+    ///             {
+    ///                 vpc00.Id,
+    ///             },
+    ///             SourceInstanceIdsReverseMatch = false,
+    ///             DestinationInstanceIds = 
+    ///             {
+    ///                 vpc01.Id,
+    ///             },
+    ///             DestinationInstanceIdsReverseMatch = false,
+    ///             SourceRouteTableIds = 
+    ///             {
+    ///                 vpc00.RouteTableId,
+    ///             },
+    ///             DestinationRouteTableIds = 
+    ///             {
+    ///                 vpc01.RouteTableId,
+    ///             },
+    ///             SourceChildInstanceTypes = 
+    ///             {
+    ///                 "VPC",
+    ///             },
     ///             DestinationChildInstanceTypes = 
     ///             {
     ///                 "VPC",
@@ -84,25 +111,22 @@ namespace Pulumi.AliCloud.Cen
     ///             {
     ///                 vpc01.CidrBlock,
     ///             },
-    ///             DestinationInstanceIds = 
+    ///             CidrMatchMode = "Include",
+    ///             RouteTypes = 
     ///             {
-    ///                 vpc01.Id,
+    ///                 "System",
     ///             },
-    ///             DestinationInstanceIdsReverseMatch = false,
-    ///             DestinationRouteTableIds = 
-    ///             {
-    ///                 vpc01.RouteTableId,
-    ///             },
-    ///             MapResult = "Permit",
     ///             MatchAsns = 
     ///             {
     ///                 "65501",
     ///             },
+    ///             AsPathMatchMode = "Include",
     ///             MatchCommunitySets = 
     ///             {
     ///                 "65501:1",
     ///             },
-    ///             NextPriority = 1,
+    ///             CommunityMatchMode = "Include",
+    ///             CommunityOperateMode = "Additive",
     ///             OperateCommunitySets = 
     ///             {
     ///                 "65501:1",
@@ -112,35 +136,12 @@ namespace Pulumi.AliCloud.Cen
     ///             {
     ///                 "65501",
     ///             },
-    ///             Priority = 1,
-    ///             RouteTypes = 
-    ///             {
-    ///                 "System",
-    ///             },
-    ///             SourceChildInstanceTypes = 
-    ///             {
-    ///                 "VPC",
-    ///             },
-    ///             SourceInstanceIds = 
-    ///             {
-    ///                 vpc00.Id,
-    ///             },
-    ///             SourceInstanceIdsReverseMatch = false,
-    ///             SourceRegionIds = 
-    ///             {
-    ///                 "cn-hangzhou",
-    ///             },
-    ///             SourceRouteTableIds = 
-    ///             {
-    ///                 vpc00.RouteTableId,
-    ///             },
-    ///             TransmitDirection = "RegionIn",
     ///         }, new CustomResourceOptions
     ///         {
     ///             DependsOn = 
     ///             {
-    ///                 "alicloud_cen_instance_attachment.default00",
-    ///                 "alicloud_cen_instance_attachment.default01",
+    ///                 default00,
+    ///                 default01,
     ///             },
     ///         });
     ///     }

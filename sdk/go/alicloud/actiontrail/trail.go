@@ -6,13 +6,12 @@ package actiontrail
 import (
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+// Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
 //
-// > **NOTE:** Available in 1.35.0+
+// > **NOTE:** Available in 1.95.0+
 //
 // ## Example Usage
 //
@@ -26,11 +25,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := actiontrail.NewTrail(ctx, "foo", &actiontrail.TrailArgs{
-// 			EventRw:       pulumi.String("Write-test"),
-// 			OssBucketName: pulumi.Any(alicloud_oss_bucket.Bucket.Id),
-// 			OssKeyPrefix:  pulumi.String("at-product-account-audit-B"),
-// 			RoleName:      pulumi.Any(alicloud_ram_role_policy_attachment.Attach.Role_name),
+// 		_, err := actiontrail.NewTrail(ctx, "_default", &actiontrail.TrailArgs{
+// 			EventRw:       pulumi.String("All"),
+// 			OssBucketName: pulumi.String("bucket_name"),
+// 			RoleName:      pulumi.String("aliyunserviceroleforactiontrail"),
+// 			TrailName:     pulumi.String("action-trail"),
+// 			TrailRegion:   pulumi.String("cn-hangzhou"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -42,12 +42,17 @@ import (
 type Trail struct {
 	pulumi.CustomResourceState
 
-	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
-	EventRw pulumi.StringPtrOutput `pulumi:"eventRw"`
-	// The name of the trail to be created, which must be unique for an account.
+	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+	EventRw             pulumi.StringPtrOutput `pulumi:"eventRw"`
+	IsOrganizationTrail pulumi.BoolPtrOutput   `pulumi:"isOrganizationTrail"`
+	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+	MnsTopicArn pulumi.StringPtrOutput `pulumi:"mnsTopicArn"`
+	// Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
-	OssBucketName pulumi.StringOutput `pulumi:"ossBucketName"`
+	OssBucketName pulumi.StringPtrOutput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
 	OssKeyPrefix pulumi.StringPtrOutput `pulumi:"ossKeyPrefix"`
 	// The RAM role in ActionTrail permitted by the user.
@@ -56,17 +61,17 @@ type Trail struct {
 	SlsProjectArn pulumi.StringPtrOutput `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn pulumi.StringPtrOutput `pulumi:"slsWriteRoleArn"`
+	// The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+	Status pulumi.StringPtrOutput `pulumi:"status"`
+	// The name of the trail to be created, which must be unique for an account.
+	TrailName pulumi.StringOutput `pulumi:"trailName"`
+	// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+	TrailRegion pulumi.StringPtrOutput `pulumi:"trailRegion"`
 }
 
 // NewTrail registers a new resource with the given unique name, arguments, and options.
 func NewTrail(ctx *pulumi.Context,
 	name string, args *TrailArgs, opts ...pulumi.ResourceOption) (*Trail, error) {
-	if args == nil || args.OssBucketName == nil {
-		return nil, errors.New("missing required argument 'OssBucketName'")
-	}
-	if args == nil || args.RoleName == nil {
-		return nil, errors.New("missing required argument 'RoleName'")
-	}
 	if args == nil {
 		args = &TrailArgs{}
 	}
@@ -92,9 +97,14 @@ func GetTrail(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Trail resources.
 type trailState struct {
-	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
-	EventRw *string `pulumi:"eventRw"`
-	// The name of the trail to be created, which must be unique for an account.
+	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+	EventRw             *string `pulumi:"eventRw"`
+	IsOrganizationTrail *bool   `pulumi:"isOrganizationTrail"`
+	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+	MnsTopicArn *string `pulumi:"mnsTopicArn"`
+	// Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
 	Name *string `pulumi:"name"`
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName *string `pulumi:"ossBucketName"`
@@ -106,12 +116,23 @@ type trailState struct {
 	SlsProjectArn *string `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn *string `pulumi:"slsWriteRoleArn"`
+	// The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+	Status *string `pulumi:"status"`
+	// The name of the trail to be created, which must be unique for an account.
+	TrailName *string `pulumi:"trailName"`
+	// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+	TrailRegion *string `pulumi:"trailRegion"`
 }
 
 type TrailState struct {
-	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
-	EventRw pulumi.StringPtrInput
-	// The name of the trail to be created, which must be unique for an account.
+	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+	EventRw             pulumi.StringPtrInput
+	IsOrganizationTrail pulumi.BoolPtrInput
+	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+	MnsTopicArn pulumi.StringPtrInput
+	// Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
 	Name pulumi.StringPtrInput
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName pulumi.StringPtrInput
@@ -123,6 +144,12 @@ type TrailState struct {
 	SlsProjectArn pulumi.StringPtrInput
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn pulumi.StringPtrInput
+	// The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+	Status pulumi.StringPtrInput
+	// The name of the trail to be created, which must be unique for an account.
+	TrailName pulumi.StringPtrInput
+	// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+	TrailRegion pulumi.StringPtrInput
 }
 
 func (TrailState) ElementType() reflect.Type {
@@ -130,38 +157,60 @@ func (TrailState) ElementType() reflect.Type {
 }
 
 type trailArgs struct {
-	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
-	EventRw *string `pulumi:"eventRw"`
-	// The name of the trail to be created, which must be unique for an account.
+	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+	EventRw             *string `pulumi:"eventRw"`
+	IsOrganizationTrail *bool   `pulumi:"isOrganizationTrail"`
+	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+	MnsTopicArn *string `pulumi:"mnsTopicArn"`
+	// Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
 	Name *string `pulumi:"name"`
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
-	OssBucketName string `pulumi:"ossBucketName"`
+	OssBucketName *string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
 	OssKeyPrefix *string `pulumi:"ossKeyPrefix"`
 	// The RAM role in ActionTrail permitted by the user.
-	RoleName string `pulumi:"roleName"`
+	RoleName *string `pulumi:"roleName"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn *string `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn *string `pulumi:"slsWriteRoleArn"`
+	// The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+	Status *string `pulumi:"status"`
+	// The name of the trail to be created, which must be unique for an account.
+	TrailName *string `pulumi:"trailName"`
+	// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+	TrailRegion *string `pulumi:"trailRegion"`
 }
 
 // The set of arguments for constructing a Trail resource.
 type TrailArgs struct {
-	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
-	EventRw pulumi.StringPtrInput
-	// The name of the trail to be created, which must be unique for an account.
+	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+	EventRw             pulumi.StringPtrInput
+	IsOrganizationTrail pulumi.BoolPtrInput
+	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+	MnsTopicArn pulumi.StringPtrInput
+	// Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
 	Name pulumi.StringPtrInput
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
-	OssBucketName pulumi.StringInput
+	OssBucketName pulumi.StringPtrInput
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
 	OssKeyPrefix pulumi.StringPtrInput
 	// The RAM role in ActionTrail permitted by the user.
-	RoleName pulumi.StringInput
+	RoleName pulumi.StringPtrInput
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringPtrInput
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn pulumi.StringPtrInput
+	// The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+	Status pulumi.StringPtrInput
+	// The name of the trail to be created, which must be unique for an account.
+	TrailName pulumi.StringPtrInput
+	// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+	TrailRegion pulumi.StringPtrInput
 }
 
 func (TrailArgs) ElementType() reflect.Type {

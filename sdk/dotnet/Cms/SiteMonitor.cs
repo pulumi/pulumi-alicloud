@@ -14,6 +14,38 @@ namespace Pulumi.AliCloud.Cms
     /// Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
     /// 
     /// Available in 1.72.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basic = new AliCloud.Cms.SiteMonitor("basic", new AliCloud.Cms.SiteMonitorArgs
+    ///         {
+    ///             Address = "http://www.alibabacloud.com",
+    ///             Interval = 5,
+    ///             IspCities = 
+    ///             {
+    ///                 new AliCloud.Cms.Inputs.SiteMonitorIspCityArgs
+    ///                 {
+    ///                     City = "546",
+    ///                     Isp = "465",
+    ///                 },
+    ///             },
+    ///             TaskName = "tf-testAccCmsSiteMonitor_basic",
+    ///             TaskType = "HTTP",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SiteMonitor : Pulumi.CustomResource
     {

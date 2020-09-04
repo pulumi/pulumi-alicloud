@@ -9,41 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.80.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const creation = config.get("creation") || "PolarDB";
- * const name = config.get("name") || "polardbconnectionbasic";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
- *     availableResourceCreation: creation,
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
- *     vpcId: defaultNetwork.id,
- * });
- * const defaultCluster = new alicloud.polardb.Cluster("default", {
- *     dbNodeClass: "polar.mysql.x4.large",
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- *     description: name,
- *     payType: "PostPaid",
- *     vswitchId: defaultSwitch.id,
- * });
- * const endpoint = new alicloud.PolardbEndpoints("endpoint", {
- *     dbClusterId: defaultCluster.id,
- *     endpointType: "Custom",
- * });
- * ```
  */
 export class Endpoint extends pulumi.CustomResource {
     /**

@@ -17,12 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/12",
- * });
- * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("default", {
- *     description: "network_acl",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("defaultNetworkAcl", {
  *     vpcId: defaultNetwork.id,
+ *     description: "network_acl",
  * });
  * ```
  */

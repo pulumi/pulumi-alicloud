@@ -16,43 +16,40 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "Rds";
  * const name = config.get("name") || "dbaccountprivilegebasic";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: creation,
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
  * const instance = new alicloud.rds.Instance("instance", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
- *     instanceName: name,
- *     instanceStorage: 10,
  *     instanceType: "rds.mysql.s1.small",
+ *     instanceStorage: "10",
  *     vswitchId: defaultSwitch.id,
+ *     instanceName: name,
  * });
- * const db: alicloud.rds.Database[] = [];
- * for (let i = 0; i < 2; i++) {
- *     db.push(new alicloud.rds.Database(`db-${i}`, {
- *         description: "from terraform",
+ * const db: alicloud.rds.Database[];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     db.push(new alicloud.rds.Database(`db-${range.value}`, {
  *         instanceId: instance.id,
+ *         description: "from terraform",
  *     }));
  * }
  * const account = new alicloud.rds.Account("account", {
- *     description: "from terraform",
  *     instanceId: instance.id,
  *     password: "Test12345",
+ *     description: "from terraform",
  * });
  * const privilege = new alicloud.rds.AccountPrivilege("privilege", {
- *     accountName: account.name,
- *     dbNames: db.map(v => v.name),
  *     instanceId: instance.id,
+ *     accountName: account.name,
  *     privilege: "ReadOnly",
+ *     dbNames: db.map(__item => __item.name),
  * });
  * ```
  */

@@ -57,17 +57,17 @@ class Cluster(pulumi.CustomResource):
         default_zones = alicloud.get_zones(available_resource_creation=creation)
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_cluster = alicloud.adb.Cluster("defaultCluster",
-            db_cluster_category="Cluster",
             db_cluster_version="3.0",
+            db_cluster_category="Cluster",
             db_node_class="C8",
             db_node_count=2,
             db_node_storage=200,
-            description=name,
             pay_type="PostPaid",
+            description=name,
             vswitch_id=default_switch.id)
         ```
 

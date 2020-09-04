@@ -42,16 +42,16 @@ import (
 // 			return err
 // 		}
 // 		_, err = vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultNatGateway, err := vpc.NewNatGateway(ctx, "defaultNatGateway", &vpc.NatGatewayArgs{
-// 			Specification: pulumi.String("Small"),
 // 			VpcId:         defaultNetwork.ID(),
+// 			Specification: pulumi.String("Small"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -68,12 +68,12 @@ import (
 // 			return err
 // 		}
 // 		_, err = vpc.NewForwardEntry(ctx, "defaultForwardEntry", &vpc.ForwardEntryArgs{
+// 			ForwardTableId: defaultNatGateway.ForwardTableIds,
 // 			ExternalIp:     defaultEip.IpAddress,
 // 			ExternalPort:   pulumi.String("80"),
-// 			ForwardTableId: defaultNatGateway.ForwardTableIds,
+// 			IpProtocol:     pulumi.String("tcp"),
 // 			InternalIp:     pulumi.String("172.16.0.3"),
 // 			InternalPort:   pulumi.String("8080"),
-// 			IpProtocol:     pulumi.String("tcp"),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -33,14 +33,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		domain, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
-// 			CdnType:    pulumi.String("web"),
 // 			DomainName: pulumi.String(fmt.Sprintf("%v%v%v", "tf-testacc", "%", "d.xiaozhu.com")),
+// 			CdnType:    pulumi.String("web"),
 // 			Scope:      pulumi.String("overseas"),
 // 			Sources: &cdn.DomainNewSourcesArgs{
 // 				Content:  pulumi.String("1.1.1.1"),
-// 				Port:     pulumi.Int(80),
-// 				Priority: pulumi.Int(20),
 // 				Type:     pulumi.String("ipaddr"),
+// 				Priority: pulumi.Int(20),
+// 				Port:     pulumi.Int(80),
 // 				Weight:   pulumi.Int(15),
 // 			},
 // 		})
@@ -48,14 +48,14 @@ import (
 // 			return err
 // 		}
 // 		_, err = cdn.NewDomainConfig(ctx, "config", &cdn.DomainConfigArgs{
-// 			DomainName: domain.DomainName,
+// 			DomainName:   domain.DomainName,
+// 			FunctionName: pulumi.String("ip_allow_list_set"),
 // 			FunctionArgs: cdn.DomainConfigFunctionArgArray{
 // 				&cdn.DomainConfigFunctionArgArgs{
 // 					ArgName:  pulumi.String("ip_list"),
 // 					ArgValue: pulumi.String("110.110.110.110"),
 // 				},
 // 			},
-// 			FunctionName: pulumi.String("ip_allow_list_set"),
 // 		})
 // 		if err != nil {
 // 			return err

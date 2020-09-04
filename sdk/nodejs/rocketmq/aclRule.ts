@@ -21,20 +21,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAcl = new alicloud.rocketmq.Acl("default", {
- *     sagCount: "0",
- * });
- * const defaultAclRule = new alicloud.rocketmq.AclRule("default", {
+ * const defaultAcl = new alicloud.rocketmq.Acl("defaultAcl", {sagCount: "0"});
+ * const defaultAclRule = new alicloud.rocketmq.AclRule("defaultAclRule", {
  *     aclId: defaultAcl.id,
  *     description: "tf-testSagAclRule",
- *     destCidr: "192.168.1.0/24",
- *     destPortRange: "-1/-1",
- *     direction: "in",
- *     ipProtocol: "ALL",
  *     policy: "accept",
- *     priority: 1,
+ *     ipProtocol: "ALL",
+ *     direction: "in",
  *     sourceCidr: "10.10.1.0/24",
  *     sourcePortRange: "-1/-1",
+ *     destCidr: "192.168.1.0/24",
+ *     destPortRange: "-1/-1",
+ *     priority: "1",
  * });
  * ```
  */

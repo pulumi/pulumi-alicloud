@@ -47,14 +47,14 @@ class KubernetesAutoscaler(pulumi.CustomResource):
 
         default = alicloud.cs.KubernetesAutoscaler("default",
             cluster_id=var["cluster_id"],
-            cool_down_duration=var["cool_down_duration"],
-            defer_scale_in_duration=var["defer_scale_in_duration"],
             nodepools=[alicloud.cs.KubernetesAutoscalerNodepoolArgs(
                 id="scaling_group_id",
-                labels="a=b",
                 taints="c=d:NoSchedule",
+                labels="a=b",
             )],
-            utilization=var["utilization"])
+            utilization=var["utilization"],
+            cool_down_duration=var["cool_down_duration"],
+            defer_scale_in_duration=var["defer_scale_in_duration"])
         ```
 
         :param str resource_name: The name of the resource.

@@ -23,18 +23,18 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf-testAccAccessGroupsdatasource"
-// 		opt1 := "^foo"
-// 		opt2 := "Classic"
-// 		ag, err := nas.GetAccessGroups(ctx, &nas.GetAccessGroupsArgs{
-// 			Description: &opt0,
-// 			NameRegex:   &opt1,
-// 			Type:        &opt2,
+// 		opt0 := "^foo"
+// 		opt1 := "Classic"
+// 		opt2 := "tf-testAccAccessGroupsdatasource"
+// 		example, err := nas.GetAccessGroups(ctx, &nas.GetAccessGroupsArgs{
+// 			NameRegex:       &opt0,
+// 			AccessGroupType: &opt1,
+// 			Description:     &opt2,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("alicloudNasAccessGroupsId", ag.Groups[0].Id)
+// 		ctx.Export("alicloudNasAccessGroupsId", example.Groups[0].Id)
 // 		return nil
 // 	})
 // }
@@ -50,29 +50,47 @@ func GetAccessGroups(ctx *pulumi.Context, args *GetAccessGroupsArgs, opts ...pul
 
 // A collection of arguments for invoking getAccessGroups.
 type GetAccessGroupsArgs struct {
+	// The name of access group.
+	AccessGroupName *string `pulumi:"accessGroupName"`
+	// Filter results by a specific AccessGroupType.
+	AccessGroupType *string `pulumi:"accessGroupType"`
 	// Filter results by a specific Description.
 	Description *string `pulumi:"description"`
+	// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+	FileSystemType *string `pulumi:"fileSystemType"`
 	// A regex string to filter AccessGroups by name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// Filter results by a specific AccessGroupType.
+	// Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.
 	Type *string `pulumi:"type"`
+	// Specifies whether the time to return is in UTC. Valid values: true and false.
+	UseutcDateTime *bool `pulumi:"useutcDateTime"`
 }
 
 // A collection of values returned by getAccessGroups.
 type GetAccessGroupsResult struct {
-	// Destription of the AccessGroup.
-	Description *string `pulumi:"description"`
+	// (Available in 1.95.0+) The name of the AccessGroup.
+	AccessGroupName *string `pulumi:"accessGroupName"`
+	// (Available in 1.95.0+) The type of the AccessGroup.
+	AccessGroupType *string `pulumi:"accessGroupType"`
+	// Description of the AccessGroup.
+	Description    *string `pulumi:"description"`
+	FileSystemType *string `pulumi:"fileSystemType"`
 	// A list of AccessGroups. Each element contains the following attributes:
 	Groups []GetAccessGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of AccessGroup IDs, the value is set to `names` .
+	// A list of AccessGroup IDs, the value is set to `names`. After version 1.95.0 the item value as `<access_group_id>:<file_system_type>`.
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of AccessGroup names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// AccessGroupType of the AccessGroup.
-	Type *string `pulumi:"type"`
+	// (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `accessGroupType` after version 1.95.0.
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.
+	Type           *string `pulumi:"type"`
+	UseutcDateTime *bool   `pulumi:"useutcDateTime"`
 }

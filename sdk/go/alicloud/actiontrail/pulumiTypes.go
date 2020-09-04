@@ -644,18 +644,24 @@ func (o GetTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetTopicsTopicOutput
 type GetTrailsActiontrail struct {
 	// Indicates whether the event is a read or a write event.
 	EventRw string `pulumi:"eventRw"`
-	// The name of the trail.
-	Name string `pulumi:"name"`
+	// The id of the ActionTrail Trail. It is the same as trail name.
+	Id string `pulumi:"id"`
 	// The name of the specified OSS bucket.
 	OssBucketName string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
 	OssKeyPrefix string `pulumi:"ossKeyPrefix"`
-	// The role in ActionTrail.
+	// The role in ActionTrail Trail.
 	RoleName string `pulumi:"roleName"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn string `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn string `pulumi:"slsWriteRoleArn"`
+	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+	Status string `pulumi:"status"`
+	// The name of the ActionTrail Trail.
+	TrailName string `pulumi:"trailName"`
+	// The regions to which the trail is applied.
+	TrailRegion string `pulumi:"trailRegion"`
 }
 
 // GetTrailsActiontrailInput is an input type that accepts GetTrailsActiontrailArgs and GetTrailsActiontrailOutput values.
@@ -672,18 +678,24 @@ type GetTrailsActiontrailInput interface {
 type GetTrailsActiontrailArgs struct {
 	// Indicates whether the event is a read or a write event.
 	EventRw pulumi.StringInput `pulumi:"eventRw"`
-	// The name of the trail.
-	Name pulumi.StringInput `pulumi:"name"`
+	// The id of the ActionTrail Trail. It is the same as trail name.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the specified OSS bucket.
 	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
 	OssKeyPrefix pulumi.StringInput `pulumi:"ossKeyPrefix"`
-	// The role in ActionTrail.
+	// The role in ActionTrail Trail.
 	RoleName pulumi.StringInput `pulumi:"roleName"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringInput `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn pulumi.StringInput `pulumi:"slsWriteRoleArn"`
+	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The name of the ActionTrail Trail.
+	TrailName pulumi.StringInput `pulumi:"trailName"`
+	// The regions to which the trail is applied.
+	TrailRegion pulumi.StringInput `pulumi:"trailRegion"`
 }
 
 func (GetTrailsActiontrailArgs) ElementType() reflect.Type {
@@ -742,9 +754,9 @@ func (o GetTrailsActiontrailOutput) EventRw() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.EventRw }).(pulumi.StringOutput)
 }
 
-// The name of the trail.
-func (o GetTrailsActiontrailOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.Name }).(pulumi.StringOutput)
+// The id of the ActionTrail Trail. It is the same as trail name.
+func (o GetTrailsActiontrailOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the specified OSS bucket.
@@ -757,7 +769,7 @@ func (o GetTrailsActiontrailOutput) OssKeyPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.OssKeyPrefix }).(pulumi.StringOutput)
 }
 
-// The role in ActionTrail.
+// The role in ActionTrail Trail.
 func (o GetTrailsActiontrailOutput) RoleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.RoleName }).(pulumi.StringOutput)
 }
@@ -770,6 +782,21 @@ func (o GetTrailsActiontrailOutput) SlsProjectArn() pulumi.StringOutput {
 // The unique ARN of the Log Service role.
 func (o GetTrailsActiontrailOutput) SlsWriteRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
+}
+
+// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+func (o GetTrailsActiontrailOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The name of the ActionTrail Trail.
+func (o GetTrailsActiontrailOutput) TrailName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.TrailName }).(pulumi.StringOutput)
+}
+
+// The regions to which the trail is applied.
+func (o GetTrailsActiontrailOutput) TrailRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.TrailRegion }).(pulumi.StringOutput)
 }
 
 type GetTrailsActiontrailArrayOutput struct{ *pulumi.OutputState }
@@ -792,6 +819,516 @@ func (o GetTrailsActiontrailArrayOutput) Index(i pulumi.IntInput) GetTrailsActio
 	}).(GetTrailsActiontrailOutput)
 }
 
+type GetTrailsDeprecatedActiontrail struct {
+	// Indicates whether the event is a read or a write event.
+	EventRw string `pulumi:"eventRw"`
+	Id      string `pulumi:"id"`
+	// The name of the specified OSS bucket.
+	OssBucketName string `pulumi:"ossBucketName"`
+	// The prefix of the specified OSS bucket name.
+	OssKeyPrefix string `pulumi:"ossKeyPrefix"`
+	// The role in ActionTrail.
+	RoleName string `pulumi:"roleName"`
+	// The unique ARN of the Log Service project.
+	SlsProjectArn string `pulumi:"slsProjectArn"`
+	// The unique ARN of the Log Service role.
+	SlsWriteRoleArn string `pulumi:"slsWriteRoleArn"`
+	Status          string `pulumi:"status"`
+	TrailName       string `pulumi:"trailName"`
+	TrailRegion     string `pulumi:"trailRegion"`
+}
+
+// GetTrailsDeprecatedActiontrailInput is an input type that accepts GetTrailsDeprecatedActiontrailArgs and GetTrailsDeprecatedActiontrailOutput values.
+// You can construct a concrete instance of `GetTrailsDeprecatedActiontrailInput` via:
+//
+//          GetTrailsDeprecatedActiontrailArgs{...}
+type GetTrailsDeprecatedActiontrailInput interface {
+	pulumi.Input
+
+	ToGetTrailsDeprecatedActiontrailOutput() GetTrailsDeprecatedActiontrailOutput
+	ToGetTrailsDeprecatedActiontrailOutputWithContext(context.Context) GetTrailsDeprecatedActiontrailOutput
+}
+
+type GetTrailsDeprecatedActiontrailArgs struct {
+	// Indicates whether the event is a read or a write event.
+	EventRw pulumi.StringInput `pulumi:"eventRw"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	// The name of the specified OSS bucket.
+	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
+	// The prefix of the specified OSS bucket name.
+	OssKeyPrefix pulumi.StringInput `pulumi:"ossKeyPrefix"`
+	// The role in ActionTrail.
+	RoleName pulumi.StringInput `pulumi:"roleName"`
+	// The unique ARN of the Log Service project.
+	SlsProjectArn pulumi.StringInput `pulumi:"slsProjectArn"`
+	// The unique ARN of the Log Service role.
+	SlsWriteRoleArn pulumi.StringInput `pulumi:"slsWriteRoleArn"`
+	Status          pulumi.StringInput `pulumi:"status"`
+	TrailName       pulumi.StringInput `pulumi:"trailName"`
+	TrailRegion     pulumi.StringInput `pulumi:"trailRegion"`
+}
+
+func (GetTrailsDeprecatedActiontrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrailsDeprecatedActiontrail)(nil)).Elem()
+}
+
+func (i GetTrailsDeprecatedActiontrailArgs) ToGetTrailsDeprecatedActiontrailOutput() GetTrailsDeprecatedActiontrailOutput {
+	return i.ToGetTrailsDeprecatedActiontrailOutputWithContext(context.Background())
+}
+
+func (i GetTrailsDeprecatedActiontrailArgs) ToGetTrailsDeprecatedActiontrailOutputWithContext(ctx context.Context) GetTrailsDeprecatedActiontrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrailsDeprecatedActiontrailOutput)
+}
+
+// GetTrailsDeprecatedActiontrailArrayInput is an input type that accepts GetTrailsDeprecatedActiontrailArray and GetTrailsDeprecatedActiontrailArrayOutput values.
+// You can construct a concrete instance of `GetTrailsDeprecatedActiontrailArrayInput` via:
+//
+//          GetTrailsDeprecatedActiontrailArray{ GetTrailsDeprecatedActiontrailArgs{...} }
+type GetTrailsDeprecatedActiontrailArrayInput interface {
+	pulumi.Input
+
+	ToGetTrailsDeprecatedActiontrailArrayOutput() GetTrailsDeprecatedActiontrailArrayOutput
+	ToGetTrailsDeprecatedActiontrailArrayOutputWithContext(context.Context) GetTrailsDeprecatedActiontrailArrayOutput
+}
+
+type GetTrailsDeprecatedActiontrailArray []GetTrailsDeprecatedActiontrailInput
+
+func (GetTrailsDeprecatedActiontrailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrailsDeprecatedActiontrail)(nil)).Elem()
+}
+
+func (i GetTrailsDeprecatedActiontrailArray) ToGetTrailsDeprecatedActiontrailArrayOutput() GetTrailsDeprecatedActiontrailArrayOutput {
+	return i.ToGetTrailsDeprecatedActiontrailArrayOutputWithContext(context.Background())
+}
+
+func (i GetTrailsDeprecatedActiontrailArray) ToGetTrailsDeprecatedActiontrailArrayOutputWithContext(ctx context.Context) GetTrailsDeprecatedActiontrailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrailsDeprecatedActiontrailArrayOutput)
+}
+
+type GetTrailsDeprecatedActiontrailOutput struct{ *pulumi.OutputState }
+
+func (GetTrailsDeprecatedActiontrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrailsDeprecatedActiontrail)(nil)).Elem()
+}
+
+func (o GetTrailsDeprecatedActiontrailOutput) ToGetTrailsDeprecatedActiontrailOutput() GetTrailsDeprecatedActiontrailOutput {
+	return o
+}
+
+func (o GetTrailsDeprecatedActiontrailOutput) ToGetTrailsDeprecatedActiontrailOutputWithContext(ctx context.Context) GetTrailsDeprecatedActiontrailOutput {
+	return o
+}
+
+// Indicates whether the event is a read or a write event.
+func (o GetTrailsDeprecatedActiontrailOutput) EventRw() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.EventRw }).(pulumi.StringOutput)
+}
+
+func (o GetTrailsDeprecatedActiontrailOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the specified OSS bucket.
+func (o GetTrailsDeprecatedActiontrailOutput) OssBucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.OssBucketName }).(pulumi.StringOutput)
+}
+
+// The prefix of the specified OSS bucket name.
+func (o GetTrailsDeprecatedActiontrailOutput) OssKeyPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.OssKeyPrefix }).(pulumi.StringOutput)
+}
+
+// The role in ActionTrail.
+func (o GetTrailsDeprecatedActiontrailOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// The unique ARN of the Log Service project.
+func (o GetTrailsDeprecatedActiontrailOutput) SlsProjectArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.SlsProjectArn }).(pulumi.StringOutput)
+}
+
+// The unique ARN of the Log Service role.
+func (o GetTrailsDeprecatedActiontrailOutput) SlsWriteRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
+}
+
+func (o GetTrailsDeprecatedActiontrailOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetTrailsDeprecatedActiontrailOutput) TrailName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.TrailName }).(pulumi.StringOutput)
+}
+
+func (o GetTrailsDeprecatedActiontrailOutput) TrailRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.TrailRegion }).(pulumi.StringOutput)
+}
+
+type GetTrailsDeprecatedActiontrailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTrailsDeprecatedActiontrailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrailsDeprecatedActiontrail)(nil)).Elem()
+}
+
+func (o GetTrailsDeprecatedActiontrailArrayOutput) ToGetTrailsDeprecatedActiontrailArrayOutput() GetTrailsDeprecatedActiontrailArrayOutput {
+	return o
+}
+
+func (o GetTrailsDeprecatedActiontrailArrayOutput) ToGetTrailsDeprecatedActiontrailArrayOutputWithContext(ctx context.Context) GetTrailsDeprecatedActiontrailArrayOutput {
+	return o
+}
+
+func (o GetTrailsDeprecatedActiontrailArrayOutput) Index(i pulumi.IntInput) GetTrailsDeprecatedActiontrailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTrailsDeprecatedActiontrail {
+		return vs[0].([]GetTrailsDeprecatedActiontrail)[vs[1].(int)]
+	}).(GetTrailsDeprecatedActiontrailOutput)
+}
+
+type GetTrailsDeprecatedTrail struct {
+	// Indicates whether the event is a read or a write event.
+	EventRw string `pulumi:"eventRw"`
+	Id      string `pulumi:"id"`
+	// The name of the specified OSS bucket.
+	OssBucketName string `pulumi:"ossBucketName"`
+	// The prefix of the specified OSS bucket name.
+	OssKeyPrefix string `pulumi:"ossKeyPrefix"`
+	// The role in ActionTrail.
+	RoleName string `pulumi:"roleName"`
+	// The unique ARN of the Log Service project.
+	SlsProjectArn string `pulumi:"slsProjectArn"`
+	// The unique ARN of the Log Service role.
+	SlsWriteRoleArn string `pulumi:"slsWriteRoleArn"`
+	Status          string `pulumi:"status"`
+	TrailName       string `pulumi:"trailName"`
+	TrailRegion     string `pulumi:"trailRegion"`
+}
+
+// GetTrailsDeprecatedTrailInput is an input type that accepts GetTrailsDeprecatedTrailArgs and GetTrailsDeprecatedTrailOutput values.
+// You can construct a concrete instance of `GetTrailsDeprecatedTrailInput` via:
+//
+//          GetTrailsDeprecatedTrailArgs{...}
+type GetTrailsDeprecatedTrailInput interface {
+	pulumi.Input
+
+	ToGetTrailsDeprecatedTrailOutput() GetTrailsDeprecatedTrailOutput
+	ToGetTrailsDeprecatedTrailOutputWithContext(context.Context) GetTrailsDeprecatedTrailOutput
+}
+
+type GetTrailsDeprecatedTrailArgs struct {
+	// Indicates whether the event is a read or a write event.
+	EventRw pulumi.StringInput `pulumi:"eventRw"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	// The name of the specified OSS bucket.
+	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
+	// The prefix of the specified OSS bucket name.
+	OssKeyPrefix pulumi.StringInput `pulumi:"ossKeyPrefix"`
+	// The role in ActionTrail.
+	RoleName pulumi.StringInput `pulumi:"roleName"`
+	// The unique ARN of the Log Service project.
+	SlsProjectArn pulumi.StringInput `pulumi:"slsProjectArn"`
+	// The unique ARN of the Log Service role.
+	SlsWriteRoleArn pulumi.StringInput `pulumi:"slsWriteRoleArn"`
+	Status          pulumi.StringInput `pulumi:"status"`
+	TrailName       pulumi.StringInput `pulumi:"trailName"`
+	TrailRegion     pulumi.StringInput `pulumi:"trailRegion"`
+}
+
+func (GetTrailsDeprecatedTrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrailsDeprecatedTrail)(nil)).Elem()
+}
+
+func (i GetTrailsDeprecatedTrailArgs) ToGetTrailsDeprecatedTrailOutput() GetTrailsDeprecatedTrailOutput {
+	return i.ToGetTrailsDeprecatedTrailOutputWithContext(context.Background())
+}
+
+func (i GetTrailsDeprecatedTrailArgs) ToGetTrailsDeprecatedTrailOutputWithContext(ctx context.Context) GetTrailsDeprecatedTrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrailsDeprecatedTrailOutput)
+}
+
+// GetTrailsDeprecatedTrailArrayInput is an input type that accepts GetTrailsDeprecatedTrailArray and GetTrailsDeprecatedTrailArrayOutput values.
+// You can construct a concrete instance of `GetTrailsDeprecatedTrailArrayInput` via:
+//
+//          GetTrailsDeprecatedTrailArray{ GetTrailsDeprecatedTrailArgs{...} }
+type GetTrailsDeprecatedTrailArrayInput interface {
+	pulumi.Input
+
+	ToGetTrailsDeprecatedTrailArrayOutput() GetTrailsDeprecatedTrailArrayOutput
+	ToGetTrailsDeprecatedTrailArrayOutputWithContext(context.Context) GetTrailsDeprecatedTrailArrayOutput
+}
+
+type GetTrailsDeprecatedTrailArray []GetTrailsDeprecatedTrailInput
+
+func (GetTrailsDeprecatedTrailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrailsDeprecatedTrail)(nil)).Elem()
+}
+
+func (i GetTrailsDeprecatedTrailArray) ToGetTrailsDeprecatedTrailArrayOutput() GetTrailsDeprecatedTrailArrayOutput {
+	return i.ToGetTrailsDeprecatedTrailArrayOutputWithContext(context.Background())
+}
+
+func (i GetTrailsDeprecatedTrailArray) ToGetTrailsDeprecatedTrailArrayOutputWithContext(ctx context.Context) GetTrailsDeprecatedTrailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrailsDeprecatedTrailArrayOutput)
+}
+
+type GetTrailsDeprecatedTrailOutput struct{ *pulumi.OutputState }
+
+func (GetTrailsDeprecatedTrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrailsDeprecatedTrail)(nil)).Elem()
+}
+
+func (o GetTrailsDeprecatedTrailOutput) ToGetTrailsDeprecatedTrailOutput() GetTrailsDeprecatedTrailOutput {
+	return o
+}
+
+func (o GetTrailsDeprecatedTrailOutput) ToGetTrailsDeprecatedTrailOutputWithContext(ctx context.Context) GetTrailsDeprecatedTrailOutput {
+	return o
+}
+
+// Indicates whether the event is a read or a write event.
+func (o GetTrailsDeprecatedTrailOutput) EventRw() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.EventRw }).(pulumi.StringOutput)
+}
+
+func (o GetTrailsDeprecatedTrailOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the specified OSS bucket.
+func (o GetTrailsDeprecatedTrailOutput) OssBucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.OssBucketName }).(pulumi.StringOutput)
+}
+
+// The prefix of the specified OSS bucket name.
+func (o GetTrailsDeprecatedTrailOutput) OssKeyPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.OssKeyPrefix }).(pulumi.StringOutput)
+}
+
+// The role in ActionTrail.
+func (o GetTrailsDeprecatedTrailOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// The unique ARN of the Log Service project.
+func (o GetTrailsDeprecatedTrailOutput) SlsProjectArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.SlsProjectArn }).(pulumi.StringOutput)
+}
+
+// The unique ARN of the Log Service role.
+func (o GetTrailsDeprecatedTrailOutput) SlsWriteRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
+}
+
+func (o GetTrailsDeprecatedTrailOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetTrailsDeprecatedTrailOutput) TrailName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.TrailName }).(pulumi.StringOutput)
+}
+
+func (o GetTrailsDeprecatedTrailOutput) TrailRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.TrailRegion }).(pulumi.StringOutput)
+}
+
+type GetTrailsDeprecatedTrailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTrailsDeprecatedTrailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrailsDeprecatedTrail)(nil)).Elem()
+}
+
+func (o GetTrailsDeprecatedTrailArrayOutput) ToGetTrailsDeprecatedTrailArrayOutput() GetTrailsDeprecatedTrailArrayOutput {
+	return o
+}
+
+func (o GetTrailsDeprecatedTrailArrayOutput) ToGetTrailsDeprecatedTrailArrayOutputWithContext(ctx context.Context) GetTrailsDeprecatedTrailArrayOutput {
+	return o
+}
+
+func (o GetTrailsDeprecatedTrailArrayOutput) Index(i pulumi.IntInput) GetTrailsDeprecatedTrailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTrailsDeprecatedTrail {
+		return vs[0].([]GetTrailsDeprecatedTrail)[vs[1].(int)]
+	}).(GetTrailsDeprecatedTrailOutput)
+}
+
+type GetTrailsTrail struct {
+	// Indicates whether the event is a read or a write event.
+	EventRw string `pulumi:"eventRw"`
+	// The id of the ActionTrail Trail. It is the same as trail name.
+	Id string `pulumi:"id"`
+	// The name of the specified OSS bucket.
+	OssBucketName string `pulumi:"ossBucketName"`
+	// The prefix of the specified OSS bucket name.
+	OssKeyPrefix string `pulumi:"ossKeyPrefix"`
+	// The role in ActionTrail Trail.
+	RoleName string `pulumi:"roleName"`
+	// The unique ARN of the Log Service project.
+	SlsProjectArn string `pulumi:"slsProjectArn"`
+	// The unique ARN of the Log Service role.
+	SlsWriteRoleArn string `pulumi:"slsWriteRoleArn"`
+	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+	Status string `pulumi:"status"`
+	// The name of the ActionTrail Trail.
+	TrailName string `pulumi:"trailName"`
+	// The regions to which the trail is applied.
+	TrailRegion string `pulumi:"trailRegion"`
+}
+
+// GetTrailsTrailInput is an input type that accepts GetTrailsTrailArgs and GetTrailsTrailOutput values.
+// You can construct a concrete instance of `GetTrailsTrailInput` via:
+//
+//          GetTrailsTrailArgs{...}
+type GetTrailsTrailInput interface {
+	pulumi.Input
+
+	ToGetTrailsTrailOutput() GetTrailsTrailOutput
+	ToGetTrailsTrailOutputWithContext(context.Context) GetTrailsTrailOutput
+}
+
+type GetTrailsTrailArgs struct {
+	// Indicates whether the event is a read or a write event.
+	EventRw pulumi.StringInput `pulumi:"eventRw"`
+	// The id of the ActionTrail Trail. It is the same as trail name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the specified OSS bucket.
+	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
+	// The prefix of the specified OSS bucket name.
+	OssKeyPrefix pulumi.StringInput `pulumi:"ossKeyPrefix"`
+	// The role in ActionTrail Trail.
+	RoleName pulumi.StringInput `pulumi:"roleName"`
+	// The unique ARN of the Log Service project.
+	SlsProjectArn pulumi.StringInput `pulumi:"slsProjectArn"`
+	// The unique ARN of the Log Service role.
+	SlsWriteRoleArn pulumi.StringInput `pulumi:"slsWriteRoleArn"`
+	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The name of the ActionTrail Trail.
+	TrailName pulumi.StringInput `pulumi:"trailName"`
+	// The regions to which the trail is applied.
+	TrailRegion pulumi.StringInput `pulumi:"trailRegion"`
+}
+
+func (GetTrailsTrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrailsTrail)(nil)).Elem()
+}
+
+func (i GetTrailsTrailArgs) ToGetTrailsTrailOutput() GetTrailsTrailOutput {
+	return i.ToGetTrailsTrailOutputWithContext(context.Background())
+}
+
+func (i GetTrailsTrailArgs) ToGetTrailsTrailOutputWithContext(ctx context.Context) GetTrailsTrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrailsTrailOutput)
+}
+
+// GetTrailsTrailArrayInput is an input type that accepts GetTrailsTrailArray and GetTrailsTrailArrayOutput values.
+// You can construct a concrete instance of `GetTrailsTrailArrayInput` via:
+//
+//          GetTrailsTrailArray{ GetTrailsTrailArgs{...} }
+type GetTrailsTrailArrayInput interface {
+	pulumi.Input
+
+	ToGetTrailsTrailArrayOutput() GetTrailsTrailArrayOutput
+	ToGetTrailsTrailArrayOutputWithContext(context.Context) GetTrailsTrailArrayOutput
+}
+
+type GetTrailsTrailArray []GetTrailsTrailInput
+
+func (GetTrailsTrailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrailsTrail)(nil)).Elem()
+}
+
+func (i GetTrailsTrailArray) ToGetTrailsTrailArrayOutput() GetTrailsTrailArrayOutput {
+	return i.ToGetTrailsTrailArrayOutputWithContext(context.Background())
+}
+
+func (i GetTrailsTrailArray) ToGetTrailsTrailArrayOutputWithContext(ctx context.Context) GetTrailsTrailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrailsTrailArrayOutput)
+}
+
+type GetTrailsTrailOutput struct{ *pulumi.OutputState }
+
+func (GetTrailsTrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrailsTrail)(nil)).Elem()
+}
+
+func (o GetTrailsTrailOutput) ToGetTrailsTrailOutput() GetTrailsTrailOutput {
+	return o
+}
+
+func (o GetTrailsTrailOutput) ToGetTrailsTrailOutputWithContext(ctx context.Context) GetTrailsTrailOutput {
+	return o
+}
+
+// Indicates whether the event is a read or a write event.
+func (o GetTrailsTrailOutput) EventRw() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsTrail) string { return v.EventRw }).(pulumi.StringOutput)
+}
+
+// The id of the ActionTrail Trail. It is the same as trail name.
+func (o GetTrailsTrailOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsTrail) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the specified OSS bucket.
+func (o GetTrailsTrailOutput) OssBucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsTrail) string { return v.OssBucketName }).(pulumi.StringOutput)
+}
+
+// The prefix of the specified OSS bucket name.
+func (o GetTrailsTrailOutput) OssKeyPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsTrail) string { return v.OssKeyPrefix }).(pulumi.StringOutput)
+}
+
+// The role in ActionTrail Trail.
+func (o GetTrailsTrailOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsTrail) string { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// The unique ARN of the Log Service project.
+func (o GetTrailsTrailOutput) SlsProjectArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsTrail) string { return v.SlsProjectArn }).(pulumi.StringOutput)
+}
+
+// The unique ARN of the Log Service role.
+func (o GetTrailsTrailOutput) SlsWriteRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsTrail) string { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
+}
+
+// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+func (o GetTrailsTrailOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsTrail) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The name of the ActionTrail Trail.
+func (o GetTrailsTrailOutput) TrailName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsTrail) string { return v.TrailName }).(pulumi.StringOutput)
+}
+
+// The regions to which the trail is applied.
+func (o GetTrailsTrailOutput) TrailRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsTrail) string { return v.TrailRegion }).(pulumi.StringOutput)
+}
+
+type GetTrailsTrailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTrailsTrailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrailsTrail)(nil)).Elem()
+}
+
+func (o GetTrailsTrailArrayOutput) ToGetTrailsTrailArrayOutput() GetTrailsTrailArrayOutput {
+	return o
+}
+
+func (o GetTrailsTrailArrayOutput) ToGetTrailsTrailArrayOutputWithContext(ctx context.Context) GetTrailsTrailArrayOutput {
+	return o
+}
+
+func (o GetTrailsTrailArrayOutput) Index(i pulumi.IntInput) GetTrailsTrailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTrailsTrail {
+		return vs[0].([]GetTrailsTrail)[vs[1].(int)]
+	}).(GetTrailsTrailOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
@@ -803,4 +1340,10 @@ func init() {
 	pulumi.RegisterOutputType(GetTopicsTopicArrayOutput{})
 	pulumi.RegisterOutputType(GetTrailsActiontrailOutput{})
 	pulumi.RegisterOutputType(GetTrailsActiontrailArrayOutput{})
+	pulumi.RegisterOutputType(GetTrailsDeprecatedActiontrailOutput{})
+	pulumi.RegisterOutputType(GetTrailsDeprecatedActiontrailArrayOutput{})
+	pulumi.RegisterOutputType(GetTrailsDeprecatedTrailOutput{})
+	pulumi.RegisterOutputType(GetTrailsDeprecatedTrailArrayOutput{})
+	pulumi.RegisterOutputType(GetTrailsTrailOutput{})
+	pulumi.RegisterOutputType(GetTrailsTrailArrayOutput{})
 }

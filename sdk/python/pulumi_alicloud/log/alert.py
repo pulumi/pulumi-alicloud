@@ -49,48 +49,48 @@ class Alert(pulumi.CustomResource):
 
         example_project = alicloud.log.Project("exampleProject", description="create by terraform")
         example_store = alicloud.log.Store("exampleStore",
-            append_meta=True,
-            auto_split=True,
-            max_split_shard_count=60,
             project=example_project.name,
             retention_period=3650,
-            shard_count=3)
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
         example_alert = alicloud.log.Alert("exampleAlert",
-            alert_displayname="tf-test-alert-displayname",
+            project_name=example_project.name,
             alert_name="tf-test-alert",
+            alert_displayname="tf-test-alert-displayname",
             condition="count> 100",
             dashboard="tf-test-dashboard",
+            query_lists=[alicloud.log.AlertQueryListArgs(
+                logstore="tf-test-logstore",
+                chart_title="chart_title",
+                start="-60s",
+                end="20s",
+                query="* AND aliyun",
+            )],
             notification_lists=[
                 alicloud.log.AlertNotificationListArgs(
-                    content="alert content",
+                    type="SMS",
                     mobile_lists=[
                         "12345678",
                         "87654321",
                     ],
-                    type="SMS",
+                    content="alert content",
                 ),
                 alicloud.log.AlertNotificationListArgs(
-                    content="alert content",
+                    type="Email",
                     email_lists=[
                         "aliyun@alibaba-inc.com",
                         "tf-test@123.com",
                     ],
-                    type="Email",
+                    content="alert content",
                 ),
                 alicloud.log.AlertNotificationListArgs(
-                    content="alert content",
-                    service_uri="www.aliyun.com",
                     type="DingTalk",
+                    service_uri="www.aliyun.com",
+                    content="alert content",
                 ),
-            ],
-            project_name=example_project.name,
-            query_lists=[alicloud.log.AlertQueryListArgs(
-                chart_title="chart_title",
-                end="20s",
-                logstore="tf-test-logstore",
-                query="* AND aliyun",
-                start="-60s",
-            )])
+            ])
         ```
 
         :param str resource_name: The name of the resource.

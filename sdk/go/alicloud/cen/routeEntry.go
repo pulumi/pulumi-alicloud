@@ -58,12 +58,12 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt5 := true
-// 		opt6 := "^ubuntu_18.*64"
+// 		opt5 := "^ubuntu_18.*64"
+// 		opt6 := true
 // 		opt7 := "system"
 // 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			MostRecent: &opt5,
-// 			NameRegex:  &opt6,
+// 			NameRegex:  &opt5,
+// 			MostRecent: &opt6,
 // 			Owners:     &opt7,
 // 		}, nil)
 // 		if err != nil {
@@ -71,37 +71,37 @@ import (
 // 		}
 // 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		}, pulumi.Provider("alicloud.hz"))
+// 		}, pulumi.Provider(alicloud.Hz))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
 // 			VpcId:            vpc.ID(),
-// 		}, pulumi.Provider("alicloud.hz"))
+// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 		}, pulumi.Provider(alicloud.Hz))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
 // 			Description: pulumi.String("foo"),
 // 			VpcId:       vpc.ID(),
-// 		}, pulumi.Provider("alicloud.hz"))
+// 		}, pulumi.Provider(alicloud.Hz))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+// 			VswitchId:               defaultSwitch.ID(),
 // 			ImageId:                 pulumi.String(defaultImages.Images[0].Id),
-// 			InstanceName:            pulumi.String(name),
 // 			InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// 			SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 // 			InternetChargeType:      pulumi.String("PayByTraffic"),
 // 			InternetMaxBandwidthOut: pulumi.Int(5),
 // 			SecurityGroups: pulumi.StringArray{
 // 				defaultSecurityGroup.ID(),
 // 			},
-// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// 			VswitchId:          defaultSwitch.ID(),
-// 		}, pulumi.Provider("alicloud.hz"))
+// 			InstanceName: pulumi.String(name),
+// 		}, pulumi.Provider(alicloud.Hz))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -109,31 +109,31 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cen.NewInstanceAttachment(ctx, "attach", &cen.InstanceAttachmentArgs{
+// 		attach, err := cen.NewInstanceAttachment(ctx, "attach", &cen.InstanceAttachmentArgs{
+// 			InstanceId:            cen.ID(),
 // 			ChildInstanceId:       vpc.ID(),
 // 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
-// 			InstanceId:            cen.ID(),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_vswitch.default",
+// 			defaultSwitch,
 // 		}))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		route, err := vpc.NewRouteEntry(ctx, "route", &vpc.RouteEntryArgs{
-// 			DestinationCidrblock: pulumi.String("11.0.0.0/16"),
-// 			NexthopId:            defaultInstance.ID(),
-// 			NexthopType:          pulumi.String("Instance"),
 // 			RouteTableId:         vpc.RouteTableId,
-// 		}, pulumi.Provider("alicloud.hz"))
+// 			DestinationCidrblock: pulumi.String("11.0.0.0/16"),
+// 			NexthopType:          pulumi.String("Instance"),
+// 			NexthopId:            defaultInstance.ID(),
+// 		}, pulumi.Provider(alicloud.Hz))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = cen.NewRouteEntry(ctx, "foo", &cen.RouteEntryArgs{
-// 			CidrBlock:    route.DestinationCidrblock,
 // 			InstanceId:   cen.ID(),
 // 			RouteTableId: vpc.RouteTableId,
-// 		}, pulumi.Provider("alicloud.hz"), pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_cen_instance_attachment.attach",
+// 			CidrBlock:    route.DestinationCidrblock,
+// 		}, pulumi.Provider(alicloud.Hz), pulumi.DependsOn([]pulumi.Resource{
+// 			attach,
 // 		}))
 // 		if err != nil {
 // 			return err

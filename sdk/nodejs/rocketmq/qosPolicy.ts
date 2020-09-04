@@ -22,18 +22,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultQos = new alicloud.rocketmq.Qos("default", {});
- * const defaultQosPolicy = new alicloud.rocketmq.QosPolicy("default", {
- *     description: "tf-testSagQosPolicyDescription",
- *     destCidr: "10.10.0.0/24",
- *     destPortRange: "-1/-1",
- *     endTime: "2019-10-26T16:41:33+0800",
- *     ipProtocol: "ALL",
- *     priority: 1,
+ * const defaultQos = new alicloud.rocketmq.Qos("defaultQos", {});
+ * const defaultQosPolicy = new alicloud.rocketmq.QosPolicy("defaultQosPolicy", {
  *     qosId: defaultQos.id,
+ *     description: "tf-testSagQosPolicyDescription",
+ *     priority: "1",
+ *     ipProtocol: "ALL",
  *     sourceCidr: "192.168.0.0/24",
  *     sourcePortRange: "-1/-1",
+ *     destCidr: "10.10.0.0/24",
+ *     destPortRange: "-1/-1",
  *     startTime: "2019-10-25T16:41:33+0800",
+ *     endTime: "2019-10-26T16:41:33+0800",
  * });
  * ```
  */

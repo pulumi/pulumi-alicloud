@@ -27,13 +27,35 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     public MyStack()
     ///     {
+    ///         // Create a new load balancer and domain extension
     ///         var instance = new AliCloud.Slb.LoadBalancer("instance", new AliCloud.Slb.LoadBalancerArgs
     ///         {
-    ///             Internet = true,
     ///             InternetChargeType = "PayByTraffic",
+    ///             Internet = true,
     ///         });
     ///         var foo = new AliCloud.Slb.ServerCertificate("foo", new AliCloud.Slb.ServerCertificateArgs
     ///         {
+    ///             ServerCertificate = @"-----BEGIN CERTIFICATE-----
+    /// MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
+    /// bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
+    /// bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0LmNvbTEaMBgGCSqGSIb3
+    /// DQEJARYLMTIzQDEyMy5jb20wHhcNMTkwNDI2MDM0ODAxWhcNMjQwNDI1MDM0ODAx
+    /// WjB9MQswCQYDVQQGEwJjbjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcx
+    /// DzANBgNVBAoMBmFsaXl1bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0
+    /// LmNvbTEaMBgGCSqGSIb3DQEJARYLMTIzQDEyMy5jb20wggEiMA0GCSqGSIb3DQEB
+    /// AQUAA4IBDwAwggEKAoIBAQDKMKF5qmN/uoMjdH3D8aPRcUOA0s8rZpYhG8zbkF1j
+    /// 8gHYoB/FDvM7G7dfVsyjbMwLOxKvAhWvHHSpEz/t7gB+QdwrAMiMJwGmtCnXrh2E
+    /// WiXgalMe1y4a/T5R7q+m4T1zFATf+kbnHWfkSGF4W7b6UBoaH+9StQ95CnqzNf/2
+    /// p/Of7+S0XzCxFXw8GIVzZk0xFe6lHJzaq06f3mvzrD+4rpO56tTUvrgTY/n61gsF
+    /// ZP7f0CJ2JQh6eNRFOEUSfxKu/Dy/+IsQxorCJY2Q59ZAf3rXrqDN104jw9PlwnLl
+    /// qfZz3RMODN6BWjxE8rvRtT0qMfuAfv1gjBdWZN0hUYBRAgMBAAEwDQYJKoZIhvcN
+    /// AQELBQADggEBAABzo82TxGp5poVkd5pLWj5ACgcBv8Cs6oH9D+4Jz9BmyuBUsQXh
+    /// 2aG0hQAe1mU61C9konsl/GTW8umJQ4M4lYEztXXwMf5PlBMGwebM0ZbSGg6jKtZg
+    /// WCgJ3eP/FMmyXGL5Jji5+e09eObhUDVle4tdi0On97zBoz85W02rgWFAqZJwiEAP
+    /// t+c7jX7uOSBq2/38iGStlrX5yB1at/gJXXiA5CL5OtlR3Okvb0/QH37efO1Nu39m
+    /// lFi0ODPAVyXjVypAiLguDxPn6AtDTdk9Iw9B19OD4NrzNRWgSSX5vuxo/VcRcgWk
+    /// 3gEe9Ca0ZKN20q9XgthAiFFjl1S9ZgdA6Zc=
+    /// -----END CERTIFICATE-----",
     ///             PrivateKey = @"-----BEGIN RSA PRIVATE KEY-----
     /// MIIEowIBAAKCAQEAyjCheapjf7qDI3R9w/Gj0XFDgNLPK2aWIRvM25BdY/IB2KAf
     /// xQ7zOxu3X1bMo2zMCzsSrwIVrxx0qRM/7e4AfkHcKwDIjCcBprQp164dhFol4GpT
@@ -60,57 +82,34 @@ namespace Pulumi.AliCloud.Slb
     /// y0zN3wKBgGDS6YttCN6aI4EOABYE8fI1EYQ7vhfiYsaWGWSR1l6bQey7KR6M1ACz
     /// ZzMASNyytVt12yXE4/Emv6/pYqigbDLfL1zQJSLJ3EHJYTh2RxjR+AaGDudYFG/T
     /// liQ9YXhV5Iu2x1pNwrtFnssDdaaGpfA7l3xC00BL7Z+SAJyI4QKA
-    /// -----END RSA PRIVATE KEY-----
-    /// ",
-    ///             ServerCertificate = @"-----BEGIN CERTIFICATE-----
-    /// MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
-    /// bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
-    /// bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0LmNvbTEaMBgGCSqGSIb3
-    /// DQEJARYLMTIzQDEyMy5jb20wHhcNMTkwNDI2MDM0ODAxWhcNMjQwNDI1MDM0ODAx
-    /// WjB9MQswCQYDVQQGEwJjbjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcx
-    /// DzANBgNVBAoMBmFsaXl1bjELMAkGA1UECwwCc2MxFTATBgNVBAMMDHd3dy50ZXN0
-    /// LmNvbTEaMBgGCSqGSIb3DQEJARYLMTIzQDEyMy5jb20wggEiMA0GCSqGSIb3DQEB
-    /// AQUAA4IBDwAwggEKAoIBAQDKMKF5qmN/uoMjdH3D8aPRcUOA0s8rZpYhG8zbkF1j
-    /// 8gHYoB/FDvM7G7dfVsyjbMwLOxKvAhWvHHSpEz/t7gB+QdwrAMiMJwGmtCnXrh2E
-    /// WiXgalMe1y4a/T5R7q+m4T1zFATf+kbnHWfkSGF4W7b6UBoaH+9StQ95CnqzNf/2
-    /// p/Of7+S0XzCxFXw8GIVzZk0xFe6lHJzaq06f3mvzrD+4rpO56tTUvrgTY/n61gsF
-    /// ZP7f0CJ2JQh6eNRFOEUSfxKu/Dy/+IsQxorCJY2Q59ZAf3rXrqDN104jw9PlwnLl
-    /// qfZz3RMODN6BWjxE8rvRtT0qMfuAfv1gjBdWZN0hUYBRAgMBAAEwDQYJKoZIhvcN
-    /// AQELBQADggEBAABzo82TxGp5poVkd5pLWj5ACgcBv8Cs6oH9D+4Jz9BmyuBUsQXh
-    /// 2aG0hQAe1mU61C9konsl/GTW8umJQ4M4lYEztXXwMf5PlBMGwebM0ZbSGg6jKtZg
-    /// WCgJ3eP/FMmyXGL5Jji5+e09eObhUDVle4tdi0On97zBoz85W02rgWFAqZJwiEAP
-    /// t+c7jX7uOSBq2/38iGStlrX5yB1at/gJXXiA5CL5OtlR3Okvb0/QH37efO1Nu39m
-    /// lFi0ODPAVyXjVypAiLguDxPn6AtDTdk9Iw9B19OD4NrzNRWgSSX5vuxo/VcRcgWk
-    /// 3gEe9Ca0ZKN20q9XgthAiFFjl1S9ZgdA6Zc=
-    /// -----END CERTIFICATE-----
-    /// ",
+    /// -----END RSA PRIVATE KEY-----",
     ///         });
     ///         var https = new AliCloud.Slb.Listener("https", new AliCloud.Slb.ListenerArgs
     ///         {
-    ///             BackendPort = 80,
-    ///             Bandwidth = 10,
-    ///             Cookie = "testslblistenercookie",
-    ///             CookieTimeout = 86400,
-    ///             FrontendPort = 443,
-    ///             HealthCheck = "on",
-    ///             HealthCheckConnectPort = 20,
-    ///             HealthCheckHttpCode = "http_2xx,http_3xx",
-    ///             HealthCheckInterval = 5,
-    ///             HealthCheckTimeout = 8,
-    ///             HealthCheckUri = "/cons",
-    ///             HealthyThreshold = 8,
     ///             LoadBalancerId = instance.Id,
+    ///             BackendPort = 80,
+    ///             FrontendPort = 443,
     ///             Protocol = "https",
-    ///             SslCertificateId = foo.Id,
     ///             StickySession = "on",
     ///             StickySessionType = "insert",
+    ///             Cookie = "testslblistenercookie",
+    ///             CookieTimeout = 86400,
+    ///             HealthCheck = "on",
+    ///             HealthCheckUri = "/cons",
+    ///             HealthCheckConnectPort = 20,
+    ///             HealthyThreshold = 8,
     ///             UnhealthyThreshold = 8,
+    ///             HealthCheckTimeout = 8,
+    ///             HealthCheckInterval = 5,
+    ///             HealthCheckHttpCode = "http_2xx,http_3xx",
+    ///             Bandwidth = 10,
+    ///             SslCertificateId = foo.Id,
     ///         });
     ///         var example1 = new AliCloud.Slb.DomainExtension("example1", new AliCloud.Slb.DomainExtensionArgs
     ///         {
-    ///             Domain = "www.test.com",
-    ///             FrontendPort = https.FrontendPort,
     ///             LoadBalancerId = instance.Id,
+    ///             FrontendPort = https.FrontendPort,
+    ///             Domain = "www.test.com",
     ///             ServerCertificateId = foo.Id,
     ///         });
     ///     }

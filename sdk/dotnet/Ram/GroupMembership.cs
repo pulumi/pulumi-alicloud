@@ -30,19 +30,19 @@ namespace Pulumi.AliCloud.Ram
     ///         });
     ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
     ///         {
-    ///             Comments = "yoyoyo",
     ///             DisplayName = "user_display_name",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Force = true,
     ///             Mobile = "86-18688888888",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Comments = "yoyoyo",
+    ///             Force = true,
     ///         });
     ///         var user1 = new AliCloud.Ram.User("user1", new AliCloud.Ram.UserArgs
     ///         {
-    ///             Comments = "yoyoyo",
     ///             DisplayName = "user_display_name1",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Force = true,
     ///             Mobile = "86-18688888889",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Comments = "yoyoyo",
+    ///             Force = true,
     ///         });
     ///         var membership = new AliCloud.Ram.GroupMembership("membership", new AliCloud.Ram.GroupMembershipArgs
     ///         {

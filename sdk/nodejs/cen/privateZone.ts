@@ -21,21 +21,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.cen.Instance("default", {});
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/12",
- * });
- * const defaultInstanceAttachment = new alicloud.cen.InstanceAttachment("default", {
+ * // Create a cen Private Zone resource and use it.
+ * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultInstanceAttachment = new alicloud.cen.InstanceAttachment("defaultInstanceAttachment", {
+ *     instanceId: defaultInstance.id,
  *     childInstanceId: defaultNetwork.id,
  *     childInstanceRegionId: "cn-hangzhou",
- *     instanceId: defaultInstance.id,
- * }, { dependsOn: [defaultInstance, defaultNetwork] });
- * const defaultPrivateZone = new alicloud.cen.PrivateZone("default", {
+ * }, {
+ *     dependsOn: [
+ *         defaultInstance,
+ *         defaultNetwork,
+ *     ],
+ * });
+ * const defaultPrivateZone = new alicloud.cen.PrivateZone("defaultPrivateZone", {
  *     accessRegionId: "cn-hangzhou",
  *     cenId: defaultInstance.id,
  *     hostRegionId: "cn-hangzhou",
  *     hostVpcId: defaultNetwork.id,
- * }, { dependsOn: [defaultInstanceAttachment] });
+ * }, {
+ *     dependsOn: [defaultInstanceAttachment],
+ * });
  * ```
  */
 export class PrivateZone extends pulumi.CustomResource {

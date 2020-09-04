@@ -89,48 +89,48 @@ class Listener(pulumi.CustomResource):
         if ip_version is None:
             ip_version = "ipv4"
         default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer",
-            internet=True,
-            internet_charge_type="PayByTraffic")
+            internet_charge_type="PayByTraffic",
+            internet=True)
         default_acl = alicloud.slb.Acl("defaultAcl",
+            ip_version=ip_version,
             entry_lists=[
                 alicloud.slb.AclEntryListArgs(
-                    comment="first",
                     entry="10.10.10.0/24",
+                    comment="first",
                 ),
                 alicloud.slb.AclEntryListArgs(
-                    comment="second",
                     entry="168.10.10.0/24",
+                    comment="second",
                 ),
-            ],
-            ip_version=ip_version)
+            ])
         default_listener = alicloud.slb.Listener("defaultListener",
-            acl_id=default_acl.id,
-            acl_status="on",
-            acl_type="white",
-            backend_port=80,
-            bandwidth=10,
-            cookie="testslblistenercookie",
-            cookie_timeout=86400,
-            frontend_port=80,
-            health_check="on",
-            health_check_connect_port=20,
-            health_check_domain="ali.com",
-            health_check_http_code="http_2xx,http_3xx",
-            health_check_interval=5,
-            health_check_timeout=8,
-            health_check_uri="/cons",
-            healthy_threshold=8,
-            idle_timeout=30,
             load_balancer_id=default_load_balancer.id,
+            backend_port=80,
+            frontend_port=80,
             protocol="http",
-            request_timeout=80,
+            bandwidth=10,
             sticky_session="on",
             sticky_session_type="insert",
+            cookie_timeout=86400,
+            cookie="testslblistenercookie",
+            health_check="on",
+            health_check_domain="ali.com",
+            health_check_uri="/cons",
+            health_check_connect_port=20,
+            healthy_threshold=8,
             unhealthy_threshold=8,
+            health_check_timeout=8,
+            health_check_interval=5,
+            health_check_http_code="http_2xx,http_3xx",
             x_forwarded_for=alicloud.slb.ListenerXForwardedForArgs(
-                retrive_slb_id=True,
                 retrive_slb_ip=True,
-            ))
+                retrive_slb_id=True,
+            ),
+            acl_status="on",
+            acl_type="white",
+            acl_id=default_acl.id,
+            request_timeout=80,
+            idle_timeout=30)
         ```
         ## Listener fields and protocol mapping
 

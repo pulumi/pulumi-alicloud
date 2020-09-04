@@ -18,23 +18,45 @@ __all__ = [
 @pulumi.output_type
 class GetAccessGroupsGroupResult(dict):
     def __init__(__self__, *,
+                 access_group_name: str,
+                 access_group_type: str,
                  description: str,
                  id: str,
                  mount_target_count: float,
                  rule_count: float,
                  type: str):
         """
+        :param str access_group_name: The name of access group.
+        :param str access_group_type: Filter results by a specific AccessGroupType.
         :param str description: Filter results by a specific Description.
-        :param str id: AccessGroupName of the AccessGroup.
+        :param str id: This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `access_group_name`.
         :param float mount_target_count: MountTargetCount block of the AccessGroup
         :param float rule_count: RuleCount of the AccessGroup.
-        :param str type: Filter results by a specific AccessGroupType.
+        :param str type: Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
         """
+        pulumi.set(__self__, "access_group_name", access_group_name)
+        pulumi.set(__self__, "access_group_type", access_group_type)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mount_target_count", mount_target_count)
         pulumi.set(__self__, "rule_count", rule_count)
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="accessGroupName")
+    def access_group_name(self) -> str:
+        """
+        The name of access group.
+        """
+        return pulumi.get(self, "access_group_name")
+
+    @property
+    @pulumi.getter(name="accessGroupType")
+    def access_group_type(self) -> str:
+        """
+        Filter results by a specific AccessGroupType.
+        """
+        return pulumi.get(self, "access_group_type")
 
     @property
     @pulumi.getter
@@ -48,7 +70,7 @@ class GetAccessGroupsGroupResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        AccessGroupName of the AccessGroup.
+        This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `access_group_name`.
         """
         return pulumi.get(self, "id")
 
@@ -72,7 +94,7 @@ class GetAccessGroupsGroupResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Filter results by a specific AccessGroupType.
+        Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
         """
         return pulumi.get(self, "type")
 
@@ -229,20 +251,26 @@ class GetMountTargetsTargetResult(dict):
                  access_group_name: str,
                  id: str,
                  mount_target_domain: str,
+                 network_type: str,
+                 status: str,
                  type: str,
                  vpc_id: str,
                  vswitch_id: str):
         """
         :param str access_group_name: Filter results by a specific AccessGroupName.
         :param str id: ID of the MountTargetDomain.
-        :param str mount_target_domain: Filter results by a specific MountTargetDomain.
-        :param str type: Filter results by a specific NetworkType.
+        :param str mount_target_domain: Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+        :param str network_type: Filter results by a specific NetworkType.
+        :param str status: Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+        :param str type: Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
         :param str vpc_id: Filter results by a specific VpcId.
         :param str vswitch_id: Filter results by a specific VSwitchId.
         """
         pulumi.set(__self__, "access_group_name", access_group_name)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mount_target_domain", mount_target_domain)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -267,15 +295,31 @@ class GetMountTargetsTargetResult(dict):
     @pulumi.getter(name="mountTargetDomain")
     def mount_target_domain(self) -> str:
         """
-        Filter results by a specific MountTargetDomain.
+        Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
         """
         return pulumi.get(self, "mount_target_domain")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        Filter results by a specific NetworkType.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> str:
         """
-        Filter results by a specific NetworkType.
+        Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
         """
         return pulumi.get(self, "type")
 

@@ -36,8 +36,8 @@ namespace Pulumi.AliCloud.Ram
     ///         })));
     ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
     ///         {
-    ///             MostRecent = true,
     ///             NameRegex = "^ubuntu_18.*64",
+    ///             MostRecent = true,
     ///             Owners = "system",
     ///         }));
     ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
@@ -46,9 +46,9 @@ namespace Pulumi.AliCloud.Ram
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
     ///         {
@@ -56,34 +56,33 @@ namespace Pulumi.AliCloud.Ram
     ///         });
     ///         var defaultSecurityGroupRule = new AliCloud.Ecs.SecurityGroupRule("defaultSecurityGroupRule", new AliCloud.Ecs.SecurityGroupRuleArgs
     ///         {
-    ///             CidrIp = "172.16.0.0/24",
+    ///             Type = "ingress",
     ///             IpProtocol = "tcp",
     ///             NicType = "intranet",
     ///             Policy = "accept",
     ///             PortRange = "22/22",
     ///             Priority = 1,
     ///             SecurityGroupId = defaultSecurityGroup.Id,
-    ///             Type = "ingress",
+    ///             CidrIp = "172.16.0.0/24",
     ///         });
     ///         var config = new Config();
     ///         var name = config.Get("name") ?? "ecsInstanceVPCExample";
     ///         var foo = new AliCloud.Ecs.Instance("foo", new AliCloud.Ecs.InstanceArgs
     ///         {
+    ///             VswitchId = defaultSwitch.Id,
     ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
-    ///             InstanceName = name,
     ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+    ///             SystemDiskCategory = "cloud_efficiency",
     ///             InternetChargeType = "PayByTraffic",
     ///             InternetMaxBandwidthOut = 5,
     ///             SecurityGroups = 
     ///             {
     ///                 defaultSecurityGroup.Id,
     ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             VswitchId = defaultSwitch.Id,
+    ///             InstanceName = name,
     ///         });
     ///         var role = new AliCloud.Ram.Role("role", new AliCloud.Ram.RoleArgs
     ///         {
-    ///             Description = "this is a test",
     ///             Document = @"  {
     ///     ""Statement"": [
     ///       {
@@ -100,18 +99,16 @@ namespace Pulumi.AliCloud.Ram
     ///   }
     ///   
     /// ",
+    ///             Description = "this is a test",
     ///             Force = true,
     ///         });
     ///         var attach = new AliCloud.Ram.RoleAttachment("attach", new AliCloud.Ram.RoleAttachmentArgs
     ///         {
+    ///             RoleName = role.Name,
     ///             InstanceIds = 
     ///             {
-    ///                 
-    ///                 {
-    ///                     foo,
-    ///                 }.Select(__item =&gt; __item.Id).ToList(),
-    ///             },
-    ///             RoleName = role.Name,
+    ///                 foo,
+    ///             }.Select(__item =&gt; __item.Id).ToList(),
     ///         });
     ///     }
     /// 

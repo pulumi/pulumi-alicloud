@@ -15,6 +15,8 @@ type EipAssociation struct {
 
 	// The allocation EIP ID.
 	AllocationId pulumi.StringOutput `pulumi:"allocationId"`
+	// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The ID of the ECS or SLB instance or Nat Gateway.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The type of cloud product that the eip instance to bind.
@@ -59,6 +61,8 @@ func GetEipAssociation(ctx *pulumi.Context,
 type eipAssociationState struct {
 	// The allocation EIP ID.
 	AllocationId *string `pulumi:"allocationId"`
+	// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+	Force *bool `pulumi:"force"`
 	// The ID of the ECS or SLB instance or Nat Gateway.
 	InstanceId *string `pulumi:"instanceId"`
 	// The type of cloud product that the eip instance to bind.
@@ -70,6 +74,8 @@ type eipAssociationState struct {
 type EipAssociationState struct {
 	// The allocation EIP ID.
 	AllocationId pulumi.StringPtrInput
+	// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+	Force pulumi.BoolPtrInput
 	// The ID of the ECS or SLB instance or Nat Gateway.
 	InstanceId pulumi.StringPtrInput
 	// The type of cloud product that the eip instance to bind.
@@ -85,6 +91,8 @@ func (EipAssociationState) ElementType() reflect.Type {
 type eipAssociationArgs struct {
 	// The allocation EIP ID.
 	AllocationId string `pulumi:"allocationId"`
+	// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+	Force *bool `pulumi:"force"`
 	// The ID of the ECS or SLB instance or Nat Gateway.
 	InstanceId string `pulumi:"instanceId"`
 	// The type of cloud product that the eip instance to bind.
@@ -97,6 +105,8 @@ type eipAssociationArgs struct {
 type EipAssociationArgs struct {
 	// The allocation EIP ID.
 	AllocationId pulumi.StringInput
+	// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+	Force pulumi.BoolPtrInput
 	// The ID of the ECS or SLB instance or Nat Gateway.
 	InstanceId pulumi.StringInput
 	// The type of cloud product that the eip instance to bind.

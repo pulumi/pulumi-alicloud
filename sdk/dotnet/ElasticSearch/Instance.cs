@@ -30,21 +30,21 @@ namespace Pulumi.AliCloud.ElasticSearch
     ///     {
     ///         var instance = new AliCloud.ElasticSearch.Instance("instance", new AliCloud.ElasticSearch.InstanceArgs
     ///         {
-    ///             InstanceChargeType = "PostPaid",
     ///             DataNodeAmount = 2,
-    ///             DataNodeSpec = "elasticsearch.sn2ne.large",
     ///             DataNodeDiskSize = 20,
     ///             DataNodeDiskType = "cloud_ssd",
-    ///             VswitchId = "some vswitch id",
-    ///             Password = "Your password",
-    ///             Version = "5.5.3_with_X-Pack",
+    ///             DataNodeSpec = "elasticsearch.sn2ne.large",
     ///             Description = "description",
-    ///             ZoneCount = 2,
+    ///             InstanceChargeType = "PostPaid",
+    ///             Password = "Your password",
     ///             Tags = 
     ///             {
     ///                 { "key1", "value1" },
     ///                 { "key2", "value2" },
     ///             },
+    ///             Version = "5.5.3_with_X-Pack",
+    ///             VswitchId = "some vswitch id",
+    ///             ZoneCount = 2,
     ///         });
     ///     }
     /// 

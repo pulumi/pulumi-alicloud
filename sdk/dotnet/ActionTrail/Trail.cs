@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ActionTrail
 {
     /// <summary>
-    /// Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+    /// Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
     /// 
-    /// &gt; **NOTE:** Available in 1.35.0+
+    /// &gt; **NOTE:** Available in 1.95.0+
     /// 
     /// ## Example Usage
     /// 
@@ -24,13 +24,14 @@ namespace Pulumi.AliCloud.ActionTrail
     /// {
     ///     public MyStack()
     ///     {
-    ///         // Create a new action trail.
-    ///         var foo = new AliCloud.ActionTrail.Trail("foo", new AliCloud.ActionTrail.TrailArgs
+    ///         // Create a new actiontrail trail.
+    ///         var @default = new AliCloud.ActionTrail.Trail("default", new AliCloud.ActionTrail.TrailArgs
     ///         {
-    ///             EventRw = "Write-test",
-    ///             OssBucketName = alicloud_oss_bucket.Bucket.Id,
-    ///             OssKeyPrefix = "at-product-account-audit-B",
-    ///             RoleName = alicloud_ram_role_policy_attachment.Attach.Role_name,
+    ///             EventRw = "All",
+    ///             OssBucketName = "bucket_name",
+    ///             RoleName = "aliyunserviceroleforactiontrail",
+    ///             TrailName = "action-trail",
+    ///             TrailRegion = "cn-hangzhou",
     ///         });
     ///     }
     /// 
@@ -40,13 +41,22 @@ namespace Pulumi.AliCloud.ActionTrail
     public partial class Trail : Pulumi.CustomResource
     {
         /// <summary>
-        /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+        /// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
         /// </summary>
         [Output("eventRw")]
         public Output<string?> EventRw { get; private set; } = null!;
 
+        [Output("isOrganizationTrail")]
+        public Output<bool?> IsOrganizationTrail { get; private set; } = null!;
+
         /// <summary>
-        /// The name of the trail to be created, which must be unique for an account.
+        /// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+        /// </summary>
+        [Output("mnsTopicArn")]
+        public Output<string?> MnsTopicArn { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -55,7 +65,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
         /// </summary>
         [Output("ossBucketName")]
-        public Output<string> OssBucketName { get; private set; } = null!;
+        public Output<string?> OssBucketName { get; private set; } = null!;
 
         /// <summary>
         /// The prefix of the specified OSS bucket name. This parameter can be left empty.
@@ -81,6 +91,24 @@ namespace Pulumi.AliCloud.ActionTrail
         [Output("slsWriteRoleArn")]
         public Output<string?> SlsWriteRoleArn { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+        /// </summary>
+        [Output("status")]
+        public Output<string?> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the trail to be created, which must be unique for an account.
+        /// </summary>
+        [Output("trailName")]
+        public Output<string> TrailName { get; private set; } = null!;
+
+        /// <summary>
+        /// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        /// </summary>
+        [Output("trailRegion")]
+        public Output<string?> TrailRegion { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Trail resource with the given unique name, arguments, and options.
@@ -89,7 +117,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Trail(string name, TrailArgs args, CustomResourceOptions? options = null)
+        public Trail(string name, TrailArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:actiontrail/trail:Trail", name, args ?? new TrailArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -128,62 +156,22 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class TrailArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+        /// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
         /// </summary>
         [Input("eventRw")]
         public Input<string>? EventRw { get; set; }
 
+        [Input("isOrganizationTrail")]
+        public Input<bool>? IsOrganizationTrail { get; set; }
+
         /// <summary>
-        /// The name of the trail to be created, which must be unique for an account.
+        /// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("mnsTopicArn")]
+        public Input<string>? MnsTopicArn { get; set; }
 
         /// <summary>
-        /// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
-        /// </summary>
-        [Input("ossBucketName", required: true)]
-        public Input<string> OssBucketName { get; set; } = null!;
-
-        /// <summary>
-        /// The prefix of the specified OSS bucket name. This parameter can be left empty.
-        /// </summary>
-        [Input("ossKeyPrefix")]
-        public Input<string>? OssKeyPrefix { get; set; }
-
-        /// <summary>
-        /// The RAM role in ActionTrail permitted by the user.
-        /// </summary>
-        [Input("roleName", required: true)]
-        public Input<string> RoleName { get; set; } = null!;
-
-        /// <summary>
-        /// The unique ARN of the Log Service project.
-        /// </summary>
-        [Input("slsProjectArn")]
-        public Input<string>? SlsProjectArn { get; set; }
-
-        /// <summary>
-        /// The unique ARN of the Log Service role.
-        /// </summary>
-        [Input("slsWriteRoleArn")]
-        public Input<string>? SlsWriteRoleArn { get; set; }
-
-        public TrailArgs()
-        {
-        }
-    }
-
-    public sealed class TrailState : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
-        /// </summary>
-        [Input("eventRw")]
-        public Input<string>? EventRw { get; set; }
-
-        /// <summary>
-        /// The name of the trail to be created, which must be unique for an account.
+        /// Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -217,6 +205,100 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         [Input("slsWriteRoleArn")]
         public Input<string>? SlsWriteRoleArn { get; set; }
+
+        /// <summary>
+        /// The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The name of the trail to be created, which must be unique for an account.
+        /// </summary>
+        [Input("trailName")]
+        public Input<string>? TrailName { get; set; }
+
+        /// <summary>
+        /// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        /// </summary>
+        [Input("trailRegion")]
+        public Input<string>? TrailRegion { get; set; }
+
+        public TrailArgs()
+        {
+        }
+    }
+
+    public sealed class TrailState : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+        /// </summary>
+        [Input("eventRw")]
+        public Input<string>? EventRw { get; set; }
+
+        [Input("isOrganizationTrail")]
+        public Input<bool>? IsOrganizationTrail { get; set; }
+
+        /// <summary>
+        /// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+        /// </summary>
+        [Input("mnsTopicArn")]
+        public Input<string>? MnsTopicArn { get; set; }
+
+        /// <summary>
+        /// Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+        /// </summary>
+        [Input("ossBucketName")]
+        public Input<string>? OssBucketName { get; set; }
+
+        /// <summary>
+        /// The prefix of the specified OSS bucket name. This parameter can be left empty.
+        /// </summary>
+        [Input("ossKeyPrefix")]
+        public Input<string>? OssKeyPrefix { get; set; }
+
+        /// <summary>
+        /// The RAM role in ActionTrail permitted by the user.
+        /// </summary>
+        [Input("roleName")]
+        public Input<string>? RoleName { get; set; }
+
+        /// <summary>
+        /// The unique ARN of the Log Service project.
+        /// </summary>
+        [Input("slsProjectArn")]
+        public Input<string>? SlsProjectArn { get; set; }
+
+        /// <summary>
+        /// The unique ARN of the Log Service role.
+        /// </summary>
+        [Input("slsWriteRoleArn")]
+        public Input<string>? SlsWriteRoleArn { get; set; }
+
+        /// <summary>
+        /// The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The name of the trail to be created, which must be unique for an account.
+        /// </summary>
+        [Input("trailName")]
+        public Input<string>? TrailName { get; set; }
+
+        /// <summary>
+        /// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        /// </summary>
+        [Input("trailRegion")]
+        public Input<string>? TrailRegion { get; set; }
 
         public TrailState()
         {

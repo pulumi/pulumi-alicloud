@@ -37,10 +37,10 @@ import (
 // 			return err
 // 		}
 // 		_, err = rocketmq.NewTopic(ctx, "defaultTopic", &rocketmq.TopicArgs{
+// 			Topic:       pulumi.String(topic),
 // 			InstanceId:  defaultInstance.ID(),
 // 			MessageType: pulumi.Int(0),
 // 			Remark:      pulumi.String("dafault_ons_topic_remark"),
-// 			Topic:       pulumi.String(topic),
 // 		})
 // 		if err != nil {
 // 			return err

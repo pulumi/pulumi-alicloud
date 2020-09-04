@@ -20,20 +20,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraformtestslbconfig";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/12",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/21",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("default", {
+ * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
  *     specification: "slb.s2.small",
+ *     vswitchId: defaultSwitch.id,
  *     tags: {
  *         tag_a: 1,
  *         tag_b: 2,
@@ -46,7 +44,6 @@ import * as utilities from "../utilities";
  *         tag_i: 9,
  *         tag_j: 10,
  *     },
- *     vswitchId: defaultSwitch.id,
  * });
  * ```
  */

@@ -10,39 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a DNS domain resource.
-//
-// > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
-//
-// > **NOTE:** Available in v1.81.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewDnsDomain(ctx, "dns", &dns.DnsDomainArgs{
-// 			DomainName: pulumi.String("starmove.com"),
-// 			GroupId:    pulumi.String("85ab8713-4a30-4de4-9d20-155ff830****"),
-// 			Tags: pulumi.StringMap{
-// 				"Created":     pulumi.String("Terraform"),
-// 				"Environment": pulumi.String("test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DnsDomain struct {
 	pulumi.CustomResourceState
 
@@ -52,9 +19,11 @@ type DnsDomain struct {
 	// Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// Id of the group in which the domain will add. If not supplied, then use default group.
-	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
+	GroupId   pulumi.StringPtrOutput `pulumi:"groupId"`
+	GroupName pulumi.StringOutput    `pulumi:"groupName"`
 	// User language.
-	Lang pulumi.StringPtrOutput `pulumi:"lang"`
+	Lang     pulumi.StringPtrOutput `pulumi:"lang"`
+	PunyCode pulumi.StringOutput    `pulumi:"punyCode"`
 	// Remarks information for your domain name.
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// The Id of resource group which the dns domain belongs.
@@ -102,9 +71,11 @@ type dnsDomainState struct {
 	// Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName *string `pulumi:"domainName"`
 	// Id of the group in which the domain will add. If not supplied, then use default group.
-	GroupId *string `pulumi:"groupId"`
+	GroupId   *string `pulumi:"groupId"`
+	GroupName *string `pulumi:"groupName"`
 	// User language.
-	Lang *string `pulumi:"lang"`
+	Lang     *string `pulumi:"lang"`
+	PunyCode *string `pulumi:"punyCode"`
 	// Remarks information for your domain name.
 	Remark *string `pulumi:"remark"`
 	// The Id of resource group which the dns domain belongs.
@@ -122,9 +93,11 @@ type DnsDomainState struct {
 	// Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringPtrInput
 	// Id of the group in which the domain will add. If not supplied, then use default group.
-	GroupId pulumi.StringPtrInput
+	GroupId   pulumi.StringPtrInput
+	GroupName pulumi.StringPtrInput
 	// User language.
-	Lang pulumi.StringPtrInput
+	Lang     pulumi.StringPtrInput
+	PunyCode pulumi.StringPtrInput
 	// Remarks information for your domain name.
 	Remark pulumi.StringPtrInput
 	// The Id of resource group which the dns domain belongs.

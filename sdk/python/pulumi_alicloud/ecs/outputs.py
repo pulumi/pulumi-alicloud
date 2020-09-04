@@ -1164,7 +1164,7 @@ class GetImagesImageResult(dict):
                  usage: str,
                  tags: Optional[Mapping[str, Any]] = None):
         """
-        :param str architecture: Platform type of the image system: i386 or x86_64.
+        :param str architecture: The image architecture. Valid values: `i386` and `x86_64`.
         :param str creation_time: Time of creation.
         :param str description: Description of the image.
         :param List['GetImagesImageDiskDeviceMappingArgs'] disk_device_mappings: Description of the system with disks and snapshots under the image.
@@ -1172,12 +1172,24 @@ class GetImagesImageResult(dict):
         :param str image_owner_alias: Alias of the image owner.
         :param str image_version: Version of the image.
         :param bool is_subscribed: Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
+        :param bool is_support_io_optimized: Specifies whether the image can be used on I/O optimized instances.
         :param str os_name: Display Chinese name of the OS.
         :param str os_name_en: Display English name of the OS.
+        :param str os_type: The operating system type of the image. Valid values: `windows` and `linux`.
         :param str product_code: Product code of the image on the image market.
         :param str progress: Progress of image creation, presented in percentages.
         :param float size: Size of the created disk.
-        :param str status: Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+        :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+               * `Creating`: The image is being created.
+               * `Waiting`: The image is waiting to be processed.
+               * `Available`: The image is available.
+               * `UnAvailable`: The image is unavailable.
+               * `CreateFailed`: The image failed to be created.
+               * `Deprecated`: The image is discontinued.
+        :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
+               * `instance`: The image is already in use and running on an ECS instance.
+               * `none`: The image is not in use.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -1209,7 +1221,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def architecture(self) -> str:
         """
-        Platform type of the image system: i386 or x86_64.
+        The image architecture. Valid values: `i386` and `x86_64`.
         """
         return pulumi.get(self, "architecture")
 
@@ -1287,6 +1299,9 @@ class GetImagesImageResult(dict):
     @property
     @pulumi.getter(name="isSupportIoOptimized")
     def is_support_io_optimized(self) -> bool:
+        """
+        Specifies whether the image can be used on I/O optimized instances.
+        """
         return pulumi.get(self, "is_support_io_optimized")
 
     @property
@@ -1313,6 +1328,9 @@ class GetImagesImageResult(dict):
     @property
     @pulumi.getter(name="osType")
     def os_type(self) -> str:
+        """
+        The operating system type of the image. Valid values: `windows` and `linux`.
+        """
         return pulumi.get(self, "os_type")
 
     @property
@@ -1353,18 +1371,32 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+        The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        * `Creating`: The image is being created.
+        * `Waiting`: The image is waiting to be processed.
+        * `Available`: The image is available.
+        * `UnAvailable`: The image is unavailable.
+        * `CreateFailed`: The image failed to be created.
+        * `Deprecated`: The image is discontinued.
         """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def usage(self) -> str:
+        """
+        Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
+        * `instance`: The image is already in use and running on an ECS instance.
+        * `none`: The image is not in use.
+        """
         return pulumi.get(self, "usage")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -1377,7 +1409,7 @@ class GetImagesImageDiskDeviceMappingResult(dict):
         """
         :param str device: Device information of the created disk: such as /dev/xvdb.
         :param str size: Size of the created disk.
-        :param str snapshot_id: Snapshot ID.
+        :param str snapshot_id: The ID of the snapshot used to create the custom image.
         """
         pulumi.set(__self__, "device", device)
         pulumi.set(__self__, "size", size)
@@ -1403,7 +1435,7 @@ class GetImagesImageDiskDeviceMappingResult(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> str:
         """
-        Snapshot ID.
+        The ID of the snapshot used to create the custom image.
         """
         return pulumi.get(self, "snapshot_id")
 

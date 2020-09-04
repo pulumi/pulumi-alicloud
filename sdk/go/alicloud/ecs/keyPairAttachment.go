@@ -52,12 +52,12 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt5 := true
-// 		opt6 := "^ubuntu_18.*64"
+// 		opt5 := "^ubuntu_18.*64"
+// 		opt6 := true
 // 		opt7 := "system"
 // 		images, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			MostRecent: &opt5,
-// 			NameRegex:  &opt6,
+// 			NameRegex:  &opt5,
+// 			MostRecent: &opt6,
 // 			Owners:     &opt7,
 // 		}, nil)
 // 		if err != nil {
@@ -70,9 +70,9 @@ import (
 // 			return err
 // 		}
 // 		vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("10.1.1.0/24"),
 // 			VpcId:            vpc.ID(),
+// 			CidrBlock:        pulumi.String("10.1.1.0/24"),
+// 			AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -87,18 +87,18 @@ import (
 // 		var instance []*ecs.Instance
 // 		for key0, val0 := range 2 {
 // 			__res, err := ecs.NewInstance(ctx, fmt.Sprintf("instance-%v", key0), &ecs.InstanceArgs{
-// 				ImageId:                 pulumi.String(images.Images[0].Id),
-// 				InstanceChargeType:      pulumi.String("PostPaid"),
-// 				InstanceName:            pulumi.String(fmt.Sprintf("%v%v%v", name, "-", val0+1)),
-// 				InstanceType:            pulumi.String(_type.InstanceTypes[0].Id),
-// 				InternetChargeType:      pulumi.String("PayByTraffic"),
-// 				InternetMaxBandwidthOut: pulumi.Int(5),
-// 				Password:                pulumi.String("Test12345"),
+// 				InstanceName: pulumi.String(fmt.Sprintf("%v%v%v", name, "-", val0+1)),
+// 				ImageId:      pulumi.String(images.Images[0].Id),
+// 				InstanceType: pulumi.String(_type.InstanceTypes[0].Id),
 // 				SecurityGroups: pulumi.StringArray{
 // 					group.ID(),
 // 				},
-// 				SystemDiskCategory: pulumi.String("cloud_ssd"),
-// 				VswitchId:          vswitch.ID(),
+// 				VswitchId:               vswitch.ID(),
+// 				InternetChargeType:      pulumi.String("PayByTraffic"),
+// 				InternetMaxBandwidthOut: pulumi.Int(5),
+// 				Password:                pulumi.String("Test12345"),
+// 				InstanceChargeType:      pulumi.String("PostPaid"),
+// 				SystemDiskCategory:      pulumi.String("cloud_ssd"),
 // 			})
 // 			if err != nil {
 // 				return err
@@ -116,8 +116,8 @@ import (
 // 			splat0 = append(splat0, val0.ID())
 // 		}
 // 		_, err = ecs.NewKeyPairAttachment(ctx, "attachment", &ecs.KeyPairAttachmentArgs{
-// 			InstanceIds: toPulumiStringArray(splat0),
 // 			KeyName:     pair.ID(),
+// 			InstanceIds: toPulumiStringArray(splat0),
 // 		})
 // 		if err != nil {
 // 			return err

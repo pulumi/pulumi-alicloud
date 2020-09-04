@@ -46,17 +46,17 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := slb.NewAcl(ctx, "_default", &slb.AclArgs{
+// 			IpVersion: pulumi.String(ipVersion),
 // 			EntryLists: slb.AclEntryListArray{
 // 				&slb.AclEntryListArgs{
-// 					Comment: pulumi.String("first"),
 // 					Entry:   pulumi.String("10.10.10.0/24"),
+// 					Comment: pulumi.String("first"),
 // 				},
 // 				&slb.AclEntryListArgs{
-// 					Comment: pulumi.String("second"),
 // 					Entry:   pulumi.String("168.10.10.0/24"),
+// 					Comment: pulumi.String("second"),
 // 				},
 // 			},
-// 			IpVersion: pulumi.String(ipVersion),
 // 		})
 // 		if err != nil {
 // 			return err

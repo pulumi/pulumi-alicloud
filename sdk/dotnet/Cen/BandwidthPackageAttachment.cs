@@ -40,8 +40,8 @@ namespace Pulumi.AliCloud.Cen
     ///         });
     ///         var foo = new AliCloud.Cen.BandwidthPackageAttachment("foo", new AliCloud.Cen.BandwidthPackageAttachmentArgs
     ///         {
-    ///             BandwidthPackageId = bwp.Id,
     ///             InstanceId = cen.Id,
+    ///             BandwidthPackageId = bwp.Id,
     ///         });
     ///     }
     /// 

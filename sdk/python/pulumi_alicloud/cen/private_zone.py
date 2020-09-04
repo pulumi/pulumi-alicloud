@@ -39,22 +39,23 @@ class PrivateZone(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        # Create a cen Private Zone resource and use it.
         default_instance = alicloud.cen.Instance("defaultInstance")
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
         default_instance_attachment = alicloud.cen.InstanceAttachment("defaultInstanceAttachment",
+            instance_id=default_instance.id,
             child_instance_id=default_network.id,
             child_instance_region_id="cn-hangzhou",
-            instance_id=default_instance.id,
             opts=ResourceOptions(depends_on=[
-                    "alicloud_cen_instance.default",
-                    "alicloud_vpc.default",
+                    default_instance,
+                    default_network,
                 ]))
         default_private_zone = alicloud.cen.PrivateZone("defaultPrivateZone",
             access_region_id="cn-hangzhou",
             cen_id=default_instance.id,
             host_region_id="cn-hangzhou",
             host_vpc_id=default_network.id,
-            opts=ResourceOptions(depends_on=["alicloud_cen_instance_attachment.default"]))
+            opts=ResourceOptions(depends_on=[default_instance_attachment]))
         ```
 
         :param str resource_name: The name of the resource.

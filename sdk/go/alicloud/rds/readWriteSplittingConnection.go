@@ -42,9 +42,9 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -52,37 +52,37 @@ import (
 // 		defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
 // 			Engine:             pulumi.String("MySQL"),
 // 			EngineVersion:      pulumi.String("5.6"),
+// 			InstanceType:       pulumi.String("rds.mysql.t1.small"),
+// 			InstanceStorage:    pulumi.Int(20),
 // 			InstanceChargeType: pulumi.String("Postpaid"),
 // 			InstanceName:       pulumi.String(name),
-// 			InstanceStorage:    pulumi.Int(20),
-// 			InstanceType:       pulumi.String("rds.mysql.t1.small"),
+// 			VswitchId:          defaultSwitch.ID(),
 // 			SecurityIps: pulumi.StringArray{
 // 				pulumi.String("10.168.1.12"),
 // 				pulumi.String("100.69.7.112"),
 // 			},
-// 			VswitchId: defaultSwitch.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = rds.NewReadOnlyInstance(ctx, "defaultReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
-// 			EngineVersion:      defaultInstance.EngineVersion,
-// 			InstanceName:       pulumi.String(fmt.Sprintf("%v%v", name, "ro")),
-// 			InstanceStorage:    pulumi.Int(30),
-// 			InstanceType:       defaultInstance.InstanceType,
+// 		defaultReadOnlyInstance, err := rds.NewReadOnlyInstance(ctx, "defaultReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
 // 			MasterDbInstanceId: defaultInstance.ID(),
-// 			VswitchId:          defaultSwitch.ID(),
 // 			ZoneId:             defaultInstance.ZoneId,
+// 			EngineVersion:      defaultInstance.EngineVersion,
+// 			InstanceType:       defaultInstance.InstanceType,
+// 			InstanceStorage:    pulumi.Int(30),
+// 			InstanceName:       pulumi.String(fmt.Sprintf("%v%v", name, "ro")),
+// 			VswitchId:          defaultSwitch.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = rds.NewReadWriteSplittingConnection(ctx, "defaultReadWriteSplittingConnection", &rds.ReadWriteSplittingConnectionArgs{
+// 			InstanceId:       defaultInstance.ID(),
 // 			ConnectionPrefix: pulumi.String("t-con-123"),
 // 			DistributionType: pulumi.String("Standard"),
-// 			InstanceId:       defaultInstance.ID(),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_db_readonly_instance.default",
+// 			defaultReadOnlyInstance,
 // 		}))
 // 		if err != nil {
 // 			return err

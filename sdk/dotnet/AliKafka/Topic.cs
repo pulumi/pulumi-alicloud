@@ -39,29 +39,29 @@ namespace Pulumi.AliCloud.AliKafka
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new AliCloud.AliKafka.InstanceArgs
     ///         {
-    ///             DeployType = 5,
-    ///             DiskSize = 500,
-    ///             DiskType = 1,
-    ///             IoMax = 20,
     ///             TopicQuota = 50,
+    ///             DiskType = 1,
+    ///             DiskSize = 500,
+    ///             DeployType = 5,
+    ///             IoMax = 20,
     ///             VswitchId = defaultSwitch.Id,
     ///         });
     ///         var config = new Config();
     ///         var topic = config.Get("topic") ?? "alikafkaTopicName";
     ///         var defaultTopic = new AliCloud.AliKafka.Topic("defaultTopic", new AliCloud.AliKafka.TopicArgs
     ///         {
-    ///             CompactTopic = false,
     ///             InstanceId = defaultInstance.Id,
+    ///             Topic = topic,
     ///             LocalTopic = false,
+    ///             CompactTopic = false,
     ///             PartitionNum = 12,
     ///             Remark = "dafault_kafka_topic_remark",
-    ///             Topic = topic,
     ///         });
     ///     }
     /// 

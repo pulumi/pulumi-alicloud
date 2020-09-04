@@ -42,8 +42,8 @@ namespace Pulumi.AliCloud.Gpdb
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
     ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
     ///         });
     ///         var example = new AliCloud.Gpdb.Instance("example", new AliCloud.Gpdb.InstanceArgs
     ///         {
@@ -52,12 +52,12 @@ namespace Pulumi.AliCloud.Gpdb
     ///             EngineVersion = "4.3",
     ///             InstanceClass = "gpdb.group.segsdx2",
     ///             InstanceGroupCount = "2",
+    ///             VswitchId = defaultSwitch.Id,
     ///             SecurityIpLists = 
     ///             {
     ///                 "10.168.1.12",
     ///                 "100.69.7.112",
     ///             },
-    ///             VswitchId = defaultSwitch.Id,
     ///         });
     ///     }
     /// 

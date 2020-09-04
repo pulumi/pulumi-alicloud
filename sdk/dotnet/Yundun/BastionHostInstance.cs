@@ -11,12 +11,38 @@ namespace Pulumi.AliCloud.Yundun
 {
     /// <summary>
     /// Cloud Bastionhost instance resource ("Yundun_bastionhost" is the short term of this product).
+    /// For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
     /// 
     /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
     /// 
     /// &gt; **NOTE:** Available in 1.63.0+ .
     /// 
     /// &gt; **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Yundun.BastionHostInstance("default", new AliCloud.Yundun.BastionHostInstanceArgs
+    ///         {
+    ///             Description = "Terraform-test",
+    ///             LicenseCode = "bhah_ent_50_asset",
+    ///             Period = 1,
+    ///             SecurityGroupIds = "sg-test",
+    ///             VswitchId = "v-testVswitch",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class BastionHostInstance : Pulumi.CustomResource
     {
@@ -26,6 +52,9 @@ namespace Pulumi.AliCloud.Yundun
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        /// </summary>
         [Output("licenseCode")]
         public Output<string> LicenseCode { get; private set; } = null!;
 
@@ -42,7 +71,7 @@ namespace Pulumi.AliCloud.Yundun
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// security group IDs configured to bastionhost
+        /// security group IDs configured to Bastionhost.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
@@ -54,7 +83,7 @@ namespace Pulumi.AliCloud.Yundun
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// vSwtich ID configured to bastionhost
+        /// VSwitch ID configured to Bastionhost.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -111,6 +140,9 @@ namespace Pulumi.AliCloud.Yundun
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        /// <summary>
+        /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        /// </summary>
         [Input("licenseCode", required: true)]
         public Input<string> LicenseCode { get; set; } = null!;
 
@@ -130,7 +162,7 @@ namespace Pulumi.AliCloud.Yundun
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// security group IDs configured to bastionhost
+        /// security group IDs configured to Bastionhost.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -151,7 +183,7 @@ namespace Pulumi.AliCloud.Yundun
         }
 
         /// <summary>
-        /// vSwtich ID configured to bastionhost
+        /// VSwitch ID configured to Bastionhost.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
@@ -169,6 +201,9 @@ namespace Pulumi.AliCloud.Yundun
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        /// </summary>
         [Input("licenseCode")]
         public Input<string>? LicenseCode { get; set; }
 
@@ -188,7 +223,7 @@ namespace Pulumi.AliCloud.Yundun
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// security group IDs configured to bastionhost
+        /// security group IDs configured to Bastionhost.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -209,7 +244,7 @@ namespace Pulumi.AliCloud.Yundun
         }
 
         /// <summary>
-        /// vSwtich ID configured to bastionhost
+        /// VSwitch ID configured to Bastionhost.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

@@ -17,58 +17,58 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const images = pulumi.output(alicloud.ecs.getImages({
+ * const images = alicloud.ecs.getImages({
  *     owners: "system",
- * }, { async: true }));
- * const instances = pulumi.output(alicloud.ecs.getInstances({ async: true }));
+ * });
+ * const instances = alicloud.ecs.getInstances({});
  * const template = new alicloud.ecs.LaunchTemplate("template", {
- *     dataDisks: [
- *         {
- *             description: "test1",
- *             name: "disk1",
- *         },
- *         {
- *             description: "test2",
- *             name: "disk2",
- *         },
- *     ],
  *     description: "test1",
+ *     imageId: images.then(images => images.images[0].id),
  *     hostName: "tf-test-host",
- *     imageId: images.images[0].id,
  *     instanceChargeType: "PrePaid",
  *     instanceName: "tf-instance-name",
- *     instanceType: instances.instances[0].instanceType,
+ *     instanceType: instances.then(instances => instances.instances[0].instanceType),
  *     internetChargeType: "PayByBandwidth",
  *     internetMaxBandwidthIn: 5,
  *     internetMaxBandwidthOut: 0,
  *     ioOptimized: "none",
  *     keyPairName: "test-key-pair",
- *     networkInterfaces: {
- *         description: "hello1",
- *         name: "eth0",
- *         primaryIp: "10.0.0.2",
- *         securityGroupId: "xxxx",
- *         vswitchId: "xxxxxxx",
- *     },
- *     networkType: "vpc",
  *     ramRoleName: "xxxxx",
- *     resourceGroupId: "rg-zkdfjahg9zxncv0",
+ *     networkType: "vpc",
  *     securityEnhancementStrategy: "Active",
- *     securityGroupId: "sg-zxcvj0lasdf102350asdf9a",
  *     spotPriceLimit: 5,
  *     spotStrategy: "SpotWithPriceLimit",
+ *     securityGroupId: "sg-zxcvj0lasdf102350asdf9a",
  *     systemDiskCategory: "cloud_ssd",
  *     systemDiskDescription: "test disk",
  *     systemDiskName: "hello",
  *     systemDiskSize: 40,
+ *     resourceGroupId: "rg-zkdfjahg9zxncv0",
+ *     userdata: "xxxxxxxxxxxxxx",
+ *     vswitchId: "sw-ljkngaksdjfj0nnasdf",
+ *     vpcId: "vpc-asdfnbg0as8dfk1nb2",
+ *     zoneId: "beijing-a",
  *     tags: {
  *         tag1: "hello",
  *         tag2: "world",
  *     },
- *     userdata: "xxxxxxxxxxxxxx",
- *     vpcId: "vpc-asdfnbg0as8dfk1nb2",
- *     vswitchId: "sw-ljkngaksdjfj0nnasdf",
- *     zoneId: "beijing-a",
+ *     networkInterfaces: {
+ *         name: "eth0",
+ *         description: "hello1",
+ *         primaryIp: "10.0.0.2",
+ *         securityGroupId: "xxxx",
+ *         vswitchId: "xxxxxxx",
+ *     },
+ *     dataDisks: [
+ *         {
+ *             name: "disk1",
+ *             description: "test1",
+ *         },
+ *         {
+ *             name: "disk2",
+ *             description: "test2",
+ *         },
+ *     ],
  * });
  * ```
  */

@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nas
 {
     /// <summary>
-    /// Provides a Nas Mount Target resource.
+    /// Provides a NAS Mount Target resource.
+    /// For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
     /// 
     /// &gt; NOTE: Available in v1.34.0+.
     /// 
@@ -32,26 +33,22 @@ namespace Pulumi.AliCloud.Nas
     /// {
     ///     public MyStack()
     ///     {
-    ///         var fooFileSystem = new AliCloud.Nas.FileSystem("fooFileSystem", new AliCloud.Nas.FileSystemArgs
+    ///         var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new AliCloud.Nas.FileSystemArgs
     ///         {
-    ///             Description = "tf-testAccNasConfigFs",
     ///             ProtocolType = "NFS",
     ///             StorageType = "Performance",
+    ///             Description = "test file system",
     ///         });
-    ///         var fooAccessGroup = new AliCloud.Nas.AccessGroup("fooAccessGroup", new AliCloud.Nas.AccessGroupArgs
+    ///         var exampleAccessGroup = new AliCloud.Nas.AccessGroup("exampleAccessGroup", new AliCloud.Nas.AccessGroupArgs
     ///         {
-    ///             Description = "tf-testAccNasConfig",
-    ///             Type = "Classic",
+    ///             AccessGroupName = "test_name",
+    ///             AccessGroupType = "Classic",
+    ///             Description = "test access group",
     ///         });
-    ///         var bar = new AliCloud.Nas.AccessGroup("bar", new AliCloud.Nas.AccessGroupArgs
+    ///         var exampleMountTarget = new AliCloud.Nas.MountTarget("exampleMountTarget", new AliCloud.Nas.MountTargetArgs
     ///         {
-    ///             Description = "tf-testAccNasConfig-2",
-    ///             Type = "Classic",
-    ///         });
-    ///         var fooMountTarget = new AliCloud.Nas.MountTarget("fooMountTarget", new AliCloud.Nas.MountTargetArgs
-    ///         {
-    ///             AccessGroupName = fooAccessGroup.Id,
-    ///             FileSystemId = fooFileSystem.Id,
+    ///             FileSystemId = exampleFileSystem.Id,
+    ///             AccessGroupName = exampleAccessGroup.AccessGroupName,
     ///         });
     ///     }
     /// 
@@ -61,25 +58,31 @@ namespace Pulumi.AliCloud.Nas
     public partial class MountTarget : Pulumi.CustomResource
     {
         /// <summary>
-        /// Permission group name.
+        /// The name of the permission group that applies to the mount target.
         /// </summary>
         [Output("accessGroupName")]
         public Output<string> AccessGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// File system ID.
+        /// The ID of the file system.
         /// </summary>
         [Output("fileSystemId")]
         public Output<string> FileSystemId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
+        /// The ID of security group.
+        /// </summary>
+        [Output("securityGroupId")]
+        public Output<string?> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// VSwitch ID.
+        /// The ID of the VSwitch in the VPC where the mount target resides.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -131,25 +134,31 @@ namespace Pulumi.AliCloud.Nas
     public sealed class MountTargetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Permission group name.
+        /// The name of the permission group that applies to the mount target.
         /// </summary>
         [Input("accessGroupName", required: true)]
         public Input<string> AccessGroupName { get; set; } = null!;
 
         /// <summary>
-        /// File system ID.
+        /// The ID of the file system.
         /// </summary>
         [Input("fileSystemId", required: true)]
         public Input<string> FileSystemId { get; set; } = null!;
 
         /// <summary>
-        /// Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
+        /// The ID of security group.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// VSwitch ID.
+        /// The ID of the VSwitch in the VPC where the mount target resides.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -162,25 +171,31 @@ namespace Pulumi.AliCloud.Nas
     public sealed class MountTargetState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Permission group name.
+        /// The name of the permission group that applies to the mount target.
         /// </summary>
         [Input("accessGroupName")]
         public Input<string>? AccessGroupName { get; set; }
 
         /// <summary>
-        /// File system ID.
+        /// The ID of the file system.
         /// </summary>
         [Input("fileSystemId")]
         public Input<string>? FileSystemId { get; set; }
 
         /// <summary>
-        /// Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
+        /// The ID of security group.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// VSwitch ID.
+        /// The ID of the VSwitch in the VPC where the mount target resides.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

@@ -17,6 +17,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// Specifies whether the domain is from Alibaba Cloud or not.
         /// </summary>
         public readonly bool AliDomain;
+        public readonly ImmutableArray<int> AvailableTtls;
         /// <summary>
         /// DNS list of domain names in the resolution system.
         /// </summary>
@@ -66,6 +67,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// Tree-like analytical line list.
         /// </summary>
         public readonly string RecordLineTreeJson;
+        public readonly ImmutableArray<Outputs.GetDomainsDomainRecordLineResult> RecordLines;
         /// <summary>
         /// Whether it is a regional route.
         /// </summary>
@@ -74,6 +76,10 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// The Id of resource group which the dns belongs.
         /// </summary>
         public readonly string Remark;
+        /// <summary>
+        /// The Id of resource group which the dns belongs.
+        /// </summary>
+        public readonly string ResourceGroupId;
         /// <summary>
         /// Whether to allow auxiliary dns.
         /// </summary>
@@ -91,6 +97,8 @@ namespace Pulumi.AliCloud.Dns.Outputs
         [OutputConstructor]
         private GetDomainsDomainResult(
             bool aliDomain,
+
+            ImmutableArray<int> availableTtls,
 
             ImmutableArray<string> dnsServers,
 
@@ -118,9 +126,13 @@ namespace Pulumi.AliCloud.Dns.Outputs
 
             string recordLineTreeJson,
 
+            ImmutableArray<Outputs.GetDomainsDomainRecordLineResult> recordLines,
+
             bool regionLines,
 
             string remark,
+
+            string resourceGroupId,
 
             bool slaveDns,
 
@@ -131,6 +143,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
             string versionName)
         {
             AliDomain = aliDomain;
+            AvailableTtls = availableTtls;
             DnsServers = dnsServers;
             DomainId = domainId;
             DomainName = domainName;
@@ -144,8 +157,10 @@ namespace Pulumi.AliCloud.Dns.Outputs
             MinTtl = minTtl;
             PunyCode = punyCode;
             RecordLineTreeJson = recordLineTreeJson;
+            RecordLines = recordLines;
             RegionLines = regionLines;
             Remark = remark;
+            ResourceGroupId = resourceGroupId;
             SlaveDns = slaveDns;
             Tags = tags;
             VersionCode = versionCode;

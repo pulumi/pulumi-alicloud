@@ -35,22 +35,22 @@ namespace Pulumi.AliCloud.CloudConnect
     ///         });
     ///         var cenAccount = new AliCloud.Provider("cenAccount", new AliCloud.ProviderArgs
     ///         {
-    ///             AccessKey = "xxxxxx",
     ///             Region = "cn-hangzhou",
+    ///             AccessKey = "xxxxxx",
     ///             SecretKey = "xxxxxx",
     ///         });
     ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
     ///         {
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = "alicloud.cen_account",
+    ///             Provider = alicloud.Cen_account,
     ///         });
     ///         var ccn = new AliCloud.CloudConnect.Network("ccn", new AliCloud.CloudConnect.NetworkArgs
     ///         {
     ///             IsDefault = true,
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = "alicloud.ccn_account",
+    ///             Provider = alicloud.Ccn_account,
     ///         });
     ///         var @default = new AliCloud.CloudConnect.NetworkGrant("default", new AliCloud.CloudConnect.NetworkGrantArgs
     ///         {
@@ -61,8 +61,8 @@ namespace Pulumi.AliCloud.CloudConnect
     ///         {
     ///             DependsOn = 
     ///             {
-    ///                 "alicloud_cen_instance.cen",
-    ///                 "alicloud_cloud_connect_network.ccn",
+    ///                 ccn,
+    ///                 cen,
     ///             },
     ///         });
     ///     }

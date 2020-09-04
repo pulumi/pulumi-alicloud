@@ -45,24 +45,24 @@ class BackupPolicy(pulumi.CustomResource):
         default_zones = alicloud.get_zones(available_resource_creation=creation)
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_instance = alicloud.kvstore.Instance("defaultInstance",
-            engine_version="2.8",
             instance_class="Memcache",
             instance_name=name,
-            instance_type="memcache.master.small.default",
+            vswitch_id=default_switch.id,
             private_ip="172.16.0.10",
             security_ips=["10.0.0.1"],
-            vswitch_id=default_switch.id)
+            instance_type="memcache.master.small.default",
+            engine_version="2.8")
         default_backup_policy = alicloud.kvstore.BackupPolicy("defaultBackupPolicy",
+            instance_id=default_instance.id,
             backup_periods=[
                 "Tuesday",
                 "Wednesday",
             ],
-            backup_time="10:00Z-11:00Z",
-            instance_id=default_instance.id)
+            backup_time="10:00Z-11:00Z")
         ```
 
         :param str resource_name: The name of the resource.

@@ -27,52 +27,51 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "testcreatehttplistener";
  * const ipVersion = config.get("ipVersion") || "ipv4";
- *
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("default", {
- *     internet: true,
+ * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
  *     internetChargeType: "PayByTraffic",
+ *     internet: true,
  * });
- * const defaultAcl = new alicloud.slb.Acl("default", {
+ * const defaultAcl = new alicloud.slb.Acl("defaultAcl", {
+ *     ipVersion: ipVersion,
  *     entryLists: [
  *         {
- *             comment: "first",
  *             entry: "10.10.10.0/24",
+ *             comment: "first",
  *         },
  *         {
- *             comment: "second",
  *             entry: "168.10.10.0/24",
+ *             comment: "second",
  *         },
  *     ],
- *     ipVersion: ipVersion,
  * });
- * const defaultListener = new alicloud.slb.Listener("default", {
- *     aclId: defaultAcl.id,
- *     aclStatus: "on",
- *     aclType: "white",
- *     backendPort: 80,
- *     bandwidth: 10,
- *     cookie: "testslblistenercookie",
- *     cookieTimeout: 86400,
- *     frontendPort: 80,
- *     healthCheck: "on",
- *     healthCheckConnectPort: 20,
- *     healthCheckDomain: "ali.com",
- *     healthCheckHttpCode: "http_2xx,http_3xx",
- *     healthCheckInterval: 5,
- *     healthCheckTimeout: 8,
- *     healthCheckUri: "/cons",
- *     healthyThreshold: 8,
- *     idleTimeout: 30,
+ * const defaultListener = new alicloud.slb.Listener("defaultListener", {
  *     loadBalancerId: defaultLoadBalancer.id,
+ *     backendPort: 80,
+ *     frontendPort: 80,
  *     protocol: "http",
- *     requestTimeout: 80,
+ *     bandwidth: 10,
  *     stickySession: "on",
  *     stickySessionType: "insert",
+ *     cookieTimeout: 86400,
+ *     cookie: "testslblistenercookie",
+ *     healthCheck: "on",
+ *     healthCheckDomain: "ali.com",
+ *     healthCheckUri: "/cons",
+ *     healthCheckConnectPort: 20,
+ *     healthyThreshold: 8,
  *     unhealthyThreshold: 8,
+ *     healthCheckTimeout: 8,
+ *     healthCheckInterval: 5,
+ *     healthCheckHttpCode: "http_2xx,http_3xx",
  *     xForwardedFor: {
- *         retriveSlbId: true,
  *         retriveSlbIp: true,
+ *         retriveSlbId: true,
  *     },
+ *     aclStatus: "on",
+ *     aclType: "white",
+ *     aclId: defaultAcl.id,
+ *     requestTimeout: 80,
+ *     idleTimeout: 30,
  * });
  * ```
  * ## Listener fields and protocol mapping

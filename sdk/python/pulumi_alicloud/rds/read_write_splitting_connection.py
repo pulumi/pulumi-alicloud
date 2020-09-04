@@ -43,34 +43,34 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         default_zones = alicloud.get_zones(available_resource_creation=creation)
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_instance = alicloud.rds.Instance("defaultInstance",
             engine="MySQL",
             engine_version="5.6",
+            instance_type="rds.mysql.t1.small",
+            instance_storage=20,
             instance_charge_type="Postpaid",
             instance_name=name,
-            instance_storage=20,
-            instance_type="rds.mysql.t1.small",
+            vswitch_id=default_switch.id,
             security_ips=[
                 "10.168.1.12",
                 "100.69.7.112",
-            ],
-            vswitch_id=default_switch.id)
+            ])
         default_read_only_instance = alicloud.rds.ReadOnlyInstance("defaultReadOnlyInstance",
-            engine_version=default_instance.engine_version,
-            instance_name=f"{name}ro",
-            instance_storage=30,
-            instance_type=default_instance.instance_type,
             master_db_instance_id=default_instance.id,
-            vswitch_id=default_switch.id,
-            zone_id=default_instance.zone_id)
+            zone_id=default_instance.zone_id,
+            engine_version=default_instance.engine_version,
+            instance_type=default_instance.instance_type,
+            instance_storage=30,
+            instance_name=f"{name}ro",
+            vswitch_id=default_switch.id)
         default_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("defaultReadWriteSplittingConnection",
+            instance_id=default_instance.id,
             connection_prefix="t-con-123",
             distribution_type="Standard",
-            instance_id=default_instance.id,
-            opts=ResourceOptions(depends_on=["alicloud_db_readonly_instance.default"]))
+            opts=ResourceOptions(depends_on=[default_read_only_instance]))
         ```
 
         > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.

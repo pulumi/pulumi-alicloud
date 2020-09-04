@@ -51,8 +51,8 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
             eni_amount=2)
-        image = alicloud.ecs.get_images(most_recent=True,
-            name_regex="^ubuntu_18.*64",
+        image = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
             owners="system")
         config = pulumi.Config()
         name = config.get("name")
@@ -63,31 +63,31 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             number = "1"
         main_network = alicloud.vpc.Network("mainNetwork", cidr_block="172.16.0.0/16")
         main_switch = alicloud.vpc.Switch("mainSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=main_network.id,
             cidr_block="172.16.0.0/16",
-            vpc_id=main_network.id)
+            availability_zone=default_zones.zones[0].id)
         group_security_group = alicloud.ecs.SecurityGroup("groupSecurityGroup", vpc_id=main_network.id)
         instance_instance = []
         for range in [{"value": i} for i in range(0, 2)]:
             instance_instance.append(alicloud.ecs.Instance(f"instanceInstance-{range['value']}",
-                availability_zone=default_zones.zones[0].id,
                 image_id=image.images[0].id,
-                instance_charge_type="PostPaid",
-                instance_name=name,
                 instance_type=default_instance_types.instance_types[0].id,
+                instance_name=name,
+                security_groups=[group_security_group.id],
                 internet_charge_type="PayByTraffic",
                 internet_max_bandwidth_out=10,
-                security_groups=[group_security_group.id],
+                availability_zone=default_zones.zones[0].id,
+                instance_charge_type="PostPaid",
                 system_disk_category="cloud_efficiency",
                 vswitch_id=main_switch.id))
         instance_load_balancer = alicloud.slb.LoadBalancer("instanceLoadBalancer",
-            specification="slb.s2.small",
-            vswitch_id=main_switch.id)
+            vswitch_id=main_switch.id,
+            specification="slb.s2.small")
         default_network_interface = []
         for range in [{"value": i} for i in range(0, number)]:
             default_network_interface.append(alicloud.vpc.NetworkInterface(f"defaultNetworkInterface-{range['value']}",
-                security_groups=[group_security_group.id],
-                vswitch_id=main_switch.id))
+                vswitch_id=main_switch.id,
+                security_groups=[group_security_group.id]))
         default_network_interface_attachment = []
         for range in [{"value": i} for i in range(0, number)]:
             default_network_interface_attachment.append(alicloud.vpc.NetworkInterfaceAttachment(f"defaultNetworkInterfaceAttachment-{range['value']}",
@@ -97,34 +97,34 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             load_balancer_id=instance_load_balancer.id,
             servers=[
                 alicloud.slb.MasterSlaveServerGroupServerArgs(
-                    port=100,
                     server_id=instance_instance[0].id,
-                    server_type="Master",
+                    port=100,
                     weight=100,
+                    server_type="Master",
                 ),
                 alicloud.slb.MasterSlaveServerGroupServerArgs(
-                    port=100,
                     server_id=instance_instance[1].id,
-                    server_type="Slave",
+                    port=100,
                     weight=100,
+                    server_type="Slave",
                 ),
             ])
         tcp = alicloud.slb.Listener("tcp",
-            bandwidth=10,
-            established_timeout=600,
-            frontend_port=22,
-            health_check_connect_port=20,
-            health_check_http_code="http_2xx",
-            health_check_interval=5,
-            health_check_timeout=8,
-            health_check_type="tcp",
-            health_check_uri="/console",
-            healthy_threshold=8,
             load_balancer_id=instance_load_balancer.id,
             master_slave_server_group_id=group_master_slave_server_group.id,
-            persistence_timeout=3600,
+            frontend_port=22,
             protocol="tcp",
-            unhealthy_threshold=8)
+            bandwidth=10,
+            health_check_type="tcp",
+            persistence_timeout=3600,
+            healthy_threshold=8,
+            unhealthy_threshold=8,
+            health_check_timeout=8,
+            health_check_interval=5,
+            health_check_http_code="http_2xx",
+            health_check_connect_port=20,
+            health_check_uri="/console",
+            established_timeout=600)
         ```
         ## Block servers
 

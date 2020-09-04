@@ -35,8 +35,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = vpc.NewNetworkAcl(ctx, "defaultNetworkAcl", &vpc.NetworkAclArgs{
-// 			Description: pulumi.String("network_acl"),
 // 			VpcId:       defaultNetwork.ID(),
+// 			Description: pulumi.String("network_acl"),
 // 		})
 // 		if err != nil {
 // 			return err

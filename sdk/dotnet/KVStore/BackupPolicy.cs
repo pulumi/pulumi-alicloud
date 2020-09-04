@@ -38,32 +38,32 @@ namespace Pulumi.AliCloud.KVStore
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new AliCloud.KVStore.InstanceArgs
     ///         {
-    ///             EngineVersion = "2.8",
     ///             InstanceClass = "Memcache",
     ///             InstanceName = name,
-    ///             InstanceType = "memcache.master.small.default",
+    ///             VswitchId = defaultSwitch.Id,
     ///             PrivateIp = "172.16.0.10",
     ///             SecurityIps = 
     ///             {
     ///                 "10.0.0.1",
     ///             },
-    ///             VswitchId = defaultSwitch.Id,
+    ///             InstanceType = "memcache.master.small.default",
+    ///             EngineVersion = "2.8",
     ///         });
     ///         var defaultBackupPolicy = new AliCloud.KVStore.BackupPolicy("defaultBackupPolicy", new AliCloud.KVStore.BackupPolicyArgs
     ///         {
+    ///             InstanceId = defaultInstance.Id,
     ///             BackupPeriods = 
     ///             {
     ///                 "Tuesday",
     ///                 "Wednesday",
     ///             },
     ///             BackupTime = "10:00Z-11:00Z",
-    ///             InstanceId = defaultInstance.Id,
     ///         });
     ///     }
     /// 

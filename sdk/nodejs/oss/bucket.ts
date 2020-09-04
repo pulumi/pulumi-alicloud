@@ -47,8 +47,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const bucket_target = new alicloud.oss.Bucket("bucket-target", {
- *     acl: "public-read",
  *     bucket: "bucket-170309-acl",
+ *     acl: "public-read",
  * });
  * const bucket_logging = new alicloud.oss.Bucket("bucket-logging", {
  *     bucket: "bucket-170309-logging",

@@ -37,22 +37,22 @@ namespace Pulumi.AliCloud.KVStore
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new AliCloud.KVStore.InstanceArgs
     ///         {
-    ///             EngineVersion = "4.0",
     ///             InstanceClass = "redis.master.small.default",
     ///             InstanceName = name,
-    ///             InstanceType = "Redis",
+    ///             VswitchId = defaultSwitch.Id,
     ///             PrivateIp = "172.16.0.10",
     ///             SecurityIps = 
     ///             {
     ///                 "10.0.0.1",
     ///             },
-    ///             VswitchId = defaultSwitch.Id,
+    ///             InstanceType = "Redis",
+    ///             EngineVersion = "4.0",
     ///         });
     ///     }
     /// 

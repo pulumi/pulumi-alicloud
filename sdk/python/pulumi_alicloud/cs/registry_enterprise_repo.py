@@ -42,15 +42,15 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         my_namespace = alicloud.cs.RegistryEnterpriseNamespace("my-namespace",
+            instance_id="cri-xxx",
             auto_create=False,
-            default_visibility="PUBLIC",
-            instance_id="cri-xxx")
+            default_visibility="PUBLIC")
         my_repo = alicloud.cs.RegistryEnterpriseRepo("my-repo",
-            detail="this is a public repo",
             instance_id=my_namespace.instance_id,
             namespace=my_namespace.name,
+            summary="this is summary of my new repo",
             repo_type="PUBLIC",
-            summary="this is summary of my new repo")
+            detail="this is a public repo")
         ```
 
         :param str resource_name: The name of the resource.

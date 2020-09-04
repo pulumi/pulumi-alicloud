@@ -21,29 +21,26 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "Gpdb";
  * const name = config.get("name") || "gpdbConnectionBasic";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: creation,
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultInstance = new alicloud.gpdb.Instance("default", {
- *     description: name,
+ * const defaultInstance = new alicloud.gpdb.Instance("defaultInstance", {
+ *     vswitchId: defaultSwitch.id,
  *     engine: "gpdb",
  *     engineVersion: "4.3",
  *     instanceClass: "gpdb.group.segsdx2",
  *     instanceGroupCount: "2",
- *     vswitchId: defaultSwitch.id,
+ *     description: name,
  * });
- * const defaultConnection = new alicloud.gpdb.Connection("default", {
- *     connectionPrefix: "testAbc",
+ * const defaultConnection = new alicloud.gpdb.Connection("defaultConnection", {
  *     instanceId: defaultInstance.id,
+ *     connectionPrefix: "testAbc",
  * });
  * ```
  */

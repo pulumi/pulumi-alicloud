@@ -33,6 +33,25 @@ class SiteMonitor(pulumi.CustomResource):
 
         Available in 1.72.0+
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        basic = alicloud.cms.SiteMonitor("basic",
+            address="http://www.alibabacloud.com",
+            interval=5,
+            isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
+                city="546",
+                isp="465",
+            )],
+            task_name="tf-testAccCmsSiteMonitor_basic",
+            task_type="HTTP")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The URL or IP address monitored by the site monitoring task.

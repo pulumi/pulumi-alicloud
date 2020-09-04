@@ -42,26 +42,26 @@ class Notification(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            max_size=1,
             min_size=1,
+            max_size=1,
+            scaling_group_name=name,
             removal_policies=[
                 "OldestInstance",
                 "NewestInstance",
             ],
-            scaling_group_name=name,
             vswitch_ids=[default_switch.id])
         default_queue = alicloud.mns.Queue("defaultQueue")
         default_notification = alicloud.ess.Notification("defaultNotification",
-            notification_arn=default_queue.name.apply(lambda name: f"acs:ess:{default_regions.regions[0].id}:{default_account.id}:queue/{name}"),
+            scaling_group_id=default_scaling_group.id,
             notification_types=[
                 "AUTOSCALING:SCALE_OUT_SUCCESS",
                 "AUTOSCALING:SCALE_OUT_ERROR",
             ],
-            scaling_group_id=default_scaling_group.id)
+            notification_arn=default_queue.name.apply(lambda name: f"acs:ess:{default_regions.regions[0].id}:{default_account.id}:queue/{name}"))
         ```
 
         :param str resource_name: The name of the resource.

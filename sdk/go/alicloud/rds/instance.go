@@ -43,9 +43,9 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -53,12 +53,12 @@ import (
 // 		_, err = rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
 // 			Engine:             pulumi.String("MySQL"),
 // 			EngineVersion:      pulumi.String("5.6"),
+// 			InstanceType:       pulumi.String("rds.mysql.s2.large"),
+// 			InstanceStorage:    pulumi.Int(30),
 // 			InstanceChargeType: pulumi.String("Postpaid"),
 // 			InstanceName:       pulumi.String(name),
-// 			InstanceStorage:    pulumi.Int(30),
-// 			InstanceType:       pulumi.String("rds.mysql.s2.large"),
-// 			MonitoringPeriod:   pulumi.Int(60),
 // 			VswitchId:          defaultSwitch.ID(),
+// 			MonitoringPeriod:   pulumi.Int(60),
 // 		})
 // 		if err != nil {
 // 			return err

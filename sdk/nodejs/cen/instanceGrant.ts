@@ -17,9 +17,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccCenInstanceGrantBasic";
- *
  * // Create a new instance-grant and use it to grant one child instance of account1 to a new CEN of account 2.
  * const account1 = new alicloud.Provider("account1", {
  *     accessKey: "access123",
@@ -29,21 +26,30 @@ import * as utilities from "../utilities";
  *     accessKey: "access456",
  *     secretKey: "secret456",
  * });
- * const cen = new alicloud.cen.Instance("cen", {}, { provider: account2 });
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "192.168.0.0/16",
- * }, { provider: account1 });
- * const fooInstanceGrant = new alicloud.cen.InstanceGrant("foo", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testAccCenInstanceGrantBasic";
+ * const cen = new alicloud.cen.Instance("cen", {}, {
+ *     provider: alicloud.account2,
+ * });
+ * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "192.168.0.0/16"}, {
+ *     provider: alicloud.account1,
+ * });
+ * const fooInstanceGrant = new alicloud.cen.InstanceGrant("fooInstanceGrant", {
  *     cenId: cen.id,
+ *     childInstanceId: vpc.id,
  *     cenOwnerId: "uid2",
- *     childInstanceId: vpc.id,
- * }, { provider: account1 });
- * const fooInstanceAttachment = new alicloud.cen.InstanceAttachment("foo", {
- *     childInstanceId: vpc.id,
- *     childInstanceOwnerId: "uid1",
- *     childInstanceRegionId: "cn-qingdao",
+ * }, {
+ *     provider: alicloud.account1,
+ * });
+ * const fooInstanceAttachment = new alicloud.cen.InstanceAttachment("fooInstanceAttachment", {
  *     instanceId: cen.id,
- * }, { provider: account2, dependsOn: [fooInstanceGrant] });
+ *     childInstanceId: vpc.id,
+ *     childInstanceRegionId: "cn-qingdao",
+ *     childInstanceOwnerId: "uid1",
+ * }, {
+ *     provider: alicloud.account2,
+ *     dependsOn: [fooInstanceGrant],
+ * });
  * ```
  */
 export class InstanceGrant extends pulumi.CustomResource {

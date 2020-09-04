@@ -35,13 +35,13 @@ namespace Pulumi.AliCloud.CS
     ///         var app = new AliCloud.CS.Application("app", new AliCloud.CS.ApplicationArgs
     ///         {
     ///             ClusterName = "my-first-swarm",
+    ///             Version = "1.2",
+    ///             Template = File.ReadAllText("wordpress.yml"),
+    ///             LatestImage = true,
     ///             Environment = 
     ///             {
     ///                 { "EXTERNAL_URL", "123.123.123.123:8080" },
     ///             },
-    ///             LatestImage = true,
-    ///             Template = File.ReadAllText("wordpress.yml"),
-    ///             Version = "1.2",
     ///         });
     ///     }
     /// 

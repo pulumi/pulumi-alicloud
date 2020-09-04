@@ -41,8 +41,8 @@ namespace Pulumi.AliCloud.Vpc
     ///         }));
     ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///             CidrBlock = "192.168.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///             VpcId = vpc.Id,
     ///         });
     ///         var @group = new AliCloud.Ecs.SecurityGroup("group", new AliCloud.Ecs.SecurityGroupArgs
@@ -56,8 +56,8 @@ namespace Pulumi.AliCloud.Vpc
     ///         })));
     ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
     ///         {
-    ///             MostRecent = true,
     ///             NameRegex = "^ubuntu_18.*64",
+    ///             MostRecent = true,
     ///             Owners = "system",
     ///         }));
     ///         var instance = new List&lt;AliCloud.Ecs.Instance&gt;();
@@ -67,16 +67,16 @@ namespace Pulumi.AliCloud.Vpc
     ///             instance.Add(new AliCloud.Ecs.Instance($"instance-{range.Value}", new AliCloud.Ecs.InstanceArgs
     ///             {
     ///                 AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///                 ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
-    ///                 InstanceName = name,
-    ///                 InstanceType = instanceType.Apply(instanceType =&gt; instanceType.InstanceTypes[0].Id),
-    ///                 InternetMaxBandwidthOut = 10,
     ///                 SecurityGroups = 
     ///                 {
     ///                     @group.Id,
     ///                 },
+    ///                 InstanceType = instanceType.Apply(instanceType =&gt; instanceType.InstanceTypes[0].Id),
     ///                 SystemDiskCategory = "cloud_efficiency",
+    ///                 ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
+    ///                 InstanceName = name,
     ///                 VswitchId = vswitch.Id,
+    ///                 InternetMaxBandwidthOut = 10,
     ///             }));
     ///         }
     ///         var @interface = new List&lt;AliCloud.Vpc.NetworkInterface&gt;();
@@ -85,11 +85,11 @@ namespace Pulumi.AliCloud.Vpc
     ///             var range = new { Value = rangeIndex };
     ///             @interface.Add(new AliCloud.Vpc.NetworkInterface($"interface-{range.Value}", new AliCloud.Vpc.NetworkInterfaceArgs
     ///             {
+    ///                 VswitchId = vswitch.Id,
     ///                 SecurityGroups = 
     ///                 {
     ///                     @group.Id,
     ///                 },
-    ///                 VswitchId = vswitch.Id,
     ///             }));
     ///         }
     ///         var attachment = new List&lt;AliCloud.Vpc.NetworkInterfaceAttachment&gt;();

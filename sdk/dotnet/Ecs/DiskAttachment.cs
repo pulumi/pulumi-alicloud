@@ -24,6 +24,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     public MyStack()
     ///     {
+    ///         // Create a new ECS disk-attachment and use it attach one disk to a new instance.
     ///         var ecsSg = new AliCloud.Ecs.SecurityGroup("ecsSg", new AliCloud.Ecs.SecurityGroupArgs
     ///         {
     ///             Description = "New security group",
@@ -39,15 +40,15 @@ namespace Pulumi.AliCloud.Ecs
     ///         });
     ///         var ecsInstance = new AliCloud.Ecs.Instance("ecsInstance", new AliCloud.Ecs.InstanceArgs
     ///         {
-    ///             AvailabilityZone = "cn-beijing-a",
     ///             ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
-    ///             InstanceName = "Hello",
     ///             InstanceType = "ecs.n4.small",
-    ///             InternetChargeType = "PayByBandwidth",
+    ///             AvailabilityZone = "cn-beijing-a",
     ///             SecurityGroups = 
     ///             {
     ///                 ecsSg.Id,
     ///             },
+    ///             InstanceName = "Hello",
+    ///             InternetChargeType = "PayByBandwidth",
     ///             Tags = 
     ///             {
     ///                 { "Name", "TerraformTest-instance" },

@@ -19,18 +19,18 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * const user = new alicloud.ram.User("user", {
- *     comments: "yoyoyo",
  *     displayName: "user_display_name",
- *     email: "hello.uuu@aaa.com",
- *     force: true,
  *     mobile: "86-18688888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ *     force: true,
  * });
  * const user1 = new alicloud.ram.User("user1", {
- *     comments: "yoyoyo",
  *     displayName: "user_display_name1",
- *     email: "hello.uuu@aaa.com",
- *     force: true,
  *     mobile: "86-18688888889",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ *     force: true,
  * });
  * const membership = new alicloud.ram.GroupMembership("membership", {
  *     groupName: group.name,

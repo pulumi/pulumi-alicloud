@@ -20,7 +20,7 @@ class GetMountTargetsResult:
     """
     A collection of values returned by getMountTargets.
     """
-    def __init__(__self__, access_group_name=None, file_system_id=None, id=None, ids=None, mount_target_domain=None, output_file=None, targets=None, type=None, vpc_id=None, vswitch_id=None):
+    def __init__(__self__, access_group_name=None, file_system_id=None, id=None, ids=None, mount_target_domain=None, network_type=None, output_file=None, status=None, targets=None, type=None, vpc_id=None, vswitch_id=None):
         if access_group_name and not isinstance(access_group_name, str):
             raise TypeError("Expected argument 'access_group_name' to be a str")
         pulumi.set(__self__, "access_group_name", access_group_name)
@@ -40,14 +40,24 @@ class GetMountTargetsResult:
             pulumi.log.warn("mount_target_domain is deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.")
 
         pulumi.set(__self__, "mount_target_domain", mount_target_domain)
+        if network_type and not isinstance(network_type, str):
+            raise TypeError("Expected argument 'network_type' to be a str")
+        pulumi.set(__self__, "network_type", network_type)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if targets and not isinstance(targets, list):
             raise TypeError("Expected argument 'targets' to be a list")
         pulumi.set(__self__, "targets", targets)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
+        if type is not None:
+            warnings.warn("Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.", DeprecationWarning)
+            pulumi.log.warn("type is deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.")
+
         pulumi.set(__self__, "type", type)
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
@@ -90,14 +100,26 @@ class GetMountTargetsResult:
     def mount_target_domain(self) -> Optional[str]:
         """
         MountTargetDomain of the MountTarget.
-        * `type`- NetworkType of The MountTarget.
+        * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+        * `network_type`- (Available 1.95.0+) NetworkType of The MountTarget.
+        * `status`- (Available 1.95.0+) The status of the mount target.
         """
         return pulumi.get(self, "mount_target_domain")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[str]:
+        return pulumi.get(self, "network_type")
 
     @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
@@ -140,7 +162,9 @@ class AwaitableGetMountTargetsResult(GetMountTargetsResult):
             id=self.id,
             ids=self.ids,
             mount_target_domain=self.mount_target_domain,
+            network_type=self.network_type,
             output_file=self.output_file,
+            status=self.status,
             targets=self.targets,
             type=self.type,
             vpc_id=self.vpc_id,
@@ -151,7 +175,9 @@ def get_mount_targets(access_group_name: Optional[str] = None,
                       file_system_id: Optional[str] = None,
                       ids: Optional[List[str]] = None,
                       mount_target_domain: Optional[str] = None,
+                      network_type: Optional[str] = None,
                       output_file: Optional[str] = None,
+                      status: Optional[str] = None,
                       type: Optional[str] = None,
                       vpc_id: Optional[str] = None,
                       vswitch_id: Optional[str] = None,
@@ -167,17 +193,19 @@ def get_mount_targets(access_group_name: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    mt = alicloud.nas.get_mount_targets(access_group_name="tf-testAccNasConfig",
-        file_system_id="1a2sc4d")
-    pulumi.export("alicloudNasMountTargetsId", mt.targets[0].id)
+    example = alicloud.nas.get_mount_targets(file_system_id="1a2sc4d",
+        access_group_name="tf-testAccNasConfig")
+    pulumi.export("theFirstMountTargetDomain", example.targets[0].id)
     ```
 
 
     :param str access_group_name: Filter results by a specific AccessGroupName.
     :param str file_system_id: The ID of the FileSystem that owns the MountTarget.
     :param List[str] ids: A list of MountTargetDomain.
-    :param str mount_target_domain: Filter results by a specific MountTargetDomain.
-    :param str type: Filter results by a specific NetworkType.
+    :param str mount_target_domain: Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+    :param str network_type: Filter results by a specific NetworkType.
+    :param str status: Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+    :param str type: Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
     :param str vpc_id: Filter results by a specific VpcId.
     :param str vswitch_id: Filter results by a specific VSwitchId.
     """
@@ -186,7 +214,9 @@ def get_mount_targets(access_group_name: Optional[str] = None,
     __args__['fileSystemId'] = file_system_id
     __args__['ids'] = ids
     __args__['mountTargetDomain'] = mount_target_domain
+    __args__['networkType'] = network_type
     __args__['outputFile'] = output_file
+    __args__['status'] = status
     __args__['type'] = type
     __args__['vpcId'] = vpc_id
     __args__['vswitchId'] = vswitch_id
@@ -202,7 +232,9 @@ def get_mount_targets(access_group_name: Optional[str] = None,
         id=__ret__.id,
         ids=__ret__.ids,
         mount_target_domain=__ret__.mount_target_domain,
+        network_type=__ret__.network_type,
         output_file=__ret__.output_file,
+        status=__ret__.status,
         targets=__ret__.targets,
         type=__ret__.type,
         vpc_id=__ret__.vpc_id,

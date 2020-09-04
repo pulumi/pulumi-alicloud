@@ -35,6 +35,7 @@ class RouteEntry(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_pulumi as pulumi
 
+        # Create a cen_route_entry resource and use it to publish a route entry pointing to an ECS.
         hz = pulumi.providers.Alicloud("hz", region="cn-hangzhou")
         config = pulumi.Config()
         name = config.get("name")
@@ -45,48 +46,48 @@ class RouteEntry(pulumi.CustomResource):
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        default_images = alicloud.ecs.get_images(most_recent=True,
-            name_regex="^ubuntu_18.*64",
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
             owners="system")
         vpc = alicloud.vpc.Network("vpc", cidr_block="172.16.0.0/12",
-        opts=ResourceOptions(provider="alicloud.hz"))
+        opts=ResourceOptions(provider=alicloud["hz"]))
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
-            cidr_block="172.16.0.0/21",
             vpc_id=vpc.id,
-            opts=ResourceOptions(provider="alicloud.hz"))
+            cidr_block="172.16.0.0/21",
+            availability_zone=default_zones.zones[0].id,
+            opts=ResourceOptions(provider=alicloud["hz"]))
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
             description="foo",
             vpc_id=vpc.id,
-            opts=ResourceOptions(provider="alicloud.hz"))
+            opts=ResourceOptions(provider=alicloud["hz"]))
         default_instance = alicloud.ecs.Instance("defaultInstance",
+            vswitch_id=default_switch.id,
             image_id=default_images.images[0].id,
-            instance_name=name,
             instance_type=default_instance_types.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
             internet_charge_type="PayByTraffic",
             internet_max_bandwidth_out=5,
             security_groups=[default_security_group.id],
-            system_disk_category="cloud_efficiency",
-            vswitch_id=default_switch.id,
-            opts=ResourceOptions(provider="alicloud.hz"))
+            instance_name=name,
+            opts=ResourceOptions(provider=alicloud["hz"]))
         cen = alicloud.cen.Instance("cen")
         attach = alicloud.cen.InstanceAttachment("attach",
+            instance_id=cen.id,
             child_instance_id=vpc.id,
             child_instance_region_id="cn-hangzhou",
-            instance_id=cen.id,
-            opts=ResourceOptions(depends_on=["alicloud_vswitch.default"]))
+            opts=ResourceOptions(depends_on=[default_switch]))
         route = alicloud.vpc.RouteEntry("route",
-            destination_cidrblock="11.0.0.0/16",
-            nexthop_id=default_instance.id,
-            nexthop_type="Instance",
             route_table_id=vpc.route_table_id,
-            opts=ResourceOptions(provider="alicloud.hz"))
+            destination_cidrblock="11.0.0.0/16",
+            nexthop_type="Instance",
+            nexthop_id=default_instance.id,
+            opts=ResourceOptions(provider=alicloud["hz"]))
         foo = alicloud.cen.RouteEntry("foo",
-            cidr_block=route.destination_cidrblock,
             instance_id=cen.id,
             route_table_id=vpc.route_table_id,
-            opts=ResourceOptions(provider="alicloud.hz",
-                depends_on=["alicloud_cen_instance_attachment.attach"]))
+            cidr_block=route.destination_cidrblock,
+            opts=ResourceOptions(provider=alicloud["hz"],
+                depends_on=[attach]))
         ```
 
         :param str resource_name: The name of the resource.

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Size;
         /// <summary>
-        /// Snapshot ID.
+        /// The ID of the snapshot used to create the custom image.
         /// </summary>
         public readonly string SnapshotId;
 

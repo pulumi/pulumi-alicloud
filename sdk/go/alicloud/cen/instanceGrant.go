@@ -44,31 +44,31 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider("alicloud.account2"))
+// 		cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider(alicloud.Account2))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("192.168.0.0/16"),
-// 		}, pulumi.Provider("alicloud.account1"))
+// 		}, pulumi.Provider(alicloud.Account1))
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cen.NewInstanceGrant(ctx, "fooInstanceGrant", &cen.InstanceGrantArgs{
+// 		fooInstanceGrant, err := cen.NewInstanceGrant(ctx, "fooInstanceGrant", &cen.InstanceGrantArgs{
 // 			CenId:           cen.ID(),
-// 			CenOwnerId:      pulumi.String("uid2"),
 // 			ChildInstanceId: vpc.ID(),
-// 		}, pulumi.Provider("alicloud.account1"))
+// 			CenOwnerId:      pulumi.String("uid2"),
+// 		}, pulumi.Provider(alicloud.Account1))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = cen.NewInstanceAttachment(ctx, "fooInstanceAttachment", &cen.InstanceAttachmentArgs{
-// 			ChildInstanceId:       vpc.ID(),
-// 			ChildInstanceOwnerId:  pulumi.String("uid1"),
-// 			ChildInstanceRegionId: pulumi.String("cn-qingdao"),
 // 			InstanceId:            cen.ID(),
-// 		}, pulumi.Provider("alicloud.account2"), pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_cen_instance_grant.foo",
+// 			ChildInstanceId:       vpc.ID(),
+// 			ChildInstanceRegionId: pulumi.String("cn-qingdao"),
+// 			ChildInstanceOwnerId:  pulumi.String("uid1"),
+// 		}, pulumi.Provider(alicloud.Account2), pulumi.DependsOn([]pulumi.Resource{
+// 			fooInstanceGrant,
 // 		}))
 // 		if err != nil {
 // 			return err

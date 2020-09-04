@@ -36,52 +36,52 @@ import (
 // 			return err
 // 		}
 // 		_, err = log.NewStore(ctx, "exampleStore", &log.StoreArgs{
-// 			AppendMeta:         pulumi.Bool(true),
-// 			AutoSplit:          pulumi.Bool(true),
-// 			MaxSplitShardCount: pulumi.Int(60),
 // 			Project:            exampleProject.Name,
 // 			RetentionPeriod:    pulumi.Int(3650),
 // 			ShardCount:         pulumi.Int(3),
+// 			AutoSplit:          pulumi.Bool(true),
+// 			MaxSplitShardCount: pulumi.Int(60),
+// 			AppendMeta:         pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = log.NewAlert(ctx, "exampleAlert", &log.AlertArgs{
-// 			AlertDisplayname: pulumi.String("tf-test-alert-displayname"),
+// 			ProjectName:      exampleProject.Name,
 // 			AlertName:        pulumi.String("tf-test-alert"),
+// 			AlertDisplayname: pulumi.String("tf-test-alert-displayname"),
 // 			Condition:        pulumi.String("count> 100"),
 // 			Dashboard:        pulumi.String("tf-test-dashboard"),
+// 			QueryLists: log.AlertQueryListArray{
+// 				&log.AlertQueryListArgs{
+// 					Logstore:   pulumi.String("tf-test-logstore"),
+// 					ChartTitle: pulumi.String("chart_title"),
+// 					Start:      pulumi.String("-60s"),
+// 					End:        pulumi.String("20s"),
+// 					Query:      pulumi.String("* AND aliyun"),
+// 				},
+// 			},
 // 			NotificationLists: log.AlertNotificationListArray{
 // 				&log.AlertNotificationListArgs{
-// 					Content: pulumi.String("alert content"),
+// 					Type: pulumi.String("SMS"),
 // 					MobileLists: pulumi.StringArray{
 // 						pulumi.String("12345678"),
 // 						pulumi.String("87654321"),
 // 					},
-// 					Type: pulumi.String("SMS"),
+// 					Content: pulumi.String("alert content"),
 // 				},
 // 				&log.AlertNotificationListArgs{
-// 					Content: pulumi.String("alert content"),
+// 					Type: pulumi.String("Email"),
 // 					EmailLists: pulumi.StringArray{
 // 						pulumi.String("aliyun@alibaba-inc.com"),
 // 						pulumi.String("tf-test@123.com"),
 // 					},
-// 					Type: pulumi.String("Email"),
+// 					Content: pulumi.String("alert content"),
 // 				},
 // 				&log.AlertNotificationListArgs{
-// 					Content:    pulumi.String("alert content"),
-// 					ServiceUri: pulumi.String("www.aliyun.com"),
 // 					Type:       pulumi.String("DingTalk"),
-// 				},
-// 			},
-// 			ProjectName: exampleProject.Name,
-// 			QueryLists: log.AlertQueryListArray{
-// 				&log.AlertQueryListArgs{
-// 					ChartTitle: pulumi.String("chart_title"),
-// 					End:        pulumi.String("20s"),
-// 					Logstore:   pulumi.String("tf-test-logstore"),
-// 					Query:      pulumi.String("* AND aliyun"),
-// 					Start:      pulumi.String("-60s"),
+// 					ServiceUri: pulumi.String("www.aliyun.com"),
+// 					Content:    pulumi.String("alert content"),
 // 				},
 // 			},
 // 		})

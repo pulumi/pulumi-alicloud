@@ -27,12 +27,12 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
-// 			DbNodeClass: pulumi.Any(_var.Clusterclass),
 // 			DbType:      pulumi.String("MySQL"),
 // 			DbVersion:   pulumi.String("8.0"),
-// 			Description: pulumi.String("testDB"),
 // 			PayType:     pulumi.String("PostPaid"),
+// 			DbNodeClass: pulumi.Any(_var.Clusterclass),
 // 			VswitchId:   pulumi.String("polar.mysql.x4.large"),
+// 			Description: pulumi.String("testDB"),
 // 		})
 // 		if err != nil {
 // 			return err

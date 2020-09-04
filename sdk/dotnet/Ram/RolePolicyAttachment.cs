@@ -25,7 +25,6 @@ namespace Pulumi.AliCloud.Ram
     ///         // Create a RAM Role Policy attachment.
     ///         var role = new AliCloud.Ram.Role("role", new AliCloud.Ram.RoleArgs
     ///         {
-    ///             Description = "this is a role test.",
     ///             Document = @"    {
     ///       ""Statement"": [
     ///         {
@@ -41,13 +40,12 @@ namespace Pulumi.AliCloud.Ram
     ///       ],
     ///       ""Version"": ""1""
     ///     }
-    ///     
     /// ",
+    ///             Description = "this is a role test.",
     ///             Force = true,
     ///         });
     ///         var policy = new AliCloud.Ram.Policy("policy", new AliCloud.Ram.PolicyArgs
     ///         {
-    ///             Description = "this is a policy test",
     ///             Document = @"  {
     ///     ""Statement"": [
     ///       {
@@ -64,8 +62,8 @@ namespace Pulumi.AliCloud.Ram
     ///     ],
     ///       ""Version"": ""1""
     ///   }
-    ///   
     /// ",
+    ///             Description = "this is a policy test",
     ///             Force = true,
     ///         });
     ///         var attach = new AliCloud.Ram.RolePolicyAttachment("attach", new AliCloud.Ram.RolePolicyAttachmentArgs

@@ -42,20 +42,20 @@ namespace Pulumi.AliCloud.Ess
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new AliCloud.Ess.ScalingGroupArgs
     ///         {
-    ///             MaxSize = 1,
     ///             MinSize = 1,
+    ///             MaxSize = 1,
+    ///             ScalingGroupName = name,
     ///             RemovalPolicies = 
     ///             {
     ///                 "OldestInstance",
     ///                 "NewestInstance",
     ///             },
-    ///             ScalingGroupName = name,
     ///             VswitchIds = 
     ///             {
     ///                 defaultSwitch.Id,
@@ -66,6 +66,12 @@ namespace Pulumi.AliCloud.Ess
     ///         });
     ///         var defaultNotification = new AliCloud.Ess.Notification("defaultNotification", new AliCloud.Ess.NotificationArgs
     ///         {
+    ///             ScalingGroupId = defaultScalingGroup.Id,
+    ///             NotificationTypes = 
+    ///             {
+    ///                 "AUTOSCALING:SCALE_OUT_SUCCESS",
+    ///                 "AUTOSCALING:SCALE_OUT_ERROR",
+    ///             },
     ///             NotificationArn = Output.Tuple(defaultRegions, defaultAccount, defaultQueue.Name).Apply(values =&gt;
     ///             {
     ///                 var defaultRegions = values.Item1;
@@ -73,12 +79,6 @@ namespace Pulumi.AliCloud.Ess
     ///                 var name = values.Item3;
     ///                 return $"acs:ess:{defaultRegions.Regions[0].Id}:{defaultAccount.Id}:queue/{name}";
     ///             }),
-    ///             NotificationTypes = 
-    ///             {
-    ///                 "AUTOSCALING:SCALE_OUT_SUCCESS",
-    ///                 "AUTOSCALING:SCALE_OUT_ERROR",
-    ///             },
-    ///             ScalingGroupId = defaultScalingGroup.Id,
     ///         });
     ///     }
     /// 

@@ -20,20 +20,20 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const instance = new alicloud.elasticsearch.Instance("instance", {
- *     instanceChargeType: "PostPaid",
- *     dataNodeAmount: "2",
- *     dataNodeSpec: "elasticsearch.sn2ne.large",
- *     dataNodeDiskSize: "20",
+ *     dataNodeAmount: 2,
+ *     dataNodeDiskSize: 20,
  *     dataNodeDiskType: "cloud_ssd",
- *     vswitchId: "some vswitch id",
- *     password: "Your password",
- *     version: "5.5.3_with_X-Pack",
+ *     dataNodeSpec: "elasticsearch.sn2ne.large",
  *     description: "description",
- *     zoneCount: "2",
+ *     instanceChargeType: "PostPaid",
+ *     password: "Your password",
  *     tags: {
  *         key1: "value1",
  *         key2: "value2",
  *     },
+ *     version: "5.5.3_with_X-Pack",
+ *     vswitchId: "some vswitch id",
+ *     zoneCount: 2,
  * });
  * ```
  */

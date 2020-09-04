@@ -41,25 +41,39 @@ namespace Pulumi.AliCloud.Vpc
     ///         var barNetwork = new AliCloud.Vpc.Network("barNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
     ///             CidrBlock = "192.168.0.0/16",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = alicloud,
     ///         });
     ///         var initiate = new AliCloud.Vpc.RouterInterface("initiate", new AliCloud.Vpc.RouterInterfaceArgs
     ///         {
+    ///             OppositeRegion = region,
+    ///             RouterType = "VRouter",
+    ///             RouterId = fooNetwork.RouterId,
+    ///             Role = "InitiatingSide",
+    ///             Specification = "Large.2",
     ///             Description = name,
     ///             InstanceChargeType = "PostPaid",
-    ///             OppositeRegion = region,
-    ///             Role = "InitiatingSide",
-    ///             RouterId = fooNetwork.RouterId,
-    ///             RouterType = "VRouter",
-    ///             Specification = "Large.2",
     ///         });
     ///         var opposite = new AliCloud.Vpc.RouterInterface("opposite", new AliCloud.Vpc.RouterInterfaceArgs
     ///         {
-    ///             Description = $"{name}-opposite",
     ///             OppositeRegion = region,
-    ///             Role = "AcceptingSide",
-    ///             RouterId = barNetwork.RouterId,
     ///             RouterType = "VRouter",
+    ///             RouterId = barNetwork.RouterId,
+    ///             Role = "AcceptingSide",
     ///             Specification = "Large.1",
+    ///             Description = $"{name}-opposite",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = alicloud,
+    ///         });
+    ///         var barRouterInterfaceConnection = new AliCloud.Vpc.RouterInterfaceConnection("barRouterInterfaceConnection", new AliCloud.Vpc.RouterInterfaceConnectionArgs
+    ///         {
+    ///             InterfaceId = opposite.Id,
+    ///             OppositeInterfaceId = initiate.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = alicloud,
     ///         });
     ///         // A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
     ///         var fooRouterInterfaceConnection = new AliCloud.Vpc.RouterInterfaceConnection("fooRouterInterfaceConnection", new AliCloud.Vpc.RouterInterfaceConnectionArgs
@@ -70,14 +84,10 @@ namespace Pulumi.AliCloud.Vpc
     ///         {
     ///             DependsOn = 
     ///             {
-    ///                 "alicloud_router_interface_connection.bar",
+    ///                 barRouterInterfaceConnection,
     ///             },
     ///         });
-    ///         var barRouterInterfaceConnection = new AliCloud.Vpc.RouterInterfaceConnection("barRouterInterfaceConnection", new AliCloud.Vpc.RouterInterfaceConnectionArgs
-    ///         {
-    ///             InterfaceId = opposite.Id,
-    ///             OppositeInterfaceId = initiate.Id,
-    ///         });
+    ///         // The connection must start from the accepting side.
     ///     }
     /// 
     /// }

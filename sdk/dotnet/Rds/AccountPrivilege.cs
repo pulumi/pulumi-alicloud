@@ -37,18 +37,18 @@ namespace Pulumi.AliCloud.Rds
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
     ///         {
     ///             Engine = "MySQL",
     ///             EngineVersion = "5.6",
-    ///             InstanceName = name,
-    ///             InstanceStorage = 10,
     ///             InstanceType = "rds.mysql.s1.small",
+    ///             InstanceStorage = 10,
     ///             VswitchId = defaultSwitch.Id,
+    ///             InstanceName = name,
     ///         });
     ///         var db = new List&lt;AliCloud.Rds.Database&gt;();
     ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
@@ -56,22 +56,22 @@ namespace Pulumi.AliCloud.Rds
     ///             var range = new { Value = rangeIndex };
     ///             db.Add(new AliCloud.Rds.Database($"db-{range.Value}", new AliCloud.Rds.DatabaseArgs
     ///             {
-    ///                 Description = "from terraform",
     ///                 InstanceId = instance.Id,
+    ///                 Description = "from terraform",
     ///             }));
     ///         }
     ///         var account = new AliCloud.Rds.Account("account", new AliCloud.Rds.AccountArgs
     ///         {
-    ///             Description = "from terraform",
     ///             InstanceId = instance.Id,
     ///             Password = "Test12345",
+    ///             Description = "from terraform",
     ///         });
     ///         var privilege = new AliCloud.Rds.AccountPrivilege("privilege", new AliCloud.Rds.AccountPrivilegeArgs
     ///         {
-    ///             AccountName = account.Name,
-    ///             DbNames = db.Select(__item =&gt; __item.Name).ToList(),
     ///             InstanceId = instance.Id,
+    ///             AccountName = account.Name,
     ///             Privilege = "ReadOnly",
+    ///             DbNames = db.Select(__item =&gt; __item.Name).ToList(),
     ///         });
     ///     }
     /// 

@@ -11,15 +11,19 @@ import (
 )
 
 type GetAccessGroupsGroup struct {
+	// The name of access group.
+	AccessGroupName string `pulumi:"accessGroupName"`
+	// Filter results by a specific AccessGroupType.
+	AccessGroupType string `pulumi:"accessGroupType"`
 	// Filter results by a specific Description.
 	Description string `pulumi:"description"`
-	// AccessGroupName of the AccessGroup.
+	// This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `accessGroupName`.
 	Id string `pulumi:"id"`
 	// MountTargetCount block of the AccessGroup
 	MountTargetCount int `pulumi:"mountTargetCount"`
 	// RuleCount of the AccessGroup.
 	RuleCount int `pulumi:"ruleCount"`
-	// Filter results by a specific AccessGroupType.
+	// Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
 	Type string `pulumi:"type"`
 }
 
@@ -35,15 +39,19 @@ type GetAccessGroupsGroupInput interface {
 }
 
 type GetAccessGroupsGroupArgs struct {
+	// The name of access group.
+	AccessGroupName pulumi.StringInput `pulumi:"accessGroupName"`
+	// Filter results by a specific AccessGroupType.
+	AccessGroupType pulumi.StringInput `pulumi:"accessGroupType"`
 	// Filter results by a specific Description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// AccessGroupName of the AccessGroup.
+	// This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `accessGroupName`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// MountTargetCount block of the AccessGroup
 	MountTargetCount pulumi.IntInput `pulumi:"mountTargetCount"`
 	// RuleCount of the AccessGroup.
 	RuleCount pulumi.IntInput `pulumi:"ruleCount"`
-	// Filter results by a specific AccessGroupType.
+	// Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -98,12 +106,22 @@ func (o GetAccessGroupsGroupOutput) ToGetAccessGroupsGroupOutputWithContext(ctx 
 	return o
 }
 
+// The name of access group.
+func (o GetAccessGroupsGroupOutput) AccessGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessGroupsGroup) string { return v.AccessGroupName }).(pulumi.StringOutput)
+}
+
+// Filter results by a specific AccessGroupType.
+func (o GetAccessGroupsGroupOutput) AccessGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessGroupsGroup) string { return v.AccessGroupType }).(pulumi.StringOutput)
+}
+
 // Filter results by a specific Description.
 func (o GetAccessGroupsGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// AccessGroupName of the AccessGroup.
+// This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `accessGroupName`.
 func (o GetAccessGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -118,7 +136,7 @@ func (o GetAccessGroupsGroupOutput) RuleCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAccessGroupsGroup) int { return v.RuleCount }).(pulumi.IntOutput)
 }
 
-// Filter results by a specific AccessGroupType.
+// Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
 func (o GetAccessGroupsGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessGroupsGroup) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -432,9 +450,13 @@ type GetMountTargetsTarget struct {
 	AccessGroupName string `pulumi:"accessGroupName"`
 	// ID of the MountTargetDomain.
 	Id string `pulumi:"id"`
-	// Filter results by a specific MountTargetDomain.
+	// Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
 	MountTargetDomain string `pulumi:"mountTargetDomain"`
 	// Filter results by a specific NetworkType.
+	NetworkType string `pulumi:"networkType"`
+	// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+	Status string `pulumi:"status"`
+	// Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
 	Type string `pulumi:"type"`
 	// Filter results by a specific VpcId.
 	VpcId string `pulumi:"vpcId"`
@@ -458,9 +480,13 @@ type GetMountTargetsTargetArgs struct {
 	AccessGroupName pulumi.StringInput `pulumi:"accessGroupName"`
 	// ID of the MountTargetDomain.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Filter results by a specific MountTargetDomain.
+	// Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
 	MountTargetDomain pulumi.StringInput `pulumi:"mountTargetDomain"`
 	// Filter results by a specific NetworkType.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Filter results by a specific VpcId.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -529,12 +555,22 @@ func (o GetMountTargetsTargetOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMountTargetsTarget) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Filter results by a specific MountTargetDomain.
+// Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
 func (o GetMountTargetsTargetOutput) MountTargetDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMountTargetsTarget) string { return v.MountTargetDomain }).(pulumi.StringOutput)
 }
 
 // Filter results by a specific NetworkType.
+func (o GetMountTargetsTargetOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountTargetsTarget) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+func (o GetMountTargetsTargetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMountTargetsTarget) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
 func (o GetMountTargetsTargetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMountTargetsTarget) string { return v.Type }).(pulumi.StringOutput)
 }

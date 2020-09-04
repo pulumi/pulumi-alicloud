@@ -26,18 +26,18 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
-// 			Comments:    pulumi.String("yoyoyo"),
 // 			DisplayName: pulumi.String("user_display_name"),
-// 			Email:       pulumi.String("hello.uuu@aaa.com"),
-// 			Force:       pulumi.Bool(true),
 // 			Mobile:      pulumi.String("86-18688888888"),
+// 			Email:       pulumi.String("hello.uuu@aaa.com"),
+// 			Comments:    pulumi.String("yoyoyo"),
+// 			Force:       pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = ram.NewAccessKey(ctx, "ak", &ram.AccessKeyArgs{
-// 			SecretFile: pulumi.String("/xxx/xxx/xxx.txt"),
 // 			UserName:   user.Name,
+// 			SecretFile: pulumi.String("/xxx/xxx/xxx.txt"),
 // 		})
 // 		if err != nil {
 // 			return err

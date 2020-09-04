@@ -30,7 +30,6 @@ namespace Pulumi.AliCloud.Ram
     ///         });
     ///         var policy = new AliCloud.Ram.Policy("policy", new AliCloud.Ram.PolicyArgs
     ///         {
-    ///             Description = "this is a policy test",
     ///             Document = @"    {
     ///       ""Statement"": [
     ///         {
@@ -47,15 +46,15 @@ namespace Pulumi.AliCloud.Ram
     ///       ],
     ///         ""Version"": ""1""
     ///     }
-    ///   
     /// ",
+    ///             Description = "this is a policy test",
     ///             Force = true,
     ///         });
     ///         var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new AliCloud.Ram.GroupPolicyAttachmentArgs
     ///         {
-    ///             GroupName = @group.Name,
     ///             PolicyName = policy.Name,
     ///             PolicyType = policy.Type,
+    ///             GroupName = @group.Name,
     ///         });
     ///     }
     /// 

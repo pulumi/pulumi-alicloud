@@ -37,18 +37,18 @@ namespace Pulumi.AliCloud.Rds
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
     ///         {
     ///             Engine = "MySQL",
     ///             EngineVersion = "5.6",
-    ///             InstanceName = name,
-    ///             InstanceStorage = 10,
     ///             InstanceType = "rds.mysql.s1.small",
+    ///             InstanceStorage = 10,
     ///             VswitchId = defaultSwitch.Id,
+    ///             InstanceName = name,
     ///         });
     ///         var defaultDatabase = new AliCloud.Rds.Database("defaultDatabase", new AliCloud.Rds.DatabaseArgs
     ///         {

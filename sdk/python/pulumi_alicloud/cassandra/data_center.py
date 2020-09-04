@@ -47,6 +47,39 @@ class DataCenter(pulumi.CustomResource):
         > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
 
         ## Example Usage
+        ### Create a cassandra dataCenter
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_cluster = alicloud.cassandra.Cluster("defaultCluster",
+            cluster_name="cassandra-cluster-name-tf",
+            data_center_name="dc-1",
+            auto_renew=False,
+            instance_type="cassandra.c.large",
+            major_version="3.11",
+            node_count=2,
+            pay_type="PayAsYouGo",
+            vswitch_id="vsw-xxxx1",
+            disk_size=160,
+            disk_type="cloud_ssd",
+            maintain_start_time="18:00Z",
+            maintain_end_time="20:00Z",
+            ip_white="127.0.0.1")
+        default_data_center = alicloud.cassandra.DataCenter("defaultDataCenter",
+            cluster_id=default_cluster.id,
+            data_center_name="dc-2",
+            auto_renew=False,
+            instance_type="cassandra.c.large",
+            node_count=2,
+            pay_type="PayAsYouGo",
+            vswitch_id="vsw-xxxx2",
+            disk_size=160,
+            disk_type="cloud_ssd")
+        ```
+
+        This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

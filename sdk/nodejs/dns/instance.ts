@@ -4,29 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Create an DNS Instance resource.
- *
- * > **NOTE:** Available in v1.80.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const thisInstance = new alicloud.dns.Instance("this", {
- *     dnsSecurity: "no",
- *     domainNumbers: "2",
- *     period: 1,
- *     renewPeriod: 1,
- *     renewalStatus: "ManualRenewal",
- *     versionCode: "version_personal",
- * });
- * ```
- */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -63,6 +40,7 @@ export class Instance extends pulumi.CustomResource {
      * Number of domain names bound.
      */
     public readonly domainNumbers!: pulumi.Output<string>;
+    public readonly paymentType!: pulumi.Output<string | undefined>;
     /**
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      */
@@ -98,6 +76,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             inputs["dnsSecurity"] = state ? state.dnsSecurity : undefined;
             inputs["domainNumbers"] = state ? state.domainNumbers : undefined;
+            inputs["paymentType"] = state ? state.paymentType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["renewPeriod"] = state ? state.renewPeriod : undefined;
             inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
@@ -116,6 +95,7 @@ export class Instance extends pulumi.CustomResource {
             }
             inputs["dnsSecurity"] = args ? args.dnsSecurity : undefined;
             inputs["domainNumbers"] = args ? args.domainNumbers : undefined;
+            inputs["paymentType"] = args ? args.paymentType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["renewPeriod"] = args ? args.renewPeriod : undefined;
             inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
@@ -145,6 +125,7 @@ export interface InstanceState {
      * Number of domain names bound.
      */
     readonly domainNumbers?: pulumi.Input<string>;
+    readonly paymentType?: pulumi.Input<string>;
     /**
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      */
@@ -179,6 +160,7 @@ export interface InstanceArgs {
      * Number of domain names bound.
      */
     readonly domainNumbers: pulumi.Input<string>;
+    readonly paymentType?: pulumi.Input<string>;
     /**
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      */

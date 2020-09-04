@@ -11,40 +11,6 @@ namespace Pulumi.AliCloud.Dns
 {
     public static class GetInstances
     {
-        /// <summary>
-        /// This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// &gt; **NOTE:**  Available in 1.84.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(AliCloud.Dns.GetInstances.InvokeAsync(new AliCloud.Dns.GetInstancesArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "dns-cn-oew1npk****",
-        ///             },
-        ///         }));
-        ///         this.FirstInstanceId = example.Apply(example =&gt; example.Instances[0].Id);
-        ///     }
-        /// 
-        ///     [Output("firstInstanceId")]
-        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:dns/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
     }
@@ -64,8 +30,14 @@ namespace Pulumi.AliCloud.Dns
             set => _ids = value;
         }
 
+        [Input("lang")]
+        public string? Lang { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        [Input("userClientIp")]
+        public string? UserClientIp { get; set; }
 
         public GetInstancesArgs()
         {
@@ -88,7 +60,9 @@ namespace Pulumi.AliCloud.Dns
         /// A list of instances. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
+        public readonly string? Lang;
         public readonly string? OutputFile;
+        public readonly string? UserClientIp;
 
         [OutputConstructor]
         private GetInstancesResult(
@@ -98,12 +72,18 @@ namespace Pulumi.AliCloud.Dns
 
             ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
 
-            string? outputFile)
+            string? lang,
+
+            string? outputFile,
+
+            string? userClientIp)
         {
             Id = id;
             Ids = ids;
             Instances = instances;
+            Lang = lang;
             OutputFile = outputFile;
+            UserClientIp = userClientIp;
         }
     }
 }

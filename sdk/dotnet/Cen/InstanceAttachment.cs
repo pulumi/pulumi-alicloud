@@ -36,9 +36,9 @@ namespace Pulumi.AliCloud.Cen
     ///         });
     ///         var foo = new AliCloud.Cen.InstanceAttachment("foo", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
+    ///             InstanceId = cen.Id,
     ///             ChildInstanceId = vpc.Id,
     ///             ChildInstanceRegionId = "cn-beijing",
-    ///             InstanceId = cen.Id,
     ///         });
     ///     }
     /// 

@@ -40,9 +40,9 @@ class InstanceAttachment(pulumi.CustomResource):
         cen = alicloud.cen.Instance("cen", description="terraform01")
         vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/16")
         foo = alicloud.cen.InstanceAttachment("foo",
+            instance_id=cen.id,
             child_instance_id=vpc.id,
-            child_instance_region_id="cn-beijing",
-            instance_id=cen.id)
+            child_instance_region_id="cn-beijing")
         ```
 
         :param str resource_name: The name of the resource.

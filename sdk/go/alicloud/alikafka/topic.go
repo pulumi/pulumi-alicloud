@@ -47,31 +47,31 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-// 			DeployType: pulumi.Int(5),
-// 			DiskSize:   pulumi.Int(500),
-// 			DiskType:   pulumi.Int(1),
-// 			IoMax:      pulumi.Int(20),
 // 			TopicQuota: pulumi.Int(50),
+// 			DiskType:   pulumi.Int(1),
+// 			DiskSize:   pulumi.Int(500),
+// 			DeployType: pulumi.Int(5),
+// 			IoMax:      pulumi.Int(20),
 // 			VswitchId:  defaultSwitch.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
-// 			CompactTopic: pulumi.Bool(false),
 // 			InstanceId:   defaultInstance.ID(),
+// 			Topic:        pulumi.String(topic),
 // 			LocalTopic:   pulumi.Bool(false),
+// 			CompactTopic: pulumi.Bool(false),
 // 			PartitionNum: pulumi.Int(12),
 // 			Remark:       pulumi.String("dafault_kafka_topic_remark"),
-// 			Topic:        pulumi.String(topic),
 // 		})
 // 		if err != nil {
 // 			return err

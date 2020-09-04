@@ -3,6 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .alidns_domain import *
+from .alidns_instance import *
 from .alidns_record import *
 from .ddos_bgp_instance import *
 from .ddos_coo_instance import *
@@ -11,6 +13,8 @@ from .domain import *
 from .domain_attachment import *
 from .domain_group import *
 from .get_alidns_domain_groups import *
+from .get_alidns_domains import *
+from .get_alidns_instances import *
 from .get_alidns_records import *
 from .get_domain_groups import *
 from .get_domain_records import *

@@ -18,39 +18,36 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "Rds";
  * const name = config.get("name") || "dbInstancevpc";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: creation,
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultInstance = new alicloud.rds.Instance("default", {
+ * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
+ *     instanceType: "rds.mysql.t1.small",
+ *     instanceStorage: "20",
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
- *     instanceStorage: 20,
- *     instanceType: "rds.mysql.t1.small",
+ *     vswitchId: defaultSwitch.id,
  *     securityIps: [
  *         "10.168.1.12",
  *         "100.69.7.112",
  *     ],
- *     vswitchId: defaultSwitch.id,
  * });
- * const defaultReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("default", {
- *     engineVersion: defaultInstance.engineVersion,
- *     instanceName: `${name}ro`,
- *     instanceStorage: 30,
- *     instanceType: defaultInstance.instanceType,
+ * const defaultReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("defaultReadOnlyInstance", {
  *     masterDbInstanceId: defaultInstance.id,
- *     vswitchId: defaultSwitch.id,
  *     zoneId: defaultInstance.zoneId,
+ *     engineVersion: defaultInstance.engineVersion,
+ *     instanceType: defaultInstance.instanceType,
+ *     instanceStorage: "30",
+ *     instanceName: `${name}ro`,
+ *     vswitchId: defaultSwitch.id,
  * });
  * ```
  */

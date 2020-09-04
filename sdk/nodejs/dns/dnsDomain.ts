@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a DNS domain resource.
- *
- * > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
- *
- * > **NOTE:** Available in v1.81.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Add a new Domain.
- * const dns = new alicloud.dns.DnsDomain("dns", {
- *     domainName: "starmove.com",
- *     groupId: "85ab8713-4a30-4de4-9d20-155ff830****",
- *     tags: {
- *         Created: "Terraform",
- *         Environment: "test",
- *     },
- * });
- * ```
- */
 export class DnsDomain extends pulumi.CustomResource {
     /**
      * Get an existing DnsDomain resource's state with the given name, ID, and optional extra
@@ -69,10 +45,12 @@ export class DnsDomain extends pulumi.CustomResource {
      * Id of the group in which the domain will add. If not supplied, then use default group.
      */
     public readonly groupId!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly groupName!: pulumi.Output<string>;
     /**
      * User language.
      */
     public readonly lang!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly punyCode!: pulumi.Output<string>;
     /**
      * Remarks information for your domain name.
      */
@@ -104,7 +82,9 @@ export class DnsDomain extends pulumi.CustomResource {
             inputs["domainId"] = state ? state.domainId : undefined;
             inputs["domainName"] = state ? state.domainName : undefined;
             inputs["groupId"] = state ? state.groupId : undefined;
+            inputs["groupName"] = state ? state.groupName : undefined;
             inputs["lang"] = state ? state.lang : undefined;
+            inputs["punyCode"] = state ? state.punyCode : undefined;
             inputs["remark"] = state ? state.remark : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -121,6 +101,8 @@ export class DnsDomain extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["dnsServers"] = undefined /*out*/;
             inputs["domainId"] = undefined /*out*/;
+            inputs["groupName"] = undefined /*out*/;
+            inputs["punyCode"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -150,10 +132,12 @@ export interface DnsDomainState {
      * Id of the group in which the domain will add. If not supplied, then use default group.
      */
     readonly groupId?: pulumi.Input<string>;
+    readonly groupName?: pulumi.Input<string>;
     /**
      * User language.
      */
     readonly lang?: pulumi.Input<string>;
+    readonly punyCode?: pulumi.Input<string>;
     /**
      * Remarks information for your domain name.
      */

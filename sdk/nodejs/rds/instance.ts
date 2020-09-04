@@ -21,27 +21,24 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "dbInstanceconfig";
  * const creation = config.get("creation") || "Rds";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: creation,
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultInstance = new alicloud.rds.Instance("default", {
+ * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
+ *     instanceType: "rds.mysql.s2.large",
+ *     instanceStorage: "30",
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
- *     instanceStorage: 30,
- *     instanceType: "rds.mysql.s2.large",
- *     monitoringPeriod: 60,
  *     vswitchId: defaultSwitch.id,
+ *     monitoringPeriod: "60",
  * });
  * ```
  * ### Create a RDS MySQL instance with specific parameters

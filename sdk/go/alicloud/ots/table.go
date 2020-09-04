@@ -28,8 +28,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		foo, err := ots.NewInstance(ctx, "foo", &ots.InstanceArgs{
-// 			AccessedBy:  pulumi.String("Any"),
 // 			Description: pulumi.String(name),
+// 			AccessedBy:  pulumi.String("Any"),
 // 			Tags: pulumi.StringMap{
 // 				"Created": pulumi.String("TF"),
 // 				"For":     pulumi.String("acceptance test"),
@@ -39,9 +39,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = ots.NewTable(ctx, "basic", &ots.TableArgs{
-// 			DeviationCellVersionInSec: pulumi.String("1"),
-// 			InstanceName:              foo.Name,
-// 			MaxVersion:                pulumi.Int(1),
+// 			InstanceName: foo.Name,
+// 			TableName:    pulumi.String(name),
 // 			PrimaryKeys: ots.TablePrimaryKeyArray{
 // 				&ots.TablePrimaryKeyArgs{
 // 					Name: pulumi.String("pk1"),
@@ -56,8 +55,9 @@ import (
 // 					Type: pulumi.String("Binary"),
 // 				},
 // 			},
-// 			TableName:  pulumi.String(name),
-// 			TimeToLive: pulumi.Int(-1),
+// 			TimeToLive:                pulumi.Int(-1),
+// 			MaxVersion:                pulumi.Int(1),
+// 			DeviationCellVersionInSec: pulumi.String("1"),
 // 		})
 // 		if err != nil {
 // 			return err

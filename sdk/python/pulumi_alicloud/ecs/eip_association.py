@@ -16,6 +16,7 @@ class EipAssociation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocation_id: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,7 @@ class EipAssociation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] allocation_id: The allocation EIP ID.
+        :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
         :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway.
         :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind.
         :param pulumi.Input[str] private_ip_address: The private IP address in the network segment of the vswitch which has been assigned.
@@ -51,6 +53,7 @@ class EipAssociation(pulumi.CustomResource):
             if allocation_id is None:
                 raise TypeError("Missing required property 'allocation_id'")
             __props__['allocation_id'] = allocation_id
+            __props__['force'] = force
             if instance_id is None:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
@@ -67,6 +70,7 @@ class EipAssociation(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allocation_id: Optional[pulumi.Input[str]] = None,
+            force: Optional[pulumi.Input[bool]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None) -> 'EipAssociation':
@@ -78,6 +82,7 @@ class EipAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] allocation_id: The allocation EIP ID.
+        :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
         :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway.
         :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind.
         :param pulumi.Input[str] private_ip_address: The private IP address in the network segment of the vswitch which has been assigned.
@@ -87,6 +92,7 @@ class EipAssociation(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["allocation_id"] = allocation_id
+        __props__["force"] = force
         __props__["instance_id"] = instance_id
         __props__["instance_type"] = instance_type
         __props__["private_ip_address"] = private_ip_address
@@ -99,6 +105,14 @@ class EipAssociation(pulumi.CustomResource):
         The allocation EIP ID.
         """
         return pulumi.get(self, "allocation_id")
+
+    @property
+    @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+        """
+        return pulumi.get(self, "force")
 
     @property
     @pulumi.getter(name="instanceId")

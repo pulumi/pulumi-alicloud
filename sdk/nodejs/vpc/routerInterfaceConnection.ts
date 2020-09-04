@@ -25,39 +25,43 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "alicloudRouterInterfaceConnectionBasic";
- *
- * const fooNetwork = new alicloud.vpc.Network("foo", {
- *     cidrBlock: "172.16.0.0/12",
- * });
- * const barNetwork = new alicloud.vpc.Network("bar", {
- *     cidrBlock: "192.168.0.0/16",
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const barNetwork = new alicloud.vpc.Network("barNetwork", {cidrBlock: "192.168.0.0/16"}, {
+ *     provider: alicloud,
  * });
  * const initiate = new alicloud.vpc.RouterInterface("initiate", {
+ *     oppositeRegion: region,
+ *     routerType: "VRouter",
+ *     routerId: fooNetwork.routerId,
+ *     role: "InitiatingSide",
+ *     specification: "Large.2",
  *     description: name,
  *     instanceChargeType: "PostPaid",
- *     oppositeRegion: region,
- *     role: "InitiatingSide",
- *     routerId: fooNetwork.routerId,
- *     routerType: "VRouter",
- *     specification: "Large.2",
  * });
  * const opposite = new alicloud.vpc.RouterInterface("opposite", {
- *     description: `${name}-opposite`,
  *     oppositeRegion: region,
- *     role: "AcceptingSide",
- *     routerId: barNetwork.routerId,
  *     routerType: "VRouter",
+ *     routerId: barNetwork.routerId,
+ *     role: "AcceptingSide",
  *     specification: "Large.1",
+ *     description: `${name}-opposite`,
+ * }, {
+ *     provider: alicloud,
  * });
- * const barRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("bar", {
+ * const barRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("barRouterInterfaceConnection", {
  *     interfaceId: opposite.id,
  *     oppositeInterfaceId: initiate.id,
+ * }, {
+ *     provider: alicloud,
  * });
  * // A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
- * const fooRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("foo", {
+ * const fooRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("fooRouterInterfaceConnection", {
  *     interfaceId: initiate.id,
  *     oppositeInterfaceId: opposite.id,
- * }, { dependsOn: [barRouterInterfaceConnection] });
+ * }, {
+ *     dependsOn: [barRouterInterfaceConnection],
+ * });
+ * // The connection must start from the accepting side.
  * ```
  */
 export class RouterInterfaceConnection extends pulumi.CustomResource {

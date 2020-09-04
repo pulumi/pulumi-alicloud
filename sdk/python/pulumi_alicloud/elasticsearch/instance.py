@@ -58,20 +58,20 @@ class Instance(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         instance = alicloud.elasticsearch.Instance("instance",
-            instance_charge_type="PostPaid",
             data_node_amount=2,
-            data_node_spec="elasticsearch.sn2ne.large",
             data_node_disk_size=20,
             data_node_disk_type="cloud_ssd",
-            vswitch_id="some vswitch id",
-            password="Your password",
-            version="5.5.3_with_X-Pack",
+            data_node_spec="elasticsearch.sn2ne.large",
             description="description",
-            zone_count=2,
+            instance_charge_type="PostPaid",
+            password="Your password",
             tags={
                 "key1": "value1",
                 "key2": "value2",
-            })
+            },
+            version="5.5.3_with_X-Pack",
+            vswitch_id="some vswitch id",
+            zone_count=2)
         ```
 
         :param str resource_name: The name of the resource.

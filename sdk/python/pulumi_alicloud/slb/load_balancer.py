@@ -55,11 +55,12 @@ class LoadBalancer(pulumi.CustomResource):
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer",
             specification="slb.s2.small",
+            vswitch_id=default_switch.id,
             tags={
                 "tag_a": 1,
                 "tag_b": 2,
@@ -71,8 +72,7 @@ class LoadBalancer(pulumi.CustomResource):
                 "tag_h": 8,
                 "tag_i": 9,
                 "tag_j": 10,
-            },
-            vswitch_id=default_switch.id)
+            })
         ```
 
         :param str resource_name: The name of the resource.

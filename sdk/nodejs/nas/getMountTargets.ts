@@ -17,12 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const mt = pulumi.output(alicloud.nas.getMountTargets({
- *     accessGroupName: "tf-testAccNasConfig",
+ * const example = alicloud.nas.getMountTargets({
  *     fileSystemId: "1a2sc4d",
- * }, { async: true }));
- *
- * export const alicloudNasMountTargetsId = mt.targets[0].id;
+ *     accessGroupName: "tf-testAccNasConfig",
+ * });
+ * export const theFirstMountTargetDomain = example.then(example => example.targets[0].id);
  * ```
  */
 export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountTargetsResult> {
@@ -38,7 +37,9 @@ export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeO
         "fileSystemId": args.fileSystemId,
         "ids": args.ids,
         "mountTargetDomain": args.mountTargetDomain,
+        "networkType": args.networkType,
         "outputFile": args.outputFile,
+        "status": args.status,
         "type": args.type,
         "vpcId": args.vpcId,
         "vswitchId": args.vswitchId,
@@ -62,14 +63,24 @@ export interface GetMountTargetsArgs {
      */
     readonly ids?: string[];
     /**
-     * Filter results by a specific MountTargetDomain.
+     * Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
      *
      * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
      */
     readonly mountTargetDomain?: string;
-    readonly outputFile?: string;
     /**
      * Filter results by a specific NetworkType.
+     */
+    readonly networkType?: string;
+    readonly outputFile?: string;
+    /**
+     * Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+     */
+    readonly status?: string;
+    /**
+     * Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
+     *
+     * @deprecated Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
      */
     readonly type?: string;
     /**
@@ -101,16 +112,23 @@ export interface GetMountTargetsResult {
     readonly ids: string[];
     /**
      * MountTargetDomain of the MountTarget.
-     * * `type`- NetworkType of The MountTarget.
+     * * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
+     * * `networkType`- (Available 1.95.0+) NetworkType of The MountTarget.
+     * * `status`- (Available 1.95.0+) The status of the mount target.
      *
      * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
      */
     readonly mountTargetDomain?: string;
+    readonly networkType?: string;
     readonly outputFile?: string;
+    readonly status?: string;
     /**
      * A list of MountTargetDomains. Each element contains the following attributes:
      */
     readonly targets: outputs.nas.GetMountTargetsTarget[];
+    /**
+     * @deprecated Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
+     */
     readonly type?: string;
     /**
      * VpcId of The MountTarget.

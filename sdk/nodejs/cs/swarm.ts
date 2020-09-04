@@ -21,15 +21,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const myCluster = new alicloud.cs.Swarm("my_cluster", {
- *     cidrBlock: "172.18.0.0/24",
- *     diskCategory: "cloud_efficiency",
- *     diskSize: 20,
- *     imageId: var_image_id,
+ * const myCluster = new alicloud.cs.Swarm("myCluster", {
+ *     password: "Yourpassword1234",
  *     instanceType: "ecs.n4.small",
  *     nodeNumber: 2,
- *     password: "Yourpassword1234",
- *     vswitchId: var_vswitch_id,
+ *     diskCategory: "cloud_efficiency",
+ *     diskSize: 20,
+ *     cidrBlock: "172.18.0.0/24",
+ *     imageId: _var.image_id,
+ *     vswitchId: _var.vswitch_id,
  * });
  * ```
  */

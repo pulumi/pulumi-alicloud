@@ -26,12 +26,12 @@ namespace Pulumi.AliCloud.PolarDB
     ///     {
     ///         var cluster = new AliCloud.PolarDB.Cluster("cluster", new AliCloud.PolarDB.ClusterArgs
     ///         {
-    ///             DbNodeClass = @var.Clusterclass,
     ///             DbType = "MySQL",
     ///             DbVersion = "8.0",
-    ///             Description = "testDB",
     ///             PayType = "PostPaid",
+    ///             DbNodeClass = @var.Clusterclass,
     ///             VswitchId = "polar.mysql.x4.large",
+    ///             Description = "testDB",
     ///         });
     ///         var @default = new AliCloud.PolarDB.Database("default", new AliCloud.PolarDB.DatabaseArgs
     ///         {

@@ -20,7 +20,7 @@ class GetDomainsResult:
     """
     A collection of values returned by getDomains.
     """
-    def __init__(__self__, ali_domain=None, domain_name_regex=None, domains=None, group_id=None, group_name_regex=None, id=None, ids=None, instance_id=None, key_word=None, lang=None, names=None, output_file=None, resource_group_id=None, search_mode=None, starmark=None, tags=None, version_code=None):
+    def __init__(__self__, ali_domain=None, domain_name_regex=None, domains=None, enable_details=None, group_id=None, group_name_regex=None, id=None, ids=None, instance_id=None, key_word=None, lang=None, names=None, output_file=None, resource_group_id=None, search_mode=None, starmark=None, tags=None, version_code=None):
         if ali_domain and not isinstance(ali_domain, bool):
             raise TypeError("Expected argument 'ali_domain' to be a bool")
         pulumi.set(__self__, "ali_domain", ali_domain)
@@ -30,6 +30,9 @@ class GetDomainsResult:
         if domains and not isinstance(domains, list):
             raise TypeError("Expected argument 'domains' to be a list")
         pulumi.set(__self__, "domains", domains)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if group_id and not isinstance(group_id, str):
             raise TypeError("Expected argument 'group_id' to be a str")
         pulumi.set(__self__, "group_id", group_id)
@@ -93,6 +96,11 @@ class GetDomainsResult:
         A list of domains. Each element contains the following attributes:
         """
         return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter(name="groupId")
@@ -195,6 +203,7 @@ class AwaitableGetDomainsResult(GetDomainsResult):
             ali_domain=self.ali_domain,
             domain_name_regex=self.domain_name_regex,
             domains=self.domains,
+            enable_details=self.enable_details,
             group_id=self.group_id,
             group_name_regex=self.group_name_regex,
             id=self.id,
@@ -213,6 +222,7 @@ class AwaitableGetDomainsResult(GetDomainsResult):
 
 def get_domains(ali_domain: Optional[bool] = None,
                 domain_name_regex: Optional[str] = None,
+                enable_details: Optional[bool] = None,
                 group_id: Optional[str] = None,
                 group_name_regex: Optional[str] = None,
                 ids: Optional[List[str]] = None,
@@ -227,19 +237,7 @@ def get_domains(ali_domain: Optional[bool] = None,
                 version_code: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
-    This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    domains_ds = alicloud.dns.get_domains(domain_name_regex="^hegu",
-        output_file="domains.txt")
-    pulumi.export("firstDomainId", domains_ds.domains[0].domain_id)
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
     :param str domain_name_regex: A regex string to filter results by the domain name.
@@ -258,6 +256,7 @@ def get_domains(ali_domain: Optional[bool] = None,
     __args__ = dict()
     __args__['aliDomain'] = ali_domain
     __args__['domainNameRegex'] = domain_name_regex
+    __args__['enableDetails'] = enable_details
     __args__['groupId'] = group_id
     __args__['groupNameRegex'] = group_name_regex
     __args__['ids'] = ids
@@ -280,6 +279,7 @@ def get_domains(ali_domain: Optional[bool] = None,
         ali_domain=__ret__.ali_domain,
         domain_name_regex=__ret__.domain_name_regex,
         domains=__ret__.domains,
+        enable_details=__ret__.enable_details,
         group_id=__ret__.group_id,
         group_name_regex=__ret__.group_name_regex,
         id=__ret__.id,

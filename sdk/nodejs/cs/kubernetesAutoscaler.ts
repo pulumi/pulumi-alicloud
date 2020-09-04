@@ -25,16 +25,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultKubernetesAutoscaler = new alicloud.cs.KubernetesAutoscaler("default", {
- *     clusterId: var_cluster_id,
- *     coolDownDuration: var_cool_down_duration,
- *     deferScaleInDuration: var_defer_scale_in_duration,
+ * const _default = new alicloud.cs.KubernetesAutoscaler("default", {
+ *     clusterId: _var.cluster_id,
  *     nodepools: [{
  *         id: "scaling_group_id",
- *         labels: "a=b",
  *         taints: "c=d:NoSchedule",
+ *         labels: "a=b",
  *     }],
- *     utilization: var_utilization,
+ *     utilization: _var.utilization,
+ *     coolDownDuration: _var.cool_down_duration,
+ *     deferScaleInDuration: _var.defer_scale_in_duration,
  * });
  * ```
  */

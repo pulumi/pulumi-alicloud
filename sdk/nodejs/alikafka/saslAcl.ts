@@ -23,43 +23,40 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const username = config.get("username") || "testusername";
  * const password = config.get("password") || "testpassword";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/12",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultInstance = new alicloud.alikafka.Instance("default", {
- *     deployType: 5,
- *     diskSize: 500,
- *     diskType: 1,
- *     ioMax: 20,
- *     topicQuota: 50,
+ * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
+ *     topicQuota: "50",
+ *     diskType: "1",
+ *     diskSize: "500",
+ *     deployType: "5",
+ *     ioMax: "20",
  *     vswitchId: defaultSwitch.id,
  * });
- * const defaultTopic = new alicloud.alikafka.Topic("default", {
+ * const defaultTopic = new alicloud.alikafka.Topic("defaultTopic", {
  *     instanceId: defaultInstance.id,
- *     remark: "topic-remark",
  *     topic: "test-topic",
+ *     remark: "topic-remark",
  * });
- * const defaultSaslUser = new alicloud.alikafka.SaslUser("default", {
+ * const defaultSaslUser = new alicloud.alikafka.SaslUser("defaultSaslUser", {
  *     instanceId: defaultInstance.id,
- *     password: password,
  *     username: username,
+ *     password: password,
  * });
- * const defaultSaslAcl = new alicloud.alikafka.SaslAcl("default", {
- *     aclOperationType: "Write",
- *     aclResourceName: defaultTopic.topic,
- *     aclResourcePatternType: "LITERAL",
- *     aclResourceType: "Topic",
+ * const defaultSaslAcl = new alicloud.alikafka.SaslAcl("defaultSaslAcl", {
  *     instanceId: defaultInstance.id,
  *     username: defaultSaslUser.username,
+ *     aclResourceType: "Topic",
+ *     aclResourceName: defaultTopic.topic,
+ *     aclResourcePatternType: "LITERAL",
+ *     aclOperationType: "Write",
  * });
  * ```
  */

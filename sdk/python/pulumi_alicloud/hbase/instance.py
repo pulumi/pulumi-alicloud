@@ -81,6 +81,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[float] core_instance_quantity: default=2. if core_instance_quantity > 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
         :param pulumi.Input[bool] deletion_protection: the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
         :param pulumi.Input[float] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
+        :param pulumi.Input[str] engine: "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
         :param pulumi.Input[str] engine_version: hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
                * `master_instance_type`、`core_instance_type` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -178,6 +179,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[float] core_instance_quantity: default=2. if core_instance_quantity > 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
         :param pulumi.Input[bool] deletion_protection: the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
         :param pulumi.Input[float] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
+        :param pulumi.Input[str] engine: "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
         :param pulumi.Input[str] engine_version: hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
                * `master_instance_type`、`core_instance_type` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -278,6 +280,9 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def engine(self) -> pulumi.Output[Optional[str]]:
+        """
+        "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+        """
         return pulumi.get(self, "engine")
 
     @property

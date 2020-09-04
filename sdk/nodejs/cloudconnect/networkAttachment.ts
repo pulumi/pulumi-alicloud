@@ -21,13 +21,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ccn = new alicloud.cloudconnect.Network("ccn", {
- *     isDefault: true,
- * });
- * const defaultNetworkAttachment = new alicloud.cloudconnect.NetworkAttachment("default", {
+ * const ccn = new alicloud.cloudconnect.Network("ccn", {isDefault: "true"});
+ * const _default = new alicloud.cloudconnect.NetworkAttachment("default", {
  *     ccnId: ccn.id,
  *     sagId: "sag-xxxxx",
- * }, { dependsOn: [ccn] });
+ * }, {
+ *     dependsOn: [ccn],
+ * });
  * ```
  */
 export class NetworkAttachment extends pulumi.CustomResource {

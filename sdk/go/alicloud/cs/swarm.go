@@ -31,13 +31,13 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cs.NewSwarm(ctx, "myCluster", &cs.SwarmArgs{
-// 			CidrBlock:    pulumi.String("172.18.0.0/24"),
-// 			DiskCategory: pulumi.String("cloud_efficiency"),
-// 			DiskSize:     pulumi.Int(20),
-// 			ImageId:      pulumi.Any(_var.Image_id),
+// 			Password:     pulumi.String("Yourpassword1234"),
 // 			InstanceType: pulumi.String("ecs.n4.small"),
 // 			NodeNumber:   pulumi.Int(2),
-// 			Password:     pulumi.String("Yourpassword1234"),
+// 			DiskCategory: pulumi.String("cloud_efficiency"),
+// 			DiskSize:     pulumi.Int(20),
+// 			CidrBlock:    pulumi.String("172.18.0.0/24"),
+// 			ImageId:      pulumi.Any(_var.Image_id),
 // 			VswitchId:    pulumi.Any(_var.Vswitch_id),
 // 		})
 // 		if err != nil {

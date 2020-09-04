@@ -47,15 +47,15 @@ class NetworkInterface(pulumi.CustomResource):
         vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/24")
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         vswitch = alicloud.vpc.Switch("vswitch",
-            availability_zone=default_zones.zones[0].id,
             cidr_block="192.168.0.0/24",
+            availability_zone=default_zones.zones[0].id,
             vpc_id=vpc.id)
         group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
         default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",
-            private_ip="192.168.0.2",
-            private_ips_count=3,
+            vswitch_id=vswitch.id,
             security_groups=[group.id],
-            vswitch_id=vswitch.id)
+            private_ip="192.168.0.2",
+            private_ips_count=3)
         ```
 
         :param str resource_name: The name of the resource.

@@ -36,16 +36,16 @@ namespace Pulumi.AliCloud.RocketMQ
     ///         });
     ///         var defaultQosPolicy = new AliCloud.RocketMQ.QosPolicy("defaultQosPolicy", new AliCloud.RocketMQ.QosPolicyArgs
     ///         {
-    ///             Description = "tf-testSagQosPolicyDescription",
-    ///             DestCidr = "10.10.0.0/24",
-    ///             DestPortRange = "-1/-1",
-    ///             EndTime = "2019-10-26T16:41:33+0800",
-    ///             IpProtocol = "ALL",
-    ///             Priority = 1,
     ///             QosId = defaultQos.Id,
+    ///             Description = "tf-testSagQosPolicyDescription",
+    ///             Priority = 1,
+    ///             IpProtocol = "ALL",
     ///             SourceCidr = "192.168.0.0/24",
     ///             SourcePortRange = "-1/-1",
+    ///             DestCidr = "10.10.0.0/24",
+    ///             DestPortRange = "-1/-1",
     ///             StartTime = "2019-10-25T16:41:33+0800",
+    ///             EndTime = "2019-10-26T16:41:33+0800",
     ///         });
     ///     }
     /// 

@@ -21,13 +21,33 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sampleDs, err := slb.GetListeners(ctx, &slb.GetListenersArgs{
-// 			LoadBalancerId: alicloud_slb.Sample_slb.Id,
-// 		}, nil)
+// 		_, err := slb.NewLoadBalancer(ctx, "_default", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("firstSlbListenerProtocol", sampleDs.SlbListeners[0].Protocol)
+// 		_, err = slb.NewListener(ctx, "tcp", &slb.ListenerArgs{
+// 			LoadBalancerId:         _default.ID(),
+// 			BackendPort:            pulumi.Int(22),
+// 			FrontendPort:           pulumi.Int(22),
+// 			Protocol:               pulumi.String("tcp"),
+// 			Bandwidth:              pulumi.Int(10),
+// 			HealthCheckType:        pulumi.String("tcp"),
+// 			PersistenceTimeout:     pulumi.Int(3600),
+// 			HealthyThreshold:       pulumi.Int(8),
+// 			UnhealthyThreshold:     pulumi.Int(8),
+// 			HealthCheckTimeout:     pulumi.Int(8),
+// 			HealthCheckInterval:    pulumi.Int(5),
+// 			HealthCheckHttpCode:    pulumi.String("http_2xx"),
+// 			HealthCheckConnectPort: pulumi.Int(20),
+// 			HealthCheckUri:         pulumi.String("/console"),
+// 			EstablishedTimeout:     pulumi.Int(600),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstSlbListenerProtocol", sampleDs.ApplyT(func(sampleDs slb.GetListenersResult) (string, error) {
+// 			return sampleDs.SlbListeners[0].Protocol, nil
+// 		}).(pulumi.StringOutput))
 // 		return nil
 // 	})
 // }

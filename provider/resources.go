@@ -181,7 +181,11 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// ActionTrail
-			"alicloud_actiontrail": {Tok: resource(actionTrailMod, "Trail")},
+			"alicloud_actiontrail_trail": {Tok: resource(actionTrailMod, "Trail")},
+			"alicloud_actiontrail": {
+				Tok:                resource(actionTrailMod, "TrailDeprecated"),
+				DeprecationMessage: "Resource renamed to `Trail`",
+			},
 
 			// Adb
 			"alicloud_adb_account":       {Tok: resource(adbMod, "Account")},
@@ -309,6 +313,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dns_domain":            {Tok: resource(dnsMod, "DnsDomain")},
 			"alicloud_alidns_domain_group":   {Tok: resource(dnsMod, "DomainGroup")},
 			"alicloud_alidns_record":         {Tok: resource(dnsMod, "AlidnsRecord")},
+			"alicloud_alidns_domain":         {Tok: resource(dnsMod, "AlidnsDomain")},
+			"alicloud_alidns_instance":       {Tok: resource(dnsMod, "AlidnsInstance")},
 
 			// Drds
 			"alicloud_drds_instance": {Tok: resource(drdsMod, "Instance")},
@@ -624,7 +630,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_file_crc64_checksum": {Tok: dataSource(alicloudMod, "getFileCrc64Checksum")},
 
 			// ActionTrail
-			"alicloud_actiontrails": {Tok: dataSource(actionTrailMod, "getTrails")},
+			"alicloud_actiontrails": {
+				Tok:                dataSource(actionTrailMod, "getTrailsDeprecated"),
+				DeprecationMessage: "DataSource has been renamed to `getTrails`",
+			},
+			"alicloud_actiontrail_trails": {Tok: dataSource(actionTrailMod, "getTrails")},
 
 			// AliKafka
 			"alicloud_alikafka_consumer_groups": {Tok: dataSource(actionTrailMod, "getConsumerGroups")},
@@ -697,6 +707,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dns_instances":        {Tok: dataSource(dnsMod, "getInstances")},
 			"alicloud_alidns_domain_groups": {Tok: dataSource(dnsMod, "getAlidnsDomainGroups")},
 			"alicloud_alidns_records":       {Tok: dataSource(dnsMod, "getAlidnsRecords")},
+			"alicloud_alidns_domains":       {Tok: dataSource(dnsMod, "getAlidnsDomains")},
+			"alicloud_alidns_instances":     {Tok: dataSource(dnsMod, "getAlidnsInstances")},
 
 			// Drds
 			"alicloud_drds_instances": {Tok: dataSource(drdsMod, "getInstances")},

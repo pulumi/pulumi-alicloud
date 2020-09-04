@@ -49,20 +49,20 @@ namespace Pulumi.AliCloud.Slb
     ///         var ipVersion = config.Get("ipVersion") ?? "ipv4";
     ///         var @default = new AliCloud.Slb.Acl("default", new AliCloud.Slb.AclArgs
     ///         {
+    ///             IpVersion = ipVersion,
     ///             EntryLists = 
     ///             {
     ///                 new AliCloud.Slb.Inputs.AclEntryListArgs
     ///                 {
-    ///                     Comment = "first",
     ///                     Entry = "10.10.10.0/24",
+    ///                     Comment = "first",
     ///                 },
     ///                 new AliCloud.Slb.Inputs.AclEntryListArgs
     ///                 {
-    ///                     Comment = "second",
     ///                     Entry = "168.10.10.0/24",
+    ///                     Comment = "second",
     ///                 },
     ///             },
-    ///             IpVersion = ipVersion,
     ///         });
     ///     }
     /// 

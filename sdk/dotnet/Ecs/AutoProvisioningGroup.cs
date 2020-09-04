@@ -37,9 +37,9 @@ namespace Pulumi.AliCloud.Ecs
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             CidrBlock = "172.16.0.0/24",
     ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
     ///         {
@@ -47,8 +47,8 @@ namespace Pulumi.AliCloud.Ecs
     ///         });
     ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
     ///         {
-    ///             MostRecent = true,
     ///             NameRegex = "^ubuntu_18.*64",
+    ///             MostRecent = true,
     ///             Owners = "system",
     ///         }));
     ///         var template = new AliCloud.Ecs.LaunchTemplate("template", new AliCloud.Ecs.LaunchTemplateArgs
@@ -59,6 +59,10 @@ namespace Pulumi.AliCloud.Ecs
     ///         });
     ///         var defaultAutoProvisioningGroup = new AliCloud.Ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup", new AliCloud.Ecs.AutoProvisioningGroupArgs
     ///         {
+    ///             LaunchTemplateId = template.Id,
+    ///             TotalTargetCapacity = "4",
+    ///             PayAsYouGoTargetCapacity = "1",
+    ///             SpotTargetCapacity = "2",
     ///             LaunchTemplateConfigs = 
     ///             {
     ///                 new AliCloud.Ecs.Inputs.AutoProvisioningGroupLaunchTemplateConfigArgs
@@ -67,10 +71,6 @@ namespace Pulumi.AliCloud.Ecs
     ///                     VswitchId = defaultSwitch.Id,
     ///                 },
     ///             },
-    ///             LaunchTemplateId = template.Id,
-    ///             PayAsYouGoTargetCapacity = "1",
-    ///             SpotTargetCapacity = "2",
-    ///             TotalTargetCapacity = "4",
     ///         });
     ///     }
     /// 

@@ -42,31 +42,31 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		cluster, err := adb.NewCluster(ctx, "cluster", &adb.ClusterArgs{
-// 			DbClusterCategory: pulumi.String("Cluster"),
 // 			DbClusterVersion:  pulumi.String("3.0"),
+// 			DbClusterCategory: pulumi.String("Cluster"),
 // 			DbNodeClass:       pulumi.String("C8"),
 // 			DbNodeCount:       pulumi.Int(2),
 // 			DbNodeStorage:     pulumi.Int(200),
-// 			Description:       pulumi.String(name),
 // 			PayType:           pulumi.String("PostPaid"),
 // 			VswitchId:         defaultSwitch.ID(),
+// 			Description:       pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = adb.NewAccount(ctx, "account", &adb.AccountArgs{
-// 			AccountDescription: pulumi.String(name),
+// 			DbClusterId:        cluster.ID(),
 // 			AccountName:        pulumi.String("tftestnormal"),
 // 			AccountPassword:    pulumi.String("Test12345"),
-// 			DbClusterId:        cluster.ID(),
+// 			AccountDescription: pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err

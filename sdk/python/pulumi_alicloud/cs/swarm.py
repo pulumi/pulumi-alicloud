@@ -50,13 +50,13 @@ class Swarm(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         my_cluster = alicloud.cs.Swarm("myCluster",
-            cidr_block="172.18.0.0/24",
-            disk_category="cloud_efficiency",
-            disk_size=20,
-            image_id=var["image_id"],
+            password="Yourpassword1234",
             instance_type="ecs.n4.small",
             node_number=2,
-            password="Yourpassword1234",
+            disk_category="cloud_efficiency",
+            disk_size=20,
+            cidr_block="172.18.0.0/24",
+            image_id=var["image_id"],
             vswitch_id=var["vswitch_id"])
         ```
 

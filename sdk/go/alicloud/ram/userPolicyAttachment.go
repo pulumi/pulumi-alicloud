@@ -27,18 +27,18 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
-// 			Comments:    pulumi.String("yoyoyo"),
 // 			DisplayName: pulumi.String("user_display_name"),
-// 			Email:       pulumi.String("hello.uuu@aaa.com"),
-// 			Force:       pulumi.Bool(true),
 // 			Mobile:      pulumi.String("86-18688888888"),
+// 			Email:       pulumi.String("hello.uuu@aaa.com"),
+// 			Comments:    pulumi.String("yoyoyo"),
+// 			Force:       pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": [\n", "          \"oss:ListObjects\",\n", "          \"oss:GetObject\"\n", "        ],\n", "        \"Effect\": \"Allow\",\n", "        \"Resource\": [\n", "          \"acs:oss:*:*:mybucket\",\n", "          \"acs:oss:*:*:mybucket/*\"\n", "        ]\n", "      }\n", "    ],\n", "      \"Version\": \"1\"\n", "  }\n")),
 // 			Description: pulumi.String("this is a policy test"),
-// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": [\n", "          \"oss:ListObjects\",\n", "          \"oss:GetObject\"\n", "        ],\n", "        \"Effect\": \"Allow\",\n", "        \"Resource\": [\n", "          \"acs:oss:*:*:mybucket\",\n", "          \"acs:oss:*:*:mybucket/*\"\n", "        ]\n", "      }\n", "    ],\n", "      \"Version\": \"1\"\n", "  }\n", "  \n")),
 // 			Force:       pulumi.Bool(true),
 // 		})
 // 		if err != nil {

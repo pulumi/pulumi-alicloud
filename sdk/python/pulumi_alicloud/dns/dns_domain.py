@@ -25,28 +25,7 @@ class DnsDomain(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a DNS domain resource.
-
-        > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
-
-        > **NOTE:** Available in v1.81.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Add a new Domain.
-        dns = alicloud.dns.DnsDomain("dns",
-            domain_name="starmove.com",
-            group_id="85ab8713-4a30-4de4-9d20-155ff830****",
-            tags={
-                "Created": "Terraform",
-                "Environment": "test",
-            })
-        ```
-
+        Create a DnsDomain resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -85,6 +64,8 @@ class DnsDomain(pulumi.CustomResource):
             __props__['tags'] = tags
             __props__['dns_servers'] = None
             __props__['domain_id'] = None
+            __props__['group_name'] = None
+            __props__['puny_code'] = None
         super(DnsDomain, __self__).__init__(
             'alicloud:dns/dnsDomain:DnsDomain',
             resource_name,
@@ -99,7 +80,9 @@ class DnsDomain(pulumi.CustomResource):
             domain_id: Optional[pulumi.Input[str]] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
+            group_name: Optional[pulumi.Input[str]] = None,
             lang: Optional[pulumi.Input[str]] = None,
+            puny_code: Optional[pulumi.Input[str]] = None,
             remark: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'DnsDomain':
@@ -128,7 +111,9 @@ class DnsDomain(pulumi.CustomResource):
         __props__["domain_id"] = domain_id
         __props__["domain_name"] = domain_name
         __props__["group_id"] = group_id
+        __props__["group_name"] = group_name
         __props__["lang"] = lang
+        __props__["puny_code"] = puny_code
         __props__["remark"] = remark
         __props__["resource_group_id"] = resource_group_id
         __props__["tags"] = tags
@@ -164,12 +149,22 @@ class DnsDomain(pulumi.CustomResource):
         return pulumi.get(self, "group_id")
 
     @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "group_name")
+
+    @property
     @pulumi.getter
     def lang(self) -> pulumi.Output[Optional[str]]:
         """
         User language.
         """
         return pulumi.get(self, "lang")
+
+    @property
+    @pulumi.getter(name="punyCode")
+    def puny_code(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "puny_code")
 
     @property
     @pulumi.getter

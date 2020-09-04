@@ -19,16 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fooAccessGroup = new alicloud.nas.AccessGroup("foo", {
- *     description: "tf-testAccNasConfig",
+ * const fooAccessGroup = new alicloud.nas.AccessGroup("fooAccessGroup", {
  *     type: "Vpc",
+ *     description: "tf-testAccNasConfig",
  * });
- * const fooAccessRule = new alicloud.nas.AccessRule("foo", {
+ * const fooAccessRule = new alicloud.nas.AccessRule("fooAccessRule", {
  *     accessGroupName: fooAccessGroup.id,
- *     priority: 2,
- *     rwAccessType: "RDWR",
  *     sourceCidrIp: "168.1.1.0/16",
+ *     rwAccessType: "RDWR",
  *     userAccessType: "no_squash",
+ *     priority: 2,
  * });
  * ```
  */

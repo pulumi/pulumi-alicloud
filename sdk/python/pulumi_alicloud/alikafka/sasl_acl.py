@@ -50,31 +50,31 @@ class SaslAcl(pulumi.CustomResource):
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
-            availability_zone=default_zones.zones[0].id,
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            vpc_id=default_network.id)
+            availability_zone=default_zones.zones[0].id)
         default_instance = alicloud.alikafka.Instance("defaultInstance",
-            deploy_type=5,
-            disk_size=500,
-            disk_type=1,
-            io_max=20,
             topic_quota=50,
+            disk_type=1,
+            disk_size=500,
+            deploy_type=5,
+            io_max=20,
             vswitch_id=default_switch.id)
         default_topic = alicloud.alikafka.Topic("defaultTopic",
             instance_id=default_instance.id,
-            remark="topic-remark",
-            topic="test-topic")
+            topic="test-topic",
+            remark="topic-remark")
         default_sasl_user = alicloud.alikafka.SaslUser("defaultSaslUser",
             instance_id=default_instance.id,
-            password=password,
-            username=username)
+            username=username,
+            password=password)
         default_sasl_acl = alicloud.alikafka.SaslAcl("defaultSaslAcl",
-            acl_operation_type="Write",
+            instance_id=default_instance.id,
+            username=default_sasl_user.username,
+            acl_resource_type="Topic",
             acl_resource_name=default_topic.topic,
             acl_resource_pattern_type="LITERAL",
-            acl_resource_type="Topic",
-            instance_id=default_instance.id,
-            username=default_sasl_user.username)
+            acl_operation_type="Write")
         ```
 
         :param str resource_name: The name of the resource.

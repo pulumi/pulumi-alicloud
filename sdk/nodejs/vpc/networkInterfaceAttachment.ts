@@ -20,55 +20,50 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "networkInterfaceAttachment";
  * const number = config.get("number") || "2";
- *
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "192.168.0.0/24",
- * });
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "192.168.0.0/24"});
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
+ * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     availabilityZone: defaultZones.zones[0].id,
  *     cidrBlock: "192.168.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  *     vpcId: vpc.id,
  * });
- * const group = new alicloud.ecs.SecurityGroup("group", {
- *     vpcId: vpc.id,
- * });
- * const instanceType = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
+ * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
+ * const instanceType = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: defaultZones.zones[0].id,
  *     eniAmount: 2,
- * }, { async: true }));
- * const defaultImages = pulumi.output(alicloud.ecs.getImages({
- *     mostRecent: true,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
  *     owners: "system",
- * }, { async: true }));
- * const instance: alicloud.ecs.Instance[] = [];
- * for (let i = 0; i < number; i++) {
- *     instance.push(new alicloud.ecs.Instance(`instance-${i}`, {
- *         availabilityZone: defaultZones.zones[0].id,
- *         imageId: defaultImages.images[0].id,
- *         instanceName: name,
- *         instanceType: instanceType.instanceTypes[0].id,
- *         internetMaxBandwidthOut: 10,
+ * });
+ * const instance: alicloud.ecs.Instance[];
+ * for (const range = {value: 0}; range.value < number; range.value++) {
+ *     instance.push(new alicloud.ecs.Instance(`instance-${range.value}`, {
+ *         availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  *         securityGroups: [group.id],
+ *         instanceType: instanceType.then(instanceType => instanceType.instanceTypes[0].id),
  *         systemDiskCategory: "cloud_efficiency",
+ *         imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
+ *         instanceName: name,
  *         vswitchId: vswitch.id,
+ *         internetMaxBandwidthOut: 10,
  *     }));
  * }
- * const interfaceNetworkInterface: alicloud.vpc.NetworkInterface[] = [];
- * for (let i = 0; i < number; i++) {
- *     interfaceNetworkInterface.push(new alicloud.vpc.NetworkInterface(`interface-${i}`, {
+ * const _interface: alicloud.vpc.NetworkInterface[];
+ * for (const range = {value: 0}; range.value < number; range.value++) {
+ *     _interface.push(new alicloud.vpc.NetworkInterface(`interface-${range.value}`, {
+ *         vswitchId: vswitch.id,
  *         securityGroups: [group.id],
- *         vswitchId: vswitch.id,
  *     }));
  * }
- * const attachment: alicloud.vpc.NetworkInterfaceAttachment[] = [];
- * for (let i = 0; i < number; i++) {
- *     attachment.push(new alicloud.vpc.NetworkInterfaceAttachment(`attachment-${i}`, {
- *         instanceId: pulumi.all(instance.map(v => v.id)).apply(id => id.map(v => v)[i]),
- *         networkInterfaceId: pulumi.all(interfaceNetworkInterface.map(v => v.id)).apply(id => id.map(v => v)[i]),
+ * const attachment: alicloud.vpc.NetworkInterfaceAttachment[];
+ * for (const range = {value: 0}; range.value < number; range.value++) {
+ *     attachment.push(new alicloud.vpc.NetworkInterfaceAttachment(`attachment-${range.value}`, {
+ *         instanceId: instance.map(__item => __item.id)[range.index],
+ *         networkInterfaceId: _interface.map(__item => __item.id)[range.index],
  *     }));
  * }
  * ```

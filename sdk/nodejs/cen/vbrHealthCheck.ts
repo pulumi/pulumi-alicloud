@@ -20,21 +20,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.cen.Instance("default", {});
- * const defaultInstanceAttachment = new alicloud.cen.InstanceAttachment("default", {
+ * // Create a cen vbr HealrhCheck resource and use it.
+ * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {});
+ * const defaultInstanceAttachment = new alicloud.cen.InstanceAttachment("defaultInstanceAttachment", {
+ *     instanceId: defaultInstance.id,
  *     childInstanceId: "vbr-xxxxx",
  *     childInstanceRegionId: "cn-hangzhou",
- *     instanceId: defaultInstance.id,
  * });
- * const defaultVbrHealthCheck = new alicloud.cen.VbrHealthCheck("default", {
+ * const defaultVbrHealthCheck = new alicloud.cen.VbrHealthCheck("defaultVbrHealthCheck", {
  *     cenId: defaultInstance.id,
- *     healthCheckInterval: 2,
  *     healthCheckSourceIp: "192.168.1.2",
  *     healthCheckTargetIp: "10.0.0.2",
- *     healthyThreshold: 8,
  *     vbrInstanceId: "vbr-xxxxx",
  *     vbrInstanceRegionId: "cn-hangzhou",
- * }, { dependsOn: [defaultInstanceAttachment] });
+ *     healthCheckInterval: 2,
+ *     healthyThreshold: 8,
+ * }, {
+ *     dependsOn: [defaultInstanceAttachment],
+ * });
  * ```
  */
 export class VbrHealthCheck extends pulumi.CustomResource {

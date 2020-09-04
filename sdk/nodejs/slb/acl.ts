@@ -40,19 +40,18 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraformslbaclconfig";
  * const ipVersion = config.get("ipVersion") || "ipv4";
- *
- * const defaultAcl = new alicloud.slb.Acl("default", {
+ * const _default = new alicloud.slb.Acl("default", {
+ *     ipVersion: ipVersion,
  *     entryLists: [
  *         {
- *             comment: "first",
  *             entry: "10.10.10.0/24",
+ *             comment: "first",
  *         },
  *         {
- *             comment: "second",
  *             entry: "168.10.10.0/24",
+ *             comment: "second",
  *         },
  *     ],
- *     ipVersion: ipVersion,
  * });
  * ```
  * ## Entry Block

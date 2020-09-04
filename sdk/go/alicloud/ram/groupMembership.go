@@ -32,21 +32,21 @@ import (
 // 			return err
 // 		}
 // 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
-// 			Comments:    pulumi.String("yoyoyo"),
 // 			DisplayName: pulumi.String("user_display_name"),
-// 			Email:       pulumi.String("hello.uuu@aaa.com"),
-// 			Force:       pulumi.Bool(true),
 // 			Mobile:      pulumi.String("86-18688888888"),
+// 			Email:       pulumi.String("hello.uuu@aaa.com"),
+// 			Comments:    pulumi.String("yoyoyo"),
+// 			Force:       pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		user1, err := ram.NewUser(ctx, "user1", &ram.UserArgs{
-// 			Comments:    pulumi.String("yoyoyo"),
 // 			DisplayName: pulumi.String("user_display_name1"),
-// 			Email:       pulumi.String("hello.uuu@aaa.com"),
-// 			Force:       pulumi.Bool(true),
 // 			Mobile:      pulumi.String("86-18688888889"),
+// 			Email:       pulumi.String("hello.uuu@aaa.com"),
+// 			Comments:    pulumi.String("yoyoyo"),
+// 			Force:       pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err

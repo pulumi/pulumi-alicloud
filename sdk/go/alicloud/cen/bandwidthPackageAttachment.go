@@ -43,8 +43,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = cen.NewBandwidthPackageAttachment(ctx, "foo", &cen.BandwidthPackageAttachmentArgs{
-// 			BandwidthPackageId: bwp.ID(),
 // 			InstanceId:         cen.ID(),
+// 			BandwidthPackageId: bwp.ID(),
 // 		})
 // 		if err != nil {
 // 			return err

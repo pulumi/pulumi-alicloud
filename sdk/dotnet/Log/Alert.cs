@@ -33,58 +33,58 @@ namespace Pulumi.AliCloud.Log
     ///         });
     ///         var exampleStore = new AliCloud.Log.Store("exampleStore", new AliCloud.Log.StoreArgs
     ///         {
-    ///             AppendMeta = true,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
     ///             Project = exampleProject.Name,
     ///             RetentionPeriod = 3650,
     ///             ShardCount = 3,
+    ///             AutoSplit = true,
+    ///             MaxSplitShardCount = 60,
+    ///             AppendMeta = true,
     ///         });
     ///         var exampleAlert = new AliCloud.Log.Alert("exampleAlert", new AliCloud.Log.AlertArgs
     ///         {
-    ///             AlertDisplayname = "tf-test-alert-displayname",
+    ///             ProjectName = exampleProject.Name,
     ///             AlertName = "tf-test-alert",
+    ///             AlertDisplayname = "tf-test-alert-displayname",
     ///             Condition = "count&gt; 100",
     ///             Dashboard = "tf-test-dashboard",
+    ///             QueryLists = 
+    ///             {
+    ///                 new AliCloud.Log.Inputs.AlertQueryListArgs
+    ///                 {
+    ///                     Logstore = "tf-test-logstore",
+    ///                     ChartTitle = "chart_title",
+    ///                     Start = "-60s",
+    ///                     End = "20s",
+    ///                     Query = "* AND aliyun",
+    ///                 },
+    ///             },
     ///             NotificationLists = 
     ///             {
     ///                 new AliCloud.Log.Inputs.AlertNotificationListArgs
     ///                 {
-    ///                     Content = "alert content",
+    ///                     Type = "SMS",
     ///                     MobileLists = 
     ///                     {
     ///                         "12345678",
     ///                         "87654321",
     ///                     },
-    ///                     Type = "SMS",
+    ///                     Content = "alert content",
     ///                 },
     ///                 new AliCloud.Log.Inputs.AlertNotificationListArgs
     ///                 {
-    ///                     Content = "alert content",
+    ///                     Type = "Email",
     ///                     EmailLists = 
     ///                     {
     ///                         "aliyun@alibaba-inc.com",
     ///                         "tf-test@123.com",
     ///                     },
-    ///                     Type = "Email",
+    ///                     Content = "alert content",
     ///                 },
     ///                 new AliCloud.Log.Inputs.AlertNotificationListArgs
     ///                 {
-    ///                     Content = "alert content",
-    ///                     ServiceUri = "www.aliyun.com",
     ///                     Type = "DingTalk",
-    ///                 },
-    ///             },
-    ///             ProjectName = exampleProject.Name,
-    ///             QueryLists = 
-    ///             {
-    ///                 new AliCloud.Log.Inputs.AlertQueryListArgs
-    ///                 {
-    ///                     ChartTitle = "chart_title",
-    ///                     End = "20s",
-    ///                     Logstore = "tf-test-logstore",
-    ///                     Query = "* AND aliyun",
-    ///                     Start = "-60s",
+    ///                     ServiceUri = "www.aliyun.com",
+    ///                     Content = "alert content",
     ///                 },
     ///             },
     ///         });

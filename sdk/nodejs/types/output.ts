@@ -252,9 +252,49 @@ export namespace actiontrail {
          */
         eventRw: string;
         /**
-         * The name of the trail.
+         * The id of the ActionTrail Trail. It is the same as trail name.
          */
-        name: string;
+        id: string;
+        /**
+         * The name of the specified OSS bucket.
+         */
+        ossBucketName: string;
+        /**
+         * The prefix of the specified OSS bucket name.
+         */
+        ossKeyPrefix: string;
+        /**
+         * The role in ActionTrail Trail.
+         */
+        roleName: string;
+        /**
+         * The unique ARN of the Log Service project.
+         */
+        slsProjectArn: string;
+        /**
+         * The unique ARN of the Log Service role.
+         */
+        slsWriteRoleArn: string;
+        /**
+         * Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+         */
+        status: string;
+        /**
+         * The name of the ActionTrail Trail.
+         */
+        trailName: string;
+        /**
+         * The regions to which the trail is applied.
+         */
+        trailRegion: string;
+    }
+
+    export interface GetTrailsDeprecatedActiontrail {
+        /**
+         * Indicates whether the event is a read or a write event.
+         */
+        eventRw: string;
+        id: string;
         /**
          * The name of the specified OSS bucket.
          */
@@ -275,6 +315,83 @@ export namespace actiontrail {
          * The unique ARN of the Log Service role.
          */
         slsWriteRoleArn: string;
+        status: string;
+        trailName: string;
+        trailRegion: string;
+    }
+
+    export interface GetTrailsDeprecatedTrail {
+        /**
+         * Indicates whether the event is a read or a write event.
+         */
+        eventRw: string;
+        id: string;
+        /**
+         * The name of the specified OSS bucket.
+         */
+        ossBucketName: string;
+        /**
+         * The prefix of the specified OSS bucket name.
+         */
+        ossKeyPrefix: string;
+        /**
+         * The role in ActionTrail.
+         */
+        roleName: string;
+        /**
+         * The unique ARN of the Log Service project.
+         */
+        slsProjectArn: string;
+        /**
+         * The unique ARN of the Log Service role.
+         */
+        slsWriteRoleArn: string;
+        status: string;
+        trailName: string;
+        trailRegion: string;
+    }
+
+    export interface GetTrailsTrail {
+        /**
+         * Indicates whether the event is a read or a write event.
+         */
+        eventRw: string;
+        /**
+         * The id of the ActionTrail Trail. It is the same as trail name.
+         */
+        id: string;
+        /**
+         * The name of the specified OSS bucket.
+         */
+        ossBucketName: string;
+        /**
+         * The prefix of the specified OSS bucket name.
+         */
+        ossKeyPrefix: string;
+        /**
+         * The role in ActionTrail Trail.
+         */
+        roleName: string;
+        /**
+         * The unique ARN of the Log Service project.
+         */
+        slsProjectArn: string;
+        /**
+         * The unique ARN of the Log Service role.
+         */
+        slsWriteRoleArn: string;
+        /**
+         * Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+         */
+        status: string;
+        /**
+         * The name of the ActionTrail Trail.
+         */
+        trailName: string;
+        /**
+         * The regions to which the trail is applied.
+         */
+        trailRegion: string;
     }
 }
 
@@ -2642,6 +2759,141 @@ export namespace dns {
         id: string;
     }
 
+    export interface GetAlidnsDomainsDomain {
+        /**
+         * Specifies whether the domain is from Alibaba Cloud or not.
+         */
+        aliDomain: boolean;
+        /**
+         * List of available TTLs.
+         */
+        availableTtls: number[];
+        /**
+         * DNS list of domain names in the resolution system.
+         */
+        dnsServers: string[];
+        /**
+         * ID of the domain.
+         */
+        domainId: string;
+        /**
+         * Name of the domain.
+         */
+        domainName: string;
+        /**
+         * Domain group ID, if not filled, the default is all groups.
+         */
+        groupId: string;
+        /**
+         * Name of group that contains the domain.
+         */
+        groupName: string;
+        /**
+         * The Id of resource.
+         */
+        id: string;
+        /**
+         * Whether it is in black hole.
+         */
+        inBlackHole: boolean;
+        /**
+         * Whether it is cleaning.
+         */
+        inClean: boolean;
+        /**
+         * Cloud analysis product ID.
+         */
+        instanceId: string;
+        lineType: string;
+        /**
+         * Minimum TTL.
+         */
+        minTtl: number;
+        /**
+         * Punycode of the Chinese domain.
+         */
+        punyCode: string;
+        /**
+         * Tree-like analytical line list.
+         */
+        recordLineTreeJson: string;
+        /**
+         * Parse the line data list.
+         */
+        recordLines: outputs.dns.GetAlidnsDomainsDomainRecordLine[];
+        /**
+         * Whether it is a regional route.
+         */
+        regionLines: boolean;
+        /**
+         * The Id of resource group which the dns belongs.
+         */
+        remark: string;
+        /**
+         * The Id of resource group which the dns belongs.
+         */
+        resourceGroupId: string;
+        /**
+         * Whether to allow auxiliary dns.
+         */
+        slaveDns: boolean;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * Cloud analysis version code.
+         */
+        versionCode: string;
+        versionName: string;
+    }
+
+    export interface GetAlidnsDomainsDomainRecordLine {
+        /**
+         * The code of the parent line, or empty if there is none.
+         */
+        fatherCode: string;
+        /**
+         * Sub-line Code.
+         */
+        lineCode: string;
+        /**
+         * Parent line display name.
+         */
+        lineDisplayName: string;
+        /**
+         * Sub-line display name.
+         */
+        lineName: string;
+    }
+
+    export interface GetAlidnsInstancesInstance {
+        /**
+         * DNS security level.
+         */
+        dnsSecurity: string;
+        /**
+         * Number of domain names bound.
+         */
+        domainNumbers: string;
+        /**
+         * Id of the instance.
+         */
+        id: string;
+        /**
+         * Id of the instance resource.
+         */
+        instanceId: string;
+        /**
+         * Paid package version.
+         */
+        versionCode: string;
+        /**
+         * Paid package version name.
+         */
+        versionName: string;
+    }
+
     export interface GetAlidnsRecordsRecord {
         /**
          * The domain name associated to the records.
@@ -2712,6 +2964,7 @@ export namespace dns {
          * Specifies whether the domain is from Alibaba Cloud or not.
          */
         aliDomain: boolean;
+        availableTtls: number[];
         /**
          * DNS list of domain names in the resolution system.
          */
@@ -2761,6 +3014,7 @@ export namespace dns {
          * Tree-like analytical line list.
          */
         recordLineTreeJson: string;
+        recordLines: outputs.dns.GetDomainsDomainRecordLine[];
         /**
          * Whether it is a regional route.
          */
@@ -2769,6 +3023,10 @@ export namespace dns {
          * The Id of resource group which the dns belongs.
          */
         remark: string;
+        /**
+         * The Id of resource group which the dns belongs.
+         */
+        resourceGroupId: string;
         /**
          * Whether to allow auxiliary dns.
          */
@@ -2782,6 +3040,13 @@ export namespace dns {
          */
         versionCode: string;
         versionName: string;
+    }
+
+    export interface GetDomainsDomainRecordLine {
+        fatherCode: string;
+        lineCode: string;
+        lineDisplayName: string;
+        lineName: string;
     }
 
     export interface GetGroupsGroup {
@@ -3239,7 +3504,7 @@ export namespace ecs {
 
     export interface GetImagesImage {
         /**
-         * Platform type of the image system: i386 or x86_64.
+         * The image architecture. Valid values: `i386` and `x8664`.
          */
         architecture: string;
         /**
@@ -3273,6 +3538,9 @@ export namespace ecs {
          * Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
          */
         isSubscribed: boolean;
+        /**
+         * Specifies whether the image can be used on I/O optimized instances.
+         */
         isSupportIoOptimized: boolean;
         name: string;
         /**
@@ -3283,6 +3551,9 @@ export namespace ecs {
          * Display English name of the OS.
          */
         osNameEn: string;
+        /**
+         * The operating system type of the image. Valid values: `windows` and `linux`.
+         */
         osType: string;
         platform: string;
         /**
@@ -3299,10 +3570,24 @@ export namespace ecs {
         size: number;
         state: string;
         /**
-         * Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+         * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+         * * `Creating`: The image is being created.
+         * * `Waiting`: The image is waiting to be processed.
+         * * `Available`: The image is available.
+         * * `UnAvailable`: The image is unavailable.
+         * * `CreateFailed`: The image failed to be created.
+         * * `Deprecated`: The image is discontinued.
          */
         status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
         tags?: {[key: string]: any};
+        /**
+         * Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
+         * * `instance`: The image is already in use and running on an ECS instance.
+         * * `none`: The image is not in use.
+         */
         usage: string;
     }
 
@@ -3316,7 +3601,7 @@ export namespace ecs {
          */
         size: string;
         /**
-         * Snapshot ID.
+         * The ID of the snapshot used to create the custom image.
          */
         snapshotId: string;
     }
@@ -5883,11 +6168,19 @@ export namespace mse {
 export namespace nas {
     export interface GetAccessGroupsGroup {
         /**
+         * The name of access group.
+         */
+        accessGroupName: string;
+        /**
+         * Filter results by a specific AccessGroupType.
+         */
+        accessGroupType: string;
+        /**
          * Filter results by a specific Description.
          */
         description: string;
         /**
-         * AccessGroupName of the AccessGroup.
+         * This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `accessGroupName`.
          */
         id: string;
         /**
@@ -5899,7 +6192,7 @@ export namespace nas {
          */
         ruleCount: number;
         /**
-         * Filter results by a specific AccessGroupType.
+         * Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
          */
         type: string;
     }
@@ -5968,11 +6261,19 @@ export namespace nas {
          */
         id: string;
         /**
-         * Filter results by a specific MountTargetDomain.
+         * Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
          */
         mountTargetDomain: string;
         /**
          * Filter results by a specific NetworkType.
+         */
+        networkType: string;
+        /**
+         * Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+         */
+        status: string;
+        /**
+         * Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
          */
         type: string;
         /**

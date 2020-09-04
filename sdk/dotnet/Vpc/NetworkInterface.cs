@@ -38,8 +38,8 @@ namespace Pulumi.AliCloud.Vpc
     ///         }));
     ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///             CidrBlock = "192.168.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///             VpcId = vpc.Id,
     ///         });
     ///         var @group = new AliCloud.Ecs.SecurityGroup("group", new AliCloud.Ecs.SecurityGroupArgs
@@ -48,13 +48,13 @@ namespace Pulumi.AliCloud.Vpc
     ///         });
     ///         var defaultNetworkInterface = new AliCloud.Vpc.NetworkInterface("defaultNetworkInterface", new AliCloud.Vpc.NetworkInterfaceArgs
     ///         {
-    ///             PrivateIp = "192.168.0.2",
-    ///             PrivateIpsCount = 3,
+    ///             VswitchId = vswitch.Id,
     ///             SecurityGroups = 
     ///             {
     ///                 @group.Id,
     ///             },
-    ///             VswitchId = vswitch.Id,
+    ///             PrivateIp = "192.168.0.2",
+    ///             PrivateIpsCount = 3,
     ///         });
     ///     }
     /// 

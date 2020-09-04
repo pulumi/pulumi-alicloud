@@ -25,15 +25,14 @@ namespace Pulumi.AliCloud.Ram
     ///         // Create a RAM User Policy attachment.
     ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
     ///         {
-    ///             Comments = "yoyoyo",
     ///             DisplayName = "user_display_name",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Force = true,
     ///             Mobile = "86-18688888888",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Comments = "yoyoyo",
+    ///             Force = true,
     ///         });
     ///         var policy = new AliCloud.Ram.Policy("policy", new AliCloud.Ram.PolicyArgs
     ///         {
-    ///             Description = "this is a policy test",
     ///             Document = @"  {
     ///     ""Statement"": [
     ///       {
@@ -50,8 +49,8 @@ namespace Pulumi.AliCloud.Ram
     ///     ],
     ///       ""Version"": ""1""
     ///   }
-    ///   
     /// ",
+    ///             Description = "this is a policy test",
     ///             Force = true,
     ///         });
     ///         var attach = new AliCloud.Ram.UserPolicyAttachment("attach", new AliCloud.Ram.UserPolicyAttachmentArgs

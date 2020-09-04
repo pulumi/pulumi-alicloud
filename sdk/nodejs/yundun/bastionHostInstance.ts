@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Cloud Bastionhost instance resource ("Yundun_bastionhost" is the short term of this product).
+ * For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
  *
  * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
  *
@@ -23,8 +24,8 @@ import * as utilities from "../utilities";
  *
  * const defaultBastionHostInstance = new alicloud.yundun.BastionHostInstance("default", {
  *     description: "Terraform-test",
+ *     licenseCode: "bhah_ent_50_asset",
  *     period: 1,
- *     planCode: "alpha.professional",
  *     securityGroupIds: "sg-test",
  *     vswitchId: "v-testVswitch",
  * });
@@ -62,6 +63,9 @@ export class BastionHostInstance extends pulumi.CustomResource {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+     */
     public readonly licenseCode!: pulumi.Output<string>;
     /**
      * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
@@ -72,7 +76,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
-     * security group IDs configured to bastionhost
+     * security group IDs configured to Bastionhost.
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
@@ -80,7 +84,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * vSwtich ID configured to bastionhost
+     * VSwitch ID configured to Bastionhost.
      */
     public readonly vswitchId!: pulumi.Output<string>;
 
@@ -144,6 +148,9 @@ export interface BastionHostInstanceState {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+     */
     readonly licenseCode?: pulumi.Input<string>;
     /**
      * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
@@ -154,7 +161,7 @@ export interface BastionHostInstanceState {
      */
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
-     * security group IDs configured to bastionhost
+     * security group IDs configured to Bastionhost.
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -162,7 +169,7 @@ export interface BastionHostInstanceState {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * vSwtich ID configured to bastionhost
+     * VSwitch ID configured to Bastionhost.
      */
     readonly vswitchId?: pulumi.Input<string>;
 }
@@ -175,6 +182,9 @@ export interface BastionHostInstanceArgs {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     readonly description: pulumi.Input<string>;
+    /**
+     * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+     */
     readonly licenseCode: pulumi.Input<string>;
     /**
      * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
@@ -185,7 +195,7 @@ export interface BastionHostInstanceArgs {
      */
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
-     * security group IDs configured to bastionhost
+     * security group IDs configured to Bastionhost.
      */
     readonly securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -193,7 +203,7 @@ export interface BastionHostInstanceArgs {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * vSwtich ID configured to bastionhost
+     * VSwitch ID configured to Bastionhost.
      */
     readonly vswitchId: pulumi.Input<string>;
 }

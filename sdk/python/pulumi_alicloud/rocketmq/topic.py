@@ -47,10 +47,10 @@ class Topic(pulumi.CustomResource):
             topic = "onsTopicName"
         default_instance = alicloud.rocketmq.Instance("defaultInstance", remark="default_ons_instance_remark")
         default_topic = alicloud.rocketmq.Topic("defaultTopic",
+            topic=topic,
             instance_id=default_instance.id,
             message_type=0,
-            remark="dafault_ons_topic_remark",
-            topic=topic)
+            remark="dafault_ons_topic_remark")
         ```
 
         :param str resource_name: The name of the resource.

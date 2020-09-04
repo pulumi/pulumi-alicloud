@@ -44,10 +44,10 @@ class Repo(pulumi.CustomResource):
             auto_create=False,
             default_visibility="PUBLIC")
         my_repo = alicloud.cr.Repo("my-repo",
-            detail="this is a public repo",
             namespace=my_namespace.name,
+            summary="this is summary of my new repo",
             repo_type="PUBLIC",
-            summary="this is summary of my new repo")
+            detail="this is a public repo")
         ```
 
         :param str resource_name: The name of the resource.

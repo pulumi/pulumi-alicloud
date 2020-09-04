@@ -49,16 +49,16 @@ class QosPolicy(pulumi.CustomResource):
 
         default_qos = alicloud.rocketmq.Qos("defaultQos")
         default_qos_policy = alicloud.rocketmq.QosPolicy("defaultQosPolicy",
-            description="tf-testSagQosPolicyDescription",
-            dest_cidr="10.10.0.0/24",
-            dest_port_range="-1/-1",
-            end_time="2019-10-26T16:41:33+0800",
-            ip_protocol="ALL",
-            priority=1,
             qos_id=default_qos.id,
+            description="tf-testSagQosPolicyDescription",
+            priority=1,
+            ip_protocol="ALL",
             source_cidr="192.168.0.0/24",
             source_port_range="-1/-1",
-            start_time="2019-10-25T16:41:33+0800")
+            dest_cidr="10.10.0.0/24",
+            dest_port_range="-1/-1",
+            start_time="2019-10-25T16:41:33+0800",
+            end_time="2019-10-26T16:41:33+0800")
         ```
 
         :param str resource_name: The name of the resource.

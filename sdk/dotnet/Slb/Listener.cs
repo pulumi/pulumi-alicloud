@@ -36,56 +36,56 @@ namespace Pulumi.AliCloud.Slb
     ///         var ipVersion = config.Get("ipVersion") ?? "ipv4";
     ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
     ///         {
-    ///             Internet = true,
     ///             InternetChargeType = "PayByTraffic",
+    ///             Internet = true,
     ///         });
     ///         var defaultAcl = new AliCloud.Slb.Acl("defaultAcl", new AliCloud.Slb.AclArgs
     ///         {
+    ///             IpVersion = ipVersion,
     ///             EntryLists = 
     ///             {
     ///                 new AliCloud.Slb.Inputs.AclEntryListArgs
     ///                 {
-    ///                     Comment = "first",
     ///                     Entry = "10.10.10.0/24",
+    ///                     Comment = "first",
     ///                 },
     ///                 new AliCloud.Slb.Inputs.AclEntryListArgs
     ///                 {
-    ///                     Comment = "second",
     ///                     Entry = "168.10.10.0/24",
+    ///                     Comment = "second",
     ///                 },
     ///             },
-    ///             IpVersion = ipVersion,
     ///         });
     ///         var defaultListener = new AliCloud.Slb.Listener("defaultListener", new AliCloud.Slb.ListenerArgs
     ///         {
-    ///             AclId = defaultAcl.Id,
-    ///             AclStatus = "on",
-    ///             AclType = "white",
-    ///             BackendPort = 80,
-    ///             Bandwidth = 10,
-    ///             Cookie = "testslblistenercookie",
-    ///             CookieTimeout = 86400,
-    ///             FrontendPort = 80,
-    ///             HealthCheck = "on",
-    ///             HealthCheckConnectPort = 20,
-    ///             HealthCheckDomain = "ali.com",
-    ///             HealthCheckHttpCode = "http_2xx,http_3xx",
-    ///             HealthCheckInterval = 5,
-    ///             HealthCheckTimeout = 8,
-    ///             HealthCheckUri = "/cons",
-    ///             HealthyThreshold = 8,
-    ///             IdleTimeout = 30,
     ///             LoadBalancerId = defaultLoadBalancer.Id,
+    ///             BackendPort = 80,
+    ///             FrontendPort = 80,
     ///             Protocol = "http",
-    ///             RequestTimeout = 80,
+    ///             Bandwidth = 10,
     ///             StickySession = "on",
     ///             StickySessionType = "insert",
+    ///             CookieTimeout = 86400,
+    ///             Cookie = "testslblistenercookie",
+    ///             HealthCheck = "on",
+    ///             HealthCheckDomain = "ali.com",
+    ///             HealthCheckUri = "/cons",
+    ///             HealthCheckConnectPort = 20,
+    ///             HealthyThreshold = 8,
     ///             UnhealthyThreshold = 8,
+    ///             HealthCheckTimeout = 8,
+    ///             HealthCheckInterval = 5,
+    ///             HealthCheckHttpCode = "http_2xx,http_3xx",
     ///             XForwardedFor = new AliCloud.Slb.Inputs.ListenerXForwardedForArgs
     ///             {
-    ///                 RetriveSlbId = true,
     ///                 RetriveSlbIp = true,
+    ///                 RetriveSlbId = true,
     ///             },
+    ///             AclStatus = "on",
+    ///             AclType = "white",
+    ///             AclId = defaultAcl.Id,
+    ///             RequestTimeout = 80,
+    ///             IdleTimeout = 30,
     ///         });
     ///     }
     /// 
