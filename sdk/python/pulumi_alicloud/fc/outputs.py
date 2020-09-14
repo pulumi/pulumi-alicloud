@@ -10,15 +10,66 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'FunctionCustomContainerConfig',
     'ServiceLogConfig',
+    'ServiceNasConfig',
+    'ServiceNasConfigMountPoint',
     'ServiceVpcConfig',
     'GetFunctionsFunctionResult',
+    'GetFunctionsFunctionCustomContainerConfigResult',
     'GetServicesServiceResult',
     'GetServicesServiceLogConfigResult',
+    'GetServicesServiceNasConfigResult',
+    'GetServicesServiceNasConfigMountPointResult',
     'GetServicesServiceVpcConfigResult',
     'GetTriggersTriggerResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class FunctionCustomContainerConfig(dict):
+    def __init__(__self__, *,
+                 image: str,
+                 args: Optional[str] = None,
+                 command: Optional[str] = None):
+        """
+        :param str image: The container image address.
+        :param str args: The args field specifies the arguments passed to the command.
+        :param str command: The entry point of the container, which specifies the actual command run by the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if command is not None:
+            pulumi.set(__self__, "command", command)
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
+        """
+        The container image address.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[str]:
+        """
+        The args field specifies the arguments passed to the command.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def command(self) -> Optional[str]:
+        """
+        The entry point of the container, which specifies the actual command run by the container.
+        """
+        return pulumi.get(self, "command")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class ServiceLogConfig(dict):
@@ -47,6 +98,81 @@ class ServiceLogConfig(dict):
         The project name of Logs service.
         """
         return pulumi.get(self, "project")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceNasConfig(dict):
+    def __init__(__self__, *,
+                 group_id: float,
+                 mount_points: List['outputs.ServiceNasConfigMountPoint'],
+                 user_id: float):
+        """
+        :param float group_id: The group id of your NAS file system.
+        :param List['ServiceNasConfigMountPointArgs'] mount_points: Config the NAS mount points, including following attributes:
+        :param float user_id: The user id of your NAS file system.
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "mount_points", mount_points)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> float:
+        """
+        The group id of your NAS file system.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="mountPoints")
+    def mount_points(self) -> List['outputs.ServiceNasConfigMountPoint']:
+        """
+        Config the NAS mount points, including following attributes:
+        """
+        return pulumi.get(self, "mount_points")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> float:
+        """
+        The user id of your NAS file system.
+        """
+        return pulumi.get(self, "user_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceNasConfigMountPoint(dict):
+    def __init__(__self__, *,
+                 mount_dir: str,
+                 server_addr: str):
+        """
+        :param str mount_dir: The local address where to mount your remote NAS directory.
+        :param str server_addr: The address of the remote NAS directory.
+        """
+        pulumi.set(__self__, "mount_dir", mount_dir)
+        pulumi.set(__self__, "server_addr", server_addr)
+
+    @property
+    @pulumi.getter(name="mountDir")
+    def mount_dir(self) -> str:
+        """
+        The local address where to mount your remote NAS directory.
+        """
+        return pulumi.get(self, "mount_dir")
+
+    @property
+    @pulumi.getter(name="serverAddr")
+    def server_addr(self) -> str:
+        """
+        The address of the remote NAS directory.
+        """
+        return pulumi.get(self, "server_addr")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -95,6 +221,7 @@ class ServiceVpcConfig(dict):
 @pulumi.output_type
 class GetFunctionsFunctionResult(dict):
     def __init__(__self__, *,
+                 ca_port: float,
                  code_checksum: str,
                  code_size: float,
                  creation_time: str,
@@ -102,12 +229,18 @@ class GetFunctionsFunctionResult(dict):
                  environment_variables: Mapping[str, Any],
                  handler: str,
                  id: str,
+                 initialization_timeout: float,
+                 initializer: str,
+                 instance_concurrency: float,
+                 instance_type: str,
                  last_modification_time: str,
                  memory_size: float,
                  name: str,
                  runtime: str,
-                 timeout: float):
+                 timeout: float,
+                 custom_container_config: Optional['outputs.GetFunctionsFunctionCustomContainerConfigResult'] = None):
         """
+        :param float ca_port: The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
         :param str code_checksum: Checksum (crc64) of the function code.
         :param float code_size: Function code size in bytes.
         :param str creation_time: Function creation time.
@@ -115,12 +248,18 @@ class GetFunctionsFunctionResult(dict):
         :param Mapping[str, Any] environment_variables: A map that defines environment variables for the function.
         :param str handler: Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.
         :param str id: Function ID.
+        :param float initialization_timeout: The maximum length of time, in seconds, that the function's initialization should be run for.
+        :param str initializer: The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+        :param float instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
+        :param str instance_type: The instance type of the function.
         :param str last_modification_time: Function last modification time.
         :param float memory_size: Amount of memory in MB the function can use at runtime.
         :param str name: Function name.
         :param str runtime: Function runtime. The list of possible values is [available here](https://www.alibabacloud.com/help/doc-detail/52077.htm).
         :param float timeout: Maximum amount of time the function can run in seconds.
+        :param 'GetFunctionsFunctionCustomContainerConfigArgs' custom_container_config: The configuration for custom container runtime. It contains following attributes:
         """
+        pulumi.set(__self__, "ca_port", ca_port)
         pulumi.set(__self__, "code_checksum", code_checksum)
         pulumi.set(__self__, "code_size", code_size)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -128,11 +267,25 @@ class GetFunctionsFunctionResult(dict):
         pulumi.set(__self__, "environment_variables", environment_variables)
         pulumi.set(__self__, "handler", handler)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "initialization_timeout", initialization_timeout)
+        pulumi.set(__self__, "initializer", initializer)
+        pulumi.set(__self__, "instance_concurrency", instance_concurrency)
+        pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "last_modification_time", last_modification_time)
         pulumi.set(__self__, "memory_size", memory_size)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "runtime", runtime)
         pulumi.set(__self__, "timeout", timeout)
+        if custom_container_config is not None:
+            pulumi.set(__self__, "custom_container_config", custom_container_config)
+
+    @property
+    @pulumi.getter(name="caPort")
+    def ca_port(self) -> float:
+        """
+        The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+        """
+        return pulumi.get(self, "ca_port")
 
     @property
     @pulumi.getter(name="codeChecksum")
@@ -191,6 +344,38 @@ class GetFunctionsFunctionResult(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="initializationTimeout")
+    def initialization_timeout(self) -> float:
+        """
+        The maximum length of time, in seconds, that the function's initialization should be run for.
+        """
+        return pulumi.get(self, "initialization_timeout")
+
+    @property
+    @pulumi.getter
+    def initializer(self) -> str:
+        """
+        The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+        """
+        return pulumi.get(self, "initializer")
+
+    @property
+    @pulumi.getter(name="instanceConcurrency")
+    def instance_concurrency(self) -> float:
+        """
+        The maximum number of requests can be executed concurrently within the single function instance.
+        """
+        return pulumi.get(self, "instance_concurrency")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The instance type of the function.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
     @pulumi.getter(name="lastModificationTime")
     def last_modification_time(self) -> str:
         """
@@ -230,6 +415,54 @@ class GetFunctionsFunctionResult(dict):
         """
         return pulumi.get(self, "timeout")
 
+    @property
+    @pulumi.getter(name="customContainerConfig")
+    def custom_container_config(self) -> Optional['outputs.GetFunctionsFunctionCustomContainerConfigResult']:
+        """
+        The configuration for custom container runtime. It contains following attributes:
+        """
+        return pulumi.get(self, "custom_container_config")
+
+
+@pulumi.output_type
+class GetFunctionsFunctionCustomContainerConfigResult(dict):
+    def __init__(__self__, *,
+                 args: str,
+                 command: str,
+                 image: str):
+        """
+        :param str args: The args field specifies the arguments passed to the command.
+        :param str command: The entry point of the container, which specifies the actual command run by the container.
+        :param str image: The container image address.
+        """
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "command", command)
+        pulumi.set(__self__, "image", image)
+
+    @property
+    @pulumi.getter
+    def args(self) -> str:
+        """
+        The args field specifies the arguments passed to the command.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def command(self) -> str:
+        """
+        The entry point of the container, which specifies the actual command run by the container.
+        """
+        return pulumi.get(self, "command")
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
+        """
+        The container image address.
+        """
+        return pulumi.get(self, "image")
+
 
 @pulumi.output_type
 class GetServicesServiceResult(dict):
@@ -241,6 +474,7 @@ class GetServicesServiceResult(dict):
                  last_modification_time: str,
                  log_config: 'outputs.GetServicesServiceLogConfigResult',
                  name: str,
+                 nas_config: 'outputs.GetServicesServiceNasConfigResult',
                  role: str,
                  vpc_config: 'outputs.GetServicesServiceVpcConfigResult'):
         """
@@ -251,6 +485,7 @@ class GetServicesServiceResult(dict):
         :param str last_modification_time: FC service last modification time.
         :param 'GetServicesServiceLogConfigArgs' log_config: A list of one element containing information about the associated log store. It contains the following attributes:
         :param str name: FC service name.
+        :param 'GetServicesServiceNasConfigArgs' nas_config: A list of one element about the nas configuration.
         :param str role: FC service role ARN.
         :param 'GetServicesServiceVpcConfigArgs' vpc_config: A list of one element containing information about accessible VPC resources. It contains the following attributes:
         """
@@ -261,6 +496,7 @@ class GetServicesServiceResult(dict):
         pulumi.set(__self__, "last_modification_time", last_modification_time)
         pulumi.set(__self__, "log_config", log_config)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nas_config", nas_config)
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "vpc_config", vpc_config)
 
@@ -321,6 +557,14 @@ class GetServicesServiceResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="nasConfig")
+    def nas_config(self) -> 'outputs.GetServicesServiceNasConfigResult':
+        """
+        A list of one element about the nas configuration.
+        """
+        return pulumi.get(self, "nas_config")
+
+    @property
     @pulumi.getter
     def role(self) -> str:
         """
@@ -364,6 +608,75 @@ class GetServicesServiceLogConfigResult(dict):
         Log Service project name.
         """
         return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class GetServicesServiceNasConfigResult(dict):
+    def __init__(__self__, *,
+                 group_id: float,
+                 mount_points: List['outputs.GetServicesServiceNasConfigMountPointResult'],
+                 user_id: float):
+        """
+        :param float group_id: The group id of the NAS file system.
+        :param List['GetServicesServiceNasConfigMountPointArgs'] mount_points: The mount points configuration, including following attributes:
+        :param float user_id: The user id of the NAS file system.
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "mount_points", mount_points)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> float:
+        """
+        The group id of the NAS file system.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="mountPoints")
+    def mount_points(self) -> List['outputs.GetServicesServiceNasConfigMountPointResult']:
+        """
+        The mount points configuration, including following attributes:
+        """
+        return pulumi.get(self, "mount_points")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> float:
+        """
+        The user id of the NAS file system.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetServicesServiceNasConfigMountPointResult(dict):
+    def __init__(__self__, *,
+                 mount_dir: str,
+                 server_addr: str):
+        """
+        :param str mount_dir: The local address where to mount your remote NAS directory.
+        :param str server_addr: The address of the remote NAS directory.
+        """
+        pulumi.set(__self__, "mount_dir", mount_dir)
+        pulumi.set(__self__, "server_addr", server_addr)
+
+    @property
+    @pulumi.getter(name="mountDir")
+    def mount_dir(self) -> str:
+        """
+        The local address where to mount your remote NAS directory.
+        """
+        return pulumi.get(self, "mount_dir")
+
+    @property
+    @pulumi.getter(name="serverAddr")
+    def server_addr(self) -> str:
+        """
+        The address of the remote NAS directory.
+        """
+        return pulumi.get(self, "server_addr")
 
 
 @pulumi.output_type

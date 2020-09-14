@@ -4986,7 +4986,26 @@ export namespace ess {
 }
 
 export namespace fc {
+    export interface FunctionCustomContainerConfig {
+        /**
+         * The args field specifies the arguments passed to the command.
+         */
+        args?: string;
+        /**
+         * The entry point of the container, which specifies the actual command run by the container.
+         */
+        command?: string;
+        /**
+         * The container image address.
+         */
+        image: string;
+    }
+
     export interface GetFunctionsFunction {
+        /**
+         * The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+         */
+        caPort: number;
         /**
          * Checksum (crc64) of the function code.
          */
@@ -4999,6 +5018,10 @@ export namespace fc {
          * Function creation time.
          */
         creationTime: string;
+        /**
+         * The configuration for custom container runtime. It contains following attributes:
+         */
+        customContainerConfig?: outputs.fc.GetFunctionsFunctionCustomContainerConfig;
         /**
          * Function description.
          */
@@ -5015,6 +5038,22 @@ export namespace fc {
          * Function ID.
          */
         id: string;
+        /**
+         * The maximum length of time, in seconds, that the function's initialization should be run for.
+         */
+        initializationTimeout: number;
+        /**
+         * The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+         */
+        initializer: string;
+        /**
+         * The maximum number of requests can be executed concurrently within the single function instance.
+         */
+        instanceConcurrency: number;
+        /**
+         * The instance type of the function.
+         */
+        instanceType: string;
         /**
          * Function last modification time.
          */
@@ -5035,6 +5074,21 @@ export namespace fc {
          * Maximum amount of time the function can run in seconds.
          */
         timeout: number;
+    }
+
+    export interface GetFunctionsFunctionCustomContainerConfig {
+        /**
+         * The args field specifies the arguments passed to the command.
+         */
+        args: string;
+        /**
+         * The entry point of the container, which specifies the actual command run by the container.
+         */
+        command: string;
+        /**
+         * The container image address.
+         */
+        image: string;
     }
 
     export interface GetServicesService {
@@ -5067,6 +5121,10 @@ export namespace fc {
          */
         name: string;
         /**
+         * A list of one element about the nas configuration.
+         */
+        nasConfig: outputs.fc.GetServicesServiceNasConfig;
+        /**
          * FC service role ARN.
          */
         role: string;
@@ -5085,6 +5143,32 @@ export namespace fc {
          * Log Service project name.
          */
         project: string;
+    }
+
+    export interface GetServicesServiceNasConfig {
+        /**
+         * The group id of the NAS file system.
+         */
+        groupId: number;
+        /**
+         * The mount points configuration, including following attributes:
+         */
+        mountPoints: outputs.fc.GetServicesServiceNasConfigMountPoint[];
+        /**
+         * The user id of the NAS file system.
+         */
+        userId: number;
+    }
+
+    export interface GetServicesServiceNasConfigMountPoint {
+        /**
+         * The local address where to mount your remote NAS directory.
+         */
+        mountDir: string;
+        /**
+         * The address of the remote NAS directory.
+         */
+        serverAddr: string;
     }
 
     export interface GetServicesServiceVpcConfig {
@@ -5153,6 +5237,32 @@ export namespace fc {
          * The project name of Logs service.
          */
         project: string;
+    }
+
+    export interface ServiceNasConfig {
+        /**
+         * The group id of your NAS file system.
+         */
+        groupId: number;
+        /**
+         * Config the NAS mount points, including following attributes:
+         */
+        mountPoints: outputs.fc.ServiceNasConfigMountPoint[];
+        /**
+         * The user id of your NAS file system.
+         */
+        userId: number;
+    }
+
+    export interface ServiceNasConfigMountPoint {
+        /**
+         * The local address where to mount your remote NAS directory.
+         */
+        mountDir: string;
+        /**
+         * The address of the remote NAS directory.
+         */
+        serverAddr: string;
     }
 
     export interface ServiceVpcConfig {

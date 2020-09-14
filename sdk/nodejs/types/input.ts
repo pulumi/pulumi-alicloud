@@ -1061,6 +1061,21 @@ export namespace ess {
 }
 
 export namespace fc {
+    export interface FunctionCustomContainerConfig {
+        /**
+         * The args field specifies the arguments passed to the command.
+         */
+        args?: pulumi.Input<string>;
+        /**
+         * The entry point of the container, which specifies the actual command run by the container.
+         */
+        command?: pulumi.Input<string>;
+        /**
+         * The container image address.
+         */
+        image: pulumi.Input<string>;
+    }
+
     export interface ServiceLogConfig {
         /**
          * The log store name of Logs service.
@@ -1070,6 +1085,32 @@ export namespace fc {
          * The project name of Logs service.
          */
         project: pulumi.Input<string>;
+    }
+
+    export interface ServiceNasConfig {
+        /**
+         * The group id of your NAS file system.
+         */
+        groupId: pulumi.Input<number>;
+        /**
+         * Config the NAS mount points, including following attributes:
+         */
+        mountPoints: pulumi.Input<pulumi.Input<inputs.fc.ServiceNasConfigMountPoint>[]>;
+        /**
+         * The user id of your NAS file system.
+         */
+        userId: pulumi.Input<number>;
+    }
+
+    export interface ServiceNasConfigMountPoint {
+        /**
+         * The local address where to mount your remote NAS directory.
+         */
+        mountDir: pulumi.Input<string>;
+        /**
+         * The address of the remote NAS directory.
+         */
+        serverAddr: pulumi.Input<string>;
     }
 
     export interface ServiceVpcConfig {

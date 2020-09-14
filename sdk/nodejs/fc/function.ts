@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class Function extends pulumi.CustomResource {
@@ -33,9 +35,17 @@ export class Function extends pulumi.CustomResource {
     }
 
     /**
+     * The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+     */
+    public readonly caPort!: pulumi.Output<number | undefined>;
+    /**
      * The checksum (crc64) of the function code.
      */
     public readonly codeChecksum!: pulumi.Output<string>;
+    /**
+     * The configuration for custom container runtime.
+     */
+    public readonly customContainerConfig!: pulumi.Output<outputs.fc.FunctionCustomContainerConfig | undefined>;
     /**
      * The Function Compute function description.
      */
@@ -53,15 +63,31 @@ export class Function extends pulumi.CustomResource {
      */
     public /*out*/ readonly functionId!: pulumi.Output<string>;
     /**
-     * The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+     * The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
      */
     public readonly handler!: pulumi.Output<string>;
+    /**
+     * The maximum length of time, in seconds, that the function's initialization should be run for.
+     */
+    public readonly initializationTimeout!: pulumi.Output<number | undefined>;
+    /**
+     * The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+     */
+    public readonly initializer!: pulumi.Output<string | undefined>;
+    /**
+     * The maximum number of requests can be executed concurrently within the single function instance.
+     */
+    public readonly instanceConcurrency!: pulumi.Output<number | undefined>;
+    /**
+     * The instance type of the function.
+     */
+    public readonly instanceType!: pulumi.Output<string | undefined>;
     /**
      * The date this resource was last modified.
      */
     public /*out*/ readonly lastModified!: pulumi.Output<string>;
     /**
-     * Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+     * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
      */
     public readonly memorySize!: pulumi.Output<number | undefined>;
     /**
@@ -89,7 +115,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly service!: pulumi.Output<string>;
     /**
-     * The amount of time your Function has to run in seconds.
+     * The amount of time your function has to run in seconds.
      */
     public readonly timeout!: pulumi.Output<number | undefined>;
 
@@ -105,12 +131,18 @@ export class Function extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as FunctionState | undefined;
+            inputs["caPort"] = state ? state.caPort : undefined;
             inputs["codeChecksum"] = state ? state.codeChecksum : undefined;
+            inputs["customContainerConfig"] = state ? state.customContainerConfig : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["environmentVariables"] = state ? state.environmentVariables : undefined;
             inputs["filename"] = state ? state.filename : undefined;
             inputs["functionId"] = state ? state.functionId : undefined;
             inputs["handler"] = state ? state.handler : undefined;
+            inputs["initializationTimeout"] = state ? state.initializationTimeout : undefined;
+            inputs["initializer"] = state ? state.initializer : undefined;
+            inputs["instanceConcurrency"] = state ? state.instanceConcurrency : undefined;
+            inputs["instanceType"] = state ? state.instanceType : undefined;
             inputs["lastModified"] = state ? state.lastModified : undefined;
             inputs["memorySize"] = state ? state.memorySize : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -131,11 +163,17 @@ export class Function extends pulumi.CustomResource {
             if (!args || args.service === undefined) {
                 throw new Error("Missing required property 'service'");
             }
+            inputs["caPort"] = args ? args.caPort : undefined;
             inputs["codeChecksum"] = args ? args.codeChecksum : undefined;
+            inputs["customContainerConfig"] = args ? args.customContainerConfig : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["environmentVariables"] = args ? args.environmentVariables : undefined;
             inputs["filename"] = args ? args.filename : undefined;
             inputs["handler"] = args ? args.handler : undefined;
+            inputs["initializationTimeout"] = args ? args.initializationTimeout : undefined;
+            inputs["initializer"] = args ? args.initializer : undefined;
+            inputs["instanceConcurrency"] = args ? args.instanceConcurrency : undefined;
+            inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["memorySize"] = args ? args.memorySize : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
@@ -163,9 +201,17 @@ export class Function extends pulumi.CustomResource {
  */
 export interface FunctionState {
     /**
+     * The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+     */
+    readonly caPort?: pulumi.Input<number>;
+    /**
      * The checksum (crc64) of the function code.
      */
     readonly codeChecksum?: pulumi.Input<string>;
+    /**
+     * The configuration for custom container runtime.
+     */
+    readonly customContainerConfig?: pulumi.Input<inputs.fc.FunctionCustomContainerConfig>;
     /**
      * The Function Compute function description.
      */
@@ -183,15 +229,31 @@ export interface FunctionState {
      */
     readonly functionId?: pulumi.Input<string>;
     /**
-     * The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+     * The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
      */
     readonly handler?: pulumi.Input<string>;
+    /**
+     * The maximum length of time, in seconds, that the function's initialization should be run for.
+     */
+    readonly initializationTimeout?: pulumi.Input<number>;
+    /**
+     * The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+     */
+    readonly initializer?: pulumi.Input<string>;
+    /**
+     * The maximum number of requests can be executed concurrently within the single function instance.
+     */
+    readonly instanceConcurrency?: pulumi.Input<number>;
+    /**
+     * The instance type of the function.
+     */
+    readonly instanceType?: pulumi.Input<string>;
     /**
      * The date this resource was last modified.
      */
     readonly lastModified?: pulumi.Input<string>;
     /**
-     * Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+     * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
      */
     readonly memorySize?: pulumi.Input<number>;
     /**
@@ -219,7 +281,7 @@ export interface FunctionState {
      */
     readonly service?: pulumi.Input<string>;
     /**
-     * The amount of time your Function has to run in seconds.
+     * The amount of time your function has to run in seconds.
      */
     readonly timeout?: pulumi.Input<number>;
 }
@@ -229,9 +291,17 @@ export interface FunctionState {
  */
 export interface FunctionArgs {
     /**
+     * The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+     */
+    readonly caPort?: pulumi.Input<number>;
+    /**
      * The checksum (crc64) of the function code.
      */
     readonly codeChecksum?: pulumi.Input<string>;
+    /**
+     * The configuration for custom container runtime.
+     */
+    readonly customContainerConfig?: pulumi.Input<inputs.fc.FunctionCustomContainerConfig>;
     /**
      * The Function Compute function description.
      */
@@ -245,11 +315,27 @@ export interface FunctionArgs {
      */
     readonly filename?: pulumi.Input<string>;
     /**
-     * The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+     * The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
      */
     readonly handler: pulumi.Input<string>;
     /**
-     * Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+     * The maximum length of time, in seconds, that the function's initialization should be run for.
+     */
+    readonly initializationTimeout?: pulumi.Input<number>;
+    /**
+     * The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+     */
+    readonly initializer?: pulumi.Input<string>;
+    /**
+     * The maximum number of requests can be executed concurrently within the single function instance.
+     */
+    readonly instanceConcurrency?: pulumi.Input<number>;
+    /**
+     * The instance type of the function.
+     */
+    readonly instanceType?: pulumi.Input<string>;
+    /**
+     * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
      */
     readonly memorySize?: pulumi.Input<number>;
     /**
@@ -277,7 +363,7 @@ export interface FunctionArgs {
      */
     readonly service: pulumi.Input<string>;
     /**
-     * The amount of time your Function has to run in seconds.
+     * The amount of time your function has to run in seconds.
      */
     readonly timeout?: pulumi.Input<number>;
 }

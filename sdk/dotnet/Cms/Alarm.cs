@@ -12,6 +12,54 @@ namespace Pulumi.AliCloud.Cms
     /// <summary>
     /// This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
     /// Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basic = new AliCloud.Cms.Alarm("basic", new AliCloud.Cms.AlarmArgs
+    ///         {
+    ///             ContactGroups = 
+    ///             {
+    ///                 "test-group",
+    ///             },
+    ///             Dimensions = 
+    ///             {
+    ///                 { "device", "/dev/vda1,/dev/vdb1" },
+    ///                 { "instanceId", "i-bp1247,i-bp11gd" },
+    ///             },
+    ///             EffectiveInterval = "0:00-2:00",
+    ///             EscalationsCritical = new AliCloud.Cms.Inputs.AlarmEscalationsCriticalArgs
+    ///             {
+    ///                 ComparisonOperator = "&lt;=",
+    ///                 Statistics = "Average",
+    ///                 Threshold = "35",
+    ///                 Times = 2,
+    ///             },
+    ///             EscalationsWarn = new AliCloud.Cms.Inputs.AlarmEscalationsWarnArgs
+    ///             {
+    ///                 ComparisonOperator = "&lt;=",
+    ///                 Statistics = "Average",
+    ///                 Threshold = "102400",
+    ///                 Times = 1,
+    ///             },
+    ///             Metric = "disk_writebytes",
+    ///             Period = 900,
+    ///             Project = "acs_ecs_dashboard",
+    ///             Webhook = $"https://{data.Alicloud_account.Current.Id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Alarm : Pulumi.CustomResource
     {

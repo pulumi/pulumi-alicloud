@@ -48,6 +48,12 @@ namespace Pulumi.AliCloud.FC
         public Output<string?> NamePrefix { get; private set; } = null!;
 
         /// <summary>
+        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+        /// </summary>
+        [Output("nasConfig")]
+        public Output<Outputs.ServiceNasConfig?> NasConfig { get; private set; } = null!;
+
+        /// <summary>
         /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         /// </summary>
         [Output("role")]
@@ -142,6 +148,12 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
+        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+        /// </summary>
+        [Input("nasConfig")]
+        public Input<Inputs.ServiceNasConfigArgs>? NasConfig { get; set; }
+
+        /// <summary>
         /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         /// </summary>
         [Input("role")]
@@ -195,6 +207,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
+
+        /// <summary>
+        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+        /// </summary>
+        [Input("nasConfig")]
+        public Input<Inputs.ServiceNasConfigGetArgs>? NasConfig { get; set; }
 
         /// <summary>
         /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.

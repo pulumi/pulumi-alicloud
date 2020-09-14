@@ -43,6 +43,39 @@ class Alarm(pulumi.CustomResource):
         This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
         Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        basic = alicloud.cms.Alarm("basic",
+            contact_groups=["test-group"],
+            dimensions={
+                "device": "/dev/vda1,/dev/vdb1",
+                "instance_id": "i-bp1247,i-bp11gd",
+            },
+            effective_interval="0:00-2:00",
+            escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
+                comparison_operator="<=",
+                statistics="Average",
+                threshold="35",
+                times=2,
+            ),
+            escalations_warn=alicloud.cms.AlarmEscalationsWarnArgs(
+                comparison_operator="<=",
+                statistics="Average",
+                threshold="102400",
+                times=1,
+            ),
+            metric="disk_writebytes",
+            period=900,
+            project="acs_ecs_dashboard",
+            webhook=f"https://{data['alicloud_account']['current']['id']}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[List[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.

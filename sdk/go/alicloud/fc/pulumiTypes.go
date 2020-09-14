@@ -10,6 +10,175 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type FunctionCustomContainerConfig struct {
+	// The args field specifies the arguments passed to the command.
+	Args *string `pulumi:"args"`
+	// The entry point of the container, which specifies the actual command run by the container.
+	Command *string `pulumi:"command"`
+	// The container image address.
+	Image string `pulumi:"image"`
+}
+
+// FunctionCustomContainerConfigInput is an input type that accepts FunctionCustomContainerConfigArgs and FunctionCustomContainerConfigOutput values.
+// You can construct a concrete instance of `FunctionCustomContainerConfigInput` via:
+//
+//          FunctionCustomContainerConfigArgs{...}
+type FunctionCustomContainerConfigInput interface {
+	pulumi.Input
+
+	ToFunctionCustomContainerConfigOutput() FunctionCustomContainerConfigOutput
+	ToFunctionCustomContainerConfigOutputWithContext(context.Context) FunctionCustomContainerConfigOutput
+}
+
+type FunctionCustomContainerConfigArgs struct {
+	// The args field specifies the arguments passed to the command.
+	Args pulumi.StringPtrInput `pulumi:"args"`
+	// The entry point of the container, which specifies the actual command run by the container.
+	Command pulumi.StringPtrInput `pulumi:"command"`
+	// The container image address.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (FunctionCustomContainerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (i FunctionCustomContainerConfigArgs) ToFunctionCustomContainerConfigOutput() FunctionCustomContainerConfigOutput {
+	return i.ToFunctionCustomContainerConfigOutputWithContext(context.Background())
+}
+
+func (i FunctionCustomContainerConfigArgs) ToFunctionCustomContainerConfigOutputWithContext(ctx context.Context) FunctionCustomContainerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionCustomContainerConfigOutput)
+}
+
+func (i FunctionCustomContainerConfigArgs) ToFunctionCustomContainerConfigPtrOutput() FunctionCustomContainerConfigPtrOutput {
+	return i.ToFunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionCustomContainerConfigArgs) ToFunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) FunctionCustomContainerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionCustomContainerConfigOutput).ToFunctionCustomContainerConfigPtrOutputWithContext(ctx)
+}
+
+// FunctionCustomContainerConfigPtrInput is an input type that accepts FunctionCustomContainerConfigArgs, FunctionCustomContainerConfigPtr and FunctionCustomContainerConfigPtrOutput values.
+// You can construct a concrete instance of `FunctionCustomContainerConfigPtrInput` via:
+//
+//          FunctionCustomContainerConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type FunctionCustomContainerConfigPtrInput interface {
+	pulumi.Input
+
+	ToFunctionCustomContainerConfigPtrOutput() FunctionCustomContainerConfigPtrOutput
+	ToFunctionCustomContainerConfigPtrOutputWithContext(context.Context) FunctionCustomContainerConfigPtrOutput
+}
+
+type functionCustomContainerConfigPtrType FunctionCustomContainerConfigArgs
+
+func FunctionCustomContainerConfigPtr(v *FunctionCustomContainerConfigArgs) FunctionCustomContainerConfigPtrInput {
+	return (*functionCustomContainerConfigPtrType)(v)
+}
+
+func (*functionCustomContainerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (i *functionCustomContainerConfigPtrType) ToFunctionCustomContainerConfigPtrOutput() FunctionCustomContainerConfigPtrOutput {
+	return i.ToFunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *functionCustomContainerConfigPtrType) ToFunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) FunctionCustomContainerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionCustomContainerConfigPtrOutput)
+}
+
+type FunctionCustomContainerConfigOutput struct{ *pulumi.OutputState }
+
+func (FunctionCustomContainerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (o FunctionCustomContainerConfigOutput) ToFunctionCustomContainerConfigOutput() FunctionCustomContainerConfigOutput {
+	return o
+}
+
+func (o FunctionCustomContainerConfigOutput) ToFunctionCustomContainerConfigOutputWithContext(ctx context.Context) FunctionCustomContainerConfigOutput {
+	return o
+}
+
+func (o FunctionCustomContainerConfigOutput) ToFunctionCustomContainerConfigPtrOutput() FunctionCustomContainerConfigPtrOutput {
+	return o.ToFunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionCustomContainerConfigOutput) ToFunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) FunctionCustomContainerConfigPtrOutput {
+	return o.ApplyT(func(v FunctionCustomContainerConfig) *FunctionCustomContainerConfig {
+		return &v
+	}).(FunctionCustomContainerConfigPtrOutput)
+}
+
+// The args field specifies the arguments passed to the command.
+func (o FunctionCustomContainerConfigOutput) Args() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionCustomContainerConfig) *string { return v.Args }).(pulumi.StringPtrOutput)
+}
+
+// The entry point of the container, which specifies the actual command run by the container.
+func (o FunctionCustomContainerConfigOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionCustomContainerConfig) *string { return v.Command }).(pulumi.StringPtrOutput)
+}
+
+// The container image address.
+func (o FunctionCustomContainerConfigOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionCustomContainerConfig) string { return v.Image }).(pulumi.StringOutput)
+}
+
+type FunctionCustomContainerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionCustomContainerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (o FunctionCustomContainerConfigPtrOutput) ToFunctionCustomContainerConfigPtrOutput() FunctionCustomContainerConfigPtrOutput {
+	return o
+}
+
+func (o FunctionCustomContainerConfigPtrOutput) ToFunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) FunctionCustomContainerConfigPtrOutput {
+	return o
+}
+
+func (o FunctionCustomContainerConfigPtrOutput) Elem() FunctionCustomContainerConfigOutput {
+	return o.ApplyT(func(v *FunctionCustomContainerConfig) FunctionCustomContainerConfig { return *v }).(FunctionCustomContainerConfigOutput)
+}
+
+// The args field specifies the arguments passed to the command.
+func (o FunctionCustomContainerConfigPtrOutput) Args() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringPtrOutput)
+}
+
+// The entry point of the container, which specifies the actual command run by the container.
+func (o FunctionCustomContainerConfigPtrOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Command
+	}).(pulumi.StringPtrOutput)
+}
+
+// The container image address.
+func (o FunctionCustomContainerConfigPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceLogConfig struct {
 	// The log store name of Logs service.
 	Logstore string `pulumi:"logstore"`
@@ -158,6 +327,281 @@ func (o ServiceLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
 		}
 		return &v.Project
 	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceNasConfig struct {
+	// The group id of your NAS file system.
+	GroupId int `pulumi:"groupId"`
+	// Config the NAS mount points, including following attributes:
+	MountPoints []ServiceNasConfigMountPoint `pulumi:"mountPoints"`
+	// The user id of your NAS file system.
+	UserId int `pulumi:"userId"`
+}
+
+// ServiceNasConfigInput is an input type that accepts ServiceNasConfigArgs and ServiceNasConfigOutput values.
+// You can construct a concrete instance of `ServiceNasConfigInput` via:
+//
+//          ServiceNasConfigArgs{...}
+type ServiceNasConfigInput interface {
+	pulumi.Input
+
+	ToServiceNasConfigOutput() ServiceNasConfigOutput
+	ToServiceNasConfigOutputWithContext(context.Context) ServiceNasConfigOutput
+}
+
+type ServiceNasConfigArgs struct {
+	// The group id of your NAS file system.
+	GroupId pulumi.IntInput `pulumi:"groupId"`
+	// Config the NAS mount points, including following attributes:
+	MountPoints ServiceNasConfigMountPointArrayInput `pulumi:"mountPoints"`
+	// The user id of your NAS file system.
+	UserId pulumi.IntInput `pulumi:"userId"`
+}
+
+func (ServiceNasConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNasConfig)(nil)).Elem()
+}
+
+func (i ServiceNasConfigArgs) ToServiceNasConfigOutput() ServiceNasConfigOutput {
+	return i.ToServiceNasConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceNasConfigArgs) ToServiceNasConfigOutputWithContext(ctx context.Context) ServiceNasConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNasConfigOutput)
+}
+
+func (i ServiceNasConfigArgs) ToServiceNasConfigPtrOutput() ServiceNasConfigPtrOutput {
+	return i.ToServiceNasConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceNasConfigArgs) ToServiceNasConfigPtrOutputWithContext(ctx context.Context) ServiceNasConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNasConfigOutput).ToServiceNasConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceNasConfigPtrInput is an input type that accepts ServiceNasConfigArgs, ServiceNasConfigPtr and ServiceNasConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceNasConfigPtrInput` via:
+//
+//          ServiceNasConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceNasConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceNasConfigPtrOutput() ServiceNasConfigPtrOutput
+	ToServiceNasConfigPtrOutputWithContext(context.Context) ServiceNasConfigPtrOutput
+}
+
+type serviceNasConfigPtrType ServiceNasConfigArgs
+
+func ServiceNasConfigPtr(v *ServiceNasConfigArgs) ServiceNasConfigPtrInput {
+	return (*serviceNasConfigPtrType)(v)
+}
+
+func (*serviceNasConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceNasConfig)(nil)).Elem()
+}
+
+func (i *serviceNasConfigPtrType) ToServiceNasConfigPtrOutput() ServiceNasConfigPtrOutput {
+	return i.ToServiceNasConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceNasConfigPtrType) ToServiceNasConfigPtrOutputWithContext(ctx context.Context) ServiceNasConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNasConfigPtrOutput)
+}
+
+type ServiceNasConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceNasConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNasConfig)(nil)).Elem()
+}
+
+func (o ServiceNasConfigOutput) ToServiceNasConfigOutput() ServiceNasConfigOutput {
+	return o
+}
+
+func (o ServiceNasConfigOutput) ToServiceNasConfigOutputWithContext(ctx context.Context) ServiceNasConfigOutput {
+	return o
+}
+
+func (o ServiceNasConfigOutput) ToServiceNasConfigPtrOutput() ServiceNasConfigPtrOutput {
+	return o.ToServiceNasConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceNasConfigOutput) ToServiceNasConfigPtrOutputWithContext(ctx context.Context) ServiceNasConfigPtrOutput {
+	return o.ApplyT(func(v ServiceNasConfig) *ServiceNasConfig {
+		return &v
+	}).(ServiceNasConfigPtrOutput)
+}
+
+// The group id of your NAS file system.
+func (o ServiceNasConfigOutput) GroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceNasConfig) int { return v.GroupId }).(pulumi.IntOutput)
+}
+
+// Config the NAS mount points, including following attributes:
+func (o ServiceNasConfigOutput) MountPoints() ServiceNasConfigMountPointArrayOutput {
+	return o.ApplyT(func(v ServiceNasConfig) []ServiceNasConfigMountPoint { return v.MountPoints }).(ServiceNasConfigMountPointArrayOutput)
+}
+
+// The user id of your NAS file system.
+func (o ServiceNasConfigOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceNasConfig) int { return v.UserId }).(pulumi.IntOutput)
+}
+
+type ServiceNasConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceNasConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceNasConfig)(nil)).Elem()
+}
+
+func (o ServiceNasConfigPtrOutput) ToServiceNasConfigPtrOutput() ServiceNasConfigPtrOutput {
+	return o
+}
+
+func (o ServiceNasConfigPtrOutput) ToServiceNasConfigPtrOutputWithContext(ctx context.Context) ServiceNasConfigPtrOutput {
+	return o
+}
+
+func (o ServiceNasConfigPtrOutput) Elem() ServiceNasConfigOutput {
+	return o.ApplyT(func(v *ServiceNasConfig) ServiceNasConfig { return *v }).(ServiceNasConfigOutput)
+}
+
+// The group id of your NAS file system.
+func (o ServiceNasConfigPtrOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceNasConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.GroupId
+	}).(pulumi.IntPtrOutput)
+}
+
+// Config the NAS mount points, including following attributes:
+func (o ServiceNasConfigPtrOutput) MountPoints() ServiceNasConfigMountPointArrayOutput {
+	return o.ApplyT(func(v *ServiceNasConfig) []ServiceNasConfigMountPoint {
+		if v == nil {
+			return nil
+		}
+		return v.MountPoints
+	}).(ServiceNasConfigMountPointArrayOutput)
+}
+
+// The user id of your NAS file system.
+func (o ServiceNasConfigPtrOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceNasConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.UserId
+	}).(pulumi.IntPtrOutput)
+}
+
+type ServiceNasConfigMountPoint struct {
+	// The local address where to mount your remote NAS directory.
+	MountDir string `pulumi:"mountDir"`
+	// The address of the remote NAS directory.
+	ServerAddr string `pulumi:"serverAddr"`
+}
+
+// ServiceNasConfigMountPointInput is an input type that accepts ServiceNasConfigMountPointArgs and ServiceNasConfigMountPointOutput values.
+// You can construct a concrete instance of `ServiceNasConfigMountPointInput` via:
+//
+//          ServiceNasConfigMountPointArgs{...}
+type ServiceNasConfigMountPointInput interface {
+	pulumi.Input
+
+	ToServiceNasConfigMountPointOutput() ServiceNasConfigMountPointOutput
+	ToServiceNasConfigMountPointOutputWithContext(context.Context) ServiceNasConfigMountPointOutput
+}
+
+type ServiceNasConfigMountPointArgs struct {
+	// The local address where to mount your remote NAS directory.
+	MountDir pulumi.StringInput `pulumi:"mountDir"`
+	// The address of the remote NAS directory.
+	ServerAddr pulumi.StringInput `pulumi:"serverAddr"`
+}
+
+func (ServiceNasConfigMountPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNasConfigMountPoint)(nil)).Elem()
+}
+
+func (i ServiceNasConfigMountPointArgs) ToServiceNasConfigMountPointOutput() ServiceNasConfigMountPointOutput {
+	return i.ToServiceNasConfigMountPointOutputWithContext(context.Background())
+}
+
+func (i ServiceNasConfigMountPointArgs) ToServiceNasConfigMountPointOutputWithContext(ctx context.Context) ServiceNasConfigMountPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNasConfigMountPointOutput)
+}
+
+// ServiceNasConfigMountPointArrayInput is an input type that accepts ServiceNasConfigMountPointArray and ServiceNasConfigMountPointArrayOutput values.
+// You can construct a concrete instance of `ServiceNasConfigMountPointArrayInput` via:
+//
+//          ServiceNasConfigMountPointArray{ ServiceNasConfigMountPointArgs{...} }
+type ServiceNasConfigMountPointArrayInput interface {
+	pulumi.Input
+
+	ToServiceNasConfigMountPointArrayOutput() ServiceNasConfigMountPointArrayOutput
+	ToServiceNasConfigMountPointArrayOutputWithContext(context.Context) ServiceNasConfigMountPointArrayOutput
+}
+
+type ServiceNasConfigMountPointArray []ServiceNasConfigMountPointInput
+
+func (ServiceNasConfigMountPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceNasConfigMountPoint)(nil)).Elem()
+}
+
+func (i ServiceNasConfigMountPointArray) ToServiceNasConfigMountPointArrayOutput() ServiceNasConfigMountPointArrayOutput {
+	return i.ToServiceNasConfigMountPointArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceNasConfigMountPointArray) ToServiceNasConfigMountPointArrayOutputWithContext(ctx context.Context) ServiceNasConfigMountPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNasConfigMountPointArrayOutput)
+}
+
+type ServiceNasConfigMountPointOutput struct{ *pulumi.OutputState }
+
+func (ServiceNasConfigMountPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNasConfigMountPoint)(nil)).Elem()
+}
+
+func (o ServiceNasConfigMountPointOutput) ToServiceNasConfigMountPointOutput() ServiceNasConfigMountPointOutput {
+	return o
+}
+
+func (o ServiceNasConfigMountPointOutput) ToServiceNasConfigMountPointOutputWithContext(ctx context.Context) ServiceNasConfigMountPointOutput {
+	return o
+}
+
+// The local address where to mount your remote NAS directory.
+func (o ServiceNasConfigMountPointOutput) MountDir() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceNasConfigMountPoint) string { return v.MountDir }).(pulumi.StringOutput)
+}
+
+// The address of the remote NAS directory.
+func (o ServiceNasConfigMountPointOutput) ServerAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceNasConfigMountPoint) string { return v.ServerAddr }).(pulumi.StringOutput)
+}
+
+type ServiceNasConfigMountPointArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceNasConfigMountPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceNasConfigMountPoint)(nil)).Elem()
+}
+
+func (o ServiceNasConfigMountPointArrayOutput) ToServiceNasConfigMountPointArrayOutput() ServiceNasConfigMountPointArrayOutput {
+	return o
+}
+
+func (o ServiceNasConfigMountPointArrayOutput) ToServiceNasConfigMountPointArrayOutputWithContext(ctx context.Context) ServiceNasConfigMountPointArrayOutput {
+	return o
+}
+
+func (o ServiceNasConfigMountPointArrayOutput) Index(i pulumi.IntInput) ServiceNasConfigMountPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceNasConfigMountPoint {
+		return vs[0].([]ServiceNasConfigMountPoint)[vs[1].(int)]
+	}).(ServiceNasConfigMountPointOutput)
 }
 
 type ServiceVpcConfig struct {
@@ -326,12 +770,16 @@ func (o ServiceVpcConfigPtrOutput) VswitchIds() pulumi.StringArrayOutput {
 }
 
 type GetFunctionsFunction struct {
+	// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+	CaPort int `pulumi:"caPort"`
 	// Checksum (crc64) of the function code.
 	CodeChecksum string `pulumi:"codeChecksum"`
 	// Function code size in bytes.
 	CodeSize int `pulumi:"codeSize"`
 	// Function creation time.
 	CreationTime string `pulumi:"creationTime"`
+	// The configuration for custom container runtime. It contains following attributes:
+	CustomContainerConfig *GetFunctionsFunctionCustomContainerConfig `pulumi:"customContainerConfig"`
 	// Function description.
 	Description string `pulumi:"description"`
 	// A map that defines environment variables for the function.
@@ -340,6 +788,14 @@ type GetFunctionsFunction struct {
 	Handler string `pulumi:"handler"`
 	// Function ID.
 	Id string `pulumi:"id"`
+	// The maximum length of time, in seconds, that the function's initialization should be run for.
+	InitializationTimeout int `pulumi:"initializationTimeout"`
+	// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+	Initializer string `pulumi:"initializer"`
+	// The maximum number of requests can be executed concurrently within the single function instance.
+	InstanceConcurrency int `pulumi:"instanceConcurrency"`
+	// The instance type of the function.
+	InstanceType string `pulumi:"instanceType"`
 	// Function last modification time.
 	LastModificationTime string `pulumi:"lastModificationTime"`
 	// Amount of memory in MB the function can use at runtime.
@@ -364,12 +820,16 @@ type GetFunctionsFunctionInput interface {
 }
 
 type GetFunctionsFunctionArgs struct {
+	// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+	CaPort pulumi.IntInput `pulumi:"caPort"`
 	// Checksum (crc64) of the function code.
 	CodeChecksum pulumi.StringInput `pulumi:"codeChecksum"`
 	// Function code size in bytes.
 	CodeSize pulumi.IntInput `pulumi:"codeSize"`
 	// Function creation time.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// The configuration for custom container runtime. It contains following attributes:
+	CustomContainerConfig GetFunctionsFunctionCustomContainerConfigPtrInput `pulumi:"customContainerConfig"`
 	// Function description.
 	Description pulumi.StringInput `pulumi:"description"`
 	// A map that defines environment variables for the function.
@@ -378,6 +838,14 @@ type GetFunctionsFunctionArgs struct {
 	Handler pulumi.StringInput `pulumi:"handler"`
 	// Function ID.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The maximum length of time, in seconds, that the function's initialization should be run for.
+	InitializationTimeout pulumi.IntInput `pulumi:"initializationTimeout"`
+	// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+	Initializer pulumi.StringInput `pulumi:"initializer"`
+	// The maximum number of requests can be executed concurrently within the single function instance.
+	InstanceConcurrency pulumi.IntInput `pulumi:"instanceConcurrency"`
+	// The instance type of the function.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 	// Function last modification time.
 	LastModificationTime pulumi.StringInput `pulumi:"lastModificationTime"`
 	// Amount of memory in MB the function can use at runtime.
@@ -441,6 +909,11 @@ func (o GetFunctionsFunctionOutput) ToGetFunctionsFunctionOutputWithContext(ctx 
 	return o
 }
 
+// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+func (o GetFunctionsFunctionOutput) CaPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) int { return v.CaPort }).(pulumi.IntOutput)
+}
+
 // Checksum (crc64) of the function code.
 func (o GetFunctionsFunctionOutput) CodeChecksum() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) string { return v.CodeChecksum }).(pulumi.StringOutput)
@@ -454,6 +927,13 @@ func (o GetFunctionsFunctionOutput) CodeSize() pulumi.IntOutput {
 // Function creation time.
 func (o GetFunctionsFunctionOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// The configuration for custom container runtime. It contains following attributes:
+func (o GetFunctionsFunctionOutput) CustomContainerConfig() GetFunctionsFunctionCustomContainerConfigPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *GetFunctionsFunctionCustomContainerConfig {
+		return v.CustomContainerConfig
+	}).(GetFunctionsFunctionCustomContainerConfigPtrOutput)
 }
 
 // Function description.
@@ -474,6 +954,26 @@ func (o GetFunctionsFunctionOutput) Handler() pulumi.StringOutput {
 // Function ID.
 func (o GetFunctionsFunctionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The maximum length of time, in seconds, that the function's initialization should be run for.
+func (o GetFunctionsFunctionOutput) InitializationTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) int { return v.InitializationTimeout }).(pulumi.IntOutput)
+}
+
+// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+func (o GetFunctionsFunctionOutput) Initializer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) string { return v.Initializer }).(pulumi.StringOutput)
+}
+
+// The maximum number of requests can be executed concurrently within the single function instance.
+func (o GetFunctionsFunctionOutput) InstanceConcurrency() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) int { return v.InstanceConcurrency }).(pulumi.IntOutput)
+}
+
+// The instance type of the function.
+func (o GetFunctionsFunctionOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // Function last modification time.
@@ -521,6 +1021,177 @@ func (o GetFunctionsFunctionArrayOutput) Index(i pulumi.IntInput) GetFunctionsFu
 	}).(GetFunctionsFunctionOutput)
 }
 
+type GetFunctionsFunctionCustomContainerConfig struct {
+	// The args field specifies the arguments passed to the command.
+	Args string `pulumi:"args"`
+	// The entry point of the container, which specifies the actual command run by the container.
+	Command string `pulumi:"command"`
+	// The container image address.
+	Image string `pulumi:"image"`
+}
+
+// GetFunctionsFunctionCustomContainerConfigInput is an input type that accepts GetFunctionsFunctionCustomContainerConfigArgs and GetFunctionsFunctionCustomContainerConfigOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionCustomContainerConfigInput` via:
+//
+//          GetFunctionsFunctionCustomContainerConfigArgs{...}
+type GetFunctionsFunctionCustomContainerConfigInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionCustomContainerConfigOutput() GetFunctionsFunctionCustomContainerConfigOutput
+	ToGetFunctionsFunctionCustomContainerConfigOutputWithContext(context.Context) GetFunctionsFunctionCustomContainerConfigOutput
+}
+
+type GetFunctionsFunctionCustomContainerConfigArgs struct {
+	// The args field specifies the arguments passed to the command.
+	Args pulumi.StringInput `pulumi:"args"`
+	// The entry point of the container, which specifies the actual command run by the container.
+	Command pulumi.StringInput `pulumi:"command"`
+	// The container image address.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (GetFunctionsFunctionCustomContainerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionCustomContainerConfigArgs) ToGetFunctionsFunctionCustomContainerConfigOutput() GetFunctionsFunctionCustomContainerConfigOutput {
+	return i.ToGetFunctionsFunctionCustomContainerConfigOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionCustomContainerConfigArgs) ToGetFunctionsFunctionCustomContainerConfigOutputWithContext(ctx context.Context) GetFunctionsFunctionCustomContainerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionCustomContainerConfigOutput)
+}
+
+func (i GetFunctionsFunctionCustomContainerConfigArgs) ToGetFunctionsFunctionCustomContainerConfigPtrOutput() GetFunctionsFunctionCustomContainerConfigPtrOutput {
+	return i.ToGetFunctionsFunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionCustomContainerConfigArgs) ToGetFunctionsFunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionCustomContainerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionCustomContainerConfigOutput).ToGetFunctionsFunctionCustomContainerConfigPtrOutputWithContext(ctx)
+}
+
+// GetFunctionsFunctionCustomContainerConfigPtrInput is an input type that accepts GetFunctionsFunctionCustomContainerConfigArgs, GetFunctionsFunctionCustomContainerConfigPtr and GetFunctionsFunctionCustomContainerConfigPtrOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionCustomContainerConfigPtrInput` via:
+//
+//          GetFunctionsFunctionCustomContainerConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GetFunctionsFunctionCustomContainerConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionCustomContainerConfigPtrOutput() GetFunctionsFunctionCustomContainerConfigPtrOutput
+	ToGetFunctionsFunctionCustomContainerConfigPtrOutputWithContext(context.Context) GetFunctionsFunctionCustomContainerConfigPtrOutput
+}
+
+type getFunctionsFunctionCustomContainerConfigPtrType GetFunctionsFunctionCustomContainerConfigArgs
+
+func GetFunctionsFunctionCustomContainerConfigPtr(v *GetFunctionsFunctionCustomContainerConfigArgs) GetFunctionsFunctionCustomContainerConfigPtrInput {
+	return (*getFunctionsFunctionCustomContainerConfigPtrType)(v)
+}
+
+func (*getFunctionsFunctionCustomContainerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (i *getFunctionsFunctionCustomContainerConfigPtrType) ToGetFunctionsFunctionCustomContainerConfigPtrOutput() GetFunctionsFunctionCustomContainerConfigPtrOutput {
+	return i.ToGetFunctionsFunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getFunctionsFunctionCustomContainerConfigPtrType) ToGetFunctionsFunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionCustomContainerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionCustomContainerConfigPtrOutput)
+}
+
+type GetFunctionsFunctionCustomContainerConfigOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionCustomContainerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionCustomContainerConfigOutput) ToGetFunctionsFunctionCustomContainerConfigOutput() GetFunctionsFunctionCustomContainerConfigOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionCustomContainerConfigOutput) ToGetFunctionsFunctionCustomContainerConfigOutputWithContext(ctx context.Context) GetFunctionsFunctionCustomContainerConfigOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionCustomContainerConfigOutput) ToGetFunctionsFunctionCustomContainerConfigPtrOutput() GetFunctionsFunctionCustomContainerConfigPtrOutput {
+	return o.ToGetFunctionsFunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetFunctionsFunctionCustomContainerConfigOutput) ToGetFunctionsFunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionCustomContainerConfigPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionCustomContainerConfig) *GetFunctionsFunctionCustomContainerConfig {
+		return &v
+	}).(GetFunctionsFunctionCustomContainerConfigPtrOutput)
+}
+
+// The args field specifies the arguments passed to the command.
+func (o GetFunctionsFunctionCustomContainerConfigOutput) Args() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionCustomContainerConfig) string { return v.Args }).(pulumi.StringOutput)
+}
+
+// The entry point of the container, which specifies the actual command run by the container.
+func (o GetFunctionsFunctionCustomContainerConfigOutput) Command() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionCustomContainerConfig) string { return v.Command }).(pulumi.StringOutput)
+}
+
+// The container image address.
+func (o GetFunctionsFunctionCustomContainerConfigOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionCustomContainerConfig) string { return v.Image }).(pulumi.StringOutput)
+}
+
+type GetFunctionsFunctionCustomContainerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionCustomContainerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionCustomContainerConfigPtrOutput) ToGetFunctionsFunctionCustomContainerConfigPtrOutput() GetFunctionsFunctionCustomContainerConfigPtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionCustomContainerConfigPtrOutput) ToGetFunctionsFunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionCustomContainerConfigPtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionCustomContainerConfigPtrOutput) Elem() GetFunctionsFunctionCustomContainerConfigOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionCustomContainerConfig) GetFunctionsFunctionCustomContainerConfig {
+		return *v
+	}).(GetFunctionsFunctionCustomContainerConfigOutput)
+}
+
+// The args field specifies the arguments passed to the command.
+func (o GetFunctionsFunctionCustomContainerConfigPtrOutput) Args() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Args
+	}).(pulumi.StringPtrOutput)
+}
+
+// The entry point of the container, which specifies the actual command run by the container.
+func (o GetFunctionsFunctionCustomContainerConfigPtrOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Command
+	}).(pulumi.StringPtrOutput)
+}
+
+// The container image address.
+func (o GetFunctionsFunctionCustomContainerConfigPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetServicesService struct {
 	// FC service creation time.
 	CreationTime string `pulumi:"creationTime"`
@@ -536,6 +1207,8 @@ type GetServicesService struct {
 	LogConfig GetServicesServiceLogConfig `pulumi:"logConfig"`
 	// FC service name.
 	Name string `pulumi:"name"`
+	// A list of one element about the nas configuration.
+	NasConfig GetServicesServiceNasConfig `pulumi:"nasConfig"`
 	// FC service role ARN.
 	Role string `pulumi:"role"`
 	// A list of one element containing information about accessible VPC resources. It contains the following attributes:
@@ -568,6 +1241,8 @@ type GetServicesServiceArgs struct {
 	LogConfig GetServicesServiceLogConfigInput `pulumi:"logConfig"`
 	// FC service name.
 	Name pulumi.StringInput `pulumi:"name"`
+	// A list of one element about the nas configuration.
+	NasConfig GetServicesServiceNasConfigInput `pulumi:"nasConfig"`
 	// FC service role ARN.
 	Role pulumi.StringInput `pulumi:"role"`
 	// A list of one element containing information about accessible VPC resources. It contains the following attributes:
@@ -660,6 +1335,11 @@ func (o GetServicesServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesService) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A list of one element about the nas configuration.
+func (o GetServicesServiceOutput) NasConfig() GetServicesServiceNasConfigOutput {
+	return o.ApplyT(func(v GetServicesService) GetServicesServiceNasConfig { return v.NasConfig }).(GetServicesServiceNasConfigOutput)
+}
+
 // FC service role ARN.
 func (o GetServicesServiceOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesService) string { return v.Role }).(pulumi.StringOutput)
@@ -749,6 +1429,182 @@ func (o GetServicesServiceLogConfigOutput) Logstore() pulumi.StringOutput {
 // Log Service project name.
 func (o GetServicesServiceLogConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesServiceLogConfig) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type GetServicesServiceNasConfig struct {
+	// The group id of the NAS file system.
+	GroupId int `pulumi:"groupId"`
+	// The mount points configuration, including following attributes:
+	MountPoints []GetServicesServiceNasConfigMountPoint `pulumi:"mountPoints"`
+	// The user id of the NAS file system.
+	UserId int `pulumi:"userId"`
+}
+
+// GetServicesServiceNasConfigInput is an input type that accepts GetServicesServiceNasConfigArgs and GetServicesServiceNasConfigOutput values.
+// You can construct a concrete instance of `GetServicesServiceNasConfigInput` via:
+//
+//          GetServicesServiceNasConfigArgs{...}
+type GetServicesServiceNasConfigInput interface {
+	pulumi.Input
+
+	ToGetServicesServiceNasConfigOutput() GetServicesServiceNasConfigOutput
+	ToGetServicesServiceNasConfigOutputWithContext(context.Context) GetServicesServiceNasConfigOutput
+}
+
+type GetServicesServiceNasConfigArgs struct {
+	// The group id of the NAS file system.
+	GroupId pulumi.IntInput `pulumi:"groupId"`
+	// The mount points configuration, including following attributes:
+	MountPoints GetServicesServiceNasConfigMountPointArrayInput `pulumi:"mountPoints"`
+	// The user id of the NAS file system.
+	UserId pulumi.IntInput `pulumi:"userId"`
+}
+
+func (GetServicesServiceNasConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesServiceNasConfig)(nil)).Elem()
+}
+
+func (i GetServicesServiceNasConfigArgs) ToGetServicesServiceNasConfigOutput() GetServicesServiceNasConfigOutput {
+	return i.ToGetServicesServiceNasConfigOutputWithContext(context.Background())
+}
+
+func (i GetServicesServiceNasConfigArgs) ToGetServicesServiceNasConfigOutputWithContext(ctx context.Context) GetServicesServiceNasConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceNasConfigOutput)
+}
+
+type GetServicesServiceNasConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServicesServiceNasConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesServiceNasConfig)(nil)).Elem()
+}
+
+func (o GetServicesServiceNasConfigOutput) ToGetServicesServiceNasConfigOutput() GetServicesServiceNasConfigOutput {
+	return o
+}
+
+func (o GetServicesServiceNasConfigOutput) ToGetServicesServiceNasConfigOutputWithContext(ctx context.Context) GetServicesServiceNasConfigOutput {
+	return o
+}
+
+// The group id of the NAS file system.
+func (o GetServicesServiceNasConfigOutput) GroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesServiceNasConfig) int { return v.GroupId }).(pulumi.IntOutput)
+}
+
+// The mount points configuration, including following attributes:
+func (o GetServicesServiceNasConfigOutput) MountPoints() GetServicesServiceNasConfigMountPointArrayOutput {
+	return o.ApplyT(func(v GetServicesServiceNasConfig) []GetServicesServiceNasConfigMountPoint { return v.MountPoints }).(GetServicesServiceNasConfigMountPointArrayOutput)
+}
+
+// The user id of the NAS file system.
+func (o GetServicesServiceNasConfigOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesServiceNasConfig) int { return v.UserId }).(pulumi.IntOutput)
+}
+
+type GetServicesServiceNasConfigMountPoint struct {
+	// The local address where to mount your remote NAS directory.
+	MountDir string `pulumi:"mountDir"`
+	// The address of the remote NAS directory.
+	ServerAddr string `pulumi:"serverAddr"`
+}
+
+// GetServicesServiceNasConfigMountPointInput is an input type that accepts GetServicesServiceNasConfigMountPointArgs and GetServicesServiceNasConfigMountPointOutput values.
+// You can construct a concrete instance of `GetServicesServiceNasConfigMountPointInput` via:
+//
+//          GetServicesServiceNasConfigMountPointArgs{...}
+type GetServicesServiceNasConfigMountPointInput interface {
+	pulumi.Input
+
+	ToGetServicesServiceNasConfigMountPointOutput() GetServicesServiceNasConfigMountPointOutput
+	ToGetServicesServiceNasConfigMountPointOutputWithContext(context.Context) GetServicesServiceNasConfigMountPointOutput
+}
+
+type GetServicesServiceNasConfigMountPointArgs struct {
+	// The local address where to mount your remote NAS directory.
+	MountDir pulumi.StringInput `pulumi:"mountDir"`
+	// The address of the remote NAS directory.
+	ServerAddr pulumi.StringInput `pulumi:"serverAddr"`
+}
+
+func (GetServicesServiceNasConfigMountPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesServiceNasConfigMountPoint)(nil)).Elem()
+}
+
+func (i GetServicesServiceNasConfigMountPointArgs) ToGetServicesServiceNasConfigMountPointOutput() GetServicesServiceNasConfigMountPointOutput {
+	return i.ToGetServicesServiceNasConfigMountPointOutputWithContext(context.Background())
+}
+
+func (i GetServicesServiceNasConfigMountPointArgs) ToGetServicesServiceNasConfigMountPointOutputWithContext(ctx context.Context) GetServicesServiceNasConfigMountPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceNasConfigMountPointOutput)
+}
+
+// GetServicesServiceNasConfigMountPointArrayInput is an input type that accepts GetServicesServiceNasConfigMountPointArray and GetServicesServiceNasConfigMountPointArrayOutput values.
+// You can construct a concrete instance of `GetServicesServiceNasConfigMountPointArrayInput` via:
+//
+//          GetServicesServiceNasConfigMountPointArray{ GetServicesServiceNasConfigMountPointArgs{...} }
+type GetServicesServiceNasConfigMountPointArrayInput interface {
+	pulumi.Input
+
+	ToGetServicesServiceNasConfigMountPointArrayOutput() GetServicesServiceNasConfigMountPointArrayOutput
+	ToGetServicesServiceNasConfigMountPointArrayOutputWithContext(context.Context) GetServicesServiceNasConfigMountPointArrayOutput
+}
+
+type GetServicesServiceNasConfigMountPointArray []GetServicesServiceNasConfigMountPointInput
+
+func (GetServicesServiceNasConfigMountPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicesServiceNasConfigMountPoint)(nil)).Elem()
+}
+
+func (i GetServicesServiceNasConfigMountPointArray) ToGetServicesServiceNasConfigMountPointArrayOutput() GetServicesServiceNasConfigMountPointArrayOutput {
+	return i.ToGetServicesServiceNasConfigMountPointArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicesServiceNasConfigMountPointArray) ToGetServicesServiceNasConfigMountPointArrayOutputWithContext(ctx context.Context) GetServicesServiceNasConfigMountPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceNasConfigMountPointArrayOutput)
+}
+
+type GetServicesServiceNasConfigMountPointOutput struct{ *pulumi.OutputState }
+
+func (GetServicesServiceNasConfigMountPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesServiceNasConfigMountPoint)(nil)).Elem()
+}
+
+func (o GetServicesServiceNasConfigMountPointOutput) ToGetServicesServiceNasConfigMountPointOutput() GetServicesServiceNasConfigMountPointOutput {
+	return o
+}
+
+func (o GetServicesServiceNasConfigMountPointOutput) ToGetServicesServiceNasConfigMountPointOutputWithContext(ctx context.Context) GetServicesServiceNasConfigMountPointOutput {
+	return o
+}
+
+// The local address where to mount your remote NAS directory.
+func (o GetServicesServiceNasConfigMountPointOutput) MountDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesServiceNasConfigMountPoint) string { return v.MountDir }).(pulumi.StringOutput)
+}
+
+// The address of the remote NAS directory.
+func (o GetServicesServiceNasConfigMountPointOutput) ServerAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesServiceNasConfigMountPoint) string { return v.ServerAddr }).(pulumi.StringOutput)
+}
+
+type GetServicesServiceNasConfigMountPointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicesServiceNasConfigMountPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicesServiceNasConfigMountPoint)(nil)).Elem()
+}
+
+func (o GetServicesServiceNasConfigMountPointArrayOutput) ToGetServicesServiceNasConfigMountPointArrayOutput() GetServicesServiceNasConfigMountPointArrayOutput {
+	return o
+}
+
+func (o GetServicesServiceNasConfigMountPointArrayOutput) ToGetServicesServiceNasConfigMountPointArrayOutputWithContext(ctx context.Context) GetServicesServiceNasConfigMountPointArrayOutput {
+	return o
+}
+
+func (o GetServicesServiceNasConfigMountPointArrayOutput) Index(i pulumi.IntInput) GetServicesServiceNasConfigMountPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicesServiceNasConfigMountPoint {
+		return vs[0].([]GetServicesServiceNasConfigMountPoint)[vs[1].(int)]
+	}).(GetServicesServiceNasConfigMountPointOutput)
 }
 
 type GetServicesServiceVpcConfig struct {
@@ -1079,15 +1935,26 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(FunctionCustomContainerConfigOutput{})
+	pulumi.RegisterOutputType(FunctionCustomContainerConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceLogConfigOutput{})
 	pulumi.RegisterOutputType(ServiceLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceNasConfigOutput{})
+	pulumi.RegisterOutputType(ServiceNasConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceNasConfigMountPointOutput{})
+	pulumi.RegisterOutputType(ServiceNasConfigMountPointArrayOutput{})
 	pulumi.RegisterOutputType(ServiceVpcConfigOutput{})
 	pulumi.RegisterOutputType(ServiceVpcConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetFunctionsFunctionOutput{})
 	pulumi.RegisterOutputType(GetFunctionsFunctionArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionCustomContainerConfigOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionCustomContainerConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceLogConfigOutput{})
+	pulumi.RegisterOutputType(GetServicesServiceNasConfigOutput{})
+	pulumi.RegisterOutputType(GetServicesServiceNasConfigMountPointOutput{})
+	pulumi.RegisterOutputType(GetServicesServiceNasConfigMountPointArrayOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceVpcConfigOutput{})
 	pulumi.RegisterOutputType(GetTriggersTriggerOutput{})
 	pulumi.RegisterOutputType(GetTriggersTriggerArrayOutput{})

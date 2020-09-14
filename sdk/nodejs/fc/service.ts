@@ -59,6 +59,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly namePrefix!: pulumi.Output<string | undefined>;
     /**
+     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+     */
+    public readonly nasConfig!: pulumi.Output<outputs.fc.ServiceNasConfig | undefined>;
+    /**
      * RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      */
     public readonly role!: pulumi.Output<string | undefined>;
@@ -89,6 +93,7 @@ export class Service extends pulumi.CustomResource {
             inputs["logConfig"] = state ? state.logConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
+            inputs["nasConfig"] = state ? state.nasConfig : undefined;
             inputs["role"] = state ? state.role : undefined;
             inputs["serviceId"] = state ? state.serviceId : undefined;
             inputs["vpcConfig"] = state ? state.vpcConfig : undefined;
@@ -99,6 +104,7 @@ export class Service extends pulumi.CustomResource {
             inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
+            inputs["nasConfig"] = args ? args.nasConfig : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["vpcConfig"] = args ? args.vpcConfig : undefined;
             inputs["lastModified"] = undefined /*out*/;
@@ -144,6 +150,10 @@ export interface ServiceState {
      */
     readonly namePrefix?: pulumi.Input<string>;
     /**
+     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+     */
+    readonly nasConfig?: pulumi.Input<inputs.fc.ServiceNasConfig>;
+    /**
      * RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      */
     readonly role?: pulumi.Input<string>;
@@ -181,6 +191,10 @@ export interface ServiceArgs {
      * Setting a prefix to get a only name. It is conflict with "name".
      */
     readonly namePrefix?: pulumi.Input<string>;
+    /**
+     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+     */
+    readonly nasConfig?: pulumi.Input<inputs.fc.ServiceNasConfig>;
     /**
      * RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      */

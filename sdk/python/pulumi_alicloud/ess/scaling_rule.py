@@ -39,11 +39,11 @@ class ScalingRule(pulumi.CustomResource):
                - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
                - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
                - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
-        :param pulumi.Input[float] adjustment_value: Adjusted value of a scaling rule. Value range:
+        :param pulumi.Input[float] adjustment_value: The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
-        :param pulumi.Input[float] cooldown: Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+        :param pulumi.Input[float] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[float] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
@@ -117,11 +117,11 @@ class ScalingRule(pulumi.CustomResource):
                - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
                - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
                - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
-        :param pulumi.Input[float] adjustment_value: Adjusted value of a scaling rule. Value range:
+        :param pulumi.Input[float] adjustment_value: The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
-        :param pulumi.Input[float] cooldown: Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+        :param pulumi.Input[float] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[float] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
@@ -164,7 +164,7 @@ class ScalingRule(pulumi.CustomResource):
     @pulumi.getter(name="adjustmentValue")
     def adjustment_value(self) -> pulumi.Output[Optional[float]]:
         """
-        Adjusted value of a scaling rule. Value range:
+        The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
         - QuantityChangeInCapacity：(0, 500] U (-500, 0]
         - PercentChangeInCapacity：[0, 10000] U [-100, 0]
         - TotalCapacity：[0, 1000]
@@ -180,7 +180,7 @@ class ScalingRule(pulumi.CustomResource):
     @pulumi.getter
     def cooldown(self) -> pulumi.Output[Optional[float]]:
         """
-        Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+        The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         """
         return pulumi.get(self, "cooldown")
 

@@ -13,8 +13,12 @@ import (
 type Function struct {
 	pulumi.CustomResourceState
 
+	// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+	CaPort pulumi.IntPtrOutput `pulumi:"caPort"`
 	// The checksum (crc64) of the function code.
 	CodeChecksum pulumi.StringOutput `pulumi:"codeChecksum"`
+	// The configuration for custom container runtime.
+	CustomContainerConfig FunctionCustomContainerConfigPtrOutput `pulumi:"customContainerConfig"`
 	// The Function Compute function description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A map that defines environment variables for the function.
@@ -23,11 +27,19 @@ type Function struct {
 	Filename pulumi.StringPtrOutput `pulumi:"filename"`
 	// The Function Compute service ID.
 	FunctionId pulumi.StringOutput `pulumi:"functionId"`
-	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
 	Handler pulumi.StringOutput `pulumi:"handler"`
+	// The maximum length of time, in seconds, that the function's initialization should be run for.
+	InitializationTimeout pulumi.IntPtrOutput `pulumi:"initializationTimeout"`
+	// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+	Initializer pulumi.StringPtrOutput `pulumi:"initializer"`
+	// The maximum number of requests can be executed concurrently within the single function instance.
+	InstanceConcurrency pulumi.IntPtrOutput `pulumi:"instanceConcurrency"`
+	// The instance type of the function.
+	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
 	// The date this resource was last modified.
 	LastModified pulumi.StringOutput `pulumi:"lastModified"`
-	// Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
 	MemorySize pulumi.IntPtrOutput `pulumi:"memorySize"`
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -41,7 +53,7 @@ type Function struct {
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// The Function Compute service name.
 	Service pulumi.StringOutput `pulumi:"service"`
-	// The amount of time your Function has to run in seconds.
+	// The amount of time your function has to run in seconds.
 	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
 }
 
@@ -82,8 +94,12 @@ func GetFunction(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Function resources.
 type functionState struct {
+	// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+	CaPort *int `pulumi:"caPort"`
 	// The checksum (crc64) of the function code.
 	CodeChecksum *string `pulumi:"codeChecksum"`
+	// The configuration for custom container runtime.
+	CustomContainerConfig *FunctionCustomContainerConfig `pulumi:"customContainerConfig"`
 	// The Function Compute function description.
 	Description *string `pulumi:"description"`
 	// A map that defines environment variables for the function.
@@ -92,11 +108,19 @@ type functionState struct {
 	Filename *string `pulumi:"filename"`
 	// The Function Compute service ID.
 	FunctionId *string `pulumi:"functionId"`
-	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
 	Handler *string `pulumi:"handler"`
+	// The maximum length of time, in seconds, that the function's initialization should be run for.
+	InitializationTimeout *int `pulumi:"initializationTimeout"`
+	// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+	Initializer *string `pulumi:"initializer"`
+	// The maximum number of requests can be executed concurrently within the single function instance.
+	InstanceConcurrency *int `pulumi:"instanceConcurrency"`
+	// The instance type of the function.
+	InstanceType *string `pulumi:"instanceType"`
 	// The date this resource was last modified.
 	LastModified *string `pulumi:"lastModified"`
-	// Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
 	MemorySize *int `pulumi:"memorySize"`
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
 	Name *string `pulumi:"name"`
@@ -110,13 +134,17 @@ type functionState struct {
 	Runtime *string `pulumi:"runtime"`
 	// The Function Compute service name.
 	Service *string `pulumi:"service"`
-	// The amount of time your Function has to run in seconds.
+	// The amount of time your function has to run in seconds.
 	Timeout *int `pulumi:"timeout"`
 }
 
 type FunctionState struct {
+	// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+	CaPort pulumi.IntPtrInput
 	// The checksum (crc64) of the function code.
 	CodeChecksum pulumi.StringPtrInput
+	// The configuration for custom container runtime.
+	CustomContainerConfig FunctionCustomContainerConfigPtrInput
 	// The Function Compute function description.
 	Description pulumi.StringPtrInput
 	// A map that defines environment variables for the function.
@@ -125,11 +153,19 @@ type FunctionState struct {
 	Filename pulumi.StringPtrInput
 	// The Function Compute service ID.
 	FunctionId pulumi.StringPtrInput
-	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
 	Handler pulumi.StringPtrInput
+	// The maximum length of time, in seconds, that the function's initialization should be run for.
+	InitializationTimeout pulumi.IntPtrInput
+	// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+	Initializer pulumi.StringPtrInput
+	// The maximum number of requests can be executed concurrently within the single function instance.
+	InstanceConcurrency pulumi.IntPtrInput
+	// The instance type of the function.
+	InstanceType pulumi.StringPtrInput
 	// The date this resource was last modified.
 	LastModified pulumi.StringPtrInput
-	// Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
 	MemorySize pulumi.IntPtrInput
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
 	Name pulumi.StringPtrInput
@@ -143,7 +179,7 @@ type FunctionState struct {
 	Runtime pulumi.StringPtrInput
 	// The Function Compute service name.
 	Service pulumi.StringPtrInput
-	// The amount of time your Function has to run in seconds.
+	// The amount of time your function has to run in seconds.
 	Timeout pulumi.IntPtrInput
 }
 
@@ -152,17 +188,29 @@ func (FunctionState) ElementType() reflect.Type {
 }
 
 type functionArgs struct {
+	// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+	CaPort *int `pulumi:"caPort"`
 	// The checksum (crc64) of the function code.
 	CodeChecksum *string `pulumi:"codeChecksum"`
+	// The configuration for custom container runtime.
+	CustomContainerConfig *FunctionCustomContainerConfig `pulumi:"customContainerConfig"`
 	// The Function Compute function description.
 	Description *string `pulumi:"description"`
 	// A map that defines environment variables for the function.
 	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
 	// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
 	Filename *string `pulumi:"filename"`
-	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
 	Handler string `pulumi:"handler"`
-	// Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+	// The maximum length of time, in seconds, that the function's initialization should be run for.
+	InitializationTimeout *int `pulumi:"initializationTimeout"`
+	// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+	Initializer *string `pulumi:"initializer"`
+	// The maximum number of requests can be executed concurrently within the single function instance.
+	InstanceConcurrency *int `pulumi:"instanceConcurrency"`
+	// The instance type of the function.
+	InstanceType *string `pulumi:"instanceType"`
+	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
 	MemorySize *int `pulumi:"memorySize"`
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
 	Name *string `pulumi:"name"`
@@ -176,23 +224,35 @@ type functionArgs struct {
 	Runtime string `pulumi:"runtime"`
 	// The Function Compute service name.
 	Service string `pulumi:"service"`
-	// The amount of time your Function has to run in seconds.
+	// The amount of time your function has to run in seconds.
 	Timeout *int `pulumi:"timeout"`
 }
 
 // The set of arguments for constructing a Function resource.
 type FunctionArgs struct {
+	// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+	CaPort pulumi.IntPtrInput
 	// The checksum (crc64) of the function code.
 	CodeChecksum pulumi.StringPtrInput
+	// The configuration for custom container runtime.
+	CustomContainerConfig FunctionCustomContainerConfigPtrInput
 	// The Function Compute function description.
 	Description pulumi.StringPtrInput
 	// A map that defines environment variables for the function.
 	EnvironmentVariables pulumi.MapInput
 	// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
 	Filename pulumi.StringPtrInput
-	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
 	Handler pulumi.StringInput
-	// Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+	// The maximum length of time, in seconds, that the function's initialization should be run for.
+	InitializationTimeout pulumi.IntPtrInput
+	// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+	Initializer pulumi.StringPtrInput
+	// The maximum number of requests can be executed concurrently within the single function instance.
+	InstanceConcurrency pulumi.IntPtrInput
+	// The instance type of the function.
+	InstanceType pulumi.StringPtrInput
+	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
 	MemorySize pulumi.IntPtrInput
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
 	Name pulumi.StringPtrInput
@@ -206,7 +266,7 @@ type FunctionArgs struct {
 	Runtime pulumi.StringInput
 	// The Function Compute service name.
 	Service pulumi.StringInput
-	// The amount of time your Function has to run in seconds.
+	// The amount of time your function has to run in seconds.
 	Timeout pulumi.IntPtrInput
 }
 

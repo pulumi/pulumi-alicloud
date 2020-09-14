@@ -124,6 +124,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly renewalStatus!: pulumi.Output<string | undefined>;
     /**
+     * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     public readonly securityIps!: pulumi.Output<string[]>;
@@ -167,6 +171,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["payType"] = state ? state.payType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityIps"] = state ? state.securityIps : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -194,6 +199,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["payType"] = args ? args.payType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityIps"] = args ? args.securityIps : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -269,6 +275,10 @@ export interface ClusterState {
      */
     readonly renewalStatus?: pulumi.Input<string>;
     /**
+     * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
@@ -341,6 +351,10 @@ export interface ClusterArgs {
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
     readonly renewalStatus?: pulumi.Input<string>;
+    /**
+     * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */

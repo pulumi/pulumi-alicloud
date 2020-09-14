@@ -42,6 +42,10 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// A list of one element about the nas configuration.
+        /// </summary>
+        public readonly Outputs.GetServicesServiceNasConfigResult NasConfig;
+        /// <summary>
         /// FC service role ARN.
         /// </summary>
         public readonly string Role;
@@ -66,6 +70,8 @@ namespace Pulumi.AliCloud.FC.Outputs
 
             string name,
 
+            Outputs.GetServicesServiceNasConfigResult nasConfig,
+
             string role,
 
             Outputs.GetServicesServiceVpcConfigResult vpcConfig)
@@ -77,6 +83,7 @@ namespace Pulumi.AliCloud.FC.Outputs
             LastModificationTime = lastModificationTime;
             LogConfig = logConfig;
             Name = name;
+            NasConfig = nasConfig;
             Role = role;
             VpcConfig = vpcConfig;
         }

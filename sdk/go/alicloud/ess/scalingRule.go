@@ -18,13 +18,13 @@ type ScalingRule struct {
 	// - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
 	// - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
 	AdjustmentType pulumi.StringPtrOutput `pulumi:"adjustmentType"`
-	// Adjusted value of a scaling rule. Value range:
+	// The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
 	// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue pulumi.IntPtrOutput `pulumi:"adjustmentValue"`
 	Ari             pulumi.StringOutput `pulumi:"ari"`
-	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown pulumi.IntPtrOutput `pulumi:"cooldown"`
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
 	DisableScaleIn pulumi.BoolPtrOutput `pulumi:"disableScaleIn"`
@@ -80,13 +80,13 @@ type scalingRuleState struct {
 	// - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
 	// - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
 	AdjustmentType *string `pulumi:"adjustmentType"`
-	// Adjusted value of a scaling rule. Value range:
+	// The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
 	// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue *int    `pulumi:"adjustmentValue"`
 	Ari             *string `pulumi:"ari"`
-	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown *int `pulumi:"cooldown"`
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
 	DisableScaleIn *bool `pulumi:"disableScaleIn"`
@@ -112,13 +112,13 @@ type ScalingRuleState struct {
 	// - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
 	// - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
 	AdjustmentType pulumi.StringPtrInput
-	// Adjusted value of a scaling rule. Value range:
+	// The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
 	// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue pulumi.IntPtrInput
 	Ari             pulumi.StringPtrInput
-	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown pulumi.IntPtrInput
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
 	DisableScaleIn pulumi.BoolPtrInput
@@ -148,12 +148,12 @@ type scalingRuleArgs struct {
 	// - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
 	// - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
 	AdjustmentType *string `pulumi:"adjustmentType"`
-	// Adjusted value of a scaling rule. Value range:
+	// The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
 	// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue *int `pulumi:"adjustmentValue"`
-	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown *int `pulumi:"cooldown"`
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
 	DisableScaleIn *bool `pulumi:"disableScaleIn"`
@@ -180,12 +180,12 @@ type ScalingRuleArgs struct {
 	// - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
 	// - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
 	AdjustmentType pulumi.StringPtrInput
-	// Adjusted value of a scaling rule. Value range:
+	// The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
 	// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue pulumi.IntPtrInput
-	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown pulumi.IntPtrInput
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
 	DisableScaleIn pulumi.BoolPtrInput

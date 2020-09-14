@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 __all__ = ['Function']
 
@@ -15,11 +17,17 @@ class Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ca_port: Optional[pulumi.Input[float]] = None,
                  code_checksum: Optional[pulumi.Input[str]] = None,
+                 custom_container_config: Optional[pulumi.Input[pulumi.InputType['FunctionCustomContainerConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
+                 initialization_timeout: Optional[pulumi.Input[float]] = None,
+                 initializer: Optional[pulumi.Input[str]] = None,
+                 instance_concurrency: Optional[pulumi.Input[float]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  memory_size: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
@@ -35,19 +43,25 @@ class Function(pulumi.CustomResource):
         Create a Function resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] ca_port: The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
         :param pulumi.Input[str] code_checksum: The checksum (crc64) of the function code.
+        :param pulumi.Input[pulumi.InputType['FunctionCustomContainerConfigArgs']] custom_container_config: The configuration for custom container runtime.
         :param pulumi.Input[str] description: The Function Compute function description.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A map that defines environment variables for the function.
         :param pulumi.Input[str] filename: The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
-        :param pulumi.Input[str] handler: The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
-        :param pulumi.Input[float] memory_size: Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        :param pulumi.Input[str] handler: The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
+        :param pulumi.Input[float] initialization_timeout: The maximum length of time, in seconds, that the function's initialization should be run for.
+        :param pulumi.Input[str] initializer: The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+        :param pulumi.Input[float] instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
+        :param pulumi.Input[str] instance_type: The instance type of the function.
+        :param pulumi.Input[float] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
         :param pulumi.Input[str] name: The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only function name. It is conflict with "name".
         :param pulumi.Input[str] oss_bucket: The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
         :param pulumi.Input[str] oss_key: The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
         :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
         :param pulumi.Input[str] service: The Function Compute service name.
-        :param pulumi.Input[float] timeout: The amount of time your Function has to run in seconds.
+        :param pulumi.Input[float] timeout: The amount of time your function has to run in seconds.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -66,13 +80,19 @@ class Function(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['ca_port'] = ca_port
             __props__['code_checksum'] = code_checksum
+            __props__['custom_container_config'] = custom_container_config
             __props__['description'] = description
             __props__['environment_variables'] = environment_variables
             __props__['filename'] = filename
             if handler is None:
                 raise TypeError("Missing required property 'handler'")
             __props__['handler'] = handler
+            __props__['initialization_timeout'] = initialization_timeout
+            __props__['initializer'] = initializer
+            __props__['instance_concurrency'] = instance_concurrency
+            __props__['instance_type'] = instance_type
             __props__['memory_size'] = memory_size
             __props__['name'] = name
             __props__['name_prefix'] = name_prefix
@@ -97,12 +117,18 @@ class Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ca_port: Optional[pulumi.Input[float]] = None,
             code_checksum: Optional[pulumi.Input[str]] = None,
+            custom_container_config: Optional[pulumi.Input[pulumi.InputType['FunctionCustomContainerConfigArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             filename: Optional[pulumi.Input[str]] = None,
             function_id: Optional[pulumi.Input[str]] = None,
             handler: Optional[pulumi.Input[str]] = None,
+            initialization_timeout: Optional[pulumi.Input[float]] = None,
+            initializer: Optional[pulumi.Input[str]] = None,
+            instance_concurrency: Optional[pulumi.Input[float]] = None,
+            instance_type: Optional[pulumi.Input[str]] = None,
             last_modified: Optional[pulumi.Input[str]] = None,
             memory_size: Optional[pulumi.Input[float]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -119,32 +145,44 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] ca_port: The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
         :param pulumi.Input[str] code_checksum: The checksum (crc64) of the function code.
+        :param pulumi.Input[pulumi.InputType['FunctionCustomContainerConfigArgs']] custom_container_config: The configuration for custom container runtime.
         :param pulumi.Input[str] description: The Function Compute function description.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A map that defines environment variables for the function.
         :param pulumi.Input[str] filename: The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
         :param pulumi.Input[str] function_id: The Function Compute service ID.
-        :param pulumi.Input[str] handler: The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+        :param pulumi.Input[str] handler: The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
+        :param pulumi.Input[float] initialization_timeout: The maximum length of time, in seconds, that the function's initialization should be run for.
+        :param pulumi.Input[str] initializer: The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+        :param pulumi.Input[float] instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
+        :param pulumi.Input[str] instance_type: The instance type of the function.
         :param pulumi.Input[str] last_modified: The date this resource was last modified.
-        :param pulumi.Input[float] memory_size: Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        :param pulumi.Input[float] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
         :param pulumi.Input[str] name: The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only function name. It is conflict with "name".
         :param pulumi.Input[str] oss_bucket: The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
         :param pulumi.Input[str] oss_key: The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
         :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
         :param pulumi.Input[str] service: The Function Compute service name.
-        :param pulumi.Input[float] timeout: The amount of time your Function has to run in seconds.
+        :param pulumi.Input[float] timeout: The amount of time your function has to run in seconds.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["ca_port"] = ca_port
         __props__["code_checksum"] = code_checksum
+        __props__["custom_container_config"] = custom_container_config
         __props__["description"] = description
         __props__["environment_variables"] = environment_variables
         __props__["filename"] = filename
         __props__["function_id"] = function_id
         __props__["handler"] = handler
+        __props__["initialization_timeout"] = initialization_timeout
+        __props__["initializer"] = initializer
+        __props__["instance_concurrency"] = instance_concurrency
+        __props__["instance_type"] = instance_type
         __props__["last_modified"] = last_modified
         __props__["memory_size"] = memory_size
         __props__["name"] = name
@@ -157,12 +195,28 @@ class Function(pulumi.CustomResource):
         return Function(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="caPort")
+    def ca_port(self) -> pulumi.Output[Optional[float]]:
+        """
+        The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+        """
+        return pulumi.get(self, "ca_port")
+
+    @property
     @pulumi.getter(name="codeChecksum")
     def code_checksum(self) -> pulumi.Output[str]:
         """
         The checksum (crc64) of the function code.
         """
         return pulumi.get(self, "code_checksum")
+
+    @property
+    @pulumi.getter(name="customContainerConfig")
+    def custom_container_config(self) -> pulumi.Output[Optional['outputs.FunctionCustomContainerConfig']]:
+        """
+        The configuration for custom container runtime.
+        """
+        return pulumi.get(self, "custom_container_config")
 
     @property
     @pulumi.getter
@@ -200,9 +254,41 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def handler(self) -> pulumi.Output[str]:
         """
-        The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+        The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
         """
         return pulumi.get(self, "handler")
+
+    @property
+    @pulumi.getter(name="initializationTimeout")
+    def initialization_timeout(self) -> pulumi.Output[Optional[float]]:
+        """
+        The maximum length of time, in seconds, that the function's initialization should be run for.
+        """
+        return pulumi.get(self, "initialization_timeout")
+
+    @property
+    @pulumi.getter
+    def initializer(self) -> pulumi.Output[Optional[str]]:
+        """
+        The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+        """
+        return pulumi.get(self, "initializer")
+
+    @property
+    @pulumi.getter(name="instanceConcurrency")
+    def instance_concurrency(self) -> pulumi.Output[Optional[float]]:
+        """
+        The maximum number of requests can be executed concurrently within the single function instance.
+        """
+        return pulumi.get(self, "instance_concurrency")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The instance type of the function.
+        """
+        return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="lastModified")
@@ -216,7 +302,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> pulumi.Output[Optional[float]]:
         """
-        Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
         """
         return pulumi.get(self, "memory_size")
 
@@ -272,7 +358,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def timeout(self) -> pulumi.Output[Optional[float]]:
         """
-        The amount of time your Function has to run in seconds.
+        The amount of time your function has to run in seconds.
         """
         return pulumi.get(self, "timeout")
 

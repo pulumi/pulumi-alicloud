@@ -24,6 +24,8 @@ type Service struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Setting a prefix to get a only name. It is conflict with "name".
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
+	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+	NasConfig ServiceNasConfigPtrOutput `pulumi:"nasConfig"`
 	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	Role pulumi.StringPtrOutput `pulumi:"role"`
 	// The Function Compute service ID.
@@ -72,6 +74,8 @@ type serviceState struct {
 	Name *string `pulumi:"name"`
 	// Setting a prefix to get a only name. It is conflict with "name".
 	NamePrefix *string `pulumi:"namePrefix"`
+	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+	NasConfig *ServiceNasConfig `pulumi:"nasConfig"`
 	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	Role *string `pulumi:"role"`
 	// The Function Compute service ID.
@@ -93,6 +97,8 @@ type ServiceState struct {
 	Name pulumi.StringPtrInput
 	// Setting a prefix to get a only name. It is conflict with "name".
 	NamePrefix pulumi.StringPtrInput
+	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+	NasConfig ServiceNasConfigPtrInput
 	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	Role pulumi.StringPtrInput
 	// The Function Compute service ID.
@@ -116,6 +122,8 @@ type serviceArgs struct {
 	Name *string `pulumi:"name"`
 	// Setting a prefix to get a only name. It is conflict with "name".
 	NamePrefix *string `pulumi:"namePrefix"`
+	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+	NasConfig *ServiceNasConfig `pulumi:"nasConfig"`
 	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	Role *string `pulumi:"role"`
 	// Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
@@ -134,6 +142,8 @@ type ServiceArgs struct {
 	Name pulumi.StringPtrInput
 	// Setting a prefix to get a only name. It is conflict with "name".
 	NamePrefix pulumi.StringPtrInput
+	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+	NasConfig ServiceNasConfigPtrInput
 	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	Role pulumi.StringPtrInput
 	// Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).

@@ -22,6 +22,7 @@ class Service(pulumi.CustomResource):
                  log_config: Optional[pulumi.Input[pulumi.InputType['ServiceLogConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
+                 nas_config: Optional[pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  vpc_config: Optional[pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']]] = None,
                  __props__=None,
@@ -36,6 +37,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceLogConfigArgs']] log_config: Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
         :param pulumi.Input[str] name: The Function Compute service name. It is the only in one Alicloud account and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only name. It is conflict with "name".
+        :param pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']] nas_config: Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         :param pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']] vpc_config: Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
         """
@@ -61,6 +63,7 @@ class Service(pulumi.CustomResource):
             __props__['log_config'] = log_config
             __props__['name'] = name
             __props__['name_prefix'] = name_prefix
+            __props__['nas_config'] = nas_config
             __props__['role'] = role
             __props__['vpc_config'] = vpc_config
             __props__['last_modified'] = None
@@ -81,6 +84,7 @@ class Service(pulumi.CustomResource):
             log_config: Optional[pulumi.Input[pulumi.InputType['ServiceLogConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
+            nas_config: Optional[pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']]] = None,
             role: Optional[pulumi.Input[str]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
             vpc_config: Optional[pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']]] = None) -> 'Service':
@@ -97,6 +101,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceLogConfigArgs']] log_config: Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
         :param pulumi.Input[str] name: The Function Compute service name. It is the only in one Alicloud account and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only name. It is conflict with "name".
+        :param pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']] nas_config: Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         :param pulumi.Input[str] service_id: The Function Compute service ID.
         :param pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']] vpc_config: Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
@@ -111,6 +116,7 @@ class Service(pulumi.CustomResource):
         __props__["log_config"] = log_config
         __props__["name"] = name
         __props__["name_prefix"] = name_prefix
+        __props__["nas_config"] = nas_config
         __props__["role"] = role
         __props__["service_id"] = service_id
         __props__["vpc_config"] = vpc_config
@@ -163,6 +169,14 @@ class Service(pulumi.CustomResource):
         Setting a prefix to get a only name. It is conflict with "name".
         """
         return pulumi.get(self, "name_prefix")
+
+    @property
+    @pulumi.getter(name="nasConfig")
+    def nas_config(self) -> pulumi.Output[Optional['outputs.ServiceNasConfig']]:
+        """
+        Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+        """
+        return pulumi.get(self, "nas_config")
 
     @property
     @pulumi.getter
