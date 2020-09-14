@@ -25,14 +25,21 @@ import * as utilities from "../utilities";
  *         instanceId: "i-bp1247,i-bp11gd",
  *     },
  *     effectiveInterval: "0:00-2:00",
+ *     escalationsCritical: {
+ *         comparisonOperator: "<=",
+ *         statistics: "Average",
+ *         threshold: "35",
+ *         times: 2,
+ *     },
+ *     escalationsWarn: {
+ *         comparisonOperator: "<=",
+ *         statistics: "Average",
+ *         threshold: "102400",
+ *         times: 1,
+ *     },
  *     metric: "disk_writebytes",
- *     notifyType: 1,
- *     operator: "<=",
  *     period: 900,
  *     project: "acs_ecs_dashboard",
- *     statistics: "Average",
- *     threshold: "35",
- *     triggeredCount: 2,
  *     webhook: pulumi.interpolate`https://${alicloud_account_current.id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/`,
  * });
  * ```

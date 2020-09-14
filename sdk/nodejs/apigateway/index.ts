@@ -8,5 +8,6 @@ export * from "./appAttachment";
 export * from "./getApis";
 export * from "./getApps";
 export * from "./getGroups";
+export * from "./getService";
 export * from "./group";
 export * from "./vpcAccess";

@@ -644,9 +644,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_alikafka_topics":          {Tok: dataSource(actionTrailMod, "getTopics")},
 
 			// ApiGateway
-			"alicloud_api_gateway_groups": {Tok: dataSource(apiGatewayMod, "getGroups")},
-			"alicloud_api_gateway_apis":   {Tok: dataSource(apiGatewayMod, "getApis")},
-			"alicloud_api_gateway_apps":   {Tok: dataSource(apiGatewayMod, "getApps")},
+			"alicloud_api_gateway_groups":  {Tok: dataSource(apiGatewayMod, "getGroups")},
+			"alicloud_api_gateway_apis":    {Tok: dataSource(apiGatewayMod, "getApis")},
+			"alicloud_api_gateway_apps":    {Tok: dataSource(apiGatewayMod, "getApps")},
+			"alicloud_api_gateway_service": {Tok: dataSource(apiGatewayMod, "getService")},
 
 			// Cas
 			"alicloud_cas_certificates": {Tok: dataSource(casMod, "getCertificates")},
@@ -780,6 +781,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kvstore_instance_classes": {Tok: dataSource(kvstoreMod, "getInstanceClasses")},
 			"alicloud_kvstore_instance_engines": {Tok: dataSource(kvstoreMod, "getInstanceEngines")},
 			"alicloud_kvstore_zones":            {Tok: dataSource(kvstoreMod, "getZones")},
+
+			// Log
+			"alicloud_log_service": {Tok: dataSource(logMod, "getService")},
 
 			// Marketplace
 			"alicloud_market_products": {Tok: dataSource(marketPlaceMod, "getProducts")},

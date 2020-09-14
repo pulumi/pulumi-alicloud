@@ -6,6 +6,7 @@
 from .alert import *
 from .audit import *
 from .dashboard import *
+from .get_service import *
 from .log_tail_attachment import *
 from .log_tail_config import *
 from .machine_group import *

@@ -12,10 +12,22 @@ namespace Pulumi.AliCloud.FC
     public partial class Function : Pulumi.CustomResource
     {
         /// <summary>
+        /// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+        /// </summary>
+        [Output("caPort")]
+        public Output<int?> CaPort { get; private set; } = null!;
+
+        /// <summary>
         /// The checksum (crc64) of the function code.
         /// </summary>
         [Output("codeChecksum")]
         public Output<string> CodeChecksum { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration for custom container runtime.
+        /// </summary>
+        [Output("customContainerConfig")]
+        public Output<Outputs.FunctionCustomContainerConfig?> CustomContainerConfig { get; private set; } = null!;
 
         /// <summary>
         /// The Function Compute function description.
@@ -42,10 +54,34 @@ namespace Pulumi.AliCloud.FC
         public Output<string> FunctionId { get; private set; } = null!;
 
         /// <summary>
-        /// The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+        /// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
         /// </summary>
         [Output("handler")]
         public Output<string> Handler { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum length of time, in seconds, that the function's initialization should be run for.
+        /// </summary>
+        [Output("initializationTimeout")]
+        public Output<int?> InitializationTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+        /// </summary>
+        [Output("initializer")]
+        public Output<string?> Initializer { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum number of requests can be executed concurrently within the single function instance.
+        /// </summary>
+        [Output("instanceConcurrency")]
+        public Output<int?> InstanceConcurrency { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance type of the function.
+        /// </summary>
+        [Output("instanceType")]
+        public Output<string?> InstanceType { get; private set; } = null!;
 
         /// <summary>
         /// The date this resource was last modified.
@@ -54,7 +90,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> LastModified { get; private set; } = null!;
 
         /// <summary>
-        /// Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
         /// </summary>
         [Output("memorySize")]
         public Output<int?> MemorySize { get; private set; } = null!;
@@ -96,7 +132,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> Service { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time your Function has to run in seconds.
+        /// The amount of time your function has to run in seconds.
         /// </summary>
         [Output("timeout")]
         public Output<int?> Timeout { get; private set; } = null!;
@@ -148,10 +184,22 @@ namespace Pulumi.AliCloud.FC
     public sealed class FunctionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+        /// </summary>
+        [Input("caPort")]
+        public Input<int>? CaPort { get; set; }
+
+        /// <summary>
         /// The checksum (crc64) of the function code.
         /// </summary>
         [Input("codeChecksum")]
         public Input<string>? CodeChecksum { get; set; }
+
+        /// <summary>
+        /// The configuration for custom container runtime.
+        /// </summary>
+        [Input("customContainerConfig")]
+        public Input<Inputs.FunctionCustomContainerConfigArgs>? CustomContainerConfig { get; set; }
 
         /// <summary>
         /// The Function Compute function description.
@@ -178,13 +226,37 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Filename { get; set; }
 
         /// <summary>
-        /// The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+        /// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
         /// </summary>
         [Input("handler", required: true)]
         public Input<string> Handler { get; set; } = null!;
 
         /// <summary>
-        /// Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        /// The maximum length of time, in seconds, that the function's initialization should be run for.
+        /// </summary>
+        [Input("initializationTimeout")]
+        public Input<int>? InitializationTimeout { get; set; }
+
+        /// <summary>
+        /// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+        /// </summary>
+        [Input("initializer")]
+        public Input<string>? Initializer { get; set; }
+
+        /// <summary>
+        /// The maximum number of requests can be executed concurrently within the single function instance.
+        /// </summary>
+        [Input("instanceConcurrency")]
+        public Input<int>? InstanceConcurrency { get; set; }
+
+        /// <summary>
+        /// The instance type of the function.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
         /// </summary>
         [Input("memorySize")]
         public Input<int>? MemorySize { get; set; }
@@ -226,7 +298,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string> Service { get; set; } = null!;
 
         /// <summary>
-        /// The amount of time your Function has to run in seconds.
+        /// The amount of time your function has to run in seconds.
         /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
@@ -239,10 +311,22 @@ namespace Pulumi.AliCloud.FC
     public sealed class FunctionState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+        /// </summary>
+        [Input("caPort")]
+        public Input<int>? CaPort { get; set; }
+
+        /// <summary>
         /// The checksum (crc64) of the function code.
         /// </summary>
         [Input("codeChecksum")]
         public Input<string>? CodeChecksum { get; set; }
+
+        /// <summary>
+        /// The configuration for custom container runtime.
+        /// </summary>
+        [Input("customContainerConfig")]
+        public Input<Inputs.FunctionCustomContainerConfigGetArgs>? CustomContainerConfig { get; set; }
 
         /// <summary>
         /// The Function Compute function description.
@@ -275,10 +359,34 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? FunctionId { get; set; }
 
         /// <summary>
-        /// The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
+        /// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
         /// </summary>
         [Input("handler")]
         public Input<string>? Handler { get; set; }
+
+        /// <summary>
+        /// The maximum length of time, in seconds, that the function's initialization should be run for.
+        /// </summary>
+        [Input("initializationTimeout")]
+        public Input<int>? InitializationTimeout { get; set; }
+
+        /// <summary>
+        /// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+        /// </summary>
+        [Input("initializer")]
+        public Input<string>? Initializer { get; set; }
+
+        /// <summary>
+        /// The maximum number of requests can be executed concurrently within the single function instance.
+        /// </summary>
+        [Input("instanceConcurrency")]
+        public Input<int>? InstanceConcurrency { get; set; }
+
+        /// <summary>
+        /// The instance type of the function.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
 
         /// <summary>
         /// The date this resource was last modified.
@@ -287,7 +395,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? LastModified { get; set; }
 
         /// <summary>
-        /// Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
         /// </summary>
         [Input("memorySize")]
         public Input<int>? MemorySize { get; set; }
@@ -329,7 +437,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// The amount of time your Function has to run in seconds.
+        /// The amount of time your function has to run in seconds.
         /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }

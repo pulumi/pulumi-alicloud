@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Ddos
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Alias { Type = "alicloud:dns/ddosCooInstance:DdosCooInstance"},
+                    new Pulumi.Alias { Type = "alicloud:dns/ddosCooInstance:DdosCooInstance"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

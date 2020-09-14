@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> AdjustmentType { get; private set; } = null!;
 
         /// <summary>
-        /// Adjusted value of a scaling rule. Value range:
+        /// The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
         /// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
         /// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
         /// - TotalCapacity：[0, 1000]
@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> Ari { get; private set; } = null!;
 
         /// <summary>
-        /// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+        /// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         /// </summary>
         [Output("cooldown")]
         public Output<int?> Cooldown { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? AdjustmentType { get; set; }
 
         /// <summary>
-        /// Adjusted value of a scaling rule. Value range:
+        /// The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
         /// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
         /// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
         /// - TotalCapacity：[0, 1000]
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? AdjustmentValue { get; set; }
 
         /// <summary>
-        /// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+        /// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         /// </summary>
         [Input("cooldown")]
         public Input<int>? Cooldown { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? AdjustmentType { get; set; }
 
         /// <summary>
-        /// Adjusted value of a scaling rule. Value range:
+        /// The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
         /// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
         /// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
         /// - TotalCapacity：[0, 1000]
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? Ari { get; set; }
 
         /// <summary>
-        /// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+        /// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         /// </summary>
         [Input("cooldown")]
         public Input<int>? Cooldown { get; set; }

@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class GetFunctionsFunctionResult
     {
         /// <summary>
+        /// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+        /// </summary>
+        public readonly int CaPort;
+        /// <summary>
         /// Checksum (crc64) of the function code.
         /// </summary>
         public readonly string CodeChecksum;
@@ -25,6 +29,10 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// Function creation time.
         /// </summary>
         public readonly string CreationTime;
+        /// <summary>
+        /// The configuration for custom container runtime. It contains following attributes:
+        /// </summary>
+        public readonly Outputs.GetFunctionsFunctionCustomContainerConfigResult? CustomContainerConfig;
         /// <summary>
         /// Function description.
         /// </summary>
@@ -41,6 +49,22 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// Function ID.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The maximum length of time, in seconds, that the function's initialization should be run for.
+        /// </summary>
+        public readonly int InitializationTimeout;
+        /// <summary>
+        /// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+        /// </summary>
+        public readonly string Initializer;
+        /// <summary>
+        /// The maximum number of requests can be executed concurrently within the single function instance.
+        /// </summary>
+        public readonly int InstanceConcurrency;
+        /// <summary>
+        /// The instance type of the function.
+        /// </summary>
+        public readonly string InstanceType;
         /// <summary>
         /// Function last modification time.
         /// </summary>
@@ -64,11 +88,15 @@ namespace Pulumi.AliCloud.FC.Outputs
 
         [OutputConstructor]
         private GetFunctionsFunctionResult(
+            int caPort,
+
             string codeChecksum,
 
             int codeSize,
 
             string creationTime,
+
+            Outputs.GetFunctionsFunctionCustomContainerConfigResult? customContainerConfig,
 
             string description,
 
@@ -77,6 +105,14 @@ namespace Pulumi.AliCloud.FC.Outputs
             string handler,
 
             string id,
+
+            int initializationTimeout,
+
+            string initializer,
+
+            int instanceConcurrency,
+
+            string instanceType,
 
             string lastModificationTime,
 
@@ -88,13 +124,19 @@ namespace Pulumi.AliCloud.FC.Outputs
 
             int timeout)
         {
+            CaPort = caPort;
             CodeChecksum = codeChecksum;
             CodeSize = codeSize;
             CreationTime = creationTime;
+            CustomContainerConfig = customContainerConfig;
             Description = description;
             EnvironmentVariables = environmentVariables;
             Handler = handler;
             Id = id;
+            InitializationTimeout = initializationTimeout;
+            Initializer = initializer;
+            InstanceConcurrency = instanceConcurrency;
+            InstanceType = instanceType;
             LastModificationTime = lastModificationTime;
             MemorySize = memorySize;
             Name = name;

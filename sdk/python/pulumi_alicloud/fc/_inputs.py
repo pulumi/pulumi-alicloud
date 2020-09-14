@@ -9,9 +9,66 @@ from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
 __all__ = [
+    'FunctionCustomContainerConfigArgs',
     'ServiceLogConfigArgs',
+    'ServiceNasConfigArgs',
+    'ServiceNasConfigMountPointArgs',
     'ServiceVpcConfigArgs',
 ]
+
+@pulumi.input_type
+class FunctionCustomContainerConfigArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[str],
+                 args: Optional[pulumi.Input[str]] = None,
+                 command: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] image: The container image address.
+        :param pulumi.Input[str] args: The args field specifies the arguments passed to the command.
+        :param pulumi.Input[str] command: The entry point of the container, which specifies the actual command run by the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if command is not None:
+            pulumi.set(__self__, "command", command)
+
+    @property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[str]:
+        """
+        The container image address.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[str]]:
+        """
+        The args field specifies the arguments passed to the command.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter
+    def command(self) -> Optional[pulumi.Input[str]]:
+        """
+        The entry point of the container, which specifies the actual command run by the container.
+        """
+        return pulumi.get(self, "command")
+
+    @command.setter
+    def command(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "command", value)
+
 
 @pulumi.input_type
 class ServiceLogConfigArgs:
@@ -48,6 +105,95 @@ class ServiceLogConfigArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class ServiceNasConfigArgs:
+    def __init__(__self__, *,
+                 group_id: pulumi.Input[float],
+                 mount_points: pulumi.Input[List[pulumi.Input['ServiceNasConfigMountPointArgs']]],
+                 user_id: pulumi.Input[float]):
+        """
+        :param pulumi.Input[float] group_id: The group id of your NAS file system.
+        :param pulumi.Input[List[pulumi.Input['ServiceNasConfigMountPointArgs']]] mount_points: Config the NAS mount points, including following attributes:
+        :param pulumi.Input[float] user_id: The user id of your NAS file system.
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "mount_points", mount_points)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[float]:
+        """
+        The group id of your NAS file system.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[float]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="mountPoints")
+    def mount_points(self) -> pulumi.Input[List[pulumi.Input['ServiceNasConfigMountPointArgs']]]:
+        """
+        Config the NAS mount points, including following attributes:
+        """
+        return pulumi.get(self, "mount_points")
+
+    @mount_points.setter
+    def mount_points(self, value: pulumi.Input[List[pulumi.Input['ServiceNasConfigMountPointArgs']]]):
+        pulumi.set(self, "mount_points", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Input[float]:
+        """
+        The user id of your NAS file system.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: pulumi.Input[float]):
+        pulumi.set(self, "user_id", value)
+
+
+@pulumi.input_type
+class ServiceNasConfigMountPointArgs:
+    def __init__(__self__, *,
+                 mount_dir: pulumi.Input[str],
+                 server_addr: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] mount_dir: The local address where to mount your remote NAS directory.
+        :param pulumi.Input[str] server_addr: The address of the remote NAS directory.
+        """
+        pulumi.set(__self__, "mount_dir", mount_dir)
+        pulumi.set(__self__, "server_addr", server_addr)
+
+    @property
+    @pulumi.getter(name="mountDir")
+    def mount_dir(self) -> pulumi.Input[str]:
+        """
+        The local address where to mount your remote NAS directory.
+        """
+        return pulumi.get(self, "mount_dir")
+
+    @mount_dir.setter
+    def mount_dir(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mount_dir", value)
+
+    @property
+    @pulumi.getter(name="serverAddr")
+    def server_addr(self) -> pulumi.Input[str]:
+        """
+        The address of the remote NAS directory.
+        """
+        return pulumi.get(self, "server_addr")
+
+    @server_addr.setter
+    def server_addr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_addr", value)
 
 
 @pulumi.input_type

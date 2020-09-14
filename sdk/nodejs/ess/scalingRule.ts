@@ -42,7 +42,7 @@ export class ScalingRule extends pulumi.CustomResource {
      */
     public readonly adjustmentType!: pulumi.Output<string | undefined>;
     /**
-     * Adjusted value of a scaling rule. Value range:
+     * The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
      * - QuantityChangeInCapacity：(0, 500] U (-500, 0]
      * - PercentChangeInCapacity：[0, 10000] U [-100, 0]
      * - TotalCapacity：[0, 1000]
@@ -50,7 +50,7 @@ export class ScalingRule extends pulumi.CustomResource {
     public readonly adjustmentValue!: pulumi.Output<number | undefined>;
     public /*out*/ readonly ari!: pulumi.Output<string>;
     /**
-     * Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+     * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
      */
     public readonly cooldown!: pulumi.Output<number | undefined>;
     /**
@@ -151,7 +151,7 @@ export interface ScalingRuleState {
      */
     readonly adjustmentType?: pulumi.Input<string>;
     /**
-     * Adjusted value of a scaling rule. Value range:
+     * The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
      * - QuantityChangeInCapacity：(0, 500] U (-500, 0]
      * - PercentChangeInCapacity：[0, 10000] U [-100, 0]
      * - TotalCapacity：[0, 1000]
@@ -159,7 +159,7 @@ export interface ScalingRuleState {
     readonly adjustmentValue?: pulumi.Input<number>;
     readonly ari?: pulumi.Input<string>;
     /**
-     * Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+     * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
      */
     readonly cooldown?: pulumi.Input<number>;
     /**
@@ -208,14 +208,14 @@ export interface ScalingRuleArgs {
      */
     readonly adjustmentType?: pulumi.Input<string>;
     /**
-     * Adjusted value of a scaling rule. Value range:
+     * The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
      * - QuantityChangeInCapacity：(0, 500] U (-500, 0]
      * - PercentChangeInCapacity：[0, 10000] U [-100, 0]
      * - TotalCapacity：[0, 1000]
      */
     readonly adjustmentValue?: pulumi.Input<number>;
     /**
-     * Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+     * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
      */
     readonly cooldown?: pulumi.Input<number>;
     /**

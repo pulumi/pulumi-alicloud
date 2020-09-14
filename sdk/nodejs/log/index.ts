@@ -5,6 +5,7 @@
 export * from "./alert";
 export * from "./audit";
 export * from "./dashboard";
+export * from "./getService";
 export * from "./logTailAttachment";
 export * from "./logTailConfig";
 export * from "./machineGroup";

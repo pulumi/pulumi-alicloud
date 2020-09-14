@@ -140,6 +140,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         /// </summary>
         [Output("securityIps")]
@@ -290,6 +296,12 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
+        /// <summary>
+        /// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("securityIps")]
         private InputList<string>? _securityIps;
 
@@ -419,6 +431,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
+        /// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         [Input("securityIps")]
         private InputList<string>? _securityIps;

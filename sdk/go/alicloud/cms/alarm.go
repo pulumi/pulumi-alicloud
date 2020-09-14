@@ -12,6 +12,56 @@ import (
 
 // This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
 // Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cms.NewAlarm(ctx, "basic", &cms.AlarmArgs{
+// 			ContactGroups: pulumi.StringArray{
+// 				pulumi.String("test-group"),
+// 			},
+// 			Dimensions: pulumi.StringMap{
+// 				"device":     pulumi.String("/dev/vda1,/dev/vdb1"),
+// 				"instanceId": pulumi.String("i-bp1247,i-bp11gd"),
+// 			},
+// 			EffectiveInterval: pulumi.String("0:00-2:00"),
+// 			EscalationsCritical: &cms.AlarmEscalationsCriticalArgs{
+// 				ComparisonOperator: pulumi.String("<="),
+// 				Statistics:         pulumi.String("Average"),
+// 				Threshold:          pulumi.String("35"),
+// 				Times:              pulumi.Int(2),
+// 			},
+// 			EscalationsWarn: &cms.AlarmEscalationsWarnArgs{
+// 				ComparisonOperator: pulumi.String("<="),
+// 				Statistics:         pulumi.String("Average"),
+// 				Threshold:          pulumi.String("102400"),
+// 				Times:              pulumi.Int(1),
+// 			},
+// 			Metric:  pulumi.String("disk_writebytes"),
+// 			Period:  pulumi.Int(900),
+// 			Project: pulumi.String("acs_ecs_dashboard"),
+// 			Webhook: pulumi.String(fmt.Sprintf("%v%v%v", "https://", data.Alicloud_account.Current.Id, ".eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Alarm struct {
 	pulumi.CustomResourceState
 

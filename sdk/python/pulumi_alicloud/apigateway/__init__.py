@@ -9,6 +9,7 @@ from .app_attachment import *
 from .get_apis import *
 from .get_apps import *
 from .get_groups import *
+from .get_service import *
 from .group import *
 from .vpc_access import *
 from ._inputs import *
