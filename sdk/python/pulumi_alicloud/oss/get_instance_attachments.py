@@ -15,6 +15,8 @@ __all__ = [
     'get_instance_attachments',
 ]
 
+warnings.warn("alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments", DeprecationWarning)
+
 @pulumi.output_type
 class GetInstanceAttachmentsResult:
     """
@@ -122,7 +124,7 @@ def get_instance_attachments(instance_name: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    attachments_ds = alicloud.oss.get_instance_attachments(instance_name="sample-instance",
+    attachments_ds = alicloud.ots.get_instance_attachments(instance_name="sample-instance",
         name_regex="testvpc",
         output_file="attachments.txt")
     pulumi.export("firstOtsAttachmentId", attachments_ds.attachments[0].id)
@@ -132,6 +134,7 @@ def get_instance_attachments(instance_name: Optional[str] = None,
     :param str instance_name: The name of OTS instance.
     :param str name_regex: A regex string to filter results by vpc name.
     """
+    pulumi.log.warn("get_instance_attachments is deprecated: alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments")
     __args__ = dict()
     __args__['instanceName'] = instance_name
     __args__['nameRegex'] = name_regex

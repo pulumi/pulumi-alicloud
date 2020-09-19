@@ -45,32 +45,21 @@ import (
 //
 // * `instanceId` - (Optional) The specified instance ID.
 // * `diskId` - (Optional) The specified disk ID.
-// * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values:
-//   * true: Encrypted snapshots.
-//   * false: No encryption attribute limit.
-//
-//   Default value: false.
+// * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
 // * `ids` - (Optional)  A list of snapshot IDs.
 // * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
-// * `status` - (Optional) The specified snapshot status.
-//   * The snapshot status. Optional values:
+// * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
 //   * progressing: The snapshots are being created.
 //   * accomplished: The snapshots are ready to use.
 //   * failed: The snapshot creation failed.
 //   * all: All status.
-//
-//   Default value: all.
-//
-// * `type` - (Optional) The snapshot category. Optional values:
+// * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
 //   * auto: Auto snapshots.
 //   * user: Manual snapshots.
 //   * all: Auto and manual snapshots.
-//
-//   Default value: all.
 // * `sourceDiskType` - (Optional) The type of source disk:
 //   * System: The snapshots are created for system disks.
 //   * Data: The snapshots are created for data disks.
-//
 // * `usage` - (Optional) The usage of the snapshot:
 //   * image: The snapshots are used to create custom images.
 //   * disk: The snapshots are used to CreateDisk.
@@ -97,23 +86,14 @@ type GetSnapshotsArgs struct {
 	InstanceId *string  `pulumi:"instanceId"`
 	NameRegex  *string  `pulumi:"nameRegex"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// Source disk attribute. Value range:
-	// * System
-	// * Data
+	// Source disk attribute. Value range: `System`,`Data`.
 	SourceDiskType *string `pulumi:"sourceDiskType"`
-	// The snapshot status. Value range:
-	// * progressing
-	// * accomplished
-	// * failed
+	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the snapshot.
 	Tags map[string]interface{} `pulumi:"tags"`
 	Type *string                `pulumi:"type"`
-	// Whether the snapshots are used to create resources or not. Value range:
-	// * image
-	// * disk
-	// * imageDisk
-	// * none
+	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage *string `pulumi:"usage"`
 }
 
@@ -133,22 +113,13 @@ type GetSnapshotsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of snapshots. Each element contains the following attributes:
 	Snapshots []GetSnapshotsSnapshot `pulumi:"snapshots"`
-	// Source disk attribute. Value range:
-	// * System
-	// * Data
+	// Source disk attribute. Value range: `System`,`Data`.
 	SourceDiskType *string `pulumi:"sourceDiskType"`
-	// The snapshot status. Value range:
-	// * progressing
-	// * accomplished
-	// * failed
+	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the snapshot.
 	Tags map[string]interface{} `pulumi:"tags"`
 	Type *string                `pulumi:"type"`
-	// Whether the snapshots are used to create resources or not. Value range:
-	// * image
-	// * disk
-	// * imageDisk
-	// * none
+	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage *string `pulumi:"usage"`
 }

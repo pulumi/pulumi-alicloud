@@ -1571,6 +1571,351 @@ func (o ManagedKubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) Managed
 	}).(ManagedKubernetesWorkerNodeOutput)
 }
 
+type NodePoolDataDisk struct {
+	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
+	Category             *string `pulumi:"category"`
+	Device               *string `pulumi:"device"`
+	Encrypted            *string `pulumi:"encrypted"`
+	KmsKeyId             *string `pulumi:"kmsKeyId"`
+	// The name of node pool.
+	Name       *string `pulumi:"name"`
+	Size       *int    `pulumi:"size"`
+	SnapshotId *string `pulumi:"snapshotId"`
+}
+
+// NodePoolDataDiskInput is an input type that accepts NodePoolDataDiskArgs and NodePoolDataDiskOutput values.
+// You can construct a concrete instance of `NodePoolDataDiskInput` via:
+//
+//          NodePoolDataDiskArgs{...}
+type NodePoolDataDiskInput interface {
+	pulumi.Input
+
+	ToNodePoolDataDiskOutput() NodePoolDataDiskOutput
+	ToNodePoolDataDiskOutputWithContext(context.Context) NodePoolDataDiskOutput
+}
+
+type NodePoolDataDiskArgs struct {
+	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
+	Category             pulumi.StringPtrInput `pulumi:"category"`
+	Device               pulumi.StringPtrInput `pulumi:"device"`
+	Encrypted            pulumi.StringPtrInput `pulumi:"encrypted"`
+	KmsKeyId             pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The name of node pool.
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Size       pulumi.IntPtrInput    `pulumi:"size"`
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+}
+
+func (NodePoolDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolDataDisk)(nil)).Elem()
+}
+
+func (i NodePoolDataDiskArgs) ToNodePoolDataDiskOutput() NodePoolDataDiskOutput {
+	return i.ToNodePoolDataDiskOutputWithContext(context.Background())
+}
+
+func (i NodePoolDataDiskArgs) ToNodePoolDataDiskOutputWithContext(ctx context.Context) NodePoolDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDataDiskOutput)
+}
+
+// NodePoolDataDiskArrayInput is an input type that accepts NodePoolDataDiskArray and NodePoolDataDiskArrayOutput values.
+// You can construct a concrete instance of `NodePoolDataDiskArrayInput` via:
+//
+//          NodePoolDataDiskArray{ NodePoolDataDiskArgs{...} }
+type NodePoolDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolDataDiskArrayOutput() NodePoolDataDiskArrayOutput
+	ToNodePoolDataDiskArrayOutputWithContext(context.Context) NodePoolDataDiskArrayOutput
+}
+
+type NodePoolDataDiskArray []NodePoolDataDiskInput
+
+func (NodePoolDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolDataDisk)(nil)).Elem()
+}
+
+func (i NodePoolDataDiskArray) ToNodePoolDataDiskArrayOutput() NodePoolDataDiskArrayOutput {
+	return i.ToNodePoolDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolDataDiskArray) ToNodePoolDataDiskArrayOutputWithContext(ctx context.Context) NodePoolDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDataDiskArrayOutput)
+}
+
+type NodePoolDataDiskOutput struct{ *pulumi.OutputState }
+
+func (NodePoolDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolDataDisk)(nil)).Elem()
+}
+
+func (o NodePoolDataDiskOutput) ToNodePoolDataDiskOutput() NodePoolDataDiskOutput {
+	return o
+}
+
+func (o NodePoolDataDiskOutput) ToNodePoolDataDiskOutputWithContext(ctx context.Context) NodePoolDataDiskOutput {
+	return o
+}
+
+func (o NodePoolDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolDataDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolDataDiskOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The name of node pool.
+func (o NodePoolDataDiskOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolDataDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+func (o NodePoolDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolDataDisk)(nil)).Elem()
+}
+
+func (o NodePoolDataDiskArrayOutput) ToNodePoolDataDiskArrayOutput() NodePoolDataDiskArrayOutput {
+	return o
+}
+
+func (o NodePoolDataDiskArrayOutput) ToNodePoolDataDiskArrayOutputWithContext(ctx context.Context) NodePoolDataDiskArrayOutput {
+	return o
+}
+
+func (o NodePoolDataDiskArrayOutput) Index(i pulumi.IntInput) NodePoolDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolDataDisk {
+		return vs[0].([]NodePoolDataDisk)[vs[1].(int)]
+	}).(NodePoolDataDiskOutput)
+}
+
+type NodePoolLabel struct {
+	Key   string  `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// NodePoolLabelInput is an input type that accepts NodePoolLabelArgs and NodePoolLabelOutput values.
+// You can construct a concrete instance of `NodePoolLabelInput` via:
+//
+//          NodePoolLabelArgs{...}
+type NodePoolLabelInput interface {
+	pulumi.Input
+
+	ToNodePoolLabelOutput() NodePoolLabelOutput
+	ToNodePoolLabelOutputWithContext(context.Context) NodePoolLabelOutput
+}
+
+type NodePoolLabelArgs struct {
+	Key   pulumi.StringInput    `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (NodePoolLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolLabel)(nil)).Elem()
+}
+
+func (i NodePoolLabelArgs) ToNodePoolLabelOutput() NodePoolLabelOutput {
+	return i.ToNodePoolLabelOutputWithContext(context.Background())
+}
+
+func (i NodePoolLabelArgs) ToNodePoolLabelOutputWithContext(ctx context.Context) NodePoolLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolLabelOutput)
+}
+
+// NodePoolLabelArrayInput is an input type that accepts NodePoolLabelArray and NodePoolLabelArrayOutput values.
+// You can construct a concrete instance of `NodePoolLabelArrayInput` via:
+//
+//          NodePoolLabelArray{ NodePoolLabelArgs{...} }
+type NodePoolLabelArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolLabelArrayOutput() NodePoolLabelArrayOutput
+	ToNodePoolLabelArrayOutputWithContext(context.Context) NodePoolLabelArrayOutput
+}
+
+type NodePoolLabelArray []NodePoolLabelInput
+
+func (NodePoolLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolLabel)(nil)).Elem()
+}
+
+func (i NodePoolLabelArray) ToNodePoolLabelArrayOutput() NodePoolLabelArrayOutput {
+	return i.ToNodePoolLabelArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolLabelArray) ToNodePoolLabelArrayOutputWithContext(ctx context.Context) NodePoolLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolLabelArrayOutput)
+}
+
+type NodePoolLabelOutput struct{ *pulumi.OutputState }
+
+func (NodePoolLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolLabel)(nil)).Elem()
+}
+
+func (o NodePoolLabelOutput) ToNodePoolLabelOutput() NodePoolLabelOutput {
+	return o
+}
+
+func (o NodePoolLabelOutput) ToNodePoolLabelOutputWithContext(ctx context.Context) NodePoolLabelOutput {
+	return o
+}
+
+func (o NodePoolLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o NodePoolLabelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolLabel)(nil)).Elem()
+}
+
+func (o NodePoolLabelArrayOutput) ToNodePoolLabelArrayOutput() NodePoolLabelArrayOutput {
+	return o
+}
+
+func (o NodePoolLabelArrayOutput) ToNodePoolLabelArrayOutputWithContext(ctx context.Context) NodePoolLabelArrayOutput {
+	return o
+}
+
+func (o NodePoolLabelArrayOutput) Index(i pulumi.IntInput) NodePoolLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolLabel {
+		return vs[0].([]NodePoolLabel)[vs[1].(int)]
+	}).(NodePoolLabelOutput)
+}
+
+type NodePoolTaint struct {
+	Effect *string `pulumi:"effect"`
+	Key    string  `pulumi:"key"`
+	Value  *string `pulumi:"value"`
+}
+
+// NodePoolTaintInput is an input type that accepts NodePoolTaintArgs and NodePoolTaintOutput values.
+// You can construct a concrete instance of `NodePoolTaintInput` via:
+//
+//          NodePoolTaintArgs{...}
+type NodePoolTaintInput interface {
+	pulumi.Input
+
+	ToNodePoolTaintOutput() NodePoolTaintOutput
+	ToNodePoolTaintOutputWithContext(context.Context) NodePoolTaintOutput
+}
+
+type NodePoolTaintArgs struct {
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	Key    pulumi.StringInput    `pulumi:"key"`
+	Value  pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (NodePoolTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolTaint)(nil)).Elem()
+}
+
+func (i NodePoolTaintArgs) ToNodePoolTaintOutput() NodePoolTaintOutput {
+	return i.ToNodePoolTaintOutputWithContext(context.Background())
+}
+
+func (i NodePoolTaintArgs) ToNodePoolTaintOutputWithContext(ctx context.Context) NodePoolTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolTaintOutput)
+}
+
+// NodePoolTaintArrayInput is an input type that accepts NodePoolTaintArray and NodePoolTaintArrayOutput values.
+// You can construct a concrete instance of `NodePoolTaintArrayInput` via:
+//
+//          NodePoolTaintArray{ NodePoolTaintArgs{...} }
+type NodePoolTaintArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolTaintArrayOutput() NodePoolTaintArrayOutput
+	ToNodePoolTaintArrayOutputWithContext(context.Context) NodePoolTaintArrayOutput
+}
+
+type NodePoolTaintArray []NodePoolTaintInput
+
+func (NodePoolTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolTaint)(nil)).Elem()
+}
+
+func (i NodePoolTaintArray) ToNodePoolTaintArrayOutput() NodePoolTaintArrayOutput {
+	return i.ToNodePoolTaintArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolTaintArray) ToNodePoolTaintArrayOutputWithContext(ctx context.Context) NodePoolTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolTaintArrayOutput)
+}
+
+type NodePoolTaintOutput struct{ *pulumi.OutputState }
+
+func (NodePoolTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolTaint)(nil)).Elem()
+}
+
+func (o NodePoolTaintOutput) ToNodePoolTaintOutput() NodePoolTaintOutput {
+	return o
+}
+
+func (o NodePoolTaintOutput) ToNodePoolTaintOutputWithContext(ctx context.Context) NodePoolTaintOutput {
+	return o
+}
+
+func (o NodePoolTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o NodePoolTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolTaint)(nil)).Elem()
+}
+
+func (o NodePoolTaintArrayOutput) ToNodePoolTaintArrayOutput() NodePoolTaintArrayOutput {
+	return o
+}
+
+func (o NodePoolTaintArrayOutput) ToNodePoolTaintArrayOutputWithContext(ctx context.Context) NodePoolTaintArrayOutput {
+	return o
+}
+
+func (o NodePoolTaintArrayOutput) Index(i pulumi.IntInput) NodePoolTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolTaint {
+		return vs[0].([]NodePoolTaint)[vs[1].(int)]
+	}).(NodePoolTaintOutput)
+}
+
 type ServerlessKubernetesAddon struct {
 	Config   *string `pulumi:"config"`
 	Disabled *bool   `pulumi:"disabled"`
@@ -4064,6 +4409,12 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesWorkerDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesWorkerNodeOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesWorkerNodeArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolDataDiskOutput{})
+	pulumi.RegisterOutputType(NodePoolDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolLabelOutput{})
+	pulumi.RegisterOutputType(NodePoolLabelArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolTaintOutput{})
+	pulumi.RegisterOutputType(NodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(SwarmNodeOutput{})

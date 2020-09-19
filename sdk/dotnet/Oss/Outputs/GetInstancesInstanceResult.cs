@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// {
         ///     public MyStack()
         ///     {
-        ///         var instancesDs = Output.Create(AliCloud.Oss.GetInstances.InvokeAsync(new AliCloud.Oss.GetInstancesArgs
+        ///         var instancesDs = Output.Create(AliCloud.Ots.GetInstances.InvokeAsync(new AliCloud.Ots.GetInstancesArgs
         ///         {
         ///             Tags = 
         ///             {

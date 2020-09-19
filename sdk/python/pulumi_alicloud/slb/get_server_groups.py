@@ -120,7 +120,20 @@ def get_server_groups(ids: Optional[List[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    sample_ds = alicloud.slb.get_server_groups(load_balancer_id=alicloud_slb["sample_slb"]["id"])
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "slbservergroups"
+    default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("defaultSwitch",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/16",
+        availability_zone=default_zones.zones[0].id)
+    default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
+    default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_load_balancer.id)
+    sample_ds = default_load_balancer.id.apply(lambda id: alicloud.slb.get_server_groups(load_balancer_id=id))
     pulumi.export("firstSlbServerGroupId", sample_ds.slb_server_groups[0].id)
     ```
 

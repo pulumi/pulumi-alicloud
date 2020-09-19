@@ -275,6 +275,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cr_ee_repo":               {Tok: resource(csMod, "RegistryEnterpriseRepo")},
 			"alicloud_cr_ee_namespace":          {Tok: resource(csMod, "RegistryEnterpriseNamespace")},
 			"alicloud_cr_ee_sync_rule":          {Tok: resource(csMod, "RegistryEnterpriseSyncRule")},
+			"alicloud_cs_kubernetes_node_pool":  {Tok: resource(csMod, "NodePool")},
 
 			// DataHub
 			"alicloud_datahub_project":      {Tok: resource(datahubMod, "Project")},
@@ -530,7 +531,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: resource(rocketMqMod, "Topic"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"topic": {
-						CSharpName: "TopicName",
+						CSharpName: "TopicDeprecated",
 					},
 				},
 			},
@@ -666,6 +667,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_flowlogs":             {Tok: dataSource(cenMod, "getFlowlogs")},
 			"alicloud_cen_route_maps":           {Tok: dataSource(cenMod, "getRouteMaps")},
 			"alicloud_cen_private_zones":        {Tok: dataSource(cenMod, "getPrivateZones")},
+			"alicloud_cen_instance_attachments": {Tok: dataSource(cenMod, "getInstanceAttachments")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_networks": {Tok: dataSource(cloudConnectMod, "getNetworks")},
@@ -807,6 +809,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_nas_file_systems":  {Tok: dataSource(nasMod, "getFileSystems")},
 			"alicloud_nas_mount_targets": {Tok: dataSource(nasMod, "getMountTargets")},
 			"alicloud_nas_protocols":     {Tok: dataSource(nasMod, "getProtocols")},
+			"alicloud_nas_service":       {Tok: dataSource(nasMod, "getService")},
 
 			// Oos
 			"alicloud_oos_templates":  {Tok: dataSource(oosMod, "getTemplates")},
@@ -815,11 +818,10 @@ func Provider() tfbridge.ProviderInfo {
 			// Oss
 			"alicloud_oss_bucket_objects": {Tok: dataSource(ossMod, "getBucketObjects")},
 			"alicloud_oss_buckets":        {Tok: dataSource(ossMod, "getBuckets")},
+			"alicloud_oss_service":        {Tok: dataSource(ossMod, "getService")},
 
 			// Ots
-			"alicloud_ots_instance_attachments": {Tok: dataSource(ossMod, "getInstanceAttachments")},
-			"alicloud_ots_instances":            {Tok: dataSource(ossMod, "getInstances")},
-			"alicloud_ots_tables":               {Tok: dataSource(ossMod, "getTables")},
+			"alicloud_ots_service": {Tok: dataSource(otsMod, "getService")},
 
 			// PolarDb
 			"alicloud_polardb_clusters":     {Tok: dataSource(polarDbMod, "getClusters")},
@@ -943,6 +945,13 @@ func Provider() tfbridge.ProviderInfo {
 		resource(ddosMod, "DdosBgpInstance"), dnsMod, ddosMod, nil)
 	prov.RenameResourceWithAlias("alicloud_ddoscoo_instance", resource(dnsMod, "DdosCooInstance"),
 		resource(ddosMod, "DdosCooInstance"), dnsMod, ddosMod, nil)
+
+	prov.RenameDataSource("alicloud_ots_instance_attachments", dataSource(ossMod, "getInstanceAttachments"),
+		dataSource(otsMod, "getInstanceAttachments"), ossMod, otsMod, nil)
+	prov.RenameDataSource("alicloud_ots_instances", dataSource(ossMod, "getInstances"),
+		dataSource(otsMod, "getInstances"), ossMod, otsMod, nil)
+	prov.RenameDataSource("alicloud_ots_tables", dataSource(ossMod, "getTables"),
+		dataSource(otsMod, "getTables"), ossMod, otsMod, nil)
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).

@@ -47,6 +47,7 @@ class VbrHealthCheck(pulumi.CustomResource):
         default_instance_attachment = alicloud.cen.InstanceAttachment("defaultInstanceAttachment",
             instance_id=default_instance.id,
             child_instance_id="vbr-xxxxx",
+            child_instance_type="VBR",
             child_instance_region_id="cn-hangzhou")
         default_vbr_health_check = alicloud.cen.VbrHealthCheck("defaultVbrHealthCheck",
             cen_id=default_instance.id,

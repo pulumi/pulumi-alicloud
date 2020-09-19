@@ -45,6 +45,7 @@ class PrivateZone(pulumi.CustomResource):
         default_instance_attachment = alicloud.cen.InstanceAttachment("defaultInstanceAttachment",
             instance_id=default_instance.id,
             child_instance_id=default_network.id,
+            child_instance_type="VPC",
             child_instance_region_id="cn-hangzhou",
             opts=ResourceOptions(depends_on=[
                     default_instance,

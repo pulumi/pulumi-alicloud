@@ -66,7 +66,7 @@ class AwaitableGetServiceResult(GetServiceResult):
 def get_service(enable: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
-    Using this data source can open Log service automatically. If the service has been opened, it will return opened.
+    Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
 
     For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
 
@@ -82,7 +82,7 @@ def get_service(enable: Optional[str] = None,
     ```
 
 
-    :param str enable: Setting the value to `On` to enable the service. If has been opened, return the result.
+    :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off".
     """
     __args__ = dict()
     __args__['enable'] = enable

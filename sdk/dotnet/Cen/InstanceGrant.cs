@@ -65,6 +65,7 @@ namespace Pulumi.AliCloud.Cen
     ///         {
     ///             InstanceId = cen.Id,
     ///             ChildInstanceId = vpc.Id,
+    ///             ChildInstanceType = "VPC",
     ///             ChildInstanceRegionId = "cn-qingdao",
     ///             ChildInstanceOwnerId = "uid1",
     ///         }, new CustomResourceOptions

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Oss
 {
+    [Obsolete(@"alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables")]
     public static class GetTables
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.AliCloud.Oss
         /// {
         ///     public MyStack()
         ///     {
-        ///         var tablesDs = Output.Create(AliCloud.Oss.GetTables.InvokeAsync(new AliCloud.Oss.GetTablesArgs
+        ///         var tablesDs = Output.Create(AliCloud.Ots.GetTables.InvokeAsync(new AliCloud.Ots.GetTablesArgs
         ///         {
         ///             InstanceName = "sample-instance",
         ///             NameRegex = "sample-table",

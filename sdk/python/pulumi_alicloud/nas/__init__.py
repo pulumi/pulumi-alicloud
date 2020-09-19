@@ -11,5 +11,6 @@ from .get_access_rules import *
 from .get_file_systems import *
 from .get_mount_targets import *
 from .get_protocols import *
+from .get_service import *
 from .mount_target import *
 from . import outputs

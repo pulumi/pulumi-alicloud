@@ -60,12 +60,14 @@ namespace Pulumi.AliCloud.Cen
     ///         {
     ///             InstanceId = defaultInstance.Id,
     ///             ChildInstanceId = vpc00.Id,
+    ///             ChildInstanceType = "VPC",
     ///             ChildInstanceRegionId = "cn-hangzhou",
     ///         });
     ///         var default01 = new AliCloud.Cen.InstanceAttachment("default01", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
     ///             InstanceId = defaultInstance.Id,
     ///             ChildInstanceId = vpc01.Id,
+    ///             ChildInstanceType = "VPC",
     ///             ChildInstanceRegionId = "cn-shanghai",
     ///         });
     ///         var defaultRouteMap = new AliCloud.Cen.RouteMap("defaultRouteMap", new AliCloud.Cen.RouteMapArgs

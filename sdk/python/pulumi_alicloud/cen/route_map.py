@@ -74,10 +74,12 @@ class RouteMap(pulumi.CustomResource):
         default00 = alicloud.cen.InstanceAttachment("default00",
             instance_id=default_instance.id,
             child_instance_id=vpc00.id,
+            child_instance_type="VPC",
             child_instance_region_id="cn-hangzhou")
         default01 = alicloud.cen.InstanceAttachment("default01",
             instance_id=default_instance.id,
             child_instance_id=vpc01.id,
+            child_instance_type="VPC",
             child_instance_region_id="cn-shanghai")
         default_route_map = alicloud.cen.RouteMap("defaultRouteMap",
             cen_region_id="cn-hangzhou",

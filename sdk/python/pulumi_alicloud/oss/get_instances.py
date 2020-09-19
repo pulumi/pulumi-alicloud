@@ -15,6 +15,8 @@ __all__ = [
     'get_instances',
 ]
 
+warnings.warn("alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances", DeprecationWarning)
+
 @pulumi.output_type
 class GetInstancesResult:
     """
@@ -123,7 +125,7 @@ def get_instances(ids: Optional[List[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    instances_ds = alicloud.oss.get_instances(name_regex="sample-instance",
+    instances_ds = alicloud.ots.get_instances(name_regex="sample-instance",
         output_file="instances.txt")
     pulumi.export("firstInstanceId", instances_ds.instances[0].id)
     ```
@@ -136,12 +138,13 @@ def get_instances(ids: Optional[List[str]] = None,
            import pulumi
            import pulumi_alicloud as alicloud
            
-           instances_ds = alicloud.oss.get_instances(tags={
+           instances_ds = alicloud.ots.get_instances(tags={
                "tagKey1": "tagValue1",
                "tagKey2": "tagValue2",
            })
            ```
     """
+    pulumi.log.warn("get_instances is deprecated: alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances")
     __args__ = dict()
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex

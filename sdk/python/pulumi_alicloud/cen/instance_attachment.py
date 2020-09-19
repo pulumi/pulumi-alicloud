@@ -15,15 +15,19 @@ class InstanceAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cen_owner_id: Optional[pulumi.Input[float]] = None,
                  child_instance_id: Optional[pulumi.Input[str]] = None,
-                 child_instance_owner_id: Optional[pulumi.Input[str]] = None,
+                 child_instance_owner_id: Optional[pulumi.Input[float]] = None,
                  child_instance_region_id: Optional[pulumi.Input[str]] = None,
+                 child_instance_type: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
-        Provides a CEN child instance attachment resource.
+        Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
+
+        ->**NOTE:** Available in 1.42.0+
 
         ## Example Usage
 
@@ -42,14 +46,17 @@ class InstanceAttachment(pulumi.CustomResource):
         foo = alicloud.cen.InstanceAttachment("foo",
             instance_id=cen.id,
             child_instance_id=vpc.id,
+            child_instance_type="VPC",
             child_instance_region_id="cn-beijing")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] cen_owner_id: The account ID to which the CEN instance belongs.
         :param pulumi.Input[str] child_instance_id: The ID of the child instance to attach.
-        :param pulumi.Input[str] child_instance_owner_id: The uid of the child instance. Only used when attach a child instance of other account.
+        :param pulumi.Input[float] child_instance_owner_id: The uid of the child instance. Only used when attach a child instance of other account.
         :param pulumi.Input[str] child_instance_region_id: The region ID of the child instance to attach.
+        :param pulumi.Input[str] child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         """
         if __name__ is not None:
@@ -69,6 +76,7 @@ class InstanceAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['cen_owner_id'] = cen_owner_id
             if child_instance_id is None:
                 raise TypeError("Missing required property 'child_instance_id'")
             __props__['child_instance_id'] = child_instance_id
@@ -76,9 +84,13 @@ class InstanceAttachment(pulumi.CustomResource):
             if child_instance_region_id is None:
                 raise TypeError("Missing required property 'child_instance_region_id'")
             __props__['child_instance_region_id'] = child_instance_region_id
+            if child_instance_type is None:
+                raise TypeError("Missing required property 'child_instance_type'")
+            __props__['child_instance_type'] = child_instance_type
             if instance_id is None:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
+            __props__['status'] = None
         super(InstanceAttachment, __self__).__init__(
             'alicloud:cen/instanceAttachment:InstanceAttachment',
             resource_name,
@@ -89,10 +101,13 @@ class InstanceAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cen_owner_id: Optional[pulumi.Input[float]] = None,
             child_instance_id: Optional[pulumi.Input[str]] = None,
-            child_instance_owner_id: Optional[pulumi.Input[str]] = None,
+            child_instance_owner_id: Optional[pulumi.Input[float]] = None,
             child_instance_region_id: Optional[pulumi.Input[str]] = None,
-            instance_id: Optional[pulumi.Input[str]] = None) -> 'InstanceAttachment':
+            child_instance_type: Optional[pulumi.Input[str]] = None,
+            instance_id: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None) -> 'InstanceAttachment':
         """
         Get an existing InstanceAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -100,20 +115,34 @@ class InstanceAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] cen_owner_id: The account ID to which the CEN instance belongs.
         :param pulumi.Input[str] child_instance_id: The ID of the child instance to attach.
-        :param pulumi.Input[str] child_instance_owner_id: The uid of the child instance. Only used when attach a child instance of other account.
+        :param pulumi.Input[float] child_instance_owner_id: The uid of the child instance. Only used when attach a child instance of other account.
         :param pulumi.Input[str] child_instance_region_id: The region ID of the child instance to attach.
+        :param pulumi.Input[str] child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
+        :param pulumi.Input[str] status: The associating status of the network.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["cen_owner_id"] = cen_owner_id
         __props__["child_instance_id"] = child_instance_id
         __props__["child_instance_owner_id"] = child_instance_owner_id
         __props__["child_instance_region_id"] = child_instance_region_id
+        __props__["child_instance_type"] = child_instance_type
         __props__["instance_id"] = instance_id
+        __props__["status"] = status
         return InstanceAttachment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="cenOwnerId")
+    def cen_owner_id(self) -> pulumi.Output[Optional[float]]:
+        """
+        The account ID to which the CEN instance belongs.
+        """
+        return pulumi.get(self, "cen_owner_id")
 
     @property
     @pulumi.getter(name="childInstanceId")
@@ -125,7 +154,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="childInstanceOwnerId")
-    def child_instance_owner_id(self) -> pulumi.Output[str]:
+    def child_instance_owner_id(self) -> pulumi.Output[float]:
         """
         The uid of the child instance. Only used when attach a child instance of other account.
         """
@@ -140,12 +169,28 @@ class InstanceAttachment(pulumi.CustomResource):
         return pulumi.get(self, "child_instance_region_id")
 
     @property
+    @pulumi.getter(name="childInstanceType")
+    def child_instance_type(self) -> pulumi.Output[str]:
+        """
+        The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+        """
+        return pulumi.get(self, "child_instance_type")
+
+    @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the CEN.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The associating status of the network.
+        """
+        return pulumi.get(self, "status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

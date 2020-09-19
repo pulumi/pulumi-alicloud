@@ -60,10 +60,12 @@ class BandwidthLimit(pulumi.CustomResource):
         vpc_attach1 = alicloud.cen.InstanceAttachment("vpcAttach1",
             instance_id=cen.id,
             child_instance_id=vpc1.id,
+            child_instance_type="VPC",
             child_instance_region_id="eu-central-1")
         vpc_attach2 = alicloud.cen.InstanceAttachment("vpcAttach2",
             instance_id=cen.id,
             child_instance_id=vpc2.id,
+            child_instance_type="VPC",
             child_instance_region_id="cn-shanghai")
         foo = alicloud.cen.BandwidthLimit("foo",
             instance_id=cen.id,

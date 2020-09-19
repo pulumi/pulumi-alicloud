@@ -82,6 +82,7 @@ import (
 // 		vpcAttach1, err := cen.NewInstanceAttachment(ctx, "vpcAttach1", &cen.InstanceAttachmentArgs{
 // 			InstanceId:            cen.ID(),
 // 			ChildInstanceId:       vpc1.ID(),
+// 			ChildInstanceType:     pulumi.String("VPC"),
 // 			ChildInstanceRegionId: pulumi.String("eu-central-1"),
 // 		})
 // 		if err != nil {
@@ -90,6 +91,7 @@ import (
 // 		vpcAttach2, err := cen.NewInstanceAttachment(ctx, "vpcAttach2", &cen.InstanceAttachmentArgs{
 // 			InstanceId:            cen.ID(),
 // 			ChildInstanceId:       vpc2.ID(),
+// 			ChildInstanceType:     pulumi.String("VPC"),
 // 			ChildInstanceRegionId: pulumi.String("cn-shanghai"),
 // 		})
 // 		if err != nil {

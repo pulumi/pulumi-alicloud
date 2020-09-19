@@ -15,11 +15,39 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getRules({
- *     frontendPort: 80,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "slbrulebasicconfig";
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/16",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ * });
+ * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {vswitchId: defaultSwitch.id});
+ * const defaultListener = new alicloud.slb.Listener("defaultListener", {
+ *     loadBalancerId: defaultLoadBalancer.id,
+ *     backendPort: 22,
+ *     frontendPort: 22,
+ *     protocol: "http",
+ *     bandwidth: 5,
+ *     healthCheckConnectPort: "20",
+ * });
+ * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultLoadBalancer.id});
+ * const defaultRule = new alicloud.slb.Rule("defaultRule", {
+ *     loadBalancerId: defaultLoadBalancer.id,
+ *     frontendPort: defaultListener.frontendPort,
+ *     domain: "*.aliyun.com",
+ *     url: "/image",
+ *     serverGroupId: defaultServerGroup.id,
+ * });
+ * const sampleDs = defaultLoadBalancer.id.apply(id => alicloud.slb.getRules({
  *     loadBalancerId: id,
- * }, { async: true }));
- *
+ *     frontendPort: 22,
+ * }));
  * export const firstSlbRuleId = sampleDs.slbRules[0].id;
  * ```
  */

@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  * const defaultInstanceAttachment = new alicloud.cen.InstanceAttachment("defaultInstanceAttachment", {
  *     instanceId: defaultInstance.id,
  *     childInstanceId: "vbr-xxxxx",
+ *     childInstanceType: "VBR",
  *     childInstanceRegionId: "cn-hangzhou",
  * });
  * const defaultVbrHealthCheck = new alicloud.cen.VbrHealthCheck("defaultVbrHealthCheck", {

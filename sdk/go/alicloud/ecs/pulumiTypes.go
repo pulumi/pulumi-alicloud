@@ -4273,20 +4273,13 @@ type GetSnapshotsSnapshot struct {
 	SourceDiskId string `pulumi:"sourceDiskId"`
 	// Size of the source disk, measured in GB.
 	SourceDiskSize string `pulumi:"sourceDiskSize"`
-	// Source disk attribute. Value range:
-	// * System
-	// * Data
+	// Source disk attribute. Value range: `System`,`Data`.
 	SourceDiskType string `pulumi:"sourceDiskType"`
-	// The snapshot status. Value range:
-	// * progressing
-	// * accomplished
-	// * failed
+	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 	Status string `pulumi:"status"`
-	// Whether the snapshots are used to create resources or not. Value range:
-	// * image
-	// * disk
-	// * imageDisk
-	// * none
+	// A map of tags assigned to the snapshot.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage string `pulumi:"usage"`
 }
 
@@ -4324,20 +4317,13 @@ type GetSnapshotsSnapshotArgs struct {
 	SourceDiskId pulumi.StringInput `pulumi:"sourceDiskId"`
 	// Size of the source disk, measured in GB.
 	SourceDiskSize pulumi.StringInput `pulumi:"sourceDiskSize"`
-	// Source disk attribute. Value range:
-	// * System
-	// * Data
+	// Source disk attribute. Value range: `System`,`Data`.
 	SourceDiskType pulumi.StringInput `pulumi:"sourceDiskType"`
-	// The snapshot status. Value range:
-	// * progressing
-	// * accomplished
-	// * failed
+	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Whether the snapshots are used to create resources or not. Value range:
-	// * image
-	// * disk
-	// * imageDisk
-	// * none
+	// A map of tags assigned to the snapshot.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
 
@@ -4447,26 +4433,22 @@ func (o GetSnapshotsSnapshotOutput) SourceDiskSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskSize }).(pulumi.StringOutput)
 }
 
-// Source disk attribute. Value range:
-// * System
-// * Data
+// Source disk attribute. Value range: `System`,`Data`.
 func (o GetSnapshotsSnapshotOutput) SourceDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskType }).(pulumi.StringOutput)
 }
 
-// The snapshot status. Value range:
-// * progressing
-// * accomplished
-// * failed
+// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Whether the snapshots are used to create resources or not. Value range:
-// * image
-// * disk
-// * imageDisk
-// * none
+// A map of tags assigned to the snapshot.
+func (o GetSnapshotsSnapshotOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 func (o GetSnapshotsSnapshotOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Usage }).(pulumi.StringOutput)
 }

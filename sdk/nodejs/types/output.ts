@@ -1196,6 +1196,41 @@ export namespace cen {
         status: string;
     }
 
+    export interface GetInstanceAttachmentsAttachment {
+        /**
+         * The time when the network is associated with the CEN instance.
+         */
+        childInstanceAttachTime: string;
+        /**
+         * The ID of the network.
+         */
+        childInstanceId: string;
+        /**
+         * The ID of the account to which the network belongs.
+         */
+        childInstanceOwnerId: number;
+        /**
+         * The region to which the network to be queried belongs.
+         */
+        childInstanceRegionId: string;
+        /**
+         * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+         */
+        childInstanceType: string;
+        /**
+         * The ID of the CEN Instance Attachment.
+         */
+        id: string;
+        /**
+         * The ID of the CEN instance.
+         */
+        instanceId: string;
+        /**
+         * The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
+         */
+        status: string;
+    }
+
     export interface GetInstancesInstance {
         /**
          * List of CEN Bandwidth Package IDs in the specified CEN instance.
@@ -2355,6 +2390,31 @@ export namespace cs {
          * The private IP address of node.
          */
         privateIp: string;
+    }
+
+    export interface NodePoolDataDisk {
+        autoSnapshotPolicyId?: string;
+        category?: string;
+        device?: string;
+        encrypted?: string;
+        kmsKeyId?: string;
+        /**
+         * The name of node pool.
+         */
+        name?: string;
+        size?: number;
+        snapshotId?: string;
+    }
+
+    export interface NodePoolLabel {
+        key: string;
+        value?: string;
+    }
+
+    export interface NodePoolTaint {
+        effect?: string;
+        key: string;
+        value?: string;
     }
 
     export interface ServerlessKubernetesAddon {
@@ -4108,24 +4168,19 @@ export namespace ecs {
          */
         sourceDiskSize: string;
         /**
-         * Source disk attribute. Value range:
-         * * System
-         * * Data
+         * Source disk attribute. Value range: `System`,`Data`.
          */
         sourceDiskType: string;
         /**
-         * The snapshot status. Value range:
-         * * progressing
-         * * accomplished
-         * * failed
+         * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
          */
         status: string;
         /**
-         * Whether the snapshots are used to create resources or not. Value range:
-         * * image
-         * * disk
-         * * imageDisk
-         * * none
+         * A map of tags assigned to the snapshot.
+         */
+        tags?: {[key: string]: any};
+        /**
+         * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
          */
         usage: string;
     }
@@ -4314,37 +4369,9 @@ export namespace edas {
          */
         clusterType: number;
         /**
-         * Application's creation time.
-         */
-        createTime: number;
-        /**
-         * The URL for health checking of the application.
-         */
-        healthCheckUrl: string;
-        /**
-         * Number of instances.
-         */
-        instanceCount: number;
-        /**
          * The ID of the namespace the application belongs to.
          */
         regionId: string;
-        /**
-         * Number of running instances.
-         */
-        runningInstanceCount: number;
-        /**
-         * The ID of the SLB instance that is going to be bound.
-         */
-        slbId: string;
-        /**
-         * The IP address that is allocated to the bound SLB instance.
-         */
-        slbIp: string;
-        /**
-         * The port of intranet SLB.
-         */
-        slbPort: number;
     }
 
     export interface GetClustersCluster {
@@ -6982,7 +7009,7 @@ export namespace oss {
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
          *
-         * const instancesDs = pulumi.output(alicloud.oss.getInstances({
+         * const instancesDs = pulumi.output(alicloud.ots.getInstances({
          *     tags: {
          *         tagKey1: "tagValue1",
          *         tagKey2: "tagValue2",
@@ -7035,6 +7062,131 @@ export namespace oss {
 }
 
 export namespace ots {
+    export interface GetInstanceAttachmentsAttachment {
+        /**
+         * The domain of the instance attachment.
+         */
+        domain: string;
+        /**
+         * The access endpoint of the instance attachment.
+         */
+        endpoint: string;
+        /**
+         * The resource ID, the value is same as "instanceName".
+         */
+        id: string;
+        /**
+         * The name of OTS instance.
+         */
+        instanceName: string;
+        /**
+         * The region of the instance attachment.
+         */
+        region: string;
+        /**
+         * The ID of attaching VPC to instance.
+         */
+        vpcId: string;
+        /**
+         * The name of attaching VPC to instance.
+         */
+        vpcName: string;
+    }
+
+    export interface GetInstancesInstance {
+        /**
+         * The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
+         */
+        clusterType: string;
+        /**
+         * The create time of the instance.
+         */
+        createTime: string;
+        /**
+         * The description of the instance.
+         */
+        description: string;
+        /**
+         * The instance quota which indicating the maximum number of tables.
+         */
+        entityQuota: number;
+        /**
+         * ID of the instance.
+         */
+        id: string;
+        /**
+         * Instance name.
+         */
+        name: string;
+        /**
+         * The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+         */
+        network: string;
+        /**
+         * The maximum adjustable read capacity unit of the instance.
+         */
+        readCapacity: number;
+        /**
+         * Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
+         */
+        status: string;
+        /**
+         * A map of tags assigned to the instance. It must be in the format:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const instancesDs = pulumi.output(alicloud.ots.getInstances({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * }, { async: true }));
+         * ```
+         */
+        tags: {[key: string]: any};
+        /**
+         * The user id of the instance.
+         */
+        userId: string;
+        /**
+         * The maximum adjustable write capacity unit of the instance.
+         */
+        writeCapacity: number;
+    }
+
+    export interface GetTablesTable {
+        /**
+         * ID of the table. The value is `<instance_name>:<table_name>`.
+         */
+        id: string;
+        /**
+         * The name of OTS instance.
+         */
+        instanceName: string;
+        /**
+         * The maximum number of versions stored in this table.
+         */
+        maxVersion: number;
+        /**
+         * The property of `TableMeta` which indicates the structure information of a table.
+         */
+        primaryKeys: outputs.ots.GetTablesTablePrimaryKey[];
+        /**
+         * The table name of the OTS which could not be changed.
+         */
+        tableName: string;
+        /**
+         * The retention time of data stored in this table.
+         */
+        timeToLive: number;
+    }
+
+    export interface GetTablesTablePrimaryKey {
+        name: string;
+        type: string;
+    }
+
     export interface TablePrimaryKey {
         /**
          * Name for primary key.
@@ -8026,9 +8178,25 @@ export namespace rocketmq {
 
     export interface GetInstancesInstance {
         /**
+         * The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+         */
+        httpInternalEndpoint: string;
+        /**
+         * The public HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+         */
+        httpInternetEndpoint: string;
+        /**
+         * The public HTTPS endpoint for the Message Queue for Apache RocketMQ instance.
+         */
+        httpInternetSecureEndpoint: string;
+        /**
          * ID of the instance.
          */
         id: string;
+        /**
+         * Indicates whether any namespace is configured for the Message Queue for Apache RocketMQ instance.
+         */
+        independentNaming: boolean;
         /**
          * ID of the instance.
          */
@@ -8048,18 +8216,38 @@ export namespace rocketmq {
         /**
          * The automatic release time of an Enterprise Platinum Edition instance.
          */
-        releaseTime: number;
+        releaseTime: string;
+        /**
+         * This attribute is a concise description of instance.
+         */
+        remark: string;
+        /**
+         * The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+         */
+        status: number;
+        /**
+         * A map of tags assigned to the Ons instance.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The TCP endpoint for the Message Queue for Apache RocketMQ instance.
+         */
+        tcpEndpoint: string;
     }
 
     export interface GetTopicsTopic {
         /**
-         * Time of creation.
+         * The id of the topic.
          */
-        createTime: string;
+        id: string;
         /**
          * Indicates whether namespaces are available. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
          */
         independentNaming: boolean;
+        /**
+         * ID of the ONS Instance that owns the topics.
+         */
+        instanceId: string;
         /**
          * The type of the message. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
          */
@@ -8068,6 +8256,10 @@ export namespace rocketmq {
          * The ID of the topic owner, which is the Alibaba Cloud UID.
          */
         owner: string;
+        /**
+         * This attribute is used to set the read-write mode for the topic.
+         */
+        perm: number;
         /**
          * The relation ID. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
          */
@@ -8081,9 +8273,17 @@ export namespace rocketmq {
          */
         remark: string;
         /**
+         * A map of tags assigned to the Ons instance.
+         */
+        tags: {[key: string]: any};
+        /**
          * The name of the topic.
          */
         topic: string;
+        /**
+         * The name of the topic.
+         */
+        topicName: string;
     }
 }
 

@@ -37,7 +37,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = rocketmq.NewTopic(ctx, "defaultTopic", &rocketmq.TopicArgs{
-// 			Topic:       pulumi.String(topic),
+// 			TopicName:   pulumi.String(topic),
 // 			InstanceId:  defaultInstance.ID(),
 // 			MessageType: pulumi.Int(0),
 // 			Remark:      pulumi.String("dafault_ons_topic_remark"),
@@ -60,8 +60,16 @@ type Topic struct {
 	Perm pulumi.IntPtrOutput `pulumi:"perm"`
 	// This attribute is a concise description of topic. The length cannot exceed 128.
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
-	// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// Replaced by `topicName` after version 1.97.0.
+	//
+	// Deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
 	Topic pulumi.StringOutput `pulumi:"topic"`
+	// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+	TopicName pulumi.StringOutput `pulumi:"topicName"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -72,9 +80,6 @@ func NewTopic(ctx *pulumi.Context,
 	}
 	if args == nil || args.MessageType == nil {
 		return nil, errors.New("missing required argument 'MessageType'")
-	}
-	if args == nil || args.Topic == nil {
-		return nil, errors.New("missing required argument 'Topic'")
 	}
 	if args == nil {
 		args = &TopicArgs{}
@@ -109,8 +114,16 @@ type topicState struct {
 	Perm *int `pulumi:"perm"`
 	// This attribute is a concise description of topic. The length cannot exceed 128.
 	Remark *string `pulumi:"remark"`
-	// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// Replaced by `topicName` after version 1.97.0.
+	//
+	// Deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
 	Topic *string `pulumi:"topic"`
+	// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+	TopicName *string `pulumi:"topicName"`
 }
 
 type TopicState struct {
@@ -122,8 +135,16 @@ type TopicState struct {
 	Perm pulumi.IntPtrInput
 	// This attribute is a concise description of topic. The length cannot exceed 128.
 	Remark pulumi.StringPtrInput
-	// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapInput
+	// Replaced by `topicName` after version 1.97.0.
+	//
+	// Deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
 	Topic pulumi.StringPtrInput
+	// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+	TopicName pulumi.StringPtrInput
 }
 
 func (TopicState) ElementType() reflect.Type {
@@ -139,8 +160,16 @@ type topicArgs struct {
 	Perm *int `pulumi:"perm"`
 	// This attribute is a concise description of topic. The length cannot exceed 128.
 	Remark *string `pulumi:"remark"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// Replaced by `topicName` after version 1.97.0.
+	//
+	// Deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
+	Topic *string `pulumi:"topic"`
 	// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
-	Topic string `pulumi:"topic"`
+	TopicName *string `pulumi:"topicName"`
 }
 
 // The set of arguments for constructing a Topic resource.
@@ -153,8 +182,16 @@ type TopicArgs struct {
 	Perm pulumi.IntPtrInput
 	// This attribute is a concise description of topic. The length cannot exceed 128.
 	Remark pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapInput
+	// Replaced by `topicName` after version 1.97.0.
+	//
+	// Deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
+	Topic pulumi.StringPtrInput
 	// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
-	Topic pulumi.StringInput
+	TopicName pulumi.StringPtrInput
 }
 
 func (TopicArgs) ElementType() reflect.Type {

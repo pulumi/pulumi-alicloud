@@ -7,9 +7,14 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
 
 __all__ = [
     'TablePrimaryKey',
+    'GetInstanceAttachmentsAttachmentResult',
+    'GetInstancesInstanceResult',
+    'GetTablesTableResult',
+    'GetTablesTablePrimaryKeyResult',
 ]
 
 @pulumi.output_type
@@ -42,5 +47,338 @@ class TablePrimaryKey(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetInstanceAttachmentsAttachmentResult(dict):
+    def __init__(__self__, *,
+                 domain: str,
+                 endpoint: str,
+                 id: str,
+                 instance_name: str,
+                 region: str,
+                 vpc_id: str,
+                 vpc_name: str):
+        """
+        :param str domain: The domain of the instance attachment.
+        :param str endpoint: The access endpoint of the instance attachment.
+        :param str id: The resource ID, the value is same as "instance_name".
+        :param str instance_name: The name of OTS instance.
+        :param str region: The region of the instance attachment.
+        :param str vpc_id: The ID of attaching VPC to instance.
+        :param str vpc_name: The name of attaching VPC to instance.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_name", vpc_name)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The domain of the instance attachment.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The access endpoint of the instance attachment.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The resource ID, the value is same as "instance_name".
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of OTS instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region of the instance attachment.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of attaching VPC to instance.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vpcName")
+    def vpc_name(self) -> str:
+        """
+        The name of attaching VPC to instance.
+        """
+        return pulumi.get(self, "vpc_name")
+
+
+@pulumi.output_type
+class GetInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 cluster_type: str,
+                 create_time: str,
+                 description: str,
+                 entity_quota: float,
+                 id: str,
+                 name: str,
+                 network: str,
+                 read_capacity: float,
+                 status: str,
+                 tags: Mapping[str, Any],
+                 user_id: str,
+                 write_capacity: float):
+        """
+        :param str cluster_type: The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
+        :param str create_time: The create time of the instance.
+        :param str description: The description of the instance.
+        :param float entity_quota: The instance quota which indicating the maximum number of tables.
+        :param str id: ID of the instance.
+        :param str name: Instance name.
+        :param str network: The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+        :param float read_capacity: The maximum adjustable read capacity unit of the instance.
+        :param str status: Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
+        :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
+               ```python
+               import pulumi
+               import pulumi_alicloud as alicloud
+               
+               instances_ds = alicloud.ots.get_instances(tags={
+                   "tagKey1": "tagValue1",
+                   "tagKey2": "tagValue2",
+               })
+               ```
+        :param str user_id: The user id of the instance.
+        :param float write_capacity: The maximum adjustable write capacity unit of the instance.
+        """
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "entity_quota", entity_quota)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "read_capacity", read_capacity)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "write_capacity", write_capacity)
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> str:
+        """
+        The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The create time of the instance.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the instance.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="entityQuota")
+    def entity_quota(self) -> float:
+        """
+        The instance quota which indicating the maximum number of tables.
+        """
+        return pulumi.get(self, "entity_quota")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the instance.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Instance name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="readCapacity")
+    def read_capacity(self) -> float:
+        """
+        The maximum adjustable read capacity unit of the instance.
+        """
+        return pulumi.get(self, "read_capacity")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the instance. It must be in the format:
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        instances_ds = alicloud.ots.get_instances(tags={
+            "tagKey1": "tagValue1",
+            "tagKey2": "tagValue2",
+        })
+        ```
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        The user id of the instance.
+        """
+        return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="writeCapacity")
+    def write_capacity(self) -> float:
+        """
+        The maximum adjustable write capacity unit of the instance.
+        """
+        return pulumi.get(self, "write_capacity")
+
+
+@pulumi.output_type
+class GetTablesTableResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 instance_name: str,
+                 max_version: float,
+                 primary_keys: List['outputs.GetTablesTablePrimaryKeyResult'],
+                 table_name: str,
+                 time_to_live: float):
+        """
+        :param str id: ID of the table. The value is `<instance_name>:<table_name>`.
+        :param str instance_name: The name of OTS instance.
+        :param float max_version: The maximum number of versions stored in this table.
+        :param List['GetTablesTablePrimaryKeyArgs'] primary_keys: The property of `TableMeta` which indicates the structure information of a table.
+        :param str table_name: The table name of the OTS which could not be changed.
+        :param float time_to_live: The retention time of data stored in this table.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "max_version", max_version)
+        pulumi.set(__self__, "primary_keys", primary_keys)
+        pulumi.set(__self__, "table_name", table_name)
+        pulumi.set(__self__, "time_to_live", time_to_live)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the table. The value is `<instance_name>:<table_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of OTS instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="maxVersion")
+    def max_version(self) -> float:
+        """
+        The maximum number of versions stored in this table.
+        """
+        return pulumi.get(self, "max_version")
+
+    @property
+    @pulumi.getter(name="primaryKeys")
+    def primary_keys(self) -> List['outputs.GetTablesTablePrimaryKeyResult']:
+        """
+        The property of `TableMeta` which indicates the structure information of a table.
+        """
+        return pulumi.get(self, "primary_keys")
+
+    @property
+    @pulumi.getter(name="tableName")
+    def table_name(self) -> str:
+        """
+        The table name of the OTS which could not be changed.
+        """
+        return pulumi.get(self, "table_name")
+
+    @property
+    @pulumi.getter(name="timeToLive")
+    def time_to_live(self) -> float:
+        """
+        The retention time of data stored in this table.
+        """
+        return pulumi.get(self, "time_to_live")
+
+
+@pulumi.output_type
+class GetTablesTablePrimaryKeyResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
 

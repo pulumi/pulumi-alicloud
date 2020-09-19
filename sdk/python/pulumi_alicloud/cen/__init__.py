@@ -10,6 +10,7 @@ from .flow_log import *
 from .get_bandwidth_limits import *
 from .get_bandwidth_packages import *
 from .get_flowlogs import *
+from .get_instance_attachments import *
 from .get_instances import *
 from .get_private_zones import *
 from .get_region_route_entries import *

@@ -42,6 +42,7 @@ namespace Pulumi.AliCloud.Cen
     ///         {
     ///             InstanceId = defaultInstance.Id,
     ///             ChildInstanceId = defaultNetwork.Id,
+    ///             ChildInstanceType = "VPC",
     ///             ChildInstanceRegionId = "cn-hangzhou",
     ///         }, new CustomResourceOptions
     ///         {

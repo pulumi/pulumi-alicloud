@@ -660,6 +660,31 @@ export namespace cs {
         privateIp?: pulumi.Input<string>;
     }
 
+    export interface NodePoolDataDisk {
+        autoSnapshotPolicyId?: pulumi.Input<string>;
+        category?: pulumi.Input<string>;
+        device?: pulumi.Input<string>;
+        encrypted?: pulumi.Input<string>;
+        kmsKeyId?: pulumi.Input<string>;
+        /**
+         * The name of node pool.
+         */
+        name?: pulumi.Input<string>;
+        size?: pulumi.Input<number>;
+        snapshotId?: pulumi.Input<string>;
+    }
+
+    export interface NodePoolLabel {
+        key: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface NodePoolTaint {
+        effect?: pulumi.Input<string>;
+        key: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
     export interface ServerlessKubernetesAddon {
         config?: pulumi.Input<string>;
         disabled?: pulumi.Input<boolean>;

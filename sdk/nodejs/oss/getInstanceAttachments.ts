@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const attachmentsDs = pulumi.output(alicloud.oss.getInstanceAttachments({
+ * const attachmentsDs = pulumi.output(alicloud.ots.getInstanceAttachments({
  *     instanceName: "sample-instance",
  *     nameRegex: "testvpc",
  *     outputFile: "attachments.txt",
@@ -24,7 +24,9 @@ import * as utilities from "../utilities";
  * export const firstOtsAttachmentId = attachmentsDs.attachments[0].id;
  * ```
  */
+/** @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
 export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentsResult> {
+    pulumi.log.warn("getInstanceAttachments is deprecated: alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments")
     if (!opts) {
         opts = {}
     }

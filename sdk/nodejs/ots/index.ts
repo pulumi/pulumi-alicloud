@@ -2,6 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./getInstanceAttachments";
+export * from "./getInstances";
+export * from "./getService";
+export * from "./getTables";
 export * from "./instance";
 export * from "./instanceAttachment";
 export * from "./table";

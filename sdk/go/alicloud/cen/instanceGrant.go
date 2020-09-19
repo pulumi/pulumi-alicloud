@@ -65,8 +65,9 @@ import (
 // 		_, err = cen.NewInstanceAttachment(ctx, "fooInstanceAttachment", &cen.InstanceAttachmentArgs{
 // 			InstanceId:            cen.ID(),
 // 			ChildInstanceId:       vpc.ID(),
+// 			ChildInstanceType:     pulumi.String("VPC"),
 // 			ChildInstanceRegionId: pulumi.String("cn-qingdao"),
-// 			ChildInstanceOwnerId:  pulumi.String("uid1"),
+// 			ChildInstanceOwnerId:  pulumi.Int("uid1"),
 // 		}, pulumi.Provider(alicloud.Account2), pulumi.DependsOn([]pulumi.Resource{
 // 			fooInstanceGrant,
 // 		}))

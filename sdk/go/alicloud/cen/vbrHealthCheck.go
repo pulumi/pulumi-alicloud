@@ -38,6 +38,7 @@ import (
 // 		defaultInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
 // 			InstanceId:            defaultInstance.ID(),
 // 			ChildInstanceId:       pulumi.String("vbr-xxxxx"),
+// 			ChildInstanceType:     pulumi.String("VBR"),
 // 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
 // 		})
 // 		if err != nil {

@@ -15,7 +15,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -23,7 +23,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "sample-instance"
 // 		opt1 := "instances.txt"
-// 		instancesDs, err := oss.GetInstances(ctx, &oss.GetInstancesArgs{
+// 		instancesDs, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
 // 			NameRegex:  &opt0,
 // 			OutputFile: &opt1,
 // 		}, nil)
@@ -35,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+//
+// Deprecated: alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
 	err := ctx.Invoke("alicloud:oss/getInstances:getInstances", args, &rv, opts...)
@@ -56,13 +58,13 @@ type GetInstancesArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
 	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 	// )
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := oss.GetInstances(ctx, &oss.GetInstancesArgs{
+	// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
 	// 			Tags: map[string]interface{}{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",

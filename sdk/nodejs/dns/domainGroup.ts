@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * // Add a new Alinds Domain Group.
  * const example = new alicloud.dns.DomainGroup("example", {
- *     groupName: "tf-testDG",
+ *     domainGroupName: "tf-testDG",
  * });
  * ```
  */
@@ -52,6 +52,12 @@ export class DomainGroup extends pulumi.CustomResource {
     /**
      * Name of the domain group.
      */
+    public readonly domainGroupName!: pulumi.Output<string>;
+    /**
+     * Replaced by `domainGroupName` after version 1.97.0.
+     *
+     * @deprecated Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
+     */
     public readonly groupName!: pulumi.Output<string>;
     /**
      * User language.
@@ -65,18 +71,17 @@ export class DomainGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DomainGroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: DomainGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainGroupArgs | DomainGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DomainGroupState | undefined;
+            inputs["domainGroupName"] = state ? state.domainGroupName : undefined;
             inputs["groupName"] = state ? state.groupName : undefined;
             inputs["lang"] = state ? state.lang : undefined;
         } else {
             const args = argsOrState as DomainGroupArgs | undefined;
-            if (!args || args.groupName === undefined) {
-                throw new Error("Missing required property 'groupName'");
-            }
+            inputs["domainGroupName"] = args ? args.domainGroupName : undefined;
             inputs["groupName"] = args ? args.groupName : undefined;
             inputs["lang"] = args ? args.lang : undefined;
         }
@@ -98,6 +103,12 @@ export interface DomainGroupState {
     /**
      * Name of the domain group.
      */
+    readonly domainGroupName?: pulumi.Input<string>;
+    /**
+     * Replaced by `domainGroupName` after version 1.97.0.
+     *
+     * @deprecated Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
+     */
     readonly groupName?: pulumi.Input<string>;
     /**
      * User language.
@@ -112,7 +123,13 @@ export interface DomainGroupArgs {
     /**
      * Name of the domain group.
      */
-    readonly groupName: pulumi.Input<string>;
+    readonly domainGroupName?: pulumi.Input<string>;
+    /**
+     * Replaced by `domainGroupName` after version 1.97.0.
+     *
+     * @deprecated Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
+     */
+    readonly groupName?: pulumi.Input<string>;
     /**
      * User language.
      */

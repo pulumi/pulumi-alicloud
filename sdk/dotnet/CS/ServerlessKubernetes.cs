@@ -92,6 +92,12 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        /// </summary>
+        [Output("version")]
+        public Output<string> Version { get; private set; } = null!;
+
+        /// <summary>
         /// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
         /// </summary>
         [Output("vpcId")]
@@ -247,6 +253,12 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        /// <summary>
         /// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
         /// </summary>
         [Input("vpcId", required: true)]
@@ -367,6 +379,12 @@ namespace Pulumi.AliCloud.CS
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         /// <summary>
         /// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.

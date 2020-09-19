@@ -58,24 +58,19 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string SourceDiskSize;
         /// <summary>
-        /// Source disk attribute. Value range:
-        /// * System
-        /// * Data
+        /// Source disk attribute. Value range: `System`,`Data`.
         /// </summary>
         public readonly string SourceDiskType;
         /// <summary>
-        /// The snapshot status. Value range:
-        /// * progressing
-        /// * accomplished
-        /// * failed
+        /// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Whether the snapshots are used to create resources or not. Value range:
-        /// * image
-        /// * disk
-        /// * image_disk
-        /// * none
+        /// A map of tags assigned to the snapshot.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Tags;
+        /// <summary>
+        /// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
         /// </summary>
         public readonly string Usage;
 
@@ -107,6 +102,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string status,
 
+            ImmutableDictionary<string, object>? tags,
+
             string usage)
         {
             CreationTime = creationTime;
@@ -122,6 +119,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             SourceDiskSize = sourceDiskSize;
             SourceDiskType = sourceDiskType;
             Status = status;
+            Tags = tags;
             Usage = usage;
         }
     }

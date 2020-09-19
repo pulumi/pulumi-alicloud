@@ -14,9 +14,25 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
     public sealed class GetInstancesInstanceResult
     {
         /// <summary>
+        /// The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+        /// </summary>
+        public readonly string HttpInternalEndpoint;
+        /// <summary>
+        /// The public HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+        /// </summary>
+        public readonly string HttpInternetEndpoint;
+        /// <summary>
+        /// The public HTTPS endpoint for the Message Queue for Apache RocketMQ instance.
+        /// </summary>
+        public readonly string HttpInternetSecureEndpoint;
+        /// <summary>
         /// ID of the instance.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Indicates whether any namespace is configured for the Message Queue for Apache RocketMQ instance.
+        /// </summary>
+        public readonly bool IndependentNaming;
         /// <summary>
         /// ID of the instance.
         /// </summary>
@@ -36,11 +52,35 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
         /// <summary>
         /// The automatic release time of an Enterprise Platinum Edition instance.
         /// </summary>
-        public readonly int ReleaseTime;
+        public readonly string ReleaseTime;
+        /// <summary>
+        /// This attribute is a concise description of instance.
+        /// </summary>
+        public readonly string Remark;
+        /// <summary>
+        /// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+        /// </summary>
+        public readonly int Status;
+        /// <summary>
+        /// A map of tags assigned to the Ons instance.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Tags;
+        /// <summary>
+        /// The TCP endpoint for the Message Queue for Apache RocketMQ instance.
+        /// </summary>
+        public readonly string TcpEndpoint;
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
+            string httpInternalEndpoint,
+
+            string httpInternetEndpoint,
+
+            string httpInternetSecureEndpoint,
+
             string id,
+
+            bool independentNaming,
 
             string instanceId,
 
@@ -50,14 +90,30 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
 
             int instanceType,
 
-            int releaseTime)
+            string releaseTime,
+
+            string remark,
+
+            int status,
+
+            ImmutableDictionary<string, object> tags,
+
+            string tcpEndpoint)
         {
+            HttpInternalEndpoint = httpInternalEndpoint;
+            HttpInternetEndpoint = httpInternetEndpoint;
+            HttpInternetSecureEndpoint = httpInternetSecureEndpoint;
             Id = id;
+            IndependentNaming = independentNaming;
             InstanceId = instanceId;
             InstanceName = instanceName;
             InstanceStatus = instanceStatus;
             InstanceType = instanceType;
             ReleaseTime = releaseTime;
+            Remark = remark;
+            Status = status;
+            Tags = tags;
+            TcpEndpoint = tcpEndpoint;
         }
     }
 }

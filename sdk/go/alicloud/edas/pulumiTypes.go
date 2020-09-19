@@ -23,22 +23,8 @@ type GetApplicationsApplication struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
 	ClusterType int `pulumi:"clusterType"`
-	// Application's creation time.
-	CreateTime int `pulumi:"createTime"`
-	// The URL for health checking of the application.
-	HealthCheckUrl string `pulumi:"healthCheckUrl"`
-	// Number of instances.
-	InstanceCount int `pulumi:"instanceCount"`
 	// The ID of the namespace the application belongs to.
 	RegionId string `pulumi:"regionId"`
-	// Number of running instances.
-	RunningInstanceCount int `pulumi:"runningInstanceCount"`
-	// The ID of the SLB instance that is going to be bound.
-	SlbId string `pulumi:"slbId"`
-	// The IP address that is allocated to the bound SLB instance.
-	SlbIp string `pulumi:"slbIp"`
-	// The port of intranet SLB.
-	SlbPort int `pulumi:"slbPort"`
 }
 
 // GetApplicationsApplicationInput is an input type that accepts GetApplicationsApplicationArgs and GetApplicationsApplicationOutput values.
@@ -65,22 +51,8 @@ type GetApplicationsApplicationArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
 	ClusterType pulumi.IntInput `pulumi:"clusterType"`
-	// Application's creation time.
-	CreateTime pulumi.IntInput `pulumi:"createTime"`
-	// The URL for health checking of the application.
-	HealthCheckUrl pulumi.StringInput `pulumi:"healthCheckUrl"`
-	// Number of instances.
-	InstanceCount pulumi.IntInput `pulumi:"instanceCount"`
 	// The ID of the namespace the application belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// Number of running instances.
-	RunningInstanceCount pulumi.IntInput `pulumi:"runningInstanceCount"`
-	// The ID of the SLB instance that is going to be bound.
-	SlbId pulumi.StringInput `pulumi:"slbId"`
-	// The IP address that is allocated to the bound SLB instance.
-	SlbIp pulumi.StringInput `pulumi:"slbIp"`
-	// The port of intranet SLB.
-	SlbPort pulumi.IntInput `pulumi:"slbPort"`
 }
 
 func (GetApplicationsApplicationArgs) ElementType() reflect.Type {
@@ -164,44 +136,9 @@ func (o GetApplicationsApplicationOutput) ClusterType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationsApplication) int { return v.ClusterType }).(pulumi.IntOutput)
 }
 
-// Application's creation time.
-func (o GetApplicationsApplicationOutput) CreateTime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApplicationsApplication) int { return v.CreateTime }).(pulumi.IntOutput)
-}
-
-// The URL for health checking of the application.
-func (o GetApplicationsApplicationOutput) HealthCheckUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationsApplication) string { return v.HealthCheckUrl }).(pulumi.StringOutput)
-}
-
-// Number of instances.
-func (o GetApplicationsApplicationOutput) InstanceCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApplicationsApplication) int { return v.InstanceCount }).(pulumi.IntOutput)
-}
-
 // The ID of the namespace the application belongs to.
 func (o GetApplicationsApplicationOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationsApplication) string { return v.RegionId }).(pulumi.StringOutput)
-}
-
-// Number of running instances.
-func (o GetApplicationsApplicationOutput) RunningInstanceCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApplicationsApplication) int { return v.RunningInstanceCount }).(pulumi.IntOutput)
-}
-
-// The ID of the SLB instance that is going to be bound.
-func (o GetApplicationsApplicationOutput) SlbId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationsApplication) string { return v.SlbId }).(pulumi.StringOutput)
-}
-
-// The IP address that is allocated to the bound SLB instance.
-func (o GetApplicationsApplicationOutput) SlbIp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationsApplication) string { return v.SlbIp }).(pulumi.StringOutput)
-}
-
-// The port of intranet SLB.
-func (o GetApplicationsApplicationOutput) SlbPort() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApplicationsApplication) int { return v.SlbPort }).(pulumi.IntOutput)
 }
 
 type GetApplicationsApplicationArrayOutput struct{ *pulumi.OutputState }

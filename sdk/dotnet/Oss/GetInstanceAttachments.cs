@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Oss
 {
+    [Obsolete(@"alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments")]
     public static class GetInstanceAttachments
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.AliCloud.Oss
         /// {
         ///     public MyStack()
         ///     {
-        ///         var attachmentsDs = Output.Create(AliCloud.Oss.GetInstanceAttachments.InvokeAsync(new AliCloud.Oss.GetInstanceAttachmentsArgs
+        ///         var attachmentsDs = Output.Create(AliCloud.Ots.GetInstanceAttachments.InvokeAsync(new AliCloud.Ots.GetInstanceAttachmentsArgs
         ///         {
         ///             InstanceName = "sample-instance",
         ///             NameRegex = "testvpc",

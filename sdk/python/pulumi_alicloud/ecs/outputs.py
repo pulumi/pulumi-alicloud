@@ -2700,7 +2700,8 @@ class GetSnapshotsSnapshotResult(dict):
                  source_disk_size: str,
                  source_disk_type: str,
                  status: str,
-                 usage: str):
+                 usage: str,
+                 tags: Optional[Mapping[str, Any]] = None):
         """
         :param str creation_time: Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
         :param str description: Description of the snapshot.
@@ -2713,18 +2714,10 @@ class GetSnapshotsSnapshotResult(dict):
         :param float retention_days: The number of days that an automatic snapshot retains in the console for your instance.
         :param str source_disk_id: Source disk ID, which is retained after the source disk of the snapshot is deleted.
         :param str source_disk_size: Size of the source disk, measured in GB.
-        :param str source_disk_type: Source disk attribute. Value range:
-               * System
-               * Data
-        :param str status: The snapshot status. Value range:
-               * progressing
-               * accomplished
-               * failed
-        :param str usage: Whether the snapshots are used to create resources or not. Value range:
-               * image
-               * disk
-               * image_disk
-               * none
+        :param str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
+        :param str status: The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+        :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+        :param Mapping[str, Any] tags: A map of tags assigned to the snapshot.
         """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
@@ -2740,6 +2733,8 @@ class GetSnapshotsSnapshotResult(dict):
         pulumi.set(__self__, "source_disk_type", source_disk_type)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "usage", usage)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -2833,9 +2828,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="sourceDiskType")
     def source_disk_type(self) -> str:
         """
-        Source disk attribute. Value range:
-        * System
-        * Data
+        Source disk attribute. Value range: `System`,`Data`.
         """
         return pulumi.get(self, "source_disk_type")
 
@@ -2843,10 +2836,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The snapshot status. Value range:
-        * progressing
-        * accomplished
-        * failed
+        The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
         """
         return pulumi.get(self, "status")
 
@@ -2854,12 +2844,16 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def usage(self) -> str:
         """
-        Whether the snapshots are used to create resources or not. Value range:
-        * image
-        * disk
-        * image_disk
-        * none
+        Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
         """
         return pulumi.get(self, "usage")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        A map of tags assigned to the snapshot.
+        """
+        return pulumi.get(self, "tags")
 
 

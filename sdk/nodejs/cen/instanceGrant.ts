@@ -44,6 +44,7 @@ import * as utilities from "../utilities";
  * const fooInstanceAttachment = new alicloud.cen.InstanceAttachment("fooInstanceAttachment", {
  *     instanceId: cen.id,
  *     childInstanceId: vpc.id,
+ *     childInstanceType: "VPC",
  *     childInstanceRegionId: "cn-qingdao",
  *     childInstanceOwnerId: "uid1",
  * }, {

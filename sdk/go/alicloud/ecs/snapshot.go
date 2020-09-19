@@ -47,7 +47,8 @@ type Snapshot struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The source disk ID.
 	DiskId pulumi.StringOutput `pulumi:"diskId"`
-	// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
@@ -90,7 +91,8 @@ type snapshotState struct {
 	Description *string `pulumi:"description"`
 	// The source disk ID.
 	DiskId *string `pulumi:"diskId"`
-	// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	Name *string `pulumi:"name"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -103,7 +105,8 @@ type SnapshotState struct {
 	Description pulumi.StringPtrInput
 	// The source disk ID.
 	DiskId pulumi.StringPtrInput
-	// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	Name pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -120,7 +123,8 @@ type snapshotArgs struct {
 	Description *string `pulumi:"description"`
 	// The source disk ID.
 	DiskId string `pulumi:"diskId"`
-	// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	Name *string `pulumi:"name"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -134,7 +138,8 @@ type SnapshotArgs struct {
 	Description pulumi.StringPtrInput
 	// The source disk ID.
 	DiskId pulumi.StringInput
-	// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	Name pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput

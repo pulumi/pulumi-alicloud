@@ -53,7 +53,8 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> DiskId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        /// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -129,7 +130,8 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> DiskId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        /// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -172,7 +174,8 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DiskId { get; set; }
 
         /// <summary>
-        /// Name of the snapshot. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        /// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

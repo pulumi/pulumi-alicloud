@@ -211,6 +211,7 @@ def get_load_balancers(address: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    default = alicloud.slb.LoadBalancer("default")
     slbs_ds = alicloud.slb.get_load_balancers(name_regex="sample_slb")
     pulumi.export("firstSlbId", slbs_ds.slbs[0].id)
     ```

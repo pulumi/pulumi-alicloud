@@ -10,7 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a CEN child instance attachment resource.
+// Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
+//
+// ->**NOTE:** Available in 1.42.0+
 //
 // ## Example Usage
 //
@@ -42,6 +44,7 @@ import (
 // 		_, err = cen.NewInstanceAttachment(ctx, "foo", &cen.InstanceAttachmentArgs{
 // 			InstanceId:            cen.ID(),
 // 			ChildInstanceId:       vpc.ID(),
+// 			ChildInstanceType:     pulumi.String("VPC"),
 // 			ChildInstanceRegionId: pulumi.String("cn-beijing"),
 // 		})
 // 		if err != nil {
@@ -54,14 +57,20 @@ import (
 type InstanceAttachment struct {
 	pulumi.CustomResourceState
 
+	// The account ID to which the CEN instance belongs.
+	CenOwnerId pulumi.IntPtrOutput `pulumi:"cenOwnerId"`
 	// The ID of the child instance to attach.
 	ChildInstanceId pulumi.StringOutput `pulumi:"childInstanceId"`
 	// The uid of the child instance. Only used when attach a child instance of other account.
-	ChildInstanceOwnerId pulumi.StringOutput `pulumi:"childInstanceOwnerId"`
+	ChildInstanceOwnerId pulumi.IntOutput `pulumi:"childInstanceOwnerId"`
 	// The region ID of the child instance to attach.
 	ChildInstanceRegionId pulumi.StringOutput `pulumi:"childInstanceRegionId"`
+	// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+	ChildInstanceType pulumi.StringOutput `pulumi:"childInstanceType"`
 	// The ID of the CEN.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// The associating status of the network.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewInstanceAttachment registers a new resource with the given unique name, arguments, and options.
@@ -72,6 +81,9 @@ func NewInstanceAttachment(ctx *pulumi.Context,
 	}
 	if args == nil || args.ChildInstanceRegionId == nil {
 		return nil, errors.New("missing required argument 'ChildInstanceRegionId'")
+	}
+	if args == nil || args.ChildInstanceType == nil {
+		return nil, errors.New("missing required argument 'ChildInstanceType'")
 	}
 	if args == nil || args.InstanceId == nil {
 		return nil, errors.New("missing required argument 'InstanceId'")
@@ -101,25 +113,37 @@ func GetInstanceAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceAttachment resources.
 type instanceAttachmentState struct {
+	// The account ID to which the CEN instance belongs.
+	CenOwnerId *int `pulumi:"cenOwnerId"`
 	// The ID of the child instance to attach.
 	ChildInstanceId *string `pulumi:"childInstanceId"`
 	// The uid of the child instance. Only used when attach a child instance of other account.
-	ChildInstanceOwnerId *string `pulumi:"childInstanceOwnerId"`
+	ChildInstanceOwnerId *int `pulumi:"childInstanceOwnerId"`
 	// The region ID of the child instance to attach.
 	ChildInstanceRegionId *string `pulumi:"childInstanceRegionId"`
+	// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+	ChildInstanceType *string `pulumi:"childInstanceType"`
 	// The ID of the CEN.
 	InstanceId *string `pulumi:"instanceId"`
+	// The associating status of the network.
+	Status *string `pulumi:"status"`
 }
 
 type InstanceAttachmentState struct {
+	// The account ID to which the CEN instance belongs.
+	CenOwnerId pulumi.IntPtrInput
 	// The ID of the child instance to attach.
 	ChildInstanceId pulumi.StringPtrInput
 	// The uid of the child instance. Only used when attach a child instance of other account.
-	ChildInstanceOwnerId pulumi.StringPtrInput
+	ChildInstanceOwnerId pulumi.IntPtrInput
 	// The region ID of the child instance to attach.
 	ChildInstanceRegionId pulumi.StringPtrInput
+	// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+	ChildInstanceType pulumi.StringPtrInput
 	// The ID of the CEN.
 	InstanceId pulumi.StringPtrInput
+	// The associating status of the network.
+	Status pulumi.StringPtrInput
 }
 
 func (InstanceAttachmentState) ElementType() reflect.Type {
@@ -127,24 +151,32 @@ func (InstanceAttachmentState) ElementType() reflect.Type {
 }
 
 type instanceAttachmentArgs struct {
+	// The account ID to which the CEN instance belongs.
+	CenOwnerId *int `pulumi:"cenOwnerId"`
 	// The ID of the child instance to attach.
 	ChildInstanceId string `pulumi:"childInstanceId"`
 	// The uid of the child instance. Only used when attach a child instance of other account.
-	ChildInstanceOwnerId *string `pulumi:"childInstanceOwnerId"`
+	ChildInstanceOwnerId *int `pulumi:"childInstanceOwnerId"`
 	// The region ID of the child instance to attach.
 	ChildInstanceRegionId string `pulumi:"childInstanceRegionId"`
+	// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+	ChildInstanceType string `pulumi:"childInstanceType"`
 	// The ID of the CEN.
 	InstanceId string `pulumi:"instanceId"`
 }
 
 // The set of arguments for constructing a InstanceAttachment resource.
 type InstanceAttachmentArgs struct {
+	// The account ID to which the CEN instance belongs.
+	CenOwnerId pulumi.IntPtrInput
 	// The ID of the child instance to attach.
 	ChildInstanceId pulumi.StringInput
 	// The uid of the child instance. Only used when attach a child instance of other account.
-	ChildInstanceOwnerId pulumi.StringPtrInput
+	ChildInstanceOwnerId pulumi.IntPtrInput
 	// The region ID of the child instance to attach.
 	ChildInstanceRegionId pulumi.StringInput
+	// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+	ChildInstanceType pulumi.StringInput
 	// The ID of the CEN.
 	InstanceId pulumi.StringInput
 }

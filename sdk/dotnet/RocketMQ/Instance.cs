@@ -32,6 +32,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///     {
     ///         var example = new AliCloud.RocketMQ.Instance("example", new AliCloud.RocketMQ.InstanceArgs
     ///         {
+    ///             InstanceName = "tf-example-ons-instance",
     ///             Remark = "tf-example-ons-instance-remark",
     ///         });
     ///     }
@@ -41,6 +42,12 @@ namespace Pulumi.AliCloud.RocketMQ
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+        /// </summary>
+        [Output("instanceName")]
+        public Output<string> InstanceName { get; private set; } = null!;
+
         /// <summary>
         /// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
         /// </summary>
@@ -54,7 +61,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<int> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+        /// Replaced by `instance_name` after version 1.97.0.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -70,6 +77,20 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         [Output("remark")]
         public Output<string?> Remark { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
+        /// </summary>
+        [Output("status")]
+        public Output<int> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -120,6 +141,12 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <summary>
         /// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
         /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
+        /// <summary>
+        /// Replaced by `instance_name` after version 1.97.0.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -129,6 +156,20 @@ namespace Pulumi.AliCloud.RocketMQ
         [Input("remark")]
         public Input<string>? Remark { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         public InstanceArgs()
         {
         }
@@ -136,6 +177,12 @@ namespace Pulumi.AliCloud.RocketMQ
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
         /// <summary>
         /// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
         /// </summary>
@@ -149,7 +196,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<int>? InstanceType { get; set; }
 
         /// <summary>
-        /// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+        /// Replaced by `instance_name` after version 1.97.0.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -165,6 +212,26 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         [Input("remark")]
         public Input<string>? Remark { get; set; }
+
+        /// <summary>
+        /// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
+        /// </summary>
+        [Input("status")]
+        public Input<int>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public InstanceState()
         {

@@ -9,6 +9,7 @@ export * from "./flowLog";
 export * from "./getBandwidthLimits";
 export * from "./getBandwidthPackages";
 export * from "./getFlowlogs";
+export * from "./getInstanceAttachments";
 export * from "./getInstances";
 export * from "./getPrivateZones";
 export * from "./getRegionRouteEntries";

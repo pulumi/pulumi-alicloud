@@ -8,4 +8,5 @@ export * from "./getBucketObjects";
 export * from "./getBuckets";
 export * from "./getInstanceAttachments";
 export * from "./getInstances";
+export * from "./getService";
 export * from "./getTables";

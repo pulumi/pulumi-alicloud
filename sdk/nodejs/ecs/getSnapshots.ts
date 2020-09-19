@@ -30,32 +30,21 @@ import * as utilities from "../utilities";
  *
  * * `instanceId` - (Optional) The specified instance ID.
  * * `diskId` - (Optional) The specified disk ID.
- * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values:
- *   * true: Encrypted snapshots.
- *   * false: No encryption attribute limit.
- *   
- *   Default value: false.
+ * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
  * * `ids` - (Optional)  A list of snapshot IDs.
  * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
- * * `status` - (Optional) The specified snapshot status.
- *   * The snapshot status. Optional values:
+ * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
  *   * progressing: The snapshots are being created.
  *   * accomplished: The snapshots are ready to use.
  *   * failed: The snapshot creation failed.
  *   * all: All status.
- *   
- *   Default value: all.
- *
- * * `type` - (Optional) The snapshot category. Optional values:
+ * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
  *   * auto: Auto snapshots.
  *   * user: Manual snapshots.
  *   * all: Auto and manual snapshots.
- *   
- *   Default value: all.
  * * `sourceDiskType` - (Optional) The type of source disk:
  *   * System: The snapshots are created for system disks.
  *   * Data: The snapshots are created for data disks.
- *
  * * `usage` - (Optional) The usage of the snapshot:
  *   * image: The snapshots are used to create custom images.
  *   * disk: The snapshots are used to CreateDisk.
@@ -105,16 +94,11 @@ export interface GetSnapshotsArgs {
     readonly nameRegex?: string;
     readonly outputFile?: string;
     /**
-     * Source disk attribute. Value range:
-     * * System
-     * * Data
+     * Source disk attribute. Value range: `System`,`Data`.
      */
     readonly sourceDiskType?: string;
     /**
-     * The snapshot status. Value range:
-     * * progressing
-     * * accomplished
-     * * failed
+     * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
      */
     readonly status?: string;
     /**
@@ -123,11 +107,7 @@ export interface GetSnapshotsArgs {
     readonly tags?: {[key: string]: any};
     readonly type?: string;
     /**
-     * Whether the snapshots are used to create resources or not. Value range:
-     * * image
-     * * disk
-     * * imageDisk
-     * * none
+     * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
      */
     readonly usage?: string;
 }
@@ -161,16 +141,11 @@ export interface GetSnapshotsResult {
      */
     readonly snapshots: outputs.ecs.GetSnapshotsSnapshot[];
     /**
-     * Source disk attribute. Value range:
-     * * System
-     * * Data
+     * Source disk attribute. Value range: `System`,`Data`.
      */
     readonly sourceDiskType?: string;
     /**
-     * The snapshot status. Value range:
-     * * progressing
-     * * accomplished
-     * * failed
+     * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
      */
     readonly status?: string;
     /**
@@ -179,11 +154,7 @@ export interface GetSnapshotsResult {
     readonly tags?: {[key: string]: any};
     readonly type?: string;
     /**
-     * Whether the snapshots are used to create resources or not. Value range:
-     * * image
-     * * disk
-     * * imageDisk
-     * * none
+     * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
      */
     readonly usage?: string;
 }

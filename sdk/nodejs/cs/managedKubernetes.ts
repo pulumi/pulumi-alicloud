@@ -162,6 +162,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly slbIntranet!: pulumi.Output<string>;
     /**
+     * Default nil, A map of tags assigned to the kubernetes cluster .
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
     public readonly userCa!: pulumi.Output<string | undefined>;
@@ -281,6 +285,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["slbInternet"] = state ? state.slbInternet : undefined;
             inputs["slbInternetEnabled"] = state ? state.slbInternetEnabled : undefined;
             inputs["slbIntranet"] = state ? state.slbIntranet : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["userCa"] = state ? state.userCa : undefined;
             inputs["userData"] = state ? state.userData : undefined;
             inputs["version"] = state ? state.version : undefined;
@@ -340,6 +345,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["serviceAccountIssuer"] = args ? args.serviceAccountIssuer : undefined;
             inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             inputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["userCa"] = args ? args.userCa : undefined;
             inputs["userData"] = args ? args.userData : undefined;
             inputs["version"] = args ? args.version : undefined;
@@ -507,6 +513,10 @@ export interface ManagedKubernetesState {
      * The ID of private load balancer where the current cluster master node is located.
      */
     readonly slbIntranet?: pulumi.Input<string>;
+    /**
+     * Default nil, A map of tags assigned to the kubernetes cluster .
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
@@ -696,6 +706,10 @@ export interface ManagedKubernetesArgs {
      * Whether to create internet load balancer for API Server. Default to true.
      */
     readonly slbInternetEnabled?: pulumi.Input<boolean>;
+    /**
+     * Default nil, A map of tags assigned to the kubernetes cluster .
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */

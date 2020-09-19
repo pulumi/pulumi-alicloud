@@ -47,15 +47,22 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
+	// Default to `false`. Set it to true can output more details.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of instance IDs to filter results.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by the instance name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+	Status *int `pulumi:"status"`
+	// A map of tags assigned to the Ons instance.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of instance IDs.
@@ -66,4 +73,8 @@ type GetInstancesResult struct {
 	// A list of instance names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
+	Status *int `pulumi:"status"`
+	// A map of tags assigned to the Ons instance.
+	Tags map[string]interface{} `pulumi:"tags"`
 }

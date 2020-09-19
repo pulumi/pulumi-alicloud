@@ -26,9 +26,34 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     public MyStack()
         ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetServerGroups.InvokeAsync(new AliCloud.Slb.GetServerGroupsArgs
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "slbservergroups";
+        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
         ///         {
-        ///             LoadBalancerId = alicloud_slb.Sample_slb.Id,
+        ///             AvailableDiskCategory = "cloud_efficiency",
+        ///             AvailableResourceCreation = "VSwitch",
+        ///         }));
+        ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/16",
+        ///         });
+        ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             VpcId = defaultNetwork.Id,
+        ///             CidrBlock = "172.16.0.0/16",
+        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+        ///         });
+        ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+        ///         {
+        ///             VswitchId = defaultSwitch.Id,
+        ///         });
+        ///         var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new AliCloud.Slb.ServerGroupArgs
+        ///         {
+        ///             LoadBalancerId = defaultLoadBalancer.Id,
+        ///         });
+        ///         var sampleDs = defaultLoadBalancer.Id.Apply(id =&gt; AliCloud.Slb.GetServerGroups.InvokeAsync(new AliCloud.Slb.GetServerGroupsArgs
+        ///         {
+        ///             LoadBalancerId = id,
         ///         }));
         ///         this.FirstSlbServerGroupId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbServerGroups[0].Id);
         ///     }

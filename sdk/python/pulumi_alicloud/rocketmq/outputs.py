@@ -68,26 +68,74 @@ class GetGroupsGroupResult(dict):
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
+                 http_internal_endpoint: str,
+                 http_internet_endpoint: str,
+                 http_internet_secure_endpoint: str,
                  id: str,
+                 independent_naming: bool,
                  instance_id: str,
                  instance_name: str,
                  instance_status: float,
                  instance_type: float,
-                 release_time: float):
+                 release_time: str,
+                 remark: str,
+                 status: float,
+                 tags: Mapping[str, Any],
+                 tcp_endpoint: str):
         """
+        :param str http_internal_endpoint: The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+        :param str http_internet_endpoint: The public HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+        :param str http_internet_secure_endpoint: The public HTTPS endpoint for the Message Queue for Apache RocketMQ instance.
         :param str id: ID of the instance.
+        :param bool independent_naming: Indicates whether any namespace is configured for the Message Queue for Apache RocketMQ instance.
         :param str instance_id: ID of the instance.
         :param str instance_name: Name of the instance.
         :param float instance_status: The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
         :param float instance_type: The type of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
-        :param float release_time: The automatic release time of an Enterprise Platinum Edition instance.
+        :param str release_time: The automatic release time of an Enterprise Platinum Edition instance.
+        :param str remark: This attribute is a concise description of instance.
+        :param float status: The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+        :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
+        :param str tcp_endpoint: The TCP endpoint for the Message Queue for Apache RocketMQ instance.
         """
+        pulumi.set(__self__, "http_internal_endpoint", http_internal_endpoint)
+        pulumi.set(__self__, "http_internet_endpoint", http_internet_endpoint)
+        pulumi.set(__self__, "http_internet_secure_endpoint", http_internet_secure_endpoint)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "independent_naming", independent_naming)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "instance_status", instance_status)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "release_time", release_time)
+        pulumi.set(__self__, "remark", remark)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "tcp_endpoint", tcp_endpoint)
+
+    @property
+    @pulumi.getter(name="httpInternalEndpoint")
+    def http_internal_endpoint(self) -> str:
+        """
+        The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+        """
+        return pulumi.get(self, "http_internal_endpoint")
+
+    @property
+    @pulumi.getter(name="httpInternetEndpoint")
+    def http_internet_endpoint(self) -> str:
+        """
+        The public HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+        """
+        return pulumi.get(self, "http_internet_endpoint")
+
+    @property
+    @pulumi.getter(name="httpInternetSecureEndpoint")
+    def http_internet_secure_endpoint(self) -> str:
+        """
+        The public HTTPS endpoint for the Message Queue for Apache RocketMQ instance.
+        """
+        return pulumi.get(self, "http_internet_secure_endpoint")
 
     @property
     @pulumi.getter
@@ -96,6 +144,14 @@ class GetInstancesInstanceResult(dict):
         ID of the instance.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="independentNaming")
+    def independent_naming(self) -> bool:
+        """
+        Indicates whether any namespace is configured for the Message Queue for Apache RocketMQ instance.
+        """
+        return pulumi.get(self, "independent_naming")
 
     @property
     @pulumi.getter(name="instanceId")
@@ -131,50 +187,94 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="releaseTime")
-    def release_time(self) -> float:
+    def release_time(self) -> str:
         """
         The automatic release time of an Enterprise Platinum Edition instance.
         """
         return pulumi.get(self, "release_time")
 
+    @property
+    @pulumi.getter
+    def remark(self) -> str:
+        """
+        This attribute is a concise description of instance.
+        """
+        return pulumi.get(self, "remark")
+
+    @property
+    @pulumi.getter
+    def status(self) -> float:
+        """
+        The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the Ons instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tcpEndpoint")
+    def tcp_endpoint(self) -> str:
+        """
+        The TCP endpoint for the Message Queue for Apache RocketMQ instance.
+        """
+        return pulumi.get(self, "tcp_endpoint")
+
 
 @pulumi.output_type
 class GetTopicsTopicResult(dict):
     def __init__(__self__, *,
-                 create_time: str,
+                 id: str,
                  independent_naming: bool,
+                 instance_id: str,
                  message_type: float,
                  owner: str,
+                 perm: float,
                  relation: float,
                  relation_name: str,
                  remark: str,
-                 topic: str):
+                 tags: Mapping[str, Any],
+                 topic: str,
+                 topic_name: str):
         """
-        :param str create_time: Time of creation.
+        :param str id: The id of the topic.
         :param bool independent_naming: Indicates whether namespaces are available. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
+        :param str instance_id: ID of the ONS Instance that owns the topics.
         :param float message_type: The type of the message. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
         :param str owner: The ID of the topic owner, which is the Alibaba Cloud UID.
+        :param float perm: This attribute is used to set the read-write mode for the topic.
         :param float relation: The relation ID. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
         :param str relation_name: The name of the relation, for example, owner, publishable, subscribable, and publishable and subscribable.
         :param str remark: Remark of the topic.
+        :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
         :param str topic: The name of the topic.
+        :param str topic_name: The name of the topic.
         """
-        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "independent_naming", independent_naming)
+        pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "message_type", message_type)
         pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "perm", perm)
         pulumi.set(__self__, "relation", relation)
         pulumi.set(__self__, "relation_name", relation_name)
         pulumi.set(__self__, "remark", remark)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "topic", topic)
+        pulumi.set(__self__, "topic_name", topic_name)
 
     @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    @pulumi.getter
+    def id(self) -> str:
         """
-        Time of creation.
+        The id of the topic.
         """
-        return pulumi.get(self, "create_time")
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="independentNaming")
@@ -183,6 +283,14 @@ class GetTopicsTopicResult(dict):
         Indicates whether namespaces are available. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
         """
         return pulumi.get(self, "independent_naming")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        ID of the ONS Instance that owns the topics.
+        """
+        return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="messageType")
@@ -199,6 +307,14 @@ class GetTopicsTopicResult(dict):
         The ID of the topic owner, which is the Alibaba Cloud UID.
         """
         return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter
+    def perm(self) -> float:
+        """
+        This attribute is used to set the read-write mode for the topic.
+        """
+        return pulumi.get(self, "perm")
 
     @property
     @pulumi.getter
@@ -226,10 +342,26 @@ class GetTopicsTopicResult(dict):
 
     @property
     @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the Ons instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
     def topic(self) -> str:
         """
         The name of the topic.
         """
         return pulumi.get(self, "topic")
+
+    @property
+    @pulumi.getter(name="topicName")
+    def topic_name(self) -> str:
+        """
+        The name of the topic.
+        """
+        return pulumi.get(self, "topic_name")
 
 

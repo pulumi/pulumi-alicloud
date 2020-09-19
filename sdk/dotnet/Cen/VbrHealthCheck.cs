@@ -37,6 +37,7 @@ namespace Pulumi.AliCloud.Cen
     ///         {
     ///             InstanceId = defaultInstance.Id,
     ///             ChildInstanceId = "vbr-xxxxx",
+    ///             ChildInstanceType = "VBR",
     ///             ChildInstanceRegionId = "cn-hangzhou",
     ///         });
     ///         var defaultVbrHealthCheck = new AliCloud.Cen.VbrHealthCheck("defaultVbrHealthCheck", new AliCloud.Cen.VbrHealthCheckArgs

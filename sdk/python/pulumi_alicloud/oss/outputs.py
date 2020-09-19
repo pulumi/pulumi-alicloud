@@ -1160,7 +1160,7 @@ class GetInstancesInstanceResult(dict):
                import pulumi
                import pulumi_alicloud as alicloud
                
-               instances_ds = alicloud.oss.get_instances(tags={
+               instances_ds = alicloud.ots.get_instances(tags={
                    "tagKey1": "tagValue1",
                    "tagKey2": "tagValue2",
                })
@@ -1262,7 +1262,7 @@ class GetInstancesInstanceResult(dict):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        instances_ds = alicloud.oss.get_instances(tags={
+        instances_ds = alicloud.ots.get_instances(tags={
             "tagKey1": "tagValue1",
             "tagKey2": "tagValue2",
         })

@@ -74,12 +74,14 @@ namespace Pulumi.AliCloud.Cen
     ///         {
     ///             InstanceId = cen.Id,
     ///             ChildInstanceId = vpc1.Id,
+    ///             ChildInstanceType = "VPC",
     ///             ChildInstanceRegionId = "eu-central-1",
     ///         });
     ///         var vpcAttach2 = new AliCloud.Cen.InstanceAttachment("vpcAttach2", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
     ///             InstanceId = cen.Id,
     ///             ChildInstanceId = vpc2.Id,
+    ///             ChildInstanceType = "VPC",
     ///             ChildInstanceRegionId = "cn-shanghai",
     ///         });
     ///         var foo = new AliCloud.Cen.BandwidthLimit("foo", new AliCloud.Cen.BandwidthLimitArgs

@@ -10,4 +10,5 @@ export * from "./getAccessRules";
 export * from "./getFileSystems";
 export * from "./getMountTargets";
 export * from "./getProtocols";
+export * from "./getService";
 export * from "./mountTarget";

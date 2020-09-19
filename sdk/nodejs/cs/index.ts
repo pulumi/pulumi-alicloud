@@ -14,6 +14,7 @@ export * from "./getServerlessKubernetesClusters";
 export * from "./kubernetes";
 export * from "./kubernetesAutoscaler";
 export * from "./managedKubernetes";
+export * from "./nodePool";
 export * from "./registryEnterpriseNamespace";
 export * from "./registryEnterpriseRepo";
 export * from "./registryEnterpriseSyncRule";

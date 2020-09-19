@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Using this data source can open API gateway service automatically. If the service has been opened, it will return opened.
+// Using this data source can enable API gateway service automatically. If the service has been enabled, it will return `Opened`.
 //
 // For information about API Gateway and how to use it, see [What is API Gateway](https://www.alibabacloud.com/help/product/29462.htm).
 //
@@ -47,7 +47,7 @@ func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getService.
 type GetServiceArgs struct {
-	// Setting the value to `On` to enable the service. If has been opened, return the result.
+	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off".
 	Enable *string `pulumi:"enable"`
 }
 
