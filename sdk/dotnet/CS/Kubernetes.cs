@@ -261,6 +261,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SlbIntranet { get; private set; } = null!;
 
         /// <summary>
+        /// Default nil, A map of tags assigned to the kubernetes cluster .
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         /// </summary>
         [Output("userCa")]
@@ -670,6 +676,18 @@ namespace Pulumi.AliCloud.CS
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Default nil, A map of tags assigned to the kubernetes cluster .
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         /// </summary>
@@ -1075,6 +1093,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("slbIntranet")]
         public Input<string>? SlbIntranet { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Default nil, A map of tags assigned to the kubernetes cluster .
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.

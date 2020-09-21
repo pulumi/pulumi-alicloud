@@ -17,7 +17,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -25,7 +25,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "sample-table"
 // 		opt1 := "tables.txt"
-// 		tablesDs, err := oss.GetTables(ctx, &oss.GetTablesArgs{
+// 		tablesDs, err := ots.GetTables(ctx, &ots.GetTablesArgs{
 // 			InstanceName: "sample-instance",
 // 			NameRegex:    &opt0,
 // 			OutputFile:   &opt1,
@@ -38,6 +38,8 @@ import (
 // 	})
 // }
 // ```
+//
+// Deprecated: alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
 func GetTables(ctx *pulumi.Context, args *GetTablesArgs, opts ...pulumi.InvokeOption) (*GetTablesResult, error) {
 	var rv GetTablesResult
 	err := ctx.Invoke("alicloud:oss/getTables:getTables", args, &rv, opts...)

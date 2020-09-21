@@ -65,6 +65,7 @@ import (
 // 		default00, err := cen.NewInstanceAttachment(ctx, "default00", &cen.InstanceAttachmentArgs{
 // 			InstanceId:            defaultInstance.ID(),
 // 			ChildInstanceId:       vpc00.ID(),
+// 			ChildInstanceType:     pulumi.String("VPC"),
 // 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
 // 		})
 // 		if err != nil {
@@ -73,6 +74,7 @@ import (
 // 		default01, err := cen.NewInstanceAttachment(ctx, "default01", &cen.InstanceAttachmentArgs{
 // 			InstanceId:            defaultInstance.ID(),
 // 			ChildInstanceId:       vpc01.ID(),
+// 			ChildInstanceType:     pulumi.String("VPC"),
 // 			ChildInstanceRegionId: pulumi.String("cn-shanghai"),
 // 		})
 // 		if err != nil {

@@ -44,11 +44,13 @@ import * as utilities from "../utilities";
  * const vpcAttach1 = new alicloud.cen.InstanceAttachment("vpcAttach1", {
  *     instanceId: cen.id,
  *     childInstanceId: vpc1.id,
+ *     childInstanceType: "VPC",
  *     childInstanceRegionId: "eu-central-1",
  * });
  * const vpcAttach2 = new alicloud.cen.InstanceAttachment("vpcAttach2", {
  *     instanceId: cen.id,
  *     childInstanceId: vpc2.id,
+ *     childInstanceType: "VPC",
  *     childInstanceRegionId: "cn-shanghai",
  * });
  * const foo = new alicloud.cen.BandwidthLimit("foo", {

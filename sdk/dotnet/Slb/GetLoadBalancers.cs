@@ -26,6 +26,9 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     public MyStack()
         ///     {
+        ///         var @default = new AliCloud.Slb.LoadBalancer("default", new AliCloud.Slb.LoadBalancerArgs
+        ///         {
+        ///         });
         ///         var slbsDs = Output.Create(AliCloud.Slb.GetLoadBalancers.InvokeAsync(new AliCloud.Slb.GetLoadBalancersArgs
         ///         {
         ///             NameRegex = "sample_slb",

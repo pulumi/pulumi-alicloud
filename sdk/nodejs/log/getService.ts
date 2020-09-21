@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Using this data source can open Log service automatically. If the service has been opened, it will return opened.
+ * Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
  *
  * For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
  *
@@ -43,7 +43,7 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetServiceArgs {
     /**
-     * Setting the value to `On` to enable the service. If has been opened, return the result.
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off".
      */
     readonly enable?: string;
 }

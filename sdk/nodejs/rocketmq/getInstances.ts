@@ -42,9 +42,12 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:rocketmq/getInstances:getInstances", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "status": args.status,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -52,6 +55,10 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesArgs {
+    /**
+     * Default to `false`. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
     /**
      * A list of instance IDs to filter results.
      */
@@ -61,12 +68,21 @@ export interface GetInstancesArgs {
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+     */
+    readonly status?: number;
+    /**
+     * A map of tags assigned to the Ons instance.
+     */
+    readonly tags?: {[key: string]: any};
 }
 
 /**
  * A collection of values returned by getInstances.
  */
 export interface GetInstancesResult {
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -85,4 +101,12 @@ export interface GetInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
+     */
+    readonly status?: number;
+    /**
+     * A map of tags assigned to the Ons instance.
+     */
+    readonly tags?: {[key: string]: any};
 }

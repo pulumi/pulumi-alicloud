@@ -13,6 +13,7 @@ __all__ = [
     'GetBandwidthLimitsLimitResult',
     'GetBandwidthPackagesPackageResult',
     'GetFlowlogsFlowlogResult',
+    'GetInstanceAttachmentsAttachmentResult',
     'GetInstancesInstanceResult',
     'GetPrivateZonesZoneResult',
     'GetRegionRouteEntriesEntryResult',
@@ -302,6 +303,101 @@ class GetFlowlogsFlowlogResult(dict):
     def status(self) -> str:
         """
         The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetInstanceAttachmentsAttachmentResult(dict):
+    def __init__(__self__, *,
+                 child_instance_attach_time: str,
+                 child_instance_id: str,
+                 child_instance_owner_id: float,
+                 child_instance_region_id: str,
+                 child_instance_type: str,
+                 id: str,
+                 instance_id: str,
+                 status: str):
+        """
+        :param str child_instance_attach_time: The time when the network is associated with the CEN instance.
+        :param str child_instance_id: The ID of the network.
+        :param float child_instance_owner_id: The ID of the account to which the network belongs.
+        :param str child_instance_region_id: The region to which the network to be queried belongs.
+        :param str child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+        :param str id: The ID of the CEN Instance Attachment.
+        :param str instance_id: The ID of the CEN instance.
+        :param str status: The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
+        """
+        pulumi.set(__self__, "child_instance_attach_time", child_instance_attach_time)
+        pulumi.set(__self__, "child_instance_id", child_instance_id)
+        pulumi.set(__self__, "child_instance_owner_id", child_instance_owner_id)
+        pulumi.set(__self__, "child_instance_region_id", child_instance_region_id)
+        pulumi.set(__self__, "child_instance_type", child_instance_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="childInstanceAttachTime")
+    def child_instance_attach_time(self) -> str:
+        """
+        The time when the network is associated with the CEN instance.
+        """
+        return pulumi.get(self, "child_instance_attach_time")
+
+    @property
+    @pulumi.getter(name="childInstanceId")
+    def child_instance_id(self) -> str:
+        """
+        The ID of the network.
+        """
+        return pulumi.get(self, "child_instance_id")
+
+    @property
+    @pulumi.getter(name="childInstanceOwnerId")
+    def child_instance_owner_id(self) -> float:
+        """
+        The ID of the account to which the network belongs.
+        """
+        return pulumi.get(self, "child_instance_owner_id")
+
+    @property
+    @pulumi.getter(name="childInstanceRegionId")
+    def child_instance_region_id(self) -> str:
+        """
+        The region to which the network to be queried belongs.
+        """
+        return pulumi.get(self, "child_instance_region_id")
+
+    @property
+    @pulumi.getter(name="childInstanceType")
+    def child_instance_type(self) -> str:
+        """
+        The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+        """
+        return pulumi.get(self, "child_instance_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the CEN Instance Attachment.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the CEN instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
         """
         return pulumi.get(self, "status")
 

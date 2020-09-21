@@ -15,6 +15,8 @@ __all__ = [
     'get_tables',
 ]
 
+warnings.warn("alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables", DeprecationWarning)
+
 @pulumi.output_type
 class GetTablesResult:
     """
@@ -125,7 +127,7 @@ def get_tables(ids: Optional[List[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    tables_ds = alicloud.oss.get_tables(instance_name="sample-instance",
+    tables_ds = alicloud.ots.get_tables(instance_name="sample-instance",
         name_regex="sample-table",
         output_file="tables.txt")
     pulumi.export("firstTableId", tables_ds.tables[0].id)
@@ -136,6 +138,7 @@ def get_tables(ids: Optional[List[str]] = None,
     :param str instance_name: The name of OTS instance.
     :param str name_regex: A regex string to filter results by table name.
     """
+    pulumi.log.warn("get_tables is deprecated: alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables")
     __args__ = dict()
     __args__['ids'] = ids
     __args__['instanceName'] = instance_name

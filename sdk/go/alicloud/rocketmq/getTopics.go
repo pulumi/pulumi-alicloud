@@ -24,22 +24,23 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
-// 			Remark: pulumi.String("default_ons_instance_remark"),
+// 			InstanceName: pulumi.String(name),
+// 			Remark:       pulumi.String("default_ons_instance_remark"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultTopic, err := rocketmq.NewTopic(ctx, "defaultTopic", &rocketmq.TopicArgs{
+// 			TopicName:   pulumi.String(topic),
 // 			InstanceId:  defaultInstance.ID(),
 // 			MessageType: pulumi.Int(0),
 // 			Remark:      pulumi.String("dafault_ons_topic_remark"),
-// 			Topic:       pulumi.String(topic),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("firstTopicName", topicsDs.ApplyT(func(topicsDs rocketmq.GetTopicsResult) (string, error) {
-// 			return topicsDs.Topics[0].Topic, nil
+// 			return topicsDs.Topics[0].TopicName, nil
 // 		}).(pulumi.StringOutput))
 // 		return nil
 // 	})
@@ -56,22 +57,31 @@ func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getTopics.
 type GetTopicsArgs struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// A list of topic IDs to filter results.
+	Ids []string `pulumi:"ids"`
 	// ID of the ONS Instance that owns the topics.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by the topic name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	// A map of tags assigned to the Ons instance.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // A collection of values returned by getTopics.
 type GetTopicsResult struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	InstanceId string  `pulumi:"instanceId"`
-	NameRegex  *string `pulumi:"nameRegex"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	InstanceId string   `pulumi:"instanceId"`
+	NameRegex  *string  `pulumi:"nameRegex"`
 	// A list of topic names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// A map of tags assigned to the Ons instance.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// A list of topics. Each element contains the following attributes:
 	Topics []GetTopicsTopic `pulumi:"topics"`
 }

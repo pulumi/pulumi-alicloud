@@ -65,6 +65,12 @@ namespace Pulumi.AliCloud.RocketMQ
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -86,6 +92,24 @@ namespace Pulumi.AliCloud.RocketMQ
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+        /// </summary>
+        [Input("status")]
+        public int? Status { get; set; }
+
+        [Input("tags")]
+        private Dictionary<string, object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the Ons instance.
+        /// </summary>
+        public Dictionary<string, object> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, object>());
+            set => _tags = value;
+        }
+
         public GetInstancesArgs()
         {
         }
@@ -95,6 +119,7 @@ namespace Pulumi.AliCloud.RocketMQ
     [OutputType]
     public sealed class GetInstancesResult
     {
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -113,9 +138,19 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
+        /// </summary>
+        public readonly int? Status;
+        /// <summary>
+        /// A map of tags assigned to the Ons instance.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Tags;
 
         [OutputConstructor]
         private GetInstancesResult(
+            bool? enableDetails,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -126,14 +161,21 @@ namespace Pulumi.AliCloud.RocketMQ
 
             ImmutableArray<string> names,
 
-            string? outputFile)
+            string? outputFile,
+
+            int? status,
+
+            ImmutableDictionary<string, object>? tags)
         {
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             Instances = instances;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            Status = status;
+            Tags = tags;
         }
     }
 }

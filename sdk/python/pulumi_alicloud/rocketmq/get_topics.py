@@ -20,10 +20,16 @@ class GetTopicsResult:
     """
     A collection of values returned by getTopics.
     """
-    def __init__(__self__, id=None, instance_id=None, name_regex=None, names=None, output_file=None, topics=None):
+    def __init__(__self__, enable_details=None, id=None, ids=None, instance_id=None, name_regex=None, names=None, output_file=None, tags=None, topics=None):
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ids and not isinstance(ids, list):
+            raise TypeError("Expected argument 'ids' to be a list")
+        pulumi.set(__self__, "ids", ids)
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
@@ -36,9 +42,17 @@ class GetTopicsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if topics and not isinstance(topics, list):
             raise TypeError("Expected argument 'topics' to be a list")
         pulumi.set(__self__, "topics", topics)
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -47,6 +61,11 @@ class GetTopicsResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> List[str]:
+        return pulumi.get(self, "ids")
 
     @property
     @pulumi.getter(name="instanceId")
@@ -73,6 +92,14 @@ class GetTopicsResult:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        A map of tags assigned to the Ons instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
     def topics(self) -> List['outputs.GetTopicsTopicResult']:
         """
         A list of topics. Each element contains the following attributes:
@@ -86,17 +113,23 @@ class AwaitableGetTopicsResult(GetTopicsResult):
         if False:
             yield self
         return GetTopicsResult(
+            enable_details=self.enable_details,
             id=self.id,
+            ids=self.ids,
             instance_id=self.instance_id,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            tags=self.tags,
             topics=self.topics)
 
 
-def get_topics(instance_id: Optional[str] = None,
+def get_topics(enable_details: Optional[bool] = None,
+               ids: Optional[List[str]] = None,
+               instance_id: Optional[str] = None,
                name_regex: Optional[str] = None,
                output_file: Optional[str] = None,
+               tags: Optional[Mapping[str, Any]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTopicsResult:
     """
     This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
@@ -116,26 +149,33 @@ def get_topics(instance_id: Optional[str] = None,
     topic = config.get("topic")
     if topic is None:
         topic = "onsTopicDatasourceName"
-    default_instance = alicloud.rocketmq.Instance("defaultInstance", remark="default_ons_instance_remark")
+    default_instance = alicloud.rocketmq.Instance("defaultInstance",
+        instance_name=name,
+        remark="default_ons_instance_remark")
     default_topic = alicloud.rocketmq.Topic("defaultTopic",
+        topic_name=topic,
         instance_id=default_instance.id,
         message_type=0,
-        remark="dafault_ons_topic_remark",
-        topic=topic)
+        remark="dafault_ons_topic_remark")
     topics_ds = default_topic.instance_id.apply(lambda instance_id: alicloud.rocketmq.get_topics(instance_id=instance_id,
         name_regex=topic,
         output_file="topics.txt"))
-    pulumi.export("firstTopicName", topics_ds.topics[0].topic)
+    pulumi.export("firstTopicName", topics_ds.topics[0].topic_name)
     ```
 
 
+    :param List[str] ids: A list of topic IDs to filter results.
     :param str instance_id: ID of the ONS Instance that owns the topics.
     :param str name_regex: A regex string to filter results by the topic name.
+    :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
     __args__['instanceId'] = instance_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -143,9 +183,12 @@ def get_topics(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rocketmq/getTopics:getTopics', __args__, opts=opts, typ=GetTopicsResult).value
 
     return AwaitableGetTopicsResult(
+        enable_details=__ret__.enable_details,
         id=__ret__.id,
+        ids=__ret__.ids,
         instance_id=__ret__.instance_id,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
+        tags=__ret__.tags,
         topics=__ret__.topics)

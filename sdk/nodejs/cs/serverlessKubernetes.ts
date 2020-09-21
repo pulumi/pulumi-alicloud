@@ -87,6 +87,10 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+     */
+    public readonly version!: pulumi.Output<string>;
+    /**
      * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
      */
     public readonly vpcId!: pulumi.Output<string>;
@@ -127,6 +131,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["privateZone"] = state ? state.privateZone : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["version"] = state ? state.version : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
@@ -149,6 +154,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["privateZone"] = args ? args.privateZone : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["version"] = args ? args.version : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["vswitchIds"] = args ? args.vswitchIds : undefined;
@@ -221,6 +227,10 @@ export interface ServerlessKubernetesState {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+     */
+    readonly version?: pulumi.Input<string>;
+    /**
      * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
      */
     readonly vpcId?: pulumi.Input<string>;
@@ -292,6 +302,10 @@ export interface ServerlessKubernetesArgs {
      * Default nil, A map of tags assigned to the kubernetes cluster .
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+     */
+    readonly version?: pulumi.Input<string>;
     /**
      * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
      */

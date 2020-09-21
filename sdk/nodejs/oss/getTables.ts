@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const tablesDs = pulumi.output(alicloud.oss.getTables({
+ * const tablesDs = pulumi.output(alicloud.ots.getTables({
  *     instanceName: "sample-instance",
  *     nameRegex: "sample-table",
  *     outputFile: "tables.txt",
@@ -26,7 +26,9 @@ import * as utilities from "../utilities";
  * export const firstTableId = tablesDs.tables[0].id;
  * ```
  */
+/** @deprecated alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables */
 export function getTables(args: GetTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetTablesResult> {
+    pulumi.log.warn("getTables is deprecated: alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables")
     if (!opts) {
         opts = {}
     }

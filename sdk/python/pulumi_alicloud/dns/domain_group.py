@@ -15,6 +15,7 @@ class DomainGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 domain_group_name: Optional[pulumi.Input[str]] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -32,12 +33,13 @@ class DomainGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Add a new Alinds Domain Group.
-        example = alicloud.dns.DomainGroup("example", group_name="tf-testDG")
+        example = alicloud.dns.DomainGroup("example", domain_group_name="tf-testDG")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group_name: Name of the domain group.
+        :param pulumi.Input[str] domain_group_name: Name of the domain group.
+        :param pulumi.Input[str] group_name: Replaced by `domain_group_name` after version 1.97.0.
         :param pulumi.Input[str] lang: User language.
         """
         if __name__ is not None:
@@ -57,8 +59,10 @@ class DomainGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if group_name is None:
-                raise TypeError("Missing required property 'group_name'")
+            __props__['domain_group_name'] = domain_group_name
+            if group_name is not None:
+                warnings.warn("Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.", DeprecationWarning)
+                pulumi.log.warn("group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.")
             __props__['group_name'] = group_name
             __props__['lang'] = lang
         super(DomainGroup, __self__).__init__(
@@ -71,6 +75,7 @@ class DomainGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            domain_group_name: Optional[pulumi.Input[str]] = None,
             group_name: Optional[pulumi.Input[str]] = None,
             lang: Optional[pulumi.Input[str]] = None) -> 'DomainGroup':
         """
@@ -80,22 +85,32 @@ class DomainGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group_name: Name of the domain group.
+        :param pulumi.Input[str] domain_group_name: Name of the domain group.
+        :param pulumi.Input[str] group_name: Replaced by `domain_group_name` after version 1.97.0.
         :param pulumi.Input[str] lang: User language.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["domain_group_name"] = domain_group_name
         __props__["group_name"] = group_name
         __props__["lang"] = lang
         return DomainGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="domainGroupName")
+    def domain_group_name(self) -> pulumi.Output[str]:
+        """
+        Name of the domain group.
+        """
+        return pulumi.get(self, "domain_group_name")
+
+    @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Output[str]:
         """
-        Name of the domain group.
+        Replaced by `domain_group_name` after version 1.97.0.
         """
         return pulumi.get(self, "group_name")
 

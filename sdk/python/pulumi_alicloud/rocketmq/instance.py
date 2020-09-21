@@ -15,8 +15,10 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -37,13 +39,19 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.rocketmq.Instance("example", remark="tf-example-ons-instance-remark")
+        example = alicloud.rocketmq.Instance("example",
+            instance_name="tf-example-ons-instance",
+            remark="tf-example-ons-instance-remark")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+        :param pulumi.Input[str] instance_name: Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+        :param pulumi.Input[str] name: Replaced by `instance_name` after version 1.97.0.
         :param pulumi.Input[str] remark: This attribute is a concise description of instance. The length cannot exceed 128.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -62,11 +70,17 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['instance_name'] = instance_name
+            if name is not None:
+                warnings.warn("Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.", DeprecationWarning)
+                pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.")
             __props__['name'] = name
             __props__['remark'] = remark
+            __props__['tags'] = tags
             __props__['instance_status'] = None
             __props__['instance_type'] = None
             __props__['release_time'] = None
+            __props__['status'] = None
         super(Instance, __self__).__init__(
             'alicloud:rocketmq/instance:Instance',
             resource_name,
@@ -77,11 +91,14 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            instance_name: Optional[pulumi.Input[str]] = None,
             instance_status: Optional[pulumi.Input[float]] = None,
             instance_type: Optional[pulumi.Input[float]] = None,
             name: Optional[pulumi.Input[str]] = None,
             release_time: Optional[pulumi.Input[str]] = None,
-            remark: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            remark: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[float]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -89,22 +106,38 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] instance_name: Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
         :param pulumi.Input[float] instance_status: The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
         :param pulumi.Input[float] instance_type: The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
-        :param pulumi.Input[str] name: Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+        :param pulumi.Input[str] name: Replaced by `instance_name` after version 1.97.0.
         :param pulumi.Input[str] release_time: Platinum edition instance expiration time.
         :param pulumi.Input[str] remark: This attribute is a concise description of instance. The length cannot exceed 128.
+        :param pulumi.Input[float] status: The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["instance_name"] = instance_name
         __props__["instance_status"] = instance_status
         __props__["instance_type"] = instance_type
         __props__["name"] = name
         __props__["release_time"] = release_time
         __props__["remark"] = remark
+        __props__["status"] = status
+        __props__["tags"] = tags
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Output[str]:
+        """
+        Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+        """
+        return pulumi.get(self, "instance_name")
 
     @property
     @pulumi.getter(name="instanceStatus")
@@ -126,7 +159,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+        Replaced by `instance_name` after version 1.97.0.
         """
         return pulumi.get(self, "name")
 
@@ -145,6 +178,24 @@ class Instance(pulumi.CustomResource):
         This attribute is a concise description of instance. The length cannot exceed 128.
         """
         return pulumi.get(self, "remark")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[float]:
+        """
+        The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

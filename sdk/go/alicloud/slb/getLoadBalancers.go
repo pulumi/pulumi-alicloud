@@ -21,6 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := slb.NewLoadBalancer(ctx, "_default", nil)
+// 		if err != nil {
+// 			return err
+// 		}
 // 		opt0 := "sample_slb"
 // 		slbsDs, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
 // 			NameRegex: &opt0,

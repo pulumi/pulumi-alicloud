@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const instancesDs = pulumi.output(alicloud.oss.getInstances({
+ * const instancesDs = pulumi.output(alicloud.ots.getInstances({
  *     nameRegex: "sample-instance",
  *     outputFile: "instances.txt",
  * }, { async: true }));
@@ -23,7 +23,9 @@ import * as utilities from "../utilities";
  * export const firstInstanceId = instancesDs.instances[0].id;
  * ```
  */
+/** @deprecated alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
+    pulumi.log.warn("getInstances is deprecated: alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances")
     args = args || {};
     if (!opts) {
         opts = {}
@@ -59,7 +61,7 @@ export interface GetInstancesArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const instancesDs = pulumi.output(alicloud.oss.getInstances({
+     * const instancesDs = pulumi.output(alicloud.ots.getInstances({
      *     tags: {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",

@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///         });
     ///         var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new AliCloud.RocketMQ.TopicArgs
     ///         {
-    ///             Topic = topic,
+    ///             TopicName = topic,
     ///             InstanceId = defaultInstance.Id,
     ///             MessageType = 0,
     ///             Remark = "dafault_ons_topic_remark",
@@ -74,9 +74,23 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<string?> Remark { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Replaced by `topic_name` after version 1.97.0.
         /// </summary>
         [Output("topic")]
+        public Output<string> TopicDeprecated { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+        /// </summary>
+        [Output("topicName")]
         public Output<string> TopicName { get; private set; } = null!;
 
 
@@ -149,11 +163,31 @@ namespace Pulumi.AliCloud.RocketMQ
         [Input("remark")]
         public Input<string>? Remark { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Replaced by `topic_name` after version 1.97.0.
+        /// </summary>
+        [Input("topic")]
+        public Input<string>? TopicDeprecated { get; set; }
+
         /// <summary>
         /// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         /// </summary>
-        [Input("topic", required: true)]
-        public Input<string> TopicName { get; set; } = null!;
+        [Input("topicName")]
+        public Input<string>? TopicName { get; set; }
 
         public TopicArgs()
         {
@@ -186,10 +220,30 @@ namespace Pulumi.AliCloud.RocketMQ
         [Input("remark")]
         public Input<string>? Remark { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Replaced by `topic_name` after version 1.97.0.
+        /// </summary>
+        [Input("topic")]
+        public Input<string>? TopicDeprecated { get; set; }
+
         /// <summary>
         /// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         /// </summary>
-        [Input("topic")]
+        [Input("topicName")]
         public Input<string>? TopicName { get; set; }
 
         public TopicState()

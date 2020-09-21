@@ -19,7 +19,9 @@ class Topic(pulumi.CustomResource):
                  message_type: Optional[pulumi.Input[float]] = None,
                  perm: Optional[pulumi.Input[float]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
+                 topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -47,7 +49,7 @@ class Topic(pulumi.CustomResource):
             topic = "onsTopicName"
         default_instance = alicloud.rocketmq.Instance("defaultInstance", remark="default_ons_instance_remark")
         default_topic = alicloud.rocketmq.Topic("defaultTopic",
-            topic=topic,
+            topic_name=topic,
             instance_id=default_instance.id,
             message_type=0,
             remark="dafault_ons_topic_remark")
@@ -59,7 +61,11 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[float] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
         :param pulumi.Input[float] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
-        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] topic: Replaced by `topic_name` after version 1.97.0.
+        :param pulumi.Input[str] topic_name: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -86,9 +92,12 @@ class Topic(pulumi.CustomResource):
             __props__['message_type'] = message_type
             __props__['perm'] = perm
             __props__['remark'] = remark
-            if topic is None:
-                raise TypeError("Missing required property 'topic'")
+            __props__['tags'] = tags
+            if topic is not None:
+                warnings.warn("Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.", DeprecationWarning)
+                pulumi.log.warn("topic is deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.")
             __props__['topic'] = topic
+            __props__['topic_name'] = topic_name
         super(Topic, __self__).__init__(
             'alicloud:rocketmq/topic:Topic',
             resource_name,
@@ -103,7 +112,9 @@ class Topic(pulumi.CustomResource):
             message_type: Optional[pulumi.Input[float]] = None,
             perm: Optional[pulumi.Input[float]] = None,
             remark: Optional[pulumi.Input[str]] = None,
-            topic: Optional[pulumi.Input[str]] = None) -> 'Topic':
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            topic: Optional[pulumi.Input[str]] = None,
+            topic_name: Optional[pulumi.Input[str]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -115,7 +126,11 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[float] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
         :param pulumi.Input[float] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
-        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] topic: Replaced by `topic_name` after version 1.97.0.
+        :param pulumi.Input[str] topic_name: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -125,7 +140,9 @@ class Topic(pulumi.CustomResource):
         __props__["message_type"] = message_type
         __props__["perm"] = perm
         __props__["remark"] = remark
+        __props__["tags"] = tags
         __props__["topic"] = topic
+        __props__["topic_name"] = topic_name
         return Topic(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -162,11 +179,29 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
     def topic(self) -> pulumi.Output[str]:
+        """
+        Replaced by `topic_name` after version 1.97.0.
+        """
+        return pulumi.get(self, "topic")
+
+    @property
+    @pulumi.getter(name="topicName")
+    def topic_name(self) -> pulumi.Output[str]:
         """
         Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """
-        return pulumi.get(self, "topic")
+        return pulumi.get(self, "topic_name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

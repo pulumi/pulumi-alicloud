@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN child instance attachment resource.
+    /// Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
+    /// 
+    /// -&gt;**NOTE:** Available in 1.42.0+
     /// 
     /// ## Example Usage
     /// 
@@ -38,6 +40,7 @@ namespace Pulumi.AliCloud.Cen
     ///         {
     ///             InstanceId = cen.Id,
     ///             ChildInstanceId = vpc.Id,
+    ///             ChildInstanceType = "VPC",
     ///             ChildInstanceRegionId = "cn-beijing",
     ///         });
     ///     }
@@ -48,6 +51,12 @@ namespace Pulumi.AliCloud.Cen
     public partial class InstanceAttachment : Pulumi.CustomResource
     {
         /// <summary>
+        /// The account ID to which the CEN instance belongs.
+        /// </summary>
+        [Output("cenOwnerId")]
+        public Output<int?> CenOwnerId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the child instance to attach.
         /// </summary>
         [Output("childInstanceId")]
@@ -57,7 +66,7 @@ namespace Pulumi.AliCloud.Cen
         /// The uid of the child instance. Only used when attach a child instance of other account.
         /// </summary>
         [Output("childInstanceOwnerId")]
-        public Output<string> ChildInstanceOwnerId { get; private set; } = null!;
+        public Output<int> ChildInstanceOwnerId { get; private set; } = null!;
 
         /// <summary>
         /// The region ID of the child instance to attach.
@@ -66,10 +75,22 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> ChildInstanceRegionId { get; private set; } = null!;
 
         /// <summary>
+        /// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+        /// </summary>
+        [Output("childInstanceType")]
+        public Output<string> ChildInstanceType { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the CEN.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The associating status of the network.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -118,6 +139,12 @@ namespace Pulumi.AliCloud.Cen
     public sealed class InstanceAttachmentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The account ID to which the CEN instance belongs.
+        /// </summary>
+        [Input("cenOwnerId")]
+        public Input<int>? CenOwnerId { get; set; }
+
+        /// <summary>
         /// The ID of the child instance to attach.
         /// </summary>
         [Input("childInstanceId", required: true)]
@@ -127,13 +154,19 @@ namespace Pulumi.AliCloud.Cen
         /// The uid of the child instance. Only used when attach a child instance of other account.
         /// </summary>
         [Input("childInstanceOwnerId")]
-        public Input<string>? ChildInstanceOwnerId { get; set; }
+        public Input<int>? ChildInstanceOwnerId { get; set; }
 
         /// <summary>
         /// The region ID of the child instance to attach.
         /// </summary>
         [Input("childInstanceRegionId", required: true)]
         public Input<string> ChildInstanceRegionId { get; set; } = null!;
+
+        /// <summary>
+        /// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+        /// </summary>
+        [Input("childInstanceType", required: true)]
+        public Input<string> ChildInstanceType { get; set; } = null!;
 
         /// <summary>
         /// The ID of the CEN.
@@ -149,6 +182,12 @@ namespace Pulumi.AliCloud.Cen
     public sealed class InstanceAttachmentState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The account ID to which the CEN instance belongs.
+        /// </summary>
+        [Input("cenOwnerId")]
+        public Input<int>? CenOwnerId { get; set; }
+
+        /// <summary>
         /// The ID of the child instance to attach.
         /// </summary>
         [Input("childInstanceId")]
@@ -158,7 +197,7 @@ namespace Pulumi.AliCloud.Cen
         /// The uid of the child instance. Only used when attach a child instance of other account.
         /// </summary>
         [Input("childInstanceOwnerId")]
-        public Input<string>? ChildInstanceOwnerId { get; set; }
+        public Input<int>? ChildInstanceOwnerId { get; set; }
 
         /// <summary>
         /// The region ID of the child instance to attach.
@@ -167,10 +206,22 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? ChildInstanceRegionId { get; set; }
 
         /// <summary>
+        /// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+        /// </summary>
+        [Input("childInstanceType")]
+        public Input<string>? ChildInstanceType { get; set; }
+
+        /// <summary>
         /// The ID of the CEN.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// The associating status of the network.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public InstanceAttachmentState()
         {

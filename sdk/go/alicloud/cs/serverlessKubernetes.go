@@ -41,6 +41,8 @@ type ServerlessKubernetes struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+	Version pulumi.StringOutput `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
@@ -110,6 +112,8 @@ type serverlessKubernetesState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags map[string]interface{} `pulumi:"tags"`
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+	Version *string `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId *string `pulumi:"vpcId"`
 	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
@@ -149,6 +153,8 @@ type ServerlessKubernetesState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags pulumi.MapInput
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+	Version pulumi.StringPtrInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringPtrInput
 	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
@@ -192,6 +198,8 @@ type serverlessKubernetesArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags map[string]interface{} `pulumi:"tags"`
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+	Version *string `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId string `pulumi:"vpcId"`
 	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
@@ -232,6 +240,8 @@ type ServerlessKubernetesArgs struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags pulumi.MapInput
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+	Version pulumi.StringPtrInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringInput
 	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.

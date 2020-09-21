@@ -112,6 +112,7 @@ import (
 // 		attach, err := cen.NewInstanceAttachment(ctx, "attach", &cen.InstanceAttachmentArgs{
 // 			InstanceId:            cen.ID(),
 // 			ChildInstanceId:       vpc.ID(),
+// 			ChildInstanceType:     pulumi.String("VPC"),
 // 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			defaultSwitch,

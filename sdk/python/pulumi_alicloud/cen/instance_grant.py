@@ -57,6 +57,7 @@ class InstanceGrant(pulumi.CustomResource):
         foo_instance_attachment = alicloud.cen.InstanceAttachment("fooInstanceAttachment",
             instance_id=cen.id,
             child_instance_id=vpc.id,
+            child_instance_type="VPC",
             child_instance_region_id="cn-qingdao",
             child_instance_owner_id="uid1",
             opts=ResourceOptions(provider=alicloud["account2"],

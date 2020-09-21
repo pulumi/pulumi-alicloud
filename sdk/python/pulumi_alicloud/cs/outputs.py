@@ -22,6 +22,9 @@ __all__ = [
     'ManagedKubernetesConnections',
     'ManagedKubernetesWorkerDataDisk',
     'ManagedKubernetesWorkerNode',
+    'NodePoolDataDisk',
+    'NodePoolLabel',
+    'NodePoolTaint',
     'ServerlessKubernetesAddon',
     'SwarmNode',
     'GetKubernetesClustersClusterResult',
@@ -656,6 +659,138 @@ class ManagedKubernetesWorkerNode(dict):
         The private IP address of node.
         """
         return pulumi.get(self, "private_ip")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class NodePoolDataDisk(dict):
+    def __init__(__self__, *,
+                 auto_snapshot_policy_id: Optional[str] = None,
+                 category: Optional[str] = None,
+                 device: Optional[str] = None,
+                 encrypted: Optional[str] = None,
+                 kms_key_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 size: Optional[float] = None,
+                 snapshot_id: Optional[str] = None):
+        """
+        :param str name: The name of node pool.
+        """
+        if auto_snapshot_policy_id is not None:
+            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @property
+    @pulumi.getter(name="autoSnapshotPolicyId")
+    def auto_snapshot_policy_id(self) -> Optional[str]:
+        return pulumi.get(self, "auto_snapshot_policy_id")
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[str]:
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[str]:
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of node pool.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[float]:
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[str]:
+        return pulumi.get(self, "snapshot_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class NodePoolLabel(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class NodePoolTaint(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

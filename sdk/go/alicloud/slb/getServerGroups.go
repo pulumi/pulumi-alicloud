@@ -15,19 +15,52 @@ import (
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sampleDs, err := slb.GetServerGroups(ctx, &slb.GetServerGroupsArgs{
-// 			LoadBalancerId: alicloud_slb.Sample_slb.Id,
+// 		opt0 := "cloud_efficiency"
+// 		opt1 := "VSwitch"
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableDiskCategory:     &opt0,
+// 			AvailableResourceCreation: &opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("firstSlbServerGroupId", sampleDs.SlbServerGroups[0].Id)
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/16"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultLoadBalancer, err := slb.NewLoadBalancer(ctx, "defaultLoadBalancer", &slb.LoadBalancerArgs{
+// 			VswitchId: defaultSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = slb.NewServerGroup(ctx, "defaultServerGroup", &slb.ServerGroupArgs{
+// 			LoadBalancerId: defaultLoadBalancer.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstSlbServerGroupId", sampleDs.ApplyT(func(sampleDs slb.GetServerGroupsResult) (string, error) {
+// 			return sampleDs.SlbServerGroups[0].Id, nil
+// 		}).(pulumi.StringOutput))
 // 		return nil
 // 	})
 // }

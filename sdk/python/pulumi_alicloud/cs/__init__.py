@@ -15,6 +15,7 @@ from .get_serverless_kubernetes_clusters import *
 from .kubernetes import *
 from .kubernetes_autoscaler import *
 from .managed_kubernetes import *
+from .node_pool import *
 from .registry_enterprise_namespace import *
 from .registry_enterprise_repo import *
 from .registry_enterprise_sync_rule import *

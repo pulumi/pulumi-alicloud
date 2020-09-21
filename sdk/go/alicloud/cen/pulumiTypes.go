@@ -490,6 +490,166 @@ func (o GetFlowlogsFlowlogArrayOutput) Index(i pulumi.IntInput) GetFlowlogsFlowl
 	}).(GetFlowlogsFlowlogOutput)
 }
 
+type GetInstanceAttachmentsAttachment struct {
+	// The time when the network is associated with the CEN instance.
+	ChildInstanceAttachTime string `pulumi:"childInstanceAttachTime"`
+	// The ID of the network.
+	ChildInstanceId string `pulumi:"childInstanceId"`
+	// The ID of the account to which the network belongs.
+	ChildInstanceOwnerId int `pulumi:"childInstanceOwnerId"`
+	// The region to which the network to be queried belongs.
+	ChildInstanceRegionId string `pulumi:"childInstanceRegionId"`
+	// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+	ChildInstanceType string `pulumi:"childInstanceType"`
+	// The ID of the CEN Instance Attachment.
+	Id string `pulumi:"id"`
+	// The ID of the CEN instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
+	Status string `pulumi:"status"`
+}
+
+// GetInstanceAttachmentsAttachmentInput is an input type that accepts GetInstanceAttachmentsAttachmentArgs and GetInstanceAttachmentsAttachmentOutput values.
+// You can construct a concrete instance of `GetInstanceAttachmentsAttachmentInput` via:
+//
+//          GetInstanceAttachmentsAttachmentArgs{...}
+type GetInstanceAttachmentsAttachmentInput interface {
+	pulumi.Input
+
+	ToGetInstanceAttachmentsAttachmentOutput() GetInstanceAttachmentsAttachmentOutput
+	ToGetInstanceAttachmentsAttachmentOutputWithContext(context.Context) GetInstanceAttachmentsAttachmentOutput
+}
+
+type GetInstanceAttachmentsAttachmentArgs struct {
+	// The time when the network is associated with the CEN instance.
+	ChildInstanceAttachTime pulumi.StringInput `pulumi:"childInstanceAttachTime"`
+	// The ID of the network.
+	ChildInstanceId pulumi.StringInput `pulumi:"childInstanceId"`
+	// The ID of the account to which the network belongs.
+	ChildInstanceOwnerId pulumi.IntInput `pulumi:"childInstanceOwnerId"`
+	// The region to which the network to be queried belongs.
+	ChildInstanceRegionId pulumi.StringInput `pulumi:"childInstanceRegionId"`
+	// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+	ChildInstanceType pulumi.StringInput `pulumi:"childInstanceType"`
+	// The ID of the CEN Instance Attachment.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the CEN instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetInstanceAttachmentsAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetInstanceAttachmentsAttachmentArgs) ToGetInstanceAttachmentsAttachmentOutput() GetInstanceAttachmentsAttachmentOutput {
+	return i.ToGetInstanceAttachmentsAttachmentOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAttachmentsAttachmentArgs) ToGetInstanceAttachmentsAttachmentOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachmentsAttachmentOutput)
+}
+
+// GetInstanceAttachmentsAttachmentArrayInput is an input type that accepts GetInstanceAttachmentsAttachmentArray and GetInstanceAttachmentsAttachmentArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAttachmentsAttachmentArrayInput` via:
+//
+//          GetInstanceAttachmentsAttachmentArray{ GetInstanceAttachmentsAttachmentArgs{...} }
+type GetInstanceAttachmentsAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAttachmentsAttachmentArrayOutput() GetInstanceAttachmentsAttachmentArrayOutput
+	ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(context.Context) GetInstanceAttachmentsAttachmentArrayOutput
+}
+
+type GetInstanceAttachmentsAttachmentArray []GetInstanceAttachmentsAttachmentInput
+
+func (GetInstanceAttachmentsAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetInstanceAttachmentsAttachmentArray) ToGetInstanceAttachmentsAttachmentArrayOutput() GetInstanceAttachmentsAttachmentArrayOutput {
+	return i.ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAttachmentsAttachmentArray) ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachmentsAttachmentArrayOutput)
+}
+
+type GetInstanceAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAttachmentsAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetInstanceAttachmentsAttachmentOutput) ToGetInstanceAttachmentsAttachmentOutput() GetInstanceAttachmentsAttachmentOutput {
+	return o
+}
+
+func (o GetInstanceAttachmentsAttachmentOutput) ToGetInstanceAttachmentsAttachmentOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentOutput {
+	return o
+}
+
+// The time when the network is associated with the CEN instance.
+func (o GetInstanceAttachmentsAttachmentOutput) ChildInstanceAttachTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.ChildInstanceAttachTime }).(pulumi.StringOutput)
+}
+
+// The ID of the network.
+func (o GetInstanceAttachmentsAttachmentOutput) ChildInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.ChildInstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the account to which the network belongs.
+func (o GetInstanceAttachmentsAttachmentOutput) ChildInstanceOwnerId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) int { return v.ChildInstanceOwnerId }).(pulumi.IntOutput)
+}
+
+// The region to which the network to be queried belongs.
+func (o GetInstanceAttachmentsAttachmentOutput) ChildInstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.ChildInstanceRegionId }).(pulumi.StringOutput)
+}
+
+// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+func (o GetInstanceAttachmentsAttachmentOutput) ChildInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.ChildInstanceType }).(pulumi.StringOutput)
+}
+
+// The ID of the CEN Instance Attachment.
+func (o GetInstanceAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the CEN instance.
+func (o GetInstanceAttachmentsAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
+func (o GetInstanceAttachmentsAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetInstanceAttachmentsAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAttachmentsAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetInstanceAttachmentsAttachmentArrayOutput) ToGetInstanceAttachmentsAttachmentArrayOutput() GetInstanceAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetInstanceAttachmentsAttachmentArrayOutput) ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetInstanceAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetInstanceAttachmentsAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAttachmentsAttachment {
+		return vs[0].([]GetInstanceAttachmentsAttachment)[vs[1].(int)]
+	}).(GetInstanceAttachmentsAttachmentOutput)
+}
+
 type GetInstancesInstance struct {
 	// List of CEN Bandwidth Package IDs in the specified CEN instance.
 	CenBandwidthPackageIds []string `pulumi:"cenBandwidthPackageIds"`
@@ -1583,6 +1743,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBandwidthPackagesPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetFlowlogsFlowlogOutput{})
 	pulumi.RegisterOutputType(GetFlowlogsFlowlogArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAttachmentsAttachmentOutput{})
+	pulumi.RegisterOutputType(GetInstanceAttachmentsAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetPrivateZonesZoneOutput{})

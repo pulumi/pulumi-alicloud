@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CEN child instance attachment resource.
+ * Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
+ *
+ * ->**NOTE:** Available in 1.42.0+
  *
  * ## Example Usage
  *
@@ -22,6 +24,7 @@ import * as utilities from "../utilities";
  * const foo = new alicloud.cen.InstanceAttachment("foo", {
  *     instanceId: cen.id,
  *     childInstanceId: vpc.id,
+ *     childInstanceType: "VPC",
  *     childInstanceRegionId: "cn-beijing",
  * });
  * ```
@@ -55,21 +58,33 @@ export class InstanceAttachment extends pulumi.CustomResource {
     }
 
     /**
+     * The account ID to which the CEN instance belongs.
+     */
+    public readonly cenOwnerId!: pulumi.Output<number | undefined>;
+    /**
      * The ID of the child instance to attach.
      */
     public readonly childInstanceId!: pulumi.Output<string>;
     /**
      * The uid of the child instance. Only used when attach a child instance of other account.
      */
-    public readonly childInstanceOwnerId!: pulumi.Output<string>;
+    public readonly childInstanceOwnerId!: pulumi.Output<number>;
     /**
      * The region ID of the child instance to attach.
      */
     public readonly childInstanceRegionId!: pulumi.Output<string>;
     /**
+     * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+     */
+    public readonly childInstanceType!: pulumi.Output<string>;
+    /**
      * The ID of the CEN.
      */
     public readonly instanceId!: pulumi.Output<string>;
+    /**
+     * The associating status of the network.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a InstanceAttachment resource with the given unique name, arguments, and options.
@@ -83,10 +98,13 @@ export class InstanceAttachment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as InstanceAttachmentState | undefined;
+            inputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
             inputs["childInstanceId"] = state ? state.childInstanceId : undefined;
             inputs["childInstanceOwnerId"] = state ? state.childInstanceOwnerId : undefined;
             inputs["childInstanceRegionId"] = state ? state.childInstanceRegionId : undefined;
+            inputs["childInstanceType"] = state ? state.childInstanceType : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
+            inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as InstanceAttachmentArgs | undefined;
             if (!args || args.childInstanceId === undefined) {
@@ -95,13 +113,19 @@ export class InstanceAttachment extends pulumi.CustomResource {
             if (!args || args.childInstanceRegionId === undefined) {
                 throw new Error("Missing required property 'childInstanceRegionId'");
             }
+            if (!args || args.childInstanceType === undefined) {
+                throw new Error("Missing required property 'childInstanceType'");
+            }
             if (!args || args.instanceId === undefined) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            inputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
             inputs["childInstanceId"] = args ? args.childInstanceId : undefined;
             inputs["childInstanceOwnerId"] = args ? args.childInstanceOwnerId : undefined;
             inputs["childInstanceRegionId"] = args ? args.childInstanceRegionId : undefined;
+            inputs["childInstanceType"] = args ? args.childInstanceType : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -119,21 +143,33 @@ export class InstanceAttachment extends pulumi.CustomResource {
  */
 export interface InstanceAttachmentState {
     /**
+     * The account ID to which the CEN instance belongs.
+     */
+    readonly cenOwnerId?: pulumi.Input<number>;
+    /**
      * The ID of the child instance to attach.
      */
     readonly childInstanceId?: pulumi.Input<string>;
     /**
      * The uid of the child instance. Only used when attach a child instance of other account.
      */
-    readonly childInstanceOwnerId?: pulumi.Input<string>;
+    readonly childInstanceOwnerId?: pulumi.Input<number>;
     /**
      * The region ID of the child instance to attach.
      */
     readonly childInstanceRegionId?: pulumi.Input<string>;
     /**
+     * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+     */
+    readonly childInstanceType?: pulumi.Input<string>;
+    /**
      * The ID of the CEN.
      */
     readonly instanceId?: pulumi.Input<string>;
+    /**
+     * The associating status of the network.
+     */
+    readonly status?: pulumi.Input<string>;
 }
 
 /**
@@ -141,17 +177,25 @@ export interface InstanceAttachmentState {
  */
 export interface InstanceAttachmentArgs {
     /**
+     * The account ID to which the CEN instance belongs.
+     */
+    readonly cenOwnerId?: pulumi.Input<number>;
+    /**
      * The ID of the child instance to attach.
      */
     readonly childInstanceId: pulumi.Input<string>;
     /**
      * The uid of the child instance. Only used when attach a child instance of other account.
      */
-    readonly childInstanceOwnerId?: pulumi.Input<string>;
+    readonly childInstanceOwnerId?: pulumi.Input<number>;
     /**
      * The region ID of the child instance to attach.
      */
     readonly childInstanceRegionId: pulumi.Input<string>;
+    /**
+     * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+     */
+    readonly childInstanceType: pulumi.Input<string>;
     /**
      * The ID of the CEN.
      */

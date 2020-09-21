@@ -23,14 +23,7 @@ class GetApplicationsApplicationResult(dict):
                  build_package_id: float,
                  cluster_id: str,
                  cluster_type: float,
-                 create_time: float,
-                 health_check_url: str,
-                 instance_count: float,
-                 region_id: str,
-                 running_instance_count: float,
-                 slb_id: str,
-                 slb_ip: str,
-                 slb_port: float):
+                 region_id: str):
         """
         :param str app_id: The ID of the application that you want to deploy.
         :param str app_name: The name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
@@ -38,14 +31,7 @@ class GetApplicationsApplicationResult(dict):
         :param float build_package_id: The package ID of Enterprise Distributed Application Service (EDAS) Container.
         :param str cluster_id: The ID of the cluster that you want to create the application.
         :param float cluster_type: The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
-        :param float create_time: Application's creation time.
-        :param str health_check_url: The URL for health checking of the application.
-        :param float instance_count: Number of instances.
         :param str region_id: The ID of the namespace the application belongs to.
-        :param float running_instance_count: Number of running instances.
-        :param str slb_id: The ID of the SLB instance that is going to be bound.
-        :param str slb_ip: The IP address that is allocated to the bound SLB instance.
-        :param float slb_port: The port of intranet SLB.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "app_name", app_name)
@@ -53,14 +39,7 @@ class GetApplicationsApplicationResult(dict):
         pulumi.set(__self__, "build_package_id", build_package_id)
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "cluster_type", cluster_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "health_check_url", health_check_url)
-        pulumi.set(__self__, "instance_count", instance_count)
         pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "running_instance_count", running_instance_count)
-        pulumi.set(__self__, "slb_id", slb_id)
-        pulumi.set(__self__, "slb_ip", slb_ip)
-        pulumi.set(__self__, "slb_port", slb_port)
 
     @property
     @pulumi.getter(name="appId")
@@ -111,68 +90,12 @@ class GetApplicationsApplicationResult(dict):
         return pulumi.get(self, "cluster_type")
 
     @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> float:
-        """
-        Application's creation time.
-        """
-        return pulumi.get(self, "create_time")
-
-    @property
-    @pulumi.getter(name="healthCheckUrl")
-    def health_check_url(self) -> str:
-        """
-        The URL for health checking of the application.
-        """
-        return pulumi.get(self, "health_check_url")
-
-    @property
-    @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> float:
-        """
-        Number of instances.
-        """
-        return pulumi.get(self, "instance_count")
-
-    @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> str:
         """
         The ID of the namespace the application belongs to.
         """
         return pulumi.get(self, "region_id")
-
-    @property
-    @pulumi.getter(name="runningInstanceCount")
-    def running_instance_count(self) -> float:
-        """
-        Number of running instances.
-        """
-        return pulumi.get(self, "running_instance_count")
-
-    @property
-    @pulumi.getter(name="slbId")
-    def slb_id(self) -> str:
-        """
-        The ID of the SLB instance that is going to be bound.
-        """
-        return pulumi.get(self, "slb_id")
-
-    @property
-    @pulumi.getter(name="slbIp")
-    def slb_ip(self) -> str:
-        """
-        The IP address that is allocated to the bound SLB instance.
-        """
-        return pulumi.get(self, "slb_ip")
-
-    @property
-    @pulumi.getter(name="slbPort")
-    def slb_port(self) -> float:
-        """
-        The port of intranet SLB.
-        """
-        return pulumi.get(self, "slb_port")
 
 
 @pulumi.output_type

@@ -116,7 +116,673 @@ func (o TablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) TablePrimaryKeyOutp
 	}).(TablePrimaryKeyOutput)
 }
 
+type GetInstanceAttachmentsAttachment struct {
+	// The domain of the instance attachment.
+	Domain string `pulumi:"domain"`
+	// The access endpoint of the instance attachment.
+	Endpoint string `pulumi:"endpoint"`
+	// The resource ID, the value is same as "instanceName".
+	Id string `pulumi:"id"`
+	// The name of OTS instance.
+	InstanceName string `pulumi:"instanceName"`
+	// The region of the instance attachment.
+	Region string `pulumi:"region"`
+	// The ID of attaching VPC to instance.
+	VpcId string `pulumi:"vpcId"`
+	// The name of attaching VPC to instance.
+	VpcName string `pulumi:"vpcName"`
+}
+
+// GetInstanceAttachmentsAttachmentInput is an input type that accepts GetInstanceAttachmentsAttachmentArgs and GetInstanceAttachmentsAttachmentOutput values.
+// You can construct a concrete instance of `GetInstanceAttachmentsAttachmentInput` via:
+//
+//          GetInstanceAttachmentsAttachmentArgs{...}
+type GetInstanceAttachmentsAttachmentInput interface {
+	pulumi.Input
+
+	ToGetInstanceAttachmentsAttachmentOutput() GetInstanceAttachmentsAttachmentOutput
+	ToGetInstanceAttachmentsAttachmentOutputWithContext(context.Context) GetInstanceAttachmentsAttachmentOutput
+}
+
+type GetInstanceAttachmentsAttachmentArgs struct {
+	// The domain of the instance attachment.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The access endpoint of the instance attachment.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// The resource ID, the value is same as "instanceName".
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of OTS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The region of the instance attachment.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The ID of attaching VPC to instance.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The name of attaching VPC to instance.
+	VpcName pulumi.StringInput `pulumi:"vpcName"`
+}
+
+func (GetInstanceAttachmentsAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetInstanceAttachmentsAttachmentArgs) ToGetInstanceAttachmentsAttachmentOutput() GetInstanceAttachmentsAttachmentOutput {
+	return i.ToGetInstanceAttachmentsAttachmentOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAttachmentsAttachmentArgs) ToGetInstanceAttachmentsAttachmentOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachmentsAttachmentOutput)
+}
+
+// GetInstanceAttachmentsAttachmentArrayInput is an input type that accepts GetInstanceAttachmentsAttachmentArray and GetInstanceAttachmentsAttachmentArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAttachmentsAttachmentArrayInput` via:
+//
+//          GetInstanceAttachmentsAttachmentArray{ GetInstanceAttachmentsAttachmentArgs{...} }
+type GetInstanceAttachmentsAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAttachmentsAttachmentArrayOutput() GetInstanceAttachmentsAttachmentArrayOutput
+	ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(context.Context) GetInstanceAttachmentsAttachmentArrayOutput
+}
+
+type GetInstanceAttachmentsAttachmentArray []GetInstanceAttachmentsAttachmentInput
+
+func (GetInstanceAttachmentsAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetInstanceAttachmentsAttachmentArray) ToGetInstanceAttachmentsAttachmentArrayOutput() GetInstanceAttachmentsAttachmentArrayOutput {
+	return i.ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAttachmentsAttachmentArray) ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachmentsAttachmentArrayOutput)
+}
+
+type GetInstanceAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAttachmentsAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetInstanceAttachmentsAttachmentOutput) ToGetInstanceAttachmentsAttachmentOutput() GetInstanceAttachmentsAttachmentOutput {
+	return o
+}
+
+func (o GetInstanceAttachmentsAttachmentOutput) ToGetInstanceAttachmentsAttachmentOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentOutput {
+	return o
+}
+
+// The domain of the instance attachment.
+func (o GetInstanceAttachmentsAttachmentOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The access endpoint of the instance attachment.
+func (o GetInstanceAttachmentsAttachmentOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The resource ID, the value is same as "instanceName".
+func (o GetInstanceAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of OTS instance.
+func (o GetInstanceAttachmentsAttachmentOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The region of the instance attachment.
+func (o GetInstanceAttachmentsAttachmentOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The ID of attaching VPC to instance.
+func (o GetInstanceAttachmentsAttachmentOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The name of attaching VPC to instance.
+func (o GetInstanceAttachmentsAttachmentOutput) VpcName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.VpcName }).(pulumi.StringOutput)
+}
+
+type GetInstanceAttachmentsAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAttachmentsAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetInstanceAttachmentsAttachmentArrayOutput) ToGetInstanceAttachmentsAttachmentArrayOutput() GetInstanceAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetInstanceAttachmentsAttachmentArrayOutput) ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetInstanceAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetInstanceAttachmentsAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAttachmentsAttachment {
+		return vs[0].([]GetInstanceAttachmentsAttachment)[vs[1].(int)]
+	}).(GetInstanceAttachmentsAttachmentOutput)
+}
+
+type GetInstancesInstance struct {
+	// The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
+	ClusterType string `pulumi:"clusterType"`
+	// The create time of the instance.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the instance.
+	Description string `pulumi:"description"`
+	// The instance quota which indicating the maximum number of tables.
+	EntityQuota int `pulumi:"entityQuota"`
+	// ID of the instance.
+	Id string `pulumi:"id"`
+	// Instance name.
+	Name string `pulumi:"name"`
+	// The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+	Network string `pulumi:"network"`
+	// The maximum adjustable read capacity unit of the instance.
+	ReadCapacity int `pulumi:"readCapacity"`
+	// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
+	Status string `pulumi:"status"`
+	// A map of tags assigned to the instance. It must be in the format:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The user id of the instance.
+	UserId string `pulumi:"userId"`
+	// The maximum adjustable write capacity unit of the instance.
+	WriteCapacity int `pulumi:"writeCapacity"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+//          GetInstancesInstanceArgs{...}
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	// The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
+	ClusterType pulumi.StringInput `pulumi:"clusterType"`
+	// The create time of the instance.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the instance.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The instance quota which indicating the maximum number of tables.
+	EntityQuota pulumi.IntInput `pulumi:"entityQuota"`
+	// ID of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Instance name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The maximum adjustable read capacity unit of the instance.
+	ReadCapacity pulumi.IntInput `pulumi:"readCapacity"`
+	// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// A map of tags assigned to the instance. It must be in the format:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The user id of the instance.
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// The maximum adjustable write capacity unit of the instance.
+	WriteCapacity pulumi.IntInput `pulumi:"writeCapacity"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+// The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
+func (o GetInstancesInstanceOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// The create time of the instance.
+func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the instance.
+func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The instance quota which indicating the maximum number of tables.
+func (o GetInstancesInstanceOutput) EntityQuota() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.EntityQuota }).(pulumi.IntOutput)
+}
+
+// ID of the instance.
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Instance name.
+func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+func (o GetInstancesInstanceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The maximum adjustable read capacity unit of the instance.
+func (o GetInstancesInstanceOutput) ReadCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.ReadCapacity }).(pulumi.IntOutput)
+}
+
+// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
+func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A map of tags assigned to the instance. It must be in the format:
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
+// 			Tags: map[string]interface{}{
+// 				"tagKey1": "tagValue1",
+// 				"tagKey2": "tagValue2",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The user id of the instance.
+func (o GetInstancesInstanceOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The maximum adjustable write capacity unit of the instance.
+func (o GetInstancesInstanceOutput) WriteCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.WriteCapacity }).(pulumi.IntOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
+type GetTablesTable struct {
+	// ID of the table. The value is `<instance_name>:<table_name>`.
+	Id string `pulumi:"id"`
+	// The name of OTS instance.
+	InstanceName string `pulumi:"instanceName"`
+	// The maximum number of versions stored in this table.
+	MaxVersion int `pulumi:"maxVersion"`
+	// The property of `TableMeta` which indicates the structure information of a table.
+	PrimaryKeys []GetTablesTablePrimaryKey `pulumi:"primaryKeys"`
+	// The table name of the OTS which could not be changed.
+	TableName string `pulumi:"tableName"`
+	// The retention time of data stored in this table.
+	TimeToLive int `pulumi:"timeToLive"`
+}
+
+// GetTablesTableInput is an input type that accepts GetTablesTableArgs and GetTablesTableOutput values.
+// You can construct a concrete instance of `GetTablesTableInput` via:
+//
+//          GetTablesTableArgs{...}
+type GetTablesTableInput interface {
+	pulumi.Input
+
+	ToGetTablesTableOutput() GetTablesTableOutput
+	ToGetTablesTableOutputWithContext(context.Context) GetTablesTableOutput
+}
+
+type GetTablesTableArgs struct {
+	// ID of the table. The value is `<instance_name>:<table_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of OTS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The maximum number of versions stored in this table.
+	MaxVersion pulumi.IntInput `pulumi:"maxVersion"`
+	// The property of `TableMeta` which indicates the structure information of a table.
+	PrimaryKeys GetTablesTablePrimaryKeyArrayInput `pulumi:"primaryKeys"`
+	// The table name of the OTS which could not be changed.
+	TableName pulumi.StringInput `pulumi:"tableName"`
+	// The retention time of data stored in this table.
+	TimeToLive pulumi.IntInput `pulumi:"timeToLive"`
+}
+
+func (GetTablesTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTable)(nil)).Elem()
+}
+
+func (i GetTablesTableArgs) ToGetTablesTableOutput() GetTablesTableOutput {
+	return i.ToGetTablesTableOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableArgs) ToGetTablesTableOutputWithContext(ctx context.Context) GetTablesTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableOutput)
+}
+
+// GetTablesTableArrayInput is an input type that accepts GetTablesTableArray and GetTablesTableArrayOutput values.
+// You can construct a concrete instance of `GetTablesTableArrayInput` via:
+//
+//          GetTablesTableArray{ GetTablesTableArgs{...} }
+type GetTablesTableArrayInput interface {
+	pulumi.Input
+
+	ToGetTablesTableArrayOutput() GetTablesTableArrayOutput
+	ToGetTablesTableArrayOutputWithContext(context.Context) GetTablesTableArrayOutput
+}
+
+type GetTablesTableArray []GetTablesTableInput
+
+func (GetTablesTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTable)(nil)).Elem()
+}
+
+func (i GetTablesTableArray) ToGetTablesTableArrayOutput() GetTablesTableArrayOutput {
+	return i.ToGetTablesTableArrayOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableArray) ToGetTablesTableArrayOutputWithContext(ctx context.Context) GetTablesTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableArrayOutput)
+}
+
+type GetTablesTableOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTable)(nil)).Elem()
+}
+
+func (o GetTablesTableOutput) ToGetTablesTableOutput() GetTablesTableOutput {
+	return o
+}
+
+func (o GetTablesTableOutput) ToGetTablesTableOutputWithContext(ctx context.Context) GetTablesTableOutput {
+	return o
+}
+
+// ID of the table. The value is `<instance_name>:<table_name>`.
+func (o GetTablesTableOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTable) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of OTS instance.
+func (o GetTablesTableOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTable) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The maximum number of versions stored in this table.
+func (o GetTablesTableOutput) MaxVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTablesTable) int { return v.MaxVersion }).(pulumi.IntOutput)
+}
+
+// The property of `TableMeta` which indicates the structure information of a table.
+func (o GetTablesTableOutput) PrimaryKeys() GetTablesTablePrimaryKeyArrayOutput {
+	return o.ApplyT(func(v GetTablesTable) []GetTablesTablePrimaryKey { return v.PrimaryKeys }).(GetTablesTablePrimaryKeyArrayOutput)
+}
+
+// The table name of the OTS which could not be changed.
+func (o GetTablesTableOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTable) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+// The retention time of data stored in this table.
+func (o GetTablesTableOutput) TimeToLive() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTablesTable) int { return v.TimeToLive }).(pulumi.IntOutput)
+}
+
+type GetTablesTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTable)(nil)).Elem()
+}
+
+func (o GetTablesTableArrayOutput) ToGetTablesTableArrayOutput() GetTablesTableArrayOutput {
+	return o
+}
+
+func (o GetTablesTableArrayOutput) ToGetTablesTableArrayOutputWithContext(ctx context.Context) GetTablesTableArrayOutput {
+	return o
+}
+
+func (o GetTablesTableArrayOutput) Index(i pulumi.IntInput) GetTablesTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTable {
+		return vs[0].([]GetTablesTable)[vs[1].(int)]
+	}).(GetTablesTableOutput)
+}
+
+type GetTablesTablePrimaryKey struct {
+	Name string `pulumi:"name"`
+	Type string `pulumi:"type"`
+}
+
+// GetTablesTablePrimaryKeyInput is an input type that accepts GetTablesTablePrimaryKeyArgs and GetTablesTablePrimaryKeyOutput values.
+// You can construct a concrete instance of `GetTablesTablePrimaryKeyInput` via:
+//
+//          GetTablesTablePrimaryKeyArgs{...}
+type GetTablesTablePrimaryKeyInput interface {
+	pulumi.Input
+
+	ToGetTablesTablePrimaryKeyOutput() GetTablesTablePrimaryKeyOutput
+	ToGetTablesTablePrimaryKeyOutputWithContext(context.Context) GetTablesTablePrimaryKeyOutput
+}
+
+type GetTablesTablePrimaryKeyArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetTablesTablePrimaryKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTablePrimaryKey)(nil)).Elem()
+}
+
+func (i GetTablesTablePrimaryKeyArgs) ToGetTablesTablePrimaryKeyOutput() GetTablesTablePrimaryKeyOutput {
+	return i.ToGetTablesTablePrimaryKeyOutputWithContext(context.Background())
+}
+
+func (i GetTablesTablePrimaryKeyArgs) ToGetTablesTablePrimaryKeyOutputWithContext(ctx context.Context) GetTablesTablePrimaryKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTablePrimaryKeyOutput)
+}
+
+// GetTablesTablePrimaryKeyArrayInput is an input type that accepts GetTablesTablePrimaryKeyArray and GetTablesTablePrimaryKeyArrayOutput values.
+// You can construct a concrete instance of `GetTablesTablePrimaryKeyArrayInput` via:
+//
+//          GetTablesTablePrimaryKeyArray{ GetTablesTablePrimaryKeyArgs{...} }
+type GetTablesTablePrimaryKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetTablesTablePrimaryKeyArrayOutput() GetTablesTablePrimaryKeyArrayOutput
+	ToGetTablesTablePrimaryKeyArrayOutputWithContext(context.Context) GetTablesTablePrimaryKeyArrayOutput
+}
+
+type GetTablesTablePrimaryKeyArray []GetTablesTablePrimaryKeyInput
+
+func (GetTablesTablePrimaryKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTablePrimaryKey)(nil)).Elem()
+}
+
+func (i GetTablesTablePrimaryKeyArray) ToGetTablesTablePrimaryKeyArrayOutput() GetTablesTablePrimaryKeyArrayOutput {
+	return i.ToGetTablesTablePrimaryKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetTablesTablePrimaryKeyArray) ToGetTablesTablePrimaryKeyArrayOutputWithContext(ctx context.Context) GetTablesTablePrimaryKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTablePrimaryKeyArrayOutput)
+}
+
+type GetTablesTablePrimaryKeyOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTablePrimaryKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTablePrimaryKey)(nil)).Elem()
+}
+
+func (o GetTablesTablePrimaryKeyOutput) ToGetTablesTablePrimaryKeyOutput() GetTablesTablePrimaryKeyOutput {
+	return o
+}
+
+func (o GetTablesTablePrimaryKeyOutput) ToGetTablesTablePrimaryKeyOutputWithContext(ctx context.Context) GetTablesTablePrimaryKeyOutput {
+	return o
+}
+
+func (o GetTablesTablePrimaryKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTablePrimaryKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetTablesTablePrimaryKeyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTablePrimaryKey) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetTablesTablePrimaryKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTablePrimaryKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTablePrimaryKey)(nil)).Elem()
+}
+
+func (o GetTablesTablePrimaryKeyArrayOutput) ToGetTablesTablePrimaryKeyArrayOutput() GetTablesTablePrimaryKeyArrayOutput {
+	return o
+}
+
+func (o GetTablesTablePrimaryKeyArrayOutput) ToGetTablesTablePrimaryKeyArrayOutputWithContext(ctx context.Context) GetTablesTablePrimaryKeyArrayOutput {
+	return o
+}
+
+func (o GetTablesTablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) GetTablesTablePrimaryKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTablePrimaryKey {
+		return vs[0].([]GetTablesTablePrimaryKey)[vs[1].(int)]
+	}).(GetTablesTablePrimaryKeyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TablePrimaryKeyOutput{})
 	pulumi.RegisterOutputType(TablePrimaryKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAttachmentsAttachmentOutput{})
+	pulumi.RegisterOutputType(GetInstanceAttachmentsAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetTablesTableOutput{})
+	pulumi.RegisterOutputType(GetTablesTableArrayOutput{})
+	pulumi.RegisterOutputType(GetTablesTablePrimaryKeyOutput{})
+	pulumi.RegisterOutputType(GetTablesTablePrimaryKeyArrayOutput{})
 }

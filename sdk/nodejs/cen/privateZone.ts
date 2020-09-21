@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  * const defaultInstanceAttachment = new alicloud.cen.InstanceAttachment("defaultInstanceAttachment", {
  *     instanceId: defaultInstance.id,
  *     childInstanceId: defaultNetwork.id,
+ *     childInstanceType: "VPC",
  *     childInstanceRegionId: "cn-hangzhou",
  * }, {
  *     dependsOn: [

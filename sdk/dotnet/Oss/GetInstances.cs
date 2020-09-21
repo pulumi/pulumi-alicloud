@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Oss
 {
+    [Obsolete(@"alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances")]
     public static class GetInstances
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.AliCloud.Oss
         /// {
         ///     public MyStack()
         ///     {
-        ///         var instancesDs = Output.Create(AliCloud.Oss.GetInstances.InvokeAsync(new AliCloud.Oss.GetInstancesArgs
+        ///         var instancesDs = Output.Create(AliCloud.Ots.GetInstances.InvokeAsync(new AliCloud.Ots.GetInstancesArgs
         ///         {
         ///             NameRegex = "sample-instance",
         ///             OutputFile = "instances.txt",
@@ -82,7 +83,7 @@ namespace Pulumi.AliCloud.Oss
         /// {
         ///     public MyStack()
         ///     {
-        ///         var instancesDs = Output.Create(AliCloud.Oss.GetInstances.InvokeAsync(new AliCloud.Oss.GetInstancesArgs
+        ///         var instancesDs = Output.Create(AliCloud.Ots.GetInstances.InvokeAsync(new AliCloud.Ots.GetInstancesArgs
         ///         {
         ///             Tags = 
         ///             {

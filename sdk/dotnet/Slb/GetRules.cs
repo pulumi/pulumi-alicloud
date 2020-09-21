@@ -26,10 +26,52 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     public MyStack()
         ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetRules.InvokeAsync(new AliCloud.Slb.GetRulesArgs
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "slbrulebasicconfig";
+        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
         ///         {
-        ///             FrontendPort = 80,
-        ///             LoadBalancerId = alicloud_slb.Sample_slb.Id,
+        ///             AvailableDiskCategory = "cloud_efficiency",
+        ///             AvailableResourceCreation = "VSwitch",
+        ///         }));
+        ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/16",
+        ///         });
+        ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             VpcId = defaultNetwork.Id,
+        ///             CidrBlock = "172.16.0.0/16",
+        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+        ///         });
+        ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+        ///         {
+        ///             VswitchId = defaultSwitch.Id,
+        ///         });
+        ///         var defaultListener = new AliCloud.Slb.Listener("defaultListener", new AliCloud.Slb.ListenerArgs
+        ///         {
+        ///             LoadBalancerId = defaultLoadBalancer.Id,
+        ///             BackendPort = 22,
+        ///             FrontendPort = 22,
+        ///             Protocol = "http",
+        ///             Bandwidth = 5,
+        ///             HealthCheckConnectPort = 20,
+        ///         });
+        ///         var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new AliCloud.Slb.ServerGroupArgs
+        ///         {
+        ///             LoadBalancerId = defaultLoadBalancer.Id,
+        ///         });
+        ///         var defaultRule = new AliCloud.Slb.Rule("defaultRule", new AliCloud.Slb.RuleArgs
+        ///         {
+        ///             LoadBalancerId = defaultLoadBalancer.Id,
+        ///             FrontendPort = defaultListener.FrontendPort,
+        ///             Domain = "*.aliyun.com",
+        ///             Url = "/image",
+        ///             ServerGroupId = defaultServerGroup.Id,
+        ///         });
+        ///         var sampleDs = defaultLoadBalancer.Id.Apply(id =&gt; AliCloud.Slb.GetRules.InvokeAsync(new AliCloud.Slb.GetRulesArgs
+        ///         {
+        ///             LoadBalancerId = id,
+        ///             FrontendPort = 22,
         ///         }));
         ///         this.FirstSlbRuleId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbRules[0].Id);
         ///     }

@@ -2478,13 +2478,13 @@ type GetInstancesInstance struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
 	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 	// )
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := oss.GetInstances(ctx, &oss.GetInstancesArgs{
+	// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
 	// 			Tags: map[string]interface{}{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
@@ -2539,13 +2539,13 @@ type GetInstancesInstanceArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
 	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 	// )
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := oss.GetInstances(ctx, &oss.GetInstancesArgs{
+	// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
 	// 			Tags: map[string]interface{}{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
@@ -2666,13 +2666,13 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/oss"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ots"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.GetInstances(ctx, &oss.GetInstancesArgs{
+// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
 // 			Tags: map[string]interface{}{
 // 				"tagKey1": "tagValue1",
 // 				"tagKey2": "tagValue2",

@@ -74,6 +74,7 @@ class RouteEntry(pulumi.CustomResource):
         attach = alicloud.cen.InstanceAttachment("attach",
             instance_id=cen.id,
             child_instance_id=vpc.id,
+            child_instance_type="VPC",
             child_instance_region_id="cn-hangzhou",
             opts=ResourceOptions(depends_on=[default_switch]))
         route = alicloud.vpc.RouteEntry("route",

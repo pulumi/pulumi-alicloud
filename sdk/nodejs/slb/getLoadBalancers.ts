@@ -15,11 +15,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const slbsDs = pulumi.output(alicloud.slb.getLoadBalancers({
+ * const _default = new alicloud.slb.LoadBalancer("default", {});
+ * const slbsDs = alicloud.slb.getLoadBalancers({
  *     nameRegex: "sample_slb",
- * }, { async: true }));
- *
- * export const firstSlbId = slbsDs.slbs[0].id;
+ * });
+ * export const firstSlbId = slbsDs.then(slbsDs => slbsDs.slbs[0].id);
  * ```
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {

@@ -33,14 +33,15 @@ namespace Pulumi.AliCloud.RocketMQ
         ///         var topic = config.Get("topic") ?? "onsTopicDatasourceName";
         ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
         ///         {
+        ///             InstanceName = name,
         ///             Remark = "default_ons_instance_remark",
         ///         });
         ///         var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new AliCloud.RocketMQ.TopicArgs
         ///         {
+        ///             TopicName = topic,
         ///             InstanceId = defaultInstance.Id,
         ///             MessageType = 0,
         ///             Remark = "dafault_ons_topic_remark",
-        ///             Topic = topic,
         ///         });
         ///         var topicsDs = defaultTopic.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetTopics.InvokeAsync(new AliCloud.RocketMQ.GetTopicsArgs
         ///         {
@@ -48,7 +49,7 @@ namespace Pulumi.AliCloud.RocketMQ
         ///             NameRegex = topic,
         ///             OutputFile = "topics.txt",
         ///         }));
-        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics[0].Topic);
+        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics[0].TopicName);
         ///     }
         /// 
         ///     [Output("firstTopicName")]
@@ -65,6 +66,21 @@ namespace Pulumi.AliCloud.RocketMQ
 
     public sealed class GetTopicsArgs : Pulumi.InvokeArgs
     {
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private List<string>? _ids;
+
+        /// <summary>
+        /// A list of topic IDs to filter results.
+        /// </summary>
+        public List<string> Ids
+        {
+            get => _ids ?? (_ids = new List<string>());
+            set => _ids = value;
+        }
+
         /// <summary>
         /// ID of the ONS Instance that owns the topics.
         /// </summary>
@@ -80,6 +96,18 @@ namespace Pulumi.AliCloud.RocketMQ
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("tags")]
+        private Dictionary<string, object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the Ons instance.
+        /// </summary>
+        public Dictionary<string, object> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, object>());
+            set => _tags = value;
+        }
+
         public GetTopicsArgs()
         {
         }
@@ -89,10 +117,12 @@ namespace Pulumi.AliCloud.RocketMQ
     [OutputType]
     public sealed class GetTopicsResult
     {
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
         public readonly string InstanceId;
         public readonly string? NameRegex;
         /// <summary>
@@ -101,13 +131,21 @@ namespace Pulumi.AliCloud.RocketMQ
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
+        /// A map of tags assigned to the Ons instance.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Tags;
+        /// <summary>
         /// A list of topics. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTopicsTopicResult> Topics;
 
         [OutputConstructor]
         private GetTopicsResult(
+            bool? enableDetails,
+
             string id,
+
+            ImmutableArray<string> ids,
 
             string instanceId,
 
@@ -117,13 +155,18 @@ namespace Pulumi.AliCloud.RocketMQ
 
             string? outputFile,
 
+            ImmutableDictionary<string, object>? tags,
+
             ImmutableArray<Outputs.GetTopicsTopicResult> topics)
         {
+            EnableDetails = enableDetails;
             Id = id;
+            Ids = ids;
             InstanceId = instanceId;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            Tags = tags;
             Topics = topics;
         }
     }

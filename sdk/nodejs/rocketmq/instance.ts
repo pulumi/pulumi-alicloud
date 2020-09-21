@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.rocketmq.Instance("example", {
+ *     instanceName: "tf-example-ons-instance",
  *     remark: "tf-example-ons-instance-remark",
  * });
  * ```
@@ -55,6 +56,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+     */
+    public readonly instanceName!: pulumi.Output<string>;
+    /**
      * The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
      */
     public /*out*/ readonly instanceStatus!: pulumi.Output<number>;
@@ -63,7 +68,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceType!: pulumi.Output<number>;
     /**
-     * Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+     * Replaced by `instanceName` after version 1.97.0.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -74,6 +81,16 @@ export class Instance extends pulumi.CustomResource {
      * This attribute is a concise description of instance. The length cannot exceed 128.
      */
     public readonly remark!: pulumi.Output<string | undefined>;
+    /**
+     * The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
+     */
+    public /*out*/ readonly status!: pulumi.Output<number>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -87,18 +104,24 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["instanceStatus"] = state ? state.instanceStatus : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["releaseTime"] = state ? state.releaseTime : undefined;
             inputs["remark"] = state ? state.remark : undefined;
+            inputs["status"] = state ? state.status : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
+            inputs["instanceName"] = args ? args.instanceName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["remark"] = args ? args.remark : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["instanceStatus"] = undefined /*out*/;
             inputs["instanceType"] = undefined /*out*/;
             inputs["releaseTime"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -116,6 +139,10 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
+     * Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+     */
+    readonly instanceName?: pulumi.Input<string>;
+    /**
      * The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
      */
     readonly instanceStatus?: pulumi.Input<number>;
@@ -124,7 +151,9 @@ export interface InstanceState {
      */
     readonly instanceType?: pulumi.Input<number>;
     /**
-     * Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+     * Replaced by `instanceName` after version 1.97.0.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -135,6 +164,16 @@ export interface InstanceState {
      * This attribute is a concise description of instance. The length cannot exceed 128.
      */
     readonly remark?: pulumi.Input<string>;
+    /**
+     * The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
+     */
+    readonly status?: pulumi.Input<number>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -144,9 +183,21 @@ export interface InstanceArgs {
     /**
      * Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
      */
+    readonly instanceName?: pulumi.Input<string>;
+    /**
+     * Replaced by `instanceName` after version 1.97.0.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * This attribute is a concise description of instance. The length cannot exceed 128.
      */
     readonly remark?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }

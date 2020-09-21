@@ -34,11 +34,13 @@ import * as utilities from "../utilities";
  * const default00 = new alicloud.cen.InstanceAttachment("default00", {
  *     instanceId: defaultInstance.id,
  *     childInstanceId: vpc00.id,
+ *     childInstanceType: "VPC",
  *     childInstanceRegionId: "cn-hangzhou",
  * });
  * const default01 = new alicloud.cen.InstanceAttachment("default01", {
  *     instanceId: defaultInstance.id,
  *     childInstanceId: vpc01.id,
+ *     childInstanceType: "VPC",
  *     childInstanceRegionId: "cn-shanghai",
  * });
  * const defaultRouteMap = new alicloud.cen.RouteMap("defaultRouteMap", {

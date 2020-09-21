@@ -20,23 +20,22 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceName";
  * const topic = config.get("topic") || "onsTopicDatasourceName";
- *
- * const defaultInstance = new alicloud.rocketmq.Instance("default", {
+ * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {
+ *     instanceName: name,
  *     remark: "default_ons_instance_remark",
  * });
- * const defaultTopic = new alicloud.rocketmq.Topic("default", {
+ * const defaultTopic = new alicloud.rocketmq.Topic("defaultTopic", {
+ *     topicName: topic,
  *     instanceId: defaultInstance.id,
  *     messageType: 0,
  *     remark: "dafault_ons_topic_remark",
- *     topic: topic,
  * });
  * const topicsDs = defaultTopic.instanceId.apply(instanceId => alicloud.rocketmq.getTopics({
  *     instanceId: instanceId,
  *     nameRegex: topic,
  *     outputFile: "topics.txt",
- * }, { async: true }));
- *
- * export const firstTopicName = topicsDs.topics[0].topic;
+ * }));
+ * export const firstTopicName = topicsDs.topics[0].topicName;
  * ```
  */
 export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
@@ -48,9 +47,12 @@ export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pro
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:rocketmq/getTopics:getTopics", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
         "instanceId": args.instanceId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -58,6 +60,11 @@ export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getTopics.
  */
 export interface GetTopicsArgs {
+    readonly enableDetails?: boolean;
+    /**
+     * A list of topic IDs to filter results.
+     */
+    readonly ids?: string[];
     /**
      * ID of the ONS Instance that owns the topics.
      */
@@ -67,16 +74,22 @@ export interface GetTopicsArgs {
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * A map of tags assigned to the Ons instance.
+     */
+    readonly tags?: {[key: string]: any};
 }
 
 /**
  * A collection of values returned by getTopics.
  */
 export interface GetTopicsResult {
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ids: string[];
     readonly instanceId: string;
     readonly nameRegex?: string;
     /**
@@ -84,6 +97,10 @@ export interface GetTopicsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A map of tags assigned to the Ons instance.
+     */
+    readonly tags?: {[key: string]: any};
     /**
      * A list of topics. Each element contains the following attributes:
      */

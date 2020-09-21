@@ -31,6 +31,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -55,6 +56,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster .
+        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
         :param pulumi.Input[str] vswitch_id: (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         :param pulumi.Input[List[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
@@ -90,6 +92,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__['private_zone'] = private_zone
             __props__['security_group_id'] = security_group_id
             __props__['tags'] = tags
+            __props__['version'] = version
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
@@ -122,6 +125,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             private_zone: Optional[pulumi.Input[bool]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            version: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             vswitch_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'ServerlessKubernetes':
@@ -146,6 +150,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster .
+        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
         :param pulumi.Input[str] vswitch_id: (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         :param pulumi.Input[List[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
@@ -168,6 +173,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__["private_zone"] = private_zone
         __props__["security_group_id"] = security_group_id
         __props__["tags"] = tags
+        __props__["version"] = version
         __props__["vpc_id"] = vpc_id
         __props__["vswitch_id"] = vswitch_id
         __props__["vswitch_ids"] = vswitch_ids
@@ -280,6 +286,14 @@ class ServerlessKubernetes(pulumi.CustomResource):
         Default nil, A map of tags assigned to the kubernetes cluster .
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Output[str]:
+        """
+        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        """
+        return pulumi.get(self, "version")
 
     @property
     @pulumi.getter(name="vpcId")

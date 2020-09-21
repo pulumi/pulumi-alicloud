@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const topic = config.get("topic") || "onsTopicName";
  * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {remark: "default_ons_instance_remark"});
  * const defaultTopic = new alicloud.rocketmq.Topic("defaultTopic", {
- *     topic: topic,
+ *     topicName: topic,
  *     instanceId: defaultInstance.id,
  *     messageType: 0,
  *     remark: "dafault_ons_topic_remark",
@@ -76,9 +76,21 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly remark!: pulumi.Output<string | undefined>;
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * Replaced by `topicName` after version 1.97.0.
+     *
+     * @deprecated Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
      */
     public readonly topic!: pulumi.Output<string>;
+    /**
+     * Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+     */
+    public readonly topicName!: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -96,7 +108,9 @@ export class Topic extends pulumi.CustomResource {
             inputs["messageType"] = state ? state.messageType : undefined;
             inputs["perm"] = state ? state.perm : undefined;
             inputs["remark"] = state ? state.remark : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["topic"] = state ? state.topic : undefined;
+            inputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
             if (!args || args.instanceId === undefined) {
@@ -105,14 +119,13 @@ export class Topic extends pulumi.CustomResource {
             if (!args || args.messageType === undefined) {
                 throw new Error("Missing required property 'messageType'");
             }
-            if (!args || args.topic === undefined) {
-                throw new Error("Missing required property 'topic'");
-            }
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["messageType"] = args ? args.messageType : undefined;
             inputs["perm"] = args ? args.perm : undefined;
             inputs["remark"] = args ? args.remark : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["topic"] = args ? args.topic : undefined;
+            inputs["topicName"] = args ? args.topicName : undefined;
         }
         if (!opts) {
             opts = {}
@@ -146,9 +159,21 @@ export interface TopicState {
      */
     readonly remark?: pulumi.Input<string>;
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Replaced by `topicName` after version 1.97.0.
+     *
+     * @deprecated Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
      */
     readonly topic?: pulumi.Input<string>;
+    /**
+     * Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+     */
+    readonly topicName?: pulumi.Input<string>;
 }
 
 /**
@@ -172,7 +197,19 @@ export interface TopicArgs {
      */
     readonly remark?: pulumi.Input<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Replaced by `topicName` after version 1.97.0.
+     *
+     * @deprecated Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
+     */
+    readonly topic?: pulumi.Input<string>;
+    /**
      * Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
      */
-    readonly topic: pulumi.Input<string>;
+    readonly topicName?: pulumi.Input<string>;
 }

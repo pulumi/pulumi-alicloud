@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Dns
     ///         // Add a new Alinds Domain Group.
     ///         var example = new AliCloud.Dns.DomainGroup("example", new AliCloud.Dns.DomainGroupArgs
     ///         {
-    ///             GroupName = "tf-testDG",
+    ///             DomainGroupName = "tf-testDG",
     ///         });
     ///     }
     /// 
@@ -38,6 +38,12 @@ namespace Pulumi.AliCloud.Dns
     {
         /// <summary>
         /// Name of the domain group.
+        /// </summary>
+        [Output("domainGroupName")]
+        public Output<string> DomainGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// Replaced by `domain_group_name` after version 1.97.0.
         /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
@@ -56,7 +62,7 @@ namespace Pulumi.AliCloud.Dns
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public DomainGroup(string name, DomainGroupArgs args, CustomResourceOptions? options = null)
+        public DomainGroup(string name, DomainGroupArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:dns/domainGroup:DomainGroup", name, args ?? new DomainGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -97,8 +103,14 @@ namespace Pulumi.AliCloud.Dns
         /// <summary>
         /// Name of the domain group.
         /// </summary>
-        [Input("groupName", required: true)]
-        public Input<string> GroupName { get; set; } = null!;
+        [Input("domainGroupName")]
+        public Input<string>? DomainGroupName { get; set; }
+
+        /// <summary>
+        /// Replaced by `domain_group_name` after version 1.97.0.
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
 
         /// <summary>
         /// User language.
@@ -115,6 +127,12 @@ namespace Pulumi.AliCloud.Dns
     {
         /// <summary>
         /// Name of the domain group.
+        /// </summary>
+        [Input("domainGroupName")]
+        public Input<string>? DomainGroupName { get; set; }
+
+        /// <summary>
+        /// Replaced by `domain_group_name` after version 1.97.0.
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }

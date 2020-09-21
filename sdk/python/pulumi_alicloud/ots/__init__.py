@@ -3,6 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .get_instance_attachments import *
+from .get_instances import *
+from .get_service import *
+from .get_tables import *
 from .instance import *
 from .instance_attachment import *
 from .table import *

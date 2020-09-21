@@ -135,8 +135,16 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 }
 
 type GetInstancesInstance struct {
+	// The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+	HttpInternalEndpoint string `pulumi:"httpInternalEndpoint"`
+	// The public HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+	HttpInternetEndpoint string `pulumi:"httpInternetEndpoint"`
+	// The public HTTPS endpoint for the Message Queue for Apache RocketMQ instance.
+	HttpInternetSecureEndpoint string `pulumi:"httpInternetSecureEndpoint"`
 	// ID of the instance.
 	Id string `pulumi:"id"`
+	// Indicates whether any namespace is configured for the Message Queue for Apache RocketMQ instance.
+	IndependentNaming bool `pulumi:"independentNaming"`
 	// ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Name of the instance.
@@ -146,7 +154,15 @@ type GetInstancesInstance struct {
 	// The type of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
 	InstanceType int `pulumi:"instanceType"`
 	// The automatic release time of an Enterprise Platinum Edition instance.
-	ReleaseTime int `pulumi:"releaseTime"`
+	ReleaseTime string `pulumi:"releaseTime"`
+	// This attribute is a concise description of instance.
+	Remark string `pulumi:"remark"`
+	// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+	Status int `pulumi:"status"`
+	// A map of tags assigned to the Ons instance.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The TCP endpoint for the Message Queue for Apache RocketMQ instance.
+	TcpEndpoint string `pulumi:"tcpEndpoint"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -161,8 +177,16 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
+	// The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+	HttpInternalEndpoint pulumi.StringInput `pulumi:"httpInternalEndpoint"`
+	// The public HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+	HttpInternetEndpoint pulumi.StringInput `pulumi:"httpInternetEndpoint"`
+	// The public HTTPS endpoint for the Message Queue for Apache RocketMQ instance.
+	HttpInternetSecureEndpoint pulumi.StringInput `pulumi:"httpInternetSecureEndpoint"`
 	// ID of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates whether any namespace is configured for the Message Queue for Apache RocketMQ instance.
+	IndependentNaming pulumi.BoolInput `pulumi:"independentNaming"`
 	// ID of the instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// Name of the instance.
@@ -172,7 +196,15 @@ type GetInstancesInstanceArgs struct {
 	// The type of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
 	InstanceType pulumi.IntInput `pulumi:"instanceType"`
 	// The automatic release time of an Enterprise Platinum Edition instance.
-	ReleaseTime pulumi.IntInput `pulumi:"releaseTime"`
+	ReleaseTime pulumi.StringInput `pulumi:"releaseTime"`
+	// This attribute is a concise description of instance.
+	Remark pulumi.StringInput `pulumi:"remark"`
+	// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+	Status pulumi.IntInput `pulumi:"status"`
+	// A map of tags assigned to the Ons instance.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The TCP endpoint for the Message Queue for Apache RocketMQ instance.
+	TcpEndpoint pulumi.StringInput `pulumi:"tcpEndpoint"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -226,9 +258,29 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
+// The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+func (o GetInstancesInstanceOutput) HttpInternalEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.HttpInternalEndpoint }).(pulumi.StringOutput)
+}
+
+// The public HTTP endpoint for the Message Queue for Apache RocketMQ instance.
+func (o GetInstancesInstanceOutput) HttpInternetEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.HttpInternetEndpoint }).(pulumi.StringOutput)
+}
+
+// The public HTTPS endpoint for the Message Queue for Apache RocketMQ instance.
+func (o GetInstancesInstanceOutput) HttpInternetSecureEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.HttpInternetSecureEndpoint }).(pulumi.StringOutput)
+}
+
 // ID of the instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Indicates whether any namespace is configured for the Message Queue for Apache RocketMQ instance.
+func (o GetInstancesInstanceOutput) IndependentNaming() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.IndependentNaming }).(pulumi.BoolOutput)
 }
 
 // ID of the instance.
@@ -252,8 +304,28 @@ func (o GetInstancesInstanceOutput) InstanceType() pulumi.IntOutput {
 }
 
 // The automatic release time of an Enterprise Platinum Edition instance.
-func (o GetInstancesInstanceOutput) ReleaseTime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetInstancesInstance) int { return v.ReleaseTime }).(pulumi.IntOutput)
+func (o GetInstancesInstanceOutput) ReleaseTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ReleaseTime }).(pulumi.StringOutput)
+}
+
+// This attribute is a concise description of instance.
+func (o GetInstancesInstanceOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Remark }).(pulumi.StringOutput)
+}
+
+// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+func (o GetInstancesInstanceOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Status }).(pulumi.IntOutput)
+}
+
+// A map of tags assigned to the Ons instance.
+func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The TCP endpoint for the Message Queue for Apache RocketMQ instance.
+func (o GetInstancesInstanceOutput) TcpEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.TcpEndpoint }).(pulumi.StringOutput)
 }
 
 type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -277,22 +349,30 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetTopicsTopic struct {
-	// Time of creation.
-	CreateTime string `pulumi:"createTime"`
+	// The id of the topic.
+	Id string `pulumi:"id"`
 	// Indicates whether namespaces are available. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
 	IndependentNaming bool `pulumi:"independentNaming"`
+	// ID of the ONS Instance that owns the topics.
+	InstanceId string `pulumi:"instanceId"`
 	// The type of the message. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
 	MessageType int `pulumi:"messageType"`
 	// The ID of the topic owner, which is the Alibaba Cloud UID.
 	Owner string `pulumi:"owner"`
+	// This attribute is used to set the read-write mode for the topic.
+	Perm int `pulumi:"perm"`
 	// The relation ID. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
 	Relation int `pulumi:"relation"`
 	// The name of the relation, for example, owner, publishable, subscribable, and publishable and subscribable.
 	RelationName string `pulumi:"relationName"`
 	// Remark of the topic.
 	Remark string `pulumi:"remark"`
+	// A map of tags assigned to the Ons instance.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The name of the topic.
 	Topic string `pulumi:"topic"`
+	// The name of the topic.
+	TopicName string `pulumi:"topicName"`
 }
 
 // GetTopicsTopicInput is an input type that accepts GetTopicsTopicArgs and GetTopicsTopicOutput values.
@@ -307,22 +387,30 @@ type GetTopicsTopicInput interface {
 }
 
 type GetTopicsTopicArgs struct {
-	// Time of creation.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The id of the topic.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Indicates whether namespaces are available. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
 	IndependentNaming pulumi.BoolInput `pulumi:"independentNaming"`
+	// ID of the ONS Instance that owns the topics.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The type of the message. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
 	MessageType pulumi.IntInput `pulumi:"messageType"`
 	// The ID of the topic owner, which is the Alibaba Cloud UID.
 	Owner pulumi.StringInput `pulumi:"owner"`
+	// This attribute is used to set the read-write mode for the topic.
+	Perm pulumi.IntInput `pulumi:"perm"`
 	// The relation ID. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
 	Relation pulumi.IntInput `pulumi:"relation"`
 	// The name of the relation, for example, owner, publishable, subscribable, and publishable and subscribable.
 	RelationName pulumi.StringInput `pulumi:"relationName"`
 	// Remark of the topic.
 	Remark pulumi.StringInput `pulumi:"remark"`
+	// A map of tags assigned to the Ons instance.
+	Tags pulumi.MapInput `pulumi:"tags"`
 	// The name of the topic.
 	Topic pulumi.StringInput `pulumi:"topic"`
+	// The name of the topic.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
 func (GetTopicsTopicArgs) ElementType() reflect.Type {
@@ -376,14 +464,19 @@ func (o GetTopicsTopicOutput) ToGetTopicsTopicOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Time of creation.
-func (o GetTopicsTopicOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTopicsTopic) string { return v.CreateTime }).(pulumi.StringOutput)
+// The id of the topic.
+func (o GetTopicsTopicOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Indicates whether namespaces are available. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
 func (o GetTopicsTopicOutput) IndependentNaming() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTopicsTopic) bool { return v.IndependentNaming }).(pulumi.BoolOutput)
+}
+
+// ID of the ONS Instance that owns the topics.
+func (o GetTopicsTopicOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // The type of the message. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
@@ -394,6 +487,11 @@ func (o GetTopicsTopicOutput) MessageType() pulumi.IntOutput {
 // The ID of the topic owner, which is the Alibaba Cloud UID.
 func (o GetTopicsTopicOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicsTopic) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// This attribute is used to set the read-write mode for the topic.
+func (o GetTopicsTopicOutput) Perm() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTopicsTopic) int { return v.Perm }).(pulumi.IntOutput)
 }
 
 // The relation ID. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
@@ -411,9 +509,19 @@ func (o GetTopicsTopicOutput) Remark() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicsTopic) string { return v.Remark }).(pulumi.StringOutput)
 }
 
+// A map of tags assigned to the Ons instance.
+func (o GetTopicsTopicOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetTopicsTopic) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
 // The name of the topic.
 func (o GetTopicsTopicOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicsTopic) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+// The name of the topic.
+func (o GetTopicsTopicOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.TopicName }).(pulumi.StringOutput)
 }
 
 type GetTopicsTopicArrayOutput struct{ *pulumi.OutputState }

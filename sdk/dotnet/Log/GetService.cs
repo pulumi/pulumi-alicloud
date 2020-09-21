@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Log
     public static class GetService
     {
         /// <summary>
-        /// Using this data source can open Log service automatically. If the service has been opened, it will return opened.
+        /// Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
         /// 
         /// For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Log
     public sealed class GetServiceArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. If has been opened, return the result.
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off".
         /// </summary>
         [Input("enable")]
         public string? Enable { get; set; }

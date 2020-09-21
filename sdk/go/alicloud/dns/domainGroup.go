@@ -6,7 +6,6 @@ package dns
 import (
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -27,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := dns.NewDomainGroup(ctx, "example", &dns.DomainGroupArgs{
-// 			GroupName: pulumi.String("tf-testDG"),
+// 			DomainGroupName: pulumi.String("tf-testDG"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -40,6 +39,10 @@ type DomainGroup struct {
 	pulumi.CustomResourceState
 
 	// Name of the domain group.
+	DomainGroupName pulumi.StringOutput `pulumi:"domainGroupName"`
+	// Replaced by `domainGroupName` after version 1.97.0.
+	//
+	// Deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
 	GroupName pulumi.StringOutput `pulumi:"groupName"`
 	// User language.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
@@ -48,9 +51,6 @@ type DomainGroup struct {
 // NewDomainGroup registers a new resource with the given unique name, arguments, and options.
 func NewDomainGroup(ctx *pulumi.Context,
 	name string, args *DomainGroupArgs, opts ...pulumi.ResourceOption) (*DomainGroup, error) {
-	if args == nil || args.GroupName == nil {
-		return nil, errors.New("missing required argument 'GroupName'")
-	}
 	if args == nil {
 		args = &DomainGroupArgs{}
 	}
@@ -77,6 +77,10 @@ func GetDomainGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DomainGroup resources.
 type domainGroupState struct {
 	// Name of the domain group.
+	DomainGroupName *string `pulumi:"domainGroupName"`
+	// Replaced by `domainGroupName` after version 1.97.0.
+	//
+	// Deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
 	GroupName *string `pulumi:"groupName"`
 	// User language.
 	Lang *string `pulumi:"lang"`
@@ -84,6 +88,10 @@ type domainGroupState struct {
 
 type DomainGroupState struct {
 	// Name of the domain group.
+	DomainGroupName pulumi.StringPtrInput
+	// Replaced by `domainGroupName` after version 1.97.0.
+	//
+	// Deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
 	GroupName pulumi.StringPtrInput
 	// User language.
 	Lang pulumi.StringPtrInput
@@ -95,7 +103,11 @@ func (DomainGroupState) ElementType() reflect.Type {
 
 type domainGroupArgs struct {
 	// Name of the domain group.
-	GroupName string `pulumi:"groupName"`
+	DomainGroupName *string `pulumi:"domainGroupName"`
+	// Replaced by `domainGroupName` after version 1.97.0.
+	//
+	// Deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
+	GroupName *string `pulumi:"groupName"`
 	// User language.
 	Lang *string `pulumi:"lang"`
 }
@@ -103,7 +115,11 @@ type domainGroupArgs struct {
 // The set of arguments for constructing a DomainGroup resource.
 type DomainGroupArgs struct {
 	// Name of the domain group.
-	GroupName pulumi.StringInput
+	DomainGroupName pulumi.StringPtrInput
+	// Replaced by `domainGroupName` after version 1.97.0.
+	//
+	// Deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
+	GroupName pulumi.StringPtrInput
 	// User language.
 	Lang pulumi.StringPtrInput
 }

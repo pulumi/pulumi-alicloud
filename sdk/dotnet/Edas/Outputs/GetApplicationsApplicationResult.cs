@@ -38,37 +38,9 @@ namespace Pulumi.AliCloud.Edas.Outputs
         /// </summary>
         public readonly int ClusterType;
         /// <summary>
-        /// Application's creation time.
-        /// </summary>
-        public readonly int CreateTime;
-        /// <summary>
-        /// The URL for health checking of the application.
-        /// </summary>
-        public readonly string HealthCheckUrl;
-        /// <summary>
-        /// Number of instances.
-        /// </summary>
-        public readonly int InstanceCount;
-        /// <summary>
         /// The ID of the namespace the application belongs to.
         /// </summary>
         public readonly string RegionId;
-        /// <summary>
-        /// Number of running instances.
-        /// </summary>
-        public readonly int RunningInstanceCount;
-        /// <summary>
-        /// The ID of the SLB instance that is going to be bound.
-        /// </summary>
-        public readonly string SlbId;
-        /// <summary>
-        /// The IP address that is allocated to the bound SLB instance.
-        /// </summary>
-        public readonly string SlbIp;
-        /// <summary>
-        /// The port of intranet SLB.
-        /// </summary>
-        public readonly int SlbPort;
 
         [OutputConstructor]
         private GetApplicationsApplicationResult(
@@ -84,21 +56,7 @@ namespace Pulumi.AliCloud.Edas.Outputs
 
             int clusterType,
 
-            int createTime,
-
-            string healthCheckUrl,
-
-            int instanceCount,
-
-            string regionId,
-
-            int runningInstanceCount,
-
-            string slbId,
-
-            string slbIp,
-
-            int slbPort)
+            string regionId)
         {
             AppId = appId;
             AppName = appName;
@@ -106,14 +64,7 @@ namespace Pulumi.AliCloud.Edas.Outputs
             BuildPackageId = buildPackageId;
             ClusterId = clusterId;
             ClusterType = clusterType;
-            CreateTime = createTime;
-            HealthCheckUrl = healthCheckUrl;
-            InstanceCount = instanceCount;
             RegionId = regionId;
-            RunningInstanceCount = runningInstanceCount;
-            SlbId = slbId;
-            SlbIp = slbIp;
-            SlbPort = slbPort;
         }
     }
 }

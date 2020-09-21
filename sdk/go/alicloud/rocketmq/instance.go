@@ -32,7 +32,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := rocketmq.NewInstance(ctx, "example", &rocketmq.InstanceArgs{
-// 			Remark: pulumi.String("tf-example-ons-instance-remark"),
+// 			InstanceName: pulumi.String("tf-example-ons-instance"),
+// 			Remark:       pulumi.String("tf-example-ons-instance-remark"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -44,16 +45,26 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
 	InstanceStatus pulumi.IntOutput `pulumi:"instanceStatus"`
 	// The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
 	InstanceType pulumi.IntOutput `pulumi:"instanceType"`
-	// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+	// Replaced by `instanceName` after version 1.97.0.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Platinum edition instance expiration time.
 	ReleaseTime pulumi.StringOutput `pulumi:"releaseTime"`
 	// This attribute is a concise description of instance. The length cannot exceed 128.
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
+	// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
+	Status pulumi.IntOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -84,29 +95,49 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+	InstanceName *string `pulumi:"instanceName"`
 	// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
 	InstanceStatus *int `pulumi:"instanceStatus"`
 	// The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
 	InstanceType *int `pulumi:"instanceType"`
-	// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+	// Replaced by `instanceName` after version 1.97.0.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.
 	Name *string `pulumi:"name"`
 	// Platinum edition instance expiration time.
 	ReleaseTime *string `pulumi:"releaseTime"`
 	// This attribute is a concise description of instance. The length cannot exceed 128.
 	Remark *string `pulumi:"remark"`
+	// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
+	Status *int `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type InstanceState struct {
+	// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+	InstanceName pulumi.StringPtrInput
 	// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
 	InstanceStatus pulumi.IntPtrInput
 	// The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
 	InstanceType pulumi.IntPtrInput
-	// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+	// Replaced by `instanceName` after version 1.97.0.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.
 	Name pulumi.StringPtrInput
 	// Platinum edition instance expiration time.
 	ReleaseTime pulumi.StringPtrInput
 	// This attribute is a concise description of instance. The length cannot exceed 128.
 	Remark pulumi.StringPtrInput
+	// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
+	Status pulumi.IntPtrInput
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -115,17 +146,33 @@ func (InstanceState) ElementType() reflect.Type {
 
 type instanceArgs struct {
 	// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+	InstanceName *string `pulumi:"instanceName"`
+	// Replaced by `instanceName` after version 1.97.0.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.
 	Name *string `pulumi:"name"`
 	// This attribute is a concise description of instance. The length cannot exceed 128.
 	Remark *string `pulumi:"remark"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
 	// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
+	InstanceName pulumi.StringPtrInput
+	// Replaced by `instanceName` after version 1.97.0.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.
 	Name pulumi.StringPtrInput
 	// This attribute is a concise description of instance. The length cannot exceed 128.
 	Remark pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
