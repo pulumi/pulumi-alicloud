@@ -13,8 +13,11 @@ import (
 //
 // > **NOTE:**  You should set the `secretFile` if you want to get the access key.
 //
+// > **NOTE:**  From version 1.98.0, if not set `pgpKey`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
+//
 // ## Example Usage
 //
+// Output the secret to a file.
 // ```go
 // package main
 //
@@ -46,6 +49,40 @@ import (
 // 	})
 // }
 // ```
+//
+// Using `pgpKey` to encrypt the secret.
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ram"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+// 			DisplayName: pulumi.String("user_display_name"),
+// 			Mobile:      pulumi.String("86-18688888888"),
+// 			Email:       pulumi.String("hello.uuu@aaa.com"),
+// 			Comments:    pulumi.String("yoyoyo"),
+// 			Force:       pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		encrypt, err := ram.NewAccessKey(ctx, "encrypt", &ram.AccessKeyArgs{
+// 			UserName: user.Name,
+// 			PgpKey:   pulumi.String("keybase:some_person_that_exists"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("secret", encrypt.EncryptedSecret)
+// 		return nil
+// 	})
+// }
+// ```
 type AccessKey struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +91,7 @@ type AccessKey struct {
 	KeyFingerprint pulumi.StringOutput `pulumi:"keyFingerprint"`
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey pulumi.StringPtrOutput `pulumi:"pgpKey"`
+	Secret pulumi.StringOutput    `pulumi:"secret"`
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile pulumi.StringPtrOutput `pulumi:"secretFile"`
 	// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
@@ -95,6 +133,7 @@ type accessKeyState struct {
 	KeyFingerprint *string `pulumi:"keyFingerprint"`
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey *string `pulumi:"pgpKey"`
+	Secret *string `pulumi:"secret"`
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile *string `pulumi:"secretFile"`
 	// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
@@ -109,6 +148,7 @@ type AccessKeyState struct {
 	KeyFingerprint pulumi.StringPtrInput
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey pulumi.StringPtrInput
+	Secret pulumi.StringPtrInput
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile pulumi.StringPtrInput
 	// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.

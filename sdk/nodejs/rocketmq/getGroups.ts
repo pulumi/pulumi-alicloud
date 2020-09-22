@@ -19,23 +19,22 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceName";
- * const groupId = config.get("groupId") || "GID-onsGroupDatasourceName";
- *
- * const defaultInstance = new alicloud.rocketmq.Instance("default", {
+ * const groupName = config.get("groupName") || "GID-onsGroupDatasourceName";
+ * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {
+ *     instanceName: name,
  *     remark: "default_ons_instance_remark",
  * });
- * const defaultGroup = new alicloud.rocketmq.Group("default", {
- *     groupId: groupId,
+ * const defaultGroup = new alicloud.rocketmq.Group("defaultGroup", {
+ *     groupName: groupName,
  *     instanceId: defaultInstance.id,
  *     remark: "dafault_ons_group_remark",
  * });
  * const groupsDs = defaultGroup.instanceId.apply(instanceId => alicloud.rocketmq.getGroups({
- *     groupIdRegex: groupId,
  *     instanceId: instanceId,
+ *     nameRegex: _var.group_id,
  *     outputFile: "groups.txt",
- * }, { async: true }));
- *
- * export const firstGroupName = groupsDs.groups[0].groupId;
+ * }));
+ * export const firstGroupName = groupsDs.groups[0].groupName;
  * ```
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
@@ -48,8 +47,12 @@ export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pro
     }
     return pulumi.runtime.invoke("alicloud:rocketmq/getGroups:getGroups", {
         "groupIdRegex": args.groupIdRegex,
+        "groupType": args.groupType,
+        "ids": args.ids,
         "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -62,10 +65,23 @@ export interface GetGroupsArgs {
      */
     readonly groupIdRegex?: string;
     /**
+     * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+     */
+    readonly groupType?: string;
+    /**
+     * A list of group names.
+     */
+    readonly ids?: string[];
+    /**
      * ID of the ONS Instance that owns the groups.
      */
     readonly instanceId: string;
+    readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * A map of tags assigned to the Ons instance.
+     */
+    readonly tags?: {[key: string]: any};
 }
 
 /**
@@ -73,6 +89,10 @@ export interface GetGroupsArgs {
  */
 export interface GetGroupsResult {
     readonly groupIdRegex?: string;
+    /**
+     * Specify the protocol applicable to the created Group ID.
+     */
+    readonly groupType?: string;
     /**
      * A list of groups. Each element contains the following attributes:
      */
@@ -86,5 +106,11 @@ export interface GetGroupsResult {
      */
     readonly ids: string[];
     readonly instanceId: string;
+    readonly nameRegex?: string;
+    readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A map of tags assigned to the Ons group.
+     */
+    readonly tags?: {[key: string]: any};
 }

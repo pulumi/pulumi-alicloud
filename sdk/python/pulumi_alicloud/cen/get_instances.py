@@ -20,7 +20,7 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None, tags=None):
+    def __init__(__self__, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None, status=None, tags=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +39,9 @@ class GetInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
@@ -87,6 +90,14 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Status of the CEN instance, including "Creating", "Active" and "Deleting".
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
         A map of tags assigned to the Cen Instance.
@@ -106,12 +117,14 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            status=self.status,
             tags=self.tags)
 
 
 def get_instances(ids: Optional[List[str]] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
+                  status: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
@@ -131,12 +144,14 @@ def get_instances(ids: Optional[List[str]] = None,
 
     :param List[str] ids: A list of CEN instances IDs.
     :param str name_regex: A regex string to filter CEN instances by name.
+    :param str status: The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['status'] = status
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -151,4 +166,5 @@ def get_instances(ids: Optional[List[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
+        status=__ret__.status,
         tags=__ret__.tags)

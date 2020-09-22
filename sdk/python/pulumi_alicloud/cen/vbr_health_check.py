@@ -43,7 +43,7 @@ class VbrHealthCheck(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a cen vbr HealrhCheck resource and use it.
-        default_instance = alicloud.cen.Instance("defaultInstance")
+        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name="test_name")
         default_instance_attachment = alicloud.cen.InstanceAttachment("defaultInstanceAttachment",
             instance_id=default_instance.id,
             child_instance_id="vbr-xxxxx",

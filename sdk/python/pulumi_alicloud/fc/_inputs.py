@@ -9,12 +9,146 @@ from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
 __all__ = [
+    'CustomDomainCertConfigArgs',
+    'CustomDomainRouteConfigArgs',
     'FunctionCustomContainerConfigArgs',
     'ServiceLogConfigArgs',
     'ServiceNasConfigArgs',
     'ServiceNasConfigMountPointArgs',
     'ServiceVpcConfigArgs',
 ]
+
+@pulumi.input_type
+class CustomDomainCertConfigArgs:
+    def __init__(__self__, *,
+                 cert_name: pulumi.Input[str],
+                 certificate: pulumi.Input[str],
+                 private_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] cert_name: The name of the certificate, used to distinguish different certificates.
+        :param pulumi.Input[str] certificate: Certificate data of the HTTPS certificates, follow the 'pem' format.
+        :param pulumi.Input[str] private_key: Private key of the HTTPS certificates, follow the 'pem' format.
+        """
+        pulumi.set(__self__, "cert_name", cert_name)
+        pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "private_key", private_key)
+
+    @property
+    @pulumi.getter(name="certName")
+    def cert_name(self) -> pulumi.Input[str]:
+        """
+        The name of the certificate, used to distinguish different certificates.
+        """
+        return pulumi.get(self, "cert_name")
+
+    @cert_name.setter
+    def cert_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cert_name", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> pulumi.Input[str]:
+        """
+        Certificate data of the HTTPS certificates, follow the 'pem' format.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Input[str]:
+        """
+        Private key of the HTTPS certificates, follow the 'pem' format.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_key", value)
+
+
+@pulumi.input_type
+class CustomDomainRouteConfigArgs:
+    def __init__(__self__, *,
+                 function_name: pulumi.Input[str],
+                 path: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 methods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 qualifier: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] function_name: The name of the Function Compute function that requests are routed to.
+        :param pulumi.Input[str] path: The path that requests are routed from.
+        :param pulumi.Input[List[pulumi.Input[str]]] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+        :param pulumi.Input[str] qualifier: The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+        """
+        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "service_name", service_name)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if qualifier is not None:
+            pulumi.set(__self__, "qualifier", qualifier)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> pulumi.Input[str]:
+        """
+        The name of the Function Compute function that requests are routed to.
+        """
+        return pulumi.get(self, "function_name")
+
+    @function_name.setter
+    def function_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "function_name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        The path that requests are routed from.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+        """
+        return pulumi.get(self, "methods")
+
+    @methods.setter
+    def methods(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "methods", value)
+
+    @property
+    @pulumi.getter
+    def qualifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+        """
+        return pulumi.get(self, "qualifier")
+
+    @qualifier.setter
+    def qualifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "qualifier", value)
+
 
 @pulumi.input_type
 class FunctionCustomContainerConfigArgs:

@@ -15,12 +15,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const cenInstancesDs = pulumi.output(alicloud.cen.getInstances({
+ * const cenInstancesDs = alicloud.cen.getInstances({
  *     ids: ["cen-id1"],
  *     nameRegex: "^foo",
- * }, { async: true }));
- *
- * export const firstCenInstanceId = cenInstancesDs.instances[0].id;
+ * });
+ * export const firstCenInstanceId = cenInstancesDs.then(cenInstancesDs => cenInstancesDs.instances[0].id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -36,6 +35,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "status": args.status,
         "tags": args.tags,
     }, opts);
 }
@@ -53,6 +53,10 @@ export interface GetInstancesArgs {
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
+     */
+    readonly status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -81,6 +85,10 @@ export interface GetInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Status of the CEN instance, including "Creating", "Active" and "Deleting".
+     */
+    readonly status?: string;
     /**
      * A map of tags assigned to the Cen Instance.
      */

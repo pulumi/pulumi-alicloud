@@ -10,11 +10,16 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'CustomDomainCertConfig',
+    'CustomDomainRouteConfig',
     'FunctionCustomContainerConfig',
     'ServiceLogConfig',
     'ServiceNasConfig',
     'ServiceNasConfigMountPoint',
     'ServiceVpcConfig',
+    'GetCustomDomainsDomainResult',
+    'GetCustomDomainsDomainCertConfigResult',
+    'GetCustomDomainsDomainRouteConfigResult',
     'GetFunctionsFunctionResult',
     'GetFunctionsFunctionCustomContainerConfigResult',
     'GetServicesServiceResult',
@@ -25,6 +30,112 @@ __all__ = [
     'GetTriggersTriggerResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class CustomDomainCertConfig(dict):
+    def __init__(__self__, *,
+                 cert_name: str,
+                 certificate: str,
+                 private_key: str):
+        """
+        :param str cert_name: The name of the certificate, used to distinguish different certificates.
+        :param str certificate: Certificate data of the HTTPS certificates, follow the 'pem' format.
+        :param str private_key: Private key of the HTTPS certificates, follow the 'pem' format.
+        """
+        pulumi.set(__self__, "cert_name", cert_name)
+        pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "private_key", private_key)
+
+    @property
+    @pulumi.getter(name="certName")
+    def cert_name(self) -> str:
+        """
+        The name of the certificate, used to distinguish different certificates.
+        """
+        return pulumi.get(self, "cert_name")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> str:
+        """
+        Certificate data of the HTTPS certificates, follow the 'pem' format.
+        """
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> str:
+        """
+        Private key of the HTTPS certificates, follow the 'pem' format.
+        """
+        return pulumi.get(self, "private_key")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class CustomDomainRouteConfig(dict):
+    def __init__(__self__, *,
+                 function_name: str,
+                 path: str,
+                 service_name: str,
+                 methods: Optional[List[str]] = None,
+                 qualifier: Optional[str] = None):
+        """
+        :param str function_name: The name of the Function Compute function that requests are routed to.
+        :param str path: The path that requests are routed from.
+        :param List[str] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+        :param str qualifier: The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+        """
+        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "service_name", service_name)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if qualifier is not None:
+            pulumi.set(__self__, "qualifier", qualifier)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> str:
+        """
+        The name of the Function Compute function that requests are routed to.
+        """
+        return pulumi.get(self, "function_name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path that requests are routed from.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Optional[List[str]]:
+        """
+        The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+        """
+        return pulumi.get(self, "methods")
+
+    @property
+    @pulumi.getter
+    def qualifier(self) -> Optional[str]:
+        """
+        The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+        """
+        return pulumi.get(self, "qualifier")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class FunctionCustomContainerConfig(dict):
@@ -216,6 +327,203 @@ class ServiceVpcConfig(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetCustomDomainsDomainResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 api_version: str,
+                 cert_config: 'outputs.GetCustomDomainsDomainCertConfigResult',
+                 created_time: str,
+                 domain_name: str,
+                 id: str,
+                 last_modified_time: str,
+                 protocol: str,
+                 route_configs: List['outputs.GetCustomDomainsDomainRouteConfigResult']):
+        """
+        :param str account_id: The account id.
+        :param str api_version: The API version of the Function Compute service.
+        :param 'GetCustomDomainsDomainCertConfigArgs' cert_config: The configuration of HTTPS certificate.
+        :param str created_time: The created time of the custom domain.
+        :param str domain_name: The custom domain name.
+        :param str id: The custom domain id, same as domain name.
+        :param str last_modified_time: The last modified time of the custom domain.
+        :param str protocol: The custom domain protocol.
+        :param List['GetCustomDomainsDomainRouteConfigArgs'] route_configs: The configuration of domain route, mapping the path and Function Compute function.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "api_version", api_version)
+        pulumi.set(__self__, "cert_config", cert_config)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_modified_time", last_modified_time)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "route_configs", route_configs)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The account id.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> str:
+        """
+        The API version of the Function Compute service.
+        """
+        return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter(name="certConfig")
+    def cert_config(self) -> 'outputs.GetCustomDomainsDomainCertConfigResult':
+        """
+        The configuration of HTTPS certificate.
+        """
+        return pulumi.get(self, "cert_config")
+
+    @property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> str:
+        """
+        The created time of the custom domain.
+        """
+        return pulumi.get(self, "created_time")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        The custom domain name.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The custom domain id, same as domain name.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> str:
+        """
+        The last modified time of the custom domain.
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The custom domain protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="routeConfigs")
+    def route_configs(self) -> List['outputs.GetCustomDomainsDomainRouteConfigResult']:
+        """
+        The configuration of domain route, mapping the path and Function Compute function.
+        """
+        return pulumi.get(self, "route_configs")
+
+
+@pulumi.output_type
+class GetCustomDomainsDomainCertConfigResult(dict):
+    def __init__(__self__, *,
+                 cert_name: str,
+                 certificate: str):
+        """
+        :param str cert_name: The name of the certificate.
+        :param str certificate: Certificate data of the HTTPS certificates, follow the 'pem'.
+        """
+        pulumi.set(__self__, "cert_name", cert_name)
+        pulumi.set(__self__, "certificate", certificate)
+
+    @property
+    @pulumi.getter(name="certName")
+    def cert_name(self) -> str:
+        """
+        The name of the certificate.
+        """
+        return pulumi.get(self, "cert_name")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> str:
+        """
+        Certificate data of the HTTPS certificates, follow the 'pem'.
+        """
+        return pulumi.get(self, "certificate")
+
+
+@pulumi.output_type
+class GetCustomDomainsDomainRouteConfigResult(dict):
+    def __init__(__self__, *,
+                 function_name: str,
+                 methods: List[str],
+                 path: str,
+                 qualifier: str,
+                 service_name: str):
+        """
+        :param str function_name: The name of the Function Compute function that requests are routed to.
+        :param List[str] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+        :param str path: The path that requests are routed from.
+        :param str qualifier: The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service.
+        :param str service_name: The name of the Function Compute service that requests are routed to.
+        """
+        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "methods", methods)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "qualifier", qualifier)
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> str:
+        """
+        The name of the Function Compute function that requests are routed to.
+        """
+        return pulumi.get(self, "function_name")
+
+    @property
+    @pulumi.getter
+    def methods(self) -> List[str]:
+        """
+        The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+        """
+        return pulumi.get(self, "methods")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path that requests are routed from.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def qualifier(self) -> str:
+        """
+        The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service.
+        """
+        return pulumi.get(self, "qualifier")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        The name of the Function Compute service that requests are routed to.
+        """
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type

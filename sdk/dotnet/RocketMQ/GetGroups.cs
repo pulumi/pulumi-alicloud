@@ -15,6 +15,48 @@ namespace Pulumi.AliCloud.RocketMQ
         /// This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.53.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "onsInstanceName";
+        ///         var groupName = config.Get("groupName") ?? "GID-onsGroupDatasourceName";
+        ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
+        ///         {
+        ///             InstanceName = name,
+        ///             Remark = "default_ons_instance_remark",
+        ///         });
+        ///         var defaultGroup = new AliCloud.RocketMQ.Group("defaultGroup", new AliCloud.RocketMQ.GroupArgs
+        ///         {
+        ///             GroupName = groupName,
+        ///             InstanceId = defaultInstance.Id,
+        ///             Remark = "dafault_ons_group_remark",
+        ///         });
+        ///         var groupsDs = defaultGroup.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetGroups.InvokeAsync(new AliCloud.RocketMQ.GetGroupsArgs
+        ///         {
+        ///             InstanceId = instanceId,
+        ///             NameRegex = @var.Group_id,
+        ///             OutputFile = "groups.txt",
+        ///         }));
+        ///         this.FirstGroupName = groupsDs.Apply(groupsDs =&gt; groupsDs.Groups[0].GroupName);
+        ///     }
+        /// 
+        ///     [Output("firstGroupName")]
+        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());
@@ -30,13 +72,46 @@ namespace Pulumi.AliCloud.RocketMQ
         public string? GroupIdRegex { get; set; }
 
         /// <summary>
+        /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        /// </summary>
+        [Input("groupType")]
+        public string? GroupType { get; set; }
+
+        [Input("ids")]
+        private List<string>? _ids;
+
+        /// <summary>
+        /// A list of group names.
+        /// </summary>
+        public List<string> Ids
+        {
+            get => _ids ?? (_ids = new List<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
         /// ID of the ONS Instance that owns the groups.
         /// </summary>
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        [Input("tags")]
+        private Dictionary<string, object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the Ons instance.
+        /// </summary>
+        public Dictionary<string, object> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, object>());
+            set => _tags = value;
+        }
 
         public GetGroupsArgs()
         {
@@ -48,6 +123,10 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class GetGroupsResult
     {
         public readonly string? GroupIdRegex;
+        /// <summary>
+        /// Specify the protocol applicable to the created Group ID.
+        /// </summary>
+        public readonly string? GroupType;
         /// <summary>
         /// A list of groups. Each element contains the following attributes:
         /// </summary>
@@ -61,11 +140,19 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string InstanceId;
+        public readonly string? NameRegex;
+        public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A map of tags assigned to the Ons group.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Tags;
 
         [OutputConstructor]
         private GetGroupsResult(
             string? groupIdRegex,
+
+            string? groupType,
 
             ImmutableArray<Outputs.GetGroupsGroupResult> groups,
 
@@ -75,14 +162,24 @@ namespace Pulumi.AliCloud.RocketMQ
 
             string instanceId,
 
-            string? outputFile)
+            string? nameRegex,
+
+            ImmutableArray<string> names,
+
+            string? outputFile,
+
+            ImmutableDictionary<string, object>? tags)
         {
             GroupIdRegex = groupIdRegex;
+            GroupType = groupType;
             Groups = groups;
             Id = id;
             Ids = ids;
             InstanceId = instanceId;
+            NameRegex = nameRegex;
+            Names = names;
             OutputFile = outputFile;
+            Tags = tags;
         }
     }
 }

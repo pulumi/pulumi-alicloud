@@ -994,6 +994,8 @@ func (o GetNotificationsNotificationArrayOutput) Index(i pulumi.IntInput) GetNot
 type GetScalingConfigurationsConfiguration struct {
 	// Creation time of the scaling configuration.
 	CreationTime string `pulumi:"creationTime"`
+	// Performance mode of the t5 burstable instance.
+	CreditSpecification string `pulumi:"creditSpecification"`
 	// Data disks of the scaling configuration.
 	DataDisks []GetScalingConfigurationsConfigurationDataDisk `pulumi:"dataDisks"`
 	// ID of the scaling rule.
@@ -1036,6 +1038,8 @@ type GetScalingConfigurationsConfigurationInput interface {
 type GetScalingConfigurationsConfigurationArgs struct {
 	// Creation time of the scaling configuration.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// Performance mode of the t5 burstable instance.
+	CreditSpecification pulumi.StringInput `pulumi:"creditSpecification"`
 	// Data disks of the scaling configuration.
 	DataDisks GetScalingConfigurationsConfigurationDataDiskArrayInput `pulumi:"dataDisks"`
 	// ID of the scaling rule.
@@ -1118,6 +1122,11 @@ func (o GetScalingConfigurationsConfigurationOutput) ToGetScalingConfigurationsC
 // Creation time of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// Performance mode of the t5 burstable instance.
+func (o GetScalingConfigurationsConfigurationOutput) CreditSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.CreditSpecification }).(pulumi.StringOutput)
 }
 
 // Data disks of the scaling configuration.

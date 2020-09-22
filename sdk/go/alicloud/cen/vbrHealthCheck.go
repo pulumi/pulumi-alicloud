@@ -31,7 +31,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
+// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+// 			CenInstanceName: pulumi.String("test_name"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

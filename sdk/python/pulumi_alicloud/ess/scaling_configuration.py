@@ -18,6 +18,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
+                 credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
@@ -59,6 +60,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
+        :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]] data_disks: DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
@@ -113,6 +115,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['active'] = active
+            __props__['credit_specification'] = credit_specification
             __props__['data_disks'] = data_disks
             __props__['enable'] = enable
             __props__['force_delete'] = force_delete
@@ -165,6 +168,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             active: Optional[pulumi.Input[bool]] = None,
+            credit_specification: Optional[pulumi.Input[str]] = None,
             data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
@@ -206,6 +210,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
+        :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]] data_disks: DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
@@ -247,6 +252,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["active"] = active
+        __props__["credit_specification"] = credit_specification
         __props__["data_disks"] = data_disks
         __props__["enable"] = enable
         __props__["force_delete"] = force_delete
@@ -289,6 +295,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         Whether active current scaling configuration in the specified scaling group. Default to `false`.
         """
         return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter(name="creditSpecification")
+    def credit_specification(self) -> pulumi.Output[Optional[str]]:
+        """
+        Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        """
+        return pulumi.get(self, "credit_specification")
 
     @property
     @pulumi.getter(name="dataDisks")

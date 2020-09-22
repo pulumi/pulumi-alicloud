@@ -14,8 +14,11 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// &gt; **NOTE:**  You should set the `secret_file` if you want to get the access key.
     /// 
+    /// &gt; **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
+    /// 
     /// ## Example Usage
     /// 
+    /// Output the secret to a file.
     /// ```csharp
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
@@ -42,6 +45,37 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// }
     /// ```
+    /// 
+    /// Using `pgp_key` to encrypt the secret.
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new RAM access key for user.
+    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
+    ///         {
+    ///             DisplayName = "user_display_name",
+    ///             Mobile = "86-18688888888",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Comments = "yoyoyo",
+    ///             Force = true,
+    ///         });
+    ///         var encrypt = new AliCloud.Ram.AccessKey("encrypt", new AliCloud.Ram.AccessKeyArgs
+    ///         {
+    ///             UserName = user.Name,
+    ///             PgpKey = "keybase:some_person_that_exists",
+    ///         });
+    ///         this.Secret = encrypt.EncryptedSecret;
+    ///     }
+    /// 
+    ///     [Output("secret")]
+    ///     public Output&lt;string&gt; Secret { get; set; }
+    /// }
+    /// ```
     /// </summary>
     public partial class AccessKey : Pulumi.CustomResource
     {
@@ -59,6 +93,9 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         [Output("pgpKey")]
         public Output<string?> PgpKey { get; private set; } = null!;
+
+        [Output("secret")]
+        public Output<string> Secret { get; private set; } = null!;
 
         /// <summary>
         /// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
@@ -169,6 +206,9 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         [Input("pgpKey")]
         public Input<string>? PgpKey { get; set; }
+
+        [Input("secret")]
+        public Input<string>? Secret { get; set; }
 
         /// <summary>
         /// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.

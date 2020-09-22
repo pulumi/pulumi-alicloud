@@ -15,6 +15,7 @@ export * from "./getPrivateZones";
 export * from "./getRegionRouteEntries";
 export * from "./getRouteEntries";
 export * from "./getRouteMaps";
+export * from "./getVbrHealthChecks";
 export * from "./instance";
 export * from "./instanceAttachment";
 export * from "./instanceGrant";

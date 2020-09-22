@@ -176,7 +176,7 @@ class DnsDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The Id of resource group which the dns domain belongs.
         """

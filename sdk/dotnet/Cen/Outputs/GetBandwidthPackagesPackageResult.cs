@@ -18,21 +18,30 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly int Bandwidth;
         /// <summary>
-        /// The billing method, including "POSTPAY" and "PREPAY".
+        /// The billing method, including `POSTPAY` and `PREPAY`.
         /// </summary>
         public readonly string BandwidthPackageChargeType;
         /// <summary>
-        /// Status of the CEN Bandwidth Package, including "Normal", "FinancialLocked" and "SecurityLocked".
+        /// Status of the CEN Bandwidth Package, including `Normal`, `FinancialLocked` and `SecurityLocked`.
         /// </summary>
         public readonly string BusinessStatus;
         /// <summary>
-        /// Creation time of the CEN bandwidth package.
+        /// The ID of the bandwidth package.
         /// </summary>
-        public readonly string CreationTime;
+        public readonly string CenBandwidthPackageId;
+        /// <summary>
+        /// The name of the bandwidth package.
+        /// </summary>
+        public readonly string CenBandwidthPackageName;
+        /// <summary>
+        /// The list of CEN instances that are associated with the bandwidth package.
+        /// </summary>
+        public readonly ImmutableArray<string> CenIds;
         /// <summary>
         /// Description of the CEN Bandwidth Package.
         /// </summary>
         public readonly string Description;
+        public readonly string ExpiredTime;
         /// <summary>
         /// Region ID of the interconnected regions.
         /// </summary>
@@ -42,6 +51,14 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string GeographicRegionBId;
         /// <summary>
+        /// The area ID of the cross-area connection.
+        /// </summary>
+        public readonly string GeographicSpanId;
+        /// <summary>
+        /// Indicates whether renewal data is involved.
+        /// </summary>
+        public readonly string HasReservationData;
+        /// <summary>
         /// ID of the CEN Bandwidth Package.
         /// </summary>
         public readonly string Id;
@@ -50,11 +67,35 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
+        /// Indicates whether the bandwidth package is a cross-border bandwidth package.
+        /// </summary>
+        public readonly bool IsCrossBorder;
+        /// <summary>
         /// Name of the CEN Bandwidth Package.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Status of the CEN Bandwidth Package in CEN instance, including "Idle" and "InUse".
+        /// The billing method of the bandwidth package.
+        /// </summary>
+        public readonly string PaymentType;
+        /// <summary>
+        /// The expiration time of the temporary upgrade.
+        /// </summary>
+        public readonly string ReservationActiveTime;
+        /// <summary>
+        /// The restored bandwidth after the temporary upgrade.
+        /// </summary>
+        public readonly string ReservationBandwidth;
+        /// <summary>
+        /// The billing method after the configuration change.
+        /// </summary>
+        public readonly string ReservationInternetChargeType;
+        /// <summary>
+        /// The type of the configuration change.
+        /// </summary>
+        public readonly string ReservationOrderType;
+        /// <summary>
+        /// Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
         /// </summary>
         public readonly string Status;
 
@@ -66,32 +107,65 @@ namespace Pulumi.AliCloud.Cen.Outputs
 
             string businessStatus,
 
-            string creationTime,
+            string cenBandwidthPackageId,
+
+            string cenBandwidthPackageName,
+
+            ImmutableArray<string> cenIds,
 
             string description,
+
+            string expiredTime,
 
             string geographicRegionAId,
 
             string geographicRegionBId,
 
+            string geographicSpanId,
+
+            string hasReservationData,
+
             string id,
 
             string instanceId,
 
+            bool isCrossBorder,
+
             string name,
+
+            string paymentType,
+
+            string reservationActiveTime,
+
+            string reservationBandwidth,
+
+            string reservationInternetChargeType,
+
+            string reservationOrderType,
 
             string status)
         {
             Bandwidth = bandwidth;
             BandwidthPackageChargeType = bandwidthPackageChargeType;
             BusinessStatus = businessStatus;
-            CreationTime = creationTime;
+            CenBandwidthPackageId = cenBandwidthPackageId;
+            CenBandwidthPackageName = cenBandwidthPackageName;
+            CenIds = cenIds;
             Description = description;
+            ExpiredTime = expiredTime;
             GeographicRegionAId = geographicRegionAId;
             GeographicRegionBId = geographicRegionBId;
+            GeographicSpanId = geographicSpanId;
+            HasReservationData = hasReservationData;
             Id = id;
             InstanceId = instanceId;
+            IsCrossBorder = isCrossBorder;
             Name = name;
+            PaymentType = paymentType;
+            ReservationActiveTime = reservationActiveTime;
+            ReservationBandwidth = reservationBandwidth;
+            ReservationInternetChargeType = reservationInternetChargeType;
+            ReservationOrderType = reservationOrderType;
             Status = status;
         }
     }

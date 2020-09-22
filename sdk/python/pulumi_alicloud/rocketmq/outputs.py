@@ -17,20 +17,48 @@ __all__ = [
 @pulumi.output_type
 class GetGroupsGroupResult(dict):
     def __init__(__self__, *,
+                 group_name: str,
+                 group_type: str,
                  id: str,
                  independent_naming: bool,
+                 instance_id: str,
                  owner: str,
-                 remark: str):
+                 remark: str,
+                 tags: Mapping[str, Any]):
         """
+        :param str group_name: The name of the group.
+        :param str group_type: Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
         :param str id: The name of the group.
         :param bool independent_naming: Indicates whether namespaces are available. Read [Fields in SubscribeInfoDo](https://www.alibabacloud.com/help/doc-detail/29619.html) for further details.
+        :param str instance_id: ID of the ONS Instance that owns the groups.
         :param str owner: The ID of the group owner, which is the Alibaba Cloud UID.
         :param str remark: Remark of the group.
+        :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
         """
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "group_type", group_type)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "independent_naming", independent_naming)
+        pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "owner", owner)
         pulumi.set(__self__, "remark", remark)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> str:
+        """
+        The name of the group.
+        """
+        return pulumi.get(self, "group_name")
+
+    @property
+    @pulumi.getter(name="groupType")
+    def group_type(self) -> str:
+        """
+        Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        """
+        return pulumi.get(self, "group_type")
 
     @property
     @pulumi.getter
@@ -49,6 +77,14 @@ class GetGroupsGroupResult(dict):
         return pulumi.get(self, "independent_naming")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        ID of the ONS Instance that owns the groups.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def owner(self) -> str:
         """
@@ -63,6 +99,14 @@ class GetGroupsGroupResult(dict):
         Remark of the group.
         """
         return pulumi.get(self, "remark")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the Ons instance.
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

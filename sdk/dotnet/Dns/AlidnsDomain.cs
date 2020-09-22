@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Dns
         /// The Id of resource group which the dns domain belongs.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.

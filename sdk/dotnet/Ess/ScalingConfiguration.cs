@@ -18,6 +18,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
+        /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        /// </summary>
+        [Output("creditSpecification")]
+        public Output<string?> CreditSpecification { get; private set; } = null!;
+
+        /// <summary>
         /// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         /// </summary>
         [Output("dataDisks")]
@@ -269,6 +275,12 @@ namespace Pulumi.AliCloud.Ess
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
+        /// <summary>
+        /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        /// </summary>
+        [Input("creditSpecification")]
+        public Input<string>? CreditSpecification { get; set; }
+
         [Input("dataDisks")]
         private InputList<Inputs.ScalingConfigurationDataDiskArgs>? _dataDisks;
 
@@ -518,6 +530,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
+
+        /// <summary>
+        /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        /// </summary>
+        [Input("creditSpecification")]
+        public Input<string>? CreditSpecification { get; set; }
 
         [Input("dataDisks")]
         private InputList<Inputs.ScalingConfigurationDataDiskGetArgs>? _dataDisks;

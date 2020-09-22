@@ -26,12 +26,12 @@ namespace Pulumi.AliCloud.Cen
         /// {
         ///     public MyStack()
         ///     {
-        ///         var bwp = Output.Create(AliCloud.Cen.GetBandwidthPackages.InvokeAsync(new AliCloud.Cen.GetBandwidthPackagesArgs
+        ///         var example = Output.Create(AliCloud.Cen.GetBandwidthPackages.InvokeAsync(new AliCloud.Cen.GetBandwidthPackagesArgs
         ///         {
         ///             InstanceId = "cen-id1",
         ///             NameRegex = "^foo",
         ///         }));
-        ///         this.FirstCenBandwidthPackageId = bwp.Apply(bwp =&gt; bwp.Packages[0].Id);
+        ///         this.FirstCenBandwidthPackageId = example.Apply(example =&gt; example.Packages[0].Id);
         ///     }
         /// 
         ///     [Output("firstCenBandwidthPackageId")]
@@ -61,6 +61,12 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
+        /// -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+        /// </summary>
+        [Input("includeReservationData")]
+        public bool? IncludeReservationData { get; set; }
+
+        /// <summary>
         /// ID of a CEN instance.
         /// </summary>
         [Input("instanceId")]
@@ -75,6 +81,12 @@ namespace Pulumi.AliCloud.Cen
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
         public GetBandwidthPackagesArgs()
         {
         }
@@ -88,9 +100,14 @@ namespace Pulumi.AliCloud.Cen
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// ID of CEN instance that owns the CEN Bandwidth Package.
+        /// A list of specific CEN Bandwidth Package IDs.
+        /// * `names` (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
+        /// </summary>
+        public readonly ImmutableArray<string> Ids;
+        public readonly bool? IncludeReservationData;
+        /// <summary>
+        /// The ID of the CEN instance that are associated with the bandwidth package.
         /// </summary>
         public readonly string? InstanceId;
         public readonly string? NameRegex;
@@ -100,12 +117,18 @@ namespace Pulumi.AliCloud.Cen
         /// A list of CEN bandwidth package. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetBandwidthPackagesPackageResult> Packages;
+        /// <summary>
+        /// Status of the CEN Bandwidth Package in CEN instance, including `Idle` and `InUse`.
+        /// </summary>
+        public readonly string? Status;
 
         [OutputConstructor]
         private GetBandwidthPackagesResult(
             string id,
 
             ImmutableArray<string> ids,
+
+            bool? includeReservationData,
 
             string? instanceId,
 
@@ -115,15 +138,19 @@ namespace Pulumi.AliCloud.Cen
 
             string? outputFile,
 
-            ImmutableArray<Outputs.GetBandwidthPackagesPackageResult> packages)
+            ImmutableArray<Outputs.GetBandwidthPackagesPackageResult> packages,
+
+            string? status)
         {
             Id = id;
             Ids = ids;
+            IncludeReservationData = includeReservationData;
             InstanceId = instanceId;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             Packages = packages;
+            Status = status;
         }
     }
 }

@@ -27,8 +27,11 @@ class AccessKey(pulumi.CustomResource):
 
         > **NOTE:**  You should set the `secret_file` if you want to get the access key.
 
+        > **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
+
         ## Example Usage
 
+        Output the secret to a file.
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -43,6 +46,24 @@ class AccessKey(pulumi.CustomResource):
         ak = alicloud.ram.AccessKey("ak",
             user_name=user.name,
             secret_file="/xxx/xxx/xxx.txt")
+        ```
+
+        Using `pgp_key` to encrypt the secret.
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM access key for user.
+        user = alicloud.ram.User("user",
+            display_name="user_display_name",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo",
+            force=True)
+        encrypt = alicloud.ram.AccessKey("encrypt",
+            user_name=user.name,
+            pgp_key="keybase:some_person_that_exists")
+        pulumi.export("secret", encrypt.encrypted_secret)
         ```
 
         :param str resource_name: The name of the resource.
@@ -75,6 +96,7 @@ class AccessKey(pulumi.CustomResource):
             __props__['user_name'] = user_name
             __props__['encrypted_secret'] = None
             __props__['key_fingerprint'] = None
+            __props__['secret'] = None
         super(AccessKey, __self__).__init__(
             'alicloud:ram/accessKey:AccessKey',
             resource_name,
@@ -88,6 +110,7 @@ class AccessKey(pulumi.CustomResource):
             encrypted_secret: Optional[pulumi.Input[str]] = None,
             key_fingerprint: Optional[pulumi.Input[str]] = None,
             pgp_key: Optional[pulumi.Input[str]] = None,
+            secret: Optional[pulumi.Input[str]] = None,
             secret_file: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             user_name: Optional[pulumi.Input[str]] = None) -> 'AccessKey':
@@ -111,6 +134,7 @@ class AccessKey(pulumi.CustomResource):
         __props__["encrypted_secret"] = encrypted_secret
         __props__["key_fingerprint"] = key_fingerprint
         __props__["pgp_key"] = pgp_key
+        __props__["secret"] = secret
         __props__["secret_file"] = secret_file
         __props__["status"] = status
         __props__["user_name"] = user_name
@@ -136,6 +160,11 @@ class AccessKey(pulumi.CustomResource):
         Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
         """
         return pulumi.get(self, "pgp_key")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "secret")
 
     @property
     @pulumi.getter(name="secretFile")

@@ -10,6 +10,41 @@ import (
 // This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.53.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rocketmq"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
+// 			InstanceName: pulumi.String(name),
+// 			Remark:       pulumi.String("default_ons_instance_remark"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultGroup, err := rocketmq.NewGroup(ctx, "defaultGroup", &rocketmq.GroupArgs{
+// 			GroupName:  pulumi.String(groupName),
+// 			InstanceId: defaultInstance.ID(),
+// 			Remark:     pulumi.String("dafault_ons_group_remark"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstGroupName", groupsDs.ApplyT(func(groupsDs rocketmq.GetGroupsResult) (string, error) {
+// 			return groupsDs.Groups[0].GroupName, nil
+// 		}).(pulumi.StringOutput))
+// 		return nil
+// 	})
+// }
+// ```
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	var rv GetGroupsResult
 	err := ctx.Invoke("alicloud:rocketmq/getGroups:getGroups", args, &rv, opts...)
@@ -23,14 +58,23 @@ func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOp
 type GetGroupsArgs struct {
 	// A regex string to filter results by the group name.
 	GroupIdRegex *string `pulumi:"groupIdRegex"`
+	// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+	GroupType *string `pulumi:"groupType"`
+	// A list of group names.
+	Ids []string `pulumi:"ids"`
 	// ID of the ONS Instance that owns the groups.
 	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	// A map of tags assigned to the Ons instance.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
 	GroupIdRegex *string `pulumi:"groupIdRegex"`
+	// Specify the protocol applicable to the created Group ID.
+	GroupType *string `pulumi:"groupType"`
 	// A list of groups. Each element contains the following attributes:
 	Groups []GetGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
@@ -38,5 +82,9 @@ type GetGroupsResult struct {
 	// A list of group names.
 	Ids        []string `pulumi:"ids"`
 	InstanceId string   `pulumi:"instanceId"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// A map of tags assigned to the Ons group.
+	Tags map[string]interface{} `pulumi:"tags"`
 }

@@ -37,7 +37,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = rocketmq.NewGroup(ctx, "defaultGroup", &rocketmq.GroupArgs{
-// 			GroupId:    pulumi.String(groupId),
+// 			GroupName:  pulumi.String(groupName),
 // 			InstanceId: defaultInstance.ID(),
 // 			Remark:     pulumi.String("dafault_ons_group_remark"),
 // 		})
@@ -51,22 +51,29 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
-	// Name of the group. Two groups on a single instance cannot have the same name. A `groupId` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+	// Replaced by `groupName` after version 1.98.0.
+	//
+	// Deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
+	// Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+	GroupName pulumi.StringOutput `pulumi:"groupName"`
+	// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+	GroupType pulumi.StringPtrOutput `pulumi:"groupType"`
 	// ID of the ONS Instance that owns the groups.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
 	ReadEnable pulumi.BoolPtrOutput `pulumi:"readEnable"`
 	// This attribute is a concise description of group. The length cannot exceed 256.
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
 func NewGroup(ctx *pulumi.Context,
 	name string, args *GroupArgs, opts ...pulumi.ResourceOption) (*Group, error) {
-	if args == nil || args.GroupId == nil {
-		return nil, errors.New("missing required argument 'GroupId'")
-	}
 	if args == nil || args.InstanceId == nil {
 		return nil, errors.New("missing required argument 'InstanceId'")
 	}
@@ -95,25 +102,45 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	// Name of the group. Two groups on a single instance cannot have the same name. A `groupId` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+	// Replaced by `groupName` after version 1.98.0.
+	//
+	// Deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
 	GroupId *string `pulumi:"groupId"`
+	// Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+	GroupName *string `pulumi:"groupName"`
+	// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+	GroupType *string `pulumi:"groupType"`
 	// ID of the ONS Instance that owns the groups.
 	InstanceId *string `pulumi:"instanceId"`
 	// This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
 	ReadEnable *bool `pulumi:"readEnable"`
 	// This attribute is a concise description of group. The length cannot exceed 256.
 	Remark *string `pulumi:"remark"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type GroupState struct {
-	// Name of the group. Two groups on a single instance cannot have the same name. A `groupId` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+	// Replaced by `groupName` after version 1.98.0.
+	//
+	// Deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
 	GroupId pulumi.StringPtrInput
+	// Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+	GroupName pulumi.StringPtrInput
+	// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+	GroupType pulumi.StringPtrInput
 	// ID of the ONS Instance that owns the groups.
 	InstanceId pulumi.StringPtrInput
 	// This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
 	ReadEnable pulumi.BoolPtrInput
 	// This attribute is a concise description of group. The length cannot exceed 256.
 	Remark pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -121,26 +148,46 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// Name of the group. Two groups on a single instance cannot have the same name. A `groupId` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
-	GroupId string `pulumi:"groupId"`
+	// Replaced by `groupName` after version 1.98.0.
+	//
+	// Deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
+	GroupId *string `pulumi:"groupId"`
+	// Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+	GroupName *string `pulumi:"groupName"`
+	// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+	GroupType *string `pulumi:"groupType"`
 	// ID of the ONS Instance that owns the groups.
 	InstanceId string `pulumi:"instanceId"`
 	// This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
 	ReadEnable *bool `pulumi:"readEnable"`
 	// This attribute is a concise description of group. The length cannot exceed 256.
 	Remark *string `pulumi:"remark"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// Name of the group. Two groups on a single instance cannot have the same name. A `groupId` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
-	GroupId pulumi.StringInput
+	// Replaced by `groupName` after version 1.98.0.
+	//
+	// Deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
+	GroupId pulumi.StringPtrInput
+	// Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+	GroupName pulumi.StringPtrInput
+	// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+	GroupType pulumi.StringPtrInput
 	// ID of the ONS Instance that owns the groups.
 	InstanceId pulumi.StringInput
 	// This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
 	ReadEnable pulumi.BoolPtrInput
 	// This attribute is a concise description of group. The length cannot exceed 256.
 	Remark pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {

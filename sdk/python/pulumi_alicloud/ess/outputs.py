@@ -528,6 +528,7 @@ class GetNotificationsNotificationResult(dict):
 class GetScalingConfigurationsConfigurationResult(dict):
     def __init__(__self__, *,
                  creation_time: str,
+                 credit_specification: str,
                  data_disks: List['outputs.GetScalingConfigurationsConfigurationDataDiskResult'],
                  id: str,
                  image_id: str,
@@ -543,6 +544,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
                  system_disk_size: float):
         """
         :param str creation_time: Creation time of the scaling configuration.
+        :param str credit_specification: Performance mode of the t5 burstable instance.
         :param List['GetScalingConfigurationsConfigurationDataDiskArgs'] data_disks: Data disks of the scaling configuration.
         :param str id: ID of the scaling rule.
         :param str image_id: Image ID of the scaling configuration.
@@ -558,6 +560,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
         :param float system_disk_size: System disk size of the scaling configuration.
         """
         pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "credit_specification", credit_specification)
         pulumi.set(__self__, "data_disks", data_disks)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "image_id", image_id)
@@ -579,6 +582,14 @@ class GetScalingConfigurationsConfigurationResult(dict):
         Creation time of the scaling configuration.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="creditSpecification")
+    def credit_specification(self) -> str:
+        """
+        Performance mode of the t5 burstable instance.
+        """
+        return pulumi.get(self, "credit_specification")
 
     @property
     @pulumi.getter(name="dataDisks")

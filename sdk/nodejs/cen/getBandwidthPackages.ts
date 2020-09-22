@@ -15,12 +15,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const bwp = pulumi.output(alicloud.cen.getBandwidthPackages({
+ * const example = alicloud.cen.getBandwidthPackages({
  *     instanceId: "cen-id1",
  *     nameRegex: "^foo",
- * }, { async: true }));
- *
- * export const firstCenBandwidthPackageId = bwp.packages[0].id;
+ * });
+ * export const firstCenBandwidthPackageId = example.then(example => example.packages[0].id);
  * ```
  */
 export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthPackagesResult> {
@@ -34,9 +33,11 @@ export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pul
     }
     return pulumi.runtime.invoke("alicloud:cen/getBandwidthPackages:getBandwidthPackages", {
         "ids": args.ids,
+        "includeReservationData": args.includeReservationData,
         "instanceId": args.instanceId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "status": args.status,
     }, opts);
 }
 
@@ -49,6 +50,10 @@ export interface GetBandwidthPackagesArgs {
      */
     readonly ids?: string[];
     /**
+     * -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+     */
+    readonly includeReservationData?: boolean;
+    /**
      * ID of a CEN instance.
      */
     readonly instanceId?: string;
@@ -57,6 +62,10 @@ export interface GetBandwidthPackagesArgs {
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
+     */
+    readonly status?: string;
 }
 
 /**
@@ -67,9 +76,14 @@ export interface GetBandwidthPackagesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly ids: string[];
     /**
-     * ID of CEN instance that owns the CEN Bandwidth Package.
+     * A list of specific CEN Bandwidth Package IDs.
+     * * `names` (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
+     */
+    readonly ids: string[];
+    readonly includeReservationData?: boolean;
+    /**
+     * The ID of the CEN instance that are associated with the bandwidth package.
      */
     readonly instanceId?: string;
     readonly nameRegex?: string;
@@ -79,4 +93,8 @@ export interface GetBandwidthPackagesResult {
      * A list of CEN bandwidth package. Each element contains the following attributes:
      */
     readonly packages: outputs.cen.GetBandwidthPackagesPackage[];
+    /**
+     * Status of the CEN Bandwidth Package in CEN instance, including `Idle` and `InUse`.
+     */
+    readonly status?: string;
 }

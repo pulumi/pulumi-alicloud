@@ -12,13 +12,21 @@ import (
 
 type GetGroupsGroup struct {
 	// The name of the group.
+	GroupName string `pulumi:"groupName"`
+	// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+	GroupType string `pulumi:"groupType"`
+	// The name of the group.
 	Id string `pulumi:"id"`
 	// Indicates whether namespaces are available. Read [Fields in SubscribeInfoDo](https://www.alibabacloud.com/help/doc-detail/29619.html) for further details.
 	IndependentNaming bool `pulumi:"independentNaming"`
+	// ID of the ONS Instance that owns the groups.
+	InstanceId string `pulumi:"instanceId"`
 	// The ID of the group owner, which is the Alibaba Cloud UID.
 	Owner string `pulumi:"owner"`
 	// Remark of the group.
 	Remark string `pulumi:"remark"`
+	// A map of tags assigned to the Ons instance.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
@@ -34,13 +42,21 @@ type GetGroupsGroupInput interface {
 
 type GetGroupsGroupArgs struct {
 	// The name of the group.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+	GroupType pulumi.StringInput `pulumi:"groupType"`
+	// The name of the group.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Indicates whether namespaces are available. Read [Fields in SubscribeInfoDo](https://www.alibabacloud.com/help/doc-detail/29619.html) for further details.
 	IndependentNaming pulumi.BoolInput `pulumi:"independentNaming"`
+	// ID of the ONS Instance that owns the groups.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The ID of the group owner, which is the Alibaba Cloud UID.
 	Owner pulumi.StringInput `pulumi:"owner"`
 	// Remark of the group.
 	Remark pulumi.StringInput `pulumi:"remark"`
+	// A map of tags assigned to the Ons instance.
+	Tags pulumi.MapInput `pulumi:"tags"`
 }
 
 func (GetGroupsGroupArgs) ElementType() reflect.Type {
@@ -95,6 +111,16 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Cont
 }
 
 // The name of the group.
+func (o GetGroupsGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+func (o GetGroupsGroupOutput) GroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.GroupType }).(pulumi.StringOutput)
+}
+
+// The name of the group.
 func (o GetGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -102,6 +128,11 @@ func (o GetGroupsGroupOutput) Id() pulumi.StringOutput {
 // Indicates whether namespaces are available. Read [Fields in SubscribeInfoDo](https://www.alibabacloud.com/help/doc-detail/29619.html) for further details.
 func (o GetGroupsGroupOutput) IndependentNaming() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupsGroup) bool { return v.IndependentNaming }).(pulumi.BoolOutput)
+}
+
+// ID of the ONS Instance that owns the groups.
+func (o GetGroupsGroupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // The ID of the group owner, which is the Alibaba Cloud UID.
@@ -112,6 +143,11 @@ func (o GetGroupsGroupOutput) Owner() pulumi.StringOutput {
 // Remark of the group.
 func (o GetGroupsGroupOutput) Remark() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.Remark }).(pulumi.StringOutput)
+}
+
+// A map of tags assigned to the Ons instance.
+func (o GetGroupsGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 type GetGroupsGroupArrayOutput struct{ *pulumi.OutputState }

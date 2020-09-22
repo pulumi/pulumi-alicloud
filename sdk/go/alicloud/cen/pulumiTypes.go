@@ -146,25 +146,46 @@ func (o GetBandwidthLimitsLimitArrayOutput) Index(i pulumi.IntInput) GetBandwidt
 type GetBandwidthPackagesPackage struct {
 	// The bandwidth in Mbps of the CEN bandwidth package.
 	Bandwidth int `pulumi:"bandwidth"`
-	// The billing method, including "POSTPAY" and "PREPAY".
+	// The billing method, including `POSTPAY` and `PREPAY`.
 	BandwidthPackageChargeType string `pulumi:"bandwidthPackageChargeType"`
-	// Status of the CEN Bandwidth Package, including "Normal", "FinancialLocked" and "SecurityLocked".
+	// Status of the CEN Bandwidth Package, including `Normal`, `FinancialLocked` and `SecurityLocked`.
 	BusinessStatus string `pulumi:"businessStatus"`
-	// Creation time of the CEN bandwidth package.
-	CreationTime string `pulumi:"creationTime"`
+	// The ID of the bandwidth package.
+	CenBandwidthPackageId string `pulumi:"cenBandwidthPackageId"`
+	// The name of the bandwidth package.
+	CenBandwidthPackageName string `pulumi:"cenBandwidthPackageName"`
+	// The list of CEN instances that are associated with the bandwidth package.
+	CenIds []string `pulumi:"cenIds"`
 	// Description of the CEN Bandwidth Package.
 	Description string `pulumi:"description"`
+	ExpiredTime string `pulumi:"expiredTime"`
 	// Region ID of the interconnected regions.
 	GeographicRegionAId string `pulumi:"geographicRegionAId"`
 	// Region ID of the interconnected regions.
 	GeographicRegionBId string `pulumi:"geographicRegionBId"`
+	// The area ID of the cross-area connection.
+	GeographicSpanId string `pulumi:"geographicSpanId"`
+	// Indicates whether renewal data is involved.
+	HasReservationData string `pulumi:"hasReservationData"`
 	// ID of the CEN Bandwidth Package.
 	Id string `pulumi:"id"`
 	// ID of a CEN instance.
 	InstanceId string `pulumi:"instanceId"`
+	// Indicates whether the bandwidth package is a cross-border bandwidth package.
+	IsCrossBorder bool `pulumi:"isCrossBorder"`
 	// Name of the CEN Bandwidth Package.
 	Name string `pulumi:"name"`
-	// Status of the CEN Bandwidth Package in CEN instance, including "Idle" and "InUse".
+	// The billing method of the bandwidth package.
+	PaymentType string `pulumi:"paymentType"`
+	// The expiration time of the temporary upgrade.
+	ReservationActiveTime string `pulumi:"reservationActiveTime"`
+	// The restored bandwidth after the temporary upgrade.
+	ReservationBandwidth string `pulumi:"reservationBandwidth"`
+	// The billing method after the configuration change.
+	ReservationInternetChargeType string `pulumi:"reservationInternetChargeType"`
+	// The type of the configuration change.
+	ReservationOrderType string `pulumi:"reservationOrderType"`
+	// Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
 	Status string `pulumi:"status"`
 }
 
@@ -182,25 +203,46 @@ type GetBandwidthPackagesPackageInput interface {
 type GetBandwidthPackagesPackageArgs struct {
 	// The bandwidth in Mbps of the CEN bandwidth package.
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	// The billing method, including "POSTPAY" and "PREPAY".
+	// The billing method, including `POSTPAY` and `PREPAY`.
 	BandwidthPackageChargeType pulumi.StringInput `pulumi:"bandwidthPackageChargeType"`
-	// Status of the CEN Bandwidth Package, including "Normal", "FinancialLocked" and "SecurityLocked".
+	// Status of the CEN Bandwidth Package, including `Normal`, `FinancialLocked` and `SecurityLocked`.
 	BusinessStatus pulumi.StringInput `pulumi:"businessStatus"`
-	// Creation time of the CEN bandwidth package.
-	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// The ID of the bandwidth package.
+	CenBandwidthPackageId pulumi.StringInput `pulumi:"cenBandwidthPackageId"`
+	// The name of the bandwidth package.
+	CenBandwidthPackageName pulumi.StringInput `pulumi:"cenBandwidthPackageName"`
+	// The list of CEN instances that are associated with the bandwidth package.
+	CenIds pulumi.StringArrayInput `pulumi:"cenIds"`
 	// Description of the CEN Bandwidth Package.
 	Description pulumi.StringInput `pulumi:"description"`
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
 	// Region ID of the interconnected regions.
 	GeographicRegionAId pulumi.StringInput `pulumi:"geographicRegionAId"`
 	// Region ID of the interconnected regions.
 	GeographicRegionBId pulumi.StringInput `pulumi:"geographicRegionBId"`
+	// The area ID of the cross-area connection.
+	GeographicSpanId pulumi.StringInput `pulumi:"geographicSpanId"`
+	// Indicates whether renewal data is involved.
+	HasReservationData pulumi.StringInput `pulumi:"hasReservationData"`
 	// ID of the CEN Bandwidth Package.
 	Id pulumi.StringInput `pulumi:"id"`
 	// ID of a CEN instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Indicates whether the bandwidth package is a cross-border bandwidth package.
+	IsCrossBorder pulumi.BoolInput `pulumi:"isCrossBorder"`
 	// Name of the CEN Bandwidth Package.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Status of the CEN Bandwidth Package in CEN instance, including "Idle" and "InUse".
+	// The billing method of the bandwidth package.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The expiration time of the temporary upgrade.
+	ReservationActiveTime pulumi.StringInput `pulumi:"reservationActiveTime"`
+	// The restored bandwidth after the temporary upgrade.
+	ReservationBandwidth pulumi.StringInput `pulumi:"reservationBandwidth"`
+	// The billing method after the configuration change.
+	ReservationInternetChargeType pulumi.StringInput `pulumi:"reservationInternetChargeType"`
+	// The type of the configuration change.
+	ReservationOrderType pulumi.StringInput `pulumi:"reservationOrderType"`
+	// Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -260,24 +302,38 @@ func (o GetBandwidthPackagesPackageOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// The billing method, including "POSTPAY" and "PREPAY".
+// The billing method, including `POSTPAY` and `PREPAY`.
 func (o GetBandwidthPackagesPackageOutput) BandwidthPackageChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.BandwidthPackageChargeType }).(pulumi.StringOutput)
 }
 
-// Status of the CEN Bandwidth Package, including "Normal", "FinancialLocked" and "SecurityLocked".
+// Status of the CEN Bandwidth Package, including `Normal`, `FinancialLocked` and `SecurityLocked`.
 func (o GetBandwidthPackagesPackageOutput) BusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.BusinessStatus }).(pulumi.StringOutput)
 }
 
-// Creation time of the CEN bandwidth package.
-func (o GetBandwidthPackagesPackageOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.CreationTime }).(pulumi.StringOutput)
+// The ID of the bandwidth package.
+func (o GetBandwidthPackagesPackageOutput) CenBandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.CenBandwidthPackageId }).(pulumi.StringOutput)
+}
+
+// The name of the bandwidth package.
+func (o GetBandwidthPackagesPackageOutput) CenBandwidthPackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.CenBandwidthPackageName }).(pulumi.StringOutput)
+}
+
+// The list of CEN instances that are associated with the bandwidth package.
+func (o GetBandwidthPackagesPackageOutput) CenIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) []string { return v.CenIds }).(pulumi.StringArrayOutput)
 }
 
 // Description of the CEN Bandwidth Package.
 func (o GetBandwidthPackagesPackageOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetBandwidthPackagesPackageOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
 // Region ID of the interconnected regions.
@@ -290,6 +346,16 @@ func (o GetBandwidthPackagesPackageOutput) GeographicRegionBId() pulumi.StringOu
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.GeographicRegionBId }).(pulumi.StringOutput)
 }
 
+// The area ID of the cross-area connection.
+func (o GetBandwidthPackagesPackageOutput) GeographicSpanId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.GeographicSpanId }).(pulumi.StringOutput)
+}
+
+// Indicates whether renewal data is involved.
+func (o GetBandwidthPackagesPackageOutput) HasReservationData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.HasReservationData }).(pulumi.StringOutput)
+}
+
 // ID of the CEN Bandwidth Package.
 func (o GetBandwidthPackagesPackageOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Id }).(pulumi.StringOutput)
@@ -300,12 +366,42 @@ func (o GetBandwidthPackagesPackageOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// Indicates whether the bandwidth package is a cross-border bandwidth package.
+func (o GetBandwidthPackagesPackageOutput) IsCrossBorder() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) bool { return v.IsCrossBorder }).(pulumi.BoolOutput)
+}
+
 // Name of the CEN Bandwidth Package.
 func (o GetBandwidthPackagesPackageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Status of the CEN Bandwidth Package in CEN instance, including "Idle" and "InUse".
+// The billing method of the bandwidth package.
+func (o GetBandwidthPackagesPackageOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The expiration time of the temporary upgrade.
+func (o GetBandwidthPackagesPackageOutput) ReservationActiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.ReservationActiveTime }).(pulumi.StringOutput)
+}
+
+// The restored bandwidth after the temporary upgrade.
+func (o GetBandwidthPackagesPackageOutput) ReservationBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.ReservationBandwidth }).(pulumi.StringOutput)
+}
+
+// The billing method after the configuration change.
+func (o GetBandwidthPackagesPackageOutput) ReservationInternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.ReservationInternetChargeType }).(pulumi.StringOutput)
+}
+
+// The type of the configuration change.
+func (o GetBandwidthPackagesPackageOutput) ReservationOrderType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.ReservationOrderType }).(pulumi.StringOutput)
+}
+
+// Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
 func (o GetBandwidthPackagesPackageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -655,6 +751,8 @@ type GetInstancesInstance struct {
 	CenBandwidthPackageIds []string `pulumi:"cenBandwidthPackageIds"`
 	// ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
+	// Name of the CEN instance.
+	CenInstanceName string `pulumi:"cenInstanceName"`
 	// Description of the CEN instance.
 	Description string `pulumi:"description"`
 	// ID of the CEN instance.
@@ -663,7 +761,7 @@ type GetInstancesInstance struct {
 	Name string `pulumi:"name"`
 	// Indicates the allowed level of CIDR block overlapping.
 	ProtectionLevel string `pulumi:"protectionLevel"`
-	// Status of the CEN instance, including "Creating", "Active" and "Deleting".
+	// The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -685,6 +783,8 @@ type GetInstancesInstanceArgs struct {
 	CenBandwidthPackageIds pulumi.StringArrayInput `pulumi:"cenBandwidthPackageIds"`
 	// ID of the CEN instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
+	// Name of the CEN instance.
+	CenInstanceName pulumi.StringInput `pulumi:"cenInstanceName"`
 	// Description of the CEN instance.
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the CEN instance.
@@ -693,7 +793,7 @@ type GetInstancesInstanceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Indicates the allowed level of CIDR block overlapping.
 	ProtectionLevel pulumi.StringInput `pulumi:"protectionLevel"`
-	// Status of the CEN instance, including "Creating", "Active" and "Deleting".
+	// The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
@@ -760,6 +860,11 @@ func (o GetInstancesInstanceOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CenId }).(pulumi.StringOutput)
 }
 
+// Name of the CEN instance.
+func (o GetInstancesInstanceOutput) CenInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CenInstanceName }).(pulumi.StringOutput)
+}
+
 // Description of the CEN instance.
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
@@ -780,7 +885,7 @@ func (o GetInstancesInstanceOutput) ProtectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ProtectionLevel }).(pulumi.StringOutput)
 }
 
-// Status of the CEN instance, including "Creating", "Active" and "Deleting".
+// The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1736,6 +1841,166 @@ func (o GetRouteMapsMapArrayOutput) Index(i pulumi.IntInput) GetRouteMapsMapOutp
 	}).(GetRouteMapsMapOutput)
 }
 
+type GetVbrHealthChecksCheck struct {
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId string `pulumi:"cenId"`
+	// The time interval at which probe packets are sent during the health check.
+	HealthCheckInterval int `pulumi:"healthCheckInterval"`
+	// The source IP address of the health check.
+	HealthCheckSourceIp string `pulumi:"healthCheckSourceIp"`
+	// The destination IP address of the health check.
+	HealthCheckTargetIp string `pulumi:"healthCheckTargetIp"`
+	// The number of probe packets that are sent during the health check.
+	HealthyThreshold int `pulumi:"healthyThreshold"`
+	// The ID of the CEN VBR Heath Check.
+	Id string `pulumi:"id"`
+	// The ID of the VBR instance.
+	VbrInstanceId string `pulumi:"vbrInstanceId"`
+	// The ID of the region where the VBR instance is deployed.
+	VbrInstanceRegionId string `pulumi:"vbrInstanceRegionId"`
+}
+
+// GetVbrHealthChecksCheckInput is an input type that accepts GetVbrHealthChecksCheckArgs and GetVbrHealthChecksCheckOutput values.
+// You can construct a concrete instance of `GetVbrHealthChecksCheckInput` via:
+//
+//          GetVbrHealthChecksCheckArgs{...}
+type GetVbrHealthChecksCheckInput interface {
+	pulumi.Input
+
+	ToGetVbrHealthChecksCheckOutput() GetVbrHealthChecksCheckOutput
+	ToGetVbrHealthChecksCheckOutputWithContext(context.Context) GetVbrHealthChecksCheckOutput
+}
+
+type GetVbrHealthChecksCheckArgs struct {
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// The time interval at which probe packets are sent during the health check.
+	HealthCheckInterval pulumi.IntInput `pulumi:"healthCheckInterval"`
+	// The source IP address of the health check.
+	HealthCheckSourceIp pulumi.StringInput `pulumi:"healthCheckSourceIp"`
+	// The destination IP address of the health check.
+	HealthCheckTargetIp pulumi.StringInput `pulumi:"healthCheckTargetIp"`
+	// The number of probe packets that are sent during the health check.
+	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
+	// The ID of the CEN VBR Heath Check.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the VBR instance.
+	VbrInstanceId pulumi.StringInput `pulumi:"vbrInstanceId"`
+	// The ID of the region where the VBR instance is deployed.
+	VbrInstanceRegionId pulumi.StringInput `pulumi:"vbrInstanceRegionId"`
+}
+
+func (GetVbrHealthChecksCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVbrHealthChecksCheck)(nil)).Elem()
+}
+
+func (i GetVbrHealthChecksCheckArgs) ToGetVbrHealthChecksCheckOutput() GetVbrHealthChecksCheckOutput {
+	return i.ToGetVbrHealthChecksCheckOutputWithContext(context.Background())
+}
+
+func (i GetVbrHealthChecksCheckArgs) ToGetVbrHealthChecksCheckOutputWithContext(ctx context.Context) GetVbrHealthChecksCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVbrHealthChecksCheckOutput)
+}
+
+// GetVbrHealthChecksCheckArrayInput is an input type that accepts GetVbrHealthChecksCheckArray and GetVbrHealthChecksCheckArrayOutput values.
+// You can construct a concrete instance of `GetVbrHealthChecksCheckArrayInput` via:
+//
+//          GetVbrHealthChecksCheckArray{ GetVbrHealthChecksCheckArgs{...} }
+type GetVbrHealthChecksCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetVbrHealthChecksCheckArrayOutput() GetVbrHealthChecksCheckArrayOutput
+	ToGetVbrHealthChecksCheckArrayOutputWithContext(context.Context) GetVbrHealthChecksCheckArrayOutput
+}
+
+type GetVbrHealthChecksCheckArray []GetVbrHealthChecksCheckInput
+
+func (GetVbrHealthChecksCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVbrHealthChecksCheck)(nil)).Elem()
+}
+
+func (i GetVbrHealthChecksCheckArray) ToGetVbrHealthChecksCheckArrayOutput() GetVbrHealthChecksCheckArrayOutput {
+	return i.ToGetVbrHealthChecksCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetVbrHealthChecksCheckArray) ToGetVbrHealthChecksCheckArrayOutputWithContext(ctx context.Context) GetVbrHealthChecksCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVbrHealthChecksCheckArrayOutput)
+}
+
+type GetVbrHealthChecksCheckOutput struct{ *pulumi.OutputState }
+
+func (GetVbrHealthChecksCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVbrHealthChecksCheck)(nil)).Elem()
+}
+
+func (o GetVbrHealthChecksCheckOutput) ToGetVbrHealthChecksCheckOutput() GetVbrHealthChecksCheckOutput {
+	return o
+}
+
+func (o GetVbrHealthChecksCheckOutput) ToGetVbrHealthChecksCheckOutputWithContext(ctx context.Context) GetVbrHealthChecksCheckOutput {
+	return o
+}
+
+// The ID of the Cloud Enterprise Network (CEN) instance.
+func (o GetVbrHealthChecksCheckOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksCheck) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The time interval at which probe packets are sent during the health check.
+func (o GetVbrHealthChecksCheckOutput) HealthCheckInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksCheck) int { return v.HealthCheckInterval }).(pulumi.IntOutput)
+}
+
+// The source IP address of the health check.
+func (o GetVbrHealthChecksCheckOutput) HealthCheckSourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksCheck) string { return v.HealthCheckSourceIp }).(pulumi.StringOutput)
+}
+
+// The destination IP address of the health check.
+func (o GetVbrHealthChecksCheckOutput) HealthCheckTargetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksCheck) string { return v.HealthCheckTargetIp }).(pulumi.StringOutput)
+}
+
+// The number of probe packets that are sent during the health check.
+func (o GetVbrHealthChecksCheckOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksCheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+// The ID of the CEN VBR Heath Check.
+func (o GetVbrHealthChecksCheckOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksCheck) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the VBR instance.
+func (o GetVbrHealthChecksCheckOutput) VbrInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksCheck) string { return v.VbrInstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the region where the VBR instance is deployed.
+func (o GetVbrHealthChecksCheckOutput) VbrInstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrHealthChecksCheck) string { return v.VbrInstanceRegionId }).(pulumi.StringOutput)
+}
+
+type GetVbrHealthChecksCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVbrHealthChecksCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVbrHealthChecksCheck)(nil)).Elem()
+}
+
+func (o GetVbrHealthChecksCheckArrayOutput) ToGetVbrHealthChecksCheckArrayOutput() GetVbrHealthChecksCheckArrayOutput {
+	return o
+}
+
+func (o GetVbrHealthChecksCheckArrayOutput) ToGetVbrHealthChecksCheckArrayOutputWithContext(ctx context.Context) GetVbrHealthChecksCheckArrayOutput {
+	return o
+}
+
+func (o GetVbrHealthChecksCheckArrayOutput) Index(i pulumi.IntInput) GetVbrHealthChecksCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVbrHealthChecksCheck {
+		return vs[0].([]GetVbrHealthChecksCheck)[vs[1].(int)]
+	}).(GetVbrHealthChecksCheckOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetBandwidthLimitsLimitOutput{})
 	pulumi.RegisterOutputType(GetBandwidthLimitsLimitArrayOutput{})
@@ -1757,4 +2022,6 @@ func init() {
 	pulumi.RegisterOutputType(GetRouteEntriesEntryConflictArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteMapsMapOutput{})
 	pulumi.RegisterOutputType(GetRouteMapsMapArrayOutput{})
+	pulumi.RegisterOutputType(GetVbrHealthChecksCheckOutput{})
+	pulumi.RegisterOutputType(GetVbrHealthChecksCheckArrayOutput{})
 }

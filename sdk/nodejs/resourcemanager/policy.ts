@@ -61,10 +61,6 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /**
-     * The time when the policy was created.
-     */
-    public /*out*/ readonly createDate!: pulumi.Output<string>;
-    /**
      * The version of the policy. Default to v1.
      *
      * @deprecated Field 'default_version' has been deprecated from provider version 1.90.0
@@ -99,7 +95,6 @@ export class Policy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            inputs["createDate"] = state ? state.createDate : undefined;
             inputs["defaultVersion"] = state ? state.defaultVersion : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["policyDocument"] = state ? state.policyDocument : undefined;
@@ -117,7 +112,6 @@ export class Policy extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["policyDocument"] = args ? args.policyDocument : undefined;
             inputs["policyName"] = args ? args.policyName : undefined;
-            inputs["createDate"] = undefined /*out*/;
             inputs["policyType"] = undefined /*out*/;
         }
         if (!opts) {
@@ -135,10 +129,6 @@ export class Policy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Policy resources.
  */
 export interface PolicyState {
-    /**
-     * The time when the policy was created.
-     */
-    readonly createDate?: pulumi.Input<string>;
     /**
      * The version of the policy. Default to v1.
      *

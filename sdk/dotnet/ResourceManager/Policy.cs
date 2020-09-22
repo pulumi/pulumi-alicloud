@@ -49,12 +49,6 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>
-        /// The time when the policy was created.
-        /// </summary>
-        [Output("createDate")]
-        public Output<string> CreateDate { get; private set; } = null!;
-
-        /// <summary>
         /// The version of the policy. Default to v1.
         /// </summary>
         [Output("defaultVersion")]
@@ -161,12 +155,6 @@ namespace Pulumi.AliCloud.ResourceManager
 
     public sealed class PolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The time when the policy was created.
-        /// </summary>
-        [Input("createDate")]
-        public Input<string>? CreateDate { get; set; }
-
         /// <summary>
         /// The version of the policy. Default to v1.
         /// </summary>

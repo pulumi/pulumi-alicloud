@@ -45,8 +45,6 @@ import (
 type Policy struct {
 	pulumi.CustomResourceState
 
-	// The time when the policy was created.
-	CreateDate pulumi.StringOutput `pulumi:"createDate"`
 	// The version of the policy. Default to v1.
 	//
 	// Deprecated: Field 'default_version' has been deprecated from provider version 1.90.0
@@ -95,8 +93,6 @@ func GetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
-	// The time when the policy was created.
-	CreateDate *string `pulumi:"createDate"`
 	// The version of the policy. Default to v1.
 	//
 	// Deprecated: Field 'default_version' has been deprecated from provider version 1.90.0
@@ -112,8 +108,6 @@ type policyState struct {
 }
 
 type PolicyState struct {
-	// The time when the policy was created.
-	CreateDate pulumi.StringPtrInput
 	// The version of the policy. Default to v1.
 	//
 	// Deprecated: Field 'default_version' has been deprecated from provider version 1.90.0

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Create a cen vbr HealrhCheck resource and use it.
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {});
+ * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: "test_name"});
  * const defaultInstanceAttachment = new alicloud.cen.InstanceAttachment("defaultInstanceAttachment", {
  *     instanceId: defaultInstance.id,
  *     childInstanceId: "vbr-xxxxx",
