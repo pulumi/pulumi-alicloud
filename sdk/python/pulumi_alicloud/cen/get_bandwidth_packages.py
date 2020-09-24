@@ -20,13 +20,16 @@ class GetBandwidthPackagesResult:
     """
     A collection of values returned by getBandwidthPackages.
     """
-    def __init__(__self__, id=None, ids=None, instance_id=None, name_regex=None, names=None, output_file=None, packages=None):
+    def __init__(__self__, id=None, ids=None, include_reservation_data=None, instance_id=None, name_regex=None, names=None, output_file=None, packages=None, status=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if include_reservation_data and not isinstance(include_reservation_data, bool):
+            raise TypeError("Expected argument 'include_reservation_data' to be a bool")
+        pulumi.set(__self__, "include_reservation_data", include_reservation_data)
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
@@ -42,6 +45,9 @@ class GetBandwidthPackagesResult:
         if packages and not isinstance(packages, list):
             raise TypeError("Expected argument 'packages' to be a list")
         pulumi.set(__self__, "packages", packages)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -54,13 +60,22 @@ class GetBandwidthPackagesResult:
     @property
     @pulumi.getter
     def ids(self) -> List[str]:
+        """
+        A list of specific CEN Bandwidth Package IDs.
+        * `names` (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
+        """
         return pulumi.get(self, "ids")
+
+    @property
+    @pulumi.getter(name="includeReservationData")
+    def include_reservation_data(self) -> Optional[bool]:
+        return pulumi.get(self, "include_reservation_data")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[str]:
         """
-        ID of CEN instance that owns the CEN Bandwidth Package.
+        The ID of the CEN instance that are associated with the bandwidth package.
         """
         return pulumi.get(self, "instance_id")
 
@@ -87,6 +102,14 @@ class GetBandwidthPackagesResult:
         """
         return pulumi.get(self, "packages")
 
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Status of the CEN Bandwidth Package in CEN instance, including `Idle` and `InUse`.
+        """
+        return pulumi.get(self, "status")
+
 
 class AwaitableGetBandwidthPackagesResult(GetBandwidthPackagesResult):
     # pylint: disable=using-constant-test
@@ -96,17 +119,21 @@ class AwaitableGetBandwidthPackagesResult(GetBandwidthPackagesResult):
         return GetBandwidthPackagesResult(
             id=self.id,
             ids=self.ids,
+            include_reservation_data=self.include_reservation_data,
             instance_id=self.instance_id,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            packages=self.packages)
+            packages=self.packages,
+            status=self.status)
 
 
 def get_bandwidth_packages(ids: Optional[List[str]] = None,
+                           include_reservation_data: Optional[bool] = None,
                            instance_id: Optional[str] = None,
                            name_regex: Optional[str] = None,
                            output_file: Optional[str] = None,
+                           status: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBandwidthPackagesResult:
     """
     This data source provides CEN Bandwidth Packages available to the user.
@@ -117,21 +144,25 @@ def get_bandwidth_packages(ids: Optional[List[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    bwp = alicloud.cen.get_bandwidth_packages(instance_id="cen-id1",
+    example = alicloud.cen.get_bandwidth_packages(instance_id="cen-id1",
         name_regex="^foo")
-    pulumi.export("firstCenBandwidthPackageId", bwp.packages[0].id)
+    pulumi.export("firstCenBandwidthPackageId", example.packages[0].id)
     ```
 
 
     :param List[str] ids: Limit search to a list of specific CEN Bandwidth Package IDs.
+    :param bool include_reservation_data: -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
     :param str instance_id: ID of a CEN instance.
     :param str name_regex: A regex string to filter CEN Bandwidth Package by name.
+    :param str status: Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['includeReservationData'] = include_reservation_data
     __args__['instanceId'] = instance_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['status'] = status
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -141,8 +172,10 @@ def get_bandwidth_packages(ids: Optional[List[str]] = None,
     return AwaitableGetBandwidthPackagesResult(
         id=__ret__.id,
         ids=__ret__.ids,
+        include_reservation_data=__ret__.include_reservation_data,
         instance_id=__ret__.instance_id,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
-        packages=__ret__.packages)
+        packages=__ret__.packages,
+        status=__ret__.status)

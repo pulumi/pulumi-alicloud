@@ -30,14 +30,14 @@ namespace Pulumi.AliCloud.RocketMQ
     ///     {
     ///         var config = new Config();
     ///         var name = config.Get("name") ?? "onsInstanceName";
-    ///         var groupId = config.Get("groupId") ?? "GID-onsGroupDatasourceName";
+    ///         var groupName = config.Get("groupName") ?? "GID-onsGroupDatasourceName";
     ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
     ///         {
     ///             Remark = "default_ons_instance_remark",
     ///         });
     ///         var defaultGroup = new AliCloud.RocketMQ.Group("defaultGroup", new AliCloud.RocketMQ.GroupArgs
     ///         {
-    ///             GroupId = groupId,
+    ///             GroupName = groupName,
     ///             InstanceId = defaultInstance.Id,
     ///             Remark = "dafault_ons_group_remark",
     ///         });
@@ -49,10 +49,22 @@ namespace Pulumi.AliCloud.RocketMQ
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of the group. Two groups on a single instance cannot have the same name. A `group_id` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+        /// Replaced by `group_name` after version 1.98.0.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+        /// </summary>
+        [Output("groupName")]
+        public Output<string> GroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        /// </summary>
+        [Output("groupType")]
+        public Output<string?> GroupType { get; private set; } = null!;
 
         /// <summary>
         /// ID of the ONS Instance that owns the groups.
@@ -71,6 +83,14 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         [Output("remark")]
         public Output<string?> Remark { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -119,10 +139,22 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class GroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the group. Two groups on a single instance cannot have the same name. A `group_id` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+        /// Replaced by `group_name` after version 1.98.0.
         /// </summary>
-        [Input("groupId", required: true)]
-        public Input<string> GroupId { get; set; } = null!;
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
+
+        /// <summary>
+        /// Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
+        /// <summary>
+        /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        /// </summary>
+        [Input("groupType")]
+        public Input<string>? GroupType { get; set; }
 
         /// <summary>
         /// ID of the ONS Instance that owns the groups.
@@ -142,6 +174,20 @@ namespace Pulumi.AliCloud.RocketMQ
         [Input("remark")]
         public Input<string>? Remark { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         public GroupArgs()
         {
         }
@@ -150,10 +196,22 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class GroupState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the group. Two groups on a single instance cannot have the same name. A `group_id` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+        /// Replaced by `group_name` after version 1.98.0.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
+
+        /// <summary>
+        /// Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
+        /// <summary>
+        /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        /// </summary>
+        [Input("groupType")]
+        public Input<string>? GroupType { get; set; }
 
         /// <summary>
         /// ID of the ONS Instance that owns the groups.
@@ -172,6 +230,20 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         [Input("remark")]
         public Input<string>? Remark { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public GroupState()
         {

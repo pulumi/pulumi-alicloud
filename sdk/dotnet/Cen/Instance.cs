@@ -26,8 +26,9 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     public MyStack()
     ///     {
-    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
+    ///         var example = new AliCloud.Cen.Instance("example", new AliCloud.Cen.InstanceArgs
     ///         {
+    ///             CenInstanceName = "tf_test_foo",
     ///             Description = "an example for cen",
     ///         });
     ///     }
@@ -38,22 +39,28 @@ namespace Pulumi.AliCloud.Cen
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        /// </summary>
+        [Output("cenInstanceName")]
+        public Output<string> CenInstanceName { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        /// Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
+        /// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
         /// </summary>
         [Output("protectionLevel")]
-        public Output<string> ProtectionLevel { get; private set; } = null!;
+        public Output<string?> ProtectionLevel { get; private set; } = null!;
 
         /// <summary>
         /// The Cen Instance current status.
@@ -114,19 +121,25 @@ namespace Pulumi.AliCloud.Cen
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        /// </summary>
+        [Input("cenInstanceName")]
+        public Input<string>? CenInstanceName { get; set; }
+
+        /// <summary>
         /// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        /// Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
+        /// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }
@@ -151,19 +164,25 @@ namespace Pulumi.AliCloud.Cen
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        /// </summary>
+        [Input("cenInstanceName")]
+        public Input<string>? CenInstanceName { get; set; }
+
+        /// <summary>
         /// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        /// Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
+        /// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }

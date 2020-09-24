@@ -15,6 +15,8 @@ type ScalingConfiguration struct {
 
 	// Whether active current scaling configuration in the specified scaling group. Default to `false`.
 	Active pulumi.BoolOutput `pulumi:"active"`
+	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	CreditSpecification pulumi.StringPtrOutput `pulumi:"creditSpecification"`
 	// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
 	DataDisks ScalingConfigurationDataDiskArrayOutput `pulumi:"dataDisks"`
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
@@ -122,6 +124,8 @@ func GetScalingConfiguration(ctx *pulumi.Context,
 type scalingConfigurationState struct {
 	// Whether active current scaling configuration in the specified scaling group. Default to `false`.
 	Active *bool `pulumi:"active"`
+	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	CreditSpecification *string `pulumi:"creditSpecification"`
 	// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
 	DataDisks []ScalingConfigurationDataDisk `pulumi:"dataDisks"`
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
@@ -199,6 +203,8 @@ type scalingConfigurationState struct {
 type ScalingConfigurationState struct {
 	// Whether active current scaling configuration in the specified scaling group. Default to `false`.
 	Active pulumi.BoolPtrInput
+	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	CreditSpecification pulumi.StringPtrInput
 	// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
 	DataDisks ScalingConfigurationDataDiskArrayInput
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
@@ -280,6 +286,8 @@ func (ScalingConfigurationState) ElementType() reflect.Type {
 type scalingConfigurationArgs struct {
 	// Whether active current scaling configuration in the specified scaling group. Default to `false`.
 	Active *bool `pulumi:"active"`
+	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	CreditSpecification *string `pulumi:"creditSpecification"`
 	// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
 	DataDisks []ScalingConfigurationDataDisk `pulumi:"dataDisks"`
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
@@ -358,6 +366,8 @@ type scalingConfigurationArgs struct {
 type ScalingConfigurationArgs struct {
 	// Whether active current scaling configuration in the specified scaling group. Default to `false`.
 	Active pulumi.BoolPtrInput
+	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	CreditSpecification pulumi.StringPtrInput
 	// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
 	DataDisks ScalingConfigurationDataDiskArrayInput
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.

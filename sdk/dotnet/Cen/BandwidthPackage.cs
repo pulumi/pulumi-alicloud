@@ -26,14 +26,12 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     public MyStack()
     ///     {
-    ///         var foo = new AliCloud.Cen.BandwidthPackage("foo", new AliCloud.Cen.BandwidthPackageArgs
+    ///         var example = new AliCloud.Cen.BandwidthPackage("example", new AliCloud.Cen.BandwidthPackageArgs
     ///         {
     ///             Bandwidth = 5,
-    ///             GeographicRegionIds = 
-    ///             {
-    ///                 "China",
-    ///                 "Asia-Pacific",
-    ///             },
+    ///             CenBandwidthPackageName = "tf-testAccCenBandwidthPackageConfig",
+    ///             GeographicRegionAId = "China",
+    ///             GeographicRegionBId = "China",
     ///         });
     ///     }
     /// 
@@ -49,10 +47,16 @@ namespace Pulumi.AliCloud.Cen
         public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        /// The name of the bandwidth package. Defaults to null.
+        /// </summary>
+        [Output("cenBandwidthPackageName")]
+        public Output<string> CenBandwidthPackageName { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         /// </summary>
         [Output("chargeType")]
-        public Output<string?> ChargeType { get; private set; } = null!;
+        public Output<string> ChargeType { get; private set; } = null!;
 
         /// <summary>
         /// The description of the bandwidth package. Default to null.
@@ -67,25 +71,43 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> ExpiredTime { get; private set; } = null!;
 
         /// <summary>
-        /// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
+        /// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// </summary>
+        [Output("geographicRegionAId")]
+        public Output<string> GeographicRegionAId { get; private set; } = null!;
+
+        /// <summary>
+        /// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// </summary>
+        [Output("geographicRegionBId")]
+        public Output<string> GeographicRegionBId { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         /// </summary>
         [Output("geographicRegionIds")]
         public Output<ImmutableArray<string>> GeographicRegionIds { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the bandwidth package. Defaults to null.
+        /// Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
+        /// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
+
+        /// <summary>
+        /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the bandwidth, including "InUse" and "Idle".
+        /// The association status of the bandwidth package.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -143,7 +165,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<int> Bandwidth { get; set; } = null!;
 
         /// <summary>
-        /// The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        /// The name of the bandwidth package. Defaults to null.
+        /// </summary>
+        [Input("cenBandwidthPackageName")]
+        public Input<string>? CenBandwidthPackageName { get; set; }
+
+        /// <summary>
+        /// Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         /// </summary>
         [Input("chargeType")]
         public Input<string>? ChargeType { get; set; }
@@ -154,12 +182,25 @@ namespace Pulumi.AliCloud.Cen
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("geographicRegionIds", required: true)]
+        /// <summary>
+        /// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// </summary>
+        [Input("geographicRegionAId")]
+        public Input<string>? GeographicRegionAId { get; set; }
+
+        /// <summary>
+        /// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// </summary>
+        [Input("geographicRegionBId")]
+        public Input<string>? GeographicRegionBId { get; set; }
+
+        [Input("geographicRegionIds")]
         private InputList<string>? _geographicRegionIds;
 
         /// <summary>
-        /// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
+        /// Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         /// </summary>
+        [Obsolete(@"Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.")]
         public InputList<string> GeographicRegionIds
         {
             get => _geographicRegionIds ?? (_geographicRegionIds = new InputList<string>());
@@ -167,13 +208,19 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The name of the bandwidth package. Defaults to null.
+        /// Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
+        /// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -192,7 +239,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        /// The name of the bandwidth package. Defaults to null.
+        /// </summary>
+        [Input("cenBandwidthPackageName")]
+        public Input<string>? CenBandwidthPackageName { get; set; }
+
+        /// <summary>
+        /// Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         /// </summary>
         [Input("chargeType")]
         public Input<string>? ChargeType { get; set; }
@@ -209,12 +262,25 @@ namespace Pulumi.AliCloud.Cen
         [Input("expiredTime")]
         public Input<string>? ExpiredTime { get; set; }
 
+        /// <summary>
+        /// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// </summary>
+        [Input("geographicRegionAId")]
+        public Input<string>? GeographicRegionAId { get; set; }
+
+        /// <summary>
+        /// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+        /// </summary>
+        [Input("geographicRegionBId")]
+        public Input<string>? GeographicRegionBId { get; set; }
+
         [Input("geographicRegionIds")]
         private InputList<string>? _geographicRegionIds;
 
         /// <summary>
-        /// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
+        /// Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         /// </summary>
+        [Obsolete(@"Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.")]
         public InputList<string> GeographicRegionIds
         {
             get => _geographicRegionIds ?? (_geographicRegionIds = new InputList<string>());
@@ -222,19 +288,25 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The name of the bandwidth package. Defaults to null.
+        /// Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
+        /// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The status of the bandwidth, including "InUse" and "Idle".
+        /// The association status of the bandwidth package.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

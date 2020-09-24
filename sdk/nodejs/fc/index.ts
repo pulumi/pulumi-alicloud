@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./customDomain";
 export * from "./function";
+export * from "./getCustomDomains";
 export * from "./getFunctions";
 export * from "./getServices";
 export * from "./getTriggers";

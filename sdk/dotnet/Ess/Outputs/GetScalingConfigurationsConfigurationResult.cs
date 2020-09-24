@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
+        /// Performance mode of the t5 burstable instance.
+        /// </summary>
+        public readonly string CreditSpecification;
+        /// <summary>
         /// Data disks of the scaling configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetScalingConfigurationsConfigurationDataDiskResult> DataDisks;
@@ -74,6 +78,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
         private GetScalingConfigurationsConfigurationResult(
             string creationTime,
 
+            string creditSpecification,
+
             ImmutableArray<Outputs.GetScalingConfigurationsConfigurationDataDiskResult> dataDisks,
 
             string id,
@@ -101,6 +107,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
             int systemDiskSize)
         {
             CreationTime = creationTime;
+            CreditSpecification = creditSpecification;
             DataDisks = dataDisks;
             Id = id;
             ImageId = imageId;

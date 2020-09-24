@@ -21,10 +21,10 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceName";
- * const groupId = config.get("groupId") || "GID-onsGroupDatasourceName";
+ * const groupName = config.get("groupName") || "GID-onsGroupDatasourceName";
  * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {remark: "default_ons_instance_remark"});
  * const defaultGroup = new alicloud.rocketmq.Group("defaultGroup", {
- *     groupId: groupId,
+ *     groupName: groupName,
  *     instanceId: defaultInstance.id,
  *     remark: "dafault_ons_group_remark",
  * });
@@ -59,9 +59,19 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
-     * Name of the group. Two groups on a single instance cannot have the same name. A `groupId` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+     * Replaced by `groupName` after version 1.98.0.
+     *
+     * @deprecated Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
      */
     public readonly groupId!: pulumi.Output<string>;
+    /**
+     * Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+     */
+    public readonly groupName!: pulumi.Output<string>;
+    /**
+     * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+     */
+    public readonly groupType!: pulumi.Output<string | undefined>;
     /**
      * ID of the ONS Instance that owns the groups.
      */
@@ -74,6 +84,12 @@ export class Group extends pulumi.CustomResource {
      * This attribute is a concise description of group. The length cannot exceed 256.
      */
     public readonly remark!: pulumi.Output<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -88,21 +104,24 @@ export class Group extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as GroupState | undefined;
             inputs["groupId"] = state ? state.groupId : undefined;
+            inputs["groupName"] = state ? state.groupName : undefined;
+            inputs["groupType"] = state ? state.groupType : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["readEnable"] = state ? state.readEnable : undefined;
             inputs["remark"] = state ? state.remark : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if (!args || args.groupId === undefined) {
-                throw new Error("Missing required property 'groupId'");
-            }
             if (!args || args.instanceId === undefined) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["groupId"] = args ? args.groupId : undefined;
+            inputs["groupName"] = args ? args.groupName : undefined;
+            inputs["groupType"] = args ? args.groupType : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["readEnable"] = args ? args.readEnable : undefined;
             inputs["remark"] = args ? args.remark : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
         }
         if (!opts) {
             opts = {}
@@ -120,9 +139,19 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupState {
     /**
-     * Name of the group. Two groups on a single instance cannot have the same name. A `groupId` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+     * Replaced by `groupName` after version 1.98.0.
+     *
+     * @deprecated Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
      */
     readonly groupId?: pulumi.Input<string>;
+    /**
+     * Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+     */
+    readonly groupName?: pulumi.Input<string>;
+    /**
+     * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+     */
+    readonly groupType?: pulumi.Input<string>;
     /**
      * ID of the ONS Instance that owns the groups.
      */
@@ -135,6 +164,12 @@ export interface GroupState {
      * This attribute is a concise description of group. The length cannot exceed 256.
      */
     readonly remark?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -142,9 +177,19 @@ export interface GroupState {
  */
 export interface GroupArgs {
     /**
-     * Name of the group. Two groups on a single instance cannot have the same name. A `groupId` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+     * Replaced by `groupName` after version 1.98.0.
+     *
+     * @deprecated Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
      */
-    readonly groupId: pulumi.Input<string>;
+    readonly groupId?: pulumi.Input<string>;
+    /**
+     * Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+     */
+    readonly groupName?: pulumi.Input<string>;
+    /**
+     * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+     */
+    readonly groupType?: pulumi.Input<string>;
     /**
      * ID of the ONS Instance that owns the groups.
      */
@@ -157,4 +202,10 @@ export interface GroupArgs {
      * This attribute is a concise description of group. The length cannot exceed 256.
      */
     readonly remark?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }

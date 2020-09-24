@@ -52,6 +52,8 @@ type GetInstancesArgs struct {
 	// A regex string to filter CEN instances by name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	// The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -68,6 +70,8 @@ type GetInstancesResult struct {
 	// A list of CEN instances names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// Status of the CEN instance, including "Creating", "Active" and "Deleting".
+	Status *string `pulumi:"status"`
 	// A map of tags assigned to the Cen Instance.
 	Tags map[string]interface{} `pulumi:"tags"`
 }

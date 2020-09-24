@@ -20,6 +20,7 @@ __all__ = [
     'GetRouteEntriesEntryResult',
     'GetRouteEntriesEntryConflictResult',
     'GetRouteMapsMapResult',
+    'GetVbrHealthChecksCheckResult',
 ]
 
 @pulumi.output_type
@@ -90,37 +91,69 @@ class GetBandwidthPackagesPackageResult(dict):
                  bandwidth: float,
                  bandwidth_package_charge_type: str,
                  business_status: str,
-                 creation_time: str,
+                 cen_bandwidth_package_id: str,
+                 cen_bandwidth_package_name: str,
+                 cen_ids: List[str],
                  description: str,
+                 expired_time: str,
                  geographic_region_a_id: str,
                  geographic_region_b_id: str,
+                 geographic_span_id: str,
+                 has_reservation_data: str,
                  id: str,
                  instance_id: str,
+                 is_cross_border: bool,
                  name: str,
+                 payment_type: str,
+                 reservation_active_time: str,
+                 reservation_bandwidth: str,
+                 reservation_internet_charge_type: str,
+                 reservation_order_type: str,
                  status: str):
         """
         :param float bandwidth: The bandwidth in Mbps of the CEN bandwidth package.
-        :param str bandwidth_package_charge_type: The billing method, including "POSTPAY" and "PREPAY".
-        :param str business_status: Status of the CEN Bandwidth Package, including "Normal", "FinancialLocked" and "SecurityLocked".
-        :param str creation_time: Creation time of the CEN bandwidth package.
+        :param str bandwidth_package_charge_type: The billing method, including `POSTPAY` and `PREPAY`.
+        :param str business_status: Status of the CEN Bandwidth Package, including `Normal`, `FinancialLocked` and `SecurityLocked`.
+        :param str cen_bandwidth_package_id: The ID of the bandwidth package.
+        :param str cen_bandwidth_package_name: The name of the bandwidth package.
+        :param List[str] cen_ids: The list of CEN instances that are associated with the bandwidth package.
         :param str description: Description of the CEN Bandwidth Package.
         :param str geographic_region_a_id: Region ID of the interconnected regions.
         :param str geographic_region_b_id: Region ID of the interconnected regions.
+        :param str geographic_span_id: The area ID of the cross-area connection.
+        :param str has_reservation_data: Indicates whether renewal data is involved.
         :param str id: ID of the CEN Bandwidth Package.
         :param str instance_id: ID of a CEN instance.
+        :param bool is_cross_border: Indicates whether the bandwidth package is a cross-border bandwidth package.
         :param str name: Name of the CEN Bandwidth Package.
-        :param str status: Status of the CEN Bandwidth Package in CEN instance, including "Idle" and "InUse".
+        :param str payment_type: The billing method of the bandwidth package.
+        :param str reservation_active_time: The expiration time of the temporary upgrade.
+        :param str reservation_bandwidth: The restored bandwidth after the temporary upgrade.
+        :param str reservation_internet_charge_type: The billing method after the configuration change.
+        :param str reservation_order_type: The type of the configuration change.
+        :param str status: Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "bandwidth_package_charge_type", bandwidth_package_charge_type)
         pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
+        pulumi.set(__self__, "cen_bandwidth_package_name", cen_bandwidth_package_name)
+        pulumi.set(__self__, "cen_ids", cen_ids)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
         pulumi.set(__self__, "geographic_region_a_id", geographic_region_a_id)
         pulumi.set(__self__, "geographic_region_b_id", geographic_region_b_id)
+        pulumi.set(__self__, "geographic_span_id", geographic_span_id)
+        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "is_cross_border", is_cross_border)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
+        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
+        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
+        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
         pulumi.set(__self__, "status", status)
 
     @property
@@ -135,7 +168,7 @@ class GetBandwidthPackagesPackageResult(dict):
     @pulumi.getter(name="bandwidthPackageChargeType")
     def bandwidth_package_charge_type(self) -> str:
         """
-        The billing method, including "POSTPAY" and "PREPAY".
+        The billing method, including `POSTPAY` and `PREPAY`.
         """
         return pulumi.get(self, "bandwidth_package_charge_type")
 
@@ -143,17 +176,33 @@ class GetBandwidthPackagesPackageResult(dict):
     @pulumi.getter(name="businessStatus")
     def business_status(self) -> str:
         """
-        Status of the CEN Bandwidth Package, including "Normal", "FinancialLocked" and "SecurityLocked".
+        Status of the CEN Bandwidth Package, including `Normal`, `FinancialLocked` and `SecurityLocked`.
         """
         return pulumi.get(self, "business_status")
 
     @property
-    @pulumi.getter(name="creationTime")
-    def creation_time(self) -> str:
+    @pulumi.getter(name="cenBandwidthPackageId")
+    def cen_bandwidth_package_id(self) -> str:
         """
-        Creation time of the CEN bandwidth package.
+        The ID of the bandwidth package.
         """
-        return pulumi.get(self, "creation_time")
+        return pulumi.get(self, "cen_bandwidth_package_id")
+
+    @property
+    @pulumi.getter(name="cenBandwidthPackageName")
+    def cen_bandwidth_package_name(self) -> str:
+        """
+        The name of the bandwidth package.
+        """
+        return pulumi.get(self, "cen_bandwidth_package_name")
+
+    @property
+    @pulumi.getter(name="cenIds")
+    def cen_ids(self) -> List[str]:
+        """
+        The list of CEN instances that are associated with the bandwidth package.
+        """
+        return pulumi.get(self, "cen_ids")
 
     @property
     @pulumi.getter
@@ -162,6 +211,11 @@ class GetBandwidthPackagesPackageResult(dict):
         Description of the CEN Bandwidth Package.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        return pulumi.get(self, "expired_time")
 
     @property
     @pulumi.getter(name="geographicRegionAId")
@@ -180,6 +234,22 @@ class GetBandwidthPackagesPackageResult(dict):
         return pulumi.get(self, "geographic_region_b_id")
 
     @property
+    @pulumi.getter(name="geographicSpanId")
+    def geographic_span_id(self) -> str:
+        """
+        The area ID of the cross-area connection.
+        """
+        return pulumi.get(self, "geographic_span_id")
+
+    @property
+    @pulumi.getter(name="hasReservationData")
+    def has_reservation_data(self) -> str:
+        """
+        Indicates whether renewal data is involved.
+        """
+        return pulumi.get(self, "has_reservation_data")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -196,6 +266,14 @@ class GetBandwidthPackagesPackageResult(dict):
         return pulumi.get(self, "instance_id")
 
     @property
+    @pulumi.getter(name="isCrossBorder")
+    def is_cross_border(self) -> bool:
+        """
+        Indicates whether the bandwidth package is a cross-border bandwidth package.
+        """
+        return pulumi.get(self, "is_cross_border")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -204,10 +282,50 @@ class GetBandwidthPackagesPackageResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The billing method of the bandwidth package.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="reservationActiveTime")
+    def reservation_active_time(self) -> str:
+        """
+        The expiration time of the temporary upgrade.
+        """
+        return pulumi.get(self, "reservation_active_time")
+
+    @property
+    @pulumi.getter(name="reservationBandwidth")
+    def reservation_bandwidth(self) -> str:
+        """
+        The restored bandwidth after the temporary upgrade.
+        """
+        return pulumi.get(self, "reservation_bandwidth")
+
+    @property
+    @pulumi.getter(name="reservationInternetChargeType")
+    def reservation_internet_charge_type(self) -> str:
+        """
+        The billing method after the configuration change.
+        """
+        return pulumi.get(self, "reservation_internet_charge_type")
+
+    @property
+    @pulumi.getter(name="reservationOrderType")
+    def reservation_order_type(self) -> str:
+        """
+        The type of the configuration change.
+        """
+        return pulumi.get(self, "reservation_order_type")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of the CEN Bandwidth Package in CEN instance, including "Idle" and "InUse".
+        Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
         """
         return pulumi.get(self, "status")
 
@@ -407,6 +525,7 @@ class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  cen_bandwidth_package_ids: List[str],
                  cen_id: str,
+                 cen_instance_name: str,
                  description: str,
                  id: str,
                  name: str,
@@ -416,15 +535,17 @@ class GetInstancesInstanceResult(dict):
         """
         :param List[str] cen_bandwidth_package_ids: List of CEN Bandwidth Package IDs in the specified CEN instance.
         :param str cen_id: ID of the CEN instance.
+        :param str cen_instance_name: Name of the CEN instance.
         :param str description: Description of the CEN instance.
         :param str id: ID of the CEN instance.
         :param str name: Name of the CEN instance.
         :param str protection_level: Indicates the allowed level of CIDR block overlapping.
-        :param str status: Status of the CEN instance, including "Creating", "Active" and "Deleting".
+        :param str status: The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "cen_bandwidth_package_ids", cen_bandwidth_package_ids)
         pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cen_instance_name", cen_instance_name)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -447,6 +568,14 @@ class GetInstancesInstanceResult(dict):
         ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
+
+    @property
+    @pulumi.getter(name="cenInstanceName")
+    def cen_instance_name(self) -> str:
+        """
+        Name of the CEN instance.
+        """
+        return pulumi.get(self, "cen_instance_name")
 
     @property
     @pulumi.getter
@@ -484,7 +613,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of the CEN instance, including "Creating", "Active" and "Deleting".
+        The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
         """
         return pulumi.get(self, "status")
 
@@ -1124,5 +1253,100 @@ class GetRouteMapsMapResult(dict):
         The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
         """
         return pulumi.get(self, "transmit_direction")
+
+
+@pulumi.output_type
+class GetVbrHealthChecksCheckResult(dict):
+    def __init__(__self__, *,
+                 cen_id: str,
+                 health_check_interval: float,
+                 health_check_source_ip: str,
+                 health_check_target_ip: str,
+                 healthy_threshold: float,
+                 id: str,
+                 vbr_instance_id: str,
+                 vbr_instance_region_id: str):
+        """
+        :param str cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+        :param float health_check_interval: The time interval at which probe packets are sent during the health check.
+        :param str health_check_source_ip: The source IP address of the health check.
+        :param str health_check_target_ip: The destination IP address of the health check.
+        :param float healthy_threshold: The number of probe packets that are sent during the health check.
+        :param str id: The ID of the CEN VBR Heath Check.
+        :param str vbr_instance_id: The ID of the VBR instance.
+        :param str vbr_instance_region_id: The ID of the region where the VBR instance is deployed.
+        """
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "health_check_interval", health_check_interval)
+        pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
+        pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
+        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "vbr_instance_id", vbr_instance_id)
+        pulumi.set(__self__, "vbr_instance_region_id", vbr_instance_region_id)
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> str:
+        """
+        The ID of the Cloud Enterprise Network (CEN) instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @property
+    @pulumi.getter(name="healthCheckInterval")
+    def health_check_interval(self) -> float:
+        """
+        The time interval at which probe packets are sent during the health check.
+        """
+        return pulumi.get(self, "health_check_interval")
+
+    @property
+    @pulumi.getter(name="healthCheckSourceIp")
+    def health_check_source_ip(self) -> str:
+        """
+        The source IP address of the health check.
+        """
+        return pulumi.get(self, "health_check_source_ip")
+
+    @property
+    @pulumi.getter(name="healthCheckTargetIp")
+    def health_check_target_ip(self) -> str:
+        """
+        The destination IP address of the health check.
+        """
+        return pulumi.get(self, "health_check_target_ip")
+
+    @property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> float:
+        """
+        The number of probe packets that are sent during the health check.
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the CEN VBR Heath Check.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="vbrInstanceId")
+    def vbr_instance_id(self) -> str:
+        """
+        The ID of the VBR instance.
+        """
+        return pulumi.get(self, "vbr_instance_id")
+
+    @property
+    @pulumi.getter(name="vbrInstanceRegionId")
+    def vbr_instance_region_id(self) -> str:
+        """
+        The ID of the region where the VBR instance is deployed.
+        """
+        return pulumi.get(self, "vbr_instance_region_id")
 
 

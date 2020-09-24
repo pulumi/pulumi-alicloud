@@ -39,6 +39,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly active!: pulumi.Output<boolean>;
     /**
+     * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+     */
+    public readonly creditSpecification!: pulumi.Output<string | undefined>;
+    /**
      * DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
      */
     public readonly dataDisks!: pulumi.Output<outputs.ess.ScalingConfigurationDataDisk[] | undefined>;
@@ -190,6 +194,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ScalingConfigurationState | undefined;
             inputs["active"] = state ? state.active : undefined;
+            inputs["creditSpecification"] = state ? state.creditSpecification : undefined;
             inputs["dataDisks"] = state ? state.dataDisks : undefined;
             inputs["enable"] = state ? state.enable : undefined;
             inputs["forceDelete"] = state ? state.forceDelete : undefined;
@@ -229,6 +234,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
             inputs["active"] = args ? args.active : undefined;
+            inputs["creditSpecification"] = args ? args.creditSpecification : undefined;
             inputs["dataDisks"] = args ? args.dataDisks : undefined;
             inputs["enable"] = args ? args.enable : undefined;
             inputs["forceDelete"] = args ? args.forceDelete : undefined;
@@ -282,6 +288,10 @@ export interface ScalingConfigurationState {
      * Whether active current scaling configuration in the specified scaling group. Default to `false`.
      */
     readonly active?: pulumi.Input<boolean>;
+    /**
+     * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+     */
+    readonly creditSpecification?: pulumi.Input<string>;
     /**
      * DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
      */
@@ -430,6 +440,10 @@ export interface ScalingConfigurationArgs {
      * Whether active current scaling configuration in the specified scaling group. Default to `false`.
      */
     readonly active?: pulumi.Input<boolean>;
+    /**
+     * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+     */
+    readonly creditSpecification?: pulumi.Input<string>;
     /**
      * DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
      */

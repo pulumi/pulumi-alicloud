@@ -85,7 +85,6 @@ class Policy(pulumi.CustomResource):
             if policy_name is None:
                 raise TypeError("Missing required property 'policy_name'")
             __props__['policy_name'] = policy_name
-            __props__['create_date'] = None
             __props__['policy_type'] = None
         super(Policy, __self__).__init__(
             'alicloud:resourcemanager/policy:Policy',
@@ -97,7 +96,6 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_date: Optional[pulumi.Input[str]] = None,
             default_version: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             policy_document: Optional[pulumi.Input[str]] = None,
@@ -110,7 +108,6 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_date: The time when the policy was created.
         :param pulumi.Input[str] default_version: The version of the policy. Default to v1.
         :param pulumi.Input[str] description: The description of the policy. The description must be 1 to 1,024 characters in length.
         :param pulumi.Input[str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
@@ -121,21 +118,12 @@ class Policy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["create_date"] = create_date
         __props__["default_version"] = default_version
         __props__["description"] = description
         __props__["policy_document"] = policy_document
         __props__["policy_name"] = policy_name
         __props__["policy_type"] = policy_type
         return Policy(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="createDate")
-    def create_date(self) -> pulumi.Output[str]:
-        """
-        The time when the policy was created.
-        """
-        return pulumi.get(self, "create_date")
 
     @property
     @pulumi.getter(name="defaultVersion")

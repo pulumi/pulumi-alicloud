@@ -1120,21 +1120,30 @@ export namespace cen {
          */
         bandwidth: number;
         /**
-         * The billing method, including "POSTPAY" and "PREPAY".
+         * The billing method, including `POSTPAY` and `PREPAY`.
          */
         bandwidthPackageChargeType: string;
         /**
-         * Status of the CEN Bandwidth Package, including "Normal", "FinancialLocked" and "SecurityLocked".
+         * Status of the CEN Bandwidth Package, including `Normal`, `FinancialLocked` and `SecurityLocked`.
          */
         businessStatus: string;
         /**
-         * Creation time of the CEN bandwidth package.
+         * The ID of the bandwidth package.
          */
-        creationTime: string;
+        cenBandwidthPackageId: string;
+        /**
+         * The name of the bandwidth package.
+         */
+        cenBandwidthPackageName: string;
+        /**
+         * The list of CEN instances that are associated with the bandwidth package.
+         */
+        cenIds: string[];
         /**
          * Description of the CEN Bandwidth Package.
          */
         description: string;
+        expiredTime: string;
         /**
          * Region ID of the interconnected regions.
          */
@@ -1144,6 +1153,14 @@ export namespace cen {
          */
         geographicRegionBId: string;
         /**
+         * The area ID of the cross-area connection.
+         */
+        geographicSpanId: string;
+        /**
+         * Indicates whether renewal data is involved.
+         */
+        hasReservationData: string;
+        /**
          * ID of the CEN Bandwidth Package.
          */
         id: string;
@@ -1152,11 +1169,35 @@ export namespace cen {
          */
         instanceId: string;
         /**
+         * Indicates whether the bandwidth package is a cross-border bandwidth package.
+         */
+        isCrossBorder: boolean;
+        /**
          * Name of the CEN Bandwidth Package.
          */
         name: string;
         /**
-         * Status of the CEN Bandwidth Package in CEN instance, including "Idle" and "InUse".
+         * The billing method of the bandwidth package.
+         */
+        paymentType: string;
+        /**
+         * The expiration time of the temporary upgrade.
+         */
+        reservationActiveTime: string;
+        /**
+         * The restored bandwidth after the temporary upgrade.
+         */
+        reservationBandwidth: string;
+        /**
+         * The billing method after the configuration change.
+         */
+        reservationInternetChargeType: string;
+        /**
+         * The type of the configuration change.
+         */
+        reservationOrderType: string;
+        /**
+         * Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
          */
         status: string;
     }
@@ -1241,6 +1282,10 @@ export namespace cen {
          */
         cenId: string;
         /**
+         * Name of the CEN instance.
+         */
+        cenInstanceName: string;
+        /**
          * Description of the CEN instance.
          */
         description: string;
@@ -1257,7 +1302,7 @@ export namespace cen {
          */
         protectionLevel: string;
         /**
-         * Status of the CEN instance, including "Creating", "Active" and "Deleting".
+         * The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
          */
         status: string;
         /**
@@ -1495,6 +1540,41 @@ export namespace cen {
          * The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
          */
         transmitDirection: string;
+    }
+
+    export interface GetVbrHealthChecksCheck {
+        /**
+         * The ID of the Cloud Enterprise Network (CEN) instance.
+         */
+        cenId: string;
+        /**
+         * The time interval at which probe packets are sent during the health check.
+         */
+        healthCheckInterval: number;
+        /**
+         * The source IP address of the health check.
+         */
+        healthCheckSourceIp: string;
+        /**
+         * The destination IP address of the health check.
+         */
+        healthCheckTargetIp: string;
+        /**
+         * The number of probe packets that are sent during the health check.
+         */
+        healthyThreshold: number;
+        /**
+         * The ID of the CEN VBR Heath Check.
+         */
+        id: string;
+        /**
+         * The ID of the VBR instance.
+         */
+        vbrInstanceId: string;
+        /**
+         * The ID of the region where the VBR instance is deployed.
+         */
+        vbrInstanceRegionId: string;
     }
 }
 
@@ -4744,6 +4824,10 @@ export namespace ess {
          */
         creationTime: string;
         /**
+         * Performance mode of the t5 burstable instance.
+         */
+        creditSpecification: string;
+        /**
          * Data disks of the scaling configuration.
          */
         dataDisks: outputs.ess.GetScalingConfigurationsConfigurationDataDisk[];
@@ -5013,6 +5097,41 @@ export namespace ess {
 }
 
 export namespace fc {
+    export interface CustomDomainCertConfig {
+        /**
+         * The name of the certificate, used to distinguish different certificates.
+         */
+        certName: string;
+        /**
+         * Certificate data of the HTTPS certificates, follow the 'pem' format.
+         */
+        certificate: string;
+        /**
+         * Private key of the HTTPS certificates, follow the 'pem' format.
+         */
+        privateKey: string;
+    }
+
+    export interface CustomDomainRouteConfig {
+        /**
+         * The name of the Function Compute function that requests are routed to.
+         */
+        functionName: string;
+        /**
+         * The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+         */
+        methods?: string[];
+        /**
+         * The path that requests are routed from.
+         */
+        path: string;
+        /**
+         * The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+         */
+        qualifier?: string;
+        serviceName: string;
+    }
+
     export interface FunctionCustomContainerConfig {
         /**
          * The args field specifies the arguments passed to the command.
@@ -5026,6 +5145,79 @@ export namespace fc {
          * The container image address.
          */
         image: string;
+    }
+
+    export interface GetCustomDomainsDomain {
+        /**
+         * The account id.
+         */
+        accountId: string;
+        /**
+         * The API version of the Function Compute service.
+         */
+        apiVersion: string;
+        /**
+         * The configuration of HTTPS certificate.
+         */
+        certConfig: outputs.fc.GetCustomDomainsDomainCertConfig;
+        /**
+         * The created time of the custom domain.
+         */
+        createdTime: string;
+        /**
+         * The custom domain name.
+         */
+        domainName: string;
+        /**
+         * The custom domain id, same as domain name.
+         */
+        id: string;
+        /**
+         * The last modified time of the custom domain.
+         */
+        lastModifiedTime: string;
+        /**
+         * The custom domain protocol.
+         */
+        protocol: string;
+        /**
+         * The configuration of domain route, mapping the path and Function Compute function.
+         */
+        routeConfigs: outputs.fc.GetCustomDomainsDomainRouteConfig[];
+    }
+
+    export interface GetCustomDomainsDomainCertConfig {
+        /**
+         * The name of the certificate.
+         */
+        certName: string;
+        /**
+         * Certificate data of the HTTPS certificates, follow the 'pem'.
+         */
+        certificate: string;
+    }
+
+    export interface GetCustomDomainsDomainRouteConfig {
+        /**
+         * The name of the Function Compute function that requests are routed to.
+         */
+        functionName: string;
+        /**
+         * The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+         */
+        methods: string[];
+        /**
+         * The path that requests are routed from.
+         */
+        path: string;
+        /**
+         * The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service.
+         */
+        qualifier: string;
+        /**
+         * The name of the Function Compute service that requests are routed to.
+         */
+        serviceName: string;
     }
 
     export interface GetFunctionsFunction {
@@ -8161,11 +8353,23 @@ export namespace rocketmq {
         /**
          * The name of the group.
          */
+        groupName: string;
+        /**
+         * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+         */
+        groupType: string;
+        /**
+         * The name of the group.
+         */
         id: string;
         /**
          * Indicates whether namespaces are available. Read [Fields in SubscribeInfoDo](https://www.alibabacloud.com/help/doc-detail/29619.html) for further details.
          */
         independentNaming: boolean;
+        /**
+         * ID of the ONS Instance that owns the groups.
+         */
+        instanceId: string;
         /**
          * The ID of the group owner, which is the Alibaba Cloud UID.
          */
@@ -8174,6 +8378,10 @@ export namespace rocketmq {
          * Remark of the group.
          */
         remark: string;
+        /**
+         * A map of tags assigned to the Ons instance.
+         */
+        tags: {[key: string]: any};
     }
 
     export interface GetInstancesInstance {

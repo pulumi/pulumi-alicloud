@@ -27,8 +27,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
-// 			Description: pulumi.String("an example for cen"),
+// 		_, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
+// 			CenInstanceName: pulumi.String("tf_test_foo"),
+// 			Description:     pulumi.String("an example for cen"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -40,12 +41,16 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	CenInstanceName pulumi.StringOutput `pulumi:"cenInstanceName"`
 	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
-	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
+	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+	ProtectionLevel pulumi.StringPtrOutput `pulumi:"protectionLevel"`
 	// The Cen Instance current status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -80,11 +85,15 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	CenInstanceName *string `pulumi:"cenInstanceName"`
 	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
-	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
 	Name *string `pulumi:"name"`
-	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
+	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
 	// The Cen Instance current status.
 	Status *string `pulumi:"status"`
@@ -93,11 +102,15 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	CenInstanceName pulumi.StringPtrInput
 	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
-	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
 	Name pulumi.StringPtrInput
-	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
+	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
 	ProtectionLevel pulumi.StringPtrInput
 	// The Cen Instance current status.
 	Status pulumi.StringPtrInput
@@ -110,11 +123,15 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	CenInstanceName *string `pulumi:"cenInstanceName"`
 	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
-	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
 	Name *string `pulumi:"name"`
-	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
+	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -122,11 +139,15 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	CenInstanceName pulumi.StringPtrInput
 	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
-	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
 	Name pulumi.StringPtrInput
-	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
+	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
 	ProtectionLevel pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput

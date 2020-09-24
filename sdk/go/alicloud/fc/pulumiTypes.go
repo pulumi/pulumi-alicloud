@@ -10,6 +10,305 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type CustomDomainCertConfig struct {
+	// The name of the certificate, used to distinguish different certificates.
+	CertName string `pulumi:"certName"`
+	// Certificate data of the HTTPS certificates, follow the 'pem' format.
+	Certificate string `pulumi:"certificate"`
+	// Private key of the HTTPS certificates, follow the 'pem' format.
+	PrivateKey string `pulumi:"privateKey"`
+}
+
+// CustomDomainCertConfigInput is an input type that accepts CustomDomainCertConfigArgs and CustomDomainCertConfigOutput values.
+// You can construct a concrete instance of `CustomDomainCertConfigInput` via:
+//
+//          CustomDomainCertConfigArgs{...}
+type CustomDomainCertConfigInput interface {
+	pulumi.Input
+
+	ToCustomDomainCertConfigOutput() CustomDomainCertConfigOutput
+	ToCustomDomainCertConfigOutputWithContext(context.Context) CustomDomainCertConfigOutput
+}
+
+type CustomDomainCertConfigArgs struct {
+	// The name of the certificate, used to distinguish different certificates.
+	CertName pulumi.StringInput `pulumi:"certName"`
+	// Certificate data of the HTTPS certificates, follow the 'pem' format.
+	Certificate pulumi.StringInput `pulumi:"certificate"`
+	// Private key of the HTTPS certificates, follow the 'pem' format.
+	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+}
+
+func (CustomDomainCertConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainCertConfig)(nil)).Elem()
+}
+
+func (i CustomDomainCertConfigArgs) ToCustomDomainCertConfigOutput() CustomDomainCertConfigOutput {
+	return i.ToCustomDomainCertConfigOutputWithContext(context.Background())
+}
+
+func (i CustomDomainCertConfigArgs) ToCustomDomainCertConfigOutputWithContext(ctx context.Context) CustomDomainCertConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainCertConfigOutput)
+}
+
+func (i CustomDomainCertConfigArgs) ToCustomDomainCertConfigPtrOutput() CustomDomainCertConfigPtrOutput {
+	return i.ToCustomDomainCertConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CustomDomainCertConfigArgs) ToCustomDomainCertConfigPtrOutputWithContext(ctx context.Context) CustomDomainCertConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainCertConfigOutput).ToCustomDomainCertConfigPtrOutputWithContext(ctx)
+}
+
+// CustomDomainCertConfigPtrInput is an input type that accepts CustomDomainCertConfigArgs, CustomDomainCertConfigPtr and CustomDomainCertConfigPtrOutput values.
+// You can construct a concrete instance of `CustomDomainCertConfigPtrInput` via:
+//
+//          CustomDomainCertConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomDomainCertConfigPtrInput interface {
+	pulumi.Input
+
+	ToCustomDomainCertConfigPtrOutput() CustomDomainCertConfigPtrOutput
+	ToCustomDomainCertConfigPtrOutputWithContext(context.Context) CustomDomainCertConfigPtrOutput
+}
+
+type customDomainCertConfigPtrType CustomDomainCertConfigArgs
+
+func CustomDomainCertConfigPtr(v *CustomDomainCertConfigArgs) CustomDomainCertConfigPtrInput {
+	return (*customDomainCertConfigPtrType)(v)
+}
+
+func (*customDomainCertConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomainCertConfig)(nil)).Elem()
+}
+
+func (i *customDomainCertConfigPtrType) ToCustomDomainCertConfigPtrOutput() CustomDomainCertConfigPtrOutput {
+	return i.ToCustomDomainCertConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *customDomainCertConfigPtrType) ToCustomDomainCertConfigPtrOutputWithContext(ctx context.Context) CustomDomainCertConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainCertConfigPtrOutput)
+}
+
+type CustomDomainCertConfigOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainCertConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainCertConfig)(nil)).Elem()
+}
+
+func (o CustomDomainCertConfigOutput) ToCustomDomainCertConfigOutput() CustomDomainCertConfigOutput {
+	return o
+}
+
+func (o CustomDomainCertConfigOutput) ToCustomDomainCertConfigOutputWithContext(ctx context.Context) CustomDomainCertConfigOutput {
+	return o
+}
+
+func (o CustomDomainCertConfigOutput) ToCustomDomainCertConfigPtrOutput() CustomDomainCertConfigPtrOutput {
+	return o.ToCustomDomainCertConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainCertConfigOutput) ToCustomDomainCertConfigPtrOutputWithContext(ctx context.Context) CustomDomainCertConfigPtrOutput {
+	return o.ApplyT(func(v CustomDomainCertConfig) *CustomDomainCertConfig {
+		return &v
+	}).(CustomDomainCertConfigPtrOutput)
+}
+
+// The name of the certificate, used to distinguish different certificates.
+func (o CustomDomainCertConfigOutput) CertName() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomDomainCertConfig) string { return v.CertName }).(pulumi.StringOutput)
+}
+
+// Certificate data of the HTTPS certificates, follow the 'pem' format.
+func (o CustomDomainCertConfigOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomDomainCertConfig) string { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// Private key of the HTTPS certificates, follow the 'pem' format.
+func (o CustomDomainCertConfigOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomDomainCertConfig) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+type CustomDomainCertConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainCertConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomainCertConfig)(nil)).Elem()
+}
+
+func (o CustomDomainCertConfigPtrOutput) ToCustomDomainCertConfigPtrOutput() CustomDomainCertConfigPtrOutput {
+	return o
+}
+
+func (o CustomDomainCertConfigPtrOutput) ToCustomDomainCertConfigPtrOutputWithContext(ctx context.Context) CustomDomainCertConfigPtrOutput {
+	return o
+}
+
+func (o CustomDomainCertConfigPtrOutput) Elem() CustomDomainCertConfigOutput {
+	return o.ApplyT(func(v *CustomDomainCertConfig) CustomDomainCertConfig { return *v }).(CustomDomainCertConfigOutput)
+}
+
+// The name of the certificate, used to distinguish different certificates.
+func (o CustomDomainCertConfigPtrOutput) CertName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomDomainCertConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate data of the HTTPS certificates, follow the 'pem' format.
+func (o CustomDomainCertConfigPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomDomainCertConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Certificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private key of the HTTPS certificates, follow the 'pem' format.
+func (o CustomDomainCertConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomDomainCertConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomDomainRouteConfig struct {
+	// The name of the Function Compute function that requests are routed to.
+	FunctionName string `pulumi:"functionName"`
+	// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+	Methods []string `pulumi:"methods"`
+	// The path that requests are routed from.
+	Path string `pulumi:"path"`
+	// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+	Qualifier   *string `pulumi:"qualifier"`
+	ServiceName string  `pulumi:"serviceName"`
+}
+
+// CustomDomainRouteConfigInput is an input type that accepts CustomDomainRouteConfigArgs and CustomDomainRouteConfigOutput values.
+// You can construct a concrete instance of `CustomDomainRouteConfigInput` via:
+//
+//          CustomDomainRouteConfigArgs{...}
+type CustomDomainRouteConfigInput interface {
+	pulumi.Input
+
+	ToCustomDomainRouteConfigOutput() CustomDomainRouteConfigOutput
+	ToCustomDomainRouteConfigOutputWithContext(context.Context) CustomDomainRouteConfigOutput
+}
+
+type CustomDomainRouteConfigArgs struct {
+	// The name of the Function Compute function that requests are routed to.
+	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// The path that requests are routed from.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+	Qualifier   pulumi.StringPtrInput `pulumi:"qualifier"`
+	ServiceName pulumi.StringInput    `pulumi:"serviceName"`
+}
+
+func (CustomDomainRouteConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainRouteConfig)(nil)).Elem()
+}
+
+func (i CustomDomainRouteConfigArgs) ToCustomDomainRouteConfigOutput() CustomDomainRouteConfigOutput {
+	return i.ToCustomDomainRouteConfigOutputWithContext(context.Background())
+}
+
+func (i CustomDomainRouteConfigArgs) ToCustomDomainRouteConfigOutputWithContext(ctx context.Context) CustomDomainRouteConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainRouteConfigOutput)
+}
+
+// CustomDomainRouteConfigArrayInput is an input type that accepts CustomDomainRouteConfigArray and CustomDomainRouteConfigArrayOutput values.
+// You can construct a concrete instance of `CustomDomainRouteConfigArrayInput` via:
+//
+//          CustomDomainRouteConfigArray{ CustomDomainRouteConfigArgs{...} }
+type CustomDomainRouteConfigArrayInput interface {
+	pulumi.Input
+
+	ToCustomDomainRouteConfigArrayOutput() CustomDomainRouteConfigArrayOutput
+	ToCustomDomainRouteConfigArrayOutputWithContext(context.Context) CustomDomainRouteConfigArrayOutput
+}
+
+type CustomDomainRouteConfigArray []CustomDomainRouteConfigInput
+
+func (CustomDomainRouteConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDomainRouteConfig)(nil)).Elem()
+}
+
+func (i CustomDomainRouteConfigArray) ToCustomDomainRouteConfigArrayOutput() CustomDomainRouteConfigArrayOutput {
+	return i.ToCustomDomainRouteConfigArrayOutputWithContext(context.Background())
+}
+
+func (i CustomDomainRouteConfigArray) ToCustomDomainRouteConfigArrayOutputWithContext(ctx context.Context) CustomDomainRouteConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainRouteConfigArrayOutput)
+}
+
+type CustomDomainRouteConfigOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainRouteConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainRouteConfig)(nil)).Elem()
+}
+
+func (o CustomDomainRouteConfigOutput) ToCustomDomainRouteConfigOutput() CustomDomainRouteConfigOutput {
+	return o
+}
+
+func (o CustomDomainRouteConfigOutput) ToCustomDomainRouteConfigOutputWithContext(ctx context.Context) CustomDomainRouteConfigOutput {
+	return o
+}
+
+// The name of the Function Compute function that requests are routed to.
+func (o CustomDomainRouteConfigOutput) FunctionName() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomDomainRouteConfig) string { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+func (o CustomDomainRouteConfigOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomDomainRouteConfig) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// The path that requests are routed from.
+func (o CustomDomainRouteConfigOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomDomainRouteConfig) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+func (o CustomDomainRouteConfigOutput) Qualifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainRouteConfig) *string { return v.Qualifier }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomDomainRouteConfigOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomDomainRouteConfig) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+type CustomDomainRouteConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainRouteConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDomainRouteConfig)(nil)).Elem()
+}
+
+func (o CustomDomainRouteConfigArrayOutput) ToCustomDomainRouteConfigArrayOutput() CustomDomainRouteConfigArrayOutput {
+	return o
+}
+
+func (o CustomDomainRouteConfigArrayOutput) ToCustomDomainRouteConfigArrayOutputWithContext(ctx context.Context) CustomDomainRouteConfigArrayOutput {
+	return o
+}
+
+func (o CustomDomainRouteConfigArrayOutput) Index(i pulumi.IntInput) CustomDomainRouteConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomDomainRouteConfig {
+		return vs[0].([]CustomDomainRouteConfig)[vs[1].(int)]
+	}).(CustomDomainRouteConfigOutput)
+}
+
 type FunctionCustomContainerConfig struct {
 	// The args field specifies the arguments passed to the command.
 	Args *string `pulumi:"args"`
@@ -767,6 +1066,369 @@ func (o ServiceVpcConfigPtrOutput) VswitchIds() pulumi.StringArrayOutput {
 		}
 		return v.VswitchIds
 	}).(pulumi.StringArrayOutput)
+}
+
+type GetCustomDomainsDomain struct {
+	// The account id.
+	AccountId string `pulumi:"accountId"`
+	// The API version of the Function Compute service.
+	ApiVersion string `pulumi:"apiVersion"`
+	// The configuration of HTTPS certificate.
+	CertConfig GetCustomDomainsDomainCertConfig `pulumi:"certConfig"`
+	// The created time of the custom domain.
+	CreatedTime string `pulumi:"createdTime"`
+	// The custom domain name.
+	DomainName string `pulumi:"domainName"`
+	// The custom domain id, same as domain name.
+	Id string `pulumi:"id"`
+	// The last modified time of the custom domain.
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// The custom domain protocol.
+	Protocol string `pulumi:"protocol"`
+	// The configuration of domain route, mapping the path and Function Compute function.
+	RouteConfigs []GetCustomDomainsDomainRouteConfig `pulumi:"routeConfigs"`
+}
+
+// GetCustomDomainsDomainInput is an input type that accepts GetCustomDomainsDomainArgs and GetCustomDomainsDomainOutput values.
+// You can construct a concrete instance of `GetCustomDomainsDomainInput` via:
+//
+//          GetCustomDomainsDomainArgs{...}
+type GetCustomDomainsDomainInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsDomainOutput() GetCustomDomainsDomainOutput
+	ToGetCustomDomainsDomainOutputWithContext(context.Context) GetCustomDomainsDomainOutput
+}
+
+type GetCustomDomainsDomainArgs struct {
+	// The account id.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The API version of the Function Compute service.
+	ApiVersion pulumi.StringInput `pulumi:"apiVersion"`
+	// The configuration of HTTPS certificate.
+	CertConfig GetCustomDomainsDomainCertConfigInput `pulumi:"certConfig"`
+	// The created time of the custom domain.
+	CreatedTime pulumi.StringInput `pulumi:"createdTime"`
+	// The custom domain name.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The custom domain id, same as domain name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The last modified time of the custom domain.
+	LastModifiedTime pulumi.StringInput `pulumi:"lastModifiedTime"`
+	// The custom domain protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The configuration of domain route, mapping the path and Function Compute function.
+	RouteConfigs GetCustomDomainsDomainRouteConfigArrayInput `pulumi:"routeConfigs"`
+}
+
+func (GetCustomDomainsDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsDomain)(nil)).Elem()
+}
+
+func (i GetCustomDomainsDomainArgs) ToGetCustomDomainsDomainOutput() GetCustomDomainsDomainOutput {
+	return i.ToGetCustomDomainsDomainOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsDomainArgs) ToGetCustomDomainsDomainOutputWithContext(ctx context.Context) GetCustomDomainsDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsDomainOutput)
+}
+
+// GetCustomDomainsDomainArrayInput is an input type that accepts GetCustomDomainsDomainArray and GetCustomDomainsDomainArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainsDomainArrayInput` via:
+//
+//          GetCustomDomainsDomainArray{ GetCustomDomainsDomainArgs{...} }
+type GetCustomDomainsDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsDomainArrayOutput() GetCustomDomainsDomainArrayOutput
+	ToGetCustomDomainsDomainArrayOutputWithContext(context.Context) GetCustomDomainsDomainArrayOutput
+}
+
+type GetCustomDomainsDomainArray []GetCustomDomainsDomainInput
+
+func (GetCustomDomainsDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsDomain)(nil)).Elem()
+}
+
+func (i GetCustomDomainsDomainArray) ToGetCustomDomainsDomainArrayOutput() GetCustomDomainsDomainArrayOutput {
+	return i.ToGetCustomDomainsDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsDomainArray) ToGetCustomDomainsDomainArrayOutputWithContext(ctx context.Context) GetCustomDomainsDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsDomainArrayOutput)
+}
+
+type GetCustomDomainsDomainOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsDomain)(nil)).Elem()
+}
+
+func (o GetCustomDomainsDomainOutput) ToGetCustomDomainsDomainOutput() GetCustomDomainsDomainOutput {
+	return o
+}
+
+func (o GetCustomDomainsDomainOutput) ToGetCustomDomainsDomainOutputWithContext(ctx context.Context) GetCustomDomainsDomainOutput {
+	return o
+}
+
+// The account id.
+func (o GetCustomDomainsDomainOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomain) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The API version of the Function Compute service.
+func (o GetCustomDomainsDomainOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomain) string { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// The configuration of HTTPS certificate.
+func (o GetCustomDomainsDomainOutput) CertConfig() GetCustomDomainsDomainCertConfigOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomain) GetCustomDomainsDomainCertConfig { return v.CertConfig }).(GetCustomDomainsDomainCertConfigOutput)
+}
+
+// The created time of the custom domain.
+func (o GetCustomDomainsDomainOutput) CreatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomain) string { return v.CreatedTime }).(pulumi.StringOutput)
+}
+
+// The custom domain name.
+func (o GetCustomDomainsDomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The custom domain id, same as domain name.
+func (o GetCustomDomainsDomainOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomain) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The last modified time of the custom domain.
+func (o GetCustomDomainsDomainOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomain) string { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// The custom domain protocol.
+func (o GetCustomDomainsDomainOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomain) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The configuration of domain route, mapping the path and Function Compute function.
+func (o GetCustomDomainsDomainOutput) RouteConfigs() GetCustomDomainsDomainRouteConfigArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomain) []GetCustomDomainsDomainRouteConfig { return v.RouteConfigs }).(GetCustomDomainsDomainRouteConfigArrayOutput)
+}
+
+type GetCustomDomainsDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsDomain)(nil)).Elem()
+}
+
+func (o GetCustomDomainsDomainArrayOutput) ToGetCustomDomainsDomainArrayOutput() GetCustomDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsDomainArrayOutput) ToGetCustomDomainsDomainArrayOutputWithContext(ctx context.Context) GetCustomDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetCustomDomainsDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainsDomain {
+		return vs[0].([]GetCustomDomainsDomain)[vs[1].(int)]
+	}).(GetCustomDomainsDomainOutput)
+}
+
+type GetCustomDomainsDomainCertConfig struct {
+	// The name of the certificate.
+	CertName string `pulumi:"certName"`
+	// Certificate data of the HTTPS certificates, follow the 'pem'.
+	Certificate string `pulumi:"certificate"`
+}
+
+// GetCustomDomainsDomainCertConfigInput is an input type that accepts GetCustomDomainsDomainCertConfigArgs and GetCustomDomainsDomainCertConfigOutput values.
+// You can construct a concrete instance of `GetCustomDomainsDomainCertConfigInput` via:
+//
+//          GetCustomDomainsDomainCertConfigArgs{...}
+type GetCustomDomainsDomainCertConfigInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsDomainCertConfigOutput() GetCustomDomainsDomainCertConfigOutput
+	ToGetCustomDomainsDomainCertConfigOutputWithContext(context.Context) GetCustomDomainsDomainCertConfigOutput
+}
+
+type GetCustomDomainsDomainCertConfigArgs struct {
+	// The name of the certificate.
+	CertName pulumi.StringInput `pulumi:"certName"`
+	// Certificate data of the HTTPS certificates, follow the 'pem'.
+	Certificate pulumi.StringInput `pulumi:"certificate"`
+}
+
+func (GetCustomDomainsDomainCertConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsDomainCertConfig)(nil)).Elem()
+}
+
+func (i GetCustomDomainsDomainCertConfigArgs) ToGetCustomDomainsDomainCertConfigOutput() GetCustomDomainsDomainCertConfigOutput {
+	return i.ToGetCustomDomainsDomainCertConfigOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsDomainCertConfigArgs) ToGetCustomDomainsDomainCertConfigOutputWithContext(ctx context.Context) GetCustomDomainsDomainCertConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsDomainCertConfigOutput)
+}
+
+type GetCustomDomainsDomainCertConfigOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsDomainCertConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsDomainCertConfig)(nil)).Elem()
+}
+
+func (o GetCustomDomainsDomainCertConfigOutput) ToGetCustomDomainsDomainCertConfigOutput() GetCustomDomainsDomainCertConfigOutput {
+	return o
+}
+
+func (o GetCustomDomainsDomainCertConfigOutput) ToGetCustomDomainsDomainCertConfigOutputWithContext(ctx context.Context) GetCustomDomainsDomainCertConfigOutput {
+	return o
+}
+
+// The name of the certificate.
+func (o GetCustomDomainsDomainCertConfigOutput) CertName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomainCertConfig) string { return v.CertName }).(pulumi.StringOutput)
+}
+
+// Certificate data of the HTTPS certificates, follow the 'pem'.
+func (o GetCustomDomainsDomainCertConfigOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomainCertConfig) string { return v.Certificate }).(pulumi.StringOutput)
+}
+
+type GetCustomDomainsDomainRouteConfig struct {
+	// The name of the Function Compute function that requests are routed to.
+	FunctionName string `pulumi:"functionName"`
+	// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+	Methods []string `pulumi:"methods"`
+	// The path that requests are routed from.
+	Path string `pulumi:"path"`
+	// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service.
+	Qualifier string `pulumi:"qualifier"`
+	// The name of the Function Compute service that requests are routed to.
+	ServiceName string `pulumi:"serviceName"`
+}
+
+// GetCustomDomainsDomainRouteConfigInput is an input type that accepts GetCustomDomainsDomainRouteConfigArgs and GetCustomDomainsDomainRouteConfigOutput values.
+// You can construct a concrete instance of `GetCustomDomainsDomainRouteConfigInput` via:
+//
+//          GetCustomDomainsDomainRouteConfigArgs{...}
+type GetCustomDomainsDomainRouteConfigInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsDomainRouteConfigOutput() GetCustomDomainsDomainRouteConfigOutput
+	ToGetCustomDomainsDomainRouteConfigOutputWithContext(context.Context) GetCustomDomainsDomainRouteConfigOutput
+}
+
+type GetCustomDomainsDomainRouteConfigArgs struct {
+	// The name of the Function Compute function that requests are routed to.
+	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// The path that requests are routed from.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service.
+	Qualifier pulumi.StringInput `pulumi:"qualifier"`
+	// The name of the Function Compute service that requests are routed to.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (GetCustomDomainsDomainRouteConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsDomainRouteConfig)(nil)).Elem()
+}
+
+func (i GetCustomDomainsDomainRouteConfigArgs) ToGetCustomDomainsDomainRouteConfigOutput() GetCustomDomainsDomainRouteConfigOutput {
+	return i.ToGetCustomDomainsDomainRouteConfigOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsDomainRouteConfigArgs) ToGetCustomDomainsDomainRouteConfigOutputWithContext(ctx context.Context) GetCustomDomainsDomainRouteConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsDomainRouteConfigOutput)
+}
+
+// GetCustomDomainsDomainRouteConfigArrayInput is an input type that accepts GetCustomDomainsDomainRouteConfigArray and GetCustomDomainsDomainRouteConfigArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainsDomainRouteConfigArrayInput` via:
+//
+//          GetCustomDomainsDomainRouteConfigArray{ GetCustomDomainsDomainRouteConfigArgs{...} }
+type GetCustomDomainsDomainRouteConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsDomainRouteConfigArrayOutput() GetCustomDomainsDomainRouteConfigArrayOutput
+	ToGetCustomDomainsDomainRouteConfigArrayOutputWithContext(context.Context) GetCustomDomainsDomainRouteConfigArrayOutput
+}
+
+type GetCustomDomainsDomainRouteConfigArray []GetCustomDomainsDomainRouteConfigInput
+
+func (GetCustomDomainsDomainRouteConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsDomainRouteConfig)(nil)).Elem()
+}
+
+func (i GetCustomDomainsDomainRouteConfigArray) ToGetCustomDomainsDomainRouteConfigArrayOutput() GetCustomDomainsDomainRouteConfigArrayOutput {
+	return i.ToGetCustomDomainsDomainRouteConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsDomainRouteConfigArray) ToGetCustomDomainsDomainRouteConfigArrayOutputWithContext(ctx context.Context) GetCustomDomainsDomainRouteConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsDomainRouteConfigArrayOutput)
+}
+
+type GetCustomDomainsDomainRouteConfigOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsDomainRouteConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsDomainRouteConfig)(nil)).Elem()
+}
+
+func (o GetCustomDomainsDomainRouteConfigOutput) ToGetCustomDomainsDomainRouteConfigOutput() GetCustomDomainsDomainRouteConfigOutput {
+	return o
+}
+
+func (o GetCustomDomainsDomainRouteConfigOutput) ToGetCustomDomainsDomainRouteConfigOutputWithContext(ctx context.Context) GetCustomDomainsDomainRouteConfigOutput {
+	return o
+}
+
+// The name of the Function Compute function that requests are routed to.
+func (o GetCustomDomainsDomainRouteConfigOutput) FunctionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomainRouteConfig) string { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+func (o GetCustomDomainsDomainRouteConfigOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomainRouteConfig) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// The path that requests are routed from.
+func (o GetCustomDomainsDomainRouteConfigOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomainRouteConfig) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service.
+func (o GetCustomDomainsDomainRouteConfigOutput) Qualifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomainRouteConfig) string { return v.Qualifier }).(pulumi.StringOutput)
+}
+
+// The name of the Function Compute service that requests are routed to.
+func (o GetCustomDomainsDomainRouteConfigOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsDomainRouteConfig) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+type GetCustomDomainsDomainRouteConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsDomainRouteConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsDomainRouteConfig)(nil)).Elem()
+}
+
+func (o GetCustomDomainsDomainRouteConfigArrayOutput) ToGetCustomDomainsDomainRouteConfigArrayOutput() GetCustomDomainsDomainRouteConfigArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsDomainRouteConfigArrayOutput) ToGetCustomDomainsDomainRouteConfigArrayOutputWithContext(ctx context.Context) GetCustomDomainsDomainRouteConfigArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsDomainRouteConfigArrayOutput) Index(i pulumi.IntInput) GetCustomDomainsDomainRouteConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainsDomainRouteConfig {
+		return vs[0].([]GetCustomDomainsDomainRouteConfig)[vs[1].(int)]
+	}).(GetCustomDomainsDomainRouteConfigOutput)
 }
 
 type GetFunctionsFunction struct {
@@ -1935,6 +2597,10 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(CustomDomainCertConfigOutput{})
+	pulumi.RegisterOutputType(CustomDomainCertConfigPtrOutput{})
+	pulumi.RegisterOutputType(CustomDomainRouteConfigOutput{})
+	pulumi.RegisterOutputType(CustomDomainRouteConfigArrayOutput{})
 	pulumi.RegisterOutputType(FunctionCustomContainerConfigOutput{})
 	pulumi.RegisterOutputType(FunctionCustomContainerConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceLogConfigOutput{})
@@ -1945,6 +2611,11 @@ func init() {
 	pulumi.RegisterOutputType(ServiceNasConfigMountPointArrayOutput{})
 	pulumi.RegisterOutputType(ServiceVpcConfigOutput{})
 	pulumi.RegisterOutputType(ServiceVpcConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsDomainOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsDomainCertConfigOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsDomainRouteConfigOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsDomainRouteConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionsFunctionOutput{})
 	pulumi.RegisterOutputType(GetFunctionsFunctionArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionsFunctionCustomContainerConfigOutput{})

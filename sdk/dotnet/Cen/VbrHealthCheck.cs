@@ -32,6 +32,7 @@ namespace Pulumi.AliCloud.Cen
     ///         // Create a cen vbr HealrhCheck resource and use it.
     ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
     ///         {
+    ///             CenInstanceName = "test_name",
     ///         });
     ///         var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {

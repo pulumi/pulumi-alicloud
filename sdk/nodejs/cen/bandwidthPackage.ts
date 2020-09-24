@@ -17,12 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const foo = new alicloud.cen.BandwidthPackage("foo", {
+ * const example = new alicloud.cen.BandwidthPackage("example", {
  *     bandwidth: 5,
- *     geographicRegionIds: [
- *         "China",
- *         "Asia-Pacific",
- *     ],
+ *     cenBandwidthPackageName: "tf-testAccCenBandwidthPackageConfig",
+ *     geographicRegionAId: "China",
+ *     geographicRegionBId: "China",
  * });
  * ```
  */
@@ -59,9 +58,15 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly bandwidth!: pulumi.Output<number>;
     /**
-     * The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+     * The name of the bandwidth package. Defaults to null.
      */
-    public readonly chargeType!: pulumi.Output<string | undefined>;
+    public readonly cenBandwidthPackageName!: pulumi.Output<string>;
+    /**
+     * Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
+     *
+     * @deprecated Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.
+     */
+    public readonly chargeType!: pulumi.Output<string>;
     /**
      * The description of the bandwidth package. Default to null.
      */
@@ -71,19 +76,35 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public /*out*/ readonly expiredTime!: pulumi.Output<string>;
     /**
-     * List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
+     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     */
+    public readonly geographicRegionAId!: pulumi.Output<string>;
+    /**
+     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     */
+    public readonly geographicRegionBId!: pulumi.Output<string>;
+    /**
+     * Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
+     *
+     * @deprecated Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.
      */
     public readonly geographicRegionIds!: pulumi.Output<string[]>;
     /**
-     * The name of the bandwidth package. Defaults to null.
+     * Field 'name' has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
+     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+     */
+    public readonly paymentType!: pulumi.Output<string>;
+    /**
+     * The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The status of the bandwidth, including "InUse" and "Idle".
+     * The association status of the bandwidth package.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -100,11 +121,15 @@ export class BandwidthPackage extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as BandwidthPackageState | undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
+            inputs["cenBandwidthPackageName"] = state ? state.cenBandwidthPackageName : undefined;
             inputs["chargeType"] = state ? state.chargeType : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["expiredTime"] = state ? state.expiredTime : undefined;
+            inputs["geographicRegionAId"] = state ? state.geographicRegionAId : undefined;
+            inputs["geographicRegionBId"] = state ? state.geographicRegionBId : undefined;
             inputs["geographicRegionIds"] = state ? state.geographicRegionIds : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["paymentType"] = state ? state.paymentType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["status"] = state ? state.status : undefined;
         } else {
@@ -112,14 +137,15 @@ export class BandwidthPackage extends pulumi.CustomResource {
             if (!args || args.bandwidth === undefined) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if (!args || args.geographicRegionIds === undefined) {
-                throw new Error("Missing required property 'geographicRegionIds'");
-            }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
+            inputs["cenBandwidthPackageName"] = args ? args.cenBandwidthPackageName : undefined;
             inputs["chargeType"] = args ? args.chargeType : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["geographicRegionAId"] = args ? args.geographicRegionAId : undefined;
+            inputs["geographicRegionBId"] = args ? args.geographicRegionBId : undefined;
             inputs["geographicRegionIds"] = args ? args.geographicRegionIds : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["paymentType"] = args ? args.paymentType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["expiredTime"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
@@ -144,7 +170,13 @@ export interface BandwidthPackageState {
      */
     readonly bandwidth?: pulumi.Input<number>;
     /**
-     * The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+     * The name of the bandwidth package. Defaults to null.
+     */
+    readonly cenBandwidthPackageName?: pulumi.Input<string>;
+    /**
+     * Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
+     *
+     * @deprecated Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.
      */
     readonly chargeType?: pulumi.Input<string>;
     /**
@@ -156,19 +188,35 @@ export interface BandwidthPackageState {
      */
     readonly expiredTime?: pulumi.Input<string>;
     /**
-     * List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
+     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     */
+    readonly geographicRegionAId?: pulumi.Input<string>;
+    /**
+     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     */
+    readonly geographicRegionBId?: pulumi.Input<string>;
+    /**
+     * Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
+     *
+     * @deprecated Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.
      */
     readonly geographicRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the bandwidth package. Defaults to null.
+     * Field 'name' has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
+     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+     */
+    readonly paymentType?: pulumi.Input<string>;
+    /**
+     * The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * The status of the bandwidth, including "InUse" and "Idle".
+     * The association status of the bandwidth package.
      */
     readonly status?: pulumi.Input<string>;
 }
@@ -182,7 +230,13 @@ export interface BandwidthPackageArgs {
      */
     readonly bandwidth: pulumi.Input<number>;
     /**
-     * The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+     * The name of the bandwidth package. Defaults to null.
+     */
+    readonly cenBandwidthPackageName?: pulumi.Input<string>;
+    /**
+     * Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
+     *
+     * @deprecated Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.
      */
     readonly chargeType?: pulumi.Input<string>;
     /**
@@ -190,15 +244,31 @@ export interface BandwidthPackageArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
+     * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
      */
-    readonly geographicRegionIds: pulumi.Input<pulumi.Input<string>[]>;
+    readonly geographicRegionAId?: pulumi.Input<string>;
     /**
-     * The name of the bandwidth package. Defaults to null.
+     * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+     */
+    readonly geographicRegionBId?: pulumi.Input<string>;
+    /**
+     * Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
+     *
+     * @deprecated Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.
+     */
+    readonly geographicRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Field 'name' has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
+     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+     */
+    readonly paymentType?: pulumi.Input<string>;
+    /**
+     * The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
      */
     readonly period?: pulumi.Input<number>;
 }

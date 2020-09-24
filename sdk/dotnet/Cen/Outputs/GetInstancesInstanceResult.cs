@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string CenId;
         /// <summary>
+        /// Name of the CEN instance.
+        /// </summary>
+        public readonly string CenInstanceName;
+        /// <summary>
         /// Description of the CEN instance.
         /// </summary>
         public readonly string Description;
@@ -38,7 +42,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string ProtectionLevel;
         /// <summary>
-        /// Status of the CEN instance, including "Creating", "Active" and "Deleting".
+        /// The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -51,6 +55,8 @@ namespace Pulumi.AliCloud.Cen.Outputs
             ImmutableArray<string> cenBandwidthPackageIds,
 
             string cenId,
+
+            string cenInstanceName,
 
             string description,
 
@@ -66,6 +72,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         {
             CenBandwidthPackageIds = cenBandwidthPackageIds;
             CenId = cenId;
+            CenInstanceName = cenInstanceName;
             Description = description;
             Id = id;
             Name = name;

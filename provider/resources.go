@@ -386,9 +386,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_emr_cluster": {Tok: resource(emrMod, "Cluster")},
 
 			// FC
-			"alicloud_fc_function": {Tok: resource(fcMod, "Function")},
-			"alicloud_fc_service":  {Tok: resource(fcMod, "Service")},
-			"alicloud_fc_trigger":  {Tok: resource(fcMod, "Trigger")},
+			"alicloud_fc_function":      {Tok: resource(fcMod, "Function")},
+			"alicloud_fc_service":       {Tok: resource(fcMod, "Service")},
+			"alicloud_fc_trigger":       {Tok: resource(fcMod, "Trigger")},
+			"alicloud_fc_custom_domain": {Tok: resource(fcMod, "CustomDomain")},
 
 			// Gpdb
 			"alicloud_gpdb_connection": {Tok: resource(gpdbMod, "Connection")},
@@ -658,6 +659,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cassandra_data_centers": {Tok: dataSource(cassandraMod, "getDataCenters")},
 			"alicloud_cassandra_zones":        {Tok: dataSource(cassandraMod, "getZones")},
 
+			// Cdn
+			"alicloud_cdn_services": {Tok: dataSource(cdnMod, "getServices")},
+
 			// Cen
 			"alicloud_cen_bandwidth_limits":     {Tok: dataSource(cenMod, "getBandwidthLimits")},
 			"alicloud_cen_bandwidth_packages":   {Tok: dataSource(cenMod, "getBandwidthPackages")},
@@ -668,6 +672,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_route_maps":           {Tok: dataSource(cenMod, "getRouteMaps")},
 			"alicloud_cen_private_zones":        {Tok: dataSource(cenMod, "getPrivateZones")},
 			"alicloud_cen_instance_attachments": {Tok: dataSource(cenMod, "getInstanceAttachments")},
+			"alicloud_cen_vbr_health_checks":    {Tok: dataSource(cenMod, "getVbrHealthChecks")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_networks": {Tok: dataSource(cloudConnectMod, "getNetworks")},
@@ -733,9 +738,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_snapshots":              {Tok: dataSource(ecsMod, "getSnapshots")},
 			"alicloud_ecs_dedicated_hosts":    {Tok: dataSource(ecsMod, "getDedicatedHosts")},
 
+			// Edas
 			"alicloud_edas_applications":  {Tok: dataSource(edasMod, "getApplications")},
 			"alicloud_edas_deploy_groups": {Tok: dataSource(edasMod, "getDeployGroups")},
 			"alicloud_edas_clusters":      {Tok: dataSource(edasMod, "getClusters")},
+			"alicloud_edas_services":      {Tok: dataSource(edasMod, "getServices")},
 
 			// Elasticsearch
 			"alicloud_elasticsearch_instances": {Tok: dataSource(elasticsearchMod, "getInstances")},
@@ -756,10 +763,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ess_lifecycle_hooks":        {Tok: dataSource(essMod, "getLifecycleHooks")},
 
 			// Fc
-			"alicloud_fc_functions": {Tok: dataSource(fcMod, "getFunctions")},
-			"alicloud_fc_services":  {Tok: dataSource(fcMod, "getServices")},
-			"alicloud_fc_triggers":  {Tok: dataSource(fcMod, "getTriggers")},
-			"alicloud_fc_zones":     {Tok: dataSource(fcMod, "getZones")},
+			"alicloud_fc_functions":      {Tok: dataSource(fcMod, "getFunctions")},
+			"alicloud_fc_services":       {Tok: dataSource(fcMod, "getServices")},
+			"alicloud_fc_triggers":       {Tok: dataSource(fcMod, "getTriggers")},
+			"alicloud_fc_zones":          {Tok: dataSource(fcMod, "getZones")},
+			"alicloud_fc_custom_domains": {Tok: dataSource(fcMod, "getCustomDomains")},
 
 			// Gpdb
 			"alicloud_gpdb_instances": {Tok: dataSource(gpdbMod, "getInstances")},

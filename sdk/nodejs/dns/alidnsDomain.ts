@@ -88,7 +88,7 @@ export class AlidnsDomain extends pulumi.CustomResource {
     /**
      * The Id of resource group which the dns domain belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

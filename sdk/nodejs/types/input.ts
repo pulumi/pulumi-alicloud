@@ -1086,6 +1086,41 @@ export namespace ess {
 }
 
 export namespace fc {
+    export interface CustomDomainCertConfig {
+        /**
+         * The name of the certificate, used to distinguish different certificates.
+         */
+        certName: pulumi.Input<string>;
+        /**
+         * Certificate data of the HTTPS certificates, follow the 'pem' format.
+         */
+        certificate: pulumi.Input<string>;
+        /**
+         * Private key of the HTTPS certificates, follow the 'pem' format.
+         */
+        privateKey: pulumi.Input<string>;
+    }
+
+    export interface CustomDomainRouteConfig {
+        /**
+         * The name of the Function Compute function that requests are routed to.
+         */
+        functionName: pulumi.Input<string>;
+        /**
+         * The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+         */
+        methods?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The path that requests are routed from.
+         */
+        path: pulumi.Input<string>;
+        /**
+         * The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+         */
+        qualifier?: pulumi.Input<string>;
+        serviceName: pulumi.Input<string>;
+    }
+
     export interface FunctionCustomContainerConfig {
         /**
          * The args field specifies the arguments passed to the command.

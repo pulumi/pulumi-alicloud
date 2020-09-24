@@ -72,6 +72,12 @@ namespace Pulumi.AliCloud.Cen
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
         [Input("tags")]
         private Dictionary<string, object>? _tags;
 
@@ -112,6 +118,10 @@ namespace Pulumi.AliCloud.Cen
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
+        /// Status of the CEN instance, including "Creating", "Active" and "Deleting".
+        /// </summary>
+        public readonly string? Status;
+        /// <summary>
         /// A map of tags assigned to the Cen Instance.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
@@ -130,6 +140,8 @@ namespace Pulumi.AliCloud.Cen
 
             string? outputFile,
 
+            string? status,
+
             ImmutableDictionary<string, object>? tags)
         {
             Id = id;
@@ -138,6 +150,7 @@ namespace Pulumi.AliCloud.Cen
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            Status = status;
             Tags = tags;
         }
     }

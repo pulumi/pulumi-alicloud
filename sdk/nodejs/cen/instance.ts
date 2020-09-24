@@ -17,7 +17,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const cen = new alicloud.cen.Instance("cen", {
+ * const example = new alicloud.cen.Instance("example", {
+ *     cenInstanceName: "tf_test_foo",
  *     description: "an example for cen",
  * });
  * ```
@@ -51,17 +52,23 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     */
+    public readonly cenInstanceName!: pulumi.Output<string>;
+    /**
      * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     * Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
+     * Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
      */
-    public readonly protectionLevel!: pulumi.Output<string>;
+    public readonly protectionLevel!: pulumi.Output<string | undefined>;
     /**
      * The Cen Instance current status.
      */
@@ -83,6 +90,7 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            inputs["cenInstanceName"] = state ? state.cenInstanceName : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["protectionLevel"] = state ? state.protectionLevel : undefined;
@@ -90,6 +98,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
+            inputs["cenInstanceName"] = args ? args.cenInstanceName : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["protectionLevel"] = args ? args.protectionLevel : undefined;
@@ -112,15 +121,21 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
+     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     */
+    readonly cenInstanceName?: pulumi.Input<string>;
+    /**
      * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     * Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
+     * Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
      */
     readonly protectionLevel?: pulumi.Input<string>;
     /**
@@ -138,15 +153,21 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
+     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     */
+    readonly cenInstanceName?: pulumi.Input<string>;
+    /**
      * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     * Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
+     * Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
      */
     readonly protectionLevel?: pulumi.Input<string>;
     /**

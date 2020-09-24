@@ -16,6 +16,7 @@ from .get_private_zones import *
 from .get_region_route_entries import *
 from .get_route_entries import *
 from .get_route_maps import *
+from .get_vbr_health_checks import *
 from .instance import *
 from .instance_attachment import *
 from .instance_grant import *
