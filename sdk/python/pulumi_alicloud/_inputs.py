@@ -80,6 +80,7 @@ class ProviderEndpointArgs:
                  cdn: Optional[pulumi.Input[str]] = None,
                  cen: Optional[pulumi.Input[str]] = None,
                  cms: Optional[pulumi.Input[str]] = None,
+                 config: Optional[pulumi.Input[str]] = None,
                  cr: Optional[pulumi.Input[str]] = None,
                  cs: Optional[pulumi.Input[str]] = None,
                  datahub: Optional[pulumi.Input[str]] = None,
@@ -143,6 +144,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "cen", cen)
         if cms is not None:
             pulumi.set(__self__, "cms", cms)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
         if cr is not None:
             pulumi.set(__self__, "cr", cr)
         if cs is not None:
@@ -329,6 +332,15 @@ class ProviderEndpointArgs:
     @cms.setter
     def cms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cms", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter

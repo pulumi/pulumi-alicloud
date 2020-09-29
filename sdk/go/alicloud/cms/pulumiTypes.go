@@ -674,6 +674,208 @@ func (o SiteMonitorIspCityArrayOutput) Index(i pulumi.IntInput) SiteMonitorIspCi
 	}).(SiteMonitorIspCityOutput)
 }
 
+type GetAlarmContactsContact struct {
+	// The name of the alarm contact.
+	AlarmContactName string `pulumi:"alarmContactName"`
+	// The TradeManager ID of the alarm contact.
+	ChannelsAliim string `pulumi:"channelsAliim"`
+	// The webhook URL of the DingTalk chatbot.
+	ChannelsDingWebHook string `pulumi:"channelsDingWebHook"`
+	// The email address of the alarm contact.
+	ChannelsMail string `pulumi:"channelsMail"`
+	// The phone number of the alarm contact.
+	ChannelsSms string `pulumi:"channelsSms"`
+	// Indicates whether the TradeManager ID is valid.
+	ChannelsStateAliim string `pulumi:"channelsStateAliim"`
+	// Indicates whether the DingTalk chatbot is normal.
+	ChannelsStateDingWebHook string `pulumi:"channelsStateDingWebHook"`
+	// The status of the email address.
+	ChannelsStateMail string `pulumi:"channelsStateMail"`
+	// The status of the phone number.
+	ChannelsStatusSms string `pulumi:"channelsStatusSms"`
+	// The alert groups to which the alarm contact is added.
+	ContactGroups []string `pulumi:"contactGroups"`
+	// The description of the alarm contact.
+	Describe string `pulumi:"describe"`
+	// The ID of the alarm contact.
+	Id   string `pulumi:"id"`
+	Lang string `pulumi:"lang"`
+}
+
+// GetAlarmContactsContactInput is an input type that accepts GetAlarmContactsContactArgs and GetAlarmContactsContactOutput values.
+// You can construct a concrete instance of `GetAlarmContactsContactInput` via:
+//
+//          GetAlarmContactsContactArgs{...}
+type GetAlarmContactsContactInput interface {
+	pulumi.Input
+
+	ToGetAlarmContactsContactOutput() GetAlarmContactsContactOutput
+	ToGetAlarmContactsContactOutputWithContext(context.Context) GetAlarmContactsContactOutput
+}
+
+type GetAlarmContactsContactArgs struct {
+	// The name of the alarm contact.
+	AlarmContactName pulumi.StringInput `pulumi:"alarmContactName"`
+	// The TradeManager ID of the alarm contact.
+	ChannelsAliim pulumi.StringInput `pulumi:"channelsAliim"`
+	// The webhook URL of the DingTalk chatbot.
+	ChannelsDingWebHook pulumi.StringInput `pulumi:"channelsDingWebHook"`
+	// The email address of the alarm contact.
+	ChannelsMail pulumi.StringInput `pulumi:"channelsMail"`
+	// The phone number of the alarm contact.
+	ChannelsSms pulumi.StringInput `pulumi:"channelsSms"`
+	// Indicates whether the TradeManager ID is valid.
+	ChannelsStateAliim pulumi.StringInput `pulumi:"channelsStateAliim"`
+	// Indicates whether the DingTalk chatbot is normal.
+	ChannelsStateDingWebHook pulumi.StringInput `pulumi:"channelsStateDingWebHook"`
+	// The status of the email address.
+	ChannelsStateMail pulumi.StringInput `pulumi:"channelsStateMail"`
+	// The status of the phone number.
+	ChannelsStatusSms pulumi.StringInput `pulumi:"channelsStatusSms"`
+	// The alert groups to which the alarm contact is added.
+	ContactGroups pulumi.StringArrayInput `pulumi:"contactGroups"`
+	// The description of the alarm contact.
+	Describe pulumi.StringInput `pulumi:"describe"`
+	// The ID of the alarm contact.
+	Id   pulumi.StringInput `pulumi:"id"`
+	Lang pulumi.StringInput `pulumi:"lang"`
+}
+
+func (GetAlarmContactsContactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmContactsContact)(nil)).Elem()
+}
+
+func (i GetAlarmContactsContactArgs) ToGetAlarmContactsContactOutput() GetAlarmContactsContactOutput {
+	return i.ToGetAlarmContactsContactOutputWithContext(context.Background())
+}
+
+func (i GetAlarmContactsContactArgs) ToGetAlarmContactsContactOutputWithContext(ctx context.Context) GetAlarmContactsContactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmContactsContactOutput)
+}
+
+// GetAlarmContactsContactArrayInput is an input type that accepts GetAlarmContactsContactArray and GetAlarmContactsContactArrayOutput values.
+// You can construct a concrete instance of `GetAlarmContactsContactArrayInput` via:
+//
+//          GetAlarmContactsContactArray{ GetAlarmContactsContactArgs{...} }
+type GetAlarmContactsContactArrayInput interface {
+	pulumi.Input
+
+	ToGetAlarmContactsContactArrayOutput() GetAlarmContactsContactArrayOutput
+	ToGetAlarmContactsContactArrayOutputWithContext(context.Context) GetAlarmContactsContactArrayOutput
+}
+
+type GetAlarmContactsContactArray []GetAlarmContactsContactInput
+
+func (GetAlarmContactsContactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmContactsContact)(nil)).Elem()
+}
+
+func (i GetAlarmContactsContactArray) ToGetAlarmContactsContactArrayOutput() GetAlarmContactsContactArrayOutput {
+	return i.ToGetAlarmContactsContactArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlarmContactsContactArray) ToGetAlarmContactsContactArrayOutputWithContext(ctx context.Context) GetAlarmContactsContactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmContactsContactArrayOutput)
+}
+
+type GetAlarmContactsContactOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmContactsContactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmContactsContact)(nil)).Elem()
+}
+
+func (o GetAlarmContactsContactOutput) ToGetAlarmContactsContactOutput() GetAlarmContactsContactOutput {
+	return o
+}
+
+func (o GetAlarmContactsContactOutput) ToGetAlarmContactsContactOutputWithContext(ctx context.Context) GetAlarmContactsContactOutput {
+	return o
+}
+
+// The name of the alarm contact.
+func (o GetAlarmContactsContactOutput) AlarmContactName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.AlarmContactName }).(pulumi.StringOutput)
+}
+
+// The TradeManager ID of the alarm contact.
+func (o GetAlarmContactsContactOutput) ChannelsAliim() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.ChannelsAliim }).(pulumi.StringOutput)
+}
+
+// The webhook URL of the DingTalk chatbot.
+func (o GetAlarmContactsContactOutput) ChannelsDingWebHook() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.ChannelsDingWebHook }).(pulumi.StringOutput)
+}
+
+// The email address of the alarm contact.
+func (o GetAlarmContactsContactOutput) ChannelsMail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.ChannelsMail }).(pulumi.StringOutput)
+}
+
+// The phone number of the alarm contact.
+func (o GetAlarmContactsContactOutput) ChannelsSms() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.ChannelsSms }).(pulumi.StringOutput)
+}
+
+// Indicates whether the TradeManager ID is valid.
+func (o GetAlarmContactsContactOutput) ChannelsStateAliim() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.ChannelsStateAliim }).(pulumi.StringOutput)
+}
+
+// Indicates whether the DingTalk chatbot is normal.
+func (o GetAlarmContactsContactOutput) ChannelsStateDingWebHook() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.ChannelsStateDingWebHook }).(pulumi.StringOutput)
+}
+
+// The status of the email address.
+func (o GetAlarmContactsContactOutput) ChannelsStateMail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.ChannelsStateMail }).(pulumi.StringOutput)
+}
+
+// The status of the phone number.
+func (o GetAlarmContactsContactOutput) ChannelsStatusSms() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.ChannelsStatusSms }).(pulumi.StringOutput)
+}
+
+// The alert groups to which the alarm contact is added.
+func (o GetAlarmContactsContactOutput) ContactGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) []string { return v.ContactGroups }).(pulumi.StringArrayOutput)
+}
+
+// The description of the alarm contact.
+func (o GetAlarmContactsContactOutput) Describe() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.Describe }).(pulumi.StringOutput)
+}
+
+// The ID of the alarm contact.
+func (o GetAlarmContactsContactOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAlarmContactsContactOutput) Lang() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.Lang }).(pulumi.StringOutput)
+}
+
+type GetAlarmContactsContactArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmContactsContactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmContactsContact)(nil)).Elem()
+}
+
+func (o GetAlarmContactsContactArrayOutput) ToGetAlarmContactsContactArrayOutput() GetAlarmContactsContactArrayOutput {
+	return o
+}
+
+func (o GetAlarmContactsContactArrayOutput) ToGetAlarmContactsContactArrayOutputWithContext(ctx context.Context) GetAlarmContactsContactArrayOutput {
+	return o
+}
+
+func (o GetAlarmContactsContactArrayOutput) Index(i pulumi.IntInput) GetAlarmContactsContactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmContactsContact {
+		return vs[0].([]GetAlarmContactsContact)[vs[1].(int)]
+	}).(GetAlarmContactsContactOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalPtrOutput{})
@@ -683,4 +885,6 @@ func init() {
 	pulumi.RegisterOutputType(AlarmEscalationsWarnPtrOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityArrayOutput{})
+	pulumi.RegisterOutputType(GetAlarmContactsContactOutput{})
+	pulumi.RegisterOutputType(GetAlarmContactsContactArrayOutput{})
 }

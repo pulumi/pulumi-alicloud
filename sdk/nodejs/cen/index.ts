@@ -22,4 +22,5 @@ export * from "./instanceGrant";
 export * from "./privateZone";
 export * from "./routeEntry";
 export * from "./routeMap";
+export * from "./routeService";
 export * from "./vbrHealthCheck";

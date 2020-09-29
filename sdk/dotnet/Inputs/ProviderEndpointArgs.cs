@@ -48,6 +48,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("cms")]
         public Input<string>? Cms { get; set; }
 
+        [Input("config")]
+        public Input<string>? Config { get; set; }
+
         [Input("cr")]
         public Input<string>? Cr { get; set; }
 

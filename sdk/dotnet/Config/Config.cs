@@ -102,6 +102,7 @@ namespace Pulumi.AliCloud
                 public string? Cdn { get; set; } = null!;
                 public string? Cen { get; set; } = null!;
                 public string? Cms { get; set; } = null!;
+                public string? Config { get; set; } = null!;
                 public string? Cr { get; set; } = null!;
                 public string? Cs { get; set; } = null!;
                 public string? Datahub { get; set; } = null!;

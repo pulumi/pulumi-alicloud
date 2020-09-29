@@ -48,8 +48,6 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
-	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch HBase instances.
-	Multi      *bool   `pulumi:"multi"`
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -59,7 +57,6 @@ type GetZonesResult struct {
 	Id string `pulumi:"id"`
 	// A list of zone IDs.
 	Ids        []string `pulumi:"ids"`
-	Multi      *bool    `pulumi:"multi"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of availability zones. Each element contains the following attributes:
 	Zones []GetZonesZone `pulumi:"zones"`

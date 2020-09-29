@@ -17,19 +17,11 @@ namespace Pulumi.AliCloud.Hbase.Outputs
         /// ID of the zone.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of zone ids in which the multi zone.
-        /// </summary>
-        public readonly ImmutableArray<string> MultiZoneIds;
 
         [OutputConstructor]
-        private GetZonesZoneResult(
-            string id,
-
-            ImmutableArray<string> multiZoneIds)
+        private GetZonesZoneResult(string id)
         {
             Id = id;
-            MultiZoneIds = multiZoneIds;
         }
     }
 }

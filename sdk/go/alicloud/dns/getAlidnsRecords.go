@@ -33,7 +33,7 @@ type GetAlidnsRecordsArgs struct {
 	KeyWord *string `pulumi:"keyWord"`
 	// User language.
 	Lang *string `pulumi:"lang"`
-	// ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
 	Line *string `pulumi:"line"`
 	// Sort by. Sort from newest to oldest according to the time added by resolution.
 	OrderBy    *string `pulumi:"orderBy"`

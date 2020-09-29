@@ -69,6 +69,7 @@ export interface ProviderEndpoint {
     cdn?: string;
     cen?: string;
     cms?: string;
+    config?: string;
     cr?: string;
     cs?: string;
     datahub?: string;
@@ -1578,6 +1579,126 @@ export namespace cen {
     }
 }
 
+export namespace cfg {
+    export interface GetConfigurationRecordersRecorder {
+        accountId: string;
+        /**
+         * The ID of the Config Configuration Recorder. Value as the `accountId`.
+         * * `accountId`- The ID of the Alicloud account.
+         */
+        id: string;
+        /**
+         * Status of resource monitoring.
+         */
+        organizationEnableStatus: string;
+        /**
+         * The ID of the Enterprise management account.
+         */
+        organizationMasterId: number;
+        /**
+         * A list of resource types to be monitored.
+         */
+        resourceTypes: string[];
+        /**
+         * Enterprise version configuration audit enabled status.
+         */
+        status: string;
+    }
+
+    export interface GetDeliveryChannelsChannel {
+        /**
+         * The Alibaba Cloud Resource Name (ARN) of the role assumed by delivery method.
+         */
+        deliveryChannelAssumeRoleArn: string;
+        /**
+         * The rule attached to the delivery method. This parameter is applicable only to delivery methods of the Message Service (MNS) type.
+         */
+        deliveryChannelCondition: string;
+        /**
+         * The ID of the delivery channel.
+         */
+        deliveryChannelId: string;
+        /**
+         * The name of the delivery channel.
+         */
+        deliveryChannelName: string;
+        /**
+         * The ARN of the delivery destination.
+         */
+        deliveryChannelTargetArn: string;
+        /**
+         * The type of the delivery method.
+         */
+        deliveryChannelType: string;
+        /**
+         * The description of the delivery method.
+         */
+        description: string;
+        /**
+         * The ID of the Config Delivery Channel.
+         */
+        id: string;
+        /**
+         * The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
+         */
+        status: number;
+    }
+
+    export interface GetRulesRule {
+        accountId: number;
+        configRuleArn: string;
+        configRuleId: string;
+        /**
+         * The state of the config rule, valid values: `ACTIVE`, `DELETING`, `DELETING_RESULTS`, `EVALUATING` and `INACTIVE`.
+         */
+        configRuleState: string;
+        createTimestamp: number;
+        description: string;
+        /**
+         * The ID of the Config Rule.
+         * * `accountId`- The ID of the Alicloud account.
+         * * `configRuleArn`- The ARN of the Config Rule.
+         * * `configRuleId`- The ID of the Config Rule.
+         * * `configRuleState`- The state of the Config Rule.
+         * * `createTimestamp`- The timestamp of the Config Rule created.
+         * * `description`- The description of the Config Rule.
+         * * `inputParameters`- The input paramrters of the Config Rule.
+         * * `modifiedTimestamp`- the timestamp of the Config Rule modified.
+         * * `riskLevel`- The risk level of the Config Rule.
+         * * `ruleName`- The name of the Config Rule.
+         * * `sourceDetails`- The source details of the Config Rule.
+         */
+        id: string;
+        inputParameters: {[key: string]: any};
+        modifiedTimestamp: number;
+        /**
+         * The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+         */
+        riskLevel: number;
+        ruleName: string;
+        sourceDetails: outputs.cfg.GetRulesRuleSourceDetail[];
+        sourceIdentifier: string;
+        sourceOwner: string;
+    }
+
+    export interface GetRulesRuleSourceDetail {
+        /**
+         * Event source of the Config Rule.
+         */
+        eventSource: string;
+        /**
+         * Rule execution cycle.
+         */
+        maximumExecutionFrequency: string;
+        /**
+         * Rule trigger mechanism.
+         * * `sourceIdentifier`- The name of the custom rule or managed rule.
+         * * `sourceOwner`- The source owner of the Config Rule.
+         */
+        messageType: string;
+    }
+}
+
 export namespace cloudconnect {
     export interface GetNetworksNetwork {
         /**
@@ -1658,6 +1779,58 @@ export namespace cms {
         times?: number;
     }
 
+    export interface GetAlarmContactsContact {
+        /**
+         * The name of the alarm contact.
+         */
+        alarmContactName: string;
+        /**
+         * The TradeManager ID of the alarm contact.
+         */
+        channelsAliim: string;
+        /**
+         * The webhook URL of the DingTalk chatbot.
+         */
+        channelsDingWebHook: string;
+        /**
+         * The email address of the alarm contact.
+         */
+        channelsMail: string;
+        /**
+         * The phone number of the alarm contact.
+         */
+        channelsSms: string;
+        /**
+         * Indicates whether the TradeManager ID is valid.
+         */
+        channelsStateAliim: string;
+        /**
+         * Indicates whether the DingTalk chatbot is normal.
+         */
+        channelsStateDingWebHook: string;
+        /**
+         * The status of the email address.
+         */
+        channelsStateMail: string;
+        /**
+         * The status of the phone number.
+         */
+        channelsStatusSms: string;
+        /**
+         * The alert groups to which the alarm contact is added.
+         */
+        contactGroups: string[];
+        /**
+         * The description of the alarm contact.
+         */
+        describe: string;
+        /**
+         * The ID of the alarm contact.
+         */
+        id: string;
+        lang: string;
+    }
+
     export interface SiteMonitorIspCity {
         city: string;
         isp: string;
@@ -1685,6 +1858,7 @@ export namespace config {
         cdn?: string;
         cen?: string;
         cms?: string;
+        config?: string;
         cr?: string;
         cs?: string;
         datahub?: string;
@@ -3044,7 +3218,7 @@ export namespace dns {
          */
         id: string;
         /**
-         * ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+         * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
          */
         line: string;
         /**
@@ -5652,10 +5826,6 @@ export namespace hbase {
          * ID of the zone.
          */
         id: string;
-        /**
-         * A list of zone ids in which the multi zone.
-         */
-        multiZoneIds: string[];
     }
 }
 

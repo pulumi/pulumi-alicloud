@@ -15,5 +15,5 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.8.0
 	github.com/pulumi/pulumi/sdk/v2 v2.10.0
-	github.com/aliyun/terraform-provider-alicloud v1.98.0
+	github.com/aliyun/terraform-provider-alicloud v1.99.0
 )

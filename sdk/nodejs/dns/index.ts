@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./alidnsDomain";
+export * from "./alidnsDomainAttachment";
 export * from "./alidnsInstance";
 export * from "./alidnsRecord";
 export * from "./ddosBgpInstance";

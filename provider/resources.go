@@ -40,6 +40,7 @@ const (
 	cenMod             = "Cen"
 	cloudConnectMod    = "CloudConnect"
 	cmsMod             = "Cms"
+	cfgMod             = "Cfg"
 	crMod              = "CR"
 	csMod              = "CS"
 	datahubMod         = "Datahub"
@@ -245,6 +246,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_route_map":                    {Tok: resource(cenMod, "RouteMap")},
 			"alicloud_cen_private_zone":                 {Tok: resource(cenMod, "PrivateZone")},
 			"alicloud_cen_vbr_health_check":             {Tok: resource(cenMod, "VbrHealthCheck")},
+			"alicloud_cen_route_service":                {Tok: resource(cenMod, "RouteService")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_network":            {Tok: resource(cloudConnectMod, "Network")},
@@ -252,13 +254,19 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cloud_connect_network_grant":      {Tok: resource(cloudConnectMod, "NetworkGrant")},
 
 			// CMS
-			"alicloud_cms_alarm": {Tok: resource(cmsMod, "Alarm")},
+			"alicloud_cms_alarm":         {Tok: resource(cmsMod, "Alarm")},
+			"alicloud_cms_alarm_contact": {Tok: resource(cmsMod, "AlarmContact")},
 			"alicloud_cms_site_monitor": {
 				Tok: resource(cmsMod, "SiteMonitor"),
 				Docs: &tfbridge.DocInfo{
 					Source: "cms_sitemonitor.markdown",
 				},
 			},
+
+			// Config
+			"alicloud_config_configuration_recorder": {Tok: resource(cfgMod, "ConfigurationRecorder")},
+			"alicloud_config_delivery_channel":       {Tok: resource(cfgMod, "DeliveryChannel")},
+			"alicloud_config_rule":                   {Tok: resource(cfgMod, "Rule")},
 
 			// CR
 			"alicloud_cr_repo":      {Tok: resource(crMod, "Repo")},
@@ -307,15 +315,16 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:                resource(dnsMod, "Domain"),
 				DeprecationMessage: "This resource has been deprecated in favour of DnsDomain",
 			},
-			"alicloud_dns_group":             {Tok: resource(dnsMod, "Group")},
-			"alicloud_dns_record":            {Tok: resource(dnsMod, "Record")},
-			"alicloud_dns_domain_attachment": {Tok: resource(dnsMod, "DomainAttachment")},
-			"alicloud_dns_instance":          {Tok: resource(dnsMod, "Instance")},
-			"alicloud_dns_domain":            {Tok: resource(dnsMod, "DnsDomain")},
-			"alicloud_alidns_domain_group":   {Tok: resource(dnsMod, "DomainGroup")},
-			"alicloud_alidns_record":         {Tok: resource(dnsMod, "AlidnsRecord")},
-			"alicloud_alidns_domain":         {Tok: resource(dnsMod, "AlidnsDomain")},
-			"alicloud_alidns_instance":       {Tok: resource(dnsMod, "AlidnsInstance")},
+			"alicloud_dns_group":                {Tok: resource(dnsMod, "Group")},
+			"alicloud_dns_record":               {Tok: resource(dnsMod, "Record")},
+			"alicloud_dns_domain_attachment":    {Tok: resource(dnsMod, "DomainAttachment")},
+			"alicloud_dns_instance":             {Tok: resource(dnsMod, "Instance")},
+			"alicloud_dns_domain":               {Tok: resource(dnsMod, "DnsDomain")},
+			"alicloud_alidns_domain_group":      {Tok: resource(dnsMod, "DomainGroup")},
+			"alicloud_alidns_record":            {Tok: resource(dnsMod, "AlidnsRecord")},
+			"alicloud_alidns_domain":            {Tok: resource(dnsMod, "AlidnsDomain")},
+			"alicloud_alidns_instance":          {Tok: resource(dnsMod, "AlidnsInstance")},
+			"alicloud_alidns_domain_attachment": {Tok: resource(dnsMod, "AlidnsDomainAttachment")},
 
 			// Drds
 			"alicloud_drds_instance": {Tok: resource(drdsMod, "Instance")},
@@ -660,7 +669,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cassandra_zones":        {Tok: dataSource(cassandraMod, "getZones")},
 
 			// Cdn
-			"alicloud_cdn_services": {Tok: dataSource(cdnMod, "getServices")},
+			"alicloud_cdn_service": {Tok: dataSource(cdnMod, "getService")},
 
 			// Cen
 			"alicloud_cen_bandwidth_limits":     {Tok: dataSource(cenMod, "getBandwidthLimits")},
@@ -676,6 +685,14 @@ func Provider() tfbridge.ProviderInfo {
 
 			// CloudConnect
 			"alicloud_cloud_connect_networks": {Tok: dataSource(cloudConnectMod, "getNetworks")},
+
+			// CMS
+			"alicloud_cms_alarm_contacts": {Tok: dataSource(cmsMod, "getAlarmContacts")},
+
+			// Config
+			"alicloud_config_configuration_recorders": {Tok: dataSource(cfgMod, "getConfigurationRecorders")},
+			"alicloud_config_delivery_channels":       {Tok: dataSource(cfgMod, "getDeliveryChannels")},
+			"alicloud_config_rules":                   {Tok: dataSource(cfgMod, "getRules")},
 
 			// Cr
 			"alicloud_cr_namespaces": {Tok: dataSource(crMod, "getNamespaces")},
@@ -742,7 +759,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_edas_applications":  {Tok: dataSource(edasMod, "getApplications")},
 			"alicloud_edas_deploy_groups": {Tok: dataSource(edasMod, "getDeployGroups")},
 			"alicloud_edas_clusters":      {Tok: dataSource(edasMod, "getClusters")},
-			"alicloud_edas_services":      {Tok: dataSource(edasMod, "getServices")},
+			"alicloud_edas_service":       {Tok: dataSource(edasMod, "getService")},
 
 			// Elasticsearch
 			"alicloud_elasticsearch_instances": {Tok: dataSource(elasticsearchMod, "getInstances")},

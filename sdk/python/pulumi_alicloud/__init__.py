@@ -22,6 +22,7 @@ from . import (
     cassandra,
     cdn,
     cen,
+    cfg,
     cloudconnect,
     cms,
     config,

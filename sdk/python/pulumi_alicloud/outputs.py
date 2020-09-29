@@ -191,6 +191,7 @@ class ProviderEndpoint(dict):
                  cdn: Optional[str] = None,
                  cen: Optional[str] = None,
                  cms: Optional[str] = None,
+                 config: Optional[str] = None,
                  cr: Optional[str] = None,
                  cs: Optional[str] = None,
                  datahub: Optional[str] = None,
@@ -254,6 +255,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "cen", cen)
         if cms is not None:
             pulumi.set(__self__, "cms", cms)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
         if cr is not None:
             pulumi.set(__self__, "cr", cr)
         if cs is not None:
@@ -392,6 +395,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def cms(self) -> Optional[str]:
         return pulumi.get(self, "cms")
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[str]:
+        return pulumi.get(self, "config")
 
     @property
     @pulumi.getter

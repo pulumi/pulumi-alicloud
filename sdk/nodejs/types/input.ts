@@ -25,6 +25,7 @@ export interface ProviderEndpoint {
     cdn?: pulumi.Input<string>;
     cen?: pulumi.Input<string>;
     cms?: pulumi.Input<string>;
+    config?: pulumi.Input<string>;
     cr?: pulumi.Input<string>;
     cs?: pulumi.Input<string>;
     datahub?: pulumi.Input<string>;
@@ -411,6 +412,9 @@ export namespace cdn {
 }
 
 export namespace cen {
+}
+
+export namespace cfg {
 }
 
 export namespace cloudconnect {
