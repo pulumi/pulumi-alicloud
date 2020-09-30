@@ -5,3 +5,4 @@
 export * from "./domain";
 export * from "./domainConfig";
 export * from "./domainNew";
+export * from "./getService";

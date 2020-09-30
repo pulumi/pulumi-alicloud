@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Cdn;
         public readonly string? Cen;
         public readonly string? Cms;
+        public readonly string? Config;
         public readonly string? Cr;
         public readonly string? Cs;
         public readonly string? Datahub;
@@ -90,6 +91,8 @@ namespace Pulumi.AliCloud.Outputs
             string? cen,
 
             string? cms,
+
+            string? config,
 
             string? cr,
 
@@ -181,6 +184,7 @@ namespace Pulumi.AliCloud.Outputs
             Cdn = cdn;
             Cen = cen;
             Cms = cms;
+            Config = config;
             Cr = cr;
             Cs = cs;
             Datahub = datahub;

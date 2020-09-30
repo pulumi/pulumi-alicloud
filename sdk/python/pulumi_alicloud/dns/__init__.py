@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .alidns_domain import *
+from .alidns_domain_attachment import *
 from .alidns_instance import *
 from .alidns_record import *
 from .ddos_bgp_instance import *

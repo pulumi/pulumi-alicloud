@@ -155,6 +155,8 @@ github.com/aliyun/alibaba-cloud-sdk-go v1.61.497 h1:CZnbzj2qPGnn9zj1/ZzgiPvwAPCY
 github.com/aliyun/alibaba-cloud-sdk-go v1.61.497/go.mod h1:pUKYbK5JQ+1Dfxk80P0qxGqe5dkxDoabbZS7zOcouyA=
 github.com/aliyun/alibaba-cloud-sdk-go v1.61.508 h1:bUUcEoCLIeA25VWqTNCus8u9GDIN+SRibgfyhgH3xd8=
 github.com/aliyun/alibaba-cloud-sdk-go v1.61.508/go.mod h1:pUKYbK5JQ+1Dfxk80P0qxGqe5dkxDoabbZS7zOcouyA=
+github.com/aliyun/alibaba-cloud-sdk-go v1.61.514 h1:+FloRcWY88f7Vz/WFqtDP6AemLGZbVmmcuC6gRFXjyU=
+github.com/aliyun/alibaba-cloud-sdk-go v1.61.514/go.mod h1:pUKYbK5JQ+1Dfxk80P0qxGqe5dkxDoabbZS7zOcouyA=
 github.com/aliyun/aliyun-datahub-sdk-go v0.0.0-20180929121038-c1c85baca7c0 h1:nvOIS4LOMKF65MCDkJgAMZXNk5MdbbfFcA3Dk9WwsXM=
 github.com/aliyun/aliyun-datahub-sdk-go v0.0.0-20180929121038-c1c85baca7c0/go.mod h1:GwtZxKUD+aLBrtlkEcyPNAx+jRkBioEC7EKOlQ26lTc=
 github.com/aliyun/aliyun-log-go-sdk v0.1.6 h1:xtTQNaJ768Fj+TYFNTeBaqP3nDXJaDTWAi/qp9Fgclo=
@@ -190,6 +192,8 @@ github.com/aliyun/terraform-provider-alicloud v1.97.0 h1:HL3FSIXEAnis/E2ZQpZ3QlM
 github.com/aliyun/terraform-provider-alicloud v1.97.0/go.mod h1:JveFWe2SAHhkKtBibsdf/Ss6fMS5aiu9zI3ea3KRFkI=
 github.com/aliyun/terraform-provider-alicloud v1.98.0 h1:WJcvPYc3D5PCM+62IsPqDq1J/20vzYL1JPSTcBYO/wg=
 github.com/aliyun/terraform-provider-alicloud v1.98.0/go.mod h1:baKPjul4Oapr+F4qmqXxubbW/FXEMzowyxy7m+kwWm0=
+github.com/aliyun/terraform-provider-alicloud v1.99.0 h1:pZWnn101WKCBCTo15gSDZQf2BGTxaoc3j2Lh8ZLFtHM=
+github.com/aliyun/terraform-provider-alicloud v1.99.0/go.mod h1:C5BD8zDrRGSNGR8F8jEVkx5406Llih35wQ0KoTYENVE=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239 h1:kFOfPq6dUM1hTo4JG6LR5AXSUEsOjtdm0kw0FtQtMJA=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239/go.mod h1:2FmKhYUyUczH0OGQWaF5ceTx0UBShxjsH6f8oGKYe2c=
 github.com/antchfx/xpath v0.0.0-20190129040759-c8489ed3251e/go.mod h1:Yee4kTMuNiPYJ7nSNorELQMr1J33uOpXDMByNYhvtNk=

@@ -10,36 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides bind the domain name to the DNS instance resource.
-//
-// > **NOTE:** Available in v1.80.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewDomainAttachment(ctx, "dns", &dns.DomainAttachmentArgs{
-// 			DomainNames: pulumi.StringArray{
-// 				pulumi.String("test111.abc"),
-// 				pulumi.String("test222.abc"),
-// 			},
-// 			InstanceId: pulumi.String("dns-cn-mp91lyq9xxxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DomainAttachment struct {
 	pulumi.CustomResourceState
 

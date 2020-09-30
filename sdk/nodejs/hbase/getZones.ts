@@ -33,7 +33,6 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:hbase/getZones:getZones", {
-        "multi": args.multi,
         "outputFile": args.outputFile,
     }, opts);
 }
@@ -42,10 +41,6 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
-    /**
-     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch HBase instances.
-     */
-    readonly multi?: boolean;
     readonly outputFile?: string;
 }
 
@@ -61,7 +56,6 @@ export interface GetZonesResult {
      * A list of zone IDs.
      */
     readonly ids: string[];
-    readonly multi?: boolean;
     readonly outputFile?: string;
     /**
      * A list of availability zones. Each element contains the following attributes:

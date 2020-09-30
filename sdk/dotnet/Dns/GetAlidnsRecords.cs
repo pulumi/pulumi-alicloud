@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Dns
         public string? Lang { get; set; }
 
         /// <summary>
-        /// ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+        /// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
         /// </summary>
         [Input("line")]
         public string? Line { get; set; }

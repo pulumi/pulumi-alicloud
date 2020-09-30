@@ -20,16 +20,13 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, id=None, ids=None, multi=None, output_file=None, zones=None):
+    def __init__(__self__, id=None, ids=None, output_file=None, zones=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
-        if multi and not isinstance(multi, bool):
-            raise TypeError("Expected argument 'multi' to be a bool")
-        pulumi.set(__self__, "multi", multi)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
@@ -54,11 +51,6 @@ class GetZonesResult:
         return pulumi.get(self, "ids")
 
     @property
-    @pulumi.getter
-    def multi(self) -> Optional[bool]:
-        return pulumi.get(self, "multi")
-
-    @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
@@ -80,13 +72,11 @@ class AwaitableGetZonesResult(GetZonesResult):
         return GetZonesResult(
             id=self.id,
             ids=self.ids,
-            multi=self.multi,
             output_file=self.output_file,
             zones=self.zones)
 
 
-def get_zones(multi: Optional[bool] = None,
-              output_file: Optional[str] = None,
+def get_zones(output_file: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
     This data source provides availability zones for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -104,12 +94,8 @@ def get_zones(multi: Optional[bool] = None,
     hbase = alicloud.hbase.Instance("hbase", zone_id=zones_ids.zones[0].id)
     # Other properties...
     ```
-
-
-    :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch HBase instances.
     """
     __args__ = dict()
-    __args__['multi'] = multi
     __args__['outputFile'] = output_file
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -120,6 +106,5 @@ def get_zones(multi: Optional[bool] = None,
     return AwaitableGetZonesResult(
         id=__ret__.id,
         ids=__ret__.ids,
-        multi=__ret__.multi,
         output_file=__ret__.output_file,
         zones=__ret__.zones)

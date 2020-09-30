@@ -90,6 +90,7 @@ type Endpoints struct {
 	Cdn             *string `pulumi:"cdn"`
 	Cen             *string `pulumi:"cen"`
 	Cms             *string `pulumi:"cms"`
+	Config          *string `pulumi:"config"`
 	Cr              *string `pulumi:"cr"`
 	Cs              *string `pulumi:"cs"`
 	Datahub         *string `pulumi:"datahub"`
@@ -155,6 +156,7 @@ type EndpointsArgs struct {
 	Cdn             pulumi.StringPtrInput `pulumi:"cdn"`
 	Cen             pulumi.StringPtrInput `pulumi:"cen"`
 	Cms             pulumi.StringPtrInput `pulumi:"cms"`
+	Config          pulumi.StringPtrInput `pulumi:"config"`
 	Cr              pulumi.StringPtrInput `pulumi:"cr"`
 	Cs              pulumi.StringPtrInput `pulumi:"cs"`
 	Datahub         pulumi.StringPtrInput `pulumi:"datahub"`
@@ -293,6 +295,10 @@ func (o EndpointsOutput) Cen() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Cms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Cms }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Cr() pulumi.StringPtrOutput {

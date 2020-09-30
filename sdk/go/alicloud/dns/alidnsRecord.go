@@ -50,7 +50,7 @@ type AlidnsRecord struct {
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// User language.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
-	// The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
+	// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
 	Line pulumi.StringPtrOutput `pulumi:"line"`
 	// The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
@@ -114,7 +114,7 @@ type alidnsRecordState struct {
 	DomainName *string `pulumi:"domainName"`
 	// User language.
 	Lang *string `pulumi:"lang"`
-	// The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
+	// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
 	Line *string `pulumi:"line"`
 	// The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
 	Priority *int `pulumi:"priority"`
@@ -139,7 +139,7 @@ type AlidnsRecordState struct {
 	DomainName pulumi.StringPtrInput
 	// User language.
 	Lang pulumi.StringPtrInput
-	// The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
+	// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
 	Line pulumi.StringPtrInput
 	// The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
 	Priority pulumi.IntPtrInput
@@ -168,7 +168,7 @@ type alidnsRecordArgs struct {
 	DomainName string `pulumi:"domainName"`
 	// User language.
 	Lang *string `pulumi:"lang"`
-	// The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
+	// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
 	Line *string `pulumi:"line"`
 	// The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
 	Priority *int `pulumi:"priority"`
@@ -194,7 +194,7 @@ type AlidnsRecordArgs struct {
 	DomainName pulumi.StringInput
 	// User language.
 	Lang pulumi.StringPtrInput
-	// The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
+	// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
 	Line pulumi.StringPtrInput
 	// The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
 	Priority pulumi.IntPtrInput

@@ -3,4 +3,6 @@
 
 // Export members:
 export * from "./alarm";
+export * from "./alarmContact";
+export * from "./getAlarmContacts";
 export * from "./siteMonitor";

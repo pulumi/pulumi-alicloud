@@ -13,6 +13,7 @@ __all__ = [
     'AlarmEscalationsInfo',
     'AlarmEscalationsWarn',
     'SiteMonitorIspCity',
+    'GetAlarmContactsContactResult',
 ]
 
 @pulumi.output_type
@@ -209,5 +210,151 @@ class SiteMonitorIspCity(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetAlarmContactsContactResult(dict):
+    def __init__(__self__, *,
+                 alarm_contact_name: str,
+                 channels_aliim: str,
+                 channels_ding_web_hook: str,
+                 channels_mail: str,
+                 channels_sms: str,
+                 channels_state_aliim: str,
+                 channels_state_ding_web_hook: str,
+                 channels_state_mail: str,
+                 channels_status_sms: str,
+                 contact_groups: List[str],
+                 describe: str,
+                 id: str,
+                 lang: str):
+        """
+        :param str alarm_contact_name: The name of the alarm contact.
+        :param str channels_aliim: The TradeManager ID of the alarm contact.
+        :param str channels_ding_web_hook: The webhook URL of the DingTalk chatbot.
+        :param str channels_mail: The email address of the alarm contact.
+        :param str channels_sms: The phone number of the alarm contact.
+        :param str channels_state_aliim: Indicates whether the TradeManager ID is valid.
+        :param str channels_state_ding_web_hook: Indicates whether the DingTalk chatbot is normal.
+        :param str channels_state_mail: The status of the email address.
+        :param str channels_status_sms: The status of the phone number.
+        :param List[str] contact_groups: The alert groups to which the alarm contact is added.
+        :param str describe: The description of the alarm contact.
+        :param str id: The ID of the alarm contact.
+        """
+        pulumi.set(__self__, "alarm_contact_name", alarm_contact_name)
+        pulumi.set(__self__, "channels_aliim", channels_aliim)
+        pulumi.set(__self__, "channels_ding_web_hook", channels_ding_web_hook)
+        pulumi.set(__self__, "channels_mail", channels_mail)
+        pulumi.set(__self__, "channels_sms", channels_sms)
+        pulumi.set(__self__, "channels_state_aliim", channels_state_aliim)
+        pulumi.set(__self__, "channels_state_ding_web_hook", channels_state_ding_web_hook)
+        pulumi.set(__self__, "channels_state_mail", channels_state_mail)
+        pulumi.set(__self__, "channels_status_sms", channels_status_sms)
+        pulumi.set(__self__, "contact_groups", contact_groups)
+        pulumi.set(__self__, "describe", describe)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "lang", lang)
+
+    @property
+    @pulumi.getter(name="alarmContactName")
+    def alarm_contact_name(self) -> str:
+        """
+        The name of the alarm contact.
+        """
+        return pulumi.get(self, "alarm_contact_name")
+
+    @property
+    @pulumi.getter(name="channelsAliim")
+    def channels_aliim(self) -> str:
+        """
+        The TradeManager ID of the alarm contact.
+        """
+        return pulumi.get(self, "channels_aliim")
+
+    @property
+    @pulumi.getter(name="channelsDingWebHook")
+    def channels_ding_web_hook(self) -> str:
+        """
+        The webhook URL of the DingTalk chatbot.
+        """
+        return pulumi.get(self, "channels_ding_web_hook")
+
+    @property
+    @pulumi.getter(name="channelsMail")
+    def channels_mail(self) -> str:
+        """
+        The email address of the alarm contact.
+        """
+        return pulumi.get(self, "channels_mail")
+
+    @property
+    @pulumi.getter(name="channelsSms")
+    def channels_sms(self) -> str:
+        """
+        The phone number of the alarm contact.
+        """
+        return pulumi.get(self, "channels_sms")
+
+    @property
+    @pulumi.getter(name="channelsStateAliim")
+    def channels_state_aliim(self) -> str:
+        """
+        Indicates whether the TradeManager ID is valid.
+        """
+        return pulumi.get(self, "channels_state_aliim")
+
+    @property
+    @pulumi.getter(name="channelsStateDingWebHook")
+    def channels_state_ding_web_hook(self) -> str:
+        """
+        Indicates whether the DingTalk chatbot is normal.
+        """
+        return pulumi.get(self, "channels_state_ding_web_hook")
+
+    @property
+    @pulumi.getter(name="channelsStateMail")
+    def channels_state_mail(self) -> str:
+        """
+        The status of the email address.
+        """
+        return pulumi.get(self, "channels_state_mail")
+
+    @property
+    @pulumi.getter(name="channelsStatusSms")
+    def channels_status_sms(self) -> str:
+        """
+        The status of the phone number.
+        """
+        return pulumi.get(self, "channels_status_sms")
+
+    @property
+    @pulumi.getter(name="contactGroups")
+    def contact_groups(self) -> List[str]:
+        """
+        The alert groups to which the alarm contact is added.
+        """
+        return pulumi.get(self, "contact_groups")
+
+    @property
+    @pulumi.getter
+    def describe(self) -> str:
+        """
+        The description of the alarm contact.
+        """
+        return pulumi.get(self, "describe")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the alarm contact.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def lang(self) -> str:
+        return pulumi.get(self, "lang")
 
 

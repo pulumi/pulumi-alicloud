@@ -21,24 +21,7 @@ class DomainAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides bind the domain name to the DNS instance resource.
-
-        > **NOTE:** Available in v1.80.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        dns = alicloud.dns.DomainAttachment("dns",
-            domain_names=[
-                "test111.abc",
-                "test222.abc",
-            ],
-            instance_id="dns-cn-mp91lyq9xxxx")
-        ```
-
+        Create a DomainAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[List[pulumi.Input[str]]] domain_names: The domain names bound to the DNS instance.

@@ -9,35 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
-    /// <summary>
-    /// Provides bind the domain name to the DNS instance resource.
-    /// 
-    /// &gt; **NOTE:** Available in v1.80.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var dns = new AliCloud.Dns.DomainAttachment("dns", new AliCloud.Dns.DomainAttachmentArgs
-    ///         {
-    ///             DomainNames = 
-    ///             {
-    ///                 "test111.abc",
-    ///                 "test222.abc",
-    ///             },
-    ///             InstanceId = "dns-cn-mp91lyq9xxxx",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class DomainAttachment : Pulumi.CustomResource
     {
         /// <summary>

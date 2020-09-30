@@ -49,12 +49,6 @@ namespace Pulumi.AliCloud.Hbase
 
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch HBase instances.
-        /// </summary>
-        [Input("multi")]
-        public bool? Multi { get; set; }
-
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -75,7 +69,6 @@ namespace Pulumi.AliCloud.Hbase
         /// A list of zone IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        public readonly bool? Multi;
         public readonly string? OutputFile;
         /// <summary>
         /// A list of availability zones. Each element contains the following attributes:
@@ -88,15 +81,12 @@ namespace Pulumi.AliCloud.Hbase
 
             ImmutableArray<string> ids,
 
-            bool? multi,
-
             string? outputFile,
 
             ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
             Id = id;
             Ids = ids;
-            Multi = multi;
             OutputFile = outputFile;
             Zones = zones;
         }

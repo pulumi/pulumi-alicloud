@@ -253,7 +253,7 @@ def get_alidns_records(direction: Optional[str] = None,
     :param List[str] ids: A list of record IDs.
     :param str key_word: Keywords.
     :param str lang: User language.
-    :param str line: ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+    :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
     :param str order_by: Sort by. Sort from newest to oldest according to the time added by resolution.
     :param str rr_key_word: The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
     :param str rr_regex: Host record regex.
