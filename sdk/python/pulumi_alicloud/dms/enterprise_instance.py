@@ -28,6 +28,7 @@ class EnterpriseInstance(pulumi.CustomResource):
                  host: Optional[pulumi.Input[str]] = None,
                  instance_alias: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
                  instance_source: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
@@ -36,6 +37,7 @@ class EnterpriseInstance(pulumi.CustomResource):
                  safe_rule: Optional[pulumi.Input[str]] = None,
                  safe_rule_id: Optional[pulumi.Input[str]] = None,
                  sid: Optional[pulumi.Input[str]] = None,
+                 skip_test: Optional[pulumi.Input[bool]] = None,
                  tid: Optional[pulumi.Input[float]] = None,
                  use_dsql: Optional[pulumi.Input[float]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -62,7 +64,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             env_type="test",
             export_timeout=600,
             host="rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com",
-            instance_alias="your_alias_name",
+            instance_name="your_alias_name",
             instance_source="RDS",
             instance_type="MySQL",
             network_type="VPC",
@@ -84,7 +86,8 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] env_type: Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
         :param pulumi.Input[float] export_timeout: Export timeout, unit: s (seconds).
         :param pulumi.Input[str] host: Host address of the target database.
-        :param pulumi.Input[str] instance_alias: Instance alias, to help users quickly distinguish positioning.
+        :param pulumi.Input[str] instance_alias: It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        :param pulumi.Input[str] instance_name: Instance name, to help users quickly distinguish positioning.
         :param pulumi.Input[str] instance_source: The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
         :param pulumi.Input[str] instance_type: Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
         :param pulumi.Input[str] network_type: Network type. Valid values: `CLASSIC`, `VPC`.
@@ -136,10 +139,12 @@ class EnterpriseInstance(pulumi.CustomResource):
             if host is None:
                 raise TypeError("Missing required property 'host'")
             __props__['host'] = host
-            if instance_alias is None:
-                raise TypeError("Missing required property 'instance_alias'")
+            if instance_alias is not None:
+                warnings.warn("Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.", DeprecationWarning)
+                pulumi.log.warn("instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.")
             __props__['instance_alias'] = instance_alias
             __props__['instance_id'] = instance_id
+            __props__['instance_name'] = instance_name
             if instance_source is None:
                 raise TypeError("Missing required property 'instance_source'")
             __props__['instance_source'] = instance_source
@@ -160,11 +165,13 @@ class EnterpriseInstance(pulumi.CustomResource):
             __props__['safe_rule'] = safe_rule
             __props__['safe_rule_id'] = safe_rule_id
             __props__['sid'] = sid
+            __props__['skip_test'] = skip_test
             __props__['tid'] = tid
             __props__['use_dsql'] = use_dsql
             __props__['vpc_id'] = vpc_id
             __props__['dba_nick_name'] = None
             __props__['state'] = None
+            __props__['status'] = None
         super(EnterpriseInstance, __self__).__init__(
             'alicloud:dms/enterpriseInstance:EnterpriseInstance',
             resource_name,
@@ -189,6 +196,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             host: Optional[pulumi.Input[str]] = None,
             instance_alias: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
+            instance_name: Optional[pulumi.Input[str]] = None,
             instance_source: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
@@ -197,7 +205,9 @@ class EnterpriseInstance(pulumi.CustomResource):
             safe_rule: Optional[pulumi.Input[str]] = None,
             safe_rule_id: Optional[pulumi.Input[str]] = None,
             sid: Optional[pulumi.Input[str]] = None,
+            skip_test: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             tid: Optional[pulumi.Input[float]] = None,
             use_dsql: Optional[pulumi.Input[float]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'EnterpriseInstance':
@@ -219,7 +229,8 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] env_type: Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
         :param pulumi.Input[float] export_timeout: Export timeout, unit: s (seconds).
         :param pulumi.Input[str] host: Host address of the target database.
-        :param pulumi.Input[str] instance_alias: Instance alias, to help users quickly distinguish positioning.
+        :param pulumi.Input[str] instance_alias: It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        :param pulumi.Input[str] instance_name: Instance name, to help users quickly distinguish positioning.
         :param pulumi.Input[str] instance_source: The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
         :param pulumi.Input[str] instance_type: Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
         :param pulumi.Input[str] network_type: Network type. Valid values: `CLASSIC`, `VPC`.
@@ -227,7 +238,8 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[float] query_timeout: Query timeout time, unit: s (seconds).
         :param pulumi.Input[str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
         :param pulumi.Input[str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-        :param pulumi.Input[str] state: The instance status.
+        :param pulumi.Input[str] state: It has been deprecated from provider version 1.100.0 and 'status' instead.
+        :param pulumi.Input[str] status: The instance status.
         :param pulumi.Input[float] tid: The tenant ID.
         :param pulumi.Input[float] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         :param pulumi.Input[str] vpc_id: VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
@@ -250,6 +262,7 @@ class EnterpriseInstance(pulumi.CustomResource):
         __props__["host"] = host
         __props__["instance_alias"] = instance_alias
         __props__["instance_id"] = instance_id
+        __props__["instance_name"] = instance_name
         __props__["instance_source"] = instance_source
         __props__["instance_type"] = instance_type
         __props__["network_type"] = network_type
@@ -258,7 +271,9 @@ class EnterpriseInstance(pulumi.CustomResource):
         __props__["safe_rule"] = safe_rule
         __props__["safe_rule_id"] = safe_rule_id
         __props__["sid"] = sid
+        __props__["skip_test"] = skip_test
         __props__["state"] = state
+        __props__["status"] = status
         __props__["tid"] = tid
         __props__["use_dsql"] = use_dsql
         __props__["vpc_id"] = vpc_id
@@ -361,7 +376,7 @@ class EnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceAlias")
     def instance_alias(self) -> pulumi.Output[str]:
         """
-        Instance alias, to help users quickly distinguish positioning.
+        It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
         """
         return pulumi.get(self, "instance_alias")
 
@@ -369,6 +384,14 @@ class EnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Output[str]:
+        """
+        Instance name, to help users quickly distinguish positioning.
+        """
+        return pulumi.get(self, "instance_name")
 
     @property
     @pulumi.getter(name="instanceSource")
@@ -432,12 +455,25 @@ class EnterpriseInstance(pulumi.CustomResource):
         return pulumi.get(self, "sid")
 
     @property
+    @pulumi.getter(name="skipTest")
+    def skip_test(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "skip_test")
+
+    @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The instance status.
+        It has been deprecated from provider version 1.100.0 and 'status' instead.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The instance status.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter

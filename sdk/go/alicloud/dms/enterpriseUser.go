@@ -27,12 +27,12 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := dms.NewEnterpriseUser(ctx, "example", &dms.EnterpriseUserArgs{
-// 			Mobile:   pulumi.String("1591066xxxx"),
-// 			NickName: pulumi.String("tf-test"),
+// 			Mobile: pulumi.String("1591066xxxx"),
 // 			RoleNames: pulumi.StringArray{
 // 				pulumi.String("DBA"),
 // 			},
-// 			Uid: pulumi.String("uid"),
+// 			Uid:      pulumi.String("uid"),
+// 			UserName: pulumi.String("tf-test"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -50,8 +50,10 @@ type EnterpriseUser struct {
 	MaxResultCount pulumi.IntPtrOutput `pulumi:"maxResultCount"`
 	// The DingTalk number or mobile number of the user.
 	Mobile pulumi.StringPtrOutput `pulumi:"mobile"`
-	// The nickname of the user.
-	NickName pulumi.StringPtrOutput `pulumi:"nickName"`
+	// It has been deprecated from 1.100.0 and use `userName` instead.
+	//
+	// Deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
+	NickName pulumi.StringOutput `pulumi:"nickName"`
 	// The roles that the user plays.
 	RoleNames pulumi.StringArrayOutput `pulumi:"roleNames"`
 	// The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
@@ -60,6 +62,8 @@ type EnterpriseUser struct {
 	Tid pulumi.IntPtrOutput `pulumi:"tid"`
 	// The Alibaba Cloud unique ID (UID) of the user to add.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// The nickname of the user.
+	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
 // NewEnterpriseUser registers a new resource with the given unique name, arguments, and options.
@@ -99,7 +103,9 @@ type enterpriseUserState struct {
 	MaxResultCount *int `pulumi:"maxResultCount"`
 	// The DingTalk number or mobile number of the user.
 	Mobile *string `pulumi:"mobile"`
-	// The nickname of the user.
+	// It has been deprecated from 1.100.0 and use `userName` instead.
+	//
+	// Deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
 	NickName *string `pulumi:"nickName"`
 	// The roles that the user plays.
 	RoleNames []string `pulumi:"roleNames"`
@@ -109,6 +115,8 @@ type enterpriseUserState struct {
 	Tid *int `pulumi:"tid"`
 	// The Alibaba Cloud unique ID (UID) of the user to add.
 	Uid *string `pulumi:"uid"`
+	// The nickname of the user.
+	UserName *string `pulumi:"userName"`
 }
 
 type EnterpriseUserState struct {
@@ -118,7 +126,9 @@ type EnterpriseUserState struct {
 	MaxResultCount pulumi.IntPtrInput
 	// The DingTalk number or mobile number of the user.
 	Mobile pulumi.StringPtrInput
-	// The nickname of the user.
+	// It has been deprecated from 1.100.0 and use `userName` instead.
+	//
+	// Deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
 	NickName pulumi.StringPtrInput
 	// The roles that the user plays.
 	RoleNames pulumi.StringArrayInput
@@ -128,6 +138,8 @@ type EnterpriseUserState struct {
 	Tid pulumi.IntPtrInput
 	// The Alibaba Cloud unique ID (UID) of the user to add.
 	Uid pulumi.StringPtrInput
+	// The nickname of the user.
+	UserName pulumi.StringPtrInput
 }
 
 func (EnterpriseUserState) ElementType() reflect.Type {
@@ -141,7 +153,9 @@ type enterpriseUserArgs struct {
 	MaxResultCount *int `pulumi:"maxResultCount"`
 	// The DingTalk number or mobile number of the user.
 	Mobile *string `pulumi:"mobile"`
-	// The nickname of the user.
+	// It has been deprecated from 1.100.0 and use `userName` instead.
+	//
+	// Deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
 	NickName *string `pulumi:"nickName"`
 	// The roles that the user plays.
 	RoleNames []string `pulumi:"roleNames"`
@@ -151,6 +165,8 @@ type enterpriseUserArgs struct {
 	Tid *int `pulumi:"tid"`
 	// The Alibaba Cloud unique ID (UID) of the user to add.
 	Uid string `pulumi:"uid"`
+	// The nickname of the user.
+	UserName *string `pulumi:"userName"`
 }
 
 // The set of arguments for constructing a EnterpriseUser resource.
@@ -161,7 +177,9 @@ type EnterpriseUserArgs struct {
 	MaxResultCount pulumi.IntPtrInput
 	// The DingTalk number or mobile number of the user.
 	Mobile pulumi.StringPtrInput
-	// The nickname of the user.
+	// It has been deprecated from 1.100.0 and use `userName` instead.
+	//
+	// Deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
 	NickName pulumi.StringPtrInput
 	// The roles that the user plays.
 	RoleNames pulumi.StringArrayInput
@@ -171,6 +189,8 @@ type EnterpriseUserArgs struct {
 	Tid pulumi.IntPtrInput
 	// The Alibaba Cloud unique ID (UID) of the user to add.
 	Uid pulumi.StringInput
+	// The nickname of the user.
+	UserName pulumi.StringPtrInput
 }
 
 func (EnterpriseUserArgs) ElementType() reflect.Type {

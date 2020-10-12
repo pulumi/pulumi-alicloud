@@ -38,6 +38,7 @@ export function getEnterpriseUsers(args?: GetEnterpriseUsersArgs, opts?: pulumi.
     }
     return pulumi.runtime.invoke("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", {
         "ids": args.ids,
+        "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "role": args.role,
         "searchKey": args.searchKey,
@@ -54,6 +55,10 @@ export interface GetEnterpriseUsersArgs {
      * A list of DMS Enterprise User IDs (UID).
      */
     readonly ids?: string[];
+    /**
+     * A regex string to filter the results by the DMS Enterprise User nick_name.
+     */
+    readonly nameRegex?: string;
     readonly outputFile?: string;
     /**
      * The role of the user to query.
@@ -85,6 +90,11 @@ export interface GetEnterpriseUsersResult {
      * A list of DMS Enterprise User IDs (UID).
      */
     readonly ids: string[];
+    readonly nameRegex?: string;
+    /**
+     * A list of DMS Enterprise User names.
+     */
+    readonly names: string[];
     readonly outputFile?: string;
     readonly role?: string;
     readonly searchKey?: string;

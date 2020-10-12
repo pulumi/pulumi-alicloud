@@ -395,10 +395,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_emr_cluster": {Tok: resource(emrMod, "Cluster")},
 
 			// FC
-			"alicloud_fc_function":      {Tok: resource(fcMod, "Function")},
-			"alicloud_fc_service":       {Tok: resource(fcMod, "Service")},
-			"alicloud_fc_trigger":       {Tok: resource(fcMod, "Trigger")},
-			"alicloud_fc_custom_domain": {Tok: resource(fcMod, "CustomDomain")},
+			"alicloud_fc_function":                     {Tok: resource(fcMod, "Function")},
+			"alicloud_fc_service":                      {Tok: resource(fcMod, "Service")},
+			"alicloud_fc_trigger":                      {Tok: resource(fcMod, "Trigger")},
+			"alicloud_fc_custom_domain":                {Tok: resource(fcMod, "CustomDomain")},
+			"alicloud_fc_function_async_invoke_config": {Tok: resource(fcMod, "FunctionAsyncInvokeConfig")},
 
 			// Gpdb
 			"alicloud_gpdb_connection": {Tok: resource(gpdbMod, "Connection")},

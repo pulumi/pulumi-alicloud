@@ -66,6 +66,12 @@ namespace Pulumi.AliCloud.Dms
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter the results by the DMS Enterprise User nick_name.
+        /// </summary>
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -110,6 +116,11 @@ namespace Pulumi.AliCloud.Dms
         /// A list of DMS Enterprise User IDs (UID).
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly string? NameRegex;
+        /// <summary>
+        /// A list of DMS Enterprise User names.
+        /// </summary>
+        public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? Role;
         public readonly string? SearchKey;
@@ -129,6 +140,10 @@ namespace Pulumi.AliCloud.Dms
 
             ImmutableArray<string> ids,
 
+            string? nameRegex,
+
+            ImmutableArray<string> names,
+
             string? outputFile,
 
             string? role,
@@ -143,6 +158,8 @@ namespace Pulumi.AliCloud.Dms
         {
             Id = id;
             Ids = ids;
+            NameRegex = nameRegex;
+            Names = names;
             OutputFile = outputFile;
             Role = role;
             SearchKey = searchKey;

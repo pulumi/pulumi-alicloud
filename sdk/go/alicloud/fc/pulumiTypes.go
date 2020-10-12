@@ -309,6 +309,428 @@ func (o CustomDomainRouteConfigArrayOutput) Index(i pulumi.IntInput) CustomDomai
 	}).(CustomDomainRouteConfigOutput)
 }
 
+type FunctionAsyncInvokeConfigDestinationConfig struct {
+	// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+	OnFailure *FunctionAsyncInvokeConfigDestinationConfigOnFailure `pulumi:"onFailure"`
+	// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+	OnSuccess *FunctionAsyncInvokeConfigDestinationConfigOnSuccess `pulumi:"onSuccess"`
+}
+
+// FunctionAsyncInvokeConfigDestinationConfigInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigArgs and FunctionAsyncInvokeConfigDestinationConfigOutput values.
+// You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigInput` via:
+//
+//          FunctionAsyncInvokeConfigDestinationConfigArgs{...}
+type FunctionAsyncInvokeConfigDestinationConfigInput interface {
+	pulumi.Input
+
+	ToFunctionAsyncInvokeConfigDestinationConfigOutput() FunctionAsyncInvokeConfigDestinationConfigOutput
+	ToFunctionAsyncInvokeConfigDestinationConfigOutputWithContext(context.Context) FunctionAsyncInvokeConfigDestinationConfigOutput
+}
+
+type FunctionAsyncInvokeConfigDestinationConfigArgs struct {
+	// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+	OnFailure FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrInput `pulumi:"onFailure"`
+	// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+	OnSuccess FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrInput `pulumi:"onSuccess"`
+}
+
+func (FunctionAsyncInvokeConfigDestinationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfig)(nil)).Elem()
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigArgs) ToFunctionAsyncInvokeConfigDestinationConfigOutput() FunctionAsyncInvokeConfigDestinationConfigOutput {
+	return i.ToFunctionAsyncInvokeConfigDestinationConfigOutputWithContext(context.Background())
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigArgs) ToFunctionAsyncInvokeConfigDestinationConfigOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigDestinationConfigOutput)
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigArgs) ToFunctionAsyncInvokeConfigDestinationConfigPtrOutput() FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
+	return i.ToFunctionAsyncInvokeConfigDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigArgs) ToFunctionAsyncInvokeConfigDestinationConfigPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigDestinationConfigOutput).ToFunctionAsyncInvokeConfigDestinationConfigPtrOutputWithContext(ctx)
+}
+
+// FunctionAsyncInvokeConfigDestinationConfigPtrInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigArgs, FunctionAsyncInvokeConfigDestinationConfigPtr and FunctionAsyncInvokeConfigDestinationConfigPtrOutput values.
+// You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigPtrInput` via:
+//
+//          FunctionAsyncInvokeConfigDestinationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type FunctionAsyncInvokeConfigDestinationConfigPtrInput interface {
+	pulumi.Input
+
+	ToFunctionAsyncInvokeConfigDestinationConfigPtrOutput() FunctionAsyncInvokeConfigDestinationConfigPtrOutput
+	ToFunctionAsyncInvokeConfigDestinationConfigPtrOutputWithContext(context.Context) FunctionAsyncInvokeConfigDestinationConfigPtrOutput
+}
+
+type functionAsyncInvokeConfigDestinationConfigPtrType FunctionAsyncInvokeConfigDestinationConfigArgs
+
+func FunctionAsyncInvokeConfigDestinationConfigPtr(v *FunctionAsyncInvokeConfigDestinationConfigArgs) FunctionAsyncInvokeConfigDestinationConfigPtrInput {
+	return (*functionAsyncInvokeConfigDestinationConfigPtrType)(v)
+}
+
+func (*functionAsyncInvokeConfigDestinationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionAsyncInvokeConfigDestinationConfig)(nil)).Elem()
+}
+
+func (i *functionAsyncInvokeConfigDestinationConfigPtrType) ToFunctionAsyncInvokeConfigDestinationConfigPtrOutput() FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
+	return i.ToFunctionAsyncInvokeConfigDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *functionAsyncInvokeConfigDestinationConfigPtrType) ToFunctionAsyncInvokeConfigDestinationConfigPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigDestinationConfigPtrOutput)
+}
+
+type FunctionAsyncInvokeConfigDestinationConfigOutput struct{ *pulumi.OutputState }
+
+func (FunctionAsyncInvokeConfigDestinationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfig)(nil)).Elem()
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOutput) ToFunctionAsyncInvokeConfigDestinationConfigOutput() FunctionAsyncInvokeConfigDestinationConfigOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOutput) ToFunctionAsyncInvokeConfigDestinationConfigOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOutput) ToFunctionAsyncInvokeConfigDestinationConfigPtrOutput() FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
+	return o.ToFunctionAsyncInvokeConfigDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOutput) ToFunctionAsyncInvokeConfigDestinationConfigPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
+	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfig) *FunctionAsyncInvokeConfigDestinationConfig {
+		return &v
+	}).(FunctionAsyncInvokeConfigDestinationConfigPtrOutput)
+}
+
+// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+func (o FunctionAsyncInvokeConfigDestinationConfigOutput) OnFailure() FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfig) *FunctionAsyncInvokeConfigDestinationConfigOnFailure {
+		return v.OnFailure
+	}).(FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
+}
+
+// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+func (o FunctionAsyncInvokeConfigDestinationConfigOutput) OnSuccess() FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfig) *FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
+		return v.OnSuccess
+	}).(FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput)
+}
+
+type FunctionAsyncInvokeConfigDestinationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionAsyncInvokeConfigDestinationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionAsyncInvokeConfigDestinationConfig)(nil)).Elem()
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) ToFunctionAsyncInvokeConfigDestinationConfigPtrOutput() FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) ToFunctionAsyncInvokeConfigDestinationConfigPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) Elem() FunctionAsyncInvokeConfigDestinationConfigOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfig) FunctionAsyncInvokeConfigDestinationConfig {
+		return *v
+	}).(FunctionAsyncInvokeConfigDestinationConfigOutput)
+}
+
+// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) OnFailure() FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfig) *FunctionAsyncInvokeConfigDestinationConfigOnFailure {
+		if v == nil {
+			return nil
+		}
+		return v.OnFailure
+	}).(FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
+}
+
+// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) OnSuccess() FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfig) *FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
+		if v == nil {
+			return nil
+		}
+		return v.OnSuccess
+	}).(FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput)
+}
+
+type FunctionAsyncInvokeConfigDestinationConfigOnFailure struct {
+	// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+	Destination string `pulumi:"destination"`
+}
+
+// FunctionAsyncInvokeConfigDestinationConfigOnFailureInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs and FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput values.
+// You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigOnFailureInput` via:
+//
+//          FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{...}
+type FunctionAsyncInvokeConfigDestinationConfigOnFailureInput interface {
+	pulumi.Input
+
+	ToFunctionAsyncInvokeConfigDestinationConfigOnFailureOutput() FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput
+	ToFunctionAsyncInvokeConfigDestinationConfigOnFailureOutputWithContext(context.Context) FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput
+}
+
+type FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs struct {
+	// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfigOnFailure)(nil)).Elem()
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs) ToFunctionAsyncInvokeConfigDestinationConfigOnFailureOutput() FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput {
+	return i.ToFunctionAsyncInvokeConfigDestinationConfigOnFailureOutputWithContext(context.Background())
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs) ToFunctionAsyncInvokeConfigDestinationConfigOnFailureOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput)
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs) ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput() FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return i.ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs) ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput).ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx)
+}
+
+// FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs, FunctionAsyncInvokeConfigDestinationConfigOnFailurePtr and FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput values.
+// You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrInput` via:
+//
+//          FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{...}
+//
+//  or:
+//
+//          nil
+type FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrInput interface {
+	pulumi.Input
+
+	ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput() FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput
+	ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(context.Context) FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput
+}
+
+type functionAsyncInvokeConfigDestinationConfigOnFailurePtrType FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs
+
+func FunctionAsyncInvokeConfigDestinationConfigOnFailurePtr(v *FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs) FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrInput {
+	return (*functionAsyncInvokeConfigDestinationConfigOnFailurePtrType)(v)
+}
+
+func (*functionAsyncInvokeConfigDestinationConfigOnFailurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionAsyncInvokeConfigDestinationConfigOnFailure)(nil)).Elem()
+}
+
+func (i *functionAsyncInvokeConfigDestinationConfigOnFailurePtrType) ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput() FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return i.ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i *functionAsyncInvokeConfigDestinationConfigOnFailurePtrType) ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
+}
+
+type FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput struct{ *pulumi.OutputState }
+
+func (FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfigOnFailure)(nil)).Elem()
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnFailureOutput() FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnFailureOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput() FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o.ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfigOnFailure) *FunctionAsyncInvokeConfigDestinationConfigOnFailure {
+		return &v
+	}).(FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
+}
+
+// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+func (o FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfigOnFailure) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionAsyncInvokeConfigDestinationConfigOnFailure)(nil)).Elem()
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput() FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput) Elem() FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfigOnFailure) FunctionAsyncInvokeConfigDestinationConfigOnFailure {
+		return *v
+	}).(FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput)
+}
+
+// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+func (o FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfigOnFailure) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type FunctionAsyncInvokeConfigDestinationConfigOnSuccess struct {
+	// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+	Destination string `pulumi:"destination"`
+}
+
+// FunctionAsyncInvokeConfigDestinationConfigOnSuccessInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs and FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput values.
+// You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigOnSuccessInput` via:
+//
+//          FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{...}
+type FunctionAsyncInvokeConfigDestinationConfigOnSuccessInput interface {
+	pulumi.Input
+
+	ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput() FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput
+	ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessOutputWithContext(context.Context) FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput
+}
+
+type FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs struct {
+	// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfigOnSuccess)(nil)).Elem()
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput() FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput {
+	return i.ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessOutputWithContext(context.Background())
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput)
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput() FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return i.ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput).ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx)
+}
+
+// FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs, FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtr and FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput values.
+// You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrInput` via:
+//
+//          FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{...}
+//
+//  or:
+//
+//          nil
+type FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrInput interface {
+	pulumi.Input
+
+	ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput() FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput
+	ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(context.Context) FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput
+}
+
+type functionAsyncInvokeConfigDestinationConfigOnSuccessPtrType FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs
+
+func FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtr(v *FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs) FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrInput {
+	return (*functionAsyncInvokeConfigDestinationConfigOnSuccessPtrType)(v)
+}
+
+func (*functionAsyncInvokeConfigDestinationConfigOnSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionAsyncInvokeConfigDestinationConfigOnSuccess)(nil)).Elem()
+}
+
+func (i *functionAsyncInvokeConfigDestinationConfigOnSuccessPtrType) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput() FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return i.ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *functionAsyncInvokeConfigDestinationConfigOnSuccessPtrType) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput)
+}
+
+type FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput struct{ *pulumi.OutputState }
+
+func (FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAsyncInvokeConfigDestinationConfigOnSuccess)(nil)).Elem()
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput() FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput() FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o.ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfigOnSuccess) *FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
+		return &v
+	}).(FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput)
+}
+
+// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfigOnSuccess) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionAsyncInvokeConfigDestinationConfigOnSuccess)(nil)).Elem()
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput() FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) ToFunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) Elem() FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfigOnSuccess) FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
+		return *v
+	}).(FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput)
+}
+
+// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfigOnSuccess) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
 type FunctionCustomContainerConfig struct {
 	// The args field specifies the arguments passed to the command.
 	Args *string `pulumi:"args"`
@@ -2601,6 +3023,12 @@ func init() {
 	pulumi.RegisterOutputType(CustomDomainCertConfigPtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainRouteConfigOutput{})
 	pulumi.RegisterOutputType(CustomDomainRouteConfigArrayOutput{})
+	pulumi.RegisterOutputType(FunctionAsyncInvokeConfigDestinationConfigOutput{})
+	pulumi.RegisterOutputType(FunctionAsyncInvokeConfigDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput{})
+	pulumi.RegisterOutputType(FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput{})
+	pulumi.RegisterOutputType(FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput{})
+	pulumi.RegisterOutputType(FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput{})
 	pulumi.RegisterOutputType(FunctionCustomContainerConfigOutput{})
 	pulumi.RegisterOutputType(FunctionCustomContainerConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceLogConfigOutput{})

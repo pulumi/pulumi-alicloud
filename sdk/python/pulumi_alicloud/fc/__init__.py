@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .custom_domain import *
 from .function import *
+from .function_async_invoke_config import *
 from .get_custom_domains import *
 from .get_functions import *
 from .get_services import *

@@ -33,10 +33,12 @@ type GetEnterpriseInstancesInstance struct {
 	ExportTimeout int `pulumi:"exportTimeout"`
 	// The endpoint of the database instance.
 	Host string `pulumi:"host"`
+	Id   string `pulumi:"id"`
 	// The alias of the database instance.
 	InstanceAlias string `pulumi:"instanceAlias"`
 	// The ID of the database instance.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId   string `pulumi:"instanceId"`
+	InstanceName string `pulumi:"instanceName"`
 	// The source of the database instance.
 	InstanceSource string `pulumi:"instanceSource"`
 	// The ID of the database instance.
@@ -91,10 +93,12 @@ type GetEnterpriseInstancesInstanceArgs struct {
 	ExportTimeout pulumi.IntInput `pulumi:"exportTimeout"`
 	// The endpoint of the database instance.
 	Host pulumi.StringInput `pulumi:"host"`
+	Id   pulumi.StringInput `pulumi:"id"`
 	// The alias of the database instance.
 	InstanceAlias pulumi.StringInput `pulumi:"instanceAlias"`
 	// The ID of the database instance.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	InstanceId   pulumi.StringInput `pulumi:"instanceId"`
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
 	// The source of the database instance.
 	InstanceSource pulumi.StringInput `pulumi:"instanceSource"`
 	// The ID of the database instance.
@@ -221,6 +225,10 @@ func (o GetEnterpriseInstancesInstanceOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnterpriseInstancesInstance) string { return v.Host }).(pulumi.StringOutput)
 }
 
+func (o GetEnterpriseInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
 // The alias of the database instance.
 func (o GetEnterpriseInstancesInstanceOutput) InstanceAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnterpriseInstancesInstance) string { return v.InstanceAlias }).(pulumi.StringOutput)
@@ -229,6 +237,10 @@ func (o GetEnterpriseInstancesInstanceOutput) InstanceAlias() pulumi.StringOutpu
 // The ID of the database instance.
 func (o GetEnterpriseInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnterpriseInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetEnterpriseInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
 // The source of the database instance.
@@ -314,6 +326,8 @@ type GetEnterpriseUsersUser struct {
 	Uid    string `pulumi:"uid"`
 	// The ID of the user.
 	UserId string `pulumi:"userId"`
+	// The nickname of the user.
+	UserName string `pulumi:"userName"`
 }
 
 // GetEnterpriseUsersUserInput is an input type that accepts GetEnterpriseUsersUserArgs and GetEnterpriseUsersUserOutput values.
@@ -345,6 +359,8 @@ type GetEnterpriseUsersUserArgs struct {
 	Uid    pulumi.StringInput `pulumi:"uid"`
 	// The ID of the user.
 	UserId pulumi.StringInput `pulumi:"userId"`
+	// The nickname of the user.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (GetEnterpriseUsersUserArgs) ElementType() reflect.Type {
@@ -440,6 +456,11 @@ func (o GetEnterpriseUsersUserOutput) Uid() pulumi.StringOutput {
 // The ID of the user.
 func (o GetEnterpriseUsersUserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnterpriseUsersUser) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The nickname of the user.
+func (o GetEnterpriseUsersUserOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersUser) string { return v.UserName }).(pulumi.StringOutput)
 }
 
 type GetEnterpriseUsersUserArrayOutput struct{ *pulumi.OutputState }

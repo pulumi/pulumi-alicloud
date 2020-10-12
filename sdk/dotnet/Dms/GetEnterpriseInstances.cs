@@ -48,6 +48,12 @@ namespace Pulumi.AliCloud.Dms
         public string? InstanceType { get; set; }
 
         /// <summary>
+        /// A regex string to filter the results by the DMS Enterprise Instance instance_alias.
+        /// </summary>
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
+
+        /// <summary>
         /// The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
         /// </summary>
         [Input("netType")]
@@ -91,6 +97,10 @@ namespace Pulumi.AliCloud.Dms
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of DMS Enterprise IDs (Each of them consists of host:port).
+        /// </summary>
+        public readonly ImmutableArray<string> Ids;
         public readonly string? InstanceAliasRegex;
         /// <summary>
         /// The ID of the database instance.
@@ -104,6 +114,11 @@ namespace Pulumi.AliCloud.Dms
         /// A list of KMS keys. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEnterpriseInstancesInstanceResult> Instances;
+        public readonly string? NameRegex;
+        /// <summary>
+        /// A list of DMS Enterprise names.
+        /// </summary>
+        public readonly ImmutableArray<string> Names;
         public readonly string? NetType;
         public readonly string? OutputFile;
         public readonly string? SearchKey;
@@ -119,6 +134,8 @@ namespace Pulumi.AliCloud.Dms
 
             string id,
 
+            ImmutableArray<string> ids,
+
             string? instanceAliasRegex,
 
             string? instanceSource,
@@ -126,6 +143,10 @@ namespace Pulumi.AliCloud.Dms
             string? instanceType,
 
             ImmutableArray<Outputs.GetEnterpriseInstancesInstanceResult> instances,
+
+            string? nameRegex,
+
+            ImmutableArray<string> names,
 
             string? netType,
 
@@ -139,10 +160,13 @@ namespace Pulumi.AliCloud.Dms
         {
             EnvType = envType;
             Id = id;
+            Ids = ids;
             InstanceAliasRegex = instanceAliasRegex;
             InstanceSource = instanceSource;
             InstanceType = instanceType;
             Instances = instances;
+            NameRegex = nameRegex;
+            Names = names;
             NetType = netType;
             OutputFile = outputFile;
             SearchKey = searchKey;

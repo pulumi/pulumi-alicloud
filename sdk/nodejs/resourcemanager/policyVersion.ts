@@ -33,10 +33,6 @@ export class PolicyVersion extends pulumi.CustomResource {
     }
 
     /**
-     * The time when the policy version was created.
-     */
-    public /*out*/ readonly createDate!: pulumi.Output<string>;
-    /**
      * Specifies whether to set the policy version as the default version. Default to `false`.
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
@@ -50,10 +46,6 @@ export class PolicyVersion extends pulumi.CustomResource {
      * The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      */
     public readonly policyName!: pulumi.Output<string>;
-    /**
-     * The ID of the policy version.
-     */
-    public /*out*/ readonly versionId!: pulumi.Output<string>;
 
     /**
      * Create a PolicyVersion resource with the given unique name, arguments, and options.
@@ -67,11 +59,9 @@ export class PolicyVersion extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as PolicyVersionState | undefined;
-            inputs["createDate"] = state ? state.createDate : undefined;
             inputs["isDefaultVersion"] = state ? state.isDefaultVersion : undefined;
             inputs["policyDocument"] = state ? state.policyDocument : undefined;
             inputs["policyName"] = state ? state.policyName : undefined;
-            inputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as PolicyVersionArgs | undefined;
             if (!args || args.policyDocument === undefined) {
@@ -83,8 +73,6 @@ export class PolicyVersion extends pulumi.CustomResource {
             inputs["isDefaultVersion"] = args ? args.isDefaultVersion : undefined;
             inputs["policyDocument"] = args ? args.policyDocument : undefined;
             inputs["policyName"] = args ? args.policyName : undefined;
-            inputs["createDate"] = undefined /*out*/;
-            inputs["versionId"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -102,10 +90,6 @@ export class PolicyVersion extends pulumi.CustomResource {
  */
 export interface PolicyVersionState {
     /**
-     * The time when the policy version was created.
-     */
-    readonly createDate?: pulumi.Input<string>;
-    /**
      * Specifies whether to set the policy version as the default version. Default to `false`.
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
@@ -119,10 +103,6 @@ export interface PolicyVersionState {
      * The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      */
     readonly policyName?: pulumi.Input<string>;
-    /**
-     * The ID of the policy version.
-     */
-    readonly versionId?: pulumi.Input<string>;
 }
 
 /**

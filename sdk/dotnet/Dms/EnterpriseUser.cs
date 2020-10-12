@@ -27,12 +27,12 @@ namespace Pulumi.AliCloud.Dms
     ///         var example = new AliCloud.Dms.EnterpriseUser("example", new AliCloud.Dms.EnterpriseUserArgs
     ///         {
     ///             Mobile = "1591066xxxx",
-    ///             NickName = "tf-test",
     ///             RoleNames = 
     ///             {
     ///                 "DBA",
     ///             },
     ///             Uid = "uid",
+    ///             UserName = "tf-test",
     ///         });
     ///     }
     /// 
@@ -60,10 +60,10 @@ namespace Pulumi.AliCloud.Dms
         public Output<string?> Mobile { get; private set; } = null!;
 
         /// <summary>
-        /// The nickname of the user.
+        /// It has been deprecated from 1.100.0 and use `user_name` instead.
         /// </summary>
         [Output("nickName")]
-        public Output<string?> NickName { get; private set; } = null!;
+        public Output<string> NickName { get; private set; } = null!;
 
         /// <summary>
         /// The roles that the user plays.
@@ -88,6 +88,12 @@ namespace Pulumi.AliCloud.Dms
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// The nickname of the user.
+        /// </summary>
+        [Output("userName")]
+        public Output<string> UserName { get; private set; } = null!;
 
 
         /// <summary>
@@ -154,7 +160,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Mobile { get; set; }
 
         /// <summary>
-        /// The nickname of the user.
+        /// It has been deprecated from 1.100.0 and use `user_name` instead.
         /// </summary>
         [Input("nickName")]
         public Input<string>? NickName { get; set; }
@@ -189,6 +195,12 @@ namespace Pulumi.AliCloud.Dms
         [Input("uid", required: true)]
         public Input<string> Uid { get; set; } = null!;
 
+        /// <summary>
+        /// The nickname of the user.
+        /// </summary>
+        [Input("userName")]
+        public Input<string>? UserName { get; set; }
+
         public EnterpriseUserArgs()
         {
         }
@@ -215,7 +227,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Mobile { get; set; }
 
         /// <summary>
-        /// The nickname of the user.
+        /// It has been deprecated from 1.100.0 and use `user_name` instead.
         /// </summary>
         [Input("nickName")]
         public Input<string>? NickName { get; set; }
@@ -249,6 +261,12 @@ namespace Pulumi.AliCloud.Dms
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// The nickname of the user.
+        /// </summary>
+        [Input("userName")]
+        public Input<string>? UserName { get; set; }
 
         public EnterpriseUserState()
         {

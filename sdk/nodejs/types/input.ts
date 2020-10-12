@@ -1125,6 +1125,31 @@ export namespace fc {
         serviceName: pulumi.Input<string>;
     }
 
+    export interface FunctionAsyncInvokeConfigDestinationConfig {
+        /**
+         * Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+         */
+        onFailure?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailure>;
+        /**
+         * Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+         */
+        onSuccess?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccess>;
+    }
+
+    export interface FunctionAsyncInvokeConfigDestinationConfigOnFailure {
+        /**
+         * Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+         */
+        destination: pulumi.Input<string>;
+    }
+
+    export interface FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
+        /**
+         * Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+         */
+        destination: pulumi.Input<string>;
+    }
+
     export interface FunctionCustomContainerConfig {
         /**
          * The args field specifies the arguments passed to the command.

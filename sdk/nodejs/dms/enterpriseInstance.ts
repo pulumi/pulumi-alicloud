@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     envType: "test",
  *     exportTimeout: 600,
  *     host: "rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com",
- *     instanceAlias: "your_alias_name",
+ *     instanceName: "your_alias_name",
  *     instanceSource: "RDS",
  *     instanceType: "MySQL",
  *     networkType: "VPC",
@@ -109,10 +109,16 @@ export class EnterpriseInstance extends pulumi.CustomResource {
      */
     public readonly host!: pulumi.Output<string>;
     /**
-     * Instance alias, to help users quickly distinguish positioning.
+     * It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+     *
+     * @deprecated Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
      */
     public readonly instanceAlias!: pulumi.Output<string>;
     public readonly instanceId!: pulumi.Output<string>;
+    /**
+     * Instance name, to help users quickly distinguish positioning.
+     */
+    public readonly instanceName!: pulumi.Output<string>;
     /**
      * The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
      */
@@ -142,10 +148,17 @@ export class EnterpriseInstance extends pulumi.CustomResource {
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */
     public readonly sid!: pulumi.Output<string | undefined>;
+    public readonly skipTest!: pulumi.Output<boolean | undefined>;
+    /**
+     * It has been deprecated from provider version 1.100.0 and 'status' instead.
+     *
+     * @deprecated Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The instance status.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The tenant ID.
      */
@@ -185,6 +198,7 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             inputs["host"] = state ? state.host : undefined;
             inputs["instanceAlias"] = state ? state.instanceAlias : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
+            inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["instanceSource"] = state ? state.instanceSource : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
             inputs["networkType"] = state ? state.networkType : undefined;
@@ -193,7 +207,9 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             inputs["safeRule"] = state ? state.safeRule : undefined;
             inputs["safeRuleId"] = state ? state.safeRuleId : undefined;
             inputs["sid"] = state ? state.sid : undefined;
+            inputs["skipTest"] = state ? state.skipTest : undefined;
             inputs["state"] = state ? state.state : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["tid"] = state ? state.tid : undefined;
             inputs["useDsql"] = state ? state.useDsql : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
@@ -216,9 +232,6 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             }
             if (!args || args.host === undefined) {
                 throw new Error("Missing required property 'host'");
-            }
-            if (!args || args.instanceAlias === undefined) {
-                throw new Error("Missing required property 'instanceAlias'");
             }
             if (!args || args.instanceSource === undefined) {
                 throw new Error("Missing required property 'instanceSource'");
@@ -251,6 +264,7 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             inputs["host"] = args ? args.host : undefined;
             inputs["instanceAlias"] = args ? args.instanceAlias : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["instanceName"] = args ? args.instanceName : undefined;
             inputs["instanceSource"] = args ? args.instanceSource : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["networkType"] = args ? args.networkType : undefined;
@@ -259,11 +273,13 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             inputs["safeRule"] = args ? args.safeRule : undefined;
             inputs["safeRuleId"] = args ? args.safeRuleId : undefined;
             inputs["sid"] = args ? args.sid : undefined;
+            inputs["skipTest"] = args ? args.skipTest : undefined;
             inputs["tid"] = args ? args.tid : undefined;
             inputs["useDsql"] = args ? args.useDsql : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
             inputs["dbaNickName"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -326,10 +342,16 @@ export interface EnterpriseInstanceState {
      */
     readonly host?: pulumi.Input<string>;
     /**
-     * Instance alias, to help users quickly distinguish positioning.
+     * It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+     *
+     * @deprecated Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
      */
     readonly instanceAlias?: pulumi.Input<string>;
     readonly instanceId?: pulumi.Input<string>;
+    /**
+     * Instance name, to help users quickly distinguish positioning.
+     */
+    readonly instanceName?: pulumi.Input<string>;
     /**
      * The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
      */
@@ -359,10 +381,17 @@ export interface EnterpriseInstanceState {
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */
     readonly sid?: pulumi.Input<string>;
+    readonly skipTest?: pulumi.Input<boolean>;
+    /**
+     * It has been deprecated from provider version 1.100.0 and 'status' instead.
+     *
+     * @deprecated Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
+     */
+    readonly state?: pulumi.Input<string>;
     /**
      * The instance status.
      */
-    readonly state?: pulumi.Input<string>;
+    readonly status?: pulumi.Input<string>;
     /**
      * The tenant ID.
      */
@@ -423,10 +452,16 @@ export interface EnterpriseInstanceArgs {
      */
     readonly host: pulumi.Input<string>;
     /**
-     * Instance alias, to help users quickly distinguish positioning.
+     * It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+     *
+     * @deprecated Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
      */
-    readonly instanceAlias: pulumi.Input<string>;
+    readonly instanceAlias?: pulumi.Input<string>;
     readonly instanceId?: pulumi.Input<string>;
+    /**
+     * Instance name, to help users quickly distinguish positioning.
+     */
+    readonly instanceName?: pulumi.Input<string>;
     /**
      * The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
      */
@@ -456,6 +491,7 @@ export interface EnterpriseInstanceArgs {
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */
     readonly sid?: pulumi.Input<string>;
+    readonly skipTest?: pulumi.Input<boolean>;
     /**
      * The tenant ID.
      */

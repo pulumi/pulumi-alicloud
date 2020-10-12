@@ -20,13 +20,16 @@ class GetEnterpriseInstancesResult:
     """
     A collection of values returned by getEnterpriseInstances.
     """
-    def __init__(__self__, env_type=None, id=None, instance_alias_regex=None, instance_source=None, instance_type=None, instances=None, net_type=None, output_file=None, search_key=None, status=None, tid=None):
+    def __init__(__self__, env_type=None, id=None, ids=None, instance_alias_regex=None, instance_source=None, instance_type=None, instances=None, name_regex=None, names=None, net_type=None, output_file=None, search_key=None, status=None, tid=None):
         if env_type and not isinstance(env_type, str):
             raise TypeError("Expected argument 'env_type' to be a str")
         pulumi.set(__self__, "env_type", env_type)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ids and not isinstance(ids, list):
+            raise TypeError("Expected argument 'ids' to be a list")
+        pulumi.set(__self__, "ids", ids)
         if instance_alias_regex and not isinstance(instance_alias_regex, str):
             raise TypeError("Expected argument 'instance_alias_regex' to be a str")
         pulumi.set(__self__, "instance_alias_regex", instance_alias_regex)
@@ -39,6 +42,12 @@ class GetEnterpriseInstancesResult:
         if instances and not isinstance(instances, list):
             raise TypeError("Expected argument 'instances' to be a list")
         pulumi.set(__self__, "instances", instances)
+        if name_regex and not isinstance(name_regex, str):
+            raise TypeError("Expected argument 'name_regex' to be a str")
+        pulumi.set(__self__, "name_regex", name_regex)
+        if names and not isinstance(names, list):
+            raise TypeError("Expected argument 'names' to be a list")
+        pulumi.set(__self__, "names", names)
         if net_type and not isinstance(net_type, str):
             raise TypeError("Expected argument 'net_type' to be a str")
         pulumi.set(__self__, "net_type", net_type)
@@ -72,6 +81,14 @@ class GetEnterpriseInstancesResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter
+    def ids(self) -> List[str]:
+        """
+        A list of DMS Enterprise IDs (Each of them consists of host:port).
+        """
+        return pulumi.get(self, "ids")
+
+    @property
     @pulumi.getter(name="instanceAliasRegex")
     def instance_alias_regex(self) -> Optional[str]:
         return pulumi.get(self, "instance_alias_regex")
@@ -99,6 +116,19 @@ class GetEnterpriseInstancesResult:
         A list of KMS keys. Each element contains the following attributes:
         """
         return pulumi.get(self, "instances")
+
+    @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[str]:
+        return pulumi.get(self, "name_regex")
+
+    @property
+    @pulumi.getter
+    def names(self) -> List[str]:
+        """
+        A list of DMS Enterprise names.
+        """
+        return pulumi.get(self, "names")
 
     @property
     @pulumi.getter(name="netType")
@@ -137,10 +167,13 @@ class AwaitableGetEnterpriseInstancesResult(GetEnterpriseInstancesResult):
         return GetEnterpriseInstancesResult(
             env_type=self.env_type,
             id=self.id,
+            ids=self.ids,
             instance_alias_regex=self.instance_alias_regex,
             instance_source=self.instance_source,
             instance_type=self.instance_type,
             instances=self.instances,
+            name_regex=self.name_regex,
+            names=self.names,
             net_type=self.net_type,
             output_file=self.output_file,
             search_key=self.search_key,
@@ -152,6 +185,7 @@ def get_enterprise_instances(env_type: Optional[str] = None,
                              instance_alias_regex: Optional[str] = None,
                              instance_source: Optional[str] = None,
                              instance_type: Optional[str] = None,
+                             name_regex: Optional[str] = None,
                              net_type: Optional[str] = None,
                              output_file: Optional[str] = None,
                              search_key: Optional[str] = None,
@@ -168,6 +202,7 @@ def get_enterprise_instances(env_type: Optional[str] = None,
     :param str instance_alias_regex: A regex string to filter the results by the DMS Enterprise Instance instance_alias.
     :param str instance_source: The source of the database instance.
     :param str instance_type: The ID of the database instance.
+    :param str name_regex: A regex string to filter the results by the DMS Enterprise Instance instance_alias.
     :param str net_type: The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
     :param str search_key: The keyword used to query database instances.
     :param str status: Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
@@ -178,6 +213,7 @@ def get_enterprise_instances(env_type: Optional[str] = None,
     __args__['instanceAliasRegex'] = instance_alias_regex
     __args__['instanceSource'] = instance_source
     __args__['instanceType'] = instance_type
+    __args__['nameRegex'] = name_regex
     __args__['netType'] = net_type
     __args__['outputFile'] = output_file
     __args__['searchKey'] = search_key
@@ -192,10 +228,13 @@ def get_enterprise_instances(env_type: Optional[str] = None,
     return AwaitableGetEnterpriseInstancesResult(
         env_type=__ret__.env_type,
         id=__ret__.id,
+        ids=__ret__.ids,
         instance_alias_regex=__ret__.instance_alias_regex,
         instance_source=__ret__.instance_source,
         instance_type=__ret__.instance_type,
         instances=__ret__.instances,
+        name_regex=__ret__.name_regex,
+        names=__ret__.names,
         net_type=__ret__.net_type,
         output_file=__ret__.output_file,
         search_key=__ret__.search_key,

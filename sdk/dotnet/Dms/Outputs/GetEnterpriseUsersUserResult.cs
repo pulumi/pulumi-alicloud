@@ -46,6 +46,10 @@ namespace Pulumi.AliCloud.Dms.Outputs
         /// The ID of the user.
         /// </summary>
         public readonly string UserId;
+        /// <summary>
+        /// The nickname of the user.
+        /// </summary>
+        public readonly string UserName;
 
         [OutputConstructor]
         private GetEnterpriseUsersUserResult(
@@ -65,7 +69,9 @@ namespace Pulumi.AliCloud.Dms.Outputs
 
             string uid,
 
-            string userId)
+            string userId,
+
+            string userName)
         {
             Id = id;
             Mobile = mobile;
@@ -76,6 +82,7 @@ namespace Pulumi.AliCloud.Dms.Outputs
             Status = status;
             Uid = uid;
             UserId = userId;
+            UserName = userName;
         }
     }
 }
