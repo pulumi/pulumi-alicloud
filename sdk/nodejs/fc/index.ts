@@ -4,6 +4,7 @@
 // Export members:
 export * from "./customDomain";
 export * from "./function";
+export * from "./functionAsyncInvokeConfig";
 export * from "./getCustomDomains";
 export * from "./getFunctions";
 export * from "./getServices";

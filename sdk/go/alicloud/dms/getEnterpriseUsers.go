@@ -52,8 +52,10 @@ func GetEnterpriseUsers(ctx *pulumi.Context, args *GetEnterpriseUsersArgs, opts 
 // A collection of arguments for invoking getEnterpriseUsers.
 type GetEnterpriseUsersArgs struct {
 	// A list of DMS Enterprise User IDs (UID).
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// A regex string to filter the results by the DMS Enterprise User nick_name.
+	NameRegex  *string `pulumi:"nameRegex"`
+	OutputFile *string `pulumi:"outputFile"`
 	// The role of the user to query.
 	Role *string `pulumi:"role"`
 	// The keyword used to query users.
@@ -69,7 +71,10 @@ type GetEnterpriseUsersResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of DMS Enterprise User IDs (UID).
-	Ids        []string `pulumi:"ids"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of DMS Enterprise User names.
+	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Role       *string  `pulumi:"role"`
 	SearchKey  *string  `pulumi:"searchKey"`

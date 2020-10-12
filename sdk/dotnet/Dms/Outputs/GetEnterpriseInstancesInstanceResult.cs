@@ -57,6 +57,7 @@ namespace Pulumi.AliCloud.Dms.Outputs
         /// The endpoint of the database instance.
         /// </summary>
         public readonly string Host;
+        public readonly string Id;
         /// <summary>
         /// The alias of the database instance.
         /// </summary>
@@ -65,6 +66,7 @@ namespace Pulumi.AliCloud.Dms.Outputs
         /// The ID of the database instance.
         /// </summary>
         public readonly string InstanceId;
+        public readonly string InstanceName;
         /// <summary>
         /// The source of the database instance.
         /// </summary>
@@ -126,9 +128,13 @@ namespace Pulumi.AliCloud.Dms.Outputs
 
             string host,
 
+            string id,
+
             string instanceAlias,
 
             string instanceId,
+
+            string instanceName,
 
             string instanceSource,
 
@@ -159,8 +165,10 @@ namespace Pulumi.AliCloud.Dms.Outputs
             EnvType = envType;
             ExportTimeout = exportTimeout;
             Host = host;
+            Id = id;
             InstanceAlias = instanceAlias;
             InstanceId = instanceId;
+            InstanceName = instanceName;
             InstanceSource = instanceSource;
             InstanceType = instanceType;
             Port = port;

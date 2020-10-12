@@ -25,6 +25,7 @@ export function getEnterpriseInstances(args?: GetEnterpriseInstancesArgs, opts?:
         "instanceAliasRegex": args.instanceAliasRegex,
         "instanceSource": args.instanceSource,
         "instanceType": args.instanceType,
+        "nameRegex": args.nameRegex,
         "netType": args.netType,
         "outputFile": args.outputFile,
         "searchKey": args.searchKey,
@@ -53,6 +54,10 @@ export interface GetEnterpriseInstancesArgs {
      * The ID of the database instance.
      */
     readonly instanceType?: string;
+    /**
+     * A regex string to filter the results by the DMS Enterprise Instance instance_alias.
+     */
+    readonly nameRegex?: string;
     /**
      * The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
      */
@@ -84,6 +89,10 @@ export interface GetEnterpriseInstancesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of DMS Enterprise IDs (Each of them consists of host:port).
+     */
+    readonly ids: string[];
     readonly instanceAliasRegex?: string;
     /**
      * The ID of the database instance.
@@ -97,6 +106,11 @@ export interface GetEnterpriseInstancesResult {
      * A list of KMS keys. Each element contains the following attributes:
      */
     readonly instances: outputs.dms.GetEnterpriseInstancesInstance[];
+    readonly nameRegex?: string;
+    /**
+     * A list of DMS Enterprise names.
+     */
+    readonly names: string[];
     readonly netType?: string;
     readonly outputFile?: string;
     readonly searchKey?: string;

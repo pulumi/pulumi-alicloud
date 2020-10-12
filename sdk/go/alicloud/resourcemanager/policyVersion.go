@@ -13,8 +13,6 @@ import (
 type PolicyVersion struct {
 	pulumi.CustomResourceState
 
-	// The time when the policy version was created.
-	CreateDate pulumi.StringOutput `pulumi:"createDate"`
 	// Specifies whether to set the policy version as the default version. Default to `false`.
 	//
 	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
@@ -23,8 +21,6 @@ type PolicyVersion struct {
 	PolicyDocument pulumi.StringOutput `pulumi:"policyDocument"`
 	// The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
-	// The ID of the policy version.
-	VersionId pulumi.StringOutput `pulumi:"versionId"`
 }
 
 // NewPolicyVersion registers a new resource with the given unique name, arguments, and options.
@@ -61,8 +57,6 @@ func GetPolicyVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PolicyVersion resources.
 type policyVersionState struct {
-	// The time when the policy version was created.
-	CreateDate *string `pulumi:"createDate"`
 	// Specifies whether to set the policy version as the default version. Default to `false`.
 	//
 	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
@@ -71,13 +65,9 @@ type policyVersionState struct {
 	PolicyDocument *string `pulumi:"policyDocument"`
 	// The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	PolicyName *string `pulumi:"policyName"`
-	// The ID of the policy version.
-	VersionId *string `pulumi:"versionId"`
 }
 
 type PolicyVersionState struct {
-	// The time when the policy version was created.
-	CreateDate pulumi.StringPtrInput
 	// Specifies whether to set the policy version as the default version. Default to `false`.
 	//
 	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
@@ -86,8 +76,6 @@ type PolicyVersionState struct {
 	PolicyDocument pulumi.StringPtrInput
 	// The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	PolicyName pulumi.StringPtrInput
-	// The ID of the policy version.
-	VersionId pulumi.StringPtrInput
 }
 
 func (PolicyVersionState) ElementType() reflect.Type {

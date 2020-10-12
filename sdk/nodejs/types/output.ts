@@ -2970,6 +2970,7 @@ export namespace dms {
          * The endpoint of the database instance.
          */
         host: string;
+        id: string;
         /**
          * The alias of the database instance.
          */
@@ -2978,6 +2979,7 @@ export namespace dms {
          * The ID of the database instance.
          */
         instanceId: string;
+        instanceName: string;
         /**
          * The source of the database instance.
          */
@@ -3050,6 +3052,10 @@ export namespace dms {
          * The ID of the user.
          */
         userId: string;
+        /**
+         * The nickname of the user.
+         */
+        userName: string;
     }
 }
 
@@ -5304,6 +5310,31 @@ export namespace fc {
          */
         qualifier?: string;
         serviceName: string;
+    }
+
+    export interface FunctionAsyncInvokeConfigDestinationConfig {
+        /**
+         * Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+         */
+        onFailure?: outputs.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailure;
+        /**
+         * Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+         */
+        onSuccess?: outputs.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccess;
+    }
+
+    export interface FunctionAsyncInvokeConfigDestinationConfigOnFailure {
+        /**
+         * Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+         */
+        destination: string;
+    }
+
+    export interface FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
+        /**
+         * Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+         */
+        destination: string;
     }
 
     export interface FunctionCustomContainerConfig {

@@ -56,8 +56,6 @@ class PolicyVersion(pulumi.CustomResource):
             if policy_name is None:
                 raise TypeError("Missing required property 'policy_name'")
             __props__['policy_name'] = policy_name
-            __props__['create_date'] = None
-            __props__['version_id'] = None
         super(PolicyVersion, __self__).__init__(
             'alicloud:resourcemanager/policyVersion:PolicyVersion',
             resource_name,
@@ -68,11 +66,9 @@ class PolicyVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_date: Optional[pulumi.Input[str]] = None,
             is_default_version: Optional[pulumi.Input[bool]] = None,
             policy_document: Optional[pulumi.Input[str]] = None,
-            policy_name: Optional[pulumi.Input[str]] = None,
-            version_id: Optional[pulumi.Input[str]] = None) -> 'PolicyVersion':
+            policy_name: Optional[pulumi.Input[str]] = None) -> 'PolicyVersion':
         """
         Get an existing PolicyVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -80,30 +76,18 @@ class PolicyVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_date: The time when the policy version was created.
         :param pulumi.Input[bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
         :param pulumi.Input[str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[str] policy_name: The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[str] version_id: The ID of the policy version.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
-        __props__["create_date"] = create_date
         __props__["is_default_version"] = is_default_version
         __props__["policy_document"] = policy_document
         __props__["policy_name"] = policy_name
-        __props__["version_id"] = version_id
         return PolicyVersion(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="createDate")
-    def create_date(self) -> pulumi.Output[str]:
-        """
-        The time when the policy version was created.
-        """
-        return pulumi.get(self, "create_date")
 
     @property
     @pulumi.getter(name="isDefaultVersion")
@@ -128,14 +112,6 @@ class PolicyVersion(pulumi.CustomResource):
         The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "policy_name")
-
-    @property
-    @pulumi.getter(name="versionId")
-    def version_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the policy version.
-        """
-        return pulumi.get(self, "version_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

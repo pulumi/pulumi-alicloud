@@ -12,12 +12,6 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class PolicyVersion : Pulumi.CustomResource
     {
         /// <summary>
-        /// The time when the policy version was created.
-        /// </summary>
-        [Output("createDate")]
-        public Output<string> CreateDate { get; private set; } = null!;
-
-        /// <summary>
         /// Specifies whether to set the policy version as the default version. Default to `false`.
         /// </summary>
         [Output("isDefaultVersion")]
@@ -34,12 +28,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Output("policyName")]
         public Output<string> PolicyName { get; private set; } = null!;
-
-        /// <summary>
-        /// The ID of the policy version.
-        /// </summary>
-        [Output("versionId")]
-        public Output<string> VersionId { get; private set; } = null!;
 
 
         /// <summary>
@@ -113,12 +101,6 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class PolicyVersionState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The time when the policy version was created.
-        /// </summary>
-        [Input("createDate")]
-        public Input<string>? CreateDate { get; set; }
-
-        /// <summary>
         /// Specifies whether to set the policy version as the default version. Default to `false`.
         /// </summary>
         [Input("isDefaultVersion")]
@@ -135,12 +117,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
-
-        /// <summary>
-        /// The ID of the policy version.
-        /// </summary>
-        [Input("versionId")]
-        public Input<string>? VersionId { get; set; }
 
         public PolicyVersionState()
         {

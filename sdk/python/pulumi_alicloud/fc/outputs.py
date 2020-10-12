@@ -12,6 +12,9 @@ from . import outputs
 __all__ = [
     'CustomDomainCertConfig',
     'CustomDomainRouteConfig',
+    'FunctionAsyncInvokeConfigDestinationConfig',
+    'FunctionAsyncInvokeConfigDestinationConfigOnFailure',
+    'FunctionAsyncInvokeConfigDestinationConfigOnSuccess',
     'FunctionCustomContainerConfig',
     'ServiceLogConfig',
     'ServiceNasConfig',
@@ -132,6 +135,82 @@ class CustomDomainRouteConfig(dict):
         The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
         """
         return pulumi.get(self, "qualifier")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class FunctionAsyncInvokeConfigDestinationConfig(dict):
+    def __init__(__self__, *,
+                 on_failure: Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnFailure'] = None,
+                 on_success: Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccess'] = None):
+        """
+        :param 'FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs' on_failure: Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+        :param 'FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs' on_success: Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+        """
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+        if on_success is not None:
+            pulumi.set(__self__, "on_success", on_success)
+
+    @property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnFailure']:
+        """
+        Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+        """
+        return pulumi.get(self, "on_failure")
+
+    @property
+    @pulumi.getter(name="onSuccess")
+    def on_success(self) -> Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccess']:
+        """
+        Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+        """
+        return pulumi.get(self, "on_success")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class FunctionAsyncInvokeConfigDestinationConfigOnFailure(dict):
+    def __init__(__self__, *,
+                 destination: str):
+        """
+        :param str destination: Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+        """
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        """
+        Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+        """
+        return pulumi.get(self, "destination")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class FunctionAsyncInvokeConfigDestinationConfigOnSuccess(dict):
+    def __init__(__self__, *,
+                 destination: str):
+        """
+        :param str destination: Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+        """
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        """
+        Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+        """
+        return pulumi.get(self, "destination")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

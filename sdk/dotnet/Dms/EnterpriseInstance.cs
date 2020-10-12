@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Dms
     ///             EnvType = "test",
     ///             ExportTimeout = 600,
     ///             Host = "rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com",
-    ///             InstanceAlias = "your_alias_name",
+    ///             InstanceName = "your_alias_name",
     ///             InstanceSource = "RDS",
     ///             InstanceType = "MySQL",
     ///             NetworkType = "VPC",
@@ -120,13 +120,19 @@ namespace Pulumi.AliCloud.Dms
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
-        /// Instance alias, to help users quickly distinguish positioning.
+        /// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
         /// </summary>
         [Output("instanceAlias")]
         public Output<string> InstanceAlias { get; private set; } = null!;
 
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance name, to help users quickly distinguish positioning.
+        /// </summary>
+        [Output("instanceName")]
+        public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
         /// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
@@ -173,11 +179,20 @@ namespace Pulumi.AliCloud.Dms
         [Output("sid")]
         public Output<string?> Sid { get; private set; } = null!;
 
+        [Output("skipTest")]
+        public Output<bool?> SkipTest { get; private set; } = null!;
+
         /// <summary>
-        /// The instance status.
+        /// It has been deprecated from provider version 1.100.0 and 'status' instead.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance status.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// The tenant ID.
@@ -307,13 +322,19 @@ namespace Pulumi.AliCloud.Dms
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// Instance alias, to help users quickly distinguish positioning.
+        /// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
         /// </summary>
-        [Input("instanceAlias", required: true)]
-        public Input<string> InstanceAlias { get; set; } = null!;
+        [Input("instanceAlias")]
+        public Input<string>? InstanceAlias { get; set; }
 
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// Instance name, to help users quickly distinguish positioning.
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
 
         /// <summary>
         /// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
@@ -359,6 +380,9 @@ namespace Pulumi.AliCloud.Dms
         /// </summary>
         [Input("sid")]
         public Input<string>? Sid { get; set; }
+
+        [Input("skipTest")]
+        public Input<bool>? SkipTest { get; set; }
 
         /// <summary>
         /// The tenant ID.
@@ -455,13 +479,19 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Instance alias, to help users quickly distinguish positioning.
+        /// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
         /// </summary>
         [Input("instanceAlias")]
         public Input<string>? InstanceAlias { get; set; }
 
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// Instance name, to help users quickly distinguish positioning.
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
 
         /// <summary>
         /// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
@@ -508,11 +538,20 @@ namespace Pulumi.AliCloud.Dms
         [Input("sid")]
         public Input<string>? Sid { get; set; }
 
+        [Input("skipTest")]
+        public Input<bool>? SkipTest { get; set; }
+
         /// <summary>
-        /// The instance status.
+        /// It has been deprecated from provider version 1.100.0 and 'status' instead.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The instance status.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The tenant ID.

@@ -29,6 +29,8 @@ type GetEnterpriseInstancesArgs struct {
 	InstanceSource *string `pulumi:"instanceSource"`
 	// The ID of the database instance.
 	InstanceType *string `pulumi:"instanceType"`
+	// A regex string to filter the results by the DMS Enterprise Instance instance_alias.
+	NameRegex *string `pulumi:"nameRegex"`
 	// The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
 	NetType    *string `pulumi:"netType"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -45,17 +47,22 @@ type GetEnterpriseInstancesResult struct {
 	// The type of the environment to which the database instance belongs..
 	EnvType *string `pulumi:"envType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string  `pulumi:"id"`
-	InstanceAliasRegex *string `pulumi:"instanceAliasRegex"`
+	Id string `pulumi:"id"`
+	// A list of DMS Enterprise IDs (Each of them consists of host:port).
+	Ids                []string `pulumi:"ids"`
+	InstanceAliasRegex *string  `pulumi:"instanceAliasRegex"`
 	// The ID of the database instance.
 	InstanceSource *string `pulumi:"instanceSource"`
 	// The ID of the database instance.
 	InstanceType *string `pulumi:"instanceType"`
 	// A list of KMS keys. Each element contains the following attributes:
-	Instances  []GetEnterpriseInstancesInstance `pulumi:"instances"`
-	NetType    *string                          `pulumi:"netType"`
-	OutputFile *string                          `pulumi:"outputFile"`
-	SearchKey  *string                          `pulumi:"searchKey"`
+	Instances []GetEnterpriseInstancesInstance `pulumi:"instances"`
+	NameRegex *string                          `pulumi:"nameRegex"`
+	// A list of DMS Enterprise names.
+	Names      []string `pulumi:"names"`
+	NetType    *string  `pulumi:"netType"`
+	OutputFile *string  `pulumi:"outputFile"`
+	SearchKey  *string  `pulumi:"searchKey"`
 	// The status of the database instance.
 	Status *string `pulumi:"status"`
 	Tid    *int    `pulumi:"tid"`

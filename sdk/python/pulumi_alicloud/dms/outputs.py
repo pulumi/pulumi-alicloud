@@ -27,8 +27,10 @@ class GetEnterpriseInstancesInstanceResult(dict):
                  env_type: str,
                  export_timeout: float,
                  host: str,
+                 id: str,
                  instance_alias: str,
                  instance_id: str,
+                 instance_name: str,
                  instance_source: str,
                  instance_type: str,
                  port: float,
@@ -73,8 +75,10 @@ class GetEnterpriseInstancesInstanceResult(dict):
         pulumi.set(__self__, "env_type", env_type)
         pulumi.set(__self__, "export_timeout", export_timeout)
         pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_alias", instance_alias)
         pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "instance_source", instance_source)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "port", port)
@@ -174,6 +178,11 @@ class GetEnterpriseInstancesInstanceResult(dict):
         return pulumi.get(self, "host")
 
     @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
     @pulumi.getter(name="instanceAlias")
     def instance_alias(self) -> str:
         """
@@ -188,6 +197,11 @@ class GetEnterpriseInstancesInstanceResult(dict):
         The ID of the database instance.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        return pulumi.get(self, "instance_name")
 
     @property
     @pulumi.getter(name="instanceSource")
@@ -273,7 +287,8 @@ class GetEnterpriseUsersUserResult(dict):
                  role_names: List[str],
                  status: str,
                  uid: str,
-                 user_id: str):
+                 user_id: str,
+                 user_name: str):
         """
         :param str id: The Alibaba Cloud unique ID (UID) of the user.
         :param str mobile: The DingTalk number or mobile number of the user.
@@ -283,6 +298,7 @@ class GetEnterpriseUsersUserResult(dict):
         :param List[str] role_names: The list names of the role that he user plays.
         :param str status: The status of the user.
         :param str user_id: The ID of the user.
+        :param str user_name: The nickname of the user.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mobile", mobile)
@@ -293,6 +309,7 @@ class GetEnterpriseUsersUserResult(dict):
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "uid", uid)
         pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter
@@ -362,5 +379,13 @@ class GetEnterpriseUsersUserResult(dict):
         The ID of the user.
         """
         return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        The nickname of the user.
+        """
+        return pulumi.get(self, "user_name")
 
 

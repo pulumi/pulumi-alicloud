@@ -11,6 +11,9 @@ from .. import _utilities, _tables
 __all__ = [
     'CustomDomainCertConfigArgs',
     'CustomDomainRouteConfigArgs',
+    'FunctionAsyncInvokeConfigDestinationConfigArgs',
+    'FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs',
+    'FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs',
     'FunctionCustomContainerConfigArgs',
     'ServiceLogConfigArgs',
     'ServiceNasConfigArgs',
@@ -148,6 +151,89 @@ class CustomDomainRouteConfigArgs:
     @qualifier.setter
     def qualifier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "qualifier", value)
+
+
+@pulumi.input_type
+class FunctionAsyncInvokeConfigDestinationConfigArgs:
+    def __init__(__self__, *,
+                 on_failure: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']] = None,
+                 on_success: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']] = None):
+        """
+        :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs'] on_failure: Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+        :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs'] on_success: Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+        """
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+        if on_success is not None:
+            pulumi.set(__self__, "on_success", on_success)
+
+    @property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']]:
+        """
+        Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+        """
+        return pulumi.get(self, "on_failure")
+
+    @on_failure.setter
+    def on_failure(self, value: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']]):
+        pulumi.set(self, "on_failure", value)
+
+    @property
+    @pulumi.getter(name="onSuccess")
+    def on_success(self) -> Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']]:
+        """
+        Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+        """
+        return pulumi.get(self, "on_success")
+
+    @on_success.setter
+    def on_success(self, value: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']]):
+        pulumi.set(self, "on_success", value)
+
+
+@pulumi.input_type
+class FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs:
+    def __init__(__self__, *,
+                 destination: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] destination: Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+        """
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input[str]:
+        """
+        Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs:
+    def __init__(__self__, *,
+                 destination: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] destination: Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+        """
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input[str]:
+        """
+        Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type

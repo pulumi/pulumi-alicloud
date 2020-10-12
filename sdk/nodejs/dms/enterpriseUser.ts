@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  *
  * const example = new alicloud.dms.EnterpriseUser("example", {
  *     mobile: "1591066xxxx",
- *     nickName: "tf-test",
  *     roleNames: ["DBA"],
  *     uid: "uid",
+ *     userName: "tf-test",
  * });
  * ```
  */
@@ -64,9 +64,11 @@ export class EnterpriseUser extends pulumi.CustomResource {
      */
     public readonly mobile!: pulumi.Output<string | undefined>;
     /**
-     * The nickname of the user.
+     * It has been deprecated from 1.100.0 and use `userName` instead.
+     *
+     * @deprecated Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
      */
-    public readonly nickName!: pulumi.Output<string | undefined>;
+    public readonly nickName!: pulumi.Output<string>;
     /**
      * The roles that the user plays.
      */
@@ -83,6 +85,10 @@ export class EnterpriseUser extends pulumi.CustomResource {
      * The Alibaba Cloud unique ID (UID) of the user to add.
      */
     public readonly uid!: pulumi.Output<string>;
+    /**
+     * The nickname of the user.
+     */
+    public readonly userName!: pulumi.Output<string>;
 
     /**
      * Create a EnterpriseUser resource with the given unique name, arguments, and options.
@@ -104,6 +110,7 @@ export class EnterpriseUser extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
             inputs["tid"] = state ? state.tid : undefined;
             inputs["uid"] = state ? state.uid : undefined;
+            inputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as EnterpriseUserArgs | undefined;
             if (!args || args.uid === undefined) {
@@ -117,6 +124,7 @@ export class EnterpriseUser extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["tid"] = args ? args.tid : undefined;
             inputs["uid"] = args ? args.uid : undefined;
+            inputs["userName"] = args ? args.userName : undefined;
         }
         if (!opts) {
             opts = {}
@@ -146,7 +154,9 @@ export interface EnterpriseUserState {
      */
     readonly mobile?: pulumi.Input<string>;
     /**
-     * The nickname of the user.
+     * It has been deprecated from 1.100.0 and use `userName` instead.
+     *
+     * @deprecated Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
      */
     readonly nickName?: pulumi.Input<string>;
     /**
@@ -165,6 +175,10 @@ export interface EnterpriseUserState {
      * The Alibaba Cloud unique ID (UID) of the user to add.
      */
     readonly uid?: pulumi.Input<string>;
+    /**
+     * The nickname of the user.
+     */
+    readonly userName?: pulumi.Input<string>;
 }
 
 /**
@@ -184,7 +198,9 @@ export interface EnterpriseUserArgs {
      */
     readonly mobile?: pulumi.Input<string>;
     /**
-     * The nickname of the user.
+     * It has been deprecated from 1.100.0 and use `userName` instead.
+     *
+     * @deprecated Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
      */
     readonly nickName?: pulumi.Input<string>;
     /**
@@ -203,4 +219,8 @@ export interface EnterpriseUserArgs {
      * The Alibaba Cloud unique ID (UID) of the user to add.
      */
     readonly uid: pulumi.Input<string>;
+    /**
+     * The nickname of the user.
+     */
+    readonly userName?: pulumi.Input<string>;
 }

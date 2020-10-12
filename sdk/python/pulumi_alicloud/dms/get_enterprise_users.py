@@ -20,13 +20,19 @@ class GetEnterpriseUsersResult:
     """
     A collection of values returned by getEnterpriseUsers.
     """
-    def __init__(__self__, id=None, ids=None, output_file=None, role=None, search_key=None, status=None, tid=None, users=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, role=None, search_key=None, status=None, tid=None, users=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if name_regex and not isinstance(name_regex, str):
+            raise TypeError("Expected argument 'name_regex' to be a str")
+        pulumi.set(__self__, "name_regex", name_regex)
+        if names and not isinstance(names, list):
+            raise TypeError("Expected argument 'names' to be a list")
+        pulumi.set(__self__, "names", names)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
@@ -61,6 +67,19 @@ class GetEnterpriseUsersResult:
         A list of DMS Enterprise User IDs (UID).
         """
         return pulumi.get(self, "ids")
+
+    @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[str]:
+        return pulumi.get(self, "name_regex")
+
+    @property
+    @pulumi.getter
+    def names(self) -> List[str]:
+        """
+        A list of DMS Enterprise User names.
+        """
+        return pulumi.get(self, "names")
 
     @property
     @pulumi.getter(name="outputFile")
@@ -107,6 +126,8 @@ class AwaitableGetEnterpriseUsersResult(GetEnterpriseUsersResult):
         return GetEnterpriseUsersResult(
             id=self.id,
             ids=self.ids,
+            name_regex=self.name_regex,
+            names=self.names,
             output_file=self.output_file,
             role=self.role,
             search_key=self.search_key,
@@ -116,6 +137,7 @@ class AwaitableGetEnterpriseUsersResult(GetEnterpriseUsersResult):
 
 
 def get_enterprise_users(ids: Optional[List[str]] = None,
+                         name_regex: Optional[str] = None,
                          output_file: Optional[str] = None,
                          role: Optional[str] = None,
                          search_key: Optional[str] = None,
@@ -141,6 +163,7 @@ def get_enterprise_users(ids: Optional[List[str]] = None,
 
 
     :param List[str] ids: A list of DMS Enterprise User IDs (UID).
+    :param str name_regex: A regex string to filter the results by the DMS Enterprise User nick_name.
     :param str role: The role of the user to query.
     :param str search_key: The keyword used to query users.
     :param str status: The status of the user.
@@ -148,6 +171,7 @@ def get_enterprise_users(ids: Optional[List[str]] = None,
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['role'] = role
     __args__['searchKey'] = search_key
@@ -162,6 +186,8 @@ def get_enterprise_users(ids: Optional[List[str]] = None,
     return AwaitableGetEnterpriseUsersResult(
         id=__ret__.id,
         ids=__ret__.ids,
+        name_regex=__ret__.name_regex,
+        names=__ret__.names,
         output_file=__ret__.output_file,
         role=__ret__.role,
         search_key=__ret__.search_key,

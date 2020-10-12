@@ -255,6 +255,7 @@
         "ess/scheduledTask.ts",
         "fc/customDomain.ts",
         "fc/function.ts",
+        "fc/functionAsyncInvokeConfig.ts",
         "fc/getCustomDomains.ts",
         "fc/getFunctions.ts",
         "fc/getServices.ts",

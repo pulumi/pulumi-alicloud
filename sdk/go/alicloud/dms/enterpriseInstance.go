@@ -35,7 +35,7 @@ import (
 // 			EnvType:          pulumi.String("test"),
 // 			ExportTimeout:    pulumi.Int(600),
 // 			Host:             pulumi.String("rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com"),
-// 			InstanceAlias:    pulumi.String("your_alias_name"),
+// 			InstanceName:     pulumi.String("your_alias_name"),
 // 			InstanceSource:   pulumi.String("RDS"),
 // 			InstanceType:     pulumi.String("MySQL"),
 // 			NetworkType:      pulumi.String("VPC"),
@@ -77,9 +77,13 @@ type EnterpriseInstance struct {
 	ExportTimeout pulumi.IntOutput `pulumi:"exportTimeout"`
 	// Host address of the target database.
 	Host pulumi.StringOutput `pulumi:"host"`
-	// Instance alias, to help users quickly distinguish positioning.
+	// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+	//
+	// Deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
 	InstanceAlias pulumi.StringOutput `pulumi:"instanceAlias"`
 	InstanceId    pulumi.StringOutput `pulumi:"instanceId"`
+	// Instance name, to help users quickly distinguish positioning.
+	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
 	InstanceSource pulumi.StringOutput `pulumi:"instanceSource"`
 	// Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
@@ -94,9 +98,14 @@ type EnterpriseInstance struct {
 	SafeRule   pulumi.StringOutput `pulumi:"safeRule"`
 	SafeRuleId pulumi.StringOutput `pulumi:"safeRuleId"`
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-	Sid pulumi.StringPtrOutput `pulumi:"sid"`
-	// The instance status.
+	Sid      pulumi.StringPtrOutput `pulumi:"sid"`
+	SkipTest pulumi.BoolPtrOutput   `pulumi:"skipTest"`
+	// It has been deprecated from provider version 1.100.0 and 'status' instead.
+	//
+	// Deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
 	State pulumi.StringOutput `pulumi:"state"`
+	// The instance status.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The tenant ID.
 	Tid pulumi.IntPtrOutput `pulumi:"tid"`
 	// Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
@@ -125,9 +134,6 @@ func NewEnterpriseInstance(ctx *pulumi.Context,
 	}
 	if args == nil || args.Host == nil {
 		return nil, errors.New("missing required argument 'Host'")
-	}
-	if args == nil || args.InstanceAlias == nil {
-		return nil, errors.New("missing required argument 'InstanceAlias'")
 	}
 	if args == nil || args.InstanceSource == nil {
 		return nil, errors.New("missing required argument 'InstanceSource'")
@@ -195,9 +201,13 @@ type enterpriseInstanceState struct {
 	ExportTimeout *int `pulumi:"exportTimeout"`
 	// Host address of the target database.
 	Host *string `pulumi:"host"`
-	// Instance alias, to help users quickly distinguish positioning.
+	// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+	//
+	// Deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
 	InstanceAlias *string `pulumi:"instanceAlias"`
 	InstanceId    *string `pulumi:"instanceId"`
+	// Instance name, to help users quickly distinguish positioning.
+	InstanceName *string `pulumi:"instanceName"`
 	// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
 	InstanceSource *string `pulumi:"instanceSource"`
 	// Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
@@ -212,9 +222,14 @@ type enterpriseInstanceState struct {
 	SafeRule   *string `pulumi:"safeRule"`
 	SafeRuleId *string `pulumi:"safeRuleId"`
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-	Sid *string `pulumi:"sid"`
-	// The instance status.
+	Sid      *string `pulumi:"sid"`
+	SkipTest *bool   `pulumi:"skipTest"`
+	// It has been deprecated from provider version 1.100.0 and 'status' instead.
+	//
+	// Deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
 	State *string `pulumi:"state"`
+	// The instance status.
+	Status *string `pulumi:"status"`
 	// The tenant ID.
 	Tid *int `pulumi:"tid"`
 	// Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
@@ -247,9 +262,13 @@ type EnterpriseInstanceState struct {
 	ExportTimeout pulumi.IntPtrInput
 	// Host address of the target database.
 	Host pulumi.StringPtrInput
-	// Instance alias, to help users quickly distinguish positioning.
+	// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+	//
+	// Deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
 	InstanceAlias pulumi.StringPtrInput
 	InstanceId    pulumi.StringPtrInput
+	// Instance name, to help users quickly distinguish positioning.
+	InstanceName pulumi.StringPtrInput
 	// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
 	InstanceSource pulumi.StringPtrInput
 	// Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
@@ -264,9 +283,14 @@ type EnterpriseInstanceState struct {
 	SafeRule   pulumi.StringPtrInput
 	SafeRuleId pulumi.StringPtrInput
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-	Sid pulumi.StringPtrInput
-	// The instance status.
+	Sid      pulumi.StringPtrInput
+	SkipTest pulumi.BoolPtrInput
+	// It has been deprecated from provider version 1.100.0 and 'status' instead.
+	//
+	// Deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
 	State pulumi.StringPtrInput
+	// The instance status.
+	Status pulumi.StringPtrInput
 	// The tenant ID.
 	Tid pulumi.IntPtrInput
 	// Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
@@ -301,9 +325,13 @@ type enterpriseInstanceArgs struct {
 	ExportTimeout int `pulumi:"exportTimeout"`
 	// Host address of the target database.
 	Host string `pulumi:"host"`
-	// Instance alias, to help users quickly distinguish positioning.
-	InstanceAlias string  `pulumi:"instanceAlias"`
+	// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+	//
+	// Deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
+	InstanceAlias *string `pulumi:"instanceAlias"`
 	InstanceId    *string `pulumi:"instanceId"`
+	// Instance name, to help users quickly distinguish positioning.
+	InstanceName *string `pulumi:"instanceName"`
 	// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
 	InstanceSource string `pulumi:"instanceSource"`
 	// Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
@@ -318,7 +346,8 @@ type enterpriseInstanceArgs struct {
 	SafeRule   string  `pulumi:"safeRule"`
 	SafeRuleId *string `pulumi:"safeRuleId"`
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-	Sid *string `pulumi:"sid"`
+	Sid      *string `pulumi:"sid"`
+	SkipTest *bool   `pulumi:"skipTest"`
 	// The tenant ID.
 	Tid *int `pulumi:"tid"`
 	// Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
@@ -350,9 +379,13 @@ type EnterpriseInstanceArgs struct {
 	ExportTimeout pulumi.IntInput
 	// Host address of the target database.
 	Host pulumi.StringInput
-	// Instance alias, to help users quickly distinguish positioning.
-	InstanceAlias pulumi.StringInput
+	// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+	//
+	// Deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
+	InstanceAlias pulumi.StringPtrInput
 	InstanceId    pulumi.StringPtrInput
+	// Instance name, to help users quickly distinguish positioning.
+	InstanceName pulumi.StringPtrInput
 	// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
 	InstanceSource pulumi.StringInput
 	// Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
@@ -367,7 +400,8 @@ type EnterpriseInstanceArgs struct {
 	SafeRule   pulumi.StringInput
 	SafeRuleId pulumi.StringPtrInput
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-	Sid pulumi.StringPtrInput
+	Sid      pulumi.StringPtrInput
+	SkipTest pulumi.BoolPtrInput
 	// The tenant ID.
 	Tid pulumi.IntPtrInput
 	// Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
