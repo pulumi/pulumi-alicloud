@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * This operation is provided to scale out an EDAS application.
+ *
+ * > **NOTE:** Available in 1.82.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.edas.ApplicationScale("default", {
+ *     appId: _var.app_id,
+ *     deployGroup: _var.deploy_group,
+ *     ecuInfos: _var.ecu_info,
+ *     forceStatus: _var.force_status,
+ * });
+ * ```
+ */
 export class ApplicationScale extends pulumi.CustomResource {
     /**
      * Get an existing ApplicationScale resource's state with the given name, ID, and optional extra
