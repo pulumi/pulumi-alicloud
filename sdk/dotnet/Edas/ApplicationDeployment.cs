@@ -9,6 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Edas
 {
+    /// <summary>
+    /// Deploys applications on EDAS.
+    /// 
+    /// &gt; **NOTE:** Available in 1.82.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Edas.ApplicationDeployment("default", new AliCloud.Edas.ApplicationDeploymentArgs
+    ///         {
+    ///             AppId = @var.App_id,
+    ///             GroupId = @var.Group_id,
+    ///             PackageVersion = @var.Package_version,
+    ///             WarUrl = @var.War_url,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ApplicationDeployment : Pulumi.CustomResource
     {
         /// <summary>

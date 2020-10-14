@@ -10,6 +10,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// This operation is provided to scale out an EDAS application.
+//
+// > **NOTE:** Available in 1.82.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/edas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := edas.NewApplicationScale(ctx, "_default", &edas.ApplicationScaleArgs{
+// 			AppId:       pulumi.Any(_var.App_id),
+// 			DeployGroup: pulumi.Any(_var.Deploy_group),
+// 			EcuInfos:    _var.Ecu_info,
+// 			ForceStatus: pulumi.Any(_var.Force_status),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ApplicationScale struct {
 	pulumi.CustomResourceState
 

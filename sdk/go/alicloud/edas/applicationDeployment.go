@@ -10,6 +10,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Deploys applications on EDAS.
+//
+// > **NOTE:** Available in 1.82.0+
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/edas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := edas.NewApplicationDeployment(ctx, "_default", &edas.ApplicationDeploymentArgs{
+// 			AppId:          pulumi.Any(_var.App_id),
+// 			GroupId:        pulumi.Any(_var.Group_id),
+// 			PackageVersion: pulumi.Any(_var.Package_version),
+// 			WarUrl:         pulumi.Any(_var.War_url),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ApplicationDeployment struct {
 	pulumi.CustomResourceState
 
