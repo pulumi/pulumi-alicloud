@@ -296,6 +296,8 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
+	// A list of zone ids in which the multi zone. Removed from v1.99.0.
+	MultiZoneIds []string `pulumi:"multiZoneIds"`
 }
 
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
@@ -312,6 +314,8 @@ type GetZonesZoneInput interface {
 type GetZonesZoneArgs struct {
 	// ID of the zone.
 	Id pulumi.StringInput `pulumi:"id"`
+	// A list of zone ids in which the multi zone. Removed from v1.99.0.
+	MultiZoneIds pulumi.StringArrayInput `pulumi:"multiZoneIds"`
 }
 
 func (GetZonesZoneArgs) ElementType() reflect.Type {
@@ -368,6 +372,11 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 // ID of the zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of zone ids in which the multi zone. Removed from v1.99.0.
+func (o GetZonesZoneOutput) MultiZoneIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
 }
 
 type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }

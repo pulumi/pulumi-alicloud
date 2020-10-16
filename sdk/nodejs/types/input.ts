@@ -1653,6 +1653,7 @@ export namespace slb {
     }
 
     export interface MasterSlaveServerGroupServer {
+        isBackup?: pulumi.Input<number>;
         port: pulumi.Input<number>;
         serverId: pulumi.Input<string>;
         serverType?: pulumi.Input<string>;

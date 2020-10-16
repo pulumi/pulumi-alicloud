@@ -167,11 +167,14 @@ class MasterSlaveServerGroupServerArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[float],
                  server_id: pulumi.Input[str],
+                 is_backup: Optional[pulumi.Input[float]] = None,
                  server_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[float]] = None):
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_id", server_id)
+        if is_backup is not None:
+            pulumi.set(__self__, "is_backup", is_backup)
         if server_type is not None:
             pulumi.set(__self__, "server_type", server_type)
         if type is not None:
@@ -196,6 +199,15 @@ class MasterSlaveServerGroupServerArgs:
     @server_id.setter
     def server_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "server_id", value)
+
+    @property
+    @pulumi.getter(name="isBackup")
+    def is_backup(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "is_backup")
+
+    @is_backup.setter
+    def is_backup(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "is_backup", value)
 
     @property
     @pulumi.getter(name="serverType")

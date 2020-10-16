@@ -21,6 +21,7 @@ import (
 	"github.com/aliyun/terraform-provider-alicloud/alicloud"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
+	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
 )
 
@@ -125,9 +126,7 @@ func resource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the alicloud package.
 func Provider() tfbridge.ProviderInfo {
-	const alicloudName = "name"
-
-	p := alicloud.Provider().(*schema.Provider)
+	p := shimv1.NewProvider(alicloud.Provider().(*schema.Provider))
 
 	prov := tfbridge.ProviderInfo{
 		P:           p,
@@ -979,21 +978,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov.RenameDataSource("alicloud_ots_tables", dataSource(ossMod, "getTables"),
 		dataSource(otsMod, "getTables"), ossMod, otsMod, nil)
 
-	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
-	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
-	for resname, res := range prov.Resources {
-		if schema := p.ResourcesMap[resname]; schema != nil {
-			// Only apply auto-name to input properties (Optional || Required) named `name`
-			if tfs, has := schema.Schema[alicloudName]; has && (tfs.Optional || tfs.Required) {
-				if _, hasfield := res.Fields[alicloudName]; !hasfield {
-					if res.Fields == nil {
-						res.Fields = make(map[string]*tfbridge.SchemaInfo)
-					}
-					res.Fields[alicloudName] = tfbridge.AutoName(alicloudName, 255)
-				}
-			}
-		}
-	}
+	prov.SetAutonaming(255, "-")
 
 	return prov
 }

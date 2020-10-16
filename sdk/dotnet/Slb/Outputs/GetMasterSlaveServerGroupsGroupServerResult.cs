@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
+        /// (Removed from v1.63.0) Determine if the server is executing.
+        /// </summary>
+        public readonly int IsBackup;
+        /// <summary>
         /// The port used by the master slave server group.
         /// </summary>
         public readonly int Port;
@@ -34,6 +38,8 @@ namespace Pulumi.AliCloud.Slb.Outputs
         private GetMasterSlaveServerGroupsGroupServerResult(
             string instanceId,
 
+            int isBackup,
+
             int port,
 
             string serverType,
@@ -41,6 +47,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
             int weight)
         {
             InstanceId = instanceId;
+            IsBackup = isBackup;
             Port = port;
             ServerType = serverType;
             Weight = weight;

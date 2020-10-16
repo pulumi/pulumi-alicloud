@@ -283,14 +283,17 @@ class GetUsersUserResult(dict):
     def __init__(__self__, *,
                  create_date: str,
                  id: str,
+                 last_login_date: str,
                  name: str):
         """
         :param str create_date: Creation date of the user.
         :param str id: The original id is user name, but it is user id in 1.37.0+.
+        :param str last_login_date: Last login date of the user. Removed from version 1.79.0.
         :param str name: Name of the user.
         """
         pulumi.set(__self__, "create_date", create_date)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_login_date", last_login_date)
         pulumi.set(__self__, "name", name)
 
     @property
@@ -308,6 +311,14 @@ class GetUsersUserResult(dict):
         The original id is user name, but it is user id in 1.37.0+.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastLoginDate")
+    def last_login_date(self) -> str:
+        """
+        Last login date of the user. Removed from version 1.79.0.
+        """
+        return pulumi.get(self, "last_login_date")
 
     @property
     @pulumi.getter

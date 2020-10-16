@@ -13,6 +13,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
     [OutputType]
     public sealed class MasterSlaveServerGroupServer
     {
+        public readonly int? IsBackup;
         public readonly int Port;
         public readonly string ServerId;
         public readonly string? ServerType;
@@ -21,6 +22,8 @@ namespace Pulumi.AliCloud.Slb.Outputs
 
         [OutputConstructor]
         private MasterSlaveServerGroupServer(
+            int? isBackup,
+
             int port,
 
             string serverId,
@@ -31,6 +34,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
 
             int? weight)
         {
+            IsBackup = isBackup;
             Port = port;
             ServerId = serverId;
             ServerType = serverType;

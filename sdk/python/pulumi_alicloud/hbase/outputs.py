@@ -262,11 +262,14 @@ class GetInstancesInstanceResult(dict):
 @pulumi.output_type
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
-                 id: str):
+                 id: str,
+                 multi_zone_ids: List[str]):
         """
         :param str id: ID of the zone.
+        :param List[str] multi_zone_ids: A list of zone ids in which the multi zone. Removed from v1.99.0.
         """
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter
@@ -275,5 +278,13 @@ class GetZonesZoneResult(dict):
         ID of the zone.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="multiZoneIds")
+    def multi_zone_ids(self) -> List[str]:
+        """
+        A list of zone ids in which the multi zone. Removed from v1.99.0.
+        """
+        return pulumi.get(self, "multi_zone_ids")
 
 
