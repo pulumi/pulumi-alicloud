@@ -2211,6 +2211,7 @@ export namespace cs {
          * The ID of availability zone.
          */
         availabilityZone: string;
+        clusterNetworkType: string;
         /**
          * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
          */
@@ -2219,6 +2220,15 @@ export namespace cs {
          * ID of the node.
          */
         id: string;
+        imageId: string;
+        /**
+         * The keypair of ssh login cluster node, you have to create it first.
+         */
+        keyName: string;
+        /**
+         * A list of one element containing information about the associated log store. It contains the following attributes:
+         */
+        logConfigs: outputs.cs.GetManagedKubernetesClustersClusterLogConfig[];
         /**
          * Node name.
          */
@@ -2227,18 +2237,39 @@ export namespace cs {
          * The ID of nat gateway used to launch kubernetes cluster.
          */
         natGatewayId: string;
+        podCidr: string;
         /**
          * The ID of security group where the current cluster worker node is located.
          */
         securityGroupId: string;
+        serviceCidr: string;
+        slbInternetEnabled: boolean;
         /**
          * The ID of VPC where the current cluster is located.
          */
         vpcId: string;
         /**
+         * The ID of VSwitches where the current cluster is located.
+         */
+        vswitchIds: string[];
+        workerAutoRenew: boolean;
+        workerAutoRenewPeriod: number;
+        workerDataDiskCategory: string;
+        workerDataDiskSize: number;
+        workerDiskCategory: string;
+        workerDiskSize: number;
+        workerInstanceChargeType: string;
+        workerInstanceTypes: string[];
+        /**
          * List of cluster worker nodes. It contains several attributes to `Block Nodes`.
          */
         workerNodes: outputs.cs.GetManagedKubernetesClustersClusterWorkerNode[];
+        /**
+         * The ECS instance node number in the current container cluster.
+         */
+        workerNumbers: number[];
+        workerPeriod: number;
+        workerPeriodUnit: string;
     }
 
     export interface GetManagedKubernetesClustersClusterConnections {
@@ -2258,6 +2289,17 @@ export namespace cs {
          * Service Access Domain.
          */
         serviceDomain: string;
+    }
+
+    export interface GetManagedKubernetesClustersClusterLogConfig {
+        /**
+         * Log Service project name.
+         */
+        project: string;
+        /**
+         * Type of collecting logs.
+         */
+        type: string;
     }
 
     export interface GetManagedKubernetesClustersClusterWorkerNode {
@@ -5857,6 +5899,10 @@ export namespace hbase {
          * ID of the zone.
          */
         id: string;
+        /**
+         * A list of zone ids in which the multi zone. Removed from v1.99.0.
+         */
+        multiZoneIds: string[];
     }
 }
 
@@ -8073,6 +8119,10 @@ export namespace ram {
          */
         id: string;
         /**
+         * Last login date of the user. Removed from version 1.79.0.
+         */
+        lastLoginDate: string;
+        /**
          * Name of the user.
          */
         name: string;
@@ -9093,6 +9143,10 @@ export namespace slb {
          */
         instanceId: string;
         /**
+         * (Removed from v1.63.0) Determine if the server is executing.
+         */
+        isBackup: number;
+        /**
          * The port used by the master slave server group.
          */
         port: number;
@@ -9238,6 +9292,7 @@ export namespace slb {
     }
 
     export interface MasterSlaveServerGroupServer {
+        isBackup?: number;
         port: number;
         serverId: string;
         serverType?: string;

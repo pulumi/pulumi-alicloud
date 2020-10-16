@@ -34,6 +34,7 @@ __all__ = [
     'GetKubernetesClustersClusterWorkerNodeResult',
     'GetManagedKubernetesClustersClusterResult',
     'GetManagedKubernetesClustersClusterConnectionsResult',
+    'GetManagedKubernetesClustersClusterLogConfigResult',
     'GetManagedKubernetesClustersClusterWorkerNodeResult',
     'GetRegistryEnterpriseInstancesInstanceResult',
     'GetRegistryEnterpriseNamespacesNamespaceResult',
@@ -1430,31 +1431,73 @@ class GetKubernetesClustersClusterWorkerNodeResult(dict):
 class GetManagedKubernetesClustersClusterResult(dict):
     def __init__(__self__, *,
                  availability_zone: str,
+                 cluster_network_type: str,
                  connections: 'outputs.GetManagedKubernetesClustersClusterConnectionsResult',
                  id: str,
+                 image_id: str,
+                 key_name: str,
+                 log_configs: List['outputs.GetManagedKubernetesClustersClusterLogConfigResult'],
                  name: str,
                  nat_gateway_id: str,
+                 pod_cidr: str,
                  security_group_id: str,
+                 service_cidr: str,
+                 slb_internet_enabled: bool,
                  vpc_id: str,
-                 worker_nodes: List['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult']):
+                 vswitch_ids: List[str],
+                 worker_auto_renew: bool,
+                 worker_auto_renew_period: float,
+                 worker_data_disk_category: str,
+                 worker_data_disk_size: float,
+                 worker_disk_category: str,
+                 worker_disk_size: float,
+                 worker_instance_charge_type: str,
+                 worker_instance_types: List[str],
+                 worker_nodes: List['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult'],
+                 worker_numbers: List[float],
+                 worker_period: float,
+                 worker_period_unit: str):
         """
         :param str availability_zone: The ID of availability zone.
         :param 'GetManagedKubernetesClustersClusterConnectionsArgs' connections: Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         :param str id: ID of the node.
+        :param str key_name: The keypair of ssh login cluster node, you have to create it first.
+        :param List['GetManagedKubernetesClustersClusterLogConfigArgs'] log_configs: A list of one element containing information about the associated log store. It contains the following attributes:
         :param str name: Node name.
         :param str nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param str security_group_id: The ID of security group where the current cluster worker node is located.
         :param str vpc_id: The ID of VPC where the current cluster is located.
+        :param List[str] vswitch_ids: The ID of VSwitches where the current cluster is located.
         :param List['GetManagedKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        :param List[float] worker_numbers: The ECS instance node number in the current container cluster.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "cluster_network_type", cluster_network_type)
         pulumi.set(__self__, "connections", connections)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "log_configs", log_configs)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
+        pulumi.set(__self__, "pod_cidr", pod_cidr)
         pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "service_cidr", service_cidr)
+        pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
         pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        pulumi.set(__self__, "worker_auto_renew", worker_auto_renew)
+        pulumi.set(__self__, "worker_auto_renew_period", worker_auto_renew_period)
+        pulumi.set(__self__, "worker_data_disk_category", worker_data_disk_category)
+        pulumi.set(__self__, "worker_data_disk_size", worker_data_disk_size)
+        pulumi.set(__self__, "worker_disk_category", worker_disk_category)
+        pulumi.set(__self__, "worker_disk_size", worker_disk_size)
+        pulumi.set(__self__, "worker_instance_charge_type", worker_instance_charge_type)
+        pulumi.set(__self__, "worker_instance_types", worker_instance_types)
         pulumi.set(__self__, "worker_nodes", worker_nodes)
+        pulumi.set(__self__, "worker_numbers", worker_numbers)
+        pulumi.set(__self__, "worker_period", worker_period)
+        pulumi.set(__self__, "worker_period_unit", worker_period_unit)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -1463,6 +1506,11 @@ class GetManagedKubernetesClustersClusterResult(dict):
         The ID of availability zone.
         """
         return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter(name="clusterNetworkType")
+    def cluster_network_type(self) -> str:
+        return pulumi.get(self, "cluster_network_type")
 
     @property
     @pulumi.getter
@@ -1481,6 +1529,27 @@ class GetManagedKubernetesClustersClusterResult(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> str:
+        """
+        The keypair of ssh login cluster node, you have to create it first.
+        """
+        return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter(name="logConfigs")
+    def log_configs(self) -> List['outputs.GetManagedKubernetesClustersClusterLogConfigResult']:
+        """
+        A list of one element containing information about the associated log store. It contains the following attributes:
+        """
+        return pulumi.get(self, "log_configs")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -1497,12 +1566,27 @@ class GetManagedKubernetesClustersClusterResult(dict):
         return pulumi.get(self, "nat_gateway_id")
 
     @property
+    @pulumi.getter(name="podCidr")
+    def pod_cidr(self) -> str:
+        return pulumi.get(self, "pod_cidr")
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> str:
         """
         The ID of security group where the current cluster worker node is located.
         """
         return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="serviceCidr")
+    def service_cidr(self) -> str:
+        return pulumi.get(self, "service_cidr")
+
+    @property
+    @pulumi.getter(name="slbInternetEnabled")
+    def slb_internet_enabled(self) -> bool:
+        return pulumi.get(self, "slb_internet_enabled")
 
     @property
     @pulumi.getter(name="vpcId")
@@ -1513,12 +1597,78 @@ class GetManagedKubernetesClustersClusterResult(dict):
         return pulumi.get(self, "vpc_id")
 
     @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> List[str]:
+        """
+        The ID of VSwitches where the current cluster is located.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @property
+    @pulumi.getter(name="workerAutoRenew")
+    def worker_auto_renew(self) -> bool:
+        return pulumi.get(self, "worker_auto_renew")
+
+    @property
+    @pulumi.getter(name="workerAutoRenewPeriod")
+    def worker_auto_renew_period(self) -> float:
+        return pulumi.get(self, "worker_auto_renew_period")
+
+    @property
+    @pulumi.getter(name="workerDataDiskCategory")
+    def worker_data_disk_category(self) -> str:
+        return pulumi.get(self, "worker_data_disk_category")
+
+    @property
+    @pulumi.getter(name="workerDataDiskSize")
+    def worker_data_disk_size(self) -> float:
+        return pulumi.get(self, "worker_data_disk_size")
+
+    @property
+    @pulumi.getter(name="workerDiskCategory")
+    def worker_disk_category(self) -> str:
+        return pulumi.get(self, "worker_disk_category")
+
+    @property
+    @pulumi.getter(name="workerDiskSize")
+    def worker_disk_size(self) -> float:
+        return pulumi.get(self, "worker_disk_size")
+
+    @property
+    @pulumi.getter(name="workerInstanceChargeType")
+    def worker_instance_charge_type(self) -> str:
+        return pulumi.get(self, "worker_instance_charge_type")
+
+    @property
+    @pulumi.getter(name="workerInstanceTypes")
+    def worker_instance_types(self) -> List[str]:
+        return pulumi.get(self, "worker_instance_types")
+
+    @property
     @pulumi.getter(name="workerNodes")
     def worker_nodes(self) -> List['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult']:
         """
         List of cluster worker nodes. It contains several attributes to `Block Nodes`.
         """
         return pulumi.get(self, "worker_nodes")
+
+    @property
+    @pulumi.getter(name="workerNumbers")
+    def worker_numbers(self) -> List[float]:
+        """
+        The ECS instance node number in the current container cluster.
+        """
+        return pulumi.get(self, "worker_numbers")
+
+    @property
+    @pulumi.getter(name="workerPeriod")
+    def worker_period(self) -> float:
+        return pulumi.get(self, "worker_period")
+
+    @property
+    @pulumi.getter(name="workerPeriodUnit")
+    def worker_period_unit(self) -> str:
+        return pulumi.get(self, "worker_period_unit")
 
 
 @pulumi.output_type
@@ -1570,6 +1720,35 @@ class GetManagedKubernetesClustersClusterConnectionsResult(dict):
         Service Access Domain.
         """
         return pulumi.get(self, "service_domain")
+
+
+@pulumi.output_type
+class GetManagedKubernetesClustersClusterLogConfigResult(dict):
+    def __init__(__self__, *,
+                 project: str,
+                 type: str):
+        """
+        :param str project: Log Service project name.
+        :param str type: Type of collecting logs.
+        """
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Log Service project name.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of collecting logs.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

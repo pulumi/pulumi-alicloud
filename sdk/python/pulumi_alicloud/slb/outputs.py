@@ -153,11 +153,14 @@ class MasterSlaveServerGroupServer(dict):
     def __init__(__self__, *,
                  port: float,
                  server_id: str,
+                 is_backup: Optional[float] = None,
                  server_type: Optional[str] = None,
                  type: Optional[str] = None,
                  weight: Optional[float] = None):
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_id", server_id)
+        if is_backup is not None:
+            pulumi.set(__self__, "is_backup", is_backup)
         if server_type is not None:
             pulumi.set(__self__, "server_type", server_type)
         if type is not None:
@@ -174,6 +177,11 @@ class MasterSlaveServerGroupServer(dict):
     @pulumi.getter(name="serverId")
     def server_id(self) -> str:
         return pulumi.get(self, "server_id")
+
+    @property
+    @pulumi.getter(name="isBackup")
+    def is_backup(self) -> Optional[float]:
+        return pulumi.get(self, "is_backup")
 
     @property
     @pulumi.getter(name="serverType")
@@ -1247,16 +1255,19 @@ class GetMasterSlaveServerGroupsGroupResult(dict):
 class GetMasterSlaveServerGroupsGroupServerResult(dict):
     def __init__(__self__, *,
                  instance_id: str,
+                 is_backup: float,
                  port: float,
                  server_type: str,
                  weight: float):
         """
         :param str instance_id: ID of the attached ECS instance.
+        :param float is_backup: (Removed from v1.63.0) Determine if the server is executing.
         :param float port: The port used by the master slave server group.
         :param str server_type: The server type of the attached ECS instance.
         :param float weight: Weight associated to the ECS instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "is_backup", is_backup)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_type", server_type)
         pulumi.set(__self__, "weight", weight)
@@ -1268,6 +1279,14 @@ class GetMasterSlaveServerGroupsGroupServerResult(dict):
         ID of the attached ECS instance.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="isBackup")
+    def is_backup(self) -> float:
+        """
+        (Removed from v1.63.0) Determine if the server is executing.
+        """
+        return pulumi.get(self, "is_backup")
 
     @property
     @pulumi.getter

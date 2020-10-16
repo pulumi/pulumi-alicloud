@@ -2957,21 +2957,44 @@ func (o GetKubernetesClustersClusterWorkerNodeArrayOutput) Index(i pulumi.IntInp
 
 type GetManagedKubernetesClustersCluster struct {
 	// The ID of availability zone.
-	AvailabilityZone string `pulumi:"availabilityZone"`
+	AvailabilityZone   string `pulumi:"availabilityZone"`
+	ClusterNetworkType string `pulumi:"clusterNetworkType"`
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections GetManagedKubernetesClustersClusterConnections `pulumi:"connections"`
 	// ID of the node.
-	Id string `pulumi:"id"`
+	Id      string `pulumi:"id"`
+	ImageId string `pulumi:"imageId"`
+	// The keypair of ssh login cluster node, you have to create it first.
+	KeyName string `pulumi:"keyName"`
+	// A list of one element containing information about the associated log store. It contains the following attributes:
+	LogConfigs []GetManagedKubernetesClustersClusterLogConfig `pulumi:"logConfigs"`
 	// Node name.
 	Name string `pulumi:"name"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId string `pulumi:"natGatewayId"`
+	PodCidr      string `pulumi:"podCidr"`
 	// The ID of security group where the current cluster worker node is located.
-	SecurityGroupId string `pulumi:"securityGroupId"`
+	SecurityGroupId    string `pulumi:"securityGroupId"`
+	ServiceCidr        string `pulumi:"serviceCidr"`
+	SlbInternetEnabled bool   `pulumi:"slbInternetEnabled"`
 	// The ID of VPC where the current cluster is located.
 	VpcId string `pulumi:"vpcId"`
+	// The ID of VSwitches where the current cluster is located.
+	VswitchIds               []string `pulumi:"vswitchIds"`
+	WorkerAutoRenew          bool     `pulumi:"workerAutoRenew"`
+	WorkerAutoRenewPeriod    int      `pulumi:"workerAutoRenewPeriod"`
+	WorkerDataDiskCategory   string   `pulumi:"workerDataDiskCategory"`
+	WorkerDataDiskSize       int      `pulumi:"workerDataDiskSize"`
+	WorkerDiskCategory       string   `pulumi:"workerDiskCategory"`
+	WorkerDiskSize           int      `pulumi:"workerDiskSize"`
+	WorkerInstanceChargeType string   `pulumi:"workerInstanceChargeType"`
+	WorkerInstanceTypes      []string `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 	WorkerNodes []GetManagedKubernetesClustersClusterWorkerNode `pulumi:"workerNodes"`
+	// The ECS instance node number in the current container cluster.
+	WorkerNumbers    []int  `pulumi:"workerNumbers"`
+	WorkerPeriod     int    `pulumi:"workerPeriod"`
+	WorkerPeriodUnit string `pulumi:"workerPeriodUnit"`
 }
 
 // GetManagedKubernetesClustersClusterInput is an input type that accepts GetManagedKubernetesClustersClusterArgs and GetManagedKubernetesClustersClusterOutput values.
@@ -2987,21 +3010,44 @@ type GetManagedKubernetesClustersClusterInput interface {
 
 type GetManagedKubernetesClustersClusterArgs struct {
 	// The ID of availability zone.
-	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	AvailabilityZone   pulumi.StringInput `pulumi:"availabilityZone"`
+	ClusterNetworkType pulumi.StringInput `pulumi:"clusterNetworkType"`
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections GetManagedKubernetesClustersClusterConnectionsInput `pulumi:"connections"`
 	// ID of the node.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// The keypair of ssh login cluster node, you have to create it first.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// A list of one element containing information about the associated log store. It contains the following attributes:
+	LogConfigs GetManagedKubernetesClustersClusterLogConfigArrayInput `pulumi:"logConfigs"`
 	// Node name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
+	PodCidr      pulumi.StringInput `pulumi:"podCidr"`
 	// The ID of security group where the current cluster worker node is located.
-	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	SecurityGroupId    pulumi.StringInput `pulumi:"securityGroupId"`
+	ServiceCidr        pulumi.StringInput `pulumi:"serviceCidr"`
+	SlbInternetEnabled pulumi.BoolInput   `pulumi:"slbInternetEnabled"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of VSwitches where the current cluster is located.
+	VswitchIds               pulumi.StringArrayInput `pulumi:"vswitchIds"`
+	WorkerAutoRenew          pulumi.BoolInput        `pulumi:"workerAutoRenew"`
+	WorkerAutoRenewPeriod    pulumi.IntInput         `pulumi:"workerAutoRenewPeriod"`
+	WorkerDataDiskCategory   pulumi.StringInput      `pulumi:"workerDataDiskCategory"`
+	WorkerDataDiskSize       pulumi.IntInput         `pulumi:"workerDataDiskSize"`
+	WorkerDiskCategory       pulumi.StringInput      `pulumi:"workerDiskCategory"`
+	WorkerDiskSize           pulumi.IntInput         `pulumi:"workerDiskSize"`
+	WorkerInstanceChargeType pulumi.StringInput      `pulumi:"workerInstanceChargeType"`
+	WorkerInstanceTypes      pulumi.StringArrayInput `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 	WorkerNodes GetManagedKubernetesClustersClusterWorkerNodeArrayInput `pulumi:"workerNodes"`
+	// The ECS instance node number in the current container cluster.
+	WorkerNumbers    pulumi.IntArrayInput `pulumi:"workerNumbers"`
+	WorkerPeriod     pulumi.IntInput      `pulumi:"workerPeriod"`
+	WorkerPeriodUnit pulumi.StringInput   `pulumi:"workerPeriodUnit"`
 }
 
 func (GetManagedKubernetesClustersClusterArgs) ElementType() reflect.Type {
@@ -3060,6 +3106,10 @@ func (o GetManagedKubernetesClustersClusterOutput) AvailabilityZone() pulumi.Str
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+func (o GetManagedKubernetesClustersClusterOutput) ClusterNetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.ClusterNetworkType }).(pulumi.StringOutput)
+}
+
 // Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 func (o GetManagedKubernetesClustersClusterOutput) Connections() GetManagedKubernetesClustersClusterConnectionsOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) GetManagedKubernetesClustersClusterConnections {
@@ -3072,6 +3122,22 @@ func (o GetManagedKubernetesClustersClusterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetManagedKubernetesClustersClusterOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The keypair of ssh login cluster node, you have to create it first.
+func (o GetManagedKubernetesClustersClusterOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// A list of one element containing information about the associated log store. It contains the following attributes:
+func (o GetManagedKubernetesClustersClusterOutput) LogConfigs() GetManagedKubernetesClustersClusterLogConfigArrayOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []GetManagedKubernetesClustersClusterLogConfig {
+		return v.LogConfigs
+	}).(GetManagedKubernetesClustersClusterLogConfigArrayOutput)
+}
+
 // Node name.
 func (o GetManagedKubernetesClustersClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.Name }).(pulumi.StringOutput)
@@ -3082,9 +3148,21 @@ func (o GetManagedKubernetesClustersClusterOutput) NatGatewayId() pulumi.StringO
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.NatGatewayId }).(pulumi.StringOutput)
 }
 
+func (o GetManagedKubernetesClustersClusterOutput) PodCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.PodCidr }).(pulumi.StringOutput)
+}
+
 // The ID of security group where the current cluster worker node is located.
 func (o GetManagedKubernetesClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) ServiceCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.ServiceCidr }).(pulumi.StringOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) SlbInternetEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) bool { return v.SlbInternetEnabled }).(pulumi.BoolOutput)
 }
 
 // The ID of VPC where the current cluster is located.
@@ -3092,11 +3170,61 @@ func (o GetManagedKubernetesClustersClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
+// The ID of VSwitches where the current cluster is located.
+func (o GetManagedKubernetesClustersClusterOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) WorkerAutoRenew() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) bool { return v.WorkerAutoRenew }).(pulumi.BoolOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) WorkerAutoRenewPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) int { return v.WorkerAutoRenewPeriod }).(pulumi.IntOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) WorkerDataDiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.WorkerDataDiskCategory }).(pulumi.StringOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) WorkerDataDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) int { return v.WorkerDataDiskSize }).(pulumi.IntOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) WorkerDiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.WorkerDiskCategory }).(pulumi.StringOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) WorkerDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) int { return v.WorkerDiskSize }).(pulumi.IntOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) WorkerInstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.WorkerInstanceChargeType }).(pulumi.StringOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) WorkerInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []string { return v.WorkerInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
 // List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 func (o GetManagedKubernetesClustersClusterOutput) WorkerNodes() GetManagedKubernetesClustersClusterWorkerNodeArrayOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []GetManagedKubernetesClustersClusterWorkerNode {
 		return v.WorkerNodes
 	}).(GetManagedKubernetesClustersClusterWorkerNodeArrayOutput)
+}
+
+// The ECS instance node number in the current container cluster.
+func (o GetManagedKubernetesClustersClusterOutput) WorkerNumbers() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []int { return v.WorkerNumbers }).(pulumi.IntArrayOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) WorkerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) int { return v.WorkerPeriod }).(pulumi.IntOutput)
+}
+
+func (o GetManagedKubernetesClustersClusterOutput) WorkerPeriodUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.WorkerPeriodUnit }).(pulumi.StringOutput)
 }
 
 type GetManagedKubernetesClustersClusterArrayOutput struct{ *pulumi.OutputState }
@@ -3196,6 +3324,112 @@ func (o GetManagedKubernetesClustersClusterConnectionsOutput) MasterPublicIp() p
 // Service Access Domain.
 func (o GetManagedKubernetesClustersClusterConnectionsOutput) ServiceDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnections) string { return v.ServiceDomain }).(pulumi.StringOutput)
+}
+
+type GetManagedKubernetesClustersClusterLogConfig struct {
+	// Log Service project name.
+	Project string `pulumi:"project"`
+	// Type of collecting logs.
+	Type string `pulumi:"type"`
+}
+
+// GetManagedKubernetesClustersClusterLogConfigInput is an input type that accepts GetManagedKubernetesClustersClusterLogConfigArgs and GetManagedKubernetesClustersClusterLogConfigOutput values.
+// You can construct a concrete instance of `GetManagedKubernetesClustersClusterLogConfigInput` via:
+//
+//          GetManagedKubernetesClustersClusterLogConfigArgs{...}
+type GetManagedKubernetesClustersClusterLogConfigInput interface {
+	pulumi.Input
+
+	ToGetManagedKubernetesClustersClusterLogConfigOutput() GetManagedKubernetesClustersClusterLogConfigOutput
+	ToGetManagedKubernetesClustersClusterLogConfigOutputWithContext(context.Context) GetManagedKubernetesClustersClusterLogConfigOutput
+}
+
+type GetManagedKubernetesClustersClusterLogConfigArgs struct {
+	// Log Service project name.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Type of collecting logs.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetManagedKubernetesClustersClusterLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedKubernetesClustersClusterLogConfig)(nil)).Elem()
+}
+
+func (i GetManagedKubernetesClustersClusterLogConfigArgs) ToGetManagedKubernetesClustersClusterLogConfigOutput() GetManagedKubernetesClustersClusterLogConfigOutput {
+	return i.ToGetManagedKubernetesClustersClusterLogConfigOutputWithContext(context.Background())
+}
+
+func (i GetManagedKubernetesClustersClusterLogConfigArgs) ToGetManagedKubernetesClustersClusterLogConfigOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagedKubernetesClustersClusterLogConfigOutput)
+}
+
+// GetManagedKubernetesClustersClusterLogConfigArrayInput is an input type that accepts GetManagedKubernetesClustersClusterLogConfigArray and GetManagedKubernetesClustersClusterLogConfigArrayOutput values.
+// You can construct a concrete instance of `GetManagedKubernetesClustersClusterLogConfigArrayInput` via:
+//
+//          GetManagedKubernetesClustersClusterLogConfigArray{ GetManagedKubernetesClustersClusterLogConfigArgs{...} }
+type GetManagedKubernetesClustersClusterLogConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetManagedKubernetesClustersClusterLogConfigArrayOutput() GetManagedKubernetesClustersClusterLogConfigArrayOutput
+	ToGetManagedKubernetesClustersClusterLogConfigArrayOutputWithContext(context.Context) GetManagedKubernetesClustersClusterLogConfigArrayOutput
+}
+
+type GetManagedKubernetesClustersClusterLogConfigArray []GetManagedKubernetesClustersClusterLogConfigInput
+
+func (GetManagedKubernetesClustersClusterLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagedKubernetesClustersClusterLogConfig)(nil)).Elem()
+}
+
+func (i GetManagedKubernetesClustersClusterLogConfigArray) ToGetManagedKubernetesClustersClusterLogConfigArrayOutput() GetManagedKubernetesClustersClusterLogConfigArrayOutput {
+	return i.ToGetManagedKubernetesClustersClusterLogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetManagedKubernetesClustersClusterLogConfigArray) ToGetManagedKubernetesClustersClusterLogConfigArrayOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagedKubernetesClustersClusterLogConfigArrayOutput)
+}
+
+type GetManagedKubernetesClustersClusterLogConfigOutput struct{ *pulumi.OutputState }
+
+func (GetManagedKubernetesClustersClusterLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedKubernetesClustersClusterLogConfig)(nil)).Elem()
+}
+
+func (o GetManagedKubernetesClustersClusterLogConfigOutput) ToGetManagedKubernetesClustersClusterLogConfigOutput() GetManagedKubernetesClustersClusterLogConfigOutput {
+	return o
+}
+
+func (o GetManagedKubernetesClustersClusterLogConfigOutput) ToGetManagedKubernetesClustersClusterLogConfigOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterLogConfigOutput {
+	return o
+}
+
+// Log Service project name.
+func (o GetManagedKubernetesClustersClusterLogConfigOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterLogConfig) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Type of collecting logs.
+func (o GetManagedKubernetesClustersClusterLogConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterLogConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetManagedKubernetesClustersClusterLogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetManagedKubernetesClustersClusterLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagedKubernetesClustersClusterLogConfig)(nil)).Elem()
+}
+
+func (o GetManagedKubernetesClustersClusterLogConfigArrayOutput) ToGetManagedKubernetesClustersClusterLogConfigArrayOutput() GetManagedKubernetesClustersClusterLogConfigArrayOutput {
+	return o
+}
+
+func (o GetManagedKubernetesClustersClusterLogConfigArrayOutput) ToGetManagedKubernetesClustersClusterLogConfigArrayOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterLogConfigArrayOutput {
+	return o
+}
+
+func (o GetManagedKubernetesClustersClusterLogConfigArrayOutput) Index(i pulumi.IntInput) GetManagedKubernetesClustersClusterLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagedKubernetesClustersClusterLogConfig {
+		return vs[0].([]GetManagedKubernetesClustersClusterLogConfig)[vs[1].(int)]
+	}).(GetManagedKubernetesClustersClusterLogConfigOutput)
 }
 
 type GetManagedKubernetesClustersClusterWorkerNode struct {
@@ -4431,6 +4665,8 @@ func init() {
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterConnectionsOutput{})
+	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterLogConfigOutput{})
+	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterWorkerNodeOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetRegistryEnterpriseInstancesInstanceOutput{})

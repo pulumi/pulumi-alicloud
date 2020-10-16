@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Slb.Inputs
 
     public sealed class MasterSlaveServerGroupServerGetArgs : Pulumi.ResourceArgs
     {
+        [Input("isBackup")]
+        public Input<int>? IsBackup { get; set; }
+
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 

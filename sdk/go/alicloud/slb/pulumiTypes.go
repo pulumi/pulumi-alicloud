@@ -406,6 +406,7 @@ func (o ListenerXForwardedForPtrOutput) RetriveSlbProto() pulumi.BoolPtrOutput {
 }
 
 type MasterSlaveServerGroupServer struct {
+	IsBackup   *int    `pulumi:"isBackup"`
 	Port       int     `pulumi:"port"`
 	ServerId   string  `pulumi:"serverId"`
 	ServerType *string `pulumi:"serverType"`
@@ -425,6 +426,7 @@ type MasterSlaveServerGroupServerInput interface {
 }
 
 type MasterSlaveServerGroupServerArgs struct {
+	IsBackup   pulumi.IntPtrInput    `pulumi:"isBackup"`
 	Port       pulumi.IntInput       `pulumi:"port"`
 	ServerId   pulumi.StringInput    `pulumi:"serverId"`
 	ServerType pulumi.StringPtrInput `pulumi:"serverType"`
@@ -481,6 +483,10 @@ func (o MasterSlaveServerGroupServerOutput) ToMasterSlaveServerGroupServerOutput
 
 func (o MasterSlaveServerGroupServerOutput) ToMasterSlaveServerGroupServerOutputWithContext(ctx context.Context) MasterSlaveServerGroupServerOutput {
 	return o
+}
+
+func (o MasterSlaveServerGroupServerOutput) IsBackup() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MasterSlaveServerGroupServer) *int { return v.IsBackup }).(pulumi.IntPtrOutput)
 }
 
 func (o MasterSlaveServerGroupServerOutput) Port() pulumi.IntOutput {
@@ -2346,6 +2352,8 @@ func (o GetMasterSlaveServerGroupsGroupArrayOutput) Index(i pulumi.IntInput) Get
 type GetMasterSlaveServerGroupsGroupServer struct {
 	// ID of the attached ECS instance.
 	InstanceId string `pulumi:"instanceId"`
+	// (Removed from v1.63.0) Determine if the server is executing.
+	IsBackup int `pulumi:"isBackup"`
 	// The port used by the master slave server group.
 	Port int `pulumi:"port"`
 	// The server type of the attached ECS instance.
@@ -2368,6 +2376,8 @@ type GetMasterSlaveServerGroupsGroupServerInput interface {
 type GetMasterSlaveServerGroupsGroupServerArgs struct {
 	// ID of the attached ECS instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// (Removed from v1.63.0) Determine if the server is executing.
+	IsBackup pulumi.IntInput `pulumi:"isBackup"`
 	// The port used by the master slave server group.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The server type of the attached ECS instance.
@@ -2430,6 +2440,11 @@ func (o GetMasterSlaveServerGroupsGroupServerOutput) ToGetMasterSlaveServerGroup
 // ID of the attached ECS instance.
 func (o GetMasterSlaveServerGroupsGroupServerOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMasterSlaveServerGroupsGroupServer) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// (Removed from v1.63.0) Determine if the server is executing.
+func (o GetMasterSlaveServerGroupsGroupServerOutput) IsBackup() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMasterSlaveServerGroupsGroupServer) int { return v.IsBackup }).(pulumi.IntOutput)
 }
 
 // The port used by the master slave server group.

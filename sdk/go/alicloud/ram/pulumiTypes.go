@@ -556,6 +556,8 @@ type GetUsersUser struct {
 	CreateDate string `pulumi:"createDate"`
 	// The original id is user name, but it is user id in 1.37.0+.
 	Id string `pulumi:"id"`
+	// Last login date of the user. Removed from version 1.79.0.
+	LastLoginDate string `pulumi:"lastLoginDate"`
 	// Name of the user.
 	Name string `pulumi:"name"`
 }
@@ -576,6 +578,8 @@ type GetUsersUserArgs struct {
 	CreateDate pulumi.StringInput `pulumi:"createDate"`
 	// The original id is user name, but it is user id in 1.37.0+.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Last login date of the user. Removed from version 1.79.0.
+	LastLoginDate pulumi.StringInput `pulumi:"lastLoginDate"`
 	// Name of the user.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -639,6 +643,11 @@ func (o GetUsersUserOutput) CreateDate() pulumi.StringOutput {
 // The original id is user name, but it is user id in 1.37.0+.
 func (o GetUsersUserOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Last login date of the user. Removed from version 1.79.0.
+func (o GetUsersUserOutput) LastLoginDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.LastLoginDate }).(pulumi.StringOutput)
 }
 
 // Name of the user.
