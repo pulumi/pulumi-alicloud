@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -42,7 +42,7 @@ class GetDomainGroupsResult:
 
     @property
     @pulumi.getter
-    def groups(self) -> List['outputs.GetDomainGroupsGroupResult']:
+    def groups(self) -> Sequence['outputs.GetDomainGroupsGroupResult']:
         return pulumi.get(self, "groups")
 
     @property
@@ -55,7 +55,7 @@ class GetDomainGroupsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -65,7 +65,7 @@ class GetDomainGroupsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         return pulumi.get(self, "names")
 
     @property
@@ -88,7 +88,7 @@ class AwaitableGetDomainGroupsResult(GetDomainGroupsResult):
             output_file=self.output_file)
 
 
-def get_domain_groups(ids: Optional[List[str]] = None,
+def get_domain_groups(ids: Optional[Sequence[str]] = None,
                       name_regex: Optional[str] = None,
                       output_file: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainGroupsResult:

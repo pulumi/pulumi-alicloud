@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -139,24 +139,24 @@ class GetInstancesInstanceResult(dict):
                  cluster_type: str,
                  create_time: str,
                  description: str,
-                 entity_quota: float,
+                 entity_quota: int,
                  id: str,
                  name: str,
                  network: str,
-                 read_capacity: float,
+                 read_capacity: int,
                  status: str,
                  tags: Mapping[str, Any],
                  user_id: str,
-                 write_capacity: float):
+                 write_capacity: int):
         """
         :param str cluster_type: The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
         :param str create_time: The create time of the instance.
         :param str description: The description of the instance.
-        :param float entity_quota: The instance quota which indicating the maximum number of tables.
+        :param int entity_quota: The instance quota which indicating the maximum number of tables.
         :param str id: ID of the instance.
         :param str name: Instance name.
         :param str network: The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-        :param float read_capacity: The maximum adjustable read capacity unit of the instance.
+        :param int read_capacity: The maximum adjustable read capacity unit of the instance.
         :param str status: Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
         :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
                ```python
@@ -169,7 +169,7 @@ class GetInstancesInstanceResult(dict):
                })
                ```
         :param str user_id: The user id of the instance.
-        :param float write_capacity: The maximum adjustable write capacity unit of the instance.
+        :param int write_capacity: The maximum adjustable write capacity unit of the instance.
         """
         pulumi.set(__self__, "cluster_type", cluster_type)
         pulumi.set(__self__, "create_time", create_time)
@@ -210,7 +210,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="entityQuota")
-    def entity_quota(self) -> float:
+    def entity_quota(self) -> int:
         """
         The instance quota which indicating the maximum number of tables.
         """
@@ -242,7 +242,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="readCapacity")
-    def read_capacity(self) -> float:
+    def read_capacity(self) -> int:
         """
         The maximum adjustable read capacity unit of the instance.
         """
@@ -283,7 +283,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="writeCapacity")
-    def write_capacity(self) -> float:
+    def write_capacity(self) -> int:
         """
         The maximum adjustable write capacity unit of the instance.
         """
@@ -295,17 +295,17 @@ class GetTablesTableResult(dict):
     def __init__(__self__, *,
                  id: str,
                  instance_name: str,
-                 max_version: float,
-                 primary_keys: List['outputs.GetTablesTablePrimaryKeyResult'],
+                 max_version: int,
+                 primary_keys: Sequence['outputs.GetTablesTablePrimaryKeyResult'],
                  table_name: str,
-                 time_to_live: float):
+                 time_to_live: int):
         """
         :param str id: ID of the table. The value is `<instance_name>:<table_name>`.
         :param str instance_name: The name of OTS instance.
-        :param float max_version: The maximum number of versions stored in this table.
-        :param List['GetTablesTablePrimaryKeyArgs'] primary_keys: The property of `TableMeta` which indicates the structure information of a table.
+        :param int max_version: The maximum number of versions stored in this table.
+        :param Sequence['GetTablesTablePrimaryKeyArgs'] primary_keys: The property of `TableMeta` which indicates the structure information of a table.
         :param str table_name: The table name of the OTS which could not be changed.
-        :param float time_to_live: The retention time of data stored in this table.
+        :param int time_to_live: The retention time of data stored in this table.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_name", instance_name)
@@ -332,7 +332,7 @@ class GetTablesTableResult(dict):
 
     @property
     @pulumi.getter(name="maxVersion")
-    def max_version(self) -> float:
+    def max_version(self) -> int:
         """
         The maximum number of versions stored in this table.
         """
@@ -340,7 +340,7 @@ class GetTablesTableResult(dict):
 
     @property
     @pulumi.getter(name="primaryKeys")
-    def primary_keys(self) -> List['outputs.GetTablesTablePrimaryKeyResult']:
+    def primary_keys(self) -> Sequence['outputs.GetTablesTablePrimaryKeyResult']:
         """
         The property of `TableMeta` which indicates the structure information of a table.
         """
@@ -356,7 +356,7 @@ class GetTablesTableResult(dict):
 
     @property
     @pulumi.getter(name="timeToLive")
-    def time_to_live(self) -> float:
+    def time_to_live(self) -> int:
         """
         The retention time of data stored in this table.
         """

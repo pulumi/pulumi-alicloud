@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Instance']
@@ -16,13 +16,13 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
-                 cold_storage_size: Optional[pulumi.Input[float]] = None,
-                 core_disk_size: Optional[pulumi.Input[float]] = None,
+                 cold_storage_size: Optional[pulumi.Input[int]] = None,
+                 core_disk_size: Optional[pulumi.Input[int]] = None,
                  core_disk_type: Optional[pulumi.Input[str]] = None,
-                 core_instance_quantity: Optional[pulumi.Input[float]] = None,
+                 core_instance_quantity: Optional[pulumi.Input[int]] = None,
                  core_instance_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
-                 duration: Optional[pulumi.Input[float]] = None,
+                 duration: Optional[pulumi.Input[int]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
@@ -73,14 +73,14 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: `true`, `false`, System default to `false`, valid when pay_type = PrePaid.
-        :param pulumi.Input[float] cold_storage_size: 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
-        :param pulumi.Input[float] core_disk_size: User-defined HBase instance one core node's storage space.Unit: GB. Value range:
+        :param pulumi.Input[int] cold_storage_size: 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
+        :param pulumi.Input[int] core_disk_size: User-defined HBase instance one core node's storage space.Unit: GB. Value range:
                - Custom storage space; value range: [400, 8000]
                - 40-GB increments.
         :param pulumi.Input[str] core_disk_type: Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`. local_disk size is fixed.
-        :param pulumi.Input[float] core_instance_quantity: default=2. if core_instance_quantity > 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
+        :param pulumi.Input[int] core_instance_quantity: default=2. if core_instance_quantity > 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
         :param pulumi.Input[bool] deletion_protection: the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
-        :param pulumi.Input[float] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
+        :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
         :param pulumi.Input[str] engine: "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
         :param pulumi.Input[str] engine_version: hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
                * `master_instance_type`、`core_instance_type` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
@@ -146,13 +146,13 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
-            cold_storage_size: Optional[pulumi.Input[float]] = None,
-            core_disk_size: Optional[pulumi.Input[float]] = None,
+            cold_storage_size: Optional[pulumi.Input[int]] = None,
+            core_disk_size: Optional[pulumi.Input[int]] = None,
             core_disk_type: Optional[pulumi.Input[str]] = None,
-            core_instance_quantity: Optional[pulumi.Input[float]] = None,
+            core_instance_quantity: Optional[pulumi.Input[int]] = None,
             core_instance_type: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
-            duration: Optional[pulumi.Input[float]] = None,
+            duration: Optional[pulumi.Input[int]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             maintain_end_time: Optional[pulumi.Input[str]] = None,
@@ -171,14 +171,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: `true`, `false`, System default to `false`, valid when pay_type = PrePaid.
-        :param pulumi.Input[float] cold_storage_size: 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
-        :param pulumi.Input[float] core_disk_size: User-defined HBase instance one core node's storage space.Unit: GB. Value range:
+        :param pulumi.Input[int] cold_storage_size: 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
+        :param pulumi.Input[int] core_disk_size: User-defined HBase instance one core node's storage space.Unit: GB. Value range:
                - Custom storage space; value range: [400, 8000]
                - 40-GB increments.
         :param pulumi.Input[str] core_disk_type: Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`. local_disk size is fixed.
-        :param pulumi.Input[float] core_instance_quantity: default=2. if core_instance_quantity > 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
+        :param pulumi.Input[int] core_instance_quantity: default=2. if core_instance_quantity > 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
         :param pulumi.Input[bool] deletion_protection: the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
-        :param pulumi.Input[float] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
+        :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
         :param pulumi.Input[str] engine: "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
         :param pulumi.Input[str] engine_version: hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
                * `master_instance_type`、`core_instance_type` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
@@ -224,7 +224,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coldStorageSize")
-    def cold_storage_size(self) -> pulumi.Output[float]:
+    def cold_storage_size(self) -> pulumi.Output[int]:
         """
         0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
         """
@@ -232,7 +232,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coreDiskSize")
-    def core_disk_size(self) -> pulumi.Output[Optional[float]]:
+    def core_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
         User-defined HBase instance one core node's storage space.Unit: GB. Value range:
         - Custom storage space; value range: [400, 8000]
@@ -250,7 +250,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coreInstanceQuantity")
-    def core_instance_quantity(self) -> pulumi.Output[Optional[float]]:
+    def core_instance_quantity(self) -> pulumi.Output[Optional[int]]:
         """
         default=2. if core_instance_quantity > 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
         """
@@ -271,7 +271,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def duration(self) -> pulumi.Output[float]:
+    def duration(self) -> pulumi.Output[int]:
         """
         1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
         """

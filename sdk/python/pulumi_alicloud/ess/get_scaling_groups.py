@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -42,7 +42,7 @@ class GetScalingGroupsResult:
 
     @property
     @pulumi.getter
-    def groups(self) -> List['outputs.GetScalingGroupsGroupResult']:
+    def groups(self) -> Sequence['outputs.GetScalingGroupsGroupResult']:
         """
         A list of scaling groups. Each element contains the following attributes:
         """
@@ -58,7 +58,7 @@ class GetScalingGroupsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of scaling group ids.
         """
@@ -71,7 +71,7 @@ class GetScalingGroupsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of scaling group names.
         """
@@ -97,7 +97,7 @@ class AwaitableGetScalingGroupsResult(GetScalingGroupsResult):
             output_file=self.output_file)
 
 
-def get_scaling_groups(ids: Optional[List[str]] = None,
+def get_scaling_groups(ids: Optional[Sequence[str]] = None,
                        name_regex: Optional[str] = None,
                        output_file: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetScalingGroupsResult:
@@ -119,7 +119,7 @@ def get_scaling_groups(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of scaling group IDs.
+    :param Sequence[str] ids: A list of scaling group IDs.
     :param str name_regex: A regex string to filter resulting scaling groups by name.
     """
     __args__ = dict()

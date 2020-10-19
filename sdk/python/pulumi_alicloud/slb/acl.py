@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,7 +17,7 @@ class Acl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entry_lists: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]]] = None,
+                 entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -85,7 +85,7 @@ class Acl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]] entry_lists: A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]] entry_lists: A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
         :param pulumi.Input[str] ip_version: The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
         :param pulumi.Input[str] name: Name of the access control list.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
@@ -123,7 +123,7 @@ class Acl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            entry_lists: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]]] = None,
+            entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]]] = None,
             ip_version: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -135,7 +135,7 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]] entry_lists: A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]] entry_lists: A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
         :param pulumi.Input[str] ip_version: The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
         :param pulumi.Input[str] name: Name of the access control list.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
@@ -154,7 +154,7 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entryLists")
-    def entry_lists(self) -> pulumi.Output[Optional[List['outputs.AclEntryList']]]:
+    def entry_lists(self) -> pulumi.Output[Optional[Sequence['outputs.AclEntryList']]]:
         """
         A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
         """

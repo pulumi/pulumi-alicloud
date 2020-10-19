@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -73,7 +73,7 @@ class GetFlowlogsResult:
 
     @property
     @pulumi.getter
-    def flowlogs(self) -> List['outputs.GetFlowlogsFlowlogResult']:
+    def flowlogs(self) -> Sequence['outputs.GetFlowlogsFlowlogResult']:
         return pulumi.get(self, "flowlogs")
 
     @property
@@ -86,7 +86,7 @@ class GetFlowlogsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of CEN flow log IDs.
         """
@@ -107,7 +107,7 @@ class GetFlowlogsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of CEN flow log names.
         """
@@ -156,7 +156,7 @@ class AwaitableGetFlowlogsResult(GetFlowlogsResult):
 
 def get_flowlogs(cen_id: Optional[str] = None,
                  description: Optional[str] = None,
-                 ids: Optional[List[str]] = None,
+                 ids: Optional[Sequence[str]] = None,
                  log_store_name: Optional[str] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
@@ -184,7 +184,7 @@ def get_flowlogs(cen_id: Optional[str] = None,
 
     :param str cen_id: The ID of the CEN Instance.
     :param str description: The description of flowlog.
-    :param List[str] ids: A list of CEN flow log IDs.
+    :param Sequence[str] ids: A list of CEN flow log IDs.
     :param str log_store_name: The name of the log store which is in the  `project_name` SLS project.
     :param str name_regex: A regex string to filter CEN flow logs by name.
     :param str project_name: The name of the SLS project.

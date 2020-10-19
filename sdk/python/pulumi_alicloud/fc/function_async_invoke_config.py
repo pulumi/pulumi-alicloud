@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,8 +19,8 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_config: Optional[pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
-                 maximum_event_age_in_seconds: Optional[pulumi.Input[float]] = None,
-                 maximum_retry_attempts: Optional[pulumi.Input[float]] = None,
+                 maximum_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
+                 maximum_retry_attempts: Optional[pulumi.Input[int]] = None,
                  qualifier: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -82,8 +82,8 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']] destination_config: Configuration block with destination configuration. See below for details.
         :param pulumi.Input[str] function_name: Name of the Function Compute Function.
-        :param pulumi.Input[float] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
-        :param pulumi.Input[float] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+        :param pulumi.Input[int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+        :param pulumi.Input[int] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
         :param pulumi.Input[str] qualifier: Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
         :param pulumi.Input[str] service_name: Name of the Function Compute Function, omitting any version or alias qualifier.
         """
@@ -130,8 +130,8 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             destination_config: Optional[pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
             last_modified_time: Optional[pulumi.Input[str]] = None,
-            maximum_event_age_in_seconds: Optional[pulumi.Input[float]] = None,
-            maximum_retry_attempts: Optional[pulumi.Input[float]] = None,
+            maximum_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
+            maximum_retry_attempts: Optional[pulumi.Input[int]] = None,
             qualifier: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None) -> 'FunctionAsyncInvokeConfig':
         """
@@ -145,8 +145,8 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']] destination_config: Configuration block with destination configuration. See below for details.
         :param pulumi.Input[str] function_name: Name of the Function Compute Function.
         :param pulumi.Input[str] last_modified_time: The date this resource was last modified.
-        :param pulumi.Input[float] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
-        :param pulumi.Input[float] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+        :param pulumi.Input[int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+        :param pulumi.Input[int] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
         :param pulumi.Input[str] qualifier: Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
         :param pulumi.Input[str] service_name: Name of the Function Compute Function, omitting any version or alias qualifier.
         """
@@ -198,7 +198,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maximumEventAgeInSeconds")
-    def maximum_event_age_in_seconds(self) -> pulumi.Output[Optional[float]]:
+    def maximum_event_age_in_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
         """
@@ -206,7 +206,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maximumRetryAttempts")
-    def maximum_retry_attempts(self) -> pulumi.Output[Optional[float]]:
+    def maximum_retry_attempts(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
         """

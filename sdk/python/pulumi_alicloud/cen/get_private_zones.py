@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -69,7 +69,7 @@ class GetPrivateZonesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of CEN private zone IDs.
         """
@@ -90,7 +90,7 @@ class GetPrivateZonesResult:
 
     @property
     @pulumi.getter
-    def zones(self) -> List['outputs.GetPrivateZonesZoneResult']:
+    def zones(self) -> Sequence['outputs.GetPrivateZonesZoneResult']:
         """
         A list of CEN private zones. Each element contains the following attributes:
         """
@@ -114,7 +114,7 @@ class AwaitableGetPrivateZonesResult(GetPrivateZonesResult):
 
 def get_private_zones(cen_id: Optional[str] = None,
                       host_region_id: Optional[str] = None,
-                      ids: Optional[List[str]] = None,
+                      ids: Optional[Sequence[str]] = None,
                       output_file: Optional[str] = None,
                       status: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrivateZonesResult:
@@ -126,7 +126,7 @@ def get_private_zones(cen_id: Optional[str] = None,
 
     :param str cen_id: The ID of the CEN instance.
     :param str host_region_id: The service region. The service region is the target region of the PrivateZone service accessed through CEN.
-    :param List[str] ids: A list of CEN private zone IDs.
+    :param Sequence[str] ids: A list of CEN private zone IDs.
            * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
     :param str status: The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
     """

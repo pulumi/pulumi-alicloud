@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
-                 data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -27,8 +27,8 @@ class LaunchTemplate(pulumi.CustomResource):
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
-                 internet_max_bandwidth_in: Optional[pulumi.Input[float]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[float]] = None,
+                 internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
+                 internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  io_optimized: Optional[pulumi.Input[str]] = None,
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -43,7 +43,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
-                 system_disk_size: Optional[pulumi.Input[float]] = None,
+                 system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: Image ID.
@@ -128,8 +128,8 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
-        :param pulumi.Input[float] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
-        :param pulumi.Input[float] internet_max_bandwidth_out: Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
+        :param pulumi.Input[int] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
         :param pulumi.Input[str] io_optimized: Whether it is an I/O-optimized instance or not. Optional values:
                - none
                - optimized
@@ -155,7 +155,7 @@ class LaunchTemplate(pulumi.CustomResource):
                - cloud_essd: ESSD cloud Disks.
         :param pulumi.Input[str] system_disk_description: System disk description. It cannot begin with http:// or https://.
         :param pulumi.Input[str] system_disk_name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
-        :param pulumi.Input[float] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
+        :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -223,7 +223,7 @@ class LaunchTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_release_time: Optional[pulumi.Input[str]] = None,
-            data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]]] = None,
+            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
@@ -232,8 +232,8 @@ class LaunchTemplate(pulumi.CustomResource):
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
-            internet_max_bandwidth_in: Optional[pulumi.Input[float]] = None,
-            internet_max_bandwidth_out: Optional[pulumi.Input[float]] = None,
+            internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
+            internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
             io_optimized: Optional[pulumi.Input[str]] = None,
             key_pair_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -248,7 +248,7 @@ class LaunchTemplate(pulumi.CustomResource):
             system_disk_category: Optional[pulumi.Input[str]] = None,
             system_disk_description: Optional[pulumi.Input[str]] = None,
             system_disk_name: Optional[pulumi.Input[str]] = None,
-            system_disk_size: Optional[pulumi.Input[float]] = None,
+            system_disk_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             userdata: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -262,7 +262,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: Image ID.
@@ -272,8 +272,8 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
-        :param pulumi.Input[float] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
-        :param pulumi.Input[float] internet_max_bandwidth_out: Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
+        :param pulumi.Input[int] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
         :param pulumi.Input[str] io_optimized: Whether it is an I/O-optimized instance or not. Optional values:
                - none
                - optimized
@@ -299,7 +299,7 @@ class LaunchTemplate(pulumi.CustomResource):
                - cloud_essd: ESSD cloud Disks.
         :param pulumi.Input[str] system_disk_description: System disk description. It cannot begin with http:// or https://.
         :param pulumi.Input[str] system_disk_name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
-        :param pulumi.Input[float] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
+        :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -355,7 +355,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> pulumi.Output[Optional[List['outputs.LaunchTemplateDataDisk']]]:
+    def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.LaunchTemplateDataDisk']]]:
         """
         The list of data disks created with instance.
         """
@@ -426,7 +426,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthIn")
-    def internet_max_bandwidth_in(self) -> pulumi.Output[float]:
+    def internet_max_bandwidth_in(self) -> pulumi.Output[int]:
         """
         The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
         """
@@ -434,7 +434,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> pulumi.Output[Optional[float]]:
+    def internet_max_bandwidth_out(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
         """
@@ -563,7 +563,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> pulumi.Output[Optional[float]]:
+    def system_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
         Size of the system disk, measured in GB. Value range: [20, 500].
         """

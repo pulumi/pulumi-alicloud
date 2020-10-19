@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetFoldersResult:
 
     @property
     @pulumi.getter
-    def folders(self) -> List['outputs.GetFoldersFolderResult']:
+    def folders(self) -> Sequence['outputs.GetFoldersFolderResult']:
         """
         A list of folders. Each element contains the following attributes:
         """
@@ -61,7 +61,7 @@ class GetFoldersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of folder IDs.
         """
@@ -74,7 +74,7 @@ class GetFoldersResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of folder names.
         """
@@ -106,7 +106,7 @@ class AwaitableGetFoldersResult(GetFoldersResult):
             parent_folder_id=self.parent_folder_id)
 
 
-def get_folders(ids: Optional[List[str]] = None,
+def get_folders(ids: Optional[Sequence[str]] = None,
                 name_regex: Optional[str] = None,
                 output_file: Optional[str] = None,
                 parent_folder_id: Optional[str] = None,
@@ -129,7 +129,7 @@ def get_folders(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of resource manager folders IDs.
+    :param Sequence[str] ids: A list of resource manager folders IDs.
     :param str name_regex: A regex string to filter results by folder name.
     :param str parent_folder_id: The ID of the parent folder.
     """

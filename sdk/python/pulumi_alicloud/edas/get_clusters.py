@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def clusters(self) -> List['outputs.GetClustersClusterResult']:
+    def clusters(self) -> Sequence['outputs.GetClustersClusterResult']:
         """
         A list of clusters.
         """
@@ -61,7 +61,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of cluster IDs.
         """
@@ -79,7 +79,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of cluster names.
         """
@@ -106,7 +106,7 @@ class AwaitableGetClustersResult(GetClustersResult):
             output_file=self.output_file)
 
 
-def get_clusters(ids: Optional[List[str]] = None,
+def get_clusters(ids: Optional[Sequence[str]] = None,
                  logical_region_id: Optional[str] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
@@ -129,7 +129,7 @@ def get_clusters(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: An ids string to filter results by the cluster id.
+    :param Sequence[str] ids: An ids string to filter results by the cluster id.
     :param str logical_region_id: ID of the namespace in EDAS.
     :param str name_regex: A regex string to filter results by the cluster name.
     """

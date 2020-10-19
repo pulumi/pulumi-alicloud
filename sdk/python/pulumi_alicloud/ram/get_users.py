@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -64,7 +64,7 @@ class GetUsersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of ram user IDs.
         """
@@ -77,7 +77,7 @@ class GetUsersResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of ram user names.
         """
@@ -100,7 +100,7 @@ class GetUsersResult:
 
     @property
     @pulumi.getter
-    def users(self) -> List['outputs.GetUsersUserResult']:
+    def users(self) -> Sequence['outputs.GetUsersUserResult']:
         """
         A list of users. Each element contains the following attributes:
         """
@@ -125,7 +125,7 @@ class AwaitableGetUsersResult(GetUsersResult):
 
 
 def get_users(group_name: Optional[str] = None,
-              ids: Optional[List[str]] = None,
+              ids: Optional[Sequence[str]] = None,
               name_regex: Optional[str] = None,
               output_file: Optional[str] = None,
               policy_name: Optional[str] = None,
@@ -150,7 +150,7 @@ def get_users(group_name: Optional[str] = None,
 
 
     :param str group_name: Filter results by a specific group name. Returned users are in the specified group.
-    :param List[str] ids: - A list of ram user IDs.
+    :param Sequence[str] ids: - A list of ram user IDs.
     :param str name_regex: A regex string to filter resulting users by their names.
     :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
     :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -39,8 +39,8 @@ class GetVbrHealthChecksResult:
         if vbr_instance_id and not isinstance(vbr_instance_id, str):
             raise TypeError("Expected argument 'vbr_instance_id' to be a str")
         pulumi.set(__self__, "vbr_instance_id", vbr_instance_id)
-        if vbr_instance_owner_id and not isinstance(vbr_instance_owner_id, float):
-            raise TypeError("Expected argument 'vbr_instance_owner_id' to be a float")
+        if vbr_instance_owner_id and not isinstance(vbr_instance_owner_id, int):
+            raise TypeError("Expected argument 'vbr_instance_owner_id' to be a int")
         pulumi.set(__self__, "vbr_instance_owner_id", vbr_instance_owner_id)
         if vbr_instance_region_id and not isinstance(vbr_instance_region_id, str):
             raise TypeError("Expected argument 'vbr_instance_region_id' to be a str")
@@ -56,7 +56,7 @@ class GetVbrHealthChecksResult:
 
     @property
     @pulumi.getter
-    def checks(self) -> List['outputs.GetVbrHealthChecksCheckResult']:
+    def checks(self) -> Sequence['outputs.GetVbrHealthChecksCheckResult']:
         """
         A list of CEN VBR Heath Checks. Each element contains the following attributes:
         """
@@ -72,7 +72,7 @@ class GetVbrHealthChecksResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of the CEN VBR Heath Check IDs.
         """
@@ -93,7 +93,7 @@ class GetVbrHealthChecksResult:
 
     @property
     @pulumi.getter(name="vbrInstanceOwnerId")
-    def vbr_instance_owner_id(self) -> Optional[float]:
+    def vbr_instance_owner_id(self) -> Optional[int]:
         return pulumi.get(self, "vbr_instance_owner_id")
 
     @property
@@ -124,7 +124,7 @@ class AwaitableGetVbrHealthChecksResult(GetVbrHealthChecksResult):
 def get_vbr_health_checks(cen_id: Optional[str] = None,
                           output_file: Optional[str] = None,
                           vbr_instance_id: Optional[str] = None,
-                          vbr_instance_owner_id: Optional[float] = None,
+                          vbr_instance_owner_id: Optional[int] = None,
                           vbr_instance_region_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVbrHealthChecksResult:
     """
@@ -135,7 +135,7 @@ def get_vbr_health_checks(cen_id: Optional[str] = None,
 
     :param str cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
     :param str vbr_instance_id: The ID of the VBR instance.
-    :param float vbr_instance_owner_id: The User ID (UID) of the account to which the VBR instance belongs.
+    :param int vbr_instance_owner_id: The User ID (UID) of the account to which the VBR instance belongs.
     :param str vbr_instance_region_id: The ID of the region where the VBR instance is deployed.
     """
     __args__ = dict()

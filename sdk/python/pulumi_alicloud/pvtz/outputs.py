@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -52,18 +52,18 @@ class ZoneAttachmentVpc(dict):
 @pulumi.output_type
 class GetZoneRecordsRecordResult(dict):
     def __init__(__self__, *,
-                 id: float,
-                 priority: float,
+                 id: int,
+                 priority: int,
                  resource_record: str,
                  status: str,
-                 ttl: float,
+                 ttl: int,
                  type: str,
                  value: str):
         """
-        :param float id: ID of the Private Zone Record.
-        :param float priority: Priority of the Private Zone Record.
+        :param int id: ID of the Private Zone Record.
+        :param int priority: Priority of the Private Zone Record.
         :param str resource_record: Resource record of the Private Zone Record.
-        :param float ttl: Ttl of the Private Zone Record.
+        :param int ttl: Ttl of the Private Zone Record.
         :param str type: Type of the Private Zone Record.
         :param str value: Value of the Private Zone Record.
         """
@@ -77,7 +77,7 @@ class GetZoneRecordsRecordResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         ID of the Private Zone Record.
         """
@@ -85,7 +85,7 @@ class GetZoneRecordsRecordResult(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         """
         Priority of the Private Zone Record.
         """
@@ -106,7 +106,7 @@ class GetZoneRecordsRecordResult(dict):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> int:
         """
         Ttl of the Private Zone Record.
         """
@@ -132,21 +132,21 @@ class GetZoneRecordsRecordResult(dict):
 @pulumi.output_type
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
-                 bind_vpcs: List['outputs.GetZonesZoneBindVpcResult'],
+                 bind_vpcs: Sequence['outputs.GetZonesZoneBindVpcResult'],
                  creation_time: str,
                  id: str,
                  is_ptr: bool,
                  name: str,
-                 record_count: float,
+                 record_count: int,
                  remark: str,
                  update_time: str):
         """
-        :param List['GetZonesZoneBindVpcArgs'] bind_vpcs: List of the VPCs is bound to the Private Zone.
+        :param Sequence['GetZonesZoneBindVpcArgs'] bind_vpcs: List of the VPCs is bound to the Private Zone.
         :param str creation_time: Time of creation of the Private Zone.
         :param str id: ID of the Private Zone.
         :param bool is_ptr: Whether the Private Zone is ptr
         :param str name: Name of the Private Zone.
-        :param float record_count: Count of the Private Zone Record.
+        :param int record_count: Count of the Private Zone Record.
         :param str remark: Remark of the Private Zone.
         :param str update_time: Time of update of the Private Zone.
         """
@@ -161,7 +161,7 @@ class GetZonesZoneResult(dict):
 
     @property
     @pulumi.getter(name="bindVpcs")
-    def bind_vpcs(self) -> List['outputs.GetZonesZoneBindVpcResult']:
+    def bind_vpcs(self) -> Sequence['outputs.GetZonesZoneBindVpcResult']:
         """
         List of the VPCs is bound to the Private Zone.
         """
@@ -201,7 +201,7 @@ class GetZonesZoneResult(dict):
 
     @property
     @pulumi.getter(name="recordCount")
-    def record_count(self) -> float:
+    def record_count(self) -> int:
         """
         Count of the Private Zone Record.
         """

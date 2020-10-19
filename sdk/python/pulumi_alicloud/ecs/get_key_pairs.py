@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -67,12 +67,12 @@ class GetKeyPairsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
     @pulumi.getter(name="keyPairs")
-    def key_pairs(self) -> List['outputs.GetKeyPairsKeyPairResult']:
+    def key_pairs(self) -> Sequence['outputs.GetKeyPairsKeyPairResult']:
         """
         A list of key pairs. Each element contains the following attributes:
         """
@@ -85,7 +85,7 @@ class GetKeyPairsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of key pair names.
         """
@@ -131,7 +131,7 @@ class AwaitableGetKeyPairsResult(GetKeyPairsResult):
 
 
 def get_key_pairs(finger_print: Optional[str] = None,
-                  ids: Optional[List[str]] = None,
+                  ids: Optional[Sequence[str]] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
                   resource_group_id: Optional[str] = None,
@@ -153,7 +153,7 @@ def get_key_pairs(finger_print: Optional[str] = None,
 
 
     :param str finger_print: A finger print used to retrieve specified key pair.
-    :param List[str] ids: A list of key pair IDs.
+    :param Sequence[str] ids: A list of key pair IDs.
     :param str name_regex: A regex string to apply to the resulting key pairs.
     :param str resource_group_id: The Id of resource group which the key pair belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.

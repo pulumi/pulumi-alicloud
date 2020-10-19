@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Attachment']
@@ -17,10 +17,10 @@ class Attachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_servers: Optional[pulumi.Input[str]] = None,
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
-                 instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  server_type: Optional[pulumi.Input[str]] = None,
-                 weight: Optional[pulumi.Input[float]] = None,
+                 weight: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -30,10 +30,10 @@ class Attachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_servers: The backend servers of the load balancer.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_ids: A list of instance ids to added backend server in the SLB.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A list of instance ids to added backend server in the SLB.
         :param pulumi.Input[str] load_balancer_id: ID of the load balancer.
         :param pulumi.Input[str] server_type: Type of the instances. Valid value ecs, eni. Default to ecs.
-        :param pulumi.Input[float] weight: Weight of the instances. Valid value range: [0-100]. Default to 100.
+        :param pulumi.Input[int] weight: Weight of the instances. Valid value range: [0-100]. Default to 100.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -74,10 +74,10 @@ class Attachment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backend_servers: Optional[pulumi.Input[str]] = None,
             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
-            instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             load_balancer_id: Optional[pulumi.Input[str]] = None,
             server_type: Optional[pulumi.Input[str]] = None,
-            weight: Optional[pulumi.Input[float]] = None) -> 'Attachment':
+            weight: Optional[pulumi.Input[int]] = None) -> 'Attachment':
         """
         Get an existing Attachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -87,10 +87,10 @@ class Attachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_servers: The backend servers of the load balancer.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_ids: A list of instance ids to added backend server in the SLB.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A list of instance ids to added backend server in the SLB.
         :param pulumi.Input[str] load_balancer_id: ID of the load balancer.
         :param pulumi.Input[str] server_type: Type of the instances. Valid value ecs, eni. Default to ecs.
-        :param pulumi.Input[float] weight: Weight of the instances. Valid value range: [0-100]. Default to 100.
+        :param pulumi.Input[int] weight: Weight of the instances. Valid value range: [0-100]. Default to 100.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -122,7 +122,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> pulumi.Output[List[str]]:
+    def instance_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of instance ids to added backend server in the SLB.
         """
@@ -146,7 +146,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> pulumi.Output[Optional[float]]:
+    def weight(self) -> pulumi.Output[Optional[int]]:
         """
         Weight of the instances. Valid value range: [0-100]. Default to 100.
         """

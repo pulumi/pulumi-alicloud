@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Topic']
@@ -16,7 +16,7 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  logging_enabled: Optional[pulumi.Input[bool]] = None,
-                 maximum_message_size: Optional[pulumi.Input[float]] = None,
+                 maximum_message_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -26,7 +26,7 @@ class Topic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] logging_enabled: Is logging enabled? true or false. Default value to false.
-        :param pulumi.Input[float] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
+        :param pulumi.Input[int] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         :param pulumi.Input[str] name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
         if __name__ is not None:
@@ -60,7 +60,7 @@ class Topic(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             logging_enabled: Optional[pulumi.Input[bool]] = None,
-            maximum_message_size: Optional[pulumi.Input[float]] = None,
+            maximum_message_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
@@ -70,7 +70,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] logging_enabled: Is logging enabled? true or false. Default value to false.
-        :param pulumi.Input[float] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
+        :param pulumi.Input[int] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         :param pulumi.Input[str] name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -92,7 +92,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maximumMessageSize")
-    def maximum_message_size(self) -> pulumi.Output[Optional[float]]:
+    def maximum_message_size(self) -> pulumi.Output[Optional[int]]:
         """
         This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         """

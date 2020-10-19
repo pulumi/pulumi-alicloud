@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -47,7 +47,7 @@ class GetKeyVersionsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of KMS KeyVersion IDs.
         """
@@ -68,7 +68,7 @@ class GetKeyVersionsResult:
 
     @property
     @pulumi.getter
-    def versions(self) -> List['outputs.GetKeyVersionsVersionResult']:
+    def versions(self) -> Sequence['outputs.GetKeyVersionsVersionResult']:
         """
         A list of KMS KeyVersions. Each element contains the following attributes:
         """
@@ -88,7 +88,7 @@ class AwaitableGetKeyVersionsResult(GetKeyVersionsResult):
             versions=self.versions)
 
 
-def get_key_versions(ids: Optional[List[str]] = None,
+def get_key_versions(ids: Optional[Sequence[str]] = None,
                      key_id: Optional[str] = None,
                      output_file: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyVersionsResult:
@@ -109,7 +109,7 @@ def get_key_versions(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of KMS KeyVersion IDs.
+    :param Sequence[str] ids: A list of KMS KeyVersion IDs.
     :param str key_id: The id of kms key.
     """
     __args__ = dict()

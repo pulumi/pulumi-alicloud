@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -51,7 +51,7 @@ class GetNodeClassesResult:
 
     @property
     @pulumi.getter
-    def classes(self) -> List['outputs.GetNodeClassesClassResult']:
+    def classes(self) -> Sequence['outputs.GetNodeClassesClassResult']:
         """
         A list of PolarDB node classes. Each element contains the following attributes:
         """

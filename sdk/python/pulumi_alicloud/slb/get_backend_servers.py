@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -39,7 +39,7 @@ class GetBackendServersResult:
 
     @property
     @pulumi.getter(name="backendServers")
-    def backend_servers(self) -> List['outputs.GetBackendServersBackendServerResult']:
+    def backend_servers(self) -> Sequence['outputs.GetBackendServersBackendServerResult']:
         return pulumi.get(self, "backend_servers")
 
     @property
@@ -52,7 +52,7 @@ class GetBackendServersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -79,7 +79,7 @@ class AwaitableGetBackendServersResult(GetBackendServersResult):
             output_file=self.output_file)
 
 
-def get_backend_servers(ids: Optional[List[str]] = None,
+def get_backend_servers(ids: Optional[Sequence[str]] = None,
                         load_balancer_id: Optional[str] = None,
                         output_file: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackendServersResult:
@@ -99,7 +99,7 @@ def get_backend_servers(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: List of attached ECS instance IDs.
+    :param Sequence[str] ids: List of attached ECS instance IDs.
     :param str load_balancer_id: ID of the SLB with attachments.
     """
     __args__ = dict()

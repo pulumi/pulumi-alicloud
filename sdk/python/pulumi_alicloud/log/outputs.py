@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -23,14 +23,14 @@ class AlertNotificationList(dict):
     def __init__(__self__, *,
                  content: str,
                  type: str,
-                 email_lists: Optional[List[str]] = None,
-                 mobile_lists: Optional[List[str]] = None,
+                 email_lists: Optional[Sequence[str]] = None,
+                 mobile_lists: Optional[Sequence[str]] = None,
                  service_uri: Optional[str] = None):
         """
         :param str content: Notice content of alarm.
         :param str type: Notification type. support Email, SMS, DingTalk.
-        :param List[str] email_lists: Email address list.
-        :param List[str] mobile_lists: SMS sending mobile number.
+        :param Sequence[str] email_lists: Email address list.
+        :param Sequence[str] mobile_lists: SMS sending mobile number.
         :param str service_uri: Request address.
         """
         pulumi.set(__self__, "content", content)
@@ -60,7 +60,7 @@ class AlertNotificationList(dict):
 
     @property
     @pulumi.getter(name="emailLists")
-    def email_lists(self) -> Optional[List[str]]:
+    def email_lists(self) -> Optional[Sequence[str]]:
         """
         Email address list.
         """
@@ -68,7 +68,7 @@ class AlertNotificationList(dict):
 
     @property
     @pulumi.getter(name="mobileLists")
-    def mobile_lists(self) -> Optional[List[str]]:
+    def mobile_lists(self) -> Optional[Sequence[str]]:
         """
         SMS sending mobile number.
         """
@@ -171,7 +171,7 @@ class StoreIndexFieldSearch(dict):
                  case_sensitive: Optional[bool] = None,
                  enable_analytics: Optional[bool] = None,
                  include_chinese: Optional[bool] = None,
-                 json_keys: Optional[List['outputs.StoreIndexFieldSearchJsonKey']] = None,
+                 json_keys: Optional[Sequence['outputs.StoreIndexFieldSearchJsonKey']] = None,
                  token: Optional[str] = None,
                  type: Optional[str] = None):
         """
@@ -180,7 +180,7 @@ class StoreIndexFieldSearch(dict):
         :param bool case_sensitive: Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
         :param bool enable_analytics: Whether to enable field analytics. Default to true.
         :param bool include_chinese: Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-        :param List['StoreIndexFieldSearchJsonKeyArgs'] json_keys: Use nested index when type is json
+        :param Sequence['StoreIndexFieldSearchJsonKeyArgs'] json_keys: Use nested index when type is json
         :param str token: The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
         :param str type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         """
@@ -242,7 +242,7 @@ class StoreIndexFieldSearch(dict):
 
     @property
     @pulumi.getter(name="jsonKeys")
-    def json_keys(self) -> Optional[List['outputs.StoreIndexFieldSearchJsonKey']]:
+    def json_keys(self) -> Optional[Sequence['outputs.StoreIndexFieldSearchJsonKey']]:
         """
         Use nested index when type is json
         """
@@ -376,10 +376,10 @@ class StoreShard(dict):
     def __init__(__self__, *,
                  begin_key: Optional[str] = None,
                  end_key: Optional[str] = None,
-                 id: Optional[float] = None,
+                 id: Optional[int] = None,
                  status: Optional[str] = None):
         """
-        :param float id: The ID of the log project. It formats of `<project>:<name>`.
+        :param int id: The ID of the log project. It formats of `<project>:<name>`.
         """
         if begin_key is not None:
             pulumi.set(__self__, "begin_key", begin_key)
@@ -402,7 +402,7 @@ class StoreShard(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[float]:
+    def id(self) -> Optional[int]:
         """
         The ID of the log project. It formats of `<project>:<name>`.
         """

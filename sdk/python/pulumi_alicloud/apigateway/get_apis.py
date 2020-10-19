@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -57,7 +57,7 @@ class GetApisResult:
 
     @property
     @pulumi.getter
-    def apis(self) -> List['outputs.GetApisApiResult']:
+    def apis(self) -> Sequence['outputs.GetApisApiResult']:
         """
         A list of apis. Each element contains the following attributes:
         """
@@ -81,7 +81,7 @@ class GetApisResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of api IDs.
         """
@@ -94,7 +94,7 @@ class GetApisResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of api names.
         """
@@ -124,7 +124,7 @@ class AwaitableGetApisResult(GetApisResult):
 
 def get_apis(api_id: Optional[str] = None,
              group_id: Optional[str] = None,
-             ids: Optional[List[str]] = None,
+             ids: Optional[Sequence[str]] = None,
              name_regex: Optional[str] = None,
              output_file: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApisResult:
@@ -144,7 +144,7 @@ def get_apis(api_id: Optional[str] = None,
 
     :param str api_id: (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
     :param str group_id: ID of the specified group.
-    :param List[str] ids: A list of api IDs.
+    :param Sequence[str] ids: A list of api IDs.
     :param str name_regex: A regex string to filter api gateway apis by name.
     """
     __args__ = dict()

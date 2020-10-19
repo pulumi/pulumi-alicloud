@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,11 +22,11 @@ class Alert(pulumi.CustomResource):
                  alert_name: Optional[pulumi.Input[str]] = None,
                  condition: Optional[pulumi.Input[str]] = None,
                  dashboard: Optional[pulumi.Input[str]] = None,
-                 mute_until: Optional[pulumi.Input[float]] = None,
-                 notification_lists: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]]] = None,
-                 notify_threshold: Optional[pulumi.Input[float]] = None,
+                 mute_until: Optional[pulumi.Input[int]] = None,
+                 notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]]] = None,
+                 notify_threshold: Optional[pulumi.Input[int]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
-                 query_lists: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
+                 query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
                  schedule_interval: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
                  throttling: Optional[pulumi.Input[str]] = None,
@@ -99,11 +99,11 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] alert_displayname: Alert displayname.
         :param pulumi.Input[str] alert_name: Name of logstore for configuring alarm service.
         :param pulumi.Input[str] condition: Conditional expression, such as: count> 100.
-        :param pulumi.Input[float] mute_until: Timestamp, notifications before closing again.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]] notification_lists: Alarm information notification list.
-        :param pulumi.Input[float] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[int] mute_until: Timestamp, notifications before closing again.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]] notification_lists: Alarm information notification list.
+        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
         :param pulumi.Input[str] project_name: The project name.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]] query_lists: Multiple conditions for configured alarm query.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]] query_lists: Multiple conditions for configured alarm query.
         :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
         :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
         :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
@@ -167,11 +167,11 @@ class Alert(pulumi.CustomResource):
             alert_name: Optional[pulumi.Input[str]] = None,
             condition: Optional[pulumi.Input[str]] = None,
             dashboard: Optional[pulumi.Input[str]] = None,
-            mute_until: Optional[pulumi.Input[float]] = None,
-            notification_lists: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]]] = None,
-            notify_threshold: Optional[pulumi.Input[float]] = None,
+            mute_until: Optional[pulumi.Input[int]] = None,
+            notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]]] = None,
+            notify_threshold: Optional[pulumi.Input[int]] = None,
             project_name: Optional[pulumi.Input[str]] = None,
-            query_lists: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
+            query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
             schedule_interval: Optional[pulumi.Input[str]] = None,
             schedule_type: Optional[pulumi.Input[str]] = None,
             throttling: Optional[pulumi.Input[str]] = None) -> 'Alert':
@@ -186,11 +186,11 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] alert_displayname: Alert displayname.
         :param pulumi.Input[str] alert_name: Name of logstore for configuring alarm service.
         :param pulumi.Input[str] condition: Conditional expression, such as: count> 100.
-        :param pulumi.Input[float] mute_until: Timestamp, notifications before closing again.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]] notification_lists: Alarm information notification list.
-        :param pulumi.Input[float] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[int] mute_until: Timestamp, notifications before closing again.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]] notification_lists: Alarm information notification list.
+        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
         :param pulumi.Input[str] project_name: The project name.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]] query_lists: Multiple conditions for configured alarm query.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]] query_lists: Multiple conditions for configured alarm query.
         :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
         :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
         :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
@@ -253,7 +253,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="muteUntil")
-    def mute_until(self) -> pulumi.Output[Optional[float]]:
+    def mute_until(self) -> pulumi.Output[Optional[int]]:
         """
         Timestamp, notifications before closing again.
         """
@@ -261,7 +261,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationLists")
-    def notification_lists(self) -> pulumi.Output[List['outputs.AlertNotificationList']]:
+    def notification_lists(self) -> pulumi.Output[Sequence['outputs.AlertNotificationList']]:
         """
         Alarm information notification list.
         """
@@ -269,7 +269,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notifyThreshold")
-    def notify_threshold(self) -> pulumi.Output[Optional[float]]:
+    def notify_threshold(self) -> pulumi.Output[Optional[int]]:
         """
         Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
         """
@@ -285,7 +285,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="queryLists")
-    def query_lists(self) -> pulumi.Output[List['outputs.AlertQueryList']]:
+    def query_lists(self) -> pulumi.Output[Sequence['outputs.AlertQueryList']]:
         """
         Multiple conditions for configured alarm query.
         """

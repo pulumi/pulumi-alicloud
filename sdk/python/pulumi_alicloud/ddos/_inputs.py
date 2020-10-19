@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -15,12 +15,12 @@ __all__ = [
 @pulumi.input_type
 class SchedulerRuleRuleArgs:
     def __init__(__self__, *,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  region_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[float]] = None,
+                 status: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 value_type: Optional[pulumi.Input[float]] = None):
+                 value_type: Optional[pulumi.Input[int]] = None):
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if region_id is not None:
@@ -36,11 +36,11 @@ class SchedulerRuleRuleArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
@@ -54,11 +54,11 @@ class SchedulerRuleRuleArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[float]]:
+    def status(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[float]]):
+    def status(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "status", value)
 
     @property
@@ -81,11 +81,11 @@ class SchedulerRuleRuleArgs:
 
     @property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[float]]:
+    def value_type(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "value_type")
 
     @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[float]]):
+    def value_type(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "value_type", value)
 
 

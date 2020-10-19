@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -78,7 +78,7 @@ class GetDomainRecordsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -98,7 +98,7 @@ class GetDomainRecordsResult:
 
     @property
     @pulumi.getter
-    def records(self) -> List['outputs.GetDomainRecordsRecordResult']:
+    def records(self) -> Sequence['outputs.GetDomainRecordsRecordResult']:
         return pulumi.get(self, "records")
 
     @property
@@ -113,7 +113,7 @@ class GetDomainRecordsResult:
 
     @property
     @pulumi.getter
-    def urls(self) -> List[str]:
+    def urls(self) -> Sequence[str]:
         return pulumi.get(self, "urls")
 
     @property
@@ -144,7 +144,7 @@ class AwaitableGetDomainRecordsResult(GetDomainRecordsResult):
 
 def get_domain_records(domain_name: Optional[str] = None,
                        host_record_regex: Optional[str] = None,
-                       ids: Optional[List[str]] = None,
+                       ids: Optional[Sequence[str]] = None,
                        is_locked: Optional[bool] = None,
                        line: Optional[str] = None,
                        output_file: Optional[str] = None,

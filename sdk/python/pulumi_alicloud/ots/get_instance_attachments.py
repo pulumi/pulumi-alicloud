@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetInstanceAttachmentsResult:
 
     @property
     @pulumi.getter
-    def attachments(self) -> List['outputs.GetInstanceAttachmentsAttachmentResult']:
+    def attachments(self) -> Sequence['outputs.GetInstanceAttachmentsAttachmentResult']:
         """
         A list of instance attachments. Each element contains the following attributes:
         """
@@ -74,7 +74,7 @@ class GetInstanceAttachmentsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of vpc names.
         """
@@ -87,7 +87,7 @@ class GetInstanceAttachmentsResult:
 
     @property
     @pulumi.getter(name="vpcIds")
-    def vpc_ids(self) -> List[str]:
+    def vpc_ids(self) -> Sequence[str]:
         """
         A list of vpc ids.
         """

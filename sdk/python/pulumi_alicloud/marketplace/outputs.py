@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -23,12 +23,12 @@ class GetProductProductResult(dict):
                  code: str,
                  description: str,
                  name: str,
-                 skuses: List['outputs.GetProductProductSkusResult']):
+                 skuses: Sequence['outputs.GetProductProductSkusResult']):
         """
         :param str code: The code of the product.
         :param str description: The description of the product.
         :param str name: The name of the product.
-        :param List['GetProductProductSkusArgs'] skuses: A list of one element containing sku attributes of an object. Each element contains the following attributes:
+        :param Sequence['GetProductProductSkusArgs'] skuses: A list of one element containing sku attributes of an object. Each element contains the following attributes:
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "description", description)
@@ -61,7 +61,7 @@ class GetProductProductResult(dict):
 
     @property
     @pulumi.getter
-    def skuses(self) -> List['outputs.GetProductProductSkusResult']:
+    def skuses(self) -> Sequence['outputs.GetProductProductSkusResult']:
         """
         A list of one element containing sku attributes of an object. Each element contains the following attributes:
         """
@@ -71,13 +71,13 @@ class GetProductProductResult(dict):
 @pulumi.output_type
 class GetProductProductSkusResult(dict):
     def __init__(__self__, *,
-                 images: List['outputs.GetProductProductSkusImageResult'],
-                 package_versions: List['outputs.GetProductProductSkusPackageVersionResult'],
+                 images: Sequence['outputs.GetProductProductSkusImageResult'],
+                 package_versions: Sequence['outputs.GetProductProductSkusPackageVersionResult'],
                  sku_code: str,
                  sku_name: str):
         """
-        :param List['GetProductProductSkusImageArgs'] images: The list of custom ECS images, Each element contains the following attributes:
-        :param List['GetProductProductSkusPackageVersionArgs'] package_versions: The list of package version details of this product sku, Each element contains the following attributes:
+        :param Sequence['GetProductProductSkusImageArgs'] images: The list of custom ECS images, Each element contains the following attributes:
+        :param Sequence['GetProductProductSkusPackageVersionArgs'] package_versions: The list of package version details of this product sku, Each element contains the following attributes:
         :param str sku_code: The sku code of this product sku.
         :param str sku_name: The sku name of this product sku.
         """
@@ -88,7 +88,7 @@ class GetProductProductSkusResult(dict):
 
     @property
     @pulumi.getter
-    def images(self) -> List['outputs.GetProductProductSkusImageResult']:
+    def images(self) -> Sequence['outputs.GetProductProductSkusImageResult']:
         """
         The list of custom ECS images, Each element contains the following attributes:
         """
@@ -96,7 +96,7 @@ class GetProductProductSkusResult(dict):
 
     @property
     @pulumi.getter(name="packageVersions")
-    def package_versions(self) -> List['outputs.GetProductProductSkusPackageVersionResult']:
+    def package_versions(self) -> Sequence['outputs.GetProductProductSkusPackageVersionResult']:
         """
         The list of package version details of this product sku, Each element contains the following attributes:
         """
@@ -191,7 +191,7 @@ class GetProductProductSkusPackageVersionResult(dict):
 @pulumi.output_type
 class GetProductsProductResult(dict):
     def __init__(__self__, *,
-                 category_id: float,
+                 category_id: int,
                  code: str,
                  delivery_date: str,
                  delivery_way: str,
@@ -201,13 +201,13 @@ class GetProductsProductResult(dict):
                  score: str,
                  short_description: str,
                  suggested_price: str,
-                 supplier_id: float,
+                 supplier_id: int,
                  supplier_name: str,
                  tags: str,
                  target_url: str,
                  warranty_date: str):
         """
-        :param float category_id: The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+        :param int category_id: The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
         :param str code: The code of the product.
         :param str delivery_date: The delivery date of the product.
         :param str delivery_way: The delivery way of the product.
@@ -217,7 +217,7 @@ class GetProductsProductResult(dict):
         :param str score: The rating information of the product.
         :param str short_description: The short description of the product.
         :param str suggested_price: The suggested price of the product.
-        :param float supplier_id: The supplier id of the product.
+        :param int supplier_id: The supplier id of the product.
         :param str supplier_name: The supplier name of the product.
         :param str tags: The tags of the product.
         :param str target_url: The detail page URL of the product.
@@ -241,7 +241,7 @@ class GetProductsProductResult(dict):
 
     @property
     @pulumi.getter(name="categoryId")
-    def category_id(self) -> float:
+    def category_id(self) -> int:
         """
         The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
         """
@@ -321,7 +321,7 @@ class GetProductsProductResult(dict):
 
     @property
     @pulumi.getter(name="supplierId")
-    def supplier_id(self) -> float:
+    def supplier_id(self) -> int:
         """
         The supplier id of the product.
         """

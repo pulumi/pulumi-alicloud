@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Instance']
@@ -15,17 +15,17 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deploy_type: Optional[pulumi.Input[float]] = None,
-                 disk_size: Optional[pulumi.Input[float]] = None,
-                 disk_type: Optional[pulumi.Input[float]] = None,
-                 eip_max: Optional[pulumi.Input[float]] = None,
-                 io_max: Optional[pulumi.Input[float]] = None,
+                 deploy_type: Optional[pulumi.Input[int]] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
+                 disk_type: Optional[pulumi.Input[int]] = None,
+                 eip_max: Optional[pulumi.Input[int]] = None,
+                 io_max: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  spec_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 topic_quota: Optional[pulumi.Input[float]] = None,
+                 topic_quota: Optional[pulumi.Input[int]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -71,17 +71,17 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] deploy_type: The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
-        :param pulumi.Input[float] disk_size: The disk size of the instance. When modify this value, it only support adjust to a greater value.
-        :param pulumi.Input[float] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-        :param pulumi.Input[float] eip_max: The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
-        :param pulumi.Input[float] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] deploy_type: The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+        :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+        :param pulumi.Input[int] eip_max: The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
         :param pulumi.Input[str] security_group: （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[float] topic_quota: The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        :param pulumi.Input[int] topic_quota: The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         """
         if __name__ is not None:
@@ -137,17 +137,17 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deploy_type: Optional[pulumi.Input[float]] = None,
-            disk_size: Optional[pulumi.Input[float]] = None,
-            disk_type: Optional[pulumi.Input[float]] = None,
-            eip_max: Optional[pulumi.Input[float]] = None,
-            io_max: Optional[pulumi.Input[float]] = None,
+            deploy_type: Optional[pulumi.Input[int]] = None,
+            disk_size: Optional[pulumi.Input[int]] = None,
+            disk_type: Optional[pulumi.Input[int]] = None,
+            eip_max: Optional[pulumi.Input[int]] = None,
+            io_max: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             paid_type: Optional[pulumi.Input[str]] = None,
             security_group: Optional[pulumi.Input[str]] = None,
             spec_type: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            topic_quota: Optional[pulumi.Input[float]] = None,
+            topic_quota: Optional[pulumi.Input[int]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
@@ -158,17 +158,17 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] deploy_type: The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
-        :param pulumi.Input[float] disk_size: The disk size of the instance. When modify this value, it only support adjust to a greater value.
-        :param pulumi.Input[float] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-        :param pulumi.Input[float] eip_max: The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
-        :param pulumi.Input[float] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] deploy_type: The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+        :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+        :param pulumi.Input[int] eip_max: The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
         :param pulumi.Input[str] security_group: （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[float] topic_quota: The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        :param pulumi.Input[int] topic_quota: The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
         :param pulumi.Input[str] vpc_id: The ID of attaching VPC to instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The Zone to launch the kafka instance.
@@ -195,7 +195,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deployType")
-    def deploy_type(self) -> pulumi.Output[float]:
+    def deploy_type(self) -> pulumi.Output[int]:
         """
         The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
         """
@@ -203,7 +203,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> pulumi.Output[float]:
+    def disk_size(self) -> pulumi.Output[int]:
         """
         The disk size of the instance. When modify this value, it only support adjust to a greater value.
         """
@@ -211,7 +211,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> pulumi.Output[float]:
+    def disk_type(self) -> pulumi.Output[int]:
         """
         The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         """
@@ -219,7 +219,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eipMax")
-    def eip_max(self) -> pulumi.Output[Optional[float]]:
+    def eip_max(self) -> pulumi.Output[Optional[int]]:
         """
         The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
         """
@@ -227,7 +227,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ioMax")
-    def io_max(self) -> pulumi.Output[float]:
+    def io_max(self) -> pulumi.Output[int]:
         """
         The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         """
@@ -275,7 +275,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="topicQuota")
-    def topic_quota(self) -> pulumi.Output[float]:
+    def topic_quota(self) -> pulumi.Output[int]:
         """
         The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
         """

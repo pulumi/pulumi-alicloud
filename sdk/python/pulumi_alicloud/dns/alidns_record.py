@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['AlidnsRecord']
@@ -18,11 +18,11 @@ class AlidnsRecord(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  line: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  rr: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_client_ip: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
@@ -57,11 +57,11 @@ class AlidnsRecord(pulumi.CustomResource):
         :param pulumi.Input[str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] lang: User language.
         :param pulumi.Input[str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
-        :param pulumi.Input[float] priority: The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
+        :param pulumi.Input[int] priority: The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
         :param pulumi.Input[str] remark: The remark of the domain record.
         :param pulumi.Input[str] rr: Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
         :param pulumi.Input[str] status: The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
-        :param pulumi.Input[float] ttl: The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
+        :param pulumi.Input[int] ttl: The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
         :param pulumi.Input[str] type: The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
         :param pulumi.Input[str] value: The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
@@ -115,11 +115,11 @@ class AlidnsRecord(pulumi.CustomResource):
             domain_name: Optional[pulumi.Input[str]] = None,
             lang: Optional[pulumi.Input[str]] = None,
             line: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             remark: Optional[pulumi.Input[str]] = None,
             rr: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            ttl: Optional[pulumi.Input[float]] = None,
+            ttl: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
             user_client_ip: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None) -> 'AlidnsRecord':
@@ -133,11 +133,11 @@ class AlidnsRecord(pulumi.CustomResource):
         :param pulumi.Input[str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] lang: User language.
         :param pulumi.Input[str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
-        :param pulumi.Input[float] priority: The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
+        :param pulumi.Input[int] priority: The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
         :param pulumi.Input[str] remark: The remark of the domain record.
         :param pulumi.Input[str] rr: Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
         :param pulumi.Input[str] status: The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
-        :param pulumi.Input[float] ttl: The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
+        :param pulumi.Input[int] ttl: The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
         :param pulumi.Input[str] type: The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
         :param pulumi.Input[str] value: The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
@@ -185,7 +185,7 @@ class AlidnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[float]]:
+    def priority(self) -> pulumi.Output[Optional[int]]:
         """
         The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
         """
@@ -217,7 +217,7 @@ class AlidnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[Optional[float]]:
+    def ttl(self) -> pulumi.Output[Optional[int]]:
         """
         The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
         """

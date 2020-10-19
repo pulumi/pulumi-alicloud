@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -33,8 +33,8 @@ class GetRulesResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
-        if member_id and not isinstance(member_id, float):
-            raise TypeError("Expected argument 'member_id' to be a float")
+        if member_id and not isinstance(member_id, int):
+            raise TypeError("Expected argument 'member_id' to be a int")
         pulumi.set(__self__, "member_id", member_id)
         if multi_account and not isinstance(multi_account, bool):
             raise TypeError("Expected argument 'multi_account' to be a bool")
@@ -48,8 +48,8 @@ class GetRulesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
-        if risk_level and not isinstance(risk_level, float):
-            raise TypeError("Expected argument 'risk_level' to be a float")
+        if risk_level and not isinstance(risk_level, int):
+            raise TypeError("Expected argument 'risk_level' to be a int")
         pulumi.set(__self__, "risk_level", risk_level)
         if rules and not isinstance(rules, list):
             raise TypeError("Expected argument 'rules' to be a list")
@@ -75,7 +75,7 @@ class GetRulesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of Config Rule IDs.
         """
@@ -83,7 +83,7 @@ class GetRulesResult:
 
     @property
     @pulumi.getter(name="memberId")
-    def member_id(self) -> Optional[float]:
+    def member_id(self) -> Optional[int]:
         return pulumi.get(self, "member_id")
 
     @property
@@ -98,7 +98,7 @@ class GetRulesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of Config Rule names.
         """
@@ -111,12 +111,12 @@ class GetRulesResult:
 
     @property
     @pulumi.getter(name="riskLevel")
-    def risk_level(self) -> Optional[float]:
+    def risk_level(self) -> Optional[int]:
         return pulumi.get(self, "risk_level")
 
     @property
     @pulumi.getter
-    def rules(self) -> List['outputs.GetRulesRuleResult']:
+    def rules(self) -> Sequence['outputs.GetRulesRuleResult']:
         """
         A list of Config Rules. Each element contains the following attributes:
         """
@@ -144,12 +144,12 @@ class AwaitableGetRulesResult(GetRulesResult):
 
 def get_rules(config_rule_state: Optional[str] = None,
               enable_details: Optional[bool] = None,
-              ids: Optional[List[str]] = None,
-              member_id: Optional[float] = None,
+              ids: Optional[Sequence[str]] = None,
+              member_id: Optional[int] = None,
               multi_account: Optional[bool] = None,
               name_regex: Optional[str] = None,
               output_file: Optional[str] = None,
-              risk_level: Optional[float] = None,
+              risk_level: Optional[int] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRulesResult:
     """
     This data source provides the Config Rules of the current Alibaba Cloud user.
@@ -170,11 +170,11 @@ def get_rules(config_rule_state: Optional[str] = None,
 
     :param str config_rule_state: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `DELETING_RESULTS`, `EVALUATING` and `INACTIVE`.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param List[str] ids: A list of Config Rule IDs.
-    :param float member_id: The ID of the member account to which the rule to be queried belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
+    :param Sequence[str] ids: A list of Config Rule IDs.
+    :param int member_id: The ID of the member account to which the rule to be queried belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
     :param bool multi_account: Whether the enterprise management account queries the rule details of member accounts.
     :param str name_regex: A regex string to filter results by rule name.
-    :param float risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+    :param int risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
     """
     __args__ = dict()
     __args__['configRuleState'] = config_rule_state

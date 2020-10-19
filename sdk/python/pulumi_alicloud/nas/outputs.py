@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,16 +22,16 @@ class GetAccessGroupsGroupResult(dict):
                  access_group_type: str,
                  description: str,
                  id: str,
-                 mount_target_count: float,
-                 rule_count: float,
+                 mount_target_count: int,
+                 rule_count: int,
                  type: str):
         """
         :param str access_group_name: The name of access group.
         :param str access_group_type: Filter results by a specific AccessGroupType.
         :param str description: Filter results by a specific Description.
         :param str id: This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `access_group_name`.
-        :param float mount_target_count: MountTargetCount block of the AccessGroup
-        :param float rule_count: RuleCount of the AccessGroup.
+        :param int mount_target_count: MountTargetCount block of the AccessGroup
+        :param int rule_count: RuleCount of the AccessGroup.
         :param str type: Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
         """
         pulumi.set(__self__, "access_group_name", access_group_name)
@@ -76,7 +76,7 @@ class GetAccessGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="mountTargetCount")
-    def mount_target_count(self) -> float:
+    def mount_target_count(self) -> int:
         """
         MountTargetCount block of the AccessGroup
         """
@@ -84,7 +84,7 @@ class GetAccessGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="ruleCount")
-    def rule_count(self) -> float:
+    def rule_count(self) -> int:
         """
         RuleCount of the AccessGroup.
         """
@@ -103,13 +103,13 @@ class GetAccessGroupsGroupResult(dict):
 class GetAccessRulesRuleResult(dict):
     def __init__(__self__, *,
                  access_rule_id: str,
-                 priority: float,
+                 priority: int,
                  rw_access: str,
                  source_cidr_ip: str,
                  user_access: str):
         """
         :param str access_rule_id: AccessRuleId of the AccessRule.
-        :param float priority: Priority of the AccessRule.
+        :param int priority: Priority of the AccessRule.
         :param str rw_access: Filter results by a specific RWAccess.
         :param str source_cidr_ip: Filter results by a specific SourceCidrIp.
         :param str user_access: Filter results by a specific UserAccess.
@@ -130,7 +130,7 @@ class GetAccessRulesRuleResult(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         """
         Priority of the AccessRule.
         """
@@ -167,7 +167,7 @@ class GetFileSystemsSystemResult(dict):
                  create_time: str,
                  description: str,
                  id: str,
-                 metered_size: float,
+                 metered_size: int,
                  protocol_type: str,
                  region_id: str,
                  storage_type: str):
@@ -175,7 +175,7 @@ class GetFileSystemsSystemResult(dict):
         :param str create_time: Time of creation.
         :param str description: Destription of the FileSystem.
         :param str id: ID of the FileSystem.
-        :param float metered_size: MeteredSize of the FileSystem.
+        :param int metered_size: MeteredSize of the FileSystem.
         :param str protocol_type: Filter results by a specific ProtocolType.
         :param str region_id: ID of the region where the FileSystem is located.
         :param str storage_type: Filter results by a specific StorageType.
@@ -214,7 +214,7 @@ class GetFileSystemsSystemResult(dict):
 
     @property
     @pulumi.getter(name="meteredSize")
-    def metered_size(self) -> float:
+    def metered_size(self) -> int:
         """
         MeteredSize of the FileSystem.
         """

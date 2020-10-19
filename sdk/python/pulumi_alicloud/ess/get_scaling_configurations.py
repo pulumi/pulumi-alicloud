@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetScalingConfigurationsResult:
 
     @property
     @pulumi.getter
-    def configurations(self) -> List['outputs.GetScalingConfigurationsConfigurationResult']:
+    def configurations(self) -> Sequence['outputs.GetScalingConfigurationsConfigurationResult']:
         """
         A list of scaling rules. Each element contains the following attributes:
         """
@@ -61,7 +61,7 @@ class GetScalingConfigurationsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of scaling configuration ids.
         """
@@ -74,7 +74,7 @@ class GetScalingConfigurationsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of scaling configuration names.
         """
@@ -109,7 +109,7 @@ class AwaitableGetScalingConfigurationsResult(GetScalingConfigurationsResult):
             scaling_group_id=self.scaling_group_id)
 
 
-def get_scaling_configurations(ids: Optional[List[str]] = None,
+def get_scaling_configurations(ids: Optional[Sequence[str]] = None,
                                name_regex: Optional[str] = None,
                                output_file: Optional[str] = None,
                                scaling_group_id: Optional[str] = None,
@@ -133,7 +133,7 @@ def get_scaling_configurations(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of scaling configuration IDs.
+    :param Sequence[str] ids: A list of scaling configuration IDs.
     :param str name_regex: A regex string to filter resulting scaling configurations by name.
     :param str scaling_group_id: Scaling group id the scaling configurations belong to.
     """

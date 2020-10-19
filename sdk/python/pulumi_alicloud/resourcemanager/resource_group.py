@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -83,7 +83,7 @@ class ResourceGroup(pulumi.CustomResource):
             create_date: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            region_statuses: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ResourceGroupRegionStatusArgs']]]]] = None,
+            region_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupRegionStatusArgs']]]]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'ResourceGroup':
         """
         Get an existing ResourceGroup resource's state with the given name, id, and optional extra
@@ -146,7 +146,7 @@ class ResourceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="regionStatuses")
-    def region_statuses(self) -> pulumi.Output[List['outputs.ResourceGroupRegionStatus']]:
+    def region_statuses(self) -> pulumi.Output[Sequence['outputs.ResourceGroupRegionStatus']]:
         return pulumi.get(self, "region_statuses")
 
     @property

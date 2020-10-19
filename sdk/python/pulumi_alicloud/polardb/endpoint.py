@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Endpoint']
@@ -19,7 +19,7 @@ class Endpoint(pulumi.CustomResource):
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
-                 nodes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  read_write_mode: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -36,7 +36,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[Mapping[str, Any]] endpoint_config: Advanced configuration of the cluster address.
         :param pulumi.Input[str] endpoint_type: Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
-        :param pulumi.Input[List[pulumi.Input[str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. Default to `ReadOnly`.
         """
         if __name__ is not None:
@@ -80,7 +80,7 @@ class Endpoint(pulumi.CustomResource):
             db_cluster_id: Optional[pulumi.Input[str]] = None,
             endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             endpoint_type: Optional[pulumi.Input[str]] = None,
-            nodes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             read_write_mode: Optional[pulumi.Input[str]] = None) -> 'Endpoint':
         """
         Get an existing Endpoint resource's state with the given name, id, and optional extra
@@ -93,7 +93,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[Mapping[str, Any]] endpoint_config: Advanced configuration of the cluster address.
         :param pulumi.Input[str] endpoint_type: Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
-        :param pulumi.Input[List[pulumi.Input[str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. Default to `ReadOnly`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -142,7 +142,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def nodes(self) -> pulumi.Output[List[str]]:
+    def nodes(self) -> pulumi.Output[Sequence[str]]:
         """
         Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         """

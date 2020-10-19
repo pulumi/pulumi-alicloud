@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -93,7 +93,7 @@ class GetAccessGroupsResult:
 
     @property
     @pulumi.getter
-    def groups(self) -> List['outputs.GetAccessGroupsGroupResult']:
+    def groups(self) -> Sequence['outputs.GetAccessGroupsGroupResult']:
         """
         A list of AccessGroups. Each element contains the following attributes:
         """
@@ -109,7 +109,7 @@ class GetAccessGroupsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of AccessGroup IDs, the value is set to `names`. After version 1.95.0 the item value as `<access_group_id>:<file_system_type>`.
         """
@@ -122,7 +122,7 @@ class GetAccessGroupsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of AccessGroup names.
         """

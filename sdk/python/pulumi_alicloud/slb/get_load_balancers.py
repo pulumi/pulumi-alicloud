@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -82,7 +82,7 @@ class GetLoadBalancersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of slb IDs.
         """
@@ -103,7 +103,7 @@ class GetLoadBalancersResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of slb names.
         """
@@ -137,7 +137,7 @@ class GetLoadBalancersResult:
 
     @property
     @pulumi.getter
-    def slbs(self) -> List['outputs.GetLoadBalancersSlbResult']:
+    def slbs(self) -> Sequence['outputs.GetLoadBalancersSlbResult']:
         """
         A list of SLBs. Each element contains the following attributes:
         """
@@ -191,7 +191,7 @@ class AwaitableGetLoadBalancersResult(GetLoadBalancersResult):
 
 
 def get_load_balancers(address: Optional[str] = None,
-                       ids: Optional[List[str]] = None,
+                       ids: Optional[Sequence[str]] = None,
                        master_availability_zone: Optional[str] = None,
                        name_regex: Optional[str] = None,
                        network_type: Optional[str] = None,
@@ -218,7 +218,7 @@ def get_load_balancers(address: Optional[str] = None,
 
 
     :param str address: Service address of the SLBs.
-    :param List[str] ids: A list of SLBs IDs.
+    :param Sequence[str] ids: A list of SLBs IDs.
     :param str master_availability_zone: Master availability zone of the SLBs.
     :param str name_regex: A regex string to filter results by SLB name.
     :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.

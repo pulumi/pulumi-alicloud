@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['ConfigurationRecorder']
@@ -16,7 +16,7 @@ class ConfigurationRecorder(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enterprise_edition: Optional[pulumi.Input[bool]] = None,
-                 resource_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -41,7 +41,7 @@ class ConfigurationRecorder(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enterprise_edition: - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,8 +77,8 @@ class ConfigurationRecorder(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             enterprise_edition: Optional[pulumi.Input[bool]] = None,
             organization_enable_status: Optional[pulumi.Input[str]] = None,
-            organization_master_id: Optional[pulumi.Input[float]] = None,
-            resource_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            organization_master_id: Optional[pulumi.Input[int]] = None,
+            resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'ConfigurationRecorder':
         """
         Get an existing ConfigurationRecorder resource's state with the given name, id, and optional extra
@@ -89,8 +89,8 @@ class ConfigurationRecorder(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enterprise_edition: - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
         :param pulumi.Input[str] organization_enable_status: Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
-        :param pulumi.Input[float] organization_master_id: The ID of the Enterprise management account.
-        :param pulumi.Input[List[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        :param pulumi.Input[int] organization_master_id: The ID of the Enterprise management account.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         :param pulumi.Input[str] status: Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -122,7 +122,7 @@ class ConfigurationRecorder(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="organizationMasterId")
-    def organization_master_id(self) -> pulumi.Output[float]:
+    def organization_master_id(self) -> pulumi.Output[int]:
         """
         The ID of the Enterprise management account.
         """
@@ -130,7 +130,7 @@ class ConfigurationRecorder(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceTypes")
-    def resource_types(self) -> pulumi.Output[List[str]]:
+    def resource_types(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         """

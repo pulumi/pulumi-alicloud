@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,11 +19,11 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer_gateway_id: Optional[pulumi.Input[str]] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
-                 ike_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]]] = None,
-                 ipsec_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]]] = None,
-                 local_subnets: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]]] = None,
+                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]]] = None,
+                 local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 remote_subnets: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -34,11 +34,11 @@ class Connection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]] ike_configs: The configurations of phase-one negotiation.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]] ipsec_configs: The configurations of phase-two negotiation.
-        :param pulumi.Input[List[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]] ike_configs: The configurations of phase-one negotiation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]] ipsec_configs: The configurations of phase-two negotiation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] name: The name of the IPsec connection.
-        :param pulumi.Input[List[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
         if __name__ is not None:
@@ -87,11 +87,11 @@ class Connection(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             customer_gateway_id: Optional[pulumi.Input[str]] = None,
             effect_immediately: Optional[pulumi.Input[bool]] = None,
-            ike_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]]] = None,
-            ipsec_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]]] = None,
-            local_subnets: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]]] = None,
+            ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]]] = None,
+            local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            remote_subnets: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vpn_gateway_id: Optional[pulumi.Input[str]] = None) -> 'Connection':
         """
@@ -103,11 +103,11 @@ class Connection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]] ike_configs: The configurations of phase-one negotiation.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]] ipsec_configs: The configurations of phase-two negotiation.
-        :param pulumi.Input[List[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]] ike_configs: The configurations of phase-one negotiation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]] ipsec_configs: The configurations of phase-two negotiation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] name: The name of the IPsec connection.
-        :param pulumi.Input[List[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] status: The status of VPN connection.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
@@ -144,7 +144,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ikeConfigs")
-    def ike_configs(self) -> pulumi.Output[List['outputs.ConnectionIkeConfig']]:
+    def ike_configs(self) -> pulumi.Output[Sequence['outputs.ConnectionIkeConfig']]:
         """
         The configurations of phase-one negotiation.
         """
@@ -152,7 +152,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipsecConfigs")
-    def ipsec_configs(self) -> pulumi.Output[List['outputs.ConnectionIpsecConfig']]:
+    def ipsec_configs(self) -> pulumi.Output[Sequence['outputs.ConnectionIpsecConfig']]:
         """
         The configurations of phase-two negotiation.
         """
@@ -160,7 +160,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localSubnets")
-    def local_subnets(self) -> pulumi.Output[List[str]]:
+    def local_subnets(self) -> pulumi.Output[Sequence[str]]:
         """
         The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         """
@@ -176,7 +176,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="remoteSubnets")
-    def remote_subnets(self) -> pulumi.Output[List[str]]:
+    def remote_subnets(self) -> pulumi.Output[Sequence[str]]:
         """
         The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -43,7 +43,7 @@ class GetConsumerGroupsResult:
 
     @property
     @pulumi.getter(name="consumerIds")
-    def consumer_ids(self) -> List[str]:
+    def consumer_ids(self) -> Sequence[str]:
         """
         A list of consumer group ids.
         """

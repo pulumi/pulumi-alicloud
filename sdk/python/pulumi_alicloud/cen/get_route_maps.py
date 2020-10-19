@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -80,7 +80,7 @@ class GetRouteMapsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of CEN route map IDs.
         """
@@ -88,7 +88,7 @@ class GetRouteMapsResult:
 
     @property
     @pulumi.getter
-    def maps(self) -> List['outputs.GetRouteMapsMapResult']:
+    def maps(self) -> Sequence['outputs.GetRouteMapsMapResult']:
         """
         A list of CEN instances. Each element contains the following attributes:
         """
@@ -136,7 +136,7 @@ class AwaitableGetRouteMapsResult(GetRouteMapsResult):
 def get_route_maps(cen_id: Optional[str] = None,
                    cen_region_id: Optional[str] = None,
                    description_regex: Optional[str] = None,
-                   ids: Optional[List[str]] = None,
+                   ids: Optional[Sequence[str]] = None,
                    output_file: Optional[str] = None,
                    status: Optional[str] = None,
                    transmit_direction: Optional[str] = None,
@@ -165,7 +165,7 @@ def get_route_maps(cen_id: Optional[str] = None,
     :param str cen_id: The ID of the CEN instance.
     :param str cen_region_id: The ID of the region to which the CEN instance belongs.
     :param str description_regex: A regex string to filter CEN route map by description.
-    :param List[str] ids: A list of CEN route map IDs.
+    :param Sequence[str] ids: A list of CEN route map IDs.
     :param str status: The status of the route map, including `Creating`, `Active` and `Deleting`.
     :param str transmit_direction: The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
     """

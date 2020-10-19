@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -25,7 +25,7 @@ class Domain(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  security_token: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
                  ssl_pri: Optional[pulumi.Input[str]] = None,
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
@@ -76,7 +76,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] force_set: Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scope: The acceleration region.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information.
         :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
         :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
@@ -136,7 +136,7 @@ class Domain(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
             security_token: Optional[pulumi.Input[str]] = None,
-            sources: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
+            sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
             ssl_pri: Optional[pulumi.Input[str]] = None,
             ssl_protocol: Optional[pulumi.Input[str]] = None,
             ssl_pub: Optional[pulumi.Input[str]] = None,
@@ -159,7 +159,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] force_set: Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scope: The acceleration region.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information.
         :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
         :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
@@ -252,7 +252,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def sources(self) -> pulumi.Output[List['outputs.DomainSource']]:
+    def sources(self) -> pulumi.Output[Sequence['outputs.DomainSource']]:
         """
         The origin information.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Schedule']
@@ -16,11 +16,11 @@ class Schedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 desired_capacity: Optional[pulumi.Input[float]] = None,
-                 launch_expiration_time: Optional[pulumi.Input[float]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 launch_expiration_time: Optional[pulumi.Input[int]] = None,
                  launch_time: Optional[pulumi.Input[str]] = None,
-                 max_value: Optional[pulumi.Input[float]] = None,
-                 min_value: Optional[pulumi.Input[float]] = None,
+                 max_value: Optional[pulumi.Input[int]] = None,
+                 min_value: Optional[pulumi.Input[int]] = None,
                  recurrence_end_time: Optional[pulumi.Input[str]] = None,
                  recurrence_type: Optional[pulumi.Input[str]] = None,
                  recurrence_value: Optional[pulumi.Input[str]] = None,
@@ -77,11 +77,11 @@ class Schedule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            desired_capacity: Optional[pulumi.Input[float]] = None,
-            launch_expiration_time: Optional[pulumi.Input[float]] = None,
+            desired_capacity: Optional[pulumi.Input[int]] = None,
+            launch_expiration_time: Optional[pulumi.Input[int]] = None,
             launch_time: Optional[pulumi.Input[str]] = None,
-            max_value: Optional[pulumi.Input[float]] = None,
-            min_value: Optional[pulumi.Input[float]] = None,
+            max_value: Optional[pulumi.Input[int]] = None,
+            min_value: Optional[pulumi.Input[int]] = None,
             recurrence_end_time: Optional[pulumi.Input[str]] = None,
             recurrence_type: Optional[pulumi.Input[str]] = None,
             recurrence_value: Optional[pulumi.Input[str]] = None,
@@ -123,12 +123,12 @@ class Schedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> pulumi.Output[Optional[float]]:
+    def desired_capacity(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "desired_capacity")
 
     @property
     @pulumi.getter(name="launchExpirationTime")
-    def launch_expiration_time(self) -> pulumi.Output[Optional[float]]:
+    def launch_expiration_time(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "launch_expiration_time")
 
     @property
@@ -138,12 +138,12 @@ class Schedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxValue")
-    def max_value(self) -> pulumi.Output[Optional[float]]:
+    def max_value(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "max_value")
 
     @property
     @pulumi.getter(name="minValue")
-    def min_value(self) -> pulumi.Output[Optional[float]]:
+    def min_value(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "min_value")
 
     @property

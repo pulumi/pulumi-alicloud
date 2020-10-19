@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['BandwidthPackage']
@@ -15,16 +15,16 @@ class BandwidthPackage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[float]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
                  cen_bandwidth_package_name: Optional[pulumi.Input[str]] = None,
                  charge_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geographic_region_a_id: Optional[pulumi.Input[str]] = None,
                  geographic_region_b_id: Optional[pulumi.Input[str]] = None,
-                 geographic_region_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 geographic_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -50,16 +50,16 @@ class BandwidthPackage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
+        :param pulumi.Input[int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         :param pulumi.Input[str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
-        :param pulumi.Input[List[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[str] name: Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
-        :param pulumi.Input[float] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
+        :param pulumi.Input[int] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -111,17 +111,17 @@ class BandwidthPackage(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[float]] = None,
+            bandwidth: Optional[pulumi.Input[int]] = None,
             cen_bandwidth_package_name: Optional[pulumi.Input[str]] = None,
             charge_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             expired_time: Optional[pulumi.Input[str]] = None,
             geographic_region_a_id: Optional[pulumi.Input[str]] = None,
             geographic_region_b_id: Optional[pulumi.Input[str]] = None,
-            geographic_region_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            geographic_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'BandwidthPackage':
         """
         Get an existing BandwidthPackage resource's state with the given name, id, and optional extra
@@ -130,17 +130,17 @@ class BandwidthPackage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
+        :param pulumi.Input[int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         :param pulumi.Input[str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[str] expired_time: The time of the bandwidth package to expire.
         :param pulumi.Input[str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
-        :param pulumi.Input[List[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[str] name: Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
-        :param pulumi.Input[float] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
+        :param pulumi.Input[int] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
         :param pulumi.Input[str] status: The association status of the bandwidth package.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -163,7 +163,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> pulumi.Output[float]:
+    def bandwidth(self) -> pulumi.Output[int]:
         """
         The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         """
@@ -219,7 +219,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="geographicRegionIds")
-    def geographic_region_ids(self) -> pulumi.Output[List[str]]:
+    def geographic_region_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         """
@@ -243,7 +243,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
         The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
         """

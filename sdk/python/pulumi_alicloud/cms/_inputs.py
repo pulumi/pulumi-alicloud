@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -21,12 +21,12 @@ class AlarmEscalationsCriticalArgs:
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  statistics: Optional[pulumi.Input[str]] = None,
                  threshold: Optional[pulumi.Input[str]] = None,
-                 times: Optional[pulumi.Input[float]] = None):
+                 times: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
         :param pulumi.Input[str] statistics: Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
-        :param pulumi.Input[float] times: Critical level alarm retry times. Default to 3.
+        :param pulumi.Input[int] times: Critical level alarm retry times. Default to 3.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -75,14 +75,14 @@ class AlarmEscalationsCriticalArgs:
 
     @property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[float]]:
+    def times(self) -> Optional[pulumi.Input[int]]:
         """
         Critical level alarm retry times. Default to 3.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[float]]):
+    def times(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "times", value)
 
 
@@ -92,12 +92,12 @@ class AlarmEscalationsInfoArgs:
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  statistics: Optional[pulumi.Input[str]] = None,
                  threshold: Optional[pulumi.Input[str]] = None,
-                 times: Optional[pulumi.Input[float]] = None):
+                 times: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
         :param pulumi.Input[str] statistics: Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
-        :param pulumi.Input[float] times: Critical level alarm retry times. Default to 3.
+        :param pulumi.Input[int] times: Critical level alarm retry times. Default to 3.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -146,14 +146,14 @@ class AlarmEscalationsInfoArgs:
 
     @property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[float]]:
+    def times(self) -> Optional[pulumi.Input[int]]:
         """
         Critical level alarm retry times. Default to 3.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[float]]):
+    def times(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "times", value)
 
 
@@ -163,12 +163,12 @@ class AlarmEscalationsWarnArgs:
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  statistics: Optional[pulumi.Input[str]] = None,
                  threshold: Optional[pulumi.Input[str]] = None,
-                 times: Optional[pulumi.Input[float]] = None):
+                 times: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
         :param pulumi.Input[str] statistics: Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
-        :param pulumi.Input[float] times: Critical level alarm retry times. Default to 3.
+        :param pulumi.Input[int] times: Critical level alarm retry times. Default to 3.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -217,14 +217,14 @@ class AlarmEscalationsWarnArgs:
 
     @property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[float]]:
+    def times(self) -> Optional[pulumi.Input[int]]:
         """
         Critical level alarm retry times. Default to 3.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[float]]):
+    def times(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "times", value)
 
 

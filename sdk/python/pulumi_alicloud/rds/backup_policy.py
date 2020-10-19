@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['BackupPolicy']
@@ -15,25 +15,25 @@ class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archive_backup_keep_count: Optional[pulumi.Input[float]] = None,
+                 archive_backup_keep_count: Optional[pulumi.Input[int]] = None,
                  archive_backup_keep_policy: Optional[pulumi.Input[str]] = None,
-                 archive_backup_retention_period: Optional[pulumi.Input[float]] = None,
-                 backup_periods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 backup_retention_period: Optional[pulumi.Input[float]] = None,
+                 archive_backup_retention_period: Optional[pulumi.Input[int]] = None,
+                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_retention_period: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  compress_type: Optional[pulumi.Input[str]] = None,
                  enable_backup_log: Optional[pulumi.Input[bool]] = None,
                  high_space_usage_protection: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 local_log_retention_hours: Optional[pulumi.Input[float]] = None,
-                 local_log_retention_space: Optional[pulumi.Input[float]] = None,
+                 local_log_retention_hours: Optional[pulumi.Input[int]] = None,
+                 local_log_retention_space: Optional[pulumi.Input[int]] = None,
                  log_backup: Optional[pulumi.Input[bool]] = None,
                  log_backup_frequency: Optional[pulumi.Input[str]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[float]] = None,
-                 log_retention_period: Optional[pulumi.Input[float]] = None,
-                 preferred_backup_periods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 log_backup_retention_period: Optional[pulumi.Input[int]] = None,
+                 log_retention_period: Optional[pulumi.Input[int]] = None,
+                 preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_backup_time: Optional[pulumi.Input[str]] = None,
-                 retention_period: Optional[pulumi.Input[float]] = None,
+                 retention_period: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -73,25 +73,25 @@ class BackupPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+        :param pulumi.Input[int] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
         :param pulumi.Input[str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
-        :param pulumi.Input[float] archive_backup_retention_period: Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
-        :param pulumi.Input[List[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
-        :param pulumi.Input[float] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
+        :param pulumi.Input[int] archive_backup_retention_period: Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         :param pulumi.Input[str] compress_type: The compress type of instance policy. Valid values are `1`, `4`, `8`.
         :param pulumi.Input[bool] enable_backup_log: Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
         :param pulumi.Input[str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[float] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
-        :param pulumi.Input[float] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
+        :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
+        :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
         :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
-        :param pulumi.Input[float] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
-        :param pulumi.Input[float] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
-        :param pulumi.Input[List[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+        :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
-        :param pulumi.Input[float] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -156,25 +156,25 @@ class BackupPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            archive_backup_keep_count: Optional[pulumi.Input[float]] = None,
+            archive_backup_keep_count: Optional[pulumi.Input[int]] = None,
             archive_backup_keep_policy: Optional[pulumi.Input[str]] = None,
-            archive_backup_retention_period: Optional[pulumi.Input[float]] = None,
-            backup_periods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            backup_retention_period: Optional[pulumi.Input[float]] = None,
+            archive_backup_retention_period: Optional[pulumi.Input[int]] = None,
+            backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            backup_retention_period: Optional[pulumi.Input[int]] = None,
             backup_time: Optional[pulumi.Input[str]] = None,
             compress_type: Optional[pulumi.Input[str]] = None,
             enable_backup_log: Optional[pulumi.Input[bool]] = None,
             high_space_usage_protection: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
-            local_log_retention_hours: Optional[pulumi.Input[float]] = None,
-            local_log_retention_space: Optional[pulumi.Input[float]] = None,
+            local_log_retention_hours: Optional[pulumi.Input[int]] = None,
+            local_log_retention_space: Optional[pulumi.Input[int]] = None,
             log_backup: Optional[pulumi.Input[bool]] = None,
             log_backup_frequency: Optional[pulumi.Input[str]] = None,
-            log_backup_retention_period: Optional[pulumi.Input[float]] = None,
-            log_retention_period: Optional[pulumi.Input[float]] = None,
-            preferred_backup_periods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            log_backup_retention_period: Optional[pulumi.Input[int]] = None,
+            log_retention_period: Optional[pulumi.Input[int]] = None,
+            preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             preferred_backup_time: Optional[pulumi.Input[str]] = None,
-            retention_period: Optional[pulumi.Input[float]] = None) -> 'BackupPolicy':
+            retention_period: Optional[pulumi.Input[int]] = None) -> 'BackupPolicy':
         """
         Get an existing BackupPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -182,25 +182,25 @@ class BackupPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+        :param pulumi.Input[int] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
         :param pulumi.Input[str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
-        :param pulumi.Input[float] archive_backup_retention_period: Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
-        :param pulumi.Input[List[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
-        :param pulumi.Input[float] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
+        :param pulumi.Input[int] archive_backup_retention_period: Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         :param pulumi.Input[str] compress_type: The compress type of instance policy. Valid values are `1`, `4`, `8`.
         :param pulumi.Input[bool] enable_backup_log: Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
         :param pulumi.Input[str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[float] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
-        :param pulumi.Input[float] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
+        :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
+        :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
         :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
-        :param pulumi.Input[float] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
-        :param pulumi.Input[float] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
-        :param pulumi.Input[List[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+        :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
-        :param pulumi.Input[float] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -229,7 +229,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="archiveBackupKeepCount")
-    def archive_backup_keep_count(self) -> pulumi.Output[float]:
+    def archive_backup_keep_count(self) -> pulumi.Output[int]:
         """
         Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
         """
@@ -245,7 +245,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="archiveBackupRetentionPeriod")
-    def archive_backup_retention_period(self) -> pulumi.Output[float]:
+    def archive_backup_retention_period(self) -> pulumi.Output[int]:
         """
         Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
         """
@@ -253,7 +253,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupPeriods")
-    def backup_periods(self) -> pulumi.Output[List[str]]:
+    def backup_periods(self) -> pulumi.Output[Sequence[str]]:
         """
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         """
@@ -261,7 +261,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> pulumi.Output[Optional[float]]:
+    def backup_retention_period(self) -> pulumi.Output[Optional[int]]:
         """
         Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         """
@@ -309,7 +309,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localLogRetentionHours")
-    def local_log_retention_hours(self) -> pulumi.Output[float]:
+    def local_log_retention_hours(self) -> pulumi.Output[int]:
         """
         Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         """
@@ -317,7 +317,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localLogRetentionSpace")
-    def local_log_retention_space(self) -> pulumi.Output[float]:
+    def local_log_retention_space(self) -> pulumi.Output[int]:
         """
         Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
         """
@@ -341,7 +341,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logBackupRetentionPeriod")
-    def log_backup_retention_period(self) -> pulumi.Output[float]:
+    def log_backup_retention_period(self) -> pulumi.Output[int]:
         """
         Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
         """
@@ -349,7 +349,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logRetentionPeriod")
-    def log_retention_period(self) -> pulumi.Output[float]:
+    def log_retention_period(self) -> pulumi.Output[int]:
         """
         It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         """
@@ -357,7 +357,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preferredBackupPeriods")
-    def preferred_backup_periods(self) -> pulumi.Output[List[str]]:
+    def preferred_backup_periods(self) -> pulumi.Output[Sequence[str]]:
         """
         DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         """
@@ -373,7 +373,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> pulumi.Output[float]:
+    def retention_period(self) -> pulumi.Output[int]:
         """
         It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """

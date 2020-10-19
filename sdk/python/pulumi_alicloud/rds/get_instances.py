@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -95,7 +95,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of RDS instance IDs.
         """
@@ -103,7 +103,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         """
         A list of RDS instances. Each element contains the following attributes:
         """
@@ -116,7 +116,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of RDS instance names.
         """
@@ -181,7 +181,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
 def get_instances(connection_mode: Optional[str] = None,
                   db_type: Optional[str] = None,
                   engine: Optional[str] = None,
-                  ids: Optional[List[str]] = None,
+                  ids: Optional[Sequence[str]] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
                   status: Optional[str] = None,
@@ -212,7 +212,7 @@ def get_instances(connection_mode: Optional[str] = None,
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
     :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
     :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
-    :param List[str] ids: A list of RDS instance IDs.
+    :param Sequence[str] ids: A list of RDS instance IDs.
     :param str name_regex: A regex string to filter results by instance name.
     :param str status: Status of the instance.
     :param Mapping[str, Any] tags: A map of tags assigned to the DB instances. 

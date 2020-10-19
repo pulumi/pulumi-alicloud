@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -61,7 +61,7 @@ class GetSecretVersionsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of Kms Secret Version ids.
         """
@@ -92,7 +92,7 @@ class GetSecretVersionsResult:
 
     @property
     @pulumi.getter
-    def versions(self) -> List['outputs.GetSecretVersionsVersionResult']:
+    def versions(self) -> Sequence['outputs.GetSecretVersionsVersionResult']:
         """
         A list of KMS Secret Versions. Each element contains the following attributes:
         """
@@ -116,7 +116,7 @@ class AwaitableGetSecretVersionsResult(GetSecretVersionsResult):
 
 
 def get_secret_versions(enable_details: Optional[bool] = None,
-                        ids: Optional[List[str]] = None,
+                        ids: Optional[Sequence[str]] = None,
                         include_deprecated: Optional[str] = None,
                         output_file: Optional[str] = None,
                         secret_name: Optional[str] = None,
@@ -140,7 +140,7 @@ def get_secret_versions(enable_details: Optional[bool] = None,
 
 
     :param bool enable_details: Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
-    :param List[str] ids: A list of KMS Secret Version ids.
+    :param Sequence[str] ids: A list of KMS Secret Version ids.
     :param str include_deprecated: Specifies whether to return deprecated secret versions. Default to `false`.
     :param str secret_name: The name of the secret.
     :param str version_stage: The stage of the secret version.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,14 +22,14 @@ class AlertNotificationListArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[str],
                  type: pulumi.Input[str],
-                 email_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 mobile_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 email_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 mobile_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] content: Notice content of alarm.
         :param pulumi.Input[str] type: Notification type. support Email, SMS, DingTalk.
-        :param pulumi.Input[List[pulumi.Input[str]]] email_lists: Email address list.
-        :param pulumi.Input[List[pulumi.Input[str]]] mobile_lists: SMS sending mobile number.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: Email address list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mobile_lists: SMS sending mobile number.
         :param pulumi.Input[str] service_uri: Request address.
         """
         pulumi.set(__self__, "content", content)
@@ -67,26 +67,26 @@ class AlertNotificationListArgs:
 
     @property
     @pulumi.getter(name="emailLists")
-    def email_lists(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Email address list.
         """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
-    def email_lists(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def email_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_lists", value)
 
     @property
     @pulumi.getter(name="mobileLists")
-    def mobile_lists(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def mobile_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         SMS sending mobile number.
         """
         return pulumi.get(self, "mobile_lists")
 
     @mobile_lists.setter
-    def mobile_lists(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def mobile_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "mobile_lists", value)
 
     @property
@@ -208,7 +208,7 @@ class StoreIndexFieldSearchArgs:
                  case_sensitive: Optional[pulumi.Input[bool]] = None,
                  enable_analytics: Optional[pulumi.Input[bool]] = None,
                  include_chinese: Optional[pulumi.Input[bool]] = None,
-                 json_keys: Optional[pulumi.Input[List[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]] = None,
+                 json_keys: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -217,7 +217,7 @@ class StoreIndexFieldSearchArgs:
         :param pulumi.Input[bool] case_sensitive: Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
         :param pulumi.Input[bool] enable_analytics: Whether to enable field analytics. Default to true.
         :param pulumi.Input[bool] include_chinese: Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-        :param pulumi.Input[List[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]] json_keys: Use nested index when type is json
+        :param pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]] json_keys: Use nested index when type is json
         :param pulumi.Input[str] token: The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
         :param pulumi.Input[str] type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         """
@@ -299,14 +299,14 @@ class StoreIndexFieldSearchArgs:
 
     @property
     @pulumi.getter(name="jsonKeys")
-    def json_keys(self) -> Optional[pulumi.Input[List[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]]:
+    def json_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]]:
         """
         Use nested index when type is json
         """
         return pulumi.get(self, "json_keys")
 
     @json_keys.setter
-    def json_keys(self, value: Optional[pulumi.Input[List[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]]):
+    def json_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]]):
         pulumi.set(self, "json_keys", value)
 
     @property
@@ -464,10 +464,10 @@ class StoreShardArgs:
     def __init__(__self__, *,
                  begin_key: Optional[pulumi.Input[str]] = None,
                  end_key: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[float]] = None,
+                 id: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] id: The ID of the log project. It formats of `<project>:<name>`.
+        :param pulumi.Input[int] id: The ID of the log project. It formats of `<project>:<name>`.
         """
         if begin_key is not None:
             pulumi.set(__self__, "begin_key", begin_key)
@@ -498,14 +498,14 @@ class StoreShardArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[float]]:
+    def id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the log project. It formats of `<project>:<name>`.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[float]]):
+    def id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "id", value)
 
     @property

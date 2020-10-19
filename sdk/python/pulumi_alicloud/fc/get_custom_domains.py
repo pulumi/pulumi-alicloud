@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -42,7 +42,7 @@ class GetCustomDomainsResult:
 
     @property
     @pulumi.getter
-    def domains(self) -> List['outputs.GetCustomDomainsDomainResult']:
+    def domains(self) -> Sequence['outputs.GetCustomDomainsDomainResult']:
         """
         A list of custom domains, including the following attributes:
         """
@@ -58,7 +58,7 @@ class GetCustomDomainsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of custom domain ids.
         """
@@ -71,7 +71,7 @@ class GetCustomDomainsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of custom domain names.
         """
@@ -97,7 +97,7 @@ class AwaitableGetCustomDomainsResult(GetCustomDomainsResult):
             output_file=self.output_file)
 
 
-def get_custom_domains(ids: Optional[List[str]] = None,
+def get_custom_domains(ids: Optional[Sequence[str]] = None,
                        name_regex: Optional[str] = None,
                        output_file: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomDomainsResult:
@@ -117,7 +117,7 @@ def get_custom_domains(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of functions ids.
+    :param Sequence[str] ids: A list of functions ids.
     :param str name_regex: A regex string to filter results by Function Compute custom domain name.
     """
     __args__ = dict()

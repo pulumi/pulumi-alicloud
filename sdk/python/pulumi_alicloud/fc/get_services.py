@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -50,7 +50,7 @@ class GetServicesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of FC services ids.
         """
@@ -63,7 +63,7 @@ class GetServicesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of FC services names.
         """
@@ -76,7 +76,7 @@ class GetServicesResult:
 
     @property
     @pulumi.getter
-    def services(self) -> List['outputs.GetServicesServiceResult']:
+    def services(self) -> Sequence['outputs.GetServicesServiceResult']:
         """
         A list of FC services. Each element contains the following attributes:
         """
@@ -97,7 +97,7 @@ class AwaitableGetServicesResult(GetServicesResult):
             services=self.services)
 
 
-def get_services(ids: Optional[List[str]] = None,
+def get_services(ids: Optional[Sequence[str]] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicesResult:
@@ -115,7 +115,7 @@ def get_services(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: - A list of FC services ids.
+    :param Sequence[str] ids: - A list of FC services ids.
     :param str name_regex: A regex string to filter results by FC service name.
     """
     __args__ = dict()

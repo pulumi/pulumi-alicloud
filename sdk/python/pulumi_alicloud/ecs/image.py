@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class Image(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  architecture: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_device_mappings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]]] = None,
+                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -64,7 +64,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] architecture: Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
         :param pulumi.Input[str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]] disk_device_mappings: Description of the system with disks and snapshots under the image.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]] disk_device_mappings: Description of the system with disks and snapshots under the image.
         :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`. 
                - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
@@ -118,7 +118,7 @@ class Image(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             architecture: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            disk_device_mappings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]]] = None,
+            disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]]] = None,
             force: Optional[pulumi.Input[bool]] = None,
             image_name: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
@@ -136,7 +136,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] architecture: Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
         :param pulumi.Input[str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]] disk_device_mappings: Description of the system with disks and snapshots under the image.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]] disk_device_mappings: Description of the system with disks and snapshots under the image.
         :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`. 
                - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
@@ -182,7 +182,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskDeviceMappings")
-    def disk_device_mappings(self) -> pulumi.Output[List['outputs.ImageDiskDeviceMapping']]:
+    def disk_device_mappings(self) -> pulumi.Output[Sequence['outputs.ImageDiskDeviceMapping']]:
         """
         Description of the system with disks and snapshots under the image.
         """

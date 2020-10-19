@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -17,7 +17,7 @@ class DomainSourceArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[str],
                  type: pulumi.Input[str],
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  priority: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[str]] = None):
         """
@@ -26,7 +26,7 @@ class DomainSourceArgs:
                `ipaddr`: The origin is configured using an IP address.
                `domain`: The origin is configured using a domain name.
                `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
-        :param pulumi.Input[float] port: The port number. Valid values: `443` and `80`. Default to `80`.
+        :param pulumi.Input[int] port: The port number. Valid values: `443` and `80`. Default to `80`.
         :param pulumi.Input[str] priority: The priority of the origin if multiple origins are specified. Default to `20`.
         :param pulumi.Input[str] weight: The weight of the origin if multiple origins are specified. Default to `10`.
         """
@@ -68,14 +68,14 @@ class DomainSourceArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[float]]:
+    def port(self) -> Optional[pulumi.Input[int]]:
         """
         The port number. Valid values: `443` and `80`. Default to `80`.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[float]]):
+    def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
     @property

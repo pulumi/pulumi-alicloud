@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -50,7 +50,7 @@ class GetNamespacesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of matched Container Registry namespaces. Its element is a namespace name.
         """
@@ -63,7 +63,7 @@ class GetNamespacesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of namespace names.
         """
@@ -71,7 +71,7 @@ class GetNamespacesResult:
 
     @property
     @pulumi.getter
-    def namespaces(self) -> List['outputs.GetNamespacesNamespaceResult']:
+    def namespaces(self) -> Sequence['outputs.GetNamespacesNamespaceResult']:
         """
         A list of matched Container Registry namespaces. Each element contains the following attributes:
         """

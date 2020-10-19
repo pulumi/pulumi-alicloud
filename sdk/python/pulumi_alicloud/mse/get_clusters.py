@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -59,7 +59,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def clusters(self) -> List['outputs.GetClustersClusterResult']:
+    def clusters(self) -> Sequence['outputs.GetClustersClusterResult']:
         """
         A list of MSE Clusters. Each element contains the following attributes:
         """
@@ -80,7 +80,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of MSE Cluster ids.
         """
@@ -93,7 +93,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of MSE Cluster names.
         """
@@ -138,7 +138,7 @@ class AwaitableGetClustersResult(GetClustersResult):
 
 def get_clusters(cluster_alias_name: Optional[str] = None,
                  enable_details: Optional[bool] = None,
-                 ids: Optional[List[str]] = None,
+                 ids: Optional[Sequence[str]] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
                  request_pars: Optional[str] = None,
@@ -162,7 +162,7 @@ def get_clusters(cluster_alias_name: Optional[str] = None,
 
 
     :param str cluster_alias_name: The alias name of MSE Cluster.
-    :param List[str] ids: A list of MSE Cluster ids.
+    :param Sequence[str] ids: A list of MSE Cluster ids.
     :param str name_regex: A regex string to filter the results by the cluster alias name.
     :param str status: The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
     """

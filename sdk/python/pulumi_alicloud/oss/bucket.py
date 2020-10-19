@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,9 +19,9 @@ class Bucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[str]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 cors_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketCorsRuleArgs']]]]] = None,
+                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsRuleArgs']]]]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
                  logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
                  logging_isenable: Optional[pulumi.Input[bool]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
@@ -217,9 +217,9 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketCorsRuleArgs']]]] cors_rules: A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsRuleArgs']]]] cors_rules: A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
         :param pulumi.Input[bool] logging_isenable: The flag of using logging enable container. Defaults true.
         :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
@@ -283,12 +283,12 @@ class Bucket(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acl: Optional[pulumi.Input[str]] = None,
             bucket: Optional[pulumi.Input[str]] = None,
-            cors_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketCorsRuleArgs']]]]] = None,
+            cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsRuleArgs']]]]] = None,
             creation_date: Optional[pulumi.Input[str]] = None,
             extranet_endpoint: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             intranet_endpoint: Optional[pulumi.Input[str]] = None,
-            lifecycle_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
+            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
             logging_isenable: Optional[pulumi.Input[bool]] = None,
@@ -309,12 +309,12 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketCorsRuleArgs']]]] cors_rules: A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsRuleArgs']]]] cors_rules: A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
         :param pulumi.Input[str] creation_date: The creation date of the bucket.
         :param pulumi.Input[str] extranet_endpoint: The extranet access endpoint of the bucket.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
         :param pulumi.Input[str] intranet_endpoint: The intranet access endpoint of the bucket.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
         :param pulumi.Input[bool] logging_isenable: The flag of using logging enable container. Defaults true.
@@ -369,7 +369,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="corsRules")
-    def cors_rules(self) -> pulumi.Output[Optional[List['outputs.BucketCorsRule']]]:
+    def cors_rules(self) -> pulumi.Output[Optional[Sequence['outputs.BucketCorsRule']]]:
         """
         A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
         """
@@ -409,7 +409,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> pulumi.Output[Optional[List['outputs.BucketLifecycleRule']]]:
+    def lifecycle_rules(self) -> pulumi.Output[Optional[Sequence['outputs.BucketLifecycleRule']]]:
         """
         A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
         """

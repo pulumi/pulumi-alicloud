@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,23 +18,23 @@ class NodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_count: Optional[pulumi.Input[float]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
                  node_name_mode: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
-                 system_disk_size: Optional[pulumi.Input[float]] = None,
+                 system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 taints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -47,23 +47,23 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types: The instance type of worker node.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The instance type of worker node.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
         :param pulumi.Input[str] name: The name of node pool.
-        :param pulumi.Input[float] node_count: The worker node number of the node pool.
+        :param pulumi.Input[int] node_count: The worker node number of the node pool.
         :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] security_group_id: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[float] system_disk_size: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[Mapping[str, Any]] tags: A List of tags to assign to the resource. It will be applied for ECS instances finally.
                - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
                - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
-        :param pulumi.Input[List[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -120,24 +120,24 @@ class NodePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
-            data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
+            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
-            instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_count: Optional[pulumi.Input[float]] = None,
+            node_count: Optional[pulumi.Input[int]] = None,
             node_name_mode: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
-            system_disk_size: Optional[pulumi.Input[float]] = None,
+            system_disk_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            taints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
+            taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
-            vswitch_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'NodePool':
+            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'NodePool':
         """
         Get an existing NodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -147,24 +147,24 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types: The instance type of worker node.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The instance type of worker node.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
         :param pulumi.Input[str] name: The name of node pool.
-        :param pulumi.Input[float] node_count: The worker node number of the node pool.
+        :param pulumi.Input[int] node_count: The worker node number of the node pool.
         :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] security_group_id: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[float] system_disk_size: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[Mapping[str, Any]] tags: A List of tags to assign to the resource. It will be applied for ECS instances finally.
                - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
                - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
-        :param pulumi.Input[List[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -201,7 +201,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> pulumi.Output[Optional[List['outputs.NodePoolDataDisk']]]:
+    def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolDataDisk']]]:
         return pulumi.get(self, "data_disks")
 
     @property
@@ -214,7 +214,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> pulumi.Output[List[str]]:
+    def instance_types(self) -> pulumi.Output[Sequence[str]]:
         """
         The instance type of worker node.
         """
@@ -238,7 +238,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[List['outputs.NodePoolLabel']]]:
+    def labels(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolLabel']]]:
         """
         A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
         """
@@ -254,7 +254,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> pulumi.Output[float]:
+    def node_count(self) -> pulumi.Output[int]:
         """
         The worker node number of the node pool.
         """
@@ -294,7 +294,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> pulumi.Output[Optional[float]]:
+    def system_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
         The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
@@ -312,7 +312,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def taints(self) -> pulumi.Output[Optional[List['outputs.NodePoolTaint']]]:
+    def taints(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolTaint']]]:
         """
         A List of Kubernetes taints to assign to the nodes.
         """
@@ -336,7 +336,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> pulumi.Output[List[str]]:
+    def vswitch_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         The vswitches used by node pool workers.
         """

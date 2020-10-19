@@ -27,10 +27,20 @@ import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/polardb"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cfg := config.New(ctx, "")
+// 		name := "polardbClusterconfig"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		creation := "PolarDB"
+// 		if param := cfg.Get("creation"); param != "" {
+// 			creation = param
+// 		}
 // 		opt0 := creation
 // 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,

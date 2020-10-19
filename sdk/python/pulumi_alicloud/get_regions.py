@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -55,7 +55,7 @@ class GetRegionsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of region IDs.
         """
@@ -73,7 +73,7 @@ class GetRegionsResult:
 
     @property
     @pulumi.getter
-    def regions(self) -> List['outputs.GetRegionsRegionResult']:
+    def regions(self) -> Sequence['outputs.GetRegionsRegionResult']:
         """
         A list of regions. Each element contains the following attributes:
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -105,7 +105,7 @@ class GetTemplatesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of OOS Template ids. Each element in the list is same as template_name.
         """
@@ -153,7 +153,7 @@ class GetTemplatesResult:
 
     @property
     @pulumi.getter
-    def templates(self) -> List['outputs.GetTemplatesTemplateResult']:
+    def templates(self) -> Sequence['outputs.GetTemplatesTemplateResult']:
         """
         A list of OOS Templates. Each element contains the following attributes:
         """
@@ -189,7 +189,7 @@ def get_templates(category: Optional[str] = None,
                   created_date: Optional[str] = None,
                   created_date_after: Optional[str] = None,
                   has_trigger: Optional[bool] = None,
-                  ids: Optional[List[str]] = None,
+                  ids: Optional[Sequence[str]] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
                   share_type: Optional[str] = None,
@@ -226,7 +226,7 @@ def get_templates(category: Optional[str] = None,
     :param str created_date: The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
     :param str created_date_after: Create a template whose time is greater than or equal to the specified time. The format is: YYYY-MM-DDThh:mm:ssZ.
     :param bool has_trigger: Is it triggered successfully.
-    :param List[str] ids: A list of OOS Template ids. Each element in the list is same as template_name.
+    :param Sequence[str] ids: A list of OOS Template ids. Each element in the list is same as template_name.
     :param str name_regex: A regex string to filter the results by the template_name.
     :param str share_type: The sharing type of the template. Valid values: `Private`, `Public`.
     :param str sort_field: Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.

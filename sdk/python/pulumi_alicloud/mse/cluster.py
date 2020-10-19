@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Cluster']
@@ -15,13 +15,13 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_entry_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cluster_alias_name: Optional[pulumi.Input[str]] = None,
                  cluster_specification: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  cluster_version: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
-                 instance_count: Optional[pulumi.Input[float]] = None,
+                 instance_count: Optional[pulumi.Input[int]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_network_flow: Optional[pulumi.Input[str]] = None,
@@ -55,13 +55,13 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] acl_entry_lists: The whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
         :param pulumi.Input[str] disk_type: The type of Disk.
-        :param pulumi.Input[float] instance_count: The count of instance.
+        :param pulumi.Input[int] instance_count: The count of instance.
         :param pulumi.Input[str] net_type: The type of network. Range limit: 1~5.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
@@ -118,13 +118,13 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_entry_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             cluster_alias_name: Optional[pulumi.Input[str]] = None,
             cluster_specification: Optional[pulumi.Input[str]] = None,
             cluster_type: Optional[pulumi.Input[str]] = None,
             cluster_version: Optional[pulumi.Input[str]] = None,
             disk_type: Optional[pulumi.Input[str]] = None,
-            instance_count: Optional[pulumi.Input[float]] = None,
+            instance_count: Optional[pulumi.Input[int]] = None,
             net_type: Optional[pulumi.Input[str]] = None,
             private_slb_specification: Optional[pulumi.Input[str]] = None,
             pub_network_flow: Optional[pulumi.Input[str]] = None,
@@ -138,13 +138,13 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] acl_entry_lists: The whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
         :param pulumi.Input[str] disk_type: The type of Disk.
-        :param pulumi.Input[float] instance_count: The count of instance.
+        :param pulumi.Input[int] instance_count: The count of instance.
         :param pulumi.Input[str] net_type: The type of network. Range limit: 1~5.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
@@ -173,7 +173,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclEntryLists")
-    def acl_entry_lists(self) -> pulumi.Output[Optional[List[str]]]:
+    def acl_entry_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The whitelist.
         """
@@ -221,7 +221,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> pulumi.Output[float]:
+    def instance_count(self) -> pulumi.Output[int]:
         """
         The count of instance.
         """

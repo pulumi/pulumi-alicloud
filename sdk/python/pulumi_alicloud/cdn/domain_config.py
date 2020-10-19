@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class DomainConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 function_args: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
+                 function_args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -62,7 +62,7 @@ class DomainConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config.
         :param pulumi.Input[str] function_name: The name of the domain config.
         """
         if __name__ is not None:
@@ -102,7 +102,7 @@ class DomainConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
-            function_args: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
+            function_args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
             function_name: Optional[pulumi.Input[str]] = None) -> 'DomainConfig':
         """
         Get an existing DomainConfig resource's state with the given name, id, and optional extra
@@ -112,7 +112,7 @@ class DomainConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config.
         :param pulumi.Input[str] function_name: The name of the domain config.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -134,7 +134,7 @@ class DomainConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="functionArgs")
-    def function_args(self) -> pulumi.Output[List['outputs.DomainConfigFunctionArg']]:
+    def function_args(self) -> pulumi.Output[Sequence['outputs.DomainConfigFunctionArg']]:
         """
         The args of the domain config.
         """

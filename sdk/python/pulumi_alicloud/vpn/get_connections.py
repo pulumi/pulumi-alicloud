@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -48,7 +48,7 @@ class GetConnectionsResult:
 
     @property
     @pulumi.getter
-    def connections(self) -> List['outputs.GetConnectionsConnectionResult']:
+    def connections(self) -> Sequence['outputs.GetConnectionsConnectionResult']:
         """
         A list of VPN connections. Each element contains the following attributes:
         """
@@ -72,7 +72,7 @@ class GetConnectionsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         (Optional) IDs of the VPN connections.
         """
@@ -85,7 +85,7 @@ class GetConnectionsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         (Optional) names of the VPN connections.
         """
@@ -122,7 +122,7 @@ class AwaitableGetConnectionsResult(GetConnectionsResult):
 
 
 def get_connections(customer_gateway_id: Optional[str] = None,
-                    ids: Optional[List[str]] = None,
+                    ids: Optional[Sequence[str]] = None,
                     name_regex: Optional[str] = None,
                     output_file: Optional[str] = None,
                     vpn_gateway_id: Optional[str] = None,
@@ -144,7 +144,7 @@ def get_connections(customer_gateway_id: Optional[str] = None,
 
 
     :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.
-    :param List[str] ids: IDs of the VPN connections.
+    :param Sequence[str] ids: IDs of the VPN connections.
     :param str name_regex: A regex string of VPN connection name.
     :param str output_file: Save the result to the file.
     :param str vpn_gateway_id: Use the VPN gateway ID as the search key.

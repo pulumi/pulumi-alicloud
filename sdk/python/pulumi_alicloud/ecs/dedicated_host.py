@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -21,14 +21,14 @@ class DedicatedHost(pulumi.CustomResource):
                  auto_placement: Optional[pulumi.Input[str]] = None,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[float]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  dedicated_host_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detail_fee: Optional[pulumi.Input[bool]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  expired_time: Optional[pulumi.Input[str]] = None,
-                 network_attributes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]]] = None,
+                 network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  sale_cycle: Optional[pulumi.Input[str]] = None,
@@ -85,14 +85,14 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[str] auto_placement: Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
         :param pulumi.Input[str] auto_release_time: The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         :param pulumi.Input[bool] auto_renew: Specifies whether to automatically renew the subscription dedicated host.
-        :param pulumi.Input[float] auto_renew_period: The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
+        :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
         :param pulumi.Input[str] dedicated_host_name: The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] dedicated_host_type: The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
         :param pulumi.Input[str] description: The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[bool] detail_fee: Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
         :param pulumi.Input[bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]] network_attributes: dedicated host network parameters. contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]] network_attributes: dedicated host network parameters. contains the following attributes:
         :param pulumi.Input[str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
         :param pulumi.Input[str] sale_cycle: The unit of the subscription period of the dedicated host.
@@ -150,14 +150,14 @@ class DedicatedHost(pulumi.CustomResource):
             auto_placement: Optional[pulumi.Input[str]] = None,
             auto_release_time: Optional[pulumi.Input[str]] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[float]] = None,
+            auto_renew_period: Optional[pulumi.Input[int]] = None,
             dedicated_host_name: Optional[pulumi.Input[str]] = None,
             dedicated_host_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             detail_fee: Optional[pulumi.Input[bool]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             expired_time: Optional[pulumi.Input[str]] = None,
-            network_attributes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]]] = None,
+            network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             sale_cycle: Optional[pulumi.Input[str]] = None,
@@ -175,14 +175,14 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[str] auto_placement: Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
         :param pulumi.Input[str] auto_release_time: The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         :param pulumi.Input[bool] auto_renew: Specifies whether to automatically renew the subscription dedicated host.
-        :param pulumi.Input[float] auto_renew_period: The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
+        :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
         :param pulumi.Input[str] dedicated_host_name: The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] dedicated_host_type: The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
         :param pulumi.Input[str] description: The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[bool] detail_fee: Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
         :param pulumi.Input[bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]] network_attributes: dedicated host network parameters. contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]] network_attributes: dedicated host network parameters. contains the following attributes:
         :param pulumi.Input[str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
         :param pulumi.Input[str] sale_cycle: The unit of the subscription period of the dedicated host.
@@ -248,7 +248,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> pulumi.Output[Optional[float]]:
+    def auto_renew_period(self) -> pulumi.Output[Optional[int]]:
         """
         The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
         """
@@ -304,7 +304,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkAttributes")
-    def network_attributes(self) -> pulumi.Output[Optional[List['outputs.DedicatedHostNetworkAttribute']]]:
+    def network_attributes(self) -> pulumi.Output[Optional[Sequence['outputs.DedicatedHostNetworkAttribute']]]:
         """
         dedicated host network parameters. contains the following attributes:
         """

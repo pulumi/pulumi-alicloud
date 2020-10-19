@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -70,7 +70,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         The ids list of MongoDB instances
         """
@@ -94,7 +94,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         """
         A list of MongoDB instances. Its every element contains the following attributes:
         """
@@ -107,7 +107,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         The names list of MongoDB instances
         """
@@ -143,7 +143,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
 
 
 def get_instances(availability_zone: Optional[str] = None,
-                  ids: Optional[List[str]] = None,
+                  ids: Optional[Sequence[str]] = None,
                   instance_class: Optional[str] = None,
                   instance_type: Optional[str] = None,
                   name_regex: Optional[str] = None,
@@ -168,7 +168,7 @@ def get_instances(availability_zone: Optional[str] = None,
 
 
     :param str availability_zone: Instance availability zone.
-    :param List[str] ids: The ids list of MongoDB instances
+    :param Sequence[str] ids: The ids list of MongoDB instances
     :param str instance_class: Sizing of the instance to be queried.
     :param str instance_type: Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
     :param str name_regex: A regex string to apply to the instance name.

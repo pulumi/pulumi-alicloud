@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -50,7 +50,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of instance IDs.
         """
@@ -58,7 +58,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         """
         A list of instances. Each element contains the following attributes:
         """
@@ -94,7 +94,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             user_client_ip=self.user_client_ip)
 
 
-def get_instances(ids: Optional[List[str]] = None,
+def get_instances(ids: Optional[Sequence[str]] = None,
                   lang: Optional[str] = None,
                   output_file: Optional[str] = None,
                   user_client_ip: Optional[str] = None,
@@ -102,7 +102,7 @@ def get_instances(ids: Optional[List[str]] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param List[str] ids: A list of instance IDs.
+    :param Sequence[str] ids: A list of instance IDs.
     """
     __args__ = dict()
     __args__['ids'] = ids

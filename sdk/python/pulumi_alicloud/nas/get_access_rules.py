@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -61,7 +61,7 @@ class GetAccessRulesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of rule IDs, Each element set to `access_rule_id` (Each element formats as `<access_group_name>:<access rule id>` before 1.53.0).
         """
@@ -74,7 +74,7 @@ class GetAccessRulesResult:
 
     @property
     @pulumi.getter
-    def rules(self) -> List['outputs.GetAccessRulesRuleResult']:
+    def rules(self) -> Sequence['outputs.GetAccessRulesRuleResult']:
         """
         A list of AccessRules. Each element contains the following attributes:
         """
@@ -122,7 +122,7 @@ class AwaitableGetAccessRulesResult(GetAccessRulesResult):
 
 
 def get_access_rules(access_group_name: Optional[str] = None,
-                     ids: Optional[List[str]] = None,
+                     ids: Optional[Sequence[str]] = None,
                      output_file: Optional[str] = None,
                      rw_access: Optional[str] = None,
                      source_cidr_ip: Optional[str] = None,
@@ -135,7 +135,7 @@ def get_access_rules(access_group_name: Optional[str] = None,
 
 
     :param str access_group_name: Filter results by a specific AccessGroupName.
-    :param List[str] ids: A list of rule IDs.
+    :param Sequence[str] ids: A list of rule IDs.
     :param str rw_access: Filter results by a specific RWAccess.
     :param str source_cidr_ip: Filter results by a specific SourceCidrIp.
     :param str user_access: Filter results by a specific UserAccess.

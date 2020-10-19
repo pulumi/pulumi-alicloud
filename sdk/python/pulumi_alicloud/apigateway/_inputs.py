@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -93,13 +93,13 @@ class ApiFcServiceConfigArgs:
                  function_name: pulumi.Input[str],
                  region: pulumi.Input[str],
                  service_name: pulumi.Input[str],
-                 timeout: pulumi.Input[float],
+                 timeout: pulumi.Input[int],
                  arn_role: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] function_name: The function name of function compute service.
         :param pulumi.Input[str] region: The region that the function compute service belongs to.
         :param pulumi.Input[str] service_name: The service name of function compute service.
-        :param pulumi.Input[float] timeout: Backend service time-out time; unit: millisecond.
+        :param pulumi.Input[int] timeout: Backend service time-out time; unit: millisecond.
         :param pulumi.Input[str] arn_role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         """
         pulumi.set(__self__, "function_name", function_name)
@@ -147,14 +147,14 @@ class ApiFcServiceConfigArgs:
 
     @property
     @pulumi.getter
-    def timeout(self) -> pulumi.Input[float]:
+    def timeout(self) -> pulumi.Input[int]:
         """
         Backend service time-out time; unit: millisecond.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: pulumi.Input[float]):
+    def timeout(self, value: pulumi.Input[int]):
         pulumi.set(self, "timeout", value)
 
     @property
@@ -176,13 +176,13 @@ class ApiHttpServiceConfigArgs:
                  address: pulumi.Input[str],
                  method: pulumi.Input[str],
                  path: pulumi.Input[str],
-                 timeout: pulumi.Input[float],
+                 timeout: pulumi.Input[int],
                  aone_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] address: The address of backend service.
         :param pulumi.Input[str] method: The http method of backend service.
         :param pulumi.Input[str] path: The path of backend service.
-        :param pulumi.Input[float] timeout: Backend service time-out time; unit: millisecond.
+        :param pulumi.Input[int] timeout: Backend service time-out time; unit: millisecond.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "method", method)
@@ -229,14 +229,14 @@ class ApiHttpServiceConfigArgs:
 
     @property
     @pulumi.getter
-    def timeout(self) -> pulumi.Input[float]:
+    def timeout(self) -> pulumi.Input[int]:
         """
         Backend service time-out time; unit: millisecond.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: pulumi.Input[float]):
+    def timeout(self, value: pulumi.Input[int]):
         pulumi.set(self, "timeout", value)
 
     @property
@@ -255,13 +255,13 @@ class ApiHttpVpcServiceConfigArgs:
                  method: pulumi.Input[str],
                  name: pulumi.Input[str],
                  path: pulumi.Input[str],
-                 timeout: pulumi.Input[float],
+                 timeout: pulumi.Input[int],
                  aone_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] method: The http method of backend service.
         :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
         :param pulumi.Input[str] path: The path of backend service.
-        :param pulumi.Input[float] timeout: Backend service time-out time; unit: millisecond.
+        :param pulumi.Input[int] timeout: Backend service time-out time; unit: millisecond.
         """
         pulumi.set(__self__, "method", method)
         pulumi.set(__self__, "name", name)
@@ -308,14 +308,14 @@ class ApiHttpVpcServiceConfigArgs:
 
     @property
     @pulumi.getter
-    def timeout(self) -> pulumi.Input[float]:
+    def timeout(self) -> pulumi.Input[int]:
         """
         Backend service time-out time; unit: millisecond.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: pulumi.Input[float]):
+    def timeout(self, value: pulumi.Input[int]):
         pulumi.set(self, "timeout", value)
 
     @property

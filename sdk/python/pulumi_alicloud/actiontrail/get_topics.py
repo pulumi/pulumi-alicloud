@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -60,7 +60,7 @@ class GetTopicsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of topic names.
         """
@@ -73,7 +73,7 @@ class GetTopicsResult:
 
     @property
     @pulumi.getter
-    def topics(self) -> List['outputs.GetTopicsTopicResult']:
+    def topics(self) -> Sequence['outputs.GetTopicsTopicResult']:
         """
         A list of topics. Each element contains the following attributes:
         """

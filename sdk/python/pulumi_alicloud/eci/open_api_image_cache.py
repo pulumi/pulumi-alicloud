@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,11 +19,11 @@ class OpenApiImageCache(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  image_cache_name: Optional[pulumi.Input[str]] = None,
-                 image_cache_size: Optional[pulumi.Input[float]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OpenApiImageCacheImageRegistryCredentialArgs']]]]] = None,
-                 images: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 image_cache_size: Optional[pulumi.Input[int]] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenApiImageCacheImageRegistryCredentialArgs']]]]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 retention_days: Optional[pulumi.Input[float]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -85,11 +85,11 @@ class OpenApiImageCache(pulumi.CustomResource):
             container_group_id: Optional[pulumi.Input[str]] = None,
             eip_instance_id: Optional[pulumi.Input[str]] = None,
             image_cache_name: Optional[pulumi.Input[str]] = None,
-            image_cache_size: Optional[pulumi.Input[float]] = None,
-            image_registry_credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OpenApiImageCacheImageRegistryCredentialArgs']]]]] = None,
-            images: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            image_cache_size: Optional[pulumi.Input[int]] = None,
+            image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenApiImageCacheImageRegistryCredentialArgs']]]]] = None,
+            images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
-            retention_days: Optional[pulumi.Input[float]] = None,
+            retention_days: Optional[pulumi.Input[int]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -137,17 +137,17 @@ class OpenApiImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageCacheSize")
-    def image_cache_size(self) -> pulumi.Output[Optional[float]]:
+    def image_cache_size(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "image_cache_size")
 
     @property
     @pulumi.getter(name="imageRegistryCredentials")
-    def image_registry_credentials(self) -> pulumi.Output[Optional[List['outputs.OpenApiImageCacheImageRegistryCredential']]]:
+    def image_registry_credentials(self) -> pulumi.Output[Optional[Sequence['outputs.OpenApiImageCacheImageRegistryCredential']]]:
         return pulumi.get(self, "image_registry_credentials")
 
     @property
     @pulumi.getter
-    def images(self) -> pulumi.Output[List[str]]:
+    def images(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "images")
 
     @property
@@ -157,7 +157,7 @@ class OpenApiImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> pulumi.Output[Optional[float]]:
+    def retention_days(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "retention_days")
 
     @property

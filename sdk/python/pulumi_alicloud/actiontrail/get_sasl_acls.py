@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -61,7 +61,7 @@ class GetSaslAclsResult:
 
     @property
     @pulumi.getter
-    def acls(self) -> List['outputs.GetSaslAclsAclResult']:
+    def acls(self) -> Sequence['outputs.GetSaslAclsAclResult']:
         """
         A list of sasl acls. Each element contains the following attributes:
         """

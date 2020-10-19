@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['QosPolicy']
@@ -21,7 +21,7 @@ class QosPolicy(pulumi.CustomResource):
                  end_time: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  qos_id: Optional[pulumi.Input[str]] = None,
                  source_cidr: Optional[pulumi.Input[str]] = None,
                  source_port_range: Optional[pulumi.Input[str]] = None,
@@ -69,7 +69,7 @@ class QosPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] end_time: The expiration time of the quintuple rule.
         :param pulumi.Input[str] ip_protocol: The transport layer protocol.
         :param pulumi.Input[str] name: The name of the QoS policy.
-        :param pulumi.Input[float] priority: The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
+        :param pulumi.Input[int] priority: The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
         :param pulumi.Input[str] qos_id: The instance ID of the QoS policy to which the quintuple rule is created.
         :param pulumi.Input[str] source_cidr: The source CIDR block.
         :param pulumi.Input[str] source_port_range: The source port range of the transport layer.
@@ -133,7 +133,7 @@ class QosPolicy(pulumi.CustomResource):
             end_time: Optional[pulumi.Input[str]] = None,
             ip_protocol: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             qos_id: Optional[pulumi.Input[str]] = None,
             source_cidr: Optional[pulumi.Input[str]] = None,
             source_port_range: Optional[pulumi.Input[str]] = None,
@@ -151,7 +151,7 @@ class QosPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] end_time: The expiration time of the quintuple rule.
         :param pulumi.Input[str] ip_protocol: The transport layer protocol.
         :param pulumi.Input[str] name: The name of the QoS policy.
-        :param pulumi.Input[float] priority: The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
+        :param pulumi.Input[int] priority: The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
         :param pulumi.Input[str] qos_id: The instance ID of the QoS policy to which the quintuple rule is created.
         :param pulumi.Input[str] source_cidr: The source CIDR block.
         :param pulumi.Input[str] source_port_range: The source port range of the transport layer.
@@ -224,7 +224,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[float]:
+    def priority(self) -> pulumi.Output[int]:
         """
         The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
         """

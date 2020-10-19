@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['VbrHealthCheck']
@@ -16,12 +16,12 @@ class VbrHealthCheck(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
-                 health_check_interval: Optional[pulumi.Input[float]] = None,
+                 health_check_interval: Optional[pulumi.Input[int]] = None,
                  health_check_source_ip: Optional[pulumi.Input[str]] = None,
                  health_check_target_ip: Optional[pulumi.Input[str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[float]] = None,
+                 healthy_threshold: Optional[pulumi.Input[int]] = None,
                  vbr_instance_id: Optional[pulumi.Input[str]] = None,
-                 vbr_instance_owner_id: Optional[pulumi.Input[float]] = None,
+                 vbr_instance_owner_id: Optional[pulumi.Input[int]] = None,
                  vbr_instance_region_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -63,12 +63,12 @@ class VbrHealthCheck(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input[float] health_check_interval: Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
+        :param pulumi.Input[int] health_check_interval: Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
         :param pulumi.Input[str] health_check_source_ip: The source IP address of health checks.
         :param pulumi.Input[str] health_check_target_ip: The destination IP address of health checks.
-        :param pulumi.Input[float] healthy_threshold: Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
+        :param pulumi.Input[int] healthy_threshold: Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
         :param pulumi.Input[str] vbr_instance_id: The ID of the VBR.
-        :param pulumi.Input[float] vbr_instance_owner_id: The ID of the account to which the VBR belongs.
+        :param pulumi.Input[int] vbr_instance_owner_id: The ID of the account to which the VBR belongs.
         :param pulumi.Input[str] vbr_instance_region_id: The ID of the region to which the VBR belongs.
         """
         if __name__ is not None:
@@ -115,12 +115,12 @@ class VbrHealthCheck(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cen_id: Optional[pulumi.Input[str]] = None,
-            health_check_interval: Optional[pulumi.Input[float]] = None,
+            health_check_interval: Optional[pulumi.Input[int]] = None,
             health_check_source_ip: Optional[pulumi.Input[str]] = None,
             health_check_target_ip: Optional[pulumi.Input[str]] = None,
-            healthy_threshold: Optional[pulumi.Input[float]] = None,
+            healthy_threshold: Optional[pulumi.Input[int]] = None,
             vbr_instance_id: Optional[pulumi.Input[str]] = None,
-            vbr_instance_owner_id: Optional[pulumi.Input[float]] = None,
+            vbr_instance_owner_id: Optional[pulumi.Input[int]] = None,
             vbr_instance_region_id: Optional[pulumi.Input[str]] = None) -> 'VbrHealthCheck':
         """
         Get an existing VbrHealthCheck resource's state with the given name, id, and optional extra
@@ -130,12 +130,12 @@ class VbrHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input[float] health_check_interval: Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
+        :param pulumi.Input[int] health_check_interval: Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
         :param pulumi.Input[str] health_check_source_ip: The source IP address of health checks.
         :param pulumi.Input[str] health_check_target_ip: The destination IP address of health checks.
-        :param pulumi.Input[float] healthy_threshold: Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
+        :param pulumi.Input[int] healthy_threshold: Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
         :param pulumi.Input[str] vbr_instance_id: The ID of the VBR.
-        :param pulumi.Input[float] vbr_instance_owner_id: The ID of the account to which the VBR belongs.
+        :param pulumi.Input[int] vbr_instance_owner_id: The ID of the account to which the VBR belongs.
         :param pulumi.Input[str] vbr_instance_region_id: The ID of the region to which the VBR belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -162,7 +162,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckInterval")
-    def health_check_interval(self) -> pulumi.Output[Optional[float]]:
+    def health_check_interval(self) -> pulumi.Output[Optional[int]]:
         """
         Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
         """
@@ -186,7 +186,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> pulumi.Output[Optional[float]]:
+    def healthy_threshold(self) -> pulumi.Output[Optional[int]]:
         """
         Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
         """
@@ -202,7 +202,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vbrInstanceOwnerId")
-    def vbr_instance_owner_id(self) -> pulumi.Output[Optional[float]]:
+    def vbr_instance_owner_id(self) -> pulumi.Output[Optional[int]]:
         """
         The ID of the account to which the VBR belongs.
         """

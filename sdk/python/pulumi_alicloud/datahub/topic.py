@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Topic']
@@ -16,12 +16,12 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
-                 life_cycle: Optional[pulumi.Input[float]] = None,
+                 life_cycle: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  record_type: Optional[pulumi.Input[str]] = None,
-                 shard_count: Optional[pulumi.Input[float]] = None,
+                 shard_count: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -69,7 +69,7 @@ class Topic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.
-        :param pulumi.Input[float] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
+        :param pulumi.Input[int] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         :param pulumi.Input[str] name: The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         :param pulumi.Input[str] project_name: The name of the datahub project that this topic belongs to. It is case-insensitive.
         :param pulumi.Input[Mapping[str, Any]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
@@ -79,7 +79,7 @@ class Topic(pulumi.CustomResource):
                - DOUBLE
                - TIMESTAMP
         :param pulumi.Input[str] record_type: The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
-        :param pulumi.Input[float] shard_count: The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
+        :param pulumi.Input[int] shard_count: The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -122,12 +122,12 @@ class Topic(pulumi.CustomResource):
             comment: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             last_modify_time: Optional[pulumi.Input[str]] = None,
-            life_cycle: Optional[pulumi.Input[float]] = None,
+            life_cycle: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_name: Optional[pulumi.Input[str]] = None,
             record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             record_type: Optional[pulumi.Input[str]] = None,
-            shard_count: Optional[pulumi.Input[float]] = None) -> 'Topic':
+            shard_count: Optional[pulumi.Input[int]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -138,7 +138,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.
         :param pulumi.Input[str] create_time: Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
         :param pulumi.Input[str] last_modify_time: Last modify time of the datahub topic. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
-        :param pulumi.Input[float] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
+        :param pulumi.Input[int] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         :param pulumi.Input[str] name: The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         :param pulumi.Input[str] project_name: The name of the datahub project that this topic belongs to. It is case-insensitive.
         :param pulumi.Input[Mapping[str, Any]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
@@ -148,7 +148,7 @@ class Topic(pulumi.CustomResource):
                - DOUBLE
                - TIMESTAMP
         :param pulumi.Input[str] record_type: The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
-        :param pulumi.Input[float] shard_count: The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
+        :param pulumi.Input[int] shard_count: The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -191,7 +191,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifeCycle")
-    def life_cycle(self) -> pulumi.Output[Optional[float]]:
+    def life_cycle(self) -> pulumi.Output[Optional[int]]:
         """
         How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         """
@@ -236,7 +236,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> pulumi.Output[Optional[float]]:
+    def shard_count(self) -> pulumi.Output[Optional[int]]:
         """
         The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
         """

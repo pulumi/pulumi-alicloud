@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,12 +19,12 @@ class ShardingInstanceMongoListArgs:
                  node_class: pulumi.Input[str],
                  connect_string: Optional[pulumi.Input[str]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None):
+                 port: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] node_class: -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[str] connect_string: Mongo node connection string
         :param pulumi.Input[str] node_id: The ID of the shard-node.
-        :param pulumi.Input[float] port: Mongo node port
+        :param pulumi.Input[int] port: Mongo node port
                * `shard_list`
         """
         pulumi.set(__self__, "node_class", node_class)
@@ -73,7 +73,7 @@ class ShardingInstanceMongoListArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[float]]:
+    def port(self) -> Optional[pulumi.Input[int]]:
         """
         Mongo node port
         * `shard_list`
@@ -81,7 +81,7 @@ class ShardingInstanceMongoListArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[float]]):
+    def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
 
@@ -89,11 +89,11 @@ class ShardingInstanceMongoListArgs:
 class ShardingInstanceShardListArgs:
     def __init__(__self__, *,
                  node_class: pulumi.Input[str],
-                 node_storage: pulumi.Input[float],
+                 node_storage: pulumi.Input[int],
                  node_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] node_class: -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-        :param pulumi.Input[float] node_storage: - Custom storage space; value range: [10, 1,000]
+        :param pulumi.Input[int] node_storage: - Custom storage space; value range: [10, 1,000]
                - 10-GB increments. Unit: GB.
         :param pulumi.Input[str] node_id: The ID of the shard-node.
         """
@@ -116,7 +116,7 @@ class ShardingInstanceShardListArgs:
 
     @property
     @pulumi.getter(name="nodeStorage")
-    def node_storage(self) -> pulumi.Input[float]:
+    def node_storage(self) -> pulumi.Input[int]:
         """
         - Custom storage space; value range: [10, 1,000]
         - 10-GB increments. Unit: GB.
@@ -124,7 +124,7 @@ class ShardingInstanceShardListArgs:
         return pulumi.get(self, "node_storage")
 
     @node_storage.setter
-    def node_storage(self, value: pulumi.Input[float]):
+    def node_storage(self, value: pulumi.Input[int]):
         pulumi.set(self, "node_storage", value)
 
     @property

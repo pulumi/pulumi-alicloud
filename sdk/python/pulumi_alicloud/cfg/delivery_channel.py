@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['DeliveryChannel']
@@ -21,7 +21,7 @@ class DeliveryChannel(pulumi.CustomResource):
                  delivery_channel_target_arn: Optional[pulumi.Input[str]] = None,
                  delivery_channel_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[float]] = None,
+                 status: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -38,7 +38,7 @@ class DeliveryChannel(pulumi.CustomResource):
                - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] description: The description of the delivery method.
-        :param pulumi.Input[float] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
+        :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -86,7 +86,7 @@ class DeliveryChannel(pulumi.CustomResource):
             delivery_channel_target_arn: Optional[pulumi.Input[str]] = None,
             delivery_channel_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[float]] = None) -> 'DeliveryChannel':
+            status: Optional[pulumi.Input[int]] = None) -> 'DeliveryChannel':
         """
         Get an existing DeliveryChannel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -103,7 +103,7 @@ class DeliveryChannel(pulumi.CustomResource):
                - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] description: The description of the delivery method.
-        :param pulumi.Input[float] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
+        :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -171,7 +171,7 @@ class DeliveryChannel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[float]:
+    def status(self) -> pulumi.Output[int]:
         """
         The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
         """

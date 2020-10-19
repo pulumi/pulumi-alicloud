@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -22,20 +22,20 @@ class GetClustersClusterResult(dict):
                  cluster_id: str,
                  cluster_name: str,
                  cluster_type: str,
-                 cpu: float,
+                 cpu: int,
                  health_status: str,
                  id: str,
-                 init_cost_time: float,
-                 instance_count: float,
+                 init_cost_time: int,
+                 instance_count: int,
                  instance_id: str,
-                 instance_models: List['outputs.GetClustersClusterInstanceModelResult'],
+                 instance_models: Sequence['outputs.GetClustersClusterInstanceModelResult'],
                  internet_address: str,
                  internet_domain: str,
                  internet_port: str,
                  intranet_address: str,
                  intranet_domain: str,
                  intranet_port: str,
-                 memory_capacity: float,
+                 memory_capacity: int,
                  pay_info: str,
                  pub_network_flow: str,
                  status: str):
@@ -45,20 +45,20 @@ class GetClustersClusterResult(dict):
         :param str cluster_id: ID of the MSE Cluster.
         :param str cluster_name: ID of the OOS Executions.
         :param str cluster_type: The type of MSE Cluster.
-        :param float cpu: The num of cpu.
+        :param int cpu: The num of cpu.
         :param str health_status: The health status of MSE Cluster.
         :param str id: ID of the MSE Cluster.
-        :param float init_cost_time: Time-consuming to create.
-        :param float instance_count: The count of instance.
+        :param int init_cost_time: Time-consuming to create.
+        :param int instance_count: The count of instance.
         :param str instance_id: ID of the MSE Cluster.
-        :param List['GetClustersClusterInstanceModelArgs'] instance_models: The list of instances.
+        :param Sequence['GetClustersClusterInstanceModelArgs'] instance_models: The list of instances.
         :param str internet_address: The address of public network.
         :param str internet_domain: The domain of public network.
         :param str internet_port: The port of public network.
         :param str intranet_address: The address of private network.
         :param str intranet_domain: The domain of private network.
         :param str intranet_port: The port of private network.
-        :param float memory_capacity: The memory size.
+        :param int memory_capacity: The memory size.
         :param str pay_info: The type of payment.
         :param str pub_network_flow: The public network bandwidth.
         :param str status: The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
@@ -128,7 +128,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter
-    def cpu(self) -> float:
+    def cpu(self) -> int:
         """
         The num of cpu.
         """
@@ -152,7 +152,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="initCostTime")
-    def init_cost_time(self) -> float:
+    def init_cost_time(self) -> int:
         """
         Time-consuming to create.
         """
@@ -160,7 +160,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> float:
+    def instance_count(self) -> int:
         """
         The count of instance.
         """
@@ -176,7 +176,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="instanceModels")
-    def instance_models(self) -> List['outputs.GetClustersClusterInstanceModelResult']:
+    def instance_models(self) -> Sequence['outputs.GetClustersClusterInstanceModelResult']:
         """
         The list of instances.
         """
@@ -232,7 +232,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="memoryCapacity")
-    def memory_capacity(self) -> float:
+    def memory_capacity(self) -> int:
         """
         The memory size.
         """

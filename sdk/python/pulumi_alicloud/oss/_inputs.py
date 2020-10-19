@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -23,17 +23,17 @@ __all__ = [
 @pulumi.input_type
 class BucketCorsRuleArgs:
     def __init__(__self__, *,
-                 allowed_methods: pulumi.Input[List[pulumi.Input[str]]],
-                 allowed_origins: pulumi.Input[List[pulumi.Input[str]]],
-                 allowed_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 expose_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 max_age_seconds: Optional[pulumi.Input[float]] = None):
+                 allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 allowed_origins: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 allowed_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_age_seconds: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_methods: Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: Specifies which origins are allowed.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_headers: Specifies which headers are allowed.
-        :param pulumi.Input[List[pulumi.Input[str]]] expose_headers: Specifies expose header in the response.
-        :param pulumi.Input[float] max_age_seconds: Specifies time in seconds that browser can cache the response for a preflight request.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_methods: Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: Specifies which origins are allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_headers: Specifies which headers are allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: Specifies expose header in the response.
+        :param pulumi.Input[int] max_age_seconds: Specifies time in seconds that browser can cache the response for a preflight request.
         """
         pulumi.set(__self__, "allowed_methods", allowed_methods)
         pulumi.set(__self__, "allowed_origins", allowed_origins)
@@ -46,62 +46,62 @@ class BucketCorsRuleArgs:
 
     @property
     @pulumi.getter(name="allowedMethods")
-    def allowed_methods(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def allowed_methods(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
         """
         return pulumi.get(self, "allowed_methods")
 
     @allowed_methods.setter
-    def allowed_methods(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def allowed_methods(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "allowed_methods", value)
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def allowed_origins(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Specifies which origins are allowed.
         """
         return pulumi.get(self, "allowed_origins")
 
     @allowed_origins.setter
-    def allowed_origins(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def allowed_origins(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "allowed_origins", value)
 
     @property
     @pulumi.getter(name="allowedHeaders")
-    def allowed_headers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allowed_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies which headers are allowed.
         """
         return pulumi.get(self, "allowed_headers")
 
     @allowed_headers.setter
-    def allowed_headers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allowed_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_headers", value)
 
     @property
     @pulumi.getter(name="exposeHeaders")
-    def expose_headers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies expose header in the response.
         """
         return pulumi.get(self, "expose_headers")
 
     @expose_headers.setter
-    def expose_headers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "expose_headers", value)
 
     @property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> Optional[pulumi.Input[float]]:
+    def max_age_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies time in seconds that browser can cache the response for a preflight request.
         """
         return pulumi.get(self, "max_age_seconds")
 
     @max_age_seconds.setter
-    def max_age_seconds(self, value: Optional[pulumi.Input[float]]):
+    def max_age_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age_seconds", value)
 
 
@@ -109,16 +109,16 @@ class BucketCorsRuleArgs:
 class BucketLifecycleRuleArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
-                 expirations: Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleExpirationArgs']]]] = None,
+                 expirations: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
-                 transitions: Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]] = None):
+                 transitions: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]] = None):
         """
         :param pulumi.Input[bool] enabled: Specifies lifecycle rule status.
-        :param pulumi.Input[List[pulumi.Input['BucketLifecycleRuleExpirationArgs']]] expirations: Specifies a period in the object's expire (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgs']]] expirations: Specifies a period in the object's expire (documented below).
         :param pulumi.Input[str] id: Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
         :param pulumi.Input[str] prefix: Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
-        :param pulumi.Input[List[pulumi.Input['BucketLifecycleRuleTransitionArgs']]] transitions: Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]] transitions: Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
         """
         pulumi.set(__self__, "enabled", enabled)
         if expirations is not None:
@@ -144,14 +144,14 @@ class BucketLifecycleRuleArgs:
 
     @property
     @pulumi.getter
-    def expirations(self) -> Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleExpirationArgs']]]]:
+    def expirations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgs']]]]:
         """
         Specifies a period in the object's expire (documented below).
         """
         return pulumi.get(self, "expirations")
 
     @expirations.setter
-    def expirations(self, value: Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleExpirationArgs']]]]):
+    def expirations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgs']]]]):
         pulumi.set(self, "expirations", value)
 
     @property
@@ -180,14 +180,14 @@ class BucketLifecycleRuleArgs:
 
     @property
     @pulumi.getter
-    def transitions(self) -> Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]]:
+    def transitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]]:
         """
         Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
         """
         return pulumi.get(self, "transitions")
 
     @transitions.setter
-    def transitions(self, value: Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]]):
+    def transitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]]):
         pulumi.set(self, "transitions", value)
 
 
@@ -195,10 +195,10 @@ class BucketLifecycleRuleArgs:
 class BucketLifecycleRuleExpirationArgs:
     def __init__(__self__, *,
                  date: Optional[pulumi.Input[str]] = None,
-                 days: Optional[pulumi.Input[float]] = None):
+                 days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] date: Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-        :param pulumi.Input[float] days: Specifies the number of days after object creation when the specific rule action takes effect.
+        :param pulumi.Input[int] days: Specifies the number of days after object creation when the specific rule action takes effect.
         """
         if date is not None:
             pulumi.set(__self__, "date", date)
@@ -219,14 +219,14 @@ class BucketLifecycleRuleExpirationArgs:
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[float]]:
+    def days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days after object creation when the specific rule action takes effect.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[float]]):
+    def days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days", value)
 
 
@@ -234,11 +234,11 @@ class BucketLifecycleRuleExpirationArgs:
 class BucketLifecycleRuleTransitionArgs:
     def __init__(__self__, *,
                  created_before_date: Optional[pulumi.Input[str]] = None,
-                 days: Optional[pulumi.Input[float]] = None,
+                 days: Optional[pulumi.Input[int]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
-        :param pulumi.Input[float] days: Specifies the number of days after object creation when the specific rule action takes effect.
+        :param pulumi.Input[int] days: Specifies the number of days after object creation when the specific rule action takes effect.
         :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
         """
         if created_before_date is not None:
@@ -262,14 +262,14 @@ class BucketLifecycleRuleTransitionArgs:
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[float]]:
+    def days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days after object creation when the specific rule action takes effect.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[float]]):
+    def days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days", value)
 
     @property
@@ -326,10 +326,10 @@ class BucketLoggingArgs:
 @pulumi.input_type
 class BucketRefererConfigArgs:
     def __init__(__self__, *,
-                 referers: pulumi.Input[List[pulumi.Input[str]]],
+                 referers: pulumi.Input[Sequence[pulumi.Input[str]]],
                  allow_empty: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] referers: The list of referer.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] referers: The list of referer.
         :param pulumi.Input[bool] allow_empty: Allows referer to be empty. Defaults false.
         """
         pulumi.set(__self__, "referers", referers)
@@ -338,14 +338,14 @@ class BucketRefererConfigArgs:
 
     @property
     @pulumi.getter
-    def referers(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def referers(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The list of referer.
         """
         return pulumi.get(self, "referers")
 
     @referers.setter
-    def referers(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def referers(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "referers", value)
 
     @property

@@ -22,6 +22,7 @@ import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/slb"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
 //
 // func main() {
@@ -54,6 +55,15 @@ import (
 // 		}, nil)
 // 		if err != nil {
 // 			return err
+// 		}
+// 		cfg := config.New(ctx, "")
+// 		name := "tf-testAccSlbMasterSlaveServerGroupVpc"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		number := "1"
+// 		if param := cfg.Get("number"); param != "" {
+// 			number = param
 // 		}
 // 		mainNetwork, err := vpc.NewNetwork(ctx, "mainNetwork", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("172.16.0.0/16"),

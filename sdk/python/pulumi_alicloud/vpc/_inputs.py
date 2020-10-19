@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -18,8 +18,8 @@ __all__ = [
 @pulumi.input_type
 class NatGatewayBandwidthPackageArgs:
     def __init__(__self__, *,
-                 bandwidth: pulumi.Input[float],
-                 ip_count: pulumi.Input[float],
+                 bandwidth: pulumi.Input[int],
+                 ip_count: pulumi.Input[int],
                  public_ip_addresses: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -31,20 +31,20 @@ class NatGatewayBandwidthPackageArgs:
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> pulumi.Input[float]:
+    def bandwidth(self) -> pulumi.Input[int]:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: pulumi.Input[float]):
+    def bandwidth(self, value: pulumi.Input[int]):
         pulumi.set(self, "bandwidth", value)
 
     @property
     @pulumi.getter(name="ipCount")
-    def ip_count(self) -> pulumi.Input[float]:
+    def ip_count(self) -> pulumi.Input[int]:
         return pulumi.get(self, "ip_count")
 
     @ip_count.setter
-    def ip_count(self, value: pulumi.Input[float]):
+    def ip_count(self, value: pulumi.Input[int]):
         pulumi.set(self, "ip_count", value)
 
     @property

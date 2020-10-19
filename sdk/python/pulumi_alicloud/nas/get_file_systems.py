@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -53,7 +53,7 @@ class GetFileSystemsResult:
 
     @property
     @pulumi.getter
-    def descriptions(self) -> List[str]:
+    def descriptions(self) -> Sequence[str]:
         """
         A list of FileSystem descriptions.
         """
@@ -69,7 +69,7 @@ class GetFileSystemsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of FileSystem Id.
         """
@@ -98,7 +98,7 @@ class GetFileSystemsResult:
 
     @property
     @pulumi.getter
-    def systems(self) -> List['outputs.GetFileSystemsSystemResult']:
+    def systems(self) -> Sequence['outputs.GetFileSystemsSystemResult']:
         """
         A list of VPCs. Each element contains the following attributes:
         """
@@ -122,7 +122,7 @@ class AwaitableGetFileSystemsResult(GetFileSystemsResult):
 
 
 def get_file_systems(description_regex: Optional[str] = None,
-                     ids: Optional[List[str]] = None,
+                     ids: Optional[Sequence[str]] = None,
                      output_file: Optional[str] = None,
                      protocol_type: Optional[str] = None,
                      storage_type: Optional[str] = None,
@@ -145,7 +145,7 @@ def get_file_systems(description_regex: Optional[str] = None,
 
 
     :param str description_regex: A regex string to filter the results by the ：FileSystem description.
-    :param List[str] ids: A list of FileSystemId.
+    :param Sequence[str] ids: A list of FileSystemId.
     :param str protocol_type: Filter results by a specific ProtocolType.
     :param str storage_type: Filter results by a specific StorageType.
     """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -48,7 +48,7 @@ class AclEntryListArgs:
 class BackendServerBackendServerArgs:
     def __init__(__self__, *,
                  server_id: pulumi.Input[str],
-                 weight: pulumi.Input[float],
+                 weight: pulumi.Input[int],
                  server_ip: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "server_id", server_id)
@@ -69,11 +69,11 @@ class BackendServerBackendServerArgs:
 
     @property
     @pulumi.getter
-    def weight(self) -> pulumi.Input[float]:
+    def weight(self) -> pulumi.Input[int]:
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: pulumi.Input[float]):
+    def weight(self, value: pulumi.Input[int]):
         pulumi.set(self, "weight", value)
 
     @property
@@ -165,12 +165,12 @@ class ListenerXForwardedForArgs:
 @pulumi.input_type
 class MasterSlaveServerGroupServerArgs:
     def __init__(__self__, *,
-                 port: pulumi.Input[float],
+                 port: pulumi.Input[int],
                  server_id: pulumi.Input[str],
-                 is_backup: Optional[pulumi.Input[float]] = None,
+                 is_backup: Optional[pulumi.Input[int]] = None,
                  server_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 weight: Optional[pulumi.Input[float]] = None):
+                 weight: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_id", server_id)
         if is_backup is not None:
@@ -184,11 +184,11 @@ class MasterSlaveServerGroupServerArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Input[float]:
+    def port(self) -> pulumi.Input[int]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: pulumi.Input[float]):
+    def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
 
     @property
@@ -202,11 +202,11 @@ class MasterSlaveServerGroupServerArgs:
 
     @property
     @pulumi.getter(name="isBackup")
-    def is_backup(self) -> Optional[pulumi.Input[float]]:
+    def is_backup(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "is_backup")
 
     @is_backup.setter
-    def is_backup(self, value: Optional[pulumi.Input[float]]):
+    def is_backup(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "is_backup", value)
 
     @property
@@ -229,21 +229,21 @@ class MasterSlaveServerGroupServerArgs:
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[float]]:
+    def weight(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[float]]):
+    def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type
 class ServerGroupServerArgs:
     def __init__(__self__, *,
-                 port: pulumi.Input[float],
-                 server_ids: pulumi.Input[List[pulumi.Input[str]]],
+                 port: pulumi.Input[int],
+                 server_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  type: Optional[pulumi.Input[str]] = None,
-                 weight: Optional[pulumi.Input[float]] = None):
+                 weight: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_ids", server_ids)
         if type is not None:
@@ -253,20 +253,20 @@ class ServerGroupServerArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Input[float]:
+    def port(self) -> pulumi.Input[int]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: pulumi.Input[float]):
+    def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter(name="serverIds")
-    def server_ids(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def server_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "server_ids")
 
     @server_ids.setter
-    def server_ids(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def server_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "server_ids", value)
 
     @property
@@ -280,11 +280,11 @@ class ServerGroupServerArgs:
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[float]]:
+    def weight(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[float]]):
+    def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
 
 

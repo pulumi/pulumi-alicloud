@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -53,7 +53,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def descriptions(self) -> List[str]:
+    def descriptions(self) -> Sequence[str]:
         return pulumi.get(self, "descriptions")
 
     @property
@@ -66,12 +66,12 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         return pulumi.get(self, "instances")
 
     @property
@@ -107,7 +107,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
 
 
 def get_instances(description_regex: Optional[str] = None,
-                  ids: Optional[List[str]] = None,
+                  ids: Optional[Sequence[str]] = None,
                   output_file: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   version: Optional[str] = None,

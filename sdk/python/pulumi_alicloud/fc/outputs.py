@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -83,12 +83,12 @@ class CustomDomainRouteConfig(dict):
                  function_name: str,
                  path: str,
                  service_name: str,
-                 methods: Optional[List[str]] = None,
+                 methods: Optional[Sequence[str]] = None,
                  qualifier: Optional[str] = None):
         """
         :param str function_name: The name of the Function Compute function that requests are routed to.
         :param str path: The path that requests are routed from.
-        :param List[str] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+        :param Sequence[str] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
         :param str qualifier: The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
         """
         pulumi.set(__self__, "function_name", function_name)
@@ -122,7 +122,7 @@ class CustomDomainRouteConfig(dict):
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[List[str]]:
+    def methods(self) -> Optional[Sequence[str]]:
         """
         The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
         """
@@ -296,13 +296,13 @@ class ServiceLogConfig(dict):
 @pulumi.output_type
 class ServiceNasConfig(dict):
     def __init__(__self__, *,
-                 group_id: float,
-                 mount_points: List['outputs.ServiceNasConfigMountPoint'],
-                 user_id: float):
+                 group_id: int,
+                 mount_points: Sequence['outputs.ServiceNasConfigMountPoint'],
+                 user_id: int):
         """
-        :param float group_id: The group id of your NAS file system.
-        :param List['ServiceNasConfigMountPointArgs'] mount_points: Config the NAS mount points, including following attributes:
-        :param float user_id: The user id of your NAS file system.
+        :param int group_id: The group id of your NAS file system.
+        :param Sequence['ServiceNasConfigMountPointArgs'] mount_points: Config the NAS mount points, including following attributes:
+        :param int user_id: The user id of your NAS file system.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "mount_points", mount_points)
@@ -310,7 +310,7 @@ class ServiceNasConfig(dict):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> float:
+    def group_id(self) -> int:
         """
         The group id of your NAS file system.
         """
@@ -318,7 +318,7 @@ class ServiceNasConfig(dict):
 
     @property
     @pulumi.getter(name="mountPoints")
-    def mount_points(self) -> List['outputs.ServiceNasConfigMountPoint']:
+    def mount_points(self) -> Sequence['outputs.ServiceNasConfigMountPoint']:
         """
         Config the NAS mount points, including following attributes:
         """
@@ -326,7 +326,7 @@ class ServiceNasConfig(dict):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> float:
+    def user_id(self) -> int:
         """
         The user id of your NAS file system.
         """
@@ -372,11 +372,11 @@ class ServiceNasConfigMountPoint(dict):
 class ServiceVpcConfig(dict):
     def __init__(__self__, *,
                  security_group_id: str,
-                 vswitch_ids: List[str],
+                 vswitch_ids: Sequence[str],
                  vpc_id: Optional[str] = None):
         """
         :param str security_group_id: A security group ID associated with the FC service.
-        :param List[str] vswitch_ids: A list of vswitch IDs associated with the FC service.
+        :param Sequence[str] vswitch_ids: A list of vswitch IDs associated with the FC service.
         """
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "vswitch_ids", vswitch_ids)
@@ -393,7 +393,7 @@ class ServiceVpcConfig(dict):
 
     @property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> List[str]:
+    def vswitch_ids(self) -> Sequence[str]:
         """
         A list of vswitch IDs associated with the FC service.
         """
@@ -419,7 +419,7 @@ class GetCustomDomainsDomainResult(dict):
                  id: str,
                  last_modified_time: str,
                  protocol: str,
-                 route_configs: List['outputs.GetCustomDomainsDomainRouteConfigResult']):
+                 route_configs: Sequence['outputs.GetCustomDomainsDomainRouteConfigResult']):
         """
         :param str account_id: The account id.
         :param str api_version: The API version of the Function Compute service.
@@ -429,7 +429,7 @@ class GetCustomDomainsDomainResult(dict):
         :param str id: The custom domain id, same as domain name.
         :param str last_modified_time: The last modified time of the custom domain.
         :param str protocol: The custom domain protocol.
-        :param List['GetCustomDomainsDomainRouteConfigArgs'] route_configs: The configuration of domain route, mapping the path and Function Compute function.
+        :param Sequence['GetCustomDomainsDomainRouteConfigArgs'] route_configs: The configuration of domain route, mapping the path and Function Compute function.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "api_version", api_version)
@@ -507,7 +507,7 @@ class GetCustomDomainsDomainResult(dict):
 
     @property
     @pulumi.getter(name="routeConfigs")
-    def route_configs(self) -> List['outputs.GetCustomDomainsDomainRouteConfigResult']:
+    def route_configs(self) -> Sequence['outputs.GetCustomDomainsDomainRouteConfigResult']:
         """
         The configuration of domain route, mapping the path and Function Compute function.
         """
@@ -547,13 +547,13 @@ class GetCustomDomainsDomainCertConfigResult(dict):
 class GetCustomDomainsDomainRouteConfigResult(dict):
     def __init__(__self__, *,
                  function_name: str,
-                 methods: List[str],
+                 methods: Sequence[str],
                  path: str,
                  qualifier: str,
                  service_name: str):
         """
         :param str function_name: The name of the Function Compute function that requests are routed to.
-        :param List[str] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+        :param Sequence[str] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
         :param str path: The path that requests are routed from.
         :param str qualifier: The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service.
         :param str service_name: The name of the Function Compute service that requests are routed to.
@@ -574,7 +574,7 @@ class GetCustomDomainsDomainRouteConfigResult(dict):
 
     @property
     @pulumi.getter
-    def methods(self) -> List[str]:
+    def methods(self) -> Sequence[str]:
         """
         The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
         """
@@ -608,42 +608,42 @@ class GetCustomDomainsDomainRouteConfigResult(dict):
 @pulumi.output_type
 class GetFunctionsFunctionResult(dict):
     def __init__(__self__, *,
-                 ca_port: float,
+                 ca_port: int,
                  code_checksum: str,
-                 code_size: float,
+                 code_size: int,
                  creation_time: str,
                  description: str,
                  environment_variables: Mapping[str, Any],
                  handler: str,
                  id: str,
-                 initialization_timeout: float,
+                 initialization_timeout: int,
                  initializer: str,
-                 instance_concurrency: float,
+                 instance_concurrency: int,
                  instance_type: str,
                  last_modification_time: str,
-                 memory_size: float,
+                 memory_size: int,
                  name: str,
                  runtime: str,
-                 timeout: float,
+                 timeout: int,
                  custom_container_config: Optional['outputs.GetFunctionsFunctionCustomContainerConfigResult'] = None):
         """
-        :param float ca_port: The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+        :param int ca_port: The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
         :param str code_checksum: Checksum (crc64) of the function code.
-        :param float code_size: Function code size in bytes.
+        :param int code_size: Function code size in bytes.
         :param str creation_time: Function creation time.
         :param str description: Function description.
         :param Mapping[str, Any] environment_variables: A map that defines environment variables for the function.
         :param str handler: Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.
         :param str id: Function ID.
-        :param float initialization_timeout: The maximum length of time, in seconds, that the function's initialization should be run for.
+        :param int initialization_timeout: The maximum length of time, in seconds, that the function's initialization should be run for.
         :param str initializer: The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
-        :param float instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
+        :param int instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
         :param str instance_type: The instance type of the function.
         :param str last_modification_time: Function last modification time.
-        :param float memory_size: Amount of memory in MB the function can use at runtime.
+        :param int memory_size: Amount of memory in MB the function can use at runtime.
         :param str name: Function name.
         :param str runtime: Function runtime. The list of possible values is [available here](https://www.alibabacloud.com/help/doc-detail/52077.htm).
-        :param float timeout: Maximum amount of time the function can run in seconds.
+        :param int timeout: Maximum amount of time the function can run in seconds.
         :param 'GetFunctionsFunctionCustomContainerConfigArgs' custom_container_config: The configuration for custom container runtime. It contains following attributes:
         """
         pulumi.set(__self__, "ca_port", ca_port)
@@ -668,7 +668,7 @@ class GetFunctionsFunctionResult(dict):
 
     @property
     @pulumi.getter(name="caPort")
-    def ca_port(self) -> float:
+    def ca_port(self) -> int:
         """
         The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
         """
@@ -684,7 +684,7 @@ class GetFunctionsFunctionResult(dict):
 
     @property
     @pulumi.getter(name="codeSize")
-    def code_size(self) -> float:
+    def code_size(self) -> int:
         """
         Function code size in bytes.
         """
@@ -732,7 +732,7 @@ class GetFunctionsFunctionResult(dict):
 
     @property
     @pulumi.getter(name="initializationTimeout")
-    def initialization_timeout(self) -> float:
+    def initialization_timeout(self) -> int:
         """
         The maximum length of time, in seconds, that the function's initialization should be run for.
         """
@@ -748,7 +748,7 @@ class GetFunctionsFunctionResult(dict):
 
     @property
     @pulumi.getter(name="instanceConcurrency")
-    def instance_concurrency(self) -> float:
+    def instance_concurrency(self) -> int:
         """
         The maximum number of requests can be executed concurrently within the single function instance.
         """
@@ -772,7 +772,7 @@ class GetFunctionsFunctionResult(dict):
 
     @property
     @pulumi.getter(name="memorySize")
-    def memory_size(self) -> float:
+    def memory_size(self) -> int:
         """
         Amount of memory in MB the function can use at runtime.
         """
@@ -796,7 +796,7 @@ class GetFunctionsFunctionResult(dict):
 
     @property
     @pulumi.getter
-    def timeout(self) -> float:
+    def timeout(self) -> int:
         """
         Maximum amount of time the function can run in seconds.
         """
@@ -1000,13 +1000,13 @@ class GetServicesServiceLogConfigResult(dict):
 @pulumi.output_type
 class GetServicesServiceNasConfigResult(dict):
     def __init__(__self__, *,
-                 group_id: float,
-                 mount_points: List['outputs.GetServicesServiceNasConfigMountPointResult'],
-                 user_id: float):
+                 group_id: int,
+                 mount_points: Sequence['outputs.GetServicesServiceNasConfigMountPointResult'],
+                 user_id: int):
         """
-        :param float group_id: The group id of the NAS file system.
-        :param List['GetServicesServiceNasConfigMountPointArgs'] mount_points: The mount points configuration, including following attributes:
-        :param float user_id: The user id of the NAS file system.
+        :param int group_id: The group id of the NAS file system.
+        :param Sequence['GetServicesServiceNasConfigMountPointArgs'] mount_points: The mount points configuration, including following attributes:
+        :param int user_id: The user id of the NAS file system.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "mount_points", mount_points)
@@ -1014,7 +1014,7 @@ class GetServicesServiceNasConfigResult(dict):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> float:
+    def group_id(self) -> int:
         """
         The group id of the NAS file system.
         """
@@ -1022,7 +1022,7 @@ class GetServicesServiceNasConfigResult(dict):
 
     @property
     @pulumi.getter(name="mountPoints")
-    def mount_points(self) -> List['outputs.GetServicesServiceNasConfigMountPointResult']:
+    def mount_points(self) -> Sequence['outputs.GetServicesServiceNasConfigMountPointResult']:
         """
         The mount points configuration, including following attributes:
         """
@@ -1030,7 +1030,7 @@ class GetServicesServiceNasConfigResult(dict):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> float:
+    def user_id(self) -> int:
         """
         The user id of the NAS file system.
         """
@@ -1071,11 +1071,11 @@ class GetServicesServiceVpcConfigResult(dict):
     def __init__(__self__, *,
                  security_group_id: str,
                  vpc_id: str,
-                 vswitch_ids: List[str]):
+                 vswitch_ids: Sequence[str]):
         """
         :param str security_group_id: Associated security group ID.
         :param str vpc_id: Associated VPC ID.
-        :param List[str] vswitch_ids: Associated VSwitch IDs.
+        :param Sequence[str] vswitch_ids: Associated VSwitch IDs.
         """
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -1099,7 +1099,7 @@ class GetServicesServiceVpcConfigResult(dict):
 
     @property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> List[str]:
+    def vswitch_ids(self) -> Sequence[str]:
         """
         Associated VSwitch IDs.
         """

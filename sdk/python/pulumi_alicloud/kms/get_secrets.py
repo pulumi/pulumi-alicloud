@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -61,7 +61,7 @@ class GetSecretsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of Kms Secret ids. The value is same as KMS secret_name.
         """
@@ -74,7 +74,7 @@ class GetSecretsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of KMS Secret names.
         """
@@ -87,7 +87,7 @@ class GetSecretsResult:
 
     @property
     @pulumi.getter
-    def secrets(self) -> List['outputs.GetSecretsSecretResult']:
+    def secrets(self) -> Sequence['outputs.GetSecretsSecretResult']:
         """
         A list of KMS Secrets. Each element contains the following attributes:
         """
@@ -119,7 +119,7 @@ class AwaitableGetSecretsResult(GetSecretsResult):
 
 
 def get_secrets(fetch_tags: Optional[bool] = None,
-                ids: Optional[List[str]] = None,
+                ids: Optional[Sequence[str]] = None,
                 name_regex: Optional[str] = None,
                 output_file: Optional[str] = None,
                 tags: Optional[Mapping[str, Any]] = None,
@@ -146,7 +146,7 @@ def get_secrets(fetch_tags: Optional[bool] = None,
 
 
     :param bool fetch_tags: Whether to include the predetermined resource tag in the return value. Default to `false`.
-    :param List[str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
+    :param Sequence[str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
     :param str name_regex: A regex string to filter the results by the KMS secret_name.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """

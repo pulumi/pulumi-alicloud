@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -28,14 +28,14 @@ class GetMongoInstancesInstanceResult(dict):
                  instance_class: str,
                  instance_type: str,
                  lock_mode: str,
-                 mongos: List['outputs.GetMongoInstancesInstanceMongoResult'],
+                 mongos: Sequence['outputs.GetMongoInstancesInstanceMongoResult'],
                  name: str,
                  network_type: str,
                  region_id: str,
                  replication: str,
-                 shards: List['outputs.GetMongoInstancesInstanceShardResult'],
+                 shards: Sequence['outputs.GetMongoInstancesInstanceShardResult'],
                  status: str,
-                 storage: float,
+                 storage: int,
                  tags: Mapping[str, Any]):
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "charge_type", charge_type)
@@ -109,7 +109,7 @@ class GetMongoInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def mongos(self) -> List['outputs.GetMongoInstancesInstanceMongoResult']:
+    def mongos(self) -> Sequence['outputs.GetMongoInstancesInstanceMongoResult']:
         return pulumi.get(self, "mongos")
 
     @property
@@ -134,7 +134,7 @@ class GetMongoInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def shards(self) -> List['outputs.GetMongoInstancesInstanceShardResult']:
+    def shards(self) -> Sequence['outputs.GetMongoInstancesInstanceShardResult']:
         return pulumi.get(self, "shards")
 
     @property
@@ -144,7 +144,7 @@ class GetMongoInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def storage(self) -> float:
+    def storage(self) -> int:
         return pulumi.get(self, "storage")
 
     @property
@@ -185,7 +185,7 @@ class GetMongoInstancesInstanceShardResult(dict):
                  class_: str,
                  description: str,
                  node_id: str,
-                 storage: float):
+                 storage: int):
         pulumi.set(__self__, "class_", class_)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "node_id", node_id)
@@ -208,7 +208,7 @@ class GetMongoInstancesInstanceShardResult(dict):
 
     @property
     @pulumi.getter
-    def storage(self) -> float:
+    def storage(self) -> int:
         return pulumi.get(self, "storage")
 
 

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -56,7 +56,7 @@ class GetRolesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of ram role IDs.
         """
@@ -69,7 +69,7 @@ class GetRolesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of ram role names.
         """
@@ -92,7 +92,7 @@ class GetRolesResult:
 
     @property
     @pulumi.getter
-    def roles(self) -> List['outputs.GetRolesRoleResult']:
+    def roles(self) -> Sequence['outputs.GetRolesRoleResult']:
         """
         A list of roles. Each element contains the following attributes:
         """
@@ -115,7 +115,7 @@ class AwaitableGetRolesResult(GetRolesResult):
             roles=self.roles)
 
 
-def get_roles(ids: Optional[List[str]] = None,
+def get_roles(ids: Optional[Sequence[str]] = None,
               name_regex: Optional[str] = None,
               output_file: Optional[str] = None,
               policy_name: Optional[str] = None,
@@ -138,7 +138,7 @@ def get_roles(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: - A list of ram role IDs.
+    :param Sequence[str] ids: - A list of ram role IDs.
     :param str name_regex: A regex string to filter results by the role name.
     :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
     :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.

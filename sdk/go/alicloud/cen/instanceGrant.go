@@ -26,6 +26,7 @@ import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/providers"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
 //
 // func main() {
@@ -43,6 +44,11 @@ import (
 // 		})
 // 		if err != nil {
 // 			return err
+// 		}
+// 		cfg := config.New(ctx, "")
+// 		name := "tf-testAccCenInstanceGrantBasic"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
 // 		}
 // 		cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider(alicloud.Account2))
 // 		if err != nil {

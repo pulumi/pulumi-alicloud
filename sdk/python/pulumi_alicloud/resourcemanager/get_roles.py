@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -50,7 +50,7 @@ class GetRolesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of role IDs.
         """
@@ -63,7 +63,7 @@ class GetRolesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of role names.
         """
@@ -76,7 +76,7 @@ class GetRolesResult:
 
     @property
     @pulumi.getter
-    def roles(self) -> List['outputs.GetRolesRoleResult']:
+    def roles(self) -> Sequence['outputs.GetRolesRoleResult']:
         """
         A list of roles. Each element contains the following attributes:
         """
@@ -97,7 +97,7 @@ class AwaitableGetRolesResult(GetRolesResult):
             roles=self.roles)
 
 
-def get_roles(ids: Optional[List[str]] = None,
+def get_roles(ids: Optional[Sequence[str]] = None,
               name_regex: Optional[str] = None,
               output_file: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesResult:
@@ -117,7 +117,7 @@ def get_roles(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of Resource Manager Role IDs.
+    :param Sequence[str] ids: A list of Resource Manager Role IDs.
     :param str name_regex: A regex string to filter results by role name.
     """
     __args__ = dict()

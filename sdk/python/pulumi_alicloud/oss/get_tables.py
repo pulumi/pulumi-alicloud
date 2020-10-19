@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -55,7 +55,7 @@ class GetTablesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of table IDs.
         """
@@ -76,7 +76,7 @@ class GetTablesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of table names.
         """
@@ -89,7 +89,7 @@ class GetTablesResult:
 
     @property
     @pulumi.getter
-    def tables(self) -> List['outputs.GetTablesTableResult']:
+    def tables(self) -> Sequence['outputs.GetTablesTableResult']:
         """
         A list of tables. Each element contains the following attributes:
         """
@@ -111,7 +111,7 @@ class AwaitableGetTablesResult(GetTablesResult):
             tables=self.tables)
 
 
-def get_tables(ids: Optional[List[str]] = None,
+def get_tables(ids: Optional[Sequence[str]] = None,
                instance_name: Optional[str] = None,
                name_regex: Optional[str] = None,
                output_file: Optional[str] = None,
@@ -134,7 +134,7 @@ def get_tables(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of table IDs.
+    :param Sequence[str] ids: A list of table IDs.
     :param str instance_name: The name of OTS instance.
     :param str name_regex: A regex string to filter results by table name.
     """

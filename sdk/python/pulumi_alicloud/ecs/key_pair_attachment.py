@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['KeyPairAttachment']
@@ -16,7 +16,7 @@ class KeyPairAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  force: Optional[pulumi.Input[bool]] = None,
-                 instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -76,7 +76,7 @@ class KeyPairAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] key_name: The name of key pair used to bind.
         """
         if __name__ is not None:
@@ -114,7 +114,7 @@ class KeyPairAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             force: Optional[pulumi.Input[bool]] = None,
-            instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             key_name: Optional[pulumi.Input[str]] = None) -> 'KeyPairAttachment':
         """
         Get an existing KeyPairAttachment resource's state with the given name, id, and optional extra
@@ -124,7 +124,7 @@ class KeyPairAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] key_name: The name of key pair used to bind.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -146,7 +146,7 @@ class KeyPairAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> pulumi.Output[List[str]]:
+    def instance_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         The list of ECS instance's IDs.
         """

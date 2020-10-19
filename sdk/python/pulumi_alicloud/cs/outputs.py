@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -674,7 +674,7 @@ class NodePoolDataDisk(dict):
                  encrypted: Optional[str] = None,
                  kms_key_id: Optional[str] = None,
                  name: Optional[str] = None,
-                 size: Optional[float] = None,
+                 size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         """
         :param str name: The name of node pool.
@@ -731,7 +731,7 @@ class NodePoolDataDisk(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[float]:
+    def size(self) -> Optional[int]:
         return pulumi.get(self, "size")
 
     @property
@@ -914,36 +914,36 @@ class GetKubernetesClustersClusterResult(dict):
                  id: str,
                  image_id: str,
                  key_name: str,
-                 log_configs: List['outputs.GetKubernetesClustersClusterLogConfigResult'],
+                 log_configs: Sequence['outputs.GetKubernetesClustersClusterLogConfigResult'],
                  master_auto_renew: bool,
-                 master_auto_renew_period: float,
+                 master_auto_renew_period: int,
                  master_disk_category: str,
-                 master_disk_size: float,
+                 master_disk_size: int,
                  master_instance_charge_type: str,
-                 master_instance_types: List[str],
-                 master_nodes: List['outputs.GetKubernetesClustersClusterMasterNodeResult'],
-                 master_period: float,
+                 master_instance_types: Sequence[str],
+                 master_nodes: Sequence['outputs.GetKubernetesClustersClusterMasterNodeResult'],
+                 master_period: int,
                  master_period_unit: str,
                  name: str,
                  nat_gateway_id: str,
-                 node_cidr_mask: float,
+                 node_cidr_mask: int,
                  pod_cidr: str,
                  security_group_id: str,
                  service_cidr: str,
                  slb_internet_enabled: bool,
                  vpc_id: str,
-                 vswitch_ids: List[str],
+                 vswitch_ids: Sequence[str],
                  worker_auto_renew: bool,
-                 worker_auto_renew_period: float,
+                 worker_auto_renew_period: int,
                  worker_data_disk_category: str,
-                 worker_data_disk_size: float,
+                 worker_data_disk_size: int,
                  worker_disk_category: str,
-                 worker_disk_size: float,
+                 worker_disk_size: int,
                  worker_instance_charge_type: str,
-                 worker_instance_types: List[str],
-                 worker_nodes: List['outputs.GetKubernetesClustersClusterWorkerNodeResult'],
-                 worker_numbers: List[float],
-                 worker_period: float,
+                 worker_instance_types: Sequence[str],
+                 worker_nodes: Sequence['outputs.GetKubernetesClustersClusterWorkerNodeResult'],
+                 worker_numbers: Sequence[int],
+                 worker_period: int,
                  worker_period_unit: str):
         """
         :param str availability_zone: The ID of availability zone.
@@ -951,25 +951,25 @@ class GetKubernetesClustersClusterResult(dict):
         :param str id: ID of the node.
         :param str image_id: The ID of node image.
         :param str key_name: The keypair of ssh login cluster node, you have to create it first.
-        :param List['GetKubernetesClustersClusterLogConfigArgs'] log_configs: A list of one element containing information about the associated log store. It contains the following attributes:
+        :param Sequence['GetKubernetesClustersClusterLogConfigArgs'] log_configs: A list of one element containing information about the associated log store. It contains the following attributes:
         :param str master_disk_category: The system disk category of master node.
-        :param float master_disk_size: The system disk size of master node.
-        :param List[str] master_instance_types: The instance type of master node.
-        :param List['GetKubernetesClustersClusterMasterNodeArgs'] master_nodes: List of cluster master nodes. It contains several attributes to `Block Nodes`.
+        :param int master_disk_size: The system disk size of master node.
+        :param Sequence[str] master_instance_types: The instance type of master node.
+        :param Sequence['GetKubernetesClustersClusterMasterNodeArgs'] master_nodes: List of cluster master nodes. It contains several attributes to `Block Nodes`.
         :param str name: Node name.
         :param str nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
-        :param float node_cidr_mask: The network mask used on pods for each node.
+        :param int node_cidr_mask: The network mask used on pods for each node.
         :param str security_group_id: The ID of security group where the current cluster worker node is located.
         :param bool slb_internet_enabled: Whether internet load balancer for API Server is created
         :param str vpc_id: The ID of VPC where the current cluster is located.
-        :param List[str] vswitch_ids: The ID of VSwitches where the current cluster is located.
+        :param Sequence[str] vswitch_ids: The ID of VSwitches where the current cluster is located.
         :param str worker_data_disk_category: The data disk size of worker node.
-        :param float worker_data_disk_size: The data disk category of worker node.
+        :param int worker_data_disk_size: The data disk category of worker node.
         :param str worker_disk_category: The system disk category of worker node.
-        :param float worker_disk_size: The system disk size of worker node.
-        :param List[str] worker_instance_types: The instance type of worker node.
-        :param List['GetKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
-        :param List[float] worker_numbers: The ECS instance node number in the current container cluster.
+        :param int worker_disk_size: The system disk size of worker node.
+        :param Sequence[str] worker_instance_types: The instance type of worker node.
+        :param Sequence['GetKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        :param Sequence[int] worker_numbers: The ECS instance node number in the current container cluster.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "cluster_network_type", cluster_network_type)
@@ -1056,7 +1056,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="logConfigs")
-    def log_configs(self) -> List['outputs.GetKubernetesClustersClusterLogConfigResult']:
+    def log_configs(self) -> Sequence['outputs.GetKubernetesClustersClusterLogConfigResult']:
         """
         A list of one element containing information about the associated log store. It contains the following attributes:
         """
@@ -1069,7 +1069,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="masterAutoRenewPeriod")
-    def master_auto_renew_period(self) -> float:
+    def master_auto_renew_period(self) -> int:
         return pulumi.get(self, "master_auto_renew_period")
 
     @property
@@ -1082,7 +1082,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="masterDiskSize")
-    def master_disk_size(self) -> float:
+    def master_disk_size(self) -> int:
         """
         The system disk size of master node.
         """
@@ -1095,7 +1095,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="masterInstanceTypes")
-    def master_instance_types(self) -> List[str]:
+    def master_instance_types(self) -> Sequence[str]:
         """
         The instance type of master node.
         """
@@ -1103,7 +1103,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="masterNodes")
-    def master_nodes(self) -> List['outputs.GetKubernetesClustersClusterMasterNodeResult']:
+    def master_nodes(self) -> Sequence['outputs.GetKubernetesClustersClusterMasterNodeResult']:
         """
         List of cluster master nodes. It contains several attributes to `Block Nodes`.
         """
@@ -1111,7 +1111,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="masterPeriod")
-    def master_period(self) -> float:
+    def master_period(self) -> int:
         return pulumi.get(self, "master_period")
 
     @property
@@ -1137,7 +1137,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="nodeCidrMask")
-    def node_cidr_mask(self) -> float:
+    def node_cidr_mask(self) -> int:
         """
         The network mask used on pods for each node.
         """
@@ -1179,7 +1179,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> List[str]:
+    def vswitch_ids(self) -> Sequence[str]:
         """
         The ID of VSwitches where the current cluster is located.
         """
@@ -1192,7 +1192,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerAutoRenewPeriod")
-    def worker_auto_renew_period(self) -> float:
+    def worker_auto_renew_period(self) -> int:
         return pulumi.get(self, "worker_auto_renew_period")
 
     @property
@@ -1205,7 +1205,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerDataDiskSize")
-    def worker_data_disk_size(self) -> float:
+    def worker_data_disk_size(self) -> int:
         """
         The data disk category of worker node.
         """
@@ -1221,7 +1221,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerDiskSize")
-    def worker_disk_size(self) -> float:
+    def worker_disk_size(self) -> int:
         """
         The system disk size of worker node.
         """
@@ -1234,7 +1234,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerInstanceTypes")
-    def worker_instance_types(self) -> List[str]:
+    def worker_instance_types(self) -> Sequence[str]:
         """
         The instance type of worker node.
         """
@@ -1242,7 +1242,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerNodes")
-    def worker_nodes(self) -> List['outputs.GetKubernetesClustersClusterWorkerNodeResult']:
+    def worker_nodes(self) -> Sequence['outputs.GetKubernetesClustersClusterWorkerNodeResult']:
         """
         List of cluster worker nodes. It contains several attributes to `Block Nodes`.
         """
@@ -1250,7 +1250,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerNumbers")
-    def worker_numbers(self) -> List[float]:
+    def worker_numbers(self) -> Sequence[int]:
         """
         The ECS instance node number in the current container cluster.
         """
@@ -1258,7 +1258,7 @@ class GetKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerPeriod")
-    def worker_period(self) -> float:
+    def worker_period(self) -> int:
         return pulumi.get(self, "worker_period")
 
     @property
@@ -1436,7 +1436,7 @@ class GetManagedKubernetesClustersClusterResult(dict):
                  id: str,
                  image_id: str,
                  key_name: str,
-                 log_configs: List['outputs.GetManagedKubernetesClustersClusterLogConfigResult'],
+                 log_configs: Sequence['outputs.GetManagedKubernetesClustersClusterLogConfigResult'],
                  name: str,
                  nat_gateway_id: str,
                  pod_cidr: str,
@@ -1444,32 +1444,32 @@ class GetManagedKubernetesClustersClusterResult(dict):
                  service_cidr: str,
                  slb_internet_enabled: bool,
                  vpc_id: str,
-                 vswitch_ids: List[str],
+                 vswitch_ids: Sequence[str],
                  worker_auto_renew: bool,
-                 worker_auto_renew_period: float,
+                 worker_auto_renew_period: int,
                  worker_data_disk_category: str,
-                 worker_data_disk_size: float,
+                 worker_data_disk_size: int,
                  worker_disk_category: str,
-                 worker_disk_size: float,
+                 worker_disk_size: int,
                  worker_instance_charge_type: str,
-                 worker_instance_types: List[str],
-                 worker_nodes: List['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult'],
-                 worker_numbers: List[float],
-                 worker_period: float,
+                 worker_instance_types: Sequence[str],
+                 worker_nodes: Sequence['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult'],
+                 worker_numbers: Sequence[int],
+                 worker_period: int,
                  worker_period_unit: str):
         """
         :param str availability_zone: The ID of availability zone.
         :param 'GetManagedKubernetesClustersClusterConnectionsArgs' connections: Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         :param str id: ID of the node.
         :param str key_name: The keypair of ssh login cluster node, you have to create it first.
-        :param List['GetManagedKubernetesClustersClusterLogConfigArgs'] log_configs: A list of one element containing information about the associated log store. It contains the following attributes:
+        :param Sequence['GetManagedKubernetesClustersClusterLogConfigArgs'] log_configs: A list of one element containing information about the associated log store. It contains the following attributes:
         :param str name: Node name.
         :param str nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param str security_group_id: The ID of security group where the current cluster worker node is located.
         :param str vpc_id: The ID of VPC where the current cluster is located.
-        :param List[str] vswitch_ids: The ID of VSwitches where the current cluster is located.
-        :param List['GetManagedKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
-        :param List[float] worker_numbers: The ECS instance node number in the current container cluster.
+        :param Sequence[str] vswitch_ids: The ID of VSwitches where the current cluster is located.
+        :param Sequence['GetManagedKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        :param Sequence[int] worker_numbers: The ECS instance node number in the current container cluster.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "cluster_network_type", cluster_network_type)
@@ -1543,7 +1543,7 @@ class GetManagedKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="logConfigs")
-    def log_configs(self) -> List['outputs.GetManagedKubernetesClustersClusterLogConfigResult']:
+    def log_configs(self) -> Sequence['outputs.GetManagedKubernetesClustersClusterLogConfigResult']:
         """
         A list of one element containing information about the associated log store. It contains the following attributes:
         """
@@ -1598,7 +1598,7 @@ class GetManagedKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> List[str]:
+    def vswitch_ids(self) -> Sequence[str]:
         """
         The ID of VSwitches where the current cluster is located.
         """
@@ -1611,7 +1611,7 @@ class GetManagedKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerAutoRenewPeriod")
-    def worker_auto_renew_period(self) -> float:
+    def worker_auto_renew_period(self) -> int:
         return pulumi.get(self, "worker_auto_renew_period")
 
     @property
@@ -1621,7 +1621,7 @@ class GetManagedKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerDataDiskSize")
-    def worker_data_disk_size(self) -> float:
+    def worker_data_disk_size(self) -> int:
         return pulumi.get(self, "worker_data_disk_size")
 
     @property
@@ -1631,7 +1631,7 @@ class GetManagedKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerDiskSize")
-    def worker_disk_size(self) -> float:
+    def worker_disk_size(self) -> int:
         return pulumi.get(self, "worker_disk_size")
 
     @property
@@ -1641,12 +1641,12 @@ class GetManagedKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerInstanceTypes")
-    def worker_instance_types(self) -> List[str]:
+    def worker_instance_types(self) -> Sequence[str]:
         return pulumi.get(self, "worker_instance_types")
 
     @property
     @pulumi.getter(name="workerNodes")
-    def worker_nodes(self) -> List['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult']:
+    def worker_nodes(self) -> Sequence['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult']:
         """
         List of cluster worker nodes. It contains several attributes to `Block Nodes`.
         """
@@ -1654,7 +1654,7 @@ class GetManagedKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerNumbers")
-    def worker_numbers(self) -> List[float]:
+    def worker_numbers(self) -> Sequence[int]:
         """
         The ECS instance node number in the current container cluster.
         """
@@ -1662,7 +1662,7 @@ class GetManagedKubernetesClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="workerPeriod")
-    def worker_period(self) -> float:
+    def worker_period(self) -> int:
         return pulumi.get(self, "worker_period")
 
     @property
@@ -1798,23 +1798,23 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
                  name: str,
                  namespace_quota: str,
                  namespace_usage: str,
-                 public_endpoints: List[str],
+                 public_endpoints: Sequence[str],
                  region: str,
                  repo_quota: str,
                  repo_usage: str,
                  specification: str,
-                 vpc_endpoints: List[str]):
+                 vpc_endpoints: Sequence[str]):
         """
         :param str id: ID of Container Registry Enterprise Edition instance.
         :param str name: Name of Container Registry Enterprise Edition instance.
         :param str namespace_quota: The max number of namespaces that an instance can create.
         :param str namespace_usage: The number of namespaces already created.
-        :param List[str] public_endpoints: A list of domains for access on internet network.
+        :param Sequence[str] public_endpoints: A list of domains for access on internet network.
         :param str region: Region of Container Registry Enterprise Edition instance.
         :param str repo_quota: The max number of repos that an instance can create.
         :param str repo_usage: The number of repos already created.
         :param str specification: Specification of Container Registry Enterprise Edition instance.
-        :param List[str] vpc_endpoints: A list of domains for access on vpc network.
+        :param Sequence[str] vpc_endpoints: A list of domains for access on vpc network.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -1861,7 +1861,7 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="publicEndpoints")
-    def public_endpoints(self) -> List[str]:
+    def public_endpoints(self) -> Sequence[str]:
         """
         A list of domains for access on internet network.
         """
@@ -1901,7 +1901,7 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="vpcEndpoints")
-    def vpc_endpoints(self) -> List[str]:
+    def vpc_endpoints(self) -> Sequence[str]:
         """
         A list of domains for access on vpc network.
         """
@@ -1979,7 +1979,7 @@ class GetRegistryEnterpriseReposRepoResult(dict):
                  namespace: str,
                  repo_type: str,
                  summary: str,
-                 tags: List['outputs.GetRegistryEnterpriseReposRepoTagResult']):
+                 tags: Sequence['outputs.GetRegistryEnterpriseReposRepoTagResult']):
         """
         :param str id: ID of Container Registry Enterprise Edition repository.
         :param str instance_id: ID of Container Registry Enterprise Edition instance.
@@ -1987,7 +1987,7 @@ class GetRegistryEnterpriseReposRepoResult(dict):
         :param str namespace: Name of Container Registry Enterprise Edition namespace where the repositories are located in.
         :param str repo_type: `PUBLIC` or `PRIVATE`, repository's visibility.
         :param str summary: The repository general information.
-        :param List['GetRegistryEnterpriseReposRepoTagArgs'] tags: A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+        :param Sequence['GetRegistryEnterpriseReposRepoTagArgs'] tags: A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -2047,7 +2047,7 @@ class GetRegistryEnterpriseReposRepoResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> List['outputs.GetRegistryEnterpriseReposRepoTagResult']:
+    def tags(self) -> Sequence['outputs.GetRegistryEnterpriseReposRepoTagResult']:
         """
         A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
         """
@@ -2060,7 +2060,7 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
                  digest: str,
                  image_create: str,
                  image_id: str,
-                 image_size: float,
+                 image_size: int,
                  image_update: str,
                  status: str,
                  tag: str):
@@ -2068,7 +2068,7 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
         :param str digest: Digest of this image.
         :param str image_create: Create time of this image, unix time in nanoseconds.
         :param str image_id: Id of this image.
-        :param float image_size: Status of this image, in bytes.
+        :param int image_size: Status of this image, in bytes.
         :param str image_update: Last update time of this image, unix time in nanoseconds.
         :param str status: Status of this image.
         :param str tag: Tag of this image.
@@ -2107,7 +2107,7 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
 
     @property
     @pulumi.getter(name="imageSize")
-    def image_size(self) -> float:
+    def image_size(self) -> int:
         """
         Status of this image, in bytes.
         """

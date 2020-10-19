@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -46,7 +46,7 @@ class GetConfigurationRecordersResult:
 
     @property
     @pulumi.getter
-    def recorders(self) -> List['outputs.GetConfigurationRecordersRecorderResult']:
+    def recorders(self) -> Sequence['outputs.GetConfigurationRecordersRecorderResult']:
         """
         A list of Config Configuration Recorders. Each element contains the following attributes:
         """

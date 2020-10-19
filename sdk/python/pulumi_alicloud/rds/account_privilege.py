@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['AccountPrivilege']
@@ -16,7 +16,7 @@ class AccountPrivilege(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
-                 db_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  privilege: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -70,7 +70,7 @@ class AccountPrivilege(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: A specified account name.
-        :param pulumi.Input[List[pulumi.Input[str]]] db_names: List of specified database name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
         :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
                - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
@@ -117,7 +117,7 @@ class AccountPrivilege(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_name: Optional[pulumi.Input[str]] = None,
-            db_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             privilege: Optional[pulumi.Input[str]] = None) -> 'AccountPrivilege':
         """
@@ -128,7 +128,7 @@ class AccountPrivilege(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: A specified account name.
-        :param pulumi.Input[List[pulumi.Input[str]]] db_names: List of specified database name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
         :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
                - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
@@ -157,7 +157,7 @@ class AccountPrivilege(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbNames")
-    def db_names(self) -> pulumi.Output[List[str]]:
+    def db_names(self) -> pulumi.Output[Sequence[str]]:
         """
         List of specified database name.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -48,7 +48,7 @@ class GetAclsResult:
 
     @property
     @pulumi.getter
-    def acls(self) -> List['outputs.GetAclsAclResult']:
+    def acls(self) -> Sequence['outputs.GetAclsAclResult']:
         """
         A list of SLB  acls. Each element contains the following attributes:
         """
@@ -64,7 +64,7 @@ class GetAclsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of SLB acls IDs.
         """
@@ -77,7 +77,7 @@ class GetAclsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of SLB acls names.
         """
@@ -121,7 +121,7 @@ class AwaitableGetAclsResult(GetAclsResult):
             tags=self.tags)
 
 
-def get_acls(ids: Optional[List[str]] = None,
+def get_acls(ids: Optional[Sequence[str]] = None,
              name_regex: Optional[str] = None,
              output_file: Optional[str] = None,
              resource_group_id: Optional[str] = None,
@@ -156,7 +156,7 @@ def get_acls(ids: Optional[List[str]] = None,
     * `acl_type`      - the type of acl (such as white/black).
 
 
-    :param List[str] ids: A list of acls IDs to filter results.
+    :param Sequence[str] ids: A list of acls IDs to filter results.
     :param str name_regex: A regex string to filter results by acl name.
     :param str resource_group_id: The Id of resource group which acl belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.

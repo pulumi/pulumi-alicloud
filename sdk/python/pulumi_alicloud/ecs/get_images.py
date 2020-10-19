@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -110,7 +110,7 @@ class GetImagesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of image IDs.
         """
@@ -123,7 +123,7 @@ class GetImagesResult:
 
     @property
     @pulumi.getter
-    def images(self) -> List['outputs.GetImagesImageResult']:
+    def images(self) -> Sequence['outputs.GetImagesImageResult']:
         """
         A list of images. Each element contains the following attributes:
         """

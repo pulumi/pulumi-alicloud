@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -198,13 +198,13 @@ class GetSecretVersionsVersionResult(dict):
                  secret_data_type: str,
                  secret_name: str,
                  version_id: str,
-                 version_stages: List[str]):
+                 version_stages: Sequence[str]):
         """
         :param str secret_data: The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enable_details` is true).
         :param str secret_data_type: The type of the secret value. (Returned when `enable_details` is true).
         :param str secret_name: The name of the secret.
         :param str version_id: The version number of the secret value.
-        :param List[str] version_stages: Stage labels that mark the secret version.
+        :param Sequence[str] version_stages: Stage labels that mark the secret version.
         """
         pulumi.set(__self__, "secret_data", secret_data)
         pulumi.set(__self__, "secret_data_type", secret_data_type)
@@ -246,7 +246,7 @@ class GetSecretVersionsVersionResult(dict):
 
     @property
     @pulumi.getter(name="versionStages")
-    def version_stages(self) -> List[str]:
+    def version_stages(self) -> Sequence[str]:
         """
         Stage labels that mark the secret version.
         """

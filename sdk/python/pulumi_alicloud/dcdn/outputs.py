@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -20,7 +20,7 @@ class DomainSource(dict):
     def __init__(__self__, *,
                  content: str,
                  type: str,
-                 port: Optional[float] = None,
+                 port: Optional[int] = None,
                  priority: Optional[str] = None,
                  weight: Optional[str] = None):
         """
@@ -29,7 +29,7 @@ class DomainSource(dict):
                `ipaddr`: The origin is configured using an IP address.
                `domain`: The origin is configured using a domain name.
                `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
-        :param float port: The port number. Valid values: `443` and `80`. Default to `80`.
+        :param int port: The port number. Valid values: `443` and `80`. Default to `80`.
         :param str priority: The priority of the origin if multiple origins are specified. Default to `20`.
         :param str weight: The weight of the origin if multiple origins are specified. Default to `10`.
         """
@@ -63,7 +63,7 @@ class DomainSource(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         The port number. Valid values: `443` and `80`. Default to `80`.
         """
@@ -100,7 +100,7 @@ class GetDomainsDomainResult(dict):
                  id: str,
                  resource_group_id: str,
                  scope: str,
-                 sources: List['outputs.GetDomainsDomainSourceResult'],
+                 sources: Sequence['outputs.GetDomainsDomainSourceResult'],
                  ssl_protocol: str,
                  ssl_pub: str,
                  status: str):
@@ -113,7 +113,7 @@ class GetDomainsDomainResult(dict):
         :param str id: The ID of the DCDN Domain.
         :param str resource_group_id: The ID of the resource group.
         :param str scope: The acceleration region.
-        :param List['GetDomainsDomainSourceArgs'] sources: The origin information.
+        :param Sequence['GetDomainsDomainSourceArgs'] sources: The origin information.
         :param str ssl_protocol: Indicates whether the SSL certificate is enabled.
         :param str ssl_pub: Indicates the public key of the certificate.
         :param str status: The status of DCDN Domain.
@@ -197,7 +197,7 @@ class GetDomainsDomainResult(dict):
 
     @property
     @pulumi.getter
-    def sources(self) -> List['outputs.GetDomainsDomainSourceResult']:
+    def sources(self) -> Sequence['outputs.GetDomainsDomainSourceResult']:
         """
         The origin information.
         """
@@ -233,14 +233,14 @@ class GetDomainsDomainSourceResult(dict):
     def __init__(__self__, *,
                  content: str,
                  enabled: str,
-                 port: float,
+                 port: int,
                  priority: str,
                  type: str,
                  weight: str):
         """
         :param str content: The origin address.
         :param str enabled: The status of the origin.
-        :param float port: The port number.
+        :param int port: The port number.
         :param str priority: The priority of the origin if multiple origins are specified.
         :param str type: The type of the origin. Valid values:
         :param str weight: The weight of the origin if multiple origins are specified.
@@ -270,7 +270,7 @@ class GetDomainsDomainSourceResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The port number.
         """

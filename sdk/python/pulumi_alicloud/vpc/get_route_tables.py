@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -59,7 +59,7 @@ class GetRouteTablesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         (Optional) A list of Route Tables IDs.
         """
@@ -72,7 +72,7 @@ class GetRouteTablesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of Route Tables names.
         """
@@ -93,7 +93,7 @@ class GetRouteTablesResult:
 
     @property
     @pulumi.getter
-    def tables(self) -> List['outputs.GetRouteTablesTableResult']:
+    def tables(self) -> Sequence['outputs.GetRouteTablesTableResult']:
         """
         A list of Route Tables. Each element contains the following attributes:
         """
@@ -127,7 +127,7 @@ class AwaitableGetRouteTablesResult(GetRouteTablesResult):
             vpc_id=self.vpc_id)
 
 
-def get_route_tables(ids: Optional[List[str]] = None,
+def get_route_tables(ids: Optional[Sequence[str]] = None,
                      name_regex: Optional[str] = None,
                      output_file: Optional[str] = None,
                      resource_group_id: Optional[str] = None,
@@ -158,7 +158,7 @@ def get_route_tables(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of Route Tables IDs.
+    :param Sequence[str] ids: A list of Route Tables IDs.
     :param str name_regex: A regex string to filter route tables by name.
     :param str resource_group_id: The Id of resource group which route tables belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -17,10 +17,10 @@ __all__ = [
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  backup_status: str,
-                 core_disk_size: float,
+                 core_disk_size: int,
                  core_disk_type: str,
                  core_instance_type: str,
-                 core_node_count: float,
+                 core_node_count: int,
                  created_time: str,
                  deletion_protection: bool,
                  engine: str,
@@ -28,7 +28,7 @@ class GetInstancesInstanceResult(dict):
                  expire_time: str,
                  id: str,
                  master_instance_type: str,
-                 master_node_count: float,
+                 master_node_count: int,
                  name: str,
                  network_type: str,
                  pay_type: str,
@@ -40,17 +40,17 @@ class GetInstancesInstanceResult(dict):
                  tags: Optional[Mapping[str, Any]] = None):
         """
         :param str backup_status: the Backup Status of the instance.
-        :param float core_disk_size: core node disk size, unit:GB.
+        :param int core_disk_size: core node disk size, unit:GB.
         :param str core_disk_type: cloud_ssd or cloud_efficiency
         :param str core_instance_type: hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
-        :param float core_node_count: same with "core_instance_quantity"
+        :param int core_node_count: same with "core_instance_quantity"
         :param bool deletion_protection: the switch of delete protection.
         :param str engine: the engine of the instance.
         :param str engine_version: the engine_version of the instance.
         :param str expire_time: the expire time of the instance.
         :param str id: The ID of the HBase instance.
         :param str master_instance_type: hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
-        :param float master_node_count: the node count of master
+        :param int master_node_count: the node count of master
         :param str name: The name of the HBase instance.
         :param str network_type: Classic network or VPC.
         :param str pay_type: Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
@@ -95,7 +95,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="coreDiskSize")
-    def core_disk_size(self) -> float:
+    def core_disk_size(self) -> int:
         """
         core node disk size, unit:GB.
         """
@@ -119,7 +119,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="coreNodeCount")
-    def core_node_count(self) -> float:
+    def core_node_count(self) -> int:
         """
         same with "core_instance_quantity"
         """
@@ -180,7 +180,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="masterNodeCount")
-    def master_node_count(self) -> float:
+    def master_node_count(self) -> int:
         """
         the node count of master
         """
@@ -263,10 +263,10 @@ class GetInstancesInstanceResult(dict):
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 multi_zone_ids: List[str]):
+                 multi_zone_ids: Sequence[str]):
         """
         :param str id: ID of the zone.
-        :param List[str] multi_zone_ids: A list of zone ids in which the multi zone. Removed from v1.99.0.
+        :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone. Removed from v1.99.0.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
@@ -281,7 +281,7 @@ class GetZonesZoneResult(dict):
 
     @property
     @pulumi.getter(name="multiZoneIds")
-    def multi_zone_ids(self) -> List[str]:
+    def multi_zone_ids(self) -> Sequence[str]:
         """
         A list of zone ids in which the multi zone. Removed from v1.99.0.
         """

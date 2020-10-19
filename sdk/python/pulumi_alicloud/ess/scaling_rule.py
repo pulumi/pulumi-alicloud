@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,15 +18,15 @@ class ScalingRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adjustment_type: Optional[pulumi.Input[str]] = None,
-                 adjustment_value: Optional[pulumi.Input[float]] = None,
-                 cooldown: Optional[pulumi.Input[float]] = None,
+                 adjustment_value: Optional[pulumi.Input[int]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
-                 estimated_instance_warmup: Optional[pulumi.Input[float]] = None,
+                 estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_rule_name: Optional[pulumi.Input[str]] = None,
                  scaling_rule_type: Optional[pulumi.Input[str]] = None,
-                 step_adjustments: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]]] = None,
+                 step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]]] = None,
                  target_value: Optional[pulumi.Input[float]] = None,
                  __props__=None,
                  __name__=None,
@@ -39,18 +39,18 @@ class ScalingRule(pulumi.CustomResource):
                - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
                - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
                - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
-        :param pulumi.Input[float] adjustment_value: The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
+        :param pulumi.Input[int] adjustment_value: The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
-        :param pulumi.Input[float] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+        :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
-        :param pulumi.Input[float] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
         if __name__ is not None:
@@ -95,16 +95,16 @@ class ScalingRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             adjustment_type: Optional[pulumi.Input[str]] = None,
-            adjustment_value: Optional[pulumi.Input[float]] = None,
+            adjustment_value: Optional[pulumi.Input[int]] = None,
             ari: Optional[pulumi.Input[str]] = None,
-            cooldown: Optional[pulumi.Input[float]] = None,
+            cooldown: Optional[pulumi.Input[int]] = None,
             disable_scale_in: Optional[pulumi.Input[bool]] = None,
-            estimated_instance_warmup: Optional[pulumi.Input[float]] = None,
+            estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
             metric_name: Optional[pulumi.Input[str]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None,
             scaling_rule_name: Optional[pulumi.Input[str]] = None,
             scaling_rule_type: Optional[pulumi.Input[str]] = None,
-            step_adjustments: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]]] = None,
+            step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]]] = None,
             target_value: Optional[pulumi.Input[float]] = None) -> 'ScalingRule':
         """
         Get an existing ScalingRule resource's state with the given name, id, and optional extra
@@ -117,18 +117,18 @@ class ScalingRule(pulumi.CustomResource):
                - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
                - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
                - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
-        :param pulumi.Input[float] adjustment_value: The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
+        :param pulumi.Input[int] adjustment_value: The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
-        :param pulumi.Input[float] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+        :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
-        :param pulumi.Input[float] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -162,7 +162,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adjustmentValue")
-    def adjustment_value(self) -> pulumi.Output[Optional[float]]:
+    def adjustment_value(self) -> pulumi.Output[Optional[int]]:
         """
         The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
         - QuantityChangeInCapacity：(0, 500] U (-500, 0]
@@ -178,7 +178,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> pulumi.Output[Optional[float]]:
+    def cooldown(self) -> pulumi.Output[Optional[int]]:
         """
         The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         """
@@ -194,7 +194,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="estimatedInstanceWarmup")
-    def estimated_instance_warmup(self) -> pulumi.Output[float]:
+    def estimated_instance_warmup(self) -> pulumi.Output[int]:
         """
         The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         """
@@ -234,7 +234,7 @@ class ScalingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stepAdjustments")
-    def step_adjustments(self) -> pulumi.Output[Optional[List['outputs.ScalingRuleStepAdjustment']]]:
+    def step_adjustments(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingRuleStepAdjustment']]]:
         """
         Steps for StepScalingRule. See Block stepAdjustment below for details.
         """

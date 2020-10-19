@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,11 +17,11 @@ class NatGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_packages: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NatGatewayBandwidthPackageArgs']]]]] = None,
+                 bandwidth_packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatGatewayBandwidthPackageArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -32,11 +32,11 @@ class NatGateway(pulumi.CustomResource):
         Create a NatGateway resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NatGatewayBandwidthPackageArgs']]]] bandwidth_packages: A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatGatewayBandwidthPackageArgs']]]] bandwidth_packages: A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] instance_charge_type: The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
-        :param pulumi.Input[float] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] spec: It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         :param pulumi.Input[str] vpc_id: The VPC ID.
@@ -85,12 +85,12 @@ class NatGateway(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bandwidth_package_ids: Optional[pulumi.Input[str]] = None,
-            bandwidth_packages: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NatGatewayBandwidthPackageArgs']]]]] = None,
+            bandwidth_packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatGatewayBandwidthPackageArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             forward_table_ids: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             snat_table_ids: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[str]] = None,
             specification: Optional[pulumi.Input[str]] = None,
@@ -103,12 +103,12 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bandwidth_package_ids: A list ID of the bandwidth packages, and split them with commas.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NatGatewayBandwidthPackageArgs']]]] bandwidth_packages: A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatGatewayBandwidthPackageArgs']]]] bandwidth_packages: A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] forward_table_ids: The nat gateway will auto create a snap and forward item, the `forward_table_ids` is the created one.
         :param pulumi.Input[str] instance_charge_type: The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
-        :param pulumi.Input[float] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] snat_table_ids: The nat gateway will auto create a snap and forward item, the `snat_table_ids` is the created one.
         :param pulumi.Input[str] spec: It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
@@ -141,7 +141,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandwidthPackages")
-    def bandwidth_packages(self) -> pulumi.Output[Optional[List['outputs.NatGatewayBandwidthPackage']]]:
+    def bandwidth_packages(self) -> pulumi.Output[Optional[Sequence['outputs.NatGatewayBandwidthPackage']]]:
         """
         A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
         """
@@ -181,7 +181,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         """

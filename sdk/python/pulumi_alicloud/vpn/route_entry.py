@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['RouteEntry']
@@ -19,7 +19,7 @@ class RouteEntry(pulumi.CustomResource):
                  publish_vpc: Optional[pulumi.Input[bool]] = None,
                  route_dest: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-                 weight: Optional[pulumi.Input[float]] = None,
+                 weight: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -31,7 +31,7 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
         :param pulumi.Input[str] vpn_gateway_id: The id of the vpn gateway.
-        :param pulumi.Input[float] weight: The value should be 0 or 100.
+        :param pulumi.Input[int] weight: The value should be 0 or 100.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,7 +79,7 @@ class RouteEntry(pulumi.CustomResource):
             publish_vpc: Optional[pulumi.Input[bool]] = None,
             route_dest: Optional[pulumi.Input[str]] = None,
             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-            weight: Optional[pulumi.Input[float]] = None) -> 'RouteEntry':
+            weight: Optional[pulumi.Input[int]] = None) -> 'RouteEntry':
         """
         Get an existing RouteEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -91,7 +91,7 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
         :param pulumi.Input[str] vpn_gateway_id: The id of the vpn gateway.
-        :param pulumi.Input[float] weight: The value should be 0 or 100.
+        :param pulumi.Input[int] weight: The value should be 0 or 100.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -138,7 +138,7 @@ class RouteEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> pulumi.Output[float]:
+    def weight(self) -> pulumi.Output[int]:
         """
         The value should be 0 or 100.
         """

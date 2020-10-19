@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -17,21 +17,21 @@ __all__ = [
 @pulumi.output_type
 class GetQueuesQueueResult(dict):
     def __init__(__self__, *,
-                 delay_seconds: float,
+                 delay_seconds: int,
                  id: str,
-                 maximum_message_size: float,
-                 message_retention_period: float,
+                 maximum_message_size: int,
+                 message_retention_period: int,
                  name: str,
-                 polling_wait_seconds: float,
-                 visibility_timeouts: float):
+                 polling_wait_seconds: int,
+                 visibility_timeouts: int):
         """
-        :param float delay_seconds: This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued.
+        :param int delay_seconds: This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued.
         :param str id: The id of the queue, The value is set to `name`.
-        :param float maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the queue.
-        :param float message_retention_period: Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue.
+        :param int maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the queue.
+        :param int message_retention_period: Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue.
         :param str name: The name of the queue
-        :param float polling_wait_seconds: Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out.
-        :param float visibility_timeouts: Dequeued messages change from active (visible) status to inactive (invisible) status. This attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period.
+        :param int polling_wait_seconds: Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out.
+        :param int visibility_timeouts: Dequeued messages change from active (visible) status to inactive (invisible) status. This attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period.
         """
         pulumi.set(__self__, "delay_seconds", delay_seconds)
         pulumi.set(__self__, "id", id)
@@ -43,7 +43,7 @@ class GetQueuesQueueResult(dict):
 
     @property
     @pulumi.getter(name="delaySeconds")
-    def delay_seconds(self) -> float:
+    def delay_seconds(self) -> int:
         """
         This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued.
         """
@@ -59,7 +59,7 @@ class GetQueuesQueueResult(dict):
 
     @property
     @pulumi.getter(name="maximumMessageSize")
-    def maximum_message_size(self) -> float:
+    def maximum_message_size(self) -> int:
         """
         This indicates the maximum length, in bytes, of any message body sent to the queue.
         """
@@ -67,7 +67,7 @@ class GetQueuesQueueResult(dict):
 
     @property
     @pulumi.getter(name="messageRetentionPeriod")
-    def message_retention_period(self) -> float:
+    def message_retention_period(self) -> int:
         """
         Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue.
         """
@@ -83,7 +83,7 @@ class GetQueuesQueueResult(dict):
 
     @property
     @pulumi.getter(name="pollingWaitSeconds")
-    def polling_wait_seconds(self) -> float:
+    def polling_wait_seconds(self) -> int:
         """
         Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out.
         """
@@ -91,7 +91,7 @@ class GetQueuesQueueResult(dict):
 
     @property
     @pulumi.getter(name="visibilityTimeouts")
-    def visibility_timeouts(self) -> float:
+    def visibility_timeouts(self) -> int:
         """
         Dequeued messages change from active (visible) status to inactive (invisible) status. This attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period.
         """
@@ -187,12 +187,12 @@ class GetTopicsTopicResult(dict):
     def __init__(__self__, *,
                  id: str,
                  logging_enabled: bool,
-                 maximum_message_size: float,
+                 maximum_message_size: int,
                  name: str):
         """
         :param str id: The id of the topic. The value is set to `name`.
         :param bool logging_enabled: Whether to enable logging.
-        :param float maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the topic.
+        :param int maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the topic.
         :param str name: The name of the topic.
         """
         pulumi.set(__self__, "id", id)
@@ -218,7 +218,7 @@ class GetTopicsTopicResult(dict):
 
     @property
     @pulumi.getter(name="maximumMessageSize")
-    def maximum_message_size(self) -> float:
+    def maximum_message_size(self) -> int:
         """
         This indicates the maximum length, in bytes, of any message body sent to the topic.
         """

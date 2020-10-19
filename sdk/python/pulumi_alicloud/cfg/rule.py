@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Rule']
@@ -17,12 +17,12 @@ class Rule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 member_id: Optional[pulumi.Input[float]] = None,
+                 member_id: Optional[pulumi.Input[int]] = None,
                  multi_account: Optional[pulumi.Input[bool]] = None,
-                 risk_level: Optional[pulumi.Input[float]] = None,
+                 risk_level: Optional[pulumi.Input[int]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  scope_compliance_resource_id: Optional[pulumi.Input[str]] = None,
-                 scope_compliance_resource_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 scope_compliance_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_detail_message_type: Optional[pulumi.Input[str]] = None,
                  source_identifier: Optional[pulumi.Input[str]] = None,
                  source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
@@ -64,12 +64,12 @@ class Rule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the Config Rule.
         :param pulumi.Input[Mapping[str, Any]] input_parameters: Threshold value for managed rule triggering.
-        :param pulumi.Input[float] member_id: The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
+        :param pulumi.Input[int] member_id: The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
         :param pulumi.Input[bool] multi_account: Whether the enterprise management account is a member account to create or modify rules. Valid values: `true`: Enterprise management accounts create or modify rules for all member accounts in the resource directory. `false`:The enterprise management account creates or modifies rules for this account. Default value is `false`.
-        :param pulumi.Input[float] risk_level: The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+        :param pulumi.Input[int] risk_level: The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         :param pulumi.Input[str] rule_name: The name of the Config Rule.
         :param pulumi.Input[str] scope_compliance_resource_id: The ID of the resource to be evaluated. If not set, all resources are evaluated.
-        :param pulumi.Input[List[pulumi.Input[str]]] scope_compliance_resource_types: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         :param pulumi.Input[str] source_detail_message_type: Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
         :param pulumi.Input[str] source_identifier: The name of the custom rule or managed rules. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_maximum_execution_frequency: Rule execution cycle. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours` and `TwentyFour_Hours`.
@@ -128,12 +128,12 @@ class Rule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            member_id: Optional[pulumi.Input[float]] = None,
+            member_id: Optional[pulumi.Input[int]] = None,
             multi_account: Optional[pulumi.Input[bool]] = None,
-            risk_level: Optional[pulumi.Input[float]] = None,
+            risk_level: Optional[pulumi.Input[int]] = None,
             rule_name: Optional[pulumi.Input[str]] = None,
             scope_compliance_resource_id: Optional[pulumi.Input[str]] = None,
-            scope_compliance_resource_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            scope_compliance_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             source_detail_message_type: Optional[pulumi.Input[str]] = None,
             source_identifier: Optional[pulumi.Input[str]] = None,
             source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
@@ -147,12 +147,12 @@ class Rule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the Config Rule.
         :param pulumi.Input[Mapping[str, Any]] input_parameters: Threshold value for managed rule triggering.
-        :param pulumi.Input[float] member_id: The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
+        :param pulumi.Input[int] member_id: The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
         :param pulumi.Input[bool] multi_account: Whether the enterprise management account is a member account to create or modify rules. Valid values: `true`: Enterprise management accounts create or modify rules for all member accounts in the resource directory. `false`:The enterprise management account creates or modifies rules for this account. Default value is `false`.
-        :param pulumi.Input[float] risk_level: The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+        :param pulumi.Input[int] risk_level: The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         :param pulumi.Input[str] rule_name: The name of the Config Rule.
         :param pulumi.Input[str] scope_compliance_resource_id: The ID of the resource to be evaluated. If not set, all resources are evaluated.
-        :param pulumi.Input[List[pulumi.Input[str]]] scope_compliance_resource_types: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         :param pulumi.Input[str] source_detail_message_type: Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
         :param pulumi.Input[str] source_identifier: The name of the custom rule or managed rules. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_maximum_execution_frequency: Rule execution cycle. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours` and `TwentyFour_Hours`.
@@ -194,7 +194,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memberId")
-    def member_id(self) -> pulumi.Output[Optional[float]]:
+    def member_id(self) -> pulumi.Output[Optional[int]]:
         """
         The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
         """
@@ -210,7 +210,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="riskLevel")
-    def risk_level(self) -> pulumi.Output[float]:
+    def risk_level(self) -> pulumi.Output[int]:
         """
         The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         """
@@ -234,7 +234,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scopeComplianceResourceTypes")
-    def scope_compliance_resource_types(self) -> pulumi.Output[List[str]]:
+    def scope_compliance_resource_types(self) -> pulumi.Output[Sequence[str]]:
         """
         Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         """

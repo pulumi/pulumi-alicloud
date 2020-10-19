@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -64,7 +64,7 @@ class GetTopicsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -79,7 +79,7 @@ class GetTopicsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of topic names.
         """
@@ -100,7 +100,7 @@ class GetTopicsResult:
 
     @property
     @pulumi.getter
-    def topics(self) -> List['outputs.GetTopicsTopicResult']:
+    def topics(self) -> Sequence['outputs.GetTopicsTopicResult']:
         """
         A list of topics. Each element contains the following attributes:
         """
@@ -125,7 +125,7 @@ class AwaitableGetTopicsResult(GetTopicsResult):
 
 
 def get_topics(enable_details: Optional[bool] = None,
-               ids: Optional[List[str]] = None,
+               ids: Optional[Sequence[str]] = None,
                instance_id: Optional[str] = None,
                name_regex: Optional[str] = None,
                output_file: Optional[str] = None,
@@ -164,7 +164,7 @@ def get_topics(enable_details: Optional[bool] = None,
     ```
 
 
-    :param List[str] ids: A list of topic IDs to filter results.
+    :param Sequence[str] ids: A list of topic IDs to filter results.
     :param str instance_id: ID of the ONS Instance that owns the topics.
     :param str name_regex: A regex string to filter results by the topic name.
     :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.

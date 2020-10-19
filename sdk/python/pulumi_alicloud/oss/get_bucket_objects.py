@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -65,7 +65,7 @@ class GetBucketObjectsResult:
 
     @property
     @pulumi.getter
-    def objects(self) -> List['outputs.GetBucketObjectsObjectResult']:
+    def objects(self) -> Sequence['outputs.GetBucketObjectsObjectResult']:
         """
         A list of bucket objects. Each element contains the following attributes:
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -69,7 +69,7 @@ class GetPoliciesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of ram group names.
         """
@@ -82,7 +82,7 @@ class GetPoliciesResult:
 
     @property
     @pulumi.getter
-    def policies(self) -> List['outputs.GetPoliciesPolicyResult']:
+    def policies(self) -> Sequence['outputs.GetPoliciesPolicyResult']:
         """
         A list of policies. Each element contains the following attributes:
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -69,7 +69,7 @@ class GetResolutionLinesResult:
 
     @property
     @pulumi.getter(name="lineCodes")
-    def line_codes(self) -> List[str]:
+    def line_codes(self) -> Sequence[str]:
         """
         Line code.
         """
@@ -77,7 +77,7 @@ class GetResolutionLinesResult:
 
     @property
     @pulumi.getter(name="lineDisplayNames")
-    def line_display_names(self) -> List[str]:
+    def line_display_names(self) -> Sequence[str]:
         """
         A list of line display names.
         """
@@ -85,12 +85,12 @@ class GetResolutionLinesResult:
 
     @property
     @pulumi.getter(name="lineNames")
-    def line_names(self) -> Optional[List[str]]:
+    def line_names(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "line_names")
 
     @property
     @pulumi.getter
-    def lines(self) -> List['outputs.GetResolutionLinesLineResult']:
+    def lines(self) -> Sequence['outputs.GetResolutionLinesLineResult']:
         """
         A list of cloud resolution line. Each element contains the following attributes:
         """
@@ -126,9 +126,9 @@ class AwaitableGetResolutionLinesResult(GetResolutionLinesResult):
 
 def get_resolution_lines(domain_name: Optional[str] = None,
                          lang: Optional[str] = None,
-                         line_codes: Optional[List[str]] = None,
-                         line_display_names: Optional[List[str]] = None,
-                         line_names: Optional[List[str]] = None,
+                         line_codes: Optional[Sequence[str]] = None,
+                         line_display_names: Optional[Sequence[str]] = None,
+                         line_names: Optional[Sequence[str]] = None,
                          output_file: Optional[str] = None,
                          user_client_ip: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResolutionLinesResult:
@@ -151,8 +151,8 @@ def get_resolution_lines(domain_name: Optional[str] = None,
 
     :param str domain_name: Domain Name.
     :param str lang: language.
-    :param List[str] line_codes: A list of lines codes.
-    :param List[str] line_display_names: A list of line display names.
+    :param Sequence[str] line_codes: A list of lines codes.
+    :param Sequence[str] line_display_names: A list of line display names.
     :param str user_client_ip: The ip of user client.
     """
     __args__ = dict()

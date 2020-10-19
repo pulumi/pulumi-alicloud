@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -68,8 +68,8 @@ class GetInstanceClassesResult:
         if series_type and not isinstance(series_type, str):
             raise TypeError("Expected argument 'series_type' to be a str")
         pulumi.set(__self__, "series_type", series_type)
-        if shard_number and not isinstance(shard_number, float):
-            raise TypeError("Expected argument 'shard_number' to be a float")
+        if shard_number and not isinstance(shard_number, int):
+            raise TypeError("Expected argument 'shard_number' to be a int")
         pulumi.set(__self__, "shard_number", shard_number)
         if sorted_by and not isinstance(sorted_by, str):
             raise TypeError("Expected argument 'sorted_by' to be a str")
@@ -92,7 +92,7 @@ class GetInstanceClassesResult:
 
     @property
     @pulumi.getter
-    def classes(self) -> List['outputs.GetInstanceClassesClassResult']:
+    def classes(self) -> Sequence['outputs.GetInstanceClassesClassResult']:
         """
         A list of KVStore available instance classes when the `sorted_by` is "Price". include:
         """
@@ -128,7 +128,7 @@ class GetInstanceClassesResult:
 
     @property
     @pulumi.getter(name="instanceClasses")
-    def instance_classes(self) -> List[str]:
+    def instance_classes(self) -> Sequence[str]:
         """
         A list of KVStore available instance classes.
         """
@@ -161,7 +161,7 @@ class GetInstanceClassesResult:
 
     @property
     @pulumi.getter(name="shardNumber")
-    def shard_number(self) -> Optional[float]:
+    def shard_number(self) -> Optional[int]:
         return pulumi.get(self, "shard_number")
 
     @property
@@ -215,7 +215,7 @@ def get_instance_classes(architecture: Optional[str] = None,
                          package_type: Optional[str] = None,
                          performance_type: Optional[str] = None,
                          series_type: Optional[str] = None,
-                         shard_number: Optional[float] = None,
+                         shard_number: Optional[int] = None,
                          sorted_by: Optional[str] = None,
                          storage_type: Optional[str] = None,
                          zone_id: Optional[str] = None,
@@ -250,7 +250,7 @@ def get_instance_classes(architecture: Optional[str] = None,
     :param str package_type: It has been deprecated from 1.68.0.
     :param str performance_type: It has been deprecated from 1.68.0.
     :param str series_type: The KVStore instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
-    :param float shard_number: The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
+    :param int shard_number: The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
     :param str storage_type: It has been deprecated from 1.68.0.
     :param str zone_id: The Zone to launch the KVStore instance.
     """

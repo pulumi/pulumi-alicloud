@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -55,14 +55,14 @@ class GetAccountsAccountResult(dict):
                  account_name: str,
                  account_status: str,
                  account_type: str,
-                 database_privileges: List['outputs.GetAccountsAccountDatabasePrivilegeResult']):
+                 database_privileges: Sequence['outputs.GetAccountsAccountDatabasePrivilegeResult']):
         """
         :param str account_description: Account description.
         :param str account_lock_state: Account lock state, Valid values are `Lock`, `UnLock`.
         :param str account_name: Account name.
         :param str account_status: Cluster address type.`Cluster`: the default address of the Cluster.`Primary`: Primary address.`Custom`: Custom cluster addresses.
         :param str account_type: Account type, Valid values are `Normal`, `Super`.
-        :param List['GetAccountsAccountDatabasePrivilegeArgs'] database_privileges: A list of database privilege. Each element contains the following attributes.
+        :param Sequence['GetAccountsAccountDatabasePrivilegeArgs'] database_privileges: A list of database privilege. Each element contains the following attributes.
         """
         pulumi.set(__self__, "account_description", account_description)
         pulumi.set(__self__, "account_lock_state", account_lock_state)
@@ -113,7 +113,7 @@ class GetAccountsAccountResult(dict):
 
     @property
     @pulumi.getter(name="databasePrivileges")
-    def database_privileges(self) -> List['outputs.GetAccountsAccountDatabasePrivilegeResult']:
+    def database_privileges(self) -> Sequence['outputs.GetAccountsAccountDatabasePrivilegeResult']:
         """
         A list of database privilege. Each element contains the following attributes.
         """
@@ -155,11 +155,11 @@ class GetClustersClusterResult(dict):
                  charge_type: str,
                  create_time: str,
                  db_node_class: str,
-                 db_node_number: float,
-                 db_nodes: List['outputs.GetClustersClusterDbNodeResult'],
+                 db_node_number: int,
+                 db_nodes: Sequence['outputs.GetClustersClusterDbNodeResult'],
                  db_type: str,
                  db_version: str,
-                 delete_lock: float,
+                 delete_lock: int,
                  description: str,
                  engine: str,
                  expire_time: str,
@@ -169,18 +169,18 @@ class GetClustersClusterResult(dict):
                  network_type: str,
                  region_id: str,
                  status: str,
-                 storage_used: float,
+                 storage_used: int,
                  vpc_id: str,
                  zone_id: str):
         """
         :param str charge_type: Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
         :param str create_time: The create_time of the db_nodes.
         :param str db_node_class: The db_node_class of the db_nodes.
-        :param float db_node_number: The DBNodeNumber of the PolarDB cluster.
-        :param List['GetClustersClusterDbNodeArgs'] db_nodes: The DBNodes of the PolarDB cluster.
+        :param int db_node_number: The DBNodeNumber of the PolarDB cluster.
+        :param Sequence['GetClustersClusterDbNodeArgs'] db_nodes: The DBNodes of the PolarDB cluster.
         :param str db_type: Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
         :param str db_version: The DBVersion of the PolarDB cluster.
-        :param float delete_lock: The DeleteLock of the PolarDB cluster.
+        :param int delete_lock: The DeleteLock of the PolarDB cluster.
         :param str description: The description of the PolarDB cluster.
         :param str engine: Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
         :param str expire_time: Expiration time. Pay-As-You-Go clusters never expire.
@@ -190,7 +190,7 @@ class GetClustersClusterResult(dict):
         :param str network_type: The DBClusterNetworkType of the PolarDB cluster.
         :param str region_id: The region_id of the db_nodes.
         :param str status: status of the cluster.
-        :param float storage_used: The StorageUsed of the PolarDB cluster.
+        :param int storage_used: The StorageUsed of the PolarDB cluster.
         :param str vpc_id: ID of the VPC the cluster belongs to.
         :param str zone_id: The zone_id of the db_nodes.
         """
@@ -241,7 +241,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="dbNodeNumber")
-    def db_node_number(self) -> float:
+    def db_node_number(self) -> int:
         """
         The DBNodeNumber of the PolarDB cluster.
         """
@@ -249,7 +249,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="dbNodes")
-    def db_nodes(self) -> List['outputs.GetClustersClusterDbNodeResult']:
+    def db_nodes(self) -> Sequence['outputs.GetClustersClusterDbNodeResult']:
         """
         The DBNodes of the PolarDB cluster.
         """
@@ -273,7 +273,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="deleteLock")
-    def delete_lock(self) -> float:
+    def delete_lock(self) -> int:
         """
         The DeleteLock of the PolarDB cluster.
         """
@@ -353,7 +353,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="storageUsed")
-    def storage_used(self) -> float:
+    def storage_used(self) -> int:
         """
         The StorageUsed of the PolarDB cluster.
         """
@@ -384,8 +384,8 @@ class GetClustersClusterDbNodeResult(dict):
                  db_node_id: str,
                  db_node_role: str,
                  db_node_status: str,
-                 max_connections: float,
-                 max_iops: float,
+                 max_connections: int,
+                 max_iops: int,
                  region_id: str,
                  zone_id: str):
         """
@@ -394,8 +394,8 @@ class GetClustersClusterDbNodeResult(dict):
         :param str db_node_id: The db_node_id of the db_nodes.
         :param str db_node_role: The db_node_role of the db_nodes.
         :param str db_node_status: The db_node_status of the db_nodes.
-        :param float max_connections: The max_connections of the db_nodes.
-        :param float max_iops: The max_iops of the db_nodes.
+        :param int max_connections: The max_connections of the db_nodes.
+        :param int max_iops: The max_iops of the db_nodes.
         :param str region_id: The region_id of the db_nodes.
         :param str zone_id: The zone_id of the db_nodes.
         """
@@ -451,7 +451,7 @@ class GetClustersClusterDbNodeResult(dict):
 
     @property
     @pulumi.getter(name="maxConnections")
-    def max_connections(self) -> float:
+    def max_connections(self) -> int:
         """
         The max_connections of the db_nodes.
         """
@@ -459,7 +459,7 @@ class GetClustersClusterDbNodeResult(dict):
 
     @property
     @pulumi.getter(name="maxIops")
-    def max_iops(self) -> float:
+    def max_iops(self) -> int:
         """
         The max_iops of the db_nodes.
         """
@@ -485,14 +485,14 @@ class GetClustersClusterDbNodeResult(dict):
 @pulumi.output_type
 class GetDatabasesDatabaseResult(dict):
     def __init__(__self__, *,
-                 accounts: List['outputs.GetDatabasesDatabaseAccountResult'],
+                 accounts: Sequence['outputs.GetDatabasesDatabaseAccountResult'],
                  character_set_name: str,
                  db_description: str,
                  db_name: str,
                  db_status: str,
                  engine: str):
         """
-        :param List['GetDatabasesDatabaseAccountArgs'] accounts: A list of accounts of database. Each element contains the following attributes.
+        :param Sequence['GetDatabasesDatabaseAccountArgs'] accounts: A list of accounts of database. Each element contains the following attributes.
         :param str character_set_name: The character set name of database.
         :param str db_description: Database description.
         :param str db_name: Database name.
@@ -508,7 +508,7 @@ class GetDatabasesDatabaseResult(dict):
 
     @property
     @pulumi.getter
-    def accounts(self) -> List['outputs.GetDatabasesDatabaseAccountResult']:
+    def accounts(self) -> Sequence['outputs.GetDatabasesDatabaseAccountResult']:
         """
         A list of accounts of database. Each element contains the following attributes.
         """
@@ -598,7 +598,7 @@ class GetDatabasesDatabaseAccountResult(dict):
 @pulumi.output_type
 class GetEndpointsEndpointResult(dict):
     def __init__(__self__, *,
-                 address_items: List['outputs.GetEndpointsEndpointAddressItemResult'],
+                 address_items: Sequence['outputs.GetEndpointsEndpointAddressItemResult'],
                  auto_add_new_nodes: str,
                  db_endpoint_id: str,
                  endpoint_config: str,
@@ -606,7 +606,7 @@ class GetEndpointsEndpointResult(dict):
                  nodes: str,
                  read_write_mode: str):
         """
-        :param List['GetEndpointsEndpointAddressItemArgs'] address_items: A list of endpoint addresses. Each element contains the following attributes.
+        :param Sequence['GetEndpointsEndpointAddressItemArgs'] address_items: A list of endpoint addresses. Each element contains the following attributes.
         :param str auto_add_new_nodes: Whether the new node is automatically added to the default cluster address.Options are `Enable` and `Disable`.
         :param str db_endpoint_id: endpoint of the cluster.
         :param str endpoint_config: The Endpoint configuration. `ConsistLevel`: session consistency level, value:`0`: final consistency,`1`: session consistency;`LoadBalanceStrategy`: load balancing strategy. Based on the automatic scheduling of load, the value is: `load`.
@@ -624,7 +624,7 @@ class GetEndpointsEndpointResult(dict):
 
     @property
     @pulumi.getter(name="addressItems")
-    def address_items(self) -> List['outputs.GetEndpointsEndpointAddressItemResult']:
+    def address_items(self) -> Sequence['outputs.GetEndpointsEndpointAddressItemResult']:
         """
         A list of endpoint addresses. Each element contains the following attributes.
         """
@@ -755,10 +755,10 @@ class GetEndpointsEndpointAddressItemResult(dict):
 @pulumi.output_type
 class GetNodeClassesClassResult(dict):
     def __init__(__self__, *,
-                 supported_engines: List['outputs.GetNodeClassesClassSupportedEngineResult'],
+                 supported_engines: Sequence['outputs.GetNodeClassesClassSupportedEngineResult'],
                  zone_id: str):
         """
-        :param List['GetNodeClassesClassSupportedEngineArgs'] supported_engines: A list of PolarDB node classes in the zone.
+        :param Sequence['GetNodeClassesClassSupportedEngineArgs'] supported_engines: A list of PolarDB node classes in the zone.
         :param str zone_id: The Zone to launch the PolarDB cluster.
         """
         pulumi.set(__self__, "supported_engines", supported_engines)
@@ -766,7 +766,7 @@ class GetNodeClassesClassResult(dict):
 
     @property
     @pulumi.getter(name="supportedEngines")
-    def supported_engines(self) -> List['outputs.GetNodeClassesClassSupportedEngineResult']:
+    def supported_engines(self) -> Sequence['outputs.GetNodeClassesClassSupportedEngineResult']:
         """
         A list of PolarDB node classes in the zone.
         """
@@ -784,10 +784,10 @@ class GetNodeClassesClassResult(dict):
 @pulumi.output_type
 class GetNodeClassesClassSupportedEngineResult(dict):
     def __init__(__self__, *,
-                 available_resources: List['outputs.GetNodeClassesClassSupportedEngineAvailableResourceResult'],
+                 available_resources: Sequence['outputs.GetNodeClassesClassSupportedEngineAvailableResourceResult'],
                  engine: str):
         """
-        :param List['GetNodeClassesClassSupportedEngineAvailableResourceArgs'] available_resources: A list of PolarDB node available classes.
+        :param Sequence['GetNodeClassesClassSupportedEngineAvailableResourceArgs'] available_resources: A list of PolarDB node available classes.
         :param str engine: In the zone, the database type supports classes in the following available_resources.
         """
         pulumi.set(__self__, "available_resources", available_resources)
@@ -795,7 +795,7 @@ class GetNodeClassesClassSupportedEngineResult(dict):
 
     @property
     @pulumi.getter(name="availableResources")
-    def available_resources(self) -> List['outputs.GetNodeClassesClassSupportedEngineAvailableResourceResult']:
+    def available_resources(self) -> Sequence['outputs.GetNodeClassesClassSupportedEngineAvailableResourceResult']:
         """
         A list of PolarDB node available classes.
         """
@@ -832,10 +832,10 @@ class GetNodeClassesClassSupportedEngineAvailableResourceResult(dict):
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 multi_zone_ids: List[str]):
+                 multi_zone_ids: Sequence[str]):
         """
         :param str id: ID of the zone.
-        :param List[str] multi_zone_ids: A list of zone ids in which the multi zone.
+        :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
@@ -850,7 +850,7 @@ class GetZonesZoneResult(dict):
 
     @property
     @pulumi.getter(name="multiZoneIds")
-    def multi_zone_ids(self) -> List[str]:
+    def multi_zone_ids(self) -> Sequence[str]:
         """
         A list of zone ids in which the multi zone.
         """

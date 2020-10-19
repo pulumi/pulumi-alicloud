@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -825,7 +825,7 @@ class NodePoolDataDiskArgs:
                  encrypted: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The name of node pool.
@@ -906,11 +906,11 @@ class NodePoolDataDiskArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[float]]:
+    def size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[float]]):
+    def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
 
     @property

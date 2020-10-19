@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -120,7 +120,7 @@ class GetSecurityGroupRulesResult:
 
     @property
     @pulumi.getter
-    def rules(self) -> List['outputs.GetSecurityGroupRulesRuleResult']:
+    def rules(self) -> Sequence['outputs.GetSecurityGroupRulesRuleResult']:
         """
         A list of security group rules. Each element contains the following attributes:
         """

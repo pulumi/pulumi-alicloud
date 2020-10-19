@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -51,7 +51,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def clusters(self) -> List['outputs.GetClustersClusterResult']:
+    def clusters(self) -> Sequence['outputs.GetClustersClusterResult']:
         """
         A list of PolarDB clusters. Each element contains the following attributes:
         """
@@ -72,7 +72,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def descriptions(self) -> List[str]:
+    def descriptions(self) -> Sequence[str]:
         """
         A list of RDS cluster descriptions.
         """
@@ -88,7 +88,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of RDS cluster IDs.
         """
@@ -132,7 +132,7 @@ class AwaitableGetClustersResult(GetClustersResult):
 
 def get_clusters(db_type: Optional[str] = None,
                  description_regex: Optional[str] = None,
-                 ids: Optional[List[str]] = None,
+                 ids: Optional[Sequence[str]] = None,
                  output_file: Optional[str] = None,
                  status: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
@@ -157,7 +157,7 @@ def get_clusters(db_type: Optional[str] = None,
 
     :param str db_type: Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
     :param str description_regex: A regex string to filter results by cluster description.
-    :param List[str] ids: A list of PolarDB cluster IDs.
+    :param Sequence[str] ids: A list of PolarDB cluster IDs.
     :param str status: status of the cluster.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

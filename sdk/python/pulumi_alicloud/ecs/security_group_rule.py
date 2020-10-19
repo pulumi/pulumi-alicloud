@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['SecurityGroupRule']
@@ -21,7 +21,7 @@ class SecurityGroupRule(pulumi.CustomResource):
                  nic_type: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  source_group_owner_account: Optional[pulumi.Input[str]] = None,
                  source_security_group_id: Optional[pulumi.Input[str]] = None,
@@ -40,7 +40,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[str] policy: Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
         :param pulumi.Input[str] port_range: The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
                For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
-        :param pulumi.Input[float] priority: Authorization policy priority, with parameter values: `1-100`, default value: 1.
+        :param pulumi.Input[int] priority: Authorization policy priority, with parameter values: `1-100`, default value: 1.
         :param pulumi.Input[str] security_group_id: The security group to apply this rule to.
         :param pulumi.Input[str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
         :param pulumi.Input[str] source_security_group_id: The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
@@ -96,7 +96,7 @@ class SecurityGroupRule(pulumi.CustomResource):
             nic_type: Optional[pulumi.Input[str]] = None,
             policy: Optional[pulumi.Input[str]] = None,
             port_range: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             source_group_owner_account: Optional[pulumi.Input[str]] = None,
             source_security_group_id: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[str] policy: Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
         :param pulumi.Input[str] port_range: The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
                For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
-        :param pulumi.Input[float] priority: Authorization policy priority, with parameter values: `1-100`, default value: 1.
+        :param pulumi.Input[int] priority: Authorization policy priority, with parameter values: `1-100`, default value: 1.
         :param pulumi.Input[str] security_group_id: The security group to apply this rule to.
         :param pulumi.Input[str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
         :param pulumi.Input[str] source_security_group_id: The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
@@ -189,7 +189,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[float]]:
+    def priority(self) -> pulumi.Output[Optional[int]]:
         """
         Authorization policy priority, with parameter values: `1-100`, default value: 1.
         """

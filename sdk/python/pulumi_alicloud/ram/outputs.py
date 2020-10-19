@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,13 +19,13 @@ __all__ = [
 @pulumi.output_type
 class PolicyStatement(dict):
     def __init__(__self__, *,
-                 actions: List[str],
+                 actions: Sequence[str],
                  effect: str,
-                 resources: List[str]):
+                 resources: Sequence[str]):
         """
-        :param List[str] actions: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+        :param Sequence[str] actions: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
         :param str effect: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
-        :param List[str] resources: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+        :param Sequence[str] resources: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
@@ -33,7 +33,7 @@ class PolicyStatement(dict):
 
     @property
     @pulumi.getter
-    def actions(self) -> List[str]:
+    def actions(self) -> Sequence[str]:
         """
         (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
         """
@@ -49,7 +49,7 @@ class PolicyStatement(dict):
 
     @property
     @pulumi.getter
-    def resources(self) -> List[str]:
+    def resources(self) -> Sequence[str]:
         """
         (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
         """
@@ -91,7 +91,7 @@ class GetGroupsGroupResult(dict):
 @pulumi.output_type
 class GetPoliciesPolicyResult(dict):
     def __init__(__self__, *,
-                 attachment_count: float,
+                 attachment_count: int,
                  create_date: str,
                  default_version: str,
                  description: str,
@@ -100,7 +100,7 @@ class GetPoliciesPolicyResult(dict):
                  type: str,
                  update_date: str):
         """
-        :param float attachment_count: Attachment count of the policy.
+        :param int attachment_count: Attachment count of the policy.
         :param str create_date: Creation date of the policy.
         :param str default_version: Default version of the policy.
         :param str description: Description of the policy.
@@ -120,7 +120,7 @@ class GetPoliciesPolicyResult(dict):
 
     @property
     @pulumi.getter(name="attachmentCount")
-    def attachment_count(self) -> float:
+    def attachment_count(self) -> int:
         """
         Attachment count of the policy.
         """

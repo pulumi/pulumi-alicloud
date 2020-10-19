@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,12 +22,12 @@ class AlarmEscalationsCritical(dict):
                  comparison_operator: Optional[str] = None,
                  statistics: Optional[str] = None,
                  threshold: Optional[str] = None,
-                 times: Optional[float] = None):
+                 times: Optional[int] = None):
         """
         :param str comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
         :param str statistics: Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
-        :param float times: Critical level alarm retry times. Default to 3.
+        :param int times: Critical level alarm retry times. Default to 3.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -64,7 +64,7 @@ class AlarmEscalationsCritical(dict):
 
     @property
     @pulumi.getter
-    def times(self) -> Optional[float]:
+    def times(self) -> Optional[int]:
         """
         Critical level alarm retry times. Default to 3.
         """
@@ -80,12 +80,12 @@ class AlarmEscalationsInfo(dict):
                  comparison_operator: Optional[str] = None,
                  statistics: Optional[str] = None,
                  threshold: Optional[str] = None,
-                 times: Optional[float] = None):
+                 times: Optional[int] = None):
         """
         :param str comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
         :param str statistics: Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
-        :param float times: Critical level alarm retry times. Default to 3.
+        :param int times: Critical level alarm retry times. Default to 3.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -122,7 +122,7 @@ class AlarmEscalationsInfo(dict):
 
     @property
     @pulumi.getter
-    def times(self) -> Optional[float]:
+    def times(self) -> Optional[int]:
         """
         Critical level alarm retry times. Default to 3.
         """
@@ -138,12 +138,12 @@ class AlarmEscalationsWarn(dict):
                  comparison_operator: Optional[str] = None,
                  statistics: Optional[str] = None,
                  threshold: Optional[str] = None,
-                 times: Optional[float] = None):
+                 times: Optional[int] = None):
         """
         :param str comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
         :param str statistics: Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
-        :param float times: Critical level alarm retry times. Default to 3.
+        :param int times: Critical level alarm retry times. Default to 3.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -180,7 +180,7 @@ class AlarmEscalationsWarn(dict):
 
     @property
     @pulumi.getter
-    def times(self) -> Optional[float]:
+    def times(self) -> Optional[int]:
         """
         Critical level alarm retry times. Default to 3.
         """
@@ -224,7 +224,7 @@ class GetAlarmContactsContactResult(dict):
                  channels_state_ding_web_hook: str,
                  channels_state_mail: str,
                  channels_status_sms: str,
-                 contact_groups: List[str],
+                 contact_groups: Sequence[str],
                  describe: str,
                  id: str,
                  lang: str):
@@ -238,7 +238,7 @@ class GetAlarmContactsContactResult(dict):
         :param str channels_state_ding_web_hook: Indicates whether the DingTalk chatbot is normal.
         :param str channels_state_mail: The status of the email address.
         :param str channels_status_sms: The status of the phone number.
-        :param List[str] contact_groups: The alert groups to which the alarm contact is added.
+        :param Sequence[str] contact_groups: The alert groups to which the alarm contact is added.
         :param str describe: The description of the alarm contact.
         :param str id: The ID of the alarm contact.
         """
@@ -330,7 +330,7 @@ class GetAlarmContactsContactResult(dict):
 
     @property
     @pulumi.getter(name="contactGroups")
-    def contact_groups(self) -> List[str]:
+    def contact_groups(self) -> Sequence[str]:
         """
         The alert groups to which the alarm contact is added.
         """

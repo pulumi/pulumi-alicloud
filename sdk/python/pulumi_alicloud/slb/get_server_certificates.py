@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -48,7 +48,7 @@ class GetServerCertificatesResult:
 
     @property
     @pulumi.getter
-    def certificates(self) -> List['outputs.GetServerCertificatesCertificateResult']:
+    def certificates(self) -> Sequence['outputs.GetServerCertificatesCertificateResult']:
         """
         A list of SLB server certificates. Each element contains the following attributes:
         """
@@ -64,7 +64,7 @@ class GetServerCertificatesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of SLB server certificates IDs.
         """
@@ -77,7 +77,7 @@ class GetServerCertificatesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of SLB server certificates names.
         """
@@ -121,7 +121,7 @@ class AwaitableGetServerCertificatesResult(GetServerCertificatesResult):
             tags=self.tags)
 
 
-def get_server_certificates(ids: Optional[List[str]] = None,
+def get_server_certificates(ids: Optional[Sequence[str]] = None,
                             name_regex: Optional[str] = None,
                             output_file: Optional[str] = None,
                             resource_group_id: Optional[str] = None,
@@ -141,7 +141,7 @@ def get_server_certificates(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of server certificates IDs to filter results.
+    :param Sequence[str] ids: A list of server certificates IDs to filter results.
     :param str name_regex: A regex string to filter results by server certificate name.
     :param str resource_group_id: The Id of resource group which the slb server certificates belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.

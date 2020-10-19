@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,8 +45,8 @@ class GetEnterpriseUsersResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
-        if tid and not isinstance(tid, float):
-            raise TypeError("Expected argument 'tid' to be a float")
+        if tid and not isinstance(tid, int):
+            raise TypeError("Expected argument 'tid' to be a int")
         pulumi.set(__self__, "tid", tid)
         if users and not isinstance(users, list):
             raise TypeError("Expected argument 'users' to be a list")
@@ -62,7 +62,7 @@ class GetEnterpriseUsersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of DMS Enterprise User IDs (UID).
         """
@@ -75,7 +75,7 @@ class GetEnterpriseUsersResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of DMS Enterprise User names.
         """
@@ -106,12 +106,12 @@ class GetEnterpriseUsersResult:
 
     @property
     @pulumi.getter
-    def tid(self) -> Optional[float]:
+    def tid(self) -> Optional[int]:
         return pulumi.get(self, "tid")
 
     @property
     @pulumi.getter
-    def users(self) -> List['outputs.GetEnterpriseUsersUserResult']:
+    def users(self) -> Sequence['outputs.GetEnterpriseUsersUserResult']:
         """
         A list of DMS Enterprise Users. Each element contains the following attributes:
         """
@@ -136,13 +136,13 @@ class AwaitableGetEnterpriseUsersResult(GetEnterpriseUsersResult):
             users=self.users)
 
 
-def get_enterprise_users(ids: Optional[List[str]] = None,
+def get_enterprise_users(ids: Optional[Sequence[str]] = None,
                          name_regex: Optional[str] = None,
                          output_file: Optional[str] = None,
                          role: Optional[str] = None,
                          search_key: Optional[str] = None,
                          status: Optional[str] = None,
-                         tid: Optional[float] = None,
+                         tid: Optional[int] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnterpriseUsersResult:
     """
     This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.
@@ -162,12 +162,12 @@ def get_enterprise_users(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of DMS Enterprise User IDs (UID).
+    :param Sequence[str] ids: A list of DMS Enterprise User IDs (UID).
     :param str name_regex: A regex string to filter the results by the DMS Enterprise User nick_name.
     :param str role: The role of the user to query.
     :param str search_key: The keyword used to query users.
     :param str status: The status of the user.
-    :param float tid: The ID of the tenant in DMS Enterprise.
+    :param int tid: The ID of the tenant in DMS Enterprise.
     """
     __args__ = dict()
     __args__['ids'] = ids

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Cluster']
@@ -16,10 +16,10 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[float]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  data_center_name: Optional[pulumi.Input[str]] = None,
-                 disk_size: Optional[pulumi.Input[float]] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -27,12 +27,12 @@ class Cluster(pulumi.CustomResource):
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  major_version: Optional[pulumi.Input[str]] = None,
-                 node_count: Optional[pulumi.Input[float]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
-                 security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -79,10 +79,10 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
-        :param pulumi.Input[float] auto_renew_period: Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        :param pulumi.Input[int] auto_renew_period: Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         :param pulumi.Input[str] cluster_name: Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         :param pulumi.Input[str] data_center_name: Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
-        :param pulumi.Input[float] disk_size: User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
+        :param pulumi.Input[int] disk_size: User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
                - Custom storage space; value range: [160, 2000].
                - 80-GB increments.
         :param pulumi.Input[str] disk_type: The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
@@ -91,9 +91,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] major_version: Cassandra major version. Now only support version `3.11`.
-        :param pulumi.Input[float] node_count: The node count of Cassandra dataCenter-1 default to 2.
+        :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-1 default to 2.
         :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-1, can not empty.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
@@ -159,10 +159,10 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[float]] = None,
+            auto_renew_period: Optional[pulumi.Input[int]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
             data_center_name: Optional[pulumi.Input[str]] = None,
-            disk_size: Optional[pulumi.Input[float]] = None,
+            disk_size: Optional[pulumi.Input[int]] = None,
             disk_type: Optional[pulumi.Input[str]] = None,
             enable_public: Optional[pulumi.Input[bool]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
@@ -170,13 +170,13 @@ class Cluster(pulumi.CustomResource):
             maintain_end_time: Optional[pulumi.Input[str]] = None,
             maintain_start_time: Optional[pulumi.Input[str]] = None,
             major_version: Optional[pulumi.Input[str]] = None,
-            node_count: Optional[pulumi.Input[float]] = None,
+            node_count: Optional[pulumi.Input[int]] = None,
             password: Optional[pulumi.Input[str]] = None,
             pay_type: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
-            public_points: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            public_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -189,10 +189,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
-        :param pulumi.Input[float] auto_renew_period: Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        :param pulumi.Input[int] auto_renew_period: Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         :param pulumi.Input[str] cluster_name: Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         :param pulumi.Input[str] data_center_name: Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
-        :param pulumi.Input[float] disk_size: User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
+        :param pulumi.Input[int] disk_size: User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
                - Custom storage space; value range: [160, 2000].
                - 80-GB increments.
         :param pulumi.Input[str] disk_type: The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
@@ -201,9 +201,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] major_version: Cassandra major version. Now only support version `3.11`.
-        :param pulumi.Input[float] node_count: The node count of Cassandra dataCenter-1 default to 2.
+        :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-1 default to 2.
         :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-1, can not empty.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
@@ -247,7 +247,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> pulumi.Output[Optional[float]]:
+    def auto_renew_period(self) -> pulumi.Output[Optional[int]]:
         """
         Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         """
@@ -271,7 +271,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> pulumi.Output[Optional[float]]:
+    def disk_size(self) -> pulumi.Output[Optional[int]]:
         """
         User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
         - Custom storage space; value range: [160, 2000].
@@ -334,7 +334,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> pulumi.Output[float]:
+    def node_count(self) -> pulumi.Output[int]:
         """
         The node count of Cassandra dataCenter-1 default to 2.
         """
@@ -355,7 +355,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "period")
 
     @property
@@ -365,12 +365,12 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicPoints")
-    def public_points(self) -> pulumi.Output[List[str]]:
+    def public_points(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "public_points")
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> pulumi.Output[List[str]]:
+    def security_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of security group ids to associate with.
         """

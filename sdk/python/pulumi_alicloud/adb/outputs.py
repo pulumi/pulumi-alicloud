@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,8 +19,8 @@ class GetClustersClusterResult(dict):
                  charge_type: str,
                  create_time: str,
                  db_node_class: str,
-                 db_node_count: float,
-                 db_node_storage: float,
+                 db_node_count: int,
+                 db_node_storage: int,
                  description: str,
                  expire_time: str,
                  expired: str,
@@ -35,8 +35,8 @@ class GetClustersClusterResult(dict):
         :param str charge_type: Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
         :param str create_time: The CreateTime of the ADB cluster.
         :param str db_node_class: The DBNodeClass of the ADB cluster.
-        :param float db_node_count: The DBNodeCount of the ADB cluster.
-        :param float db_node_storage: The DBNodeStorage of the ADB cluster.
+        :param int db_node_count: The DBNodeCount of the ADB cluster.
+        :param int db_node_storage: The DBNodeStorage of the ADB cluster.
         :param str description: The description of the ADB cluster.
         :param str expire_time: Expiration time. Pay-As-You-Go clusters never expire.
         :param str expired: The expired of the ADB cluster.
@@ -90,7 +90,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="dbNodeCount")
-    def db_node_count(self) -> float:
+    def db_node_count(self) -> int:
         """
         The DBNodeCount of the ADB cluster.
         """
@@ -98,7 +98,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="dbNodeStorage")
-    def db_node_storage(self) -> float:
+    def db_node_storage(self) -> int:
         """
         The DBNodeStorage of the ADB cluster.
         """
@@ -189,10 +189,10 @@ class GetClustersClusterResult(dict):
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 multi_zone_ids: List[str]):
+                 multi_zone_ids: Sequence[str]):
         """
         :param str id: ID of the zone.
-        :param List[str] multi_zone_ids: A list of zone ids in which the multi zone.
+        :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
@@ -207,7 +207,7 @@ class GetZonesZoneResult(dict):
 
     @property
     @pulumi.getter(name="multiZoneIds")
-    def multi_zone_ids(self) -> List[str]:
+    def multi_zone_ids(self) -> Sequence[str]:
         """
         A list of zone ids in which the multi zone.
         """

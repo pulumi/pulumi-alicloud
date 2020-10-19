@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -87,7 +87,7 @@ class GetSnapshotsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of snapshot IDs.
         """
@@ -105,7 +105,7 @@ class GetSnapshotsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of snapshots names.
         """
@@ -118,7 +118,7 @@ class GetSnapshotsResult:
 
     @property
     @pulumi.getter
-    def snapshots(self) -> List['outputs.GetSnapshotsSnapshotResult']:
+    def snapshots(self) -> Sequence['outputs.GetSnapshotsSnapshotResult']:
         """
         A list of snapshots. Each element contains the following attributes:
         """
@@ -186,7 +186,7 @@ class AwaitableGetSnapshotsResult(GetSnapshotsResult):
 
 def get_snapshots(disk_id: Optional[str] = None,
                   encrypted: Optional[bool] = None,
-                  ids: Optional[List[str]] = None,
+                  ids: Optional[Sequence[str]] = None,
                   instance_id: Optional[str] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
@@ -243,7 +243,7 @@ def get_snapshots(disk_id: Optional[str] = None,
 
 
     :param bool encrypted: Whether the snapshot is encrypted or not.
-    :param List[str] ids: A list of snapshot IDs.
+    :param Sequence[str] ids: A list of snapshot IDs.
     :param str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
     :param str status: The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
     :param Mapping[str, Any] tags: A map of tags assigned to the snapshot.

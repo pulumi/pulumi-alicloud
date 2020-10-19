@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetDataCentersResult:
 
     @property
     @pulumi.getter
-    def centers(self) -> List['outputs.GetDataCentersCenterResult']:
+    def centers(self) -> Sequence['outputs.GetDataCentersCenterResult']:
         """
         A list of Cassandra data centers. Its every element contains the following attributes:
         """
@@ -69,7 +69,7 @@ class GetDataCentersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         The list of Cassandra data center ids.
         """
@@ -82,7 +82,7 @@ class GetDataCentersResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         The name list of Cassandra data centers.
         """
@@ -110,7 +110,7 @@ class AwaitableGetDataCentersResult(GetDataCentersResult):
 
 
 def get_data_centers(cluster_id: Optional[str] = None,
-                     ids: Optional[List[str]] = None,
+                     ids: Optional[Sequence[str]] = None,
                      name_regex: Optional[str] = None,
                      output_file: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataCentersResult:
@@ -132,7 +132,7 @@ def get_data_centers(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: The cluster id of dataCenters belongs to.
-    :param List[str] ids: The list of Cassandra data center ids.
+    :param Sequence[str] ids: The list of Cassandra data center ids.
     :param str name_regex: A regex string to apply to the cluster name.
     """
     __args__ = dict()

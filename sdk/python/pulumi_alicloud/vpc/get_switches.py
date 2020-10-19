@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -76,7 +76,7 @@ class GetSwitchesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of VSwitch IDs.
         """
@@ -97,7 +97,7 @@ class GetSwitchesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of VSwitch names.
         """
@@ -128,7 +128,7 @@ class GetSwitchesResult:
 
     @property
     @pulumi.getter
-    def vswitches(self) -> List['outputs.GetSwitchesVswitchResult']:
+    def vswitches(self) -> Sequence['outputs.GetSwitchesVswitchResult']:
         """
         A list of VSwitches. Each element contains the following attributes:
         """
@@ -164,7 +164,7 @@ class AwaitableGetSwitchesResult(GetSwitchesResult):
 
 
 def get_switches(cidr_block: Optional[str] = None,
-                 ids: Optional[List[str]] = None,
+                 ids: Optional[Sequence[str]] = None,
                  is_default: Optional[bool] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
@@ -197,7 +197,7 @@ def get_switches(cidr_block: Optional[str] = None,
 
 
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
-    :param List[str] ids: A list of VSwitch IDs.
+    :param Sequence[str] ids: A list of VSwitch IDs.
     :param bool is_default: Indicate whether the VSwitch is created by the system.
     :param str name_regex: A regex string to filter results by name.
     :param str resource_group_id: The Id of resource group which VSWitch belongs.

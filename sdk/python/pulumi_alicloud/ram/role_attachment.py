@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['RoleAttachment']
@@ -15,7 +15,7 @@ class RoleAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -91,7 +91,7 @@ class RoleAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] role_name: The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
         if __name__ is not None:
@@ -127,7 +127,7 @@ class RoleAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role_name: Optional[pulumi.Input[str]] = None) -> 'RoleAttachment':
         """
         Get an existing RoleAttachment resource's state with the given name, id, and optional extra
@@ -136,7 +136,7 @@ class RoleAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] role_name: The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -149,7 +149,7 @@ class RoleAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> pulumi.Output[List[str]]:
+    def instance_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         The list of ECS instance's IDs.
         """

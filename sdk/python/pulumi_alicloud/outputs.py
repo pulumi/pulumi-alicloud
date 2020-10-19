@@ -5,144 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
-    'GetRegionsRegionResult',
-    'GetZonesZoneResult',
     'ProviderAssumeRole',
     'ProviderEndpoint',
+    'GetRegionsRegionResult',
+    'GetZonesZoneResult',
 ]
-
-@pulumi.output_type
-class GetRegionsRegionResult(dict):
-    def __init__(__self__, *,
-                 id: str,
-                 local_name: str,
-                 region_id: str):
-        """
-        :param str id: ID of the region.
-        :param str local_name: Name of the region in the local language.
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "region_id", region_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        ID of the region.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> str:
-        """
-        Name of the region in the local language.
-        """
-        return pulumi.get(self, "local_name")
-
-    @property
-    @pulumi.getter(name="regionId")
-    def region_id(self) -> str:
-        return pulumi.get(self, "region_id")
-
-
-@pulumi.output_type
-class GetZonesZoneResult(dict):
-    def __init__(__self__, *,
-                 available_disk_categories: List[str],
-                 available_instance_types: List[str],
-                 available_resource_creations: List[str],
-                 id: str,
-                 local_name: str,
-                 multi_zone_ids: List[str],
-                 slb_slave_zone_ids: List[str]):
-        """
-        :param List[str] available_disk_categories: Set of supported disk categories.
-        :param List[str] available_instance_types: Allowed instance types.
-        :param List[str] available_resource_creations: Filter the results by a specific resource type.
-               Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
-        :param str id: ID of the zone.
-        :param str local_name: Name of the zone in the local language.
-        :param List[str] multi_zone_ids: A list of zone ids in which the multi zone.
-        :param List[str] slb_slave_zone_ids: A list of slb slave zone ids in which the slb master zone.
-        """
-        pulumi.set(__self__, "available_disk_categories", available_disk_categories)
-        pulumi.set(__self__, "available_instance_types", available_instance_types)
-        pulumi.set(__self__, "available_resource_creations", available_resource_creations)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
-        pulumi.set(__self__, "slb_slave_zone_ids", slb_slave_zone_ids)
-
-    @property
-    @pulumi.getter(name="availableDiskCategories")
-    def available_disk_categories(self) -> List[str]:
-        """
-        Set of supported disk categories.
-        """
-        return pulumi.get(self, "available_disk_categories")
-
-    @property
-    @pulumi.getter(name="availableInstanceTypes")
-    def available_instance_types(self) -> List[str]:
-        """
-        Allowed instance types.
-        """
-        return pulumi.get(self, "available_instance_types")
-
-    @property
-    @pulumi.getter(name="availableResourceCreations")
-    def available_resource_creations(self) -> List[str]:
-        """
-        Filter the results by a specific resource type.
-        Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
-        """
-        return pulumi.get(self, "available_resource_creations")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        ID of the zone.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> str:
-        """
-        Name of the zone in the local language.
-        """
-        return pulumi.get(self, "local_name")
-
-    @property
-    @pulumi.getter(name="multiZoneIds")
-    def multi_zone_ids(self) -> List[str]:
-        """
-        A list of zone ids in which the multi zone.
-        """
-        return pulumi.get(self, "multi_zone_ids")
-
-    @property
-    @pulumi.getter(name="slbSlaveZoneIds")
-    def slb_slave_zone_ids(self) -> List[str]:
-        """
-        A list of slb slave zone ids in which the slb master zone.
-        """
-        return pulumi.get(self, "slb_slave_zone_ids")
-
 
 @pulumi.output_type
 class ProviderAssumeRole(dict):
     def __init__(__self__, *,
                  role_arn: str,
                  policy: Optional[str] = None,
-                 session_expiration: Optional[float] = None,
+                 session_expiration: Optional[int] = None,
                  session_name: Optional[str] = None):
         pulumi.set(__self__, "role_arn", role_arn)
         if policy is not None:
@@ -164,7 +42,7 @@ class ProviderAssumeRole(dict):
 
     @property
     @pulumi.getter(name="sessionExpiration")
-    def session_expiration(self) -> Optional[float]:
+    def session_expiration(self) -> Optional[int]:
         return pulumi.get(self, "session_expiration")
 
     @property
@@ -598,5 +476,127 @@ class ProviderEndpoint(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetRegionsRegionResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 local_name: str,
+                 region_id: str):
+        """
+        :param str id: ID of the region.
+        :param str local_name: Name of the region in the local language.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_name", local_name)
+        pulumi.set(__self__, "region_id", region_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the region.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> str:
+        """
+        Name of the region in the local language.
+        """
+        return pulumi.get(self, "local_name")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        return pulumi.get(self, "region_id")
+
+
+@pulumi.output_type
+class GetZonesZoneResult(dict):
+    def __init__(__self__, *,
+                 available_disk_categories: Sequence[str],
+                 available_instance_types: Sequence[str],
+                 available_resource_creations: Sequence[str],
+                 id: str,
+                 local_name: str,
+                 multi_zone_ids: Sequence[str],
+                 slb_slave_zone_ids: Sequence[str]):
+        """
+        :param Sequence[str] available_disk_categories: Set of supported disk categories.
+        :param Sequence[str] available_instance_types: Allowed instance types.
+        :param Sequence[str] available_resource_creations: Filter the results by a specific resource type.
+               Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+        :param str id: ID of the zone.
+        :param str local_name: Name of the zone in the local language.
+        :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
+        :param Sequence[str] slb_slave_zone_ids: A list of slb slave zone ids in which the slb master zone.
+        """
+        pulumi.set(__self__, "available_disk_categories", available_disk_categories)
+        pulumi.set(__self__, "available_instance_types", available_instance_types)
+        pulumi.set(__self__, "available_resource_creations", available_resource_creations)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_name", local_name)
+        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        pulumi.set(__self__, "slb_slave_zone_ids", slb_slave_zone_ids)
+
+    @property
+    @pulumi.getter(name="availableDiskCategories")
+    def available_disk_categories(self) -> Sequence[str]:
+        """
+        Set of supported disk categories.
+        """
+        return pulumi.get(self, "available_disk_categories")
+
+    @property
+    @pulumi.getter(name="availableInstanceTypes")
+    def available_instance_types(self) -> Sequence[str]:
+        """
+        Allowed instance types.
+        """
+        return pulumi.get(self, "available_instance_types")
+
+    @property
+    @pulumi.getter(name="availableResourceCreations")
+    def available_resource_creations(self) -> Sequence[str]:
+        """
+        Filter the results by a specific resource type.
+        Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+        """
+        return pulumi.get(self, "available_resource_creations")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the zone.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> str:
+        """
+        Name of the zone in the local language.
+        """
+        return pulumi.get(self, "local_name")
+
+    @property
+    @pulumi.getter(name="multiZoneIds")
+    def multi_zone_ids(self) -> Sequence[str]:
+        """
+        A list of zone ids in which the multi zone.
+        """
+        return pulumi.get(self, "multi_zone_ids")
+
+    @property
+    @pulumi.getter(name="slbSlaveZoneIds")
+    def slb_slave_zone_ids(self) -> Sequence[str]:
+        """
+        A list of slb slave zone ids in which the slb master zone.
+        """
+        return pulumi.get(self, "slb_slave_zone_ids")
 
 

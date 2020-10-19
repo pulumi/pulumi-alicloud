@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['DdosCooInstance']
@@ -23,7 +23,7 @@ class DdosCooInstance(pulumi.CustomResource):
                  base_bandwidth: Optional[pulumi.Input[str]] = None,
                  domain_count: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  port_count: Optional[pulumi.Input[str]] = None,
                  service_bandwidth: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -61,7 +61,7 @@ class DdosCooInstance(pulumi.CustomResource):
         :param pulumi.Input[str] base_bandwidth: Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
         :param pulumi.Input[str] domain_count: Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[float] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+        :param pulumi.Input[int] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """
@@ -114,7 +114,7 @@ class DdosCooInstance(pulumi.CustomResource):
             base_bandwidth: Optional[pulumi.Input[str]] = None,
             domain_count: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             port_count: Optional[pulumi.Input[str]] = None,
             service_bandwidth: Optional[pulumi.Input[str]] = None) -> 'DdosCooInstance':
         """
@@ -128,7 +128,7 @@ class DdosCooInstance(pulumi.CustomResource):
         :param pulumi.Input[str] base_bandwidth: Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
         :param pulumi.Input[str] domain_count: Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[float] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+        :param pulumi.Input[int] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """
@@ -179,7 +179,7 @@ class DdosCooInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
         The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         """

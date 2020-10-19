@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['AlidnsInstance']
@@ -18,8 +18,8 @@ class AlidnsInstance(pulumi.CustomResource):
                  dns_security: Optional[pulumi.Input[str]] = None,
                  domain_numbers: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
-                 renew_period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  version_code: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -52,8 +52,8 @@ class AlidnsInstance(pulumi.CustomResource):
         :param pulumi.Input[str] dns_security: Alidns security level. Valid values: `no`, `basic`, `advanced`.
         :param pulumi.Input[str] domain_numbers: Number of domain names bound.
         :param pulumi.Input[str] payment_type: The billing method of the Alidns instance. Valid values: `Subscription`. Default to `Subscription`.
-        :param pulumi.Input[float] period: Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
-        :param pulumi.Input[float] renew_period: Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
+        :param pulumi.Input[int] period: Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
+        :param pulumi.Input[int] renew_period: Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
         :param pulumi.Input[str] version_code: Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
         """
@@ -101,8 +101,8 @@ class AlidnsInstance(pulumi.CustomResource):
             dns_security: Optional[pulumi.Input[str]] = None,
             domain_numbers: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
-            renew_period: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
+            renew_period: Optional[pulumi.Input[int]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             version_code: Optional[pulumi.Input[str]] = None,
             version_name: Optional[pulumi.Input[str]] = None) -> 'AlidnsInstance':
@@ -116,8 +116,8 @@ class AlidnsInstance(pulumi.CustomResource):
         :param pulumi.Input[str] dns_security: Alidns security level. Valid values: `no`, `basic`, `advanced`.
         :param pulumi.Input[str] domain_numbers: Number of domain names bound.
         :param pulumi.Input[str] payment_type: The billing method of the Alidns instance. Valid values: `Subscription`. Default to `Subscription`.
-        :param pulumi.Input[float] period: Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
-        :param pulumi.Input[float] renew_period: Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
+        :param pulumi.Input[int] period: Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
+        :param pulumi.Input[int] renew_period: Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
         :param pulumi.Input[str] version_code: Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
         :param pulumi.Input[str] version_name: Paid package version name.
@@ -162,7 +162,7 @@ class AlidnsInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
         Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
         """
@@ -170,7 +170,7 @@ class AlidnsInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> pulumi.Output[Optional[float]]:
+    def renew_period(self) -> pulumi.Output[Optional[int]]:
         """
         Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -89,7 +89,7 @@ class GetMountTargetsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of MountTargetDomain.
         """
@@ -123,7 +123,7 @@ class GetMountTargetsResult:
 
     @property
     @pulumi.getter
-    def targets(self) -> List['outputs.GetMountTargetsTargetResult']:
+    def targets(self) -> Sequence['outputs.GetMountTargetsTargetResult']:
         """
         A list of MountTargetDomains. Each element contains the following attributes:
         """
@@ -173,7 +173,7 @@ class AwaitableGetMountTargetsResult(GetMountTargetsResult):
 
 def get_mount_targets(access_group_name: Optional[str] = None,
                       file_system_id: Optional[str] = None,
-                      ids: Optional[List[str]] = None,
+                      ids: Optional[Sequence[str]] = None,
                       mount_target_domain: Optional[str] = None,
                       network_type: Optional[str] = None,
                       output_file: Optional[str] = None,
@@ -201,7 +201,7 @@ def get_mount_targets(access_group_name: Optional[str] = None,
 
     :param str access_group_name: Filter results by a specific AccessGroupName.
     :param str file_system_id: The ID of the FileSystem that owns the MountTarget.
-    :param List[str] ids: A list of MountTargetDomain.
+    :param Sequence[str] ids: A list of MountTargetDomain.
     :param str mount_target_domain: Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
     :param str network_type: Filter results by a specific NetworkType.
     :param str status: Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.

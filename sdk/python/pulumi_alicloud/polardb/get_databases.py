@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -39,7 +39,7 @@ class GetDatabasesResult:
 
     @property
     @pulumi.getter
-    def databases(self) -> List['outputs.GetDatabasesDatabaseResult']:
+    def databases(self) -> Sequence['outputs.GetDatabasesDatabaseResult']:
         """
         A list of PolarDB cluster databases. Each element contains the following attributes:
         """
@@ -65,7 +65,7 @@ class GetDatabasesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         database name of the cluster.
         """

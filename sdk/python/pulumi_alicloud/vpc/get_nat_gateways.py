@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetNatGatewaysResult:
 
     @property
     @pulumi.getter
-    def gateways(self) -> List['outputs.GetNatGatewaysGatewayResult']:
+    def gateways(self) -> Sequence['outputs.GetNatGatewaysGatewayResult']:
         """
         A list of Nat gateways. Each element contains the following attributes:
         """
@@ -61,7 +61,7 @@ class GetNatGatewaysResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         (Optional) A list of Nat gateways IDs.
         """
@@ -74,7 +74,7 @@ class GetNatGatewaysResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of Nat gateways names.
         """
@@ -109,7 +109,7 @@ class AwaitableGetNatGatewaysResult(GetNatGatewaysResult):
             vpc_id=self.vpc_id)
 
 
-def get_nat_gateways(ids: Optional[List[str]] = None,
+def get_nat_gateways(ids: Optional[Sequence[str]] = None,
                      name_regex: Optional[str] = None,
                      output_file: Optional[str] = None,
                      vpc_id: Optional[str] = None,
@@ -140,7 +140,7 @@ def get_nat_gateways(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of NAT gateways IDs.
+    :param Sequence[str] ids: A list of NAT gateways IDs.
     :param str name_regex: A regex string to filter nat gateways by name.
     :param str vpc_id: The ID of the VPC.
     """

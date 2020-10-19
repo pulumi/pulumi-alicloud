@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -39,13 +39,13 @@ class GetDeliveryChannelsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
-        if status and not isinstance(status, float):
-            raise TypeError("Expected argument 'status' to be a float")
+        if status and not isinstance(status, int):
+            raise TypeError("Expected argument 'status' to be a int")
         pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
-    def channels(self) -> List['outputs.GetDeliveryChannelsChannelResult']:
+    def channels(self) -> Sequence['outputs.GetDeliveryChannelsChannelResult']:
         """
         A list of Config Delivery Channels. Each element contains the following attributes:
         """
@@ -61,7 +61,7 @@ class GetDeliveryChannelsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of Config Delivery Channel IDs.
         """
@@ -74,7 +74,7 @@ class GetDeliveryChannelsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of Config Delivery Channel names.
         """
@@ -87,7 +87,7 @@ class GetDeliveryChannelsResult:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[float]:
+    def status(self) -> Optional[int]:
         """
         The status of the delivery method.
         """
@@ -109,10 +109,10 @@ class AwaitableGetDeliveryChannelsResult(GetDeliveryChannelsResult):
             status=self.status)
 
 
-def get_delivery_channels(ids: Optional[List[str]] = None,
+def get_delivery_channels(ids: Optional[Sequence[str]] = None,
                           name_regex: Optional[str] = None,
                           output_file: Optional[str] = None,
-                          status: Optional[float] = None,
+                          status: Optional[int] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeliveryChannelsResult:
     """
     This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
@@ -131,9 +131,9 @@ def get_delivery_channels(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of Config Delivery Channel IDs.
+    :param Sequence[str] ids: A list of Config Delivery Channel IDs.
     :param str name_regex: A regex string to filter results by delivery channel name.
-    :param float status: The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
+    :param int status: The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
     """
     __args__ = dict()
     __args__['ids'] = ids

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['InstanceAttachment']
@@ -15,9 +15,9 @@ class InstanceAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_owner_id: Optional[pulumi.Input[float]] = None,
+                 cen_owner_id: Optional[pulumi.Input[int]] = None,
                  child_instance_id: Optional[pulumi.Input[str]] = None,
-                 child_instance_owner_id: Optional[pulumi.Input[float]] = None,
+                 child_instance_owner_id: Optional[pulumi.Input[int]] = None,
                  child_instance_region_id: Optional[pulumi.Input[str]] = None,
                  child_instance_type: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -52,9 +52,9 @@ class InstanceAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] cen_owner_id: The account ID to which the CEN instance belongs.
+        :param pulumi.Input[int] cen_owner_id: The account ID to which the CEN instance belongs.
         :param pulumi.Input[str] child_instance_id: The ID of the child instance to attach.
-        :param pulumi.Input[float] child_instance_owner_id: The uid of the child instance. Only used when attach a child instance of other account.
+        :param pulumi.Input[int] child_instance_owner_id: The uid of the child instance. Only used when attach a child instance of other account.
         :param pulumi.Input[str] child_instance_region_id: The region ID of the child instance to attach.
         :param pulumi.Input[str] child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
@@ -101,9 +101,9 @@ class InstanceAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cen_owner_id: Optional[pulumi.Input[float]] = None,
+            cen_owner_id: Optional[pulumi.Input[int]] = None,
             child_instance_id: Optional[pulumi.Input[str]] = None,
-            child_instance_owner_id: Optional[pulumi.Input[float]] = None,
+            child_instance_owner_id: Optional[pulumi.Input[int]] = None,
             child_instance_region_id: Optional[pulumi.Input[str]] = None,
             child_instance_type: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
@@ -115,9 +115,9 @@ class InstanceAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] cen_owner_id: The account ID to which the CEN instance belongs.
+        :param pulumi.Input[int] cen_owner_id: The account ID to which the CEN instance belongs.
         :param pulumi.Input[str] child_instance_id: The ID of the child instance to attach.
-        :param pulumi.Input[float] child_instance_owner_id: The uid of the child instance. Only used when attach a child instance of other account.
+        :param pulumi.Input[int] child_instance_owner_id: The uid of the child instance. Only used when attach a child instance of other account.
         :param pulumi.Input[str] child_instance_region_id: The region ID of the child instance to attach.
         :param pulumi.Input[str] child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
@@ -138,7 +138,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> pulumi.Output[Optional[float]]:
+    def cen_owner_id(self) -> pulumi.Output[Optional[int]]:
         """
         The account ID to which the CEN instance belongs.
         """
@@ -154,7 +154,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="childInstanceOwnerId")
-    def child_instance_owner_id(self) -> pulumi.Output[float]:
+    def child_instance_owner_id(self) -> pulumi.Output[int]:
         """
         The uid of the child instance. Only used when attach a child instance of other account.
         """

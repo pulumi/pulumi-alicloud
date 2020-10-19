@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -18,7 +18,7 @@ class ProviderAssumeRoleArgs:
     def __init__(__self__, *,
                  role_arn: pulumi.Input[str],
                  policy: Optional[pulumi.Input[str]] = None,
-                 session_expiration: Optional[pulumi.Input[float]] = None,
+                 session_expiration: Optional[pulumi.Input[int]] = None,
                  session_name: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "role_arn", role_arn)
         if policy is not None:
@@ -48,11 +48,11 @@ class ProviderAssumeRoleArgs:
 
     @property
     @pulumi.getter(name="sessionExpiration")
-    def session_expiration(self) -> Optional[pulumi.Input[float]]:
+    def session_expiration(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "session_expiration")
 
     @session_expiration.setter
-    def session_expiration(self, value: Optional[pulumi.Input[float]]):
+    def session_expiration(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "session_expiration", value)
 
     @property

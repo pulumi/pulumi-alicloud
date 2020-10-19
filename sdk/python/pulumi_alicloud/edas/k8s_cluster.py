@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['K8sCluster']
@@ -77,12 +77,12 @@ class K8sCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_import_status: Optional[pulumi.Input[float]] = None,
+            cluster_import_status: Optional[pulumi.Input[int]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
-            cluster_type: Optional[pulumi.Input[float]] = None,
+            cluster_type: Optional[pulumi.Input[int]] = None,
             cs_cluster_id: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None,
-            network_mode: Optional[pulumi.Input[float]] = None,
+            network_mode: Optional[pulumi.Input[int]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'K8sCluster':
         """
         Get an existing K8sCluster resource's state with the given name, id, and optional extra
@@ -91,16 +91,16 @@ class K8sCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] cluster_import_status: The import status of cluster: 
+        :param pulumi.Input[int] cluster_import_status: The import status of cluster: 
                `1`: success.
                `2`: failed.
                `3`: importing.
                `4`: deleted.
         :param pulumi.Input[str] cluster_name: The name of the cluster that you want to create.
-        :param pulumi.Input[float] cluster_type: The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
+        :param pulumi.Input[int] cluster_type: The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
         :param pulumi.Input[str] cs_cluster_id: The ID of the alicloud container service kubernetes cluster that you want to import.
         :param pulumi.Input[str] namespace_id: The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
-        :param pulumi.Input[float] network_mode: The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
+        :param pulumi.Input[int] network_mode: The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
         :param pulumi.Input[str] vpc_id: The ID of the Virtual Private Cloud (VPC) for the cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -118,7 +118,7 @@ class K8sCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterImportStatus")
-    def cluster_import_status(self) -> pulumi.Output[float]:
+    def cluster_import_status(self) -> pulumi.Output[int]:
         """
         The import status of cluster: 
         `1`: success.
@@ -138,7 +138,7 @@ class K8sCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> pulumi.Output[float]:
+    def cluster_type(self) -> pulumi.Output[int]:
         """
         The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
         """
@@ -162,7 +162,7 @@ class K8sCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkMode")
-    def network_mode(self) -> pulumi.Output[float]:
+    def network_mode(self) -> pulumi.Output[int]:
         """
         The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
         """

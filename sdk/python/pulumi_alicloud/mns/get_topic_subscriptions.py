@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -55,7 +55,7 @@ class GetTopicSubscriptionsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of subscription names.
         """
@@ -68,7 +68,7 @@ class GetTopicSubscriptionsResult:
 
     @property
     @pulumi.getter
-    def subscriptions(self) -> List['outputs.GetTopicSubscriptionsSubscriptionResult']:
+    def subscriptions(self) -> Sequence['outputs.GetTopicSubscriptionsSubscriptionResult']:
         """
         A list of subscriptions. Each element contains the following attributes:
         """

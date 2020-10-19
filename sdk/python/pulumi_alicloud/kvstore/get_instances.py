@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -68,7 +68,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of RKV instance IDs.
         """
@@ -91,7 +91,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         """
         A list of RKV instances. Its every element contains the following attributes:
         """
@@ -104,7 +104,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         return pulumi.get(self, "names")
 
     @property
@@ -162,7 +162,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             vswitch_id=self.vswitch_id)
 
 
-def get_instances(ids: Optional[List[str]] = None,
+def get_instances(ids: Optional[Sequence[str]] = None,
                   instance_class: Optional[str] = None,
                   instance_type: Optional[str] = None,
                   name_regex: Optional[str] = None,
@@ -177,7 +177,7 @@ def get_instances(ids: Optional[List[str]] = None,
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
 
-    :param List[str] ids: A list of RKV instance IDs.
+    :param Sequence[str] ids: A list of RKV instance IDs.
     :param str instance_class: Type of the applied ApsaraDB for Redis instance.
            For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
     :param str instance_type: Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.

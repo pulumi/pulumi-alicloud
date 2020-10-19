@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -98,23 +98,23 @@ class OpenApiImageCacheImageRegistryCredential(dict):
 class GetImageCachesCachResult(dict):
     def __init__(__self__, *,
                  container_group_id: str,
-                 events: List['outputs.GetImageCachesCachEventResult'],
+                 events: Sequence['outputs.GetImageCachesCachEventResult'],
                  expire_date_time: str,
                  id: str,
                  image_cache_id: str,
                  image_cache_name: str,
-                 images: List[str],
+                 images: Sequence[str],
                  progress: str,
                  snapshot_id: str,
                  status: str):
         """
         :param str container_group_id: The id of container group.
-        :param List['GetImageCachesCachEventArgs'] events: Image cache pulls image event information.
+        :param Sequence['GetImageCachesCachEventArgs'] events: Image cache pulls image event information.
         :param str expire_date_time: The time of expired.
         :param str id: The ID of the ECI Image Cache.
         :param str image_cache_id: The id of the ECI Image Cache.
         :param str image_cache_name: The name of ECI Image Cache.
-        :param List[str] images: The list of cached images.
+        :param Sequence[str] images: The list of cached images.
         :param str progress: The progress of ECI Image Cache.
         :param str snapshot_id: The id of snapshot.
         :param str status: The status of ECI Image Cache.
@@ -140,7 +140,7 @@ class GetImageCachesCachResult(dict):
 
     @property
     @pulumi.getter
-    def events(self) -> List['outputs.GetImageCachesCachEventResult']:
+    def events(self) -> Sequence['outputs.GetImageCachesCachEventResult']:
         """
         Image cache pulls image event information.
         """
@@ -180,7 +180,7 @@ class GetImageCachesCachResult(dict):
 
     @property
     @pulumi.getter
-    def images(self) -> List[str]:
+    def images(self) -> Sequence[str]:
         """
         The list of cached images.
         """
@@ -214,14 +214,14 @@ class GetImageCachesCachResult(dict):
 @pulumi.output_type
 class GetImageCachesCachEventResult(dict):
     def __init__(__self__, *,
-                 count: float,
+                 count: int,
                  first_timestamp: str,
                  last_timestamp: str,
                  message: str,
                  name: str,
                  type: str):
         """
-        :param float count: Number of events.
+        :param int count: Number of events.
         :param str first_timestamp: Start time.
         :param str last_timestamp: End time.
         :param str name: The name of event.
@@ -236,7 +236,7 @@ class GetImageCachesCachEventResult(dict):
 
     @property
     @pulumi.getter
-    def count(self) -> float:
+    def count(self) -> int:
         """
         Number of events.
         """

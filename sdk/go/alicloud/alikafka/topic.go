@@ -29,6 +29,7 @@ import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/alikafka"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
 //
 // func main() {
@@ -64,6 +65,11 @@ import (
 // 		})
 // 		if err != nil {
 // 			return err
+// 		}
+// 		cfg := config.New(ctx, "")
+// 		topic := "alikafkaTopicName"
+// 		if param := cfg.Get("topic"); param != "" {
+// 			topic = param
 // 		}
 // 		_, err = alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
 // 			InstanceId:   defaultInstance.ID(),

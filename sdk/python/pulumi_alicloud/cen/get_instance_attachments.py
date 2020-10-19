@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -48,7 +48,7 @@ class GetInstanceAttachmentsResult:
 
     @property
     @pulumi.getter
-    def attachments(self) -> List['outputs.GetInstanceAttachmentsAttachmentResult']:
+    def attachments(self) -> Sequence['outputs.GetInstanceAttachmentsAttachmentResult']:
         """
         A list of CEN Instance Attachments. Each element contains the following attributes:
         """
@@ -80,7 +80,7 @@ class GetInstanceAttachmentsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of CEN Instance Attachment IDs.
         """

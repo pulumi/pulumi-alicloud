@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['VpcAccess']
@@ -17,7 +17,7 @@ class VpcAccess(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -28,7 +28,7 @@ class VpcAccess(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of the instance in VPC (ECS/Server Load Balance).
         :param pulumi.Input[str] name: The name of the vpc authorization.
-        :param pulumi.Input[float] port: ID of the port corresponding to the instance.
+        :param pulumi.Input[int] port: ID of the port corresponding to the instance.
         :param pulumi.Input[str] vpc_id: The vpc id of the vpc authorization.
         """
         if __name__ is not None:
@@ -70,7 +70,7 @@ class VpcAccess(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'VpcAccess':
         """
         Get an existing VpcAccess resource's state with the given name, id, and optional extra
@@ -81,7 +81,7 @@ class VpcAccess(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of the instance in VPC (ECS/Server Load Balance).
         :param pulumi.Input[str] name: The name of the vpc authorization.
-        :param pulumi.Input[float] port: ID of the port corresponding to the instance.
+        :param pulumi.Input[int] port: ID of the port corresponding to the instance.
         :param pulumi.Input[str] vpc_id: The vpc id of the vpc authorization.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -112,7 +112,7 @@ class VpcAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         ID of the port corresponding to the instance.
         """

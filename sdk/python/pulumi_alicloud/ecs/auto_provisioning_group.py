@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,7 +22,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
                  default_target_capacity_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  excess_capacity_termination_policy: Optional[pulumi.Input[str]] = None,
-                 launch_template_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AutoProvisioningGroupLaunchTemplateConfigArgs']]]]] = None,
+                 launch_template_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutoProvisioningGroupLaunchTemplateConfigArgs']]]]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  max_spot_price: Optional[pulumi.Input[float]] = None,
@@ -30,7 +30,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
                  pay_as_you_go_target_capacity: Optional[pulumi.Input[str]] = None,
                  spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
                  spot_instance_interruption_behavior: Optional[pulumi.Input[str]] = None,
-                 spot_instance_pools_to_use_count: Optional[pulumi.Input[float]] = None,
+                 spot_instance_pools_to_use_count: Optional[pulumi.Input[int]] = None,
                  spot_target_capacity: Optional[pulumi.Input[str]] = None,
                  terminate_instances: Optional[pulumi.Input[bool]] = None,
                  terminate_instances_with_expiration: Optional[pulumi.Input[bool]] = None,
@@ -96,7 +96,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         :param pulumi.Input[str] default_target_capacity_type: The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
         :param pulumi.Input[str] description: The description of the auto provisioning group.
         :param pulumi.Input[str] excess_capacity_termination_policy: The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AutoProvisioningGroupLaunchTemplateConfigArgs']]]] launch_template_configs: DataDisk mappings to attach to ecs instance. See Block config below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutoProvisioningGroupLaunchTemplateConfigArgs']]]] launch_template_configs: DataDisk mappings to attach to ecs instance. See Block config below for details.
         :param pulumi.Input[str] launch_template_id: The ID of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[str] launch_template_version: The version of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[float] max_spot_price: The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
@@ -104,7 +104,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         :param pulumi.Input[str] pay_as_you_go_target_capacity: The target capacity of pay-as-you-go instances in the auto provisioning group.
         :param pulumi.Input[str] spot_allocation_strategy: The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
         :param pulumi.Input[str] spot_instance_interruption_behavior: The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
-        :param pulumi.Input[float] spot_instance_pools_to_use_count: This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
+        :param pulumi.Input[int] spot_instance_pools_to_use_count: This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         :param pulumi.Input[str] spot_target_capacity: The target capacity of preemptible instances in the auto provisioning group.
         :param pulumi.Input[bool] terminate_instances: Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
         :param pulumi.Input[bool] terminate_instances_with_expiration: The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
@@ -170,7 +170,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
             default_target_capacity_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             excess_capacity_termination_policy: Optional[pulumi.Input[str]] = None,
-            launch_template_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AutoProvisioningGroupLaunchTemplateConfigArgs']]]]] = None,
+            launch_template_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutoProvisioningGroupLaunchTemplateConfigArgs']]]]] = None,
             launch_template_id: Optional[pulumi.Input[str]] = None,
             launch_template_version: Optional[pulumi.Input[str]] = None,
             max_spot_price: Optional[pulumi.Input[float]] = None,
@@ -178,7 +178,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
             pay_as_you_go_target_capacity: Optional[pulumi.Input[str]] = None,
             spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
             spot_instance_interruption_behavior: Optional[pulumi.Input[str]] = None,
-            spot_instance_pools_to_use_count: Optional[pulumi.Input[float]] = None,
+            spot_instance_pools_to_use_count: Optional[pulumi.Input[int]] = None,
             spot_target_capacity: Optional[pulumi.Input[str]] = None,
             terminate_instances: Optional[pulumi.Input[bool]] = None,
             terminate_instances_with_expiration: Optional[pulumi.Input[bool]] = None,
@@ -197,7 +197,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         :param pulumi.Input[str] default_target_capacity_type: The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
         :param pulumi.Input[str] description: The description of the auto provisioning group.
         :param pulumi.Input[str] excess_capacity_termination_policy: The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AutoProvisioningGroupLaunchTemplateConfigArgs']]]] launch_template_configs: DataDisk mappings to attach to ecs instance. See Block config below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutoProvisioningGroupLaunchTemplateConfigArgs']]]] launch_template_configs: DataDisk mappings to attach to ecs instance. See Block config below for details.
         :param pulumi.Input[str] launch_template_id: The ID of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[str] launch_template_version: The version of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[float] max_spot_price: The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
@@ -205,7 +205,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         :param pulumi.Input[str] pay_as_you_go_target_capacity: The target capacity of pay-as-you-go instances in the auto provisioning group.
         :param pulumi.Input[str] spot_allocation_strategy: The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
         :param pulumi.Input[str] spot_instance_interruption_behavior: The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
-        :param pulumi.Input[float] spot_instance_pools_to_use_count: This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
+        :param pulumi.Input[int] spot_instance_pools_to_use_count: This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         :param pulumi.Input[str] spot_target_capacity: The target capacity of preemptible instances in the auto provisioning group.
         :param pulumi.Input[bool] terminate_instances: Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
         :param pulumi.Input[bool] terminate_instances_with_expiration: The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
@@ -281,7 +281,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launchTemplateConfigs")
-    def launch_template_configs(self) -> pulumi.Output[List['outputs.AutoProvisioningGroupLaunchTemplateConfig']]:
+    def launch_template_configs(self) -> pulumi.Output[Sequence['outputs.AutoProvisioningGroupLaunchTemplateConfig']]:
         """
         DataDisk mappings to attach to ecs instance. See Block config below for details.
         """
@@ -345,7 +345,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotInstancePoolsToUseCount")
-    def spot_instance_pools_to_use_count(self) -> pulumi.Output[Optional[float]]:
+    def spot_instance_pools_to_use_count(self) -> pulumi.Output[Optional[int]]:
         """
         This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['LoadBalancer']
@@ -18,14 +18,14 @@ class LoadBalancer(pulumi.CustomResource):
                  address: Optional[pulumi.Input[str]] = None,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
-                 bandwidth: Optional[pulumi.Input[float]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
                  delete_protection: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet: Optional[pulumi.Input[bool]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  master_zone_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  slave_zone_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
@@ -82,7 +82,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
                - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
                - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
-        :param pulumi.Input[float] bandwidth: Valid
+        :param pulumi.Input[int] bandwidth: Valid
                value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[str] instance_charge_type: The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
@@ -91,7 +91,7 @@ class LoadBalancer(pulumi.CustomResource):
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-        :param pulumi.Input[float] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
@@ -149,14 +149,14 @@ class LoadBalancer(pulumi.CustomResource):
             address: Optional[pulumi.Input[str]] = None,
             address_ip_version: Optional[pulumi.Input[str]] = None,
             address_type: Optional[pulumi.Input[str]] = None,
-            bandwidth: Optional[pulumi.Input[float]] = None,
+            bandwidth: Optional[pulumi.Input[int]] = None,
             delete_protection: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             internet: Optional[pulumi.Input[bool]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
             master_zone_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             slave_zone_id: Optional[pulumi.Input[str]] = None,
             specification: Optional[pulumi.Input[str]] = None,
@@ -174,7 +174,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
                - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
                - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
-        :param pulumi.Input[float] bandwidth: Valid
+        :param pulumi.Input[int] bandwidth: Valid
                value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[str] instance_charge_type: The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
@@ -183,7 +183,7 @@ class LoadBalancer(pulumi.CustomResource):
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-        :param pulumi.Input[float] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
@@ -242,7 +242,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> pulumi.Output[Optional[float]]:
+    def bandwidth(self) -> pulumi.Output[Optional[int]]:
         """
         Valid
         value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
@@ -298,7 +298,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
         """

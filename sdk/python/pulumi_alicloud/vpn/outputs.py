@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -24,7 +24,7 @@ class ConnectionIkeConfig(dict):
     def __init__(__self__, *,
                  ike_auth_alg: Optional[str] = None,
                  ike_enc_alg: Optional[str] = None,
-                 ike_lifetime: Optional[float] = None,
+                 ike_lifetime: Optional[int] = None,
                  ike_local_id: Optional[str] = None,
                  ike_mode: Optional[str] = None,
                  ike_pfs: Optional[str] = None,
@@ -34,7 +34,7 @@ class ConnectionIkeConfig(dict):
         """
         :param str ike_auth_alg: The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
         :param str ike_enc_alg: The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
-        :param float ike_lifetime: The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+        :param int ike_lifetime: The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
         :param str ike_local_id: The identification of the VPN gateway.
         :param str ike_mode: The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
         :param str ike_pfs: The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
@@ -79,7 +79,7 @@ class ConnectionIkeConfig(dict):
 
     @property
     @pulumi.getter(name="ikeLifetime")
-    def ike_lifetime(self) -> Optional[float]:
+    def ike_lifetime(self) -> Optional[int]:
         """
         The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
         """
@@ -142,12 +142,12 @@ class ConnectionIpsecConfig(dict):
     def __init__(__self__, *,
                  ipsec_auth_alg: Optional[str] = None,
                  ipsec_enc_alg: Optional[str] = None,
-                 ipsec_lifetime: Optional[float] = None,
+                 ipsec_lifetime: Optional[int] = None,
                  ipsec_pfs: Optional[str] = None):
         """
         :param str ipsec_auth_alg: The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
         :param str ipsec_enc_alg: The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
-        :param float ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+        :param int ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
         :param str ipsec_pfs: The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
         """
         if ipsec_auth_alg is not None:
@@ -177,7 +177,7 @@ class ConnectionIpsecConfig(dict):
 
     @property
     @pulumi.getter(name="ipsecLifetime")
-    def ipsec_lifetime(self) -> Optional[float]:
+    def ipsec_lifetime(self) -> Optional[int]:
         """
         The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
         """
@@ -207,8 +207,8 @@ class GetConnectionsConnectionResult(dict):
                  remote_subnet: str,
                  status: str,
                  vpn_gateway_id: str,
-                 ike_configs: Optional[List['outputs.GetConnectionsConnectionIkeConfigResult']] = None,
-                 ipsec_configs: Optional[List['outputs.GetConnectionsConnectionIpsecConfigResult']] = None):
+                 ike_configs: Optional[Sequence['outputs.GetConnectionsConnectionIkeConfigResult']] = None,
+                 ipsec_configs: Optional[Sequence['outputs.GetConnectionsConnectionIpsecConfigResult']] = None):
         """
         :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.
         :param str id: ID of the VPN connection.
@@ -217,8 +217,8 @@ class GetConnectionsConnectionResult(dict):
         :param str remote_subnet: The remote subnet of the VPN connection.
         :param str status: The status of the VPN connection, valid value:ike_sa_not_established, ike_sa_established, ipsec_sa_not_established, ipsec_sa_established.
         :param str vpn_gateway_id: Use the VPN gateway ID as the search key.
-        :param List['GetConnectionsConnectionIkeConfigArgs'] ike_configs: The configurations of phase-one negotiation.
-        :param List['GetConnectionsConnectionIpsecConfigArgs'] ipsec_configs: The configurations of phase-two negotiation.
+        :param Sequence['GetConnectionsConnectionIkeConfigArgs'] ike_configs: The configurations of phase-one negotiation.
+        :param Sequence['GetConnectionsConnectionIpsecConfigArgs'] ipsec_configs: The configurations of phase-two negotiation.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
@@ -302,7 +302,7 @@ class GetConnectionsConnectionResult(dict):
 
     @property
     @pulumi.getter(name="ikeConfigs")
-    def ike_configs(self) -> Optional[List['outputs.GetConnectionsConnectionIkeConfigResult']]:
+    def ike_configs(self) -> Optional[Sequence['outputs.GetConnectionsConnectionIkeConfigResult']]:
         """
         The configurations of phase-one negotiation.
         """
@@ -310,7 +310,7 @@ class GetConnectionsConnectionResult(dict):
 
     @property
     @pulumi.getter(name="ipsecConfigs")
-    def ipsec_configs(self) -> Optional[List['outputs.GetConnectionsConnectionIpsecConfigResult']]:
+    def ipsec_configs(self) -> Optional[Sequence['outputs.GetConnectionsConnectionIpsecConfigResult']]:
         """
         The configurations of phase-two negotiation.
         """
@@ -322,7 +322,7 @@ class GetConnectionsConnectionIkeConfigResult(dict):
     def __init__(__self__, *,
                  ike_auth_alg: Optional[str] = None,
                  ike_enc_alg: Optional[str] = None,
-                 ike_lifetime: Optional[float] = None,
+                 ike_lifetime: Optional[int] = None,
                  ike_local_id: Optional[str] = None,
                  ike_mode: Optional[str] = None,
                  ike_pfs: Optional[str] = None,
@@ -332,7 +332,7 @@ class GetConnectionsConnectionIkeConfigResult(dict):
         """
         :param str ike_auth_alg: The authentication algorithm of phase-one negotiation.
         :param str ike_enc_alg: The encryption algorithm of phase-one negotiation.
-        :param float ike_lifetime: The SA lifecycle as the result of phase-one negotiation.
+        :param int ike_lifetime: The SA lifecycle as the result of phase-one negotiation.
         :param str ike_local_id: The identification of the VPN gateway.
         :param str ike_mode: The negotiation mode of IKE phase-one.
         :param str ike_pfs: The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
@@ -377,7 +377,7 @@ class GetConnectionsConnectionIkeConfigResult(dict):
 
     @property
     @pulumi.getter(name="ikeLifetime")
-    def ike_lifetime(self) -> Optional[float]:
+    def ike_lifetime(self) -> Optional[int]:
         """
         The SA lifecycle as the result of phase-one negotiation.
         """
@@ -437,12 +437,12 @@ class GetConnectionsConnectionIpsecConfigResult(dict):
     def __init__(__self__, *,
                  ipsec_auth_alg: Optional[str] = None,
                  ipsec_enc_alg: Optional[str] = None,
-                 ipsec_lifetime: Optional[float] = None,
+                 ipsec_lifetime: Optional[int] = None,
                  ipsec_pfs: Optional[str] = None):
         """
         :param str ipsec_auth_alg: The authentication algorithm of phase-two negotiation.
         :param str ipsec_enc_alg: The encryption algorithm of phase-two negotiation.
-        :param float ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation.
+        :param int ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation.
         :param str ipsec_pfs: The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
         """
         if ipsec_auth_alg is not None:
@@ -472,7 +472,7 @@ class GetConnectionsConnectionIpsecConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipsecLifetime")
-    def ipsec_lifetime(self) -> Optional[float]:
+    def ipsec_lifetime(self) -> Optional[int]:
         """
         The SA lifecycle as the result of phase-two negotiation.
         """
@@ -563,7 +563,7 @@ class GetGatewaysGatewayResult(dict):
                  internet_ip: str,
                  name: str,
                  specification: str,
-                 ssl_connections: float,
+                 ssl_connections: int,
                  status: str,
                  vpc_id: str):
         """
@@ -578,7 +578,7 @@ class GetGatewaysGatewayResult(dict):
         :param str internet_ip: The internet ip of the VPN.
         :param str name: The name of the VPN.
         :param str specification: The Specification of the VPN
-        :param float ssl_connections: Total count of ssl vpn connections.
+        :param int ssl_connections: Total count of ssl vpn connections.
         :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
         :param str vpc_id: Use the VPC ID as the search key.
         """
@@ -687,7 +687,7 @@ class GetGatewaysGatewayResult(dict):
 
     @property
     @pulumi.getter(name="sslConnections")
-    def ssl_connections(self) -> float:
+    def ssl_connections(self) -> int:
         """
         Total count of ssl vpn connections.
         """

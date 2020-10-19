@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -101,7 +101,7 @@ class GetExecutionsResult:
 
     @property
     @pulumi.getter
-    def executions(self) -> List['outputs.GetExecutionsExecutionResult']:
+    def executions(self) -> Sequence['outputs.GetExecutionsExecutionResult']:
         """
         A list of OOS Executions. Each element contains the following attributes:
         """
@@ -117,7 +117,7 @@ class GetExecutionsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of OOS Execution ids.
         """
@@ -215,7 +215,7 @@ def get_executions(category: Optional[str] = None,
                    end_date: Optional[str] = None,
                    end_date_after: Optional[str] = None,
                    executed_by: Optional[str] = None,
-                   ids: Optional[List[str]] = None,
+                   ids: Optional[Sequence[str]] = None,
                    include_child_execution: Optional[bool] = None,
                    mode: Optional[str] = None,
                    output_file: Optional[str] = None,
@@ -251,7 +251,7 @@ def get_executions(category: Optional[str] = None,
     :param str end_date: The time when the execution was ended.
     :param str end_date_after: Execution whose end time is less than or equal to the specified time.
     :param str executed_by: The user who execute the template.
-    :param List[str] ids: A list of OOS Execution ids.
+    :param Sequence[str] ids: A list of OOS Execution ids.
     :param bool include_child_execution: Whether to include sub-execution.
     :param str mode: The mode of OOS Execution. Valid: `Automatic`, `Debug`.
     :param str parent_execution_id: The id of parent OOS Execution.

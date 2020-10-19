@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Order']
@@ -17,12 +17,12 @@ class Order(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  coupon_id: Optional[pulumi.Input[str]] = None,
-                 duration: Optional[pulumi.Input[float]] = None,
+                 duration: Optional[pulumi.Input[int]] = None,
                  package_version: Optional[pulumi.Input[str]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  product_code: Optional[pulumi.Input[str]] = None,
-                 quantity: Optional[pulumi.Input[float]] = None,
+                 quantity: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -32,12 +32,12 @@ class Order(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] components: Service providers customize additional components.
         :param pulumi.Input[str] coupon_id: The coupon id of the market product.
-        :param pulumi.Input[float] duration: The number of purchase cycles.
+        :param pulumi.Input[int] duration: The number of purchase cycles.
         :param pulumi.Input[str] package_version: The package version of the market product.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         :param pulumi.Input[str] pricing_cycle: The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
         :param pulumi.Input[str] product_code: The product_code of market place product.
-        :param pulumi.Input[float] quantity: The quantity of the market product will be purchased.
+        :param pulumi.Input[int] quantity: The quantity of the market product will be purchased.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -82,12 +82,12 @@ class Order(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             coupon_id: Optional[pulumi.Input[str]] = None,
-            duration: Optional[pulumi.Input[float]] = None,
+            duration: Optional[pulumi.Input[int]] = None,
             package_version: Optional[pulumi.Input[str]] = None,
             pay_type: Optional[pulumi.Input[str]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
             product_code: Optional[pulumi.Input[str]] = None,
-            quantity: Optional[pulumi.Input[float]] = None) -> 'Order':
+            quantity: Optional[pulumi.Input[int]] = None) -> 'Order':
         """
         Get an existing Order resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -97,12 +97,12 @@ class Order(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] components: Service providers customize additional components.
         :param pulumi.Input[str] coupon_id: The coupon id of the market product.
-        :param pulumi.Input[float] duration: The number of purchase cycles.
+        :param pulumi.Input[int] duration: The number of purchase cycles.
         :param pulumi.Input[str] package_version: The package version of the market product.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         :param pulumi.Input[str] pricing_cycle: The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
         :param pulumi.Input[str] product_code: The product_code of market place product.
-        :param pulumi.Input[float] quantity: The quantity of the market product will be purchased.
+        :param pulumi.Input[int] quantity: The quantity of the market product will be purchased.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -136,7 +136,7 @@ class Order(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def duration(self) -> pulumi.Output[Optional[float]]:
+    def duration(self) -> pulumi.Output[Optional[int]]:
         """
         The number of purchase cycles.
         """
@@ -176,7 +176,7 @@ class Order(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def quantity(self) -> pulumi.Output[Optional[float]]:
+    def quantity(self) -> pulumi.Output[Optional[int]]:
         """
         The quantity of the market product will be purchased.
         """

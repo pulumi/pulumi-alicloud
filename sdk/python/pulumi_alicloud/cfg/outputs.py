@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -22,15 +22,15 @@ class GetConfigurationRecordersRecorderResult(dict):
                  account_id: str,
                  id: str,
                  organization_enable_status: str,
-                 organization_master_id: float,
-                 resource_types: List[str],
+                 organization_master_id: int,
+                 resource_types: Sequence[str],
                  status: str):
         """
         :param str id: The ID of the Config Configuration Recorder. Value as the `account_id`.
                * `account_id`- The ID of the Alicloud account.
         :param str organization_enable_status: Status of resource monitoring.
-        :param float organization_master_id: The ID of the Enterprise management account.
-        :param List[str] resource_types: A list of resource types to be monitored.
+        :param int organization_master_id: The ID of the Enterprise management account.
+        :param Sequence[str] resource_types: A list of resource types to be monitored.
         :param str status: Enterprise version configuration audit enabled status.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -64,7 +64,7 @@ class GetConfigurationRecordersRecorderResult(dict):
 
     @property
     @pulumi.getter(name="organizationMasterId")
-    def organization_master_id(self) -> float:
+    def organization_master_id(self) -> int:
         """
         The ID of the Enterprise management account.
         """
@@ -72,7 +72,7 @@ class GetConfigurationRecordersRecorderResult(dict):
 
     @property
     @pulumi.getter(name="resourceTypes")
-    def resource_types(self) -> List[str]:
+    def resource_types(self) -> Sequence[str]:
         """
         A list of resource types to be monitored.
         """
@@ -98,7 +98,7 @@ class GetDeliveryChannelsChannelResult(dict):
                  delivery_channel_type: str,
                  description: str,
                  id: str,
-                 status: float):
+                 status: int):
         """
         :param str delivery_channel_assume_role_arn: The Alibaba Cloud Resource Name (ARN) of the role assumed by delivery method.
         :param str delivery_channel_condition: The rule attached to the delivery method. This parameter is applicable only to delivery methods of the Message Service (MNS) type.
@@ -108,7 +108,7 @@ class GetDeliveryChannelsChannelResult(dict):
         :param str delivery_channel_type: The type of the delivery method.
         :param str description: The description of the delivery method.
         :param str id: The ID of the Config Delivery Channel.
-        :param float status: The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
+        :param int status: The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
         """
         pulumi.set(__self__, "delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
         pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
@@ -186,7 +186,7 @@ class GetDeliveryChannelsChannelResult(dict):
 
     @property
     @pulumi.getter
-    def status(self) -> float:
+    def status(self) -> int:
         """
         The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
         """
@@ -196,18 +196,18 @@ class GetDeliveryChannelsChannelResult(dict):
 @pulumi.output_type
 class GetRulesRuleResult(dict):
     def __init__(__self__, *,
-                 account_id: float,
+                 account_id: int,
                  config_rule_arn: str,
                  config_rule_id: str,
                  config_rule_state: str,
-                 create_timestamp: float,
+                 create_timestamp: int,
                  description: str,
                  id: str,
                  input_parameters: Mapping[str, Any],
-                 modified_timestamp: float,
-                 risk_level: float,
+                 modified_timestamp: int,
+                 risk_level: int,
                  rule_name: str,
-                 source_details: List['outputs.GetRulesRuleSourceDetailResult'],
+                 source_details: Sequence['outputs.GetRulesRuleSourceDetailResult'],
                  source_identifier: str,
                  source_owner: str):
         """
@@ -224,7 +224,7 @@ class GetRulesRuleResult(dict):
                * `risk_level`- The risk level of the Config Rule.
                * `rule_name`- The name of the Config Rule.
                * `source_details`- The source details of the Config Rule.
-        :param float risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+        :param int risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "config_rule_arn", config_rule_arn)
@@ -243,7 +243,7 @@ class GetRulesRuleResult(dict):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> float:
+    def account_id(self) -> int:
         return pulumi.get(self, "account_id")
 
     @property
@@ -266,7 +266,7 @@ class GetRulesRuleResult(dict):
 
     @property
     @pulumi.getter(name="createTimestamp")
-    def create_timestamp(self) -> float:
+    def create_timestamp(self) -> int:
         return pulumi.get(self, "create_timestamp")
 
     @property
@@ -300,12 +300,12 @@ class GetRulesRuleResult(dict):
 
     @property
     @pulumi.getter(name="modifiedTimestamp")
-    def modified_timestamp(self) -> float:
+    def modified_timestamp(self) -> int:
         return pulumi.get(self, "modified_timestamp")
 
     @property
     @pulumi.getter(name="riskLevel")
-    def risk_level(self) -> float:
+    def risk_level(self) -> int:
         """
         The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         """
@@ -318,7 +318,7 @@ class GetRulesRuleResult(dict):
 
     @property
     @pulumi.getter(name="sourceDetails")
-    def source_details(self) -> List['outputs.GetRulesRuleSourceDetailResult']:
+    def source_details(self) -> Sequence['outputs.GetRulesRuleSourceDetailResult']:
         return pulumi.get(self, "source_details")
 
     @property

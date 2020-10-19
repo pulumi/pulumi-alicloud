@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -42,7 +42,7 @@ class GetAclsResult:
 
     @property
     @pulumi.getter
-    def acls(self) -> List['outputs.GetAclsAclResult']:
+    def acls(self) -> Sequence['outputs.GetAclsAclResult']:
         """
         A list of Sag Acls. Each element contains the following attributes:
         """
@@ -58,7 +58,7 @@ class GetAclsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of Sag Acl IDs.
         """
@@ -71,7 +71,7 @@ class GetAclsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of Sag Acls names.
         """
@@ -97,7 +97,7 @@ class AwaitableGetAclsResult(GetAclsResult):
             output_file=self.output_file)
 
 
-def get_acls(ids: Optional[List[str]] = None,
+def get_acls(ids: Optional[Sequence[str]] = None,
              name_regex: Optional[str] = None,
              output_file: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclsResult:
@@ -122,7 +122,7 @@ def get_acls(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of Sag Acl IDs.
+    :param Sequence[str] ids: A list of Sag Acl IDs.
     :param str name_regex: A regex string to filter Sag Acl instances by name.
     """
     __args__ = dict()

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -42,8 +42,8 @@ class GetInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
-        if status and not isinstance(status, float):
-            raise TypeError("Expected argument 'status' to be a float")
+        if status and not isinstance(status, int):
+            raise TypeError("Expected argument 'status' to be a int")
         pulumi.set(__self__, "status", status)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
@@ -64,7 +64,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of instance IDs.
         """
@@ -72,7 +72,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         """
         A list of instances. Each element contains the following attributes:
         """
@@ -85,7 +85,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of instance names.
         """
@@ -98,7 +98,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[float]:
+    def status(self) -> Optional[int]:
         """
         The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
         """
@@ -131,10 +131,10 @@ class AwaitableGetInstancesResult(GetInstancesResult):
 
 
 def get_instances(enable_details: Optional[bool] = None,
-                  ids: Optional[List[str]] = None,
+                  ids: Optional[Sequence[str]] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
-                  status: Optional[float] = None,
+                  status: Optional[int] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
@@ -161,9 +161,9 @@ def get_instances(enable_details: Optional[bool] = None,
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
-    :param List[str] ids: A list of instance IDs to filter results.
+    :param Sequence[str] ids: A list of instance IDs to filter results.
     :param str name_regex: A regex string to filter results by the instance name.
-    :param float status: The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+    :param int status: The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
     :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
     """
     __args__ = dict()

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Notification']
@@ -16,7 +16,7 @@ class Notification(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  notification_arn: Optional[pulumi.Input[str]] = None,
-                 notification_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 notification_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -70,7 +70,7 @@ class Notification(pulumi.CustomResource):
                * region: the region ID of the scaling group. For more information, see `Regions and zones`
                * account-id: the ID of your account.
                * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
-        :param pulumi.Input[List[pulumi.Input[str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group.
         """
         if __name__ is not None:
@@ -110,7 +110,7 @@ class Notification(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             notification_arn: Optional[pulumi.Input[str]] = None,
-            notification_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            notification_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None) -> 'Notification':
         """
         Get an existing Notification resource's state with the given name, id, and optional extra
@@ -123,7 +123,7 @@ class Notification(pulumi.CustomResource):
                * region: the region ID of the scaling group. For more information, see `Regions and zones`
                * account-id: the ID of your account.
                * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
-        :param pulumi.Input[List[pulumi.Input[str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -148,7 +148,7 @@ class Notification(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationTypes")
-    def notification_types(self) -> pulumi.Output[List[str]]:
+    def notification_types(self) -> pulumi.Output[Sequence[str]]:
         """
         The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         """

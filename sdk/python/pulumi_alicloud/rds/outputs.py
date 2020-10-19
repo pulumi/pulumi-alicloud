@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -71,11 +71,11 @@ class GetInstanceClassesInstanceClassResult(dict):
                  instance_class: str,
                  price: str,
                  storage_range: 'outputs.GetInstanceClassesInstanceClassStorageRangeResult',
-                 zone_ids: List['outputs.GetInstanceClassesInstanceClassZoneIdResult']):
+                 zone_ids: Sequence['outputs.GetInstanceClassesInstanceClassZoneIdResult']):
         """
         :param str instance_class: DB Instance available class.
         :param 'GetInstanceClassesInstanceClassStorageRangeArgs' storage_range: DB Instance available storage range.
-        :param List['GetInstanceClassesInstanceClassZoneIdArgs'] zone_ids: A list of Zone to launch the DB instance.
+        :param Sequence['GetInstanceClassesInstanceClassZoneIdArgs'] zone_ids: A list of Zone to launch the DB instance.
         """
         pulumi.set(__self__, "instance_class", instance_class)
         pulumi.set(__self__, "price", price)
@@ -105,7 +105,7 @@ class GetInstanceClassesInstanceClassResult(dict):
 
     @property
     @pulumi.getter(name="zoneIds")
-    def zone_ids(self) -> List['outputs.GetInstanceClassesInstanceClassZoneIdResult']:
+    def zone_ids(self) -> Sequence['outputs.GetInstanceClassesInstanceClassZoneIdResult']:
         """
         A list of Zone to launch the DB instance.
         """
@@ -156,10 +156,10 @@ class GetInstanceClassesInstanceClassStorageRangeResult(dict):
 class GetInstanceClassesInstanceClassZoneIdResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 sub_zone_ids: List[str]):
+                 sub_zone_ids: Sequence[str]):
         """
         :param str id: The Zone to launch the DB instance
-        :param List[str] sub_zone_ids: A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
+        :param Sequence[str] sub_zone_ids: A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "sub_zone_ids", sub_zone_ids)
@@ -174,7 +174,7 @@ class GetInstanceClassesInstanceClassZoneIdResult(dict):
 
     @property
     @pulumi.getter(name="subZoneIds")
-    def sub_zone_ids(self) -> List[str]:
+    def sub_zone_ids(self) -> Sequence[str]:
         """
         A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
         """
@@ -187,12 +187,12 @@ class GetInstanceEnginesInstanceEngineResult(dict):
                  category: str,
                  engine: str,
                  engine_version: str,
-                 zone_ids: List['outputs.GetInstanceEnginesInstanceEngineZoneIdResult']):
+                 zone_ids: Sequence['outputs.GetInstanceEnginesInstanceEngineZoneIdResult']):
         """
         :param str category: DB Instance category.
         :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
         :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-        :param List['GetInstanceEnginesInstanceEngineZoneIdArgs'] zone_ids: A list of Zone to launch the DB instance.
+        :param Sequence['GetInstanceEnginesInstanceEngineZoneIdArgs'] zone_ids: A list of Zone to launch the DB instance.
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "engine", engine)
@@ -225,7 +225,7 @@ class GetInstanceEnginesInstanceEngineResult(dict):
 
     @property
     @pulumi.getter(name="zoneIds")
-    def zone_ids(self) -> List['outputs.GetInstanceEnginesInstanceEngineZoneIdResult']:
+    def zone_ids(self) -> Sequence['outputs.GetInstanceEnginesInstanceEngineZoneIdResult']:
         """
         A list of Zone to launch the DB instance.
         """
@@ -236,10 +236,10 @@ class GetInstanceEnginesInstanceEngineResult(dict):
 class GetInstanceEnginesInstanceEngineZoneIdResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 sub_zone_ids: List[str]):
+                 sub_zone_ids: Sequence[str]):
         """
         :param str id: The Zone to launch the DB instance
-        :param List[str] sub_zone_ids: A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
+        :param Sequence[str] sub_zone_ids: A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "sub_zone_ids", sub_zone_ids)
@@ -254,7 +254,7 @@ class GetInstanceEnginesInstanceEngineZoneIdResult(dict):
 
     @property
     @pulumi.getter(name="subZoneIds")
-    def sub_zone_ids(self) -> List[str]:
+    def sub_zone_ids(self) -> Sequence[str]:
         """
         A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
         """
@@ -276,13 +276,13 @@ class GetInstancesInstanceResult(dict):
                  expire_time: str,
                  guard_instance_id: str,
                  id: str,
-                 instance_storage: float,
+                 instance_storage: int,
                  instance_type: str,
                  master_instance_id: str,
                  name: str,
                  net_type: str,
                  port: str,
-                 readonly_instance_ids: List[str],
+                 readonly_instance_ids: Sequence[str],
                  region_id: str,
                  status: str,
                  temp_instance_id: str,
@@ -301,13 +301,13 @@ class GetInstancesInstanceResult(dict):
         :param str expire_time: Expiration time. Pay-As-You-Go instances never expire.
         :param str guard_instance_id: If a disaster recovery instance is attached to the current instance, the ID of the disaster recovery instance applies.
         :param str id: The ID of the RDS instance.
-        :param float instance_storage: (Available in 1.70.3+) User-defined DB instance storage space.
+        :param int instance_storage: (Available in 1.70.3+) User-defined DB instance storage space.
         :param str instance_type: Sizing of the RDS instance.
         :param str master_instance_id: ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
         :param str name: The name of the RDS instance.
         :param str net_type: `Internet` for public network or `Intranet` for private network.
         :param str port: (Available in 1.70.3+) RDS database connection port.
-        :param List[str] readonly_instance_ids: A list of IDs of read-only instances attached to the primary instance.
+        :param Sequence[str] readonly_instance_ids: A list of IDs of read-only instances attached to the primary instance.
         :param str region_id: Region ID the instance belongs to.
         :param str status: Status of the instance.
         :param str temp_instance_id: If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
@@ -437,7 +437,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="instanceStorage")
-    def instance_storage(self) -> float:
+    def instance_storage(self) -> int:
         """
         (Available in 1.70.3+) User-defined DB instance storage space.
         """
@@ -485,7 +485,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="readonlyInstanceIds")
-    def readonly_instance_ids(self) -> List[str]:
+    def readonly_instance_ids(self) -> Sequence[str]:
         """
         A list of IDs of read-only instances attached to the primary instance.
         """
@@ -536,10 +536,10 @@ class GetInstancesInstanceResult(dict):
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 multi_zone_ids: List[str]):
+                 multi_zone_ids: Sequence[str]):
         """
         :param str id: ID of the zone.
-        :param List[str] multi_zone_ids: A list of zone ids in which the multi zone.
+        :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
@@ -554,7 +554,7 @@ class GetZonesZoneResult(dict):
 
     @property
     @pulumi.getter(name="multiZoneIds")
-    def multi_zone_ids(self) -> List[str]:
+    def multi_zone_ids(self) -> Sequence[str]:
         """
         A list of zone ids in which the multi zone.
         """

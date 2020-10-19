@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -42,7 +42,7 @@ class GetCustomerGatewaysResult:
 
     @property
     @pulumi.getter
-    def gateways(self) -> List['outputs.GetCustomerGatewaysGatewayResult']:
+    def gateways(self) -> Sequence['outputs.GetCustomerGatewaysGatewayResult']:
         """
         A list of VPN customer gateways. Each element contains the following attributes:
         """
@@ -58,7 +58,7 @@ class GetCustomerGatewaysResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -68,7 +68,7 @@ class GetCustomerGatewaysResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         return pulumi.get(self, "names")
 
     @property
@@ -91,7 +91,7 @@ class AwaitableGetCustomerGatewaysResult(GetCustomerGatewaysResult):
             output_file=self.output_file)
 
 
-def get_customer_gateways(ids: Optional[List[str]] = None,
+def get_customer_gateways(ids: Optional[Sequence[str]] = None,
                           name_regex: Optional[str] = None,
                           output_file: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomerGatewaysResult:
@@ -113,7 +113,7 @@ def get_customer_gateways(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: ID of the VPN customer gateways.
+    :param Sequence[str] ids: ID of the VPN customer gateways.
     :param str name_regex: A regex string of VPN customer gateways name.
     :param str output_file: Save the result to the file.
     """

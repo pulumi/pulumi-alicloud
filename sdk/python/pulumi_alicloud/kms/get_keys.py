@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -55,7 +55,7 @@ class GetKeysResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of KMS key IDs.
         """
@@ -63,7 +63,7 @@ class GetKeysResult:
 
     @property
     @pulumi.getter
-    def keys(self) -> List['outputs.GetKeysKeyResult']:
+    def keys(self) -> Sequence['outputs.GetKeysKeyResult']:
         """
         A list of KMS keys. Each element contains the following attributes:
         """
@@ -98,7 +98,7 @@ class AwaitableGetKeysResult(GetKeysResult):
 
 
 def get_keys(description_regex: Optional[str] = None,
-             ids: Optional[List[str]] = None,
+             ids: Optional[Sequence[str]] = None,
              output_file: Optional[str] = None,
              status: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeysResult:
@@ -118,7 +118,7 @@ def get_keys(description_regex: Optional[str] = None,
 
 
     :param str description_regex: A regex string to filter the results by the KMS key description.
-    :param List[str] ids: A list of KMS key IDs.
+    :param Sequence[str] ids: A list of KMS key IDs.
     :param str status: Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
     """
     __args__ = dict()

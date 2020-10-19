@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -84,11 +84,11 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
 @pulumi.input_type
 class DedicatedHostNetworkAttributeArgs:
     def __init__(__self__, *,
-                 slb_udp_timeout: Optional[pulumi.Input[float]] = None,
-                 udp_timeout: Optional[pulumi.Input[float]] = None):
+                 slb_udp_timeout: Optional[pulumi.Input[int]] = None,
+                 udp_timeout: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] slb_udp_timeout: The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
-        :param pulumi.Input[float] udp_timeout: The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
+        :param pulumi.Input[int] slb_udp_timeout: The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
+        :param pulumi.Input[int] udp_timeout: The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
         """
         if slb_udp_timeout is not None:
             pulumi.set(__self__, "slb_udp_timeout", slb_udp_timeout)
@@ -97,26 +97,26 @@ class DedicatedHostNetworkAttributeArgs:
 
     @property
     @pulumi.getter(name="slbUdpTimeout")
-    def slb_udp_timeout(self) -> Optional[pulumi.Input[float]]:
+    def slb_udp_timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
         """
         return pulumi.get(self, "slb_udp_timeout")
 
     @slb_udp_timeout.setter
-    def slb_udp_timeout(self, value: Optional[pulumi.Input[float]]):
+    def slb_udp_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "slb_udp_timeout", value)
 
     @property
     @pulumi.getter(name="udpTimeout")
-    def udp_timeout(self) -> Optional[pulumi.Input[float]]:
+    def udp_timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
         """
         return pulumi.get(self, "udp_timeout")
 
     @udp_timeout.setter
-    def udp_timeout(self, value: Optional[pulumi.Input[float]]):
+    def udp_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "udp_timeout", value)
 
 
@@ -125,12 +125,12 @@ class ImageDiskDeviceMappingArgs:
     def __init__(__self__, *,
                  device: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] device: Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
         :param pulumi.Input[str] disk_type: Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-        :param pulumi.Input[float] size: Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+        :param pulumi.Input[int] size: Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         """
         if device is not None:
@@ -168,14 +168,14 @@ class ImageDiskDeviceMappingArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[float]]:
+    def size(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[float]]):
+    def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
 
     @property
@@ -195,13 +195,13 @@ class ImageDiskDeviceMappingArgs:
 class ImageImportDiskDeviceMappingArgs:
     def __init__(__self__, *,
                  device: Optional[pulumi.Input[str]] = None,
-                 disk_image_size: Optional[pulumi.Input[float]] = None,
+                 disk_image_size: Optional[pulumi.Input[int]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  oss_bucket: Optional[pulumi.Input[str]] = None,
                  oss_object: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] device: The name of disk N in the custom image.
-        :param pulumi.Input[float] disk_image_size: Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+        :param pulumi.Input[int] disk_image_size: Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
         :param pulumi.Input[str] format: Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
         :param pulumi.Input[str] oss_bucket: Save the exported OSS bucket.
         :param pulumi.Input[str] oss_object: The file name of your OSS Object.
@@ -231,14 +231,14 @@ class ImageImportDiskDeviceMappingArgs:
 
     @property
     @pulumi.getter(name="diskImageSize")
-    def disk_image_size(self) -> Optional[pulumi.Input[float]]:
+    def disk_image_size(self) -> Optional[pulumi.Input[int]]:
         """
         Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
         """
         return pulumi.get(self, "disk_image_size")
 
     @disk_image_size.setter
-    def disk_image_size(self, value: Optional[pulumi.Input[float]]):
+    def disk_image_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_image_size", value)
 
     @property
@@ -281,7 +281,7 @@ class ImageImportDiskDeviceMappingArgs:
 @pulumi.input_type
 class InstanceDataDiskArgs:
     def __init__(__self__, *,
-                 size: pulumi.Input[float],
+                 size: pulumi.Input[int],
                  auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
@@ -291,7 +291,7 @@ class InstanceDataDiskArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] size: The size of the data disk.
+        :param pulumi.Input[int] size: The size of the data disk.
                - cloud：[5, 2000]
                - cloud_efficiency：[20, 32768]
                - cloud_ssd：[20, 32768]
@@ -332,7 +332,7 @@ class InstanceDataDiskArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Input[float]:
+    def size(self) -> pulumi.Input[int]:
         """
         The size of the data disk.
         - cloud：[5, 2000]
@@ -344,7 +344,7 @@ class InstanceDataDiskArgs:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: pulumi.Input[float]):
+    def size(self, value: pulumi.Input[int]):
         pulumi.set(self, "size", value)
 
     @property
@@ -458,7 +458,7 @@ class LaunchTemplateDataDiskArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] category: The category of the disk:
@@ -471,7 +471,7 @@ class LaunchTemplateDataDiskArgs:
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[bool] encrypted: -(Optional, Bool) Encrypted the data in this disk.
         :param pulumi.Input[str] name: The name of the data disk.
-        :param pulumi.Input[float] size: The size of the data disk.
+        :param pulumi.Input[int] size: The size of the data disk.
                - cloud：[5, 2000]
                - cloud_efficiency：[20, 32768]
                - cloud_ssd：[20, 32768]
@@ -561,7 +561,7 @@ class LaunchTemplateDataDiskArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[float]]:
+    def size(self) -> Optional[pulumi.Input[int]]:
         """
         The size of the data disk.
         - cloud：[5, 2000]
@@ -573,7 +573,7 @@ class LaunchTemplateDataDiskArgs:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[float]]):
+    def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
 
     @property

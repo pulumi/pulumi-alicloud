@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -107,18 +107,18 @@ class GetInstanceEnginesInstanceEngineResult(dict):
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  availability_zone: str,
-                 bandwidth: float,
-                 capacity: float,
+                 bandwidth: int,
+                 capacity: int,
                  charge_type: str,
                  connection_domain: str,
-                 connections: float,
+                 connections: int,
                  create_time: str,
                  expire_time: str,
                  id: str,
                  instance_class: str,
                  instance_type: str,
                  name: str,
-                 port: float,
+                 port: int,
                  private_ip: str,
                  region_id: str,
                  status: str,
@@ -127,10 +127,10 @@ class GetInstancesInstanceResult(dict):
                  vswitch_id: str):
         """
         :param str availability_zone: Availability zone.
-        :param float bandwidth: Instance bandwidth limit. Unit: Mbit/s.
-        :param float capacity: Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
+        :param int bandwidth: Instance bandwidth limit. Unit: Mbit/s.
+        :param int capacity: Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
         :param str charge_type: Billing method. Value options: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
-        :param float connections: Instance connection quantity limit. Unit: count.
+        :param int connections: Instance connection quantity limit. Unit: count.
         :param str create_time: Creation time of the instance.
         :param str expire_time: Expiration time. Pay-As-You-Go instances are never expire.
         :param str id: The ID of the RKV instance.
@@ -138,7 +138,7 @@ class GetInstancesInstanceResult(dict):
                For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
         :param str instance_type: Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
         :param str name: The name of the RKV instance.
-        :param float port: Connection port of the instance.
+        :param int port: Connection port of the instance.
         :param str private_ip: Private IP address of the instance.
         :param str region_id: Region ID the instance belongs to.
         :param str status: Status of the instance.
@@ -175,7 +175,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> float:
+    def bandwidth(self) -> int:
         """
         Instance bandwidth limit. Unit: Mbit/s.
         """
@@ -183,7 +183,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def capacity(self) -> float:
+    def capacity(self) -> int:
         """
         Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
         """
@@ -204,7 +204,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def connections(self) -> float:
+    def connections(self) -> int:
         """
         Instance connection quantity limit. Unit: count.
         """
@@ -261,7 +261,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         Connection port of the instance.
         """
@@ -317,10 +317,10 @@ class GetInstancesInstanceResult(dict):
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 multi_zone_ids: List[str]):
+                 multi_zone_ids: Sequence[str]):
         """
         :param str id: ID of the zone.
-        :param List[str] multi_zone_ids: A list of zone ids in which the multi zone.
+        :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
@@ -335,7 +335,7 @@ class GetZonesZoneResult(dict):
 
     @property
     @pulumi.getter(name="multiZoneIds")
-    def multi_zone_ids(self) -> List[str]:
+    def multi_zone_ids(self) -> Sequence[str]:
         """
         A list of zone ids in which the multi zone.
         """

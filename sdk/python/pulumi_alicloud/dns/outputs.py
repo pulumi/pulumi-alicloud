@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -28,12 +28,12 @@ __all__ = [
 @pulumi.output_type
 class GetAlidnsDomainGroupsGroupResult(dict):
     def __init__(__self__, *,
-                 domain_count: float,
+                 domain_count: int,
                  group_id: str,
                  group_name: str,
                  id: str):
         """
-        :param float domain_count: Number of domain names in the group.
+        :param int domain_count: Number of domain names in the group.
         :param str group_id: Id of the domain group.
         :param str group_name: The name of the domain group.
         :param str id: Id of the instance.
@@ -45,7 +45,7 @@ class GetAlidnsDomainGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="domainCount")
-    def domain_count(self) -> float:
+    def domain_count(self) -> int:
         """
         Number of domain names in the group.
         """
@@ -80,8 +80,8 @@ class GetAlidnsDomainGroupsGroupResult(dict):
 class GetAlidnsDomainsDomainResult(dict):
     def __init__(__self__, *,
                  ali_domain: bool,
-                 available_ttls: List[float],
-                 dns_servers: List[str],
+                 available_ttls: Sequence[int],
+                 dns_servers: Sequence[str],
                  domain_id: str,
                  domain_name: str,
                  group_id: str,
@@ -91,10 +91,10 @@ class GetAlidnsDomainsDomainResult(dict):
                  in_clean: bool,
                  instance_id: str,
                  line_type: str,
-                 min_ttl: float,
+                 min_ttl: int,
                  puny_code: str,
                  record_line_tree_json: str,
-                 record_lines: List['outputs.GetAlidnsDomainsDomainRecordLineResult'],
+                 record_lines: Sequence['outputs.GetAlidnsDomainsDomainRecordLineResult'],
                  region_lines: bool,
                  remark: str,
                  resource_group_id: str,
@@ -104,8 +104,8 @@ class GetAlidnsDomainsDomainResult(dict):
                  version_name: str):
         """
         :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
-        :param List[float] available_ttls: List of available TTLs.
-        :param List[str] dns_servers: DNS list of domain names in the resolution system.
+        :param Sequence[int] available_ttls: List of available TTLs.
+        :param Sequence[str] dns_servers: DNS list of domain names in the resolution system.
         :param str domain_id: ID of the domain.
         :param str domain_name: Name of the domain.
         :param str group_id: Domain group ID, if not filled, the default is all groups.
@@ -114,10 +114,10 @@ class GetAlidnsDomainsDomainResult(dict):
         :param bool in_black_hole: Whether it is in black hole.
         :param bool in_clean: Whether it is cleaning.
         :param str instance_id: Cloud analysis product ID.
-        :param float min_ttl: Minimum TTL.
+        :param int min_ttl: Minimum TTL.
         :param str puny_code: Punycode of the Chinese domain.
         :param str record_line_tree_json: Tree-like analytical line list.
-        :param List['GetAlidnsDomainsDomainRecordLineArgs'] record_lines: Parse the line data list.
+        :param Sequence['GetAlidnsDomainsDomainRecordLineArgs'] record_lines: Parse the line data list.
         :param bool region_lines: Whether it is a regional route.
         :param str remark: The Id of resource group which the dns belongs.
         :param str resource_group_id: The Id of resource group which the dns belongs.
@@ -159,7 +159,7 @@ class GetAlidnsDomainsDomainResult(dict):
 
     @property
     @pulumi.getter(name="availableTtls")
-    def available_ttls(self) -> List[float]:
+    def available_ttls(self) -> Sequence[int]:
         """
         List of available TTLs.
         """
@@ -167,7 +167,7 @@ class GetAlidnsDomainsDomainResult(dict):
 
     @property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> List[str]:
+    def dns_servers(self) -> Sequence[str]:
         """
         DNS list of domain names in the resolution system.
         """
@@ -244,7 +244,7 @@ class GetAlidnsDomainsDomainResult(dict):
 
     @property
     @pulumi.getter(name="minTtl")
-    def min_ttl(self) -> float:
+    def min_ttl(self) -> int:
         """
         Minimum TTL.
         """
@@ -268,7 +268,7 @@ class GetAlidnsDomainsDomainResult(dict):
 
     @property
     @pulumi.getter(name="recordLines")
-    def record_lines(self) -> List['outputs.GetAlidnsDomainsDomainRecordLineResult']:
+    def record_lines(self) -> Sequence['outputs.GetAlidnsDomainsDomainRecordLineResult']:
         """
         Parse the line data list.
         """
@@ -459,11 +459,11 @@ class GetAlidnsRecordsRecordResult(dict):
                  id: str,
                  line: str,
                  locked: bool,
-                 priority: float,
+                 priority: int,
                  record_id: str,
                  rr: str,
                  status: str,
-                 ttl: float,
+                 ttl: int,
                  type: str,
                  value: str):
         """
@@ -471,11 +471,11 @@ class GetAlidnsRecordsRecordResult(dict):
         :param str id: ID of the resource.
         :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
         :param bool locked: Indicates whether the record is locked.
-        :param float priority: Priority of the `MX` record.
+        :param int priority: Priority of the `MX` record.
         :param str record_id: ID of the record.
         :param str rr: Host record of the domain.
         :param str status: Record status. Valid values: `ENABLE` and `DISABLE`.
-        :param float ttl: TTL of the record.
+        :param int ttl: TTL of the record.
         :param str type: Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
         :param str value: Host record value of the domain.
         """
@@ -525,7 +525,7 @@ class GetAlidnsRecordsRecordResult(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         """
         Priority of the `MX` record.
         """
@@ -557,7 +557,7 @@ class GetAlidnsRecordsRecordResult(dict):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> int:
         """
         TTL of the record.
         """
@@ -606,7 +606,7 @@ class GetDomainRecordsRecordResult(dict):
                  host_record: str,
                  line: str,
                  locked: bool,
-                 priority: float,
+                 priority: int,
                  record_id: str,
                  status: str,
                  ttl: float,
@@ -645,7 +645,7 @@ class GetDomainRecordsRecordResult(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         return pulumi.get(self, "priority")
 
     @property
@@ -678,8 +678,8 @@ class GetDomainRecordsRecordResult(dict):
 class GetDomainsDomainResult(dict):
     def __init__(__self__, *,
                  ali_domain: bool,
-                 available_ttls: List[float],
-                 dns_servers: List[str],
+                 available_ttls: Sequence[int],
+                 dns_servers: Sequence[str],
                  domain_id: str,
                  domain_name: str,
                  group_id: str,
@@ -689,10 +689,10 @@ class GetDomainsDomainResult(dict):
                  in_clean: bool,
                  instance_id: str,
                  line_type: str,
-                 min_ttl: float,
+                 min_ttl: int,
                  puny_code: str,
                  record_line_tree_json: str,
-                 record_lines: List['outputs.GetDomainsDomainRecordLineResult'],
+                 record_lines: Sequence['outputs.GetDomainsDomainRecordLineResult'],
                  region_lines: bool,
                  remark: str,
                  resource_group_id: str,
@@ -702,7 +702,7 @@ class GetDomainsDomainResult(dict):
                  version_name: str):
         """
         :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
-        :param List[str] dns_servers: DNS list of domain names in the resolution system.
+        :param Sequence[str] dns_servers: DNS list of domain names in the resolution system.
         :param str domain_id: ID of the domain.
         :param str domain_name: Name of the domain.
         :param str group_id: Domain group ID, if not filled, the default is all groups.
@@ -711,7 +711,7 @@ class GetDomainsDomainResult(dict):
         :param bool in_black_hole: Whether it is in black hole.
         :param bool in_clean: Whether it is cleaning.
         :param str instance_id: Cloud analysis product ID.
-        :param float min_ttl: Minimum TTL.
+        :param int min_ttl: Minimum TTL.
         :param str puny_code: Punycode of the Chinese domain.
         :param str record_line_tree_json: Tree-like analytical line list.
         :param bool region_lines: Whether it is a regional route.
@@ -755,12 +755,12 @@ class GetDomainsDomainResult(dict):
 
     @property
     @pulumi.getter(name="availableTtls")
-    def available_ttls(self) -> List[float]:
+    def available_ttls(self) -> Sequence[int]:
         return pulumi.get(self, "available_ttls")
 
     @property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> List[str]:
+    def dns_servers(self) -> Sequence[str]:
         """
         DNS list of domain names in the resolution system.
         """
@@ -837,7 +837,7 @@ class GetDomainsDomainResult(dict):
 
     @property
     @pulumi.getter(name="minTtl")
-    def min_ttl(self) -> float:
+    def min_ttl(self) -> int:
         """
         Minimum TTL.
         """
@@ -861,7 +861,7 @@ class GetDomainsDomainResult(dict):
 
     @property
     @pulumi.getter(name="recordLines")
-    def record_lines(self) -> List['outputs.GetDomainsDomainRecordLineResult']:
+    def record_lines(self) -> Sequence['outputs.GetDomainsDomainRecordLineResult']:
         return pulumi.get(self, "record_lines")
 
     @property
@@ -1060,7 +1060,7 @@ class GetRecordsRecordResult(dict):
                  host_record: str,
                  line: str,
                  locked: bool,
-                 priority: float,
+                 priority: int,
                  record_id: str,
                  status: str,
                  ttl: float,
@@ -1071,7 +1071,7 @@ class GetRecordsRecordResult(dict):
         :param str host_record: Host record of the domain.
         :param str line: ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
         :param bool locked: Indicates whether the record is locked.
-        :param float priority: Priority of the `MX` record.
+        :param int priority: Priority of the `MX` record.
         :param str record_id: ID of the record.
         :param str status: Record status. Valid items are `ENABLE` and `DISABLE`.
         :param float ttl: TTL of the record.
@@ -1123,7 +1123,7 @@ class GetRecordsRecordResult(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         """
         Priority of the `MX` record.
         """

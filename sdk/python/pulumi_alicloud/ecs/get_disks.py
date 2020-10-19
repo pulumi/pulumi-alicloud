@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -65,7 +65,7 @@ class GetDisksResult:
 
     @property
     @pulumi.getter
-    def disks(self) -> List['outputs.GetDisksDiskResult']:
+    def disks(self) -> Sequence['outputs.GetDisksDiskResult']:
         """
         A list of disks. Each element contains the following attributes:
         """
@@ -89,7 +89,7 @@ class GetDisksResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -156,7 +156,7 @@ class AwaitableGetDisksResult(GetDisksResult):
 
 def get_disks(category: Optional[str] = None,
               encrypted: Optional[str] = None,
-              ids: Optional[List[str]] = None,
+              ids: Optional[Sequence[str]] = None,
               instance_id: Optional[str] = None,
               name_regex: Optional[str] = None,
               output_file: Optional[str] = None,
@@ -180,7 +180,7 @@ def get_disks(category: Optional[str] = None,
 
     :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
     :param str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
-    :param List[str] ids: A list of disks IDs.
+    :param Sequence[str] ids: A list of disks IDs.
     :param str instance_id: Filter the results by the specified ECS instance ID.
     :param str name_regex: A regex string to filter results by disk name.
     :param str resource_group_id: The Id of resource group which the disk belongs.

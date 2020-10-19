@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -119,7 +119,7 @@ class Application(pulumi.CustomResource):
             environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             latest_image: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApplicationServiceArgs']]]]] = None,
+            services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationServiceArgs']]]]] = None,
             template: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'Application':
         """
@@ -137,7 +137,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] environment: A key/value map used to replace the variable parameter in the Compose template.
         :param pulumi.Input[bool] latest_image: Whether to use latest docker image while each updating application. Default to false.
         :param pulumi.Input[str] name: The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ApplicationServiceArgs']]]] services: List of services in the application. It contains several attributes to `Block Nodes`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationServiceArgs']]]] services: List of services in the application. It contains several attributes to `Block Nodes`.
         :param pulumi.Input[str] template: The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
         :param pulumi.Input[str] version: The application deploying version. Each updating, it must be different with current. Default to "1.0"
         """
@@ -224,7 +224,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def services(self) -> pulumi.Output[List['outputs.ApplicationService']]:
+    def services(self) -> pulumi.Output[Sequence['outputs.ApplicationService']]:
         """
         List of services in the application. It contains several attributes to `Block Nodes`.
         """

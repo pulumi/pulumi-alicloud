@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetKubernetesClustersResult:
 
     @property
     @pulumi.getter
-    def clusters(self) -> List['outputs.GetKubernetesClustersClusterResult']:
+    def clusters(self) -> Sequence['outputs.GetKubernetesClustersClusterResult']:
         """
         A list of matched Kubernetes clusters. Each element contains the following attributes:
         """
@@ -66,7 +66,7 @@ class GetKubernetesClustersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of matched Kubernetes clusters' ids.
         """
@@ -79,7 +79,7 @@ class GetKubernetesClustersResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of matched Kubernetes clusters' names.
         """
@@ -107,7 +107,7 @@ class AwaitableGetKubernetesClustersResult(GetKubernetesClustersResult):
 
 
 def get_kubernetes_clusters(enable_details: Optional[bool] = None,
-                            ids: Optional[List[str]] = None,
+                            ids: Optional[Sequence[str]] = None,
                             name_regex: Optional[str] = None,
                             output_file: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesClustersResult:
@@ -128,7 +128,7 @@ def get_kubernetes_clusters(enable_details: Optional[bool] = None,
     ```
 
 
-    :param List[str] ids: Cluster IDs to filter.
+    :param Sequence[str] ids: Cluster IDs to filter.
     :param str name_regex: A regex string to filter results by cluster name.
     """
     __args__ = dict()

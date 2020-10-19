@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -20,7 +20,7 @@ class GetClustersClusterResult(dict):
                  cluster_id: str,
                  cluster_name: str,
                  created_time: str,
-                 data_center_count: float,
+                 data_center_count: int,
                  expire_time: str,
                  id: str,
                  lock_mode: str,
@@ -32,7 +32,7 @@ class GetClustersClusterResult(dict):
         """
         :param str cluster_id: The ID of the Cassandra cluster.
         :param str cluster_name: The name of the Cassandra cluster.
-        :param float data_center_count: The count of data centers
+        :param int data_center_count: The count of data centers
         :param str expire_time: The expire time of the cluster.
         :param str id: The ID of the Cassandra cluster.
         :param str lock_mode: The lock mode of the cluster.
@@ -79,7 +79,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="dataCenterCount")
-    def data_center_count(self) -> float:
+    def data_center_count(self) -> int:
         """
         The count of data centers
         """
@@ -158,12 +158,12 @@ class GetDataCentersCenterResult(dict):
                  created_time: str,
                  data_center_id: str,
                  data_center_name: str,
-                 disk_size: float,
+                 disk_size: int,
                  disk_type: str,
                  expire_time: str,
                  instance_type: str,
                  lock_mode: str,
-                 node_count: float,
+                 node_count: int,
                  pay_type: str,
                  status: str,
                  vpc_id: str,
@@ -174,12 +174,12 @@ class GetDataCentersCenterResult(dict):
         :param str commodity_instance: The commodity ID of the Cassandra dataCenter.
         :param str data_center_id: The id of the Cassandra dataCenter.
         :param str data_center_name: The name of the Cassandra dataCenter.
-        :param float disk_size: One node disk size, unit:GB.
+        :param int disk_size: One node disk size, unit:GB.
         :param str disk_type: Cloud_ssd or cloud_efficiency.
         :param str expire_time: The expire time of the dataCenter.
         :param str instance_type: The instance type of the Cassandra dataCenter, eg: cassandra.c.large.
         :param str lock_mode: The lock mode of the dataCenter.
-        :param float node_count: The node count of dataCenter.
+        :param int node_count: The node count of dataCenter.
         :param str pay_type: Billing method. Value options are `Subscription` for Pay-As-You-Go and `PayAsYouGo` for yearly or monthly subscription.
         :param str status: Status of the dataCenter.
         :param str vpc_id: VPC ID the dataCenter belongs to.
@@ -242,7 +242,7 @@ class GetDataCentersCenterResult(dict):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> float:
+    def disk_size(self) -> int:
         """
         One node disk size, unit:GB.
         """
@@ -282,7 +282,7 @@ class GetDataCentersCenterResult(dict):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> float:
+    def node_count(self) -> int:
         """
         The node count of dataCenter.
         """
@@ -333,10 +333,10 @@ class GetDataCentersCenterResult(dict):
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 multi_zone_ids: List[str]):
+                 multi_zone_ids: Sequence[str]):
         """
         :param str id: ID of the zone.
-        :param List[str] multi_zone_ids: A list of zone ids in which the multi zone.
+        :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
@@ -351,7 +351,7 @@ class GetZonesZoneResult(dict):
 
     @property
     @pulumi.getter(name="multiZoneIds")
-    def multi_zone_ids(self) -> List[str]:
+    def multi_zone_ids(self) -> Sequence[str]:
         """
         A list of zone ids in which the multi zone.
         """

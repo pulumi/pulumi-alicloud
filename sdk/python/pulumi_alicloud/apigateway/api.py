@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class Api(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_type: Optional[pulumi.Input[str]] = None,
-                 constant_parameters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]]] = None,
+                 constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
@@ -27,10 +27,10 @@ class Api(pulumi.CustomResource):
                  mock_service_config: Optional[pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  request_config: Optional[pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']]] = None,
-                 request_parameters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]]] = None,
+                 request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]]] = None,
                  service_type: Optional[pulumi.Input[str]] = None,
-                 stage_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 system_parameters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]]] = None,
+                 stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -39,7 +39,7 @@ class Api(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api.
         :param pulumi.Input[str] description: The description of Constant parameter.
         :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
@@ -48,10 +48,10 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
         :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
         :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
-        :param pulumi.Input[List[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,7 +107,7 @@ class Api(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_id: Optional[pulumi.Input[str]] = None,
             auth_type: Optional[pulumi.Input[str]] = None,
-            constant_parameters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]]] = None,
+            constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
@@ -116,10 +116,10 @@ class Api(pulumi.CustomResource):
             mock_service_config: Optional[pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             request_config: Optional[pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']]] = None,
-            request_parameters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]]] = None,
+            request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]]] = None,
             service_type: Optional[pulumi.Input[str]] = None,
-            stage_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            system_parameters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]]] = None) -> 'Api':
+            stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]]] = None) -> 'Api':
         """
         Get an existing Api resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -129,7 +129,7 @@ class Api(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: The ID of the api of api gateway.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api.
         :param pulumi.Input[str] description: The description of Constant parameter.
         :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
@@ -138,10 +138,10 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
         :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
         :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
-        :param pulumi.Input[List[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -182,7 +182,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="constantParameters")
-    def constant_parameters(self) -> pulumi.Output[Optional[List['outputs.ApiConstantParameter']]]:
+    def constant_parameters(self) -> pulumi.Output[Optional[Sequence['outputs.ApiConstantParameter']]]:
         """
         constant_parameters defines the constant parameters of the api.
         """
@@ -254,7 +254,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestParameters")
-    def request_parameters(self) -> pulumi.Output[Optional[List['outputs.ApiRequestParameter']]]:
+    def request_parameters(self) -> pulumi.Output[Optional[Sequence['outputs.ApiRequestParameter']]]:
         """
         request_parameters defines the request parameters of the api.
         """
@@ -270,7 +270,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stageNames")
-    def stage_names(self) -> pulumi.Output[Optional[List[str]]]:
+    def stage_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
         """
@@ -278,7 +278,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemParameters")
-    def system_parameters(self) -> pulumi.Output[Optional[List['outputs.ApiSystemParameter']]]:
+    def system_parameters(self) -> pulumi.Output[Optional[Sequence['outputs.ApiSystemParameter']]]:
         """
         system_parameters defines the system parameters of the api.
         """

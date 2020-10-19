@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['DataCenter']
@@ -16,16 +16,16 @@ class DataCenter(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[float]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  data_center_name: Optional[pulumi.Input[str]] = None,
-                 disk_size: Optional[pulumi.Input[float]] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 node_count: Optional[pulumi.Input[float]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -84,15 +84,15 @@ class DataCenter(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
-        :param pulumi.Input[float] auto_renew_period: Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        :param pulumi.Input[int] auto_renew_period: Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         :param pulumi.Input[str] cluster_id: Cassandra cluster id of dataCenter-2 belongs to.
         :param pulumi.Input[str] data_center_name: Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
-        :param pulumi.Input[float] disk_size: User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
+        :param pulumi.Input[int] disk_size: User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
                - Custom storage space; value range: [160, 2000].
                - 80-GB increments.
         :param pulumi.Input[str] disk_type: The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
         :param pulumi.Input[str] instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
-        :param pulumi.Input[float] node_count: The node count of Cassandra dataCenter-2, default to 2.
+        :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-2, default to 2.
         :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
@@ -152,19 +152,19 @@ class DataCenter(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[float]] = None,
+            auto_renew_period: Optional[pulumi.Input[int]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             data_center_id: Optional[pulumi.Input[str]] = None,
             data_center_name: Optional[pulumi.Input[str]] = None,
-            disk_size: Optional[pulumi.Input[float]] = None,
+            disk_size: Optional[pulumi.Input[int]] = None,
             disk_type: Optional[pulumi.Input[str]] = None,
             enable_public: Optional[pulumi.Input[bool]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
-            node_count: Optional[pulumi.Input[float]] = None,
+            node_count: Optional[pulumi.Input[int]] = None,
             pay_type: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
-            public_points: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            public_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'DataCenter':
@@ -176,15 +176,15 @@ class DataCenter(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
-        :param pulumi.Input[float] auto_renew_period: Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        :param pulumi.Input[int] auto_renew_period: Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         :param pulumi.Input[str] cluster_id: Cassandra cluster id of dataCenter-2 belongs to.
         :param pulumi.Input[str] data_center_name: Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
-        :param pulumi.Input[float] disk_size: User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
+        :param pulumi.Input[int] disk_size: User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
                - Custom storage space; value range: [160, 2000].
                - 80-GB increments.
         :param pulumi.Input[str] disk_type: The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
         :param pulumi.Input[str] instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
-        :param pulumi.Input[float] node_count: The node count of Cassandra dataCenter-2, default to 2.
+        :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-2, default to 2.
         :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
@@ -222,7 +222,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> pulumi.Output[Optional[float]]:
+    def auto_renew_period(self) -> pulumi.Output[Optional[int]]:
         """
         Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         """
@@ -251,7 +251,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> pulumi.Output[Optional[float]]:
+    def disk_size(self) -> pulumi.Output[Optional[int]]:
         """
         User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
         - Custom storage space; value range: [160, 2000].
@@ -282,7 +282,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> pulumi.Output[float]:
+    def node_count(self) -> pulumi.Output[int]:
         """
         The node count of Cassandra dataCenter-2, default to 2.
         """
@@ -298,7 +298,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "period")
 
     @property
@@ -308,7 +308,7 @@ class DataCenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicPoints")
-    def public_points(self) -> pulumi.Output[List[str]]:
+    def public_points(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "public_points")
 
     @property

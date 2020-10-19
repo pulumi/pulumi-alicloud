@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -51,7 +51,7 @@ class GetForwardEntriesResult:
 
     @property
     @pulumi.getter
-    def entries(self) -> List['outputs.GetForwardEntriesEntryResult']:
+    def entries(self) -> Sequence['outputs.GetForwardEntriesEntryResult']:
         """
         A list of Forward Entries. Each element contains the following attributes:
         """
@@ -80,7 +80,7 @@ class GetForwardEntriesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of Forward Entries IDs.
         """
@@ -101,7 +101,7 @@ class GetForwardEntriesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[List[str]]:
+    def names(self) -> Optional[Sequence[str]]:
         """
         A list of Forward Entries names.
         """
@@ -132,10 +132,10 @@ class AwaitableGetForwardEntriesResult(GetForwardEntriesResult):
 
 def get_forward_entries(external_ip: Optional[str] = None,
                         forward_table_id: Optional[str] = None,
-                        ids: Optional[List[str]] = None,
+                        ids: Optional[Sequence[str]] = None,
                         internal_ip: Optional[str] = None,
                         name_regex: Optional[str] = None,
-                        names: Optional[List[str]] = None,
+                        names: Optional[Sequence[str]] = None,
                         output_file: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetForwardEntriesResult:
     """
@@ -179,10 +179,10 @@ def get_forward_entries(external_ip: Optional[str] = None,
 
     :param str external_ip: The public IP address.
     :param str forward_table_id: The ID of the Forward table.
-    :param List[str] ids: A list of Forward Entries IDs.
+    :param Sequence[str] ids: A list of Forward Entries IDs.
     :param str internal_ip: The private IP address.
     :param str name_regex: A regex string to filter results by forward entry name.
-    :param List[str] names: A list of Forward Entries names.
+    :param Sequence[str] names: A list of Forward Entries names.
     """
     __args__ = dict()
     __args__['externalIp'] = external_ip

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetSslVpnClientCertsResult:
 
     @property
     @pulumi.getter
-    def certs(self) -> List['outputs.GetSslVpnClientCertsCertResult']:
+    def certs(self) -> Sequence['outputs.GetSslVpnClientCertsCertResult']:
         return pulumi.get(self, "certs")
 
     @property
@@ -58,7 +58,7 @@ class GetSslVpnClientCertsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of SSL-VPN client cert IDs.
         """
@@ -71,7 +71,7 @@ class GetSslVpnClientCertsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of SSL-VPN client cert names.
         """
@@ -106,7 +106,7 @@ class AwaitableGetSslVpnClientCertsResult(GetSslVpnClientCertsResult):
             ssl_vpn_server_id=self.ssl_vpn_server_id)
 
 
-def get_ssl_vpn_client_certs(ids: Optional[List[str]] = None,
+def get_ssl_vpn_client_certs(ids: Optional[Sequence[str]] = None,
                              name_regex: Optional[str] = None,
                              output_file: Optional[str] = None,
                              ssl_vpn_server_id: Optional[str] = None,
@@ -127,7 +127,7 @@ def get_ssl_vpn_client_certs(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: IDs of the SSL-VPN client certificates.
+    :param Sequence[str] ids: IDs of the SSL-VPN client certificates.
     :param str name_regex: A regex string of SSL-VPN client certificate name.
     :param str output_file: Save the result to the file.
     :param str ssl_vpn_server_id: Use the SSL-VPN server ID as the search key.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -27,8 +27,8 @@ class GetAlidnsRecordsResult:
         if domain_name and not isinstance(domain_name, str):
             raise TypeError("Expected argument 'domain_name' to be a str")
         pulumi.set(__self__, "domain_name", domain_name)
-        if group_id and not isinstance(group_id, float):
-            raise TypeError("Expected argument 'group_id' to be a float")
+        if group_id and not isinstance(group_id, int):
+            raise TypeError("Expected argument 'group_id' to be a int")
         pulumi.set(__self__, "group_id", group_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -94,7 +94,7 @@ class GetAlidnsRecordsResult:
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[float]:
+    def group_id(self) -> Optional[int]:
         return pulumi.get(self, "group_id")
 
     @property
@@ -107,7 +107,7 @@ class GetAlidnsRecordsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of record IDs.
         """
@@ -143,7 +143,7 @@ class GetAlidnsRecordsResult:
 
     @property
     @pulumi.getter
-    def records(self) -> List['outputs.GetAlidnsRecordsRecordResult']:
+    def records(self) -> Sequence['outputs.GetAlidnsRecordsRecordResult']:
         """
         A list of records. Each element contains the following attributes:
         """
@@ -225,8 +225,8 @@ class AwaitableGetAlidnsRecordsResult(GetAlidnsRecordsResult):
 
 def get_alidns_records(direction: Optional[str] = None,
                        domain_name: Optional[str] = None,
-                       group_id: Optional[float] = None,
-                       ids: Optional[List[str]] = None,
+                       group_id: Optional[int] = None,
+                       ids: Optional[Sequence[str]] = None,
                        key_word: Optional[str] = None,
                        lang: Optional[str] = None,
                        line: Optional[str] = None,
@@ -249,8 +249,8 @@ def get_alidns_records(direction: Optional[str] = None,
 
     :param str direction: Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
     :param str domain_name: The domain name associated to the records.
-    :param float group_id: Domain name group ID.
-    :param List[str] ids: A list of record IDs.
+    :param int group_id: Domain name group ID.
+    :param Sequence[str] ids: A list of record IDs.
     :param str key_word: Keywords.
     :param str lang: User language.
     :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)

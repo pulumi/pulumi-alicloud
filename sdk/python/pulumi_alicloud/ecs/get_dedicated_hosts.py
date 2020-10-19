@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -87,7 +87,7 @@ class GetDedicatedHostsResult:
 
     @property
     @pulumi.getter
-    def hosts(self) -> List['outputs.GetDedicatedHostsHostResult']:
+    def hosts(self) -> Sequence['outputs.GetDedicatedHostsHostResult']:
         """
         A list of ECS Dedicated Hosts. Each element contains the following attributes:
         """
@@ -103,7 +103,7 @@ class GetDedicatedHostsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of ECS Dedicated Host ids.
         """
@@ -116,7 +116,7 @@ class GetDedicatedHostsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of ECS Dedicated Host names.
         """
@@ -178,7 +178,7 @@ class AwaitableGetDedicatedHostsResult(GetDedicatedHostsResult):
 def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
                         dedicated_host_name: Optional[str] = None,
                         dedicated_host_type: Optional[str] = None,
-                        ids: Optional[List[str]] = None,
+                        ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
                         output_file: Optional[str] = None,
                         resource_group_id: Optional[str] = None,
@@ -207,7 +207,7 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
     :param str dedicated_host_id: The ID of ECS Dedicated Host.
     :param str dedicated_host_name: The name of ECS Dedicated Host.
     :param str dedicated_host_type: The type of the dedicated host.
-    :param List[str] ids: A list of ECS Dedicated Host ids.
+    :param Sequence[str] ids: A list of ECS Dedicated Host ids.
     :param str name_regex: A regex string to filter results by the ECS Dedicated Host name.
     :param str output_file: Save the result to the file.
     :param str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
