@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['EnterpriseInstance']
@@ -19,12 +19,12 @@ class EnterpriseInstance(pulumi.CustomResource):
                  database_password: Optional[pulumi.Input[str]] = None,
                  database_user: Optional[pulumi.Input[str]] = None,
                  dba_id: Optional[pulumi.Input[str]] = None,
-                 dba_uid: Optional[pulumi.Input[float]] = None,
-                 ddl_online: Optional[pulumi.Input[float]] = None,
+                 dba_uid: Optional[pulumi.Input[int]] = None,
+                 ddl_online: Optional[pulumi.Input[int]] = None,
                  ecs_instance_id: Optional[pulumi.Input[str]] = None,
                  ecs_region: Optional[pulumi.Input[str]] = None,
                  env_type: Optional[pulumi.Input[str]] = None,
-                 export_timeout: Optional[pulumi.Input[float]] = None,
+                 export_timeout: Optional[pulumi.Input[int]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  instance_alias: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -32,14 +32,14 @@ class EnterpriseInstance(pulumi.CustomResource):
                  instance_source: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
-                 query_timeout: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 query_timeout: Optional[pulumi.Input[int]] = None,
                  safe_rule: Optional[pulumi.Input[str]] = None,
                  safe_rule_id: Optional[pulumi.Input[str]] = None,
                  sid: Optional[pulumi.Input[str]] = None,
                  skip_test: Optional[pulumi.Input[bool]] = None,
-                 tid: Optional[pulumi.Input[float]] = None,
-                 use_dsql: Optional[pulumi.Input[float]] = None,
+                 tid: Optional[pulumi.Input[int]] = None,
+                 use_dsql: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -79,24 +79,24 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] data_link_name: Cross-database query datalink name.
         :param pulumi.Input[str] database_password: Database access password.
         :param pulumi.Input[str] database_user: Database access account.
-        :param pulumi.Input[float] dba_uid: The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
-        :param pulumi.Input[float] ddl_online: Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
+        :param pulumi.Input[int] dba_uid: The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
+        :param pulumi.Input[int] ddl_online: Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
         :param pulumi.Input[str] ecs_instance_id: ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
         :param pulumi.Input[str] ecs_region: The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
         :param pulumi.Input[str] env_type: Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
-        :param pulumi.Input[float] export_timeout: Export timeout, unit: s (seconds).
+        :param pulumi.Input[int] export_timeout: Export timeout, unit: s (seconds).
         :param pulumi.Input[str] host: Host address of the target database.
         :param pulumi.Input[str] instance_alias: It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
         :param pulumi.Input[str] instance_name: Instance name, to help users quickly distinguish positioning.
         :param pulumi.Input[str] instance_source: The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
         :param pulumi.Input[str] instance_type: Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
         :param pulumi.Input[str] network_type: Network type. Valid values: `CLASSIC`, `VPC`.
-        :param pulumi.Input[float] port: Access port of the target database.
-        :param pulumi.Input[float] query_timeout: Query timeout time, unit: s (seconds).
+        :param pulumi.Input[int] port: Access port of the target database.
+        :param pulumi.Input[int] query_timeout: Query timeout time, unit: s (seconds).
         :param pulumi.Input[str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
         :param pulumi.Input[str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-        :param pulumi.Input[float] tid: The tenant ID.
-        :param pulumi.Input[float] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
+        :param pulumi.Input[int] tid: The tenant ID.
+        :param pulumi.Input[int] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         :param pulumi.Input[str] vpc_id: VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
         """
         if __name__ is not None:
@@ -187,12 +187,12 @@ class EnterpriseInstance(pulumi.CustomResource):
             database_user: Optional[pulumi.Input[str]] = None,
             dba_id: Optional[pulumi.Input[str]] = None,
             dba_nick_name: Optional[pulumi.Input[str]] = None,
-            dba_uid: Optional[pulumi.Input[float]] = None,
-            ddl_online: Optional[pulumi.Input[float]] = None,
+            dba_uid: Optional[pulumi.Input[int]] = None,
+            ddl_online: Optional[pulumi.Input[int]] = None,
             ecs_instance_id: Optional[pulumi.Input[str]] = None,
             ecs_region: Optional[pulumi.Input[str]] = None,
             env_type: Optional[pulumi.Input[str]] = None,
-            export_timeout: Optional[pulumi.Input[float]] = None,
+            export_timeout: Optional[pulumi.Input[int]] = None,
             host: Optional[pulumi.Input[str]] = None,
             instance_alias: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
@@ -200,16 +200,16 @@ class EnterpriseInstance(pulumi.CustomResource):
             instance_source: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
-            query_timeout: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
+            query_timeout: Optional[pulumi.Input[int]] = None,
             safe_rule: Optional[pulumi.Input[str]] = None,
             safe_rule_id: Optional[pulumi.Input[str]] = None,
             sid: Optional[pulumi.Input[str]] = None,
             skip_test: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tid: Optional[pulumi.Input[float]] = None,
-            use_dsql: Optional[pulumi.Input[float]] = None,
+            tid: Optional[pulumi.Input[int]] = None,
+            use_dsql: Optional[pulumi.Input[int]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'EnterpriseInstance':
         """
         Get an existing EnterpriseInstance resource's state with the given name, id, and optional extra
@@ -222,26 +222,26 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] database_password: Database access password.
         :param pulumi.Input[str] database_user: Database access account.
         :param pulumi.Input[str] dba_nick_name: The instance dba nickname.
-        :param pulumi.Input[float] dba_uid: The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
-        :param pulumi.Input[float] ddl_online: Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
+        :param pulumi.Input[int] dba_uid: The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
+        :param pulumi.Input[int] ddl_online: Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
         :param pulumi.Input[str] ecs_instance_id: ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
         :param pulumi.Input[str] ecs_region: The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
         :param pulumi.Input[str] env_type: Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
-        :param pulumi.Input[float] export_timeout: Export timeout, unit: s (seconds).
+        :param pulumi.Input[int] export_timeout: Export timeout, unit: s (seconds).
         :param pulumi.Input[str] host: Host address of the target database.
         :param pulumi.Input[str] instance_alias: It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
         :param pulumi.Input[str] instance_name: Instance name, to help users quickly distinguish positioning.
         :param pulumi.Input[str] instance_source: The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
         :param pulumi.Input[str] instance_type: Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
         :param pulumi.Input[str] network_type: Network type. Valid values: `CLASSIC`, `VPC`.
-        :param pulumi.Input[float] port: Access port of the target database.
-        :param pulumi.Input[float] query_timeout: Query timeout time, unit: s (seconds).
+        :param pulumi.Input[int] port: Access port of the target database.
+        :param pulumi.Input[int] query_timeout: Query timeout time, unit: s (seconds).
         :param pulumi.Input[str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
         :param pulumi.Input[str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
         :param pulumi.Input[str] state: It has been deprecated from provider version 1.100.0 and 'status' instead.
         :param pulumi.Input[str] status: The instance status.
-        :param pulumi.Input[float] tid: The tenant ID.
-        :param pulumi.Input[float] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
+        :param pulumi.Input[int] tid: The tenant ID.
+        :param pulumi.Input[int] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         :param pulumi.Input[str] vpc_id: VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -318,7 +318,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbaUid")
-    def dba_uid(self) -> pulumi.Output[float]:
+    def dba_uid(self) -> pulumi.Output[int]:
         """
         The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
         """
@@ -326,7 +326,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ddlOnline")
-    def ddl_online(self) -> pulumi.Output[Optional[float]]:
+    def ddl_online(self) -> pulumi.Output[Optional[int]]:
         """
         Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
         """
@@ -358,7 +358,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="exportTimeout")
-    def export_timeout(self) -> pulumi.Output[float]:
+    def export_timeout(self) -> pulumi.Output[int]:
         """
         Export timeout, unit: s (seconds).
         """
@@ -419,7 +419,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         Access port of the target database.
         """
@@ -427,7 +427,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="queryTimeout")
-    def query_timeout(self) -> pulumi.Output[float]:
+    def query_timeout(self) -> pulumi.Output[int]:
         """
         Query timeout time, unit: s (seconds).
         """
@@ -477,7 +477,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tid(self) -> pulumi.Output[Optional[float]]:
+    def tid(self) -> pulumi.Output[Optional[int]]:
         """
         The tenant ID.
         """
@@ -485,7 +485,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useDsql")
-    def use_dsql(self) -> pulumi.Output[Optional[float]]:
+    def use_dsql(self) -> pulumi.Output[Optional[int]]:
         """
         Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         """

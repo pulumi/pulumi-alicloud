@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,8 +20,8 @@ class SchedulerRule(pulumi.CustomResource):
                  param: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
-                 rule_type: Optional[pulumi.Input[float]] = None,
-                 rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]]] = None,
+                 rule_type: Optional[pulumi.Input[int]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -63,11 +63,11 @@ class SchedulerRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
         :param pulumi.Input[str] rule_name: The name of the rule.
-        :param pulumi.Input[float] rule_type: The rule type. Valid values:
+        :param pulumi.Input[int] rule_type: The rule type. Valid values:
                `2`: tiered protection.
                `3`: globalization acceleration.
                `6`: Cloud product interaction.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]] rules: The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]] rules: The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
                `Type`: String type, required, the address format of the linkage resource. Valid values:
                `A`: IP address.
                `CNAME`: Domain name.
@@ -123,8 +123,8 @@ class SchedulerRule(pulumi.CustomResource):
             param: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             rule_name: Optional[pulumi.Input[str]] = None,
-            rule_type: Optional[pulumi.Input[float]] = None,
-            rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]]] = None) -> 'SchedulerRule':
+            rule_type: Optional[pulumi.Input[int]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]]] = None) -> 'SchedulerRule':
         """
         Get an existing SchedulerRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -135,11 +135,11 @@ class SchedulerRule(pulumi.CustomResource):
         :param pulumi.Input[str] cname: The cname is the traffic scheduler corresponding to rules.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
         :param pulumi.Input[str] rule_name: The name of the rule.
-        :param pulumi.Input[float] rule_type: The rule type. Valid values:
+        :param pulumi.Input[int] rule_type: The rule type. Valid values:
                `2`: tiered protection.
                `3`: globalization acceleration.
                `6`: Cloud product interaction.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]] rules: The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]] rules: The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
                `Type`: String type, required, the address format of the linkage resource. Valid values:
                `A`: IP address.
                `CNAME`: Domain name.
@@ -195,7 +195,7 @@ class SchedulerRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ruleType")
-    def rule_type(self) -> pulumi.Output[float]:
+    def rule_type(self) -> pulumi.Output[int]:
         """
         The rule type. Valid values:
         `2`: tiered protection.
@@ -206,7 +206,7 @@ class SchedulerRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[List['outputs.SchedulerRuleRule']]:
+    def rules(self) -> pulumi.Output[Sequence['outputs.SchedulerRuleRule']]:
         """
         The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
         `Type`: String type, required, the address format of the linkage resource. Valid values:

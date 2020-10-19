@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -69,7 +69,7 @@ class GetDiskTypesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of data disk and system disk type IDs.
         """
@@ -92,7 +92,7 @@ class GetDiskTypesResult:
 
     @property
     @pulumi.getter
-    def types(self) -> List['outputs.GetDiskTypesTypeResult']:
+    def types(self) -> Sequence['outputs.GetDiskTypesTypeResult']:
         """
         A list of emr instance types. Each element contains the following attributes:
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -50,7 +50,7 @@ class GetNetworksResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of CCN instances IDs.
         """
@@ -63,7 +63,7 @@ class GetNetworksResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of CCN instances names.
         """
@@ -71,7 +71,7 @@ class GetNetworksResult:
 
     @property
     @pulumi.getter
-    def networks(self) -> List['outputs.GetNetworksNetworkResult']:
+    def networks(self) -> Sequence['outputs.GetNetworksNetworkResult']:
         """
         A list of CCN instances. Each element contains the following attributes:
         """
@@ -97,7 +97,7 @@ class AwaitableGetNetworksResult(GetNetworksResult):
             output_file=self.output_file)
 
 
-def get_networks(ids: Optional[List[str]] = None,
+def get_networks(ids: Optional[Sequence[str]] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworksResult:
@@ -123,7 +123,7 @@ def get_networks(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of CCN instances IDs.
+    :param Sequence[str] ids: A list of CCN instances IDs.
     :param str name_regex: A regex string to filter CCN instances by name.
     """
     __args__ = dict()

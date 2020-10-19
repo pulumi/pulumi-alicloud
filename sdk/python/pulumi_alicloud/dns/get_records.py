@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -81,7 +81,7 @@ class GetRecordsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of record IDs.
         """
@@ -107,7 +107,7 @@ class GetRecordsResult:
 
     @property
     @pulumi.getter
-    def records(self) -> List['outputs.GetRecordsRecordResult']:
+    def records(self) -> Sequence['outputs.GetRecordsRecordResult']:
         """
         A list of records. Each element contains the following attributes:
         """
@@ -131,7 +131,7 @@ class GetRecordsResult:
 
     @property
     @pulumi.getter
-    def urls(self) -> List[str]:
+    def urls(self) -> Sequence[str]:
         """
         A list of entire URLs. Each item format as `<host_record>.<domain_name>`.
         """
@@ -165,7 +165,7 @@ class AwaitableGetRecordsResult(GetRecordsResult):
 
 def get_records(domain_name: Optional[str] = None,
                 host_record_regex: Optional[str] = None,
-                ids: Optional[List[str]] = None,
+                ids: Optional[Sequence[str]] = None,
                 is_locked: Optional[bool] = None,
                 line: Optional[str] = None,
                 output_file: Optional[str] = None,
@@ -193,7 +193,7 @@ def get_records(domain_name: Optional[str] = None,
 
     :param str domain_name: The domain name associated to the records.
     :param str host_record_regex: Host record regex.
-    :param List[str] ids: A list of record IDs.
+    :param Sequence[str] ids: A list of record IDs.
     :param bool is_locked: Whether the record is locked or not.
     :param str line: ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
     :param str status: Record status. Valid items are `ENABLE` and `DISABLE`.

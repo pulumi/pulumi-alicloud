@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Role']
@@ -17,7 +17,7 @@ class Role(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assume_role_policy_document: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 max_session_duration: Optional[pulumi.Input[float]] = None,
+                 max_session_duration: Optional[pulumi.Input[int]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -60,7 +60,7 @@ class Role(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] assume_role_policy_document: The content of the permissions strategy that plays a role.
         :param pulumi.Input[str] description: The description of the Resource Manager role.
-        :param pulumi.Input[float] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
+        :param pulumi.Input[int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         :param pulumi.Input[str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
         """
         if __name__ is not None:
@@ -106,7 +106,7 @@ class Role(pulumi.CustomResource):
             assume_role_policy_document: Optional[pulumi.Input[str]] = None,
             create_date: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            max_session_duration: Optional[pulumi.Input[float]] = None,
+            max_session_duration: Optional[pulumi.Input[int]] = None,
             role_id: Optional[pulumi.Input[str]] = None,
             role_name: Optional[pulumi.Input[str]] = None,
             update_date: Optional[pulumi.Input[str]] = None) -> 'Role':
@@ -121,7 +121,7 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[str] assume_role_policy_document: The content of the permissions strategy that plays a role.
         :param pulumi.Input[str] create_date: Role creation time.
         :param pulumi.Input[str] description: The description of the Resource Manager role.
-        :param pulumi.Input[float] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
+        :param pulumi.Input[int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         :param pulumi.Input[str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
         :param pulumi.Input[str] update_date: Role update time.
         """
@@ -173,7 +173,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSessionDuration")
-    def max_session_duration(self) -> pulumi.Output[Optional[float]]:
+    def max_session_duration(self) -> pulumi.Output[Optional[int]]:
         """
         Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -71,7 +71,7 @@ class GetRouterInterfacesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of router interface IDs.
         """
@@ -79,7 +79,7 @@ class GetRouterInterfacesResult:
 
     @property
     @pulumi.getter
-    def interfaces(self) -> List['outputs.GetRouterInterfacesInterfaceResult']:
+    def interfaces(self) -> Sequence['outputs.GetRouterInterfacesInterfaceResult']:
         """
         A list of router interfaces. Each element contains the following attributes:
         """
@@ -92,7 +92,7 @@ class GetRouterInterfacesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of router interface names.
         """
@@ -181,7 +181,7 @@ class AwaitableGetRouterInterfacesResult(GetRouterInterfacesResult):
             status=self.status)
 
 
-def get_router_interfaces(ids: Optional[List[str]] = None,
+def get_router_interfaces(ids: Optional[Sequence[str]] = None,
                           name_regex: Optional[str] = None,
                           opposite_interface_id: Optional[str] = None,
                           opposite_interface_owner_id: Optional[str] = None,
@@ -208,7 +208,7 @@ def get_router_interfaces(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of router interface IDs.
+    :param Sequence[str] ids: A list of router interface IDs.
     :param str name_regex: A regex string used to filter by router interface name.
     :param str opposite_interface_id: ID of the peer router interface.
     :param str opposite_interface_owner_id: Account ID of the owner of the peer router interface.

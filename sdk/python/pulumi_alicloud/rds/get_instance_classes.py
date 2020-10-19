@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -91,7 +91,7 @@ class GetInstanceClassesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         (Available in 1.60.0+) A list of Rds instance class codes.
         """
@@ -104,7 +104,7 @@ class GetInstanceClassesResult:
 
     @property
     @pulumi.getter(name="instanceClasses")
-    def instance_classes(self) -> List['outputs.GetInstanceClassesInstanceClassResult']:
+    def instance_classes(self) -> Sequence['outputs.GetInstanceClassesInstanceClassResult']:
         """
         A list of Rds available resource. Each element contains the following attributes:
         """

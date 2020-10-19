@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -21,11 +21,11 @@ class GetEnterpriseInstancesInstanceResult(dict):
                  database_user: str,
                  dba_id: str,
                  dba_nick_name: str,
-                 ddl_online: float,
+                 ddl_online: int,
                  ecs_instance_id: str,
                  ecs_region: str,
                  env_type: str,
-                 export_timeout: float,
+                 export_timeout: int,
                  host: str,
                  id: str,
                  instance_alias: str,
@@ -33,12 +33,12 @@ class GetEnterpriseInstancesInstanceResult(dict):
                  instance_name: str,
                  instance_source: str,
                  instance_type: str,
-                 port: float,
-                 query_timeout: float,
+                 port: int,
+                 query_timeout: int,
                  safe_rule_id: str,
                  sid: str,
                  status: str,
-                 use_dsql: float,
+                 use_dsql: int,
                  vpc_id: str):
         """
         :param str data_link_name: The name of the data link for the database instance.
@@ -46,22 +46,22 @@ class GetEnterpriseInstancesInstanceResult(dict):
         :param str database_user: The logon username of the database instance.
         :param str dba_id: The ID of the database administrator (DBA) of the database instance.
         :param str dba_nick_name: The nickname of the DBA.
-        :param float ddl_online: Indicates whether the online data description language (DDL) service was enabled for the database instance.
+        :param int ddl_online: Indicates whether the online data description language (DDL) service was enabled for the database instance.
         :param str ecs_instance_id: The ID of the Elastic Compute Service (ECS) instance to which the database instance belongs.
         :param str ecs_region: The region where the database instance resides.
         :param str env_type: The type of the environment to which the database instance belongs.
-        :param float export_timeout: The timeout period for exporting the database instance.
+        :param int export_timeout: The timeout period for exporting the database instance.
         :param str host: The endpoint of the database instance.
         :param str instance_alias: The alias of the database instance.
         :param str instance_id: The ID of the database instance.
         :param str instance_source: The source of the database instance.
         :param str instance_type: The ID of the database instance.
-        :param float port: The connection port of the database instance.
-        :param float query_timeout: The timeout period for querying the database instance.
+        :param int port: The connection port of the database instance.
+        :param int query_timeout: The timeout period for querying the database instance.
         :param str safe_rule_id: The ID of the security rule for the database instance.
         :param str sid: The system ID (SID) of the database instance.
         :param str status: Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
-        :param float use_dsql: Indicates whether cross-database query was enabled for the database instance.
+        :param int use_dsql: Indicates whether cross-database query was enabled for the database instance.
         :param str vpc_id: The ID of the Virtual Private Cloud (VPC) to which the database instance belongs.
         """
         pulumi.set(__self__, "data_link_name", data_link_name)
@@ -131,7 +131,7 @@ class GetEnterpriseInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="ddlOnline")
-    def ddl_online(self) -> float:
+    def ddl_online(self) -> int:
         """
         Indicates whether the online data description language (DDL) service was enabled for the database instance.
         """
@@ -163,7 +163,7 @@ class GetEnterpriseInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="exportTimeout")
-    def export_timeout(self) -> float:
+    def export_timeout(self) -> int:
         """
         The timeout period for exporting the database instance.
         """
@@ -221,7 +221,7 @@ class GetEnterpriseInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The connection port of the database instance.
         """
@@ -229,7 +229,7 @@ class GetEnterpriseInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="queryTimeout")
-    def query_timeout(self) -> float:
+    def query_timeout(self) -> int:
         """
         The timeout period for querying the database instance.
         """
@@ -261,7 +261,7 @@ class GetEnterpriseInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="useDsql")
-    def use_dsql(self) -> float:
+    def use_dsql(self) -> int:
         """
         Indicates whether cross-database query was enabled for the database instance.
         """
@@ -282,9 +282,9 @@ class GetEnterpriseUsersUserResult(dict):
                  id: str,
                  mobile: str,
                  nick_name: str,
-                 parent_uid: float,
-                 role_ids: List[float],
-                 role_names: List[str],
+                 parent_uid: int,
+                 role_ids: Sequence[int],
+                 role_names: Sequence[str],
                  status: str,
                  uid: str,
                  user_id: str,
@@ -293,9 +293,9 @@ class GetEnterpriseUsersUserResult(dict):
         :param str id: The Alibaba Cloud unique ID (UID) of the user.
         :param str mobile: The DingTalk number or mobile number of the user.
         :param str nick_name: The nickname of the user.
-        :param float parent_uid: The Alibaba Cloud unique ID (UID) of the parent account if the user corresponds to a Resource Access Management (RAM) user.
-        :param List[float] role_ids: The list ids of the role that the user plays.
-        :param List[str] role_names: The list names of the role that he user plays.
+        :param int parent_uid: The Alibaba Cloud unique ID (UID) of the parent account if the user corresponds to a Resource Access Management (RAM) user.
+        :param Sequence[int] role_ids: The list ids of the role that the user plays.
+        :param Sequence[str] role_names: The list names of the role that he user plays.
         :param str status: The status of the user.
         :param str user_id: The ID of the user.
         :param str user_name: The nickname of the user.
@@ -337,7 +337,7 @@ class GetEnterpriseUsersUserResult(dict):
 
     @property
     @pulumi.getter(name="parentUid")
-    def parent_uid(self) -> float:
+    def parent_uid(self) -> int:
         """
         The Alibaba Cloud unique ID (UID) of the parent account if the user corresponds to a Resource Access Management (RAM) user.
         """
@@ -345,7 +345,7 @@ class GetEnterpriseUsersUserResult(dict):
 
     @property
     @pulumi.getter(name="roleIds")
-    def role_ids(self) -> List[float]:
+    def role_ids(self) -> Sequence[int]:
         """
         The list ids of the role that the user plays.
         """
@@ -353,7 +353,7 @@ class GetEnterpriseUsersUserResult(dict):
 
     @property
     @pulumi.getter(name="roleNames")
-    def role_names(self) -> List[str]:
+    def role_names(self) -> Sequence[str]:
         """
         The list names of the role that he user plays.
         """

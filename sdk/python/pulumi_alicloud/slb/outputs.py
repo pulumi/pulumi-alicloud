@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -60,7 +60,7 @@ class AclEntryList(dict):
 class BackendServerBackendServer(dict):
     def __init__(__self__, *,
                  server_id: str,
-                 weight: float,
+                 weight: int,
                  server_ip: Optional[str] = None,
                  type: Optional[str] = None):
         pulumi.set(__self__, "server_id", server_id)
@@ -77,7 +77,7 @@ class BackendServerBackendServer(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> int:
         return pulumi.get(self, "weight")
 
     @property
@@ -151,12 +151,12 @@ class ListenerXForwardedFor(dict):
 @pulumi.output_type
 class MasterSlaveServerGroupServer(dict):
     def __init__(__self__, *,
-                 port: float,
+                 port: int,
                  server_id: str,
-                 is_backup: Optional[float] = None,
+                 is_backup: Optional[int] = None,
                  server_type: Optional[str] = None,
                  type: Optional[str] = None,
-                 weight: Optional[float] = None):
+                 weight: Optional[int] = None):
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_id", server_id)
         if is_backup is not None:
@@ -170,7 +170,7 @@ class MasterSlaveServerGroupServer(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         return pulumi.get(self, "port")
 
     @property
@@ -180,7 +180,7 @@ class MasterSlaveServerGroupServer(dict):
 
     @property
     @pulumi.getter(name="isBackup")
-    def is_backup(self) -> Optional[float]:
+    def is_backup(self) -> Optional[int]:
         return pulumi.get(self, "is_backup")
 
     @property
@@ -195,7 +195,7 @@ class MasterSlaveServerGroupServer(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[float]:
+    def weight(self) -> Optional[int]:
         return pulumi.get(self, "weight")
 
     def _translate_property(self, prop):
@@ -205,10 +205,10 @@ class MasterSlaveServerGroupServer(dict):
 @pulumi.output_type
 class ServerGroupServer(dict):
     def __init__(__self__, *,
-                 port: float,
-                 server_ids: List[str],
+                 port: int,
+                 server_ids: Sequence[str],
                  type: Optional[str] = None,
-                 weight: Optional[float] = None):
+                 weight: Optional[int] = None):
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_ids", server_ids)
         if type is not None:
@@ -218,12 +218,12 @@ class ServerGroupServer(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="serverIds")
-    def server_ids(self) -> List[str]:
+    def server_ids(self) -> Sequence[str]:
         return pulumi.get(self, "server_ids")
 
     @property
@@ -233,7 +233,7 @@ class ServerGroupServer(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[float]:
+    def weight(self) -> Optional[int]:
         return pulumi.get(self, "weight")
 
     def _translate_property(self, prop):
@@ -243,18 +243,18 @@ class ServerGroupServer(dict):
 @pulumi.output_type
 class GetAclsAclResult(dict):
     def __init__(__self__, *,
-                 entry_lists: List['outputs.GetAclsAclEntryListResult'],
+                 entry_lists: Sequence['outputs.GetAclsAclEntryListResult'],
                  id: str,
                  ip_version: str,
                  name: str,
-                 related_listeners: List['outputs.GetAclsAclRelatedListenerResult'],
+                 related_listeners: Sequence['outputs.GetAclsAclRelatedListenerResult'],
                  resource_group_id: str,
                  tags: Optional[Mapping[str, Any]] = None):
         """
-        :param List['GetAclsAclEntryListArgs'] entry_lists: A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
+        :param Sequence['GetAclsAclEntryListArgs'] entry_lists: A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
         :param str id: Acl ID.
         :param str name: Acl name.
-        :param List['GetAclsAclRelatedListenerArgs'] related_listeners: A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
+        :param Sequence['GetAclsAclRelatedListenerArgs'] related_listeners: A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
         :param str resource_group_id: The Id of resource group which acl belongs.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
@@ -269,7 +269,7 @@ class GetAclsAclResult(dict):
 
     @property
     @pulumi.getter(name="entryLists")
-    def entry_lists(self) -> List['outputs.GetAclsAclEntryListResult']:
+    def entry_lists(self) -> Sequence['outputs.GetAclsAclEntryListResult']:
         """
         A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
         """
@@ -298,7 +298,7 @@ class GetAclsAclResult(dict):
 
     @property
     @pulumi.getter(name="relatedListeners")
-    def related_listeners(self) -> List['outputs.GetAclsAclRelatedListenerResult']:
+    def related_listeners(self) -> Sequence['outputs.GetAclsAclRelatedListenerResult']:
         """
         A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
         """
@@ -344,7 +344,7 @@ class GetAclsAclEntryListResult(dict):
 class GetAclsAclRelatedListenerResult(dict):
     def __init__(__self__, *,
                  acl_type: str,
-                 frontend_port: float,
+                 frontend_port: int,
                  load_balancer_id: str,
                  protocol: str):
         pulumi.set(__self__, "acl_type", acl_type)
@@ -359,7 +359,7 @@ class GetAclsAclRelatedListenerResult(dict):
 
     @property
     @pulumi.getter(name="frontendPort")
-    def frontend_port(self) -> float:
+    def frontend_port(self) -> int:
         return pulumi.get(self, "frontend_port")
 
     @property
@@ -377,10 +377,10 @@ class GetAclsAclRelatedListenerResult(dict):
 class GetAttachmentsSlbAttachmentResult(dict):
     def __init__(__self__, *,
                  instance_id: str,
-                 weight: float):
+                 weight: int):
         """
         :param str instance_id: ID of the attached ECS instance.
-        :param float weight: Weight associated to the ECS instance.
+        :param int weight: Weight associated to the ECS instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "weight", weight)
@@ -395,7 +395,7 @@ class GetAttachmentsSlbAttachmentResult(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> int:
         """
         Weight associated to the ECS instance.
         """
@@ -407,11 +407,11 @@ class GetBackendServersBackendServerResult(dict):
     def __init__(__self__, *,
                  id: str,
                  server_type: str,
-                 weight: float):
+                 weight: int):
         """
         :param str id: backend server ID.
         :param str server_type: Type of the backend server.
-        :param float weight: Weight associated to the ECS instance.
+        :param int weight: Weight associated to the ECS instance.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "server_type", server_type)
@@ -435,7 +435,7 @@ class GetBackendServersBackendServerResult(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> int:
         """
         Weight associated to the ECS instance.
         """
@@ -447,9 +447,9 @@ class GetCaCertificatesCertificateResult(dict):
     def __init__(__self__, *,
                  common_name: str,
                  created_time: str,
-                 created_timestamp: float,
+                 created_timestamp: int,
                  expired_time: str,
-                 expired_timestamp: float,
+                 expired_timestamp: int,
                  fingerprint: str,
                  id: str,
                  name: str,
@@ -459,9 +459,9 @@ class GetCaCertificatesCertificateResult(dict):
         """
         :param str common_name: CA certificate common name.
         :param str created_time: CA certificate created time.
-        :param float created_timestamp: CA certificate created timestamp.
+        :param int created_timestamp: CA certificate created timestamp.
         :param str expired_time: CA certificate expired time.
-        :param float expired_timestamp: CA certificate expired timestamp.
+        :param int expired_timestamp: CA certificate expired timestamp.
         :param str fingerprint: CA certificate fingerprint.
         :param str id: CA certificate ID.
         :param str name: CA certificate name.
@@ -500,7 +500,7 @@ class GetCaCertificatesCertificateResult(dict):
 
     @property
     @pulumi.getter(name="createdTimestamp")
-    def created_timestamp(self) -> float:
+    def created_timestamp(self) -> int:
         """
         CA certificate created timestamp.
         """
@@ -516,7 +516,7 @@ class GetCaCertificatesCertificateResult(dict):
 
     @property
     @pulumi.getter(name="expiredTimestamp")
-    def expired_timestamp(self) -> float:
+    def expired_timestamp(self) -> int:
         """
         CA certificate expired timestamp.
         """
@@ -614,31 +614,31 @@ class GetDomainExtensionsExtensionResult(dict):
 @pulumi.output_type
 class GetListenersSlbListenerResult(dict):
     def __init__(__self__, *,
-                 backend_port: float,
-                 bandwidth: float,
+                 backend_port: int,
+                 bandwidth: int,
                  ca_certificate_id: str,
                  cookie: str,
-                 cookie_timeout: float,
+                 cookie_timeout: int,
                  description: str,
                  enable_http2: str,
-                 established_timeout: float,
-                 frontend_port: float,
+                 established_timeout: int,
+                 frontend_port: int,
                  gzip: str,
                  health_check: str,
-                 health_check_connect_port: float,
-                 health_check_connect_timeout: float,
+                 health_check_connect_port: int,
+                 health_check_connect_timeout: int,
                  health_check_domain: str,
                  health_check_http_code: str,
-                 health_check_interval: float,
-                 health_check_timeout: float,
+                 health_check_interval: int,
+                 health_check_timeout: int,
                  health_check_type: str,
                  health_check_uri: str,
-                 healthy_threshold: float,
-                 idle_timeout: float,
+                 healthy_threshold: int,
+                 idle_timeout: int,
                  master_slave_server_group_id: str,
-                 persistence_timeout: float,
+                 persistence_timeout: int,
                  protocol: str,
-                 request_timeout: float,
+                 request_timeout: int,
                  scheduler: str,
                  security_status: str,
                  server_certificate_id: str,
@@ -648,37 +648,37 @@ class GetListenersSlbListenerResult(dict):
                  sticky_session: str,
                  sticky_session_type: str,
                  tls_cipher_policy: str,
-                 unhealthy_threshold: float,
+                 unhealthy_threshold: int,
                  x_forwarded_for: str,
                  x_forwarded_for_slb_id: str,
                  x_forwarded_for_slb_ip: str,
                  x_forwarded_for_slb_proto: str):
         """
-        :param float backend_port: Port opened on the backend server to receive requests.
-        :param float bandwidth: Peak bandwidth. If the value is set to -1, the listener is not limited by bandwidth.
+        :param int backend_port: Port opened on the backend server to receive requests.
+        :param int bandwidth: Peak bandwidth. If the value is set to -1, the listener is not limited by bandwidth.
         :param str ca_certificate_id: ID of the CA certificate (only required when two-way authentication is used). Only available when the protocol is `https`.
         :param str cookie: Cookie configured by the backend server. Only available when the sticky_session_type is `server`.
-        :param float cookie_timeout: Cookie timeout in seconds. Only available when the sticky_session_type is `insert`.
+        :param int cookie_timeout: Cookie timeout in seconds. Only available when the sticky_session_type is `insert`.
         :param str description: The description of slb listener.
         :param str enable_http2: Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
-        :param float established_timeout: Connection timeout in seconds for the Layer 4 TCP listener. Only available when the protocol is `tcp`.
-        :param float frontend_port: Filter listeners by the specified frontend port.
+        :param int established_timeout: Connection timeout in seconds for the Layer 4 TCP listener. Only available when the protocol is `tcp`.
+        :param int frontend_port: Filter listeners by the specified frontend port.
         :param str gzip: Indicate whether Gzip compression is enabled or not. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
         :param str health_check: Indicate whether health check is enabled of not. Possible values are `on` and `off`.
-        :param float health_check_connect_port: Port used for health check.
-        :param float health_check_connect_timeout: Amount of time in seconds to wait for the response for a health check.
+        :param int health_check_connect_port: Port used for health check.
+        :param int health_check_connect_timeout: Amount of time in seconds to wait for the response for a health check.
         :param str health_check_domain: Domain name used for health check. The SLB sends HTTP head requests to the backend server, the domain is useful when the backend server verifies the host field in the requests. Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
         :param str health_check_http_code: HTTP status codes indicating that the health check is normal. It can contain several comma-separated values such as "http_2xx,http_3xx". Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
-        :param float health_check_interval: Time interval between two consecutive health checks.
-        :param float health_check_timeout: Amount of time in seconds to wait for the response from a health check. If an ECS instance sends no response within the specified timeout period, the health check fails. Only available when the protocol is `http` or `https`.
+        :param int health_check_interval: Time interval between two consecutive health checks.
+        :param int health_check_timeout: Amount of time in seconds to wait for the response from a health check. If an ECS instance sends no response within the specified timeout period, the health check fails. Only available when the protocol is `http` or `https`.
         :param str health_check_type: Health check method. Possible values are `tcp` and `http`. Only available when the protocol is `tcp`.
         :param str health_check_uri: URI used for health check. Only available when the protocol is `http`, `https` or `tcp` (in this case health_check_type must be `http`).
-        :param float healthy_threshold: Number of consecutive successes of health check performed on the same ECS instance (from failure to success).
-        :param float idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+        :param int healthy_threshold: Number of consecutive successes of health check performed on the same ECS instance (from failure to success).
+        :param int idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param str master_slave_server_group_id: ID of the active/standby server group.
-        :param float persistence_timeout: Timeout value of the TCP connection in seconds. If the value is 0, the session persistence function is disabled. Only available when the protocol is `tcp`.
+        :param int persistence_timeout: Timeout value of the TCP connection in seconds. If the value is 0, the session persistence function is disabled. Only available when the protocol is `tcp`.
         :param str protocol: Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
-        :param float request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+        :param int request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param str scheduler: Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
         :param str security_status: Security status. Only available when the protocol is `https`.
         :param str server_group_id: ID of the linked VServer group.
@@ -687,7 +687,7 @@ class GetListenersSlbListenerResult(dict):
         :param str sticky_session: Indicate whether session persistence is enabled or not. If enabled, all session requests from the same client are sent to the same backend server. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
         :param str sticky_session_type: Method used to handle the cookie. Possible values are `insert` (cookie added to the response) and `server` (cookie set by the backend server). Only available when the protocol is `http` or `https` and sticky_session is `on`.
         :param str tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`.
-        :param float unhealthy_threshold: Number of consecutive failures of health check performed on the same ECS instance (from success to failure).
+        :param int unhealthy_threshold: Number of consecutive failures of health check performed on the same ECS instance (from success to failure).
         :param str x_forwarded_for: Indicate whether the HTTP header field "X-Forwarded-For" is added or not; it allows the backend server to know about the user's IP address. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
         :param str x_forwarded_for_slb_id: Indicate whether the HTTP header field "X-Forwarded-For_SLBID" is added or not; it allows the backend server to know about the SLB ID. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
         :param str x_forwarded_for_slb_ip: Indicate whether the HTTP header field "X-Forwarded-For_SLBIP" is added or not; it allows the backend server to know about the SLB IP address. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
@@ -735,7 +735,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="backendPort")
-    def backend_port(self) -> float:
+    def backend_port(self) -> int:
         """
         Port opened on the backend server to receive requests.
         """
@@ -743,7 +743,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> float:
+    def bandwidth(self) -> int:
         """
         Peak bandwidth. If the value is set to -1, the listener is not limited by bandwidth.
         """
@@ -767,7 +767,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="cookieTimeout")
-    def cookie_timeout(self) -> float:
+    def cookie_timeout(self) -> int:
         """
         Cookie timeout in seconds. Only available when the sticky_session_type is `insert`.
         """
@@ -791,7 +791,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="establishedTimeout")
-    def established_timeout(self) -> float:
+    def established_timeout(self) -> int:
         """
         Connection timeout in seconds for the Layer 4 TCP listener. Only available when the protocol is `tcp`.
         """
@@ -799,7 +799,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="frontendPort")
-    def frontend_port(self) -> float:
+    def frontend_port(self) -> int:
         """
         Filter listeners by the specified frontend port.
         """
@@ -823,7 +823,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="healthCheckConnectPort")
-    def health_check_connect_port(self) -> float:
+    def health_check_connect_port(self) -> int:
         """
         Port used for health check.
         """
@@ -831,7 +831,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="healthCheckConnectTimeout")
-    def health_check_connect_timeout(self) -> float:
+    def health_check_connect_timeout(self) -> int:
         """
         Amount of time in seconds to wait for the response for a health check.
         """
@@ -855,7 +855,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="healthCheckInterval")
-    def health_check_interval(self) -> float:
+    def health_check_interval(self) -> int:
         """
         Time interval between two consecutive health checks.
         """
@@ -863,7 +863,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="healthCheckTimeout")
-    def health_check_timeout(self) -> float:
+    def health_check_timeout(self) -> int:
         """
         Amount of time in seconds to wait for the response from a health check. If an ECS instance sends no response within the specified timeout period, the health check fails. Only available when the protocol is `http` or `https`.
         """
@@ -887,7 +887,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> float:
+    def healthy_threshold(self) -> int:
         """
         Number of consecutive successes of health check performed on the same ECS instance (from failure to success).
         """
@@ -895,7 +895,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> float:
+    def idle_timeout(self) -> int:
         """
         Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         """
@@ -911,7 +911,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="persistenceTimeout")
-    def persistence_timeout(self) -> float:
+    def persistence_timeout(self) -> int:
         """
         Timeout value of the TCP connection in seconds. If the value is 0, the session persistence function is disabled. Only available when the protocol is `tcp`.
         """
@@ -927,7 +927,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="requestTimeout")
-    def request_timeout(self) -> float:
+    def request_timeout(self) -> int:
         """
         Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         """
@@ -1004,7 +1004,7 @@ class GetListenersSlbListenerResult(dict):
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> float:
+    def unhealthy_threshold(self) -> int:
         """
         Number of consecutive failures of health check performed on the same ECS instance (from success to failure).
         """
@@ -1216,11 +1216,11 @@ class GetMasterSlaveServerGroupsGroupResult(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str,
-                 servers: List['outputs.GetMasterSlaveServerGroupsGroupServerResult']):
+                 servers: Sequence['outputs.GetMasterSlaveServerGroupsGroupServerResult']):
         """
         :param str id: master slave server group ID.
         :param str name: master slave server group name.
-        :param List['GetMasterSlaveServerGroupsGroupServerArgs'] servers: ECS instances associated to the group. Each element contains the following attributes:
+        :param Sequence['GetMasterSlaveServerGroupsGroupServerArgs'] servers: ECS instances associated to the group. Each element contains the following attributes:
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -1244,7 +1244,7 @@ class GetMasterSlaveServerGroupsGroupResult(dict):
 
     @property
     @pulumi.getter
-    def servers(self) -> List['outputs.GetMasterSlaveServerGroupsGroupServerResult']:
+    def servers(self) -> Sequence['outputs.GetMasterSlaveServerGroupsGroupServerResult']:
         """
         ECS instances associated to the group. Each element contains the following attributes:
         """
@@ -1255,16 +1255,16 @@ class GetMasterSlaveServerGroupsGroupResult(dict):
 class GetMasterSlaveServerGroupsGroupServerResult(dict):
     def __init__(__self__, *,
                  instance_id: str,
-                 is_backup: float,
-                 port: float,
+                 is_backup: int,
+                 port: int,
                  server_type: str,
-                 weight: float):
+                 weight: int):
         """
         :param str instance_id: ID of the attached ECS instance.
-        :param float is_backup: (Removed from v1.63.0) Determine if the server is executing.
-        :param float port: The port used by the master slave server group.
+        :param int is_backup: (Removed from v1.63.0) Determine if the server is executing.
+        :param int port: The port used by the master slave server group.
         :param str server_type: The server type of the attached ECS instance.
-        :param float weight: Weight associated to the ECS instance.
+        :param int weight: Weight associated to the ECS instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "is_backup", is_backup)
@@ -1282,7 +1282,7 @@ class GetMasterSlaveServerGroupsGroupServerResult(dict):
 
     @property
     @pulumi.getter(name="isBackup")
-    def is_backup(self) -> float:
+    def is_backup(self) -> int:
         """
         (Removed from v1.63.0) Determine if the server is executing.
         """
@@ -1290,7 +1290,7 @@ class GetMasterSlaveServerGroupsGroupServerResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The port used by the master slave server group.
         """
@@ -1306,7 +1306,7 @@ class GetMasterSlaveServerGroupsGroupServerResult(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> int:
         """
         Weight associated to the ECS instance.
         """
@@ -1382,14 +1382,14 @@ class GetServerCertificatesCertificateResult(dict):
                  alicloud_certificate_name: str,
                  common_name: str,
                  created_time: str,
-                 created_timestamp: float,
+                 created_timestamp: int,
                  expired_time: str,
-                 expired_timestamp: float,
+                 expired_timestamp: int,
                  fingerprint: str,
                  id: str,
                  is_alicloud_certificate: bool,
                  name: str,
-                 subject_alternative_names: List[str],
+                 subject_alternative_names: Sequence[str],
                  resource_group_id: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None):
         """
@@ -1398,13 +1398,13 @@ class GetServerCertificatesCertificateResult(dict):
                * `is_alicloud_certificate`- Is server certificate issued by alibaba cloud or not.
         :param str common_name: Server certificate common name.
         :param str created_time: Server certificate created time.
-        :param float created_timestamp: Server certificate created timestamp.
+        :param int created_timestamp: Server certificate created timestamp.
         :param str expired_time: Server certificate expired time.
-        :param float expired_timestamp: Server certificate expired timestamp.
+        :param int expired_timestamp: Server certificate expired timestamp.
         :param str fingerprint: Server certificate fingerprint.
         :param str id: Server certificate ID.
         :param str name: Server certificate name.
-        :param List[str] subject_alternative_names: Server certificate subject alternative name list.
+        :param Sequence[str] subject_alternative_names: Server certificate subject alternative name list.
         :param str resource_group_id: The Id of resource group which the slb server certificates belongs.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
@@ -1458,7 +1458,7 @@ class GetServerCertificatesCertificateResult(dict):
 
     @property
     @pulumi.getter(name="createdTimestamp")
-    def created_timestamp(self) -> float:
+    def created_timestamp(self) -> int:
         """
         Server certificate created timestamp.
         """
@@ -1474,7 +1474,7 @@ class GetServerCertificatesCertificateResult(dict):
 
     @property
     @pulumi.getter(name="expiredTimestamp")
-    def expired_timestamp(self) -> float:
+    def expired_timestamp(self) -> int:
         """
         Server certificate expired timestamp.
         """
@@ -1511,7 +1511,7 @@ class GetServerCertificatesCertificateResult(dict):
 
     @property
     @pulumi.getter(name="subjectAlternativeNames")
-    def subject_alternative_names(self) -> List[str]:
+    def subject_alternative_names(self) -> Sequence[str]:
         """
         Server certificate subject alternative name list.
         """
@@ -1539,11 +1539,11 @@ class GetServerGroupsSlbServerGroupResult(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str,
-                 servers: List['outputs.GetServerGroupsSlbServerGroupServerResult']):
+                 servers: Sequence['outputs.GetServerGroupsSlbServerGroupServerResult']):
         """
         :param str id: VServer group ID.
         :param str name: VServer group name.
-        :param List['GetServerGroupsSlbServerGroupServerArgs'] servers: ECS instances associated to the group. Each element contains the following attributes:
+        :param Sequence['GetServerGroupsSlbServerGroupServerArgs'] servers: ECS instances associated to the group. Each element contains the following attributes:
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -1567,7 +1567,7 @@ class GetServerGroupsSlbServerGroupResult(dict):
 
     @property
     @pulumi.getter
-    def servers(self) -> List['outputs.GetServerGroupsSlbServerGroupServerResult']:
+    def servers(self) -> Sequence['outputs.GetServerGroupsSlbServerGroupServerResult']:
         """
         ECS instances associated to the group. Each element contains the following attributes:
         """
@@ -1578,10 +1578,10 @@ class GetServerGroupsSlbServerGroupResult(dict):
 class GetServerGroupsSlbServerGroupServerResult(dict):
     def __init__(__self__, *,
                  instance_id: str,
-                 weight: float):
+                 weight: int):
         """
         :param str instance_id: ID of the attached ECS instance.
-        :param float weight: Weight associated to the ECS instance.
+        :param int weight: Weight associated to the ECS instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "weight", weight)
@@ -1596,7 +1596,7 @@ class GetServerGroupsSlbServerGroupServerResult(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> int:
         """
         Weight associated to the ECS instance.
         """
@@ -1607,10 +1607,10 @@ class GetServerGroupsSlbServerGroupServerResult(dict):
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 slb_slave_zone_ids: List[str]):
+                 slb_slave_zone_ids: Sequence[str]):
         """
         :param str id: ID of the zone.
-        :param List[str] slb_slave_zone_ids: A list of slb slave zone ids in which the slb master zone.
+        :param Sequence[str] slb_slave_zone_ids: A list of slb slave zone ids in which the slb master zone.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "slb_slave_zone_ids", slb_slave_zone_ids)
@@ -1625,7 +1625,7 @@ class GetZonesZoneResult(dict):
 
     @property
     @pulumi.getter(name="slbSlaveZoneIds")
-    def slb_slave_zone_ids(self) -> List[str]:
+    def slb_slave_zone_ids(self) -> Sequence[str]:
         """
         A list of slb slave zone ids in which the slb master zone.
         """

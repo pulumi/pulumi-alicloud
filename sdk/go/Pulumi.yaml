@@ -1,3 +1,0 @@
-name: alicloud
-description: A Pulumi resource provider for alicloud.
-language: go

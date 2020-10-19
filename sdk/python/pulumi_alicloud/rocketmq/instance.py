@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Instance']
@@ -92,12 +92,12 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
-            instance_status: Optional[pulumi.Input[float]] = None,
-            instance_type: Optional[pulumi.Input[float]] = None,
+            instance_status: Optional[pulumi.Input[int]] = None,
+            instance_type: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             release_time: Optional[pulumi.Input[str]] = None,
             remark: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[float]] = None,
+            status: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -107,12 +107,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
-        :param pulumi.Input[float] instance_status: The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
-        :param pulumi.Input[float] instance_type: The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
+        :param pulumi.Input[int] instance_status: The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
+        :param pulumi.Input[int] instance_type: The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
         :param pulumi.Input[str] name: Replaced by `instance_name` after version 1.97.0.
         :param pulumi.Input[str] release_time: Platinum edition instance expiration time.
         :param pulumi.Input[str] remark: This attribute is a concise description of instance. The length cannot exceed 128.
-        :param pulumi.Input[float] status: The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
+        :param pulumi.Input[int] status: The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -141,7 +141,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceStatus")
-    def instance_status(self) -> pulumi.Output[float]:
+    def instance_status(self) -> pulumi.Output[int]:
         """
         The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
         """
@@ -149,7 +149,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> pulumi.Output[float]:
+    def instance_type(self) -> pulumi.Output[int]:
         """
         The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
         """
@@ -181,7 +181,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[float]:
+    def status(self) -> pulumi.Output[int]:
         """
         The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
         """

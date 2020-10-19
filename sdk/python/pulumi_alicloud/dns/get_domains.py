@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -91,7 +91,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def domains(self) -> List['outputs.GetDomainsDomainResult']:
+    def domains(self) -> Sequence['outputs.GetDomainsDomainResult']:
         """
         A list of domains. Each element contains the following attributes:
         """
@@ -125,7 +125,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of domain IDs.
         """
@@ -151,7 +151,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of domain names.
         """
@@ -225,7 +225,7 @@ def get_domains(ali_domain: Optional[bool] = None,
                 enable_details: Optional[bool] = None,
                 group_id: Optional[str] = None,
                 group_name_regex: Optional[str] = None,
-                ids: Optional[List[str]] = None,
+                ids: Optional[Sequence[str]] = None,
                 instance_id: Optional[str] = None,
                 key_word: Optional[str] = None,
                 lang: Optional[str] = None,
@@ -243,7 +243,7 @@ def get_domains(ali_domain: Optional[bool] = None,
     :param str domain_name_regex: A regex string to filter results by the domain name.
     :param str group_id: Domain group ID, if not filled, the default is all groups.
     :param str group_name_regex: A regex string to filter results by the group name.
-    :param List[str] ids: - A list of domain IDs.
+    :param Sequence[str] ids: - A list of domain IDs.
     :param str instance_id: Cloud analysis product ID.
     :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
     :param str lang: User language.

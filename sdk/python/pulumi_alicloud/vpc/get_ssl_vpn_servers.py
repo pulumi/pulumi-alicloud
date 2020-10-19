@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -53,7 +53,7 @@ class GetSslVpnServersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of SSL-VPN server IDs.
         """
@@ -66,7 +66,7 @@ class GetSslVpnServersResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of SSL-VPN server names.
         """
@@ -79,7 +79,7 @@ class GetSslVpnServersResult:
 
     @property
     @pulumi.getter
-    def servers(self) -> List['outputs.GetSslVpnServersServerResult']:
+    def servers(self) -> Sequence['outputs.GetSslVpnServersServerResult']:
         """
         A list of SSL-VPN servers. Each element contains the following attributes:
         """
@@ -109,7 +109,7 @@ class AwaitableGetSslVpnServersResult(GetSslVpnServersResult):
             vpn_gateway_id=self.vpn_gateway_id)
 
 
-def get_ssl_vpn_servers(ids: Optional[List[str]] = None,
+def get_ssl_vpn_servers(ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
                         output_file: Optional[str] = None,
                         vpn_gateway_id: Optional[str] = None,
@@ -130,7 +130,7 @@ def get_ssl_vpn_servers(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: IDs of the SSL-VPN servers.
+    :param Sequence[str] ids: IDs of the SSL-VPN servers.
     :param str name_regex: A regex string of SSL-VPN server name.
     :param str output_file: Save the result to the file.
     :param str vpn_gateway_id: Use the VPN gateway ID as the search key.

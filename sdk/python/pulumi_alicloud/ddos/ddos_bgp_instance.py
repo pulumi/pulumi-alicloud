@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['DdosBgpInstance']
@@ -15,12 +15,12 @@ class DdosBgpInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[float]] = None,
-                 base_bandwidth: Optional[pulumi.Input[float]] = None,
-                 ip_count: Optional[pulumi.Input[float]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 base_bandwidth: Optional[pulumi.Input[int]] = None,
+                 ip_count: Optional[pulumi.Input[int]] = None,
                  ip_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -49,12 +49,12 @@ class DdosBgpInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
-        :param pulumi.Input[float] base_bandwidth: Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
-        :param pulumi.Input[float] ip_count: IP count of the instance. Valid values: 100.
+        :param pulumi.Input[int] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+        :param pulumi.Input[int] base_bandwidth: Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+        :param pulumi.Input[int] ip_count: IP count of the instance. Valid values: 100.
         :param pulumi.Input[str] ip_type: IP version of the instance. Valid values: IPv4,IPv6.
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[float] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
+        :param pulumi.Input[int] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] type: Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
         """
         if __name__ is not None:
@@ -99,12 +99,12 @@ class DdosBgpInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[float]] = None,
-            base_bandwidth: Optional[pulumi.Input[float]] = None,
-            ip_count: Optional[pulumi.Input[float]] = None,
+            bandwidth: Optional[pulumi.Input[int]] = None,
+            base_bandwidth: Optional[pulumi.Input[int]] = None,
+            ip_count: Optional[pulumi.Input[int]] = None,
             ip_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'DdosBgpInstance':
         """
         Get an existing DdosBgpInstance resource's state with the given name, id, and optional extra
@@ -113,12 +113,12 @@ class DdosBgpInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
-        :param pulumi.Input[float] base_bandwidth: Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
-        :param pulumi.Input[float] ip_count: IP count of the instance. Valid values: 100.
+        :param pulumi.Input[int] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+        :param pulumi.Input[int] base_bandwidth: Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+        :param pulumi.Input[int] ip_count: IP count of the instance. Valid values: 100.
         :param pulumi.Input[str] ip_type: IP version of the instance. Valid values: IPv4,IPv6.
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[float] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
+        :param pulumi.Input[int] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] type: Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -136,7 +136,7 @@ class DdosBgpInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> pulumi.Output[float]:
+    def bandwidth(self) -> pulumi.Output[int]:
         """
         Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
         """
@@ -144,7 +144,7 @@ class DdosBgpInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="baseBandwidth")
-    def base_bandwidth(self) -> pulumi.Output[Optional[float]]:
+    def base_bandwidth(self) -> pulumi.Output[Optional[int]]:
         """
         Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
         """
@@ -152,7 +152,7 @@ class DdosBgpInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipCount")
-    def ip_count(self) -> pulumi.Output[float]:
+    def ip_count(self) -> pulumi.Output[int]:
         """
         IP count of the instance. Valid values: 100.
         """
@@ -176,7 +176,7 @@ class DdosBgpInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
         The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         """

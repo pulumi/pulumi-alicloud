@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['AccountPasswordPolicy']
@@ -16,10 +16,10 @@ class AccountPasswordPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  hard_expiry: Optional[pulumi.Input[bool]] = None,
-                 max_login_attempts: Optional[pulumi.Input[float]] = None,
-                 max_password_age: Optional[pulumi.Input[float]] = None,
-                 minimum_password_length: Optional[pulumi.Input[float]] = None,
-                 password_reuse_prevention: Optional[pulumi.Input[float]] = None,
+                 max_login_attempts: Optional[pulumi.Input[int]] = None,
+                 max_password_age: Optional[pulumi.Input[int]] = None,
+                 minimum_password_length: Optional[pulumi.Input[int]] = None,
+                 password_reuse_prevention: Optional[pulumi.Input[int]] = None,
                  require_lowercase_characters: Optional[pulumi.Input[bool]] = None,
                  require_numbers: Optional[pulumi.Input[bool]] = None,
                  require_symbols: Optional[pulumi.Input[bool]] = None,
@@ -32,10 +32,10 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] hard_expiry: Specifies if a password can expire in a hard way. Default to false.
-        :param pulumi.Input[float] max_login_attempts: Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
-        :param pulumi.Input[float] max_password_age: The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
-        :param pulumi.Input[float] minimum_password_length: Minimal required length of password for a user. Valid value range: [8-32]. Default to 12.
-        :param pulumi.Input[float] password_reuse_prevention: User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
+        :param pulumi.Input[int] max_login_attempts: Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
+        :param pulumi.Input[int] max_password_age: The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
+        :param pulumi.Input[int] minimum_password_length: Minimal required length of password for a user. Valid value range: [8-32]. Default to 12.
+        :param pulumi.Input[int] password_reuse_prevention: User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
         :param pulumi.Input[bool] require_lowercase_characters: Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_numbers: Specifies if the occurrence of a number in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_symbols: (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
@@ -78,10 +78,10 @@ class AccountPasswordPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             hard_expiry: Optional[pulumi.Input[bool]] = None,
-            max_login_attempts: Optional[pulumi.Input[float]] = None,
-            max_password_age: Optional[pulumi.Input[float]] = None,
-            minimum_password_length: Optional[pulumi.Input[float]] = None,
-            password_reuse_prevention: Optional[pulumi.Input[float]] = None,
+            max_login_attempts: Optional[pulumi.Input[int]] = None,
+            max_password_age: Optional[pulumi.Input[int]] = None,
+            minimum_password_length: Optional[pulumi.Input[int]] = None,
+            password_reuse_prevention: Optional[pulumi.Input[int]] = None,
             require_lowercase_characters: Optional[pulumi.Input[bool]] = None,
             require_numbers: Optional[pulumi.Input[bool]] = None,
             require_symbols: Optional[pulumi.Input[bool]] = None,
@@ -94,10 +94,10 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] hard_expiry: Specifies if a password can expire in a hard way. Default to false.
-        :param pulumi.Input[float] max_login_attempts: Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
-        :param pulumi.Input[float] max_password_age: The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
-        :param pulumi.Input[float] minimum_password_length: Minimal required length of password for a user. Valid value range: [8-32]. Default to 12.
-        :param pulumi.Input[float] password_reuse_prevention: User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
+        :param pulumi.Input[int] max_login_attempts: Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
+        :param pulumi.Input[int] max_password_age: The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
+        :param pulumi.Input[int] minimum_password_length: Minimal required length of password for a user. Valid value range: [8-32]. Default to 12.
+        :param pulumi.Input[int] password_reuse_prevention: User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
         :param pulumi.Input[bool] require_lowercase_characters: Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_numbers: Specifies if the occurrence of a number in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_symbols: (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
@@ -128,7 +128,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxLoginAttempts")
-    def max_login_attempts(self) -> pulumi.Output[Optional[float]]:
+    def max_login_attempts(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
         """
@@ -136,7 +136,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxPasswordAge")
-    def max_password_age(self) -> pulumi.Output[Optional[float]]:
+    def max_password_age(self) -> pulumi.Output[Optional[int]]:
         """
         The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
         """
@@ -144,7 +144,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minimumPasswordLength")
-    def minimum_password_length(self) -> pulumi.Output[Optional[float]]:
+    def minimum_password_length(self) -> pulumi.Output[Optional[int]]:
         """
         Minimal required length of password for a user. Valid value range: [8-32]. Default to 12.
         """
@@ -152,7 +152,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="passwordReusePrevention")
-    def password_reuse_prevention(self) -> pulumi.Output[Optional[float]]:
+    def password_reuse_prevention(self) -> pulumi.Output[Optional[int]]:
         """
         User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
         """

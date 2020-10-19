@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['ScheduledTask']
@@ -16,11 +16,11 @@ class ScheduledTask(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 desired_capacity: Optional[pulumi.Input[float]] = None,
-                 launch_expiration_time: Optional[pulumi.Input[float]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 launch_expiration_time: Optional[pulumi.Input[int]] = None,
                  launch_time: Optional[pulumi.Input[str]] = None,
-                 max_value: Optional[pulumi.Input[float]] = None,
-                 min_value: Optional[pulumi.Input[float]] = None,
+                 max_value: Optional[pulumi.Input[int]] = None,
+                 min_value: Optional[pulumi.Input[int]] = None,
                  recurrence_end_time: Optional[pulumi.Input[str]] = None,
                  recurrence_type: Optional[pulumi.Input[str]] = None,
                  recurrence_value: Optional[pulumi.Input[str]] = None,
@@ -36,14 +36,14 @@ class ScheduledTask(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
-        :param pulumi.Input[float] desired_capacity: The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
-        :param pulumi.Input[float] launch_expiration_time: The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+        :param pulumi.Input[int] desired_capacity: The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
+        :param pulumi.Input[int] launch_expiration_time: The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
         :param pulumi.Input[str] launch_time: The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
                The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
                If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
                Otherwise, the task is only executed once at the date and time specified by LaunchTime.
-        :param pulumi.Input[float] max_value: The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
-        :param pulumi.Input[float] min_value: The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        :param pulumi.Input[int] max_value: The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        :param pulumi.Input[int] min_value: The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         :param pulumi.Input[str] recurrence_end_time: Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
                The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
         :param pulumi.Input[str] recurrence_type: Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
@@ -102,11 +102,11 @@ class ScheduledTask(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            desired_capacity: Optional[pulumi.Input[float]] = None,
-            launch_expiration_time: Optional[pulumi.Input[float]] = None,
+            desired_capacity: Optional[pulumi.Input[int]] = None,
+            launch_expiration_time: Optional[pulumi.Input[int]] = None,
             launch_time: Optional[pulumi.Input[str]] = None,
-            max_value: Optional[pulumi.Input[float]] = None,
-            min_value: Optional[pulumi.Input[float]] = None,
+            max_value: Optional[pulumi.Input[int]] = None,
+            min_value: Optional[pulumi.Input[int]] = None,
             recurrence_end_time: Optional[pulumi.Input[str]] = None,
             recurrence_type: Optional[pulumi.Input[str]] = None,
             recurrence_value: Optional[pulumi.Input[str]] = None,
@@ -122,14 +122,14 @@ class ScheduledTask(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
-        :param pulumi.Input[float] desired_capacity: The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
-        :param pulumi.Input[float] launch_expiration_time: The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+        :param pulumi.Input[int] desired_capacity: The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
+        :param pulumi.Input[int] launch_expiration_time: The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
         :param pulumi.Input[str] launch_time: The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
                The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
                If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
                Otherwise, the task is only executed once at the date and time specified by LaunchTime.
-        :param pulumi.Input[float] max_value: The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
-        :param pulumi.Input[float] min_value: The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        :param pulumi.Input[int] max_value: The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        :param pulumi.Input[int] min_value: The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         :param pulumi.Input[str] recurrence_end_time: Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
                The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
         :param pulumi.Input[str] recurrence_type: Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
@@ -176,7 +176,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> pulumi.Output[Optional[float]]:
+    def desired_capacity(self) -> pulumi.Output[Optional[int]]:
         """
         The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
         """
@@ -184,7 +184,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launchExpirationTime")
-    def launch_expiration_time(self) -> pulumi.Output[Optional[float]]:
+    def launch_expiration_time(self) -> pulumi.Output[Optional[int]]:
         """
         The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
         """
@@ -203,7 +203,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxValue")
-    def max_value(self) -> pulumi.Output[Optional[float]]:
+    def max_value(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         """
@@ -211,7 +211,7 @@ class ScheduledTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minValue")
-    def min_value(self) -> pulumi.Output[Optional[float]]:
+    def min_value(self) -> pulumi.Output[Optional[int]]:
         """
         The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         """

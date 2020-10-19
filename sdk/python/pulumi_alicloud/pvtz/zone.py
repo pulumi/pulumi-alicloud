@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Zone']
@@ -79,7 +79,7 @@ class Zone(pulumi.CustomResource):
             lang: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             proxy_pattern: Optional[pulumi.Input[str]] = None,
-            record_count: Optional[pulumi.Input[float]] = None,
+            record_count: Optional[pulumi.Input[int]] = None,
             remark: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
@@ -96,7 +96,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_pattern: The recursive DNS proxy. Valid values:
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
-        :param pulumi.Input[float] record_count: The count of the Private Zone Record.
+        :param pulumi.Input[int] record_count: The count of the Private Zone Record.
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
@@ -155,7 +155,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recordCount")
-    def record_count(self) -> pulumi.Output[float]:
+    def record_count(self) -> pulumi.Output[int]:
         """
         The count of the Private Zone Record.
         """

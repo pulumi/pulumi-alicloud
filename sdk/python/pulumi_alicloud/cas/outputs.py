@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,7 +22,7 @@ class GetCertificatesCertificateResult(dict):
                  end_date: str,
                  expired: bool,
                  finger_print: str,
-                 id: float,
+                 id: int,
                  issuer: str,
                  name: str,
                  org_name: str,
@@ -37,7 +37,7 @@ class GetCertificatesCertificateResult(dict):
         :param str end_date: The cert's not valid after time.
         :param bool expired: The cert is expired or not.
         :param str finger_print: The cert's finger.
-        :param float id: The cert's id.
+        :param int id: The cert's id.
         :param str issuer: The cert's .
         :param str name: The cert's name.
         :param str org_name: The cert's organization.
@@ -118,7 +118,7 @@ class GetCertificatesCertificateResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The cert's id.
         """

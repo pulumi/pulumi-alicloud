@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,19 +17,19 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bootstrap_actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]]] = None,
+                 bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]]] = None,
                  charge_type: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  deposit_type: Optional[pulumi.Input[str]] = None,
                  eas_enable: Optional[pulumi.Input[bool]] = None,
                  emr_ver: Optional[pulumi.Input[str]] = None,
                  high_availability_enable: Optional[pulumi.Input[bool]] = None,
-                 host_groups: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterHostGroupArgs']]]]] = None,
+                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterHostGroupArgs']]]]] = None,
                  is_open_public_ip: Optional[pulumi.Input[bool]] = None,
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  master_pwd: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 option_software_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  related_cluster_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  ssh_enable: Optional[pulumi.Input[bool]] = None,
@@ -56,11 +56,11 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] eas_enable: High security cluster (true) or not. Default value is false.
         :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterHostGroupArgs']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterHostGroupArgs']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
         :param pulumi.Input[str] key_pair_name: Ssh key pair.
         :param pulumi.Input[str] master_pwd: Master ssh password.
         :param pulumi.Input[str] name: bootstrap action name.
-        :param pulumi.Input[List[pulumi.Input[str]]] option_software_lists: Optional software list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] option_software_lists: Optional software list.
         :param pulumi.Input[str] related_cluster_id: This specify the related cluster id, if this cluster is a Gateway.
         :param pulumi.Input[str] security_group_id: Security Group ID for Cluster, you can also specify this key for each host group.
         :param pulumi.Input[bool] ssh_enable: If this is set true, we can ssh into cluster. Default value is false.
@@ -124,19 +124,19 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bootstrap_actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]]] = None,
+            bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]]] = None,
             charge_type: Optional[pulumi.Input[str]] = None,
             cluster_type: Optional[pulumi.Input[str]] = None,
             deposit_type: Optional[pulumi.Input[str]] = None,
             eas_enable: Optional[pulumi.Input[bool]] = None,
             emr_ver: Optional[pulumi.Input[str]] = None,
             high_availability_enable: Optional[pulumi.Input[bool]] = None,
-            host_groups: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterHostGroupArgs']]]]] = None,
+            host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterHostGroupArgs']]]]] = None,
             is_open_public_ip: Optional[pulumi.Input[bool]] = None,
             key_pair_name: Optional[pulumi.Input[str]] = None,
             master_pwd: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            option_software_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             related_cluster_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             ssh_enable: Optional[pulumi.Input[bool]] = None,
@@ -158,11 +158,11 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] eas_enable: High security cluster (true) or not. Default value is false.
         :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterHostGroupArgs']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterHostGroupArgs']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
         :param pulumi.Input[str] key_pair_name: Ssh key pair.
         :param pulumi.Input[str] master_pwd: Master ssh password.
         :param pulumi.Input[str] name: bootstrap action name.
-        :param pulumi.Input[List[pulumi.Input[str]]] option_software_lists: Optional software list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] option_software_lists: Optional software list.
         :param pulumi.Input[str] related_cluster_id: This specify the related cluster id, if this cluster is a Gateway.
         :param pulumi.Input[str] security_group_id: Security Group ID for Cluster, you can also specify this key for each host group.
         :param pulumi.Input[bool] ssh_enable: If this is set true, we can ssh into cluster. Default value is false.
@@ -201,7 +201,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bootstrapActions")
-    def bootstrap_actions(self) -> pulumi.Output[Optional[List['outputs.ClusterBootstrapAction']]]:
+    def bootstrap_actions(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterBootstrapAction']]]:
         return pulumi.get(self, "bootstrap_actions")
 
     @property
@@ -254,7 +254,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> pulumi.Output[Optional[List['outputs.ClusterHostGroup']]]:
+    def host_groups(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterHostGroup']]]:
         """
         Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
         """
@@ -291,7 +291,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="optionSoftwareLists")
-    def option_software_lists(self) -> pulumi.Output[Optional[List[str]]]:
+    def option_software_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Optional software list.
         """

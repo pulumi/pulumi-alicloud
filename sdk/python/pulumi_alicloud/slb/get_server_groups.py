@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -53,7 +53,7 @@ class GetServerGroupsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of SLB VServer groups IDs.
         """
@@ -71,7 +71,7 @@ class GetServerGroupsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of SLB VServer groups names.
         """
@@ -84,7 +84,7 @@ class GetServerGroupsResult:
 
     @property
     @pulumi.getter(name="slbServerGroups")
-    def slb_server_groups(self) -> List['outputs.GetServerGroupsSlbServerGroupResult']:
+    def slb_server_groups(self) -> Sequence['outputs.GetServerGroupsSlbServerGroupResult']:
         """
         A list of SLB VServer groups. Each element contains the following attributes:
         """
@@ -106,7 +106,7 @@ class AwaitableGetServerGroupsResult(GetServerGroupsResult):
             slb_server_groups=self.slb_server_groups)
 
 
-def get_server_groups(ids: Optional[List[str]] = None,
+def get_server_groups(ids: Optional[Sequence[str]] = None,
                       load_balancer_id: Optional[str] = None,
                       name_regex: Optional[str] = None,
                       output_file: Optional[str] = None,
@@ -138,7 +138,7 @@ def get_server_groups(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of VServer group IDs to filter results.
+    :param Sequence[str] ids: A list of VServer group IDs to filter results.
     :param str load_balancer_id: ID of the SLB.
     :param str name_regex: A regex string to filter results by VServer group name.
     """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -39,7 +39,7 @@ class GetAccountsResult:
 
     @property
     @pulumi.getter
-    def accounts(self) -> List['outputs.GetAccountsAccountResult']:
+    def accounts(self) -> Sequence['outputs.GetAccountsAccountResult']:
         """
         A list of PolarDB cluster accounts. Each element contains the following attributes:
         """
@@ -65,7 +65,7 @@ class GetAccountsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         Account name of the cluster.
         """

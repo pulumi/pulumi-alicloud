@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -47,7 +47,7 @@ class GetNotificationsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[List[str]]:
+    def ids(self) -> Optional[Sequence[str]]:
         """
         A list of notification ids.
         """
@@ -55,7 +55,7 @@ class GetNotificationsResult:
 
     @property
     @pulumi.getter
-    def notifications(self) -> List['outputs.GetNotificationsNotificationResult']:
+    def notifications(self) -> Sequence['outputs.GetNotificationsNotificationResult']:
         """
         A list of notifications. Each element contains the following attributes:
         """
@@ -88,7 +88,7 @@ class AwaitableGetNotificationsResult(GetNotificationsResult):
             scaling_group_id=self.scaling_group_id)
 
 
-def get_notifications(ids: Optional[List[str]] = None,
+def get_notifications(ids: Optional[Sequence[str]] = None,
                       output_file: Optional[str] = None,
                       scaling_group_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotificationsResult:
@@ -108,7 +108,7 @@ def get_notifications(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of notification ids.
+    :param Sequence[str] ids: A list of notification ids.
     :param str scaling_group_id: Scaling group id the notifications belong to.
     """
     __args__ = dict()

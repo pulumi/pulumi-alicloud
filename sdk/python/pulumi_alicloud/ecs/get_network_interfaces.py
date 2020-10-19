@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -74,7 +74,7 @@ class GetNetworkInterfacesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -87,7 +87,7 @@ class GetNetworkInterfacesResult:
 
     @property
     @pulumi.getter
-    def interfaces(self) -> List['outputs.GetNetworkInterfacesInterfaceResult']:
+    def interfaces(self) -> Sequence['outputs.GetNetworkInterfacesInterfaceResult']:
         """
         A list of ENIs. Each element contains the following attributes:
         """
@@ -100,7 +100,7 @@ class GetNetworkInterfacesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         return pulumi.get(self, "names")
 
     @property
@@ -181,7 +181,7 @@ class AwaitableGetNetworkInterfacesResult(GetNetworkInterfacesResult):
             vswitch_id=self.vswitch_id)
 
 
-def get_network_interfaces(ids: Optional[List[str]] = None,
+def get_network_interfaces(ids: Optional[Sequence[str]] = None,
                            instance_id: Optional[str] = None,
                            name_regex: Optional[str] = None,
                            output_file: Optional[str] = None,

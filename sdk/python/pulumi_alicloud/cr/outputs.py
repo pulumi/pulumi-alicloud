@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -111,14 +111,14 @@ class GetReposRepoResult(dict):
                  namespace: str,
                  repo_type: str,
                  summary: str,
-                 tags: List['outputs.GetReposRepoTagResult']):
+                 tags: Sequence['outputs.GetReposRepoTagResult']):
         """
         :param 'GetReposRepoDomainListArgs' domain_list: The repository domain list.
         :param str name: Name of container registry namespace.
         :param str namespace: Name of container registry namespace where the repositories are located in.
         :param str repo_type: `PUBLIC` or `PRIVATE`, repository's visibility.
         :param str summary: The repository general information.
-        :param List['GetReposRepoTagArgs'] tags: A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+        :param Sequence['GetReposRepoTagArgs'] tags: A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
         """
         pulumi.set(__self__, "domain_list", domain_list)
         pulumi.set(__self__, "name", name)
@@ -169,7 +169,7 @@ class GetReposRepoResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> List['outputs.GetReposRepoTagResult']:
+    def tags(self) -> Sequence['outputs.GetReposRepoTagResult']:
         """
         A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
         """
@@ -220,18 +220,18 @@ class GetReposRepoDomainListResult(dict):
 class GetReposRepoTagResult(dict):
     def __init__(__self__, *,
                  digest: str,
-                 image_create: float,
+                 image_create: int,
                  image_id: str,
-                 image_size: float,
-                 image_update: float,
+                 image_size: int,
+                 image_update: int,
                  status: str,
                  tag: str):
         """
         :param str digest: Digest of this image.
-        :param float image_create: Create time of this image, unix time in nanoseconds.
+        :param int image_create: Create time of this image, unix time in nanoseconds.
         :param str image_id: Id of this image.
-        :param float image_size: Status of this image, in bytes.
-        :param float image_update: Last update time of this image, unix time in nanoseconds.
+        :param int image_size: Status of this image, in bytes.
+        :param int image_update: Last update time of this image, unix time in nanoseconds.
         :param str status: Status of this image.
         :param str tag: Tag of this image.
         """
@@ -253,7 +253,7 @@ class GetReposRepoTagResult(dict):
 
     @property
     @pulumi.getter(name="imageCreate")
-    def image_create(self) -> float:
+    def image_create(self) -> int:
         """
         Create time of this image, unix time in nanoseconds.
         """
@@ -269,7 +269,7 @@ class GetReposRepoTagResult(dict):
 
     @property
     @pulumi.getter(name="imageSize")
-    def image_size(self) -> float:
+    def image_size(self) -> int:
         """
         Status of this image, in bytes.
         """
@@ -277,7 +277,7 @@ class GetReposRepoTagResult(dict):
 
     @property
     @pulumi.getter(name="imageUpdate")
-    def image_update(self) -> float:
+    def image_update(self) -> int:
         """
         Last update time of this image, unix time in nanoseconds.
         """

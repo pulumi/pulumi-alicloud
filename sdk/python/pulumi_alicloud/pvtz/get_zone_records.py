@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -50,7 +50,7 @@ class GetZoneRecordsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of Private Zone Record IDs.
         """
@@ -68,7 +68,7 @@ class GetZoneRecordsResult:
 
     @property
     @pulumi.getter
-    def records(self) -> List['outputs.GetZoneRecordsRecordResult']:
+    def records(self) -> Sequence['outputs.GetZoneRecordsRecordResult']:
         """
         A list of zone records. Each element contains the following attributes:
         """
@@ -94,7 +94,7 @@ class AwaitableGetZoneRecordsResult(GetZoneRecordsResult):
             zone_id=self.zone_id)
 
 
-def get_zone_records(ids: Optional[List[str]] = None,
+def get_zone_records(ids: Optional[Sequence[str]] = None,
                      keyword: Optional[str] = None,
                      output_file: Optional[str] = None,
                      zone_id: Optional[str] = None,
@@ -114,7 +114,7 @@ def get_zone_records(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of Private Zone Record IDs.
+    :param Sequence[str] ids: A list of Private Zone Record IDs.
     :param str keyword: Keyword for record rr and value.
     :param str zone_id: ID of the Private Zone.
     """

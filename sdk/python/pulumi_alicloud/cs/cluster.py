@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,17 +19,17 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  disk_category: Optional[pulumi.Input[str]] = None,
-                 disk_size: Optional[pulumi.Input[float]] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  is_outdated: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  need_slb: Optional[pulumi.Input[bool]] = None,
-                 node_number: Optional[pulumi.Input[float]] = None,
+                 node_number: Optional[pulumi.Input[int]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  release_eip: Optional[pulumi.Input[bool]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -99,19 +99,19 @@ class Cluster(pulumi.CustomResource):
             agent_version: Optional[pulumi.Input[str]] = None,
             cidr_block: Optional[pulumi.Input[str]] = None,
             disk_category: Optional[pulumi.Input[str]] = None,
-            disk_size: Optional[pulumi.Input[float]] = None,
+            disk_size: Optional[pulumi.Input[int]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             is_outdated: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
             need_slb: Optional[pulumi.Input[bool]] = None,
-            node_number: Optional[pulumi.Input[float]] = None,
-            nodes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterNodeArgs']]]]] = None,
+            node_number: Optional[pulumi.Input[int]] = None,
+            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeArgs']]]]] = None,
             password: Optional[pulumi.Input[str]] = None,
             release_eip: Optional[pulumi.Input[bool]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
-            size: Optional[pulumi.Input[float]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             slb_id: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Cluster':
@@ -165,7 +165,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> pulumi.Output[Optional[float]]:
+    def disk_size(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "disk_size")
 
     @property
@@ -200,12 +200,12 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeNumber")
-    def node_number(self) -> pulumi.Output[Optional[float]]:
+    def node_number(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "node_number")
 
     @property
     @pulumi.getter
-    def nodes(self) -> pulumi.Output[List['outputs.ClusterNode']]:
+    def nodes(self) -> pulumi.Output[Sequence['outputs.ClusterNode']]:
         return pulumi.get(self, "nodes")
 
     @property
@@ -225,7 +225,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[Optional[float]]:
+    def size(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "size")
 
     @property

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -53,7 +53,7 @@ class GetRouteEntriesResult:
 
     @property
     @pulumi.getter
-    def entries(self) -> List['outputs.GetRouteEntriesEntryResult']:
+    def entries(self) -> Sequence['outputs.GetRouteEntriesEntryResult']:
         """
         A list of Route Entries. Each element contains the following attributes:
         """

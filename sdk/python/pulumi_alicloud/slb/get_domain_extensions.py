@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -24,8 +24,8 @@ class GetDomainExtensionsResult:
         if extensions and not isinstance(extensions, list):
             raise TypeError("Expected argument 'extensions' to be a list")
         pulumi.set(__self__, "extensions", extensions)
-        if frontend_port and not isinstance(frontend_port, float):
-            raise TypeError("Expected argument 'frontend_port' to be a float")
+        if frontend_port and not isinstance(frontend_port, int):
+            raise TypeError("Expected argument 'frontend_port' to be a int")
         pulumi.set(__self__, "frontend_port", frontend_port)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -42,7 +42,7 @@ class GetDomainExtensionsResult:
 
     @property
     @pulumi.getter
-    def extensions(self) -> List['outputs.GetDomainExtensionsExtensionResult']:
+    def extensions(self) -> Sequence['outputs.GetDomainExtensionsExtensionResult']:
         """
         A list of SLB domain extension. Each element contains the following attributes:
         """
@@ -50,7 +50,7 @@ class GetDomainExtensionsResult:
 
     @property
     @pulumi.getter(name="frontendPort")
-    def frontend_port(self) -> float:
+    def frontend_port(self) -> int:
         return pulumi.get(self, "frontend_port")
 
     @property
@@ -63,7 +63,7 @@ class GetDomainExtensionsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -91,8 +91,8 @@ class AwaitableGetDomainExtensionsResult(GetDomainExtensionsResult):
             output_file=self.output_file)
 
 
-def get_domain_extensions(frontend_port: Optional[float] = None,
-                          ids: Optional[List[str]] = None,
+def get_domain_extensions(frontend_port: Optional[int] = None,
+                          ids: Optional[Sequence[str]] = None,
                           load_balancer_id: Optional[str] = None,
                           output_file: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainExtensionsResult:
@@ -113,8 +113,8 @@ def get_domain_extensions(frontend_port: Optional[float] = None,
     ```
 
 
-    :param float frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
-    :param List[str] ids: IDs of the SLB domain extensions.
+    :param int frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+    :param Sequence[str] ids: IDs of the SLB domain extensions.
     :param str load_balancer_id: The ID of the SLB instance.
     """
     __args__ = dict()

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['AclRule']
@@ -22,7 +22,7 @@ class AclRule(pulumi.CustomResource):
                  direction: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  source_cidr: Optional[pulumi.Input[str]] = None,
                  source_port_range: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -46,7 +46,7 @@ class AclRule(pulumi.CustomResource):
         :param pulumi.Input[str] direction: The direction of the ACL rule. Valid values: in|out.
         :param pulumi.Input[str] ip_protocol: The protocol used by the ACL rule. The value is not case sensitive.
         :param pulumi.Input[str] policy: The policy used by the ACL rule. Valid values: accept|drop.
-        :param pulumi.Input[float] priority: The priority of the ACL rule. Value range: 1 to 100.
+        :param pulumi.Input[int] priority: The priority of the ACL rule. Value range: 1 to 100.
         :param pulumi.Input[str] source_cidr: The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
         :param pulumi.Input[str] source_port_range: The range of the source port. Valid value: 80/80.
         """
@@ -110,7 +110,7 @@ class AclRule(pulumi.CustomResource):
             direction: Optional[pulumi.Input[str]] = None,
             ip_protocol: Optional[pulumi.Input[str]] = None,
             policy: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             source_cidr: Optional[pulumi.Input[str]] = None,
             source_port_range: Optional[pulumi.Input[str]] = None) -> 'AclRule':
         """
@@ -127,7 +127,7 @@ class AclRule(pulumi.CustomResource):
         :param pulumi.Input[str] direction: The direction of the ACL rule. Valid values: in|out.
         :param pulumi.Input[str] ip_protocol: The protocol used by the ACL rule. The value is not case sensitive.
         :param pulumi.Input[str] policy: The policy used by the ACL rule. Valid values: accept|drop.
-        :param pulumi.Input[float] priority: The priority of the ACL rule. Value range: 1 to 100.
+        :param pulumi.Input[int] priority: The priority of the ACL rule. Value range: 1 to 100.
         :param pulumi.Input[str] source_cidr: The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
         :param pulumi.Input[str] source_port_range: The range of the source port. Valid value: 80/80.
         """
@@ -205,7 +205,7 @@ class AclRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[float]]:
+    def priority(self) -> pulumi.Output[Optional[int]]:
         """
         The priority of the ACL rule. Value range: 1 to 100.
         """

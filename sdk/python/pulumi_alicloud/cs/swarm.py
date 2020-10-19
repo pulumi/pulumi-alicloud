@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,17 +19,17 @@ class Swarm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  disk_category: Optional[pulumi.Input[str]] = None,
-                 disk_size: Optional[pulumi.Input[float]] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  is_outdated: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  need_slb: Optional[pulumi.Input[bool]] = None,
-                 node_number: Optional[pulumi.Input[float]] = None,
+                 node_number: Optional[pulumi.Input[int]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  release_eip: Optional[pulumi.Input[bool]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -68,16 +68,16 @@ class Swarm(pulumi.CustomResource):
                - 172.19-30.0.0/16
                - 10.0.0.0/16
         :param pulumi.Input[str] disk_category: The data disk category of ECS instance node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd`, `ephemeral_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[float] disk_size: The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
+        :param pulumi.Input[int] disk_size: The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
         :param pulumi.Input[str] image_id: The image ID of ECS instance node used. Default to System automate allocated.
         :param pulumi.Input[str] instance_type: The type of ECS instance node.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] name: The container cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] need_slb: Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
-        :param pulumi.Input[float] node_number: The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
+        :param pulumi.Input[int] node_number: The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
         :param pulumi.Input[str] password: The password of ECS instance node.
         :param pulumi.Input[bool] release_eip: Whether to release EIP after creating swarm cluster successfully. Default to false.
-        :param pulumi.Input[float] size: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+        :param pulumi.Input[int] size: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
         :param pulumi.Input[str] vswitch_id: The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
         """
         if __name__ is not None:
@@ -140,19 +140,19 @@ class Swarm(pulumi.CustomResource):
             agent_version: Optional[pulumi.Input[str]] = None,
             cidr_block: Optional[pulumi.Input[str]] = None,
             disk_category: Optional[pulumi.Input[str]] = None,
-            disk_size: Optional[pulumi.Input[float]] = None,
+            disk_size: Optional[pulumi.Input[int]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             is_outdated: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
             need_slb: Optional[pulumi.Input[bool]] = None,
-            node_number: Optional[pulumi.Input[float]] = None,
-            nodes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SwarmNodeArgs']]]]] = None,
+            node_number: Optional[pulumi.Input[int]] = None,
+            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SwarmNodeArgs']]]]] = None,
             password: Optional[pulumi.Input[str]] = None,
             release_eip: Optional[pulumi.Input[bool]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
-            size: Optional[pulumi.Input[float]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             slb_id: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Swarm':
@@ -170,18 +170,18 @@ class Swarm(pulumi.CustomResource):
                - 172.19-30.0.0/16
                - 10.0.0.0/16
         :param pulumi.Input[str] disk_category: The data disk category of ECS instance node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd`, `ephemeral_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[float] disk_size: The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
+        :param pulumi.Input[int] disk_size: The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
         :param pulumi.Input[str] image_id: The image ID of ECS instance node used. Default to System automate allocated.
         :param pulumi.Input[str] instance_type: The type of ECS instance node.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] name: The container cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] need_slb: Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
-        :param pulumi.Input[float] node_number: The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SwarmNodeArgs']]]] nodes: List of cluster nodes. It contains several attributes to `Block Nodes`.
+        :param pulumi.Input[int] node_number: The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SwarmNodeArgs']]]] nodes: List of cluster nodes. It contains several attributes to `Block Nodes`.
         :param pulumi.Input[str] password: The password of ECS instance node.
         :param pulumi.Input[bool] release_eip: Whether to release EIP after creating swarm cluster successfully. Default to false.
         :param pulumi.Input[str] security_group_id: The ID of security group where the current cluster worker node is located.
-        :param pulumi.Input[float] size: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+        :param pulumi.Input[int] size: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
         :param pulumi.Input[str] slb_id: The ID of load balancer where the current cluster worker node is located.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[str] vswitch_id: The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
@@ -241,7 +241,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> pulumi.Output[Optional[float]]:
+    def disk_size(self) -> pulumi.Output[Optional[int]]:
         """
         The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
         """
@@ -294,7 +294,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeNumber")
-    def node_number(self) -> pulumi.Output[Optional[float]]:
+    def node_number(self) -> pulumi.Output[Optional[int]]:
         """
         The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
         """
@@ -302,7 +302,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def nodes(self) -> pulumi.Output[List['outputs.SwarmNode']]:
+    def nodes(self) -> pulumi.Output[Sequence['outputs.SwarmNode']]:
         """
         List of cluster nodes. It contains several attributes to `Block Nodes`.
         """
@@ -334,7 +334,7 @@ class Swarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[Optional[float]]:
+    def size(self) -> pulumi.Output[Optional[int]]:
         """
         Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
         """

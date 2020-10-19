@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Instance']
@@ -15,9 +15,9 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_node_amount: Optional[pulumi.Input[float]] = None,
+                 data_node_amount: Optional[pulumi.Input[int]] = None,
                  data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
-                 data_node_disk_size: Optional[pulumi.Input[float]] = None,
+                 data_node_disk_size: Optional[pulumi.Input[int]] = None,
                  data_node_disk_type: Optional[pulumi.Input[str]] = None,
                  data_node_spec: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -25,20 +25,20 @@ class Instance(pulumi.CustomResource):
                  enable_kibana_public_network: Optional[pulumi.Input[bool]] = None,
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
-                 kibana_private_whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 kibana_whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  master_node_spec: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
-                 private_whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 public_whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
-                 zone_count: Optional[pulumi.Input[float]] = None,
+                 zone_count: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -76,9 +76,9 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
+        :param pulumi.Input[int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
-        :param pulumi.Input[float] data_node_disk_size: The single data node storage space.
+        :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
                - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         :param pulumi.Input[str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
@@ -87,22 +87,22 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
         :param pulumi.Input[bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
-        :param pulumi.Input[List[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
-        :param pulumi.Input[List[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
-        :param pulumi.Input[float] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
-        :param pulumi.Input[List[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
-        :param pulumi.Input[List[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
+        :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
                - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
                - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
-        :param pulumi.Input[float] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -172,9 +172,9 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_node_amount: Optional[pulumi.Input[float]] = None,
+            data_node_amount: Optional[pulumi.Input[int]] = None,
             data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
-            data_node_disk_size: Optional[pulumi.Input[float]] = None,
+            data_node_disk_size: Optional[pulumi.Input[int]] = None,
             data_node_disk_type: Optional[pulumi.Input[str]] = None,
             data_node_spec: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -184,23 +184,23 @@ class Instance(pulumi.CustomResource):
             enable_public: Optional[pulumi.Input[bool]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             kibana_domain: Optional[pulumi.Input[str]] = None,
-            kibana_port: Optional[pulumi.Input[float]] = None,
-            kibana_private_whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            kibana_whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            kibana_port: Optional[pulumi.Input[int]] = None,
+            kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             master_node_spec: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
-            port: Optional[pulumi.Input[float]] = None,
-            private_whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            public_whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            period: Optional[pulumi.Input[int]] = None,
+            port: Optional[pulumi.Input[int]] = None,
+            private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             version: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
-            zone_count: Optional[pulumi.Input[float]] = None) -> 'Instance':
+            zone_count: Optional[pulumi.Input[int]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -208,9 +208,9 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
+        :param pulumi.Input[int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
-        :param pulumi.Input[float] data_node_disk_size: The single data node storage space.
+        :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
                - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         :param pulumi.Input[str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
@@ -221,17 +221,17 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         :param pulumi.Input[str] kibana_domain: Kibana console domain (Internet access supported).
-        :param pulumi.Input[float] kibana_port: Kibana console port.
-        :param pulumi.Input[List[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
-        :param pulumi.Input[List[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
+        :param pulumi.Input[int] kibana_port: Kibana console port.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
-        :param pulumi.Input[float] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
-        :param pulumi.Input[float] port: Instance connection port.
-        :param pulumi.Input[List[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
-        :param pulumi.Input[List[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
+        :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        :param pulumi.Input[int] port: Instance connection port.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
@@ -239,7 +239,7 @@ class Instance(pulumi.CustomResource):
                - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
-        :param pulumi.Input[float] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -278,7 +278,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataNodeAmount")
-    def data_node_amount(self) -> pulumi.Output[float]:
+    def data_node_amount(self) -> pulumi.Output[int]:
         """
         The Elasticsearch cluster's data node quantity, between 2 and 50.
         """
@@ -294,7 +294,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataNodeDiskSize")
-    def data_node_disk_size(self) -> pulumi.Output[float]:
+    def data_node_disk_size(self) -> pulumi.Output[int]:
         """
         The single data node storage space.
         - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
@@ -375,7 +375,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kibanaPort")
-    def kibana_port(self) -> pulumi.Output[float]:
+    def kibana_port(self) -> pulumi.Output[int]:
         """
         Kibana console port.
         """
@@ -383,7 +383,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kibanaPrivateWhitelists")
-    def kibana_private_whitelists(self) -> pulumi.Output[List[str]]:
+    def kibana_private_whitelists(self) -> pulumi.Output[Sequence[str]]:
         """
         Set the Kibana's IP whitelist in private network.
         """
@@ -391,7 +391,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kibanaWhitelists")
-    def kibana_whitelists(self) -> pulumi.Output[List[str]]:
+    def kibana_whitelists(self) -> pulumi.Output[Sequence[str]]:
         """
         Set the Kibana's IP whitelist in internet network.
         """
@@ -431,7 +431,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
         The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         """
@@ -439,7 +439,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         Instance connection port.
         """
@@ -447,7 +447,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateWhitelists")
-    def private_whitelists(self) -> pulumi.Output[List[str]]:
+    def private_whitelists(self) -> pulumi.Output[Sequence[str]]:
         """
         Set the instance's IP whitelist in VPC network.
         """
@@ -455,7 +455,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicWhitelists")
-    def public_whitelists(self) -> pulumi.Output[List[str]]:
+    def public_whitelists(self) -> pulumi.Output[Sequence[str]]:
         """
         Set the instance's IP whitelist in internet network.
         """
@@ -505,7 +505,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneCount")
-    def zone_count(self) -> pulumi.Output[Optional[float]]:
+    def zone_count(self) -> pulumi.Output[Optional[int]]:
         """
         The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """

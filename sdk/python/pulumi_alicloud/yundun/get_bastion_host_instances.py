@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -50,7 +50,7 @@ class GetBastionHostInstancesResult:
 
     @property
     @pulumi.getter
-    def descriptions(self) -> List[str]:
+    def descriptions(self) -> Sequence[str]:
         return pulumi.get(self, "descriptions")
 
     @property
@@ -63,12 +63,12 @@ class GetBastionHostInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetBastionHostInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetBastionHostInstancesInstanceResult']:
         """
         A list of apis. Each element contains the following attributes:
         """
@@ -104,7 +104,7 @@ class AwaitableGetBastionHostInstancesResult(GetBastionHostInstancesResult):
 
 
 def get_bastion_host_instances(description_regex: Optional[str] = None,
-                               ids: Optional[List[str]] = None,
+                               ids: Optional[Sequence[str]] = None,
                                output_file: Optional[str] = None,
                                tags: Optional[Mapping[str, Any]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBastionHostInstancesResult:
@@ -125,7 +125,7 @@ def get_bastion_host_instances(description_regex: Optional[str] = None,
 
 
     :param str description_regex: A regex string to filter results by the instance description.
-    :param List[str] ids: Matched instance IDs to filter data source result.
+    :param Sequence[str] ids: Matched instance IDs to filter data source result.
     :param str output_file: File name to persist data source output.
     :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
            ```python

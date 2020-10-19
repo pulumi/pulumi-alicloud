@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -36,7 +36,7 @@ class GetHandshakesResult:
 
     @property
     @pulumi.getter
-    def handshakes(self) -> List['outputs.GetHandshakesHandshakeResult']:
+    def handshakes(self) -> Sequence['outputs.GetHandshakesHandshakeResult']:
         """
         A list of Resource Manager Handshakes. Each element contains the following attributes:
         """
@@ -52,7 +52,7 @@ class GetHandshakesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of Resource Manager Handshake IDs.
         """
@@ -76,7 +76,7 @@ class AwaitableGetHandshakesResult(GetHandshakesResult):
             output_file=self.output_file)
 
 
-def get_handshakes(ids: Optional[List[str]] = None,
+def get_handshakes(ids: Optional[Sequence[str]] = None,
                    output_file: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHandshakesResult:
     """
@@ -95,7 +95,7 @@ def get_handshakes(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of Resource Manager Handshake IDs.
+    :param Sequence[str] ids: A list of Resource Manager Handshake IDs.
     """
     __args__ = dict()
     __args__['ids'] = ids

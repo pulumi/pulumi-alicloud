@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -24,14 +24,14 @@ class GetInstanceTypesResult:
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
-        if cpu_core_count and not isinstance(cpu_core_count, float):
-            raise TypeError("Expected argument 'cpu_core_count' to be a float")
+        if cpu_core_count and not isinstance(cpu_core_count, int):
+            raise TypeError("Expected argument 'cpu_core_count' to be a int")
         pulumi.set(__self__, "cpu_core_count", cpu_core_count)
-        if eni_amount and not isinstance(eni_amount, float):
-            raise TypeError("Expected argument 'eni_amount' to be a float")
+        if eni_amount and not isinstance(eni_amount, int):
+            raise TypeError("Expected argument 'eni_amount' to be a int")
         pulumi.set(__self__, "eni_amount", eni_amount)
-        if gpu_amount and not isinstance(gpu_amount, float):
-            raise TypeError("Expected argument 'gpu_amount' to be a float")
+        if gpu_amount and not isinstance(gpu_amount, int):
+            raise TypeError("Expected argument 'gpu_amount' to be a int")
         pulumi.set(__self__, "gpu_amount", gpu_amount)
         if gpu_spec and not isinstance(gpu_spec, str):
             raise TypeError("Expected argument 'gpu_spec' to be a str")
@@ -80,7 +80,7 @@ class GetInstanceTypesResult:
 
     @property
     @pulumi.getter(name="cpuCoreCount")
-    def cpu_core_count(self) -> Optional[float]:
+    def cpu_core_count(self) -> Optional[int]:
         """
         Number of CPU cores.
         """
@@ -88,7 +88,7 @@ class GetInstanceTypesResult:
 
     @property
     @pulumi.getter(name="eniAmount")
-    def eni_amount(self) -> Optional[float]:
+    def eni_amount(self) -> Optional[int]:
         """
         The maximum number of network interfaces that an instance type can be attached to.
         """
@@ -96,7 +96,7 @@ class GetInstanceTypesResult:
 
     @property
     @pulumi.getter(name="gpuAmount")
-    def gpu_amount(self) -> Optional[float]:
+    def gpu_amount(self) -> Optional[int]:
         return pulumi.get(self, "gpu_amount")
 
     @property
@@ -114,7 +114,7 @@ class GetInstanceTypesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of instance type IDs.
         """
@@ -132,7 +132,7 @@ class GetInstanceTypesResult:
 
     @property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> List['outputs.GetInstanceTypesInstanceTypeResult']:
+    def instance_types(self) -> Sequence['outputs.GetInstanceTypesInstanceTypeResult']:
         """
         A list of image types. Each element contains the following attributes:
         """
@@ -203,9 +203,9 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
 
 
 def get_instance_types(availability_zone: Optional[str] = None,
-                       cpu_core_count: Optional[float] = None,
-                       eni_amount: Optional[float] = None,
-                       gpu_amount: Optional[float] = None,
+                       cpu_core_count: Optional[int] = None,
+                       eni_amount: Optional[int] = None,
+                       gpu_amount: Optional[int] = None,
                        gpu_spec: Optional[str] = None,
                        instance_charge_type: Optional[str] = None,
                        instance_type_family: Optional[str] = None,
@@ -237,9 +237,9 @@ def get_instance_types(availability_zone: Optional[str] = None,
 
 
     :param str availability_zone: The zone where instance types are supported.
-    :param float cpu_core_count: Filter the results to a specific number of cpu cores.
-    :param float eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
-    :param float gpu_amount: The GPU amount of an instance type.
+    :param int cpu_core_count: Filter the results to a specific number of cpu cores.
+    :param int eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
+    :param int gpu_amount: The GPU amount of an instance type.
     :param str gpu_spec: The GPU spec of an instance type.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param str instance_type_family: Filter the results based on their family name. For example: 'ecs.n4'.

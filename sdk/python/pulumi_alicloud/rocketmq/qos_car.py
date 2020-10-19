@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['QosCar']
@@ -17,13 +17,13 @@ class QosCar(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  limit_type: Optional[pulumi.Input[str]] = None,
-                 max_bandwidth_abs: Optional[pulumi.Input[float]] = None,
-                 max_bandwidth_percent: Optional[pulumi.Input[float]] = None,
-                 min_bandwidth_abs: Optional[pulumi.Input[float]] = None,
-                 min_bandwidth_percent: Optional[pulumi.Input[float]] = None,
+                 max_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+                 max_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+                 min_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+                 min_bandwidth_percent: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  percent_source_type: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  qos_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -63,13 +63,13 @@ class QosCar(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the QoS speed limiting rule.
         :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: Absolute, Percent.
-        :param pulumi.Input[float] max_bandwidth_abs: The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
-        :param pulumi.Input[float] max_bandwidth_percent: The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
-        :param pulumi.Input[float] min_bandwidth_abs: The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
-        :param pulumi.Input[float] min_bandwidth_percent: The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
+        :param pulumi.Input[int] max_bandwidth_abs: The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
+        :param pulumi.Input[int] max_bandwidth_percent: The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
+        :param pulumi.Input[int] min_bandwidth_abs: The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
+        :param pulumi.Input[int] min_bandwidth_percent: The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
         :param pulumi.Input[str] name: The name of the QoS speed limiting rule..
         :param pulumi.Input[str] percent_source_type: The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
-        :param pulumi.Input[float] priority: The priority of the specified stream.
+        :param pulumi.Input[int] priority: The priority of the specified stream.
         :param pulumi.Input[str] qos_id: The instance ID of the QoS.
         """
         if __name__ is not None:
@@ -117,13 +117,13 @@ class QosCar(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             limit_type: Optional[pulumi.Input[str]] = None,
-            max_bandwidth_abs: Optional[pulumi.Input[float]] = None,
-            max_bandwidth_percent: Optional[pulumi.Input[float]] = None,
-            min_bandwidth_abs: Optional[pulumi.Input[float]] = None,
-            min_bandwidth_percent: Optional[pulumi.Input[float]] = None,
+            max_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+            max_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+            min_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+            min_bandwidth_percent: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             percent_source_type: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             qos_id: Optional[pulumi.Input[str]] = None) -> 'QosCar':
         """
         Get an existing QosCar resource's state with the given name, id, and optional extra
@@ -134,13 +134,13 @@ class QosCar(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the QoS speed limiting rule.
         :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: Absolute, Percent.
-        :param pulumi.Input[float] max_bandwidth_abs: The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
-        :param pulumi.Input[float] max_bandwidth_percent: The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
-        :param pulumi.Input[float] min_bandwidth_abs: The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
-        :param pulumi.Input[float] min_bandwidth_percent: The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
+        :param pulumi.Input[int] max_bandwidth_abs: The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
+        :param pulumi.Input[int] max_bandwidth_percent: The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
+        :param pulumi.Input[int] min_bandwidth_abs: The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
+        :param pulumi.Input[int] min_bandwidth_percent: The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
         :param pulumi.Input[str] name: The name of the QoS speed limiting rule..
         :param pulumi.Input[str] percent_source_type: The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
-        :param pulumi.Input[float] priority: The priority of the specified stream.
+        :param pulumi.Input[int] priority: The priority of the specified stream.
         :param pulumi.Input[str] qos_id: The instance ID of the QoS.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -177,7 +177,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxBandwidthAbs")
-    def max_bandwidth_abs(self) -> pulumi.Output[Optional[float]]:
+    def max_bandwidth_abs(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
         """
@@ -185,7 +185,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxBandwidthPercent")
-    def max_bandwidth_percent(self) -> pulumi.Output[Optional[float]]:
+    def max_bandwidth_percent(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
         """
@@ -193,7 +193,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minBandwidthAbs")
-    def min_bandwidth_abs(self) -> pulumi.Output[Optional[float]]:
+    def min_bandwidth_abs(self) -> pulumi.Output[Optional[int]]:
         """
         The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
         """
@@ -201,7 +201,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minBandwidthPercent")
-    def min_bandwidth_percent(self) -> pulumi.Output[Optional[float]]:
+    def min_bandwidth_percent(self) -> pulumi.Output[Optional[int]]:
         """
         The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
         """
@@ -225,7 +225,7 @@ class QosCar(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[float]:
+    def priority(self) -> pulumi.Output[int]:
         """
         The priority of the specified stream.
         """

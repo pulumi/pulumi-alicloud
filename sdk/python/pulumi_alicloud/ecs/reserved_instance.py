@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['ReservedInstance']
@@ -16,11 +16,11 @@ class ReservedInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 instance_amount: Optional[pulumi.Input[float]] = None,
+                 instance_amount: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offering_type: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -54,7 +54,7 @@ class ReservedInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
-        :param pulumi.Input[float] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
+        :param pulumi.Input[int] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
         :param pulumi.Input[str] name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
         :param pulumi.Input[str] offering_type: Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
@@ -105,11 +105,11 @@ class ReservedInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            instance_amount: Optional[pulumi.Input[float]] = None,
+            instance_amount: Optional[pulumi.Input[int]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             offering_type: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
             platform: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class ReservedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
-        :param pulumi.Input[float] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
+        :param pulumi.Input[int] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
         :param pulumi.Input[str] name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
         :param pulumi.Input[str] offering_type: Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
@@ -160,7 +160,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceAmount")
-    def instance_amount(self) -> pulumi.Output[float]:
+    def instance_amount(self) -> pulumi.Output[int]:
         """
         Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         """
@@ -192,7 +192,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "period")
 
     @property

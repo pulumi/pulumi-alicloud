@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -59,7 +59,7 @@ class GetGatewaysResult:
 
     @property
     @pulumi.getter
-    def gateways(self) -> List['outputs.GetGatewaysGatewayResult']:
+    def gateways(self) -> Sequence['outputs.GetGatewaysGatewayResult']:
         """
         A list of VPN gateways. Each element contains the following attributes:
         """
@@ -75,7 +75,7 @@ class GetGatewaysResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         IDs of the VPN.
         """
@@ -88,7 +88,7 @@ class GetGatewaysResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         names of the VPN.
         """
@@ -134,7 +134,7 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
 
 
 def get_gateways(business_status: Optional[str] = None,
-                 ids: Optional[List[str]] = None,
+                 ids: Optional[Sequence[str]] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
                  status: Optional[str] = None,
@@ -162,7 +162,7 @@ def get_gateways(business_status: Optional[str] = None,
 
 
     :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
-    :param List[str] ids: IDs of the VPN.
+    :param Sequence[str] ids: IDs of the VPN.
     :param str name_regex: A regex string of VPN name.
     :param str output_file: Save the result to the file.
     :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".

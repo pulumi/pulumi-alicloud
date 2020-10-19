@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -59,7 +59,7 @@ class GetBandwidthPackagesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of specific CEN Bandwidth Package IDs.
         * `names` (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
@@ -86,7 +86,7 @@ class GetBandwidthPackagesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         return pulumi.get(self, "names")
 
     @property
@@ -96,7 +96,7 @@ class GetBandwidthPackagesResult:
 
     @property
     @pulumi.getter
-    def packages(self) -> List['outputs.GetBandwidthPackagesPackageResult']:
+    def packages(self) -> Sequence['outputs.GetBandwidthPackagesPackageResult']:
         """
         A list of CEN bandwidth package. Each element contains the following attributes:
         """
@@ -128,7 +128,7 @@ class AwaitableGetBandwidthPackagesResult(GetBandwidthPackagesResult):
             status=self.status)
 
 
-def get_bandwidth_packages(ids: Optional[List[str]] = None,
+def get_bandwidth_packages(ids: Optional[Sequence[str]] = None,
                            include_reservation_data: Optional[bool] = None,
                            instance_id: Optional[str] = None,
                            name_regex: Optional[str] = None,
@@ -150,7 +150,7 @@ def get_bandwidth_packages(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: Limit search to a list of specific CEN Bandwidth Package IDs.
+    :param Sequence[str] ids: Limit search to a list of specific CEN Bandwidth Package IDs.
     :param bool include_reservation_data: -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
     :param str instance_id: ID of a CEN instance.
     :param str name_regex: A regex string to filter CEN Bandwidth Package by name.

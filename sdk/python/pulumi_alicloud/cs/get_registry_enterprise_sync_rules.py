@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -62,7 +62,7 @@ class GetRegistryEnterpriseSyncRulesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of matched Container Registry Enterprise Edition sync rules. Its element is a sync rule uuid.
         """
@@ -83,7 +83,7 @@ class GetRegistryEnterpriseSyncRulesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of sync rule names.
         """
@@ -112,7 +112,7 @@ class GetRegistryEnterpriseSyncRulesResult:
 
     @property
     @pulumi.getter
-    def rules(self) -> List['outputs.GetRegistryEnterpriseSyncRulesRuleResult']:
+    def rules(self) -> Sequence['outputs.GetRegistryEnterpriseSyncRulesRuleResult']:
         """
         A list of matched Container Registry Enterprise Edition sync rules. Each element contains the following attributes:
         """
@@ -145,7 +145,7 @@ class AwaitableGetRegistryEnterpriseSyncRulesResult(GetRegistryEnterpriseSyncRul
             target_instance_id=self.target_instance_id)
 
 
-def get_registry_enterprise_sync_rules(ids: Optional[List[str]] = None,
+def get_registry_enterprise_sync_rules(ids: Optional[Sequence[str]] = None,
                                        instance_id: Optional[str] = None,
                                        name_regex: Optional[str] = None,
                                        namespace_name: Optional[str] = None,
@@ -173,7 +173,7 @@ def get_registry_enterprise_sync_rules(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of ids to filter results by sync rule id.
+    :param Sequence[str] ids: A list of ids to filter results by sync rule id.
     :param str instance_id: ID of Container Registry Enterprise Edition local instance.
     :param str name_regex: A regex string to filter results by sync rule name.
     :param str namespace_name: Name of Container Registry Enterprise Edition local namespace.

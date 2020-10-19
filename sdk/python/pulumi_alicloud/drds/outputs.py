@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -15,22 +15,22 @@ __all__ = [
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
-                 create_time: float,
+                 create_time: int,
                  description: str,
                  id: str,
                  network_type: str,
                  status: str,
                  type: str,
-                 version: float,
+                 version: int,
                  zone_id: str):
         """
-        :param float create_time: Creation time of the instance.
+        :param int create_time: Creation time of the instance.
         :param str description: The DRDS instance description.
         :param str id: The ID of the DRDS instance.
         :param str network_type: `Classic` for public classic network or `VPC` for private network.
         :param str status: Status of the instance.
         :param str type: The DRDS Instance type.
-        :param float version: The DRDS Instance version.
+        :param int version: The DRDS Instance version.
         :param str zone_id: Zone ID the instance belongs to.
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -44,7 +44,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> float:
+    def create_time(self) -> int:
         """
         Creation time of the instance.
         """
@@ -92,7 +92,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def version(self) -> float:
+    def version(self) -> int:
         """
         The DRDS Instance version.
         """

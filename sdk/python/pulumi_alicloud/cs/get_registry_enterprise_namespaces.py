@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -53,7 +53,7 @@ class GetRegistryEnterpriseNamespacesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of matched Container Registry Enterprise Edition namespaces. Its element is a namespace uuid.
         """
@@ -74,7 +74,7 @@ class GetRegistryEnterpriseNamespacesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of namespace names.
         """
@@ -82,7 +82,7 @@ class GetRegistryEnterpriseNamespacesResult:
 
     @property
     @pulumi.getter
-    def namespaces(self) -> List['outputs.GetRegistryEnterpriseNamespacesNamespaceResult']:
+    def namespaces(self) -> Sequence['outputs.GetRegistryEnterpriseNamespacesNamespaceResult']:
         """
         A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
         """
@@ -109,7 +109,7 @@ class AwaitableGetRegistryEnterpriseNamespacesResult(GetRegistryEnterpriseNamesp
             output_file=self.output_file)
 
 
-def get_registry_enterprise_namespaces(ids: Optional[List[str]] = None,
+def get_registry_enterprise_namespaces(ids: Optional[Sequence[str]] = None,
                                        instance_id: Optional[str] = None,
                                        name_regex: Optional[str] = None,
                                        output_file: Optional[str] = None,
@@ -132,7 +132,7 @@ def get_registry_enterprise_namespaces(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of ids to filter results by namespace id.
+    :param Sequence[str] ids: A list of ids to filter results by namespace id.
     :param str instance_id: ID of Container Registry Enterprise Edition instance.
     :param str name_regex: A regex string to filter results by namespace name.
     """

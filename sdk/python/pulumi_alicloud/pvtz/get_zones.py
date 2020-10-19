@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -50,7 +50,7 @@ class GetZonesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of zone IDs.
         """
@@ -63,7 +63,7 @@ class GetZonesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of zone names.
         """
@@ -76,7 +76,7 @@ class GetZonesResult:
 
     @property
     @pulumi.getter
-    def zones(self) -> List['outputs.GetZonesZoneResult']:
+    def zones(self) -> Sequence['outputs.GetZonesZoneResult']:
         """
         A list of zones. Each element contains the following attributes:
         """
@@ -97,7 +97,7 @@ class AwaitableGetZonesResult(GetZonesResult):
             zones=self.zones)
 
 
-def get_zones(ids: Optional[List[str]] = None,
+def get_zones(ids: Optional[Sequence[str]] = None,
               keyword: Optional[str] = None,
               output_file: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
@@ -115,7 +115,7 @@ def get_zones(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of zone IDs.
+    :param Sequence[str] ids: A list of zone IDs.
     :param str keyword: keyword for zone name.
     """
     __args__ = dict()

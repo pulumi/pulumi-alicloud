@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -42,7 +42,7 @@ class GetAliasesResult:
 
     @property
     @pulumi.getter
-    def aliases(self) -> List['outputs.GetAliasesAliasResult']:
+    def aliases(self) -> Sequence['outputs.GetAliasesAliasResult']:
         """
         A list of KMS User alias. Each element contains the following attributes:
         """
@@ -58,7 +58,7 @@ class GetAliasesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of kms aliases IDs. The value is same as KMS alias_name.
         """
@@ -71,7 +71,7 @@ class GetAliasesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of KMS alias name.
         """
@@ -97,7 +97,7 @@ class AwaitableGetAliasesResult(GetAliasesResult):
             output_file=self.output_file)
 
 
-def get_aliases(ids: Optional[List[str]] = None,
+def get_aliases(ids: Optional[Sequence[str]] = None,
                 name_regex: Optional[str] = None,
                 output_file: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAliasesResult:
@@ -118,7 +118,7 @@ def get_aliases(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of KMS aliases IDs. The value is same as KMS alias_name.
+    :param Sequence[str] ids: A list of KMS aliases IDs. The value is same as KMS alias_name.
     :param str name_regex: A regex string to filter the results by the KMS alias name.
     """
     __args__ = dict()

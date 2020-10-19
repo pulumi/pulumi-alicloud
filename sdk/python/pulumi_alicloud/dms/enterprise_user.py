@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['EnterpriseUser']
@@ -15,13 +15,13 @@ class EnterpriseUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 max_execute_count: Optional[pulumi.Input[float]] = None,
-                 max_result_count: Optional[pulumi.Input[float]] = None,
+                 max_execute_count: Optional[pulumi.Input[int]] = None,
+                 max_result_count: Optional[pulumi.Input[int]] = None,
                  mobile: Optional[pulumi.Input[str]] = None,
                  nick_name: Optional[pulumi.Input[str]] = None,
-                 role_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 role_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tid: Optional[pulumi.Input[float]] = None,
+                 tid: Optional[pulumi.Input[int]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  user_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -47,13 +47,13 @@ class EnterpriseUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] max_execute_count: Maximum number of inquiries on the day.
-        :param pulumi.Input[float] max_result_count: Query the maximum number of rows on the day.
+        :param pulumi.Input[int] max_execute_count: Maximum number of inquiries on the day.
+        :param pulumi.Input[int] max_result_count: Query the maximum number of rows on the day.
         :param pulumi.Input[str] mobile: The DingTalk number or mobile number of the user.
         :param pulumi.Input[str] nick_name: It has been deprecated from 1.100.0 and use `user_name` instead.
-        :param pulumi.Input[List[pulumi.Input[str]]] role_names: The roles that the user plays.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: The roles that the user plays.
         :param pulumi.Input[str] status: The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
-        :param pulumi.Input[float] tid: The tenant ID.
+        :param pulumi.Input[int] tid: The tenant ID.
         :param pulumi.Input[str] uid: The Alibaba Cloud unique ID (UID) of the user to add.
         :param pulumi.Input[str] user_name: The nickname of the user.
         """
@@ -98,13 +98,13 @@ class EnterpriseUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            max_execute_count: Optional[pulumi.Input[float]] = None,
-            max_result_count: Optional[pulumi.Input[float]] = None,
+            max_execute_count: Optional[pulumi.Input[int]] = None,
+            max_result_count: Optional[pulumi.Input[int]] = None,
             mobile: Optional[pulumi.Input[str]] = None,
             nick_name: Optional[pulumi.Input[str]] = None,
-            role_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            role_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tid: Optional[pulumi.Input[float]] = None,
+            tid: Optional[pulumi.Input[int]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             user_name: Optional[pulumi.Input[str]] = None) -> 'EnterpriseUser':
         """
@@ -114,13 +114,13 @@ class EnterpriseUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] max_execute_count: Maximum number of inquiries on the day.
-        :param pulumi.Input[float] max_result_count: Query the maximum number of rows on the day.
+        :param pulumi.Input[int] max_execute_count: Maximum number of inquiries on the day.
+        :param pulumi.Input[int] max_result_count: Query the maximum number of rows on the day.
         :param pulumi.Input[str] mobile: The DingTalk number or mobile number of the user.
         :param pulumi.Input[str] nick_name: It has been deprecated from 1.100.0 and use `user_name` instead.
-        :param pulumi.Input[List[pulumi.Input[str]]] role_names: The roles that the user plays.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: The roles that the user plays.
         :param pulumi.Input[str] status: The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
-        :param pulumi.Input[float] tid: The tenant ID.
+        :param pulumi.Input[int] tid: The tenant ID.
         :param pulumi.Input[str] uid: The Alibaba Cloud unique ID (UID) of the user to add.
         :param pulumi.Input[str] user_name: The nickname of the user.
         """
@@ -141,7 +141,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxExecuteCount")
-    def max_execute_count(self) -> pulumi.Output[Optional[float]]:
+    def max_execute_count(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum number of inquiries on the day.
         """
@@ -149,7 +149,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxResultCount")
-    def max_result_count(self) -> pulumi.Output[Optional[float]]:
+    def max_result_count(self) -> pulumi.Output[Optional[int]]:
         """
         Query the maximum number of rows on the day.
         """
@@ -173,7 +173,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleNames")
-    def role_names(self) -> pulumi.Output[Optional[List[str]]]:
+    def role_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The roles that the user plays.
         """
@@ -189,7 +189,7 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tid(self) -> pulumi.Output[Optional[float]]:
+    def tid(self) -> pulumi.Output[Optional[int]]:
         """
         The tenant ID.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -33,7 +33,7 @@ class GetResourceDirectoriesResult:
 
     @property
     @pulumi.getter
-    def directories(self) -> List['outputs.GetResourceDirectoriesDirectoryResult']:
+    def directories(self) -> Sequence['outputs.GetResourceDirectoriesDirectoryResult']:
         """
         A list of resource directories. Each element contains the following attributes:
         """

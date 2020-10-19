@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -61,7 +61,7 @@ class GetReposResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of matched Container Registry Repositories. Its element is set to `names`.
         """
@@ -74,7 +74,7 @@ class GetReposResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of repository names.
         """
@@ -95,7 +95,7 @@ class GetReposResult:
 
     @property
     @pulumi.getter
-    def repos(self) -> List['outputs.GetReposRepoResult']:
+    def repos(self) -> Sequence['outputs.GetReposRepoResult']:
         """
         A list of matched Container Registry Namespaces. Each element contains the following attributes:
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -31,8 +31,8 @@ __all__ = [
 @pulumi.output_type
 class NatGatewayBandwidthPackage(dict):
     def __init__(__self__, *,
-                 bandwidth: float,
-                 ip_count: float,
+                 bandwidth: int,
+                 ip_count: int,
                  public_ip_addresses: Optional[str] = None,
                  zone: Optional[str] = None):
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -44,12 +44,12 @@ class NatGatewayBandwidthPackage(dict):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> float:
+    def bandwidth(self) -> int:
         return pulumi.get(self, "bandwidth")
 
     @property
     @pulumi.getter(name="ipCount")
-    def ip_count(self) -> float:
+    def ip_count(self) -> int:
         return pulumi.get(self, "ip_count")
 
     @property
@@ -296,7 +296,7 @@ class GetCommonBandwidthPackagesPackageResult(dict):
                  id: str,
                  isp: str,
                  name: str,
-                 public_ip_addresses: List['outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult'],
+                 public_ip_addresses: Sequence['outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult'],
                  status: str,
                  resource_group_id: Optional[str] = None):
         """
@@ -307,7 +307,7 @@ class GetCommonBandwidthPackagesPackageResult(dict):
         :param str id: ID of the Common Bandwidth Package.
         :param str isp: ISP of the Common Bandwidth Package.
         :param str name: Name of the Common Bandwidth Package.
-        :param List['GetCommonBandwidthPackagesPackagePublicIpAddressArgs'] public_ip_addresses: Public ip addresses that in the Common Bandwidth Pakcage.
+        :param Sequence['GetCommonBandwidthPackagesPackagePublicIpAddressArgs'] public_ip_addresses: Public ip addresses that in the Common Bandwidth Pakcage.
         :param str status: Status of the Common Bandwidth Package.
         :param str resource_group_id: The Id of resource group which the common bandwidth package belongs.
         """
@@ -381,7 +381,7 @@ class GetCommonBandwidthPackagesPackageResult(dict):
 
     @property
     @pulumi.getter(name="publicIpAddresses")
-    def public_ip_addresses(self) -> List['outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult']:
+    def public_ip_addresses(self) -> Sequence['outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult']:
         """
         Public ip addresses that in the Common Bandwidth Pakcage.
         """
@@ -525,7 +525,7 @@ class GetNatGatewaysGatewayResult(dict):
                  description: str,
                  forward_table_id: str,
                  id: str,
-                 ip_lists: List[str],
+                 ip_lists: Sequence[str],
                  name: str,
                  snat_table_id: str,
                  spec: str,
@@ -536,7 +536,7 @@ class GetNatGatewaysGatewayResult(dict):
         :param str description: The description of the NAT gateway.
         :param str forward_table_id: The forward table id.
         :param str id: The ID of the NAT gateway.
-        :param List[str] ip_lists: The ip address of the bind eip.
+        :param Sequence[str] ip_lists: The ip address of the bind eip.
         :param str name: Name of the NAT gateway.
         :param str snat_table_id: The snat table id.
         :param str spec: The specification of the NAT gateway.
@@ -588,7 +588,7 @@ class GetNatGatewaysGatewayResult(dict):
 
     @property
     @pulumi.getter(name="ipLists")
-    def ip_lists(self) -> List[str]:
+    def ip_lists(self) -> Sequence[str]:
         """
         The ip address of the bind eip.
         """
@@ -649,7 +649,7 @@ class GetNetworksVpcResult(dict):
                  tags: Mapping[str, Any],
                  vpc_name: str,
                  vrouter_id: str,
-                 vswitch_ids: List[str]):
+                 vswitch_ids: Sequence[str]):
         """
         :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
         :param str creation_time: Time of creation.
@@ -662,7 +662,7 @@ class GetNetworksVpcResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str vpc_name: Name of the VPC.
         :param str vrouter_id: ID of the VRouter.
-        :param List[str] vswitch_ids: List of VSwitch IDs in the specified VPC
+        :param Sequence[str] vswitch_ids: List of VSwitch IDs in the specified VPC
         """
         pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -767,7 +767,7 @@ class GetNetworksVpcResult(dict):
 
     @property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> List[str]:
+    def vswitch_ids(self) -> Sequence[str]:
         """
         List of VSwitch IDs in the specified VPC
         """
@@ -1182,14 +1182,14 @@ class GetSnatEntriesEntryResult(dict):
 class GetSslVpnClientCertsCertResult(dict):
     def __init__(__self__, *,
                  create_time: str,
-                 end_time: float,
+                 end_time: int,
                  id: str,
                  name: str,
                  ssl_vpn_server_id: str,
                  status: str):
         """
         :param str create_time: The time of creation.
-        :param float end_time: The expiration time of the client certificate.
+        :param int end_time: The expiration time of the client certificate.
         :param str id: ID of the SSL-VPN client certificate.
         :param str name: The name of the SSL-VPN client certificate.
         :param str ssl_vpn_server_id: Use the SSL-VPN server ID as the search key.
@@ -1212,7 +1212,7 @@ class GetSslVpnClientCertsCertResult(dict):
 
     @property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> float:
+    def end_time(self) -> int:
         """
         The expiration time of the client certificate.
         """
@@ -1257,28 +1257,28 @@ class GetSslVpnServersServerResult(dict):
                  cipher: str,
                  client_ip_pool: str,
                  compress: bool,
-                 connections: float,
+                 connections: int,
                  create_time: str,
                  id: str,
                  internet_ip: str,
                  local_subnet: str,
-                 max_connections: float,
+                 max_connections: int,
                  name: str,
-                 port: float,
+                 port: int,
                  proto: str,
                  vpn_gateway_id: str):
         """
         :param str cipher: The encryption algorithm used.
         :param str client_ip_pool: The IP address pool of the client.
         :param bool compress: Whether to compress.
-        :param float connections: The number of current connections.
+        :param int connections: The number of current connections.
         :param str create_time: The time of creation.
         :param str id: The ID of the SSL-VPN server.
         :param str internet_ip: The public IP.
         :param str local_subnet: The local subnet of the VPN connection.
-        :param float max_connections: The maximum number of connections.
+        :param int max_connections: The maximum number of connections.
         :param str name: The name of the SSL-VPN server.
-        :param float port: The port used by the SSL-VPN server.
+        :param int port: The port used by the SSL-VPN server.
         :param str proto: The protocol used by the SSL-VPN server.
         :param str vpn_gateway_id: Use the VPN gateway ID as the search key.
         """
@@ -1322,7 +1322,7 @@ class GetSslVpnServersServerResult(dict):
 
     @property
     @pulumi.getter
-    def connections(self) -> float:
+    def connections(self) -> int:
         """
         The number of current connections.
         """
@@ -1362,7 +1362,7 @@ class GetSslVpnServersServerResult(dict):
 
     @property
     @pulumi.getter(name="maxConnections")
-    def max_connections(self) -> float:
+    def max_connections(self) -> int:
         """
         The maximum number of connections.
         """
@@ -1378,7 +1378,7 @@ class GetSslVpnServersServerResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The port used by the SSL-VPN server.
         """
@@ -1408,7 +1408,7 @@ class GetSwitchesVswitchResult(dict):
                  creation_time: str,
                  description: str,
                  id: str,
-                 instance_ids: List[str],
+                 instance_ids: Sequence[str],
                  is_default: bool,
                  name: str,
                  vpc_id: str,
@@ -1418,7 +1418,7 @@ class GetSwitchesVswitchResult(dict):
         :param str creation_time: Time of creation.
         :param str description: Description of the VSwitch.
         :param str id: ID of the VSwitch.
-        :param List[str] instance_ids: List of ECS instance IDs in the specified VSwitch.
+        :param Sequence[str] instance_ids: List of ECS instance IDs in the specified VSwitch.
         :param bool is_default: Indicate whether the VSwitch is created by the system.
         :param str name: Name of the VSwitch.
         :param str vpc_id: ID of the VPC that owns the VSwitch.
@@ -1468,7 +1468,7 @@ class GetSwitchesVswitchResult(dict):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> List[str]:
+    def instance_ids(self) -> Sequence[str]:
         """
         List of ECS instance IDs in the specified VSwitch.
         """

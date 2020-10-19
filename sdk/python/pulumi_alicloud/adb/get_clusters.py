@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def clusters(self) -> List['outputs.GetClustersClusterResult']:
+    def clusters(self) -> Sequence['outputs.GetClustersClusterResult']:
         """
         A list of ADB clusters. Each element contains the following attributes:
         """
@@ -58,7 +58,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def descriptions(self) -> List[str]:
+    def descriptions(self) -> Sequence[str]:
         """
         A list of ADB cluster descriptions.
         """
@@ -74,7 +74,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of ADB cluster IDs.
         """
@@ -107,7 +107,7 @@ class AwaitableGetClustersResult(GetClustersResult):
 
 
 def get_clusters(description_regex: Optional[str] = None,
-                 ids: Optional[List[str]] = None,
+                 ids: Optional[Sequence[str]] = None,
                  output_file: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
@@ -130,7 +130,7 @@ def get_clusters(description_regex: Optional[str] = None,
 
 
     :param str description_regex: A regex string to filter results by cluster description.
-    :param List[str] ids: A list of ADB cluster IDs.
+    :param Sequence[str] ids: A list of ADB cluster IDs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
            - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,7 +17,7 @@ class StoreIndex(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 field_searches: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]]] = None,
+                 field_searches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]]] = None,
                  full_text: Optional[pulumi.Input[pulumi.InputType['StoreIndexFullTextArgs']]] = None,
                  logstore: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -28,7 +28,7 @@ class StoreIndex(pulumi.CustomResource):
         Create a StoreIndex resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]] field_searches: List configurations of field search index. Valid item as follows:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]] field_searches: List configurations of field search index. Valid item as follows:
         :param pulumi.Input[pulumi.InputType['StoreIndexFullTextArgs']] full_text: The configuration of full text index. Valid item as follows:
         :param pulumi.Input[str] logstore: The log store name to the query index belongs.
         :param pulumi.Input[str] project: The project name to the log store belongs.
@@ -68,7 +68,7 @@ class StoreIndex(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            field_searches: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]]] = None,
+            field_searches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]]] = None,
             full_text: Optional[pulumi.Input[pulumi.InputType['StoreIndexFullTextArgs']]] = None,
             logstore: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'StoreIndex':
@@ -79,7 +79,7 @@ class StoreIndex(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]] field_searches: List configurations of field search index. Valid item as follows:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]] field_searches: List configurations of field search index. Valid item as follows:
         :param pulumi.Input[pulumi.InputType['StoreIndexFullTextArgs']] full_text: The configuration of full text index. Valid item as follows:
         :param pulumi.Input[str] logstore: The log store name to the query index belongs.
         :param pulumi.Input[str] project: The project name to the log store belongs.
@@ -96,7 +96,7 @@ class StoreIndex(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fieldSearches")
-    def field_searches(self) -> pulumi.Output[Optional[List['outputs.StoreIndexFieldSearch']]]:
+    def field_searches(self) -> pulumi.Output[Optional[Sequence['outputs.StoreIndexFieldSearch']]]:
         """
         List configurations of field search index. Valid item as follows:
         """

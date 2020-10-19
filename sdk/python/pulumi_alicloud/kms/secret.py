@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Secret']
@@ -18,13 +18,13 @@ class Secret(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
-                 recovery_window_in_days: Optional[pulumi.Input[float]] = None,
+                 recovery_window_in_days: Optional[pulumi.Input[int]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  secret_data_type: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
-                 version_stages: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -54,13 +54,13 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the secret.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
-        :param pulumi.Input[float] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+        :param pulumi.Input[int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
         :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
-        :param pulumi.Input[List[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -112,13 +112,13 @@ class Secret(pulumi.CustomResource):
             encryption_key_id: Optional[pulumi.Input[str]] = None,
             force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
             planned_delete_time: Optional[pulumi.Input[str]] = None,
-            recovery_window_in_days: Optional[pulumi.Input[float]] = None,
+            recovery_window_in_days: Optional[pulumi.Input[int]] = None,
             secret_data: Optional[pulumi.Input[str]] = None,
             secret_data_type: Optional[pulumi.Input[str]] = None,
             secret_name: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             version_id: Optional[pulumi.Input[str]] = None,
-            version_stages: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Secret':
+            version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Secret':
         """
         Get an existing Secret resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -131,13 +131,13 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         :param pulumi.Input[str] planned_delete_time: The time when the secret is scheduled to be deleted.
-        :param pulumi.Input[float] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+        :param pulumi.Input[int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
         :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
-        :param pulumi.Input[List[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -199,7 +199,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recoveryWindowInDays")
-    def recovery_window_in_days(self) -> pulumi.Output[Optional[float]]:
+    def recovery_window_in_days(self) -> pulumi.Output[Optional[int]]:
         """
         Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
         """
@@ -247,7 +247,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionStages")
-    def version_stages(self) -> pulumi.Output[List[str]]:
+    def version_stages(self) -> pulumi.Output[Sequence[str]]:
         """
         ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['RouterInterface']
@@ -22,7 +22,7 @@ class RouterInterface(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  opposite_access_point_id: Optional[pulumi.Input[str]] = None,
                  opposite_region: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  router_id: Optional[pulumi.Input[str]] = None,
                  router_type: Optional[pulumi.Input[str]] = None,
@@ -42,7 +42,7 @@ class RouterInterface(pulumi.CustomResource):
                If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
         :param pulumi.Input[str] opposite_access_point_id: It has been deprecated from version 1.11.0.
         :param pulumi.Input[str] opposite_region: The Region of peer side.
-        :param pulumi.Input[float] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] role: The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
         :param pulumi.Input[str] router_id: The Router ID.
         :param pulumi.Input[str] router_type: Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
@@ -115,7 +115,7 @@ class RouterInterface(pulumi.CustomResource):
             opposite_region: Optional[pulumi.Input[str]] = None,
             opposite_router_id: Optional[pulumi.Input[str]] = None,
             opposite_router_type: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             role: Optional[pulumi.Input[str]] = None,
             router_id: Optional[pulumi.Input[str]] = None,
             router_type: Optional[pulumi.Input[str]] = None,
@@ -140,7 +140,7 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.Input[str] opposite_region: The Region of peer side.
         :param pulumi.Input[str] opposite_router_id: It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         :param pulumi.Input[str] opposite_router_type: It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
-        :param pulumi.Input[float] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] role: The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
         :param pulumi.Input[str] router_id: The Router ID.
         :param pulumi.Input[str] router_type: Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
@@ -268,7 +268,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         """

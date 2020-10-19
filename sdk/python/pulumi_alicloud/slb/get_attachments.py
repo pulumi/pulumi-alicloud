@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -47,7 +47,7 @@ class GetAttachmentsResult:
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Optional[List[str]]:
+    def instance_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "instance_ids")
 
     @property
@@ -62,7 +62,7 @@ class GetAttachmentsResult:
 
     @property
     @pulumi.getter(name="slbAttachments")
-    def slb_attachments(self) -> List['outputs.GetAttachmentsSlbAttachmentResult']:
+    def slb_attachments(self) -> Sequence['outputs.GetAttachmentsSlbAttachmentResult']:
         """
         A list of SLB attachments. Each element contains the following attributes:
         """
@@ -82,7 +82,7 @@ class AwaitableGetAttachmentsResult(GetAttachmentsResult):
             slb_attachments=self.slb_attachments)
 
 
-def get_attachments(instance_ids: Optional[List[str]] = None,
+def get_attachments(instance_ids: Optional[Sequence[str]] = None,
                     load_balancer_id: Optional[str] = None,
                     output_file: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAttachmentsResult:
@@ -100,7 +100,7 @@ def get_attachments(instance_ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] instance_ids: List of attached ECS instance IDs.
+    :param Sequence[str] instance_ids: List of attached ECS instance IDs.
     :param str load_balancer_id: ID of the SLB with attachments.
     """
     __args__ = dict()

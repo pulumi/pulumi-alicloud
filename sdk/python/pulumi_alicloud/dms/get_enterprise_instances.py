@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -60,8 +60,8 @@ class GetEnterpriseInstancesResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
-        if tid and not isinstance(tid, float):
-            raise TypeError("Expected argument 'tid' to be a float")
+        if tid and not isinstance(tid, int):
+            raise TypeError("Expected argument 'tid' to be a int")
         pulumi.set(__self__, "tid", tid)
 
     @property
@@ -82,7 +82,7 @@ class GetEnterpriseInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of DMS Enterprise IDs (Each of them consists of host:port).
         """
@@ -111,7 +111,7 @@ class GetEnterpriseInstancesResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetEnterpriseInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetEnterpriseInstancesInstanceResult']:
         """
         A list of KMS keys. Each element contains the following attributes:
         """
@@ -124,7 +124,7 @@ class GetEnterpriseInstancesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of DMS Enterprise names.
         """
@@ -155,7 +155,7 @@ class GetEnterpriseInstancesResult:
 
     @property
     @pulumi.getter
-    def tid(self) -> Optional[float]:
+    def tid(self) -> Optional[int]:
         return pulumi.get(self, "tid")
 
 
@@ -190,7 +190,7 @@ def get_enterprise_instances(env_type: Optional[str] = None,
                              output_file: Optional[str] = None,
                              search_key: Optional[str] = None,
                              status: Optional[str] = None,
-                             tid: Optional[float] = None,
+                             tid: Optional[int] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnterpriseInstancesResult:
     """
     This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
@@ -206,7 +206,7 @@ def get_enterprise_instances(env_type: Optional[str] = None,
     :param str net_type: The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
     :param str search_key: The keyword used to query database instances.
     :param str status: Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
-    :param float tid: The ID of the tenant in Data Management (DMS) Enterprise.
+    :param int tid: The ID of the tenant in Data Management (DMS) Enterprise.
     """
     __args__ = dict()
     __args__['envType'] = env_type

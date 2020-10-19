@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -51,7 +51,7 @@ class GetSecurityGroupsResult:
 
     @property
     @pulumi.getter
-    def groups(self) -> List['outputs.GetSecurityGroupsGroupResult']:
+    def groups(self) -> Sequence['outputs.GetSecurityGroupsGroupResult']:
         """
         A list of Security Groups. Each element contains the following attributes:
         """
@@ -67,7 +67,7 @@ class GetSecurityGroupsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of Security Group IDs.
         """
@@ -80,7 +80,7 @@ class GetSecurityGroupsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of Security Group names.
         """
@@ -133,7 +133,7 @@ class AwaitableGetSecurityGroupsResult(GetSecurityGroupsResult):
             vpc_id=self.vpc_id)
 
 
-def get_security_groups(ids: Optional[List[str]] = None,
+def get_security_groups(ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
                         output_file: Optional[str] = None,
                         resource_group_id: Optional[str] = None,
@@ -158,7 +158,7 @@ def get_security_groups(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of Security Group IDs.
+    :param Sequence[str] ids: A list of Security Group IDs.
     :param str name_regex: A regex string to filter the resulting security groups by their names.
     :param str resource_group_id: The Id of resource group which the security_group belongs.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:

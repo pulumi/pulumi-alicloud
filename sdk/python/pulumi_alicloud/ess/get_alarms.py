@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -48,7 +48,7 @@ class GetAlarmsResult:
 
     @property
     @pulumi.getter
-    def alarms(self) -> List['outputs.GetAlarmsAlarmResult']:
+    def alarms(self) -> Sequence['outputs.GetAlarmsAlarmResult']:
         """
         A list of alarms. Each element contains the following attributes:
         """
@@ -64,7 +64,7 @@ class GetAlarmsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of alarm ids.
         """
@@ -85,7 +85,7 @@ class GetAlarmsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of alarm names.
         """
@@ -121,7 +121,7 @@ class AwaitableGetAlarmsResult(GetAlarmsResult):
             scaling_group_id=self.scaling_group_id)
 
 
-def get_alarms(ids: Optional[List[str]] = None,
+def get_alarms(ids: Optional[Sequence[str]] = None,
                metric_type: Optional[str] = None,
                name_regex: Optional[str] = None,
                output_file: Optional[str] = None,
@@ -133,7 +133,7 @@ def get_alarms(ids: Optional[List[str]] = None,
     > **NOTE** Available in 1.72.0+
 
 
-    :param List[str] ids: A list of alarm IDs.
+    :param Sequence[str] ids: A list of alarm IDs.
     :param str metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
     :param str name_regex: A regex string to filter resulting alarms by name.
     :param str scaling_group_id: Scaling group id the alarms belong to.

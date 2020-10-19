@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Queue']
@@ -15,12 +15,12 @@ class Queue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delay_seconds: Optional[pulumi.Input[float]] = None,
-                 maximum_message_size: Optional[pulumi.Input[float]] = None,
-                 message_retention_period: Optional[pulumi.Input[float]] = None,
+                 delay_seconds: Optional[pulumi.Input[int]] = None,
+                 maximum_message_size: Optional[pulumi.Input[int]] = None,
+                 message_retention_period: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 polling_wait_seconds: Optional[pulumi.Input[float]] = None,
-                 visibility_timeout: Optional[pulumi.Input[float]] = None,
+                 polling_wait_seconds: Optional[pulumi.Input[int]] = None,
+                 visibility_timeout: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -28,12 +28,12 @@ class Queue(pulumi.CustomResource):
         Create a Queue resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] delay_seconds: This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
-        :param pulumi.Input[float] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the queue. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
-        :param pulumi.Input[float] message_retention_period: Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue. Valid value range: 60-604800 seconds, i.e., 1 minutes to 7 days. Default value to 345600.
+        :param pulumi.Input[int] delay_seconds: This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
+        :param pulumi.Input[int] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the queue. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
+        :param pulumi.Input[int] message_retention_period: Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue. Valid value range: 60-604800 seconds, i.e., 1 minutes to 7 days. Default value to 345600.
         :param pulumi.Input[str] name: Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters .
-        :param pulumi.Input[float] polling_wait_seconds: Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
-        :param pulumi.Input[float] visibility_timeout: The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
+        :param pulumi.Input[int] polling_wait_seconds: Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
+        :param pulumi.Input[int] visibility_timeout: The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -68,12 +68,12 @@ class Queue(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delay_seconds: Optional[pulumi.Input[float]] = None,
-            maximum_message_size: Optional[pulumi.Input[float]] = None,
-            message_retention_period: Optional[pulumi.Input[float]] = None,
+            delay_seconds: Optional[pulumi.Input[int]] = None,
+            maximum_message_size: Optional[pulumi.Input[int]] = None,
+            message_retention_period: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            polling_wait_seconds: Optional[pulumi.Input[float]] = None,
-            visibility_timeout: Optional[pulumi.Input[float]] = None) -> 'Queue':
+            polling_wait_seconds: Optional[pulumi.Input[int]] = None,
+            visibility_timeout: Optional[pulumi.Input[int]] = None) -> 'Queue':
         """
         Get an existing Queue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -81,12 +81,12 @@ class Queue(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] delay_seconds: This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
-        :param pulumi.Input[float] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the queue. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
-        :param pulumi.Input[float] message_retention_period: Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue. Valid value range: 60-604800 seconds, i.e., 1 minutes to 7 days. Default value to 345600.
+        :param pulumi.Input[int] delay_seconds: This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
+        :param pulumi.Input[int] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the queue. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
+        :param pulumi.Input[int] message_retention_period: Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue. Valid value range: 60-604800 seconds, i.e., 1 minutes to 7 days. Default value to 345600.
         :param pulumi.Input[str] name: Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters .
-        :param pulumi.Input[float] polling_wait_seconds: Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
-        :param pulumi.Input[float] visibility_timeout: The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
+        :param pulumi.Input[int] polling_wait_seconds: Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
+        :param pulumi.Input[int] visibility_timeout: The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -102,7 +102,7 @@ class Queue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="delaySeconds")
-    def delay_seconds(self) -> pulumi.Output[Optional[float]]:
+    def delay_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
         """
@@ -110,7 +110,7 @@ class Queue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maximumMessageSize")
-    def maximum_message_size(self) -> pulumi.Output[Optional[float]]:
+    def maximum_message_size(self) -> pulumi.Output[Optional[int]]:
         """
         This indicates the maximum length, in bytes, of any message body sent to the queue. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         """
@@ -118,7 +118,7 @@ class Queue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="messageRetentionPeriod")
-    def message_retention_period(self) -> pulumi.Output[Optional[float]]:
+    def message_retention_period(self) -> pulumi.Output[Optional[int]]:
         """
         Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue. Valid value range: 60-604800 seconds, i.e., 1 minutes to 7 days. Default value to 345600.
         """
@@ -134,7 +134,7 @@ class Queue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pollingWaitSeconds")
-    def polling_wait_seconds(self) -> pulumi.Output[Optional[float]]:
+    def polling_wait_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
         """
@@ -142,7 +142,7 @@ class Queue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="visibilityTimeout")
-    def visibility_timeout(self) -> pulumi.Output[Optional[float]]:
+    def visibility_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[float]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
@@ -26,18 +26,18 @@ class Instance(pulumi.CustomResource):
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
-                 instance_storage: Optional[pulumi.Input[float]] = None,
+                 instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
-                 monitoring_period: Optional[pulumi.Input[float]] = None,
-                 parameters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 monitoring_period: Optional[pulumi.Input[int]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
-                 security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ip_mode: Optional[pulumi.Input[str]] = None,
-                 security_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 sql_collector_config_value: Optional[pulumi.Input[float]] = None,
+                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sql_collector_config_value: Optional[pulumi.Input[int]] = None,
                  sql_collector_status: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -86,7 +86,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
-        :param pulumi.Input[float] auto_renew_period: Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
         :param pulumi.Input[str] auto_upgrade_minor_version: The upgrade method to use. Valid values:
                - Auto: Instances are automatically upgraded to a higher minor version.
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
@@ -101,7 +101,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
-        :param pulumi.Input[float] instance_storage: User-defined DB instance storage space. Value range:
+        :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range:
                - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
                - [20,1000] for MySQL 5.7 basic single node edition;
                - [10, 2000] for SQL Server 2008R2;
@@ -110,15 +110,15 @@ class Instance(pulumi.CustomResource):
                Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
-        :param pulumi.Input[float] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
-        :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
-        :param pulumi.Input[List[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[float] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -199,7 +199,7 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[float]] = None,
+            auto_renew_period: Optional[pulumi.Input[int]] = None,
             auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
@@ -208,19 +208,19 @@ class Instance(pulumi.CustomResource):
             force_restart: Optional[pulumi.Input[bool]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
-            instance_storage: Optional[pulumi.Input[float]] = None,
+            instance_storage: Optional[pulumi.Input[int]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
-            monitoring_period: Optional[pulumi.Input[float]] = None,
-            parameters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
-            period: Optional[pulumi.Input[float]] = None,
+            monitoring_period: Optional[pulumi.Input[int]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             port: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
-            security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_ip_mode: Optional[pulumi.Input[str]] = None,
-            security_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            sql_collector_config_value: Optional[pulumi.Input[float]] = None,
+            security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            sql_collector_config_value: Optional[pulumi.Input[int]] = None,
             sql_collector_status: Optional[pulumi.Input[str]] = None,
             ssl_action: Optional[pulumi.Input[str]] = None,
             ssl_status: Optional[pulumi.Input[str]] = None,
@@ -236,7 +236,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
-        :param pulumi.Input[float] auto_renew_period: Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
         :param pulumi.Input[str] auto_upgrade_minor_version: The upgrade method to use. Valid values:
                - Auto: Instances are automatically upgraded to a higher minor version.
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
@@ -252,7 +252,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
-        :param pulumi.Input[float] instance_storage: User-defined DB instance storage space. Value range:
+        :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range:
                - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
                - [20,1000] for MySQL 5.7 basic single node edition;
                - [10, 2000] for SQL Server 2008R2;
@@ -261,16 +261,16 @@ class Instance(pulumi.CustomResource):
                Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
-        :param pulumi.Input[float] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
-        :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] port: RDS database connection port.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
-        :param pulumi.Input[List[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[float] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
@@ -329,7 +329,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> pulumi.Output[Optional[float]]:
+    def auto_renew_period(self) -> pulumi.Output[Optional[int]]:
         """
         Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
         """
@@ -408,7 +408,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceStorage")
-    def instance_storage(self) -> pulumi.Output[float]:
+    def instance_storage(self) -> pulumi.Output[int]:
         """
         User-defined DB instance storage space. Value range:
         - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
@@ -438,7 +438,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="monitoringPeriod")
-    def monitoring_period(self) -> pulumi.Output[float]:
+    def monitoring_period(self) -> pulumi.Output[int]:
         """
         The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         """
@@ -446,7 +446,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parameters(self) -> pulumi.Output[List['outputs.InstanceParameter']]:
+    def parameters(self) -> pulumi.Output[Sequence['outputs.InstanceParameter']]:
         """
         Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         """
@@ -454,7 +454,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         """
@@ -486,7 +486,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> pulumi.Output[List[str]]:
+    def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         """
@@ -502,7 +502,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> pulumi.Output[List[str]]:
+    def security_ips(self) -> pulumi.Output[Sequence[str]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
@@ -510,7 +510,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sqlCollectorConfigValue")
-    def sql_collector_config_value(self) -> pulumi.Output[Optional[float]]:
+    def sql_collector_config_value(self) -> pulumi.Output[Optional[int]]:
         """
         The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         """

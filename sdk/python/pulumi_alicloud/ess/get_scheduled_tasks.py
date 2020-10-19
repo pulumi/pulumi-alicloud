@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -56,7 +56,7 @@ class GetScheduledTasksResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of scheduled task ids.
         """
@@ -69,7 +69,7 @@ class GetScheduledTasksResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of scheduled task names.
         """
@@ -95,7 +95,7 @@ class GetScheduledTasksResult:
 
     @property
     @pulumi.getter
-    def tasks(self) -> List['outputs.GetScheduledTasksTaskResult']:
+    def tasks(self) -> Sequence['outputs.GetScheduledTasksTaskResult']:
         """
         A list of scheduled tasks. Each element contains the following attributes:
         """
@@ -118,7 +118,7 @@ class AwaitableGetScheduledTasksResult(GetScheduledTasksResult):
             tasks=self.tasks)
 
 
-def get_scheduled_tasks(ids: Optional[List[str]] = None,
+def get_scheduled_tasks(ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
                         output_file: Optional[str] = None,
                         scheduled_action: Optional[str] = None,
@@ -141,7 +141,7 @@ def get_scheduled_tasks(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of scheduled task IDs.
+    :param Sequence[str] ids: A list of scheduled task IDs.
     :param str name_regex: A regex string to filter resulting scheduled tasks by name.
     :param str scheduled_action: The operation to be performed when a scheduled task is triggered.
     :param str scheduled_task_id: The id of the scheduled task.

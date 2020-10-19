@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -18,7 +18,7 @@ class ConnectionIkeConfigArgs:
     def __init__(__self__, *,
                  ike_auth_alg: Optional[pulumi.Input[str]] = None,
                  ike_enc_alg: Optional[pulumi.Input[str]] = None,
-                 ike_lifetime: Optional[pulumi.Input[float]] = None,
+                 ike_lifetime: Optional[pulumi.Input[int]] = None,
                  ike_local_id: Optional[pulumi.Input[str]] = None,
                  ike_mode: Optional[pulumi.Input[str]] = None,
                  ike_pfs: Optional[pulumi.Input[str]] = None,
@@ -28,7 +28,7 @@ class ConnectionIkeConfigArgs:
         """
         :param pulumi.Input[str] ike_auth_alg: The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
         :param pulumi.Input[str] ike_enc_alg: The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
-        :param pulumi.Input[float] ike_lifetime: The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+        :param pulumi.Input[int] ike_lifetime: The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
         :param pulumi.Input[str] ike_local_id: The identification of the VPN gateway.
         :param pulumi.Input[str] ike_mode: The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
         :param pulumi.Input[str] ike_pfs: The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
@@ -81,14 +81,14 @@ class ConnectionIkeConfigArgs:
 
     @property
     @pulumi.getter(name="ikeLifetime")
-    def ike_lifetime(self) -> Optional[pulumi.Input[float]]:
+    def ike_lifetime(self) -> Optional[pulumi.Input[int]]:
         """
         The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
         """
         return pulumi.get(self, "ike_lifetime")
 
     @ike_lifetime.setter
-    def ike_lifetime(self, value: Optional[pulumi.Input[float]]):
+    def ike_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ike_lifetime", value)
 
     @property
@@ -169,12 +169,12 @@ class ConnectionIpsecConfigArgs:
     def __init__(__self__, *,
                  ipsec_auth_alg: Optional[pulumi.Input[str]] = None,
                  ipsec_enc_alg: Optional[pulumi.Input[str]] = None,
-                 ipsec_lifetime: Optional[pulumi.Input[float]] = None,
+                 ipsec_lifetime: Optional[pulumi.Input[int]] = None,
                  ipsec_pfs: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] ipsec_auth_alg: The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
         :param pulumi.Input[str] ipsec_enc_alg: The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
-        :param pulumi.Input[float] ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+        :param pulumi.Input[int] ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
         :param pulumi.Input[str] ipsec_pfs: The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
         """
         if ipsec_auth_alg is not None:
@@ -212,14 +212,14 @@ class ConnectionIpsecConfigArgs:
 
     @property
     @pulumi.getter(name="ipsecLifetime")
-    def ipsec_lifetime(self) -> Optional[pulumi.Input[float]]:
+    def ipsec_lifetime(self) -> Optional[pulumi.Input[int]]:
         """
         The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
         """
         return pulumi.get(self, "ipsec_lifetime")
 
     @ipsec_lifetime.setter
-    def ipsec_lifetime(self, value: Optional[pulumi.Input[float]]):
+    def ipsec_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ipsec_lifetime", value)
 
     @property

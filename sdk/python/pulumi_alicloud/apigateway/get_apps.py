@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetAppsResult:
 
     @property
     @pulumi.getter
-    def apps(self) -> List['outputs.GetAppsAppResult']:
+    def apps(self) -> Sequence['outputs.GetAppsAppResult']:
         """
         A list of apps. Each element contains the following attributes:
         """
@@ -61,7 +61,7 @@ class GetAppsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of app IDs.
         """
@@ -74,7 +74,7 @@ class GetAppsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of app names.
         """
@@ -106,7 +106,7 @@ class AwaitableGetAppsResult(GetAppsResult):
             tags=self.tags)
 
 
-def get_apps(ids: Optional[List[str]] = None,
+def get_apps(ids: Optional[Sequence[str]] = None,
              name_regex: Optional[str] = None,
              output_file: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
@@ -125,7 +125,7 @@ def get_apps(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of app IDs.
+    :param Sequence[str] ids: A list of app IDs.
     :param str name_regex: A regex string to filter apps by name.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """

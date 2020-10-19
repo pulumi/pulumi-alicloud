@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetResourceGroupsResult:
 
     @property
     @pulumi.getter
-    def groups(self) -> List['outputs.GetResourceGroupsGroupResult']:
+    def groups(self) -> Sequence['outputs.GetResourceGroupsGroupResult']:
         """
         A list of resource groups. Each element contains the following attributes:
         """
@@ -61,7 +61,7 @@ class GetResourceGroupsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of resource group IDs.
         """
@@ -74,7 +74,7 @@ class GetResourceGroupsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of resource group names.
         """
@@ -109,7 +109,7 @@ class AwaitableGetResourceGroupsResult(GetResourceGroupsResult):
             status=self.status)
 
 
-def get_resource_groups(ids: Optional[List[str]] = None,
+def get_resource_groups(ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
                         output_file: Optional[str] = None,
                         status: Optional[str] = None,
@@ -130,7 +130,7 @@ def get_resource_groups(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of resource group IDs.
+    :param Sequence[str] ids: A list of resource group IDs.
     :param str name_regex: A regex string to filter results by resource group name.
     :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
     """

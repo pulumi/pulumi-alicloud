@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -74,7 +74,7 @@ class GetInstanceEnginesResult:
 
     @property
     @pulumi.getter(name="instanceEngines")
-    def instance_engines(self) -> List['outputs.GetInstanceEnginesInstanceEngineResult']:
+    def instance_engines(self) -> Sequence['outputs.GetInstanceEnginesInstanceEngineResult']:
         """
         A list of KVStore available instance engines. Each element contains the following attributes:
         """

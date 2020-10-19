@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -42,7 +42,7 @@ class GetAlidnsDomainGroupsResult:
 
     @property
     @pulumi.getter
-    def groups(self) -> List['outputs.GetAlidnsDomainGroupsGroupResult']:
+    def groups(self) -> Sequence['outputs.GetAlidnsDomainGroupsGroupResult']:
         """
         A list of instances. Each element contains the following attributes:
         """
@@ -58,7 +58,7 @@ class GetAlidnsDomainGroupsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of instance IDs.
         """
@@ -71,7 +71,7 @@ class GetAlidnsDomainGroupsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of domain group names.
         """
@@ -97,7 +97,7 @@ class AwaitableGetAlidnsDomainGroupsResult(GetAlidnsDomainGroupsResult):
             output_file=self.output_file)
 
 
-def get_alidns_domain_groups(ids: Optional[List[str]] = None,
+def get_alidns_domain_groups(ids: Optional[Sequence[str]] = None,
                              name_regex: Optional[str] = None,
                              output_file: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlidnsDomainGroupsResult:
@@ -117,7 +117,7 @@ def get_alidns_domain_groups(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of instance IDs.
+    :param Sequence[str] ids: A list of instance IDs.
     :param str name_regex: A regex string to filter results by the domain group name.
     """
     __args__ = dict()

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -50,7 +50,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of instance IDs.
         """
@@ -58,7 +58,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         """
         A list of instances. Each element contains the following attributes:
         """
@@ -71,7 +71,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of instance names.
         """
@@ -97,7 +97,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             output_file=self.output_file)
 
 
-def get_instances(ids: Optional[List[str]] = None,
+def get_instances(ids: Optional[Sequence[str]] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
@@ -135,7 +135,7 @@ def get_instances(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of instance IDs to filter results.
+    :param Sequence[str] ids: A list of instance IDs to filter results.
     :param str name_regex: A regex string to filter results by the instance name.
     """
     __args__ = dict()

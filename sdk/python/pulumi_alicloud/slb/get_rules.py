@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -21,8 +21,8 @@ class GetRulesResult:
     A collection of values returned by getRules.
     """
     def __init__(__self__, frontend_port=None, id=None, ids=None, load_balancer_id=None, name_regex=None, names=None, output_file=None, slb_rules=None):
-        if frontend_port and not isinstance(frontend_port, float):
-            raise TypeError("Expected argument 'frontend_port' to be a float")
+        if frontend_port and not isinstance(frontend_port, int):
+            raise TypeError("Expected argument 'frontend_port' to be a int")
         pulumi.set(__self__, "frontend_port", frontend_port)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -48,7 +48,7 @@ class GetRulesResult:
 
     @property
     @pulumi.getter(name="frontendPort")
-    def frontend_port(self) -> float:
+    def frontend_port(self) -> int:
         return pulumi.get(self, "frontend_port")
 
     @property
@@ -61,7 +61,7 @@ class GetRulesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of SLB listener rules IDs.
         """
@@ -79,7 +79,7 @@ class GetRulesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of SLB listener rules names.
         """
@@ -92,7 +92,7 @@ class GetRulesResult:
 
     @property
     @pulumi.getter(name="slbRules")
-    def slb_rules(self) -> List['outputs.GetRulesSlbRuleResult']:
+    def slb_rules(self) -> Sequence['outputs.GetRulesSlbRuleResult']:
         """
         A list of SLB listener rules. Each element contains the following attributes:
         """
@@ -115,8 +115,8 @@ class AwaitableGetRulesResult(GetRulesResult):
             slb_rules=self.slb_rules)
 
 
-def get_rules(frontend_port: Optional[float] = None,
-              ids: Optional[List[str]] = None,
+def get_rules(frontend_port: Optional[int] = None,
+              ids: Optional[Sequence[str]] = None,
               load_balancer_id: Optional[str] = None,
               name_regex: Optional[str] = None,
               output_file: Optional[str] = None,
@@ -162,8 +162,8 @@ def get_rules(frontend_port: Optional[float] = None,
     ```
 
 
-    :param float frontend_port: SLB listener port.
-    :param List[str] ids: A list of rules IDs to filter results.
+    :param int frontend_port: SLB listener port.
+    :param Sequence[str] ids: A list of rules IDs to filter results.
     :param str load_balancer_id: ID of the SLB with listener rules.
     :param str name_regex: A regex string to filter results by rule name.
     """

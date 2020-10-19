@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -48,7 +48,7 @@ class GetInstanceTypeFamiliesResult:
 
     @property
     @pulumi.getter
-    def families(self) -> List['outputs.GetInstanceTypeFamiliesFamilyResult']:
+    def families(self) -> Sequence['outputs.GetInstanceTypeFamiliesFamilyResult']:
         return pulumi.get(self, "families")
 
     @property
@@ -69,7 +69,7 @@ class GetInstanceTypeFamiliesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of instance type family IDs.
         """

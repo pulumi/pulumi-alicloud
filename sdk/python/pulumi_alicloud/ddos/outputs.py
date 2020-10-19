@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -17,12 +17,12 @@ __all__ = [
 @pulumi.output_type
 class SchedulerRuleRule(dict):
     def __init__(__self__, *,
-                 priority: Optional[float] = None,
+                 priority: Optional[int] = None,
                  region_id: Optional[str] = None,
-                 status: Optional[float] = None,
+                 status: Optional[int] = None,
                  type: Optional[str] = None,
                  value: Optional[str] = None,
-                 value_type: Optional[float] = None):
+                 value_type: Optional[int] = None):
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if region_id is not None:
@@ -38,7 +38,7 @@ class SchedulerRuleRule(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> Optional[int]:
         return pulumi.get(self, "priority")
 
     @property
@@ -48,7 +48,7 @@ class SchedulerRuleRule(dict):
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[float]:
+    def status(self) -> Optional[int]:
         return pulumi.get(self, "status")
 
     @property
@@ -63,7 +63,7 @@ class SchedulerRuleRule(dict):
 
     @property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[float]:
+    def value_type(self) -> Optional[int]:
         return pulumi.get(self, "value_type")
 
     def _translate_property(self, prop):
@@ -73,19 +73,19 @@ class SchedulerRuleRule(dict):
 @pulumi.output_type
 class GetDdosBgpInstancesInstanceResult(dict):
     def __init__(__self__, *,
-                 bandwidth: float,
-                 base_bandwidth: float,
+                 bandwidth: int,
+                 base_bandwidth: int,
                  id: str,
-                 ip_count: float,
+                 ip_count: int,
                  ip_type: str,
                  name: str,
                  region: str,
                  type: str):
         """
-        :param float bandwidth: The instance's elastic defend bandwidth.
-        :param float base_bandwidth: The instance's base defend bandwidth.
+        :param int bandwidth: The instance's elastic defend bandwidth.
+        :param int base_bandwidth: The instance's base defend bandwidth.
         :param str id: The instance's id.
-        :param float ip_count: The instance's count of ip config.
+        :param int ip_count: The instance's count of ip config.
         :param str ip_type: The instance's IP version.
         :param str name: The instance's remark.
         :param str region: A region of instance.
@@ -102,7 +102,7 @@ class GetDdosBgpInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> float:
+    def bandwidth(self) -> int:
         """
         The instance's elastic defend bandwidth.
         """
@@ -110,7 +110,7 @@ class GetDdosBgpInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="baseBandwidth")
-    def base_bandwidth(self) -> float:
+    def base_bandwidth(self) -> int:
         """
         The instance's base defend bandwidth.
         """
@@ -126,7 +126,7 @@ class GetDdosBgpInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="ipCount")
-    def ip_count(self) -> float:
+    def ip_count(self) -> int:
         """
         The instance's count of ip config.
         """
@@ -168,21 +168,21 @@ class GetDdosBgpInstancesInstanceResult(dict):
 @pulumi.output_type
 class GetDdosCooInstancesInstanceResult(dict):
     def __init__(__self__, *,
-                 bandwidth: float,
-                 base_bandwidth: float,
-                 domain_count: float,
+                 bandwidth: int,
+                 base_bandwidth: int,
+                 domain_count: int,
                  id: str,
                  name: str,
-                 port_count: float,
-                 service_bandwidth: float):
+                 port_count: int,
+                 service_bandwidth: int):
         """
-        :param float bandwidth: The instance's elastic defend bandwidth.
-        :param float base_bandwidth: The instance's base defend bandwidth.
-        :param float domain_count: The instance's count of domain retransmission config.
+        :param int bandwidth: The instance's elastic defend bandwidth.
+        :param int base_bandwidth: The instance's base defend bandwidth.
+        :param int domain_count: The instance's count of domain retransmission config.
         :param str id: The instance's id.
         :param str name: The instance's remark.
-        :param float port_count: The instance's count of port retransmission config.
-        :param float service_bandwidth: The instance's business bandwidth.
+        :param int port_count: The instance's count of port retransmission config.
+        :param int service_bandwidth: The instance's business bandwidth.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "base_bandwidth", base_bandwidth)
@@ -194,7 +194,7 @@ class GetDdosCooInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> float:
+    def bandwidth(self) -> int:
         """
         The instance's elastic defend bandwidth.
         """
@@ -202,7 +202,7 @@ class GetDdosCooInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="baseBandwidth")
-    def base_bandwidth(self) -> float:
+    def base_bandwidth(self) -> int:
         """
         The instance's base defend bandwidth.
         """
@@ -210,7 +210,7 @@ class GetDdosCooInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="domainCount")
-    def domain_count(self) -> float:
+    def domain_count(self) -> int:
         """
         The instance's count of domain retransmission config.
         """
@@ -234,7 +234,7 @@ class GetDdosCooInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="portCount")
-    def port_count(self) -> float:
+    def port_count(self) -> int:
         """
         The instance's count of port retransmission config.
         """
@@ -242,7 +242,7 @@ class GetDdosCooInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="serviceBandwidth")
-    def service_bandwidth(self) -> float:
+    def service_bandwidth(self) -> int:
         """
         The instance's business bandwidth.
         """

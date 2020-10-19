@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Key']
@@ -16,14 +16,14 @@ class Key(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automatic_rotation: Optional[pulumi.Input[str]] = None,
-                 deletion_window_in_days: Optional[pulumi.Input[float]] = None,
+                 deletion_window_in_days: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  key_spec: Optional[pulumi.Input[str]] = None,
                  key_state: Optional[pulumi.Input[str]] = None,
                  key_usage: Optional[pulumi.Input[str]] = None,
                  origin: Optional[pulumi.Input[str]] = None,
-                 pending_window_in_days: Optional[pulumi.Input[float]] = None,
+                 pending_window_in_days: Optional[pulumi.Input[int]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None,
                  rotation_interval: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -51,14 +51,14 @@ class Key(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default:"Disabled".
-        :param pulumi.Input[float] deletion_window_in_days: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+        :param pulumi.Input[int] deletion_window_in_days: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
         :param pulumi.Input[str] description: The description of the key as viewed in Alicloud console.
         :param pulumi.Input[bool] is_enabled: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
         :param pulumi.Input[str] key_spec: The type of the CMK.
         :param pulumi.Input[str] key_state: The status of CMK. Defaults to Enabled.
         :param pulumi.Input[str] key_usage: Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
         :param pulumi.Input[str] origin: The source of the key material for the CMK. Defaults to "Aliyun_KMS".
-        :param pulumi.Input[float] pending_window_in_days: Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+        :param pulumi.Input[int] pending_window_in_days: Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
         :param pulumi.Input[str] protection_level: The protection level of the CMK. Defaults to "SOFTWARE".
         :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. Unit: seconds.
         """
@@ -119,7 +119,7 @@ class Key(pulumi.CustomResource):
             creation_date: Optional[pulumi.Input[str]] = None,
             creator: Optional[pulumi.Input[str]] = None,
             delete_date: Optional[pulumi.Input[str]] = None,
-            deletion_window_in_days: Optional[pulumi.Input[float]] = None,
+            deletion_window_in_days: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             is_enabled: Optional[pulumi.Input[bool]] = None,
             key_spec: Optional[pulumi.Input[str]] = None,
@@ -129,7 +129,7 @@ class Key(pulumi.CustomResource):
             material_expire_time: Optional[pulumi.Input[str]] = None,
             next_rotation_date: Optional[pulumi.Input[str]] = None,
             origin: Optional[pulumi.Input[str]] = None,
-            pending_window_in_days: Optional[pulumi.Input[float]] = None,
+            pending_window_in_days: Optional[pulumi.Input[int]] = None,
             primary_key_version: Optional[pulumi.Input[str]] = None,
             protection_level: Optional[pulumi.Input[str]] = None,
             rotation_interval: Optional[pulumi.Input[str]] = None) -> 'Key':
@@ -145,7 +145,7 @@ class Key(pulumi.CustomResource):
                * `creator` -The creator of the CMK.
                * `delete_date` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
         :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default:"Disabled".
-        :param pulumi.Input[float] deletion_window_in_days: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+        :param pulumi.Input[int] deletion_window_in_days: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
         :param pulumi.Input[str] description: The description of the key as viewed in Alicloud console.
         :param pulumi.Input[bool] is_enabled: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
         :param pulumi.Input[str] key_spec: The type of the CMK.
@@ -155,7 +155,7 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] material_expire_time: The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
         :param pulumi.Input[str] next_rotation_date: The time the next rotation is scheduled for execution.
         :param pulumi.Input[str] origin: The source of the key material for the CMK. Defaults to "Aliyun_KMS".
-        :param pulumi.Input[float] pending_window_in_days: Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+        :param pulumi.Input[int] pending_window_in_days: Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
         :param pulumi.Input[str] primary_key_version: The ID of the current primary key version of the symmetric CMK.
         :param pulumi.Input[str] protection_level: The protection level of the CMK. Defaults to "SOFTWARE".
         :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. Unit: seconds.
@@ -221,7 +221,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deletionWindowInDays")
-    def deletion_window_in_days(self) -> pulumi.Output[Optional[float]]:
+    def deletion_window_in_days(self) -> pulumi.Output[Optional[int]]:
         """
         Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
         """
@@ -301,7 +301,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pendingWindowInDays")
-    def pending_window_in_days(self) -> pulumi.Output[Optional[float]]:
+    def pending_window_in_days(self) -> pulumi.Output[Optional[int]]:
         """
         Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
         """

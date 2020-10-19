@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -76,7 +76,7 @@ class GetProductsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of product codes.
         """
@@ -99,7 +99,7 @@ class GetProductsResult:
 
     @property
     @pulumi.getter
-    def products(self) -> List['outputs.GetProductsProductResult']:
+    def products(self) -> Sequence['outputs.GetProductsProductResult']:
         """
         A list of products. Each element contains the following attributes:
         """
@@ -158,7 +158,7 @@ class AwaitableGetProductsResult(GetProductsResult):
 
 
 def get_products(category_id: Optional[str] = None,
-                 ids: Optional[List[str]] = None,
+                 ids: Optional[Sequence[str]] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
                  product_type: Optional[str] = None,
@@ -175,7 +175,7 @@ def get_products(category_id: Optional[str] = None,
 
 
     :param str category_id: The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
-    :param List[str] ids: A list of product code.
+    :param Sequence[str] ids: A list of product code.
     :param str name_regex: A regex string to apply to the product name.
     :param str product_type: The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
     :param str search_term: Search term in this query.

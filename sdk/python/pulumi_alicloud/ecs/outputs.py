@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -86,11 +86,11 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
 @pulumi.output_type
 class DedicatedHostNetworkAttribute(dict):
     def __init__(__self__, *,
-                 slb_udp_timeout: Optional[float] = None,
-                 udp_timeout: Optional[float] = None):
+                 slb_udp_timeout: Optional[int] = None,
+                 udp_timeout: Optional[int] = None):
         """
-        :param float slb_udp_timeout: The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
-        :param float udp_timeout: The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
+        :param int slb_udp_timeout: The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
+        :param int udp_timeout: The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
         """
         if slb_udp_timeout is not None:
             pulumi.set(__self__, "slb_udp_timeout", slb_udp_timeout)
@@ -99,7 +99,7 @@ class DedicatedHostNetworkAttribute(dict):
 
     @property
     @pulumi.getter(name="slbUdpTimeout")
-    def slb_udp_timeout(self) -> Optional[float]:
+    def slb_udp_timeout(self) -> Optional[int]:
         """
         The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
         """
@@ -107,7 +107,7 @@ class DedicatedHostNetworkAttribute(dict):
 
     @property
     @pulumi.getter(name="udpTimeout")
-    def udp_timeout(self) -> Optional[float]:
+    def udp_timeout(self) -> Optional[int]:
         """
         The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
         """
@@ -122,12 +122,12 @@ class ImageDiskDeviceMapping(dict):
     def __init__(__self__, *,
                  device: Optional[str] = None,
                  disk_type: Optional[str] = None,
-                 size: Optional[float] = None,
+                 size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         """
         :param str device: Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
         :param str disk_type: Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-        :param float size: Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+        :param int size: Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
         :param str snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         """
         if device is not None:
@@ -157,7 +157,7 @@ class ImageDiskDeviceMapping(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[float]:
+    def size(self) -> Optional[int]:
         """
         Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
         """
@@ -179,13 +179,13 @@ class ImageDiskDeviceMapping(dict):
 class ImageImportDiskDeviceMapping(dict):
     def __init__(__self__, *,
                  device: Optional[str] = None,
-                 disk_image_size: Optional[float] = None,
+                 disk_image_size: Optional[int] = None,
                  format: Optional[str] = None,
                  oss_bucket: Optional[str] = None,
                  oss_object: Optional[str] = None):
         """
         :param str device: The name of disk N in the custom image.
-        :param float disk_image_size: Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+        :param int disk_image_size: Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
         :param str format: Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
         :param str oss_bucket: Save the exported OSS bucket.
         :param str oss_object: The file name of your OSS Object.
@@ -211,7 +211,7 @@ class ImageImportDiskDeviceMapping(dict):
 
     @property
     @pulumi.getter(name="diskImageSize")
-    def disk_image_size(self) -> Optional[float]:
+    def disk_image_size(self) -> Optional[int]:
         """
         Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
         """
@@ -248,7 +248,7 @@ class ImageImportDiskDeviceMapping(dict):
 @pulumi.output_type
 class InstanceDataDisk(dict):
     def __init__(__self__, *,
-                 size: float,
+                 size: int,
                  auto_snapshot_policy_id: Optional[str] = None,
                  category: Optional[str] = None,
                  delete_with_instance: Optional[bool] = None,
@@ -258,7 +258,7 @@ class InstanceDataDisk(dict):
                  name: Optional[str] = None,
                  snapshot_id: Optional[str] = None):
         """
-        :param float size: The size of the data disk.
+        :param int size: The size of the data disk.
                - cloud：[5, 2000]
                - cloud_efficiency：[20, 32768]
                - cloud_ssd：[20, 32768]
@@ -299,7 +299,7 @@ class InstanceDataDisk(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         The size of the data disk.
         - cloud：[5, 2000]
@@ -392,7 +392,7 @@ class LaunchTemplateDataDisk(dict):
                  description: Optional[str] = None,
                  encrypted: Optional[bool] = None,
                  name: Optional[str] = None,
-                 size: Optional[float] = None,
+                 size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         """
         :param str category: The category of the disk:
@@ -405,7 +405,7 @@ class LaunchTemplateDataDisk(dict):
         :param str description: The description of the data disk.
         :param bool encrypted: -(Optional, Bool) Encrypted the data in this disk.
         :param str name: The name of the data disk.
-        :param float size: The size of the data disk.
+        :param int size: The size of the data disk.
                - cloud：[5, 2000]
                - cloud_efficiency：[20, 32768]
                - cloud_ssd：[20, 32768]
@@ -475,7 +475,7 @@ class LaunchTemplateDataDisk(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[float]:
+    def size(self) -> Optional[int]:
         """
         The size of the data disk.
         - cloud：[5, 2000]
@@ -574,7 +574,7 @@ class GetDedicatedHostsHostResult(dict):
                  action_on_maintenance: str,
                  auto_placement: str,
                  auto_release_time: str,
-                 cores: float,
+                 cores: int,
                  dedicated_host_id: str,
                  dedicated_host_name: str,
                  dedicated_host_type: str,
@@ -584,19 +584,19 @@ class GetDedicatedHostsHostResult(dict):
                  id: str,
                  machine_id: str,
                  payment_type: str,
-                 physical_gpus: float,
+                 physical_gpus: int,
                  resource_group_id: str,
                  sale_cycle: str,
-                 sockets: float,
+                 sockets: int,
                  status: str,
-                 supported_instance_types_lists: List[str],
+                 supported_instance_types_lists: Sequence[str],
                  tags: Mapping[str, Any],
                  zone_id: str):
         """
         :param str action_on_maintenance: The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online.
         :param str auto_placement: Specifies whether to add the dedicated host to the resource pool for automatic deployment.
         :param str auto_release_time: The automatic release time of the dedicated host.
-        :param float cores: A mapping of tags to assign to the resource.
+        :param int cores: A mapping of tags to assign to the resource.
         :param str dedicated_host_id: The ID of ECS Dedicated Host.
         :param str dedicated_host_name: The name of ECS Dedicated Host.
         :param str dedicated_host_type: The type of the dedicated host.
@@ -606,12 +606,12 @@ class GetDedicatedHostsHostResult(dict):
         :param str id: ID of the ECS Dedicated Host.
         :param str machine_id: The machine code of the dedicated host.
         :param str payment_type: The billing method of the dedicated host.
-        :param float physical_gpus: The number of physical GPUs.
+        :param int physical_gpus: The number of physical GPUs.
         :param str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
         :param str sale_cycle: The unit of the subscription billing method.
-        :param float sockets: The number of physical CPUs.
+        :param int sockets: The number of physical CPUs.
         :param str status: The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
-        :param List[str] supported_instance_types_lists: The list of ECS instanc
+        :param Sequence[str] supported_instance_types_lists: The list of ECS instanc
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str zone_id: The zone ID of the ECS Dedicated Host.
         """
@@ -663,7 +663,7 @@ class GetDedicatedHostsHostResult(dict):
 
     @property
     @pulumi.getter
-    def cores(self) -> float:
+    def cores(self) -> int:
         """
         A mapping of tags to assign to the resource.
         """
@@ -743,7 +743,7 @@ class GetDedicatedHostsHostResult(dict):
 
     @property
     @pulumi.getter(name="physicalGpus")
-    def physical_gpus(self) -> float:
+    def physical_gpus(self) -> int:
         """
         The number of physical GPUs.
         """
@@ -767,7 +767,7 @@ class GetDedicatedHostsHostResult(dict):
 
     @property
     @pulumi.getter
-    def sockets(self) -> float:
+    def sockets(self) -> int:
         """
         The number of physical CPUs.
         """
@@ -783,7 +783,7 @@ class GetDedicatedHostsHostResult(dict):
 
     @property
     @pulumi.getter(name="supportedInstanceTypesLists")
-    def supported_instance_types_lists(self) -> List[str]:
+    def supported_instance_types_lists(self) -> Sequence[str]:
         """
         The list of ECS instanc
         """
@@ -823,7 +823,7 @@ class GetDisksDiskResult(dict):
                  name: str,
                  region_id: str,
                  resource_group_id: str,
-                 size: float,
+                 size: int,
                  snapshot_id: str,
                  status: str,
                  type: str,
@@ -843,7 +843,7 @@ class GetDisksDiskResult(dict):
         :param str name: Disk name.
         :param str region_id: Region ID the disk belongs to.
         :param str resource_group_id: The Id of resource group which the disk belongs.
-        :param float size: Disk size in GiB.
+        :param int size: Disk size in GiB.
         :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
         :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
         :param str type: Disk type. Possible values: `system` and `data`.
@@ -993,7 +993,7 @@ class GetDisksDiskResult(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         Disk size in GiB.
         """
@@ -1142,7 +1142,7 @@ class GetImagesImageResult(dict):
                  architecture: str,
                  creation_time: str,
                  description: str,
-                 disk_device_mappings: List['outputs.GetImagesImageDiskDeviceMappingResult'],
+                 disk_device_mappings: Sequence['outputs.GetImagesImageDiskDeviceMappingResult'],
                  id: str,
                  image_id: str,
                  image_owner_alias: str,
@@ -1158,7 +1158,7 @@ class GetImagesImageResult(dict):
                  platform: str,
                  product_code: str,
                  progress: str,
-                 size: float,
+                 size: int,
                  state: str,
                  status: str,
                  usage: str,
@@ -1167,7 +1167,7 @@ class GetImagesImageResult(dict):
         :param str architecture: The image architecture. Valid values: `i386` and `x86_64`.
         :param str creation_time: Time of creation.
         :param str description: Description of the image.
-        :param List['GetImagesImageDiskDeviceMappingArgs'] disk_device_mappings: Description of the system with disks and snapshots under the image.
+        :param Sequence['GetImagesImageDiskDeviceMappingArgs'] disk_device_mappings: Description of the system with disks and snapshots under the image.
         :param str id: ID of the image.
         :param str image_owner_alias: Alias of the image owner.
         :param str image_version: Version of the image.
@@ -1178,7 +1178,7 @@ class GetImagesImageResult(dict):
         :param str os_type: The operating system type of the image. Valid values: `windows` and `linux`.
         :param str product_code: Product code of the image on the image market.
         :param str progress: Progress of image creation, presented in percentages.
-        :param float size: Size of the created disk.
+        :param int size: Size of the created disk.
         :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
                * `Creating`: The image is being created.
                * `Waiting`: The image is waiting to be processed.
@@ -1243,7 +1243,7 @@ class GetImagesImageResult(dict):
 
     @property
     @pulumi.getter(name="diskDeviceMappings")
-    def disk_device_mappings(self) -> List['outputs.GetImagesImageDiskDeviceMappingResult']:
+    def disk_device_mappings(self) -> Sequence['outputs.GetImagesImageDiskDeviceMappingResult']:
         """
         Description of the system with disks and snapshots under the image.
         """
@@ -1356,7 +1356,7 @@ class GetImagesImageResult(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         Size of the created disk.
         """
@@ -1445,11 +1445,11 @@ class GetInstanceTypeFamiliesFamilyResult(dict):
     def __init__(__self__, *,
                  generation: str,
                  id: str,
-                 zone_ids: List[str]):
+                 zone_ids: Sequence[str]):
         """
         :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
         :param str id: ID of the instance type family.
-        :param List[str] zone_ids: A list of Zone to launch the instance.
+        :param Sequence[str] zone_ids: A list of Zone to launch the instance.
         """
         pulumi.set(__self__, "generation", generation)
         pulumi.set(__self__, "id", id)
@@ -1473,7 +1473,7 @@ class GetInstanceTypeFamiliesFamilyResult(dict):
 
     @property
     @pulumi.getter(name="zoneIds")
-    def zone_ids(self) -> List[str]:
+    def zone_ids(self) -> Sequence[str]:
         """
         A list of Zone to launch the instance.
         """
@@ -1483,10 +1483,10 @@ class GetInstanceTypeFamiliesFamilyResult(dict):
 @pulumi.output_type
 class GetInstanceTypesInstanceTypeResult(dict):
     def __init__(__self__, *,
-                 availability_zones: List[str],
+                 availability_zones: Sequence[str],
                  burstable_instance: 'outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult',
-                 cpu_core_count: float,
-                 eni_amount: float,
+                 cpu_core_count: int,
+                 eni_amount: int,
                  family: str,
                  gpu: 'outputs.GetInstanceTypesInstanceTypeGpuResult',
                  id: str,
@@ -1494,10 +1494,10 @@ class GetInstanceTypesInstanceTypeResult(dict):
                  memory_size: float,
                  price: str):
         """
-        :param List[str] availability_zones: List of availability zones that support the instance type.
+        :param Sequence[str] availability_zones: List of availability zones that support the instance type.
         :param 'GetInstanceTypesInstanceTypeBurstableInstanceArgs' burstable_instance: The burstable instance attribution:
-        :param float cpu_core_count: Filter the results to a specific number of cpu cores.
-        :param float eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
+        :param int cpu_core_count: Filter the results to a specific number of cpu cores.
+        :param int eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
         :param str family: The instance type family.
         :param 'GetInstanceTypesInstanceTypeGpuArgs' gpu: The GPU attribution of an instance type:
         :param str id: ID of the instance type.
@@ -1517,7 +1517,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> List[str]:
+    def availability_zones(self) -> Sequence[str]:
         """
         List of availability zones that support the instance type.
         """
@@ -1533,7 +1533,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
 
     @property
     @pulumi.getter(name="cpuCoreCount")
-    def cpu_core_count(self) -> float:
+    def cpu_core_count(self) -> int:
         """
         Filter the results to a specific number of cpu cores.
         """
@@ -1541,7 +1541,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
 
     @property
     @pulumi.getter(name="eniAmount")
-    def eni_amount(self) -> float:
+    def eni_amount(self) -> int:
         """
         Filter the result whose network interface number is no more than `eni_amount`.
         """
@@ -1697,14 +1697,14 @@ class GetInstancesInstanceResult(dict):
                  availability_zone: str,
                  creation_time: str,
                  description: str,
-                 disk_device_mappings: List['outputs.GetInstancesInstanceDiskDeviceMappingResult'],
+                 disk_device_mappings: Sequence['outputs.GetInstancesInstanceDiskDeviceMappingResult'],
                  eip: str,
                  id: str,
                  image_id: str,
                  instance_charge_type: str,
                  instance_type: str,
                  internet_charge_type: str,
-                 internet_max_bandwidth_out: float,
+                 internet_max_bandwidth_out: int,
                  key_name: str,
                  name: str,
                  private_ip: str,
@@ -1712,7 +1712,7 @@ class GetInstancesInstanceResult(dict):
                  ram_role_name: str,
                  region_id: str,
                  resource_group_id: str,
-                 security_groups: List[str],
+                 security_groups: Sequence[str],
                  spot_strategy: str,
                  status: str,
                  vpc_id: str,
@@ -1722,14 +1722,14 @@ class GetInstancesInstanceResult(dict):
         :param str availability_zone: Availability zone where instances are located.
         :param str creation_time: Instance creation time.
         :param str description: Instance description.
-        :param List['GetInstancesInstanceDiskDeviceMappingArgs'] disk_device_mappings: Description of the attached disks.
+        :param Sequence['GetInstancesInstanceDiskDeviceMappingArgs'] disk_device_mappings: Description of the attached disks.
         :param str eip: EIP address the VPC instance is using.
         :param str id: ID of the instance.
         :param str image_id: The image ID of some ECS instance used.
         :param str instance_charge_type: Instance charge type.
         :param str instance_type: Instance type.
         :param str internet_charge_type: Instance network charge type.
-        :param float internet_max_bandwidth_out: Max output bandwidth for internet.
+        :param int internet_max_bandwidth_out: Max output bandwidth for internet.
         :param str key_name: Key pair the instance is using.
         :param str name: Instance name.
         :param str private_ip: Instance private IP address.
@@ -1737,7 +1737,7 @@ class GetInstancesInstanceResult(dict):
         :param str ram_role_name: The RAM role name which the instance attaches.
         :param str region_id: Region ID the instance belongs to.
         :param str resource_group_id: The Id of resource group which the instance belongs.
-        :param List[str] security_groups: List of security group IDs the instance belongs to.
+        :param Sequence[str] security_groups: List of security group IDs the instance belongs to.
         :param str spot_strategy: Spot strategy the instance is using.
         :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
         :param str vpc_id: ID of the VPC linked to the instances.
@@ -1805,7 +1805,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="diskDeviceMappings")
-    def disk_device_mappings(self) -> List['outputs.GetInstancesInstanceDiskDeviceMappingResult']:
+    def disk_device_mappings(self) -> Sequence['outputs.GetInstancesInstanceDiskDeviceMappingResult']:
         """
         Description of the attached disks.
         """
@@ -1861,7 +1861,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> float:
+    def internet_max_bandwidth_out(self) -> int:
         """
         Max output bandwidth for internet.
         """
@@ -1925,7 +1925,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> List[str]:
+    def security_groups(self) -> Sequence[str]:
         """
         List of security group IDs the instance belongs to.
         """
@@ -1986,12 +1986,12 @@ class GetInstancesInstanceDiskDeviceMappingResult(dict):
     def __init__(__self__, *,
                  category: str,
                  device: str,
-                 size: float,
+                 size: int,
                  type: str):
         """
         :param str category: Cloud disk category.
         :param str device: Device information of the created disk: such as /dev/xvdb.
-        :param float size: Size of the created disk.
+        :param int size: Size of the created disk.
         :param str type: Cloud disk type: system disk or data disk.
         """
         pulumi.set(__self__, "category", category)
@@ -2017,7 +2017,7 @@ class GetInstancesInstanceDiskDeviceMappingResult(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         Size of the created disk.
         """
@@ -2037,14 +2037,14 @@ class GetKeyPairsKeyPairResult(dict):
     def __init__(__self__, *,
                  finger_print: str,
                  id: str,
-                 instances: List['outputs.GetKeyPairsKeyPairInstanceResult'],
+                 instances: Sequence['outputs.GetKeyPairsKeyPairInstanceResult'],
                  key_name: str,
                  resource_group_id: str,
                  tags: Optional[Mapping[str, Any]] = None):
         """
         :param str finger_print: A finger print used to retrieve specified key pair.
         :param str id: ID of the key pair.
-        :param List['GetKeyPairsKeyPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
+        :param Sequence['GetKeyPairsKeyPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
         :param str key_name: Name of the key pair.
         :param str resource_group_id: The Id of resource group which the key pair belongs.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
@@ -2075,7 +2075,7 @@ class GetKeyPairsKeyPairResult(dict):
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetKeyPairsKeyPairInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetKeyPairsKeyPairInstanceResult']:
         """
         A list of ECS instances that has been bound this key pair.
         """
@@ -2235,10 +2235,10 @@ class GetNetworkInterfacesInterfaceResult(dict):
                  mac: str,
                  name: str,
                  private_ip: str,
-                 private_ips: List[str],
+                 private_ips: Sequence[str],
                  public_ip: str,
                  resource_group_id: str,
-                 security_groups: List[str],
+                 security_groups: Sequence[str],
                  status: str,
                  vpc_id: str,
                  vswitch_id: str,
@@ -2252,10 +2252,10 @@ class GetNetworkInterfacesInterfaceResult(dict):
         :param str mac: MAC address of the ENI.
         :param str name: Name of the ENI.
         :param str private_ip: Primary private IP of the ENI.
-        :param List[str] private_ips: A list of secondary private IP address that is assigned to the ENI.
+        :param Sequence[str] private_ips: A list of secondary private IP address that is assigned to the ENI.
         :param str public_ip: Public IP of the ENI.
         :param str resource_group_id: The Id of resource group.
-        :param List[str] security_groups: A list of security group that the ENI belongs to.
+        :param Sequence[str] security_groups: A list of security group that the ENI belongs to.
         :param str status: Current status of the ENI.
         :param str vpc_id: ID of the VPC that the ENI belongs to.
         :param str vswitch_id: ID of the VSwitch that the ENI is linked to.
@@ -2338,7 +2338,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
 
     @property
     @pulumi.getter(name="privateIps")
-    def private_ips(self) -> List[str]:
+    def private_ips(self) -> Sequence[str]:
         """
         A list of secondary private IP address that is assigned to the ENI.
         """
@@ -2362,7 +2362,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> List[str]:
+    def security_groups(self) -> Sequence[str]:
         """
         A list of security group that the ENI belongs to.
         """
@@ -2421,7 +2421,7 @@ class GetSecurityGroupRulesRuleResult(dict):
                  nic_type: str,
                  policy: str,
                  port_range: str,
-                 priority: float,
+                 priority: int,
                  source_cidr_ip: str,
                  source_group_id: str,
                  source_group_owner_account: str):
@@ -2435,7 +2435,7 @@ class GetSecurityGroupRulesRuleResult(dict):
         :param str nic_type: Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
         :param str policy: Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
         :param str port_range: The range of port numbers.
-        :param float priority: Rule priority.
+        :param int priority: Rule priority.
         :param str source_cidr_ip: Source IP address segment for ingress authorization.
         :param str source_group_id: Source security group ID for ingress authorization.
         :param str source_group_owner_account: Alibaba Cloud account of the source security group.
@@ -2528,7 +2528,7 @@ class GetSecurityGroupRulesRuleResult(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         """
         Rule priority.
         """
@@ -2694,8 +2694,8 @@ class GetSnapshotsSnapshotResult(dict):
                  name: str,
                  product_code: str,
                  progress: str,
-                 remain_time: float,
-                 retention_days: float,
+                 remain_time: int,
+                 retention_days: int,
                  source_disk_id: str,
                  source_disk_size: str,
                  source_disk_type: str,
@@ -2710,8 +2710,8 @@ class GetSnapshotsSnapshotResult(dict):
         :param str name: Name of the snapshot.
         :param str product_code: Product code on the image market place.
         :param str progress: Progress of snapshot creation, presented in percentage.
-        :param float remain_time: The remaining time of a snapshot creation task, in seconds.
-        :param float retention_days: The number of days that an automatic snapshot retains in the console for your instance.
+        :param int remain_time: The remaining time of a snapshot creation task, in seconds.
+        :param int retention_days: The number of days that an automatic snapshot retains in the console for your instance.
         :param str source_disk_id: Source disk ID, which is retained after the source disk of the snapshot is deleted.
         :param str source_disk_size: Size of the source disk, measured in GB.
         :param str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
@@ -2794,7 +2794,7 @@ class GetSnapshotsSnapshotResult(dict):
 
     @property
     @pulumi.getter(name="remainTime")
-    def remain_time(self) -> float:
+    def remain_time(self) -> int:
         """
         The remaining time of a snapshot creation task, in seconds.
         """
@@ -2802,7 +2802,7 @@ class GetSnapshotsSnapshotResult(dict):
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> float:
+    def retention_days(self) -> int:
         """
         The number of days that an automatic snapshot retains in the console for your instance.
         """

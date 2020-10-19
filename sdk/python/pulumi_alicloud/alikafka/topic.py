@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Topic']
@@ -18,7 +18,7 @@ class Topic(pulumi.CustomResource):
                  compact_topic: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  local_topic: Optional[pulumi.Input[bool]] = None,
-                 partition_num: Optional[pulumi.Input[float]] = None,
+                 partition_num: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
@@ -72,7 +72,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[bool] compact_topic: Whether the topic is compactTopic or not. Compact topic must be a localTopic.
         :param pulumi.Input[str] instance_id: InstanceId of your Kafka resource, the topic will create in this instance.
         :param pulumi.Input[bool] local_topic: Whether the topic is localTopic or not.
-        :param pulumi.Input[float] partition_num: The number of partitions of the topic. The number should between 1 and 48.
+        :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
@@ -120,7 +120,7 @@ class Topic(pulumi.CustomResource):
             compact_topic: Optional[pulumi.Input[bool]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             local_topic: Optional[pulumi.Input[bool]] = None,
-            partition_num: Optional[pulumi.Input[float]] = None,
+            partition_num: Optional[pulumi.Input[int]] = None,
             remark: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             topic: Optional[pulumi.Input[str]] = None) -> 'Topic':
@@ -134,7 +134,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[bool] compact_topic: Whether the topic is compactTopic or not. Compact topic must be a localTopic.
         :param pulumi.Input[str] instance_id: InstanceId of your Kafka resource, the topic will create in this instance.
         :param pulumi.Input[bool] local_topic: Whether the topic is localTopic or not.
-        :param pulumi.Input[float] partition_num: The number of partitions of the topic. The number should between 1 and 48.
+        :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
@@ -178,7 +178,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="partitionNum")
-    def partition_num(self) -> pulumi.Output[Optional[float]]:
+    def partition_num(self) -> pulumi.Output[Optional[int]]:
         """
         The number of partitions of the topic. The number should between 1 and 48.
         """

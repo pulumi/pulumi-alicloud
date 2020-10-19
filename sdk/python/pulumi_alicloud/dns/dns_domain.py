@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['DnsDomain']
@@ -76,7 +76,7 @@ class DnsDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dns_servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             domain_id: Optional[pulumi.Input[str]] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class DnsDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> pulumi.Output[List[str]]:
+    def dns_servers(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "dns_servers")
 
     @property

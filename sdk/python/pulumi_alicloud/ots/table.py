@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,10 +19,10 @@ class Table(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
-                 max_version: Optional[pulumi.Input[float]] = None,
-                 primary_keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]]] = None,
+                 max_version: Optional[pulumi.Input[int]] = None,
+                 primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]]] = None,
                  table_name: Optional[pulumi.Input[str]] = None,
-                 time_to_live: Optional[pulumi.Input[float]] = None,
+                 time_to_live: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -75,10 +75,10 @@ class Table(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
-        :param pulumi.Input[float] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        :param pulumi.Input[int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
-        :param pulumi.Input[float] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
+        :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -125,10 +125,10 @@ class Table(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
-            max_version: Optional[pulumi.Input[float]] = None,
-            primary_keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]]] = None,
+            max_version: Optional[pulumi.Input[int]] = None,
+            primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]]] = None,
             table_name: Optional[pulumi.Input[str]] = None,
-            time_to_live: Optional[pulumi.Input[float]] = None) -> 'Table':
+            time_to_live: Optional[pulumi.Input[int]] = None) -> 'Table':
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -138,10 +138,10 @@ class Table(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
-        :param pulumi.Input[float] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        :param pulumi.Input[int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
-        :param pulumi.Input[float] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
+        :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -173,7 +173,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxVersion")
-    def max_version(self) -> pulumi.Output[float]:
+    def max_version(self) -> pulumi.Output[int]:
         """
         The maximum number of versions stored in this table. The valid value is 1-2147483647.
         """
@@ -181,7 +181,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="primaryKeys")
-    def primary_keys(self) -> pulumi.Output[List['outputs.TablePrimaryKey']]:
+    def primary_keys(self) -> pulumi.Output[Sequence['outputs.TablePrimaryKey']]:
         """
         The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
         """
@@ -197,7 +197,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeToLive")
-    def time_to_live(self) -> pulumi.Output[float]:
+    def time_to_live(self) -> pulumi.Output[int]:
         """
         The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """

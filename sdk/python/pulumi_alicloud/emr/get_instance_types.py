@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -75,7 +75,7 @@ class GetInstanceTypesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of emr instance types IDs.
         """
@@ -103,12 +103,12 @@ class GetInstanceTypesResult:
 
     @property
     @pulumi.getter(name="supportNodeTypes")
-    def support_node_types(self) -> Optional[List[str]]:
+    def support_node_types(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "support_node_types")
 
     @property
     @pulumi.getter
-    def types(self) -> List['outputs.GetInstanceTypesTypeResult']:
+    def types(self) -> Sequence['outputs.GetInstanceTypesTypeResult']:
         """
         A list of emr instance types. Each element contains the following attributes:
         """
@@ -148,7 +148,7 @@ def get_instance_types(cluster_type: Optional[str] = None,
                        instance_type: Optional[str] = None,
                        output_file: Optional[str] = None,
                        support_local_storage: Optional[bool] = None,
-                       support_node_types: Optional[List[str]] = None,
+                       support_node_types: Optional[Sequence[str]] = None,
                        zone_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTypesResult:
     """
@@ -181,7 +181,7 @@ def get_instance_types(cluster_type: Optional[str] = None,
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param str instance_type: Filter the specific ecs instance type to create emr cluster.
     :param bool support_local_storage: Whether the current storage disk is local or not.
-    :param List[str] support_node_types: The specific supported node type list.
+    :param Sequence[str] support_node_types: The specific supported node type list.
            Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
     :param str zone_id: The supported resources of specific zoneId.
     """

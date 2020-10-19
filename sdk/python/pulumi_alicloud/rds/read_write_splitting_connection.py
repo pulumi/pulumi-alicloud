@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['ReadWriteSplittingConnection']
@@ -18,8 +18,8 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
                  connection_prefix: Optional[pulumi.Input[str]] = None,
                  distribution_type: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 max_delay_time: Optional[pulumi.Input[float]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 max_delay_time: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  weight: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None,
                  __name__=None,
@@ -80,8 +80,8 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
         :param pulumi.Input[str] distribution_type: Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[float] max_delay_time: Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
-        :param pulumi.Input[float] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
+        :param pulumi.Input[int] max_delay_time: Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
+        :param pulumi.Input[int] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
         :param pulumi.Input[Mapping[str, Any]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
         if __name__ is not None:
@@ -126,8 +126,8 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             connection_string: Optional[pulumi.Input[str]] = None,
             distribution_type: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
-            max_delay_time: Optional[pulumi.Input[float]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            max_delay_time: Optional[pulumi.Input[int]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             weight: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'ReadWriteSplittingConnection':
         """
         Get an existing ReadWriteSplittingConnection resource's state with the given name, id, and optional extra
@@ -140,8 +140,8 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         :param pulumi.Input[str] connection_string: Connection instance string.
         :param pulumi.Input[str] distribution_type: Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[float] max_delay_time: Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
-        :param pulumi.Input[float] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
+        :param pulumi.Input[int] max_delay_time: Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
+        :param pulumi.Input[int] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
         :param pulumi.Input[Mapping[str, Any]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -191,7 +191,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxDelayTime")
-    def max_delay_time(self) -> pulumi.Output[float]:
+    def max_delay_time(self) -> pulumi.Output[int]:
         """
         Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
         """
@@ -199,7 +199,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         Intranet connection port. Valid value: [3001-3999]. Default to 3306.
         """

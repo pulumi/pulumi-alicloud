@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -23,35 +23,35 @@ __all__ = [
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  create_time: str,
-                 deploy_type: float,
-                 disk_size: float,
-                 disk_type: float,
-                 eip_max: float,
+                 deploy_type: int,
+                 disk_size: int,
+                 disk_type: int,
+                 eip_max: int,
                  id: str,
-                 io_max: float,
+                 io_max: int,
                  name: str,
                  paid_type: str,
                  security_group: str,
-                 service_status: float,
+                 service_status: int,
                  spec_type: str,
-                 topic_quota: float,
+                 topic_quota: int,
                  vpc_id: str,
                  vswitch_id: str,
                  zone_id: str):
         """
         :param str create_time: The create time of the instance.
-        :param float deploy_type: The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
-        :param float disk_size: The disk size of the instance.
-        :param float disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-        :param float eip_max: The peak bandwidth of the instance.
+        :param int deploy_type: The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
+        :param int disk_size: The disk size of the instance.
+        :param int disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+        :param int eip_max: The peak bandwidth of the instance.
         :param str id: ID of the instance.
-        :param float io_max: The peak value of io of the instance.
+        :param int io_max: The peak value of io of the instance.
         :param str name: Name of the instance.
         :param str paid_type: The paid type of the instance.
         :param str security_group: The security group of the instance.
-        :param float service_status: The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
+        :param int service_status: The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
         :param str spec_type: The spec type of the instance.
-        :param float topic_quota: The max num of topic can be create of the instance.
+        :param int topic_quota: The max num of topic can be create of the instance.
         :param str vpc_id: The ID of attaching VPC to instance.
         :param str vswitch_id: The ID of attaching vswitch to instance.
         :param str zone_id: The ID of attaching zone to instance.
@@ -83,7 +83,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="deployType")
-    def deploy_type(self) -> float:
+    def deploy_type(self) -> int:
         """
         The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
         """
@@ -91,7 +91,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> float:
+    def disk_size(self) -> int:
         """
         The disk size of the instance.
         """
@@ -99,7 +99,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> float:
+    def disk_type(self) -> int:
         """
         The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         """
@@ -107,7 +107,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="eipMax")
-    def eip_max(self) -> float:
+    def eip_max(self) -> int:
         """
         The peak bandwidth of the instance.
         """
@@ -123,7 +123,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="ioMax")
-    def io_max(self) -> float:
+    def io_max(self) -> int:
         """
         The peak value of io of the instance.
         """
@@ -155,7 +155,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="serviceStatus")
-    def service_status(self) -> float:
+    def service_status(self) -> int:
         """
         The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
         """
@@ -171,7 +171,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="topicQuota")
-    def topic_quota(self) -> float:
+    def topic_quota(self) -> int:
         """
         The max num of topic can be create of the instance.
         """
@@ -310,17 +310,17 @@ class GetTopicsTopicResult(dict):
                  compact_topic: bool,
                  create_time: str,
                  local_topic: bool,
-                 partition_num: float,
+                 partition_num: int,
                  remark: str,
-                 status: float,
+                 status: int,
                  topic: str):
         """
         :param bool compact_topic: whether the current topic is kafka compact topic or not.
         :param str create_time: Time of creation.
         :param bool local_topic: whether the current topic is kafka local topic or not.
-        :param float partition_num: Partition number of the topic.
+        :param int partition_num: Partition number of the topic.
         :param str remark: Remark of the topic.
-        :param float status: The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
+        :param int status: The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
         :param str topic: The name of the topic.
         """
         pulumi.set(__self__, "compact_topic", compact_topic)
@@ -357,7 +357,7 @@ class GetTopicsTopicResult(dict):
 
     @property
     @pulumi.getter(name="partitionNum")
-    def partition_num(self) -> float:
+    def partition_num(self) -> int:
         """
         Partition number of the topic.
         """
@@ -373,7 +373,7 @@ class GetTopicsTopicResult(dict):
 
     @property
     @pulumi.getter
-    def status(self) -> float:
+    def status(self) -> int:
         """
         The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
         """

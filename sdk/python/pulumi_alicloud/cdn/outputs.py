@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -27,12 +27,12 @@ class DomainAuthConfig(dict):
                  auth_type: Optional[str] = None,
                  master_key: Optional[str] = None,
                  slave_key: Optional[str] = None,
-                 timeout: Optional[float] = None):
+                 timeout: Optional[int] = None):
         """
         :param str auth_type: Auth type of the auth config. Valid values are  `no_auth`, `type_a`, `type_b` and `type_c`. Default value is `no_auth`.
         :param str master_key: Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
         :param str slave_key: Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        :param float timeout: Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `auth_type` is `type_b` or `type_c`.
+        :param int timeout: Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `auth_type` is `type_b` or `type_c`.
         """
         if auth_type is not None:
             pulumi.set(__self__, "auth_type", auth_type)
@@ -69,7 +69,7 @@ class DomainAuthConfig(dict):
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[float]:
+    def timeout(self) -> Optional[int]:
         """
         Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `auth_type` is `type_b` or `type_c`.
         """
@@ -84,14 +84,14 @@ class DomainCacheConfig(dict):
     def __init__(__self__, *,
                  cache_content: str,
                  cache_type: str,
-                 ttl: float,
+                 ttl: int,
                  cache_id: Optional[str] = None,
-                 weight: Optional[float] = None):
+                 weight: Optional[int] = None):
         """
         :param str cache_content: Cache content of the cache config. It's value is a path string when the `cache_type` is `path`. When the `cache_type` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
         :param str cache_type: Cache type of the cache config. Valid values are `suffix` and `path`.
-        :param float ttl: Cache time of the cache config.
-        :param float weight: Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
+        :param int ttl: Cache time of the cache config.
+        :param int weight: Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
         """
         pulumi.set(__self__, "cache_content", cache_content)
         pulumi.set(__self__, "cache_type", cache_type)
@@ -119,7 +119,7 @@ class DomainCacheConfig(dict):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> int:
         """
         Cache time of the cache config.
         """
@@ -132,7 +132,7 @@ class DomainCacheConfig(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[float]:
+    def weight(self) -> Optional[int]:
         """
         Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
         """
@@ -347,15 +347,15 @@ class DomainNewSources(dict):
     def __init__(__self__, *,
                  content: str,
                  type: str,
-                 port: Optional[float] = None,
-                 priority: Optional[float] = None,
-                 weight: Optional[float] = None):
+                 port: Optional[int] = None,
+                 priority: Optional[int] = None,
+                 weight: Optional[int] = None):
         """
         :param str content: The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
         :param str type: The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
-        :param float port: The port of source. Valid values are `443` and `80`. Default value is `80`.
-        :param float priority: Priority of the source. Valid values are `0` and `100`. Default value is `20`.
-        :param float weight: Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+        :param int port: The port of source. Valid values are `443` and `80`. Default value is `80`.
+        :param int priority: Priority of the source. Valid values are `0` and `100`. Default value is `20`.
+        :param int weight: Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "type", type)
@@ -384,7 +384,7 @@ class DomainNewSources(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         The port of source. Valid values are `443` and `80`. Default value is `80`.
         """
@@ -392,7 +392,7 @@ class DomainNewSources(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> Optional[int]:
         """
         Priority of the source. Valid values are `0` and `100`. Default value is `20`.
         """
@@ -400,7 +400,7 @@ class DomainNewSources(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[float]:
+    def weight(self) -> Optional[int]:
         """
         Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
         """
@@ -456,10 +456,10 @@ class DomainPage404Config(dict):
 class DomainParameterFilterConfig(dict):
     def __init__(__self__, *,
                  enable: Optional[str] = None,
-                 hash_key_args: Optional[List[str]] = None):
+                 hash_key_args: Optional[Sequence[str]] = None):
         """
         :param str enable: This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.
-        :param List[str] hash_key_args: Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
+        :param Sequence[str] hash_key_args: Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -476,7 +476,7 @@ class DomainParameterFilterConfig(dict):
 
     @property
     @pulumi.getter(name="hashKeyArgs")
-    def hash_key_args(self) -> Optional[List[str]]:
+    def hash_key_args(self) -> Optional[Sequence[str]]:
         """
         Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
         """
@@ -489,11 +489,11 @@ class DomainParameterFilterConfig(dict):
 @pulumi.output_type
 class DomainReferConfig(dict):
     def __init__(__self__, *,
-                 refer_lists: List[str],
+                 refer_lists: Sequence[str],
                  allow_empty: Optional[str] = None,
                  refer_type: Optional[str] = None):
         """
-        :param List[str] refer_lists: A list of domain names of the refer config.
+        :param Sequence[str] refer_lists: A list of domain names of the refer config.
         :param str allow_empty: This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
         :param str refer_type: Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
         """
@@ -505,7 +505,7 @@ class DomainReferConfig(dict):
 
     @property
     @pulumi.getter(name="referLists")
-    def refer_lists(self) -> List[str]:
+    def refer_lists(self) -> Sequence[str]:
         """
         A list of domain names of the refer config.
         """

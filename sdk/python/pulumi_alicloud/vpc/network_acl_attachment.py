@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_acl_id: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -57,7 +57,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,7 +93,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             network_acl_id: Optional[pulumi.Input[str]] = None,
-            resources: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]]] = None) -> 'NetworkAclAttachment':
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]]] = None) -> 'NetworkAclAttachment':
         """
         Get an existing NetworkAclAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -102,7 +102,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -122,7 +122,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def resources(self) -> pulumi.Output[List['outputs.NetworkAclAttachmentResource']]:
+    def resources(self) -> pulumi.Output[Sequence['outputs.NetworkAclAttachmentResource']]:
         """
         List of the resources associated with the network acl. The details see Block Resources.
         """

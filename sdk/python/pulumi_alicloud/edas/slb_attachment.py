@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['SlbAttachment']
@@ -16,7 +16,7 @@ class SlbAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 listener_port: Optional[pulumi.Input[float]] = None,
+                 listener_port: Optional[pulumi.Input[int]] = None,
                  slb_id: Optional[pulumi.Input[str]] = None,
                  slb_ip: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -49,7 +49,7 @@ class SlbAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The ID of the applicaton to which you want to bind an SLB instance.
-        :param pulumi.Input[float] listener_port: The listening port for the bound SLB instance.
+        :param pulumi.Input[int] listener_port: The listening port for the bound SLB instance.
         :param pulumi.Input[str] slb_id: The ID of the SLB instance that is going to be bound.
         :param pulumi.Input[str] slb_ip: The IP address that is allocated to the bound SLB instance.
         :param pulumi.Input[str] type: The type of the bound SLB instance.
@@ -99,7 +99,7 @@ class SlbAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: Optional[pulumi.Input[str]] = None,
-            listener_port: Optional[pulumi.Input[float]] = None,
+            listener_port: Optional[pulumi.Input[int]] = None,
             slb_id: Optional[pulumi.Input[str]] = None,
             slb_ip: Optional[pulumi.Input[str]] = None,
             slb_status: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class SlbAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The ID of the applicaton to which you want to bind an SLB instance.
-        :param pulumi.Input[float] listener_port: The listening port for the bound SLB instance.
+        :param pulumi.Input[int] listener_port: The listening port for the bound SLB instance.
         :param pulumi.Input[str] slb_id: The ID of the SLB instance that is going to be bound.
         :param pulumi.Input[str] slb_ip: The IP address that is allocated to the bound SLB instance.
         :param pulumi.Input[str] slb_status: Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
@@ -146,7 +146,7 @@ class SlbAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="listenerPort")
-    def listener_port(self) -> pulumi.Output[Optional[float]]:
+    def listener_port(self) -> pulumi.Output[Optional[int]]:
         """
         The listening port for the bound SLB instance.
         """

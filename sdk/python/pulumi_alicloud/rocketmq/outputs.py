@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -119,11 +119,11 @@ class GetInstancesInstanceResult(dict):
                  independent_naming: bool,
                  instance_id: str,
                  instance_name: str,
-                 instance_status: float,
-                 instance_type: float,
+                 instance_status: int,
+                 instance_type: int,
                  release_time: str,
                  remark: str,
-                 status: float,
+                 status: int,
                  tags: Mapping[str, Any],
                  tcp_endpoint: str):
         """
@@ -134,11 +134,11 @@ class GetInstancesInstanceResult(dict):
         :param bool independent_naming: Indicates whether any namespace is configured for the Message Queue for Apache RocketMQ instance.
         :param str instance_id: ID of the instance.
         :param str instance_name: Name of the instance.
-        :param float instance_status: The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
-        :param float instance_type: The type of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
+        :param int instance_status: The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
+        :param int instance_type: The type of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
         :param str release_time: The automatic release time of an Enterprise Platinum Edition instance.
         :param str remark: This attribute is a concise description of instance.
-        :param float status: The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+        :param int status: The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
         :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
         :param str tcp_endpoint: The TCP endpoint for the Message Queue for Apache RocketMQ instance.
         """
@@ -215,7 +215,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="instanceStatus")
-    def instance_status(self) -> float:
+    def instance_status(self) -> int:
         """
         The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
         """
@@ -223,7 +223,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> float:
+    def instance_type(self) -> int:
         """
         The type of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
         """
@@ -247,7 +247,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def status(self) -> float:
+    def status(self) -> int:
         """
         The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
         """
@@ -276,10 +276,10 @@ class GetTopicsTopicResult(dict):
                  id: str,
                  independent_naming: bool,
                  instance_id: str,
-                 message_type: float,
+                 message_type: int,
                  owner: str,
-                 perm: float,
-                 relation: float,
+                 perm: int,
+                 relation: int,
                  relation_name: str,
                  remark: str,
                  tags: Mapping[str, Any],
@@ -289,10 +289,10 @@ class GetTopicsTopicResult(dict):
         :param str id: The id of the topic.
         :param bool independent_naming: Indicates whether namespaces are available. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
         :param str instance_id: ID of the ONS Instance that owns the topics.
-        :param float message_type: The type of the message. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
+        :param int message_type: The type of the message. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
         :param str owner: The ID of the topic owner, which is the Alibaba Cloud UID.
-        :param float perm: This attribute is used to set the read-write mode for the topic.
-        :param float relation: The relation ID. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
+        :param int perm: This attribute is used to set the read-write mode for the topic.
+        :param int relation: The relation ID. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
         :param str relation_name: The name of the relation, for example, owner, publishable, subscribable, and publishable and subscribable.
         :param str remark: Remark of the topic.
         :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
@@ -338,7 +338,7 @@ class GetTopicsTopicResult(dict):
 
     @property
     @pulumi.getter(name="messageType")
-    def message_type(self) -> float:
+    def message_type(self) -> int:
         """
         The type of the message. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
         """
@@ -354,7 +354,7 @@ class GetTopicsTopicResult(dict):
 
     @property
     @pulumi.getter
-    def perm(self) -> float:
+    def perm(self) -> int:
         """
         This attribute is used to set the read-write mode for the topic.
         """
@@ -362,7 +362,7 @@ class GetTopicsTopicResult(dict):
 
     @property
     @pulumi.getter
-    def relation(self) -> float:
+    def relation(self) -> int:
         """
         The relation ID. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
         """

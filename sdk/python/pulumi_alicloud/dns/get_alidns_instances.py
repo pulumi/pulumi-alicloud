@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -50,7 +50,7 @@ class GetAlidnsInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of instance IDs.
         """
@@ -58,7 +58,7 @@ class GetAlidnsInstancesResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetAlidnsInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetAlidnsInstancesInstanceResult']:
         """
         A list of instances. Each element contains the following attributes:
         """
@@ -94,7 +94,7 @@ class AwaitableGetAlidnsInstancesResult(GetAlidnsInstancesResult):
             user_client_ip=self.user_client_ip)
 
 
-def get_alidns_instances(ids: Optional[List[str]] = None,
+def get_alidns_instances(ids: Optional[Sequence[str]] = None,
                          lang: Optional[str] = None,
                          output_file: Optional[str] = None,
                          user_client_ip: Optional[str] = None,
@@ -115,7 +115,7 @@ def get_alidns_instances(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of instance IDs.
+    :param Sequence[str] ids: A list of instance IDs.
     :param str lang: Language.
     :param str user_client_ip: The IP address of the client.
     """

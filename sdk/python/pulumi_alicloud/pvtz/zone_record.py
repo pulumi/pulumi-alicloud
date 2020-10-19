@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['ZoneRecord']
@@ -15,9 +15,9 @@ class ZoneRecord(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  resource_record: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -28,9 +28,9 @@ class ZoneRecord(pulumi.CustomResource):
         Create a ZoneRecord resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+        :param pulumi.Input[int] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
         :param pulumi.Input[str] resource_record: The resource record of the Private Zone Record.
-        :param pulumi.Input[float] ttl: The ttl of the Private Zone Record.
+        :param pulumi.Input[int] ttl: The ttl of the Private Zone Record.
         :param pulumi.Input[str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
         :param pulumi.Input[str] value: The value of the Private Zone Record.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
@@ -77,10 +77,10 @@ class ZoneRecord(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            priority: Optional[pulumi.Input[float]] = None,
-            record_id: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
+            record_id: Optional[pulumi.Input[int]] = None,
             resource_record: Optional[pulumi.Input[str]] = None,
-            ttl: Optional[pulumi.Input[float]] = None,
+            ttl: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ZoneRecord':
@@ -91,10 +91,10 @@ class ZoneRecord(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
-        :param pulumi.Input[float] record_id: The Private Zone Record ID.
+        :param pulumi.Input[int] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+        :param pulumi.Input[int] record_id: The Private Zone Record ID.
         :param pulumi.Input[str] resource_record: The resource record of the Private Zone Record.
-        :param pulumi.Input[float] ttl: The ttl of the Private Zone Record.
+        :param pulumi.Input[int] ttl: The ttl of the Private Zone Record.
         :param pulumi.Input[str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
         :param pulumi.Input[str] value: The value of the Private Zone Record.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
@@ -114,7 +114,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[float]]:
+    def priority(self) -> pulumi.Output[Optional[int]]:
         """
         The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
         """
@@ -122,7 +122,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recordId")
-    def record_id(self) -> pulumi.Output[float]:
+    def record_id(self) -> pulumi.Output[int]:
         """
         The Private Zone Record ID.
         """
@@ -138,7 +138,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[Optional[float]]:
+    def ttl(self) -> pulumi.Output[Optional[int]]:
         """
         The ttl of the Private Zone Record.
         """

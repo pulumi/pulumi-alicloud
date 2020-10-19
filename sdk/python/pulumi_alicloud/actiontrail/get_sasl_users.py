@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -60,7 +60,7 @@ class GetSaslUsersResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of sasl usernames.
         """
@@ -73,7 +73,7 @@ class GetSaslUsersResult:
 
     @property
     @pulumi.getter
-    def users(self) -> List['outputs.GetSaslUsersUserResult']:
+    def users(self) -> Sequence['outputs.GetSaslUsersUserResult']:
         """
         A list of sasl users. Each element contains the following attributes:
         """

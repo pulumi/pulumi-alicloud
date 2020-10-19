@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -76,7 +76,7 @@ class ClusterHostGroup(dict):
                  instance_list: Optional[str] = None,
                  instance_type: Optional[str] = None,
                  node_count: Optional[str] = None,
-                 period: Optional[float] = None,
+                 period: Optional[int] = None,
                  sys_disk_capacity: Optional[str] = None,
                  sys_disk_type: Optional[str] = None):
         """
@@ -90,7 +90,7 @@ class ClusterHostGroup(dict):
         :param str instance_list: Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
         :param str instance_type: Host Ecs instance type.
         :param str node_count: Host number in this group.
-        :param float period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+        :param int period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
         :param str sys_disk_capacity: System disk capacity.
         :param str sys_disk_type: System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
         """
@@ -210,7 +210,7 @@ class ClusterHostGroup(dict):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> Optional[int]:
         """
         If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
         """
@@ -239,12 +239,12 @@ class ClusterHostGroup(dict):
 @pulumi.output_type
 class GetDiskTypesTypeResult(dict):
     def __init__(__self__, *,
-                 max: float,
-                 min: float,
+                 max: int,
+                 min: int,
                  value: str):
         """
-        :param float max: The maximum value of the data disk to supported the specific instance type
-        :param float min: The mininum value of the data disk to supported the specific instance type
+        :param int max: The maximum value of the data disk to supported the specific instance type
+        :param int min: The mininum value of the data disk to supported the specific instance type
         :param str value: The value of the data disk or system disk
         """
         pulumi.set(__self__, "max", max)
@@ -253,7 +253,7 @@ class GetDiskTypesTypeResult(dict):
 
     @property
     @pulumi.getter
-    def max(self) -> float:
+    def max(self) -> int:
         """
         The maximum value of the data disk to supported the specific instance type
         """
@@ -261,7 +261,7 @@ class GetDiskTypesTypeResult(dict):
 
     @property
     @pulumi.getter
-    def min(self) -> float:
+    def min(self) -> int:
         """
         The mininum value of the data disk to supported the specific instance type
         """
@@ -280,11 +280,11 @@ class GetDiskTypesTypeResult(dict):
 class GetInstanceTypesTypeResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 local_storage_capacity: float,
+                 local_storage_capacity: int,
                  zone_id: str):
         """
         :param str id: The ID of the instance type.
-        :param float local_storage_capacity: Local capacity of the applied ecs instance for emr cluster. Unit: GB.
+        :param int local_storage_capacity: Local capacity of the applied ecs instance for emr cluster. Unit: GB.
         :param str zone_id: The supported resources of specific zoneId.
         """
         pulumi.set(__self__, "id", id)
@@ -301,7 +301,7 @@ class GetInstanceTypesTypeResult(dict):
 
     @property
     @pulumi.getter(name="localStorageCapacity")
-    def local_storage_capacity(self) -> float:
+    def local_storage_capacity(self) -> int:
         """
         Local capacity of the applied ecs instance for emr cluster. Unit: GB.
         """
@@ -319,11 +319,11 @@ class GetInstanceTypesTypeResult(dict):
 @pulumi.output_type
 class GetMainVersionsMainVersionResult(dict):
     def __init__(__self__, *,
-                 cluster_types: List[str],
+                 cluster_types: Sequence[str],
                  emr_version: str,
                  image_id: str):
         """
-        :param List[str] cluster_types: A list of cluster types the emr cluster supported. Possible values: `HADOOP`, `ZOOKEEPER`, `KAFKA`, `DRUID`.
+        :param Sequence[str] cluster_types: A list of cluster types the emr cluster supported. Possible values: `HADOOP`, `ZOOKEEPER`, `KAFKA`, `DRUID`.
         :param str emr_version: The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
         :param str image_id: The image id of the emr cluster instance.
         """
@@ -333,7 +333,7 @@ class GetMainVersionsMainVersionResult(dict):
 
     @property
     @pulumi.getter(name="clusterTypes")
-    def cluster_types(self) -> List[str]:
+    def cluster_types(self) -> Sequence[str]:
         """
         A list of cluster types the emr cluster supported. Possible values: `HADOOP`, `ZOOKEEPER`, `KAFKA`, `DRUID`.
         """

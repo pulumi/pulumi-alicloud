@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -79,12 +79,12 @@ class CustomDomainRouteConfigArgs:
                  function_name: pulumi.Input[str],
                  path: pulumi.Input[str],
                  service_name: pulumi.Input[str],
-                 methods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  qualifier: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] function_name: The name of the Function Compute function that requests are routed to.
         :param pulumi.Input[str] path: The path that requests are routed from.
-        :param pulumi.Input[List[pulumi.Input[str]]] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
         :param pulumi.Input[str] qualifier: The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
         """
         pulumi.set(__self__, "function_name", function_name)
@@ -130,14 +130,14 @@ class CustomDomainRouteConfigArgs:
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
         """
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "methods", value)
 
     @property
@@ -330,13 +330,13 @@ class ServiceLogConfigArgs:
 @pulumi.input_type
 class ServiceNasConfigArgs:
     def __init__(__self__, *,
-                 group_id: pulumi.Input[float],
-                 mount_points: pulumi.Input[List[pulumi.Input['ServiceNasConfigMountPointArgs']]],
-                 user_id: pulumi.Input[float]):
+                 group_id: pulumi.Input[int],
+                 mount_points: pulumi.Input[Sequence[pulumi.Input['ServiceNasConfigMountPointArgs']]],
+                 user_id: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] group_id: The group id of your NAS file system.
-        :param pulumi.Input[List[pulumi.Input['ServiceNasConfigMountPointArgs']]] mount_points: Config the NAS mount points, including following attributes:
-        :param pulumi.Input[float] user_id: The user id of your NAS file system.
+        :param pulumi.Input[int] group_id: The group id of your NAS file system.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceNasConfigMountPointArgs']]] mount_points: Config the NAS mount points, including following attributes:
+        :param pulumi.Input[int] user_id: The user id of your NAS file system.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "mount_points", mount_points)
@@ -344,38 +344,38 @@ class ServiceNasConfigArgs:
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> pulumi.Input[float]:
+    def group_id(self) -> pulumi.Input[int]:
         """
         The group id of your NAS file system.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: pulumi.Input[float]):
+    def group_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "group_id", value)
 
     @property
     @pulumi.getter(name="mountPoints")
-    def mount_points(self) -> pulumi.Input[List[pulumi.Input['ServiceNasConfigMountPointArgs']]]:
+    def mount_points(self) -> pulumi.Input[Sequence[pulumi.Input['ServiceNasConfigMountPointArgs']]]:
         """
         Config the NAS mount points, including following attributes:
         """
         return pulumi.get(self, "mount_points")
 
     @mount_points.setter
-    def mount_points(self, value: pulumi.Input[List[pulumi.Input['ServiceNasConfigMountPointArgs']]]):
+    def mount_points(self, value: pulumi.Input[Sequence[pulumi.Input['ServiceNasConfigMountPointArgs']]]):
         pulumi.set(self, "mount_points", value)
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> pulumi.Input[float]:
+    def user_id(self) -> pulumi.Input[int]:
         """
         The user id of your NAS file system.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: pulumi.Input[float]):
+    def user_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "user_id", value)
 
 
@@ -420,11 +420,11 @@ class ServiceNasConfigMountPointArgs:
 class ServiceVpcConfigArgs:
     def __init__(__self__, *,
                  security_group_id: pulumi.Input[str],
-                 vswitch_ids: pulumi.Input[List[pulumi.Input[str]]],
+                 vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] security_group_id: A security group ID associated with the FC service.
-        :param pulumi.Input[List[pulumi.Input[str]]] vswitch_ids: A list of vswitch IDs associated with the FC service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: A list of vswitch IDs associated with the FC service.
         """
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "vswitch_ids", vswitch_ids)
@@ -445,14 +445,14 @@ class ServiceVpcConfigArgs:
 
     @property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def vswitch_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of vswitch IDs associated with the FC service.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def vswitch_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "vswitch_ids", value)
 
     @property

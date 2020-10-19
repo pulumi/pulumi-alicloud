@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -39,7 +39,7 @@ class GetRegionRouteEntriesResult:
 
     @property
     @pulumi.getter
-    def entries(self) -> List['outputs.GetRegionRouteEntriesEntryResult']:
+    def entries(self) -> Sequence['outputs.GetRegionRouteEntriesEntryResult']:
         """
         A list of CEN Route Entries. Each element contains the following attributes:
         """

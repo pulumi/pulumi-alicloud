@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetLifecycleHooksResult:
 
     @property
     @pulumi.getter
-    def hooks(self) -> List['outputs.GetLifecycleHooksHookResult']:
+    def hooks(self) -> Sequence['outputs.GetLifecycleHooksHookResult']:
         """
         A list of lifecycle hooks. Each element contains the following attributes:
         """
@@ -61,7 +61,7 @@ class GetLifecycleHooksResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of lifecycle hook ids.
         """
@@ -74,7 +74,7 @@ class GetLifecycleHooksResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of lifecycle hook names.
         """
@@ -109,7 +109,7 @@ class AwaitableGetLifecycleHooksResult(GetLifecycleHooksResult):
             scaling_group_id=self.scaling_group_id)
 
 
-def get_lifecycle_hooks(ids: Optional[List[str]] = None,
+def get_lifecycle_hooks(ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
                         output_file: Optional[str] = None,
                         scaling_group_id: Optional[str] = None,
@@ -131,7 +131,7 @@ def get_lifecycle_hooks(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of lifecycle hook IDs.
+    :param Sequence[str] ids: A list of lifecycle hook IDs.
     :param str name_regex: A regex string to filter resulting lifecycle hook by name.
     :param str scaling_group_id: Scaling group id the lifecycle hooks belong to.
     """

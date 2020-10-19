@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -82,7 +82,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of ECS instance IDs.
         """
@@ -98,7 +98,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         """
         A list of instances. Each element contains the following attributes:
         """
@@ -111,7 +111,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of instances names.
         """
@@ -194,7 +194,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
 
 
 def get_instances(availability_zone: Optional[str] = None,
-                  ids: Optional[List[str]] = None,
+                  ids: Optional[Sequence[str]] = None,
                   image_id: Optional[str] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
@@ -222,7 +222,7 @@ def get_instances(availability_zone: Optional[str] = None,
 
 
     :param str availability_zone: Availability zone where instances are located.
-    :param List[str] ids: A list of ECS instance IDs.
+    :param Sequence[str] ids: A list of ECS instance IDs.
     :param str image_id: The image ID of some ECS instance used.
     :param str name_regex: A regex string to filter results by instance name.
     :param str ram_role_name: The RAM role name which the instance attaches.

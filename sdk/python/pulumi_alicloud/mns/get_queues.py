@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -52,7 +52,7 @@ class GetQueuesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of queue names.
         """
@@ -65,7 +65,7 @@ class GetQueuesResult:
 
     @property
     @pulumi.getter
-    def queues(self) -> List['outputs.GetQueuesQueueResult']:
+    def queues(self) -> Sequence['outputs.GetQueuesQueueResult']:
         """
         A list of queues. Each element contains the following attributes:
         """

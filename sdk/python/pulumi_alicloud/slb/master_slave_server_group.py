@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,7 +20,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 servers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]]] = None,
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -142,7 +142,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new master slave server group.
         :param pulumi.Input[str] name: Name of the master slave server group.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -180,7 +180,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
             load_balancer_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            servers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]]] = None) -> 'MasterSlaveServerGroup':
+            servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]]] = None) -> 'MasterSlaveServerGroup':
         """
         Get an existing MasterSlaveServerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -191,7 +191,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new master slave server group.
         :param pulumi.Input[str] name: Name of the master slave server group.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -229,7 +229,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def servers(self) -> pulumi.Output[Optional[List['outputs.MasterSlaveServerGroupServer']]]:
+    def servers(self) -> pulumi.Output[Optional[Sequence['outputs.MasterSlaveServerGroupServer']]]:
         """
         A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
         """

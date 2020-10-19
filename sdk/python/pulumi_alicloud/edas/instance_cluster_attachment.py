@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['InstanceClusterAttachment']
@@ -16,7 +16,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -41,7 +41,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the cluster that you want to create the application.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_ids: The ID of instance. Type: list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The ID of instance. Type: list.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -82,8 +82,8 @@ class InstanceClusterAttachment(pulumi.CustomResource):
             cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_member_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ecu_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            status_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None) -> 'InstanceClusterAttachment':
+            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            status_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None) -> 'InstanceClusterAttachment':
         """
         Get an existing InstanceClusterAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -94,8 +94,8 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The ID of the cluster that you want to create the application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cluster_member_ids: The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] ecu_map: The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_ids: The ID of instance. Type: list.
-        :param pulumi.Input[Mapping[str, pulumi.Input[float]]] status_map: The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The ID of instance. Type: list.
+        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] status_map: The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -134,7 +134,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> pulumi.Output[List[str]]:
+    def instance_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         The ID of instance. Type: list.
         """
@@ -142,7 +142,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="statusMap")
-    def status_map(self) -> pulumi.Output[Mapping[str, float]]:
+    def status_map(self) -> pulumi.Output[Mapping[str, int]]:
         """
         The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
         """

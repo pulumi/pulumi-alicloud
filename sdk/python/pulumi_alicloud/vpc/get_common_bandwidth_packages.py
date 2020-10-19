@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -53,7 +53,7 @@ class GetCommonBandwidthPackagesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         (Optional) A list of Common Bandwidth Packages IDs.
         """
@@ -66,7 +66,7 @@ class GetCommonBandwidthPackagesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of Common Bandwidth Packages names.
         """
@@ -79,7 +79,7 @@ class GetCommonBandwidthPackagesResult:
 
     @property
     @pulumi.getter
-    def packages(self) -> List['outputs.GetCommonBandwidthPackagesPackageResult']:
+    def packages(self) -> Sequence['outputs.GetCommonBandwidthPackagesPackageResult']:
         """
         A list of Common Bandwidth Packages. Each element contains the following attributes:
         """
@@ -109,7 +109,7 @@ class AwaitableGetCommonBandwidthPackagesResult(GetCommonBandwidthPackagesResult
             resource_group_id=self.resource_group_id)
 
 
-def get_common_bandwidth_packages(ids: Optional[List[str]] = None,
+def get_common_bandwidth_packages(ids: Optional[Sequence[str]] = None,
                                   name_regex: Optional[str] = None,
                                   output_file: Optional[str] = None,
                                   resource_group_id: Optional[str] = None,
@@ -139,7 +139,7 @@ def get_common_bandwidth_packages(ids: Optional[List[str]] = None,
       * `allocation_id` - The ID of the EIP instance.
 
 
-    :param List[str] ids: A list of Common Bandwidth Packages IDs.
+    :param Sequence[str] ids: A list of Common Bandwidth Packages IDs.
     :param str name_regex: A regex string to filter results by name.
     :param str resource_group_id: The Id of resource group which the common bandwidth package belongs.
     """

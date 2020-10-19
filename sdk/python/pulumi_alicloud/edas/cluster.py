@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Cluster']
@@ -16,9 +16,9 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 cluster_type: Optional[pulumi.Input[float]] = None,
+                 cluster_type: Optional[pulumi.Input[int]] = None,
                  logical_region_id: Optional[pulumi.Input[str]] = None,
-                 network_mode: Optional[pulumi.Input[float]] = None,
+                 network_mode: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -47,9 +47,9 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: The name of the cluster that you want to create.
-        :param pulumi.Input[float] cluster_type: The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
+        :param pulumi.Input[int] cluster_type: The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
         :param pulumi.Input[str] logical_region_id: The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
-        :param pulumi.Input[float] network_mode: The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
+        :param pulumi.Input[int] network_mode: The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
         :param pulumi.Input[str] vpc_id: The ID of the Virtual Private Cloud (VPC) for the cluster.
         """
         if __name__ is not None:
@@ -91,9 +91,9 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
-            cluster_type: Optional[pulumi.Input[float]] = None,
+            cluster_type: Optional[pulumi.Input[int]] = None,
             logical_region_id: Optional[pulumi.Input[str]] = None,
-            network_mode: Optional[pulumi.Input[float]] = None,
+            network_mode: Optional[pulumi.Input[int]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -103,9 +103,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: The name of the cluster that you want to create.
-        :param pulumi.Input[float] cluster_type: The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
+        :param pulumi.Input[int] cluster_type: The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
         :param pulumi.Input[str] logical_region_id: The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
-        :param pulumi.Input[float] network_mode: The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
+        :param pulumi.Input[int] network_mode: The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
         :param pulumi.Input[str] vpc_id: The ID of the Virtual Private Cloud (VPC) for the cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -129,7 +129,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> pulumi.Output[float]:
+    def cluster_type(self) -> pulumi.Output[int]:
         """
         The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
         """
@@ -145,7 +145,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkMode")
-    def network_mode(self) -> pulumi.Output[float]:
+    def network_mode(self) -> pulumi.Output[int]:
         """
         The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
         """

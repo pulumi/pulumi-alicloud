@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -67,7 +67,7 @@ class GetMongoInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -82,7 +82,7 @@ class GetMongoInstancesResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetMongoInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetMongoInstancesInstanceResult']:
         return pulumi.get(self, "instances")
 
     @property
@@ -92,7 +92,7 @@ class GetMongoInstancesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         return pulumi.get(self, "names")
 
     @property
@@ -125,7 +125,7 @@ class AwaitableGetMongoInstancesResult(GetMongoInstancesResult):
 
 
 def get_mongo_instances(availability_zone: Optional[str] = None,
-                        ids: Optional[List[str]] = None,
+                        ids: Optional[Sequence[str]] = None,
                         instance_class: Optional[str] = None,
                         instance_type: Optional[str] = None,
                         name_regex: Optional[str] = None,

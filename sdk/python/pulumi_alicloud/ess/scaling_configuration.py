@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,18 +19,18 @@ class ScalingConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
-                 data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
-                 instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
-                 internet_max_bandwidth_in: Optional[pulumi.Input[float]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[float]] = None,
+                 internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
+                 internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  io_optimized: Optional[pulumi.Input[str]] = None,
                  is_outdated: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
@@ -43,13 +43,13 @@ class ScalingConfiguration(pulumi.CustomResource):
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
-                 security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  substitute: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
-                 system_disk_size: Optional[pulumi.Input[float]] = None,
+                 system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -61,18 +61,18 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]] data_disks: DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]] data_disks: DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
-        :param pulumi.Input[float] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
-        :param pulumi.Input[float] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
@@ -85,13 +85,13 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         :param pulumi.Input[str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
-        :param pulumi.Input[float] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
+        :param pulumi.Input[int] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
@@ -169,18 +169,18 @@ class ScalingConfiguration(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             active: Optional[pulumi.Input[bool]] = None,
             credit_specification: Optional[pulumi.Input[str]] = None,
-            data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]]] = None,
+            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             image_name: Optional[pulumi.Input[str]] = None,
-            instance_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
-            instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
-            internet_max_bandwidth_in: Optional[pulumi.Input[float]] = None,
-            internet_max_bandwidth_out: Optional[pulumi.Input[float]] = None,
+            internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
+            internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
             io_optimized: Optional[pulumi.Input[str]] = None,
             is_outdated: Optional[pulumi.Input[bool]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
@@ -193,13 +193,13 @@ class ScalingConfiguration(pulumi.CustomResource):
             scaling_configuration_name: Optional[pulumi.Input[str]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
-            security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             substitute: Optional[pulumi.Input[str]] = None,
             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
             system_disk_description: Optional[pulumi.Input[str]] = None,
             system_disk_name: Optional[pulumi.Input[str]] = None,
-            system_disk_size: Optional[pulumi.Input[float]] = None,
+            system_disk_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             user_data: Optional[pulumi.Input[str]] = None) -> 'ScalingConfiguration':
         """
@@ -211,18 +211,18 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]] data_disks: DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]] data_disks: DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
-        :param pulumi.Input[float] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
-        :param pulumi.Input[float] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
@@ -235,13 +235,13 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         :param pulumi.Input[str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
-        :param pulumi.Input[float] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
+        :param pulumi.Input[int] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
@@ -306,7 +306,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> pulumi.Output[Optional[List['outputs.ScalingConfigurationDataDisk']]]:
+    def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingConfigurationDataDisk']]]:
         """
         DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         """
@@ -346,7 +346,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def instance_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         """
@@ -370,7 +370,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> pulumi.Output[Optional[List[str]]]:
+    def instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Resource types of an ECS instance.
         """
@@ -386,7 +386,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthIn")
-    def internet_max_bandwidth_in(self) -> pulumi.Output[float]:
+    def internet_max_bandwidth_in(self) -> pulumi.Output[int]:
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
         """
@@ -394,7 +394,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> pulumi.Output[Optional[float]]:
+    def internet_max_bandwidth_out(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
         """
@@ -498,7 +498,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         """
@@ -546,7 +546,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> pulumi.Output[Optional[float]]:
+    def system_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
         Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
         """

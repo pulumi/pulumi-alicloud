@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -50,7 +50,7 @@ class GetPolicyVersionsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of policy version IDs.
         """
@@ -73,7 +73,7 @@ class GetPolicyVersionsResult:
 
     @property
     @pulumi.getter
-    def versions(self) -> List['outputs.GetPolicyVersionsVersionResult']:
+    def versions(self) -> Sequence['outputs.GetPolicyVersionsVersionResult']:
         """
         A list of policy versions. Each element contains the following attributes:
         """
@@ -94,7 +94,7 @@ class AwaitableGetPolicyVersionsResult(GetPolicyVersionsResult):
             versions=self.versions)
 
 
-def get_policy_versions(ids: Optional[List[str]] = None,
+def get_policy_versions(ids: Optional[Sequence[str]] = None,
                         output_file: Optional[str] = None,
                         policy_name: Optional[str] = None,
                         policy_type: Optional[str] = None,
@@ -116,7 +116,7 @@ def get_policy_versions(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of policy version IDs.
+    :param Sequence[str] ids: A list of policy version IDs.
     :param str policy_name: The name of the policy.
     :param str policy_type: The type of the policy. Valid values:`Custom` and `System`.
     """

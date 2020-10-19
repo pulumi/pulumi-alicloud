@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -35,7 +35,7 @@ class ScalingConfigurationDataDisk(dict):
                  encrypted: Optional[bool] = None,
                  kms_key_id: Optional[str] = None,
                  name: Optional[str] = None,
-                 size: Optional[float] = None,
+                 size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -100,7 +100,7 @@ class ScalingConfigurationDataDisk(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[float]:
+    def size(self) -> Optional[int]:
         return pulumi.get(self, "size")
 
     @property
@@ -116,7 +116,7 @@ class ScalingConfigurationDataDisk(dict):
 class ScalingGroupVServerGroupsVserverGroup(dict):
     def __init__(__self__, *,
                  loadbalancer_id: str,
-                 vserver_attributes: List['outputs.ScalingGroupVServerGroupsVserverGroupVserverAttribute']):
+                 vserver_attributes: Sequence['outputs.ScalingGroupVServerGroupsVserverGroupVserverAttribute']):
         pulumi.set(__self__, "loadbalancer_id", loadbalancer_id)
         pulumi.set(__self__, "vserver_attributes", vserver_attributes)
 
@@ -127,7 +127,7 @@ class ScalingGroupVServerGroupsVserverGroup(dict):
 
     @property
     @pulumi.getter(name="vserverAttributes")
-    def vserver_attributes(self) -> List['outputs.ScalingGroupVServerGroupsVserverGroupVserverAttribute']:
+    def vserver_attributes(self) -> Sequence['outputs.ScalingGroupVServerGroupsVserverGroupVserverAttribute']:
         return pulumi.get(self, "vserver_attributes")
 
     def _translate_property(self, prop):
@@ -137,16 +137,16 @@ class ScalingGroupVServerGroupsVserverGroup(dict):
 @pulumi.output_type
 class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
     def __init__(__self__, *,
-                 port: float,
+                 port: int,
                  vserver_group_id: str,
-                 weight: float):
+                 weight: int):
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "vserver_group_id", vserver_group_id)
         pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         return pulumi.get(self, "port")
 
     @property
@@ -156,7 +156,7 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> int:
         return pulumi.get(self, "weight")
 
     def _translate_property(self, prop):
@@ -168,7 +168,7 @@ class ScalingRuleStepAdjustment(dict):
     def __init__(__self__, *,
                  metric_interval_lower_bound: Optional[str] = None,
                  metric_interval_upper_bound: Optional[str] = None,
-                 scaling_adjustment: Optional[float] = None):
+                 scaling_adjustment: Optional[int] = None):
         if metric_interval_lower_bound is not None:
             pulumi.set(__self__, "metric_interval_lower_bound", metric_interval_lower_bound)
         if metric_interval_upper_bound is not None:
@@ -188,7 +188,7 @@ class ScalingRuleStepAdjustment(dict):
 
     @property
     @pulumi.getter(name="scalingAdjustment")
-    def scaling_adjustment(self) -> Optional[float]:
+    def scaling_adjustment(self) -> Optional[int]:
         return pulumi.get(self, "scaling_adjustment")
 
     def _translate_property(self, prop):
@@ -198,35 +198,35 @@ class ScalingRuleStepAdjustment(dict):
 @pulumi.output_type
 class GetAlarmsAlarmResult(dict):
     def __init__(__self__, *,
-                 alarm_actions: List[str],
-                 cloud_monitor_group_id: float,
+                 alarm_actions: Sequence[str],
+                 cloud_monitor_group_id: int,
                  comparison_operator: str,
                  description: str,
                  dimensions: Mapping[str, Any],
                  enable: bool,
-                 evaluation_count: float,
+                 evaluation_count: int,
                  id: str,
                  metric_name: str,
                  metric_type: str,
                  name: str,
-                 period: float,
+                 period: int,
                  scaling_group_id: str,
                  state: str,
                  statistics: str,
                  threshold: str):
         """
-        :param List[str] alarm_actions: The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
-        :param float cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
+        :param Sequence[str] alarm_actions: The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
+        :param int cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param str comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand.
         :param str description: The description for the alarm.
         :param Mapping[str, Any] dimensions: The dimension map for the alarm's associated metric.
         :param bool enable: Whether to enable specific ess alarm.
-        :param float evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state.
+        :param int evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state.
         :param str id: The id of alarm.
         :param str metric_name: The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
         :param str metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
         :param str name: The name for ess alarm.
-        :param float period: The period in seconds over which the specified statistic is applied.
+        :param int period: The period in seconds over which the specified statistic is applied.
         :param str scaling_group_id: Scaling group id the alarms belong to.
         :param str state: The state of alarm task.
         :param str statistics: The statistic to apply to the alarm's associated metric.
@@ -251,7 +251,7 @@ class GetAlarmsAlarmResult(dict):
 
     @property
     @pulumi.getter(name="alarmActions")
-    def alarm_actions(self) -> List[str]:
+    def alarm_actions(self) -> Sequence[str]:
         """
         The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
         """
@@ -259,7 +259,7 @@ class GetAlarmsAlarmResult(dict):
 
     @property
     @pulumi.getter(name="cloudMonitorGroupId")
-    def cloud_monitor_group_id(self) -> float:
+    def cloud_monitor_group_id(self) -> int:
         """
         Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         """
@@ -299,7 +299,7 @@ class GetAlarmsAlarmResult(dict):
 
     @property
     @pulumi.getter(name="evaluationCount")
-    def evaluation_count(self) -> float:
+    def evaluation_count(self) -> int:
         """
         The number of times that needs to satisfies comparison condition before transition into ALARM state.
         """
@@ -339,7 +339,7 @@ class GetAlarmsAlarmResult(dict):
 
     @property
     @pulumi.getter
-    def period(self) -> float:
+    def period(self) -> int:
         """
         The period in seconds over which the specified statistic is applied.
         """
@@ -382,7 +382,7 @@ class GetAlarmsAlarmResult(dict):
 class GetLifecycleHooksHookResult(dict):
     def __init__(__self__, *,
                  default_result: str,
-                 heartbeat_timeout: float,
+                 heartbeat_timeout: int,
                  id: str,
                  lifecycle_transition: str,
                  name: str,
@@ -391,7 +391,7 @@ class GetLifecycleHooksHookResult(dict):
                  scaling_group_id: str):
         """
         :param str default_result: Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
-        :param float heartbeat_timeout: Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter.
+        :param int heartbeat_timeout: Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter.
         :param str id: ID of the lifecycle hook.
         :param str lifecycle_transition: Type of Scaling activity attached to lifecycle hook.
         :param str name: Name of the lifecycle hook.
@@ -418,7 +418,7 @@ class GetLifecycleHooksHookResult(dict):
 
     @property
     @pulumi.getter(name="heartbeatTimeout")
-    def heartbeat_timeout(self) -> float:
+    def heartbeat_timeout(self) -> int:
         """
         Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter.
         """
@@ -478,12 +478,12 @@ class GetNotificationsNotificationResult(dict):
     def __init__(__self__, *,
                  id: str,
                  notification_arn: str,
-                 notification_types: List[str],
+                 notification_types: Sequence[str],
                  scaling_group_id: str):
         """
         :param str id: ID of the notification.
         :param str notification_arn: The Alibaba Cloud Resource Name (ARN) for the notification object.
-        :param List[str] notification_types: The notification types of Auto Scaling events and resource changes.
+        :param Sequence[str] notification_types: The notification types of Auto Scaling events and resource changes.
         :param str scaling_group_id: Scaling group id the notifications belong to.
         """
         pulumi.set(__self__, "id", id)
@@ -509,7 +509,7 @@ class GetNotificationsNotificationResult(dict):
 
     @property
     @pulumi.getter(name="notificationTypes")
-    def notification_types(self) -> List[str]:
+    def notification_types(self) -> Sequence[str]:
         """
         The notification types of Auto Scaling events and resource changes.
         """
@@ -529,35 +529,35 @@ class GetScalingConfigurationsConfigurationResult(dict):
     def __init__(__self__, *,
                  creation_time: str,
                  credit_specification: str,
-                 data_disks: List['outputs.GetScalingConfigurationsConfigurationDataDiskResult'],
+                 data_disks: Sequence['outputs.GetScalingConfigurationsConfigurationDataDiskResult'],
                  id: str,
                  image_id: str,
                  instance_type: str,
                  internet_charge_type: str,
-                 internet_max_bandwidth_in: float,
-                 internet_max_bandwidth_out: float,
+                 internet_max_bandwidth_in: int,
+                 internet_max_bandwidth_out: int,
                  lifecycle_state: str,
                  name: str,
                  scaling_group_id: str,
                  security_group_id: str,
                  system_disk_category: str,
-                 system_disk_size: float):
+                 system_disk_size: int):
         """
         :param str creation_time: Creation time of the scaling configuration.
         :param str credit_specification: Performance mode of the t5 burstable instance.
-        :param List['GetScalingConfigurationsConfigurationDataDiskArgs'] data_disks: Data disks of the scaling configuration.
+        :param Sequence['GetScalingConfigurationsConfigurationDataDiskArgs'] data_disks: Data disks of the scaling configuration.
         :param str id: ID of the scaling rule.
         :param str image_id: Image ID of the scaling configuration.
         :param str instance_type: Instance type of the scaling configuration.
         :param str internet_charge_type: Internet charge type of the scaling configuration.
-        :param float internet_max_bandwidth_in: Internet max bandwidth in of the scaling configuration.
-        :param float internet_max_bandwidth_out: Internet max bandwidth of the scaling configuration.
+        :param int internet_max_bandwidth_in: Internet max bandwidth in of the scaling configuration.
+        :param int internet_max_bandwidth_out: Internet max bandwidth of the scaling configuration.
         :param str lifecycle_state: Lifecycle state of the scaling configuration.
         :param str name: Name of the scaling configuration.
         :param str scaling_group_id: Scaling group id the scaling configurations belong to.
         :param str security_group_id: Security group ID of the scaling configuration.
         :param str system_disk_category: System disk category of the scaling configuration.
-        :param float system_disk_size: System disk size of the scaling configuration.
+        :param int system_disk_size: System disk size of the scaling configuration.
         """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "credit_specification", credit_specification)
@@ -593,7 +593,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
 
     @property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> List['outputs.GetScalingConfigurationsConfigurationDataDiskResult']:
+    def data_disks(self) -> Sequence['outputs.GetScalingConfigurationsConfigurationDataDiskResult']:
         """
         Data disks of the scaling configuration.
         """
@@ -633,7 +633,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthIn")
-    def internet_max_bandwidth_in(self) -> float:
+    def internet_max_bandwidth_in(self) -> int:
         """
         Internet max bandwidth in of the scaling configuration.
         """
@@ -641,7 +641,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> float:
+    def internet_max_bandwidth_out(self) -> int:
         """
         Internet max bandwidth of the scaling configuration.
         """
@@ -689,7 +689,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
 
     @property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> float:
+    def system_disk_size(self) -> int:
         """
         System disk size of the scaling configuration.
         """
@@ -702,13 +702,13 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
                  category: Optional[str] = None,
                  delete_with_instance: Optional[bool] = None,
                  device: Optional[str] = None,
-                 size: Optional[float] = None,
+                 size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         """
         :param str category: Category of data disk.
         :param bool delete_with_instance: Delete_with_instance attribute of data disk.
         :param str device: Device attribute of data disk.
-        :param float size: Size of data disk.
+        :param int size: Size of data disk.
         :param str snapshot_id: Size of data disk.
         """
         if category is not None:
@@ -748,7 +748,7 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[float]:
+    def size(self) -> Optional[int]:
         """
         Size of data disk.
         """
@@ -766,45 +766,45 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
 @pulumi.output_type
 class GetScalingGroupsGroupResult(dict):
     def __init__(__self__, *,
-                 active_capacity: float,
+                 active_capacity: int,
                  active_scaling_configuration: str,
-                 cooldown_time: float,
+                 cooldown_time: int,
                  creation_time: str,
-                 db_instance_ids: List[str],
+                 db_instance_ids: Sequence[str],
                  id: str,
                  launch_template_id: str,
                  launch_template_version: str,
                  lifecycle_state: str,
-                 load_balancer_ids: List[str],
-                 max_size: float,
-                 min_size: float,
+                 load_balancer_ids: Sequence[str],
+                 max_size: int,
+                 min_size: int,
                  name: str,
-                 pending_capacity: float,
+                 pending_capacity: int,
                  region_id: str,
-                 removal_policies: List[str],
-                 removing_capacity: float,
-                 total_capacity: float,
-                 vswitch_ids: List[str]):
+                 removal_policies: Sequence[str],
+                 removing_capacity: int,
+                 total_capacity: int,
+                 vswitch_ids: Sequence[str]):
         """
-        :param float active_capacity: Number of active instances in scaling group.
-        :param float cooldown_time: Default cooldown time of scaling group.
+        :param int active_capacity: Number of active instances in scaling group.
+        :param int cooldown_time: Default cooldown time of scaling group.
         :param str creation_time: Creation time of scaling group.
-        :param List[str] db_instance_ids: Db instances id which the ECS instance attached to.
+        :param Sequence[str] db_instance_ids: Db instances id which the ECS instance attached to.
         :param str id: ID of the scaling group.
         :param str launch_template_id: Active launch template ID for scaling group.
         :param str launch_template_version: Version of active launch template.
         :param str lifecycle_state: Lifecycle state of scaling group.
-        :param List[str] load_balancer_ids: Slb instances id which the ECS instance attached to.
-        :param float max_size: The maximum number of ECS instances.
-        :param float min_size: The minimum number of ECS instances.
+        :param Sequence[str] load_balancer_ids: Slb instances id which the ECS instance attached to.
+        :param int max_size: The maximum number of ECS instances.
+        :param int min_size: The minimum number of ECS instances.
         :param str name: Name of the scaling group.
                * `active_scaling_configuration` -Active scaling configuration for scaling group.
-        :param float pending_capacity: Number of pending instances in scaling group.
+        :param int pending_capacity: Number of pending instances in scaling group.
         :param str region_id: Region ID the scaling group belongs to.
-        :param List[str] removal_policies: Removal policy used to select the ECS instance to remove from the scaling group.
-        :param float removing_capacity: Number of removing instances in scaling group.
-        :param float total_capacity: Number of instances in scaling group.
-        :param List[str] vswitch_ids: Vswitches id in which the ECS instance launched.
+        :param Sequence[str] removal_policies: Removal policy used to select the ECS instance to remove from the scaling group.
+        :param int removing_capacity: Number of removing instances in scaling group.
+        :param int total_capacity: Number of instances in scaling group.
+        :param Sequence[str] vswitch_ids: Vswitches id in which the ECS instance launched.
         """
         pulumi.set(__self__, "active_capacity", active_capacity)
         pulumi.set(__self__, "active_scaling_configuration", active_scaling_configuration)
@@ -828,7 +828,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="activeCapacity")
-    def active_capacity(self) -> float:
+    def active_capacity(self) -> int:
         """
         Number of active instances in scaling group.
         """
@@ -841,7 +841,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="cooldownTime")
-    def cooldown_time(self) -> float:
+    def cooldown_time(self) -> int:
         """
         Default cooldown time of scaling group.
         """
@@ -857,7 +857,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="dbInstanceIds")
-    def db_instance_ids(self) -> List[str]:
+    def db_instance_ids(self) -> Sequence[str]:
         """
         Db instances id which the ECS instance attached to.
         """
@@ -897,7 +897,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="loadBalancerIds")
-    def load_balancer_ids(self) -> List[str]:
+    def load_balancer_ids(self) -> Sequence[str]:
         """
         Slb instances id which the ECS instance attached to.
         """
@@ -905,7 +905,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> float:
+    def max_size(self) -> int:
         """
         The maximum number of ECS instances.
         """
@@ -913,7 +913,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> float:
+    def min_size(self) -> int:
         """
         The minimum number of ECS instances.
         """
@@ -930,7 +930,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="pendingCapacity")
-    def pending_capacity(self) -> float:
+    def pending_capacity(self) -> int:
         """
         Number of pending instances in scaling group.
         """
@@ -946,7 +946,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="removalPolicies")
-    def removal_policies(self) -> List[str]:
+    def removal_policies(self) -> Sequence[str]:
         """
         Removal policy used to select the ECS instance to remove from the scaling group.
         """
@@ -954,7 +954,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="removingCapacity")
-    def removing_capacity(self) -> float:
+    def removing_capacity(self) -> int:
         """
         Number of removing instances in scaling group.
         """
@@ -962,7 +962,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="totalCapacity")
-    def total_capacity(self) -> float:
+    def total_capacity(self) -> int:
         """
         Number of instances in scaling group.
         """
@@ -970,7 +970,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> List[str]:
+    def vswitch_ids(self) -> Sequence[str]:
         """
         Vswitches id in which the ECS instance launched.
         """
@@ -981,20 +981,20 @@ class GetScalingGroupsGroupResult(dict):
 class GetScalingRulesRuleResult(dict):
     def __init__(__self__, *,
                  adjustment_type: str,
-                 adjustment_value: float,
-                 cooldown: float,
+                 adjustment_value: int,
+                 cooldown: int,
                  id: str,
-                 min_adjustment_magnitude: float,
+                 min_adjustment_magnitude: int,
                  name: str,
                  scaling_group_id: str,
                  scaling_rule_ari: str,
                  type: str):
         """
         :param str adjustment_type: Adjustment type of the scaling rule.
-        :param float adjustment_value: Adjustment value of the scaling rule.
-        :param float cooldown: Cooldown time of the scaling rule.
+        :param int adjustment_value: Adjustment value of the scaling rule.
+        :param int cooldown: Cooldown time of the scaling rule.
         :param str id: ID of the scaling rule.
-        :param float min_adjustment_magnitude: Min adjustment magnitude of scaling rule.
+        :param int min_adjustment_magnitude: Min adjustment magnitude of scaling rule.
         :param str name: Name of the scaling rule.
         :param str scaling_group_id: Scaling group id the scaling rules belong to.
         :param str scaling_rule_ari: Ari of scaling rule.
@@ -1020,7 +1020,7 @@ class GetScalingRulesRuleResult(dict):
 
     @property
     @pulumi.getter(name="adjustmentValue")
-    def adjustment_value(self) -> float:
+    def adjustment_value(self) -> int:
         """
         Adjustment value of the scaling rule.
         """
@@ -1028,7 +1028,7 @@ class GetScalingRulesRuleResult(dict):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> float:
+    def cooldown(self) -> int:
         """
         Cooldown time of the scaling rule.
         """
@@ -1044,7 +1044,7 @@ class GetScalingRulesRuleResult(dict):
 
     @property
     @pulumi.getter(name="minAdjustmentMagnitude")
-    def min_adjustment_magnitude(self) -> float:
+    def min_adjustment_magnitude(self) -> int:
         """
         Min adjustment magnitude of scaling rule.
         """
@@ -1088,10 +1088,10 @@ class GetScheduledTasksTaskResult(dict):
     def __init__(__self__, *,
                  description: str,
                  id: str,
-                 launch_expiration_time: float,
+                 launch_expiration_time: int,
                  launch_time: str,
-                 max_value: float,
-                 min_value: float,
+                 max_value: int,
+                 min_value: int,
                  name: str,
                  recurrence_end_time: str,
                  recurrence_type: str,
@@ -1101,7 +1101,7 @@ class GetScheduledTasksTaskResult(dict):
         """
         :param str description: Description of the scheduled task.
         :param str id: ID of the scheduled task id.
-        :param float launch_expiration_time: The time period during which a failed scheduled task is retried.
+        :param int launch_expiration_time: The time period during which a failed scheduled task is retried.
         :param str launch_time: The time at which the scheduled task is triggered.
         :param str name: Name of the scheduled task name.
         :param str recurrence_end_time: Specifies the end time after which the scheduled task is no longer repeated.
@@ -1140,7 +1140,7 @@ class GetScheduledTasksTaskResult(dict):
 
     @property
     @pulumi.getter(name="launchExpirationTime")
-    def launch_expiration_time(self) -> float:
+    def launch_expiration_time(self) -> int:
         """
         The time period during which a failed scheduled task is retried.
         """
@@ -1156,12 +1156,12 @@ class GetScheduledTasksTaskResult(dict):
 
     @property
     @pulumi.getter(name="maxValue")
-    def max_value(self) -> float:
+    def max_value(self) -> int:
         return pulumi.get(self, "max_value")
 
     @property
     @pulumi.getter(name="minValue")
-    def min_value(self) -> float:
+    def min_value(self) -> int:
         return pulumi.get(self, "min_value")
 
     @property

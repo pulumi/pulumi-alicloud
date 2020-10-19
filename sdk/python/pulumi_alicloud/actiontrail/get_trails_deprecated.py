@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -57,7 +57,7 @@ class GetTrailsDeprecatedResult:
 
     @property
     @pulumi.getter
-    def actiontrails(self) -> List['outputs.GetTrailsDeprecatedActiontrailResult']:
+    def actiontrails(self) -> Sequence['outputs.GetTrailsDeprecatedActiontrailResult']:
         """
         A list of actiontrails. Each element contains the following attributes:
         """
@@ -73,7 +73,7 @@ class GetTrailsDeprecatedResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -88,7 +88,7 @@ class GetTrailsDeprecatedResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of trail names.
         """
@@ -106,7 +106,7 @@ class GetTrailsDeprecatedResult:
 
     @property
     @pulumi.getter
-    def trails(self) -> List['outputs.GetTrailsDeprecatedTrailResult']:
+    def trails(self) -> Sequence['outputs.GetTrailsDeprecatedTrailResult']:
         return pulumi.get(self, "trails")
 
 
@@ -127,7 +127,7 @@ class AwaitableGetTrailsDeprecatedResult(GetTrailsDeprecatedResult):
             trails=self.trails)
 
 
-def get_trails_deprecated(ids: Optional[List[str]] = None,
+def get_trails_deprecated(ids: Optional[Sequence[str]] = None,
                           include_shadow_trails: Optional[bool] = None,
                           name_regex: Optional[str] = None,
                           output_file: Optional[str] = None,

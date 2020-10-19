@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -51,7 +51,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def domains(self) -> List['outputs.GetDomainsDomainResult']:
+    def domains(self) -> Sequence['outputs.GetDomainsDomainResult']:
         """
         A list of Domains. Each element contains the following attributes:
         """
@@ -72,7 +72,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of WAF domain self ID, value as `domain_name`.
         """
@@ -90,7 +90,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of WAF domain names.
         """
@@ -128,7 +128,7 @@ class AwaitableGetDomainsResult(GetDomainsResult):
 
 
 def get_domains(enable_details: Optional[bool] = None,
-                ids: Optional[List[str]] = None,
+                ids: Optional[Sequence[str]] = None,
                 instance_id: Optional[str] = None,
                 name_regex: Optional[str] = None,
                 output_file: Optional[str] = None,
@@ -152,7 +152,7 @@ def get_domains(enable_details: Optional[bool] = None,
 
 
     :param bool enable_details: Default to false and only output `id`, `domain_name`. Set it to true can output more details.
-    :param List[str] ids: A list of WAF domain names. Each item is domain name.
+    :param Sequence[str] ids: A list of WAF domain names. Each item is domain name.
     :param str instance_id: The Id of waf instance to which waf domain belongs.
     :param str name_regex: A regex string to filter results by domain name.
     :param str resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management.

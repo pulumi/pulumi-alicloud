@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['AccountPrivilege']
@@ -18,7 +18,7 @@ class AccountPrivilege(pulumi.CustomResource):
                  account_name: Optional[pulumi.Input[str]] = None,
                  account_privilege: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
-                 db_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -32,7 +32,7 @@ class AccountPrivilege(pulumi.CustomResource):
         :param pulumi.Input[str] account_name: A specified account name.
         :param pulumi.Input[str] account_privilege: The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
         :param pulumi.Input[str] db_cluster_id: The Id of cluster in which account belongs.
-        :param pulumi.Input[List[pulumi.Input[str]]] db_names: List of specified database name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -74,7 +74,7 @@ class AccountPrivilege(pulumi.CustomResource):
             account_name: Optional[pulumi.Input[str]] = None,
             account_privilege: Optional[pulumi.Input[str]] = None,
             db_cluster_id: Optional[pulumi.Input[str]] = None,
-            db_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'AccountPrivilege':
+            db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'AccountPrivilege':
         """
         Get an existing AccountPrivilege resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -85,7 +85,7 @@ class AccountPrivilege(pulumi.CustomResource):
         :param pulumi.Input[str] account_name: A specified account name.
         :param pulumi.Input[str] account_privilege: The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
         :param pulumi.Input[str] db_cluster_id: The Id of cluster in which account belongs.
-        :param pulumi.Input[List[pulumi.Input[str]]] db_names: List of specified database name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -123,7 +123,7 @@ class AccountPrivilege(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbNames")
-    def db_names(self) -> pulumi.Output[List[str]]:
+    def db_names(self) -> pulumi.Output[Sequence[str]]:
         """
         List of specified database name.
         """

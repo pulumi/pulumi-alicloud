@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -61,7 +61,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         The ids list of HBase instances
         """
@@ -69,7 +69,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetInstancesInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         """
         A list of HBase instances. Its every element contains the following attributes:
         """
@@ -82,7 +82,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         The names list of HBase instances
         """
@@ -119,7 +119,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
 
 
 def get_instances(availability_zone: Optional[str] = None,
-                  ids: Optional[List[str]] = None,
+                  ids: Optional[Sequence[str]] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
@@ -142,7 +142,7 @@ def get_instances(availability_zone: Optional[str] = None,
 
 
     :param str availability_zone: Instance availability zone.
-    :param List[str] ids: The ids list of HBase instances
+    :param Sequence[str] ids: The ids list of HBase instances
     :param str name_regex: A regex string to apply to the instance name.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """

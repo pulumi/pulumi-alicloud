@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,7 +45,7 @@ class GetSnatEntriesResult:
 
     @property
     @pulumi.getter
-    def entries(self) -> List['outputs.GetSnatEntriesEntryResult']:
+    def entries(self) -> Sequence['outputs.GetSnatEntriesEntryResult']:
         """
         A list of Snat Entries. Each element contains the following attributes:
         """
@@ -61,7 +61,7 @@ class GetSnatEntriesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         (Optional) A list of Snat Entries IDs.
         """
@@ -109,7 +109,7 @@ class AwaitableGetSnatEntriesResult(GetSnatEntriesResult):
             source_cidr=self.source_cidr)
 
 
-def get_snat_entries(ids: Optional[List[str]] = None,
+def get_snat_entries(ids: Optional[Sequence[str]] = None,
                      output_file: Optional[str] = None,
                      snat_ip: Optional[str] = None,
                      snat_table_id: Optional[str] = None,
@@ -151,7 +151,7 @@ def get_snat_entries(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of Snat Entries IDs.
+    :param Sequence[str] ids: A list of Snat Entries IDs.
     :param str snat_ip: The public IP of the Snat Entry.
     :param str snat_table_id: The ID of the Snat table.
     :param str source_cidr: The source CIDR block of the Snat Entry.

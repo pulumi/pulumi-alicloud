@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Application']
@@ -16,10 +16,10 @@ class Application(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_name: Optional[pulumi.Input[str]] = None,
-                 build_pack_id: Optional[pulumi.Input[float]] = None,
+                 build_pack_id: Optional[pulumi.Input[int]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  descriotion: Optional[pulumi.Input[str]] = None,
-                 ecu_infos: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  health_check_url: Optional[pulumi.Input[str]] = None,
                  logical_region_id: Optional[pulumi.Input[str]] = None,
@@ -37,10 +37,10 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_name: Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
-        :param pulumi.Input[float] build_pack_id: The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
+        :param pulumi.Input[int] build_pack_id: The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
         :param pulumi.Input[str] cluster_id: The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
         :param pulumi.Input[str] descriotion: The description of the application that you want to create.
-        :param pulumi.Input[List[pulumi.Input[str]]] ecu_infos: The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ecu_infos: The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         :param pulumi.Input[str] group_id: The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
         :param pulumi.Input[str] health_check_url: The URL for health checking of the application.
         :param pulumi.Input[str] logical_region_id: The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
@@ -93,10 +93,10 @@ class Application(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application_name: Optional[pulumi.Input[str]] = None,
-            build_pack_id: Optional[pulumi.Input[float]] = None,
+            build_pack_id: Optional[pulumi.Input[int]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             descriotion: Optional[pulumi.Input[str]] = None,
-            ecu_infos: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             health_check_url: Optional[pulumi.Input[str]] = None,
             logical_region_id: Optional[pulumi.Input[str]] = None,
@@ -111,10 +111,10 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_name: Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
-        :param pulumi.Input[float] build_pack_id: The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
+        :param pulumi.Input[int] build_pack_id: The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
         :param pulumi.Input[str] cluster_id: The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
         :param pulumi.Input[str] descriotion: The description of the application that you want to create.
-        :param pulumi.Input[List[pulumi.Input[str]]] ecu_infos: The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ecu_infos: The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         :param pulumi.Input[str] group_id: The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
         :param pulumi.Input[str] health_check_url: The URL for health checking of the application.
         :param pulumi.Input[str] logical_region_id: The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
@@ -149,7 +149,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="buildPackId")
-    def build_pack_id(self) -> pulumi.Output[Optional[float]]:
+    def build_pack_id(self) -> pulumi.Output[Optional[int]]:
         """
         The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
         """
@@ -173,7 +173,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ecuInfos")
-    def ecu_infos(self) -> pulumi.Output[Optional[List[str]]]:
+    def ecu_infos(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         """

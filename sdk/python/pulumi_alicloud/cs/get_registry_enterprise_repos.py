@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -64,7 +64,7 @@ class GetRegistryEnterpriseReposResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of matched Container Registry Enterprise Edition repositories. Its element is a repository id.
         """
@@ -85,7 +85,7 @@ class GetRegistryEnterpriseReposResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of repository names.
         """
@@ -106,7 +106,7 @@ class GetRegistryEnterpriseReposResult:
 
     @property
     @pulumi.getter
-    def repos(self) -> List['outputs.GetRegistryEnterpriseReposRepoResult']:
+    def repos(self) -> Sequence['outputs.GetRegistryEnterpriseReposRepoResult']:
         """
         A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
         """
@@ -131,7 +131,7 @@ class AwaitableGetRegistryEnterpriseReposResult(GetRegistryEnterpriseReposResult
 
 
 def get_registry_enterprise_repos(enable_details: Optional[bool] = None,
-                                  ids: Optional[List[str]] = None,
+                                  ids: Optional[Sequence[str]] = None,
                                   instance_id: Optional[str] = None,
                                   name_regex: Optional[str] = None,
                                   namespace: Optional[str] = None,
@@ -156,7 +156,7 @@ def get_registry_enterprise_repos(enable_details: Optional[bool] = None,
 
 
     :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
-    :param List[str] ids: A list of ids to filter results by repository id.
+    :param Sequence[str] ids: A list of ids to filter results by repository id.
     :param str instance_id: ID of Container Registry Enterprise Edition instance.
     :param str name_regex: A regex string to filter results by repository name.
     :param str namespace: Name of Container Registry Enterprise Edition namespace where the repositories are located in.

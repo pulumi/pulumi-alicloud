@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,8 +19,8 @@ class ZoneAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  user_client_ip: Optional[pulumi.Input[str]] = None,
-                 vpc_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 vpcs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]]] = None,
+                 vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -31,8 +31,8 @@ class ZoneAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lang: The language of code.
         :param pulumi.Input[str] user_client_ip: The user custom IP address.
-        :param pulumi.Input[List[pulumi.Input[str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]] vpcs: The List of the VPC:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]] vpcs: The List of the VPC:
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
         """
         if __name__ is not None:
@@ -71,8 +71,8 @@ class ZoneAttachment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             lang: Optional[pulumi.Input[str]] = None,
             user_client_ip: Optional[pulumi.Input[str]] = None,
-            vpc_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            vpcs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]]] = None,
+            vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ZoneAttachment':
         """
         Get an existing ZoneAttachment resource's state with the given name, id, and optional extra
@@ -83,8 +83,8 @@ class ZoneAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lang: The language of code.
         :param pulumi.Input[str] user_client_ip: The user custom IP address.
-        :param pulumi.Input[List[pulumi.Input[str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]] vpcs: The List of the VPC:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]] vpcs: The List of the VPC:
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -116,7 +116,7 @@ class ZoneAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcIds")
-    def vpc_ids(self) -> pulumi.Output[List[str]]:
+    def vpc_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
         """
@@ -124,7 +124,7 @@ class ZoneAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def vpcs(self) -> pulumi.Output[List['outputs.ZoneAttachmentVpc']]:
+    def vpcs(self) -> pulumi.Output[Sequence['outputs.ZoneAttachmentVpc']]:
         """
         The List of the VPC:
         """

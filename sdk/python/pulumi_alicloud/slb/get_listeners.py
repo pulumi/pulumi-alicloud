@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -24,8 +24,8 @@ class GetListenersResult:
         if description_regex and not isinstance(description_regex, str):
             raise TypeError("Expected argument 'description_regex' to be a str")
         pulumi.set(__self__, "description_regex", description_regex)
-        if frontend_port and not isinstance(frontend_port, float):
-            raise TypeError("Expected argument 'frontend_port' to be a float")
+        if frontend_port and not isinstance(frontend_port, int):
+            raise TypeError("Expected argument 'frontend_port' to be a int")
         pulumi.set(__self__, "frontend_port", frontend_port)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -50,7 +50,7 @@ class GetListenersResult:
 
     @property
     @pulumi.getter(name="frontendPort")
-    def frontend_port(self) -> Optional[float]:
+    def frontend_port(self) -> Optional[int]:
         """
         Frontend port used to receive incoming traffic and distribute it to the backend servers.
         """
@@ -84,7 +84,7 @@ class GetListenersResult:
 
     @property
     @pulumi.getter(name="slbListeners")
-    def slb_listeners(self) -> List['outputs.GetListenersSlbListenerResult']:
+    def slb_listeners(self) -> Sequence['outputs.GetListenersSlbListenerResult']:
         """
         A list of SLB listeners. Each element contains the following attributes:
         """
@@ -107,7 +107,7 @@ class AwaitableGetListenersResult(GetListenersResult):
 
 
 def get_listeners(description_regex: Optional[str] = None,
-                  frontend_port: Optional[float] = None,
+                  frontend_port: Optional[int] = None,
                   load_balancer_id: Optional[str] = None,
                   output_file: Optional[str] = None,
                   protocol: Optional[str] = None,
@@ -144,7 +144,7 @@ def get_listeners(description_regex: Optional[str] = None,
 
 
     :param str description_regex: A regex string to filter results by SLB listener description.
-    :param float frontend_port: Filter listeners by the specified frontend port.
+    :param int frontend_port: Filter listeners by the specified frontend port.
     :param str load_balancer_id: ID of the SLB with listeners.
     :param str protocol: Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
     """

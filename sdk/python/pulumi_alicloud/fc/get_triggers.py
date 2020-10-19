@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -61,7 +61,7 @@ class GetTriggersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of FC triggers ids.
         """
@@ -74,7 +74,7 @@ class GetTriggersResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of FC triggers names.
         """
@@ -92,7 +92,7 @@ class GetTriggersResult:
 
     @property
     @pulumi.getter
-    def triggers(self) -> List['outputs.GetTriggersTriggerResult']:
+    def triggers(self) -> Sequence['outputs.GetTriggersTriggerResult']:
         """
         A list of FC triggers. Each element contains the following attributes:
         """
@@ -116,7 +116,7 @@ class AwaitableGetTriggersResult(GetTriggersResult):
 
 
 def get_triggers(function_name: Optional[str] = None,
-                 ids: Optional[List[str]] = None,
+                 ids: Optional[Sequence[str]] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
                  service_name: Optional[str] = None,
@@ -138,7 +138,7 @@ def get_triggers(function_name: Optional[str] = None,
 
 
     :param str function_name: FC function name.
-    :param List[str] ids: - A list of FC triggers ids.
+    :param Sequence[str] ids: - A list of FC triggers ids.
     :param str name_regex: A regex string to filter results by FC trigger name.
     :param str service_name: FC service name.
     """

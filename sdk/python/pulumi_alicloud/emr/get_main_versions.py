@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -42,7 +42,7 @@ class GetMainVersionsResult:
 
     @property
     @pulumi.getter(name="clusterTypes")
-    def cluster_types(self) -> Optional[List[str]]:
+    def cluster_types(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "cluster_types")
 
     @property
@@ -63,7 +63,7 @@ class GetMainVersionsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of emr instance types IDs.
         """
@@ -71,7 +71,7 @@ class GetMainVersionsResult:
 
     @property
     @pulumi.getter(name="mainVersions")
-    def main_versions(self) -> List['outputs.GetMainVersionsMainVersionResult']:
+    def main_versions(self) -> Sequence['outputs.GetMainVersionsMainVersionResult']:
         """
         A list of versions of the emr cluster instance. Each element contains the following attributes:
         """
@@ -97,7 +97,7 @@ class AwaitableGetMainVersionsResult(GetMainVersionsResult):
             output_file=self.output_file)
 
 
-def get_main_versions(cluster_types: Optional[List[str]] = None,
+def get_main_versions(cluster_types: Optional[Sequence[str]] = None,
                       emr_version: Optional[str] = None,
                       output_file: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMainVersionsResult:
@@ -123,7 +123,7 @@ def get_main_versions(cluster_types: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] cluster_types: The supported clusterType of this emr version.
+    :param Sequence[str] cluster_types: The supported clusterType of this emr version.
            Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
     :param str emr_version: The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
     """

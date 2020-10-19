@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Topic']
@@ -16,8 +16,8 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 message_type: Optional[pulumi.Input[float]] = None,
-                 perm: Optional[pulumi.Input[float]] = None,
+                 message_type: Optional[pulumi.Input[int]] = None,
+                 perm: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
@@ -58,8 +58,8 @@ class Topic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the topics.
-        :param pulumi.Input[float] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
-        :param pulumi.Input[float] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+        :param pulumi.Input[int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
+        :param pulumi.Input[int] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -109,8 +109,8 @@ class Topic(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
-            message_type: Optional[pulumi.Input[float]] = None,
-            perm: Optional[pulumi.Input[float]] = None,
+            message_type: Optional[pulumi.Input[int]] = None,
+            perm: Optional[pulumi.Input[int]] = None,
             remark: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             topic: Optional[pulumi.Input[str]] = None,
@@ -123,8 +123,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the topics.
-        :param pulumi.Input[float] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
-        :param pulumi.Input[float] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+        :param pulumi.Input[int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
+        :param pulumi.Input[int] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -155,7 +155,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="messageType")
-    def message_type(self) -> pulumi.Output[float]:
+    def message_type(self) -> pulumi.Output[int]:
         """
         The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
         """
@@ -163,7 +163,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def perm(self) -> pulumi.Output[Optional[float]]:
+    def perm(self) -> pulumi.Output[Optional[int]]:
         """
         This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['SnapshotPolicy']
@@ -16,9 +16,9 @@ class SnapshotPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 repeat_weekdays: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 retention_days: Optional[pulumi.Input[float]] = None,
-                 time_points: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None,
+                 time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -52,13 +52,13 @@ class SnapshotPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The snapshot policy name.
-        :param pulumi.Input[List[pulumi.Input[str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
                - A maximum of seven time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
-        :param pulumi.Input[float] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
+        :param pulumi.Input[int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
                - -1: The automatic snapshots are retained permanently.
                - [1, 65536]: The number of days retained.
-        :param pulumi.Input[List[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
         """
@@ -100,9 +100,9 @@ class SnapshotPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
-            repeat_weekdays: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            retention_days: Optional[pulumi.Input[float]] = None,
-            time_points: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'SnapshotPolicy':
+            repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            retention_days: Optional[pulumi.Input[int]] = None,
+            time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'SnapshotPolicy':
         """
         Get an existing SnapshotPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -111,13 +111,13 @@ class SnapshotPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The snapshot policy name.
-        :param pulumi.Input[List[pulumi.Input[str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
                - A maximum of seven time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
-        :param pulumi.Input[float] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
+        :param pulumi.Input[int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
                - -1: The automatic snapshots are retained permanently.
                - [1, 65536]: The number of days retained.
-        :param pulumi.Input[List[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
         """
@@ -141,7 +141,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repeatWeekdays")
-    def repeat_weekdays(self) -> pulumi.Output[List[str]]:
+    def repeat_weekdays(self) -> pulumi.Output[Sequence[str]]:
         """
         The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
         - A maximum of seven time points can be selected.
@@ -151,7 +151,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> pulumi.Output[float]:
+    def retention_days(self) -> pulumi.Output[int]:
         """
         The snapshot retention time, and the unit of measurement is day. Optional values:
         - -1: The automatic snapshots are retained permanently.
@@ -161,7 +161,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timePoints")
-    def time_points(self) -> pulumi.Output[List[str]]:
+    def time_points(self) -> pulumi.Output[Sequence[str]]:
         """
         The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
         - A maximum of 24 time points can be selected.

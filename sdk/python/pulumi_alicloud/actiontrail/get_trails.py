@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -55,7 +55,7 @@ class GetTrailsResult:
 
     @property
     @pulumi.getter
-    def actiontrails(self) -> List['outputs.GetTrailsActiontrailResult']:
+    def actiontrails(self) -> Sequence['outputs.GetTrailsActiontrailResult']:
         """
         Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."
         """
@@ -71,7 +71,7 @@ class GetTrailsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of ActionTrail Trail ids. It is the same as trail name.
         """
@@ -89,7 +89,7 @@ class GetTrailsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of trail names.
         """
@@ -110,7 +110,7 @@ class GetTrailsResult:
 
     @property
     @pulumi.getter
-    def trails(self) -> List['outputs.GetTrailsTrailResult']:
+    def trails(self) -> Sequence['outputs.GetTrailsTrailResult']:
         """
         A list of ActionTrail Trails. Each element contains the following attributes:
         """
@@ -134,7 +134,7 @@ class AwaitableGetTrailsResult(GetTrailsResult):
             trails=self.trails)
 
 
-def get_trails(ids: Optional[List[str]] = None,
+def get_trails(ids: Optional[Sequence[str]] = None,
                include_shadow_trails: Optional[bool] = None,
                name_regex: Optional[str] = None,
                output_file: Optional[str] = None,
@@ -156,7 +156,7 @@ def get_trails(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of ActionTrail Trail IDs. It is the same as trail name.
+    :param Sequence[str] ids: A list of ActionTrail Trail IDs. It is the same as trail name.
     :param bool include_shadow_trails: Whether to show shadow tracking. Default to `false`.
     :param str name_regex: A regex string to filter results by trail name.
     :param str status: Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.

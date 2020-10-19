@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -55,7 +55,7 @@ class GetEipsResult:
 
     @property
     @pulumi.getter
-    def eips(self) -> List['outputs.GetEipsEipResult']:
+    def eips(self) -> Sequence['outputs.GetEipsEipResult']:
         """
         A list of EIPs. Each element contains the following attributes:
         """
@@ -71,7 +71,7 @@ class GetEipsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         (Optional) A list of EIP IDs.
         """
@@ -84,12 +84,12 @@ class GetEipsResult:
 
     @property
     @pulumi.getter(name="ipAddresses")
-    def ip_addresses(self) -> Optional[List[str]]:
+    def ip_addresses(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ip_addresses")
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         (Optional) A list of EIP names.
         """
@@ -131,9 +131,9 @@ class AwaitableGetEipsResult(GetEipsResult):
             tags=self.tags)
 
 
-def get_eips(ids: Optional[List[str]] = None,
+def get_eips(ids: Optional[Sequence[str]] = None,
              in_use: Optional[bool] = None,
-             ip_addresses: Optional[List[str]] = None,
+             ip_addresses: Optional[Sequence[str]] = None,
              output_file: Optional[str] = None,
              resource_group_id: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
@@ -152,9 +152,9 @@ def get_eips(ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] ids: A list of EIP IDs.
+    :param Sequence[str] ids: A list of EIP IDs.
     :param bool in_use: Deprecated since the version 1.8.0 of this provider.
-    :param List[str] ip_addresses: A list of EIP public IP addresses.
+    :param Sequence[str] ip_addresses: A list of EIP public IP addresses.
     :param str resource_group_id: The Id of resource group which the eips belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """

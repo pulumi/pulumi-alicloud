@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
-                 vserver_groups: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]]] = None,
+                 vserver_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -105,7 +105,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]] vserver_groups: A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]] vserver_groups: A list of vserver groups attached on scaling group. See Block vserver_group below for details.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -143,7 +143,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             force: Optional[pulumi.Input[bool]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None,
-            vserver_groups: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]]] = None) -> 'ScalingGroupVServerGroups':
+            vserver_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]]] = None) -> 'ScalingGroupVServerGroups':
         """
         Get an existing ScalingGroupVServerGroups resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -153,7 +153,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]] vserver_groups: A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]] vserver_groups: A list of vserver groups attached on scaling group. See Block vserver_group below for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -182,7 +182,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vserverGroups")
-    def vserver_groups(self) -> pulumi.Output[List['outputs.ScalingGroupVServerGroupsVserverGroup']]:
+    def vserver_groups(self) -> pulumi.Output[Sequence['outputs.ScalingGroupVServerGroupsVserverGroup']]:
         """
         A list of vserver groups attached on scaling group. See Block vserver_group below for details.
         """

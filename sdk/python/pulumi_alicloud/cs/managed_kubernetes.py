@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,8 +17,8 @@ class ManagedKubernetes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedKubernetesAddonArgs']]]]] = None,
-                 api_audiences: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesAddonArgs']]]]] = None,
+                 api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
@@ -36,11 +36,11 @@ class ManagedKubernetes(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
-                 node_cidr_mask: Optional[pulumi.Input[float]] = None,
+                 node_cidr_mask: Optional[pulumi.Input[int]] = None,
                  node_name_mode: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  pod_cidr: Optional[pulumi.Input[str]] = None,
-                 pod_vswitch_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  proxy_mode: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -51,18 +51,18 @@ class ManagedKubernetes(pulumi.CustomResource):
                  user_data: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  worker_auto_renew: Optional[pulumi.Input[bool]] = None,
-                 worker_auto_renew_period: Optional[pulumi.Input[float]] = None,
+                 worker_auto_renew_period: Optional[pulumi.Input[int]] = None,
                  worker_data_disk_category: Optional[pulumi.Input[str]] = None,
-                 worker_data_disk_size: Optional[pulumi.Input[float]] = None,
-                 worker_data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]]] = None,
+                 worker_data_disk_size: Optional[pulumi.Input[int]] = None,
+                 worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]]] = None,
                  worker_disk_category: Optional[pulumi.Input[str]] = None,
-                 worker_disk_size: Optional[pulumi.Input[float]] = None,
+                 worker_disk_size: Optional[pulumi.Input[int]] = None,
                  worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
-                 worker_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 worker_number: Optional[pulumi.Input[float]] = None,
-                 worker_period: Optional[pulumi.Input[float]] = None,
+                 worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 worker_number: Optional[pulumi.Input[int]] = None,
+                 worker_period: Optional[pulumi.Input[int]] = None,
                  worker_period_unit: Optional[pulumi.Input[str]] = None,
-                 worker_vswitch_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -70,7 +70,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         Create a ManagedKubernetes resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
@@ -87,11 +87,11 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
-        :param pulumi.Input[float] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
+        :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[List[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
@@ -102,8 +102,8 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[float] worker_auto_renew_period: Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. 
+        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. 
                - category: the type of the data disks. Valid values:
                + cloud: basic disks.
                + cloud_efficiency: ultra disks.
@@ -111,11 +111,11 @@ class ManagedKubernetes(pulumi.CustomResource):
                - size: the size of a data disk. Unit: GiB.
                - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[float] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
-        :param pulumi.Input[List[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[float] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-        :param pulumi.Input[float] worker_period: Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        :param pulumi.Input[int] worker_period: Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit. `Month` or `Week`, defaults to `Month`.
         """
         if __name__ is not None:
@@ -205,8 +205,8 @@ class ManagedKubernetes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedKubernetesAddonArgs']]]]] = None,
-            api_audiences: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesAddonArgs']]]]] = None,
+            api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             client_cert: Optional[pulumi.Input[str]] = None,
             client_key: Optional[pulumi.Input[str]] = None,
@@ -226,11 +226,11 @@ class ManagedKubernetes(pulumi.CustomResource):
             name_prefix: Optional[pulumi.Input[str]] = None,
             nat_gateway_id: Optional[pulumi.Input[str]] = None,
             new_nat_gateway: Optional[pulumi.Input[bool]] = None,
-            node_cidr_mask: Optional[pulumi.Input[float]] = None,
+            node_cidr_mask: Optional[pulumi.Input[int]] = None,
             node_name_mode: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             pod_cidr: Optional[pulumi.Input[str]] = None,
-            pod_vswitch_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             proxy_mode: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -245,20 +245,20 @@ class ManagedKubernetes(pulumi.CustomResource):
             version: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             worker_auto_renew: Optional[pulumi.Input[bool]] = None,
-            worker_auto_renew_period: Optional[pulumi.Input[float]] = None,
+            worker_auto_renew_period: Optional[pulumi.Input[int]] = None,
             worker_data_disk_category: Optional[pulumi.Input[str]] = None,
-            worker_data_disk_size: Optional[pulumi.Input[float]] = None,
-            worker_data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]]] = None,
+            worker_data_disk_size: Optional[pulumi.Input[int]] = None,
+            worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]]] = None,
             worker_disk_category: Optional[pulumi.Input[str]] = None,
-            worker_disk_size: Optional[pulumi.Input[float]] = None,
+            worker_disk_size: Optional[pulumi.Input[int]] = None,
             worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
-            worker_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            worker_nodes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerNodeArgs']]]]] = None,
-            worker_number: Optional[pulumi.Input[float]] = None,
-            worker_period: Optional[pulumi.Input[float]] = None,
+            worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            worker_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerNodeArgs']]]]] = None,
+            worker_number: Optional[pulumi.Input[int]] = None,
+            worker_period: Optional[pulumi.Input[int]] = None,
             worker_period_unit: Optional[pulumi.Input[str]] = None,
             worker_ram_role_name: Optional[pulumi.Input[str]] = None,
-            worker_vswitch_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'ManagedKubernetes':
+            worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ManagedKubernetes':
         """
         Get an existing ManagedKubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -266,7 +266,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
@@ -285,11 +285,11 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
-        :param pulumi.Input[float] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
+        :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[List[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
@@ -302,8 +302,8 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[float] worker_auto_renew_period: Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. 
+        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. 
                - category: the type of the data disks. Valid values:
                + cloud: basic disks.
                + cloud_efficiency: ultra disks.
@@ -311,12 +311,12 @@ class ManagedKubernetes(pulumi.CustomResource):
                - size: the size of a data disk. Unit: GiB.
                - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[float] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
-        :param pulumi.Input[List[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
-        :param pulumi.Input[float] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-        :param pulumi.Input[float] worker_period: Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        :param pulumi.Input[int] worker_period: Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit. `Month` or `Week`, defaults to `Month`.
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
         """
@@ -382,12 +382,12 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def addons(self) -> pulumi.Output[Optional[List['outputs.ManagedKubernetesAddon']]]:
+    def addons(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedKubernetesAddon']]]:
         return pulumi.get(self, "addons")
 
     @property
     @pulumi.getter(name="apiAudiences")
-    def api_audiences(self) -> pulumi.Output[Optional[List[str]]]:
+    def api_audiences(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
         """
@@ -544,7 +544,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeCidrMask")
-    def node_cidr_mask(self) -> pulumi.Output[Optional[float]]:
+    def node_cidr_mask(self) -> pulumi.Output[Optional[int]]:
         """
         The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         """
@@ -576,7 +576,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="podVswitchIds")
-    def pod_vswitch_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def pod_vswitch_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         """
@@ -690,7 +690,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerAutoRenewPeriod")
-    def worker_auto_renew_period(self) -> pulumi.Output[Optional[float]]:
+    def worker_auto_renew_period(self) -> pulumi.Output[Optional[int]]:
         """
         Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
         """
@@ -703,12 +703,12 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerDataDiskSize")
-    def worker_data_disk_size(self) -> pulumi.Output[Optional[float]]:
+    def worker_data_disk_size(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "worker_data_disk_size")
 
     @property
     @pulumi.getter(name="workerDataDisks")
-    def worker_data_disks(self) -> pulumi.Output[Optional[List['outputs.ManagedKubernetesWorkerDataDisk']]]:
+    def worker_data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedKubernetesWorkerDataDisk']]]:
         """
         The data disk configurations of worker nodes, such as the disk type and disk size. 
         - category: the type of the data disks. Valid values:
@@ -730,7 +730,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerDiskSize")
-    def worker_disk_size(self) -> pulumi.Output[Optional[float]]:
+    def worker_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
         The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         """
@@ -746,7 +746,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerInstanceTypes")
-    def worker_instance_types(self) -> pulumi.Output[List[str]]:
+    def worker_instance_types(self) -> pulumi.Output[Sequence[str]]:
         """
         The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         """
@@ -754,7 +754,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerNodes")
-    def worker_nodes(self) -> pulumi.Output[List['outputs.ManagedKubernetesWorkerNode']]:
+    def worker_nodes(self) -> pulumi.Output[Sequence['outputs.ManagedKubernetesWorkerNode']]:
         """
         List of cluster worker nodes. It contains several attributes to `Block Nodes`.
         """
@@ -762,7 +762,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerNumber")
-    def worker_number(self) -> pulumi.Output[float]:
+    def worker_number(self) -> pulumi.Output[int]:
         """
         The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         """
@@ -770,7 +770,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerPeriod")
-    def worker_period(self) -> pulumi.Output[Optional[float]]:
+    def worker_period(self) -> pulumi.Output[Optional[int]]:
         """
         Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
         """
@@ -794,7 +794,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerVswitchIds")
-    def worker_vswitch_ids(self) -> pulumi.Output[List[str]]:
+    def worker_vswitch_ids(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "worker_vswitch_ids")
 
     def translate_output_property(self, prop):

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -21,7 +21,7 @@ class Policy(pulumi.CustomResource):
                  document: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 statements: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]]] = None,
+                 statements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -34,7 +34,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] document: Document of the RAM policy. It is required when the `statement` is not specified.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
         :param pulumi.Input[str] name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
         :param pulumi.Input[str] version: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
         if __name__ is not None:
@@ -78,12 +78,12 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attachment_count: Optional[pulumi.Input[float]] = None,
+            attachment_count: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             document: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            statements: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]]] = None,
+            statements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'Policy':
         """
@@ -93,12 +93,12 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] attachment_count: The policy attachment count.
+        :param pulumi.Input[int] attachment_count: The policy attachment count.
         :param pulumi.Input[str] description: Description of the RAM policy. This name can have a string of 1 to 1024 characters.
         :param pulumi.Input[str] document: Document of the RAM policy. It is required when the `statement` is not specified.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
         :param pulumi.Input[str] name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
         :param pulumi.Input[str] type: The policy type.
         :param pulumi.Input[str] version: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
@@ -118,7 +118,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="attachmentCount")
-    def attachment_count(self) -> pulumi.Output[float]:
+    def attachment_count(self) -> pulumi.Output[int]:
         """
         The policy attachment count.
         """
@@ -158,7 +158,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def statements(self) -> pulumi.Output[List['outputs.PolicyStatement']]:
+    def statements(self) -> pulumi.Output[Sequence['outputs.PolicyStatement']]:
         """
         (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
         """

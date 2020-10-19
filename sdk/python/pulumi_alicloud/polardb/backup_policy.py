@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['BackupPolicy']
@@ -16,7 +16,7 @@ class BackupPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
-                 preferred_backup_periods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_backup_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -26,7 +26,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[List[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         if __name__ is not None:
@@ -64,7 +64,7 @@ class BackupPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_retention_period: Optional[pulumi.Input[str]] = None,
             db_cluster_id: Optional[pulumi.Input[str]] = None,
-            preferred_backup_periods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             preferred_backup_time: Optional[pulumi.Input[str]] = None) -> 'BackupPolicy':
         """
         Get an existing BackupPolicy resource's state with the given name, id, and optional extra
@@ -75,7 +75,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[List[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -106,7 +106,7 @@ class BackupPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preferredBackupPeriods")
-    def preferred_backup_periods(self) -> pulumi.Output[List[str]]:
+    def preferred_backup_periods(self) -> pulumi.Output[Sequence[str]]:
         """
         PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
         """

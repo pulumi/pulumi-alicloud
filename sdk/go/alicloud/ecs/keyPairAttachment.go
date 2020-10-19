@@ -28,6 +28,7 @@ import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
 //
 // func main() {
@@ -62,6 +63,11 @@ import (
 // 		}, nil)
 // 		if err != nil {
 // 			return err
+// 		}
+// 		cfg := config.New(ctx, "")
+// 		name := "keyPairAttachmentName"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
 // 		}
 // 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("10.1.0.0/21"),

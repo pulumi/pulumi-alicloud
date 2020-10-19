@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -86,7 +86,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def domains(self) -> List['outputs.GetDomainsDomainResult']:
+    def domains(self) -> Sequence['outputs.GetDomainsDomainResult']:
         """
         A list of domains. Each element contains the following attributes:
         """
@@ -107,7 +107,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list ids of DCDN Domain.
         """
@@ -120,7 +120,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of DCDN Domain names.
         """
@@ -180,7 +180,7 @@ def get_domains(change_end_time: Optional[str] = None,
                 check_domain_show: Optional[bool] = None,
                 domain_search_type: Optional[str] = None,
                 enable_details: Optional[bool] = None,
-                ids: Optional[List[str]] = None,
+                ids: Optional[Sequence[str]] = None,
                 name_regex: Optional[str] = None,
                 output_file: Optional[str] = None,
                 resource_group_id: Optional[str] = None,
@@ -198,7 +198,7 @@ def get_domains(change_end_time: Optional[str] = None,
     :param bool check_domain_show: Specifies whether to display the domains in the checking, check_failed, or configure_failed status. Valid values: `true` or `false`.
     :param str domain_search_type: The search method. Default value: `fuzzy_match`. Valid values: `fuzzy_match`, `pre_match`, `suf_match`, `full_match`.
     :param bool enable_details: Default to `false`. Set it to true can output more details.
-    :param List[str] ids: A list ids of DCDN Domain.
+    :param Sequence[str] ids: A list ids of DCDN Domain.
     :param str name_regex: A regex string to filter results by the DCDN Domain.
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of DCDN Domain.

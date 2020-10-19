@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -54,7 +54,7 @@ class GetPolicyAttachmentsResult:
 
     @property
     @pulumi.getter
-    def attachments(self) -> List['outputs.GetPolicyAttachmentsAttachmentResult']:
+    def attachments(self) -> Sequence['outputs.GetPolicyAttachmentsAttachmentResult']:
         """
         A list of Resource Manager Policy Attachment. Each element contains the following attributes:
         """
@@ -70,7 +70,7 @@ class GetPolicyAttachmentsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of Resource Manager Policy Attachment IDs.
         """

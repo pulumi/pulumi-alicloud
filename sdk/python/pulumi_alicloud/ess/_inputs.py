@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -26,7 +26,7 @@ class ScalingConfigurationDataDiskArgs:
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -126,11 +126,11 @@ class ScalingConfigurationDataDiskArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[float]]:
+    def size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[float]]):
+    def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
 
     @property
@@ -147,7 +147,7 @@ class ScalingConfigurationDataDiskArgs:
 class ScalingGroupVServerGroupsVserverGroupArgs:
     def __init__(__self__, *,
                  loadbalancer_id: pulumi.Input[str],
-                 vserver_attributes: pulumi.Input[List[pulumi.Input['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs']]]):
+                 vserver_attributes: pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs']]]):
         pulumi.set(__self__, "loadbalancer_id", loadbalancer_id)
         pulumi.set(__self__, "vserver_attributes", vserver_attributes)
 
@@ -162,31 +162,31 @@ class ScalingGroupVServerGroupsVserverGroupArgs:
 
     @property
     @pulumi.getter(name="vserverAttributes")
-    def vserver_attributes(self) -> pulumi.Input[List[pulumi.Input['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs']]]:
+    def vserver_attributes(self) -> pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs']]]:
         return pulumi.get(self, "vserver_attributes")
 
     @vserver_attributes.setter
-    def vserver_attributes(self, value: pulumi.Input[List[pulumi.Input['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs']]]):
+    def vserver_attributes(self, value: pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs']]]):
         pulumi.set(self, "vserver_attributes", value)
 
 
 @pulumi.input_type
 class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
     def __init__(__self__, *,
-                 port: pulumi.Input[float],
+                 port: pulumi.Input[int],
                  vserver_group_id: pulumi.Input[str],
-                 weight: pulumi.Input[float]):
+                 weight: pulumi.Input[int]):
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "vserver_group_id", vserver_group_id)
         pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Input[float]:
+    def port(self) -> pulumi.Input[int]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: pulumi.Input[float]):
+    def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
 
     @property
@@ -200,11 +200,11 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
 
     @property
     @pulumi.getter
-    def weight(self) -> pulumi.Input[float]:
+    def weight(self) -> pulumi.Input[int]:
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: pulumi.Input[float]):
+    def weight(self, value: pulumi.Input[int]):
         pulumi.set(self, "weight", value)
 
 
@@ -213,7 +213,7 @@ class ScalingRuleStepAdjustmentArgs:
     def __init__(__self__, *,
                  metric_interval_lower_bound: Optional[pulumi.Input[str]] = None,
                  metric_interval_upper_bound: Optional[pulumi.Input[str]] = None,
-                 scaling_adjustment: Optional[pulumi.Input[float]] = None):
+                 scaling_adjustment: Optional[pulumi.Input[int]] = None):
         if metric_interval_lower_bound is not None:
             pulumi.set(__self__, "metric_interval_lower_bound", metric_interval_lower_bound)
         if metric_interval_upper_bound is not None:
@@ -241,11 +241,11 @@ class ScalingRuleStepAdjustmentArgs:
 
     @property
     @pulumi.getter(name="scalingAdjustment")
-    def scaling_adjustment(self) -> Optional[pulumi.Input[float]]:
+    def scaling_adjustment(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "scaling_adjustment")
 
     @scaling_adjustment.setter
-    def scaling_adjustment(self, value: Optional[pulumi.Input[float]]):
+    def scaling_adjustment(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "scaling_adjustment", value)
 
 

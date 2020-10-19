@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['AccessRule']
@@ -16,7 +16,7 @@ class AccessRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  rw_access_type: Optional[pulumi.Input[str]] = None,
                  source_cidr_ip: Optional[pulumi.Input[str]] = None,
                  user_access_type: Optional[pulumi.Input[str]] = None,
@@ -52,7 +52,7 @@ class AccessRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_group_name: Permission group name.
-        :param pulumi.Input[float] priority: Priority level. Range: 1-100. Default value: 1.
+        :param pulumi.Input[int] priority: Priority level. Range: 1-100. Default value: 1.
         :param pulumi.Input[str] rw_access_type: Read-write permission type: RDWR (default), RDONLY.
         :param pulumi.Input[str] source_cidr_ip: Address or address segment.
         :param pulumi.Input[str] user_access_type: User permission type: no_squash (default), root_squash, all_squash.
@@ -96,7 +96,7 @@ class AccessRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_group_name: Optional[pulumi.Input[str]] = None,
             access_rule_id: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             rw_access_type: Optional[pulumi.Input[str]] = None,
             source_cidr_ip: Optional[pulumi.Input[str]] = None,
             user_access_type: Optional[pulumi.Input[str]] = None) -> 'AccessRule':
@@ -109,7 +109,7 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_group_name: Permission group name.
         :param pulumi.Input[str] access_rule_id: The nas access rule ID.
-        :param pulumi.Input[float] priority: Priority level. Range: 1-100. Default value: 1.
+        :param pulumi.Input[int] priority: Priority level. Range: 1-100. Default value: 1.
         :param pulumi.Input[str] rw_access_type: Read-write permission type: RDWR (default), RDONLY.
         :param pulumi.Input[str] source_cidr_ip: Address or address segment.
         :param pulumi.Input[str] user_access_type: User permission type: no_squash (default), root_squash, all_squash.
@@ -144,7 +144,7 @@ class AccessRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[float]]:
+    def priority(self) -> pulumi.Output[Optional[int]]:
         """
         Priority level. Range: 1-100. Default value: 1.
         """

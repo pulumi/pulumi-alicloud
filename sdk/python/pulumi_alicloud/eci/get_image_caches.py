@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -54,7 +54,7 @@ class GetImageCachesResult:
 
     @property
     @pulumi.getter
-    def caches(self) -> List['outputs.GetImageCachesCachResult']:
+    def caches(self) -> Sequence['outputs.GetImageCachesCachResult']:
         """
         A list of caches. Each element contains the following attributes:
         """
@@ -70,7 +70,7 @@ class GetImageCachesResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list ids of ECI Image Cache.
         """
@@ -96,7 +96,7 @@ class GetImageCachesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of ECI Image Cache names.
         """
@@ -142,7 +142,7 @@ class AwaitableGetImageCachesResult(GetImageCachesResult):
             status=self.status)
 
 
-def get_image_caches(ids: Optional[List[str]] = None,
+def get_image_caches(ids: Optional[Sequence[str]] = None,
                      image: Optional[str] = None,
                      image_cache_name: Optional[str] = None,
                      name_regex: Optional[str] = None,
@@ -156,7 +156,7 @@ def get_image_caches(ids: Optional[List[str]] = None,
     > **NOTE:** Available in 1.90.0+.
 
 
-    :param List[str] ids: A list ids of ECI Image Cache.
+    :param Sequence[str] ids: A list ids of ECI Image Cache.
     :param str image: Find the mirror cache containing it according to the image name.
     :param str image_cache_name: The name of ECI Image Cache.
     :param str name_regex: A regex string to filter results by the image cache name.

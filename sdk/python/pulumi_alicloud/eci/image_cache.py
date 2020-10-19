@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,11 +19,11 @@ class ImageCache(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  image_cache_name: Optional[pulumi.Input[str]] = None,
-                 image_cache_size: Optional[pulumi.Input[float]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]]] = None,
-                 images: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 image_cache_size: Optional[pulumi.Input[int]] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 retention_days: Optional[pulumi.Input[float]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -57,11 +57,11 @@ class ImageCache(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         :param pulumi.Input[str] image_cache_name: The name of the image cache.
-        :param pulumi.Input[float] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]] image_registry_credentials: The Image Registry parameters about the image to be cached.
-        :param pulumi.Input[List[pulumi.Input[str]]] images: The images to be cached. The image name must be versioned.
+        :param pulumi.Input[int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]] image_registry_credentials: The Image Registry parameters about the image to be cached.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: The images to be cached. The image name must be versioned.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[float] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+        :param pulumi.Input[int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
         :param pulumi.Input[str] security_group_id: The ID of the security group. You do not need to specify the same security group as the container group.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
         :param pulumi.Input[str] zone_id: The zone id to cache image.
@@ -116,11 +116,11 @@ class ImageCache(pulumi.CustomResource):
             container_group_id: Optional[pulumi.Input[str]] = None,
             eip_instance_id: Optional[pulumi.Input[str]] = None,
             image_cache_name: Optional[pulumi.Input[str]] = None,
-            image_cache_size: Optional[pulumi.Input[float]] = None,
-            image_registry_credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]]] = None,
-            images: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            image_cache_size: Optional[pulumi.Input[int]] = None,
+            image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]]] = None,
+            images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
-            retention_days: Optional[pulumi.Input[float]] = None,
+            retention_days: Optional[pulumi.Input[int]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -136,11 +136,11 @@ class ImageCache(pulumi.CustomResource):
                * `status` -The status of the image cache.
         :param pulumi.Input[str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         :param pulumi.Input[str] image_cache_name: The name of the image cache.
-        :param pulumi.Input[float] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]] image_registry_credentials: The Image Registry parameters about the image to be cached.
-        :param pulumi.Input[List[pulumi.Input[str]]] images: The images to be cached. The image name must be versioned.
+        :param pulumi.Input[int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]] image_registry_credentials: The Image Registry parameters about the image to be cached.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: The images to be cached. The image name must be versioned.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[float] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+        :param pulumi.Input[int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
         :param pulumi.Input[str] security_group_id: The ID of the security group. You do not need to specify the same security group as the container group.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
         :param pulumi.Input[str] zone_id: The zone id to cache image.
@@ -190,7 +190,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageCacheSize")
-    def image_cache_size(self) -> pulumi.Output[Optional[float]]:
+    def image_cache_size(self) -> pulumi.Output[Optional[int]]:
         """
         The size of the image cache. Default to `20`. Unit: GiB.
         """
@@ -198,7 +198,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageRegistryCredentials")
-    def image_registry_credentials(self) -> pulumi.Output[Optional[List['outputs.ImageCacheImageRegistryCredential']]]:
+    def image_registry_credentials(self) -> pulumi.Output[Optional[Sequence['outputs.ImageCacheImageRegistryCredential']]]:
         """
         The Image Registry parameters about the image to be cached.
         """
@@ -206,7 +206,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def images(self) -> pulumi.Output[List[str]]:
+    def images(self) -> pulumi.Output[Sequence[str]]:
         """
         The images to be cached. The image name must be versioned.
         """
@@ -222,7 +222,7 @@ class ImageCache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> pulumi.Output[Optional[float]]:
+    def retention_days(self) -> pulumi.Output[Optional[int]]:
         """
         The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -58,7 +58,7 @@ class GetAlarmContactsResult:
 
     @property
     @pulumi.getter
-    def contacts(self) -> List['outputs.GetAlarmContactsContactResult']:
+    def contacts(self) -> Sequence['outputs.GetAlarmContactsContactResult']:
         """
         A list of alarm contacts. Each element contains the following attributes:
         """
@@ -74,7 +74,7 @@ class GetAlarmContactsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         """
         A list of alarm contact IDs.
         """
@@ -87,7 +87,7 @@ class GetAlarmContactsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         A list of alarm contact names.
         """
@@ -117,7 +117,7 @@ class AwaitableGetAlarmContactsResult(GetAlarmContactsResult):
 
 def get_alarm_contacts(chanel_type: Optional[str] = None,
                        chanel_value: Optional[str] = None,
-                       ids: Optional[List[str]] = None,
+                       ids: Optional[Sequence[str]] = None,
                        name_regex: Optional[str] = None,
                        output_file: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlarmContactsResult:
@@ -141,7 +141,7 @@ def get_alarm_contacts(chanel_type: Optional[str] = None,
 
     :param str chanel_type: The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.
     :param str chanel_value: The alarm notification target.
-    :param List[str] ids: A list of alarm contact IDs.
+    :param Sequence[str] ids: A list of alarm contact IDs.
     :param str name_regex: A regex string to filter results by alarm contact name.
     """
     __args__ = dict()

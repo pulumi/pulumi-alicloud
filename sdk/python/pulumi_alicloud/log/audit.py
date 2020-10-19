@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Audit']
@@ -17,7 +17,7 @@ class Audit(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aliuid: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 multi_accounts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None,
                  __name__=None,
@@ -72,7 +72,7 @@ class Audit(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aliuid: Aliuid value of your account.
         :param pulumi.Input[str] display_name: Name of SLS log audit.
-        :param pulumi.Input[List[pulumi.Input[str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
         :param pulumi.Input[Mapping[str, Any]] variable_map: Log audit detailed configuration.
         """
         if __name__ is not None:
@@ -112,7 +112,7 @@ class Audit(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aliuid: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            multi_accounts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Audit':
         """
         Get an existing Audit resource's state with the given name, id, and optional extra
@@ -123,7 +123,7 @@ class Audit(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aliuid: Aliuid value of your account.
         :param pulumi.Input[str] display_name: Name of SLS log audit.
-        :param pulumi.Input[List[pulumi.Input[str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
         :param pulumi.Input[Mapping[str, Any]] variable_map: Log audit detailed configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -154,7 +154,7 @@ class Audit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multiAccounts")
-    def multi_accounts(self) -> pulumi.Output[Optional[List[str]]]:
+    def multi_accounts(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Multi-account configuration, please fill in multiple aliuid.
         """

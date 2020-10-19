@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,7 +20,7 @@ class CustomDomain(pulumi.CustomResource):
                  cert_config: Optional[pulumi.Input[pulumi.InputType['CustomDomainCertConfigArgs']]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
-                 route_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]]] = None,
+                 route_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -84,7 +84,7 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CustomDomainCertConfigArgs']] cert_config: The configuration of HTTPS certificate.
         :param pulumi.Input[str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -132,7 +132,7 @@ class CustomDomain(pulumi.CustomResource):
             domain_name: Optional[pulumi.Input[str]] = None,
             last_modified_time: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
-            route_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]]] = None) -> 'CustomDomain':
+            route_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]]] = None) -> 'CustomDomain':
         """
         Get an existing CustomDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -147,7 +147,7 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[str] last_modified_time: The date this resource was last modified.
         :param pulumi.Input[str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -221,7 +221,7 @@ class CustomDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeConfigs")
-    def route_configs(self) -> pulumi.Output[Optional[List['outputs.CustomDomainRouteConfig']]]:
+    def route_configs(self) -> pulumi.Output[Optional[Sequence['outputs.CustomDomainRouteConfig']]]:
         """
         The configuration of domain route, mapping the path and Function Compute function.
         """

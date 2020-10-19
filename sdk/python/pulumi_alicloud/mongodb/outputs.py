@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -24,12 +24,12 @@ class ShardingInstanceMongoList(dict):
                  node_class: str,
                  connect_string: Optional[str] = None,
                  node_id: Optional[str] = None,
-                 port: Optional[float] = None):
+                 port: Optional[int] = None):
         """
         :param str node_class: -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param str connect_string: Mongo node connection string
         :param str node_id: The ID of the shard-node.
-        :param float port: Mongo node port
+        :param int port: Mongo node port
                * `shard_list`
         """
         pulumi.set(__self__, "node_class", node_class)
@@ -66,7 +66,7 @@ class ShardingInstanceMongoList(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         Mongo node port
         * `shard_list`
@@ -81,11 +81,11 @@ class ShardingInstanceMongoList(dict):
 class ShardingInstanceShardList(dict):
     def __init__(__self__, *,
                  node_class: str,
-                 node_storage: float,
+                 node_storage: int,
                  node_id: Optional[str] = None):
         """
         :param str node_class: -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-        :param float node_storage: - Custom storage space; value range: [10, 1,000]
+        :param int node_storage: - Custom storage space; value range: [10, 1,000]
                - 10-GB increments. Unit: GB.
         :param str node_id: The ID of the shard-node.
         """
@@ -104,7 +104,7 @@ class ShardingInstanceShardList(dict):
 
     @property
     @pulumi.getter(name="nodeStorage")
-    def node_storage(self) -> float:
+    def node_storage(self) -> int:
         """
         - Custom storage space; value range: [10, 1,000]
         - 10-GB increments. Unit: GB.
@@ -136,14 +136,14 @@ class GetInstancesInstanceResult(dict):
                  instance_class: str,
                  instance_type: str,
                  lock_mode: str,
-                 mongos: List['outputs.GetInstancesInstanceMongoResult'],
+                 mongos: Sequence['outputs.GetInstancesInstanceMongoResult'],
                  name: str,
                  network_type: str,
                  region_id: str,
                  replication: str,
-                 shards: List['outputs.GetInstancesInstanceShardResult'],
+                 shards: Sequence['outputs.GetInstancesInstanceShardResult'],
                  status: str,
-                 storage: float,
+                 storage: int,
                  tags: Mapping[str, Any]):
         """
         :param str availability_zone: Instance availability zone.
@@ -156,14 +156,14 @@ class GetInstancesInstanceResult(dict):
         :param str instance_class: Sizing of the instance to be queried.
         :param str instance_type: Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
         :param str lock_mode: Lock status of the instance.
-        :param List['GetInstancesInstanceMongoArgs'] mongos: Array composed of Mongos.
+        :param Sequence['GetInstancesInstanceMongoArgs'] mongos: Array composed of Mongos.
         :param str name: The name of the MongoDB instance.
         :param str network_type: Classic network or VPC.
         :param str region_id: Region ID the instance belongs to.
         :param str replication: Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
-        :param List['GetInstancesInstanceShardArgs'] shards: Array composed of shards.
+        :param Sequence['GetInstancesInstanceShardArgs'] shards: Array composed of shards.
         :param str status: Status of the instance.
-        :param float storage: Shard disk.
+        :param int storage: Shard disk.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -268,7 +268,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def mongos(self) -> List['outputs.GetInstancesInstanceMongoResult']:
+    def mongos(self) -> Sequence['outputs.GetInstancesInstanceMongoResult']:
         """
         Array composed of Mongos.
         """
@@ -308,7 +308,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def shards(self) -> List['outputs.GetInstancesInstanceShardResult']:
+    def shards(self) -> Sequence['outputs.GetInstancesInstanceShardResult']:
         """
         Array composed of shards.
         """
@@ -324,7 +324,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def storage(self) -> float:
+    def storage(self) -> int:
         """
         Shard disk.
         """
@@ -385,12 +385,12 @@ class GetInstancesInstanceShardResult(dict):
                  class_: str,
                  description: str,
                  node_id: str,
-                 storage: float):
+                 storage: int):
         """
         :param str class_: Shard instance specification.
         :param str description: Shard instance description.
         :param str node_id: Shard instance ID.
-        :param float storage: Shard disk.
+        :param int storage: Shard disk.
         """
         pulumi.set(__self__, "class_", class_)
         pulumi.set(__self__, "description", description)
@@ -423,7 +423,7 @@ class GetInstancesInstanceShardResult(dict):
 
     @property
     @pulumi.getter
-    def storage(self) -> float:
+    def storage(self) -> int:
         """
         Shard disk.
         """
@@ -434,10 +434,10 @@ class GetInstancesInstanceShardResult(dict):
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 multi_zone_ids: List[str]):
+                 multi_zone_ids: Sequence[str]):
         """
         :param str id: ID of the zone.
-        :param List[str] multi_zone_ids: A list of zone ids in which the multi zone.
+        :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
@@ -452,7 +452,7 @@ class GetZonesZoneResult(dict):
 
     @property
     @pulumi.getter(name="multiZoneIds")
-    def multi_zone_ids(self) -> List[str]:
+    def multi_zone_ids(self) -> Sequence[str]:
         """
         A list of zone ids in which the multi zone.
         """

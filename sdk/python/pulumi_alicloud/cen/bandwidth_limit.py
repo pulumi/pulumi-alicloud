@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['BandwidthLimit']
@@ -15,9 +15,9 @@ class BandwidthLimit(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_limit: Optional[pulumi.Input[float]] = None,
+                 bandwidth_limit: Optional[pulumi.Input[int]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 region_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -83,9 +83,9 @@ class BandwidthLimit(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
+        :param pulumi.Input[int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
-        :param pulumi.Input[List[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -123,9 +123,9 @@ class BandwidthLimit(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth_limit: Optional[pulumi.Input[float]] = None,
+            bandwidth_limit: Optional[pulumi.Input[int]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
-            region_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'BandwidthLimit':
+            region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'BandwidthLimit':
         """
         Get an existing BandwidthLimit resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -133,9 +133,9 @@ class BandwidthLimit(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
+        :param pulumi.Input[int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
-        :param pulumi.Input[List[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -148,7 +148,7 @@ class BandwidthLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandwidthLimit")
-    def bandwidth_limit(self) -> pulumi.Output[float]:
+    def bandwidth_limit(self) -> pulumi.Output[int]:
         """
         The bandwidth configured for the interconnected regions communication.
         """
@@ -164,7 +164,7 @@ class BandwidthLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="regionIds")
-    def region_ids(self) -> pulumi.Output[List[str]]:
+    def region_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         List of the two regions to interconnect. Must be two different regions.
         """

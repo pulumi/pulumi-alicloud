@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -38,17 +38,17 @@ __all__ = [
 @pulumi.output_type
 class BucketCorsRule(dict):
     def __init__(__self__, *,
-                 allowed_methods: List[str],
-                 allowed_origins: List[str],
-                 allowed_headers: Optional[List[str]] = None,
-                 expose_headers: Optional[List[str]] = None,
-                 max_age_seconds: Optional[float] = None):
+                 allowed_methods: Sequence[str],
+                 allowed_origins: Sequence[str],
+                 allowed_headers: Optional[Sequence[str]] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age_seconds: Optional[int] = None):
         """
-        :param List[str] allowed_methods: Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
-        :param List[str] allowed_origins: Specifies which origins are allowed.
-        :param List[str] allowed_headers: Specifies which headers are allowed.
-        :param List[str] expose_headers: Specifies expose header in the response.
-        :param float max_age_seconds: Specifies time in seconds that browser can cache the response for a preflight request.
+        :param Sequence[str] allowed_methods: Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
+        :param Sequence[str] allowed_origins: Specifies which origins are allowed.
+        :param Sequence[str] allowed_headers: Specifies which headers are allowed.
+        :param Sequence[str] expose_headers: Specifies expose header in the response.
+        :param int max_age_seconds: Specifies time in seconds that browser can cache the response for a preflight request.
         """
         pulumi.set(__self__, "allowed_methods", allowed_methods)
         pulumi.set(__self__, "allowed_origins", allowed_origins)
@@ -61,7 +61,7 @@ class BucketCorsRule(dict):
 
     @property
     @pulumi.getter(name="allowedMethods")
-    def allowed_methods(self) -> List[str]:
+    def allowed_methods(self) -> Sequence[str]:
         """
         Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
         """
@@ -69,7 +69,7 @@ class BucketCorsRule(dict):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> List[str]:
+    def allowed_origins(self) -> Sequence[str]:
         """
         Specifies which origins are allowed.
         """
@@ -77,7 +77,7 @@ class BucketCorsRule(dict):
 
     @property
     @pulumi.getter(name="allowedHeaders")
-    def allowed_headers(self) -> Optional[List[str]]:
+    def allowed_headers(self) -> Optional[Sequence[str]]:
         """
         Specifies which headers are allowed.
         """
@@ -85,7 +85,7 @@ class BucketCorsRule(dict):
 
     @property
     @pulumi.getter(name="exposeHeaders")
-    def expose_headers(self) -> Optional[List[str]]:
+    def expose_headers(self) -> Optional[Sequence[str]]:
         """
         Specifies expose header in the response.
         """
@@ -93,7 +93,7 @@ class BucketCorsRule(dict):
 
     @property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> Optional[float]:
+    def max_age_seconds(self) -> Optional[int]:
         """
         Specifies time in seconds that browser can cache the response for a preflight request.
         """
@@ -107,16 +107,16 @@ class BucketCorsRule(dict):
 class BucketLifecycleRule(dict):
     def __init__(__self__, *,
                  enabled: bool,
-                 expirations: Optional[List['outputs.BucketLifecycleRuleExpiration']] = None,
+                 expirations: Optional[Sequence['outputs.BucketLifecycleRuleExpiration']] = None,
                  id: Optional[str] = None,
                  prefix: Optional[str] = None,
-                 transitions: Optional[List['outputs.BucketLifecycleRuleTransition']] = None):
+                 transitions: Optional[Sequence['outputs.BucketLifecycleRuleTransition']] = None):
         """
         :param bool enabled: Specifies lifecycle rule status.
-        :param List['BucketLifecycleRuleExpirationArgs'] expirations: Specifies a period in the object's expire (documented below).
+        :param Sequence['BucketLifecycleRuleExpirationArgs'] expirations: Specifies a period in the object's expire (documented below).
         :param str id: Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
         :param str prefix: Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
-        :param List['BucketLifecycleRuleTransitionArgs'] transitions: Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+        :param Sequence['BucketLifecycleRuleTransitionArgs'] transitions: Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
         """
         pulumi.set(__self__, "enabled", enabled)
         if expirations is not None:
@@ -138,7 +138,7 @@ class BucketLifecycleRule(dict):
 
     @property
     @pulumi.getter
-    def expirations(self) -> Optional[List['outputs.BucketLifecycleRuleExpiration']]:
+    def expirations(self) -> Optional[Sequence['outputs.BucketLifecycleRuleExpiration']]:
         """
         Specifies a period in the object's expire (documented below).
         """
@@ -162,7 +162,7 @@ class BucketLifecycleRule(dict):
 
     @property
     @pulumi.getter
-    def transitions(self) -> Optional[List['outputs.BucketLifecycleRuleTransition']]:
+    def transitions(self) -> Optional[Sequence['outputs.BucketLifecycleRuleTransition']]:
         """
         Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
         """
@@ -176,10 +176,10 @@ class BucketLifecycleRule(dict):
 class BucketLifecycleRuleExpiration(dict):
     def __init__(__self__, *,
                  date: Optional[str] = None,
-                 days: Optional[float] = None):
+                 days: Optional[int] = None):
         """
         :param str date: Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-        :param float days: Specifies the number of days after object creation when the specific rule action takes effect.
+        :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
         """
         if date is not None:
             pulumi.set(__self__, "date", date)
@@ -196,7 +196,7 @@ class BucketLifecycleRuleExpiration(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         Specifies the number of days after object creation when the specific rule action takes effect.
         """
@@ -210,11 +210,11 @@ class BucketLifecycleRuleExpiration(dict):
 class BucketLifecycleRuleTransition(dict):
     def __init__(__self__, *,
                  created_before_date: Optional[str] = None,
-                 days: Optional[float] = None,
+                 days: Optional[int] = None,
                  storage_class: Optional[str] = None):
         """
         :param str created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
-        :param float days: Specifies the number of days after object creation when the specific rule action takes effect.
+        :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
         :param str storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
         """
         if created_before_date is not None:
@@ -234,7 +234,7 @@ class BucketLifecycleRuleTransition(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         Specifies the number of days after object creation when the specific rule action takes effect.
         """
@@ -288,10 +288,10 @@ class BucketLogging(dict):
 @pulumi.output_type
 class BucketRefererConfig(dict):
     def __init__(__self__, *,
-                 referers: List[str],
+                 referers: Sequence[str],
                  allow_empty: Optional[bool] = None):
         """
-        :param List[str] referers: The list of referer.
+        :param Sequence[str] referers: The list of referer.
         :param bool allow_empty: Allows referer to be empty. Defaults false.
         """
         pulumi.set(__self__, "referers", referers)
@@ -300,7 +300,7 @@ class BucketRefererConfig(dict):
 
     @property
     @pulumi.getter
-    def referers(self) -> List[str]:
+    def referers(self) -> Sequence[str]:
         """
         The list of referer.
         """
@@ -570,11 +570,11 @@ class GetBucketObjectsObjectResult(dict):
 class GetBucketsBucketResult(dict):
     def __init__(__self__, *,
                  acl: str,
-                 cors_rules: List['outputs.GetBucketsBucketCorsRuleResult'],
+                 cors_rules: Sequence['outputs.GetBucketsBucketCorsRuleResult'],
                  creation_date: str,
                  extranet_endpoint: str,
                  intranet_endpoint: str,
-                 lifecycle_rules: List['outputs.GetBucketsBucketLifecycleRuleResult'],
+                 lifecycle_rules: Sequence['outputs.GetBucketsBucketLifecycleRuleResult'],
                  location: str,
                  logging: 'outputs.GetBucketsBucketLoggingResult',
                  name: str,
@@ -589,11 +589,11 @@ class GetBucketsBucketResult(dict):
                  policy: Optional[str] = None):
         """
         :param str acl: Bucket access control list. Possible values: `private`, `public-read` and `public-read-write`.
-        :param List['GetBucketsBucketCorsRuleArgs'] cors_rules: A list of CORS rule configurations. Each element contains the following attributes:
+        :param Sequence['GetBucketsBucketCorsRuleArgs'] cors_rules: A list of CORS rule configurations. Each element contains the following attributes:
         :param str creation_date: Bucket creation date.
         :param str extranet_endpoint: Internet domain name for accessing the bucket from outside.
         :param str intranet_endpoint: Intranet domain name for accessing the bucket from an ECS instance in the same region.
-        :param List['GetBucketsBucketLifecycleRuleArgs'] lifecycle_rules: A list CORS of lifecycle configurations. When Lifecycle is enabled, OSS automatically deletes the objects or transitions the objects (to another storage class) corresponding the lifecycle rules on a regular basis. Each element contains the following attributes:
+        :param Sequence['GetBucketsBucketLifecycleRuleArgs'] lifecycle_rules: A list CORS of lifecycle configurations. When Lifecycle is enabled, OSS automatically deletes the objects or transitions the objects (to another storage class) corresponding the lifecycle rules on a regular basis. Each element contains the following attributes:
         :param str location: Region of the data center where the bucket is located.
         :param 'GetBucketsBucketLoggingArgs' logging: A list of one element containing configuration parameters used for storing access log information. It contains the following attributes:
         :param str name: Bucket name.
@@ -636,7 +636,7 @@ class GetBucketsBucketResult(dict):
 
     @property
     @pulumi.getter(name="corsRules")
-    def cors_rules(self) -> List['outputs.GetBucketsBucketCorsRuleResult']:
+    def cors_rules(self) -> Sequence['outputs.GetBucketsBucketCorsRuleResult']:
         """
         A list of CORS rule configurations. Each element contains the following attributes:
         """
@@ -668,7 +668,7 @@ class GetBucketsBucketResult(dict):
 
     @property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> List['outputs.GetBucketsBucketLifecycleRuleResult']:
+    def lifecycle_rules(self) -> Sequence['outputs.GetBucketsBucketLifecycleRuleResult']:
         """
         A list CORS of lifecycle configurations. When Lifecycle is enabled, OSS automatically deletes the objects or transitions the objects (to another storage class) corresponding the lifecycle rules on a regular basis. Each element contains the following attributes:
         """
@@ -771,17 +771,17 @@ class GetBucketsBucketResult(dict):
 @pulumi.output_type
 class GetBucketsBucketCorsRuleResult(dict):
     def __init__(__self__, *,
-                 allowed_headers: List[str],
-                 allowed_methods: List[str],
-                 allowed_origins: List[str],
-                 expose_headers: List[str],
-                 max_age_seconds: float):
+                 allowed_headers: Sequence[str],
+                 allowed_methods: Sequence[str],
+                 allowed_origins: Sequence[str],
+                 expose_headers: Sequence[str],
+                 max_age_seconds: int):
         """
-        :param List[str] allowed_headers: Control whether the headers specified by Access-Control-Request-Headers in the OPTIONS prefetch command are allowed. Each header specified by Access-Control-Request-Headers must match a value in AllowedHeader. Each rule allows up to one wildcard “*” .
-        :param List[str] allowed_methods: Specify the allowed methods for cross-domain requests. Possible values: `GET`, `PUT`, `DELETE`, `POST` and `HEAD`.
-        :param List[str] allowed_origins: The origins allowed for cross-domain requests. Multiple elements can be used to specify multiple allowed origins. Each rule allows up to one wildcard "\*". If "\*" is specified, cross-domain requests of all origins are allowed.
-        :param List[str] expose_headers: Specify the response headers allowing users to access from an application (for example, a Javascript XMLHttpRequest object). The wildcard "\*" is not allowed.
-        :param float max_age_seconds: Specify the cache time for the returned result of a browser prefetch (OPTIONS) request to a specific resource.
+        :param Sequence[str] allowed_headers: Control whether the headers specified by Access-Control-Request-Headers in the OPTIONS prefetch command are allowed. Each header specified by Access-Control-Request-Headers must match a value in AllowedHeader. Each rule allows up to one wildcard “*” .
+        :param Sequence[str] allowed_methods: Specify the allowed methods for cross-domain requests. Possible values: `GET`, `PUT`, `DELETE`, `POST` and `HEAD`.
+        :param Sequence[str] allowed_origins: The origins allowed for cross-domain requests. Multiple elements can be used to specify multiple allowed origins. Each rule allows up to one wildcard "\*". If "\*" is specified, cross-domain requests of all origins are allowed.
+        :param Sequence[str] expose_headers: Specify the response headers allowing users to access from an application (for example, a Javascript XMLHttpRequest object). The wildcard "\*" is not allowed.
+        :param int max_age_seconds: Specify the cache time for the returned result of a browser prefetch (OPTIONS) request to a specific resource.
         """
         pulumi.set(__self__, "allowed_headers", allowed_headers)
         pulumi.set(__self__, "allowed_methods", allowed_methods)
@@ -791,7 +791,7 @@ class GetBucketsBucketCorsRuleResult(dict):
 
     @property
     @pulumi.getter(name="allowedHeaders")
-    def allowed_headers(self) -> List[str]:
+    def allowed_headers(self) -> Sequence[str]:
         """
         Control whether the headers specified by Access-Control-Request-Headers in the OPTIONS prefetch command are allowed. Each header specified by Access-Control-Request-Headers must match a value in AllowedHeader. Each rule allows up to one wildcard “*” .
         """
@@ -799,7 +799,7 @@ class GetBucketsBucketCorsRuleResult(dict):
 
     @property
     @pulumi.getter(name="allowedMethods")
-    def allowed_methods(self) -> List[str]:
+    def allowed_methods(self) -> Sequence[str]:
         """
         Specify the allowed methods for cross-domain requests. Possible values: `GET`, `PUT`, `DELETE`, `POST` and `HEAD`.
         """
@@ -807,7 +807,7 @@ class GetBucketsBucketCorsRuleResult(dict):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> List[str]:
+    def allowed_origins(self) -> Sequence[str]:
         """
         The origins allowed for cross-domain requests. Multiple elements can be used to specify multiple allowed origins. Each rule allows up to one wildcard "\*". If "\*" is specified, cross-domain requests of all origins are allowed.
         """
@@ -815,7 +815,7 @@ class GetBucketsBucketCorsRuleResult(dict):
 
     @property
     @pulumi.getter(name="exposeHeaders")
-    def expose_headers(self) -> List[str]:
+    def expose_headers(self) -> Sequence[str]:
         """
         Specify the response headers allowing users to access from an application (for example, a Javascript XMLHttpRequest object). The wildcard "\*" is not allowed.
         """
@@ -823,7 +823,7 @@ class GetBucketsBucketCorsRuleResult(dict):
 
     @property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> float:
+    def max_age_seconds(self) -> int:
         """
         Specify the cache time for the returned result of a browser prefetch (OPTIONS) request to a specific resource.
         """
@@ -885,10 +885,10 @@ class GetBucketsBucketLifecycleRuleResult(dict):
 class GetBucketsBucketLifecycleRuleExpirationResult(dict):
     def __init__(__self__, *,
                  date: Optional[str] = None,
-                 days: Optional[float] = None):
+                 days: Optional[int] = None):
         """
         :param str date: Date after which the rule to take effect. The format is like 2017-03-09.
-        :param float days: Indicate the number of days after the last object update until the rules take effect.
+        :param int days: Indicate the number of days after the last object update until the rules take effect.
         """
         if date is not None:
             pulumi.set(__self__, "date", date)
@@ -905,7 +905,7 @@ class GetBucketsBucketLifecycleRuleExpirationResult(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         Indicate the number of days after the last object update until the rules take effect.
         """
@@ -945,10 +945,10 @@ class GetBucketsBucketLoggingResult(dict):
 class GetBucketsBucketRefererConfigResult(dict):
     def __init__(__self__, *,
                  allow_empty: bool,
-                 referers: List[str]):
+                 referers: Sequence[str]):
         """
         :param bool allow_empty: Indicate whether the access request referer field can be empty.
-        :param List[str] referers: Referer access whitelist.
+        :param Sequence[str] referers: Referer access whitelist.
         """
         pulumi.set(__self__, "allow_empty", allow_empty)
         pulumi.set(__self__, "referers", referers)
@@ -963,7 +963,7 @@ class GetBucketsBucketRefererConfigResult(dict):
 
     @property
     @pulumi.getter
-    def referers(self) -> List[str]:
+    def referers(self) -> Sequence[str]:
         """
         Referer access whitelist.
         """
@@ -1136,24 +1136,24 @@ class GetInstancesInstanceResult(dict):
                  cluster_type: str,
                  create_time: str,
                  description: str,
-                 entity_quota: float,
+                 entity_quota: int,
                  id: str,
                  name: str,
                  network: str,
-                 read_capacity: float,
+                 read_capacity: int,
                  status: str,
                  tags: Mapping[str, Any],
                  user_id: str,
-                 write_capacity: float):
+                 write_capacity: int):
         """
         :param str cluster_type: The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
         :param str create_time: The create time of the instance.
         :param str description: The description of the instance.
-        :param float entity_quota: The instance quota which indicating the maximum number of tables.
+        :param int entity_quota: The instance quota which indicating the maximum number of tables.
         :param str id: ID of the instance.
         :param str name: Instance name.
         :param str network: The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-        :param float read_capacity: The maximum adjustable read capacity unit of the instance.
+        :param int read_capacity: The maximum adjustable read capacity unit of the instance.
         :param str status: Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
         :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
                ```python
@@ -1166,7 +1166,7 @@ class GetInstancesInstanceResult(dict):
                })
                ```
         :param str user_id: The user id of the instance.
-        :param float write_capacity: The maximum adjustable write capacity unit of the instance.
+        :param int write_capacity: The maximum adjustable write capacity unit of the instance.
         """
         pulumi.set(__self__, "cluster_type", cluster_type)
         pulumi.set(__self__, "create_time", create_time)
@@ -1207,7 +1207,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="entityQuota")
-    def entity_quota(self) -> float:
+    def entity_quota(self) -> int:
         """
         The instance quota which indicating the maximum number of tables.
         """
@@ -1239,7 +1239,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="readCapacity")
-    def read_capacity(self) -> float:
+    def read_capacity(self) -> int:
         """
         The maximum adjustable read capacity unit of the instance.
         """
@@ -1280,7 +1280,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="writeCapacity")
-    def write_capacity(self) -> float:
+    def write_capacity(self) -> int:
         """
         The maximum adjustable write capacity unit of the instance.
         """
@@ -1292,17 +1292,17 @@ class GetTablesTableResult(dict):
     def __init__(__self__, *,
                  id: str,
                  instance_name: str,
-                 max_version: float,
-                 primary_keys: List['outputs.GetTablesTablePrimaryKeyResult'],
+                 max_version: int,
+                 primary_keys: Sequence['outputs.GetTablesTablePrimaryKeyResult'],
                  table_name: str,
-                 time_to_live: float):
+                 time_to_live: int):
         """
         :param str id: ID of the table. The value is `<instance_name>:<table_name>`.
         :param str instance_name: The name of OTS instance.
-        :param float max_version: The maximum number of versions stored in this table.
-        :param List['GetTablesTablePrimaryKeyArgs'] primary_keys: The property of `TableMeta` which indicates the structure information of a table.
+        :param int max_version: The maximum number of versions stored in this table.
+        :param Sequence['GetTablesTablePrimaryKeyArgs'] primary_keys: The property of `TableMeta` which indicates the structure information of a table.
         :param str table_name: The table name of the OTS which could not be changed.
-        :param float time_to_live: The retention time of data stored in this table.
+        :param int time_to_live: The retention time of data stored in this table.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_name", instance_name)
@@ -1329,7 +1329,7 @@ class GetTablesTableResult(dict):
 
     @property
     @pulumi.getter(name="maxVersion")
-    def max_version(self) -> float:
+    def max_version(self) -> int:
         """
         The maximum number of versions stored in this table.
         """
@@ -1337,7 +1337,7 @@ class GetTablesTableResult(dict):
 
     @property
     @pulumi.getter(name="primaryKeys")
-    def primary_keys(self) -> List['outputs.GetTablesTablePrimaryKeyResult']:
+    def primary_keys(self) -> Sequence['outputs.GetTablesTablePrimaryKeyResult']:
         """
         The property of `TableMeta` which indicates the structure information of a table.
         """
@@ -1353,7 +1353,7 @@ class GetTablesTableResult(dict):
 
     @property
     @pulumi.getter(name="timeToLive")
-    def time_to_live(self) -> float:
+    def time_to_live(self) -> int:
         """
         The retention time of data stored in this table.
         """

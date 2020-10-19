@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -333,7 +333,7 @@ class GetHandshakesHandshakeResult(dict):
 @pulumi.output_type
 class GetPoliciesPolicyResult(dict):
     def __init__(__self__, *,
-                 attachment_count: float,
+                 attachment_count: int,
                  create_date: str,
                  default_version: str,
                  description: str,
@@ -342,7 +342,7 @@ class GetPoliciesPolicyResult(dict):
                  policy_type: str,
                  update_date: str):
         """
-        :param float attachment_count: The number of times the policy is referenced.
+        :param int attachment_count: The number of times the policy is referenced.
         :param str create_date: The time when the policy was created.
         :param str default_version: The default version of the policy.
         :param str description: The description of the policy.
@@ -363,7 +363,7 @@ class GetPoliciesPolicyResult(dict):
 
     @property
     @pulumi.getter(name="attachmentCount")
-    def attachment_count(self) -> float:
+    def attachment_count(self) -> int:
         """
         The number of times the policy is referenced.
         """
@@ -711,7 +711,7 @@ class GetRolesRoleResult(dict):
                  create_date: str,
                  description: str,
                  id: str,
-                 max_session_duration: float,
+                 max_session_duration: int,
                  role_id: str,
                  role_name: str,
                  update_date: str):
@@ -766,7 +766,7 @@ class GetRolesRoleResult(dict):
 
     @property
     @pulumi.getter(name="maxSessionDuration")
-    def max_session_duration(self) -> float:
+    def max_session_duration(self) -> int:
         return pulumi.get(self, "max_session_duration")
 
     @property

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class ImageImport(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  architecture: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_device_mappings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageImportDiskDeviceMappingArgs']]]]] = None,
+                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageImportDiskDeviceMappingArgs']]]]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  license_type: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
@@ -65,7 +65,7 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] architecture: Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
         :param pulumi.Input[str] description: Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageImportDiskDeviceMappingArgs']]]] disk_device_mappings: Description of the system with disks and snapshots under the image.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageImportDiskDeviceMappingArgs']]]] disk_device_mappings: Description of the system with disks and snapshots under the image.
         :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         :param pulumi.Input[str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
         :param pulumi.Input[str] os_type: Operating system platform type. Valid values: `windows`, Default is `linux`.
@@ -109,7 +109,7 @@ class ImageImport(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             architecture: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            disk_device_mappings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageImportDiskDeviceMappingArgs']]]]] = None,
+            disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageImportDiskDeviceMappingArgs']]]]] = None,
             image_name: Optional[pulumi.Input[str]] = None,
             license_type: Optional[pulumi.Input[str]] = None,
             os_type: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] architecture: Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
         :param pulumi.Input[str] description: Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageImportDiskDeviceMappingArgs']]]] disk_device_mappings: Description of the system with disks and snapshots under the image.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageImportDiskDeviceMappingArgs']]]] disk_device_mappings: Description of the system with disks and snapshots under the image.
         :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         :param pulumi.Input[str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
         :param pulumi.Input[str] os_type: Operating system platform type. Valid values: `windows`, Default is `linux`.
@@ -160,7 +160,7 @@ class ImageImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskDeviceMappings")
-    def disk_device_mappings(self) -> pulumi.Output[List['outputs.ImageImportDiskDeviceMapping']]:
+    def disk_device_mappings(self) -> pulumi.Output[Sequence['outputs.ImageImportDiskDeviceMapping']]:
         """
         Description of the system with disks and snapshots under the image.
         """

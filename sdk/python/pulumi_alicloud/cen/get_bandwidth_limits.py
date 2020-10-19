@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -44,12 +44,12 @@ class GetBandwidthLimitsResult:
 
     @property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Optional[List[str]]:
+    def instance_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "instance_ids")
 
     @property
     @pulumi.getter
-    def limits(self) -> List['outputs.GetBandwidthLimitsLimitResult']:
+    def limits(self) -> Sequence['outputs.GetBandwidthLimitsLimitResult']:
         """
         A list of CEN Bandwidth Limits. Each element contains the following attributes:
         """
@@ -73,7 +73,7 @@ class AwaitableGetBandwidthLimitsResult(GetBandwidthLimitsResult):
             output_file=self.output_file)
 
 
-def get_bandwidth_limits(instance_ids: Optional[List[str]] = None,
+def get_bandwidth_limits(instance_ids: Optional[Sequence[str]] = None,
                          output_file: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBandwidthLimitsResult:
     """
@@ -90,7 +90,7 @@ def get_bandwidth_limits(instance_ids: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] instance_ids: A list of CEN instances IDs.
+    :param Sequence[str] instance_ids: A list of CEN instances IDs.
     """
     __args__ = dict()
     __args__['instanceIds'] = instance_ids

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -23,7 +23,7 @@ class GetBastionHostInstancesInstanceResult(dict):
                  private_domain: str,
                  public_domain: str,
                  public_network_access: bool,
-                 security_group_ids: List[str],
+                 security_group_ids: Sequence[str],
                  user_vswitch_id: str,
                  tags: Optional[Mapping[str, Any]] = None):
         """
@@ -33,7 +33,7 @@ class GetBastionHostInstancesInstanceResult(dict):
         :param str private_domain: The instance's private domain name.
         :param str public_domain: The instance's public domain name.
         :param bool public_network_access: The instance's public network access configuration.
-        :param List[str] security_group_ids: The instance's security group configuration.
+        :param Sequence[str] security_group_ids: The instance's security group configuration.
         :param str user_vswitch_id: The instance's vSwitch ID.
         :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
                ```python
@@ -112,7 +112,7 @@ class GetBastionHostInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> List[str]:
+    def security_group_ids(self) -> Sequence[str]:
         """
         The instance's security group configuration.
         """

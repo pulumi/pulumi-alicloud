@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -26,13 +26,13 @@ __all__ = [
 @pulumi.output_type
 class GetBandwidthLimitsLimitResult(dict):
     def __init__(__self__, *,
-                 bandwidth_limit: float,
+                 bandwidth_limit: int,
                  instance_id: str,
                  local_region_id: str,
                  opposite_region_id: str,
                  status: str):
         """
-        :param float bandwidth_limit: The bandwidth limit configured for the interconnected regions communication.
+        :param int bandwidth_limit: The bandwidth limit configured for the interconnected regions communication.
         :param str instance_id: ID of the CEN instance.
         :param str local_region_id: ID of local region.
         :param str opposite_region_id: ID of opposite region.
@@ -46,7 +46,7 @@ class GetBandwidthLimitsLimitResult(dict):
 
     @property
     @pulumi.getter(name="bandwidthLimit")
-    def bandwidth_limit(self) -> float:
+    def bandwidth_limit(self) -> int:
         """
         The bandwidth limit configured for the interconnected regions communication.
         """
@@ -88,12 +88,12 @@ class GetBandwidthLimitsLimitResult(dict):
 @pulumi.output_type
 class GetBandwidthPackagesPackageResult(dict):
     def __init__(__self__, *,
-                 bandwidth: float,
+                 bandwidth: int,
                  bandwidth_package_charge_type: str,
                  business_status: str,
                  cen_bandwidth_package_id: str,
                  cen_bandwidth_package_name: str,
-                 cen_ids: List[str],
+                 cen_ids: Sequence[str],
                  description: str,
                  expired_time: str,
                  geographic_region_a_id: str,
@@ -111,12 +111,12 @@ class GetBandwidthPackagesPackageResult(dict):
                  reservation_order_type: str,
                  status: str):
         """
-        :param float bandwidth: The bandwidth in Mbps of the CEN bandwidth package.
+        :param int bandwidth: The bandwidth in Mbps of the CEN bandwidth package.
         :param str bandwidth_package_charge_type: The billing method, including `POSTPAY` and `PREPAY`.
         :param str business_status: Status of the CEN Bandwidth Package, including `Normal`, `FinancialLocked` and `SecurityLocked`.
         :param str cen_bandwidth_package_id: The ID of the bandwidth package.
         :param str cen_bandwidth_package_name: The name of the bandwidth package.
-        :param List[str] cen_ids: The list of CEN instances that are associated with the bandwidth package.
+        :param Sequence[str] cen_ids: The list of CEN instances that are associated with the bandwidth package.
         :param str description: Description of the CEN Bandwidth Package.
         :param str geographic_region_a_id: Region ID of the interconnected regions.
         :param str geographic_region_b_id: Region ID of the interconnected regions.
@@ -158,7 +158,7 @@ class GetBandwidthPackagesPackageResult(dict):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> float:
+    def bandwidth(self) -> int:
         """
         The bandwidth in Mbps of the CEN bandwidth package.
         """
@@ -198,7 +198,7 @@ class GetBandwidthPackagesPackageResult(dict):
 
     @property
     @pulumi.getter(name="cenIds")
-    def cen_ids(self) -> List[str]:
+    def cen_ids(self) -> Sequence[str]:
         """
         The list of CEN instances that are associated with the bandwidth package.
         """
@@ -430,7 +430,7 @@ class GetInstanceAttachmentsAttachmentResult(dict):
     def __init__(__self__, *,
                  child_instance_attach_time: str,
                  child_instance_id: str,
-                 child_instance_owner_id: float,
+                 child_instance_owner_id: int,
                  child_instance_region_id: str,
                  child_instance_type: str,
                  id: str,
@@ -439,7 +439,7 @@ class GetInstanceAttachmentsAttachmentResult(dict):
         """
         :param str child_instance_attach_time: The time when the network is associated with the CEN instance.
         :param str child_instance_id: The ID of the network.
-        :param float child_instance_owner_id: The ID of the account to which the network belongs.
+        :param int child_instance_owner_id: The ID of the account to which the network belongs.
         :param str child_instance_region_id: The region to which the network to be queried belongs.
         :param str child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
         :param str id: The ID of the CEN Instance Attachment.
@@ -473,7 +473,7 @@ class GetInstanceAttachmentsAttachmentResult(dict):
 
     @property
     @pulumi.getter(name="childInstanceOwnerId")
-    def child_instance_owner_id(self) -> float:
+    def child_instance_owner_id(self) -> int:
         """
         The ID of the account to which the network belongs.
         """
@@ -523,7 +523,7 @@ class GetInstanceAttachmentsAttachmentResult(dict):
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
-                 cen_bandwidth_package_ids: List[str],
+                 cen_bandwidth_package_ids: Sequence[str],
                  cen_id: str,
                  cen_instance_name: str,
                  description: str,
@@ -533,7 +533,7 @@ class GetInstancesInstanceResult(dict):
                  status: str,
                  tags: Mapping[str, Any]):
         """
-        :param List[str] cen_bandwidth_package_ids: List of CEN Bandwidth Package IDs in the specified CEN instance.
+        :param Sequence[str] cen_bandwidth_package_ids: List of CEN Bandwidth Package IDs in the specified CEN instance.
         :param str cen_id: ID of the CEN instance.
         :param str cen_instance_name: Name of the CEN instance.
         :param str description: Description of the CEN instance.
@@ -555,7 +555,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter(name="cenBandwidthPackageIds")
-    def cen_bandwidth_package_ids(self) -> List[str]:
+    def cen_bandwidth_package_ids(self) -> Sequence[str]:
         """
         List of CEN Bandwidth Package IDs in the specified CEN instance.
         """
@@ -765,7 +765,7 @@ class GetRegionRouteEntriesEntryResult(dict):
 class GetRouteEntriesEntryResult(dict):
     def __init__(__self__, *,
                  cidr_block: str,
-                 conflicts: List['outputs.GetRouteEntriesEntryConflictResult'],
+                 conflicts: Sequence['outputs.GetRouteEntriesEntryConflictResult'],
                  next_hop_id: str,
                  next_hop_type: str,
                  operational_mode: bool,
@@ -774,7 +774,7 @@ class GetRouteEntriesEntryResult(dict):
                  route_type: str):
         """
         :param str cidr_block: The destination CIDR block of the route entry to query.
-        :param List['GetRouteEntriesEntryConflictArgs'] conflicts: A list of conflicted Route Entries. Each element contains the following attributes:
+        :param Sequence['GetRouteEntriesEntryConflictArgs'] conflicts: A list of conflicted Route Entries. Each element contains the following attributes:
         :param str next_hop_id: ID of the next hop.
         :param str next_hop_type: Type of the next hop, including "Instance", "HaVip" and "RouterInterface".
         :param bool operational_mode: Whether to allow the route entry to be published or removed to or from CEN.
@@ -801,7 +801,7 @@ class GetRouteEntriesEntryResult(dict):
 
     @property
     @pulumi.getter
-    def conflicts(self) -> List['outputs.GetRouteEntriesEntryConflictResult']:
+    def conflicts(self) -> Sequence['outputs.GetRouteEntriesEntryConflictResult']:
         """
         A list of conflicted Route Entries. Each element contains the following attributes:
         """
@@ -928,27 +928,27 @@ class GetRouteMapsMapResult(dict):
                  community_match_mode: str,
                  community_operate_mode: str,
                  description: str,
-                 destination_child_instance_types: List[str],
-                 destination_cidr_blocks: List[str],
-                 destination_instance_ids: List[str],
+                 destination_child_instance_types: Sequence[str],
+                 destination_cidr_blocks: Sequence[str],
+                 destination_instance_ids: Sequence[str],
                  destination_instance_ids_reverse_match: bool,
-                 destination_route_table_ids: List[str],
+                 destination_route_table_ids: Sequence[str],
                  id: str,
                  map_result: str,
-                 match_asns: List[str],
-                 match_community_sets: List[str],
-                 next_priority: float,
-                 operate_community_sets: List[str],
-                 preference: float,
-                 prepend_as_paths: List[str],
-                 priority: float,
+                 match_asns: Sequence[str],
+                 match_community_sets: Sequence[str],
+                 next_priority: int,
+                 operate_community_sets: Sequence[str],
+                 preference: int,
+                 prepend_as_paths: Sequence[str],
+                 priority: int,
                  route_map_id: str,
-                 route_types: List[str],
-                 source_child_instance_types: List[str],
-                 source_instance_ids: List[str],
+                 route_types: Sequence[str],
+                 source_child_instance_types: Sequence[str],
+                 source_instance_ids: Sequence[str],
                  source_instance_ids_reverse_match: bool,
-                 source_region_ids: List[str],
-                 source_route_table_ids: List[str],
+                 source_region_ids: Sequence[str],
+                 source_route_table_ids: Sequence[str],
                  status: str,
                  transmit_direction: str):
         """
@@ -959,27 +959,27 @@ class GetRouteMapsMapResult(dict):
         :param str community_match_mode: A match statement. It indicates the mode in which the community attribute is matched.
         :param str community_operate_mode: An action statement. It indicates the mode in which the community attribute is operated.
         :param str description: The description of the route map.
-        :param List[str] destination_child_instance_types: A match statement that indicates the list of IDs of the destination instances.
-        :param List[str] destination_cidr_blocks: A match statement that indicates the prefix list.
-        :param List[str] destination_instance_ids: A match statement that indicates the list of IDs of the destination instances.
+        :param Sequence[str] destination_child_instance_types: A match statement that indicates the list of IDs of the destination instances.
+        :param Sequence[str] destination_cidr_blocks: A match statement that indicates the prefix list.
+        :param Sequence[str] destination_instance_ids: A match statement that indicates the list of IDs of the destination instances.
         :param bool destination_instance_ids_reverse_match: Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition.
-        :param List[str] destination_route_table_ids: A match statement that indicates the list of IDs of the destination route tables.
+        :param Sequence[str] destination_route_table_ids: A match statement that indicates the list of IDs of the destination route tables.
         :param str id: The ID of the route map.
         :param str map_result: The action that is performed to a route if the route meets all the match conditions.
-        :param List[str] match_asns: A match statement that indicates the As path list.
-        :param List[str] match_community_sets: A match statement that indicates the community set.
-        :param float next_priority: The priority of the next route map that is associated with the current route map.
-        :param List[str] operate_community_sets: An action statement that operates the community attribute.
-        :param float preference: An action statement that modifies the preference of the route.
-        :param List[str] prepend_as_paths: Indicates AS Path prepending when a regional gateway receives or publishes a route.
-        :param float priority: The priority of the route map.
+        :param Sequence[str] match_asns: A match statement that indicates the As path list.
+        :param Sequence[str] match_community_sets: A match statement that indicates the community set.
+        :param int next_priority: The priority of the next route map that is associated with the current route map.
+        :param Sequence[str] operate_community_sets: An action statement that operates the community attribute.
+        :param int preference: An action statement that modifies the preference of the route.
+        :param Sequence[str] prepend_as_paths: Indicates AS Path prepending when a regional gateway receives or publishes a route.
+        :param int priority: The priority of the route map.
         :param str route_map_id: The ID of the route map.
-        :param List[str] route_types: A match statement that indicates the list of route types.
-        :param List[str] source_child_instance_types: A match statement that indicates the list of IDs of the source instances.
-        :param List[str] source_instance_ids: A match statement that indicates the list of IDs of the source instances.
+        :param Sequence[str] route_types: A match statement that indicates the list of route types.
+        :param Sequence[str] source_child_instance_types: A match statement that indicates the list of IDs of the source instances.
+        :param Sequence[str] source_instance_ids: A match statement that indicates the list of IDs of the source instances.
         :param bool source_instance_ids_reverse_match: Indicates whether to enable the reverse match method of the SourceInstanceIds match condition.
-        :param List[str] source_region_ids: A match statement that indicates the list of IDs of the source regions.
-        :param List[str] source_route_table_ids: A match statement that indicates the list of IDs of the source route tables.
+        :param Sequence[str] source_region_ids: A match statement that indicates the list of IDs of the source regions.
+        :param Sequence[str] source_route_table_ids: A match statement that indicates the list of IDs of the source route tables.
         :param str status: The status of the route map, including `Creating`, `Active` and `Deleting`.
         :param str transmit_direction: The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
         """
@@ -1072,7 +1072,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="destinationChildInstanceTypes")
-    def destination_child_instance_types(self) -> List[str]:
+    def destination_child_instance_types(self) -> Sequence[str]:
         """
         A match statement that indicates the list of IDs of the destination instances.
         """
@@ -1080,7 +1080,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="destinationCidrBlocks")
-    def destination_cidr_blocks(self) -> List[str]:
+    def destination_cidr_blocks(self) -> Sequence[str]:
         """
         A match statement that indicates the prefix list.
         """
@@ -1088,7 +1088,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="destinationInstanceIds")
-    def destination_instance_ids(self) -> List[str]:
+    def destination_instance_ids(self) -> Sequence[str]:
         """
         A match statement that indicates the list of IDs of the destination instances.
         """
@@ -1104,7 +1104,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="destinationRouteTableIds")
-    def destination_route_table_ids(self) -> List[str]:
+    def destination_route_table_ids(self) -> Sequence[str]:
         """
         A match statement that indicates the list of IDs of the destination route tables.
         """
@@ -1128,7 +1128,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="matchAsns")
-    def match_asns(self) -> List[str]:
+    def match_asns(self) -> Sequence[str]:
         """
         A match statement that indicates the As path list.
         """
@@ -1136,7 +1136,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="matchCommunitySets")
-    def match_community_sets(self) -> List[str]:
+    def match_community_sets(self) -> Sequence[str]:
         """
         A match statement that indicates the community set.
         """
@@ -1144,7 +1144,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="nextPriority")
-    def next_priority(self) -> float:
+    def next_priority(self) -> int:
         """
         The priority of the next route map that is associated with the current route map.
         """
@@ -1152,7 +1152,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="operateCommunitySets")
-    def operate_community_sets(self) -> List[str]:
+    def operate_community_sets(self) -> Sequence[str]:
         """
         An action statement that operates the community attribute.
         """
@@ -1160,7 +1160,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter
-    def preference(self) -> float:
+    def preference(self) -> int:
         """
         An action statement that modifies the preference of the route.
         """
@@ -1168,7 +1168,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="prependAsPaths")
-    def prepend_as_paths(self) -> List[str]:
+    def prepend_as_paths(self) -> Sequence[str]:
         """
         Indicates AS Path prepending when a regional gateway receives or publishes a route.
         """
@@ -1176,7 +1176,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         """
         The priority of the route map.
         """
@@ -1192,7 +1192,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="routeTypes")
-    def route_types(self) -> List[str]:
+    def route_types(self) -> Sequence[str]:
         """
         A match statement that indicates the list of route types.
         """
@@ -1200,7 +1200,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="sourceChildInstanceTypes")
-    def source_child_instance_types(self) -> List[str]:
+    def source_child_instance_types(self) -> Sequence[str]:
         """
         A match statement that indicates the list of IDs of the source instances.
         """
@@ -1208,7 +1208,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="sourceInstanceIds")
-    def source_instance_ids(self) -> List[str]:
+    def source_instance_ids(self) -> Sequence[str]:
         """
         A match statement that indicates the list of IDs of the source instances.
         """
@@ -1224,7 +1224,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="sourceRegionIds")
-    def source_region_ids(self) -> List[str]:
+    def source_region_ids(self) -> Sequence[str]:
         """
         A match statement that indicates the list of IDs of the source regions.
         """
@@ -1232,7 +1232,7 @@ class GetRouteMapsMapResult(dict):
 
     @property
     @pulumi.getter(name="sourceRouteTableIds")
-    def source_route_table_ids(self) -> List[str]:
+    def source_route_table_ids(self) -> Sequence[str]:
         """
         A match statement that indicates the list of IDs of the source route tables.
         """
@@ -1259,19 +1259,19 @@ class GetRouteMapsMapResult(dict):
 class GetVbrHealthChecksCheckResult(dict):
     def __init__(__self__, *,
                  cen_id: str,
-                 health_check_interval: float,
+                 health_check_interval: int,
                  health_check_source_ip: str,
                  health_check_target_ip: str,
-                 healthy_threshold: float,
+                 healthy_threshold: int,
                  id: str,
                  vbr_instance_id: str,
                  vbr_instance_region_id: str):
         """
         :param str cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
-        :param float health_check_interval: The time interval at which probe packets are sent during the health check.
+        :param int health_check_interval: The time interval at which probe packets are sent during the health check.
         :param str health_check_source_ip: The source IP address of the health check.
         :param str health_check_target_ip: The destination IP address of the health check.
-        :param float healthy_threshold: The number of probe packets that are sent during the health check.
+        :param int healthy_threshold: The number of probe packets that are sent during the health check.
         :param str id: The ID of the CEN VBR Heath Check.
         :param str vbr_instance_id: The ID of the VBR instance.
         :param str vbr_instance_region_id: The ID of the region where the VBR instance is deployed.
@@ -1295,7 +1295,7 @@ class GetVbrHealthChecksCheckResult(dict):
 
     @property
     @pulumi.getter(name="healthCheckInterval")
-    def health_check_interval(self) -> float:
+    def health_check_interval(self) -> int:
         """
         The time interval at which probe packets are sent during the health check.
         """
@@ -1319,7 +1319,7 @@ class GetVbrHealthChecksCheckResult(dict):
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> float:
+    def healthy_threshold(self) -> int:
         """
         The number of probe packets that are sent during the health check.
         """

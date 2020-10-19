@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Gateway']
@@ -15,14 +15,14 @@ class Gateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[float]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipsec: Optional[pulumi.Input[bool]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
-                 ssl_connections: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 ssl_connections: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -38,8 +38,8 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] instance_charge_type: The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
                Default to PostPaid.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
-        :param pulumi.Input[float] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
-        :param pulumi.Input[float] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+        :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
+        :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
@@ -88,7 +88,7 @@ class Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[float]] = None,
+            bandwidth: Optional[pulumi.Input[int]] = None,
             business_status: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_ipsec: Optional[pulumi.Input[bool]] = None,
@@ -96,8 +96,8 @@ class Gateway(pulumi.CustomResource):
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             internet_ip: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[float]] = None,
-            ssl_connections: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
+            ssl_connections: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Gateway':
@@ -116,8 +116,8 @@ class Gateway(pulumi.CustomResource):
                Default to PostPaid.
         :param pulumi.Input[str] internet_ip: The internet ip of the VPN.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
-        :param pulumi.Input[float] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
-        :param pulumi.Input[float] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+        :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
+        :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
         :param pulumi.Input[str] status: The status of the VPN gateway.
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
@@ -144,7 +144,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> pulumi.Output[float]:
+    def bandwidth(self) -> pulumi.Output[int]:
         return pulumi.get(self, "bandwidth")
 
     @property
@@ -206,7 +206,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[float]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
         The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         """
@@ -214,7 +214,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslConnections")
-    def ssl_connections(self) -> pulumi.Output[Optional[float]]:
+    def ssl_connections(self) -> pulumi.Output[Optional[int]]:
         """
         The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
         This field is ignored when enable_ssl is false.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['SslVpnServer']
@@ -20,7 +20,7 @@ class SslVpnServer(pulumi.CustomResource):
                  compress: Optional[pulumi.Input[bool]] = None,
                  local_subnet: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -35,7 +35,7 @@ class SslVpnServer(pulumi.CustomResource):
         :param pulumi.Input[bool] compress: Specify whether to compress the communication. Valid value: true (default) | false
         :param pulumi.Input[str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         :param pulumi.Input[str] name: The name of the SSL-VPN server.
-        :param pulumi.Input[float] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
@@ -86,12 +86,12 @@ class SslVpnServer(pulumi.CustomResource):
             cipher: Optional[pulumi.Input[str]] = None,
             client_ip_pool: Optional[pulumi.Input[str]] = None,
             compress: Optional[pulumi.Input[bool]] = None,
-            connections: Optional[pulumi.Input[float]] = None,
+            connections: Optional[pulumi.Input[int]] = None,
             internet_ip: Optional[pulumi.Input[str]] = None,
             local_subnet: Optional[pulumi.Input[str]] = None,
-            max_connections: Optional[pulumi.Input[float]] = None,
+            max_connections: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             vpn_gateway_id: Optional[pulumi.Input[str]] = None) -> 'SslVpnServer':
         """
@@ -104,12 +104,12 @@ class SslVpnServer(pulumi.CustomResource):
         :param pulumi.Input[str] cipher: The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
         :param pulumi.Input[str] client_ip_pool: The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
         :param pulumi.Input[bool] compress: Specify whether to compress the communication. Valid value: true (default) | false
-        :param pulumi.Input[float] connections: The number of current connections.
+        :param pulumi.Input[int] connections: The number of current connections.
         :param pulumi.Input[str] internet_ip: The internet IP of the SSL-VPN server.
         :param pulumi.Input[str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
-        :param pulumi.Input[float] max_connections: The maximum number of connections.
+        :param pulumi.Input[int] max_connections: The maximum number of connections.
         :param pulumi.Input[str] name: The name of the SSL-VPN server.
-        :param pulumi.Input[float] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
@@ -156,7 +156,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def connections(self) -> pulumi.Output[float]:
+    def connections(self) -> pulumi.Output[int]:
         """
         The number of current connections.
         """
@@ -180,7 +180,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxConnections")
-    def max_connections(self) -> pulumi.Output[float]:
+    def max_connections(self) -> pulumi.Output[int]:
         """
         The maximum number of connections.
         """
@@ -196,7 +196,7 @@ class SslVpnServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         """
         The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         """
