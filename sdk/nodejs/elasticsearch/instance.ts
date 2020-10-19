@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const instance = new alicloud.elasticsearch.Instance("instance", {
+ *     clientNodeAmount: 2,
+ *     clientNodeSpec: "elasticsearch.sn2ne.large",
  *     dataNodeAmount: 2,
  *     dataNodeDiskSize: 20,
  *     dataNodeDiskType: "cloud_ssd",
@@ -27,6 +29,7 @@ import * as utilities from "../utilities";
  *     description: "description",
  *     instanceChargeType: "PostPaid",
  *     password: "Your password",
+ *     protocol: "HTTPS",
  *     tags: {
  *         key1: "value1",
  *         key2: "value2",
@@ -65,6 +68,14 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * The Elasticsearch cluster's client node quantity, between 2 and 25.
+     */
+    public readonly clientNodeAmount!: pulumi.Output<number | undefined>;
+    /**
+     * The client node spec. If specified, client node will be created.
+     */
+    public readonly clientNodeSpec!: pulumi.Output<string | undefined>;
     /**
      * The Elasticsearch cluster's data node quantity, between 2 and 50.
      */
@@ -155,6 +166,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly privateWhitelists!: pulumi.Output<string[]>;
     /**
+     * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+     */
+    public readonly protocol!: pulumi.Output<string | undefined>;
+    /**
      * Set the instance's IP whitelist in internet network.
      */
     public readonly publicWhitelists!: pulumi.Output<string[]>;
@@ -197,6 +212,8 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            inputs["clientNodeAmount"] = state ? state.clientNodeAmount : undefined;
+            inputs["clientNodeSpec"] = state ? state.clientNodeSpec : undefined;
             inputs["dataNodeAmount"] = state ? state.dataNodeAmount : undefined;
             inputs["dataNodeDiskEncrypted"] = state ? state.dataNodeDiskEncrypted : undefined;
             inputs["dataNodeDiskSize"] = state ? state.dataNodeDiskSize : undefined;
@@ -219,6 +236,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["period"] = state ? state.period : undefined;
             inputs["port"] = state ? state.port : undefined;
             inputs["privateWhitelists"] = state ? state.privateWhitelists : undefined;
+            inputs["protocol"] = state ? state.protocol : undefined;
             inputs["publicWhitelists"] = state ? state.publicWhitelists : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["status"] = state ? state.status : undefined;
@@ -246,6 +264,8 @@ export class Instance extends pulumi.CustomResource {
             if (!args || args.vswitchId === undefined) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            inputs["clientNodeAmount"] = args ? args.clientNodeAmount : undefined;
+            inputs["clientNodeSpec"] = args ? args.clientNodeSpec : undefined;
             inputs["dataNodeAmount"] = args ? args.dataNodeAmount : undefined;
             inputs["dataNodeDiskEncrypted"] = args ? args.dataNodeDiskEncrypted : undefined;
             inputs["dataNodeDiskSize"] = args ? args.dataNodeDiskSize : undefined;
@@ -264,6 +284,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["privateWhitelists"] = args ? args.privateWhitelists : undefined;
+            inputs["protocol"] = args ? args.protocol : undefined;
             inputs["publicWhitelists"] = args ? args.publicWhitelists : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -291,6 +312,14 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * The Elasticsearch cluster's client node quantity, between 2 and 25.
+     */
+    readonly clientNodeAmount?: pulumi.Input<number>;
+    /**
+     * The client node spec. If specified, client node will be created.
+     */
+    readonly clientNodeSpec?: pulumi.Input<string>;
     /**
      * The Elasticsearch cluster's data node quantity, between 2 and 50.
      */
@@ -381,6 +410,10 @@ export interface InstanceState {
      */
     readonly privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+     */
+    readonly protocol?: pulumi.Input<string>;
+    /**
      * Set the instance's IP whitelist in internet network.
      */
     readonly publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -416,6 +449,14 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * The Elasticsearch cluster's client node quantity, between 2 and 25.
+     */
+    readonly clientNodeAmount?: pulumi.Input<number>;
+    /**
+     * The client node spec. If specified, client node will be created.
+     */
+    readonly clientNodeSpec?: pulumi.Input<string>;
     /**
      * The Elasticsearch cluster's data node quantity, between 2 and 50.
      */
@@ -489,6 +530,10 @@ export interface InstanceArgs {
      * Set the instance's IP whitelist in VPC network.
      */
     readonly privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+     */
+    readonly protocol?: pulumi.Input<string>;
     /**
      * Set the instance's IP whitelist in internet network.
      */

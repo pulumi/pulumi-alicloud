@@ -44,6 +44,9 @@ namespace Pulumi.AliCloud.CS
         [Output("clusterCaCert")]
         public Output<string?> ClusterCaCert { get; private set; } = null!;
 
+        [Output("clusterSpec")]
+        public Output<string> ClusterSpec { get; private set; } = null!;
+
         /// <summary>
         /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         /// </summary>
@@ -166,6 +169,9 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("proxyMode")]
         public Output<string?> ProxyMode { get; private set; } = null!;
+
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -410,6 +416,9 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
 
+        [Input("clusterSpec")]
+        public Input<string>? ClusterSpec { get; set; }
+
         /// <summary>
         /// kubelet cpu policy. options: static|none. default: none.
         /// </summary>
@@ -532,6 +541,9 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -730,6 +742,9 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
 
+        [Input("clusterSpec")]
+        public Input<string>? ClusterSpec { get; set; }
+
         /// <summary>
         /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         /// </summary>
@@ -864,6 +879,9 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

@@ -240,6 +240,14 @@ export class Instance extends pulumi.CustomResource {
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
     public readonly zoneId!: pulumi.Output<string>;
+    /**
+     * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+     */
+    public readonly zoneIdSlaveA!: pulumi.Output<string | undefined>;
+    /**
+     * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+     */
+    public readonly zoneIdSlaveB!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -283,6 +291,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
+            inputs["zoneIdSlaveA"] = state ? state.zoneIdSlaveA : undefined;
+            inputs["zoneIdSlaveB"] = state ? state.zoneIdSlaveB : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if (!args || args.engine === undefined) {
@@ -324,6 +334,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+            inputs["zoneIdSlaveA"] = args ? args.zoneIdSlaveA : undefined;
+            inputs["zoneIdSlaveB"] = args ? args.zoneIdSlaveB : undefined;
             inputs["connectionString"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
             inputs["sslStatus"] = undefined /*out*/;
@@ -482,6 +494,14 @@ export interface InstanceState {
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
     readonly zoneId?: pulumi.Input<string>;
+    /**
+     * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+     */
+    readonly zoneIdSlaveA?: pulumi.Input<string>;
+    /**
+     * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+     */
+    readonly zoneIdSlaveB?: pulumi.Input<string>;
 }
 
 /**
@@ -615,4 +635,12 @@ export interface InstanceArgs {
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
     readonly zoneId?: pulumi.Input<string>;
+    /**
+     * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+     */
+    readonly zoneIdSlaveA?: pulumi.Input<string>;
+    /**
+     * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+     */
+    readonly zoneIdSlaveB?: pulumi.Input<string>;
 }

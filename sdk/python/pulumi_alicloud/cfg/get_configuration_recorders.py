@@ -71,6 +71,8 @@ def get_configuration_recorders(output_file: Optional[str] = None,
 
     > **NOTE:**  Available in 1.99.0+.
 
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+
     ## Example Usage
 
     ```python

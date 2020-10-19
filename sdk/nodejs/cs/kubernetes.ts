@@ -176,6 +176,7 @@ export class Kubernetes extends pulumi.CustomResource {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     public readonly proxyMode!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -328,6 +329,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["podCidr"] = state ? state.podCidr : undefined;
             inputs["podVswitchIds"] = state ? state.podVswitchIds : undefined;
             inputs["proxyMode"] = state ? state.proxyMode : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["serviceAccountIssuer"] = state ? state.serviceAccountIssuer : undefined;
             inputs["serviceCidr"] = state ? state.serviceCidr : undefined;
@@ -406,6 +408,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["podCidr"] = args ? args.podCidr : undefined;
             inputs["podVswitchIds"] = args ? args.podVswitchIds : undefined;
             inputs["proxyMode"] = args ? args.proxyMode : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["serviceAccountIssuer"] = args ? args.serviceAccountIssuer : undefined;
             inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
@@ -594,6 +597,7 @@ export interface KubernetesState {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -832,6 +836,7 @@ export interface KubernetesArgs {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */

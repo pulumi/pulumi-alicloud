@@ -42,6 +42,8 @@ type Cluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional software list.
 	OptionSoftwareLists pulumi.StringArrayOutput `pulumi:"optionSoftwareLists"`
+	// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// This specify the related cluster id, if this cluster is a Gateway.
 	RelatedClusterId pulumi.StringPtrOutput `pulumi:"relatedClusterId"`
 	// Security Group ID for Cluster, you can also specify this key for each host group.
@@ -121,6 +123,8 @@ type clusterState struct {
 	Name *string `pulumi:"name"`
 	// Optional software list.
 	OptionSoftwareLists []string `pulumi:"optionSoftwareLists"`
+	// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+	Period *int `pulumi:"period"`
 	// This specify the related cluster id, if this cluster is a Gateway.
 	RelatedClusterId *string `pulumi:"relatedClusterId"`
 	// Security Group ID for Cluster, you can also specify this key for each host group.
@@ -164,6 +168,8 @@ type ClusterState struct {
 	Name pulumi.StringPtrInput
 	// Optional software list.
 	OptionSoftwareLists pulumi.StringArrayInput
+	// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+	Period pulumi.IntPtrInput
 	// This specify the related cluster id, if this cluster is a Gateway.
 	RelatedClusterId pulumi.StringPtrInput
 	// Security Group ID for Cluster, you can also specify this key for each host group.
@@ -211,6 +217,8 @@ type clusterArgs struct {
 	Name *string `pulumi:"name"`
 	// Optional software list.
 	OptionSoftwareLists []string `pulumi:"optionSoftwareLists"`
+	// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+	Period *int `pulumi:"period"`
 	// This specify the related cluster id, if this cluster is a Gateway.
 	RelatedClusterId *string `pulumi:"relatedClusterId"`
 	// Security Group ID for Cluster, you can also specify this key for each host group.
@@ -255,6 +263,8 @@ type ClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// Optional software list.
 	OptionSoftwareLists pulumi.StringArrayInput
+	// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+	Period pulumi.IntPtrInput
 	// This specify the related cluster id, if this cluster is a Gateway.
 	RelatedClusterId pulumi.StringPtrInput
 	// Security Group ID for Cluster, you can also specify this key for each host group.

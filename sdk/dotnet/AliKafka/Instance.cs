@@ -90,6 +90,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<int?> EipMax { get; private set; } = null!;
 
         /// <summary>
+        /// The EndPoint to access the kafka instance.
+        /// </summary>
+        [Output("endPoint")]
+        public Output<string> EndPoint { get; private set; } = null!;
+
+        /// <summary>
         /// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         /// </summary>
         [Output("ioMax")]
@@ -303,6 +309,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("eipMax")]
         public Input<int>? EipMax { get; set; }
+
+        /// <summary>
+        /// The EndPoint to access the kafka instance.
+        /// </summary>
+        [Input("endPoint")]
+        public Input<string>? EndPoint { get; set; }
 
         /// <summary>
         /// The max value of io of the instance. When modify this value, it only support adjust to a greater value.

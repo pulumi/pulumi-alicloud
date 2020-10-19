@@ -94,7 +94,7 @@ def get_endpoints(db_cluster_id: Optional[str] = None,
     polardb_clusters_ds = alicloud.polardb.get_clusters(description_regex="pc-\\w+",
         status="Running")
     default = alicloud.polardb.get_endpoints(db_cluster_id=polardb_clusters_ds.clusters[0].id)
-    pulumi.export("ends", default.endpoints[0].db_endpoint_id)
+    pulumi.export("endpoint", default.endpoints[0].db_endpoint_id)
     ```
 
 

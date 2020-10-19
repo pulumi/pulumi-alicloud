@@ -65,7 +65,7 @@ import (
 // 		_, err = polardb.NewCluster(ctx, "defaultCluster", &polardb.ClusterArgs{
 // 			DbType:      pulumi.String("MySQL"),
 // 			DbVersion:   pulumi.String("5.6"),
-// 			DbNodeClass: pulumi.String("rds.mysql.s2.large"),
+// 			DbNodeClass: pulumi.String("polar.mysql.x4.medium"),
 // 			PayType:     pulumi.String("PostPaid"),
 // 			Description: pulumi.String(name),
 // 			VswitchId:   defaultSwitch.ID(),

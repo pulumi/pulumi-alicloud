@@ -34,16 +34,16 @@ namespace Pulumi.AliCloud.PolarDB
         ///         }));
         ///         var resourcesNodeClasses = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
         ///         {
+        ///             ZoneId = resourcesZones.Zones[0].Id,
+        ///             PayType = "Postpaid",
         ///             DbType = "MySQL",
         ///             DbVersion = "5.6",
-        ///             PayType = "Postpaid",
-        ///             ZoneId = resourcesZones.Zones[0].Id,
         ///         })));
-        ///         this.FirstPolardbNodeClass = resourcesNodeClasses.Apply(resourcesNodeClasses =&gt; resourcesNodeClasses.Classes);
+        ///         this.PolardbNodeClasses = resourcesNodeClasses.Apply(resourcesNodeClasses =&gt; resourcesNodeClasses.Classes);
         ///     }
         /// 
-        ///     [Output("firstPolardbNodeClass")]
-        ///     public Output&lt;string&gt; FirstPolardbNodeClass { get; set; }
+        ///     [Output("polardbNodeClasses")]
+        ///     public Output&lt;string&gt; PolardbNodeClasses { get; set; }
         /// }
         /// ```
         /// {{% /example %}}

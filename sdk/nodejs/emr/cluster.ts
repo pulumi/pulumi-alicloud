@@ -549,6 +549,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly optionSoftwareLists!: pulumi.Output<string[] | undefined>;
     /**
+     * If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+     */
+    public readonly period!: pulumi.Output<number | undefined>;
+    /**
      * This specify the related cluster id, if this cluster is a Gateway.
      */
     public readonly relatedClusterId!: pulumi.Output<string | undefined>;
@@ -606,6 +610,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["masterPwd"] = state ? state.masterPwd : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["optionSoftwareLists"] = state ? state.optionSoftwareLists : undefined;
+            inputs["period"] = state ? state.period : undefined;
             inputs["relatedClusterId"] = state ? state.relatedClusterId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["sshEnable"] = state ? state.sshEnable : undefined;
@@ -638,6 +643,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["masterPwd"] = args ? args.masterPwd : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["optionSoftwareLists"] = args ? args.optionSoftwareLists : undefined;
+            inputs["period"] = args ? args.period : undefined;
             inputs["relatedClusterId"] = args ? args.relatedClusterId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["sshEnable"] = args ? args.sshEnable : undefined;
@@ -708,6 +714,10 @@ export interface ClusterState {
      * Optional software list.
      */
     readonly optionSoftwareLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+     */
+    readonly period?: pulumi.Input<number>;
     /**
      * This specify the related cluster id, if this cluster is a Gateway.
      */
@@ -792,6 +802,10 @@ export interface ClusterArgs {
      * Optional software list.
      */
     readonly optionSoftwareLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+     */
+    readonly period?: pulumi.Input<number>;
     /**
      * This specify the related cluster id, if this cluster is a Gateway.
      */

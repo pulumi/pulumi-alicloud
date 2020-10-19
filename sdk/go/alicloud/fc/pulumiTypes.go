@@ -901,9 +901,9 @@ func (o FunctionCustomContainerConfigPtrOutput) Image() pulumi.StringPtrOutput {
 }
 
 type ServiceLogConfig struct {
-	// The log store name of Logs service.
+	// The log store name of Alicloud Simple Log Service.
 	Logstore string `pulumi:"logstore"`
-	// The project name of Logs service.
+	// The project name of the Alicloud Simple Log Service.
 	Project string `pulumi:"project"`
 }
 
@@ -919,9 +919,9 @@ type ServiceLogConfigInput interface {
 }
 
 type ServiceLogConfigArgs struct {
-	// The log store name of Logs service.
+	// The log store name of Alicloud Simple Log Service.
 	Logstore pulumi.StringInput `pulumi:"logstore"`
-	// The project name of Logs service.
+	// The project name of the Alicloud Simple Log Service.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -1002,12 +1002,12 @@ func (o ServiceLogConfigOutput) ToServiceLogConfigPtrOutputWithContext(ctx conte
 	}).(ServiceLogConfigPtrOutput)
 }
 
-// The log store name of Logs service.
+// The log store name of Alicloud Simple Log Service.
 func (o ServiceLogConfigOutput) Logstore() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceLogConfig) string { return v.Logstore }).(pulumi.StringOutput)
 }
 
-// The project name of Logs service.
+// The project name of the Alicloud Simple Log Service.
 func (o ServiceLogConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceLogConfig) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -1030,7 +1030,7 @@ func (o ServiceLogConfigPtrOutput) Elem() ServiceLogConfigOutput {
 	return o.ApplyT(func(v *ServiceLogConfig) ServiceLogConfig { return *v }).(ServiceLogConfigOutput)
 }
 
-// The log store name of Logs service.
+// The log store name of Alicloud Simple Log Service.
 func (o ServiceLogConfigPtrOutput) Logstore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceLogConfig) *string {
 		if v == nil {
@@ -1040,7 +1040,7 @@ func (o ServiceLogConfigPtrOutput) Logstore() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The project name of Logs service.
+// The project name of the Alicloud Simple Log Service.
 func (o ServiceLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceLogConfig) *string {
 		if v == nil {
@@ -1326,10 +1326,10 @@ func (o ServiceNasConfigMountPointArrayOutput) Index(i pulumi.IntInput) ServiceN
 }
 
 type ServiceVpcConfig struct {
-	// A security group ID associated with the FC service.
+	// A security group ID associated with the Function Compute Service.
 	SecurityGroupId string  `pulumi:"securityGroupId"`
 	VpcId           *string `pulumi:"vpcId"`
-	// A list of vswitch IDs associated with the FC service.
+	// A list of vswitch IDs associated with the Function Compute Service.
 	VswitchIds []string `pulumi:"vswitchIds"`
 }
 
@@ -1345,10 +1345,10 @@ type ServiceVpcConfigInput interface {
 }
 
 type ServiceVpcConfigArgs struct {
-	// A security group ID associated with the FC service.
+	// A security group ID associated with the Function Compute Service.
 	SecurityGroupId pulumi.StringInput    `pulumi:"securityGroupId"`
 	VpcId           pulumi.StringPtrInput `pulumi:"vpcId"`
-	// A list of vswitch IDs associated with the FC service.
+	// A list of vswitch IDs associated with the Function Compute Service.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 }
 
@@ -1429,7 +1429,7 @@ func (o ServiceVpcConfigOutput) ToServiceVpcConfigPtrOutputWithContext(ctx conte
 	}).(ServiceVpcConfigPtrOutput)
 }
 
-// A security group ID associated with the FC service.
+// A security group ID associated with the Function Compute Service.
 func (o ServiceVpcConfigOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceVpcConfig) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
@@ -1438,7 +1438,7 @@ func (o ServiceVpcConfigOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
-// A list of vswitch IDs associated with the FC service.
+// A list of vswitch IDs associated with the Function Compute Service.
 func (o ServiceVpcConfigOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceVpcConfig) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
@@ -1461,7 +1461,7 @@ func (o ServiceVpcConfigPtrOutput) Elem() ServiceVpcConfigOutput {
 	return o.ApplyT(func(v *ServiceVpcConfig) ServiceVpcConfig { return *v }).(ServiceVpcConfigOutput)
 }
 
-// A security group ID associated with the FC service.
+// A security group ID associated with the Function Compute Service.
 func (o ServiceVpcConfigPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceVpcConfig) *string {
 		if v == nil {
@@ -1480,7 +1480,7 @@ func (o ServiceVpcConfigPtrOutput) VpcId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of vswitch IDs associated with the FC service.
+// A list of vswitch IDs associated with the Function Compute Service.
 func (o ServiceVpcConfigPtrOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceVpcConfig) []string {
 		if v == nil {

@@ -8,6 +8,50 @@ import * as utilities from "../utilities";
  * Provides a PolarDB account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
  *
  * > **NOTE:** Available in v1.67.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const creation = config.get("creation") || "PolarDB";
+ * const name = config.get("name") || "dbaccountprivilegebasic";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: creation,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ * });
+ * const cluster = new alicloud.polardb.Cluster("cluster", {
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     payType: "PostPaid",
+ *     dbNodeClass: "polar.mysql.x4.large",
+ *     vswitchId: defaultSwitch.id,
+ *     description: name,
+ * });
+ * const db = new alicloud.polardb.Database("db", {
+ *     dbClusterId: cluster.id,
+ *     dbName: "tftestdatabase",
+ * });
+ * const account = new alicloud.polardb.Account("account", {
+ *     dbClusterId: cluster.id,
+ *     accountName: "tftestnormal",
+ *     accountPassword: "Test12345",
+ *     accountDescription: name,
+ * });
+ * const privilege = new alicloud.polardb.AccountPrivilege("privilege", {
+ *     dbClusterId: cluster.id,
+ *     accountName: account.accountName,
+ *     accountPrivilege: "ReadOnly",
+ *     dbNames: [db.dbName],
+ * });
+ * ```
  */
 export class AccountPrivilege extends pulumi.CustomResource {
     /**
@@ -42,7 +86,7 @@ export class AccountPrivilege extends pulumi.CustomResource {
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
-     * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+     * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
      */
     public readonly accountPrivilege!: pulumi.Output<string | undefined>;
     /**
@@ -106,7 +150,7 @@ export interface AccountPrivilegeState {
      */
     readonly accountName?: pulumi.Input<string>;
     /**
-     * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+     * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
      */
     readonly accountPrivilege?: pulumi.Input<string>;
     /**
@@ -128,7 +172,7 @@ export interface AccountPrivilegeArgs {
      */
     readonly accountName: pulumi.Input<string>;
     /**
-     * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+     * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
      */
     readonly accountPrivilege?: pulumi.Input<string>;
     /**

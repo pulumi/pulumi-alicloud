@@ -135,6 +135,7 @@ namespace Pulumi.AliCloud
                 public string? Ots { get; set; } = null!;
                 public string? Polardb { get; set; } = null!;
                 public string? Pvtz { get; set; } = null!;
+                public string? RKvstore { get; set; } = null!;
                 public string? Ram { get; set; } = null!;
                 public string? Rds { get; set; } = null!;
                 public string? Resourcemanager { get; set; } = null!;

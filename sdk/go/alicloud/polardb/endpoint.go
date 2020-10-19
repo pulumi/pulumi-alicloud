@@ -10,10 +10,77 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a PolarDB endpoint resource to allocate an Internet endpoint string for PolarDB instance.
+// Provides a PolarDB endpoint resource to manage custom endpoint of PolarDB cluster.
 //
-// > **NOTE:** Available in v1.80.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
-//  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+// > **NOTE:** Available in v1.80.0+. Only used to manage PolarDB MySQL custom cluster endpoint.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/polardb"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cfg := config.New(ctx, "")
+// 		creation := "PolarDB"
+// 		if param := cfg.Get("creation"); param != "" {
+// 			creation = param
+// 		}
+// 		name := "polardbconnectionbasic"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultCluster, err := polardb.NewCluster(ctx, "defaultCluster", &polardb.ClusterArgs{
+// 			DbType:      pulumi.String("MySQL"),
+// 			DbVersion:   pulumi.String("8.0"),
+// 			PayType:     pulumi.String("PostPaid"),
+// 			DbNodeClass: pulumi.String("polar.mysql.x4.large"),
+// 			VswitchId:   defaultSwitch.ID(),
+// 			Description: pulumi.String(name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = polardb.NewEndpoint(ctx, "endpoint", &polardb.EndpointArgs{
+// 			DbClusterId:  defaultCluster.ID(),
+// 			EndpointType: pulumi.String("Custom"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Endpoint struct {
 	pulumi.CustomResourceState
 
@@ -21,7 +88,7 @@ type Endpoint struct {
 	AutoAddNewNodes pulumi.StringPtrOutput `pulumi:"autoAddNewNodes"`
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
-	// Advanced configuration of the cluster address.
+	// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
 	EndpointConfig pulumi.MapOutput `pulumi:"endpointConfig"`
 	// Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
@@ -69,7 +136,7 @@ type endpointState struct {
 	AutoAddNewNodes *string `pulumi:"autoAddNewNodes"`
 	// The Id of cluster that can run database.
 	DbClusterId *string `pulumi:"dbClusterId"`
-	// Advanced configuration of the cluster address.
+	// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
 	EndpointConfig map[string]interface{} `pulumi:"endpointConfig"`
 	// Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
 	EndpointType *string `pulumi:"endpointType"`
@@ -84,7 +151,7 @@ type EndpointState struct {
 	AutoAddNewNodes pulumi.StringPtrInput
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringPtrInput
-	// Advanced configuration of the cluster address.
+	// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
 	EndpointConfig pulumi.MapInput
 	// Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
 	EndpointType pulumi.StringPtrInput
@@ -103,7 +170,7 @@ type endpointArgs struct {
 	AutoAddNewNodes *string `pulumi:"autoAddNewNodes"`
 	// The Id of cluster that can run database.
 	DbClusterId string `pulumi:"dbClusterId"`
-	// Advanced configuration of the cluster address.
+	// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
 	EndpointConfig map[string]interface{} `pulumi:"endpointConfig"`
 	// Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
 	EndpointType string `pulumi:"endpointType"`
@@ -119,7 +186,7 @@ type EndpointArgs struct {
 	AutoAddNewNodes pulumi.StringPtrInput
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringInput
-	// Advanced configuration of the cluster address.
+	// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
 	EndpointConfig pulumi.MapInput
 	// Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
 	EndpointType pulumi.StringInput

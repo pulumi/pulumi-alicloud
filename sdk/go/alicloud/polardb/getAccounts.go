@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("ends", _default.Accounts[0].AccountName)
+// 		ctx.Export("account", _default.Accounts[0].AccountName)
 // 		return nil
 // 	})
 // }

@@ -27,6 +27,7 @@ class GetInstancesInstanceResult(dict):
                  disk_size: int,
                  disk_type: int,
                  eip_max: int,
+                 end_point: str,
                  id: str,
                  io_max: int,
                  name: str,
@@ -44,6 +45,7 @@ class GetInstancesInstanceResult(dict):
         :param int disk_size: The disk size of the instance.
         :param int disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param int eip_max: The peak bandwidth of the instance.
+        :param str end_point: The endPoint to access the instance.
         :param str id: ID of the instance.
         :param int io_max: The peak value of io of the instance.
         :param str name: Name of the instance.
@@ -61,6 +63,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "eip_max", eip_max)
+        pulumi.set(__self__, "end_point", end_point)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "io_max", io_max)
         pulumi.set(__self__, "name", name)
@@ -112,6 +115,14 @@ class GetInstancesInstanceResult(dict):
         The peak bandwidth of the instance.
         """
         return pulumi.get(self, "eip_max")
+
+    @property
+    @pulumi.getter(name="endPoint")
+    def end_point(self) -> str:
+        """
+        The endPoint to access the instance.
+        """
+        return pulumi.get(self, "end_point")
 
     @property
     @pulumi.getter

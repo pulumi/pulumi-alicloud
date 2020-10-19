@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.KVStore
 {
     /// <summary>
-    /// Provides an ApsaraDB Redis / Memcache instance resource. A DB instance is an isolated database environment in the cloud. It can be associated with IP whitelists and backup configuration which are separate resource providers.
+    /// Provides an ApsaraDB Redis / Memcache instance resource. A DB instance is an isolated database environment in the cloud. It support be associated with IP whitelists and backup configuration which are separate resource providers. For information about Alicloud KVStore DBInstance more and how to use it, see [What is Resource Alicloud KVStore DBInstance](https://www.alibabacloud.com/help/doc-detail/60873.htm).
     /// 
     /// ## Example Usage
     /// 
@@ -24,35 +24,69 @@ namespace Pulumi.AliCloud.KVStore
     /// {
     ///     public MyStack()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "KVStore";
-    ///         var name = config.Get("name") ?? "kvstoreinstancevpc";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         var example = new AliCloud.KVStore.Instance("example", new AliCloud.KVStore.InstanceArgs
     ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///         });
-    ///         var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new AliCloud.KVStore.InstanceArgs
-    ///         {
-    ///             InstanceClass = "redis.master.small.default",
-    ///             InstanceName = name,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             PrivateIp = "172.16.0.10",
+    ///             Config = 
+    ///             {
+    ///                 { "appendonly", "yes" },
+    ///                 { "lazyfree-lazy-eviction", "yes" },
+    ///             },
+    ///             DbInstanceName = "tf-test-basic",
+    ///             EngineVersion = "4.0",
+    ///             InstanceClass = "redis.master.large.default",
+    ///             InstanceType = "Redis",
+    ///             ResourceGroupId = "rg-123456",
     ///             SecurityIps = 
     ///             {
-    ///                 "10.0.0.1",
+    ///                 "10.23.12.24",
     ///             },
-    ///             InstanceType = "Redis",
+    ///             Tags = 
+    ///             {
+    ///                 { "Created", "TF" },
+    ///                 { "For", "Test" },
+    ///             },
+    ///             VswitchId = "vsw-123456",
+    ///             ZoneId = "cn-beijing-h",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Transform To PrePaid
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.KVStore.Instance("example", new AliCloud.KVStore.InstanceArgs
+    ///         {
+    ///             Config = 
+    ///             {
+    ///                 { "appendonly", "yes" },
+    ///                 { "lazyfree-lazy-eviction", "yes" },
+    ///             },
+    ///             DbInstanceName = "tf-test-basic",
     ///             EngineVersion = "4.0",
+    ///             InstanceClass = "redis.master.large.default",
+    ///             InstanceType = "Redis",
+    ///             PaymentType = "PrePaid",
+    ///             Period = "12",
+    ///             ResourceGroupId = "rg-123456",
+    ///             SecurityIps = 
+    ///             {
+    ///                 "10.23.12.24",
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 { "Created", "TF" },
+    ///                 { "For", "Test" },
+    ///             },
+    ///             VswitchId = "vsw-123456",
+    ///             ZoneId = "cn-beijing-h",
     ///         });
     ///     }
     /// 
@@ -62,76 +96,145 @@ namespace Pulumi.AliCloud.KVStore
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid value: [1~12], Default to `1`.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone to launch the DB instance.
+        /// Specifies whether to use a coupon. Default to: `false`.
+        /// </summary>
+        [Output("autoUseCoupon")]
+        public Output<bool?> AutoUseCoupon { get; private set; } = null!;
+
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and `zone_id` instead.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// If an instance created based on a backup set generated by another instance is valid, this parameter indicates the ID of the generated backup set.
+        /// The ID of the backup file of the source instance.
         /// </summary>
         [Output("backupId")]
         public Output<string?> BackupId { get; private set; } = null!;
 
         /// <summary>
-        /// Instance connection domain (only Intranet access supported).
+        /// The bandwidth.
         /// </summary>
-        [Output("connectionDomain")]
-        public Output<string> ConnectionDomain { get; private set; } = null!;
+        [Output("bandwidth")]
+        public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The connection address of the instance.
+        /// The ID of the event or the business information.
         /// </summary>
+        [Output("businessInfo")]
+        public Output<string?> BusinessInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage capacity of the KVStore DBInstance. Unit: MB.
+        /// </summary>
+        [Output("capacity")]
+        public Output<int> Capacity { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        /// </summary>
+        [Output("config")]
+        public Output<ImmutableDictionary<string, object>?> Config { get; private set; } = null!;
+
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
-        /// The prefix of the external network connection address.
+        /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
         /// </summary>
         [Output("connectionStringPrefix")]
         public Output<string?> ConnectionStringPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to open the public network. Default to: `false`.
+        /// The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
         /// </summary>
-        [Output("enablePublic")]
-        public Output<bool?> EnablePublic { get; private set; } = null!;
+        [Output("couponNo")]
+        public Output<string?> CouponNo { get; private set; } = null!;
 
         /// <summary>
-        /// Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
+        /// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
+        /// </summary>
+        [Output("dbInstanceName")]
+        public Output<string> DbInstanceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        /// </summary>
+        [Output("dedicatedHostGroupId")]
+        public Output<string?> DedicatedHostGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+        /// </summary>
+        [Output("enablePublic")]
+        public Output<bool> EnablePublic { get; private set; } = null!;
+
+        /// <summary>
+        /// The expiration time of the prepaid instance.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
         /// </summary>
         [Output("engineVersion")]
         public Output<string?> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        /// Specifies whether to forcibly change the type. Default to: `true`.
+        /// </summary>
+        [Output("forceUpgrade")]
+        public Output<bool?> ForceUpgrade { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to create a distributed cache. Default to: `false`.
+        /// </summary>
+        [Output("globalInstance")]
+        public Output<bool?> GlobalInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of distributed cache.
+        /// </summary>
+        [Output("globalInstanceId")]
+        public Output<string?> GlobalInstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         /// </summary>
         [Output("instanceChargeType")]
-        public Output<string?> InstanceChargeType { get; private set; } = null!;
+        public Output<string> InstanceChargeType { get; private set; } = null!;
 
         [Output("instanceClass")]
-        public Output<string> InstanceClass { get; private set; } = null!;
+        public Output<string?> InstanceClass { get; private set; } = null!;
 
         /// <summary>
-        /// The name of DB instance. It a string of 2 to 256 characters.
+        /// It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         /// </summary>
         [Output("instanceName")]
-        public Output<string?> InstanceName { get; private set; } = null!;
+        public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The engine to use: `Redis` or `Memcache`. Defaults to `Redis`.
+        /// Whether to open the release protection.
+        /// </summary>
+        [Output("instanceReleaseProtection")]
+        public Output<bool> InstanceReleaseProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
         /// </summary>
         [Output("instanceType")]
         public Output<string?> InstanceType { get; private set; } = null!;
@@ -149,64 +252,130 @@ namespace Pulumi.AliCloud.KVStore
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         /// </summary>
         [Output("maintainEndTime")]
         public Output<string> MaintainEndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         /// </summary>
         [Output("maintainStartTime")]
         public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after instance was launched. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+        /// </summary>
+        [Output("modifyMode")]
+        public Output<int?> ModifyMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+        /// </summary>
+        [Output("nodeType")]
+        public Output<string?> NodeType { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+        /// </summary>
+        [Output("orderType")]
+        public Output<string?> OrderType { get; private set; } = null!;
+
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and `config` instead..
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        /// The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
+
+        /// <summary>
+        /// The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         /// </summary>
         [Output("period")]
-        public Output<int?> Period { get; private set; } = null!;
+        public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The port of redis.
+        /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
         /// </summary>
         [Output("port")]
-        public Output<string?> Port { get; private set; } = null!;
+        public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Set the instance's private IP.
+        /// The internal IP address of the instance.
         /// </summary>
         [Output("privateIp")]
         public Output<string> PrivateIp { get; private set; } = null!;
 
         /// <summary>
+        /// Theoretical maximum QPS value.
+        /// </summary>
+        [Output("qps")]
+        public Output<int> Qps { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of resource group which the resource belongs.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The Security Group ID of ECS.
+        /// The point in time of a backup file.
+        /// </summary>
+        [Output("restoreTime")]
+        public Output<string?> RestoreTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of security groups.
         /// </summary>
         [Output("securityGroupId")]
-        public Output<string> SecurityGroupId { get; private set; } = null!;
+        public Output<string?> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Set the instance's IP whitelist of the default security group.
+        /// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        /// </summary>
+        [Output("securityIpGroupAttribute")]
+        public Output<string?> SecurityIpGroupAttribute { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the whitelist group.
+        /// </summary>
+        [Output("securityIpGroupName")]
+        public Output<string> SecurityIpGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         /// </summary>
         [Output("securityIps")]
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the source instance.
+        /// </summary>
+        [Output("srcdbInstanceId")]
+        public Output<string?> SrcdbInstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        /// </summary>
+        [Output("sslEnable")]
+        public Output<string?> SslEnable { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of KVStore DBInstance.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -215,16 +384,22 @@ namespace Pulumi.AliCloud.KVStore
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values are `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         /// </summary>
         [Output("vpcAuthMode")]
-        public Output<string> VpcAuthMode { get; private set; } = null!;
+        public Output<string?> VpcAuthMode { get; private set; } = null!;
 
         /// <summary>
         /// The ID of VSwitch.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the zone.
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -234,7 +409,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
+        public Instance(string name, InstanceArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:kvstore/instance:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -273,64 +448,136 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid value: [1~12], Default to `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The Zone to launch the DB instance.
+        /// Specifies whether to use a coupon. Default to: `false`.
+        /// </summary>
+        [Input("autoUseCoupon")]
+        public Input<bool>? AutoUseCoupon { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and `zone_id` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// If an instance created based on a backup set generated by another instance is valid, this parameter indicates the ID of the generated backup set.
+        /// The ID of the backup file of the source instance.
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
 
         /// <summary>
-        /// The prefix of the external network connection address.
+        /// The ID of the event or the business information.
+        /// </summary>
+        [Input("businessInfo")]
+        public Input<string>? BusinessInfo { get; set; }
+
+        /// <summary>
+        /// The storage capacity of the KVStore DBInstance. Unit: MB.
+        /// </summary>
+        [Input("capacity")]
+        public Input<int>? Capacity { get; set; }
+
+        [Input("config")]
+        private InputMap<object>? _config;
+
+        /// <summary>
+        /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        /// </summary>
+        public InputMap<object> Config
+        {
+            get => _config ?? (_config = new InputMap<object>());
+            set => _config = value;
+        }
+
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
         /// </summary>
         [Input("connectionStringPrefix")]
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
-        /// Whether to open the public network. Default to: `false`.
+        /// The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
+        /// </summary>
+        [Input("couponNo")]
+        public Input<string>? CouponNo { get; set; }
+
+        /// <summary>
+        /// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
+        /// </summary>
+        [Input("dbInstanceName")]
+        public Input<string>? DbInstanceName { get; set; }
+
+        /// <summary>
+        /// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        /// </summary>
+        [Input("dedicatedHostGroupId")]
+        public Input<string>? DedicatedHostGroupId { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
         /// </summary>
         [Input("enablePublic")]
         public Input<bool>? EnablePublic { get; set; }
 
         /// <summary>
-        /// Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
+        /// The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        /// Specifies whether to forcibly change the type. Default to: `true`.
+        /// </summary>
+        [Input("forceUpgrade")]
+        public Input<bool>? ForceUpgrade { get; set; }
+
+        /// <summary>
+        /// Whether to create a distributed cache. Default to: `false`.
+        /// </summary>
+        [Input("globalInstance")]
+        public Input<bool>? GlobalInstance { get; set; }
+
+        /// <summary>
+        /// The ID of distributed cache.
+        /// </summary>
+        [Input("globalInstanceId")]
+        public Input<string>? GlobalInstanceId { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
-        [Input("instanceClass", required: true)]
-        public Input<string> InstanceClass { get; set; } = null!;
+        [Input("instanceClass")]
+        public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// The name of DB instance. It a string of 2 to 256 characters.
+        /// It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The engine to use: `Redis` or `Memcache`. Defaults to `Redis`.
+        /// Whether to open the release protection.
+        /// </summary>
+        [Input("instanceReleaseProtection")]
+        public Input<bool>? InstanceReleaseProtection { get; set; }
+
+        /// <summary>
+        /// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -354,23 +601,42 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         /// </summary>
         [Input("maintainEndTime")]
         public Input<string>? MaintainEndTime { get; set; }
 
         /// <summary>
-        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         /// </summary>
         [Input("maintainStartTime")]
         public Input<string>? MaintainStartTime { get; set; }
+
+        /// <summary>
+        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+        /// </summary>
+        [Input("modifyMode")]
+        public Input<int>? ModifyMode { get; set; }
+
+        /// <summary>
+        /// Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+        /// </summary>
+        [Input("nodeType")]
+        public Input<string>? NodeType { get; set; }
+
+        /// <summary>
+        /// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+        /// </summary>
+        [Input("orderType")]
+        public Input<string>? OrderType { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.InstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after instance was launched. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        /// It has been deprecated from provider version 1.101.0 and `config` instead..
         /// </summary>
+        [Obsolete(@"Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.")]
         public InputList<Inputs.InstanceParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.InstanceParameterArgs>());
@@ -378,25 +644,31 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        /// The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         /// </summary>
         [Input("period")]
-        public Input<int>? Period { get; set; }
+        public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The port of redis.
+        /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
         /// </summary>
         [Input("port")]
-        public Input<string>? Port { get; set; }
+        public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Set the instance's private IP.
+        /// The internal IP address of the instance.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
@@ -408,22 +680,52 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The Security Group ID of ECS.
+        /// The point in time of a backup file.
+        /// </summary>
+        [Input("restoreTime")]
+        public Input<string>? RestoreTime { get; set; }
+
+        /// <summary>
+        /// The ID of security groups.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        /// </summary>
+        [Input("securityIpGroupAttribute")]
+        public Input<string>? SecurityIpGroupAttribute { get; set; }
+
+        /// <summary>
+        /// The name of the whitelist group.
+        /// </summary>
+        [Input("securityIpGroupName")]
+        public Input<string>? SecurityIpGroupName { get; set; }
 
         [Input("securityIps")]
         private InputList<string>? _securityIps;
 
         /// <summary>
-        /// Set the instance's IP whitelist of the default security group.
+        /// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         /// </summary>
         public InputList<string> SecurityIps
         {
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        /// <summary>
+        /// The ID of the source instance.
+        /// </summary>
+        [Input("srcdbInstanceId")]
+        public Input<string>? SrcdbInstanceId { get; set; }
+
+        /// <summary>
+        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        /// </summary>
+        [Input("sslEnable")]
+        public Input<string>? SslEnable { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -438,7 +740,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values are `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         /// </summary>
         [Input("vpcAuthMode")]
         public Input<string>? VpcAuthMode { get; set; }
@@ -448,6 +750,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the zone.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public InstanceArgs()
         {
@@ -457,61 +765,130 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid value: [1~12], Default to `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The Zone to launch the DB instance.
+        /// Specifies whether to use a coupon. Default to: `false`.
+        /// </summary>
+        [Input("autoUseCoupon")]
+        public Input<bool>? AutoUseCoupon { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and `zone_id` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// If an instance created based on a backup set generated by another instance is valid, this parameter indicates the ID of the generated backup set.
+        /// The ID of the backup file of the source instance.
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
 
         /// <summary>
-        /// Instance connection domain (only Intranet access supported).
+        /// The bandwidth.
         /// </summary>
-        [Input("connectionDomain")]
-        public Input<string>? ConnectionDomain { get; set; }
+        [Input("bandwidth")]
+        public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The connection address of the instance.
+        /// The ID of the event or the business information.
         /// </summary>
+        [Input("businessInfo")]
+        public Input<string>? BusinessInfo { get; set; }
+
+        /// <summary>
+        /// The storage capacity of the KVStore DBInstance. Unit: MB.
+        /// </summary>
+        [Input("capacity")]
+        public Input<int>? Capacity { get; set; }
+
+        [Input("config")]
+        private InputMap<object>? _config;
+
+        /// <summary>
+        /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        /// </summary>
+        public InputMap<object> Config
+        {
+            get => _config ?? (_config = new InputMap<object>());
+            set => _config = value;
+        }
+
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
-        /// The prefix of the external network connection address.
+        /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
         /// </summary>
         [Input("connectionStringPrefix")]
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
-        /// Whether to open the public network. Default to: `false`.
+        /// The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
+        /// </summary>
+        [Input("couponNo")]
+        public Input<string>? CouponNo { get; set; }
+
+        /// <summary>
+        /// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
+        /// </summary>
+        [Input("dbInstanceName")]
+        public Input<string>? DbInstanceName { get; set; }
+
+        /// <summary>
+        /// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        /// </summary>
+        [Input("dedicatedHostGroupId")]
+        public Input<string>? DedicatedHostGroupId { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
         /// </summary>
         [Input("enablePublic")]
         public Input<bool>? EnablePublic { get; set; }
 
         /// <summary>
-        /// Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
+        /// The expiration time of the prepaid instance.
+        /// </summary>
+        [Input("endTime")]
+        public Input<string>? EndTime { get; set; }
+
+        /// <summary>
+        /// The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        /// Specifies whether to forcibly change the type. Default to: `true`.
+        /// </summary>
+        [Input("forceUpgrade")]
+        public Input<bool>? ForceUpgrade { get; set; }
+
+        /// <summary>
+        /// Whether to create a distributed cache. Default to: `false`.
+        /// </summary>
+        [Input("globalInstance")]
+        public Input<bool>? GlobalInstance { get; set; }
+
+        /// <summary>
+        /// The ID of distributed cache.
+        /// </summary>
+        [Input("globalInstanceId")]
+        public Input<string>? GlobalInstanceId { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -520,13 +897,19 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// The name of DB instance. It a string of 2 to 256 characters.
+        /// It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The engine to use: `Redis` or `Memcache`. Defaults to `Redis`.
+        /// Whether to open the release protection.
+        /// </summary>
+        [Input("instanceReleaseProtection")]
+        public Input<bool>? InstanceReleaseProtection { get; set; }
+
+        /// <summary>
+        /// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -550,23 +933,42 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         /// </summary>
         [Input("maintainEndTime")]
         public Input<string>? MaintainEndTime { get; set; }
 
         /// <summary>
-        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         /// </summary>
         [Input("maintainStartTime")]
         public Input<string>? MaintainStartTime { get; set; }
+
+        /// <summary>
+        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+        /// </summary>
+        [Input("modifyMode")]
+        public Input<int>? ModifyMode { get; set; }
+
+        /// <summary>
+        /// Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+        /// </summary>
+        [Input("nodeType")]
+        public Input<string>? NodeType { get; set; }
+
+        /// <summary>
+        /// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+        /// </summary>
+        [Input("orderType")]
+        public Input<string>? OrderType { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.InstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after instance was launched. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        /// It has been deprecated from provider version 1.101.0 and `config` instead..
         /// </summary>
+        [Obsolete(@"Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.")]
         public InputList<Inputs.InstanceParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.InstanceParameterGetArgs>());
@@ -574,28 +976,40 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        /// The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         /// </summary>
         [Input("period")]
-        public Input<int>? Period { get; set; }
+        public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The port of redis.
+        /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
         /// </summary>
         [Input("port")]
-        public Input<string>? Port { get; set; }
+        public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Set the instance's private IP.
+        /// The internal IP address of the instance.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
+
+        /// <summary>
+        /// Theoretical maximum QPS value.
+        /// </summary>
+        [Input("qps")]
+        public Input<int>? Qps { get; set; }
 
         /// <summary>
         /// The ID of resource group which the resource belongs.
@@ -604,22 +1018,58 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The Security Group ID of ECS.
+        /// The point in time of a backup file.
+        /// </summary>
+        [Input("restoreTime")]
+        public Input<string>? RestoreTime { get; set; }
+
+        /// <summary>
+        /// The ID of security groups.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        /// </summary>
+        [Input("securityIpGroupAttribute")]
+        public Input<string>? SecurityIpGroupAttribute { get; set; }
+
+        /// <summary>
+        /// The name of the whitelist group.
+        /// </summary>
+        [Input("securityIpGroupName")]
+        public Input<string>? SecurityIpGroupName { get; set; }
 
         [Input("securityIps")]
         private InputList<string>? _securityIps;
 
         /// <summary>
-        /// Set the instance's IP whitelist of the default security group.
+        /// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         /// </summary>
         public InputList<string> SecurityIps
         {
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        /// <summary>
+        /// The ID of the source instance.
+        /// </summary>
+        [Input("srcdbInstanceId")]
+        public Input<string>? SrcdbInstanceId { get; set; }
+
+        /// <summary>
+        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        /// </summary>
+        [Input("sslEnable")]
+        public Input<string>? SslEnable { get; set; }
+
+        /// <summary>
+        /// The status of KVStore DBInstance.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -634,7 +1084,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values are `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         /// </summary>
         [Input("vpcAuthMode")]
         public Input<string>? VpcAuthMode { get; set; }
@@ -644,6 +1094,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the zone.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public InstanceState()
         {

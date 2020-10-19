@@ -21,6 +21,8 @@ type GetInstancesInstance struct {
 	DiskType int `pulumi:"diskType"`
 	// The peak bandwidth of the instance.
 	EipMax int `pulumi:"eipMax"`
+	// The endPoint to access the instance.
+	EndPoint string `pulumi:"endPoint"`
 	// ID of the instance.
 	Id string `pulumi:"id"`
 	// The peak value of io of the instance.
@@ -67,6 +69,8 @@ type GetInstancesInstanceArgs struct {
 	DiskType pulumi.IntInput `pulumi:"diskType"`
 	// The peak bandwidth of the instance.
 	EipMax pulumi.IntInput `pulumi:"eipMax"`
+	// The endPoint to access the instance.
+	EndPoint pulumi.StringInput `pulumi:"endPoint"`
 	// ID of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The peak value of io of the instance.
@@ -165,6 +169,11 @@ func (o GetInstancesInstanceOutput) DiskType() pulumi.IntOutput {
 // The peak bandwidth of the instance.
 func (o GetInstancesInstanceOutput) EipMax() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.EipMax }).(pulumi.IntOutput)
+}
+
+// The endPoint to access the instance.
+func (o GetInstancesInstanceOutput) EndPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.EndPoint }).(pulumi.StringOutput)
 }
 
 // ID of the instance.

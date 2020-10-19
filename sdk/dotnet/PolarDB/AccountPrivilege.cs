@@ -13,6 +13,69 @@ namespace Pulumi.AliCloud.PolarDB
     /// Provides a PolarDB account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
     /// 
     /// &gt; **NOTE:** Available in v1.67.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "PolarDB";
+    ///         var name = config.Get("name") ?? "dbaccountprivilegebasic";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///         });
+    ///         var cluster = new AliCloud.PolarDB.Cluster("cluster", new AliCloud.PolarDB.ClusterArgs
+    ///         {
+    ///             DbType = "MySQL",
+    ///             DbVersion = "8.0",
+    ///             PayType = "PostPaid",
+    ///             DbNodeClass = "polar.mysql.x4.large",
+    ///             VswitchId = defaultSwitch.Id,
+    ///             Description = name,
+    ///         });
+    ///         var db = new AliCloud.PolarDB.Database("db", new AliCloud.PolarDB.DatabaseArgs
+    ///         {
+    ///             DbClusterId = cluster.Id,
+    ///             DbName = "tftestdatabase",
+    ///         });
+    ///         var account = new AliCloud.PolarDB.Account("account", new AliCloud.PolarDB.AccountArgs
+    ///         {
+    ///             DbClusterId = cluster.Id,
+    ///             AccountName = "tftestnormal",
+    ///             AccountPassword = "Test12345",
+    ///             AccountDescription = name,
+    ///         });
+    ///         var privilege = new AliCloud.PolarDB.AccountPrivilege("privilege", new AliCloud.PolarDB.AccountPrivilegeArgs
+    ///         {
+    ///             DbClusterId = cluster.Id,
+    ///             AccountName = account.AccountName,
+    ///             AccountPrivilege = "ReadOnly",
+    ///             DbNames = 
+    ///             {
+    ///                 db.DbName,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccountPrivilege : Pulumi.CustomResource
     {
@@ -23,7 +86,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+        /// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
         /// </summary>
         [Output("accountPrivilege")]
         public Output<string?> Privilege { get; private set; } = null!;
@@ -93,7 +156,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> AccountName { get; set; } = null!;
 
         /// <summary>
-        /// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+        /// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
         /// </summary>
         [Input("accountPrivilege")]
         public Input<string>? Privilege { get; set; }
@@ -130,7 +193,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+        /// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
         /// </summary>
         [Input("accountPrivilege")]
         public Input<string>? Privilege { get; set; }

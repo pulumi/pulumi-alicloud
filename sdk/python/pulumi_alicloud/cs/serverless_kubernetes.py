@@ -29,6 +29,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
                  private_zone: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -90,6 +91,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__['name_prefix'] = name_prefix
             __props__['new_nat_gateway'] = new_nat_gateway
             __props__['private_zone'] = private_zone
+            __props__['resource_group_id'] = resource_group_id
             __props__['security_group_id'] = security_group_id
             __props__['tags'] = tags
             __props__['version'] = version
@@ -123,6 +125,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             name_prefix: Optional[pulumi.Input[str]] = None,
             new_nat_gateway: Optional[pulumi.Input[bool]] = None,
             private_zone: Optional[pulumi.Input[bool]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             version: Optional[pulumi.Input[str]] = None,
@@ -171,6 +174,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__["name_prefix"] = name_prefix
         __props__["new_nat_gateway"] = new_nat_gateway
         __props__["private_zone"] = private_zone
+        __props__["resource_group_id"] = resource_group_id
         __props__["security_group_id"] = security_group_id
         __props__["tags"] = tags
         __props__["version"] = version
@@ -270,6 +274,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
         Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
         """
         return pulumi.get(self, "private_zone")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="securityGroupId")

@@ -13,6 +13,7 @@ __all__ = [
     'AlarmEscalationsInfo',
     'AlarmEscalationsWarn',
     'SiteMonitorIspCity',
+    'GetAlarmContactGroupsGroupResult',
     'GetAlarmContactsContactResult',
 ]
 
@@ -210,6 +211,68 @@ class SiteMonitorIspCity(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetAlarmContactGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 alarm_contact_group_name: str,
+                 contacts: Sequence[str],
+                 describe: str,
+                 enable_subscribed: bool,
+                 id: str):
+        """
+        :param str alarm_contact_group_name: The name of Alarm Contact Group.
+        :param Sequence[str] contacts: The alarm contacts in the alarm group.
+        :param str describe: The description of the Alarm Group.
+        :param bool enable_subscribed: Indicates whether the alarm group subscribes to weekly reports.
+        :param str id: The ID of the CMS.
+        """
+        pulumi.set(__self__, "alarm_contact_group_name", alarm_contact_group_name)
+        pulumi.set(__self__, "contacts", contacts)
+        pulumi.set(__self__, "describe", describe)
+        pulumi.set(__self__, "enable_subscribed", enable_subscribed)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="alarmContactGroupName")
+    def alarm_contact_group_name(self) -> str:
+        """
+        The name of Alarm Contact Group.
+        """
+        return pulumi.get(self, "alarm_contact_group_name")
+
+    @property
+    @pulumi.getter
+    def contacts(self) -> Sequence[str]:
+        """
+        The alarm contacts in the alarm group.
+        """
+        return pulumi.get(self, "contacts")
+
+    @property
+    @pulumi.getter
+    def describe(self) -> str:
+        """
+        The description of the Alarm Group.
+        """
+        return pulumi.get(self, "describe")
+
+    @property
+    @pulumi.getter(name="enableSubscribed")
+    def enable_subscribed(self) -> bool:
+        """
+        Indicates whether the alarm group subscribes to weekly reports.
+        """
+        return pulumi.get(self, "enable_subscribed")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the CMS.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

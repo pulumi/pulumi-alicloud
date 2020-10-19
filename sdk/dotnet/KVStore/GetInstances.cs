@@ -14,6 +14,32 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.KVStore.GetInstances.InvokeAsync(new AliCloud.KVStore.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "testname",
+        ///         }));
+        ///         this.FirstInstanceName = @default.Apply(@default =&gt; @default.Instances[0].Name);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceName")]
+        ///     public Output&lt;string&gt; FirstInstanceName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
@@ -22,11 +48,47 @@ namespace Pulumi.AliCloud.KVStore
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+        /// </summary>
+        [Input("architectureType")]
+        public string? ArchitectureType { get; set; }
+
+        /// <summary>
+        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// </summary>
+        [Input("editionType")]
+        public string? EditionType { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
+        /// <summary>
+        /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+        /// </summary>
+        [Input("engineVersion")]
+        public string? EngineVersion { get; set; }
+
+        /// <summary>
+        /// The expiration status of the instance.
+        /// </summary>
+        [Input("expired")]
+        public string? Expired { get; set; }
+
+        /// <summary>
+        /// Whether to create a distributed cache.
+        /// </summary>
+        [Input("globalInstance")]
+        public bool? GlobalInstance { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of RKV instance IDs.
+        /// A list of KVStore DBInstance IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -35,14 +97,13 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// Type of the applied ApsaraDB for Redis instance.
-        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
         /// </summary>
         [Input("instanceClass")]
         public string? InstanceClass { get; set; }
 
         /// <summary>
-        /// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+        /// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
         /// </summary>
         [Input("instanceType")]
         public string? InstanceType { get; set; }
@@ -53,11 +114,35 @@ namespace Pulumi.AliCloud.KVStore
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// The type of the network. Valid values: `CLASSIC`, `VPC`.
+        /// </summary>
+        [Input("networkType")]
+        public string? NetworkType { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Status of the instance.
+        /// The payment type. Valid values: `PostPaid`, `PrePaid`.
+        /// </summary>
+        [Input("paymentType")]
+        public string? PaymentType { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public string? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The name of the instance.
+        /// </summary>
+        [Input("searchKey")]
+        public string? SearchKey { get; set; }
+
+        /// <summary>
+        /// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -86,6 +171,12 @@ namespace Pulumi.AliCloud.KVStore
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
 
+        /// <summary>
+        /// The ID of the zone.
+        /// </summary>
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
+
         public GetInstancesArgs()
         {
         }
@@ -95,28 +186,50 @@ namespace Pulumi.AliCloud.KVStore
     [OutputType]
     public sealed class GetInstancesResult
     {
+        public readonly string? ArchitectureType;
+        public readonly string? EditionType;
+        public readonly bool? EnableDetails;
+        /// <summary>
+        /// The engine version of the instance.
+        /// </summary>
+        public readonly string? EngineVersion;
+        public readonly string? Expired;
+        public readonly bool? GlobalInstance;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of RKV instance IDs.
+        /// A list of KVStore Instance IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? InstanceClass;
         /// <summary>
-        /// (Optional) Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
-        /// * `instance_class`- (Optional) Type of the applied ApsaraDB for Redis instance.
+        /// (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
+        /// * `instance_class`- (Optional) Type of the applied ApsaraDB for instance.
         /// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// A list of RKV instances. Its every element contains the following attributes:
+        /// A list of KVStore Instances. Its every element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of KVStore Instance names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// The network type of the instance.
+        /// </summary>
+        public readonly string? NetworkType;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Billing method. Valid Values: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
+        /// </summary>
+        public readonly string? PaymentType;
+        public readonly string? ResourceGroupId;
+        public readonly string? SearchKey;
         /// <summary>
         /// Status of the instance.
         /// </summary>
@@ -130,9 +243,25 @@ namespace Pulumi.AliCloud.KVStore
         /// VSwitch ID the instance belongs to.
         /// </summary>
         public readonly string? VswitchId;
+        /// <summary>
+        /// The ID of zone.
+        /// </summary>
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetInstancesResult(
+            string? architectureType,
+
+            string? editionType,
+
+            bool? enableDetails,
+
+            string? engineVersion,
+
+            string? expired,
+
+            bool? globalInstance,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -147,7 +276,15 @@ namespace Pulumi.AliCloud.KVStore
 
             ImmutableArray<string> names,
 
+            string? networkType,
+
             string? outputFile,
+
+            string? paymentType,
+
+            string? resourceGroupId,
+
+            string? searchKey,
 
             string? status,
 
@@ -155,8 +292,16 @@ namespace Pulumi.AliCloud.KVStore
 
             string? vpcId,
 
-            string? vswitchId)
+            string? vswitchId,
+
+            string? zoneId)
         {
+            ArchitectureType = architectureType;
+            EditionType = editionType;
+            EnableDetails = enableDetails;
+            EngineVersion = engineVersion;
+            Expired = expired;
+            GlobalInstance = globalInstance;
             Id = id;
             Ids = ids;
             InstanceClass = instanceClass;
@@ -164,11 +309,16 @@ namespace Pulumi.AliCloud.KVStore
             Instances = instances;
             NameRegex = nameRegex;
             Names = names;
+            NetworkType = networkType;
             OutputFile = outputFile;
+            PaymentType = paymentType;
+            ResourceGroupId = resourceGroupId;
+            SearchKey = searchKey;
             Status = status;
             Tags = tags;
             VpcId = vpcId;
             VswitchId = vswitchId;
+            ZoneId = zoneId;
         }
     }
 }

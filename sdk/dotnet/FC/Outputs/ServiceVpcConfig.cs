@@ -14,12 +14,12 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class ServiceVpcConfig
     {
         /// <summary>
-        /// A security group ID associated with the FC service.
+        /// A security group ID associated with the Function Compute Service.
         /// </summary>
         public readonly string SecurityGroupId;
         public readonly string? VpcId;
         /// <summary>
-        /// A list of vswitch IDs associated with the FC service.
+        /// A list of vswitch IDs associated with the Function Compute Service.
         /// </summary>
         public readonly ImmutableArray<string> VswitchIds;
 

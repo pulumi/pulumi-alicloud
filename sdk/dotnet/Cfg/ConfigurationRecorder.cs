@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// &gt; **NOTE:** Available in v1.99.0+.
     /// 
+    /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

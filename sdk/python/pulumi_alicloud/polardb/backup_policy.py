@@ -26,7 +26,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         if __name__ is not None:
@@ -75,7 +75,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -108,7 +108,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="preferredBackupPeriods")
     def preferred_backup_periods(self) -> pulumi.Output[Sequence[str]]:
         """
-        PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+        PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         """
         return pulumi.get(self, "preferred_backup_periods")
 

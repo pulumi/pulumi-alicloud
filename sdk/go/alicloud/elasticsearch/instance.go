@@ -31,6 +31,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := elasticsearch.NewInstance(ctx, "instance", &elasticsearch.InstanceArgs{
+// 			ClientNodeAmount:   pulumi.Int(2),
+// 			ClientNodeSpec:     pulumi.String("elasticsearch.sn2ne.large"),
 // 			DataNodeAmount:     pulumi.Int(2),
 // 			DataNodeDiskSize:   pulumi.Int(20),
 // 			DataNodeDiskType:   pulumi.String("cloud_ssd"),
@@ -38,6 +40,7 @@ import (
 // 			Description:        pulumi.String("description"),
 // 			InstanceChargeType: pulumi.String("PostPaid"),
 // 			Password:           pulumi.String("Your password"),
+// 			Protocol:           pulumi.String("HTTPS"),
 // 			Tags: pulumi.StringMap{
 // 				"key1": pulumi.String("value1"),
 // 				"key2": pulumi.String("value2"),
@@ -56,6 +59,10 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The Elasticsearch cluster's client node quantity, between 2 and 25.
+	ClientNodeAmount pulumi.IntPtrOutput `pulumi:"clientNodeAmount"`
+	// The client node spec. If specified, client node will be created.
+	ClientNodeSpec pulumi.StringPtrOutput `pulumi:"clientNodeSpec"`
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	DataNodeAmount pulumi.IntOutput `pulumi:"dataNodeAmount"`
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
@@ -101,6 +108,8 @@ type Instance struct {
 	Port pulumi.IntOutput `pulumi:"port"`
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayOutput `pulumi:"privateWhitelists"`
+	// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists pulumi.StringArrayOutput `pulumi:"publicWhitelists"`
 	// The Id of resource group which the Elasticsearch instance belongs.
@@ -165,6 +174,10 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// The Elasticsearch cluster's client node quantity, between 2 and 25.
+	ClientNodeAmount *int `pulumi:"clientNodeAmount"`
+	// The client node spec. If specified, client node will be created.
+	ClientNodeSpec *string `pulumi:"clientNodeSpec"`
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	DataNodeAmount *int `pulumi:"dataNodeAmount"`
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
@@ -210,6 +223,8 @@ type instanceState struct {
 	Port *int `pulumi:"port"`
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
+	// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+	Protocol *string `pulumi:"protocol"`
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
 	// The Id of resource group which the Elasticsearch instance belongs.
@@ -229,6 +244,10 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// The Elasticsearch cluster's client node quantity, between 2 and 25.
+	ClientNodeAmount pulumi.IntPtrInput
+	// The client node spec. If specified, client node will be created.
+	ClientNodeSpec pulumi.StringPtrInput
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	DataNodeAmount pulumi.IntPtrInput
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
@@ -274,6 +293,8 @@ type InstanceState struct {
 	Port pulumi.IntPtrInput
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayInput
+	// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+	Protocol pulumi.StringPtrInput
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists pulumi.StringArrayInput
 	// The Id of resource group which the Elasticsearch instance belongs.
@@ -297,6 +318,10 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// The Elasticsearch cluster's client node quantity, between 2 and 25.
+	ClientNodeAmount *int `pulumi:"clientNodeAmount"`
+	// The client node spec. If specified, client node will be created.
+	ClientNodeSpec *string `pulumi:"clientNodeSpec"`
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	DataNodeAmount int `pulumi:"dataNodeAmount"`
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
@@ -334,6 +359,8 @@ type instanceArgs struct {
 	Period *int `pulumi:"period"`
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
+	// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+	Protocol *string `pulumi:"protocol"`
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
 	// The Id of resource group which the Elasticsearch instance belongs.
@@ -352,6 +379,10 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// The Elasticsearch cluster's client node quantity, between 2 and 25.
+	ClientNodeAmount pulumi.IntPtrInput
+	// The client node spec. If specified, client node will be created.
+	ClientNodeSpec pulumi.StringPtrInput
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	DataNodeAmount pulumi.IntInput
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
@@ -389,6 +420,8 @@ type InstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayInput
+	// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+	Protocol pulumi.StringPtrInput
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists pulumi.StringArrayInput
 	// The Id of resource group which the Elasticsearch instance belongs.

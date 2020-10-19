@@ -213,6 +213,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
     /**
+     * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     */
+    public readonly systemDiskDescription!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+     */
+    public readonly systemDiskName!: pulumi.Output<string | undefined>;
+    /**
      * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */
     public readonly systemDiskSize!: pulumi.Output<number | undefined>;
@@ -289,6 +297,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["subnetId"] = state ? state.subnetId : undefined;
             inputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
             inputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
+            inputs["systemDiskDescription"] = state ? state.systemDiskDescription : undefined;
+            inputs["systemDiskName"] = state ? state.systemDiskName : undefined;
             inputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["userData"] = state ? state.userData : undefined;
@@ -344,6 +354,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["subnetId"] = args ? args.subnetId : undefined;
             inputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
+            inputs["systemDiskDescription"] = args ? args.systemDiskDescription : undefined;
+            inputs["systemDiskName"] = args ? args.systemDiskName : undefined;
             inputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
@@ -544,6 +556,14 @@ export interface InstanceState {
      * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
+    /**
+     * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     */
+    readonly systemDiskDescription?: pulumi.Input<string>;
+    /**
+     * The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+     */
+    readonly systemDiskName?: pulumi.Input<string>;
     /**
      * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */
@@ -748,6 +768,14 @@ export interface InstanceArgs {
      * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
+    /**
+     * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     */
+    readonly systemDiskDescription?: pulumi.Input<string>;
+    /**
+     * The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+     */
+    readonly systemDiskName?: pulumi.Input<string>;
     /**
      * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */

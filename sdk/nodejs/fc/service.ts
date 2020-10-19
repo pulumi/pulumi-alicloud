@@ -35,11 +35,11 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
-     * The function compute service description.
+     * The Function Compute Service description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether to allow the service to access Internet. Default to "true".
+     * Whether to allow the Service to access Internet. Default to "true".
      */
     public readonly internetAccess!: pulumi.Output<boolean | undefined>;
     /**
@@ -47,31 +47,39 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModified!: pulumi.Output<string>;
     /**
-     * Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
      */
     public readonly logConfig!: pulumi.Output<outputs.fc.ServiceLogConfig | undefined>;
     /**
-     * The Function Compute service name. It is the only in one Alicloud account and is conflict with "namePrefix".
+     * The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Setting a prefix to get a only name. It is conflict with "name".
+     * Setting a prefix to get a only name. It is conflict with `name`.
      */
     public readonly namePrefix!: pulumi.Output<string | undefined>;
     /**
-     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
      */
     public readonly nasConfig!: pulumi.Output<outputs.fc.ServiceNasConfig | undefined>;
     /**
-     * RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+     * Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+     */
+    public readonly publish!: pulumi.Output<boolean | undefined>;
+    /**
+     * RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      */
     public readonly role!: pulumi.Output<string | undefined>;
     /**
-     * The Function Compute service ID.
+     * The Function Compute Service ID.
      */
     public /*out*/ readonly serviceId!: pulumi.Output<string>;
     /**
-     * Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+     * The latest published version of your Function Compute Service.
+     */
+    public /*out*/ readonly version!: pulumi.Output<string>;
+    /**
+     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
      */
     public readonly vpcConfig!: pulumi.Output<outputs.fc.ServiceVpcConfig | undefined>;
 
@@ -94,8 +102,10 @@ export class Service extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
             inputs["nasConfig"] = state ? state.nasConfig : undefined;
+            inputs["publish"] = state ? state.publish : undefined;
             inputs["role"] = state ? state.role : undefined;
             inputs["serviceId"] = state ? state.serviceId : undefined;
+            inputs["version"] = state ? state.version : undefined;
             inputs["vpcConfig"] = state ? state.vpcConfig : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
@@ -105,10 +115,12 @@ export class Service extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
             inputs["nasConfig"] = args ? args.nasConfig : undefined;
+            inputs["publish"] = args ? args.publish : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["vpcConfig"] = args ? args.vpcConfig : undefined;
             inputs["lastModified"] = undefined /*out*/;
             inputs["serviceId"] = undefined /*out*/;
+            inputs["version"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -126,11 +138,11 @@ export class Service extends pulumi.CustomResource {
  */
 export interface ServiceState {
     /**
-     * The function compute service description.
+     * The Function Compute Service description.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Whether to allow the service to access Internet. Default to "true".
+     * Whether to allow the Service to access Internet. Default to "true".
      */
     readonly internetAccess?: pulumi.Input<boolean>;
     /**
@@ -138,31 +150,39 @@ export interface ServiceState {
      */
     readonly lastModified?: pulumi.Input<string>;
     /**
-     * Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
      */
     readonly logConfig?: pulumi.Input<inputs.fc.ServiceLogConfig>;
     /**
-     * The Function Compute service name. It is the only in one Alicloud account and is conflict with "namePrefix".
+     * The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Setting a prefix to get a only name. It is conflict with "name".
+     * Setting a prefix to get a only name. It is conflict with `name`.
      */
     readonly namePrefix?: pulumi.Input<string>;
     /**
-     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
      */
     readonly nasConfig?: pulumi.Input<inputs.fc.ServiceNasConfig>;
     /**
-     * RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+     * Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+     */
+    readonly publish?: pulumi.Input<boolean>;
+    /**
+     * RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * The Function Compute service ID.
+     * The Function Compute Service ID.
      */
     readonly serviceId?: pulumi.Input<string>;
     /**
-     * Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+     * The latest published version of your Function Compute Service.
+     */
+    readonly version?: pulumi.Input<string>;
+    /**
+     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
      */
     readonly vpcConfig?: pulumi.Input<inputs.fc.ServiceVpcConfig>;
 }
@@ -172,35 +192,39 @@ export interface ServiceState {
  */
 export interface ServiceArgs {
     /**
-     * The function compute service description.
+     * The Function Compute Service description.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Whether to allow the service to access Internet. Default to "true".
+     * Whether to allow the Service to access Internet. Default to "true".
      */
     readonly internetAccess?: pulumi.Input<boolean>;
     /**
-     * Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
      */
     readonly logConfig?: pulumi.Input<inputs.fc.ServiceLogConfig>;
     /**
-     * The Function Compute service name. It is the only in one Alicloud account and is conflict with "namePrefix".
+     * The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Setting a prefix to get a only name. It is conflict with "name".
+     * Setting a prefix to get a only name. It is conflict with `name`.
      */
     readonly namePrefix?: pulumi.Input<string>;
     /**
-     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
      */
     readonly nasConfig?: pulumi.Input<inputs.fc.ServiceNasConfig>;
     /**
-     * RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+     * Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+     */
+    readonly publish?: pulumi.Input<boolean>;
+    /**
+     * RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
      */
     readonly vpcConfig?: pulumi.Input<inputs.fc.ServiceVpcConfig>;
 }

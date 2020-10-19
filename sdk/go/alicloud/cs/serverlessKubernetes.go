@@ -36,7 +36,8 @@ type ServerlessKubernetes struct {
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
-	PrivateZone pulumi.BoolPtrOutput `pulumi:"privateZone"`
+	PrivateZone     pulumi.BoolPtrOutput `pulumi:"privateZone"`
+	ResourceGroupId pulumi.StringOutput  `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
@@ -107,7 +108,8 @@ type serverlessKubernetesState struct {
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
-	PrivateZone *bool `pulumi:"privateZone"`
+	PrivateZone     *bool   `pulumi:"privateZone"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
@@ -148,7 +150,8 @@ type ServerlessKubernetesState struct {
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway pulumi.BoolPtrInput
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
-	PrivateZone pulumi.BoolPtrInput
+	PrivateZone     pulumi.BoolPtrInput
+	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster .
@@ -193,7 +196,8 @@ type serverlessKubernetesArgs struct {
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
-	PrivateZone *bool `pulumi:"privateZone"`
+	PrivateZone     *bool   `pulumi:"privateZone"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
@@ -235,7 +239,8 @@ type ServerlessKubernetesArgs struct {
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway pulumi.BoolPtrInput
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
-	PrivateZone pulumi.BoolPtrInput
+	PrivateZone     pulumi.BoolPtrInput
+	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster .

@@ -20,24 +20,57 @@ import (
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/polardb"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cfg := config.New(ctx, "")
+// 		name := "polardbClusterconfig"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		creation := "PolarDB"
+// 		if param := cfg.Get("creation"); param != "" {
+// 			creation = param
+// 		}
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
 // 			DbType:      pulumi.String("MySQL"),
 // 			DbVersion:   pulumi.String("8.0"),
 // 			PayType:     pulumi.String("PostPaid"),
-// 			DbNodeClass: pulumi.Any(_var.Clusterclass),
-// 			VswitchId:   pulumi.String("polar.mysql.x4.large"),
+// 			DbNodeClass: pulumi.String("polar.mysql.x4.large"),
+// 			VswitchId:   defaultSwitch.ID(),
 // 			Description: pulumi.String("testDB"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = polardb.NewDatabase(ctx, "_default", &polardb.DatabaseArgs{
+// 		_, err = polardb.NewDatabase(ctx, "defaultDatabase", &polardb.DatabaseArgs{
 // 			DbClusterId: cluster.ID(),
 // 			DbName:      pulumi.String("tftestdatabase"),
 // 		})
@@ -55,7 +88,7 @@ type Database struct {
 	CharacterSetName pulumi.StringPtrOutput `pulumi:"characterSetName"`
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
 	DbDescription pulumi.StringPtrOutput `pulumi:"dbDescription"`
 	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
 	DbName pulumi.StringOutput `pulumi:"dbName"`
@@ -99,7 +132,7 @@ type databaseState struct {
 	CharacterSetName *string `pulumi:"characterSetName"`
 	// The Id of cluster that can run database.
 	DbClusterId *string `pulumi:"dbClusterId"`
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
 	DbDescription *string `pulumi:"dbDescription"`
 	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
 	DbName *string `pulumi:"dbName"`
@@ -110,7 +143,7 @@ type DatabaseState struct {
 	CharacterSetName pulumi.StringPtrInput
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringPtrInput
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
 	DbDescription pulumi.StringPtrInput
 	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
 	DbName pulumi.StringPtrInput
@@ -125,7 +158,7 @@ type databaseArgs struct {
 	CharacterSetName *string `pulumi:"characterSetName"`
 	// The Id of cluster that can run database.
 	DbClusterId string `pulumi:"dbClusterId"`
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
 	DbDescription *string `pulumi:"dbDescription"`
 	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
 	DbName string `pulumi:"dbName"`
@@ -137,7 +170,7 @@ type DatabaseArgs struct {
 	CharacterSetName pulumi.StringPtrInput
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringInput
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
 	DbDescription pulumi.StringPtrInput
 	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
 	DbName pulumi.StringInput

@@ -159,6 +159,10 @@ type Instance struct {
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
 	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA pulumi.StringPtrOutput `pulumi:"zoneIdSlaveA"`
+	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveB pulumi.StringPtrOutput `pulumi:"zoneIdSlaveB"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -280,6 +284,10 @@ type instanceState struct {
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
 	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId *string `pulumi:"zoneId"`
+	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA *string `pulumi:"zoneIdSlaveA"`
+	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveB *string `pulumi:"zoneIdSlaveB"`
 }
 
 type InstanceState struct {
@@ -362,6 +370,10 @@ type InstanceState struct {
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
 	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringPtrInput
+	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA pulumi.StringPtrInput
+	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveB pulumi.StringPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -442,6 +454,10 @@ type instanceArgs struct {
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
 	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId *string `pulumi:"zoneId"`
+	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA *string `pulumi:"zoneIdSlaveA"`
+	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveB *string `pulumi:"zoneIdSlaveB"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -519,6 +535,10 @@ type InstanceArgs struct {
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
 	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringPtrInput
+	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA pulumi.StringPtrInput
+	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveB pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

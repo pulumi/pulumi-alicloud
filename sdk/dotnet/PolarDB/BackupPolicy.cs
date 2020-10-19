@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+        /// PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         /// </summary>
         [Output("preferredBackupPeriods")]
         public Output<ImmutableArray<string>> PreferredBackupPeriods { get; private set; } = null!;
@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<string>? _preferredBackupPeriods;
 
         /// <summary>
-        /// PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+        /// PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         /// </summary>
         public InputList<string> PreferredBackupPeriods
         {
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<string>? _preferredBackupPeriods;
 
         /// <summary>
-        /// PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+        /// PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         /// </summary>
         public InputList<string> PreferredBackupPeriods
         {

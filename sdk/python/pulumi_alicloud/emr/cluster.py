@@ -30,6 +30,7 @@ class Cluster(pulumi.CustomResource):
                  master_pwd: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  related_cluster_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  ssh_enable: Optional[pulumi.Input[bool]] = None,
@@ -61,6 +62,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] master_pwd: Master ssh password.
         :param pulumi.Input[str] name: bootstrap action name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] option_software_lists: Optional software list.
+        :param pulumi.Input[int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
         :param pulumi.Input[str] related_cluster_id: This specify the related cluster id, if this cluster is a Gateway.
         :param pulumi.Input[str] security_group_id: Security Group ID for Cluster, you can also specify this key for each host group.
         :param pulumi.Input[bool] ssh_enable: If this is set true, we can ssh into cluster. Default value is false.
@@ -104,6 +106,7 @@ class Cluster(pulumi.CustomResource):
             __props__['master_pwd'] = master_pwd
             __props__['name'] = name
             __props__['option_software_lists'] = option_software_lists
+            __props__['period'] = period
             __props__['related_cluster_id'] = related_cluster_id
             __props__['security_group_id'] = security_group_id
             __props__['ssh_enable'] = ssh_enable
@@ -137,6 +140,7 @@ class Cluster(pulumi.CustomResource):
             master_pwd: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             related_cluster_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             ssh_enable: Optional[pulumi.Input[bool]] = None,
@@ -163,6 +167,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] master_pwd: Master ssh password.
         :param pulumi.Input[str] name: bootstrap action name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] option_software_lists: Optional software list.
+        :param pulumi.Input[int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
         :param pulumi.Input[str] related_cluster_id: This specify the related cluster id, if this cluster is a Gateway.
         :param pulumi.Input[str] security_group_id: Security Group ID for Cluster, you can also specify this key for each host group.
         :param pulumi.Input[bool] ssh_enable: If this is set true, we can ssh into cluster. Default value is false.
@@ -189,6 +194,7 @@ class Cluster(pulumi.CustomResource):
         __props__["master_pwd"] = master_pwd
         __props__["name"] = name
         __props__["option_software_lists"] = option_software_lists
+        __props__["period"] = period
         __props__["related_cluster_id"] = related_cluster_id
         __props__["security_group_id"] = security_group_id
         __props__["ssh_enable"] = ssh_enable
@@ -296,6 +302,14 @@ class Cluster(pulumi.CustomResource):
         Optional software list.
         """
         return pulumi.get(self, "option_software_lists")
+
+    @property
+    @pulumi.getter
+    def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+        """
+        return pulumi.get(self, "period")
 
     @property
     @pulumi.getter(name="relatedClusterId")

@@ -103,7 +103,7 @@ def get_databases(db_cluster_id: Optional[str] = None,
     polardb_clusters_ds = alicloud.polardb.get_clusters(description_regex="pc-\\w+",
         status="Running")
     default = alicloud.polardb.get_databases(db_cluster_id=polardb_clusters_ds.clusters[0].id)
-    pulumi.export("ends", default.databases[0].db_name)
+    pulumi.export("database", default.databases[0].db_name)
     ```
 
 

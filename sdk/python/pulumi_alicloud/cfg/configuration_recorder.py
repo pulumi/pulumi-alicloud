@@ -26,6 +26,8 @@ class ConfigurationRecorder(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.99.0+.
 
+        > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+
         ## Example Usage
 
         ```python

@@ -13,6 +13,54 @@ namespace Pulumi.AliCloud.PolarDB
     /// Provides a PolarDB account resource and used to manage databases.
     /// 
     /// &gt; **NOTE:** Available in v1.67.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "PolarDB";
+    ///         var name = config.Get("name") ?? "polardbaccountmysql";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///         });
+    ///         var cluster = new AliCloud.PolarDB.Cluster("cluster", new AliCloud.PolarDB.ClusterArgs
+    ///         {
+    ///             DbType = "MySQL",
+    ///             DbVersion = "8.0",
+    ///             DbNodeClass = "polar.mysql.x4.large",
+    ///             PayType = "PostPaid",
+    ///             VswitchId = defaultSwitch.Id,
+    ///             Description = name,
+    ///         });
+    ///         var account = new AliCloud.PolarDB.Account("account", new AliCloud.PolarDB.AccountArgs
+    ///         {
+    ///             DbClusterId = cluster.Id,
+    ///             AccountName = "tftestnormal",
+    ///             AccountPassword = "Test12345",
+    ///             AccountDescription = name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

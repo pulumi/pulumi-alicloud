@@ -25,16 +25,46 @@ class Endpoint(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a PolarDB endpoint resource to allocate an Internet endpoint string for PolarDB instance.
+        Provides a PolarDB endpoint resource to manage custom endpoint of PolarDB cluster.
 
-        > **NOTE:** Available in v1.80.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
-         To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+        > **NOTE:** Available in v1.80.0+. Only used to manage PolarDB MySQL custom cluster endpoint.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        creation = config.get("creation")
+        if creation is None:
+            creation = "PolarDB"
+        name = config.get("name")
+        if name is None:
+            name = "polardbconnectionbasic"
+        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=default_zones.zones[0].id)
+        default_cluster = alicloud.polardb.Cluster("defaultCluster",
+            db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid",
+            db_node_class="polar.mysql.x4.large",
+            vswitch_id=default_switch.id,
+            description=name)
+        endpoint = alicloud.polardb.Endpoint("endpoint",
+            db_cluster_id=default_cluster.id,
+            endpoint_type="Custom")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. Default to `Disable`.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[Mapping[str, Any]] endpoint_config: Advanced configuration of the cluster address.
+        :param pulumi.Input[Mapping[str, Any]] endpoint_config: The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         :param pulumi.Input[str] endpoint_type: Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. Default to `ReadOnly`.
@@ -91,7 +121,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. Default to `Disable`.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[Mapping[str, Any]] endpoint_config: Advanced configuration of the cluster address.
+        :param pulumi.Input[Mapping[str, Any]] endpoint_config: The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         :param pulumi.Input[str] endpoint_type: Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. Default to `ReadOnly`.
@@ -128,7 +158,7 @@ class Endpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointConfig")
     def endpoint_config(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Advanced configuration of the cluster address.
+        The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         """
         return pulumi.get(self, "endpoint_config")
 

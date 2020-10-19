@@ -90,6 +90,8 @@ type Instance struct {
 	DiskType pulumi.IntOutput `pulumi:"diskType"`
 	// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
 	EipMax pulumi.IntPtrOutput `pulumi:"eipMax"`
+	// The EndPoint to access the kafka instance.
+	EndPoint pulumi.StringOutput `pulumi:"endPoint"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntOutput `pulumi:"ioMax"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
@@ -166,6 +168,8 @@ type instanceState struct {
 	DiskType *int `pulumi:"diskType"`
 	// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
 	EipMax *int `pulumi:"eipMax"`
+	// The EndPoint to access the kafka instance.
+	EndPoint *string `pulumi:"endPoint"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax *int `pulumi:"ioMax"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
@@ -197,6 +201,8 @@ type InstanceState struct {
 	DiskType pulumi.IntPtrInput
 	// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
 	EipMax pulumi.IntPtrInput
+	// The EndPoint to access the kafka instance.
+	EndPoint pulumi.StringPtrInput
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.

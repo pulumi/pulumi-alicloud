@@ -19,7 +19,7 @@ type AlertNotificationList struct {
 	MobileLists []string `pulumi:"mobileLists"`
 	// Request address.
 	ServiceUri *string `pulumi:"serviceUri"`
-	// Notification type. support Email, SMS, DingTalk.
+	// Notification type. support Email, SMS, DingTalk, MessageCenter.
 	Type string `pulumi:"type"`
 }
 
@@ -43,7 +43,7 @@ type AlertNotificationListArgs struct {
 	MobileLists pulumi.StringArrayInput `pulumi:"mobileLists"`
 	// Request address.
 	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
-	// Notification type. support Email, SMS, DingTalk.
+	// Notification type. support Email, SMS, DingTalk, MessageCenter.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -118,7 +118,7 @@ func (o AlertNotificationListOutput) ServiceUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertNotificationList) *string { return v.ServiceUri }).(pulumi.StringPtrOutput)
 }
 
-// Notification type. support Email, SMS, DingTalk.
+// Notification type. support Email, SMS, DingTalk, MessageCenter.
 func (o AlertNotificationListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertNotificationList) string { return v.Type }).(pulumi.StringOutput)
 }

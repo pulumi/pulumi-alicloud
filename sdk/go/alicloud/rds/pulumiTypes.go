@@ -770,6 +770,8 @@ type GetInstancesInstance struct {
 	InstanceType string `pulumi:"instanceType"`
 	// ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
 	MasterInstanceId string `pulumi:"masterInstanceId"`
+	// (Available in 1.101.0+) The master zone of the instance.
+	MasterZone string `pulumi:"masterZone"`
 	// The name of the RDS instance.
 	Name string `pulumi:"name"`
 	// `Internet` for public network or `Intranet` for private network.
@@ -788,6 +790,10 @@ type GetInstancesInstance struct {
 	VpcId string `pulumi:"vpcId"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId string `pulumi:"vswitchId"`
+	// (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA string `pulumi:"zoneIdSlaveA"`
+	// (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveB string `pulumi:"zoneIdSlaveB"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -832,6 +838,8 @@ type GetInstancesInstanceArgs struct {
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 	// ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
 	MasterInstanceId pulumi.StringInput `pulumi:"masterInstanceId"`
+	// (Available in 1.101.0+) The master zone of the instance.
+	MasterZone pulumi.StringInput `pulumi:"masterZone"`
 	// The name of the RDS instance.
 	Name pulumi.StringInput `pulumi:"name"`
 	// `Internet` for public network or `Intranet` for private network.
@@ -850,6 +858,10 @@ type GetInstancesInstanceArgs struct {
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA pulumi.StringInput `pulumi:"zoneIdSlaveA"`
+	// (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveB pulumi.StringInput `pulumi:"zoneIdSlaveB"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -978,6 +990,11 @@ func (o GetInstancesInstanceOutput) MasterInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.MasterInstanceId }).(pulumi.StringOutput)
 }
 
+// (Available in 1.101.0+) The master zone of the instance.
+func (o GetInstancesInstanceOutput) MasterZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MasterZone }).(pulumi.StringOutput)
+}
+
 // The name of the RDS instance.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
@@ -1021,6 +1038,16 @@ func (o GetInstancesInstanceOutput) VpcId() pulumi.StringOutput {
 // Used to retrieve instances belong to specified `vswitch` resources.
 func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+func (o GetInstancesInstanceOutput) ZoneIdSlaveA() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ZoneIdSlaveA }).(pulumi.StringOutput)
+}
+
+// (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+func (o GetInstancesInstanceOutput) ZoneIdSlaveB() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ZoneIdSlaveB }).(pulumi.StringOutput)
 }
 
 type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }

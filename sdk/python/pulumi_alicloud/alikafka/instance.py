@@ -125,6 +125,7 @@ class Instance(pulumi.CustomResource):
             if vswitch_id is None:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
+            __props__['end_point'] = None
             __props__['vpc_id'] = None
             __props__['zone_id'] = None
         super(Instance, __self__).__init__(
@@ -141,6 +142,7 @@ class Instance(pulumi.CustomResource):
             disk_size: Optional[pulumi.Input[int]] = None,
             disk_type: Optional[pulumi.Input[int]] = None,
             eip_max: Optional[pulumi.Input[int]] = None,
+            end_point: Optional[pulumi.Input[str]] = None,
             io_max: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             paid_type: Optional[pulumi.Input[str]] = None,
@@ -162,6 +164,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
@@ -181,6 +184,7 @@ class Instance(pulumi.CustomResource):
         __props__["disk_size"] = disk_size
         __props__["disk_type"] = disk_type
         __props__["eip_max"] = eip_max
+        __props__["end_point"] = end_point
         __props__["io_max"] = io_max
         __props__["name"] = name
         __props__["paid_type"] = paid_type
@@ -224,6 +228,14 @@ class Instance(pulumi.CustomResource):
         The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
         """
         return pulumi.get(self, "eip_max")
+
+    @property
+    @pulumi.getter(name="endPoint")
+    def end_point(self) -> pulumi.Output[str]:
+        """
+        The EndPoint to access the kafka instance.
+        """
+        return pulumi.get(self, "end_point")
 
     @property
     @pulumi.getter(name="ioMax")

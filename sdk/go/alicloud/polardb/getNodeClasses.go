@@ -31,19 +31,19 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "MySQL"
-// 		opt2 := "5.6"
-// 		opt3 := resourcesZones.Zones[0].Id
+// 		opt1 := resourcesZones.Zones[0].Id
+// 		opt2 := "MySQL"
+// 		opt3 := "5.6"
 // 		resourcesNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
-// 			DbType:    &opt1,
-// 			DbVersion: &opt2,
+// 			ZoneId:    &opt1,
 // 			PayType:   "Postpaid",
-// 			ZoneId:    &opt3,
+// 			DbType:    &opt2,
+// 			DbVersion: &opt3,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("firstPolardbNodeClass", resourcesNodeClasses.Classes)
+// 		ctx.Export("polardbNodeClasses", resourcesNodeClasses.Classes)
 // 		return nil
 // 	})
 // }

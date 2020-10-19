@@ -14,7 +14,13 @@ namespace Pulumi.AliCloud.KVStore.Outputs
     public sealed class GetInstancesInstanceResult
     {
         /// <summary>
-        /// Availability zone.
+        /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+        /// </summary>
+        public readonly string ArchitectureType;
+        public readonly bool AutoRenew;
+        public readonly int AutoRenewPeriod;
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and `zone_id` instead.
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
@@ -22,16 +28,27 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly int Bandwidth;
         /// <summary>
-        /// Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
+        /// Capacity of the applied ApsaraDB for the instance. Unit: MB.
         /// </summary>
         public readonly int Capacity;
         /// <summary>
-        /// Billing method. Value options: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
+        /// It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         /// </summary>
         public readonly string ChargeType;
+        /// <summary>
+        /// The parameter configuration of the instance.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Config;
+        /// <summary>
+        /// Instance connection domain (only Intranet access supported).
+        /// </summary>
         public readonly string ConnectionDomain;
         /// <summary>
-        /// Instance connection quantity limit. Unit: count.
+        /// The connection mode of the instance.
+        /// </summary>
+        public readonly string ConnectionMode;
+        /// <summary>
+        /// IIt has been deprecated from provider version 1.101.0 and `max_connections` instead.
         /// </summary>
         public readonly int Connections;
         /// <summary>
@@ -39,28 +56,78 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The ID of the instance.
+        /// </summary>
+        public readonly string DbInstanceId;
+        /// <summary>
+        /// The name of the instance.
+        /// </summary>
+        public readonly string DbInstanceName;
+        /// <summary>
+        /// The time when the instance was destroyed.
+        /// </summary>
+        public readonly string DestroyTime;
+        /// <summary>
         /// Expiration time. Pay-As-You-Go instances are never expire.
+        /// </summary>
+        public readonly string EndTime;
+        /// <summary>
+        /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+        /// </summary>
+        public readonly string EngineVersion;
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and `end_time` instead.
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
-        /// The ID of the RKV instance.
+        /// Indicates whether there was an order of renewal with configuration change that had not taken effect.
+        /// </summary>
+        public readonly bool HasRenewChangeOrder;
+        /// <summary>
+        /// The ID of the instance.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Type of the applied ApsaraDB for Redis instance.
-        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
         /// </summary>
         public readonly string InstanceClass;
+        public readonly bool InstanceReleaseProtection;
         /// <summary>
-        /// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+        /// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
-        /// The name of the RKV instance.
+        /// Indicates whether the instance is managed by Relational Database Service (RDS).
+        /// </summary>
+        public readonly bool IsRds;
+        public readonly string MaintainEndTime;
+        public readonly string MaintainStartTime;
+        /// <summary>
+        /// Instance connection quantity limit. Unit: count.
+        /// </summary>
+        public readonly int MaxConnections;
+        /// <summary>
+        /// It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Connection port of the instance.
+        /// The type of the network. Valid values: `CLASSIC`, `VPC`.
+        /// </summary>
+        public readonly string NetworkType;
+        /// <summary>
+        /// The node type of the instance.
+        /// </summary>
+        public readonly string NodeType;
+        /// <summary>
+        /// The type of the package.
+        /// </summary>
+        public readonly string PackageType;
+        /// <summary>
+        /// The payment type. Valid values: `PostPaid`, `PrePaid`.
+        /// </summary>
+        public readonly string PaymentType;
+        /// <summary>
+        /// The service port of the instance.
         /// </summary>
         public readonly int Port;
         /// <summary>
@@ -68,14 +135,47 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string PrivateIp;
         /// <summary>
+        /// The queries per second (QPS) supported by the instance.
+        /// </summary>
+        public readonly int Qps;
+        /// <summary>
         /// Region ID the instance belongs to.
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// Status of the instance.
+        /// The logical ID of the replica instance.
+        /// </summary>
+        public readonly string ReplacateId;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        public readonly string ResourceGroupId;
+        /// <summary>
+        /// The name of the instance.
+        /// </summary>
+        public readonly string SearchKey;
+        public readonly string SecurityGroupId;
+        public readonly string SecurityIpGroupAttribute;
+        public readonly string SecurityIpGroupName;
+        public readonly ImmutableArray<string> SecurityIps;
+        public readonly string SslEnable;
+        /// <summary>
+        /// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Tags;
+        /// <summary>
+        /// The username of the instance.
+        /// </summary>
         public readonly string UserName;
+        public readonly string VpcAuthMode;
+        /// <summary>
+        /// Connection port of the instance.
+        /// </summary>
+        public readonly string VpcCloudInstanceId;
         /// <summary>
         /// Used to retrieve instances belong to specified VPC.
         /// </summary>
@@ -84,9 +184,19 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// Used to retrieve instances belong to specified `vswitch` resources.
         /// </summary>
         public readonly string VswitchId;
+        /// <summary>
+        /// The ID of the zone.
+        /// </summary>
+        public readonly string ZoneId;
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
+            string architectureType,
+
+            bool autoRenew,
+
+            int autoRenewPeriod,
+
             string availabilityZone,
 
             int bandwidth,
@@ -95,55 +205,148 @@ namespace Pulumi.AliCloud.KVStore.Outputs
 
             string chargeType,
 
+            ImmutableDictionary<string, object> config,
+
             string connectionDomain,
+
+            string connectionMode,
 
             int connections,
 
             string createTime,
 
+            string dbInstanceId,
+
+            string dbInstanceName,
+
+            string destroyTime,
+
+            string endTime,
+
+            string engineVersion,
+
             string expireTime,
+
+            bool hasRenewChangeOrder,
 
             string id,
 
             string instanceClass,
 
+            bool instanceReleaseProtection,
+
             string instanceType,
 
+            bool isRds,
+
+            string maintainEndTime,
+
+            string maintainStartTime,
+
+            int maxConnections,
+
             string name,
+
+            string networkType,
+
+            string nodeType,
+
+            string packageType,
+
+            string paymentType,
 
             int port,
 
             string privateIp,
 
+            int qps,
+
             string regionId,
+
+            string replacateId,
+
+            string resourceGroupId,
+
+            string searchKey,
+
+            string securityGroupId,
+
+            string securityIpGroupAttribute,
+
+            string securityIpGroupName,
+
+            ImmutableArray<string> securityIps,
+
+            string sslEnable,
 
             string status,
 
+            ImmutableDictionary<string, object> tags,
+
             string userName,
+
+            string vpcAuthMode,
+
+            string vpcCloudInstanceId,
 
             string vpcId,
 
-            string vswitchId)
+            string vswitchId,
+
+            string zoneId)
         {
+            ArchitectureType = architectureType;
+            AutoRenew = autoRenew;
+            AutoRenewPeriod = autoRenewPeriod;
             AvailabilityZone = availabilityZone;
             Bandwidth = bandwidth;
             Capacity = capacity;
             ChargeType = chargeType;
+            Config = config;
             ConnectionDomain = connectionDomain;
+            ConnectionMode = connectionMode;
             Connections = connections;
             CreateTime = createTime;
+            DbInstanceId = dbInstanceId;
+            DbInstanceName = dbInstanceName;
+            DestroyTime = destroyTime;
+            EndTime = endTime;
+            EngineVersion = engineVersion;
             ExpireTime = expireTime;
+            HasRenewChangeOrder = hasRenewChangeOrder;
             Id = id;
             InstanceClass = instanceClass;
+            InstanceReleaseProtection = instanceReleaseProtection;
             InstanceType = instanceType;
+            IsRds = isRds;
+            MaintainEndTime = maintainEndTime;
+            MaintainStartTime = maintainStartTime;
+            MaxConnections = maxConnections;
             Name = name;
+            NetworkType = networkType;
+            NodeType = nodeType;
+            PackageType = packageType;
+            PaymentType = paymentType;
             Port = port;
             PrivateIp = privateIp;
+            Qps = qps;
             RegionId = regionId;
+            ReplacateId = replacateId;
+            ResourceGroupId = resourceGroupId;
+            SearchKey = searchKey;
+            SecurityGroupId = securityGroupId;
+            SecurityIpGroupAttribute = securityIpGroupAttribute;
+            SecurityIpGroupName = securityIpGroupName;
+            SecurityIps = securityIps;
+            SslEnable = sslEnable;
             Status = status;
+            Tags = tags;
             UserName = userName;
+            VpcAuthMode = vpcAuthMode;
+            VpcCloudInstanceId = vpcCloudInstanceId;
             VpcId = vpcId;
             VswitchId = vswitchId;
+            ZoneId = zoneId;
         }
     }
 }
