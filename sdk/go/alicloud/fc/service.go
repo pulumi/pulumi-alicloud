@@ -12,25 +12,29 @@ import (
 type Service struct {
 	pulumi.CustomResourceState
 
-	// The function compute service description.
+	// The Function Compute Service description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether to allow the service to access Internet. Default to "true".
+	// Whether to allow the Service to access Internet. Default to "true".
 	InternetAccess pulumi.BoolPtrOutput `pulumi:"internetAccess"`
 	// The date this resource was last modified.
 	LastModified pulumi.StringOutput `pulumi:"lastModified"`
-	// Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+	// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
 	LogConfig ServiceLogConfigPtrOutput `pulumi:"logConfig"`
-	// The Function Compute service name. It is the only in one Alicloud account and is conflict with "namePrefix".
+	// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Setting a prefix to get a only name. It is conflict with "name".
+	// Setting a prefix to get a only name. It is conflict with `name`.
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
 	NasConfig ServiceNasConfigPtrOutput `pulumi:"nasConfig"`
-	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+	// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+	Publish pulumi.BoolPtrOutput `pulumi:"publish"`
+	// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	Role pulumi.StringPtrOutput `pulumi:"role"`
-	// The Function Compute service ID.
+	// The Function Compute Service ID.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
-	// Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+	// The latest published version of your Function Compute Service.
+	Version pulumi.StringOutput `pulumi:"version"`
+	// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
 	VpcConfig ServiceVpcConfigPtrOutput `pulumi:"vpcConfig"`
 }
 
@@ -62,48 +66,56 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	// The function compute service description.
+	// The Function Compute Service description.
 	Description *string `pulumi:"description"`
-	// Whether to allow the service to access Internet. Default to "true".
+	// Whether to allow the Service to access Internet. Default to "true".
 	InternetAccess *bool `pulumi:"internetAccess"`
 	// The date this resource was last modified.
 	LastModified *string `pulumi:"lastModified"`
-	// Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+	// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
 	LogConfig *ServiceLogConfig `pulumi:"logConfig"`
-	// The Function Compute service name. It is the only in one Alicloud account and is conflict with "namePrefix".
+	// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
 	Name *string `pulumi:"name"`
-	// Setting a prefix to get a only name. It is conflict with "name".
+	// Setting a prefix to get a only name. It is conflict with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
-	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
 	NasConfig *ServiceNasConfig `pulumi:"nasConfig"`
-	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+	// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+	Publish *bool `pulumi:"publish"`
+	// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	Role *string `pulumi:"role"`
-	// The Function Compute service ID.
+	// The Function Compute Service ID.
 	ServiceId *string `pulumi:"serviceId"`
-	// Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+	// The latest published version of your Function Compute Service.
+	Version *string `pulumi:"version"`
+	// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
 	VpcConfig *ServiceVpcConfig `pulumi:"vpcConfig"`
 }
 
 type ServiceState struct {
-	// The function compute service description.
+	// The Function Compute Service description.
 	Description pulumi.StringPtrInput
-	// Whether to allow the service to access Internet. Default to "true".
+	// Whether to allow the Service to access Internet. Default to "true".
 	InternetAccess pulumi.BoolPtrInput
 	// The date this resource was last modified.
 	LastModified pulumi.StringPtrInput
-	// Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+	// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
 	LogConfig ServiceLogConfigPtrInput
-	// The Function Compute service name. It is the only in one Alicloud account and is conflict with "namePrefix".
+	// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
 	Name pulumi.StringPtrInput
-	// Setting a prefix to get a only name. It is conflict with "name".
+	// Setting a prefix to get a only name. It is conflict with `name`.
 	NamePrefix pulumi.StringPtrInput
-	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
 	NasConfig ServiceNasConfigPtrInput
-	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+	// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+	Publish pulumi.BoolPtrInput
+	// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	Role pulumi.StringPtrInput
-	// The Function Compute service ID.
+	// The Function Compute Service ID.
 	ServiceId pulumi.StringPtrInput
-	// Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+	// The latest published version of your Function Compute Service.
+	Version pulumi.StringPtrInput
+	// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
 	VpcConfig ServiceVpcConfigPtrInput
 }
 
@@ -112,41 +124,45 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// The function compute service description.
+	// The Function Compute Service description.
 	Description *string `pulumi:"description"`
-	// Whether to allow the service to access Internet. Default to "true".
+	// Whether to allow the Service to access Internet. Default to "true".
 	InternetAccess *bool `pulumi:"internetAccess"`
-	// Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+	// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
 	LogConfig *ServiceLogConfig `pulumi:"logConfig"`
-	// The Function Compute service name. It is the only in one Alicloud account and is conflict with "namePrefix".
+	// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
 	Name *string `pulumi:"name"`
-	// Setting a prefix to get a only name. It is conflict with "name".
+	// Setting a prefix to get a only name. It is conflict with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
-	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
 	NasConfig *ServiceNasConfig `pulumi:"nasConfig"`
-	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+	// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+	Publish *bool `pulumi:"publish"`
+	// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	Role *string `pulumi:"role"`
-	// Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+	// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
 	VpcConfig *ServiceVpcConfig `pulumi:"vpcConfig"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// The function compute service description.
+	// The Function Compute Service description.
 	Description pulumi.StringPtrInput
-	// Whether to allow the service to access Internet. Default to "true".
+	// Whether to allow the Service to access Internet. Default to "true".
 	InternetAccess pulumi.BoolPtrInput
-	// Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+	// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
 	LogConfig ServiceLogConfigPtrInput
-	// The Function Compute service name. It is the only in one Alicloud account and is conflict with "namePrefix".
+	// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
 	Name pulumi.StringPtrInput
-	// Setting a prefix to get a only name. It is conflict with "name".
+	// Setting a prefix to get a only name. It is conflict with `name`.
 	NamePrefix pulumi.StringPtrInput
-	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+	// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
 	NasConfig ServiceNasConfigPtrInput
-	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+	// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+	Publish pulumi.BoolPtrInput
+	// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	Role pulumi.StringPtrInput
-	// Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+	// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
 	VpcConfig ServiceVpcConfigPtrInput
 }
 

@@ -115,6 +115,10 @@ type Instance struct {
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
+	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	SystemDiskDescription pulumi.StringPtrOutput `pulumi:"systemDiskDescription"`
+	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+	SystemDiskName pulumi.StringPtrOutput `pulumi:"systemDiskName"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
@@ -270,6 +274,10 @@ type instanceState struct {
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+	SystemDiskName *string `pulumi:"systemDiskName"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
@@ -389,6 +397,10 @@ type InstanceState struct {
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
+	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	SystemDiskDescription pulumi.StringPtrInput
+	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+	SystemDiskName pulumi.StringPtrInput
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
@@ -510,6 +522,10 @@ type instanceArgs struct {
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+	SystemDiskName *string `pulumi:"systemDiskName"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
@@ -628,6 +644,10 @@ type InstanceArgs struct {
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
+	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	SystemDiskDescription pulumi.StringPtrInput
+	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+	SystemDiskName pulumi.StringPtrInput
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.

@@ -102,6 +102,7 @@ export interface ProviderEndpoint {
     ots?: string;
     polardb?: string;
     pvtz?: string;
+    rKvstore?: string;
     ram?: string;
     rds?: string;
     resourcemanager?: string;
@@ -132,6 +133,10 @@ export namespace actiontrail {
          * The peak bandwidth of the instance.
          */
         eipMax: number;
+        /**
+         * The endPoint to access the instance.
+         */
+        endPoint: string;
         /**
          * ID of the instance.
          */
@@ -1779,6 +1784,29 @@ export namespace cms {
         times?: number;
     }
 
+    export interface GetAlarmContactGroupsGroup {
+        /**
+         * The name of Alarm Contact Group.
+         */
+        alarmContactGroupName: string;
+        /**
+         * The alarm contacts in the alarm group.
+         */
+        contacts: string[];
+        /**
+         * The description of the Alarm Group.
+         */
+        describe: string;
+        /**
+         * Indicates whether the alarm group subscribes to weekly reports.
+         */
+        enableSubscribed: boolean;
+        /**
+         * The ID of the CMS.
+         */
+        id: string;
+    }
+
     export interface GetAlarmContactsContact {
         /**
          * The name of the alarm contact.
@@ -1891,6 +1919,7 @@ export namespace config {
         ots?: string;
         polardb?: string;
         pvtz?: string;
+        rKvstore?: string;
         ram?: string;
         rds?: string;
         resourcemanager?: string;
@@ -5696,11 +5725,11 @@ export namespace fc {
 
     export interface ServiceLogConfig {
         /**
-         * The log store name of Logs service.
+         * The log store name of Alicloud Simple Log Service.
          */
         logstore: string;
         /**
-         * The project name of Logs service.
+         * The project name of the Alicloud Simple Log Service.
          */
         project: string;
     }
@@ -5733,12 +5762,12 @@ export namespace fc {
 
     export interface ServiceVpcConfig {
         /**
-         * A security group ID associated with the FC service.
+         * A security group ID associated with the Function Compute Service.
          */
         securityGroupId: string;
         vpcId: string;
         /**
-         * A list of vswitch IDs associated with the FC service.
+         * A list of vswitch IDs associated with the Function Compute Service.
          */
         vswitchIds: string[];
     }
@@ -6016,6 +6045,47 @@ export namespace kms {
 }
 
 export namespace kvstore {
+    export interface GetConnectionsConnection {
+        /**
+         * The connection string of the instance.
+         */
+        connectionString: string;
+        /**
+         * The network type of the instance.
+         */
+        dbInstanceNetType: string;
+        /**
+         * The expiration time of the classic network address.
+         */
+        expiredTime: string;
+        id: string;
+        instanceId: string;
+        /**
+         * The IP address of the instance.
+         */
+        ipAddress: string;
+        /**
+         * The port number of the instance.
+         */
+        port: string;
+        /**
+         * The remaining validity period of the endpoint of the classic network.
+         */
+        upgradeable: string;
+        /**
+         * The ID of the VPC where the instance is deployed.
+         */
+        vpcId: string;
+        /**
+         * The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
+         */
+        vpcInstanceId: string;
+        /**
+         * The ID of the VSwitch.
+         */
+        vswitchId: string;
+    }
+
     export interface GetInstanceClassesClass {
         /**
          * KVStore available instance class.
@@ -6041,7 +6111,13 @@ export namespace kvstore {
 
     export interface GetInstancesInstance {
         /**
-         * Availability zone.
+         * The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+         */
+        architectureType: string;
+        autoRenew: boolean;
+        autoRenewPeriod: number;
+        /**
+         * It has been deprecated from provider version 1.101.0 and `zoneId` instead.
          */
         availabilityZone: string;
         /**
@@ -6049,16 +6125,27 @@ export namespace kvstore {
          */
         bandwidth: number;
         /**
-         * Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
+         * Capacity of the applied ApsaraDB for the instance. Unit: MB.
          */
         capacity: number;
         /**
-         * Billing method. Value options: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
+         * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
          */
         chargeType: string;
+        /**
+         * The parameter configuration of the instance.
+         */
+        config: {[key: string]: any};
+        /**
+         * Instance connection domain (only Intranet access supported).
+         */
         connectionDomain: string;
         /**
-         * Instance connection quantity limit. Unit: count.
+         * The connection mode of the instance.
+         */
+        connectionMode: string;
+        /**
+         * IIt has been deprecated from provider version 1.101.0 and `maxConnections` instead.
          */
         connections: number;
         /**
@@ -6066,28 +6153,78 @@ export namespace kvstore {
          */
         createTime: string;
         /**
+         * The ID of the instance.
+         */
+        dbInstanceId: string;
+        /**
+         * The name of the instance.
+         */
+        dbInstanceName: string;
+        /**
+         * The time when the instance was destroyed.
+         */
+        destroyTime: string;
+        /**
          * Expiration time. Pay-As-You-Go instances are never expire.
+         */
+        endTime: string;
+        /**
+         * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+         */
+        engineVersion: string;
+        /**
+         * It has been deprecated from provider version 1.101.0 and `endTime` instead.
          */
         expireTime: string;
         /**
-         * The ID of the RKV instance.
+         * Indicates whether there was an order of renewal with configuration change that had not taken effect.
+         */
+        hasRenewChangeOrder: boolean;
+        /**
+         * The ID of the instance.
          */
         id: string;
         /**
-         * Type of the applied ApsaraDB for Redis instance.
-         * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+         * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
          */
         instanceClass: string;
+        instanceReleaseProtection: boolean;
         /**
-         * Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+         * The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
          */
         instanceType: string;
         /**
-         * The name of the RKV instance.
+         * Indicates whether the instance is managed by Relational Database Service (RDS).
+         */
+        isRds: boolean;
+        maintainEndTime: string;
+        maintainStartTime: string;
+        /**
+         * Instance connection quantity limit. Unit: count.
+         */
+        maxConnections: number;
+        /**
+         * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
          */
         name: string;
         /**
-         * Connection port of the instance.
+         * The type of the network. Valid values: `CLASSIC`, `VPC`.
+         */
+        networkType: string;
+        /**
+         * The node type of the instance.
+         */
+        nodeType: string;
+        /**
+         * The type of the package.
+         */
+        packageType: string;
+        /**
+         * The payment type. Valid values: `PostPaid`, `PrePaid`.
+         */
+        paymentType: string;
+        /**
+         * The service port of the instance.
          */
         port: number;
         /**
@@ -6095,14 +6232,47 @@ export namespace kvstore {
          */
         privateIp: string;
         /**
+         * The queries per second (QPS) supported by the instance.
+         */
+        qps: number;
+        /**
          * Region ID the instance belongs to.
          */
         regionId: string;
         /**
-         * Status of the instance.
+         * The logical ID of the replica instance.
+         */
+        replacateId: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The name of the instance.
+         */
+        searchKey: string;
+        securityGroupId: string;
+        securityIpGroupAttribute: string;
+        securityIpGroupName: string;
+        securityIps: string[];
+        sslEnable: string;
+        /**
+         * The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
          */
         status: string;
+        /**
+         * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The username of the instance.
+         */
         userName: string;
+        vpcAuthMode: string;
+        /**
+         * Connection port of the instance.
+         */
+        vpcCloudInstanceId: string;
         /**
          * Used to retrieve instances belong to specified VPC.
          */
@@ -6111,6 +6281,10 @@ export namespace kvstore {
          * Used to retrieve instances belong to specified `vswitch` resources.
          */
         vswitchId: string;
+        /**
+         * The ID of the zone.
+         */
+        zoneId: string;
     }
 
     export interface GetZonesZone {
@@ -6149,7 +6323,7 @@ export namespace log {
          */
         serviceUri?: string;
         /**
-         * Notification type. support Email, SMS, DingTalk.
+         * Notification type. support Email, SMS, DingTalk, MessageCenter.
          */
         type: string;
     }
@@ -8279,6 +8453,10 @@ export namespace rds {
          */
         masterInstanceId: string;
         /**
+         * (Available in 1.101.0+) The master zone of the instance.
+         */
+        masterZone: string;
+        /**
          * The name of the RDS instance.
          */
         name: string;
@@ -8314,6 +8492,14 @@ export namespace rds {
          * Used to retrieve instances belong to specified `vswitch` resources.
          */
         vswitchId: string;
+        /**
+         * (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+         */
+        zoneIdSlaveA: string;
+        /**
+         * (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+         */
+        zoneIdSlaveB: string;
     }
 
     export interface GetZonesZone {

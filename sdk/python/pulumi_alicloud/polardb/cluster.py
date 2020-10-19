@@ -67,7 +67,7 @@ class Cluster(pulumi.CustomResource):
         default_cluster = alicloud.polardb.Cluster("defaultCluster",
             db_type="MySQL",
             db_version="5.6",
-            db_node_class="rds.mysql.s2.large",
+            db_node_class="polar.mysql.x4.medium",
             pay_type="PostPaid",
             description=name,
             vswitch_id=default_switch.id)

@@ -674,6 +674,139 @@ func (o SiteMonitorIspCityArrayOutput) Index(i pulumi.IntInput) SiteMonitorIspCi
 	}).(SiteMonitorIspCityOutput)
 }
 
+type GetAlarmContactGroupsGroup struct {
+	// The name of Alarm Contact Group.
+	AlarmContactGroupName string `pulumi:"alarmContactGroupName"`
+	// The alarm contacts in the alarm group.
+	Contacts []string `pulumi:"contacts"`
+	// The description of the Alarm Group.
+	Describe string `pulumi:"describe"`
+	// Indicates whether the alarm group subscribes to weekly reports.
+	EnableSubscribed bool `pulumi:"enableSubscribed"`
+	// The ID of the CMS.
+	Id string `pulumi:"id"`
+}
+
+// GetAlarmContactGroupsGroupInput is an input type that accepts GetAlarmContactGroupsGroupArgs and GetAlarmContactGroupsGroupOutput values.
+// You can construct a concrete instance of `GetAlarmContactGroupsGroupInput` via:
+//
+//          GetAlarmContactGroupsGroupArgs{...}
+type GetAlarmContactGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetAlarmContactGroupsGroupOutput() GetAlarmContactGroupsGroupOutput
+	ToGetAlarmContactGroupsGroupOutputWithContext(context.Context) GetAlarmContactGroupsGroupOutput
+}
+
+type GetAlarmContactGroupsGroupArgs struct {
+	// The name of Alarm Contact Group.
+	AlarmContactGroupName pulumi.StringInput `pulumi:"alarmContactGroupName"`
+	// The alarm contacts in the alarm group.
+	Contacts pulumi.StringArrayInput `pulumi:"contacts"`
+	// The description of the Alarm Group.
+	Describe pulumi.StringInput `pulumi:"describe"`
+	// Indicates whether the alarm group subscribes to weekly reports.
+	EnableSubscribed pulumi.BoolInput `pulumi:"enableSubscribed"`
+	// The ID of the CMS.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetAlarmContactGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmContactGroupsGroup)(nil)).Elem()
+}
+
+func (i GetAlarmContactGroupsGroupArgs) ToGetAlarmContactGroupsGroupOutput() GetAlarmContactGroupsGroupOutput {
+	return i.ToGetAlarmContactGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetAlarmContactGroupsGroupArgs) ToGetAlarmContactGroupsGroupOutputWithContext(ctx context.Context) GetAlarmContactGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmContactGroupsGroupOutput)
+}
+
+// GetAlarmContactGroupsGroupArrayInput is an input type that accepts GetAlarmContactGroupsGroupArray and GetAlarmContactGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetAlarmContactGroupsGroupArrayInput` via:
+//
+//          GetAlarmContactGroupsGroupArray{ GetAlarmContactGroupsGroupArgs{...} }
+type GetAlarmContactGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetAlarmContactGroupsGroupArrayOutput() GetAlarmContactGroupsGroupArrayOutput
+	ToGetAlarmContactGroupsGroupArrayOutputWithContext(context.Context) GetAlarmContactGroupsGroupArrayOutput
+}
+
+type GetAlarmContactGroupsGroupArray []GetAlarmContactGroupsGroupInput
+
+func (GetAlarmContactGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmContactGroupsGroup)(nil)).Elem()
+}
+
+func (i GetAlarmContactGroupsGroupArray) ToGetAlarmContactGroupsGroupArrayOutput() GetAlarmContactGroupsGroupArrayOutput {
+	return i.ToGetAlarmContactGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlarmContactGroupsGroupArray) ToGetAlarmContactGroupsGroupArrayOutputWithContext(ctx context.Context) GetAlarmContactGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmContactGroupsGroupArrayOutput)
+}
+
+type GetAlarmContactGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmContactGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmContactGroupsGroup)(nil)).Elem()
+}
+
+func (o GetAlarmContactGroupsGroupOutput) ToGetAlarmContactGroupsGroupOutput() GetAlarmContactGroupsGroupOutput {
+	return o
+}
+
+func (o GetAlarmContactGroupsGroupOutput) ToGetAlarmContactGroupsGroupOutputWithContext(ctx context.Context) GetAlarmContactGroupsGroupOutput {
+	return o
+}
+
+// The name of Alarm Contact Group.
+func (o GetAlarmContactGroupsGroupOutput) AlarmContactGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactGroupsGroup) string { return v.AlarmContactGroupName }).(pulumi.StringOutput)
+}
+
+// The alarm contacts in the alarm group.
+func (o GetAlarmContactGroupsGroupOutput) Contacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlarmContactGroupsGroup) []string { return v.Contacts }).(pulumi.StringArrayOutput)
+}
+
+// The description of the Alarm Group.
+func (o GetAlarmContactGroupsGroupOutput) Describe() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactGroupsGroup) string { return v.Describe }).(pulumi.StringOutput)
+}
+
+// Indicates whether the alarm group subscribes to weekly reports.
+func (o GetAlarmContactGroupsGroupOutput) EnableSubscribed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlarmContactGroupsGroup) bool { return v.EnableSubscribed }).(pulumi.BoolOutput)
+}
+
+// The ID of the CMS.
+func (o GetAlarmContactGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetAlarmContactGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmContactGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmContactGroupsGroup)(nil)).Elem()
+}
+
+func (o GetAlarmContactGroupsGroupArrayOutput) ToGetAlarmContactGroupsGroupArrayOutput() GetAlarmContactGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetAlarmContactGroupsGroupArrayOutput) ToGetAlarmContactGroupsGroupArrayOutputWithContext(ctx context.Context) GetAlarmContactGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetAlarmContactGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetAlarmContactGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmContactGroupsGroup {
+		return vs[0].([]GetAlarmContactGroupsGroup)[vs[1].(int)]
+	}).(GetAlarmContactGroupsGroupOutput)
+}
+
 type GetAlarmContactsContact struct {
 	// The name of the alarm contact.
 	AlarmContactName string `pulumi:"alarmContactName"`
@@ -885,6 +1018,8 @@ func init() {
 	pulumi.RegisterOutputType(AlarmEscalationsWarnPtrOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityArrayOutput{})
+	pulumi.RegisterOutputType(GetAlarmContactGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetAlarmContactGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactsContactOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactsContactArrayOutput{})
 }

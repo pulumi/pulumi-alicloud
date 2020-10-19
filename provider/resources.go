@@ -253,8 +253,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cloud_connect_network_grant":      {Tok: resource(cloudConnectMod, "NetworkGrant")},
 
 			// CMS
-			"alicloud_cms_alarm":         {Tok: resource(cmsMod, "Alarm")},
-			"alicloud_cms_alarm_contact": {Tok: resource(cmsMod, "AlarmContact")},
+			"alicloud_cms_alarm":               {Tok: resource(cmsMod, "Alarm")},
+			"alicloud_cms_alarm_contact":       {Tok: resource(cmsMod, "AlarmContact")},
+			"alicloud_cms_alarm_contact_group": {Tok: resource(cmsMod, "AlarmContactGroup")},
 			"alicloud_cms_site_monitor": {
 				Tok: resource(cmsMod, "SiteMonitor"),
 				Docs: &tfbridge.DocInfo{
@@ -425,6 +426,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kvstore_backup_policy": {Tok: resource(kvstoreMod, "BackupPolicy")},
 			"alicloud_kvstore_instance":      {Tok: resource(kvstoreMod, "Instance")},
 			"alicloud_kvstore_account":       {Tok: resource(kvstoreMod, "Account")},
+			"alicloud_kvstore_connection":    {Tok: resource(kvstoreMod, "Connection")},
 
 			// Log
 			"alicloud_log_machine_group":  {Tok: resource(logMod, "MachineGroup")},
@@ -687,7 +689,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cloud_connect_networks": {Tok: dataSource(cloudConnectMod, "getNetworks")},
 
 			// CMS
-			"alicloud_cms_alarm_contacts": {Tok: dataSource(cmsMod, "getAlarmContacts")},
+			"alicloud_cms_alarm_contacts":       {Tok: dataSource(cmsMod, "getAlarmContacts")},
+			"alicloud_cms_alarm_contact_groups": {Tok: dataSource(cmsMod, "getAlarmContactGroups")},
 
 			// Config
 			"alicloud_config_configuration_recorders": {Tok: dataSource(cfgMod, "getConfigurationRecorders")},
@@ -808,6 +811,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kvstore_instance_classes": {Tok: dataSource(kvstoreMod, "getInstanceClasses")},
 			"alicloud_kvstore_instance_engines": {Tok: dataSource(kvstoreMod, "getInstanceEngines")},
 			"alicloud_kvstore_zones":            {Tok: dataSource(kvstoreMod, "getZones")},
+			"alicloud_kvstore_connections":      {Tok: dataSource(kvstoreMod, "getConnections")},
 
 			// Log
 			"alicloud_log_service": {Tok: dataSource(logMod, "getService")},

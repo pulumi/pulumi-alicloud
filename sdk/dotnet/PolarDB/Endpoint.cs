@@ -10,10 +10,55 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PolarDB
 {
     /// <summary>
-    /// Provides a PolarDB endpoint resource to allocate an Internet endpoint string for PolarDB instance.
+    /// Provides a PolarDB endpoint resource to manage custom endpoint of PolarDB cluster.
     /// 
-    /// &gt; **NOTE:** Available in v1.80.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
-    ///  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+    /// &gt; **NOTE:** Available in v1.80.0+. Only used to manage PolarDB MySQL custom cluster endpoint.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "PolarDB";
+    ///         var name = config.Get("name") ?? "polardbconnectionbasic";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///         });
+    ///         var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new AliCloud.PolarDB.ClusterArgs
+    ///         {
+    ///             DbType = "MySQL",
+    ///             DbVersion = "8.0",
+    ///             PayType = "PostPaid",
+    ///             DbNodeClass = "polar.mysql.x4.large",
+    ///             VswitchId = defaultSwitch.Id,
+    ///             Description = name,
+    ///         });
+    ///         var endpoint = new AliCloud.PolarDB.Endpoint("endpoint", new AliCloud.PolarDB.EndpointArgs
+    ///         {
+    ///             DbClusterId = defaultCluster.Id,
+    ///             EndpointType = "Custom",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Endpoint : Pulumi.CustomResource
     {
@@ -30,7 +75,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Advanced configuration of the cluster address.
+        /// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         /// </summary>
         [Output("endpointConfig")]
         public Output<ImmutableDictionary<string, object>> EndpointConfig { get; private set; } = null!;
@@ -115,7 +160,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputMap<object>? _endpointConfig;
 
         /// <summary>
-        /// Advanced configuration of the cluster address.
+        /// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         /// </summary>
         public InputMap<object> EndpointConfig
         {
@@ -170,7 +215,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputMap<object>? _endpointConfig;
 
         /// <summary>
-        /// Advanced configuration of the cluster address.
+        /// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         /// </summary>
         public InputMap<object> EndpointConfig
         {

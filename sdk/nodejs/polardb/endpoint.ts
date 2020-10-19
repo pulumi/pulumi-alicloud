@@ -5,10 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a PolarDB endpoint resource to allocate an Internet endpoint string for PolarDB instance.
+ * Provides a PolarDB endpoint resource to manage custom endpoint of PolarDB cluster.
  *
- * > **NOTE:** Available in v1.80.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
- *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+ * > **NOTE:** Available in v1.80.0+. Only used to manage PolarDB MySQL custom cluster endpoint.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const creation = config.get("creation") || "PolarDB";
+ * const name = config.get("name") || "polardbconnectionbasic";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: creation,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ * });
+ * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     payType: "PostPaid",
+ *     dbNodeClass: "polar.mysql.x4.large",
+ *     vswitchId: defaultSwitch.id,
+ *     description: name,
+ * });
+ * const endpoint = new alicloud.polardb.Endpoint("endpoint", {
+ *     dbClusterId: defaultCluster.id,
+ *     endpointType: "Custom",
+ * });
+ * ```
  */
 export class Endpoint extends pulumi.CustomResource {
     /**
@@ -47,7 +78,7 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly dbClusterId!: pulumi.Output<string>;
     /**
-     * Advanced configuration of the cluster address.
+     * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
     public readonly endpointConfig!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -120,7 +151,7 @@ export interface EndpointState {
      */
     readonly dbClusterId?: pulumi.Input<string>;
     /**
-     * Advanced configuration of the cluster address.
+     * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
     readonly endpointConfig?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -150,7 +181,7 @@ export interface EndpointArgs {
      */
     readonly dbClusterId: pulumi.Input<string>;
     /**
-     * Advanced configuration of the cluster address.
+     * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
     readonly endpointConfig?: pulumi.Input<{[key: string]: any}>;
     /**

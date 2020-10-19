@@ -156,6 +156,8 @@ def get_rules(config_rule_state: Optional[str] = None,
 
     > **NOTE:**  Available in 1.99.0+.
 
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+
     ## Example Usage
 
     ```python

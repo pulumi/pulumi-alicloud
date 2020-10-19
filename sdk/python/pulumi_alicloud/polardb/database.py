@@ -33,14 +33,27 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "polardbClusterconfig"
+        creation = config.get("creation")
+        if creation is None:
+            creation = "PolarDB"
+        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=default_zones.zones[0].id)
         cluster = alicloud.polardb.Cluster("cluster",
             db_type="MySQL",
             db_version="8.0",
             pay_type="PostPaid",
-            db_node_class=var["clusterclass"],
-            vswitch_id="polar.mysql.x4.large",
+            db_node_class="polar.mysql.x4.large",
+            vswitch_id=default_switch.id,
             description="testDB")
-        default = alicloud.polardb.Database("default",
+        default_database = alicloud.polardb.Database("defaultDatabase",
             db_cluster_id=cluster.id,
             db_name="tftestdatabase")
         ```
@@ -49,7 +62,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[str] db_description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        :param pulumi.Input[str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
         :param pulumi.Input[str] db_name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         """
         if __name__ is not None:
@@ -100,7 +113,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[str] db_description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        :param pulumi.Input[str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
         :param pulumi.Input[str] db_name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -133,7 +146,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="dbDescription")
     def db_description(self) -> pulumi.Output[Optional[str]]:
         """
-        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
         """
         return pulumi.get(self, "db_description")
 

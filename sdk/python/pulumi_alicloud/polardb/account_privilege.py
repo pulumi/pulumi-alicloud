@@ -27,10 +27,51 @@ class AccountPrivilege(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.67.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        creation = config.get("creation")
+        if creation is None:
+            creation = "PolarDB"
+        name = config.get("name")
+        if name is None:
+            name = "dbaccountprivilegebasic"
+        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=default_zones.zones[0].id)
+        cluster = alicloud.polardb.Cluster("cluster",
+            db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid",
+            db_node_class="polar.mysql.x4.large",
+            vswitch_id=default_switch.id,
+            description=name)
+        db = alicloud.polardb.Database("db",
+            db_cluster_id=cluster.id,
+            db_name="tftestdatabase")
+        account = alicloud.polardb.Account("account",
+            db_cluster_id=cluster.id,
+            account_name="tftestnormal",
+            account_password="Test12345",
+            account_description=name)
+        privilege = alicloud.polardb.AccountPrivilege("privilege",
+            db_cluster_id=cluster.id,
+            account_name=account.account_name,
+            account_privilege="ReadOnly",
+            db_names=[db.db_name])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: A specified account name.
-        :param pulumi.Input[str] account_privilege: The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+        :param pulumi.Input[str] account_privilege: The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
         :param pulumi.Input[str] db_cluster_id: The Id of cluster in which account belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         """
@@ -83,7 +124,7 @@ class AccountPrivilege(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: A specified account name.
-        :param pulumi.Input[str] account_privilege: The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+        :param pulumi.Input[str] account_privilege: The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
         :param pulumi.Input[str] db_cluster_id: The Id of cluster in which account belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         """
@@ -109,7 +150,7 @@ class AccountPrivilege(pulumi.CustomResource):
     @pulumi.getter(name="accountPrivilege")
     def account_privilege(self) -> pulumi.Output[Optional[str]]:
         """
-        The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+        The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
         """
         return pulumi.get(self, "account_privilege")
 

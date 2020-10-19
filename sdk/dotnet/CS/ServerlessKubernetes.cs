@@ -79,6 +79,9 @@ namespace Pulumi.AliCloud.CS
         [Output("privateZone")]
         public Output<bool?> PrivateZone { get; private set; } = null!;
 
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
@@ -234,6 +237,9 @@ namespace Pulumi.AliCloud.CS
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
 
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
@@ -361,6 +367,9 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

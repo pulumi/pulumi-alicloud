@@ -55,6 +55,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
     public readonly clusterCaCert!: pulumi.Output<string | undefined>;
+    public readonly clusterSpec!: pulumi.Output<string>;
     /**
      * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
      */
@@ -136,6 +137,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     public readonly proxyMode!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -257,6 +259,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["clientCert"] = state ? state.clientCert : undefined;
             inputs["clientKey"] = state ? state.clientKey : undefined;
             inputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
+            inputs["clusterSpec"] = state ? state.clusterSpec : undefined;
             inputs["connections"] = state ? state.connections : undefined;
             inputs["cpuPolicy"] = state ? state.cpuPolicy : undefined;
             inputs["enableSsh"] = state ? state.enableSsh : undefined;
@@ -278,6 +281,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["podCidr"] = state ? state.podCidr : undefined;
             inputs["podVswitchIds"] = state ? state.podVswitchIds : undefined;
             inputs["proxyMode"] = state ? state.proxyMode : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["serviceAccountIssuer"] = state ? state.serviceAccountIssuer : undefined;
             inputs["serviceCidr"] = state ? state.serviceCidr : undefined;
@@ -322,6 +326,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["clientCert"] = args ? args.clientCert : undefined;
             inputs["clientKey"] = args ? args.clientKey : undefined;
             inputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
+            inputs["clusterSpec"] = args ? args.clusterSpec : undefined;
             inputs["cpuPolicy"] = args ? args.cpuPolicy : undefined;
             inputs["enableSsh"] = args ? args.enableSsh : undefined;
             inputs["excludeAutoscalerNodes"] = args ? args.excludeAutoscalerNodes : undefined;
@@ -341,6 +346,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["podCidr"] = args ? args.podCidr : undefined;
             inputs["podVswitchIds"] = args ? args.podVswitchIds : undefined;
             inputs["proxyMode"] = args ? args.proxyMode : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["serviceAccountIssuer"] = args ? args.serviceAccountIssuer : undefined;
             inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
@@ -407,6 +413,7 @@ export interface ManagedKubernetesState {
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
     readonly clusterCaCert?: pulumi.Input<string>;
+    readonly clusterSpec?: pulumi.Input<string>;
     /**
      * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
      */
@@ -488,6 +495,7 @@ export interface ManagedKubernetesState {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -617,6 +625,7 @@ export interface ManagedKubernetesArgs {
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
     readonly clusterCaCert?: pulumi.Input<string>;
+    readonly clusterSpec?: pulumi.Input<string>;
     /**
      * kubelet cpu policy. options: static|none. default: none.
      */
@@ -690,6 +699,7 @@ export interface ManagedKubernetesArgs {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */

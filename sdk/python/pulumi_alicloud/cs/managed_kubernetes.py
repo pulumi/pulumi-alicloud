@@ -23,6 +23,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+                 cluster_spec: Optional[pulumi.Input[str]] = None,
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  enable_ssh: Optional[pulumi.Input[bool]] = None,
                  exclude_autoscaler_nodes: Optional[pulumi.Input[bool]] = None,
@@ -42,6 +43,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  pod_cidr: Optional[pulumi.Input[str]] = None,
                  pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  proxy_mode: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
@@ -141,6 +143,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['client_cert'] = client_cert
             __props__['client_key'] = client_key
             __props__['cluster_ca_cert'] = cluster_ca_cert
+            __props__['cluster_spec'] = cluster_spec
             __props__['cpu_policy'] = cpu_policy
             __props__['enable_ssh'] = enable_ssh
             __props__['exclude_autoscaler_nodes'] = exclude_autoscaler_nodes
@@ -160,6 +163,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['pod_cidr'] = pod_cidr
             __props__['pod_vswitch_ids'] = pod_vswitch_ids
             __props__['proxy_mode'] = proxy_mode
+            __props__['resource_group_id'] = resource_group_id
             __props__['security_group_id'] = security_group_id
             __props__['service_account_issuer'] = service_account_issuer
             __props__['service_cidr'] = service_cidr
@@ -211,6 +215,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             client_cert: Optional[pulumi.Input[str]] = None,
             client_key: Optional[pulumi.Input[str]] = None,
             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+            cluster_spec: Optional[pulumi.Input[str]] = None,
             connections: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesConnectionsArgs']]] = None,
             cpu_policy: Optional[pulumi.Input[str]] = None,
             enable_ssh: Optional[pulumi.Input[bool]] = None,
@@ -232,6 +237,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             pod_cidr: Optional[pulumi.Input[str]] = None,
             pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             proxy_mode: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             service_account_issuer: Optional[pulumi.Input[str]] = None,
             service_cidr: Optional[pulumi.Input[str]] = None,
@@ -330,6 +336,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["client_cert"] = client_cert
         __props__["client_key"] = client_key
         __props__["cluster_ca_cert"] = cluster_ca_cert
+        __props__["cluster_spec"] = cluster_spec
         __props__["connections"] = connections
         __props__["cpu_policy"] = cpu_policy
         __props__["enable_ssh"] = enable_ssh
@@ -351,6 +358,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["pod_cidr"] = pod_cidr
         __props__["pod_vswitch_ids"] = pod_vswitch_ids
         __props__["proxy_mode"] = proxy_mode
+        __props__["resource_group_id"] = resource_group_id
         __props__["security_group_id"] = security_group_id
         __props__["service_account_issuer"] = service_account_issuer
         __props__["service_cidr"] = service_cidr
@@ -424,6 +432,11 @@ class ManagedKubernetes(pulumi.CustomResource):
         The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         """
         return pulumi.get(self, "cluster_ca_cert")
+
+    @property
+    @pulumi.getter(name="clusterSpec")
+    def cluster_spec(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "cluster_spec")
 
     @property
     @pulumi.getter
@@ -589,6 +602,11 @@ class ManagedKubernetes(pulumi.CustomResource):
         Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         """
         return pulumi.get(self, "proxy_mode")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="securityGroupId")

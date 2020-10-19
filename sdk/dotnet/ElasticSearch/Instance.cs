@@ -30,6 +30,8 @@ namespace Pulumi.AliCloud.ElasticSearch
     ///     {
     ///         var instance = new AliCloud.ElasticSearch.Instance("instance", new AliCloud.ElasticSearch.InstanceArgs
     ///         {
+    ///             ClientNodeAmount = 2,
+    ///             ClientNodeSpec = "elasticsearch.sn2ne.large",
     ///             DataNodeAmount = 2,
     ///             DataNodeDiskSize = 20,
     ///             DataNodeDiskType = "cloud_ssd",
@@ -37,6 +39,7 @@ namespace Pulumi.AliCloud.ElasticSearch
     ///             Description = "description",
     ///             InstanceChargeType = "PostPaid",
     ///             Password = "Your password",
+    ///             Protocol = "HTTPS",
     ///             Tags = 
     ///             {
     ///                 { "key1", "value1" },
@@ -53,6 +56,18 @@ namespace Pulumi.AliCloud.ElasticSearch
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The Elasticsearch cluster's client node quantity, between 2 and 25.
+        /// </summary>
+        [Output("clientNodeAmount")]
+        public Output<int?> ClientNodeAmount { get; private set; } = null!;
+
+        /// <summary>
+        /// The client node spec. If specified, client node will be created.
+        /// </summary>
+        [Output("clientNodeSpec")]
+        public Output<string?> ClientNodeSpec { get; private set; } = null!;
+
         /// <summary>
         /// The Elasticsearch cluster's data node quantity, between 2 and 50.
         /// </summary>
@@ -187,6 +202,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<ImmutableArray<string>> PrivateWhitelists { get; private set; } = null!;
 
         /// <summary>
+        /// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+        /// </summary>
+        [Output("protocol")]
+        public Output<string?> Protocol { get; private set; } = null!;
+
+        /// <summary>
         /// Set the instance's IP whitelist in internet network.
         /// </summary>
         [Output("publicWhitelists")]
@@ -276,6 +297,18 @@ namespace Pulumi.AliCloud.ElasticSearch
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Elasticsearch cluster's client node quantity, between 2 and 25.
+        /// </summary>
+        [Input("clientNodeAmount")]
+        public Input<int>? ClientNodeAmount { get; set; }
+
+        /// <summary>
+        /// The client node spec. If specified, client node will be created.
+        /// </summary>
+        [Input("clientNodeSpec")]
+        public Input<string>? ClientNodeSpec { get; set; }
+
         /// <summary>
         /// The Elasticsearch cluster's data node quantity, between 2 and 50.
         /// </summary>
@@ -409,6 +442,12 @@ namespace Pulumi.AliCloud.ElasticSearch
             set => _privateWhitelists = value;
         }
 
+        /// <summary>
+        /// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+        /// </summary>
+        [Input("protocol")]
+        public Input<string>? Protocol { get; set; }
+
         [Input("publicWhitelists")]
         private InputList<string>? _publicWhitelists;
 
@@ -466,6 +505,18 @@ namespace Pulumi.AliCloud.ElasticSearch
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Elasticsearch cluster's client node quantity, between 2 and 25.
+        /// </summary>
+        [Input("clientNodeAmount")]
+        public Input<int>? ClientNodeAmount { get; set; }
+
+        /// <summary>
+        /// The client node spec. If specified, client node will be created.
+        /// </summary>
+        [Input("clientNodeSpec")]
+        public Input<string>? ClientNodeSpec { get; set; }
+
         /// <summary>
         /// The Elasticsearch cluster's data node quantity, between 2 and 50.
         /// </summary>
@@ -622,6 +673,12 @@ namespace Pulumi.AliCloud.ElasticSearch
             get => _privateWhitelists ?? (_privateWhitelists = new InputList<string>());
             set => _privateWhitelists = value;
         }
+
+        /// <summary>
+        /// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+        /// </summary>
+        [Input("protocol")]
+        public Input<string>? Protocol { get; set; }
 
         [Input("publicWhitelists")]
         private InputList<string>? _publicWhitelists;

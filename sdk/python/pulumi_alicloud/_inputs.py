@@ -113,6 +113,7 @@ class ProviderEndpointArgs:
                  ots: Optional[pulumi.Input[str]] = None,
                  polardb: Optional[pulumi.Input[str]] = None,
                  pvtz: Optional[pulumi.Input[str]] = None,
+                 r_kvstore: Optional[pulumi.Input[str]] = None,
                  ram: Optional[pulumi.Input[str]] = None,
                  rds: Optional[pulumi.Input[str]] = None,
                  resourcemanager: Optional[pulumi.Input[str]] = None,
@@ -210,6 +211,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "polardb", polardb)
         if pvtz is not None:
             pulumi.set(__self__, "pvtz", pvtz)
+        if r_kvstore is not None:
+            pulumi.set(__self__, "r_kvstore", r_kvstore)
         if ram is not None:
             pulumi.set(__self__, "ram", ram)
         if rds is not None:
@@ -629,6 +632,15 @@ class ProviderEndpointArgs:
     @pvtz.setter
     def pvtz(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pvtz", value)
+
+    @property
+    @pulumi.getter(name="rKvstore")
+    def r_kvstore(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "r_kvstore")
+
+    @r_kvstore.setter
+    def r_kvstore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "r_kvstore", value)
 
     @property
     @pulumi.getter

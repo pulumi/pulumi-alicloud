@@ -110,6 +110,187 @@ func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameter
 	}).(InstanceParameterOutput)
 }
 
+type GetConnectionsConnection struct {
+	// The connection string of the instance.
+	ConnectionString string `pulumi:"connectionString"`
+	// The network type of the instance.
+	DbInstanceNetType string `pulumi:"dbInstanceNetType"`
+	// The expiration time of the classic network address.
+	ExpiredTime string `pulumi:"expiredTime"`
+	Id          string `pulumi:"id"`
+	InstanceId  string `pulumi:"instanceId"`
+	// The IP address of the instance.
+	IpAddress string `pulumi:"ipAddress"`
+	// The port number of the instance.
+	Port string `pulumi:"port"`
+	// The remaining validity period of the endpoint of the classic network.
+	Upgradeable string `pulumi:"upgradeable"`
+	// The ID of the VPC where the instance is deployed.
+	VpcId string `pulumi:"vpcId"`
+	// The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
+	VpcInstanceId string `pulumi:"vpcInstanceId"`
+	// The ID of the VSwitch.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetConnectionsConnectionInput is an input type that accepts GetConnectionsConnectionArgs and GetConnectionsConnectionOutput values.
+// You can construct a concrete instance of `GetConnectionsConnectionInput` via:
+//
+//          GetConnectionsConnectionArgs{...}
+type GetConnectionsConnectionInput interface {
+	pulumi.Input
+
+	ToGetConnectionsConnectionOutput() GetConnectionsConnectionOutput
+	ToGetConnectionsConnectionOutputWithContext(context.Context) GetConnectionsConnectionOutput
+}
+
+type GetConnectionsConnectionArgs struct {
+	// The connection string of the instance.
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
+	// The network type of the instance.
+	DbInstanceNetType pulumi.StringInput `pulumi:"dbInstanceNetType"`
+	// The expiration time of the classic network address.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	Id          pulumi.StringInput `pulumi:"id"`
+	InstanceId  pulumi.StringInput `pulumi:"instanceId"`
+	// The IP address of the instance.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The port number of the instance.
+	Port pulumi.StringInput `pulumi:"port"`
+	// The remaining validity period of the endpoint of the classic network.
+	Upgradeable pulumi.StringInput `pulumi:"upgradeable"`
+	// The ID of the VPC where the instance is deployed.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
+	VpcInstanceId pulumi.StringInput `pulumi:"vpcInstanceId"`
+	// The ID of the VSwitch.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetConnectionsConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsConnection)(nil)).Elem()
+}
+
+func (i GetConnectionsConnectionArgs) ToGetConnectionsConnectionOutput() GetConnectionsConnectionOutput {
+	return i.ToGetConnectionsConnectionOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsConnectionArgs) ToGetConnectionsConnectionOutputWithContext(ctx context.Context) GetConnectionsConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionOutput)
+}
+
+// GetConnectionsConnectionArrayInput is an input type that accepts GetConnectionsConnectionArray and GetConnectionsConnectionArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsConnectionArrayInput` via:
+//
+//          GetConnectionsConnectionArray{ GetConnectionsConnectionArgs{...} }
+type GetConnectionsConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsConnectionArrayOutput() GetConnectionsConnectionArrayOutput
+	ToGetConnectionsConnectionArrayOutputWithContext(context.Context) GetConnectionsConnectionArrayOutput
+}
+
+type GetConnectionsConnectionArray []GetConnectionsConnectionInput
+
+func (GetConnectionsConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsConnection)(nil)).Elem()
+}
+
+func (i GetConnectionsConnectionArray) ToGetConnectionsConnectionArrayOutput() GetConnectionsConnectionArrayOutput {
+	return i.ToGetConnectionsConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsConnectionArray) ToGetConnectionsConnectionArrayOutputWithContext(ctx context.Context) GetConnectionsConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionArrayOutput)
+}
+
+type GetConnectionsConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsConnection)(nil)).Elem()
+}
+
+func (o GetConnectionsConnectionOutput) ToGetConnectionsConnectionOutput() GetConnectionsConnectionOutput {
+	return o
+}
+
+func (o GetConnectionsConnectionOutput) ToGetConnectionsConnectionOutputWithContext(ctx context.Context) GetConnectionsConnectionOutput {
+	return o
+}
+
+// The connection string of the instance.
+func (o GetConnectionsConnectionOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The network type of the instance.
+func (o GetConnectionsConnectionOutput) DbInstanceNetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.DbInstanceNetType }).(pulumi.StringOutput)
+}
+
+// The expiration time of the classic network address.
+func (o GetConnectionsConnectionOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionsConnectionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionsConnectionOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The IP address of the instance.
+func (o GetConnectionsConnectionOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The port number of the instance.
+func (o GetConnectionsConnectionOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// The remaining validity period of the endpoint of the classic network.
+func (o GetConnectionsConnectionOutput) Upgradeable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.Upgradeable }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC where the instance is deployed.
+func (o GetConnectionsConnectionOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
+func (o GetConnectionsConnectionOutput) VpcInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.VpcInstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the VSwitch.
+func (o GetConnectionsConnectionOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetConnectionsConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsConnection)(nil)).Elem()
+}
+
+func (o GetConnectionsConnectionArrayOutput) ToGetConnectionsConnectionArrayOutput() GetConnectionsConnectionArrayOutput {
+	return o
+}
+
+func (o GetConnectionsConnectionArrayOutput) ToGetConnectionsConnectionArrayOutputWithContext(ctx context.Context) GetConnectionsConnectionArrayOutput {
+	return o
+}
+
+func (o GetConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) GetConnectionsConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsConnection {
+		return vs[0].([]GetConnectionsConnection)[vs[1].(int)]
+	}).(GetConnectionsConnectionOutput)
+}
+
 type GetInstanceClassesClass struct {
 	// KVStore available instance class.
 	InstanceClass string `pulumi:"instanceClass"`
@@ -329,43 +510,99 @@ func (o GetInstanceEnginesInstanceEngineArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetInstancesInstance struct {
-	// Availability zone.
+	// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+	ArchitectureType string `pulumi:"architectureType"`
+	AutoRenew        bool   `pulumi:"autoRenew"`
+	AutoRenewPeriod  int    `pulumi:"autoRenewPeriod"`
+	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// Instance bandwidth limit. Unit: Mbit/s.
 	Bandwidth int `pulumi:"bandwidth"`
-	// Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
+	// Capacity of the applied ApsaraDB for the instance. Unit: MB.
 	Capacity int `pulumi:"capacity"`
-	// Billing method. Value options: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
-	ChargeType       string `pulumi:"chargeType"`
+	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+	ChargeType string `pulumi:"chargeType"`
+	// The parameter configuration of the instance.
+	Config map[string]interface{} `pulumi:"config"`
+	// Instance connection domain (only Intranet access supported).
 	ConnectionDomain string `pulumi:"connectionDomain"`
-	// Instance connection quantity limit. Unit: count.
+	// The connection mode of the instance.
+	ConnectionMode string `pulumi:"connectionMode"`
+	// IIt has been deprecated from provider version 1.101.0 and `maxConnections` instead.
 	Connections int `pulumi:"connections"`
 	// Creation time of the instance.
 	CreateTime string `pulumi:"createTime"`
+	// The ID of the instance.
+	DbInstanceId string `pulumi:"dbInstanceId"`
+	// The name of the instance.
+	DbInstanceName string `pulumi:"dbInstanceName"`
+	// The time when the instance was destroyed.
+	DestroyTime string `pulumi:"destroyTime"`
 	// Expiration time. Pay-As-You-Go instances are never expire.
+	EndTime string `pulumi:"endTime"`
+	// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+	EngineVersion string `pulumi:"engineVersion"`
+	// It has been deprecated from provider version 1.101.0 and `endTime` instead.
 	ExpireTime string `pulumi:"expireTime"`
-	// The ID of the RKV instance.
+	// Indicates whether there was an order of renewal with configuration change that had not taken effect.
+	HasRenewChangeOrder bool `pulumi:"hasRenewChangeOrder"`
+	// The ID of the instance.
 	Id string `pulumi:"id"`
-	// Type of the applied ApsaraDB for Redis instance.
-	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
-	InstanceClass string `pulumi:"instanceClass"`
-	// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+	InstanceClass             string `pulumi:"instanceClass"`
+	InstanceReleaseProtection bool   `pulumi:"instanceReleaseProtection"`
+	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType string `pulumi:"instanceType"`
-	// The name of the RKV instance.
+	// Indicates whether the instance is managed by Relational Database Service (RDS).
+	IsRds             bool   `pulumi:"isRds"`
+	MaintainEndTime   string `pulumi:"maintainEndTime"`
+	MaintainStartTime string `pulumi:"maintainStartTime"`
+	// Instance connection quantity limit. Unit: count.
+	MaxConnections int `pulumi:"maxConnections"`
+	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	Name string `pulumi:"name"`
-	// Connection port of the instance.
+	// The type of the network. Valid values: `CLASSIC`, `VPC`.
+	NetworkType string `pulumi:"networkType"`
+	// The node type of the instance.
+	NodeType string `pulumi:"nodeType"`
+	// The type of the package.
+	PackageType string `pulumi:"packageType"`
+	// The payment type. Valid values: `PostPaid`, `PrePaid`.
+	PaymentType string `pulumi:"paymentType"`
+	// The service port of the instance.
 	Port int `pulumi:"port"`
 	// Private IP address of the instance.
 	PrivateIp string `pulumi:"privateIp"`
+	// The queries per second (QPS) supported by the instance.
+	Qps int `pulumi:"qps"`
 	// Region ID the instance belongs to.
 	RegionId string `pulumi:"regionId"`
-	// Status of the instance.
-	Status   string `pulumi:"status"`
-	UserName string `pulumi:"userName"`
+	// The logical ID of the replica instance.
+	ReplacateId string `pulumi:"replacateId"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The name of the instance.
+	SearchKey                string   `pulumi:"searchKey"`
+	SecurityGroupId          string   `pulumi:"securityGroupId"`
+	SecurityIpGroupAttribute string   `pulumi:"securityIpGroupAttribute"`
+	SecurityIpGroupName      string   `pulumi:"securityIpGroupName"`
+	SecurityIps              []string `pulumi:"securityIps"`
+	SslEnable                string   `pulumi:"sslEnable"`
+	// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
+	Status string `pulumi:"status"`
+	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The username of the instance.
+	UserName    string `pulumi:"userName"`
+	VpcAuthMode string `pulumi:"vpcAuthMode"`
+	// Connection port of the instance.
+	VpcCloudInstanceId string `pulumi:"vpcCloudInstanceId"`
 	// Used to retrieve instances belong to specified VPC.
 	VpcId string `pulumi:"vpcId"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId string `pulumi:"vswitchId"`
+	// The ID of the zone.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -380,43 +617,99 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
-	// Availability zone.
+	// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+	ArchitectureType pulumi.StringInput `pulumi:"architectureType"`
+	AutoRenew        pulumi.BoolInput   `pulumi:"autoRenew"`
+	AutoRenewPeriod  pulumi.IntInput    `pulumi:"autoRenewPeriod"`
+	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
 	// Instance bandwidth limit. Unit: Mbit/s.
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	// Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
+	// Capacity of the applied ApsaraDB for the instance. Unit: MB.
 	Capacity pulumi.IntInput `pulumi:"capacity"`
-	// Billing method. Value options: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
-	ChargeType       pulumi.StringInput `pulumi:"chargeType"`
+	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+	ChargeType pulumi.StringInput `pulumi:"chargeType"`
+	// The parameter configuration of the instance.
+	Config pulumi.MapInput `pulumi:"config"`
+	// Instance connection domain (only Intranet access supported).
 	ConnectionDomain pulumi.StringInput `pulumi:"connectionDomain"`
-	// Instance connection quantity limit. Unit: count.
+	// The connection mode of the instance.
+	ConnectionMode pulumi.StringInput `pulumi:"connectionMode"`
+	// IIt has been deprecated from provider version 1.101.0 and `maxConnections` instead.
 	Connections pulumi.IntInput `pulumi:"connections"`
 	// Creation time of the instance.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the instance.
+	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// The name of the instance.
+	DbInstanceName pulumi.StringInput `pulumi:"dbInstanceName"`
+	// The time when the instance was destroyed.
+	DestroyTime pulumi.StringInput `pulumi:"destroyTime"`
 	// Expiration time. Pay-As-You-Go instances are never expire.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
+	// It has been deprecated from provider version 1.101.0 and `endTime` instead.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-	// The ID of the RKV instance.
+	// Indicates whether there was an order of renewal with configuration change that had not taken effect.
+	HasRenewChangeOrder pulumi.BoolInput `pulumi:"hasRenewChangeOrder"`
+	// The ID of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Type of the applied ApsaraDB for Redis instance.
-	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
-	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
-	// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+	InstanceClass             pulumi.StringInput `pulumi:"instanceClass"`
+	InstanceReleaseProtection pulumi.BoolInput   `pulumi:"instanceReleaseProtection"`
+	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// The name of the RKV instance.
+	// Indicates whether the instance is managed by Relational Database Service (RDS).
+	IsRds             pulumi.BoolInput   `pulumi:"isRds"`
+	MaintainEndTime   pulumi.StringInput `pulumi:"maintainEndTime"`
+	MaintainStartTime pulumi.StringInput `pulumi:"maintainStartTime"`
+	// Instance connection quantity limit. Unit: count.
+	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
+	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Connection port of the instance.
+	// The type of the network. Valid values: `CLASSIC`, `VPC`.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The node type of the instance.
+	NodeType pulumi.StringInput `pulumi:"nodeType"`
+	// The type of the package.
+	PackageType pulumi.StringInput `pulumi:"packageType"`
+	// The payment type. Valid values: `PostPaid`, `PrePaid`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The service port of the instance.
 	Port pulumi.IntInput `pulumi:"port"`
 	// Private IP address of the instance.
 	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
+	// The queries per second (QPS) supported by the instance.
+	Qps pulumi.IntInput `pulumi:"qps"`
 	// Region ID the instance belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// Status of the instance.
-	Status   pulumi.StringInput `pulumi:"status"`
-	UserName pulumi.StringInput `pulumi:"userName"`
+	// The logical ID of the replica instance.
+	ReplacateId pulumi.StringInput `pulumi:"replacateId"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The name of the instance.
+	SearchKey                pulumi.StringInput      `pulumi:"searchKey"`
+	SecurityGroupId          pulumi.StringInput      `pulumi:"securityGroupId"`
+	SecurityIpGroupAttribute pulumi.StringInput      `pulumi:"securityIpGroupAttribute"`
+	SecurityIpGroupName      pulumi.StringInput      `pulumi:"securityIpGroupName"`
+	SecurityIps              pulumi.StringArrayInput `pulumi:"securityIps"`
+	SslEnable                pulumi.StringInput      `pulumi:"sslEnable"`
+	// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The username of the instance.
+	UserName    pulumi.StringInput `pulumi:"userName"`
+	VpcAuthMode pulumi.StringInput `pulumi:"vpcAuthMode"`
+	// Connection port of the instance.
+	VpcCloudInstanceId pulumi.StringInput `pulumi:"vpcCloudInstanceId"`
 	// Used to retrieve instances belong to specified VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The ID of the zone.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -470,7 +763,20 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
-// Availability zone.
+// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+func (o GetInstancesInstanceOutput) ArchitectureType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ArchitectureType }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) AutoRenew() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.AutoRenew }).(pulumi.BoolOutput)
+}
+
+func (o GetInstancesInstanceOutput) AutoRenewPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.AutoRenewPeriod }).(pulumi.IntOutput)
+}
+
+// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
@@ -480,21 +786,32 @@ func (o GetInstancesInstanceOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
+// Capacity of the applied ApsaraDB for the instance. Unit: MB.
 func (o GetInstancesInstanceOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Capacity }).(pulumi.IntOutput)
 }
 
-// Billing method. Value options: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
+// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 func (o GetInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
+// The parameter configuration of the instance.
+func (o GetInstancesInstanceOutput) Config() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Config }).(pulumi.MapOutput)
+}
+
+// Instance connection domain (only Intranet access supported).
 func (o GetInstancesInstanceOutput) ConnectionDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ConnectionDomain }).(pulumi.StringOutput)
 }
 
-// Instance connection quantity limit. Unit: count.
+// The connection mode of the instance.
+func (o GetInstancesInstanceOutput) ConnectionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ConnectionMode }).(pulumi.StringOutput)
+}
+
+// IIt has been deprecated from provider version 1.101.0 and `maxConnections` instead.
 func (o GetInstancesInstanceOutput) Connections() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Connections }).(pulumi.IntOutput)
 }
@@ -504,33 +821,104 @@ func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The ID of the instance.
+func (o GetInstancesInstanceOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the instance.
+func (o GetInstancesInstanceOutput) DbInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceName }).(pulumi.StringOutput)
+}
+
+// The time when the instance was destroyed.
+func (o GetInstancesInstanceOutput) DestroyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DestroyTime }).(pulumi.StringOutput)
+}
+
 // Expiration time. Pay-As-You-Go instances are never expire.
+func (o GetInstancesInstanceOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+func (o GetInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// It has been deprecated from provider version 1.101.0 and `endTime` instead.
 func (o GetInstancesInstanceOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
-// The ID of the RKV instance.
+// Indicates whether there was an order of renewal with configuration change that had not taken effect.
+func (o GetInstancesInstanceOutput) HasRenewChangeOrder() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.HasRenewChangeOrder }).(pulumi.BoolOutput)
+}
+
+// The ID of the instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Type of the applied ApsaraDB for Redis instance.
-// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
-// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+func (o GetInstancesInstanceOutput) InstanceReleaseProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.InstanceReleaseProtection }).(pulumi.BoolOutput)
+}
+
+// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The name of the RKV instance.
+// Indicates whether the instance is managed by Relational Database Service (RDS).
+func (o GetInstancesInstanceOutput) IsRds() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.IsRds }).(pulumi.BoolOutput)
+}
+
+func (o GetInstancesInstanceOutput) MaintainEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintainEndTime }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) MaintainStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintainStartTime }).(pulumi.StringOutput)
+}
+
+// Instance connection quantity limit. Unit: count.
+func (o GetInstancesInstanceOutput) MaxConnections() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.MaxConnections }).(pulumi.IntOutput)
+}
+
+// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Connection port of the instance.
+// The type of the network. Valid values: `CLASSIC`, `VPC`.
+func (o GetInstancesInstanceOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The node type of the instance.
+func (o GetInstancesInstanceOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// The type of the package.
+func (o GetInstancesInstanceOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// The payment type. Valid values: `PostPaid`, `PrePaid`.
+func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The service port of the instance.
 func (o GetInstancesInstanceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -540,18 +928,73 @@ func (o GetInstancesInstanceOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
+// The queries per second (QPS) supported by the instance.
+func (o GetInstancesInstanceOutput) Qps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Qps }).(pulumi.IntOutput)
+}
+
 // Region ID the instance belongs to.
 func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Status of the instance.
+// The logical ID of the replica instance.
+func (o GetInstancesInstanceOutput) ReplacateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ReplacateId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the instance.
+func (o GetInstancesInstanceOutput) SearchKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SearchKey }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) SecurityIpGroupAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityIpGroupAttribute }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) SecurityIpGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityIpGroupName }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) SecurityIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.SecurityIps }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancesInstanceOutput) SslEnable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SslEnable }).(pulumi.StringOutput)
+}
+
+// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The username of the instance.
 func (o GetInstancesInstanceOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) VpcAuthMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcAuthMode }).(pulumi.StringOutput)
+}
+
+// Connection port of the instance.
+func (o GetInstancesInstanceOutput) VpcCloudInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcCloudInstanceId }).(pulumi.StringOutput)
 }
 
 // Used to retrieve instances belong to specified VPC.
@@ -562,6 +1005,11 @@ func (o GetInstancesInstanceOutput) VpcId() pulumi.StringOutput {
 // Used to retrieve instances belong to specified `vswitch` resources.
 func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The ID of the zone.
+func (o GetInstancesInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -693,6 +1141,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterOutputType(InstanceParameterOutput{})
 	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsConnectionOutput{})
+	pulumi.RegisterOutputType(GetConnectionsConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesClassOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesClassArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceEnginesInstanceEngineOutput{})

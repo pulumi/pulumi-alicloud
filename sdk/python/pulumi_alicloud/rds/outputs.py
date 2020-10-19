@@ -279,6 +279,7 @@ class GetInstancesInstanceResult(dict):
                  instance_storage: int,
                  instance_type: str,
                  master_instance_id: str,
+                 master_zone: str,
                  name: str,
                  net_type: str,
                  port: str,
@@ -287,7 +288,9 @@ class GetInstancesInstanceResult(dict):
                  status: str,
                  temp_instance_id: str,
                  vpc_id: str,
-                 vswitch_id: str):
+                 vswitch_id: str,
+                 zone_id_slave_a: str,
+                 zone_id_slave_b: str):
         """
         :param str availability_zone: Availability zone.
         :param str charge_type: Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
@@ -304,6 +307,7 @@ class GetInstancesInstanceResult(dict):
         :param int instance_storage: (Available in 1.70.3+) User-defined DB instance storage space.
         :param str instance_type: Sizing of the RDS instance.
         :param str master_instance_id: ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
+        :param str master_zone: (Available in 1.101.0+) The master zone of the instance.
         :param str name: The name of the RDS instance.
         :param str net_type: `Internet` for public network or `Intranet` for private network.
         :param str port: (Available in 1.70.3+) RDS database connection port.
@@ -313,6 +317,8 @@ class GetInstancesInstanceResult(dict):
         :param str temp_instance_id: If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
         :param str vpc_id: Used to retrieve instances belong to specified VPC.
         :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
+        :param str zone_id_slave_a: (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param str zone_id_slave_b: (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "charge_type", charge_type)
@@ -329,6 +335,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "instance_storage", instance_storage)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "master_instance_id", master_instance_id)
+        pulumi.set(__self__, "master_zone", master_zone)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "net_type", net_type)
         pulumi.set(__self__, "port", port)
@@ -338,6 +345,8 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "temp_instance_id", temp_instance_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
+        pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -460,6 +469,14 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "master_instance_id")
 
     @property
+    @pulumi.getter(name="masterZone")
+    def master_zone(self) -> str:
+        """
+        (Available in 1.101.0+) The master zone of the instance.
+        """
+        return pulumi.get(self, "master_zone")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -530,6 +547,22 @@ class GetInstancesInstanceResult(dict):
         Used to retrieve instances belong to specified `vswitch` resources.
         """
         return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveA")
+    def zone_id_slave_a(self) -> str:
+        """
+        (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        """
+        return pulumi.get(self, "zone_id_slave_a")
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveB")
+    def zone_id_slave_b(self) -> str:
+        """
+        (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        """
+        return pulumi.get(self, "zone_id_slave_b")
 
 
 @pulumi.output_type

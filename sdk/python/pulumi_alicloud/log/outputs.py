@@ -28,7 +28,7 @@ class AlertNotificationList(dict):
                  service_uri: Optional[str] = None):
         """
         :param str content: Notice content of alarm.
-        :param str type: Notification type. support Email, SMS, DingTalk.
+        :param str type: Notification type. support Email, SMS, DingTalk, MessageCenter.
         :param Sequence[str] email_lists: Email address list.
         :param Sequence[str] mobile_lists: SMS sending mobile number.
         :param str service_uri: Request address.
@@ -54,7 +54,7 @@ class AlertNotificationList(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Notification type. support Email, SMS, DingTalk.
+        Notification type. support Email, SMS, DingTalk, MessageCenter.
         """
         return pulumi.get(self, "type")
 

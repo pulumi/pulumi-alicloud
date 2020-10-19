@@ -74,6 +74,10 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string MasterInstanceId;
         /// <summary>
+        /// (Available in 1.101.0+) The master zone of the instance.
+        /// </summary>
+        public readonly string MasterZone;
+        /// <summary>
         /// The name of the RDS instance.
         /// </summary>
         public readonly string Name;
@@ -109,6 +113,14 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// Used to retrieve instances belong to specified `vswitch` resources.
         /// </summary>
         public readonly string VswitchId;
+        /// <summary>
+        /// (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        /// </summary>
+        public readonly string ZoneIdSlaveA;
+        /// <summary>
+        /// (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        /// </summary>
+        public readonly string ZoneIdSlaveB;
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
@@ -142,6 +154,8 @@ namespace Pulumi.AliCloud.Rds.Outputs
 
             string masterInstanceId,
 
+            string masterZone,
+
             string name,
 
             string netType,
@@ -158,7 +172,11 @@ namespace Pulumi.AliCloud.Rds.Outputs
 
             string vpcId,
 
-            string vswitchId)
+            string vswitchId,
+
+            string zoneIdSlaveA,
+
+            string zoneIdSlaveB)
         {
             AvailabilityZone = availabilityZone;
             ChargeType = chargeType;
@@ -175,6 +193,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
             InstanceStorage = instanceStorage;
             InstanceType = instanceType;
             MasterInstanceId = masterInstanceId;
+            MasterZone = masterZone;
             Name = name;
             NetType = netType;
             Port = port;
@@ -184,6 +203,8 @@ namespace Pulumi.AliCloud.Rds.Outputs
             TempInstanceId = tempInstanceId;
             VpcId = vpcId;
             VswitchId = vswitchId;
+            ZoneIdSlaveA = zoneIdSlaveA;
+            ZoneIdSlaveB = zoneIdSlaveB;
         }
     }
 }

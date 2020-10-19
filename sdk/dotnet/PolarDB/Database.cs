@@ -24,16 +24,33 @@ namespace Pulumi.AliCloud.PolarDB
     /// {
     ///     public MyStack()
     ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "polardbClusterconfig";
+    ///         var creation = config.Get("creation") ?? "PolarDB";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///         });
     ///         var cluster = new AliCloud.PolarDB.Cluster("cluster", new AliCloud.PolarDB.ClusterArgs
     ///         {
     ///             DbType = "MySQL",
     ///             DbVersion = "8.0",
     ///             PayType = "PostPaid",
-    ///             DbNodeClass = @var.Clusterclass,
-    ///             VswitchId = "polar.mysql.x4.large",
+    ///             DbNodeClass = "polar.mysql.x4.large",
+    ///             VswitchId = defaultSwitch.Id,
     ///             Description = "testDB",
     ///         });
-    ///         var @default = new AliCloud.PolarDB.Database("default", new AliCloud.PolarDB.DatabaseArgs
+    ///         var defaultDatabase = new AliCloud.PolarDB.Database("defaultDatabase", new AliCloud.PolarDB.DatabaseArgs
     ///         {
     ///             DbClusterId = cluster.Id,
     ///             DbName = "tftestdatabase",
@@ -58,7 +75,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
         /// </summary>
         [Output("dbDescription")]
         public Output<string?> DbDescription { get; private set; } = null!;
@@ -128,7 +145,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> DbClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
         /// </summary>
         [Input("dbDescription")]
         public Input<string>? DbDescription { get; set; }
@@ -159,7 +176,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbClusterId { get; set; }
 
         /// <summary>
-        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
         /// </summary>
         [Input("dbDescription")]
         public Input<string>? DbDescription { get; set; }

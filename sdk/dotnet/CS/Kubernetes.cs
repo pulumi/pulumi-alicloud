@@ -224,6 +224,9 @@ namespace Pulumi.AliCloud.CS
         [Output("proxyMode")]
         public Output<string?> ProxyMode { get; private set; } = null!;
 
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
@@ -652,6 +655,9 @@ namespace Pulumi.AliCloud.CS
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
 
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
@@ -1057,6 +1063,9 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

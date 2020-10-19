@@ -44,6 +44,8 @@ class Instance(pulumi.CustomResource):
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_b: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -129,6 +131,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
+        :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -185,6 +189,8 @@ class Instance(pulumi.CustomResource):
             __props__['tde_status'] = tde_status
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id
+            __props__['zone_id_slave_a'] = zone_id_slave_a
+            __props__['zone_id_slave_b'] = zone_id_slave_b
             __props__['connection_string'] = None
             __props__['port'] = None
             __props__['ssl_status'] = None
@@ -227,7 +233,9 @@ class Instance(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
-            zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            zone_id: Optional[pulumi.Input[str]] = None,
+            zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+            zone_id_slave_b: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -282,6 +290,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
+        :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -317,6 +327,8 @@ class Instance(pulumi.CustomResource):
         __props__["tde_status"] = tde_status
         __props__["vswitch_id"] = vswitch_id
         __props__["zone_id"] = zone_id
+        __props__["zone_id_slave_a"] = zone_id_slave_a
+        __props__["zone_id_slave_b"] = zone_id_slave_b
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -575,6 +587,22 @@ class Instance(pulumi.CustomResource):
         The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
         """
         return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveA")
+    def zone_id_slave_a(self) -> pulumi.Output[Optional[str]]:
+        """
+        The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        """
+        return pulumi.get(self, "zone_id_slave_a")
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveB")
+    def zone_id_slave_b(self) -> pulumi.Output[Optional[str]]:
+        """
+        The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        """
+        return pulumi.get(self, "zone_id_slave_b")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -13,12 +13,100 @@ import (
 // Provides a PolarDB account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
 //
 // > **NOTE:** Available in v1.67.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/polardb"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cfg := config.New(ctx, "")
+// 		creation := "PolarDB"
+// 		if param := cfg.Get("creation"); param != "" {
+// 			creation = param
+// 		}
+// 		name := "dbaccountprivilegebasic"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
+// 			DbType:      pulumi.String("MySQL"),
+// 			DbVersion:   pulumi.String("8.0"),
+// 			PayType:     pulumi.String("PostPaid"),
+// 			DbNodeClass: pulumi.String("polar.mysql.x4.large"),
+// 			VswitchId:   defaultSwitch.ID(),
+// 			Description: pulumi.String(name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		db, err := polardb.NewDatabase(ctx, "db", &polardb.DatabaseArgs{
+// 			DbClusterId: cluster.ID(),
+// 			DbName:      pulumi.String("tftestdatabase"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		account, err := polardb.NewAccount(ctx, "account", &polardb.AccountArgs{
+// 			DbClusterId:        cluster.ID(),
+// 			AccountName:        pulumi.String("tftestnormal"),
+// 			AccountPassword:    pulumi.String("Test12345"),
+// 			AccountDescription: pulumi.String(name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = polardb.NewAccountPrivilege(ctx, "privilege", &polardb.AccountPrivilegeArgs{
+// 			DbClusterId:      cluster.ID(),
+// 			AccountName:      account.AccountName,
+// 			AccountPrivilege: pulumi.String("ReadOnly"),
+// 			DbNames: pulumi.StringArray{
+// 				db.DbName,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AccountPrivilege struct {
 	pulumi.CustomResourceState
 
 	// A specified account name.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
 	AccountPrivilege pulumi.StringPtrOutput `pulumi:"accountPrivilege"`
 	// The Id of cluster in which account belongs.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
@@ -65,7 +153,7 @@ func GetAccountPrivilege(ctx *pulumi.Context,
 type accountPrivilegeState struct {
 	// A specified account name.
 	AccountName *string `pulumi:"accountName"`
-	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
 	AccountPrivilege *string `pulumi:"accountPrivilege"`
 	// The Id of cluster in which account belongs.
 	DbClusterId *string `pulumi:"dbClusterId"`
@@ -76,7 +164,7 @@ type accountPrivilegeState struct {
 type AccountPrivilegeState struct {
 	// A specified account name.
 	AccountName pulumi.StringPtrInput
-	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
 	AccountPrivilege pulumi.StringPtrInput
 	// The Id of cluster in which account belongs.
 	DbClusterId pulumi.StringPtrInput
@@ -91,7 +179,7 @@ func (AccountPrivilegeState) ElementType() reflect.Type {
 type accountPrivilegeArgs struct {
 	// A specified account name.
 	AccountName string `pulumi:"accountName"`
-	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
 	AccountPrivilege *string `pulumi:"accountPrivilege"`
 	// The Id of cluster in which account belongs.
 	DbClusterId string `pulumi:"dbClusterId"`
@@ -103,7 +191,7 @@ type accountPrivilegeArgs struct {
 type AccountPrivilegeArgs struct {
 	// A specified account name.
 	AccountName pulumi.StringInput
-	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
 	AccountPrivilege pulumi.StringPtrInput
 	// The Id of cluster in which account belongs.
 	DbClusterId pulumi.StringInput

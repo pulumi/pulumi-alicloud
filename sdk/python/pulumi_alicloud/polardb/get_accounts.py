@@ -103,7 +103,7 @@ def get_accounts(db_cluster_id: Optional[str] = None,
     polardb_clusters_ds = alicloud.polardb.get_clusters(description_regex="pc-\\w+",
         status="Running")
     default = alicloud.polardb.get_accounts(db_cluster_id=polardb_clusters_ds.clusters[0].id)
-    pulumi.export("ends", default.accounts[0].account_name)
+    pulumi.export("account", default.accounts[0].account_name)
     ```
 
 

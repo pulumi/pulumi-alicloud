@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("ends", _default.Endpoints[0].DbEndpointId)
+// 		ctx.Export("endpoint", _default.Endpoints[0].DbEndpointId)
 // 		return nil
 // 	})
 // }

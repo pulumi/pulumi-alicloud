@@ -12,13 +12,13 @@ namespace Pulumi.AliCloud.FC
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>
-        /// The function compute service description.
+        /// The Function Compute Service description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to allow the service to access Internet. Default to "true".
+        /// Whether to allow the Service to access Internet. Default to "true".
         /// </summary>
         [Output("internetAccess")]
         public Output<bool?> InternetAccess { get; private set; } = null!;
@@ -30,43 +30,55 @@ namespace Pulumi.AliCloud.FC
         public Output<string> LastModified { get; private set; } = null!;
 
         /// <summary>
-        /// Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+        /// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.ServiceLogConfig?> LogConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Function Compute service name. It is the only in one Alicloud account and is conflict with "name_prefix".
+        /// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Setting a prefix to get a only name. It is conflict with "name".
+        /// Setting a prefix to get a only name. It is conflict with `name`.
         /// </summary>
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
         /// </summary>
         [Output("nasConfig")]
         public Output<Outputs.ServiceNasConfig?> NasConfig { get; private set; } = null!;
 
         /// <summary>
-        /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+        /// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+        /// </summary>
+        [Output("publish")]
+        public Output<bool?> Publish { get; private set; } = null!;
+
+        /// <summary>
+        /// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// The Function Compute service ID.
+        /// The Function Compute Service ID.
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+        /// The latest published version of your Function Compute Service.
+        /// </summary>
+        [Output("version")]
+        public Output<string> Version { get; private set; } = null!;
+
+        /// <summary>
+        /// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
         /// </summary>
         [Output("vpcConfig")]
         public Output<Outputs.ServiceVpcConfig?> VpcConfig { get; private set; } = null!;
@@ -118,49 +130,55 @@ namespace Pulumi.AliCloud.FC
     public sealed class ServiceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The function compute service description.
+        /// The Function Compute Service description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to allow the service to access Internet. Default to "true".
+        /// Whether to allow the Service to access Internet. Default to "true".
         /// </summary>
         [Input("internetAccess")]
         public Input<bool>? InternetAccess { get; set; }
 
         /// <summary>
-        /// Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+        /// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.ServiceLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// The Function Compute service name. It is the only in one Alicloud account and is conflict with "name_prefix".
+        /// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Setting a prefix to get a only name. It is conflict with "name".
+        /// Setting a prefix to get a only name. It is conflict with `name`.
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
         /// </summary>
         [Input("nasConfig")]
         public Input<Inputs.ServiceNasConfigArgs>? NasConfig { get; set; }
 
         /// <summary>
-        /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+        /// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+        /// </summary>
+        [Input("publish")]
+        public Input<bool>? Publish { get; set; }
+
+        /// <summary>
+        /// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+        /// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
         /// </summary>
         [Input("vpcConfig")]
         public Input<Inputs.ServiceVpcConfigArgs>? VpcConfig { get; set; }
@@ -173,13 +191,13 @@ namespace Pulumi.AliCloud.FC
     public sealed class ServiceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The function compute service description.
+        /// The Function Compute Service description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to allow the service to access Internet. Default to "true".
+        /// Whether to allow the Service to access Internet. Default to "true".
         /// </summary>
         [Input("internetAccess")]
         public Input<bool>? InternetAccess { get; set; }
@@ -191,43 +209,55 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? LastModified { get; set; }
 
         /// <summary>
-        /// Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+        /// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.ServiceLogConfigGetArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// The Function Compute service name. It is the only in one Alicloud account and is conflict with "name_prefix".
+        /// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Setting a prefix to get a only name. It is conflict with "name".
+        /// Setting a prefix to get a only name. It is conflict with `name`.
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow FC service to access your NAS resources.
+        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
         /// </summary>
         [Input("nasConfig")]
         public Input<Inputs.ServiceNasConfigGetArgs>? NasConfig { get; set; }
 
         /// <summary>
-        /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+        /// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+        /// </summary>
+        [Input("publish")]
+        public Input<bool>? Publish { get; set; }
+
+        /// <summary>
+        /// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// The Function Compute service ID.
+        /// The Function Compute Service ID.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+        /// The latest published version of your Function Compute Service.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        /// <summary>
+        /// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
         /// </summary>
         [Input("vpcConfig")]
         public Input<Inputs.ServiceVpcConfigGetArgs>? VpcConfig { get; set; }

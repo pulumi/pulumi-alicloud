@@ -38,11 +38,11 @@ namespace Pulumi.AliCloud.PolarDB
         ///         {
         ///             DbClusterId = polardbClustersDs.Clusters[0].Id,
         ///         })));
-        ///         this.Ends = @default.Apply(@default =&gt; @default.Accounts[0].AccountName);
+        ///         this.Account = @default.Apply(@default =&gt; @default.Accounts[0].AccountName);
         ///     }
         /// 
-        ///     [Output("ends")]
-        ///     public Output&lt;string&gt; Ends { get; set; }
+        ///     [Output("account")]
+        ///     public Output&lt;string&gt; Account { get; set; }
         /// }
         /// ```
         /// {{% /example %}}

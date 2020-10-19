@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
  *     dbType: "MySQL",
  *     dbVersion: "5.6",
- *     dbNodeClass: "rds.mysql.s2.large",
+ *     dbNodeClass: "polar.mysql.x4.medium",
  *     payType: "PostPaid",
  *     description: name,
  *     vswitchId: defaultSwitch.id,

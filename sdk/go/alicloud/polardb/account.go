@@ -13,6 +13,76 @@ import (
 // Provides a PolarDB account resource and used to manage databases.
 //
 // > **NOTE:** Available in v1.67.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/polardb"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cfg := config.New(ctx, "")
+// 		creation := "PolarDB"
+// 		if param := cfg.Get("creation"); param != "" {
+// 			creation = param
+// 		}
+// 		name := "polardbaccountmysql"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		opt0 := creation
+// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 			AvailableResourceCreation: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			VpcId:            defaultNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
+// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
+// 			DbType:      pulumi.String("MySQL"),
+// 			DbVersion:   pulumi.String("8.0"),
+// 			DbNodeClass: pulumi.String("polar.mysql.x4.large"),
+// 			PayType:     pulumi.String("PostPaid"),
+// 			VswitchId:   defaultSwitch.ID(),
+// 			Description: pulumi.String(name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = polardb.NewAccount(ctx, "account", &polardb.AccountArgs{
+// 			DbClusterId:        cluster.ID(),
+// 			AccountName:        pulumi.String("tftestnormal"),
+// 			AccountPassword:    pulumi.String("Test12345"),
+// 			AccountDescription: pulumi.String(name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Account struct {
 	pulumi.CustomResourceState
 

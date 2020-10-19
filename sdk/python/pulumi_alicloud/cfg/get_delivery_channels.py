@@ -119,6 +119,8 @@ def get_delivery_channels(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:**  Available in 1.99.0+.
 
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+
     ## Example Usage
 
     ```python

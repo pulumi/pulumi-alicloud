@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class ServiceLogConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The log store name of Logs service.
+        /// The log store name of Alicloud Simple Log Service.
         /// </summary>
         [Input("logstore", required: true)]
         public Input<string> Logstore { get; set; } = null!;
 
         /// <summary>
-        /// The project name of Logs service.
+        /// The project name of the Alicloud Simple Log Service.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

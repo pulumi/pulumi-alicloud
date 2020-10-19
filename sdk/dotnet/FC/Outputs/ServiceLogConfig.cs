@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class ServiceLogConfig
     {
         /// <summary>
-        /// The log store name of Logs service.
+        /// The log store name of Alicloud Simple Log Service.
         /// </summary>
         public readonly string Logstore;
         /// <summary>
-        /// The project name of Logs service.
+        /// The project name of the Alicloud Simple Log Service.
         /// </summary>
         public readonly string Project;
 

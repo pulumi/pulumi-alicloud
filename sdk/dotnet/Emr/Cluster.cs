@@ -826,6 +826,12 @@ namespace Pulumi.AliCloud.Emr
         public Output<ImmutableArray<string>> OptionSoftwareLists { get; private set; } = null!;
 
         /// <summary>
+        /// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+        /// </summary>
+        [Output("period")]
+        public Output<int?> Period { get; private set; } = null!;
+
+        /// <summary>
         /// This specify the related cluster id, if this cluster is a Gateway.
         /// </summary>
         [Output("relatedClusterId")]
@@ -1009,6 +1015,12 @@ namespace Pulumi.AliCloud.Emr
         }
 
         /// <summary>
+        /// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        /// <summary>
         /// This specify the related cluster id, if this cluster is a Gateway.
         /// </summary>
         [Input("relatedClusterId")]
@@ -1157,6 +1169,12 @@ namespace Pulumi.AliCloud.Emr
             get => _optionSoftwareLists ?? (_optionSoftwareLists = new InputList<string>());
             set => _optionSoftwareLists = value;
         }
+
+        /// <summary>
+        /// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
 
         /// <summary>
         /// This specify the related cluster id, if this cluster is a Gateway.

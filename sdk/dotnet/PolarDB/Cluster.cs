@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///         {
     ///             DbType = "MySQL",
     ///             DbVersion = "5.6",
-    ///             DbNodeClass = "rds.mysql.s2.large",
+    ///             DbNodeClass = "polar.mysql.x4.medium",
     ///             PayType = "PostPaid",
     ///             Description = name,
     ///             VswitchId = defaultSwitch.Id,

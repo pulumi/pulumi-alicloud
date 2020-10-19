@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class ServiceVpcConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A security group ID associated with the FC service.
+        /// A security group ID associated with the Function Compute Service.
         /// </summary>
         [Input("securityGroupId", required: true)]
         public Input<string> SecurityGroupId { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<string>? _vswitchIds;
 
         /// <summary>
-        /// A list of vswitch IDs associated with the FC service.
+        /// A list of vswitch IDs associated with the Function Compute Service.
         /// </summary>
         public InputList<string> VswitchIds
         {

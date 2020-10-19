@@ -34,6 +34,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly int EipMax;
         /// <summary>
+        /// The endPoint to access the instance.
+        /// </summary>
+        public readonly string EndPoint;
+        /// <summary>
         /// ID of the instance.
         /// </summary>
         public readonly string Id;
@@ -90,6 +94,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             int eipMax,
 
+            string endPoint,
+
             string id,
 
             int ioMax,
@@ -117,6 +123,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
             DiskSize = diskSize;
             DiskType = diskType;
             EipMax = eipMax;
+            EndPoint = endPoint;
             Id = id;
             IoMax = ioMax;
             Name = name;

@@ -24,6 +24,7 @@ type ManagedKubernetes struct {
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
+	ClusterSpec   pulumi.StringOutput    `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections ManagedKubernetesConnectionsOutput `pulumi:"connections"`
 	// kubelet cpu policy. options: static|none. default: none.
@@ -64,7 +65,8 @@ type ManagedKubernetes struct {
 	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayOutput `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
+	ProxyMode       pulumi.StringPtrOutput `pulumi:"proxyMode"`
+	ResourceGroupId pulumi.StringOutput    `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
@@ -171,6 +173,7 @@ type managedKubernetesState struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
+	ClusterSpec   *string `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections *ManagedKubernetesConnections `pulumi:"connections"`
 	// kubelet cpu policy. options: static|none. default: none.
@@ -211,7 +214,8 @@ type managedKubernetesState struct {
 	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode *string `pulumi:"proxyMode"`
+	ProxyMode       *string `pulumi:"proxyMode"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
@@ -282,6 +286,7 @@ type ManagedKubernetesState struct {
 	ClientKey pulumi.StringPtrInput
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
+	ClusterSpec   pulumi.StringPtrInput
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections ManagedKubernetesConnectionsPtrInput
 	// kubelet cpu policy. options: static|none. default: none.
@@ -322,7 +327,8 @@ type ManagedKubernetesState struct {
 	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode pulumi.StringPtrInput
+	ProxyMode       pulumi.StringPtrInput
+	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
@@ -397,6 +403,7 @@ type managedKubernetesArgs struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
+	ClusterSpec   *string `pulumi:"clusterSpec"`
 	// kubelet cpu policy. options: static|none. default: none.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
 	// Enable login to the node through SSH. default: false
@@ -433,7 +440,8 @@ type managedKubernetesArgs struct {
 	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode *string `pulumi:"proxyMode"`
+	ProxyMode       *string `pulumi:"proxyMode"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
@@ -494,6 +502,7 @@ type ManagedKubernetesArgs struct {
 	ClientKey pulumi.StringPtrInput
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
+	ClusterSpec   pulumi.StringPtrInput
 	// kubelet cpu policy. options: static|none. default: none.
 	CpuPolicy pulumi.StringPtrInput
 	// Enable login to the node through SSH. default: false
@@ -530,7 +539,8 @@ type ManagedKubernetesArgs struct {
 	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode pulumi.StringPtrInput
+	ProxyMode       pulumi.StringPtrInput
+	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.

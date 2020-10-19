@@ -9,6 +9,18 @@ import * as utilities from "../utilities";
 /**
  * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.kvstore.getInstances({
+ *     nameRegex: "testname",
+ * });
+ * export const firstInstanceName = _default.then(_default => _default.instances[0].name);
+ * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -20,15 +32,26 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:kvstore/getInstances:getInstances", {
+        "architectureType": args.architectureType,
+        "editionType": args.editionType,
+        "enableDetails": args.enableDetails,
+        "engineVersion": args.engineVersion,
+        "expired": args.expired,
+        "globalInstance": args.globalInstance,
         "ids": args.ids,
         "instanceClass": args.instanceClass,
         "instanceType": args.instanceType,
         "nameRegex": args.nameRegex,
+        "networkType": args.networkType,
         "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
+        "resourceGroupId": args.resourceGroupId,
+        "searchKey": args.searchKey,
         "status": args.status,
         "tags": args.tags,
         "vpcId": args.vpcId,
         "vswitchId": args.vswitchId,
+        "zoneId": args.zoneId,
     }, opts);
 }
 
@@ -37,25 +60,64 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  */
 export interface GetInstancesArgs {
     /**
-     * A list of RKV instance IDs.
+     * The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+     */
+    readonly architectureType?: string;
+    /**
+     * Used to retrieve instances belong to specified `vswitch` resources.
+     */
+    readonly editionType?: string;
+    /**
+     * Default to `false`. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
+    /**
+     * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     */
+    readonly engineVersion?: string;
+    /**
+     * The expiration status of the instance.
+     */
+    readonly expired?: string;
+    /**
+     * Whether to create a distributed cache.
+     */
+    readonly globalInstance?: boolean;
+    /**
+     * A list of KVStore DBInstance IDs.
      */
     readonly ids?: string[];
     /**
-     * Type of the applied ApsaraDB for Redis instance.
-     * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
      */
     readonly instanceClass?: string;
     /**
-     * Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+     * The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
      */
     readonly instanceType?: string;
     /**
      * A regex string to apply to the instance name.
      */
     readonly nameRegex?: string;
+    /**
+     * The type of the network. Valid values: `CLASSIC`, `VPC`.
+     */
+    readonly networkType?: string;
     readonly outputFile?: string;
     /**
-     * Status of the instance.
+     * The payment type. Valid values: `PostPaid`, `PrePaid`.
+     */
+    readonly paymentType?: string;
+    /**
+     * The ID of the resource group.
+     */
+    readonly resourceGroupId?: string;
+    /**
+     * The name of the instance.
+     */
+    readonly searchKey?: string;
+    /**
+     * The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
      */
     readonly status?: string;
     /**
@@ -70,34 +132,60 @@ export interface GetInstancesArgs {
      * Used to retrieve instances belong to specified `vswitch` resources.
      */
     readonly vswitchId?: string;
+    /**
+     * The ID of the zone.
+     */
+    readonly zoneId?: string;
 }
 
 /**
  * A collection of values returned by getInstances.
  */
 export interface GetInstancesResult {
+    readonly architectureType?: string;
+    readonly editionType?: string;
+    readonly enableDetails?: boolean;
+    /**
+     * The engine version of the instance.
+     */
+    readonly engineVersion?: string;
+    readonly expired?: string;
+    readonly globalInstance?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * A list of RKV instance IDs.
+     * A list of KVStore Instance IDs.
      */
     readonly ids: string[];
     readonly instanceClass?: string;
     /**
-     * (Optional) Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
-     * * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
+     * (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
+     * * `instanceClass`- (Optional) Type of the applied ApsaraDB for instance.
      * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
      */
     readonly instanceType?: string;
     /**
-     * A list of RKV instances. Its every element contains the following attributes:
+     * A list of KVStore Instances. Its every element contains the following attributes:
      */
     readonly instances: outputs.kvstore.GetInstancesInstance[];
     readonly nameRegex?: string;
+    /**
+     * A list of KVStore Instance names.
+     */
     readonly names: string[];
+    /**
+     * The network type of the instance.
+     */
+    readonly networkType?: string;
     readonly outputFile?: string;
+    /**
+     * Billing method. Valid Values: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
+     */
+    readonly paymentType?: string;
+    readonly resourceGroupId?: string;
+    readonly searchKey?: string;
     /**
      * Status of the instance.
      */
@@ -111,4 +199,8 @@ export interface GetInstancesResult {
      * VSwitch ID the instance belongs to.
      */
     readonly vswitchId?: string;
+    /**
+     * The ID of zone.
+     */
+    readonly zoneId?: string;
 }

@@ -227,6 +227,7 @@ type ProviderEndpoint struct {
 	Ots             *string `pulumi:"ots"`
 	Polardb         *string `pulumi:"polardb"`
 	Pvtz            *string `pulumi:"pvtz"`
+	RKvstore        *string `pulumi:"rKvstore"`
 	Ram             *string `pulumi:"ram"`
 	Rds             *string `pulumi:"rds"`
 	Resourcemanager *string `pulumi:"resourcemanager"`
@@ -293,6 +294,7 @@ type ProviderEndpointArgs struct {
 	Ots             pulumi.StringPtrInput `pulumi:"ots"`
 	Polardb         pulumi.StringPtrInput `pulumi:"polardb"`
 	Pvtz            pulumi.StringPtrInput `pulumi:"pvtz"`
+	RKvstore        pulumi.StringPtrInput `pulumi:"rKvstore"`
 	Ram             pulumi.StringPtrInput `pulumi:"ram"`
 	Rds             pulumi.StringPtrInput `pulumi:"rds"`
 	Resourcemanager pulumi.StringPtrInput `pulumi:"resourcemanager"`
@@ -531,6 +533,10 @@ func (o ProviderEndpointOutput) Polardb() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Pvtz() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Pvtz }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) RKvstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.RKvstore }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ram() pulumi.StringPtrOutput {

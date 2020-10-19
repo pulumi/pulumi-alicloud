@@ -90,6 +90,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly eipMax!: pulumi.Output<number | undefined>;
     /**
+     * The EndPoint to access the kafka instance.
+     */
+    public /*out*/ readonly endPoint!: pulumi.Output<string>;
+    /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
     public readonly ioMax!: pulumi.Output<number>;
@@ -146,6 +150,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["diskSize"] = state ? state.diskSize : undefined;
             inputs["diskType"] = state ? state.diskType : undefined;
             inputs["eipMax"] = state ? state.eipMax : undefined;
+            inputs["endPoint"] = state ? state.endPoint : undefined;
             inputs["ioMax"] = state ? state.ioMax : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["paidType"] = state ? state.paidType : undefined;
@@ -188,6 +193,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["topicQuota"] = args ? args.topicQuota : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            inputs["endPoint"] = undefined /*out*/;
             inputs["vpcId"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
         }
@@ -222,6 +228,10 @@ export interface InstanceState {
      * The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
      */
     readonly eipMax?: pulumi.Input<number>;
+    /**
+     * The EndPoint to access the kafka instance.
+     */
+    readonly endPoint?: pulumi.Input<string>;
     /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */

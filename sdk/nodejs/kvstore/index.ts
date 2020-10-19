@@ -4,6 +4,8 @@
 // Export members:
 export * from "./account";
 export * from "./backupPolicy";
+export * from "./connection";
+export * from "./getConnections";
 export * from "./getInstanceClasses";
 export * from "./getInstanceEngines";
 export * from "./getInstances";

@@ -15,15 +15,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "polardbClusterconfig";
+ * const creation = config.get("creation") || "PolarDB";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: creation,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ * });
  * const cluster = new alicloud.polardb.Cluster("cluster", {
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
- *     dbNodeClass: _var.clusterclass,
- *     vswitchId: "polar.mysql.x4.large",
+ *     dbNodeClass: "polar.mysql.x4.large",
+ *     vswitchId: defaultSwitch.id,
  *     description: "testDB",
  * });
- * const _default = new alicloud.polardb.Database("default", {
+ * const defaultDatabase = new alicloud.polardb.Database("defaultDatabase", {
  *     dbClusterId: cluster.id,
  *     dbName: "tftestdatabase",
  * });
@@ -66,7 +78,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly dbClusterId!: pulumi.Output<string>;
     /**
-     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
      */
     public readonly dbDescription!: pulumi.Output<string | undefined>;
     /**
@@ -127,7 +139,7 @@ export interface DatabaseState {
      */
     readonly dbClusterId?: pulumi.Input<string>;
     /**
-     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
      */
     readonly dbDescription?: pulumi.Input<string>;
     /**
@@ -149,7 +161,7 @@ export interface DatabaseArgs {
      */
     readonly dbClusterId: pulumi.Input<string>;
     /**
-     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
      */
     readonly dbDescription?: pulumi.Input<string>;
     /**

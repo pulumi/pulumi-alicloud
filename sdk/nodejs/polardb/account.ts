@@ -35,8 +35,8 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     description: name,
  * });
- * const account = new alicloud.rds.Account("account", {
- *     dbClusterId: alicloud_db_instance.cluster.id,
+ * const account = new alicloud.polardb.Account("account", {
+ *     dbClusterId: cluster.id,
  *     accountName: "tftestnormal",
  *     accountPassword: "Test12345",
  *     accountDescription: name,

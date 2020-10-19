@@ -15,6 +15,8 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 client_node_amount: Optional[pulumi.Input[int]] = None,
+                 client_node_spec: Optional[pulumi.Input[str]] = None,
                  data_node_amount: Optional[pulumi.Input[int]] = None,
                  data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
                  data_node_disk_size: Optional[pulumi.Input[int]] = None,
@@ -33,6 +35,7 @@ class Instance(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
                  public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -58,6 +61,8 @@ class Instance(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         instance = alicloud.elasticsearch.Instance("instance",
+            client_node_amount=2,
+            client_node_spec="elasticsearch.sn2ne.large",
             data_node_amount=2,
             data_node_disk_size=20,
             data_node_disk_type="cloud_ssd",
@@ -65,6 +70,7 @@ class Instance(pulumi.CustomResource):
             description="description",
             instance_charge_type="PostPaid",
             password="Your password",
+            protocol="HTTPS",
             tags={
                 "key1": "value1",
                 "key2": "value2",
@@ -76,6 +82,8 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
+        :param pulumi.Input[str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
@@ -95,6 +103,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
+        :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
@@ -121,6 +130,8 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['client_node_amount'] = client_node_amount
+            __props__['client_node_spec'] = client_node_spec
             if data_node_amount is None:
                 raise TypeError("Missing required property 'data_node_amount'")
             __props__['data_node_amount'] = data_node_amount
@@ -147,6 +158,7 @@ class Instance(pulumi.CustomResource):
             __props__['password'] = password
             __props__['period'] = period
             __props__['private_whitelists'] = private_whitelists
+            __props__['protocol'] = protocol
             __props__['public_whitelists'] = public_whitelists
             __props__['resource_group_id'] = resource_group_id
             __props__['tags'] = tags
@@ -172,6 +184,8 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            client_node_amount: Optional[pulumi.Input[int]] = None,
+            client_node_spec: Optional[pulumi.Input[str]] = None,
             data_node_amount: Optional[pulumi.Input[int]] = None,
             data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
             data_node_disk_size: Optional[pulumi.Input[int]] = None,
@@ -194,6 +208,7 @@ class Instance(pulumi.CustomResource):
             period: Optional[pulumi.Input[int]] = None,
             port: Optional[pulumi.Input[int]] = None,
             private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            protocol: Optional[pulumi.Input[str]] = None,
             public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -208,6 +223,8 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
+        :param pulumi.Input[str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
@@ -231,6 +248,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
+        :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
@@ -245,6 +263,8 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["client_node_amount"] = client_node_amount
+        __props__["client_node_spec"] = client_node_spec
         __props__["data_node_amount"] = data_node_amount
         __props__["data_node_disk_encrypted"] = data_node_disk_encrypted
         __props__["data_node_disk_size"] = data_node_disk_size
@@ -267,6 +287,7 @@ class Instance(pulumi.CustomResource):
         __props__["period"] = period
         __props__["port"] = port
         __props__["private_whitelists"] = private_whitelists
+        __props__["protocol"] = protocol
         __props__["public_whitelists"] = public_whitelists
         __props__["resource_group_id"] = resource_group_id
         __props__["status"] = status
@@ -275,6 +296,22 @@ class Instance(pulumi.CustomResource):
         __props__["vswitch_id"] = vswitch_id
         __props__["zone_count"] = zone_count
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clientNodeAmount")
+    def client_node_amount(self) -> pulumi.Output[Optional[int]]:
+        """
+        The Elasticsearch cluster's client node quantity, between 2 and 25.
+        """
+        return pulumi.get(self, "client_node_amount")
+
+    @property
+    @pulumi.getter(name="clientNodeSpec")
+    def client_node_spec(self) -> pulumi.Output[Optional[str]]:
+        """
+        The client node spec. If specified, client node will be created.
+        """
+        return pulumi.get(self, "client_node_spec")
 
     @property
     @pulumi.getter(name="dataNodeAmount")
@@ -452,6 +489,14 @@ class Instance(pulumi.CustomResource):
         Set the instance's IP whitelist in VPC network.
         """
         return pulumi.get(self, "private_whitelists")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Output[Optional[str]]:
+        """
+        Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+        """
+        return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="publicWhitelists")

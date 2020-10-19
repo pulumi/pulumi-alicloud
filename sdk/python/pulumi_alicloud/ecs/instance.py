@@ -56,6 +56,8 @@ class Instance(pulumi.CustomResource):
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
+                 system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
@@ -125,6 +127,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -203,6 +207,8 @@ class Instance(pulumi.CustomResource):
             __props__['subnet_id'] = subnet_id
             __props__['system_disk_auto_snapshot_policy_id'] = system_disk_auto_snapshot_policy_id
             __props__['system_disk_category'] = system_disk_category
+            __props__['system_disk_description'] = system_disk_description
+            __props__['system_disk_name'] = system_disk_name
             __props__['system_disk_size'] = system_disk_size
             __props__['tags'] = tags
             __props__['user_data'] = user_data
@@ -259,6 +265,8 @@ class Instance(pulumi.CustomResource):
             subnet_id: Optional[pulumi.Input[str]] = None,
             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
+            system_disk_description: Optional[pulumi.Input[str]] = None,
+            system_disk_name: Optional[pulumi.Input[str]] = None,
             system_disk_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
@@ -329,6 +337,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -383,6 +393,8 @@ class Instance(pulumi.CustomResource):
         __props__["subnet_id"] = subnet_id
         __props__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
         __props__["system_disk_category"] = system_disk_category
+        __props__["system_disk_description"] = system_disk_description
+        __props__["system_disk_name"] = system_disk_name
         __props__["system_disk_size"] = system_disk_size
         __props__["tags"] = tags
         __props__["user_data"] = user_data
@@ -723,6 +735,22 @@ class Instance(pulumi.CustomResource):
         Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "system_disk_category")
+
+    @property
+    @pulumi.getter(name="systemDiskDescription")
+    def system_disk_description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "system_disk_description")
+
+    @property
+    @pulumi.getter(name="systemDiskName")
+    def system_disk_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "system_disk_name")
 
     @property
     @pulumi.getter(name="systemDiskSize")

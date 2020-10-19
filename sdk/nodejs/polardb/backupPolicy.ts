@@ -41,7 +41,7 @@ export class BackupPolicy extends pulumi.CustomResource {
      */
     public readonly dbClusterId!: pulumi.Output<string>;
     /**
-     * PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+     * PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
      */
     public readonly preferredBackupPeriods!: pulumi.Output<string[]>;
     /**
@@ -99,7 +99,7 @@ export interface BackupPolicyState {
      */
     readonly dbClusterId?: pulumi.Input<string>;
     /**
-     * PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+     * PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
      */
     readonly preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -117,7 +117,7 @@ export interface BackupPolicyArgs {
      */
     readonly dbClusterId: pulumi.Input<string>;
     /**
-     * PolarDB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+     * PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
      */
     readonly preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**

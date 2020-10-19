@@ -267,8 +267,8 @@ class ServiceLogConfig(dict):
                  logstore: str,
                  project: str):
         """
-        :param str logstore: The log store name of Logs service.
-        :param str project: The project name of Logs service.
+        :param str logstore: The log store name of Alicloud Simple Log Service.
+        :param str project: The project name of the Alicloud Simple Log Service.
         """
         pulumi.set(__self__, "logstore", logstore)
         pulumi.set(__self__, "project", project)
@@ -277,7 +277,7 @@ class ServiceLogConfig(dict):
     @pulumi.getter
     def logstore(self) -> str:
         """
-        The log store name of Logs service.
+        The log store name of Alicloud Simple Log Service.
         """
         return pulumi.get(self, "logstore")
 
@@ -285,7 +285,7 @@ class ServiceLogConfig(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        The project name of Logs service.
+        The project name of the Alicloud Simple Log Service.
         """
         return pulumi.get(self, "project")
 
@@ -375,8 +375,8 @@ class ServiceVpcConfig(dict):
                  vswitch_ids: Sequence[str],
                  vpc_id: Optional[str] = None):
         """
-        :param str security_group_id: A security group ID associated with the FC service.
-        :param Sequence[str] vswitch_ids: A list of vswitch IDs associated with the FC service.
+        :param str security_group_id: A security group ID associated with the Function Compute Service.
+        :param Sequence[str] vswitch_ids: A list of vswitch IDs associated with the Function Compute Service.
         """
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "vswitch_ids", vswitch_ids)
@@ -387,7 +387,7 @@ class ServiceVpcConfig(dict):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> str:
         """
-        A security group ID associated with the FC service.
+        A security group ID associated with the Function Compute Service.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -395,7 +395,7 @@ class ServiceVpcConfig(dict):
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Sequence[str]:
         """
-        A list of vswitch IDs associated with the FC service.
+        A list of vswitch IDs associated with the Function Compute Service.
         """
         return pulumi.get(self, "vswitch_ids")
 

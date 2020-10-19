@@ -58,6 +58,7 @@ export interface ProviderEndpoint {
     ots?: pulumi.Input<string>;
     polardb?: pulumi.Input<string>;
     pvtz?: pulumi.Input<string>;
+    rKvstore?: pulumi.Input<string>;
     ram?: pulumi.Input<string>;
     rds?: pulumi.Input<string>;
     resourcemanager?: pulumi.Input<string>;
@@ -1167,11 +1168,11 @@ export namespace fc {
 
     export interface ServiceLogConfig {
         /**
-         * The log store name of Logs service.
+         * The log store name of Alicloud Simple Log Service.
          */
         logstore: pulumi.Input<string>;
         /**
-         * The project name of Logs service.
+         * The project name of the Alicloud Simple Log Service.
          */
         project: pulumi.Input<string>;
     }
@@ -1204,12 +1205,12 @@ export namespace fc {
 
     export interface ServiceVpcConfig {
         /**
-         * A security group ID associated with the FC service.
+         * A security group ID associated with the Function Compute Service.
          */
         securityGroupId: pulumi.Input<string>;
         vpcId?: pulumi.Input<string>;
         /**
-         * A list of vswitch IDs associated with the FC service.
+         * A list of vswitch IDs associated with the Function Compute Service.
          */
         vswitchIds: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -1250,7 +1251,7 @@ export namespace log {
          */
         serviceUri?: pulumi.Input<string>;
         /**
-         * Notification type. support Email, SMS, DingTalk.
+         * Notification type. support Email, SMS, DingTalk, MessageCenter.
          */
         type: pulumi.Input<string>;
     }
