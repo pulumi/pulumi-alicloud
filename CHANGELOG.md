@@ -2,9 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Improving the accuracy of previews leading to a more accurate understanding of what will actually change rather than assuming all output properties will change
+_(none)_
 
 ---
+
+## 2.23.0 (2020-10-26)
+* Improving the accuracy of previews leading to a more accurate understanding of what will actually change rather than assuming all output properties will change.  
+  ** PLEASE NOTE:**  
+  This new preview functionality can be disabled by setting `PULUMI_DISABLE_PROVIDER_PREVIEW` to `1` or `false`.
 
 ## 2.22.0 (2020-10-19)
 * Upgrade to v1.101.0 of the AliCloud Terraform Provider
