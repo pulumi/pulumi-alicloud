@@ -6,6 +6,7 @@
 from .account import *
 from .backup_policy import *
 from .connection import *
+from .get_accounts import *
 from .get_connections import *
 from .get_instance_classes import *
 from .get_instance_engines import *

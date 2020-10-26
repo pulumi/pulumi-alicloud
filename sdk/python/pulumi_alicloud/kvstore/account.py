@@ -27,11 +27,15 @@ class Account(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a kvstore account resource and used to manage databases.
+        Provides a KVStore Account resource.
+
+        For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
 
         > **NOTE:** Available in 1.66.0+
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -58,15 +62,15 @@ class Account(pulumi.CustomResource):
             security_ips=["10.0.0.1"],
             instance_type="Redis",
             engine_version="4.0")
-        account = alicloud.kvstore.Account("account",
-            instance_id=default_instance.id,
+        example = alicloud.kvstore.Account("example",
             account_name="tftestnormal",
-            account_password="Test12345")
+            account_password="YourPassword_123",
+            instance_id=default_instance.id)
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        :param pulumi.Input[str] account_name: The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
         :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         :param pulumi.Input[str] account_privilege: The privilege of account access database. Valid values: 
                - RoleReadOnly: This value is only for Redis and Memcache
@@ -77,7 +81,7 @@ class Account(pulumi.CustomResource):
                - Normal: Common privilege.
                Default to Normal.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[str] instance_id: The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+        :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
@@ -110,6 +114,7 @@ class Account(pulumi.CustomResource):
             __props__['instance_id'] = instance_id
             __props__['kms_encrypted_password'] = kms_encrypted_password
             __props__['kms_encryption_context'] = kms_encryption_context
+            __props__['status'] = None
         super(Account, __self__).__init__(
             'alicloud:kvstore/account:Account',
             resource_name,
@@ -127,7 +132,8 @@ class Account(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Account':
+            kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            status: Optional[pulumi.Input[str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -135,7 +141,7 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        :param pulumi.Input[str] account_name: The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
         :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         :param pulumi.Input[str] account_privilege: The privilege of account access database. Valid values: 
                - RoleReadOnly: This value is only for Redis and Memcache
@@ -146,9 +152,10 @@ class Account(pulumi.CustomResource):
                - Normal: Common privilege.
                Default to Normal.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[str] instance_id: The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+        :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] status: The status of KVStore Account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -162,13 +169,14 @@ class Account(pulumi.CustomResource):
         __props__["instance_id"] = instance_id
         __props__["kms_encrypted_password"] = kms_encrypted_password
         __props__["kms_encryption_context"] = kms_encryption_context
+        __props__["status"] = status
         return Account(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[str]:
         """
-        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
         """
         return pulumi.get(self, "account_name")
 
@@ -214,7 +222,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+        The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
         """
         return pulumi.get(self, "instance_id")
 
@@ -233,6 +241,14 @@ class Account(pulumi.CustomResource):
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The status of KVStore Account.
+        """
+        return pulumi.get(self, "status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -10,9 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an RDS instance resource. A DB instance is an isolated database
-// environment in the cloud. A DB instance can contain multiple user-created
-// databases.
+// Provides an RDS instance resource. A DB instance is an isolated database environment in the cloud. A DB instance can contain multiple user-created databases.
+//
+// For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
 //
 // ## Example Usage
 // ### Create a RDS MySQL instance
@@ -31,7 +31,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		cfg := config.New(ctx, "")
-// 		name := "dbInstanceconfig"
+// 		name := "tf-testaccdbinstance"
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
@@ -40,34 +40,34 @@ import (
 // 			creation = param
 // 		}
 // 		opt0 := creation
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 		exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("172.16.0.0/16"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:            defaultNetwork.ID(),
+// 		exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+// 			VpcId:            exampleNetwork.ID(),
 // 			CidrBlock:        pulumi.String("172.16.0.0/24"),
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			AvailabilityZone: pulumi.String(exampleZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
+// 		_, err = rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
 // 			Engine:             pulumi.String("MySQL"),
 // 			EngineVersion:      pulumi.String("5.6"),
 // 			InstanceType:       pulumi.String("rds.mysql.s2.large"),
 // 			InstanceStorage:    pulumi.Int(30),
 // 			InstanceChargeType: pulumi.String("Postpaid"),
 // 			InstanceName:       pulumi.String(name),
-// 			VswitchId:          defaultSwitch.ID(),
+// 			VswitchId:          exampleSwitch.ID(),
 // 			MonitoringPeriod:   pulumi.Int(60),
 // 		})
 // 		if err != nil {

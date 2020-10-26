@@ -18,6 +18,7 @@ class ScalingGroup(pulumi.CustomResource):
                  db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_cooldown: Optional[pulumi.Input[int]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 group_deletion_protection: Optional[pulumi.Input[bool]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -42,6 +43,7 @@ class ScalingGroup(pulumi.CustomResource):
                - The specified RDS instance’s whitelist must have room for more IP addresses.
         :param pulumi.Input[int] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+        :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -84,6 +86,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__['db_instance_ids'] = db_instance_ids
             __props__['default_cooldown'] = default_cooldown
             __props__['desired_capacity'] = desired_capacity
+            __props__['group_deletion_protection'] = group_deletion_protection
             __props__['loadbalancer_ids'] = loadbalancer_ids
             if max_size is None:
                 raise TypeError("Missing required property 'max_size'")
@@ -116,6 +119,7 @@ class ScalingGroup(pulumi.CustomResource):
             db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             default_cooldown: Optional[pulumi.Input[int]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
+            group_deletion_protection: Optional[pulumi.Input[bool]] = None,
             loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
@@ -140,6 +144,7 @@ class ScalingGroup(pulumi.CustomResource):
                - The specified RDS instance’s whitelist must have room for more IP addresses.
         :param pulumi.Input[int] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+        :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -169,6 +174,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__["db_instance_ids"] = db_instance_ids
         __props__["default_cooldown"] = default_cooldown
         __props__["desired_capacity"] = desired_capacity
+        __props__["group_deletion_protection"] = group_deletion_protection
         __props__["loadbalancer_ids"] = loadbalancer_ids
         __props__["max_size"] = max_size
         __props__["min_size"] = min_size
@@ -208,6 +214,14 @@ class ScalingGroup(pulumi.CustomResource):
         Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         """
         return pulumi.get(self, "desired_capacity")
+
+    @property
+    @pulumi.getter(name="groupDeletionProtection")
+    def group_deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        """
+        return pulumi.get(self, "group_deletion_protection")
 
     @property
     @pulumi.getter(name="loadbalancerIds")

@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.PolarDB
         ///         var resourcesNodeClasses = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
         ///         {
         ///             ZoneId = resourcesZones.Zones[0].Id,
-        ///             PayType = "Postpaid",
+        ///             PayType = "PostPaid",
         ///             DbType = "MySQL",
         ///             DbVersion = "5.6",
         ///         })));

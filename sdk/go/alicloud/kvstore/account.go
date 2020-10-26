@@ -10,11 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a kvstore account resource and used to manage databases.
+// Provides a KVStore Account resource.
+//
+// For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
 //
 // > **NOTE:** Available in 1.66.0+
 //
 // ## Example Usage
+//
+// Basic Usage
 //
 // ```go
 // package main
@@ -73,10 +77,10 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = kvstore.NewAccount(ctx, "account", &kvstore.AccountArgs{
-// 			InstanceId:      defaultInstance.ID(),
+// 		_, err = kvstore.NewAccount(ctx, "example", &kvstore.AccountArgs{
 // 			AccountName:     pulumi.String("tftestnormal"),
-// 			AccountPassword: pulumi.String("Test12345"),
+// 			AccountPassword: pulumi.String("YourPassword_123"),
+// 			InstanceId:      defaultInstance.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -88,7 +92,7 @@ import (
 type Account struct {
 	pulumi.CustomResourceState
 
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
@@ -104,12 +108,14 @@ type Account struct {
 	AccountType pulumi.StringPtrOutput `pulumi:"accountType"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+	// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	// The status of KVStore Account.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewAccount registers a new resource with the given unique name, arguments, and options.
@@ -146,7 +152,7 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
 	AccountName *string `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
@@ -162,16 +168,18 @@ type accountState struct {
 	AccountType *string `pulumi:"accountType"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	Description *string `pulumi:"description"`
-	// The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+	// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
 	InstanceId *string `pulumi:"instanceId"`
 	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	// The status of KVStore Account.
+	Status *string `pulumi:"status"`
 }
 
 type AccountState struct {
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
 	AccountName pulumi.StringPtrInput
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
@@ -187,12 +195,14 @@ type AccountState struct {
 	AccountType pulumi.StringPtrInput
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	Description pulumi.StringPtrInput
-	// The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+	// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
 	InstanceId pulumi.StringPtrInput
 	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
+	// The status of KVStore Account.
+	Status pulumi.StringPtrInput
 }
 
 func (AccountState) ElementType() reflect.Type {
@@ -200,7 +210,7 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
 	AccountName string `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
@@ -216,7 +226,7 @@ type accountArgs struct {
 	AccountType *string `pulumi:"accountType"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	Description *string `pulumi:"description"`
-	// The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+	// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
 	InstanceId string `pulumi:"instanceId"`
 	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -226,7 +236,7 @@ type accountArgs struct {
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
 	AccountName pulumi.StringInput
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
@@ -242,7 +252,7 @@ type AccountArgs struct {
 	AccountType pulumi.StringPtrInput
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	Description pulumi.StringPtrInput
-	// The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+	// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
 	InstanceId pulumi.StringInput
 	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput

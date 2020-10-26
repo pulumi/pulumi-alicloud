@@ -48,6 +48,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        /// </summary>
+        [Output("natType")]
+        public Output<string?> NatType { get; private set; } = null!;
+
+        /// <summary>
         /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         /// </summary>
         [Output("period")]
@@ -76,6 +82,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of VSwitch.
+        /// </summary>
+        [Output("vswitchId")]
+        public Output<string?> VswitchId { get; private set; } = null!;
 
 
         /// <summary>
@@ -154,6 +166,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        /// </summary>
+        [Input("natType")]
+        public Input<string>? NatType { get; set; }
+
+        /// <summary>
         /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         /// </summary>
         [Input("period")]
@@ -176,6 +194,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
+
+        /// <summary>
+        /// The id of VSwitch.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
 
         public NatGatewayArgs()
         {
@@ -227,6 +251,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        /// </summary>
+        [Input("natType")]
+        public Input<string>? NatType { get; set; }
+
+        /// <summary>
         /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         /// </summary>
         [Input("period")]
@@ -255,6 +285,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The id of VSwitch.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
 
         public NatGatewayState()
         {

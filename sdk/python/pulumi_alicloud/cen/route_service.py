@@ -42,8 +42,10 @@ class RouteService(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        name = config.require_object("name")
-        example_networks = alicloud.vpc.get_networks(is_example=True)
+        name = config.get("name")
+        if name is None:
+            name = "tf-test"
+        example_networks = alicloud.vpc.get_networks(is_default=True)
         example_instance = alicloud.cen.Instance("exampleInstance")
         vpc = alicloud.cen.InstanceAttachment("vpc",
             instance_id=example_instance.id,

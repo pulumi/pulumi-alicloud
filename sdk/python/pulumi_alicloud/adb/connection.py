@@ -63,7 +63,7 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_cluster_id> + 'tf'.
+        :param pulumi.Input[str] connection_prefix: Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         """
         if __name__ is not None:
@@ -112,7 +112,7 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_cluster_id> + 'tf'.
+        :param pulumi.Input[str] connection_prefix: Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
         :param pulumi.Input[str] connection_string: Connection cluster string.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[str] ip_address: The ip address of connection string.
@@ -133,7 +133,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="connectionPrefix")
     def connection_prefix(self) -> pulumi.Output[str]:
         """
-        Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_cluster_id> + 'tf'.
+        Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
         """
         return pulumi.get(self, "connection_prefix")
 

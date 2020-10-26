@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Adb
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>
-        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;db_cluster_id&gt; + 'tf'.
+        /// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `&lt;db_cluster_id&gt; + tf`.
         /// </summary>
         [Output("connectionPrefix")]
         public Output<string> ConnectionPrefix { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Adb
     public sealed class ConnectionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;db_cluster_id&gt; + 'tf'.
+        /// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `&lt;db_cluster_id&gt; + tf`.
         /// </summary>
         [Input("connectionPrefix")]
         public Input<string>? ConnectionPrefix { get; set; }
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Adb
     public sealed class ConnectionState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;db_cluster_id&gt; + 'tf'.
+        /// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `&lt;db_cluster_id&gt; + tf`.
         /// </summary>
         [Input("connectionPrefix")]
         public Input<string>? ConnectionPrefix { get; set; }

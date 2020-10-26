@@ -31,12 +31,6 @@ import * as utilities from "../utilities";
  *         threshold: "35",
  *         times: 2,
  *     },
- *     escalationsWarn: {
- *         comparisonOperator: "<=",
- *         statistics: "Average",
- *         threshold: "102400",
- *         times: 1,
- *     },
  *     metric: "disk_writebytes",
  *     period: 900,
  *     project: "acs_ecs_dashboard",

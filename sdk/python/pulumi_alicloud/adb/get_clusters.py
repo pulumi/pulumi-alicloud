@@ -20,7 +20,7 @@ class GetClustersResult:
     """
     A collection of values returned by getClusters.
     """
-    def __init__(__self__, clusters=None, description_regex=None, descriptions=None, id=None, ids=None, output_file=None, tags=None):
+    def __init__(__self__, clusters=None, description_regex=None, descriptions=None, id=None, ids=None, output_file=None, status=None, tags=None):
         if clusters and not isinstance(clusters, list):
             raise TypeError("Expected argument 'clusters' to be a list")
         pulumi.set(__self__, "clusters", clusters)
@@ -39,6 +39,9 @@ class GetClustersResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
@@ -87,6 +90,14 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Status of the cluster.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "tags")
 
@@ -103,12 +114,14 @@ class AwaitableGetClustersResult(GetClustersResult):
             id=self.id,
             ids=self.ids,
             output_file=self.output_file,
+            status=self.status,
             tags=self.tags)
 
 
 def get_clusters(description_regex: Optional[str] = None,
                  ids: Optional[Sequence[str]] = None,
                  output_file: Optional[str] = None,
+                 status: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
@@ -131,6 +144,7 @@ def get_clusters(description_regex: Optional[str] = None,
 
     :param str description_regex: A regex string to filter results by cluster description.
     :param Sequence[str] ids: A list of ADB cluster IDs.
+    :param str status: The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
            - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -139,6 +153,7 @@ def get_clusters(description_regex: Optional[str] = None,
     __args__['descriptionRegex'] = description_regex
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
+    __args__['status'] = status
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -153,4 +168,5 @@ def get_clusters(description_regex: Optional[str] = None,
         id=__ret__.id,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
+        status=__ret__.status,
         tags=__ret__.tags)

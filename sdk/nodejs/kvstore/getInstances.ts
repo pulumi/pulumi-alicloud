@@ -64,7 +64,7 @@ export interface GetInstancesArgs {
      */
     readonly architectureType?: string;
     /**
-     * Used to retrieve instances belong to specified `vswitch` resources.
+     * Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
      */
     readonly editionType?: string;
     /**

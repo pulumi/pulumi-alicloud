@@ -35,7 +35,7 @@ type GetClustersCluster struct {
 	NetworkType string `pulumi:"networkType"`
 	// Region ID the cluster belongs to.
 	RegionId string `pulumi:"regionId"`
-	// Status of the cluster.
+	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
 	Status string `pulumi:"status"`
 	// ID of the VPC the cluster belongs to.
 	VpcId string `pulumi:"vpcId"`
@@ -79,7 +79,7 @@ type GetClustersClusterArgs struct {
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// Region ID the cluster belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// Status of the cluster.
+	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
 	Status pulumi.StringInput `pulumi:"status"`
 	// ID of the VPC the cluster belongs to.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -198,7 +198,7 @@ func (o GetClustersClusterOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Status of the cluster.
+// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
 func (o GetClustersClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }

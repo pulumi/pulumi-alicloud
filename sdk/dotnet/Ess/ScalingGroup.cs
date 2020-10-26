@@ -32,6 +32,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> DesiredCapacity { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        /// </summary>
+        [Output("groupDeletionProtection")]
+        public Output<bool?> GroupDeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         /// - The Server Load Balancer instance must be enabled.
         /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -184,6 +190,12 @@ namespace Pulumi.AliCloud.Ess
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
+        /// <summary>
+        /// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        /// </summary>
+        [Input("groupDeletionProtection")]
+        public Input<bool>? GroupDeletionProtection { get; set; }
+
         [Input("loadbalancerIds")]
         private InputList<string>? _loadbalancerIds;
 
@@ -315,6 +327,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
+
+        /// <summary>
+        /// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        /// </summary>
+        [Input("groupDeletionProtection")]
+        public Input<bool>? GroupDeletionProtection { get; set; }
 
         [Input("loadbalancerIds")]
         private InputList<string>? _loadbalancerIds;

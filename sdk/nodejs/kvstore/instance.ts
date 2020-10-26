@@ -130,6 +130,7 @@ export class Instance extends pulumi.CustomResource {
      * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
      */
     public readonly config!: pulumi.Output<{[key: string]: any} | undefined>;
+    public /*out*/ readonly connectionDomain!: pulumi.Output<string>;
     /**
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -291,6 +292,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly sslEnable!: pulumi.Output<string | undefined>;
     /**
      * The status of KVStore DBInstance.
+     * * `connectionDomain`- Intranet connection address of the KVStore instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -331,6 +333,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["businessInfo"] = state ? state.businessInfo : undefined;
             inputs["capacity"] = state ? state.capacity : undefined;
             inputs["config"] = state ? state.config : undefined;
+            inputs["connectionDomain"] = state ? state.connectionDomain : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
             inputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
             inputs["couponNo"] = state ? state.couponNo : undefined;
@@ -424,6 +427,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["bandwidth"] = undefined /*out*/;
+            inputs["connectionDomain"] = undefined /*out*/;
             inputs["connectionString"] = undefined /*out*/;
             inputs["endTime"] = undefined /*out*/;
             inputs["qps"] = undefined /*out*/;
@@ -482,6 +486,7 @@ export interface InstanceState {
      * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
      */
     readonly config?: pulumi.Input<{[key: string]: any}>;
+    readonly connectionDomain?: pulumi.Input<string>;
     /**
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -643,6 +648,7 @@ export interface InstanceState {
     readonly sslEnable?: pulumi.Input<string>;
     /**
      * The status of KVStore DBInstance.
+     * * `connectionDomain`- Intranet connection address of the KVStore instance.
      */
     readonly status?: pulumi.Input<string>;
     /**

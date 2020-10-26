@@ -110,6 +110,157 @@ func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameter
 	}).(InstanceParameterOutput)
 }
 
+type GetAccountsAccount struct {
+	// The name of the account.
+	AccountName string `pulumi:"accountName"`
+	// The privilege of account access database.
+	AccountPrivilege string `pulumi:"accountPrivilege"`
+	// Privilege type of account.
+	AccountType string `pulumi:"accountType"`
+	// The description of account.
+	Description string `pulumi:"description"`
+	// The ID of the Account.
+	Id string `pulumi:"id"`
+	// The Id of instance in which account belongs.
+	InstanceId string `pulumi:"instanceId"`
+	// The status of account.
+	Status string `pulumi:"status"`
+}
+
+// GetAccountsAccountInput is an input type that accepts GetAccountsAccountArgs and GetAccountsAccountOutput values.
+// You can construct a concrete instance of `GetAccountsAccountInput` via:
+//
+//          GetAccountsAccountArgs{...}
+type GetAccountsAccountInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountOutput() GetAccountsAccountOutput
+	ToGetAccountsAccountOutputWithContext(context.Context) GetAccountsAccountOutput
+}
+
+type GetAccountsAccountArgs struct {
+	// The name of the account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The privilege of account access database.
+	AccountPrivilege pulumi.StringInput `pulumi:"accountPrivilege"`
+	// Privilege type of account.
+	AccountType pulumi.StringInput `pulumi:"accountType"`
+	// The description of account.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Account.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Id of instance in which account belongs.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The status of account.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAccountsAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccount)(nil)).Elem()
+}
+
+func (i GetAccountsAccountArgs) ToGetAccountsAccountOutput() GetAccountsAccountOutput {
+	return i.ToGetAccountsAccountOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountOutput)
+}
+
+// GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
+// You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
+//
+//          GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
+type GetAccountsAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput
+	ToGetAccountsAccountArrayOutputWithContext(context.Context) GetAccountsAccountArrayOutput
+}
+
+type GetAccountsAccountArray []GetAccountsAccountInput
+
+func (GetAccountsAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccount)(nil)).Elem()
+}
+
+func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput {
+	return i.ToGetAccountsAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountArrayOutput)
+}
+
+type GetAccountsAccountOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccount)(nil)).Elem()
+}
+
+func (o GetAccountsAccountOutput) ToGetAccountsAccountOutput() GetAccountsAccountOutput {
+	return o
+}
+
+func (o GetAccountsAccountOutput) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
+	return o
+}
+
+// The name of the account.
+func (o GetAccountsAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The privilege of account access database.
+func (o GetAccountsAccountOutput) AccountPrivilege() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountPrivilege }).(pulumi.StringOutput)
+}
+
+// Privilege type of account.
+func (o GetAccountsAccountOutput) AccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountType }).(pulumi.StringOutput)
+}
+
+// The description of account.
+func (o GetAccountsAccountOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Account.
+func (o GetAccountsAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Id of instance in which account belongs.
+func (o GetAccountsAccountOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The status of account.
+func (o GetAccountsAccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAccountsAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccount)(nil)).Elem()
+}
+
+func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccount {
+		return vs[0].([]GetAccountsAccount)[vs[1].(int)]
+	}).(GetAccountsAccountOutput)
+}
+
 type GetConnectionsConnection struct {
 	// The connection string of the instance.
 	ConnectionString string `pulumi:"connectionString"`
@@ -1141,6 +1292,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterOutputType(InstanceParameterOutput{})
 	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionsConnectionOutput{})
 	pulumi.RegisterOutputType(GetConnectionsConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesClassOutput{})

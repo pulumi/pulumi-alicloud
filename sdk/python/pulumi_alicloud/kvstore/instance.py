@@ -255,6 +255,7 @@ class Instance(pulumi.CustomResource):
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id
             __props__['bandwidth'] = None
+            __props__['connection_domain'] = None
             __props__['connection_string'] = None
             __props__['end_time'] = None
             __props__['qps'] = None
@@ -278,6 +279,7 @@ class Instance(pulumi.CustomResource):
             business_info: Optional[pulumi.Input[str]] = None,
             capacity: Optional[pulumi.Input[int]] = None,
             config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            connection_domain: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             connection_string_prefix: Optional[pulumi.Input[str]] = None,
             coupon_no: Optional[pulumi.Input[str]] = None,
@@ -374,6 +376,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
         :param pulumi.Input[str] status: The status of KVStore DBInstance.
+               * `connection_domain`- Intranet connection address of the KVStore instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_auth_mode: Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
@@ -392,6 +395,7 @@ class Instance(pulumi.CustomResource):
         __props__["business_info"] = business_info
         __props__["capacity"] = capacity
         __props__["config"] = config
+        __props__["connection_domain"] = connection_domain
         __props__["connection_string"] = connection_string
         __props__["connection_string_prefix"] = connection_string_prefix
         __props__["coupon_no"] = coupon_no
@@ -508,6 +512,11 @@ class Instance(pulumi.CustomResource):
         The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="connectionDomain")
+    def connection_domain(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "connection_domain")
 
     @property
     @pulumi.getter(name="connectionString")
@@ -812,6 +821,7 @@ class Instance(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         The status of KVStore DBInstance.
+        * `connection_domain`- Intranet connection address of the KVStore instance.
         """
         return pulumi.get(self, "status")
 

@@ -35,9 +35,13 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		cfg := config.New(ctx, "")
-// 		name := cfg.RequireObject("name")
+// 		name := "tf-test"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		opt0 := true
 // 		exampleNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			IsExample: true,
+// 			IsDefault: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

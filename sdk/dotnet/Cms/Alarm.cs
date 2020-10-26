@@ -44,13 +44,6 @@ namespace Pulumi.AliCloud.Cms
     ///                 Threshold = "35",
     ///                 Times = 2,
     ///             },
-    ///             EscalationsWarn = new AliCloud.Cms.Inputs.AlarmEscalationsWarnArgs
-    ///             {
-    ///                 ComparisonOperator = "&lt;=",
-    ///                 Statistics = "Average",
-    ///                 Threshold = "102400",
-    ///                 Times = 1,
-    ///             },
     ///             Metric = "disk_writebytes",
     ///             Period = 900,
     ///             Project = "acs_ecs_dashboard",

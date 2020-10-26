@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * });
  * const resourcesNodeClasses = resourcesZones.then(resourcesZones => alicloud.polardb.getNodeClasses({
  *     zoneId: resourcesZones.zones[0].id,
- *     payType: "Postpaid",
+ *     payType: "PostPaid",
  *     dbType: "MySQL",
  *     dbVersion: "5.6",
  * }));

@@ -149,6 +149,9 @@ namespace Pulumi.AliCloud.KVStore
         [Output("config")]
         public Output<ImmutableDictionary<string, object>?> Config { get; private set; } = null!;
 
+        [Output("connectionDomain")]
+        public Output<string> ConnectionDomain { get; private set; } = null!;
+
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
 
@@ -373,6 +376,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The status of KVStore DBInstance.
+        /// * `connection_domain`- Intranet connection address of the KVStore instance.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -824,6 +828,9 @@ namespace Pulumi.AliCloud.KVStore
             set => _config = value;
         }
 
+        [Input("connectionDomain")]
+        public Input<string>? ConnectionDomain { get; set; }
+
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
 
@@ -1067,6 +1074,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The status of KVStore DBInstance.
+        /// * `connection_domain`- Intranet connection address of the KVStore instance.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

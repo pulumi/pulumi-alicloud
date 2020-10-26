@@ -47,6 +47,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly desiredCapacity!: pulumi.Output<number | undefined>;
     /**
+     * Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+     */
+    public readonly groupDeletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
      * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -121,6 +125,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             inputs["dbInstanceIds"] = state ? state.dbInstanceIds : undefined;
             inputs["defaultCooldown"] = state ? state.defaultCooldown : undefined;
             inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
+            inputs["groupDeletionProtection"] = state ? state.groupDeletionProtection : undefined;
             inputs["loadbalancerIds"] = state ? state.loadbalancerIds : undefined;
             inputs["maxSize"] = state ? state.maxSize : undefined;
             inputs["minSize"] = state ? state.minSize : undefined;
@@ -144,6 +149,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             inputs["dbInstanceIds"] = args ? args.dbInstanceIds : undefined;
             inputs["defaultCooldown"] = args ? args.defaultCooldown : undefined;
             inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
+            inputs["groupDeletionProtection"] = args ? args.groupDeletionProtection : undefined;
             inputs["loadbalancerIds"] = args ? args.loadbalancerIds : undefined;
             inputs["maxSize"] = args ? args.maxSize : undefined;
             inputs["minSize"] = args ? args.minSize : undefined;
@@ -186,6 +192,10 @@ export interface ScalingGroupState {
      * Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
      */
     readonly desiredCapacity?: pulumi.Input<number>;
+    /**
+     * Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+     */
+    readonly groupDeletionProtection?: pulumi.Input<boolean>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
@@ -265,6 +275,10 @@ export interface ScalingGroupArgs {
      * Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
      */
     readonly desiredCapacity?: pulumi.Input<number>;
+    /**
+     * Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+     */
+    readonly groupDeletionProtection?: pulumi.Input<boolean>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.

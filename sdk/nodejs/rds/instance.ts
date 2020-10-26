@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides an RDS instance resource. A DB instance is an isolated database
- * environment in the cloud. A DB instance can contain multiple user-created
- * databases.
+ * Provides an RDS instance resource. A DB instance is an isolated database environment in the cloud. A DB instance can contain multiple user-created databases.
+ *
+ * For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
  *
  * ## Example Usage
  * ### Create a RDS MySQL instance
@@ -19,25 +19,25 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "dbInstanceconfig";
+ * const name = config.get("name") || "tf-testaccdbinstance";
  * const creation = config.get("creation") || "Rds";
- * const defaultZones = alicloud.getZones({
+ * const exampleZones = alicloud.getZones({
  *     availableResourceCreation: creation,
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones[0].id),
  * });
- * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceType: "rds.mysql.s2.large",
  *     instanceStorage: "30",
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
- *     vswitchId: defaultSwitch.id,
+ *     vswitchId: exampleSwitch.id,
  *     monitoringPeriod: "60",
  * });
  * ```
@@ -47,19 +47,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: alicloud_zones_default.zones.0.id,
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     vpcId: defaultNetwork.id,
+ *     availabilityZone: data.alicloud_zones.example.zones[0].id,
  * });
- * const defaultInstance = new alicloud.rds.Instance("default", {
- *     dbInstanceClass: "rds.mysql.t1.small",
- *     dbInstanceStorage: "10",
+ * const _default = new alicloud.rds.Instance("default", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
+ *     dbInstanceClass: "rds.mysql.t1.small",
+ *     dbInstanceStorage: "10",
+ *     vswitchId: exampleSwitch.id,
+ * });
+ * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     dbInstanceClass: "rds.mysql.t1.small",
+ *     dbInstanceStorage: "10",
  *     parameters: [
  *         {
  *             name: "innodb_large_prefix",

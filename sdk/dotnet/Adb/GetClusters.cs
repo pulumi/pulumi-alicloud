@@ -72,6 +72,12 @@ namespace Pulumi.AliCloud.Adb
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
         [Input("tags")]
         private Dictionary<string, object>? _tags;
 
@@ -113,6 +119,10 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Status of the cluster.
+        /// </summary>
+        public readonly string? Status;
         public readonly ImmutableDictionary<string, object>? Tags;
 
         [OutputConstructor]
@@ -129,6 +139,8 @@ namespace Pulumi.AliCloud.Adb
 
             string? outputFile,
 
+            string? status,
+
             ImmutableDictionary<string, object>? tags)
         {
             Clusters = clusters;
@@ -137,6 +149,7 @@ namespace Pulumi.AliCloud.Adb
             Id = id;
             Ids = ids;
             OutputFile = outputFile;
+            Status = status;
             Tags = tags;
         }
     }

@@ -6,6 +6,7 @@ export * from "./commonBandwithPackage";
 export * from "./commonBandwithPackageAttachment";
 export * from "./forwardEntry";
 export * from "./getCommonBandwidthPackages";
+export * from "./getEnhancedNatAvailableZones";
 export * from "./getForwardEntries";
 export * from "./getNatGateways";
 export * from "./getNetworks";

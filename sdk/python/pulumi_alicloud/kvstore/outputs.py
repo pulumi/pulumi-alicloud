@@ -10,6 +10,7 @@ from .. import _utilities, _tables
 
 __all__ = [
     'InstanceParameter',
+    'GetAccountsAccountResult',
     'GetConnectionsConnectionResult',
     'GetInstanceClassesClassResult',
     'GetInstanceEnginesInstanceEngineResult',
@@ -37,6 +38,90 @@ class InstanceParameter(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetAccountsAccountResult(dict):
+    def __init__(__self__, *,
+                 account_name: str,
+                 account_privilege: str,
+                 account_type: str,
+                 description: str,
+                 id: str,
+                 instance_id: str,
+                 status: str):
+        """
+        :param str account_name: The name of the account.
+        :param str account_privilege: The privilege of account access database.
+        :param str account_type: Privilege type of account.
+        :param str description: The description of account.
+        :param str id: The ID of the Account.
+        :param str instance_id: The Id of instance in which account belongs.
+        :param str status: The status of account.
+        """
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "account_privilege", account_privilege)
+        pulumi.set(__self__, "account_type", account_type)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> str:
+        """
+        The name of the account.
+        """
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="accountPrivilege")
+    def account_privilege(self) -> str:
+        """
+        The privilege of account access database.
+        """
+        return pulumi.get(self, "account_privilege")
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> str:
+        """
+        Privilege type of account.
+        """
+        return pulumi.get(self, "account_type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of account.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Account.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The Id of instance in which account belongs.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of account.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

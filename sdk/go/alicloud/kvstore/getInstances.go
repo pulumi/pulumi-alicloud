@@ -47,7 +47,7 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 type GetInstancesArgs struct {
 	// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
 	ArchitectureType *string `pulumi:"architectureType"`
-	// Used to retrieve instances belong to specified `vswitch` resources.
+	// Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
 	EditionType *string `pulumi:"editionType"`
 	// Default to `false`. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`

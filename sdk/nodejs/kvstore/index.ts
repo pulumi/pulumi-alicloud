@@ -5,6 +5,7 @@
 export * from "./account";
 export * from "./backupPolicy";
 export * from "./connection";
+export * from "./getAccounts";
 export * from "./getConnections";
 export * from "./getInstanceClasses";
 export * from "./getInstanceEngines";

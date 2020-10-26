@@ -44,7 +44,7 @@ class GetClustersClusterResult(dict):
         :param str lock_mode: The LockMode of the ADB cluster.
         :param str network_type: The DBClusterNetworkType of the ADB cluster.
         :param str region_id: Region ID the cluster belongs to.
-        :param str status: Status of the cluster.
+        :param str status: The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
         :param str vpc_id: ID of the VPC the cluster belongs to.
         :param str zone_id: The ZoneId of the ADB cluster.
         """
@@ -164,7 +164,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of the cluster.
+        The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
         """
         return pulumi.get(self, "status")
 
