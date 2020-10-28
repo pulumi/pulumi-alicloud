@@ -23,7 +23,7 @@ class Database(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a PolarDB database resource. A DB database deployed in a DB cluster. A DB cluster can own multiple databases.
+        Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
 
         > **NOTE:** Available in v1.66.0+.
 

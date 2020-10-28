@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Provides an RDS instance resource. A DB instance is an isolated database
-    /// environment in the cloud. A DB instance can contain multiple user-created
-    /// databases.
+    /// Provides an RDS instance resource. A DB instance is an isolated database environment in the cloud. A DB instance can contain multiple user-created databases.
+    /// 
+    /// For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
     /// 
     /// ## Example Usage
     /// ### Create a RDS MySQL instance
@@ -26,23 +26,23 @@ namespace Pulumi.AliCloud.Rds
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "dbInstanceconfig";
+    ///         var name = config.Get("name") ?? "tf-testaccdbinstance";
     ///         var creation = config.Get("creation") ?? "Rds";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         var exampleZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
     ///         {
     ///             AvailableResourceCreation = creation,
     ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
     ///             CidrBlock = "172.16.0.0/16",
     ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
-    ///             VpcId = defaultNetwork.Id,
+    ///             VpcId = exampleNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             AvailabilityZone = exampleZones.Apply(exampleZones =&gt; exampleZones.Zones[0].Id),
     ///         });
-    ///         var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new AliCloud.Rds.InstanceArgs
+    ///         var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new AliCloud.Rds.InstanceArgs
     ///         {
     ///             Engine = "MySQL",
     ///             EngineVersion = "5.6",
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Rds
     ///             InstanceStorage = 30,
     ///             InstanceChargeType = "Postpaid",
     ///             InstanceName = name,
-    ///             VswitchId = defaultSwitch.Id,
+    ///             VswitchId = exampleSwitch.Id,
     ///             MonitoringPeriod = 60,
     ///         });
     ///     }

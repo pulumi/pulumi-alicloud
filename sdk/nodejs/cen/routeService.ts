@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.requireObject("name");
+ * const name = config.get("name") || "tf-test";
  * const exampleNetworks = alicloud.vpc.getNetworks({
- *     isExample: true,
+ *     isDefault: true,
  * });
  * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {});
  * const vpc = new alicloud.cen.InstanceAttachment("vpc", {

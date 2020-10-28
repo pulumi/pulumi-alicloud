@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// Status of the cluster.
+        /// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
         /// </summary>
         public readonly string Status;
         /// <summary>

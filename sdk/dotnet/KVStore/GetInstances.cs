@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? ArchitectureType { get; set; }
 
         /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
         /// </summary>
         [Input("editionType")]
         public string? EditionType { get; set; }

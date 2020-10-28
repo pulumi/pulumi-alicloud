@@ -89,7 +89,7 @@ import (
 type EndpointAddress struct {
 	pulumi.CustomResourceState
 
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_endpoint_id> + 'tf'.
+	// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
 	ConnectionPrefix pulumi.StringOutput `pulumi:"connectionPrefix"`
 	// Connection cluster or endpoint string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
@@ -139,7 +139,7 @@ func GetEndpointAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EndpointAddress resources.
 type endpointAddressState struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_endpoint_id> + 'tf'.
+	// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`
 	// Connection cluster or endpoint string.
 	ConnectionString *string `pulumi:"connectionString"`
@@ -156,7 +156,7 @@ type endpointAddressState struct {
 }
 
 type EndpointAddressState struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_endpoint_id> + 'tf'.
+	// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
 	ConnectionPrefix pulumi.StringPtrInput
 	// Connection cluster or endpoint string.
 	ConnectionString pulumi.StringPtrInput
@@ -177,7 +177,7 @@ func (EndpointAddressState) ElementType() reflect.Type {
 }
 
 type endpointAddressArgs struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_endpoint_id> + 'tf'.
+	// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`
 	// The Id of cluster that can run database.
 	DbClusterId string `pulumi:"dbClusterId"`
@@ -189,7 +189,7 @@ type endpointAddressArgs struct {
 
 // The set of arguments for constructing a EndpointAddress resource.
 type EndpointAddressArgs struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_endpoint_id> + 'tf'.
+	// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
 	ConnectionPrefix pulumi.StringPtrInput
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringInput

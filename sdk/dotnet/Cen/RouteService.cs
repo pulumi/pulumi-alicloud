@@ -31,10 +31,10 @@ namespace Pulumi.AliCloud.Cen
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var name = config.RequireObject&lt;dynamic&gt;("name");
+    ///         var name = config.Get("name") ?? "tf-test";
     ///         var exampleNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
     ///         {
-    ///             IsExample = true,
+    ///             IsDefault = true,
     ///         }));
     ///         var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new AliCloud.Cen.InstanceArgs
     ///         {

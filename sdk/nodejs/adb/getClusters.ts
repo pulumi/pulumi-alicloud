@@ -18,12 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const adbClustersDs = pulumi.output(alicloud.adb.getClusters({
+ * const adbClustersDs = alicloud.adb.getClusters({
  *     descriptionRegex: "am-\\w+",
  *     status: "Running",
- * }, { async: true }));
- *
- * export const firstAdbClusterId = adbClustersDs.clusters[0].id;
+ * });
+ * export const firstAdbClusterId = adbClustersDs.then(adbClustersDs => adbClustersDs.clusters[0].id);
  * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
@@ -39,6 +38,7 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,
         "outputFile": args.outputFile,
+        "status": args.status,
         "tags": args.tags,
     }, opts);
 }
@@ -56,6 +56,10 @@ export interface GetClustersArgs {
      */
     readonly ids?: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+     */
+    readonly status?: string;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -86,5 +90,9 @@ export interface GetClustersResult {
      */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * Status of the cluster.
+     */
+    readonly status?: string;
     readonly tags?: {[key: string]: any};
 }

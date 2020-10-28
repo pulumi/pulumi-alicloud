@@ -16,6 +16,7 @@ __all__ = [
     'NetworkAclEntriesIngress',
     'GetCommonBandwidthPackagesPackageResult',
     'GetCommonBandwidthPackagesPackagePublicIpAddressResult',
+    'GetEnhancedNatAvailableZonesZoneResult',
     'GetForwardEntriesEntryResult',
     'GetNatGatewaysGatewayResult',
     'GetNetworksVpcResult',
@@ -421,6 +422,25 @@ class GetCommonBandwidthPackagesPackagePublicIpAddressResult(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
         return pulumi.get(self, "ip_address")
+
+
+@pulumi.output_type
+class GetEnhancedNatAvailableZonesZoneResult(dict):
+    def __init__(__self__, *,
+                 local_name: str,
+                 zone_id: str):
+        pulumi.set(__self__, "local_name", local_name)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> str:
+        return pulumi.get(self, "local_name")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type

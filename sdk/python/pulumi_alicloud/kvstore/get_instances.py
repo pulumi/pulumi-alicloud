@@ -313,7 +313,7 @@ def get_instances(architecture_type: Optional[str] = None,
 
 
     :param str architecture_type: The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
-    :param str edition_type: Used to retrieve instances belong to specified `vswitch` resources.
+    :param str edition_type: Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param str engine_version: The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
     :param str expired: The expiration status of the instance.

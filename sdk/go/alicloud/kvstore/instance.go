@@ -115,7 +115,8 @@ type Instance struct {
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity pulumi.IntOutput `pulumi:"capacity"`
 	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
-	Config pulumi.MapOutput `pulumi:"config"`
+	Config           pulumi.MapOutput    `pulumi:"config"`
+	ConnectionDomain pulumi.StringOutput `pulumi:"connectionDomain"`
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -202,6 +203,7 @@ type Instance struct {
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
 	SslEnable pulumi.StringPtrOutput `pulumi:"sslEnable"`
 	// The status of KVStore DBInstance.
+	// * `connectionDomain`- Intranet connection address of the KVStore instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -260,7 +262,8 @@ type instanceState struct {
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity *int `pulumi:"capacity"`
 	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
-	Config map[string]interface{} `pulumi:"config"`
+	Config           map[string]interface{} `pulumi:"config"`
+	ConnectionDomain *string                `pulumi:"connectionDomain"`
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString *string `pulumi:"connectionString"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -347,6 +350,7 @@ type instanceState struct {
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
 	SslEnable *string `pulumi:"sslEnable"`
 	// The status of KVStore DBInstance.
+	// * `connectionDomain`- Intranet connection address of the KVStore instance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -378,7 +382,8 @@ type InstanceState struct {
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity pulumi.IntPtrInput
 	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
-	Config pulumi.MapInput
+	Config           pulumi.MapInput
+	ConnectionDomain pulumi.StringPtrInput
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -465,6 +470,7 @@ type InstanceState struct {
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
 	SslEnable pulumi.StringPtrInput
 	// The status of KVStore DBInstance.
+	// * `connectionDomain`- Intranet connection address of the KVStore instance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput

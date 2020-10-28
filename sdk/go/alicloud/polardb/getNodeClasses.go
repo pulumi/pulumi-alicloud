@@ -36,7 +36,7 @@ import (
 // 		opt3 := "5.6"
 // 		resourcesNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
 // 			ZoneId:    &opt1,
-// 			PayType:   "Postpaid",
+// 			PayType:   "PostPaid",
 // 			DbType:    &opt2,
 // 			DbVersion: &opt3,
 // 		}, nil)

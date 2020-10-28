@@ -5,11 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a kvstore account resource and used to manage databases.
+ * Provides a KVStore Account resource.
+ *
+ * For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
  *
  * > **NOTE:** Available in 1.66.0+
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,10 +40,10 @@ import * as utilities from "../utilities";
  *     instanceType: "Redis",
  *     engineVersion: "4.0",
  * });
- * const account = new alicloud.kvstore.Account("account", {
- *     instanceId: defaultInstance.id,
+ * const example = new alicloud.kvstore.Account("example", {
  *     accountName: "tftestnormal",
- *     accountPassword: "Test12345",
+ *     accountPassword: "YourPassword_123",
+ *     instanceId: defaultInstance.id,
  * });
  * ```
  */
@@ -72,7 +76,7 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
@@ -98,7 +102,7 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+     * The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -109,6 +113,10 @@ export class Account extends pulumi.CustomResource {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The status of KVStore Account.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -130,6 +138,7 @@ export class Account extends pulumi.CustomResource {
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
             if (!args || args.accountName === undefined) {
@@ -146,6 +155,7 @@ export class Account extends pulumi.CustomResource {
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -163,7 +173,7 @@ export class Account extends pulumi.CustomResource {
  */
 export interface AccountState {
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
      */
     readonly accountName?: pulumi.Input<string>;
     /**
@@ -189,7 +199,7 @@ export interface AccountState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+     * The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
@@ -200,6 +210,10 @@ export interface AccountState {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The status of KVStore Account.
+     */
+    readonly status?: pulumi.Input<string>;
 }
 
 /**
@@ -207,7 +221,7 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
      */
     readonly accountName: pulumi.Input<string>;
     /**
@@ -233,7 +247,7 @@ export interface AccountArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+     * The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
      */
     readonly instanceId: pulumi.Input<string>;
     /**

@@ -812,6 +812,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kvstore_instance_engines": {Tok: dataSource(kvstoreMod, "getInstanceEngines")},
 			"alicloud_kvstore_zones":            {Tok: dataSource(kvstoreMod, "getZones")},
 			"alicloud_kvstore_connections":      {Tok: dataSource(kvstoreMod, "getConnections")},
+			"alicloud_kvstore_accounts":         {Tok: dataSource(kvstoreMod, "getAccounts")},
 
 			// Log
 			"alicloud_log_service": {Tok: dataSource(logMod, "getService")},
@@ -916,14 +917,15 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_slb_zones":                      {Tok: dataSource(slbMod, "getZones")},
 
 			// Vpc
-			"alicloud_vpcs":                      {Tok: dataSource(vpcMod, "getNetworks")},
-			"alicloud_router_interfaces":         {Tok: dataSource(vpcMod, "getRouterInterfaces")},
-			"alicloud_forward_entries":           {Tok: dataSource(vpcMod, "getForwardEntries")},
-			"alicloud_nat_gateways":              {Tok: dataSource(vpcMod, "getNatGateways")},
-			"alicloud_route_entries":             {Tok: dataSource(vpcMod, "getRouteEntries")},
-			"alicloud_route_tables":              {Tok: dataSource(vpcMod, "getRouteTables")},
-			"alicloud_snat_entries":              {Tok: dataSource(vpcMod, "getSnatEntries")},
-			"alicloud_common_bandwidth_packages": {Tok: dataSource(vpcMod, "getCommonBandwidthPackages")},
+			"alicloud_vpcs":                         {Tok: dataSource(vpcMod, "getNetworks")},
+			"alicloud_router_interfaces":            {Tok: dataSource(vpcMod, "getRouterInterfaces")},
+			"alicloud_forward_entries":              {Tok: dataSource(vpcMod, "getForwardEntries")},
+			"alicloud_nat_gateways":                 {Tok: dataSource(vpcMod, "getNatGateways")},
+			"alicloud_route_entries":                {Tok: dataSource(vpcMod, "getRouteEntries")},
+			"alicloud_route_tables":                 {Tok: dataSource(vpcMod, "getRouteTables")},
+			"alicloud_snat_entries":                 {Tok: dataSource(vpcMod, "getSnatEntries")},
+			"alicloud_common_bandwidth_packages":    {Tok: dataSource(vpcMod, "getCommonBandwidthPackages")},
+			"alicloud_enhanced_nat_available_zones": {Tok: dataSource(vpcMod, "getEnhancedNatAvailableZones")},
 
 			// Vpn
 			"alicloud_vpn_connections":       {Tok: dataSource(vpnMod, "getConnections")},

@@ -452,7 +452,7 @@ export namespace adb {
          */
         regionId: string;
         /**
-         * Status of the cluster.
+         * The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
          */
         status: string;
         /**
@@ -6045,6 +6045,37 @@ export namespace kms {
 }
 
 export namespace kvstore {
+    export interface GetAccountsAccount {
+        /**
+         * The name of the account.
+         */
+        accountName: string;
+        /**
+         * The privilege of account access database.
+         */
+        accountPrivilege: string;
+        /**
+         * Privilege type of account.
+         */
+        accountType: string;
+        /**
+         * The description of account.
+         */
+        description: string;
+        /**
+         * The ID of the Account.
+         */
+        id: string;
+        /**
+         * The Id of instance in which account belongs.
+         */
+        instanceId: string;
+        /**
+         * The status of account.
+         */
+        status: string;
+    }
+
     export interface GetConnectionsConnection {
         /**
          * The connection string of the instance.
@@ -9541,6 +9572,11 @@ export namespace vpc {
     export interface GetCommonBandwidthPackagesPackagePublicIpAddress {
         allocationId: string;
         ipAddress: string;
+    }
+
+    export interface GetEnhancedNatAvailableZonesZone {
+        localName: string;
+        zoneId: string;
     }
 
     export interface GetForwardEntriesEntry {

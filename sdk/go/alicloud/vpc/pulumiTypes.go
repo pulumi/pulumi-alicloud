@@ -810,6 +810,106 @@ func (o GetCommonBandwidthPackagesPackagePublicIpAddressArrayOutput) Index(i pul
 	}).(GetCommonBandwidthPackagesPackagePublicIpAddressOutput)
 }
 
+type GetEnhancedNatAvailableZonesZone struct {
+	LocalName string `pulumi:"localName"`
+	ZoneId    string `pulumi:"zoneId"`
+}
+
+// GetEnhancedNatAvailableZonesZoneInput is an input type that accepts GetEnhancedNatAvailableZonesZoneArgs and GetEnhancedNatAvailableZonesZoneOutput values.
+// You can construct a concrete instance of `GetEnhancedNatAvailableZonesZoneInput` via:
+//
+//          GetEnhancedNatAvailableZonesZoneArgs{...}
+type GetEnhancedNatAvailableZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetEnhancedNatAvailableZonesZoneOutput() GetEnhancedNatAvailableZonesZoneOutput
+	ToGetEnhancedNatAvailableZonesZoneOutputWithContext(context.Context) GetEnhancedNatAvailableZonesZoneOutput
+}
+
+type GetEnhancedNatAvailableZonesZoneArgs struct {
+	LocalName pulumi.StringInput `pulumi:"localName"`
+	ZoneId    pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetEnhancedNatAvailableZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnhancedNatAvailableZonesZone)(nil)).Elem()
+}
+
+func (i GetEnhancedNatAvailableZonesZoneArgs) ToGetEnhancedNatAvailableZonesZoneOutput() GetEnhancedNatAvailableZonesZoneOutput {
+	return i.ToGetEnhancedNatAvailableZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetEnhancedNatAvailableZonesZoneArgs) ToGetEnhancedNatAvailableZonesZoneOutputWithContext(ctx context.Context) GetEnhancedNatAvailableZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnhancedNatAvailableZonesZoneOutput)
+}
+
+// GetEnhancedNatAvailableZonesZoneArrayInput is an input type that accepts GetEnhancedNatAvailableZonesZoneArray and GetEnhancedNatAvailableZonesZoneArrayOutput values.
+// You can construct a concrete instance of `GetEnhancedNatAvailableZonesZoneArrayInput` via:
+//
+//          GetEnhancedNatAvailableZonesZoneArray{ GetEnhancedNatAvailableZonesZoneArgs{...} }
+type GetEnhancedNatAvailableZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetEnhancedNatAvailableZonesZoneArrayOutput() GetEnhancedNatAvailableZonesZoneArrayOutput
+	ToGetEnhancedNatAvailableZonesZoneArrayOutputWithContext(context.Context) GetEnhancedNatAvailableZonesZoneArrayOutput
+}
+
+type GetEnhancedNatAvailableZonesZoneArray []GetEnhancedNatAvailableZonesZoneInput
+
+func (GetEnhancedNatAvailableZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnhancedNatAvailableZonesZone)(nil)).Elem()
+}
+
+func (i GetEnhancedNatAvailableZonesZoneArray) ToGetEnhancedNatAvailableZonesZoneArrayOutput() GetEnhancedNatAvailableZonesZoneArrayOutput {
+	return i.ToGetEnhancedNatAvailableZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnhancedNatAvailableZonesZoneArray) ToGetEnhancedNatAvailableZonesZoneArrayOutputWithContext(ctx context.Context) GetEnhancedNatAvailableZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnhancedNatAvailableZonesZoneArrayOutput)
+}
+
+type GetEnhancedNatAvailableZonesZoneOutput struct{ *pulumi.OutputState }
+
+func (GetEnhancedNatAvailableZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnhancedNatAvailableZonesZone)(nil)).Elem()
+}
+
+func (o GetEnhancedNatAvailableZonesZoneOutput) ToGetEnhancedNatAvailableZonesZoneOutput() GetEnhancedNatAvailableZonesZoneOutput {
+	return o
+}
+
+func (o GetEnhancedNatAvailableZonesZoneOutput) ToGetEnhancedNatAvailableZonesZoneOutputWithContext(ctx context.Context) GetEnhancedNatAvailableZonesZoneOutput {
+	return o
+}
+
+func (o GetEnhancedNatAvailableZonesZoneOutput) LocalName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnhancedNatAvailableZonesZone) string { return v.LocalName }).(pulumi.StringOutput)
+}
+
+func (o GetEnhancedNatAvailableZonesZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnhancedNatAvailableZonesZone) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetEnhancedNatAvailableZonesZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnhancedNatAvailableZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnhancedNatAvailableZonesZone)(nil)).Elem()
+}
+
+func (o GetEnhancedNatAvailableZonesZoneArrayOutput) ToGetEnhancedNatAvailableZonesZoneArrayOutput() GetEnhancedNatAvailableZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetEnhancedNatAvailableZonesZoneArrayOutput) ToGetEnhancedNatAvailableZonesZoneArrayOutputWithContext(ctx context.Context) GetEnhancedNatAvailableZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetEnhancedNatAvailableZonesZoneArrayOutput) Index(i pulumi.IntInput) GetEnhancedNatAvailableZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnhancedNatAvailableZonesZone {
+		return vs[0].([]GetEnhancedNatAvailableZonesZone)[vs[1].(int)]
+	}).(GetEnhancedNatAvailableZonesZoneOutput)
+}
+
 type GetForwardEntriesEntry struct {
 	// The public IP address.
 	ExternalIp string `pulumi:"externalIp"`
@@ -2534,6 +2634,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackagePublicIpAddressOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackagePublicIpAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetEnhancedNatAvailableZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetEnhancedNatAvailableZonesZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetForwardEntriesEntryOutput{})
 	pulumi.RegisterOutputType(GetForwardEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayOutput{})

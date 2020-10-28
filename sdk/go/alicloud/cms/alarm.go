@@ -44,12 +44,6 @@ import (
 // 				Threshold:          pulumi.String("35"),
 // 				Times:              pulumi.Int(2),
 // 			},
-// 			EscalationsWarn: &cms.AlarmEscalationsWarnArgs{
-// 				ComparisonOperator: pulumi.String("<="),
-// 				Statistics:         pulumi.String("Average"),
-// 				Threshold:          pulumi.String("102400"),
-// 				Times:              pulumi.Int(1),
-// 			},
 // 			Metric:  pulumi.String("disk_writebytes"),
 // 			Period:  pulumi.Int(900),
 // 			Project: pulumi.String("acs_ecs_dashboard"),

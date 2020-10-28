@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PolarDB
 {
     /// <summary>
-    /// Provides a PolarDB database resource. A DB database deployed in a DB cluster. A DB cluster can own multiple databases.
+    /// Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
     /// 
     /// &gt; **NOTE:** Available in v1.66.0+.
     /// 

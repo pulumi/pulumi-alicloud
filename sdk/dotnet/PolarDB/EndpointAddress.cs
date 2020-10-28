@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.PolarDB
     public partial class EndpointAddress : Pulumi.CustomResource
     {
         /// <summary>
-        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;db_endpoint_id&gt; + 'tf'.
+        /// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
         /// </summary>
         [Output("connectionPrefix")]
         public Output<string> ConnectionPrefix { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class EndpointAddressArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;db_endpoint_id&gt; + 'tf'.
+        /// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
         /// </summary>
         [Input("connectionPrefix")]
         public Input<string>? ConnectionPrefix { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class EndpointAddressState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;db_endpoint_id&gt; + 'tf'.
+        /// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
         /// </summary>
         [Input("connectionPrefix")]
         public Input<string>? ConnectionPrefix { get; set; }

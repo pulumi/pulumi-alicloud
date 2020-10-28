@@ -21,6 +21,8 @@ type ScalingGroup struct {
 	DefaultCooldown pulumi.IntPtrOutput `pulumi:"defaultCooldown"`
 	// Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
 	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
+	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+	GroupDeletionProtection pulumi.BoolPtrOutput `pulumi:"groupDeletionProtection"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -100,6 +102,8 @@ type scalingGroupState struct {
 	DefaultCooldown *int `pulumi:"defaultCooldown"`
 	// Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
+	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+	GroupDeletionProtection *bool `pulumi:"groupDeletionProtection"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -146,6 +150,8 @@ type ScalingGroupState struct {
 	DefaultCooldown pulumi.IntPtrInput
 	// Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
 	DesiredCapacity pulumi.IntPtrInput
+	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+	GroupDeletionProtection pulumi.BoolPtrInput
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -196,6 +202,8 @@ type scalingGroupArgs struct {
 	DefaultCooldown *int `pulumi:"defaultCooldown"`
 	// Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
+	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+	GroupDeletionProtection *bool `pulumi:"groupDeletionProtection"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -243,6 +251,8 @@ type ScalingGroupArgs struct {
 	DefaultCooldown pulumi.IntPtrInput
 	// Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
 	DesiredCapacity pulumi.IntPtrInput
+	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+	GroupDeletionProtection pulumi.BoolPtrInput
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument

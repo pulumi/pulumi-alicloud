@@ -10,11 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.KVStore
 {
     /// <summary>
-    /// Provides a kvstore account resource and used to manage databases.
+    /// Provides a KVStore Account resource.
+    /// 
+    /// For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.66.0+
     /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,11 +58,11 @@ namespace Pulumi.AliCloud.KVStore
     ///             InstanceType = "Redis",
     ///             EngineVersion = "4.0",
     ///         });
-    ///         var account = new AliCloud.KVStore.Account("account", new AliCloud.KVStore.AccountArgs
+    ///         var example = new AliCloud.KVStore.Account("example", new AliCloud.KVStore.AccountArgs
     ///         {
-    ///             InstanceId = defaultInstance.Id,
     ///             AccountName = "tftestnormal",
-    ///             AccountPassword = "Test12345",
+    ///             AccountPassword = "YourPassword_123",
+    ///             InstanceId = defaultInstance.Id,
     ///         });
     ///     }
     /// 
@@ -68,7 +72,7 @@ namespace Pulumi.AliCloud.KVStore
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
         /// </summary>
         [Output("accountName")]
         public Output<string> AccountName { get; private set; } = null!;
@@ -104,7 +108,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+        /// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -120,6 +124,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of KVStore Account.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -168,7 +178,7 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class AccountArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
         /// </summary>
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
@@ -204,7 +214,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+        /// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -235,7 +245,7 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class AccountState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
@@ -271,7 +281,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Id of instance in which account belongs. (The engine version of instance must be 4.0 or 4.0+)
+        /// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -293,6 +303,12 @@ namespace Pulumi.AliCloud.KVStore
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The status of KVStore Account.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public AccountState()
         {

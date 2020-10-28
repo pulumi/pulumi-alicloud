@@ -25,6 +25,8 @@ type NatGateway struct {
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	NatType pulumi.StringPtrOutput `pulumi:"natType"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one.
@@ -37,6 +39,8 @@ type NatGateway struct {
 	Specification pulumi.StringPtrOutput `pulumi:"specification"`
 	// The VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	// The id of VSwitch.
+	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 }
 
 // NewNatGateway registers a new resource with the given unique name, arguments, and options.
@@ -82,6 +86,8 @@ type natGatewayState struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	Name *string `pulumi:"name"`
+	// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	NatType *string `pulumi:"natType"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period *int `pulumi:"period"`
 	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one.
@@ -94,6 +100,8 @@ type natGatewayState struct {
 	Specification *string `pulumi:"specification"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
+	// The id of VSwitch.
+	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type NatGatewayState struct {
@@ -109,6 +117,8 @@ type NatGatewayState struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	Name pulumi.StringPtrInput
+	// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	NatType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrInput
 	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one.
@@ -121,6 +131,8 @@ type NatGatewayState struct {
 	Specification pulumi.StringPtrInput
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
+	// The id of VSwitch.
+	VswitchId pulumi.StringPtrInput
 }
 
 func (NatGatewayState) ElementType() reflect.Type {
@@ -136,6 +148,8 @@ type natGatewayArgs struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	Name *string `pulumi:"name"`
+	// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	NatType *string `pulumi:"natType"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period *int `pulumi:"period"`
 	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
@@ -146,6 +160,8 @@ type natGatewayArgs struct {
 	Specification *string `pulumi:"specification"`
 	// The VPC ID.
 	VpcId string `pulumi:"vpcId"`
+	// The id of VSwitch.
+	VswitchId *string `pulumi:"vswitchId"`
 }
 
 // The set of arguments for constructing a NatGateway resource.
@@ -158,6 +174,8 @@ type NatGatewayArgs struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	Name pulumi.StringPtrInput
+	// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	NatType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
@@ -168,6 +186,8 @@ type NatGatewayArgs struct {
 	Specification pulumi.StringPtrInput
 	// The VPC ID.
 	VpcId pulumi.StringInput
+	// The id of VSwitch.
+	VswitchId pulumi.StringPtrInput
 }
 
 func (NatGatewayArgs) ElementType() reflect.Type {

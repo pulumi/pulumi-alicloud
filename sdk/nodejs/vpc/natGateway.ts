@@ -59,6 +59,10 @@ export class NatGateway extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+     */
+    public readonly natType!: pulumi.Output<string | undefined>;
+    /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
      */
     public readonly period!: pulumi.Output<number | undefined>;
@@ -80,6 +84,10 @@ export class NatGateway extends pulumi.CustomResource {
      * The VPC ID.
      */
     public readonly vpcId!: pulumi.Output<string>;
+    /**
+     * The id of VSwitch.
+     */
+    public readonly vswitchId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a NatGateway resource with the given unique name, arguments, and options.
@@ -99,11 +107,13 @@ export class NatGateway extends pulumi.CustomResource {
             inputs["forwardTableIds"] = state ? state.forwardTableIds : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["natType"] = state ? state.natType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["snatTableIds"] = state ? state.snatTableIds : undefined;
             inputs["spec"] = state ? state.spec : undefined;
             inputs["specification"] = state ? state.specification : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
+            inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as NatGatewayArgs | undefined;
             if (!args || args.vpcId === undefined) {
@@ -113,10 +123,12 @@ export class NatGateway extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["natType"] = args ? args.natType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["specification"] = args ? args.specification : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
+            inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["bandwidthPackageIds"] = undefined /*out*/;
             inputs["forwardTableIds"] = undefined /*out*/;
             inputs["snatTableIds"] = undefined /*out*/;
@@ -161,6 +173,10 @@ export interface NatGatewayState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+     */
+    readonly natType?: pulumi.Input<string>;
+    /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
      */
     readonly period?: pulumi.Input<number>;
@@ -182,6 +198,10 @@ export interface NatGatewayState {
      * The VPC ID.
      */
     readonly vpcId?: pulumi.Input<string>;
+    /**
+     * The id of VSwitch.
+     */
+    readonly vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -205,6 +225,10 @@ export interface NatGatewayArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+     */
+    readonly natType?: pulumi.Input<string>;
+    /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
      */
     readonly period?: pulumi.Input<number>;
@@ -222,4 +246,8 @@ export interface NatGatewayArgs {
      * The VPC ID.
      */
     readonly vpcId: pulumi.Input<string>;
+    /**
+     * The id of VSwitch.
+     */
+    readonly vswitchId?: pulumi.Input<string>;
 }

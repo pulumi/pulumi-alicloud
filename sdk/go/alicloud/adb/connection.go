@@ -89,7 +89,7 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_cluster_id> + 'tf'.
+	// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
 	ConnectionPrefix pulumi.StringOutput `pulumi:"connectionPrefix"`
 	// Connection cluster string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
@@ -132,7 +132,7 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_cluster_id> + 'tf'.
+	// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`
 	// Connection cluster string.
 	ConnectionString *string `pulumi:"connectionString"`
@@ -145,7 +145,7 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_cluster_id> + 'tf'.
+	// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
 	ConnectionPrefix pulumi.StringPtrInput
 	// Connection cluster string.
 	ConnectionString pulumi.StringPtrInput
@@ -162,7 +162,7 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_cluster_id> + 'tf'.
+	// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`
 	// The Id of cluster that can run database.
 	DbClusterId string `pulumi:"dbClusterId"`
@@ -170,7 +170,7 @@ type connectionArgs struct {
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_cluster_id> + 'tf'.
+	// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
 	ConnectionPrefix pulumi.StringPtrInput
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringInput

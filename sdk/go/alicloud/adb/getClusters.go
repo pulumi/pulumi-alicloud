@@ -25,9 +25,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "am-\\w+"
+// 		opt1 := "Running"
 // 		adbClustersDs, err := adb.GetClusters(ctx, &adb.GetClustersArgs{
 // 			DescriptionRegex: &opt0,
-// 			Status:           "Running",
+// 			Status:           &opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -53,6 +54,8 @@ type GetClustersArgs struct {
 	// A list of ADB cluster IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -69,7 +72,9 @@ type GetClustersResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of ADB cluster IDs.
-	Ids        []string               `pulumi:"ids"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Tags       map[string]interface{} `pulumi:"tags"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Status of the cluster.
+	Status *string                `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
 }

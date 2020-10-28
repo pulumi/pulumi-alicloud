@@ -64,12 +64,6 @@ class Alarm(pulumi.CustomResource):
                 threshold="35",
                 times=2,
             ),
-            escalations_warn=alicloud.cms.AlarmEscalationsWarnArgs(
-                comparison_operator="<=",
-                statistics="Average",
-                threshold="102400",
-                times=1,
-            ),
             metric="disk_writebytes",
             period=900,
             project="acs_ecs_dashboard",
