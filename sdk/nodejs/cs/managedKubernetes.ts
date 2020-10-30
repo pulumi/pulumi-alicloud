@@ -55,6 +55,11 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
     public readonly clusterCaCert!: pulumi.Output<string | undefined>;
+    /**
+     * The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+     * - ack.standard: Standard managed clusters.
+     * - ack.pro.small:  Professional managed clusters.
+     */
     public readonly clusterSpec!: pulumi.Output<string>;
     /**
      * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
@@ -137,6 +142,9 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     public readonly proxyMode!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -413,6 +421,11 @@ export interface ManagedKubernetesState {
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
     readonly clusterCaCert?: pulumi.Input<string>;
+    /**
+     * The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+     * - ack.standard: Standard managed clusters.
+     * - ack.pro.small:  Professional managed clusters.
+     */
     readonly clusterSpec?: pulumi.Input<string>;
     /**
      * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
@@ -495,6 +508,9 @@ export interface ManagedKubernetesState {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -625,6 +641,11 @@ export interface ManagedKubernetesArgs {
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
     readonly clusterCaCert?: pulumi.Input<string>;
+    /**
+     * The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+     * - ack.standard: Standard managed clusters.
+     * - ack.pro.small:  Professional managed clusters.
+     */
     readonly clusterSpec?: pulumi.Input<string>;
     /**
      * kubelet cpu policy. options: static|none. default: none.
@@ -699,6 +720,9 @@ export interface ManagedKubernetesArgs {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

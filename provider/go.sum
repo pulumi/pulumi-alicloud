@@ -154,10 +154,8 @@ github.com/aliyun/credentials-go v1.1.2 h1:qU1vwGIBb3UJ8BwunHDRFtAhS6jnQLnde/yk0
 github.com/aliyun/credentials-go v1.1.2/go.mod h1:ozcZaMR5kLM7pwtCMEpVmQ242suV6qTJya2bDq4X1Tw=
 github.com/aliyun/fc-go-sdk v0.0.0-20200925033337-c013428cbe21 h1:0kcRapGFTtwZIgbGSaM+N1y+GrnLaY4Vz78FqPnt164=
 github.com/aliyun/fc-go-sdk v0.0.0-20200925033337-c013428cbe21/go.mod h1:X4Pc3TFz4LRXaQPhyzBU4Ec8pL/QvaJ36CFtLJsroIM=
-github.com/aliyun/terraform-provider-alicloud v1.101.0 h1:Ujt6q9U5EjTvrDhypM+r16OxkzieZUQjTX+YyDRCEcs=
-github.com/aliyun/terraform-provider-alicloud v1.101.0/go.mod h1:6nc6b1TnzQ+mOH0gP3c1/kr4HLM/uej77BH1OyqAPGE=
-github.com/aliyun/terraform-provider-alicloud v1.102.0 h1:aSwMvNcs/gaqQF2nL/OVPJ6ZNQcyZn76OuB7dhqvNTc=
-github.com/aliyun/terraform-provider-alicloud v1.102.0/go.mod h1:8aCv/wTLelQY+qubfkma14dQFgcPabHZkgI6myj9NMk=
+github.com/aliyun/terraform-provider-alicloud v1.103.0 h1:fFVlfp+6Se9MrOu2BXgNzTip4qXlCcKqBw9JbF/QVAU=
+github.com/aliyun/terraform-provider-alicloud v1.103.0/go.mod h1:BuzPPnBHOAqR8JUvfz+It/lOfycP+omLHXsLYLYB/4E=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239 h1:kFOfPq6dUM1hTo4JG6LR5AXSUEsOjtdm0kw0FtQtMJA=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239/go.mod h1:2FmKhYUyUczH0OGQWaF5ceTx0UBShxjsH6f8oGKYe2c=
 github.com/apache/thrift v0.12.0/go.mod h1:cp2SuWMxlEZw2r+iP2GNCdIi4C1qmUzdZFSVb+bacwQ=
@@ -258,8 +256,8 @@ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/denisenkom/go-mssqldb v0.0.0-20190412130859-3b1d194e553a/go.mod h1:zAg7JM8CkOJ43xKXIj7eRO9kmWm/TW578qo+oDO6tuM=
-github.com/denverdino/aliyungo v0.0.0-20201012074500-9311540c3f72 h1:MMjMIwHW3XO7x82o/TIqf1CJUX5fcw9oQTHGKl79yH4=
-github.com/denverdino/aliyungo v0.0.0-20201012074500-9311540c3f72/go.mod h1:dV8lFg6daOBZbT6/BDGIz6Y3WFGn8juu6G+CQ6LHtl0=
+github.com/denverdino/aliyungo v0.0.0-20201022023337-dbe44e48e083 h1:fVr4tjtO8Z6zdb9SW5lpbz8m1vcBMbRS7A5OZ0wRatg=
+github.com/denverdino/aliyungo v0.0.0-20201022023337-dbe44e48e083/go.mod h1:dV8lFg6daOBZbT6/BDGIz6Y3WFGn8juu6G+CQ6LHtl0=
 github.com/devigned/tab v0.1.1/go.mod h1:XG9mPq0dFghrYvoBF3xdRrJzSTX1b7IQrvaL9mzjeJY=
 github.com/dgrijalva/jwt-go v0.0.0-20160705203006-01aeca54ebda/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
 github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=

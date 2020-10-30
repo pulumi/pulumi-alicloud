@@ -44,6 +44,11 @@ namespace Pulumi.AliCloud.CS
         [Output("clusterCaCert")]
         public Output<string?> ClusterCaCert { get; private set; } = null!;
 
+        /// <summary>
+        /// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+        /// - ack.standard: Standard managed clusters.
+        /// - ack.pro.small:  Professional managed clusters.
+        /// </summary>
         [Output("clusterSpec")]
         public Output<string> ClusterSpec { get; private set; } = null!;
 
@@ -170,6 +175,9 @@ namespace Pulumi.AliCloud.CS
         [Output("proxyMode")]
         public Output<string?> ProxyMode { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
@@ -416,6 +424,11 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
 
+        /// <summary>
+        /// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+        /// - ack.standard: Standard managed clusters.
+        /// - ack.pro.small:  Professional managed clusters.
+        /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
@@ -542,6 +555,9 @@ namespace Pulumi.AliCloud.CS
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -742,6 +758,11 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
 
+        /// <summary>
+        /// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+        /// - ack.standard: Standard managed clusters.
+        /// - ack.pro.small:  Professional managed clusters.
+        /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
@@ -880,6 +901,9 @@ namespace Pulumi.AliCloud.CS
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 

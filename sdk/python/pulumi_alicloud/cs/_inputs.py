@@ -11,6 +11,11 @@ from .. import _utilities, _tables
 __all__ = [
     'ApplicationServiceArgs',
     'ClusterNodeArgs',
+    'EdgeKubernetesAddonArgs',
+    'EdgeKubernetesConnectionsArgs',
+    'EdgeKubernetesLogConfigArgs',
+    'EdgeKubernetesWorkerDataDiskArgs',
+    'EdgeKubernetesWorkerNodeArgs',
     'KubernetesAddonArgs',
     'KubernetesAutoscalerNodepoolArgs',
     'KubernetesConnectionsArgs',
@@ -162,6 +167,296 @@ class ClusterNodeArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class EdgeKubernetesAddonArgs:
+    def __init__(__self__, *,
+                 config: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class EdgeKubernetesConnectionsArgs:
+    def __init__(__self__, *,
+                 api_server_internet: Optional[pulumi.Input[str]] = None,
+                 api_server_intranet: Optional[pulumi.Input[str]] = None,
+                 master_public_ip: Optional[pulumi.Input[str]] = None,
+                 service_domain: Optional[pulumi.Input[str]] = None):
+        if api_server_internet is not None:
+            pulumi.set(__self__, "api_server_internet", api_server_internet)
+        if api_server_intranet is not None:
+            pulumi.set(__self__, "api_server_intranet", api_server_intranet)
+        if master_public_ip is not None:
+            pulumi.set(__self__, "master_public_ip", master_public_ip)
+        if service_domain is not None:
+            pulumi.set(__self__, "service_domain", service_domain)
+
+    @property
+    @pulumi.getter(name="apiServerInternet")
+    def api_server_internet(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "api_server_internet")
+
+    @api_server_internet.setter
+    def api_server_internet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_server_internet", value)
+
+    @property
+    @pulumi.getter(name="apiServerIntranet")
+    def api_server_intranet(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "api_server_intranet")
+
+    @api_server_intranet.setter
+    def api_server_intranet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_server_intranet", value)
+
+    @property
+    @pulumi.getter(name="masterPublicIp")
+    def master_public_ip(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "master_public_ip")
+
+    @master_public_ip.setter
+    def master_public_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_public_ip", value)
+
+    @property
+    @pulumi.getter(name="serviceDomain")
+    def service_domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_domain")
+
+    @service_domain.setter
+    def service_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_domain", value)
+
+
+@pulumi.input_type
+class EdgeKubernetesLogConfigArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 project: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "type", type)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class EdgeKubernetesWorkerDataDiskArgs:
+    def __init__(__self__, *,
+                 auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+                 category: Optional[pulumi.Input[str]] = None,
+                 device: Optional[pulumi.Input[str]] = None,
+                 encrypted: Optional[pulumi.Input[str]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        if auto_snapshot_policy_id is not None:
+            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @property
+    @pulumi.getter(name="autoSnapshotPolicyId")
+    def auto_snapshot_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auto_snapshot_policy_id")
+
+    @auto_snapshot_policy_id.setter
+    def auto_snapshot_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_snapshot_policy_id", value)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "device")
+
+    @device.setter
+    def device(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_id", value)
+
+
+@pulumi.input_type
+class EdgeKubernetesWorkerNodeArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_ip: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: ID of the node.
+        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[str] private_ip: The private IP address of node.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if private_ip is not None:
+            pulumi.set(__self__, "private_ip", private_ip)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the node.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP address of node.
+        """
+        return pulumi.get(self, "private_ip")
+
+    @private_ip.setter
+    def private_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip", value)
 
 
 @pulumi.input_type

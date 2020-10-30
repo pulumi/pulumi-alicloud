@@ -176,6 +176,9 @@ export class Kubernetes extends pulumi.CustomResource {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     public readonly proxyMode!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -597,6 +600,9 @@ export interface KubernetesState {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -836,6 +842,9 @@ export interface KubernetesArgs {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

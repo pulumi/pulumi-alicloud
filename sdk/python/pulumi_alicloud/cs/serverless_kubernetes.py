@@ -55,6 +55,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
         :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster .
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
@@ -151,6 +152,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
         :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster .
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
@@ -278,6 +280,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property

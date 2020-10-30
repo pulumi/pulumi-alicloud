@@ -4,6 +4,8 @@
 // Export members:
 export * from "./application";
 export * from "./cluster";
+export * from "./edgeKubernetes";
+export * from "./getEdgeKubernetesClusters";
 export * from "./getKubernetesClusters";
 export * from "./getManagedKubernetesClusters";
 export * from "./getRegistryEnterpriseInstances";

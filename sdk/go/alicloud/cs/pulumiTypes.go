@@ -252,6 +252,681 @@ func (o ClusterNodeArrayOutput) Index(i pulumi.IntInput) ClusterNodeOutput {
 	}).(ClusterNodeOutput)
 }
 
+type EdgeKubernetesAddon struct {
+	Config   *string `pulumi:"config"`
+	Disabled *bool   `pulumi:"disabled"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name *string `pulumi:"name"`
+}
+
+// EdgeKubernetesAddonInput is an input type that accepts EdgeKubernetesAddonArgs and EdgeKubernetesAddonOutput values.
+// You can construct a concrete instance of `EdgeKubernetesAddonInput` via:
+//
+//          EdgeKubernetesAddonArgs{...}
+type EdgeKubernetesAddonInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesAddonOutput() EdgeKubernetesAddonOutput
+	ToEdgeKubernetesAddonOutputWithContext(context.Context) EdgeKubernetesAddonOutput
+}
+
+type EdgeKubernetesAddonArgs struct {
+	Config   pulumi.StringPtrInput `pulumi:"config"`
+	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (EdgeKubernetesAddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesAddon)(nil)).Elem()
+}
+
+func (i EdgeKubernetesAddonArgs) ToEdgeKubernetesAddonOutput() EdgeKubernetesAddonOutput {
+	return i.ToEdgeKubernetesAddonOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesAddonArgs) ToEdgeKubernetesAddonOutputWithContext(ctx context.Context) EdgeKubernetesAddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesAddonOutput)
+}
+
+// EdgeKubernetesAddonArrayInput is an input type that accepts EdgeKubernetesAddonArray and EdgeKubernetesAddonArrayOutput values.
+// You can construct a concrete instance of `EdgeKubernetesAddonArrayInput` via:
+//
+//          EdgeKubernetesAddonArray{ EdgeKubernetesAddonArgs{...} }
+type EdgeKubernetesAddonArrayInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesAddonArrayOutput() EdgeKubernetesAddonArrayOutput
+	ToEdgeKubernetesAddonArrayOutputWithContext(context.Context) EdgeKubernetesAddonArrayOutput
+}
+
+type EdgeKubernetesAddonArray []EdgeKubernetesAddonInput
+
+func (EdgeKubernetesAddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesAddon)(nil)).Elem()
+}
+
+func (i EdgeKubernetesAddonArray) ToEdgeKubernetesAddonArrayOutput() EdgeKubernetesAddonArrayOutput {
+	return i.ToEdgeKubernetesAddonArrayOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesAddonArray) ToEdgeKubernetesAddonArrayOutputWithContext(ctx context.Context) EdgeKubernetesAddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesAddonArrayOutput)
+}
+
+type EdgeKubernetesAddonOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesAddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesAddon)(nil)).Elem()
+}
+
+func (o EdgeKubernetesAddonOutput) ToEdgeKubernetesAddonOutput() EdgeKubernetesAddonOutput {
+	return o
+}
+
+func (o EdgeKubernetesAddonOutput) ToEdgeKubernetesAddonOutputWithContext(ctx context.Context) EdgeKubernetesAddonOutput {
+	return o
+}
+
+func (o EdgeKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesAddon) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o EdgeKubernetesAddonOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type EdgeKubernetesAddonArrayOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesAddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesAddon)(nil)).Elem()
+}
+
+func (o EdgeKubernetesAddonArrayOutput) ToEdgeKubernetesAddonArrayOutput() EdgeKubernetesAddonArrayOutput {
+	return o
+}
+
+func (o EdgeKubernetesAddonArrayOutput) ToEdgeKubernetesAddonArrayOutputWithContext(ctx context.Context) EdgeKubernetesAddonArrayOutput {
+	return o
+}
+
+func (o EdgeKubernetesAddonArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesAddonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeKubernetesAddon {
+		return vs[0].([]EdgeKubernetesAddon)[vs[1].(int)]
+	}).(EdgeKubernetesAddonOutput)
+}
+
+type EdgeKubernetesConnections struct {
+	ApiServerInternet *string `pulumi:"apiServerInternet"`
+	ApiServerIntranet *string `pulumi:"apiServerIntranet"`
+	MasterPublicIp    *string `pulumi:"masterPublicIp"`
+	ServiceDomain     *string `pulumi:"serviceDomain"`
+}
+
+// EdgeKubernetesConnectionsInput is an input type that accepts EdgeKubernetesConnectionsArgs and EdgeKubernetesConnectionsOutput values.
+// You can construct a concrete instance of `EdgeKubernetesConnectionsInput` via:
+//
+//          EdgeKubernetesConnectionsArgs{...}
+type EdgeKubernetesConnectionsInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesConnectionsOutput() EdgeKubernetesConnectionsOutput
+	ToEdgeKubernetesConnectionsOutputWithContext(context.Context) EdgeKubernetesConnectionsOutput
+}
+
+type EdgeKubernetesConnectionsArgs struct {
+	ApiServerInternet pulumi.StringPtrInput `pulumi:"apiServerInternet"`
+	ApiServerIntranet pulumi.StringPtrInput `pulumi:"apiServerIntranet"`
+	MasterPublicIp    pulumi.StringPtrInput `pulumi:"masterPublicIp"`
+	ServiceDomain     pulumi.StringPtrInput `pulumi:"serviceDomain"`
+}
+
+func (EdgeKubernetesConnectionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesConnections)(nil)).Elem()
+}
+
+func (i EdgeKubernetesConnectionsArgs) ToEdgeKubernetesConnectionsOutput() EdgeKubernetesConnectionsOutput {
+	return i.ToEdgeKubernetesConnectionsOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesConnectionsArgs) ToEdgeKubernetesConnectionsOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesConnectionsOutput)
+}
+
+func (i EdgeKubernetesConnectionsArgs) ToEdgeKubernetesConnectionsPtrOutput() EdgeKubernetesConnectionsPtrOutput {
+	return i.ToEdgeKubernetesConnectionsPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesConnectionsArgs) ToEdgeKubernetesConnectionsPtrOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesConnectionsOutput).ToEdgeKubernetesConnectionsPtrOutputWithContext(ctx)
+}
+
+// EdgeKubernetesConnectionsPtrInput is an input type that accepts EdgeKubernetesConnectionsArgs, EdgeKubernetesConnectionsPtr and EdgeKubernetesConnectionsPtrOutput values.
+// You can construct a concrete instance of `EdgeKubernetesConnectionsPtrInput` via:
+//
+//          EdgeKubernetesConnectionsArgs{...}
+//
+//  or:
+//
+//          nil
+type EdgeKubernetesConnectionsPtrInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesConnectionsPtrOutput() EdgeKubernetesConnectionsPtrOutput
+	ToEdgeKubernetesConnectionsPtrOutputWithContext(context.Context) EdgeKubernetesConnectionsPtrOutput
+}
+
+type edgeKubernetesConnectionsPtrType EdgeKubernetesConnectionsArgs
+
+func EdgeKubernetesConnectionsPtr(v *EdgeKubernetesConnectionsArgs) EdgeKubernetesConnectionsPtrInput {
+	return (*edgeKubernetesConnectionsPtrType)(v)
+}
+
+func (*edgeKubernetesConnectionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeKubernetesConnections)(nil)).Elem()
+}
+
+func (i *edgeKubernetesConnectionsPtrType) ToEdgeKubernetesConnectionsPtrOutput() EdgeKubernetesConnectionsPtrOutput {
+	return i.ToEdgeKubernetesConnectionsPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeKubernetesConnectionsPtrType) ToEdgeKubernetesConnectionsPtrOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesConnectionsPtrOutput)
+}
+
+type EdgeKubernetesConnectionsOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesConnectionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesConnections)(nil)).Elem()
+}
+
+func (o EdgeKubernetesConnectionsOutput) ToEdgeKubernetesConnectionsOutput() EdgeKubernetesConnectionsOutput {
+	return o
+}
+
+func (o EdgeKubernetesConnectionsOutput) ToEdgeKubernetesConnectionsOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsOutput {
+	return o
+}
+
+func (o EdgeKubernetesConnectionsOutput) ToEdgeKubernetesConnectionsPtrOutput() EdgeKubernetesConnectionsPtrOutput {
+	return o.ToEdgeKubernetesConnectionsPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeKubernetesConnectionsOutput) ToEdgeKubernetesConnectionsPtrOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesConnections) *EdgeKubernetesConnections {
+		return &v
+	}).(EdgeKubernetesConnectionsPtrOutput)
+}
+func (o EdgeKubernetesConnectionsOutput) ApiServerInternet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesConnectionsOutput) ApiServerIntranet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesConnectionsOutput) MasterPublicIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesConnectionsOutput) ServiceDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
+}
+
+type EdgeKubernetesConnectionsPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesConnectionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeKubernetesConnections)(nil)).Elem()
+}
+
+func (o EdgeKubernetesConnectionsPtrOutput) ToEdgeKubernetesConnectionsPtrOutput() EdgeKubernetesConnectionsPtrOutput {
+	return o
+}
+
+func (o EdgeKubernetesConnectionsPtrOutput) ToEdgeKubernetesConnectionsPtrOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsPtrOutput {
+	return o
+}
+
+func (o EdgeKubernetesConnectionsPtrOutput) Elem() EdgeKubernetesConnectionsOutput {
+	return o.ApplyT(func(v *EdgeKubernetesConnections) EdgeKubernetesConnections { return *v }).(EdgeKubernetesConnectionsOutput)
+}
+
+func (o EdgeKubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiServerInternet
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiServerIntranet
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MasterPublicIp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+type EdgeKubernetesLogConfig struct {
+	Project *string `pulumi:"project"`
+	Type    string  `pulumi:"type"`
+}
+
+// EdgeKubernetesLogConfigInput is an input type that accepts EdgeKubernetesLogConfigArgs and EdgeKubernetesLogConfigOutput values.
+// You can construct a concrete instance of `EdgeKubernetesLogConfigInput` via:
+//
+//          EdgeKubernetesLogConfigArgs{...}
+type EdgeKubernetesLogConfigInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesLogConfigOutput() EdgeKubernetesLogConfigOutput
+	ToEdgeKubernetesLogConfigOutputWithContext(context.Context) EdgeKubernetesLogConfigOutput
+}
+
+type EdgeKubernetesLogConfigArgs struct {
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	Type    pulumi.StringInput    `pulumi:"type"`
+}
+
+func (EdgeKubernetesLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesLogConfig)(nil)).Elem()
+}
+
+func (i EdgeKubernetesLogConfigArgs) ToEdgeKubernetesLogConfigOutput() EdgeKubernetesLogConfigOutput {
+	return i.ToEdgeKubernetesLogConfigOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesLogConfigArgs) ToEdgeKubernetesLogConfigOutputWithContext(ctx context.Context) EdgeKubernetesLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesLogConfigOutput)
+}
+
+func (i EdgeKubernetesLogConfigArgs) ToEdgeKubernetesLogConfigPtrOutput() EdgeKubernetesLogConfigPtrOutput {
+	return i.ToEdgeKubernetesLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesLogConfigArgs) ToEdgeKubernetesLogConfigPtrOutputWithContext(ctx context.Context) EdgeKubernetesLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesLogConfigOutput).ToEdgeKubernetesLogConfigPtrOutputWithContext(ctx)
+}
+
+// EdgeKubernetesLogConfigPtrInput is an input type that accepts EdgeKubernetesLogConfigArgs, EdgeKubernetesLogConfigPtr and EdgeKubernetesLogConfigPtrOutput values.
+// You can construct a concrete instance of `EdgeKubernetesLogConfigPtrInput` via:
+//
+//          EdgeKubernetesLogConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type EdgeKubernetesLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesLogConfigPtrOutput() EdgeKubernetesLogConfigPtrOutput
+	ToEdgeKubernetesLogConfigPtrOutputWithContext(context.Context) EdgeKubernetesLogConfigPtrOutput
+}
+
+type edgeKubernetesLogConfigPtrType EdgeKubernetesLogConfigArgs
+
+func EdgeKubernetesLogConfigPtr(v *EdgeKubernetesLogConfigArgs) EdgeKubernetesLogConfigPtrInput {
+	return (*edgeKubernetesLogConfigPtrType)(v)
+}
+
+func (*edgeKubernetesLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeKubernetesLogConfig)(nil)).Elem()
+}
+
+func (i *edgeKubernetesLogConfigPtrType) ToEdgeKubernetesLogConfigPtrOutput() EdgeKubernetesLogConfigPtrOutput {
+	return i.ToEdgeKubernetesLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeKubernetesLogConfigPtrType) ToEdgeKubernetesLogConfigPtrOutputWithContext(ctx context.Context) EdgeKubernetesLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesLogConfigPtrOutput)
+}
+
+type EdgeKubernetesLogConfigOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesLogConfig)(nil)).Elem()
+}
+
+func (o EdgeKubernetesLogConfigOutput) ToEdgeKubernetesLogConfigOutput() EdgeKubernetesLogConfigOutput {
+	return o
+}
+
+func (o EdgeKubernetesLogConfigOutput) ToEdgeKubernetesLogConfigOutputWithContext(ctx context.Context) EdgeKubernetesLogConfigOutput {
+	return o
+}
+
+func (o EdgeKubernetesLogConfigOutput) ToEdgeKubernetesLogConfigPtrOutput() EdgeKubernetesLogConfigPtrOutput {
+	return o.ToEdgeKubernetesLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeKubernetesLogConfigOutput) ToEdgeKubernetesLogConfigPtrOutputWithContext(ctx context.Context) EdgeKubernetesLogConfigPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesLogConfig) *EdgeKubernetesLogConfig {
+		return &v
+	}).(EdgeKubernetesLogConfigPtrOutput)
+}
+func (o EdgeKubernetesLogConfigOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesLogConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesLogConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeKubernetesLogConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type EdgeKubernetesLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeKubernetesLogConfig)(nil)).Elem()
+}
+
+func (o EdgeKubernetesLogConfigPtrOutput) ToEdgeKubernetesLogConfigPtrOutput() EdgeKubernetesLogConfigPtrOutput {
+	return o
+}
+
+func (o EdgeKubernetesLogConfigPtrOutput) ToEdgeKubernetesLogConfigPtrOutputWithContext(ctx context.Context) EdgeKubernetesLogConfigPtrOutput {
+	return o
+}
+
+func (o EdgeKubernetesLogConfigPtrOutput) Elem() EdgeKubernetesLogConfigOutput {
+	return o.ApplyT(func(v *EdgeKubernetesLogConfig) EdgeKubernetesLogConfig { return *v }).(EdgeKubernetesLogConfigOutput)
+}
+
+func (o EdgeKubernetesLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetesLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesLogConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetesLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type EdgeKubernetesWorkerDataDisk struct {
+	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
+	Category             *string `pulumi:"category"`
+	Device               *string `pulumi:"device"`
+	Encrypted            *string `pulumi:"encrypted"`
+	KmsKeyId             *string `pulumi:"kmsKeyId"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name       *string `pulumi:"name"`
+	Size       *string `pulumi:"size"`
+	SnapshotId *string `pulumi:"snapshotId"`
+}
+
+// EdgeKubernetesWorkerDataDiskInput is an input type that accepts EdgeKubernetesWorkerDataDiskArgs and EdgeKubernetesWorkerDataDiskOutput values.
+// You can construct a concrete instance of `EdgeKubernetesWorkerDataDiskInput` via:
+//
+//          EdgeKubernetesWorkerDataDiskArgs{...}
+type EdgeKubernetesWorkerDataDiskInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesWorkerDataDiskOutput() EdgeKubernetesWorkerDataDiskOutput
+	ToEdgeKubernetesWorkerDataDiskOutputWithContext(context.Context) EdgeKubernetesWorkerDataDiskOutput
+}
+
+type EdgeKubernetesWorkerDataDiskArgs struct {
+	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
+	Category             pulumi.StringPtrInput `pulumi:"category"`
+	Device               pulumi.StringPtrInput `pulumi:"device"`
+	Encrypted            pulumi.StringPtrInput `pulumi:"encrypted"`
+	KmsKeyId             pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Size       pulumi.StringPtrInput `pulumi:"size"`
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+}
+
+func (EdgeKubernetesWorkerDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (i EdgeKubernetesWorkerDataDiskArgs) ToEdgeKubernetesWorkerDataDiskOutput() EdgeKubernetesWorkerDataDiskOutput {
+	return i.ToEdgeKubernetesWorkerDataDiskOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesWorkerDataDiskArgs) ToEdgeKubernetesWorkerDataDiskOutputWithContext(ctx context.Context) EdgeKubernetesWorkerDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesWorkerDataDiskOutput)
+}
+
+// EdgeKubernetesWorkerDataDiskArrayInput is an input type that accepts EdgeKubernetesWorkerDataDiskArray and EdgeKubernetesWorkerDataDiskArrayOutput values.
+// You can construct a concrete instance of `EdgeKubernetesWorkerDataDiskArrayInput` via:
+//
+//          EdgeKubernetesWorkerDataDiskArray{ EdgeKubernetesWorkerDataDiskArgs{...} }
+type EdgeKubernetesWorkerDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesWorkerDataDiskArrayOutput() EdgeKubernetesWorkerDataDiskArrayOutput
+	ToEdgeKubernetesWorkerDataDiskArrayOutputWithContext(context.Context) EdgeKubernetesWorkerDataDiskArrayOutput
+}
+
+type EdgeKubernetesWorkerDataDiskArray []EdgeKubernetesWorkerDataDiskInput
+
+func (EdgeKubernetesWorkerDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (i EdgeKubernetesWorkerDataDiskArray) ToEdgeKubernetesWorkerDataDiskArrayOutput() EdgeKubernetesWorkerDataDiskArrayOutput {
+	return i.ToEdgeKubernetesWorkerDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesWorkerDataDiskArray) ToEdgeKubernetesWorkerDataDiskArrayOutputWithContext(ctx context.Context) EdgeKubernetesWorkerDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesWorkerDataDiskArrayOutput)
+}
+
+type EdgeKubernetesWorkerDataDiskOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesWorkerDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (o EdgeKubernetesWorkerDataDiskOutput) ToEdgeKubernetesWorkerDataDiskOutput() EdgeKubernetesWorkerDataDiskOutput {
+	return o
+}
+
+func (o EdgeKubernetesWorkerDataDiskOutput) ToEdgeKubernetesWorkerDataDiskOutputWithContext(ctx context.Context) EdgeKubernetesWorkerDataDiskOutput {
+	return o
+}
+
+func (o EdgeKubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesWorkerDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o EdgeKubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesWorkerDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+type EdgeKubernetesWorkerDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesWorkerDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesWorkerDataDisk)(nil)).Elem()
+}
+
+func (o EdgeKubernetesWorkerDataDiskArrayOutput) ToEdgeKubernetesWorkerDataDiskArrayOutput() EdgeKubernetesWorkerDataDiskArrayOutput {
+	return o
+}
+
+func (o EdgeKubernetesWorkerDataDiskArrayOutput) ToEdgeKubernetesWorkerDataDiskArrayOutputWithContext(ctx context.Context) EdgeKubernetesWorkerDataDiskArrayOutput {
+	return o
+}
+
+func (o EdgeKubernetesWorkerDataDiskArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesWorkerDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeKubernetesWorkerDataDisk {
+		return vs[0].([]EdgeKubernetesWorkerDataDisk)[vs[1].(int)]
+	}).(EdgeKubernetesWorkerDataDiskOutput)
+}
+
+type EdgeKubernetesWorkerNode struct {
+	// ID of the node.
+	Id *string `pulumi:"id"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name *string `pulumi:"name"`
+	// The private IP address of node.
+	PrivateIp *string `pulumi:"privateIp"`
+}
+
+// EdgeKubernetesWorkerNodeInput is an input type that accepts EdgeKubernetesWorkerNodeArgs and EdgeKubernetesWorkerNodeOutput values.
+// You can construct a concrete instance of `EdgeKubernetesWorkerNodeInput` via:
+//
+//          EdgeKubernetesWorkerNodeArgs{...}
+type EdgeKubernetesWorkerNodeInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesWorkerNodeOutput() EdgeKubernetesWorkerNodeOutput
+	ToEdgeKubernetesWorkerNodeOutputWithContext(context.Context) EdgeKubernetesWorkerNodeOutput
+}
+
+type EdgeKubernetesWorkerNodeArgs struct {
+	// ID of the node.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The private IP address of node.
+	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
+}
+
+func (EdgeKubernetesWorkerNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesWorkerNode)(nil)).Elem()
+}
+
+func (i EdgeKubernetesWorkerNodeArgs) ToEdgeKubernetesWorkerNodeOutput() EdgeKubernetesWorkerNodeOutput {
+	return i.ToEdgeKubernetesWorkerNodeOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesWorkerNodeArgs) ToEdgeKubernetesWorkerNodeOutputWithContext(ctx context.Context) EdgeKubernetesWorkerNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesWorkerNodeOutput)
+}
+
+// EdgeKubernetesWorkerNodeArrayInput is an input type that accepts EdgeKubernetesWorkerNodeArray and EdgeKubernetesWorkerNodeArrayOutput values.
+// You can construct a concrete instance of `EdgeKubernetesWorkerNodeArrayInput` via:
+//
+//          EdgeKubernetesWorkerNodeArray{ EdgeKubernetesWorkerNodeArgs{...} }
+type EdgeKubernetesWorkerNodeArrayInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesWorkerNodeArrayOutput() EdgeKubernetesWorkerNodeArrayOutput
+	ToEdgeKubernetesWorkerNodeArrayOutputWithContext(context.Context) EdgeKubernetesWorkerNodeArrayOutput
+}
+
+type EdgeKubernetesWorkerNodeArray []EdgeKubernetesWorkerNodeInput
+
+func (EdgeKubernetesWorkerNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesWorkerNode)(nil)).Elem()
+}
+
+func (i EdgeKubernetesWorkerNodeArray) ToEdgeKubernetesWorkerNodeArrayOutput() EdgeKubernetesWorkerNodeArrayOutput {
+	return i.ToEdgeKubernetesWorkerNodeArrayOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesWorkerNodeArray) ToEdgeKubernetesWorkerNodeArrayOutputWithContext(ctx context.Context) EdgeKubernetesWorkerNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesWorkerNodeArrayOutput)
+}
+
+type EdgeKubernetesWorkerNodeOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesWorkerNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesWorkerNode)(nil)).Elem()
+}
+
+func (o EdgeKubernetesWorkerNodeOutput) ToEdgeKubernetesWorkerNodeOutput() EdgeKubernetesWorkerNodeOutput {
+	return o
+}
+
+func (o EdgeKubernetesWorkerNodeOutput) ToEdgeKubernetesWorkerNodeOutputWithContext(ctx context.Context) EdgeKubernetesWorkerNodeOutput {
+	return o
+}
+
+// ID of the node.
+func (o EdgeKubernetesWorkerNodeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o EdgeKubernetesWorkerNodeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The private IP address of node.
+func (o EdgeKubernetesWorkerNodeOutput) PrivateIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
+}
+
+type EdgeKubernetesWorkerNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesWorkerNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesWorkerNode)(nil)).Elem()
+}
+
+func (o EdgeKubernetesWorkerNodeArrayOutput) ToEdgeKubernetesWorkerNodeArrayOutput() EdgeKubernetesWorkerNodeArrayOutput {
+	return o
+}
+
+func (o EdgeKubernetesWorkerNodeArrayOutput) ToEdgeKubernetesWorkerNodeArrayOutputWithContext(ctx context.Context) EdgeKubernetesWorkerNodeArrayOutput {
+	return o
+}
+
+func (o EdgeKubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesWorkerNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeKubernetesWorkerNode {
+		return vs[0].([]EdgeKubernetesWorkerNode)[vs[1].(int)]
+	}).(EdgeKubernetesWorkerNodeOutput)
+}
+
 type KubernetesAddon struct {
 	Config   *string `pulumi:"config"`
 	Disabled *bool   `pulumi:"disabled"`
@@ -2156,6 +2831,346 @@ func (o SwarmNodeArrayOutput) Index(i pulumi.IntInput) SwarmNodeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SwarmNode {
 		return vs[0].([]SwarmNode)[vs[1].(int)]
 	}).(SwarmNodeOutput)
+}
+
+type GetEdgeKubernetesClustersCluster struct {
+	// The ID of availability zone.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	Connections GetEdgeKubernetesClustersClusterConnections `pulumi:"connections"`
+	// ID of the node.
+	Id string `pulumi:"id"`
+	// Node name.
+	Name string `pulumi:"name"`
+	// The ID of nat gateway used to launch kubernetes cluster.
+	NatGatewayId string `pulumi:"natGatewayId"`
+	// The ID of security group where the current cluster worker node is located.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The ID of VPC where the current cluster is located.
+	VpcId string `pulumi:"vpcId"`
+	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	WorkerNodes []GetEdgeKubernetesClustersClusterWorkerNode `pulumi:"workerNodes"`
+}
+
+// GetEdgeKubernetesClustersClusterInput is an input type that accepts GetEdgeKubernetesClustersClusterArgs and GetEdgeKubernetesClustersClusterOutput values.
+// You can construct a concrete instance of `GetEdgeKubernetesClustersClusterInput` via:
+//
+//          GetEdgeKubernetesClustersClusterArgs{...}
+type GetEdgeKubernetesClustersClusterInput interface {
+	pulumi.Input
+
+	ToGetEdgeKubernetesClustersClusterOutput() GetEdgeKubernetesClustersClusterOutput
+	ToGetEdgeKubernetesClustersClusterOutputWithContext(context.Context) GetEdgeKubernetesClustersClusterOutput
+}
+
+type GetEdgeKubernetesClustersClusterArgs struct {
+	// The ID of availability zone.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	Connections GetEdgeKubernetesClustersClusterConnectionsInput `pulumi:"connections"`
+	// ID of the node.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Node name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of nat gateway used to launch kubernetes cluster.
+	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
+	// The ID of security group where the current cluster worker node is located.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The ID of VPC where the current cluster is located.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	WorkerNodes GetEdgeKubernetesClustersClusterWorkerNodeArrayInput `pulumi:"workerNodes"`
+}
+
+func (GetEdgeKubernetesClustersClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEdgeKubernetesClustersCluster)(nil)).Elem()
+}
+
+func (i GetEdgeKubernetesClustersClusterArgs) ToGetEdgeKubernetesClustersClusterOutput() GetEdgeKubernetesClustersClusterOutput {
+	return i.ToGetEdgeKubernetesClustersClusterOutputWithContext(context.Background())
+}
+
+func (i GetEdgeKubernetesClustersClusterArgs) ToGetEdgeKubernetesClustersClusterOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEdgeKubernetesClustersClusterOutput)
+}
+
+// GetEdgeKubernetesClustersClusterArrayInput is an input type that accepts GetEdgeKubernetesClustersClusterArray and GetEdgeKubernetesClustersClusterArrayOutput values.
+// You can construct a concrete instance of `GetEdgeKubernetesClustersClusterArrayInput` via:
+//
+//          GetEdgeKubernetesClustersClusterArray{ GetEdgeKubernetesClustersClusterArgs{...} }
+type GetEdgeKubernetesClustersClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetEdgeKubernetesClustersClusterArrayOutput() GetEdgeKubernetesClustersClusterArrayOutput
+	ToGetEdgeKubernetesClustersClusterArrayOutputWithContext(context.Context) GetEdgeKubernetesClustersClusterArrayOutput
+}
+
+type GetEdgeKubernetesClustersClusterArray []GetEdgeKubernetesClustersClusterInput
+
+func (GetEdgeKubernetesClustersClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEdgeKubernetesClustersCluster)(nil)).Elem()
+}
+
+func (i GetEdgeKubernetesClustersClusterArray) ToGetEdgeKubernetesClustersClusterArrayOutput() GetEdgeKubernetesClustersClusterArrayOutput {
+	return i.ToGetEdgeKubernetesClustersClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetEdgeKubernetesClustersClusterArray) ToGetEdgeKubernetesClustersClusterArrayOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEdgeKubernetesClustersClusterArrayOutput)
+}
+
+type GetEdgeKubernetesClustersClusterOutput struct{ *pulumi.OutputState }
+
+func (GetEdgeKubernetesClustersClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEdgeKubernetesClustersCluster)(nil)).Elem()
+}
+
+func (o GetEdgeKubernetesClustersClusterOutput) ToGetEdgeKubernetesClustersClusterOutput() GetEdgeKubernetesClustersClusterOutput {
+	return o
+}
+
+func (o GetEdgeKubernetesClustersClusterOutput) ToGetEdgeKubernetesClustersClusterOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterOutput {
+	return o
+}
+
+// The ID of availability zone.
+func (o GetEdgeKubernetesClustersClusterOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+func (o GetEdgeKubernetesClustersClusterOutput) Connections() GetEdgeKubernetesClustersClusterConnectionsOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) GetEdgeKubernetesClustersClusterConnections {
+		return v.Connections
+	}).(GetEdgeKubernetesClustersClusterConnectionsOutput)
+}
+
+// ID of the node.
+func (o GetEdgeKubernetesClustersClusterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Node name.
+func (o GetEdgeKubernetesClustersClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of nat gateway used to launch kubernetes cluster.
+func (o GetEdgeKubernetesClustersClusterOutput) NatGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) string { return v.NatGatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of security group where the current cluster worker node is located.
+func (o GetEdgeKubernetesClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of VPC where the current cluster is located.
+func (o GetEdgeKubernetesClustersClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+func (o GetEdgeKubernetesClustersClusterOutput) WorkerNodes() GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) []GetEdgeKubernetesClustersClusterWorkerNode {
+		return v.WorkerNodes
+	}).(GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput)
+}
+
+type GetEdgeKubernetesClustersClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEdgeKubernetesClustersClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEdgeKubernetesClustersCluster)(nil)).Elem()
+}
+
+func (o GetEdgeKubernetesClustersClusterArrayOutput) ToGetEdgeKubernetesClustersClusterArrayOutput() GetEdgeKubernetesClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetEdgeKubernetesClustersClusterArrayOutput) ToGetEdgeKubernetesClustersClusterArrayOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetEdgeKubernetesClustersClusterArrayOutput) Index(i pulumi.IntInput) GetEdgeKubernetesClustersClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEdgeKubernetesClustersCluster {
+		return vs[0].([]GetEdgeKubernetesClustersCluster)[vs[1].(int)]
+	}).(GetEdgeKubernetesClustersClusterOutput)
+}
+
+type GetEdgeKubernetesClustersClusterConnections struct {
+	// API Server Internet endpoint.
+	ApiServerInternet string `pulumi:"apiServerInternet"`
+	// API Server Intranet endpoint.
+	ApiServerIntranet string `pulumi:"apiServerIntranet"`
+}
+
+// GetEdgeKubernetesClustersClusterConnectionsInput is an input type that accepts GetEdgeKubernetesClustersClusterConnectionsArgs and GetEdgeKubernetesClustersClusterConnectionsOutput values.
+// You can construct a concrete instance of `GetEdgeKubernetesClustersClusterConnectionsInput` via:
+//
+//          GetEdgeKubernetesClustersClusterConnectionsArgs{...}
+type GetEdgeKubernetesClustersClusterConnectionsInput interface {
+	pulumi.Input
+
+	ToGetEdgeKubernetesClustersClusterConnectionsOutput() GetEdgeKubernetesClustersClusterConnectionsOutput
+	ToGetEdgeKubernetesClustersClusterConnectionsOutputWithContext(context.Context) GetEdgeKubernetesClustersClusterConnectionsOutput
+}
+
+type GetEdgeKubernetesClustersClusterConnectionsArgs struct {
+	// API Server Internet endpoint.
+	ApiServerInternet pulumi.StringInput `pulumi:"apiServerInternet"`
+	// API Server Intranet endpoint.
+	ApiServerIntranet pulumi.StringInput `pulumi:"apiServerIntranet"`
+}
+
+func (GetEdgeKubernetesClustersClusterConnectionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnections)(nil)).Elem()
+}
+
+func (i GetEdgeKubernetesClustersClusterConnectionsArgs) ToGetEdgeKubernetesClustersClusterConnectionsOutput() GetEdgeKubernetesClustersClusterConnectionsOutput {
+	return i.ToGetEdgeKubernetesClustersClusterConnectionsOutputWithContext(context.Background())
+}
+
+func (i GetEdgeKubernetesClustersClusterConnectionsArgs) ToGetEdgeKubernetesClustersClusterConnectionsOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterConnectionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEdgeKubernetesClustersClusterConnectionsOutput)
+}
+
+type GetEdgeKubernetesClustersClusterConnectionsOutput struct{ *pulumi.OutputState }
+
+func (GetEdgeKubernetesClustersClusterConnectionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnections)(nil)).Elem()
+}
+
+func (o GetEdgeKubernetesClustersClusterConnectionsOutput) ToGetEdgeKubernetesClustersClusterConnectionsOutput() GetEdgeKubernetesClustersClusterConnectionsOutput {
+	return o
+}
+
+func (o GetEdgeKubernetesClustersClusterConnectionsOutput) ToGetEdgeKubernetesClustersClusterConnectionsOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterConnectionsOutput {
+	return o
+}
+
+// API Server Internet endpoint.
+func (o GetEdgeKubernetesClustersClusterConnectionsOutput) ApiServerInternet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersClusterConnections) string { return v.ApiServerInternet }).(pulumi.StringOutput)
+}
+
+// API Server Intranet endpoint.
+func (o GetEdgeKubernetesClustersClusterConnectionsOutput) ApiServerIntranet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersClusterConnections) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
+}
+
+type GetEdgeKubernetesClustersClusterWorkerNode struct {
+	// ID of the node.
+	Id string `pulumi:"id"`
+	// Node name.
+	Name string `pulumi:"name"`
+	// The private IP address of node.
+	PrivateIp string `pulumi:"privateIp"`
+}
+
+// GetEdgeKubernetesClustersClusterWorkerNodeInput is an input type that accepts GetEdgeKubernetesClustersClusterWorkerNodeArgs and GetEdgeKubernetesClustersClusterWorkerNodeOutput values.
+// You can construct a concrete instance of `GetEdgeKubernetesClustersClusterWorkerNodeInput` via:
+//
+//          GetEdgeKubernetesClustersClusterWorkerNodeArgs{...}
+type GetEdgeKubernetesClustersClusterWorkerNodeInput interface {
+	pulumi.Input
+
+	ToGetEdgeKubernetesClustersClusterWorkerNodeOutput() GetEdgeKubernetesClustersClusterWorkerNodeOutput
+	ToGetEdgeKubernetesClustersClusterWorkerNodeOutputWithContext(context.Context) GetEdgeKubernetesClustersClusterWorkerNodeOutput
+}
+
+type GetEdgeKubernetesClustersClusterWorkerNodeArgs struct {
+	// ID of the node.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Node name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The private IP address of node.
+	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
+}
+
+func (GetEdgeKubernetesClustersClusterWorkerNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEdgeKubernetesClustersClusterWorkerNode)(nil)).Elem()
+}
+
+func (i GetEdgeKubernetesClustersClusterWorkerNodeArgs) ToGetEdgeKubernetesClustersClusterWorkerNodeOutput() GetEdgeKubernetesClustersClusterWorkerNodeOutput {
+	return i.ToGetEdgeKubernetesClustersClusterWorkerNodeOutputWithContext(context.Background())
+}
+
+func (i GetEdgeKubernetesClustersClusterWorkerNodeArgs) ToGetEdgeKubernetesClustersClusterWorkerNodeOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterWorkerNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEdgeKubernetesClustersClusterWorkerNodeOutput)
+}
+
+// GetEdgeKubernetesClustersClusterWorkerNodeArrayInput is an input type that accepts GetEdgeKubernetesClustersClusterWorkerNodeArray and GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput values.
+// You can construct a concrete instance of `GetEdgeKubernetesClustersClusterWorkerNodeArrayInput` via:
+//
+//          GetEdgeKubernetesClustersClusterWorkerNodeArray{ GetEdgeKubernetesClustersClusterWorkerNodeArgs{...} }
+type GetEdgeKubernetesClustersClusterWorkerNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetEdgeKubernetesClustersClusterWorkerNodeArrayOutput() GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput
+	ToGetEdgeKubernetesClustersClusterWorkerNodeArrayOutputWithContext(context.Context) GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput
+}
+
+type GetEdgeKubernetesClustersClusterWorkerNodeArray []GetEdgeKubernetesClustersClusterWorkerNodeInput
+
+func (GetEdgeKubernetesClustersClusterWorkerNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEdgeKubernetesClustersClusterWorkerNode)(nil)).Elem()
+}
+
+func (i GetEdgeKubernetesClustersClusterWorkerNodeArray) ToGetEdgeKubernetesClustersClusterWorkerNodeArrayOutput() GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput {
+	return i.ToGetEdgeKubernetesClustersClusterWorkerNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetEdgeKubernetesClustersClusterWorkerNodeArray) ToGetEdgeKubernetesClustersClusterWorkerNodeArrayOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput)
+}
+
+type GetEdgeKubernetesClustersClusterWorkerNodeOutput struct{ *pulumi.OutputState }
+
+func (GetEdgeKubernetesClustersClusterWorkerNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEdgeKubernetesClustersClusterWorkerNode)(nil)).Elem()
+}
+
+func (o GetEdgeKubernetesClustersClusterWorkerNodeOutput) ToGetEdgeKubernetesClustersClusterWorkerNodeOutput() GetEdgeKubernetesClustersClusterWorkerNodeOutput {
+	return o
+}
+
+func (o GetEdgeKubernetesClustersClusterWorkerNodeOutput) ToGetEdgeKubernetesClustersClusterWorkerNodeOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterWorkerNodeOutput {
+	return o
+}
+
+// ID of the node.
+func (o GetEdgeKubernetesClustersClusterWorkerNodeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersClusterWorkerNode) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Node name.
+func (o GetEdgeKubernetesClustersClusterWorkerNodeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersClusterWorkerNode) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The private IP address of node.
+func (o GetEdgeKubernetesClustersClusterWorkerNodeOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersClusterWorkerNode) string { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+type GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEdgeKubernetesClustersClusterWorkerNode)(nil)).Elem()
+}
+
+func (o GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput) ToGetEdgeKubernetesClustersClusterWorkerNodeArrayOutput() GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput {
+	return o
+}
+
+func (o GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput) ToGetEdgeKubernetesClustersClusterWorkerNodeArrayOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput {
+	return o
+}
+
+func (o GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput) Index(i pulumi.IntInput) GetEdgeKubernetesClustersClusterWorkerNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEdgeKubernetesClustersClusterWorkerNode {
+		return vs[0].([]GetEdgeKubernetesClustersClusterWorkerNode)[vs[1].(int)]
+	}).(GetEdgeKubernetesClustersClusterWorkerNodeOutput)
 }
 
 type GetKubernetesClustersCluster struct {
@@ -4623,6 +5638,16 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationServiceArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeOutput{})
 	pulumi.RegisterOutputType(ClusterNodeArrayOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesAddonOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesAddonArrayOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesConnectionsOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesConnectionsPtrOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesLogConfigOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesWorkerDataDiskOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesWorkerDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesWorkerNodeOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesAddonOutput{})
 	pulumi.RegisterOutputType(KubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesAutoscalerNodepoolOutput{})
@@ -4653,6 +5678,11 @@ func init() {
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(SwarmNodeOutput{})
 	pulumi.RegisterOutputType(SwarmNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterOutput{})
+	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterConnectionsOutput{})
+	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterWorkerNodeOutput{})
+	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterConnectionsOutput{})

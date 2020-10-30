@@ -278,7 +278,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly requestTimeout!: pulumi.Output<number | undefined>;
     /**
-     * Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+     * Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
      */
     public readonly scheduler!: pulumi.Output<string | undefined>;
     /**
@@ -575,7 +575,7 @@ export interface ListenerState {
      */
     readonly requestTimeout?: pulumi.Input<number>;
     /**
-     * Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+     * Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
      */
     readonly scheduler?: pulumi.Input<string>;
     /**
@@ -752,7 +752,7 @@ export interface ListenerArgs {
      */
     readonly requestTimeout?: pulumi.Input<number>;
     /**
-     * Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+     * Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
      */
     readonly scheduler?: pulumi.Input<string>;
     /**
