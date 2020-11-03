@@ -2063,6 +2063,117 @@ export namespace cs {
         status: string;
     }
 
+    export interface EdgeKubernetesAddon {
+        config?: string;
+        disabled?: boolean;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: string;
+    }
+
+    export interface EdgeKubernetesConnections {
+        apiServerInternet: string;
+        apiServerIntranet: string;
+        masterPublicIp: string;
+        serviceDomain: string;
+    }
+
+    export interface EdgeKubernetesLogConfig {
+        project?: string;
+        type: string;
+    }
+
+    export interface EdgeKubernetesWorkerDataDisk {
+        autoSnapshotPolicyId?: string;
+        category?: string;
+        device?: string;
+        encrypted?: string;
+        kmsKeyId?: string;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: string;
+        size?: string;
+        snapshotId?: string;
+    }
+
+    export interface EdgeKubernetesWorkerNode {
+        /**
+         * ID of the node.
+         */
+        id: string;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name: string;
+        /**
+         * The private IP address of node.
+         */
+        privateIp: string;
+    }
+
+    export interface GetEdgeKubernetesClustersCluster {
+        /**
+         * The ID of availability zone.
+         */
+        availabilityZone: string;
+        /**
+         * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+         */
+        connections: outputs.cs.GetEdgeKubernetesClustersClusterConnections;
+        /**
+         * ID of the node.
+         */
+        id: string;
+        /**
+         * Node name.
+         */
+        name: string;
+        /**
+         * The ID of nat gateway used to launch kubernetes cluster.
+         */
+        natGatewayId: string;
+        /**
+         * The ID of security group where the current cluster worker node is located.
+         */
+        securityGroupId: string;
+        /**
+         * The ID of VPC where the current cluster is located.
+         */
+        vpcId: string;
+        /**
+         * List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+         */
+        workerNodes: outputs.cs.GetEdgeKubernetesClustersClusterWorkerNode[];
+    }
+
+    export interface GetEdgeKubernetesClustersClusterConnections {
+        /**
+         * API Server Internet endpoint.
+         */
+        apiServerInternet: string;
+        /**
+         * API Server Intranet endpoint.
+         */
+        apiServerIntranet: string;
+    }
+
+    export interface GetEdgeKubernetesClustersClusterWorkerNode {
+        /**
+         * ID of the node.
+         */
+        id: string;
+        /**
+         * Node name.
+         */
+        name: string;
+        /**
+         * The private IP address of node.
+         */
+        privateIp: string;
+    }
+
     export interface GetKubernetesClustersCluster {
         /**
          * The ID of availability zone.

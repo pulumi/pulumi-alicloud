@@ -284,6 +284,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cr_ee_namespace":          {Tok: resource(csMod, "RegistryEnterpriseNamespace")},
 			"alicloud_cr_ee_sync_rule":          {Tok: resource(csMod, "RegistryEnterpriseSyncRule")},
 			"alicloud_cs_kubernetes_node_pool":  {Tok: resource(csMod, "NodePool")},
+			"alicloud_cs_edge_kubernetes":       {Tok: resource(csMod, "EdgeKubernetes")},
 
 			// DataHub
 			"alicloud_datahub_project":      {Tok: resource(datahubMod, "Project")},
@@ -703,6 +704,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Cs
 			"alicloud_cs_kubernetes_clusters":            {Tok: dataSource(csMod, "getKubernetesClusters")},
+			"alicloud_cs_edge_kubernetes_clusters":       {Tok: dataSource(csMod, "getEdgeKubernetesClusters")},
 			"alicloud_cs_managed_kubernetes_clusters":    {Tok: dataSource(csMod, "getManagedKubernetesClusters")},
 			"alicloud_cs_serverless_kubernetes_clusters": {Tok: dataSource(csMod, "getServerlessKubernetesClusters")},
 			"alicloud_cr_ee_instances":                   {Tok: dataSource(csMod, "getRegistryEnterpriseInstances")},

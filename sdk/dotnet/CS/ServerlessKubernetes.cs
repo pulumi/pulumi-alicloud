@@ -79,6 +79,9 @@ namespace Pulumi.AliCloud.CS
         [Output("privateZone")]
         public Output<bool?> PrivateZone { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
@@ -237,6 +240,9 @@ namespace Pulumi.AliCloud.CS
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -368,6 +374,9 @@ namespace Pulumi.AliCloud.CS
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 

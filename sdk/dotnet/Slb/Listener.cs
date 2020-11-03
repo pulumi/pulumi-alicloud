@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<int?> RequestTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
         /// </summary>
         [Output("scheduler")]
         public Output<string?> Scheduler { get; private set; } = null!;
@@ -620,7 +620,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? RequestTimeout { get; set; }
 
         /// <summary>
-        /// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
@@ -873,7 +873,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? RequestTimeout { get; set; }
 
         /// <summary>
-        /// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }

@@ -12,6 +12,11 @@ from . import outputs
 __all__ = [
     'ApplicationService',
     'ClusterNode',
+    'EdgeKubernetesAddon',
+    'EdgeKubernetesConnections',
+    'EdgeKubernetesLogConfig',
+    'EdgeKubernetesWorkerDataDisk',
+    'EdgeKubernetesWorkerNode',
     'KubernetesAddon',
     'KubernetesAutoscalerNodepool',
     'KubernetesConnections',
@@ -27,6 +32,9 @@ __all__ = [
     'NodePoolTaint',
     'ServerlessKubernetesAddon',
     'SwarmNode',
+    'GetEdgeKubernetesClustersClusterResult',
+    'GetEdgeKubernetesClustersClusterConnectionsResult',
+    'GetEdgeKubernetesClustersClusterWorkerNodeResult',
     'GetKubernetesClustersClusterResult',
     'GetKubernetesClustersClusterConnectionsResult',
     'GetKubernetesClustersClusterLogConfigResult',
@@ -146,6 +154,231 @@ class ClusterNode(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         return pulumi.get(self, "status")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EdgeKubernetesAddon(dict):
+    def __init__(__self__, *,
+                 config: Optional[str] = None,
+                 disabled: Optional[bool] = None,
+                 name: Optional[str] = None):
+        """
+        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[str]:
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EdgeKubernetesConnections(dict):
+    def __init__(__self__, *,
+                 api_server_internet: Optional[str] = None,
+                 api_server_intranet: Optional[str] = None,
+                 master_public_ip: Optional[str] = None,
+                 service_domain: Optional[str] = None):
+        if api_server_internet is not None:
+            pulumi.set(__self__, "api_server_internet", api_server_internet)
+        if api_server_intranet is not None:
+            pulumi.set(__self__, "api_server_intranet", api_server_intranet)
+        if master_public_ip is not None:
+            pulumi.set(__self__, "master_public_ip", master_public_ip)
+        if service_domain is not None:
+            pulumi.set(__self__, "service_domain", service_domain)
+
+    @property
+    @pulumi.getter(name="apiServerInternet")
+    def api_server_internet(self) -> Optional[str]:
+        return pulumi.get(self, "api_server_internet")
+
+    @property
+    @pulumi.getter(name="apiServerIntranet")
+    def api_server_intranet(self) -> Optional[str]:
+        return pulumi.get(self, "api_server_intranet")
+
+    @property
+    @pulumi.getter(name="masterPublicIp")
+    def master_public_ip(self) -> Optional[str]:
+        return pulumi.get(self, "master_public_ip")
+
+    @property
+    @pulumi.getter(name="serviceDomain")
+    def service_domain(self) -> Optional[str]:
+        return pulumi.get(self, "service_domain")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EdgeKubernetesLogConfig(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 project: Optional[str] = None):
+        pulumi.set(__self__, "type", type)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        return pulumi.get(self, "project")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EdgeKubernetesWorkerDataDisk(dict):
+    def __init__(__self__, *,
+                 auto_snapshot_policy_id: Optional[str] = None,
+                 category: Optional[str] = None,
+                 device: Optional[str] = None,
+                 encrypted: Optional[str] = None,
+                 kms_key_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 size: Optional[str] = None,
+                 snapshot_id: Optional[str] = None):
+        """
+        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        if auto_snapshot_policy_id is not None:
+            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @property
+    @pulumi.getter(name="autoSnapshotPolicyId")
+    def auto_snapshot_policy_id(self) -> Optional[str]:
+        return pulumi.get(self, "auto_snapshot_policy_id")
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[str]:
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[str]:
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[str]:
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[str]:
+        return pulumi.get(self, "snapshot_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EdgeKubernetesWorkerNode(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 private_ip: Optional[str] = None):
+        """
+        :param str id: ID of the node.
+        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str private_ip: The private IP address of node.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if private_ip is not None:
+            pulumi.set(__self__, "private_ip", private_ip)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the node.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> Optional[str]:
+        """
+        The private IP address of node.
+        """
+        return pulumi.get(self, "private_ip")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -903,6 +1136,170 @@ class SwarmNode(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetEdgeKubernetesClustersClusterResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: str,
+                 connections: 'outputs.GetEdgeKubernetesClustersClusterConnectionsResult',
+                 id: str,
+                 name: str,
+                 nat_gateway_id: str,
+                 security_group_id: str,
+                 vpc_id: str,
+                 worker_nodes: Sequence['outputs.GetEdgeKubernetesClustersClusterWorkerNodeResult']):
+        """
+        :param str availability_zone: The ID of availability zone.
+        :param 'GetEdgeKubernetesClustersClusterConnectionsArgs' connections: Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        :param str id: ID of the node.
+        :param str name: Node name.
+        :param str nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
+        :param str security_group_id: The ID of security group where the current cluster worker node is located.
+        :param str vpc_id: The ID of VPC where the current cluster is located.
+        :param Sequence['GetEdgeKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "connections", connections)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "worker_nodes", worker_nodes)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        """
+        The ID of availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter
+    def connections(self) -> 'outputs.GetEdgeKubernetesClustersClusterConnectionsResult':
+        """
+        Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        """
+        return pulumi.get(self, "connections")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the node.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Node name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="natGatewayId")
+    def nat_gateway_id(self) -> str:
+        """
+        The ID of nat gateway used to launch kubernetes cluster.
+        """
+        return pulumi.get(self, "nat_gateway_id")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The ID of security group where the current cluster worker node is located.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of VPC where the current cluster is located.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="workerNodes")
+    def worker_nodes(self) -> Sequence['outputs.GetEdgeKubernetesClustersClusterWorkerNodeResult']:
+        """
+        List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        """
+        return pulumi.get(self, "worker_nodes")
+
+
+@pulumi.output_type
+class GetEdgeKubernetesClustersClusterConnectionsResult(dict):
+    def __init__(__self__, *,
+                 api_server_internet: str,
+                 api_server_intranet: str):
+        """
+        :param str api_server_internet: API Server Internet endpoint.
+        :param str api_server_intranet: API Server Intranet endpoint.
+        """
+        pulumi.set(__self__, "api_server_internet", api_server_internet)
+        pulumi.set(__self__, "api_server_intranet", api_server_intranet)
+
+    @property
+    @pulumi.getter(name="apiServerInternet")
+    def api_server_internet(self) -> str:
+        """
+        API Server Internet endpoint.
+        """
+        return pulumi.get(self, "api_server_internet")
+
+    @property
+    @pulumi.getter(name="apiServerIntranet")
+    def api_server_intranet(self) -> str:
+        """
+        API Server Intranet endpoint.
+        """
+        return pulumi.get(self, "api_server_intranet")
+
+
+@pulumi.output_type
+class GetEdgeKubernetesClustersClusterWorkerNodeResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str,
+                 private_ip: str):
+        """
+        :param str id: ID of the node.
+        :param str name: Node name.
+        :param str private_ip: The private IP address of node.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "private_ip", private_ip)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the node.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Node name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> str:
+        """
+        The private IP address of node.
+        """
+        return pulumi.get(self, "private_ip")
 
 
 @pulumi.output_type

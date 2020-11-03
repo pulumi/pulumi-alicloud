@@ -213,7 +213,7 @@ type Listener struct {
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrOutput `pulumi:"requestTimeout"`
-	// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
 	Scheduler pulumi.StringPtrOutput `pulumi:"scheduler"`
 	// SLB Server certificate ID. It is required when `protocol` is `https`.
 	ServerCertificateId pulumi.StringOutput `pulumi:"serverCertificateId"`
@@ -339,7 +339,7 @@ type listenerState struct {
 	Protocol *string `pulumi:"protocol"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout *int `pulumi:"requestTimeout"`
-	// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
 	Scheduler *string `pulumi:"scheduler"`
 	// SLB Server certificate ID. It is required when `protocol` is `https`.
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
@@ -429,7 +429,7 @@ type ListenerState struct {
 	Protocol pulumi.StringPtrInput
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrInput
-	// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
 	Scheduler pulumi.StringPtrInput
 	// SLB Server certificate ID. It is required when `protocol` is `https`.
 	ServerCertificateId pulumi.StringPtrInput
@@ -523,7 +523,7 @@ type listenerArgs struct {
 	Protocol string `pulumi:"protocol"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout *int `pulumi:"requestTimeout"`
-	// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
 	Scheduler *string `pulumi:"scheduler"`
 	// SLB Server certificate ID. It is required when `protocol` is `https`.
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
@@ -614,7 +614,7 @@ type ListenerArgs struct {
 	Protocol pulumi.StringInput
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrInput
-	// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
 	Scheduler pulumi.StringPtrInput
 	// SLB Server certificate ID. It is required when `protocol` is `https`.
 	ServerCertificateId pulumi.StringPtrInput

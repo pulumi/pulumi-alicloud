@@ -78,6 +78,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      * Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
      */
     public readonly privateZone!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -221,6 +224,9 @@ export interface ServerlessKubernetesState {
      * Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
      */
     readonly privateZone?: pulumi.Input<boolean>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -298,6 +304,9 @@ export interface ServerlessKubernetesArgs {
      * Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
      */
     readonly privateZone?: pulumi.Input<boolean>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

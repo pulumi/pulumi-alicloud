@@ -533,6 +533,56 @@ export namespace cs {
         status?: pulumi.Input<string>;
     }
 
+    export interface EdgeKubernetesAddon {
+        config?: pulumi.Input<string>;
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface EdgeKubernetesConnections {
+        apiServerInternet?: pulumi.Input<string>;
+        apiServerIntranet?: pulumi.Input<string>;
+        masterPublicIp?: pulumi.Input<string>;
+        serviceDomain?: pulumi.Input<string>;
+    }
+
+    export interface EdgeKubernetesLogConfig {
+        project?: pulumi.Input<string>;
+        type: pulumi.Input<string>;
+    }
+
+    export interface EdgeKubernetesWorkerDataDisk {
+        autoSnapshotPolicyId?: pulumi.Input<string>;
+        category?: pulumi.Input<string>;
+        device?: pulumi.Input<string>;
+        encrypted?: pulumi.Input<string>;
+        kmsKeyId?: pulumi.Input<string>;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: pulumi.Input<string>;
+        size?: pulumi.Input<string>;
+        snapshotId?: pulumi.Input<string>;
+    }
+
+    export interface EdgeKubernetesWorkerNode {
+        /**
+         * ID of the node.
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The private IP address of node.
+         */
+        privateIp?: pulumi.Input<string>;
+    }
+
     export interface KubernetesAddon {
         config?: pulumi.Input<string>;
         disabled?: pulumi.Input<boolean>;

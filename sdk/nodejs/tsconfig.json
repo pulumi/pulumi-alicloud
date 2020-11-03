@@ -111,6 +111,8 @@
         "cr/repo.ts",
         "cs/application.ts",
         "cs/cluster.ts",
+        "cs/edgeKubernetes.ts",
+        "cs/getEdgeKubernetesClusters.ts",
         "cs/getKubernetesClusters.ts",
         "cs/getManagedKubernetesClusters.ts",
         "cs/getRegistryEnterpriseInstances.ts",
