@@ -15,7 +15,7 @@ type AutoProvisioningGroupLaunchTemplateConfig struct {
 	MaxPrice         string  `pulumi:"maxPrice"`
 	Priority         *string `pulumi:"priority"`
 	VswitchId        string  `pulumi:"vswitchId"`
-	WeightedCapacity *string `pulumi:"weightedCapacity"`
+	WeightedCapacity string  `pulumi:"weightedCapacity"`
 }
 
 // AutoProvisioningGroupLaunchTemplateConfigInput is an input type that accepts AutoProvisioningGroupLaunchTemplateConfigArgs and AutoProvisioningGroupLaunchTemplateConfigOutput values.
@@ -34,7 +34,7 @@ type AutoProvisioningGroupLaunchTemplateConfigArgs struct {
 	MaxPrice         pulumi.StringInput    `pulumi:"maxPrice"`
 	Priority         pulumi.StringPtrInput `pulumi:"priority"`
 	VswitchId        pulumi.StringInput    `pulumi:"vswitchId"`
-	WeightedCapacity pulumi.StringPtrInput `pulumi:"weightedCapacity"`
+	WeightedCapacity pulumi.StringInput    `pulumi:"weightedCapacity"`
 }
 
 func (AutoProvisioningGroupLaunchTemplateConfigArgs) ElementType() reflect.Type {
@@ -104,8 +104,8 @@ func (o AutoProvisioningGroupLaunchTemplateConfigOutput) VswitchId() pulumi.Stri
 	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-func (o AutoProvisioningGroupLaunchTemplateConfigOutput) WeightedCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) *string { return v.WeightedCapacity }).(pulumi.StringPtrOutput)
+func (o AutoProvisioningGroupLaunchTemplateConfigOutput) WeightedCapacity() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) string { return v.WeightedCapacity }).(pulumi.StringOutput)
 }
 
 type AutoProvisioningGroupLaunchTemplateConfigArrayOutput struct{ *pulumi.OutputState }

@@ -3776,9 +3776,9 @@ export namespace ecs {
     export interface AutoProvisioningGroupLaunchTemplateConfig {
         instanceType?: string;
         maxPrice: string;
-        priority?: string;
+        priority: string;
         vswitchId: string;
-        weightedCapacity?: string;
+        weightedCapacity: string;
     }
 
     export interface DedicatedHostNetworkAttribute {
@@ -10111,62 +10111,62 @@ export namespace vpc {
         /**
          * The description of the egress entry.
          */
-        description?: string;
+        description: string;
         /**
          * The destination ip of the egress entry.
          */
-        destinationCidrIp?: string;
+        destinationCidrIp: string;
         /**
          * The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
          */
-        entryType?: string;
+        entryType: string;
         /**
          * The name of the egress entry.
          */
-        name?: string;
+        name: string;
         /**
          * The policy of the egress entry. It must be `accept` or `drop`.
          */
-        policy?: string;
+        policy: string;
         /**
          * The port of the egress entry.
          */
-        port?: string;
+        port: string;
         /**
          * The protocol of the egress entry.
          */
-        protocol?: string;
+        protocol: string;
     }
 
     export interface NetworkAclEntriesIngress {
         /**
          * The description of the egress entry.
          */
-        description?: string;
+        description: string;
         /**
          * The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
          */
-        entryType?: string;
+        entryType: string;
         /**
          * The name of the egress entry.
          */
-        name?: string;
+        name: string;
         /**
          * The policy of the egress entry. It must be `accept` or `drop`.
          */
-        policy?: string;
+        policy: string;
         /**
          * The port of the egress entry.
          */
-        port?: string;
+        port: string;
         /**
          * The protocol of the egress entry.
          */
-        protocol?: string;
+        protocol: string;
         /**
          * The source ip of the ingress entry.
          */
-        sourceCidrIp?: string;
+        sourceCidrIp: string;
     }
 }
 

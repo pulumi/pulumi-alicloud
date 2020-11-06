@@ -69,6 +69,8 @@ namespace Pulumi.AliCloud.Ecs
     ///                 {
     ///                     InstanceType = "ecs.n1.small",
     ///                     VswitchId = defaultSwitch.Id,
+    ///                     WeightedCapacity = "2",
+    ///                     MaxPrice = "2",
     ///                 },
     ///             },
     ///         });
@@ -82,7 +84,7 @@ namespace Pulumi.AliCloud.Ecs
     /// * `instance_type` - (Optional) The instance type of the Nth extended configurations of the launch template.
     /// * `max_price` - (Required) The maximum price of the instance type specified in the Nth extended configurations of the launch template.
     /// * `vswitch_id` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.
-    /// * `weighted_capacity` - (Optional) The weight of the instance type specified in the Nth extended configurations of the launch template.
+    /// * `weighted_capacity` - (Required) The weight of the instance type specified in the Nth extended configurations of the launch template.
     /// * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
     /// </summary>
     public partial class AutoProvisioningGroup : Pulumi.CustomResource
@@ -91,7 +93,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
         /// </summary>
         [Output("autoProvisioningGroupName")]
-        public Output<string?> AutoProvisioningGroupName { get; private set; } = null!;
+        public Output<string> AutoProvisioningGroupName { get; private set; } = null!;
 
         /// <summary>
         /// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
@@ -133,13 +135,13 @@ namespace Pulumi.AliCloud.Ecs
         /// The version of the instance launch template associated with the auto provisioning group.
         /// </summary>
         [Output("launchTemplateVersion")]
-        public Output<string?> LaunchTemplateVersion { get; private set; } = null!;
+        public Output<string> LaunchTemplateVersion { get; private set; } = null!;
 
         /// <summary>
         /// The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
         /// </summary>
         [Output("maxSpotPrice")]
-        public Output<double?> MaxSpotPrice { get; private set; } = null!;
+        public Output<double> MaxSpotPrice { get; private set; } = null!;
 
         /// <summary>
         /// The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
@@ -169,7 +171,7 @@ namespace Pulumi.AliCloud.Ecs
         /// This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         /// </summary>
         [Output("spotInstancePoolsToUseCount")]
-        public Output<int?> SpotInstancePoolsToUseCount { get; private set; } = null!;
+        public Output<int> SpotInstancePoolsToUseCount { get; private set; } = null!;
 
         /// <summary>
         /// The target capacity of preemptible instances in the auto provisioning group.
@@ -199,13 +201,13 @@ namespace Pulumi.AliCloud.Ecs
         /// The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
         /// </summary>
         [Output("validFrom")]
-        public Output<string?> ValidFrom { get; private set; } = null!;
+        public Output<string> ValidFrom { get; private set; } = null!;
 
         /// <summary>
         /// The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
         /// </summary>
         [Output("validUntil")]
-        public Output<string?> ValidUntil { get; private set; } = null!;
+        public Output<string> ValidUntil { get; private set; } = null!;
 
 
         /// <summary>

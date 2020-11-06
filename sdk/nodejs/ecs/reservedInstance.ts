@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     periodUnit: "Year",
  *     offeringType: "All Upfront",
  *     description: "ReservedInstance",
- *     zoneId: "cn-shanghai-g",
+ *     zoneId: "cn-hangzhou-h",
  *     scope: "Zone",
  *     period: "1",
  * });

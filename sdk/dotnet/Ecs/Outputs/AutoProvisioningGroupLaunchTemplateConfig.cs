@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string MaxPrice;
         public readonly string? Priority;
         public readonly string VswitchId;
-        public readonly string? WeightedCapacity;
+        public readonly string WeightedCapacity;
 
         [OutputConstructor]
         private AutoProvisioningGroupLaunchTemplateConfig(
@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string vswitchId,
 
-            string? weightedCapacity)
+            string weightedCapacity)
         {
             InstanceType = instanceType;
             MaxPrice = maxPrice;

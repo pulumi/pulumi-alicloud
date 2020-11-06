@@ -854,7 +854,7 @@ export namespace ecs {
         maxPrice: pulumi.Input<string>;
         priority?: pulumi.Input<string>;
         vswitchId: pulumi.Input<string>;
-        weightedCapacity?: pulumi.Input<string>;
+        weightedCapacity: pulumi.Input<string>;
     }
 
     export interface DedicatedHostNetworkAttribute {

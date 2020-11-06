@@ -42,17 +42,16 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
     def __init__(__self__, *,
                  max_price: str,
                  vswitch_id: str,
+                 weighted_capacity: str,
                  instance_type: Optional[str] = None,
-                 priority: Optional[str] = None,
-                 weighted_capacity: Optional[str] = None):
+                 priority: Optional[str] = None):
         pulumi.set(__self__, "max_price", max_price)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "weighted_capacity", weighted_capacity)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
-        if weighted_capacity is not None:
-            pulumi.set(__self__, "weighted_capacity", weighted_capacity)
 
     @property
     @pulumi.getter(name="maxPrice")
@@ -65,6 +64,11 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
         return pulumi.get(self, "vswitch_id")
 
     @property
+    @pulumi.getter(name="weightedCapacity")
+    def weighted_capacity(self) -> str:
+        return pulumi.get(self, "weighted_capacity")
+
+    @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
         return pulumi.get(self, "instance_type")
@@ -73,11 +77,6 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
     @pulumi.getter
     def priority(self) -> Optional[str]:
         return pulumi.get(self, "priority")
-
-    @property
-    @pulumi.getter(name="weightedCapacity")
-    def weighted_capacity(self) -> Optional[str]:
-        return pulumi.get(self, "weighted_capacity")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
