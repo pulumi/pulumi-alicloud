@@ -46,7 +46,7 @@ class ReservedInstance(pulumi.CustomResource):
             period_unit="Year",
             offering_type="All Upfront",
             description="ReservedInstance",
-            zone_id="cn-shanghai-g",
+            zone_id="cn-hangzhou-h",
             scope="Zone",
             period=1)
         ```

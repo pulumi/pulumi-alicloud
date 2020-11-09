@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs
     ///             PeriodUnit = "Year",
     ///             OfferingType = "All Upfront",
     ///             Description = "ReservedInstance",
-    ///             ZoneId = "cn-shanghai-g",
+    ///             ZoneId = "cn-hangzhou-h",
     ///             Scope = "Zone",
     ///             Period = 1,
     ///         });

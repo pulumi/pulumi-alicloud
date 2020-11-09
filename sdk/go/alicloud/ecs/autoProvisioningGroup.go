@@ -89,8 +89,10 @@ import (
 // 			SpotTargetCapacity:       pulumi.String("2"),
 // 			LaunchTemplateConfigs: ecs.AutoProvisioningGroupLaunchTemplateConfigArray{
 // 				&ecs.AutoProvisioningGroupLaunchTemplateConfigArgs{
-// 					InstanceType: pulumi.String("ecs.n1.small"),
-// 					VswitchId:    defaultSwitch.ID(),
+// 					InstanceType:     pulumi.String("ecs.n1.small"),
+// 					VswitchId:        defaultSwitch.ID(),
+// 					WeightedCapacity: pulumi.String("2"),
+// 					MaxPrice:         pulumi.String("2"),
 // 				},
 // 			},
 // 		})
@@ -107,13 +109,13 @@ import (
 // * `instanceType` - (Optional) The instance type of the Nth extended configurations of the launch template.
 // * `maxPrice` - (Required) The maximum price of the instance type specified in the Nth extended configurations of the launch template.
 // * `vswitchId` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.
-// * `weightedCapacity` - (Optional) The weight of the instance type specified in the Nth extended configurations of the launch template.
+// * `weightedCapacity` - (Required) The weight of the instance type specified in the Nth extended configurations of the launch template.
 // * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
 type AutoProvisioningGroup struct {
 	pulumi.CustomResourceState
 
 	// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
-	AutoProvisioningGroupName pulumi.StringPtrOutput `pulumi:"autoProvisioningGroupName"`
+	AutoProvisioningGroupName pulumi.StringOutput `pulumi:"autoProvisioningGroupName"`
 	// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
 	AutoProvisioningGroupType pulumi.StringPtrOutput `pulumi:"autoProvisioningGroupType"`
 	// The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
@@ -127,9 +129,9 @@ type AutoProvisioningGroup struct {
 	// The ID of the instance launch template associated with the auto provisioning group.
 	LaunchTemplateId pulumi.StringOutput `pulumi:"launchTemplateId"`
 	// The version of the instance launch template associated with the auto provisioning group.
-	LaunchTemplateVersion pulumi.StringPtrOutput `pulumi:"launchTemplateVersion"`
+	LaunchTemplateVersion pulumi.StringOutput `pulumi:"launchTemplateVersion"`
 	// The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
-	MaxSpotPrice pulumi.Float64PtrOutput `pulumi:"maxSpotPrice"`
+	MaxSpotPrice pulumi.Float64Output `pulumi:"maxSpotPrice"`
 	// The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
 	PayAsYouGoAllocationStrategy pulumi.StringPtrOutput `pulumi:"payAsYouGoAllocationStrategy"`
 	// The target capacity of pay-as-you-go instances in the auto provisioning group.
@@ -139,7 +141,7 @@ type AutoProvisioningGroup struct {
 	// The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
 	SpotInstanceInterruptionBehavior pulumi.StringPtrOutput `pulumi:"spotInstanceInterruptionBehavior"`
 	// This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
-	SpotInstancePoolsToUseCount pulumi.IntPtrOutput `pulumi:"spotInstancePoolsToUseCount"`
+	SpotInstancePoolsToUseCount pulumi.IntOutput `pulumi:"spotInstancePoolsToUseCount"`
 	// The target capacity of preemptible instances in the auto provisioning group.
 	SpotTargetCapacity pulumi.StringPtrOutput `pulumi:"spotTargetCapacity"`
 	// Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
@@ -149,9 +151,9 @@ type AutoProvisioningGroup struct {
 	// The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
 	TotalTargetCapacity pulumi.StringOutput `pulumi:"totalTargetCapacity"`
 	// The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
-	ValidFrom pulumi.StringPtrOutput `pulumi:"validFrom"`
+	ValidFrom pulumi.StringOutput `pulumi:"validFrom"`
 	// The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
-	ValidUntil pulumi.StringPtrOutput `pulumi:"validUntil"`
+	ValidUntil pulumi.StringOutput `pulumi:"validUntil"`
 }
 
 // NewAutoProvisioningGroup registers a new resource with the given unique name, arguments, and options.

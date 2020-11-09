@@ -24,8 +24,8 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
-        [Input("weightedCapacity")]
-        public Input<string>? WeightedCapacity { get; set; }
+        [Input("weightedCapacity", required: true)]
+        public Input<string> WeightedCapacity { get; set; } = null!;
 
         public AutoProvisioningGroupLaunchTemplateConfigArgs()
         {

@@ -48,6 +48,8 @@ import * as utilities from "../utilities";
  *     launchTemplateConfigs: [{
  *         instanceType: "ecs.n1.small",
  *         vswitchId: defaultSwitch.id,
+ *         weightedCapacity: "2",
+ *         maxPrice: "2",
  *     }],
  * });
  * ```
@@ -57,7 +59,7 @@ import * as utilities from "../utilities";
  * * `instanceType` - (Optional) The instance type of the Nth extended configurations of the launch template.
  * * `maxPrice` - (Required) The maximum price of the instance type specified in the Nth extended configurations of the launch template.
  * * `vswitchId` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.
- * * `weightedCapacity` - (Optional) The weight of the instance type specified in the Nth extended configurations of the launch template.
+ * * `weightedCapacity` - (Required) The weight of the instance type specified in the Nth extended configurations of the launch template.
  * * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
  */
 export class AutoProvisioningGroup extends pulumi.CustomResource {
@@ -91,7 +93,7 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
     /**
      * The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
      */
-    public readonly autoProvisioningGroupName!: pulumi.Output<string | undefined>;
+    public readonly autoProvisioningGroupName!: pulumi.Output<string>;
     /**
      * The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
      */
@@ -119,11 +121,11 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
     /**
      * The version of the instance launch template associated with the auto provisioning group.
      */
-    public readonly launchTemplateVersion!: pulumi.Output<string | undefined>;
+    public readonly launchTemplateVersion!: pulumi.Output<string>;
     /**
      * The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
      */
-    public readonly maxSpotPrice!: pulumi.Output<number | undefined>;
+    public readonly maxSpotPrice!: pulumi.Output<number>;
     /**
      * The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
      */
@@ -143,7 +145,7 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
     /**
      * This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
      */
-    public readonly spotInstancePoolsToUseCount!: pulumi.Output<number | undefined>;
+    public readonly spotInstancePoolsToUseCount!: pulumi.Output<number>;
     /**
      * The target capacity of preemptible instances in the auto provisioning group.
      */
@@ -163,11 +165,11 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
     /**
      * The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
      */
-    public readonly validFrom!: pulumi.Output<string | undefined>;
+    public readonly validFrom!: pulumi.Output<string>;
     /**
      * The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
      */
-    public readonly validUntil!: pulumi.Output<string | undefined>;
+    public readonly validUntil!: pulumi.Output<string>;
 
     /**
      * Create a AutoProvisioningGroup resource with the given unique name, arguments, and options.

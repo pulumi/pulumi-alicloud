@@ -32,7 +32,7 @@ import (
 // 			PeriodUnit:     pulumi.String("Year"),
 // 			OfferingType:   pulumi.String("All Upfront"),
 // 			Description:    pulumi.String("ReservedInstance"),
-// 			ZoneId:         pulumi.String("cn-shanghai-g"),
+// 			ZoneId:         pulumi.String("cn-hangzhou-h"),
 // 			Scope:          pulumi.String("Zone"),
 // 			Period:         pulumi.Int(1),
 // 		})

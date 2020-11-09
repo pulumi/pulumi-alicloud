@@ -23,17 +23,16 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
     def __init__(__self__, *,
                  max_price: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
+                 weighted_capacity: pulumi.Input[str],
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[str]] = None,
-                 weighted_capacity: Optional[pulumi.Input[str]] = None):
+                 priority: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "max_price", max_price)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "weighted_capacity", weighted_capacity)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
-        if weighted_capacity is not None:
-            pulumi.set(__self__, "weighted_capacity", weighted_capacity)
 
     @property
     @pulumi.getter(name="maxPrice")
@@ -54,6 +53,15 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="weightedCapacity")
+    def weighted_capacity(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "weighted_capacity")
+
+    @weighted_capacity.setter
+    def weighted_capacity(self, value: pulumi.Input[str]):
+        pulumi.set(self, "weighted_capacity", value)
+
+    @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "instance_type")
@@ -70,15 +78,6 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "priority", value)
-
-    @property
-    @pulumi.getter(name="weightedCapacity")
-    def weighted_capacity(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "weighted_capacity")
-
-    @weighted_capacity.setter
-    def weighted_capacity(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "weighted_capacity", value)
 
 
 @pulumi.input_type

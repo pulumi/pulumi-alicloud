@@ -78,6 +78,8 @@ class AutoProvisioningGroup(pulumi.CustomResource):
             launch_template_configs=[alicloud.ecs.AutoProvisioningGroupLaunchTemplateConfigArgs(
                 instance_type="ecs.n1.small",
                 vswitch_id=default_switch.id,
+                weighted_capacity="2",
+                max_price="2",
             )])
         ```
         ## Block config
@@ -86,7 +88,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         * `instance_type` - (Optional) The instance type of the Nth extended configurations of the launch template.
         * `max_price` - (Required) The maximum price of the instance type specified in the Nth extended configurations of the launch template.
         * `vswitch_id` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.
-        * `weighted_capacity` - (Optional) The weight of the instance type specified in the Nth extended configurations of the launch template.
+        * `weighted_capacity` - (Required) The weight of the instance type specified in the Nth extended configurations of the launch template.
         * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
 
         :param str resource_name: The name of the resource.
@@ -241,7 +243,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoProvisioningGroupName")
-    def auto_provisioning_group_name(self) -> pulumi.Output[Optional[str]]:
+    def auto_provisioning_group_name(self) -> pulumi.Output[str]:
         """
         The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
         """
@@ -297,7 +299,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launchTemplateVersion")
-    def launch_template_version(self) -> pulumi.Output[Optional[str]]:
+    def launch_template_version(self) -> pulumi.Output[str]:
         """
         The version of the instance launch template associated with the auto provisioning group.
         """
@@ -305,7 +307,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSpotPrice")
-    def max_spot_price(self) -> pulumi.Output[Optional[float]]:
+    def max_spot_price(self) -> pulumi.Output[float]:
         """
         The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
         """
@@ -345,7 +347,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotInstancePoolsToUseCount")
-    def spot_instance_pools_to_use_count(self) -> pulumi.Output[Optional[int]]:
+    def spot_instance_pools_to_use_count(self) -> pulumi.Output[int]:
         """
         This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         """
@@ -385,7 +387,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validFrom")
-    def valid_from(self) -> pulumi.Output[Optional[str]]:
+    def valid_from(self) -> pulumi.Output[str]:
         """
         The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
         """
@@ -393,7 +395,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validUntil")
-    def valid_until(self) -> pulumi.Output[Optional[str]]:
+    def valid_until(self) -> pulumi.Output[str]:
         """
         The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
         """
