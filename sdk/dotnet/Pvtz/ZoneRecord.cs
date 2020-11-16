@@ -24,6 +24,12 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<int> RecordId { get; private set; } = null!;
 
         /// <summary>
+        /// The remark of the Private Zone Record.
+        /// </summary>
+        [Output("remark")]
+        public Output<string?> Remark { get; private set; } = null!;
+
+        /// <summary>
         /// The resource record of the Private Zone Record.
         /// </summary>
         [Output("resourceRecord")]
@@ -106,6 +112,12 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<int>? Priority { get; set; }
 
         /// <summary>
+        /// The remark of the Private Zone Record.
+        /// </summary>
+        [Input("remark")]
+        public Input<string>? Remark { get; set; }
+
+        /// <summary>
         /// The resource record of the Private Zone Record.
         /// </summary>
         [Input("resourceRecord", required: true)]
@@ -153,6 +165,12 @@ namespace Pulumi.AliCloud.Pvtz
         /// </summary>
         [Input("recordId")]
         public Input<int>? RecordId { get; set; }
+
+        /// <summary>
+        /// The remark of the Private Zone Record.
+        /// </summary>
+        [Input("remark")]
+        public Input<string>? Remark { get; set; }
 
         /// <summary>
         /// The resource record of the Private Zone Record.

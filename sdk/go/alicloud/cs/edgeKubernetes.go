@@ -23,7 +23,9 @@ type EdgeKubernetes struct {
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrOutput          `pulumi:"clusterCaCert"`
 	Connections   EdgeKubernetesConnectionsOutput `pulumi:"connections"`
-	// Install cloud monitor agent on ECS. default: `true`
+	// Whether to enable cluster deletion protection.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// Install cloud monitor agent on ECS. default: `true`.
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolOutput `pulumi:"isEnterpriseSecurityGroup"`
@@ -41,12 +43,15 @@ type EdgeKubernetes struct {
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrOutput `pulumi:"nodeCidrMask"`
-	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
+	ProxyMode    pulumi.StringPtrOutput   `pulumi:"proxyMode"`
+	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
+	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -63,14 +68,14 @@ type EdgeKubernetes struct {
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// - category: the type of the data disks. Valid values:
-	// + cloud: basic disks.
-	// + cloud_efficiency: ultra disks.
-	// + cloud_ssd: SSDs.
-	// - size: the size of a data disk. Unit: GiB.
-	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `category`: the type of the data disks. Valid values:
+	// * cloud: basic disks.
+	// * cloud_efficiency: ultra disks.
+	// * cloud_ssd: SSDs.
+	// * `size`: the size of a data disk. Unit: GiB.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks EdgeKubernetesWorkerDataDiskArrayOutput `pulumi:"workerDataDisks"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrOutput `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize           pulumi.IntPtrOutput    `pulumi:"workerDiskSize"`
@@ -131,7 +136,9 @@ type edgeKubernetesState struct {
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert *string                    `pulumi:"clusterCaCert"`
 	Connections   *EdgeKubernetesConnections `pulumi:"connections"`
-	// Install cloud monitor agent on ECS. default: `true`
+	// Whether to enable cluster deletion protection.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Install cloud monitor agent on ECS. default: `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
@@ -149,12 +156,15 @@ type edgeKubernetesState struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
-	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode *string `pulumi:"proxyMode"`
+	ProxyMode    *string  `pulumi:"proxyMode"`
+	RdsInstances []string `pulumi:"rdsInstances"`
+	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -171,14 +181,14 @@ type edgeKubernetesState struct {
 	// The ID of VPC where the current cluster is located.
 	VpcId *string `pulumi:"vpcId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// - category: the type of the data disks. Valid values:
-	// + cloud: basic disks.
-	// + cloud_efficiency: ultra disks.
-	// + cloud_ssd: SSDs.
-	// - size: the size of a data disk. Unit: GiB.
-	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `category`: the type of the data disks. Valid values:
+	// * cloud: basic disks.
+	// * cloud_efficiency: ultra disks.
+	// * cloud_ssd: SSDs.
+	// * `size`: the size of a data disk. Unit: GiB.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []EdgeKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize           *int    `pulumi:"workerDiskSize"`
@@ -203,7 +213,9 @@ type EdgeKubernetesState struct {
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
 	Connections   EdgeKubernetesConnectionsPtrInput
-	// Install cloud monitor agent on ECS. default: `true`
+	// Whether to enable cluster deletion protection.
+	DeletionProtection pulumi.BoolPtrInput
+	// Install cloud monitor agent on ECS. default: `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
@@ -221,12 +233,15 @@ type EdgeKubernetesState struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
-	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode pulumi.StringPtrInput
+	ProxyMode    pulumi.StringPtrInput
+	RdsInstances pulumi.StringArrayInput
+	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -243,14 +258,14 @@ type EdgeKubernetesState struct {
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// - category: the type of the data disks. Valid values:
-	// + cloud: basic disks.
-	// + cloud_efficiency: ultra disks.
-	// + cloud_ssd: SSDs.
-	// - size: the size of a data disk. Unit: GiB.
-	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `category`: the type of the data disks. Valid values:
+	// * cloud: basic disks.
+	// * cloud_efficiency: ultra disks.
+	// * cloud_ssd: SSDs.
+	// * `size`: the size of a data disk. Unit: GiB.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks EdgeKubernetesWorkerDataDiskArrayInput
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize           pulumi.IntPtrInput
@@ -278,7 +293,9 @@ type edgeKubernetesArgs struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
-	// Install cloud monitor agent on ECS. default: `true`
+	// Whether to enable cluster deletion protection.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Install cloud monitor agent on ECS. default: `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
@@ -294,12 +311,15 @@ type edgeKubernetesArgs struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
-	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode *string `pulumi:"proxyMode"`
+	ProxyMode    *string  `pulumi:"proxyMode"`
+	RdsInstances []string `pulumi:"rdsInstances"`
+	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -311,14 +331,14 @@ type edgeKubernetesArgs struct {
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version *string `pulumi:"version"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// - category: the type of the data disks. Valid values:
-	// + cloud: basic disks.
-	// + cloud_efficiency: ultra disks.
-	// + cloud_ssd: SSDs.
-	// - size: the size of a data disk. Unit: GiB.
-	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `category`: the type of the data disks. Valid values:
+	// * cloud: basic disks.
+	// * cloud_efficiency: ultra disks.
+	// * cloud_ssd: SSDs.
+	// * `size`: the size of a data disk. Unit: GiB.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []EdgeKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize           *int    `pulumi:"workerDiskSize"`
@@ -341,7 +361,9 @@ type EdgeKubernetesArgs struct {
 	ClientKey pulumi.StringPtrInput
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
-	// Install cloud monitor agent on ECS. default: `true`
+	// Whether to enable cluster deletion protection.
+	DeletionProtection pulumi.BoolPtrInput
+	// Install cloud monitor agent on ECS. default: `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
@@ -357,12 +379,15 @@ type EdgeKubernetesArgs struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
-	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode pulumi.StringPtrInput
+	ProxyMode    pulumi.StringPtrInput
+	RdsInstances pulumi.StringArrayInput
+	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -374,14 +399,14 @@ type EdgeKubernetesArgs struct {
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version pulumi.StringPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// - category: the type of the data disks. Valid values:
-	// + cloud: basic disks.
-	// + cloud_efficiency: ultra disks.
-	// + cloud_ssd: SSDs.
-	// - size: the size of a data disk. Unit: GiB.
-	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `category`: the type of the data disks. Valid values:
+	// * cloud: basic disks.
+	// * cloud_efficiency: ultra disks.
+	// * cloud_ssd: SSDs.
+	// * `size`: the size of a data disk. Unit: GiB.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks EdgeKubernetesWorkerDataDiskArrayInput
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize           pulumi.IntPtrInput

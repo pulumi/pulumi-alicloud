@@ -22,31 +22,104 @@ import (
 //
 // ## Example Usage
 //
-// cluster-autoscaler in Kubernetes Cluster
+// cluster-autoscaler in Kubernetes Cluster.
 //
 // ```go
 // package main
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ess"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewKubernetesAutoscaler(ctx, "_default", &cs.KubernetesAutoscalerArgs{
-// 			ClusterId: pulumi.Any(_var.Cluster_id),
+// 		cfg := config.New(ctx, "")
+// 		name := "autoscaler"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		defaultNetworks, err := vpc.GetNetworks(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "system"
+// 		opt1 := "^centos_7"
+// 		opt2 := true
+// 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// 			Owners:     &opt0,
+// 			NameRegex:  &opt1,
+// 			MostRecent: &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultManagedKubernetesClusters, err := cs.GetManagedKubernetesClusters(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt3 := 2
+// 		opt4 := 4
+// 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// 			CpuCoreCount: &opt3,
+// 			MemorySize:   &opt4,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+// 			VpcId: pulumi.String(defaultNetworks.Vpcs[0].Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
+// 			ScalingGroupName: pulumi.String(name),
+// 			MinSize:          pulumi.Any(_var.Min_size),
+// 			MaxSize:          pulumi.Any(_var.Max_size),
+// 			VswitchIds: pulumi.StringArray{
+// 				pulumi.String(defaultNetworks.Vpcs[0].VswitchIds[0]),
+// 			},
+// 			RemovalPolicies: pulumi.StringArray{
+// 				pulumi.String("OldestInstance"),
+// 				pulumi.String("NewestInstance"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultScalingConfiguration, err := ess.NewScalingConfiguration(ctx, "defaultScalingConfiguration", &ess.ScalingConfigurationArgs{
+// 			ImageId:            pulumi.String(defaultImages.Images[0].Id),
+// 			SecurityGroupId:    defaultSecurityGroup.ID(),
+// 			ScalingGroupId:     defaultScalingGroup.ID(),
+// 			InstanceType:       pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// 			InternetChargeType: pulumi.String("PayByTraffic"),
+// 			ForceDelete:        pulumi.Bool(true),
+// 			Enable:             pulumi.Bool(true),
+// 			Active:             pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cs.NewKubernetesAutoscaler(ctx, "defaultKubernetesAutoscaler", &cs.KubernetesAutoscalerArgs{
+// 			ClusterId: pulumi.String(defaultManagedKubernetesClusters.Clusters[0].Id),
 // 			Nodepools: cs.KubernetesAutoscalerNodepoolArray{
 // 				&cs.KubernetesAutoscalerNodepoolArgs{
-// 					Id:     pulumi.String("scaling_group_id"),
-// 					Taints: pulumi.String("c=d:NoSchedule"),
+// 					Id:     defaultScalingGroup.ID(),
 // 					Labels: pulumi.String("a=b"),
 // 				},
 // 			},
 // 			Utilization:          pulumi.Any(_var.Utilization),
 // 			CoolDownDuration:     pulumi.Any(_var.Cool_down_duration),
 // 			DeferScaleInDuration: pulumi.Any(_var.Defer_scale_in_duration),
-// 		})
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			alicloud_ess_scaling_group.Defalut,
+// 			defaultScalingConfiguration,
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

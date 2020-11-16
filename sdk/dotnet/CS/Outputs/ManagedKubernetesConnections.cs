@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// API Server Intranet endpoint.
         /// </summary>
         public readonly string? ApiServerIntranet;
+        /// <summary>
+        /// Master node SSH IP address.
+        /// </summary>
         public readonly string? MasterPublicIp;
         /// <summary>
         /// Service Access Domain.

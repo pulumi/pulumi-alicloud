@@ -1445,6 +1445,262 @@ func (o KubernetesMasterNodeArrayOutput) Index(i pulumi.IntInput) KubernetesMast
 	}).(KubernetesMasterNodeOutput)
 }
 
+type KubernetesRuntime struct {
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name *string `pulumi:"name"`
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+	Version *string `pulumi:"version"`
+}
+
+// KubernetesRuntimeInput is an input type that accepts KubernetesRuntimeArgs and KubernetesRuntimeOutput values.
+// You can construct a concrete instance of `KubernetesRuntimeInput` via:
+//
+//          KubernetesRuntimeArgs{...}
+type KubernetesRuntimeInput interface {
+	pulumi.Input
+
+	ToKubernetesRuntimeOutput() KubernetesRuntimeOutput
+	ToKubernetesRuntimeOutputWithContext(context.Context) KubernetesRuntimeOutput
+}
+
+type KubernetesRuntimeArgs struct {
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (KubernetesRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesRuntime)(nil)).Elem()
+}
+
+func (i KubernetesRuntimeArgs) ToKubernetesRuntimeOutput() KubernetesRuntimeOutput {
+	return i.ToKubernetesRuntimeOutputWithContext(context.Background())
+}
+
+func (i KubernetesRuntimeArgs) ToKubernetesRuntimeOutputWithContext(ctx context.Context) KubernetesRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRuntimeOutput)
+}
+
+func (i KubernetesRuntimeArgs) ToKubernetesRuntimePtrOutput() KubernetesRuntimePtrOutput {
+	return i.ToKubernetesRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesRuntimeArgs) ToKubernetesRuntimePtrOutputWithContext(ctx context.Context) KubernetesRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRuntimeOutput).ToKubernetesRuntimePtrOutputWithContext(ctx)
+}
+
+// KubernetesRuntimePtrInput is an input type that accepts KubernetesRuntimeArgs, KubernetesRuntimePtr and KubernetesRuntimePtrOutput values.
+// You can construct a concrete instance of `KubernetesRuntimePtrInput` via:
+//
+//          KubernetesRuntimeArgs{...}
+//
+//  or:
+//
+//          nil
+type KubernetesRuntimePtrInput interface {
+	pulumi.Input
+
+	ToKubernetesRuntimePtrOutput() KubernetesRuntimePtrOutput
+	ToKubernetesRuntimePtrOutputWithContext(context.Context) KubernetesRuntimePtrOutput
+}
+
+type kubernetesRuntimePtrType KubernetesRuntimeArgs
+
+func KubernetesRuntimePtr(v *KubernetesRuntimeArgs) KubernetesRuntimePtrInput {
+	return (*kubernetesRuntimePtrType)(v)
+}
+
+func (*kubernetesRuntimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesRuntime)(nil)).Elem()
+}
+
+func (i *kubernetesRuntimePtrType) ToKubernetesRuntimePtrOutput() KubernetesRuntimePtrOutput {
+	return i.ToKubernetesRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesRuntimePtrType) ToKubernetesRuntimePtrOutputWithContext(ctx context.Context) KubernetesRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRuntimePtrOutput)
+}
+
+type KubernetesRuntimeOutput struct{ *pulumi.OutputState }
+
+func (KubernetesRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesRuntime)(nil)).Elem()
+}
+
+func (o KubernetesRuntimeOutput) ToKubernetesRuntimeOutput() KubernetesRuntimeOutput {
+	return o
+}
+
+func (o KubernetesRuntimeOutput) ToKubernetesRuntimeOutputWithContext(ctx context.Context) KubernetesRuntimeOutput {
+	return o
+}
+
+func (o KubernetesRuntimeOutput) ToKubernetesRuntimePtrOutput() KubernetesRuntimePtrOutput {
+	return o.ToKubernetesRuntimePtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesRuntimeOutput) ToKubernetesRuntimePtrOutputWithContext(ctx context.Context) KubernetesRuntimePtrOutput {
+	return o.ApplyT(func(v KubernetesRuntime) *KubernetesRuntime {
+		return &v
+	}).(KubernetesRuntimePtrOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o KubernetesRuntimeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesRuntime) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+func (o KubernetesRuntimeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesRuntime) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type KubernetesRuntimePtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesRuntimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesRuntime)(nil)).Elem()
+}
+
+func (o KubernetesRuntimePtrOutput) ToKubernetesRuntimePtrOutput() KubernetesRuntimePtrOutput {
+	return o
+}
+
+func (o KubernetesRuntimePtrOutput) ToKubernetesRuntimePtrOutputWithContext(ctx context.Context) KubernetesRuntimePtrOutput {
+	return o
+}
+
+func (o KubernetesRuntimePtrOutput) Elem() KubernetesRuntimeOutput {
+	return o.ApplyT(func(v *KubernetesRuntime) KubernetesRuntime { return *v }).(KubernetesRuntimeOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o KubernetesRuntimePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesRuntime) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+func (o KubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesRuntime) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type KubernetesTaint struct {
+	Effect *string `pulumi:"effect"`
+	Key    *string `pulumi:"key"`
+	Value  *string `pulumi:"value"`
+}
+
+// KubernetesTaintInput is an input type that accepts KubernetesTaintArgs and KubernetesTaintOutput values.
+// You can construct a concrete instance of `KubernetesTaintInput` via:
+//
+//          KubernetesTaintArgs{...}
+type KubernetesTaintInput interface {
+	pulumi.Input
+
+	ToKubernetesTaintOutput() KubernetesTaintOutput
+	ToKubernetesTaintOutputWithContext(context.Context) KubernetesTaintOutput
+}
+
+type KubernetesTaintArgs struct {
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	Key    pulumi.StringPtrInput `pulumi:"key"`
+	Value  pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (KubernetesTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesTaint)(nil)).Elem()
+}
+
+func (i KubernetesTaintArgs) ToKubernetesTaintOutput() KubernetesTaintOutput {
+	return i.ToKubernetesTaintOutputWithContext(context.Background())
+}
+
+func (i KubernetesTaintArgs) ToKubernetesTaintOutputWithContext(ctx context.Context) KubernetesTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesTaintOutput)
+}
+
+// KubernetesTaintArrayInput is an input type that accepts KubernetesTaintArray and KubernetesTaintArrayOutput values.
+// You can construct a concrete instance of `KubernetesTaintArrayInput` via:
+//
+//          KubernetesTaintArray{ KubernetesTaintArgs{...} }
+type KubernetesTaintArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesTaintArrayOutput() KubernetesTaintArrayOutput
+	ToKubernetesTaintArrayOutputWithContext(context.Context) KubernetesTaintArrayOutput
+}
+
+type KubernetesTaintArray []KubernetesTaintInput
+
+func (KubernetesTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesTaint)(nil)).Elem()
+}
+
+func (i KubernetesTaintArray) ToKubernetesTaintArrayOutput() KubernetesTaintArrayOutput {
+	return i.ToKubernetesTaintArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesTaintArray) ToKubernetesTaintArrayOutputWithContext(ctx context.Context) KubernetesTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesTaintArrayOutput)
+}
+
+type KubernetesTaintOutput struct{ *pulumi.OutputState }
+
+func (KubernetesTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesTaint)(nil)).Elem()
+}
+
+func (o KubernetesTaintOutput) ToKubernetesTaintOutput() KubernetesTaintOutput {
+	return o
+}
+
+func (o KubernetesTaintOutput) ToKubernetesTaintOutputWithContext(ctx context.Context) KubernetesTaintOutput {
+	return o
+}
+
+func (o KubernetesTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesTaintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type KubernetesTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesTaint)(nil)).Elem()
+}
+
+func (o KubernetesTaintArrayOutput) ToKubernetesTaintArrayOutput() KubernetesTaintArrayOutput {
+	return o
+}
+
+func (o KubernetesTaintArrayOutput) ToKubernetesTaintArrayOutputWithContext(ctx context.Context) KubernetesTaintArrayOutput {
+	return o
+}
+
+func (o KubernetesTaintArrayOutput) Index(i pulumi.IntInput) KubernetesTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesTaint {
+		return vs[0].([]KubernetesTaint)[vs[1].(int)]
+	}).(KubernetesTaintOutput)
+}
+
 type KubernetesWorkerDataDisk struct {
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	Category             *string `pulumi:"category"`
@@ -1813,7 +2069,8 @@ type ManagedKubernetesConnections struct {
 	ApiServerInternet *string `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
 	ApiServerIntranet *string `pulumi:"apiServerIntranet"`
-	MasterPublicIp    *string `pulumi:"masterPublicIp"`
+	// Master node SSH IP address.
+	MasterPublicIp *string `pulumi:"masterPublicIp"`
 	// Service Access Domain.
 	ServiceDomain *string `pulumi:"serviceDomain"`
 }
@@ -1834,7 +2091,8 @@ type ManagedKubernetesConnectionsArgs struct {
 	ApiServerInternet pulumi.StringPtrInput `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
 	ApiServerIntranet pulumi.StringPtrInput `pulumi:"apiServerIntranet"`
-	MasterPublicIp    pulumi.StringPtrInput `pulumi:"masterPublicIp"`
+	// Master node SSH IP address.
+	MasterPublicIp pulumi.StringPtrInput `pulumi:"masterPublicIp"`
 	// Service Access Domain.
 	ServiceDomain pulumi.StringPtrInput `pulumi:"serviceDomain"`
 }
@@ -1926,6 +2184,7 @@ func (o ManagedKubernetesConnectionsOutput) ApiServerIntranet() pulumi.StringPtr
 	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
+// Master node SSH IP address.
 func (o ManagedKubernetesConnectionsOutput) MasterPublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
 }
@@ -1973,6 +2232,7 @@ func (o ManagedKubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Master node SSH IP address.
 func (o ManagedKubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetesConnections) *string {
 		if v == nil {
@@ -1990,6 +2250,262 @@ func (o ManagedKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrO
 		}
 		return v.ServiceDomain
 	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesRuntime struct {
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name *string `pulumi:"name"`
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+	Version *string `pulumi:"version"`
+}
+
+// ManagedKubernetesRuntimeInput is an input type that accepts ManagedKubernetesRuntimeArgs and ManagedKubernetesRuntimeOutput values.
+// You can construct a concrete instance of `ManagedKubernetesRuntimeInput` via:
+//
+//          ManagedKubernetesRuntimeArgs{...}
+type ManagedKubernetesRuntimeInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesRuntimeOutput() ManagedKubernetesRuntimeOutput
+	ToManagedKubernetesRuntimeOutputWithContext(context.Context) ManagedKubernetesRuntimeOutput
+}
+
+type ManagedKubernetesRuntimeArgs struct {
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ManagedKubernetesRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesRuntime)(nil)).Elem()
+}
+
+func (i ManagedKubernetesRuntimeArgs) ToManagedKubernetesRuntimeOutput() ManagedKubernetesRuntimeOutput {
+	return i.ToManagedKubernetesRuntimeOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesRuntimeArgs) ToManagedKubernetesRuntimeOutputWithContext(ctx context.Context) ManagedKubernetesRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesRuntimeOutput)
+}
+
+func (i ManagedKubernetesRuntimeArgs) ToManagedKubernetesRuntimePtrOutput() ManagedKubernetesRuntimePtrOutput {
+	return i.ToManagedKubernetesRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesRuntimeArgs) ToManagedKubernetesRuntimePtrOutputWithContext(ctx context.Context) ManagedKubernetesRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesRuntimeOutput).ToManagedKubernetesRuntimePtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesRuntimePtrInput is an input type that accepts ManagedKubernetesRuntimeArgs, ManagedKubernetesRuntimePtr and ManagedKubernetesRuntimePtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesRuntimePtrInput` via:
+//
+//          ManagedKubernetesRuntimeArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedKubernetesRuntimePtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesRuntimePtrOutput() ManagedKubernetesRuntimePtrOutput
+	ToManagedKubernetesRuntimePtrOutputWithContext(context.Context) ManagedKubernetesRuntimePtrOutput
+}
+
+type managedKubernetesRuntimePtrType ManagedKubernetesRuntimeArgs
+
+func ManagedKubernetesRuntimePtr(v *ManagedKubernetesRuntimeArgs) ManagedKubernetesRuntimePtrInput {
+	return (*managedKubernetesRuntimePtrType)(v)
+}
+
+func (*managedKubernetesRuntimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesRuntime)(nil)).Elem()
+}
+
+func (i *managedKubernetesRuntimePtrType) ToManagedKubernetesRuntimePtrOutput() ManagedKubernetesRuntimePtrOutput {
+	return i.ToManagedKubernetesRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesRuntimePtrType) ToManagedKubernetesRuntimePtrOutputWithContext(ctx context.Context) ManagedKubernetesRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesRuntimePtrOutput)
+}
+
+type ManagedKubernetesRuntimeOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesRuntime)(nil)).Elem()
+}
+
+func (o ManagedKubernetesRuntimeOutput) ToManagedKubernetesRuntimeOutput() ManagedKubernetesRuntimeOutput {
+	return o
+}
+
+func (o ManagedKubernetesRuntimeOutput) ToManagedKubernetesRuntimeOutputWithContext(ctx context.Context) ManagedKubernetesRuntimeOutput {
+	return o
+}
+
+func (o ManagedKubernetesRuntimeOutput) ToManagedKubernetesRuntimePtrOutput() ManagedKubernetesRuntimePtrOutput {
+	return o.ToManagedKubernetesRuntimePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesRuntimeOutput) ToManagedKubernetesRuntimePtrOutputWithContext(ctx context.Context) ManagedKubernetesRuntimePtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesRuntime) *ManagedKubernetesRuntime {
+		return &v
+	}).(ManagedKubernetesRuntimePtrOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o ManagedKubernetesRuntimeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesRuntime) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+func (o ManagedKubernetesRuntimeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesRuntime) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesRuntimePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesRuntimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesRuntime)(nil)).Elem()
+}
+
+func (o ManagedKubernetesRuntimePtrOutput) ToManagedKubernetesRuntimePtrOutput() ManagedKubernetesRuntimePtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesRuntimePtrOutput) ToManagedKubernetesRuntimePtrOutputWithContext(ctx context.Context) ManagedKubernetesRuntimePtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesRuntimePtrOutput) Elem() ManagedKubernetesRuntimeOutput {
+	return o.ApplyT(func(v *ManagedKubernetesRuntime) ManagedKubernetesRuntime { return *v }).(ManagedKubernetesRuntimeOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o ManagedKubernetesRuntimePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesRuntime) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+func (o ManagedKubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesRuntime) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesTaint struct {
+	Effect *string `pulumi:"effect"`
+	Key    *string `pulumi:"key"`
+	Value  *string `pulumi:"value"`
+}
+
+// ManagedKubernetesTaintInput is an input type that accepts ManagedKubernetesTaintArgs and ManagedKubernetesTaintOutput values.
+// You can construct a concrete instance of `ManagedKubernetesTaintInput` via:
+//
+//          ManagedKubernetesTaintArgs{...}
+type ManagedKubernetesTaintInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesTaintOutput() ManagedKubernetesTaintOutput
+	ToManagedKubernetesTaintOutputWithContext(context.Context) ManagedKubernetesTaintOutput
+}
+
+type ManagedKubernetesTaintArgs struct {
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	Key    pulumi.StringPtrInput `pulumi:"key"`
+	Value  pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ManagedKubernetesTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesTaint)(nil)).Elem()
+}
+
+func (i ManagedKubernetesTaintArgs) ToManagedKubernetesTaintOutput() ManagedKubernetesTaintOutput {
+	return i.ToManagedKubernetesTaintOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesTaintArgs) ToManagedKubernetesTaintOutputWithContext(ctx context.Context) ManagedKubernetesTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesTaintOutput)
+}
+
+// ManagedKubernetesTaintArrayInput is an input type that accepts ManagedKubernetesTaintArray and ManagedKubernetesTaintArrayOutput values.
+// You can construct a concrete instance of `ManagedKubernetesTaintArrayInput` via:
+//
+//          ManagedKubernetesTaintArray{ ManagedKubernetesTaintArgs{...} }
+type ManagedKubernetesTaintArrayInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesTaintArrayOutput() ManagedKubernetesTaintArrayOutput
+	ToManagedKubernetesTaintArrayOutputWithContext(context.Context) ManagedKubernetesTaintArrayOutput
+}
+
+type ManagedKubernetesTaintArray []ManagedKubernetesTaintInput
+
+func (ManagedKubernetesTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesTaint)(nil)).Elem()
+}
+
+func (i ManagedKubernetesTaintArray) ToManagedKubernetesTaintArrayOutput() ManagedKubernetesTaintArrayOutput {
+	return i.ToManagedKubernetesTaintArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesTaintArray) ToManagedKubernetesTaintArrayOutputWithContext(ctx context.Context) ManagedKubernetesTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesTaintArrayOutput)
+}
+
+type ManagedKubernetesTaintOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesTaint)(nil)).Elem()
+}
+
+func (o ManagedKubernetesTaintOutput) ToManagedKubernetesTaintOutput() ManagedKubernetesTaintOutput {
+	return o
+}
+
+func (o ManagedKubernetesTaintOutput) ToManagedKubernetesTaintOutputWithContext(ctx context.Context) ManagedKubernetesTaintOutput {
+	return o
+}
+
+func (o ManagedKubernetesTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedKubernetesTaintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedKubernetesTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesTaint)(nil)).Elem()
+}
+
+func (o ManagedKubernetesTaintArrayOutput) ToManagedKubernetesTaintArrayOutput() ManagedKubernetesTaintArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesTaintArrayOutput) ToManagedKubernetesTaintArrayOutputWithContext(ctx context.Context) ManagedKubernetesTaintArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesTaintArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesTaint {
+		return vs[0].([]ManagedKubernetesTaint)[vs[1].(int)]
+	}).(ManagedKubernetesTaintOutput)
 }
 
 type ManagedKubernetesWorkerDataDisk struct {
@@ -5656,6 +6172,10 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesConnectionsPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesRuntimeOutput{})
+	pulumi.RegisterOutputType(KubernetesRuntimePtrOutput{})
+	pulumi.RegisterOutputType(KubernetesTaintOutput{})
+	pulumi.RegisterOutputType(KubernetesTaintArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesWorkerDataDiskOutput{})
 	pulumi.RegisterOutputType(KubernetesWorkerDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesWorkerNodeOutput{})
@@ -5664,6 +6184,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesRuntimeOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesRuntimePtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesTaintOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesTaintArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesWorkerDataDiskOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesWorkerDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesWorkerNodeOutput{})

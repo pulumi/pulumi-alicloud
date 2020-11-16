@@ -20,10 +20,14 @@ __all__ = [
     'KubernetesAutoscalerNodepoolArgs',
     'KubernetesConnectionsArgs',
     'KubernetesMasterNodeArgs',
+    'KubernetesRuntimeArgs',
+    'KubernetesTaintArgs',
     'KubernetesWorkerDataDiskArgs',
     'KubernetesWorkerNodeArgs',
     'ManagedKubernetesAddonArgs',
     'ManagedKubernetesConnectionsArgs',
+    'ManagedKubernetesRuntimeArgs',
+    'ManagedKubernetesTaintArgs',
     'ManagedKubernetesWorkerDataDiskArgs',
     'ManagedKubernetesWorkerNodeArgs',
     'NodePoolDataDiskArgs',
@@ -674,6 +678,86 @@ class KubernetesMasterNodeArgs:
 
 
 @pulumi.input_type
+class KubernetesRuntimeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class KubernetesTaintArgs:
+    def __init__(__self__, *,
+                 effect: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class KubernetesWorkerDataDiskArgs:
     def __init__(__self__, *,
                  auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
@@ -892,6 +976,7 @@ class ManagedKubernetesConnectionsArgs:
         """
         :param pulumi.Input[str] api_server_internet: API Server Internet endpoint.
         :param pulumi.Input[str] api_server_intranet: API Server Intranet endpoint.
+        :param pulumi.Input[str] master_public_ip: Master node SSH IP address.
         :param pulumi.Input[str] service_domain: Service Access Domain.
         """
         if api_server_internet is not None:
@@ -930,6 +1015,9 @@ class ManagedKubernetesConnectionsArgs:
     @property
     @pulumi.getter(name="masterPublicIp")
     def master_public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Master node SSH IP address.
+        """
         return pulumi.get(self, "master_public_ip")
 
     @master_public_ip.setter
@@ -947,6 +1035,86 @@ class ManagedKubernetesConnectionsArgs:
     @service_domain.setter
     def service_domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_domain", value)
+
+
+@pulumi.input_type
+class ManagedKubernetesRuntimeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class ManagedKubernetesTaintArgs:
+    def __init__(__self__, *,
+                 effect: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

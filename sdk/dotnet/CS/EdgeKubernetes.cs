@@ -42,7 +42,13 @@ namespace Pulumi.AliCloud.CS
         public Output<Outputs.EdgeKubernetesConnections> Connections { get; private set; } = null!;
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: `true`
+        /// Whether to enable cluster deletion protection.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// Install cloud monitor agent on ECS. default: `true`.
         /// </summary>
         [Output("installCloudMonitor")]
         public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
@@ -96,7 +102,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> NodeCidrMask { get; private set; } = null!;
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -112,6 +118,15 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("proxyMode")]
         public Output<string?> ProxyMode { get; private set; } = null!;
+
+        [Output("rdsInstances")]
+        public Output<ImmutableArray<string>> RdsInstances { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -159,19 +174,19 @@ namespace Pulumi.AliCloud.CS
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size. 
-        /// - category: the type of the data disks. Valid values:
-        /// + cloud: basic disks.
-        /// + cloud_efficiency: ultra disks.
-        /// + cloud_ssd: SSDs.
-        /// - size: the size of a data disk. Unit: GiB.
-        /// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// * `category`: the type of the data disks. Valid values:
+        /// * cloud: basic disks.
+        /// * cloud_efficiency: ultra disks.
+        /// * cloud_ssd: SSDs.
+        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         [Output("workerDataDisks")]
         public Output<ImmutableArray<Outputs.EdgeKubernetesWorkerDataDisk>> WorkerDataDisks { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
         /// </summary>
         [Output("workerDiskCategory")]
         public Output<string?> WorkerDiskCategory { get; private set; } = null!;
@@ -285,7 +300,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterCaCert { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: `true`
+        /// Whether to enable cluster deletion protection.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Install cloud monitor agent on ECS. default: `true`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -333,7 +354,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCidrMask { get; set; }
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -349,6 +370,20 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
+
+        [Input("rdsInstances")]
+        private InputList<string>? _rdsInstances;
+        public InputList<string> RdsInstances
+        {
+            get => _rdsInstances ?? (_rdsInstances = new InputList<string>());
+            set => _rdsInstances = value;
+        }
+
+        /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -384,13 +419,13 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.EdgeKubernetesWorkerDataDiskArgs>? _workerDataDisks;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size. 
-        /// - category: the type of the data disks. Valid values:
-        /// + cloud: basic disks.
-        /// + cloud_efficiency: ultra disks.
-        /// + cloud_ssd: SSDs.
-        /// - size: the size of a data disk. Unit: GiB.
-        /// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// * `category`: the type of the data disks. Valid values:
+        /// * cloud: basic disks.
+        /// * cloud_efficiency: ultra disks.
+        /// * cloud_ssd: SSDs.
+        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.EdgeKubernetesWorkerDataDiskArgs> WorkerDataDisks
         {
@@ -399,7 +434,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
         /// </summary>
         [Input("workerDiskCategory")]
         public Input<string>? WorkerDiskCategory { get; set; }
@@ -482,7 +517,13 @@ namespace Pulumi.AliCloud.CS
         public Input<Inputs.EdgeKubernetesConnectionsGetArgs>? Connections { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: `true`
+        /// Whether to enable cluster deletion protection.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Install cloud monitor agent on ECS. default: `true`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -536,7 +577,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCidrMask { get; set; }
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -552,6 +593,20 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
+
+        [Input("rdsInstances")]
+        private InputList<string>? _rdsInstances;
+        public InputList<string> RdsInstances
+        {
+            get => _rdsInstances ?? (_rdsInstances = new InputList<string>());
+            set => _rdsInstances = value;
+        }
+
+        /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -602,13 +657,13 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.EdgeKubernetesWorkerDataDiskGetArgs>? _workerDataDisks;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size. 
-        /// - category: the type of the data disks. Valid values:
-        /// + cloud: basic disks.
-        /// + cloud_efficiency: ultra disks.
-        /// + cloud_ssd: SSDs.
-        /// - size: the size of a data disk. Unit: GiB.
-        /// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// * `category`: the type of the data disks. Valid values:
+        /// * cloud: basic disks.
+        /// * cloud_efficiency: ultra disks.
+        /// * cloud_ssd: SSDs.
+        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.EdgeKubernetesWorkerDataDiskGetArgs> WorkerDataDisks
         {
@@ -617,7 +672,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
         /// </summary>
         [Input("workerDiskCategory")]
         public Input<string>? WorkerDiskCategory { get; set; }

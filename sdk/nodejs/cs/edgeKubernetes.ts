@@ -53,7 +53,11 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     public readonly clusterCaCert!: pulumi.Output<string | undefined>;
     public /*out*/ readonly connections!: pulumi.Output<outputs.cs.EdgeKubernetesConnections>;
     /**
-     * Install cloud monitor agent on ECS. default: `true`
+     * Whether to enable cluster deletion protection.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
+     * Install cloud monitor agent on ECS. default: `true`.
      */
     public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
     /**
@@ -87,7 +91,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public readonly nodeCidrMask!: pulumi.Output<number | undefined>;
     /**
-     * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -98,6 +102,11 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     public readonly proxyMode!: pulumi.Output<string | undefined>;
+    public readonly rdsInstances!: pulumi.Output<string[] | undefined>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -128,17 +137,17 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size. 
-     * - category: the type of the data disks. Valid values:
-     * + cloud: basic disks.
-     * + cloud_efficiency: ultra disks.
-     * + cloud_ssd: SSDs.
-     * - size: the size of a data disk. Unit: GiB.
-     * - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     * * `category`: the type of the data disks. Valid values:
+     * * cloud: basic disks.
+     * * cloud_efficiency: ultra disks.
+     * * cloud_ssd: SSDs.
+     * * `size`: the size of a data disk. Unit: GiB.
+     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     public readonly workerDataDisks!: pulumi.Output<outputs.cs.EdgeKubernetesWorkerDataDisk[] | undefined>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+     * The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
      */
     public readonly workerDiskCategory!: pulumi.Output<string | undefined>;
     /**
@@ -178,6 +187,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["clientKey"] = state ? state.clientKey : undefined;
             inputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
             inputs["connections"] = state ? state.connections : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
             inputs["isEnterpriseSecurityGroup"] = state ? state.isEnterpriseSecurityGroup : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
@@ -191,6 +201,8 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["password"] = state ? state.password : undefined;
             inputs["podCidr"] = state ? state.podCidr : undefined;
             inputs["proxyMode"] = state ? state.proxyMode : undefined;
+            inputs["rdsInstances"] = state ? state.rdsInstances : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["serviceCidr"] = state ? state.serviceCidr : undefined;
             inputs["slbInternet"] = state ? state.slbInternet : undefined;
@@ -223,6 +235,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["clientCert"] = args ? args.clientCert : undefined;
             inputs["clientKey"] = args ? args.clientKey : undefined;
             inputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
             inputs["isEnterpriseSecurityGroup"] = args ? args.isEnterpriseSecurityGroup : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
@@ -235,6 +248,8 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["podCidr"] = args ? args.podCidr : undefined;
             inputs["proxyMode"] = args ? args.proxyMode : undefined;
+            inputs["rdsInstances"] = args ? args.rdsInstances : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             inputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
@@ -288,7 +303,11 @@ export interface EdgeKubernetesState {
     readonly clusterCaCert?: pulumi.Input<string>;
     readonly connections?: pulumi.Input<inputs.cs.EdgeKubernetesConnections>;
     /**
-     * Install cloud monitor agent on ECS. default: `true`
+     * Whether to enable cluster deletion protection.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Install cloud monitor agent on ECS. default: `true`.
      */
     readonly installCloudMonitor?: pulumi.Input<boolean>;
     /**
@@ -322,7 +341,7 @@ export interface EdgeKubernetesState {
      */
     readonly nodeCidrMask?: pulumi.Input<number>;
     /**
-     * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
      */
     readonly password?: pulumi.Input<string>;
     /**
@@ -333,6 +352,11 @@ export interface EdgeKubernetesState {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    readonly rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -363,17 +387,17 @@ export interface EdgeKubernetesState {
      */
     readonly vpcId?: pulumi.Input<string>;
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size. 
-     * - category: the type of the data disks. Valid values:
-     * + cloud: basic disks.
-     * + cloud_efficiency: ultra disks.
-     * + cloud_ssd: SSDs.
-     * - size: the size of a data disk. Unit: GiB.
-     * - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     * * `category`: the type of the data disks. Valid values:
+     * * cloud: basic disks.
+     * * cloud_efficiency: ultra disks.
+     * * cloud_ssd: SSDs.
+     * * `size`: the size of a data disk. Unit: GiB.
+     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+     * The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**
@@ -418,7 +442,11 @@ export interface EdgeKubernetesArgs {
      */
     readonly clusterCaCert?: pulumi.Input<string>;
     /**
-     * Install cloud monitor agent on ECS. default: `true`
+     * Whether to enable cluster deletion protection.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Install cloud monitor agent on ECS. default: `true`.
      */
     readonly installCloudMonitor?: pulumi.Input<boolean>;
     /**
@@ -448,7 +476,7 @@ export interface EdgeKubernetesArgs {
      */
     readonly nodeCidrMask?: pulumi.Input<number>;
     /**
-     * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
      */
     readonly password?: pulumi.Input<string>;
     /**
@@ -459,6 +487,11 @@ export interface EdgeKubernetesArgs {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    readonly rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -480,17 +513,17 @@ export interface EdgeKubernetesArgs {
      */
     readonly version?: pulumi.Input<string>;
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size. 
-     * - category: the type of the data disks. Valid values:
-     * + cloud: basic disks.
-     * + cloud_efficiency: ultra disks.
-     * + cloud_ssd: SSDs.
-     * - size: the size of a data disk. Unit: GiB.
-     * - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     * * `category`: the type of the data disks. Valid values:
+     * * cloud: basic disks.
+     * * cloud_efficiency: ultra disks.
+     * * cloud_ssd: SSDs.
+     * * `size`: the size of a data disk. Unit: GiB.
+     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+     * The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**

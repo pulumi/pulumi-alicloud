@@ -75,7 +75,7 @@ type Instance struct {
 	// The data node specifications of the Elasticsearch instance.
 	DataNodeSpec pulumi.StringOutput `pulumi:"dataNodeSpec"`
 	// The description of instance. It a string of 0 to 30 characters.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Instance connection domain (only VPC network access supported).
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Bool, default to false. When it set to true, the instance can close kibana private network access。

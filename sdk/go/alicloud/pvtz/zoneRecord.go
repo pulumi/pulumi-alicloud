@@ -17,6 +17,8 @@ type ZoneRecord struct {
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The Private Zone Record ID.
 	RecordId pulumi.IntOutput `pulumi:"recordId"`
+	// The remark of the Private Zone Record.
+	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// The resource record of the Private Zone Record.
 	ResourceRecord pulumi.StringOutput `pulumi:"resourceRecord"`
 	// The ttl of the Private Zone Record.
@@ -73,6 +75,8 @@ type zoneRecordState struct {
 	Priority *int `pulumi:"priority"`
 	// The Private Zone Record ID.
 	RecordId *int `pulumi:"recordId"`
+	// The remark of the Private Zone Record.
+	Remark *string `pulumi:"remark"`
 	// The resource record of the Private Zone Record.
 	ResourceRecord *string `pulumi:"resourceRecord"`
 	// The ttl of the Private Zone Record.
@@ -90,6 +94,8 @@ type ZoneRecordState struct {
 	Priority pulumi.IntPtrInput
 	// The Private Zone Record ID.
 	RecordId pulumi.IntPtrInput
+	// The remark of the Private Zone Record.
+	Remark pulumi.StringPtrInput
 	// The resource record of the Private Zone Record.
 	ResourceRecord pulumi.StringPtrInput
 	// The ttl of the Private Zone Record.
@@ -109,6 +115,8 @@ func (ZoneRecordState) ElementType() reflect.Type {
 type zoneRecordArgs struct {
 	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
 	Priority *int `pulumi:"priority"`
+	// The remark of the Private Zone Record.
+	Remark *string `pulumi:"remark"`
 	// The resource record of the Private Zone Record.
 	ResourceRecord string `pulumi:"resourceRecord"`
 	// The ttl of the Private Zone Record.
@@ -125,6 +133,8 @@ type zoneRecordArgs struct {
 type ZoneRecordArgs struct {
 	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
 	Priority pulumi.IntPtrInput
+	// The remark of the Private Zone Record.
+	Remark pulumi.StringPtrInput
 	// The resource record of the Private Zone Record.
 	ResourceRecord pulumi.StringInput
 	// The ttl of the Private Zone Record.

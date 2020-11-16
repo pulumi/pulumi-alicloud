@@ -14,7 +14,7 @@ type ManagedKubernetes struct {
 	pulumi.CustomResourceState
 
 	Addons ManagedKubernetesAddonArrayOutput `pulumi:"addons"`
-	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
 	ApiAudiences pulumi.StringArrayOutput `pulumi:"apiAudiences"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
@@ -24,21 +24,26 @@ type ManagedKubernetes struct {
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
-	// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
-	// - ack.standard: Standard managed clusters.
-	// - ack.pro.small:  Professional managed clusters.
-	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
+	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+	ClusterDomain pulumi.StringPtrOutput `pulumi:"clusterDomain"`
+	ClusterSpec   pulumi.StringOutput    `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections ManagedKubernetesConnectionsOutput `pulumi:"connections"`
-	// kubelet cpu policy. options: static|none. default: none.
+	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrOutput `pulumi:"cpuPolicy"`
-	// Enable login to the node through SSH. default: false
+	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	CustomSan pulumi.StringPtrOutput `pulumi:"customSan"`
+	// Whether to enable cluster deletion protection.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrOutput `pulumi:"enableSsh"`
-	// Exclude autoscaler nodes from `workerNodes`. default: false
+	// The disk encryption key.
+	EncryptionProviderKey pulumi.StringPtrOutput `pulumi:"encryptionProviderKey"`
+	// Exclude autoscaler nodes from `workerNodes`. Default to `false`.
 	ExcludeAutoscalerNodes pulumi.BoolPtrOutput `pulumi:"excludeAutoscalerNodes"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
-	// Install cloud monitor agent on ECS. default: true
+	// Install cloud monitor agent on ECS. Default to `true`.
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolOutput `pulumi:"isEnterpriseSecurityGroup"`
@@ -59,21 +64,30 @@ type ManagedKubernetes struct {
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrOutput `pulumi:"nodeCidrMask"`
-	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
 	NodeNameMode pulumi.StringPtrOutput `pulumi:"nodeNameMode"`
+	// The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+	NodePortRange pulumi.StringPtrOutput `pulumi:"nodePortRange"`
+	// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+	OsType pulumi.StringPtrOutput `pulumi:"osType"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
+	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+	Platform pulumi.StringPtrOutput `pulumi:"platform"`
+	// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
-	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
+	// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayOutput `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
+	ProxyMode    pulumi.StringPtrOutput   `pulumi:"proxyMode"`
+	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	Runtime ManagedKubernetesRuntimePtrOutput `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
+	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well).
 	ServiceAccountIssuer pulumi.StringPtrOutput `pulumi:"serviceAccountIssuer"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
@@ -84,11 +98,15 @@ type ManagedKubernetes struct {
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringOutput `pulumi:"slbIntranet"`
-	// Default nil, A map of tags assigned to the kubernetes cluster .
+	// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+	Taints ManagedKubernetesTaintArrayOutput `pulumi:"taints"`
+	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrOutput `pulumi:"userCa"`
-	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+	// Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -96,23 +114,24 @@ type ManagedKubernetes struct {
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew pulumi.BoolPtrOutput `pulumi:"workerAutoRenew"`
-	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+	// Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
 	WorkerAutoRenewPeriod  pulumi.IntPtrOutput    `pulumi:"workerAutoRenewPeriod"`
 	WorkerDataDiskCategory pulumi.StringPtrOutput `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     pulumi.IntPtrOutput    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// - category: the type of the data disks. Valid values:
-	// + cloud: basic disks.
-	// + cloud_efficiency: ultra disks.
-	// + cloud_ssd: SSDs.
-	// - size: the size of a data disk. Unit: GiB.
-	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `category`: the type of the data disks. Valid values:
+	// * cloud: basic disks.
+	// * cloud_efficiency: ultra disks.
+	// * cloud_ssd: SSDs.
+	// * cloud_essd: essd.
+	// * `size`: the size of a data disk. Unit: GiB.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayOutput `pulumi:"workerDataDisks"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrOutput `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrOutput `pulumi:"workerDiskSize"`
-	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes pulumi.StringArrayOutput `pulumi:"workerInstanceTypes"`
@@ -120,9 +139,9 @@ type ManagedKubernetes struct {
 	WorkerNodes ManagedKubernetesWorkerNodeArrayOutput `pulumi:"workerNodes"`
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber pulumi.IntOutput `pulumi:"workerNumber"`
-	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod pulumi.IntPtrOutput `pulumi:"workerPeriod"`
-	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+	// Worker payment period unit, the valid value is `Month`.
 	WorkerPeriodUnit pulumi.StringPtrOutput `pulumi:"workerPeriodUnit"`
 	// The RamRole Name attached to worker node.
 	WorkerRamRoleName pulumi.StringOutput      `pulumi:"workerRamRoleName"`
@@ -167,7 +186,7 @@ func GetManagedKubernetes(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ManagedKubernetes resources.
 type managedKubernetesState struct {
 	Addons []ManagedKubernetesAddon `pulumi:"addons"`
-	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
 	ApiAudiences []string `pulumi:"apiAudiences"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -177,21 +196,26 @@ type managedKubernetesState struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
-	// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
-	// - ack.standard: Standard managed clusters.
-	// - ack.pro.small:  Professional managed clusters.
-	ClusterSpec *string `pulumi:"clusterSpec"`
+	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+	ClusterDomain *string `pulumi:"clusterDomain"`
+	ClusterSpec   *string `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections *ManagedKubernetesConnections `pulumi:"connections"`
-	// kubelet cpu policy. options: static|none. default: none.
+	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
-	// Enable login to the node through SSH. default: false
+	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	CustomSan *string `pulumi:"customSan"`
+	// Whether to enable cluster deletion protection.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh *bool `pulumi:"enableSsh"`
-	// Exclude autoscaler nodes from `workerNodes`. default: false
+	// The disk encryption key.
+	EncryptionProviderKey *string `pulumi:"encryptionProviderKey"`
+	// Exclude autoscaler nodes from `workerNodes`. Default to `false`.
 	ExcludeAutoscalerNodes *bool `pulumi:"excludeAutoscalerNodes"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
-	// Install cloud monitor agent on ECS. default: true
+	// Install cloud monitor agent on ECS. Default to `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
@@ -212,21 +236,30 @@ type managedKubernetesState struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
-	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
+	// The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+	NodePortRange *string `pulumi:"nodePortRange"`
+	// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+	OsType *string `pulumi:"osType"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
+	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+	Platform *string `pulumi:"platform"`
+	// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
-	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
+	// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode *string `pulumi:"proxyMode"`
+	ProxyMode    *string  `pulumi:"proxyMode"`
+	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	Runtime *ManagedKubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
+	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well).
 	ServiceAccountIssuer *string `pulumi:"serviceAccountIssuer"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
@@ -237,11 +270,15 @@ type managedKubernetesState struct {
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet *string `pulumi:"slbIntranet"`
-	// Default nil, A map of tags assigned to the kubernetes cluster .
+	// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+	Taints []ManagedKubernetesTaint `pulumi:"taints"`
+	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	Timezone *string `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
-	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+	// Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
 	UserData *string `pulumi:"userData"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version *string `pulumi:"version"`
@@ -249,23 +286,24 @@ type managedKubernetesState struct {
 	VpcId *string `pulumi:"vpcId"`
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew *bool `pulumi:"workerAutoRenew"`
-	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+	// Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
 	WorkerAutoRenewPeriod  *int    `pulumi:"workerAutoRenewPeriod"`
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// - category: the type of the data disks. Valid values:
-	// + cloud: basic disks.
-	// + cloud_efficiency: ultra disks.
-	// + cloud_ssd: SSDs.
-	// - size: the size of a data disk. Unit: GiB.
-	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `category`: the type of the data disks. Valid values:
+	// * cloud: basic disks.
+	// * cloud_efficiency: ultra disks.
+	// * cloud_ssd: SSDs.
+	// * cloud_essd: essd.
+	// * `size`: the size of a data disk. Unit: GiB.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []ManagedKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
-	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
@@ -273,9 +311,9 @@ type managedKubernetesState struct {
 	WorkerNodes []ManagedKubernetesWorkerNode `pulumi:"workerNodes"`
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber *int `pulumi:"workerNumber"`
-	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod *int `pulumi:"workerPeriod"`
-	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+	// Worker payment period unit, the valid value is `Month`.
 	WorkerPeriodUnit *string `pulumi:"workerPeriodUnit"`
 	// The RamRole Name attached to worker node.
 	WorkerRamRoleName *string  `pulumi:"workerRamRoleName"`
@@ -284,7 +322,7 @@ type managedKubernetesState struct {
 
 type ManagedKubernetesState struct {
 	Addons ManagedKubernetesAddonArrayInput
-	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
 	ApiAudiences pulumi.StringArrayInput
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone pulumi.StringPtrInput
@@ -294,21 +332,26 @@ type ManagedKubernetesState struct {
 	ClientKey pulumi.StringPtrInput
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
-	// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
-	// - ack.standard: Standard managed clusters.
-	// - ack.pro.small:  Professional managed clusters.
-	ClusterSpec pulumi.StringPtrInput
+	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+	ClusterDomain pulumi.StringPtrInput
+	ClusterSpec   pulumi.StringPtrInput
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections ManagedKubernetesConnectionsPtrInput
-	// kubelet cpu policy. options: static|none. default: none.
+	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrInput
-	// Enable login to the node through SSH. default: false
+	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	CustomSan pulumi.StringPtrInput
+	// Whether to enable cluster deletion protection.
+	DeletionProtection pulumi.BoolPtrInput
+	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrInput
-	// Exclude autoscaler nodes from `workerNodes`. default: false
+	// The disk encryption key.
+	EncryptionProviderKey pulumi.StringPtrInput
+	// Exclude autoscaler nodes from `workerNodes`. Default to `false`.
 	ExcludeAutoscalerNodes pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
-	// Install cloud monitor agent on ECS. default: true
+	// Install cloud monitor agent on ECS. Default to `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
@@ -329,21 +372,30 @@ type ManagedKubernetesState struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
-	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
 	NodeNameMode pulumi.StringPtrInput
+	// The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+	NodePortRange pulumi.StringPtrInput
+	// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+	OsType pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
+	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+	Platform pulumi.StringPtrInput
+	// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
-	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
+	// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode pulumi.StringPtrInput
+	ProxyMode    pulumi.StringPtrInput
+	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	Runtime ManagedKubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
-	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
+	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well).
 	ServiceAccountIssuer pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
@@ -354,11 +406,15 @@ type ManagedKubernetesState struct {
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringPtrInput
-	// Default nil, A map of tags assigned to the kubernetes cluster .
+	// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
 	Tags pulumi.MapInput
+	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+	Taints ManagedKubernetesTaintArrayInput
+	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	Timezone pulumi.StringPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput
-	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+	// Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
 	UserData pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version pulumi.StringPtrInput
@@ -366,23 +422,24 @@ type ManagedKubernetesState struct {
 	VpcId pulumi.StringPtrInput
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew pulumi.BoolPtrInput
-	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+	// Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
 	WorkerAutoRenewPeriod  pulumi.IntPtrInput
 	WorkerDataDiskCategory pulumi.StringPtrInput
 	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// - category: the type of the data disks. Valid values:
-	// + cloud: basic disks.
-	// + cloud_efficiency: ultra disks.
-	// + cloud_ssd: SSDs.
-	// - size: the size of a data disk. Unit: GiB.
-	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `category`: the type of the data disks. Valid values:
+	// * cloud: basic disks.
+	// * cloud_efficiency: ultra disks.
+	// * cloud_ssd: SSDs.
+	// * cloud_essd: essd.
+	// * `size`: the size of a data disk. Unit: GiB.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayInput
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrInput
-	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrInput
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes pulumi.StringArrayInput
@@ -390,9 +447,9 @@ type ManagedKubernetesState struct {
 	WorkerNodes ManagedKubernetesWorkerNodeArrayInput
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber pulumi.IntPtrInput
-	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod pulumi.IntPtrInput
-	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+	// Worker payment period unit, the valid value is `Month`.
 	WorkerPeriodUnit pulumi.StringPtrInput
 	// The RamRole Name attached to worker node.
 	WorkerRamRoleName pulumi.StringPtrInput
@@ -405,7 +462,7 @@ func (ManagedKubernetesState) ElementType() reflect.Type {
 
 type managedKubernetesArgs struct {
 	Addons []ManagedKubernetesAddon `pulumi:"addons"`
-	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
 	ApiAudiences []string `pulumi:"apiAudiences"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -415,19 +472,24 @@ type managedKubernetesArgs struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
-	// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
-	// - ack.standard: Standard managed clusters.
-	// - ack.pro.small:  Professional managed clusters.
-	ClusterSpec *string `pulumi:"clusterSpec"`
-	// kubelet cpu policy. options: static|none. default: none.
+	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+	ClusterDomain *string `pulumi:"clusterDomain"`
+	ClusterSpec   *string `pulumi:"clusterSpec"`
+	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
-	// Enable login to the node through SSH. default: false
+	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	CustomSan *string `pulumi:"customSan"`
+	// Whether to enable cluster deletion protection.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh *bool `pulumi:"enableSsh"`
-	// Exclude autoscaler nodes from `workerNodes`. default: false
+	// The disk encryption key.
+	EncryptionProviderKey *string `pulumi:"encryptionProviderKey"`
+	// Exclude autoscaler nodes from `workerNodes`. Default to `false`.
 	ExcludeAutoscalerNodes *bool `pulumi:"excludeAutoscalerNodes"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
-	// Install cloud monitor agent on ECS. default: true
+	// Install cloud monitor agent on ECS. Default to `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
@@ -446,61 +508,75 @@ type managedKubernetesArgs struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
-	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
+	// The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+	NodePortRange *string `pulumi:"nodePortRange"`
+	// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+	OsType *string `pulumi:"osType"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
+	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+	Platform *string `pulumi:"platform"`
+	// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
-	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
+	// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode *string `pulumi:"proxyMode"`
+	ProxyMode    *string  `pulumi:"proxyMode"`
+	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	Runtime *ManagedKubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
+	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well).
 	ServiceAccountIssuer *string `pulumi:"serviceAccountIssuer"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
-	// Default nil, A map of tags assigned to the kubernetes cluster .
+	// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+	Taints []ManagedKubernetesTaint `pulumi:"taints"`
+	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	Timezone *string `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
-	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+	// Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
 	UserData *string `pulumi:"userData"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version *string `pulumi:"version"`
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew *bool `pulumi:"workerAutoRenew"`
-	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+	// Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
 	WorkerAutoRenewPeriod  *int    `pulumi:"workerAutoRenewPeriod"`
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// - category: the type of the data disks. Valid values:
-	// + cloud: basic disks.
-	// + cloud_efficiency: ultra disks.
-	// + cloud_ssd: SSDs.
-	// - size: the size of a data disk. Unit: GiB.
-	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `category`: the type of the data disks. Valid values:
+	// * cloud: basic disks.
+	// * cloud_efficiency: ultra disks.
+	// * cloud_ssd: SSDs.
+	// * cloud_essd: essd.
+	// * `size`: the size of a data disk. Unit: GiB.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []ManagedKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
-	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber int `pulumi:"workerNumber"`
-	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod *int `pulumi:"workerPeriod"`
-	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+	// Worker payment period unit, the valid value is `Month`.
 	WorkerPeriodUnit *string  `pulumi:"workerPeriodUnit"`
 	WorkerVswitchIds []string `pulumi:"workerVswitchIds"`
 }
@@ -508,7 +584,7 @@ type managedKubernetesArgs struct {
 // The set of arguments for constructing a ManagedKubernetes resource.
 type ManagedKubernetesArgs struct {
 	Addons ManagedKubernetesAddonArrayInput
-	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
 	ApiAudiences pulumi.StringArrayInput
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone pulumi.StringPtrInput
@@ -518,19 +594,24 @@ type ManagedKubernetesArgs struct {
 	ClientKey pulumi.StringPtrInput
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
-	// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
-	// - ack.standard: Standard managed clusters.
-	// - ack.pro.small:  Professional managed clusters.
-	ClusterSpec pulumi.StringPtrInput
-	// kubelet cpu policy. options: static|none. default: none.
+	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+	ClusterDomain pulumi.StringPtrInput
+	ClusterSpec   pulumi.StringPtrInput
+	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrInput
-	// Enable login to the node through SSH. default: false
+	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	CustomSan pulumi.StringPtrInput
+	// Whether to enable cluster deletion protection.
+	DeletionProtection pulumi.BoolPtrInput
+	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrInput
-	// Exclude autoscaler nodes from `workerNodes`. default: false
+	// The disk encryption key.
+	EncryptionProviderKey pulumi.StringPtrInput
+	// Exclude autoscaler nodes from `workerNodes`. Default to `false`.
 	ExcludeAutoscalerNodes pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
-	// Install cloud monitor agent on ECS. default: true
+	// Install cloud monitor agent on ECS. Default to `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
@@ -549,61 +630,75 @@ type ManagedKubernetesArgs struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
-	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
 	NodeNameMode pulumi.StringPtrInput
+	// The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+	NodePortRange pulumi.StringPtrInput
+	// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+	OsType pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
+	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+	Platform pulumi.StringPtrInput
+	// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
-	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
+	// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode pulumi.StringPtrInput
+	ProxyMode    pulumi.StringPtrInput
+	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	Runtime ManagedKubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
-	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
+	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well).
 	ServiceAccountIssuer pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled pulumi.BoolPtrInput
-	// Default nil, A map of tags assigned to the kubernetes cluster .
+	// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
 	Tags pulumi.MapInput
+	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+	Taints ManagedKubernetesTaintArrayInput
+	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	Timezone pulumi.StringPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput
-	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+	// Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
 	UserData pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version pulumi.StringPtrInput
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew pulumi.BoolPtrInput
-	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+	// Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
 	WorkerAutoRenewPeriod  pulumi.IntPtrInput
 	WorkerDataDiskCategory pulumi.StringPtrInput
 	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// - category: the type of the data disks. Valid values:
-	// + cloud: basic disks.
-	// + cloud_efficiency: ultra disks.
-	// + cloud_ssd: SSDs.
-	// - size: the size of a data disk. Unit: GiB.
-	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `category`: the type of the data disks. Valid values:
+	// * cloud: basic disks.
+	// * cloud_efficiency: ultra disks.
+	// * cloud_ssd: SSDs.
+	// * cloud_essd: essd.
+	// * `size`: the size of a data disk. Unit: GiB.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayInput
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrInput
-	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrInput
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes pulumi.StringArrayInput
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber pulumi.IntInput
-	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod pulumi.IntPtrInput
-	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+	// Worker payment period unit, the valid value is `Month`.
 	WorkerPeriodUnit pulumi.StringPtrInput
 	WorkerVswitchIds pulumi.StringArrayInput
 }

@@ -21,10 +21,14 @@ __all__ = [
     'KubernetesAutoscalerNodepool',
     'KubernetesConnections',
     'KubernetesMasterNode',
+    'KubernetesRuntime',
+    'KubernetesTaint',
     'KubernetesWorkerDataDisk',
     'KubernetesWorkerNode',
     'ManagedKubernetesAddon',
     'ManagedKubernetesConnections',
+    'ManagedKubernetesRuntime',
+    'ManagedKubernetesTaint',
     'ManagedKubernetesWorkerDataDisk',
     'ManagedKubernetesWorkerNode',
     'NodePoolDataDisk',
@@ -559,6 +563,72 @@ class KubernetesMasterNode(dict):
 
 
 @pulumi.output_type
+class KubernetesRuntime(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        """
+        return pulumi.get(self, "version")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class KubernetesTaint(dict):
+    def __init__(__self__, *,
+                 effect: Optional[str] = None,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class KubernetesWorkerDataDisk(dict):
     def __init__(__self__, *,
                  auto_snapshot_policy_id: Optional[str] = None,
@@ -730,6 +800,7 @@ class ManagedKubernetesConnections(dict):
         """
         :param str api_server_internet: API Server Internet endpoint.
         :param str api_server_intranet: API Server Intranet endpoint.
+        :param str master_public_ip: Master node SSH IP address.
         :param str service_domain: Service Access Domain.
         """
         if api_server_internet is not None:
@@ -760,6 +831,9 @@ class ManagedKubernetesConnections(dict):
     @property
     @pulumi.getter(name="masterPublicIp")
     def master_public_ip(self) -> Optional[str]:
+        """
+        Master node SSH IP address.
+        """
         return pulumi.get(self, "master_public_ip")
 
     @property
@@ -769,6 +843,72 @@ class ManagedKubernetesConnections(dict):
         Service Access Domain.
         """
         return pulumi.get(self, "service_domain")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ManagedKubernetesRuntime(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        """
+        return pulumi.get(self, "version")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ManagedKubernetesTaint(dict):
+    def __init__(__self__, *,
+                 effect: Optional[str] = None,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

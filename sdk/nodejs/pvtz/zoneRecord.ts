@@ -41,6 +41,10 @@ export class ZoneRecord extends pulumi.CustomResource {
      */
     public /*out*/ readonly recordId!: pulumi.Output<number>;
     /**
+     * The remark of the Private Zone Record.
+     */
+    public readonly remark!: pulumi.Output<string | undefined>;
+    /**
      * The resource record of the Private Zone Record.
      */
     public readonly resourceRecord!: pulumi.Output<string>;
@@ -75,6 +79,7 @@ export class ZoneRecord extends pulumi.CustomResource {
             const state = argsOrState as ZoneRecordState | undefined;
             inputs["priority"] = state ? state.priority : undefined;
             inputs["recordId"] = state ? state.recordId : undefined;
+            inputs["remark"] = state ? state.remark : undefined;
             inputs["resourceRecord"] = state ? state.resourceRecord : undefined;
             inputs["ttl"] = state ? state.ttl : undefined;
             inputs["type"] = state ? state.type : undefined;
@@ -95,6 +100,7 @@ export class ZoneRecord extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["priority"] = args ? args.priority : undefined;
+            inputs["remark"] = args ? args.remark : undefined;
             inputs["resourceRecord"] = args ? args.resourceRecord : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["type"] = args ? args.type : undefined;
@@ -126,6 +132,10 @@ export interface ZoneRecordState {
      */
     readonly recordId?: pulumi.Input<number>;
     /**
+     * The remark of the Private Zone Record.
+     */
+    readonly remark?: pulumi.Input<string>;
+    /**
      * The resource record of the Private Zone Record.
      */
     readonly resourceRecord?: pulumi.Input<string>;
@@ -155,6 +165,10 @@ export interface ZoneRecordArgs {
      * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
      */
     readonly priority?: pulumi.Input<number>;
+    /**
+     * The remark of the Private Zone Record.
+     */
+    readonly remark?: pulumi.Input<string>;
     /**
      * The resource record of the Private Zone Record.
      */

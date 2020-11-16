@@ -2745,6 +2745,23 @@ export namespace cs {
         privateIp: string;
     }
 
+    export interface KubernetesRuntime {
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: string;
+        /**
+         * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+         */
+        version?: string;
+    }
+
+    export interface KubernetesTaint {
+        effect?: string;
+        key?: string;
+        value?: string;
+    }
+
     export interface KubernetesWorkerDataDisk {
         autoSnapshotPolicyId?: string;
         category?: string;
@@ -2792,11 +2809,31 @@ export namespace cs {
          * API Server Intranet endpoint.
          */
         apiServerIntranet: string;
+        /**
+         * Master node SSH IP address.
+         */
         masterPublicIp: string;
         /**
          * Service Access Domain.
          */
         serviceDomain: string;
+    }
+
+    export interface ManagedKubernetesRuntime {
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: string;
+        /**
+         * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+         */
+        version?: string;
+    }
+
+    export interface ManagedKubernetesTaint {
+        effect?: string;
+        key?: string;
+        value?: string;
     }
 
     export interface ManagedKubernetesWorkerDataDisk {
