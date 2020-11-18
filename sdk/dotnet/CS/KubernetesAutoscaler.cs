@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ## Example Usage
     /// 
-    /// cluster-autoscaler in Kubernetes Cluster
+    /// cluster-autoscaler in Kubernetes Cluster.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,21 +32,72 @@ namespace Pulumi.AliCloud.CS
     /// {
     ///     public MyStack()
     ///     {
-    ///         var @default = new AliCloud.CS.KubernetesAutoscaler("default", new AliCloud.CS.KubernetesAutoscalerArgs
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "autoscaler";
+    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync());
+    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
     ///         {
-    ///             ClusterId = @var.Cluster_id,
+    ///             Owners = "system",
+    ///             NameRegex = "^centos_7",
+    ///             MostRecent = true,
+    ///         }));
+    ///         var defaultManagedKubernetesClusters = Output.Create(AliCloud.CS.GetManagedKubernetesClusters.InvokeAsync());
+    ///         var defaultInstanceTypes = Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
+    ///         {
+    ///             CpuCoreCount = 2,
+    ///             MemorySize = 4,
+    ///         }));
+    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Vpcs[0].Id),
+    ///         });
+    ///         var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new AliCloud.Ess.ScalingGroupArgs
+    ///         {
+    ///             ScalingGroupName = name,
+    ///             MinSize = @var.Min_size,
+    ///             MaxSize = @var.Max_size,
+    ///             VswitchIds = 
+    ///             {
+    ///                 defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Vpcs[0].VswitchIds[0]),
+    ///             },
+    ///             RemovalPolicies = 
+    ///             {
+    ///                 "OldestInstance",
+    ///                 "NewestInstance",
+    ///             },
+    ///         });
+    ///         var defaultScalingConfiguration = new AliCloud.Ess.ScalingConfiguration("defaultScalingConfiguration", new AliCloud.Ess.ScalingConfigurationArgs
+    ///         {
+    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
+    ///             SecurityGroupId = defaultSecurityGroup.Id,
+    ///             ScalingGroupId = defaultScalingGroup.Id,
+    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+    ///             InternetChargeType = "PayByTraffic",
+    ///             ForceDelete = true,
+    ///             Enable = true,
+    ///             Active = true,
+    ///         });
+    ///         var defaultKubernetesAutoscaler = new AliCloud.CS.KubernetesAutoscaler("defaultKubernetesAutoscaler", new AliCloud.CS.KubernetesAutoscalerArgs
+    ///         {
+    ///             ClusterId = defaultManagedKubernetesClusters.Apply(defaultManagedKubernetesClusters =&gt; defaultManagedKubernetesClusters.Clusters[0].Id),
     ///             Nodepools = 
     ///             {
     ///                 new AliCloud.CS.Inputs.KubernetesAutoscalerNodepoolArgs
     ///                 {
-    ///                     Id = "scaling_group_id",
-    ///                     Taints = "c=d:NoSchedule",
+    ///                     Id = defaultScalingGroup.Id,
     ///                     Labels = "a=b",
     ///                 },
     ///             },
     ///             Utilization = @var.Utilization,
     ///             CoolDownDuration = @var.Cool_down_duration,
     ///             DeferScaleInDuration = @var.Defer_scale_in_duration,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 alicloud_ess_scaling_group.Defalut,
+    ///                 defaultScalingConfiguration,
+    ///             },
     ///         });
     ///     }
     /// 

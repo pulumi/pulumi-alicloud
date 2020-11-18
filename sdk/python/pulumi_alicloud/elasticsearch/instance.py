@@ -356,7 +356,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of instance. It a string of 0 to 30 characters.
         """

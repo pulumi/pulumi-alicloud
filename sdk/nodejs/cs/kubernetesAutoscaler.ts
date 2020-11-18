@@ -19,22 +19,60 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * cluster-autoscaler in Kubernetes Cluster
+ * cluster-autoscaler in Kubernetes Cluster.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.cs.KubernetesAutoscaler("default", {
- *     clusterId: _var.cluster_id,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "autoscaler";
+ * const defaultNetworks = alicloud.vpc.getNetworks({});
+ * const defaultImages = alicloud.ecs.getImages({
+ *     owners: "system",
+ *     nameRegex: "^centos_7",
+ *     mostRecent: true,
+ * });
+ * const defaultManagedKubernetesClusters = alicloud.cs.getManagedKubernetesClusters({});
+ * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.vpcs[0].id)});
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
+ *     scalingGroupName: name,
+ *     minSize: _var.min_size,
+ *     maxSize: _var.max_size,
+ *     vswitchIds: [defaultNetworks.then(defaultNetworks => defaultNetworks.vpcs[0].vswitchIds[0])],
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ * });
+ * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("defaultScalingConfiguration", {
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes[0].id),
+ *     internetChargeType: "PayByTraffic",
+ *     forceDelete: true,
+ *     enable: true,
+ *     active: true,
+ * });
+ * const defaultKubernetesAutoscaler = new alicloud.cs.KubernetesAutoscaler("defaultKubernetesAutoscaler", {
+ *     clusterId: defaultManagedKubernetesClusters.then(defaultManagedKubernetesClusters => defaultManagedKubernetesClusters.clusters[0].id),
  *     nodepools: [{
- *         id: "scaling_group_id",
- *         taints: "c=d:NoSchedule",
+ *         id: defaultScalingGroup.id,
  *         labels: "a=b",
  *     }],
  *     utilization: _var.utilization,
  *     coolDownDuration: _var.cool_down_duration,
  *     deferScaleInDuration: _var.defer_scale_in_duration,
+ * }, {
+ *     dependsOn: [
+ *         alicloud_ess_scaling_group.defalut,
+ *         defaultScalingConfiguration,
+ *     ],
  * });
  * ```
  */

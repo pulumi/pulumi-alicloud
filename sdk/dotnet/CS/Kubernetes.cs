@@ -45,25 +45,43 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ClusterCaCert { get; private set; } = null!;
 
         /// <summary>
+        /// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+        /// </summary>
+        [Output("clusterDomain")]
+        public Output<string?> ClusterDomain { get; private set; } = null!;
+
+        /// <summary>
         /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         /// </summary>
         [Output("connections")]
         public Output<Outputs.KubernetesConnections> Connections { get; private set; } = null!;
 
         /// <summary>
-        /// kubelet cpu policy. options: static|none. default: none.
+        /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         /// </summary>
         [Output("cpuPolicy")]
         public Output<string?> CpuPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Enable login to the node through SSH. default: false
+        /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// </summary>
+        [Output("customSan")]
+        public Output<string?> CustomSan { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable cluster deletion protection.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable login to the node through SSH. Default to `false`.
         /// </summary>
         [Output("enableSsh")]
         public Output<bool?> EnableSsh { get; private set; } = null!;
 
         /// <summary>
-        /// Exclude autoscaler nodes from `worker_nodes`. default: false
+        /// Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         /// </summary>
         [Output("excludeAutoscalerNodes")]
         public Output<bool?> ExcludeAutoscalerNodes { get; private set; } = null!;
@@ -75,7 +93,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: true
+        /// Install cloud monitor agent on ECS. Default to `true`.
         /// </summary>
         [Output("installCloudMonitor")]
         public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
@@ -117,13 +135,13 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> MasterAutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Master payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+        /// Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Output("masterAutoRenewPeriod")]
         public Output<int?> MasterAutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk category of master node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         /// </summary>
         [Output("masterDiskCategory")]
         public Output<string?> MasterDiskCategory { get; private set; } = null!;
@@ -135,7 +153,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> MasterDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// Master payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+        /// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
         /// </summary>
         [Output("masterInstanceChargeType")]
         public Output<string?> MasterInstanceChargeType { get; private set; } = null!;
@@ -153,13 +171,13 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.KubernetesMasterNode>> MasterNodes { get; private set; } = null!;
 
         /// <summary>
-        /// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+        /// Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         /// </summary>
         [Output("masterPeriod")]
         public Output<int?> MasterPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Master payment period unit. `Month` or `Week`, defaults to `Month`.
+        /// Master payment period unit, the valid value is `Month`.
         /// </summary>
         [Output("masterPeriodUnit")]
         public Output<string?> MasterPeriodUnit { get; private set; } = null!;
@@ -195,10 +213,22 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> NodeCidrMask { get; private set; } = null!;
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
         /// </summary>
         [Output("nodeNameMode")]
         public Output<string?> NodeNameMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        /// </summary>
+        [Output("nodePortRange")]
+        public Output<string?> NodePortRange { get; private set; } = null!;
+
+        /// <summary>
+        /// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+        /// </summary>
+        [Output("osType")]
+        public Output<string?> OsType { get; private set; } = null!;
 
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -207,28 +237,43 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        /// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+        /// </summary>
+        [Output("platform")]
+        public Output<string?> Platform { get; private set; } = null!;
+
+        /// <summary>
+        /// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
         /// </summary>
         [Output("podCidr")]
         public Output<string?> PodCidr { get; private set; } = null!;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        /// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
         /// </summary>
         [Output("podVswitchIds")]
         public Output<ImmutableArray<string>> PodVswitchIds { get; private set; } = null!;
 
         /// <summary>
-        /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        /// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         /// </summary>
         [Output("proxyMode")]
         public Output<string?> ProxyMode { get; private set; } = null!;
+
+        [Output("rdsInstances")]
+        public Output<ImmutableArray<string>> RdsInstances { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// </summary>
+        [Output("runtime")]
+        public Output<Outputs.KubernetesRuntime?> Runtime { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -267,10 +312,22 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SlbIntranet { get; private set; } = null!;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster .
+        /// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        /// </summary>
+        [Output("taints")]
+        public Output<ImmutableArray<Outputs.KubernetesTaint>> Taints { get; private set; } = null!;
+
+        /// <summary>
+        /// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// </summary>
+        [Output("timezone")]
+        public Output<string?> Timezone { get; private set; } = null!;
 
         /// <summary>
         /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -279,7 +336,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> UserCa { get; private set; } = null!;
 
         /// <summary>
-        /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+        /// Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
@@ -303,7 +360,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> WorkerAutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+        /// Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Output("workerAutoRenewPeriod")]
         public Output<int?> WorkerAutoRenewPeriod { get; private set; } = null!;
@@ -315,19 +372,20 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> WorkerDataDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size. 
-        /// - category: the type of the data disks. Valid values:
-        /// + cloud: basic disks.
-        /// + cloud_efficiency: ultra disks.
-        /// + cloud_ssd: SSDs.
-        /// - size: the size of a data disk. Unit: GiB.
-        /// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// * `category`: the type of the data disks. Valid values:
+        /// * cloud: basic disks.
+        /// * cloud_efficiency: ultra disks.
+        /// * cloud_ssd: SSDs.
+        /// * cloud_essd: essd.
+        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         [Output("workerDataDisks")]
         public Output<ImmutableArray<Outputs.KubernetesWorkerDataDisk>> WorkerDataDisks { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         /// </summary>
         [Output("workerDiskCategory")]
         public Output<string?> WorkerDiskCategory { get; private set; } = null!;
@@ -339,7 +397,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> WorkerDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+        /// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
         /// </summary>
         [Output("workerInstanceChargeType")]
         public Output<string?> WorkerInstanceChargeType { get; private set; } = null!;
@@ -363,13 +421,13 @@ namespace Pulumi.AliCloud.CS
         public Output<int> WorkerNumber { get; private set; } = null!;
 
         /// <summary>
-        /// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+        /// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         /// </summary>
         [Output("workerPeriod")]
         public Output<int?> WorkerPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+        /// Worker payment period unit, the valid value is `Month`.
         /// </summary>
         [Output("workerPeriodUnit")]
         public Output<string?> WorkerPeriodUnit { get; private set; } = null!;
@@ -474,19 +532,37 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterCaCert { get; set; }
 
         /// <summary>
-        /// kubelet cpu policy. options: static|none. default: none.
+        /// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+        /// </summary>
+        [Input("clusterDomain")]
+        public Input<string>? ClusterDomain { get; set; }
+
+        /// <summary>
+        /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         /// </summary>
         [Input("cpuPolicy")]
         public Input<string>? CpuPolicy { get; set; }
 
         /// <summary>
-        /// Enable login to the node through SSH. default: false
+        /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// </summary>
+        [Input("customSan")]
+        public Input<string>? CustomSan { get; set; }
+
+        /// <summary>
+        /// Whether to enable cluster deletion protection.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Enable login to the node through SSH. Default to `false`.
         /// </summary>
         [Input("enableSsh")]
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
-        /// Exclude autoscaler nodes from `worker_nodes`. default: false
+        /// Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         /// </summary>
         [Input("excludeAutoscalerNodes")]
         public Input<bool>? ExcludeAutoscalerNodes { get; set; }
@@ -498,7 +574,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: true
+        /// Install cloud monitor agent on ECS. Default to `true`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -546,13 +622,13 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? MasterAutoRenew { get; set; }
 
         /// <summary>
-        /// Master payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+        /// Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Input("masterAutoRenewPeriod")]
         public Input<int>? MasterAutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The system disk category of master node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         /// </summary>
         [Input("masterDiskCategory")]
         public Input<string>? MasterDiskCategory { get; set; }
@@ -564,7 +640,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? MasterDiskSize { get; set; }
 
         /// <summary>
-        /// Master payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+        /// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
         /// </summary>
         [Input("masterInstanceChargeType")]
         public Input<string>? MasterInstanceChargeType { get; set; }
@@ -582,13 +658,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+        /// Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         /// </summary>
         [Input("masterPeriod")]
         public Input<int>? MasterPeriod { get; set; }
 
         /// <summary>
-        /// Master payment period unit. `Month` or `Week`, defaults to `Month`.
+        /// Master payment period unit, the valid value is `Month`.
         /// </summary>
         [Input("masterPeriodUnit")]
         public Input<string>? MasterPeriodUnit { get; set; }
@@ -623,10 +699,22 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCidrMask { get; set; }
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
         /// </summary>
         [Input("nodeNameMode")]
         public Input<string>? NodeNameMode { get; set; }
+
+        /// <summary>
+        /// The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        /// </summary>
+        [Input("nodePortRange")]
+        public Input<string>? NodePortRange { get; set; }
+
+        /// <summary>
+        /// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+        /// </summary>
+        [Input("osType")]
+        public Input<string>? OsType { get; set; }
 
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -635,7 +723,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        /// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+        /// </summary>
+        [Input("platform")]
+        public Input<string>? Platform { get; set; }
+
+        /// <summary>
+        /// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
@@ -644,7 +738,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        /// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -653,16 +747,30 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        /// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
+
+        [Input("rdsInstances")]
+        private InputList<string>? _rdsInstances;
+        public InputList<string> RdsInstances
+        {
+            get => _rdsInstances ?? (_rdsInstances = new InputList<string>());
+            set => _rdsInstances = value;
+        }
 
         /// <summary>
         /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// </summary>
+        [Input("runtime")]
+        public Input<Inputs.KubernetesRuntimeArgs>? Runtime { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -692,13 +800,31 @@ namespace Pulumi.AliCloud.CS
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster .
+        /// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
         /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        [Input("taints")]
+        private InputList<Inputs.KubernetesTaintArgs>? _taints;
+
+        /// <summary>
+        /// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        /// </summary>
+        public InputList<Inputs.KubernetesTaintArgs> Taints
+        {
+            get => _taints ?? (_taints = new InputList<Inputs.KubernetesTaintArgs>());
+            set => _taints = value;
+        }
+
+        /// <summary>
+        /// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
 
         /// <summary>
         /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -707,7 +833,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? UserCa { get; set; }
 
         /// <summary>
-        /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+        /// Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -725,7 +851,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? WorkerAutoRenew { get; set; }
 
         /// <summary>
-        /// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+        /// Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Input("workerAutoRenewPeriod")]
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
@@ -740,13 +866,14 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesWorkerDataDiskArgs>? _workerDataDisks;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size. 
-        /// - category: the type of the data disks. Valid values:
-        /// + cloud: basic disks.
-        /// + cloud_efficiency: ultra disks.
-        /// + cloud_ssd: SSDs.
-        /// - size: the size of a data disk. Unit: GiB.
-        /// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// * `category`: the type of the data disks. Valid values:
+        /// * cloud: basic disks.
+        /// * cloud_efficiency: ultra disks.
+        /// * cloud_ssd: SSDs.
+        /// * cloud_essd: essd.
+        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.KubernetesWorkerDataDiskArgs> WorkerDataDisks
         {
@@ -755,7 +882,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         /// </summary>
         [Input("workerDiskCategory")]
         public Input<string>? WorkerDiskCategory { get; set; }
@@ -767,7 +894,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? WorkerDiskSize { get; set; }
 
         /// <summary>
-        /// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+        /// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
         /// </summary>
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
@@ -791,13 +918,13 @@ namespace Pulumi.AliCloud.CS
         public Input<int> WorkerNumber { get; set; } = null!;
 
         /// <summary>
-        /// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+        /// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         /// </summary>
         [Input("workerPeriod")]
         public Input<int>? WorkerPeriod { get; set; }
 
         /// <summary>
-        /// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+        /// Worker payment period unit, the valid value is `Month`.
         /// </summary>
         [Input("workerPeriodUnit")]
         public Input<string>? WorkerPeriodUnit { get; set; }
@@ -862,25 +989,43 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterCaCert { get; set; }
 
         /// <summary>
+        /// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+        /// </summary>
+        [Input("clusterDomain")]
+        public Input<string>? ClusterDomain { get; set; }
+
+        /// <summary>
         /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         /// </summary>
         [Input("connections")]
         public Input<Inputs.KubernetesConnectionsGetArgs>? Connections { get; set; }
 
         /// <summary>
-        /// kubelet cpu policy. options: static|none. default: none.
+        /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         /// </summary>
         [Input("cpuPolicy")]
         public Input<string>? CpuPolicy { get; set; }
 
         /// <summary>
-        /// Enable login to the node through SSH. default: false
+        /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// </summary>
+        [Input("customSan")]
+        public Input<string>? CustomSan { get; set; }
+
+        /// <summary>
+        /// Whether to enable cluster deletion protection.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Enable login to the node through SSH. Default to `false`.
         /// </summary>
         [Input("enableSsh")]
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
-        /// Exclude autoscaler nodes from `worker_nodes`. default: false
+        /// Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         /// </summary>
         [Input("excludeAutoscalerNodes")]
         public Input<bool>? ExcludeAutoscalerNodes { get; set; }
@@ -892,7 +1037,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. default: true
+        /// Install cloud monitor agent on ECS. Default to `true`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -940,13 +1085,13 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? MasterAutoRenew { get; set; }
 
         /// <summary>
-        /// Master payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+        /// Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Input("masterAutoRenewPeriod")]
         public Input<int>? MasterAutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The system disk category of master node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         /// </summary>
         [Input("masterDiskCategory")]
         public Input<string>? MasterDiskCategory { get; set; }
@@ -958,7 +1103,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? MasterDiskSize { get; set; }
 
         /// <summary>
-        /// Master payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+        /// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
         /// </summary>
         [Input("masterInstanceChargeType")]
         public Input<string>? MasterInstanceChargeType { get; set; }
@@ -988,13 +1133,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+        /// Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         /// </summary>
         [Input("masterPeriod")]
         public Input<int>? MasterPeriod { get; set; }
 
         /// <summary>
-        /// Master payment period unit. `Month` or `Week`, defaults to `Month`.
+        /// Master payment period unit, the valid value is `Month`.
         /// </summary>
         [Input("masterPeriodUnit")]
         public Input<string>? MasterPeriodUnit { get; set; }
@@ -1035,10 +1180,22 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCidrMask { get; set; }
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
         /// </summary>
         [Input("nodeNameMode")]
         public Input<string>? NodeNameMode { get; set; }
+
+        /// <summary>
+        /// The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        /// </summary>
+        [Input("nodePortRange")]
+        public Input<string>? NodePortRange { get; set; }
+
+        /// <summary>
+        /// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+        /// </summary>
+        [Input("osType")]
+        public Input<string>? OsType { get; set; }
 
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -1047,7 +1204,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        /// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+        /// </summary>
+        [Input("platform")]
+        public Input<string>? Platform { get; set; }
+
+        /// <summary>
+        /// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
@@ -1056,7 +1219,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        /// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -1065,16 +1228,30 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        /// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
+
+        [Input("rdsInstances")]
+        private InputList<string>? _rdsInstances;
+        public InputList<string> RdsInstances
+        {
+            get => _rdsInstances ?? (_rdsInstances = new InputList<string>());
+            set => _rdsInstances = value;
+        }
 
         /// <summary>
         /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// </summary>
+        [Input("runtime")]
+        public Input<Inputs.KubernetesRuntimeGetArgs>? Runtime { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -1116,13 +1293,31 @@ namespace Pulumi.AliCloud.CS
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster .
+        /// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
         /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        [Input("taints")]
+        private InputList<Inputs.KubernetesTaintGetArgs>? _taints;
+
+        /// <summary>
+        /// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        /// </summary>
+        public InputList<Inputs.KubernetesTaintGetArgs> Taints
+        {
+            get => _taints ?? (_taints = new InputList<Inputs.KubernetesTaintGetArgs>());
+            set => _taints = value;
+        }
+
+        /// <summary>
+        /// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
 
         /// <summary>
         /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -1131,7 +1326,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? UserCa { get; set; }
 
         /// <summary>
-        /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+        /// Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -1155,7 +1350,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? WorkerAutoRenew { get; set; }
 
         /// <summary>
-        /// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+        /// Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Input("workerAutoRenewPeriod")]
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
@@ -1170,13 +1365,14 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesWorkerDataDiskGetArgs>? _workerDataDisks;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size. 
-        /// - category: the type of the data disks. Valid values:
-        /// + cloud: basic disks.
-        /// + cloud_efficiency: ultra disks.
-        /// + cloud_ssd: SSDs.
-        /// - size: the size of a data disk. Unit: GiB.
-        /// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// * `category`: the type of the data disks. Valid values:
+        /// * cloud: basic disks.
+        /// * cloud_efficiency: ultra disks.
+        /// * cloud_ssd: SSDs.
+        /// * cloud_essd: essd.
+        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.KubernetesWorkerDataDiskGetArgs> WorkerDataDisks
         {
@@ -1185,7 +1381,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         /// </summary>
         [Input("workerDiskCategory")]
         public Input<string>? WorkerDiskCategory { get; set; }
@@ -1197,7 +1393,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? WorkerDiskSize { get; set; }
 
         /// <summary>
-        /// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+        /// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
         /// </summary>
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
@@ -1233,13 +1429,13 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? WorkerNumber { get; set; }
 
         /// <summary>
-        /// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+        /// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         /// </summary>
         [Input("workerPeriod")]
         public Input<int>? WorkerPeriod { get; set; }
 
         /// <summary>
-        /// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+        /// Worker payment period unit, the valid value is `Month`.
         /// </summary>
         [Input("workerPeriodUnit")]
         public Input<string>? WorkerPeriodUnit { get; set; }

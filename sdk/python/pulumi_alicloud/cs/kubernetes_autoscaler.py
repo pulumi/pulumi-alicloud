@@ -39,22 +39,55 @@ class KubernetesAutoscaler(pulumi.CustomResource):
 
         ## Example Usage
 
-        cluster-autoscaler in Kubernetes Cluster
+        cluster-autoscaler in Kubernetes Cluster.
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.cs.KubernetesAutoscaler("default",
-            cluster_id=var["cluster_id"],
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "autoscaler"
+        default_networks = alicloud.vpc.get_networks()
+        default_images = alicloud.ecs.get_images(owners="system",
+            name_regex="^centos_7",
+            most_recent=True)
+        default_managed_kubernetes_clusters = alicloud.cs.get_managed_kubernetes_clusters()
+        default_instance_types = alicloud.ecs.get_instance_types(cpu_core_count=2,
+            memory_size=4)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.vpcs[0].id)
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            scaling_group_name=name,
+            min_size=var["min_size"],
+            max_size=var["max_size"],
+            vswitch_ids=[default_networks.vpcs[0].vswitch_ids[0]],
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
+            image_id=default_images.images[0].id,
+            security_group_id=default_security_group.id,
+            scaling_group_id=default_scaling_group.id,
+            instance_type=default_instance_types.instance_types[0].id,
+            internet_charge_type="PayByTraffic",
+            force_delete=True,
+            enable=True,
+            active=True)
+        default_kubernetes_autoscaler = alicloud.cs.KubernetesAutoscaler("defaultKubernetesAutoscaler",
+            cluster_id=default_managed_kubernetes_clusters.clusters[0].id,
             nodepools=[alicloud.cs.KubernetesAutoscalerNodepoolArgs(
-                id="scaling_group_id",
-                taints="c=d:NoSchedule",
+                id=default_scaling_group.id,
                 labels="a=b",
             )],
             utilization=var["utilization"],
             cool_down_duration=var["cool_down_duration"],
-            defer_scale_in_duration=var["defer_scale_in_duration"])
+            defer_scale_in_duration=var["defer_scale_in_duration"],
+            opts=ResourceOptions(depends_on=[
+                    alicloud_ess_scaling_group["defalut"],
+                    default_scaling_configuration,
+                ]))
         ```
 
         :param str resource_name: The name of the resource.

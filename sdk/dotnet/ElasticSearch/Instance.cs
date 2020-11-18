@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// The description of instance. It a string of 0 to 30 characters.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// Instance connection domain (only VPC network access supported).

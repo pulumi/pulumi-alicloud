@@ -22,6 +22,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,8 @@ class EdgeKubernetes(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  pod_cidr: Optional[pulumi.Input[str]] = None,
                  proxy_mode: Optional[pulumi.Input[str]] = None,
+                 rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  slb_internet_enabled: Optional[pulumi.Input[bool]] = None,
@@ -57,29 +60,31 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
-        :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`
+        :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. 
-               - category: the type of the data disks. Valid values:
-               + cloud: basic disks.
-               + cloud_efficiency: ultra disks.
-               + cloud_ssd: SSDs.
-               - size: the size of a data disk. Unit: GiB.
-               - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
-        :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
+               * `category`: the type of the data disks. Valid values:
+               * cloud: basic disks.
+               * cloud_efficiency: ultra disks.
+               * cloud_ssd: SSDs.
+               * `size`: the size of a data disk. Unit: GiB.
+               * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+        :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
         :param pulumi.Input[int] worker_number: The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
@@ -106,6 +111,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__['client_cert'] = client_cert
             __props__['client_key'] = client_key
             __props__['cluster_ca_cert'] = cluster_ca_cert
+            __props__['deletion_protection'] = deletion_protection
             __props__['install_cloud_monitor'] = install_cloud_monitor
             __props__['is_enterprise_security_group'] = is_enterprise_security_group
             __props__['key_name'] = key_name
@@ -118,6 +124,8 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__['password'] = password
             __props__['pod_cidr'] = pod_cidr
             __props__['proxy_mode'] = proxy_mode
+            __props__['rds_instances'] = rds_instances
+            __props__['resource_group_id'] = resource_group_id
             __props__['security_group_id'] = security_group_id
             __props__['service_cidr'] = service_cidr
             __props__['slb_internet_enabled'] = slb_internet_enabled
@@ -158,6 +166,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             client_key: Optional[pulumi.Input[str]] = None,
             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
             connections: Optional[pulumi.Input[pulumi.InputType['EdgeKubernetesConnectionsArgs']]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
             is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
@@ -171,6 +180,8 @@ class EdgeKubernetes(pulumi.CustomResource):
             password: Optional[pulumi.Input[str]] = None,
             pod_cidr: Optional[pulumi.Input[str]] = None,
             proxy_mode: Optional[pulumi.Input[str]] = None,
+            rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             service_cidr: Optional[pulumi.Input[str]] = None,
             slb_internet: Optional[pulumi.Input[str]] = None,
@@ -198,7 +209,8 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
-        :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`
+        :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
@@ -206,9 +218,10 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
@@ -216,14 +229,14 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. 
-               - category: the type of the data disks. Valid values:
-               + cloud: basic disks.
-               + cloud_efficiency: ultra disks.
-               + cloud_ssd: SSDs.
-               - size: the size of a data disk. Unit: GiB.
-               - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
-        :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
+               * `category`: the type of the data disks. Valid values:
+               * cloud: basic disks.
+               * cloud_efficiency: ultra disks.
+               * cloud_ssd: SSDs.
+               * `size`: the size of a data disk. Unit: GiB.
+               * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+        :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
@@ -239,6 +252,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         __props__["client_key"] = client_key
         __props__["cluster_ca_cert"] = cluster_ca_cert
         __props__["connections"] = connections
+        __props__["deletion_protection"] = deletion_protection
         __props__["install_cloud_monitor"] = install_cloud_monitor
         __props__["is_enterprise_security_group"] = is_enterprise_security_group
         __props__["key_name"] = key_name
@@ -252,6 +266,8 @@ class EdgeKubernetes(pulumi.CustomResource):
         __props__["password"] = password
         __props__["pod_cidr"] = pod_cidr
         __props__["proxy_mode"] = proxy_mode
+        __props__["rds_instances"] = rds_instances
+        __props__["resource_group_id"] = resource_group_id
         __props__["security_group_id"] = security_group_id
         __props__["service_cidr"] = service_cidr
         __props__["slb_internet"] = slb_internet
@@ -313,10 +329,18 @@ class EdgeKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "connections")
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to enable cluster deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @property
     @pulumi.getter(name="installCloudMonitor")
     def install_cloud_monitor(self) -> pulumi.Output[Optional[bool]]:
         """
-        Install cloud monitor agent on ECS. default: `true`
+        Install cloud monitor agent on ECS. default: `true`.
         """
         return pulumi.get(self, "install_cloud_monitor")
 
@@ -390,7 +414,7 @@ class EdgeKubernetes(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "password")
 
@@ -409,6 +433,19 @@ class EdgeKubernetes(pulumi.CustomResource):
         Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         """
         return pulumi.get(self, "proxy_mode")
+
+    @property
+    @pulumi.getter(name="rdsInstances")
+    def rds_instances(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "rds_instances")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -475,13 +512,13 @@ class EdgeKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerDataDisks")
     def worker_data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.EdgeKubernetesWorkerDataDisk']]]:
         """
-        The data disk configurations of worker nodes, such as the disk type and disk size. 
-        - category: the type of the data disks. Valid values:
-        + cloud: basic disks.
-        + cloud_efficiency: ultra disks.
-        + cloud_ssd: SSDs.
-        - size: the size of a data disk. Unit: GiB.
-        - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+        The data disk configurations of worker nodes, such as the disk type and disk size.
+        * `category`: the type of the data disks. Valid values:
+        * cloud: basic disks.
+        * cloud_efficiency: ultra disks.
+        * cloud_ssd: SSDs.
+        * `size`: the size of a data disk. Unit: GiB.
+        * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         """
         return pulumi.get(self, "worker_data_disks")
 
@@ -489,7 +526,7 @@ class EdgeKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerDiskCategory")
     def worker_disk_category(self) -> pulumi.Output[Optional[str]]:
         """
-        The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "worker_disk_category")
 

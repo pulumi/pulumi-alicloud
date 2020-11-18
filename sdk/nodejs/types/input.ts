@@ -632,6 +632,23 @@ export namespace cs {
         privateIp?: pulumi.Input<string>;
     }
 
+    export interface KubernetesRuntime {
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface KubernetesTaint {
+        effect?: pulumi.Input<string>;
+        key?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
     export interface KubernetesWorkerDataDisk {
         autoSnapshotPolicyId?: pulumi.Input<string>;
         category?: pulumi.Input<string>;
@@ -679,11 +696,31 @@ export namespace cs {
          * API Server Intranet endpoint.
          */
         apiServerIntranet?: pulumi.Input<string>;
+        /**
+         * Master node SSH IP address.
+         */
         masterPublicIp?: pulumi.Input<string>;
         /**
          * Service Access Domain.
          */
         serviceDomain?: pulumi.Input<string>;
+    }
+
+    export interface ManagedKubernetesRuntime {
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface ManagedKubernetesTaint {
+        effect?: pulumi.Input<string>;
+        key?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
     }
 
     export interface ManagedKubernetesWorkerDataDisk {

@@ -24,6 +24,9 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("apiServerIntranet")]
         public Input<string>? ApiServerIntranet { get; set; }
 
+        /// <summary>
+        /// Master node SSH IP address.
+        /// </summary>
         [Input("masterPublicIp")]
         public Input<string>? MasterPublicIp { get; set; }
 

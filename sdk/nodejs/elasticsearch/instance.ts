@@ -100,7 +100,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The description of instance. It a string of 0 to 30 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Instance connection domain (only VPC network access supported).
      */
