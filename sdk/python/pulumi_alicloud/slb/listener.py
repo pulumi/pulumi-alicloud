@@ -22,6 +22,7 @@ class Listener(pulumi.CustomResource):
                  acl_type: Optional[pulumi.Input[str]] = None,
                  backend_port: Optional[pulumi.Input[int]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
+                 ca_certificate_id: Optional[pulumi.Input[str]] = None,
                  cookie: Optional[pulumi.Input[str]] = None,
                  cookie_timeout: Optional[pulumi.Input[int]] = None,
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
@@ -189,6 +190,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] acl_type: Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
         :param pulumi.Input[int] backend_port: Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
         :param pulumi.Input[int] bandwidth: Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+        :param pulumi.Input[str] ca_certificate_id: SLB CA certificate ID. Only when `protocol` is `https` can be specified.
         :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -246,6 +248,7 @@ class Listener(pulumi.CustomResource):
             __props__['acl_type'] = acl_type
             __props__['backend_port'] = backend_port
             __props__['bandwidth'] = bandwidth
+            __props__['ca_certificate_id'] = ca_certificate_id
             __props__['cookie'] = cookie
             __props__['cookie_timeout'] = cookie_timeout
             __props__['delete_protection_validation'] = delete_protection_validation
@@ -317,6 +320,7 @@ class Listener(pulumi.CustomResource):
             acl_type: Optional[pulumi.Input[str]] = None,
             backend_port: Optional[pulumi.Input[int]] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
+            ca_certificate_id: Optional[pulumi.Input[str]] = None,
             cookie: Optional[pulumi.Input[str]] = None,
             cookie_timeout: Optional[pulumi.Input[int]] = None,
             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
@@ -367,6 +371,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] acl_type: Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
         :param pulumi.Input[int] backend_port: Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
         :param pulumi.Input[int] bandwidth: Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+        :param pulumi.Input[str] ca_certificate_id: SLB CA certificate ID. Only when `protocol` is `https` can be specified.
         :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -411,6 +416,7 @@ class Listener(pulumi.CustomResource):
         __props__["acl_type"] = acl_type
         __props__["backend_port"] = backend_port
         __props__["bandwidth"] = bandwidth
+        __props__["ca_certificate_id"] = ca_certificate_id
         __props__["cookie"] = cookie
         __props__["cookie_timeout"] = cookie_timeout
         __props__["delete_protection_validation"] = delete_protection_validation
@@ -490,6 +496,14 @@ class Listener(pulumi.CustomResource):
         Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
         """
         return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="caCertificateId")
+    def ca_certificate_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        """
+        return pulumi.get(self, "ca_certificate_id")
 
     @property
     @pulumi.getter

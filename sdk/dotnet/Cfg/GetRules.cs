@@ -86,6 +86,12 @@ namespace Pulumi.AliCloud.Cfg
         public int? MemberId { get; set; }
 
         /// <summary>
+        /// Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
+        /// </summary>
+        [Input("messageType")]
+        public string? MessageType { get; set; }
+
+        /// <summary>
         /// Whether the enterprise management account queries the rule details of member accounts.
         /// </summary>
         [Input("multiAccount")]
@@ -126,6 +132,7 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly int? MemberId;
+        public readonly string? MessageType;
         public readonly bool? MultiAccount;
         public readonly string? NameRegex;
         /// <summary>
@@ -151,6 +158,8 @@ namespace Pulumi.AliCloud.Cfg
 
             int? memberId,
 
+            string? messageType,
+
             bool? multiAccount,
 
             string? nameRegex,
@@ -168,6 +177,7 @@ namespace Pulumi.AliCloud.Cfg
             Id = id;
             Ids = ids;
             MemberId = memberId;
+            MessageType = messageType;
             MultiAccount = multiAccount;
             NameRegex = nameRegex;
             Names = names;

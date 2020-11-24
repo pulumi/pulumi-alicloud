@@ -117,6 +117,10 @@ type Instance struct {
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// The ID of the backup file of the source instance.
 	BackupId pulumi.StringPtrOutput `pulumi:"backupId"`
+	// Backup period.
+	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
+	// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// The bandwidth.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The ID of the event or the business information.
@@ -138,6 +142,8 @@ type Instance struct {
 	DbInstanceName pulumi.StringOutput `pulumi:"dbInstanceName"`
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrOutput `pulumi:"dedicatedHostGroupId"`
+	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+	EnableBackupLog pulumi.IntPtrOutput `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
@@ -264,6 +270,10 @@ type instanceState struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The ID of the backup file of the source instance.
 	BackupId *string `pulumi:"backupId"`
+	// Backup period.
+	BackupPeriods []string `pulumi:"backupPeriods"`
+	// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+	BackupTime *string `pulumi:"backupTime"`
 	// The bandwidth.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The ID of the event or the business information.
@@ -285,6 +295,8 @@ type instanceState struct {
 	DbInstanceName *string `pulumi:"dbInstanceName"`
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
+	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
@@ -384,6 +396,10 @@ type InstanceState struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// The ID of the backup file of the source instance.
 	BackupId pulumi.StringPtrInput
+	// Backup period.
+	BackupPeriods pulumi.StringArrayInput
+	// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+	BackupTime pulumi.StringPtrInput
 	// The bandwidth.
 	Bandwidth pulumi.IntPtrInput
 	// The ID of the event or the business information.
@@ -405,6 +421,8 @@ type InstanceState struct {
 	DbInstanceName pulumi.StringPtrInput
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrInput
+	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+	EnableBackupLog pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
@@ -508,6 +526,10 @@ type instanceArgs struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The ID of the backup file of the source instance.
 	BackupId *string `pulumi:"backupId"`
+	// Backup period.
+	BackupPeriods []string `pulumi:"backupPeriods"`
+	// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+	BackupTime *string `pulumi:"backupTime"`
 	// The ID of the event or the business information.
 	BusinessInfo *string `pulumi:"businessInfo"`
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
@@ -524,6 +546,8 @@ type instanceArgs struct {
 	DbInstanceName *string `pulumi:"dbInstanceName"`
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
+	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
@@ -617,6 +641,10 @@ type InstanceArgs struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// The ID of the backup file of the source instance.
 	BackupId pulumi.StringPtrInput
+	// Backup period.
+	BackupPeriods pulumi.StringArrayInput
+	// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+	BackupTime pulumi.StringPtrInput
 	// The ID of the event or the business information.
 	BusinessInfo pulumi.StringPtrInput
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
@@ -633,6 +661,8 @@ type InstanceArgs struct {
 	DbInstanceName pulumi.StringPtrInput
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrInput
+	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+	EnableBackupLog pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.

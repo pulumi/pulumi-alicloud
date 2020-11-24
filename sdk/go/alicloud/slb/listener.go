@@ -165,6 +165,8 @@ type Listener struct {
 	BackendPort pulumi.IntPtrOutput `pulumi:"backendPort"`
 	// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
 	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
+	// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+	CaCertificateId pulumi.StringPtrOutput `pulumi:"caCertificateId"`
 	// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
 	Cookie pulumi.StringPtrOutput `pulumi:"cookie"`
 	// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
@@ -291,6 +293,8 @@ type listenerState struct {
 	BackendPort *int `pulumi:"backendPort"`
 	// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
 	Bandwidth *int `pulumi:"bandwidth"`
+	// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+	CaCertificateId *string `pulumi:"caCertificateId"`
 	// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
 	Cookie *string `pulumi:"cookie"`
 	// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
@@ -381,6 +385,8 @@ type ListenerState struct {
 	BackendPort pulumi.IntPtrInput
 	// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
 	Bandwidth pulumi.IntPtrInput
+	// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+	CaCertificateId pulumi.StringPtrInput
 	// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
 	Cookie pulumi.StringPtrInput
 	// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
@@ -475,6 +481,8 @@ type listenerArgs struct {
 	BackendPort *int `pulumi:"backendPort"`
 	// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
 	Bandwidth *int `pulumi:"bandwidth"`
+	// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+	CaCertificateId *string `pulumi:"caCertificateId"`
 	// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
 	Cookie *string `pulumi:"cookie"`
 	// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
@@ -566,6 +574,8 @@ type ListenerArgs struct {
 	BackendPort pulumi.IntPtrInput
 	// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
 	Bandwidth pulumi.IntPtrInput
+	// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+	CaCertificateId pulumi.StringPtrInput
 	// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
 	Cookie pulumi.StringPtrInput
 	// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.

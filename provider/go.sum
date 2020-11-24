@@ -162,6 +162,8 @@ github.com/aliyun/terraform-provider-alicloud v1.103.1 h1:IQqRgYiW7FX62eS/HHBx3F
 github.com/aliyun/terraform-provider-alicloud v1.103.1/go.mod h1:fPao2AefG7mXyQdb1Ny4OtjW7b7oPYpeEVfBymTRuFY=
 github.com/aliyun/terraform-provider-alicloud v1.103.2 h1:ncsXRq/ma5addS9Vm+5VGG/I/hG3OKRkVDAz7Vgnd7U=
 github.com/aliyun/terraform-provider-alicloud v1.103.2/go.mod h1:vzxtH1i2sd+dhDPMrwScxLtBl7jTnmjPwKZMy5QGG5E=
+github.com/aliyun/terraform-provider-alicloud v1.104.0 h1:Jmcs8hRsP67KGe7+wkImR/bOEV6wL03rWHg71oXIjQM=
+github.com/aliyun/terraform-provider-alicloud v1.104.0/go.mod h1:vzxtH1i2sd+dhDPMrwScxLtBl7jTnmjPwKZMy5QGG5E=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239 h1:kFOfPq6dUM1hTo4JG6LR5AXSUEsOjtdm0kw0FtQtMJA=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239/go.mod h1:2FmKhYUyUczH0OGQWaF5ceTx0UBShxjsH6f8oGKYe2c=
 github.com/apache/thrift v0.12.0/go.mod h1:cp2SuWMxlEZw2r+iP2GNCdIi4C1qmUzdZFSVb+bacwQ=

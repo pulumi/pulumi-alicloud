@@ -134,6 +134,18 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> BackupId { get; private set; } = null!;
 
         /// <summary>
+        /// Backup period.
+        /// </summary>
+        [Output("backupPeriods")]
+        public Output<ImmutableArray<string>> BackupPeriods { get; private set; } = null!;
+
+        /// <summary>
+        /// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+        /// </summary>
+        [Output("backupTime")]
+        public Output<string> BackupTime { get; private set; } = null!;
+
+        /// <summary>
         /// The bandwidth.
         /// </summary>
         [Output("bandwidth")]
@@ -186,6 +198,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Output("dedicatedHostGroupId")]
         public Output<string?> DedicatedHostGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+        /// </summary>
+        [Output("enableBackupLog")]
+        public Output<int?> EnableBackupLog { get; private set; } = null!;
 
         /// <summary>
         /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
@@ -489,6 +507,24 @@ namespace Pulumi.AliCloud.KVStore
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
 
+        [Input("backupPeriods")]
+        private InputList<string>? _backupPeriods;
+
+        /// <summary>
+        /// Backup period.
+        /// </summary>
+        public InputList<string> BackupPeriods
+        {
+            get => _backupPeriods ?? (_backupPeriods = new InputList<string>());
+            set => _backupPeriods = value;
+        }
+
+        /// <summary>
+        /// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+        /// </summary>
+        [Input("backupTime")]
+        public Input<string>? BackupTime { get; set; }
+
         /// <summary>
         /// The ID of the event or the business information.
         /// </summary>
@@ -536,6 +572,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("dedicatedHostGroupId")]
         public Input<string>? DedicatedHostGroupId { get; set; }
+
+        /// <summary>
+        /// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+        /// </summary>
+        [Input("enableBackupLog")]
+        public Input<int>? EnableBackupLog { get; set; }
 
         /// <summary>
         /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
@@ -806,6 +848,24 @@ namespace Pulumi.AliCloud.KVStore
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
 
+        [Input("backupPeriods")]
+        private InputList<string>? _backupPeriods;
+
+        /// <summary>
+        /// Backup period.
+        /// </summary>
+        public InputList<string> BackupPeriods
+        {
+            get => _backupPeriods ?? (_backupPeriods = new InputList<string>());
+            set => _backupPeriods = value;
+        }
+
+        /// <summary>
+        /// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+        /// </summary>
+        [Input("backupTime")]
+        public Input<string>? BackupTime { get; set; }
+
         /// <summary>
         /// The bandwidth.
         /// </summary>
@@ -865,6 +925,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("dedicatedHostGroupId")]
         public Input<string>? DedicatedHostGroupId { get; set; }
+
+        /// <summary>
+        /// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+        /// </summary>
+        [Input("enableBackupLog")]
+        public Input<int>? EnableBackupLog { get; set; }
 
         /// <summary>
         /// It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.

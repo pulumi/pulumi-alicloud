@@ -7,4 +7,6 @@ export * from "./alarmContact";
 export * from "./alarmContactGroup";
 export * from "./getAlarmContactGroups";
 export * from "./getAlarmContacts";
+export * from "./getGroupMetricRules";
+export * from "./groupMetricRule";
 export * from "./siteMonitor";

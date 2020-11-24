@@ -1650,6 +1650,10 @@ export namespace cfg {
 
     export interface GetRulesRule {
         accountId: number;
+        /**
+         * The information about the compliance evaluations based on the rule.
+         */
+        compliances: outputs.cfg.GetRulesRuleCompliance[];
         configRuleArn: string;
         configRuleId: string;
         /**
@@ -1658,6 +1662,10 @@ export namespace cfg {
         configRuleState: string;
         createTimestamp: number;
         description: string;
+        /**
+         * Event source of the Config Rule.
+         */
+        eventSource: string;
         /**
          * The ID of the Config Rule.
          * * `accountId`- The ID of the Alicloud account.
@@ -1670,7 +1678,6 @@ export namespace cfg {
          * * `modifiedTimestamp`- the timestamp of the Config Rule modified.
          * * `riskLevel`- The risk level of the Config Rule.
          * * `ruleName`- The name of the Config Rule.
-         * * `sourceDetails`- The source details of the Config Rule.
          */
         id: string;
         inputParameters: {[key: string]: any};
@@ -1680,26 +1687,37 @@ export namespace cfg {
          */
         riskLevel: number;
         ruleName: string;
-        sourceDetails: outputs.cfg.GetRulesRuleSourceDetail[];
-        sourceIdentifier: string;
-        sourceOwner: string;
-    }
-
-    export interface GetRulesRuleSourceDetail {
         /**
-         * Event source of the Config Rule.
+         * The ID of the resource to be evaluated.
          */
-        eventSource: string;
+        scopeComplianceResourceId: string;
         /**
-         * Rule execution cycle.
+         * The types of the resources to be evaluated against the rule.
          */
-        maximumExecutionFrequency: string;
+        scopeComplianceResourceTypes: string[];
         /**
          * Rule trigger mechanism.
+         */
+        sourceDetailMessageType: string;
+        sourceIdentifier: string;
+        /**
+         * Rule execution cycle. 
          * * `sourceIdentifier`- The name of the custom rule or managed rule.
          * * `sourceOwner`- The source owner of the Config Rule.
          */
-        messageType: string;
+        sourceMaximumExecutionFrequency: string;
+        sourceOwner: string;
+    }
+
+    export interface GetRulesRuleCompliance {
+        /**
+         * The compliance evaluation result of the target resources.
+         */
+        complianceType: string;
+        /**
+         * The number of resources with the specified compliance evaluation result.
+         */
+        count: number;
     }
 }
 
@@ -1856,6 +1874,229 @@ export namespace cms {
          */
         id: string;
         lang: string;
+    }
+
+    export interface GetGroupMetricRulesRule {
+        /**
+         * Alarm contact group.
+         */
+        contactGroups: string;
+        /**
+         * The dimensions that specify the resources to be associated with the alert rule.
+         */
+        dimensions: string;
+        /**
+         * The time period during which the alert rule is effective.
+         */
+        effectiveInterval: string;
+        /**
+         * The subject of the alert notification email.
+         */
+        emailSubject: string;
+        /**
+         * Indicates whether the alert rule is enabled.
+         */
+        enableState: boolean;
+        /**
+         * Alarm level.
+         */
+        escalations: outputs.cms.GetGroupMetricRulesRuleEscalation[];
+        /**
+         * The ID of the application group.
+         */
+        groupId: string;
+        /**
+         * The name of the alert rule.
+         */
+        groupMetricRuleName: string;
+        /**
+         * The ID of the Group Metric Rule.
+         */
+        id: string;
+        /**
+         * The name of the metric.
+         */
+        metricName: string;
+        /**
+         * The namespace of the service.
+         */
+        namespace: string;
+        /**
+         * The time period during which the alert rule is ineffective.
+         */
+        noEffectiveInterval: string;
+        /**
+         * The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
+         */
+        period: number;
+        /**
+         * The resources that are associated with the alert rule.
+         */
+        resources: string;
+        /**
+         * The ID of the alert rule.
+         */
+        ruleId: string;
+        /**
+         * The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
+         */
+        silenceTime: number;
+        /**
+         * The type of the alert rule. The value is fixed to METRIC, indicating an alert rule for time series metrics.
+         */
+        sourceType: string;
+        /**
+         * The status of Group Metric Rule..
+         */
+        status: string;
+        /**
+         * The callback URL.
+         */
+        webhook: string;
+    }
+
+    export interface GetGroupMetricRulesRuleEscalation {
+        /**
+         * The critical level.
+         */
+        criticals: outputs.cms.GetGroupMetricRulesRuleEscalationCritical[];
+        /**
+         * The info level.
+         */
+        infos: outputs.cms.GetGroupMetricRulesRuleEscalationInfo[];
+        /**
+         * The warn level.
+         */
+        warns: outputs.cms.GetGroupMetricRulesRuleEscalationWarn[];
+    }
+
+    export interface GetGroupMetricRulesRuleEscalationCritical {
+        /**
+         * The comparison operator of the threshold for warn-level alerts.
+         */
+        comparisonOperator: string;
+        /**
+         * The statistical aggregation method for warn-level alerts.
+         */
+        statistics: string;
+        /**
+         * The threshold for warn-level alerts.
+         */
+        threshold: string;
+        /**
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         */
+        times: number;
+    }
+
+    export interface GetGroupMetricRulesRuleEscalationInfo {
+        /**
+         * The comparison operator of the threshold for warn-level alerts.
+         */
+        comparisonOperator: string;
+        /**
+         * The statistical aggregation method for warn-level alerts.
+         */
+        statistics: string;
+        /**
+         * The threshold for warn-level alerts.
+         */
+        threshold: string;
+        /**
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         */
+        times: number;
+    }
+
+    export interface GetGroupMetricRulesRuleEscalationWarn {
+        /**
+         * The comparison operator of the threshold for warn-level alerts.
+         */
+        comparisonOperator: string;
+        /**
+         * The statistical aggregation method for warn-level alerts.
+         */
+        statistics: string;
+        /**
+         * The threshold for warn-level alerts.
+         */
+        threshold: string;
+        /**
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         */
+        times: number;
+    }
+
+    export interface GroupMetricRuleEscalations {
+        /**
+         * The critical level.
+         */
+        critical?: outputs.cms.GroupMetricRuleEscalationsCritical;
+        /**
+         * The info level.
+         */
+        info?: outputs.cms.GroupMetricRuleEscalationsInfo;
+        /**
+         * The warn level.
+         */
+        warn?: outputs.cms.GroupMetricRuleEscalationsWarn;
+    }
+
+    export interface GroupMetricRuleEscalationsCritical {
+        /**
+         * The comparison operator of the threshold for warn-level alerts.
+         */
+        comparisonOperator?: string;
+        /**
+         * The statistical aggregation method for warn-level alerts.
+         */
+        statistics?: string;
+        /**
+         * The threshold for warn-level alerts.
+         */
+        threshold?: string;
+        /**
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         */
+        times?: number;
+    }
+
+    export interface GroupMetricRuleEscalationsInfo {
+        /**
+         * The comparison operator of the threshold for warn-level alerts.
+         */
+        comparisonOperator?: string;
+        /**
+         * The statistical aggregation method for warn-level alerts.
+         */
+        statistics?: string;
+        /**
+         * The threshold for warn-level alerts.
+         */
+        threshold?: string;
+        /**
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         */
+        times?: number;
+    }
+
+    export interface GroupMetricRuleEscalationsWarn {
+        /**
+         * The comparison operator of the threshold for warn-level alerts.
+         */
+        comparisonOperator?: string;
+        /**
+         * The statistical aggregation method for warn-level alerts.
+         */
+        statistics?: string;
+        /**
+         * The threshold for warn-level alerts.
+         */
+        threshold?: string;
+        /**
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         */
+        times?: number;
     }
 
     export interface SiteMonitorIspCity {
@@ -5495,6 +5736,13 @@ export namespace ess {
 }
 
 export namespace fc {
+    export interface AliasRoutingConfig {
+        /**
+         * A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
+         */
+        additionalVersionWeights?: {[key: string]: number};
+    }
+
     export interface CustomDomainCertConfig {
         /**
          * The name of the certificate, used to distinguish different certificates.

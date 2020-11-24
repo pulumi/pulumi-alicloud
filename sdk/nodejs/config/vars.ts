@@ -59,3 +59,8 @@ export let sharedCredentialsFile: string | undefined = __config.get("sharedCrede
  * that are not public (yet).
  */
 export let skipRegionValidation: boolean | undefined = __config.getObject<boolean>("skipRegionValidation");
+/**
+ * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+ * console.
+ */
+export let sourceIp: string | undefined = __config.get("sourceIp");

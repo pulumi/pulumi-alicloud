@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Cfg.Outputs
     public sealed class GetRulesRuleResult
     {
         public readonly int AccountId;
+        /// <summary>
+        /// The information about the compliance evaluations based on the rule.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRulesRuleComplianceResult> Compliances;
         public readonly string ConfigRuleArn;
         public readonly string ConfigRuleId;
         /// <summary>
@@ -22,6 +26,10 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         public readonly string ConfigRuleState;
         public readonly int CreateTimestamp;
         public readonly string Description;
+        /// <summary>
+        /// Event source of the Config Rule.
+        /// </summary>
+        public readonly string EventSource;
         /// <summary>
         /// The ID of the Config Rule.
         /// * `account_id`- The ID of the Alicloud account.
@@ -34,7 +42,6 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// * `modified_timestamp`- the timestamp of the Config Rule modified.
         /// * `risk_level`- The risk level of the Config Rule.
         /// * `rule_name`- The name of the Config Rule.
-        /// * `source_details`- The source details of the Config Rule.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableDictionary<string, object> InputParameters;
@@ -44,13 +51,32 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly int RiskLevel;
         public readonly string RuleName;
-        public readonly ImmutableArray<Outputs.GetRulesRuleSourceDetailResult> SourceDetails;
+        /// <summary>
+        /// The ID of the resource to be evaluated.
+        /// </summary>
+        public readonly string ScopeComplianceResourceId;
+        /// <summary>
+        /// The types of the resources to be evaluated against the rule.
+        /// </summary>
+        public readonly ImmutableArray<string> ScopeComplianceResourceTypes;
+        /// <summary>
+        /// Rule trigger mechanism.
+        /// </summary>
+        public readonly string SourceDetailMessageType;
         public readonly string SourceIdentifier;
+        /// <summary>
+        /// Rule execution cycle. 
+        /// * `source_identifier`- The name of the custom rule or managed rule.
+        /// * `source_owner`- The source owner of the Config Rule.
+        /// </summary>
+        public readonly string SourceMaximumExecutionFrequency;
         public readonly string SourceOwner;
 
         [OutputConstructor]
         private GetRulesRuleResult(
             int accountId,
+
+            ImmutableArray<Outputs.GetRulesRuleComplianceResult> compliances,
 
             string configRuleArn,
 
@@ -62,6 +88,8 @@ namespace Pulumi.AliCloud.Cfg.Outputs
 
             string description,
 
+            string eventSource,
+
             string id,
 
             ImmutableDictionary<string, object> inputParameters,
@@ -72,25 +100,36 @@ namespace Pulumi.AliCloud.Cfg.Outputs
 
             string ruleName,
 
-            ImmutableArray<Outputs.GetRulesRuleSourceDetailResult> sourceDetails,
+            string scopeComplianceResourceId,
+
+            ImmutableArray<string> scopeComplianceResourceTypes,
+
+            string sourceDetailMessageType,
 
             string sourceIdentifier,
+
+            string sourceMaximumExecutionFrequency,
 
             string sourceOwner)
         {
             AccountId = accountId;
+            Compliances = compliances;
             ConfigRuleArn = configRuleArn;
             ConfigRuleId = configRuleId;
             ConfigRuleState = configRuleState;
             CreateTimestamp = createTimestamp;
             Description = description;
+            EventSource = eventSource;
             Id = id;
             InputParameters = inputParameters;
             ModifiedTimestamp = modifiedTimestamp;
             RiskLevel = riskLevel;
             RuleName = ruleName;
-            SourceDetails = sourceDetails;
+            ScopeComplianceResourceId = scopeComplianceResourceId;
+            ScopeComplianceResourceTypes = scopeComplianceResourceTypes;
+            SourceDetailMessageType = sourceDetailMessageType;
             SourceIdentifier = sourceIdentifier;
+            SourceMaximumExecutionFrequency = sourceMaximumExecutionFrequency;
             SourceOwner = sourceOwner;
         }
     }

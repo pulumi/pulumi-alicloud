@@ -13,7 +13,7 @@ __all__ = [
     'GetConfigurationRecordersRecorderResult',
     'GetDeliveryChannelsChannelResult',
     'GetRulesRuleResult',
-    'GetRulesRuleSourceDetailResult',
+    'GetRulesRuleComplianceResult',
 ]
 
 @pulumi.output_type
@@ -197,21 +197,28 @@ class GetDeliveryChannelsChannelResult(dict):
 class GetRulesRuleResult(dict):
     def __init__(__self__, *,
                  account_id: int,
+                 compliances: Sequence['outputs.GetRulesRuleComplianceResult'],
                  config_rule_arn: str,
                  config_rule_id: str,
                  config_rule_state: str,
                  create_timestamp: int,
                  description: str,
+                 event_source: str,
                  id: str,
                  input_parameters: Mapping[str, Any],
                  modified_timestamp: int,
                  risk_level: int,
                  rule_name: str,
-                 source_details: Sequence['outputs.GetRulesRuleSourceDetailResult'],
+                 scope_compliance_resource_id: str,
+                 scope_compliance_resource_types: Sequence[str],
+                 source_detail_message_type: str,
                  source_identifier: str,
+                 source_maximum_execution_frequency: str,
                  source_owner: str):
         """
+        :param Sequence['GetRulesRuleComplianceArgs'] compliances: The information about the compliance evaluations based on the rule.
         :param str config_rule_state: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `DELETING_RESULTS`, `EVALUATING` and `INACTIVE`.
+        :param str event_source: Event source of the Config Rule.
         :param str id: The ID of the Config Rule.
                * `account_id`- The ID of the Alicloud account.
                * `config_rule_arn`- The ARN of the Config Rule.
@@ -223,28 +230,46 @@ class GetRulesRuleResult(dict):
                * `modified_timestamp`- the timestamp of the Config Rule modified.
                * `risk_level`- The risk level of the Config Rule.
                * `rule_name`- The name of the Config Rule.
-               * `source_details`- The source details of the Config Rule.
         :param int risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+        :param str scope_compliance_resource_id: The ID of the resource to be evaluated.
+        :param Sequence[str] scope_compliance_resource_types: The types of the resources to be evaluated against the rule.
+        :param str source_detail_message_type: Rule trigger mechanism.
+        :param str source_maximum_execution_frequency: Rule execution cycle. 
+               * `source_identifier`- The name of the custom rule or managed rule.
+               * `source_owner`- The source owner of the Config Rule.
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "compliances", compliances)
         pulumi.set(__self__, "config_rule_arn", config_rule_arn)
         pulumi.set(__self__, "config_rule_id", config_rule_id)
         pulumi.set(__self__, "config_rule_state", config_rule_state)
         pulumi.set(__self__, "create_timestamp", create_timestamp)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "event_source", event_source)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "input_parameters", input_parameters)
         pulumi.set(__self__, "modified_timestamp", modified_timestamp)
         pulumi.set(__self__, "risk_level", risk_level)
         pulumi.set(__self__, "rule_name", rule_name)
-        pulumi.set(__self__, "source_details", source_details)
+        pulumi.set(__self__, "scope_compliance_resource_id", scope_compliance_resource_id)
+        pulumi.set(__self__, "scope_compliance_resource_types", scope_compliance_resource_types)
+        pulumi.set(__self__, "source_detail_message_type", source_detail_message_type)
         pulumi.set(__self__, "source_identifier", source_identifier)
+        pulumi.set(__self__, "source_maximum_execution_frequency", source_maximum_execution_frequency)
         pulumi.set(__self__, "source_owner", source_owner)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> int:
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def compliances(self) -> Sequence['outputs.GetRulesRuleComplianceResult']:
+        """
+        The information about the compliance evaluations based on the rule.
+        """
+        return pulumi.get(self, "compliances")
 
     @property
     @pulumi.getter(name="configRuleArn")
@@ -275,6 +300,14 @@ class GetRulesRuleResult(dict):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="eventSource")
+    def event_source(self) -> str:
+        """
+        Event source of the Config Rule.
+        """
+        return pulumi.get(self, "event_source")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -289,7 +322,6 @@ class GetRulesRuleResult(dict):
         * `modified_timestamp`- the timestamp of the Config Rule modified.
         * `risk_level`- The risk level of the Config Rule.
         * `rule_name`- The name of the Config Rule.
-        * `source_details`- The source details of the Config Rule.
         """
         return pulumi.get(self, "id")
 
@@ -317,14 +349,43 @@ class GetRulesRuleResult(dict):
         return pulumi.get(self, "rule_name")
 
     @property
-    @pulumi.getter(name="sourceDetails")
-    def source_details(self) -> Sequence['outputs.GetRulesRuleSourceDetailResult']:
-        return pulumi.get(self, "source_details")
+    @pulumi.getter(name="scopeComplianceResourceId")
+    def scope_compliance_resource_id(self) -> str:
+        """
+        The ID of the resource to be evaluated.
+        """
+        return pulumi.get(self, "scope_compliance_resource_id")
+
+    @property
+    @pulumi.getter(name="scopeComplianceResourceTypes")
+    def scope_compliance_resource_types(self) -> Sequence[str]:
+        """
+        The types of the resources to be evaluated against the rule.
+        """
+        return pulumi.get(self, "scope_compliance_resource_types")
+
+    @property
+    @pulumi.getter(name="sourceDetailMessageType")
+    def source_detail_message_type(self) -> str:
+        """
+        Rule trigger mechanism.
+        """
+        return pulumi.get(self, "source_detail_message_type")
 
     @property
     @pulumi.getter(name="sourceIdentifier")
     def source_identifier(self) -> str:
         return pulumi.get(self, "source_identifier")
+
+    @property
+    @pulumi.getter(name="sourceMaximumExecutionFrequency")
+    def source_maximum_execution_frequency(self) -> str:
+        """
+        Rule execution cycle. 
+        * `source_identifier`- The name of the custom rule or managed rule.
+        * `source_owner`- The source owner of the Config Rule.
+        """
+        return pulumi.get(self, "source_maximum_execution_frequency")
 
     @property
     @pulumi.getter(name="sourceOwner")
@@ -333,46 +394,31 @@ class GetRulesRuleResult(dict):
 
 
 @pulumi.output_type
-class GetRulesRuleSourceDetailResult(dict):
+class GetRulesRuleComplianceResult(dict):
     def __init__(__self__, *,
-                 event_source: str,
-                 maximum_execution_frequency: str,
-                 message_type: str):
+                 compliance_type: str,
+                 count: int):
         """
-        :param str event_source: Event source of the Config Rule.
-        :param str maximum_execution_frequency: Rule execution cycle.
-        :param str message_type: Rule trigger mechanism.
-               * `source_identifier`- The name of the custom rule or managed rule.
-               * `source_owner`- The source owner of the Config Rule.
+        :param str compliance_type: The compliance evaluation result of the target resources.
+        :param int count: The number of resources with the specified compliance evaluation result.
         """
-        pulumi.set(__self__, "event_source", event_source)
-        pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
-        pulumi.set(__self__, "message_type", message_type)
+        pulumi.set(__self__, "compliance_type", compliance_type)
+        pulumi.set(__self__, "count", count)
 
     @property
-    @pulumi.getter(name="eventSource")
-    def event_source(self) -> str:
+    @pulumi.getter(name="complianceType")
+    def compliance_type(self) -> str:
         """
-        Event source of the Config Rule.
+        The compliance evaluation result of the target resources.
         """
-        return pulumi.get(self, "event_source")
+        return pulumi.get(self, "compliance_type")
 
     @property
-    @pulumi.getter(name="maximumExecutionFrequency")
-    def maximum_execution_frequency(self) -> str:
+    @pulumi.getter
+    def count(self) -> int:
         """
-        Rule execution cycle.
+        The number of resources with the specified compliance evaluation result.
         """
-        return pulumi.get(self, "maximum_execution_frequency")
-
-    @property
-    @pulumi.getter(name="messageType")
-    def message_type(self) -> str:
-        """
-        Rule trigger mechanism.
-        * `source_identifier`- The name of the custom rule or managed rule.
-        * `source_owner`- The source owner of the Config Rule.
-        """
-        return pulumi.get(self, "message_type")
+        return pulumi.get(self, "count")
 
 

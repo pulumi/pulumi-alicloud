@@ -174,6 +174,12 @@ namespace Pulumi.AliCloud.Slb
         public Output<int?> Bandwidth { get; private set; } = null!;
 
         /// <summary>
+        /// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        /// </summary>
+        [Output("caCertificateId")]
+        public Output<string?> CaCertificateId { get; private set; } = null!;
+
+        /// <summary>
         /// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         /// </summary>
         [Output("cookie")]
@@ -466,6 +472,12 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
+        /// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        /// </summary>
+        [Input("caCertificateId")]
+        public Input<string>? CaCertificateId { get; set; }
+
+        /// <summary>
         /// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         /// </summary>
         [Input("cookie")]
@@ -717,6 +729,12 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
+
+        /// <summary>
+        /// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        /// </summary>
+        [Input("caCertificateId")]
+        public Input<string>? CaCertificateId { get; set; }
 
         /// <summary>
         /// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.

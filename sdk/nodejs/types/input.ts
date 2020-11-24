@@ -478,6 +478,78 @@ export namespace cms {
         times?: pulumi.Input<number>;
     }
 
+    export interface GroupMetricRuleEscalations {
+        /**
+         * The critical level.
+         */
+        critical?: pulumi.Input<inputs.cms.GroupMetricRuleEscalationsCritical>;
+        /**
+         * The info level.
+         */
+        info?: pulumi.Input<inputs.cms.GroupMetricRuleEscalationsInfo>;
+        /**
+         * The warn level.
+         */
+        warn?: pulumi.Input<inputs.cms.GroupMetricRuleEscalationsWarn>;
+    }
+
+    export interface GroupMetricRuleEscalationsCritical {
+        /**
+         * The comparison operator of the threshold for warn-level alerts.
+         */
+        comparisonOperator?: pulumi.Input<string>;
+        /**
+         * The statistical aggregation method for warn-level alerts.
+         */
+        statistics?: pulumi.Input<string>;
+        /**
+         * The threshold for warn-level alerts.
+         */
+        threshold?: pulumi.Input<string>;
+        /**
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         */
+        times?: pulumi.Input<number>;
+    }
+
+    export interface GroupMetricRuleEscalationsInfo {
+        /**
+         * The comparison operator of the threshold for warn-level alerts.
+         */
+        comparisonOperator?: pulumi.Input<string>;
+        /**
+         * The statistical aggregation method for warn-level alerts.
+         */
+        statistics?: pulumi.Input<string>;
+        /**
+         * The threshold for warn-level alerts.
+         */
+        threshold?: pulumi.Input<string>;
+        /**
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         */
+        times?: pulumi.Input<number>;
+    }
+
+    export interface GroupMetricRuleEscalationsWarn {
+        /**
+         * The comparison operator of the threshold for warn-level alerts.
+         */
+        comparisonOperator?: pulumi.Input<string>;
+        /**
+         * The statistical aggregation method for warn-level alerts.
+         */
+        statistics?: pulumi.Input<string>;
+        /**
+         * The threshold for warn-level alerts.
+         */
+        threshold?: pulumi.Input<string>;
+        /**
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         */
+        times?: pulumi.Input<number>;
+    }
+
     export interface SiteMonitorIspCity {
         city: pulumi.Input<string>;
         isp: pulumi.Input<string>;
@@ -1177,6 +1249,13 @@ export namespace ess {
 }
 
 export namespace fc {
+    export interface AliasRoutingConfig {
+        /**
+         * A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
+         */
+        additionalVersionWeights?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    }
+
     export interface CustomDomainCertConfig {
         /**
          * The name of the certificate, used to distinguish different certificates.

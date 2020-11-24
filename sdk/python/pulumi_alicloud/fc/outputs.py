@@ -10,6 +10,7 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'AliasRoutingConfig',
     'CustomDomainCertConfig',
     'CustomDomainRouteConfig',
     'FunctionAsyncInvokeConfigDestinationConfig',
@@ -33,6 +34,28 @@ __all__ = [
     'GetTriggersTriggerResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class AliasRoutingConfig(dict):
+    def __init__(__self__, *,
+                 additional_version_weights: Optional[Mapping[str, float]] = None):
+        """
+        :param Mapping[str, float] additional_version_weights: A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
+        """
+        if additional_version_weights is not None:
+            pulumi.set(__self__, "additional_version_weights", additional_version_weights)
+
+    @property
+    @pulumi.getter(name="additionalVersionWeights")
+    def additional_version_weights(self) -> Optional[Mapping[str, float]]:
+        """
+        A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
+        """
+        return pulumi.get(self, "additional_version_weights")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class CustomDomainCertConfig(dict):

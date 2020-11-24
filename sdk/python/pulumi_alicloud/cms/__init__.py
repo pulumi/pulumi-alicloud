@@ -8,6 +8,8 @@ from .alarm_contact import *
 from .alarm_contact_group import *
 from .get_alarm_contact_groups import *
 from .get_alarm_contacts import *
+from .get_group_metric_rules import *
+from .group_metric_rule import *
 from .site_monitor import *
 from ._inputs import *
 from . import outputs

@@ -262,6 +262,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cms_sitemonitor.markdown",
 				},
 			},
+			"alicloud_cms_group_metric_rule": {Tok: resource(cmsMod, "GroupMetricRule")},
 
 			// Config
 			"alicloud_config_configuration_recorder": {Tok: resource(cfgMod, "ConfigurationRecorder")},
@@ -401,6 +402,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fc_trigger":                      {Tok: resource(fcMod, "Trigger")},
 			"alicloud_fc_custom_domain":                {Tok: resource(fcMod, "CustomDomain")},
 			"alicloud_fc_function_async_invoke_config": {Tok: resource(fcMod, "FunctionAsyncInvokeConfig")},
+			"alicloud_fc_alias":                        {Tok: resource(fcMod, "Alias")},
 
 			// Gpdb
 			"alicloud_gpdb_connection": {Tok: resource(gpdbMod, "Connection")},
@@ -692,6 +694,7 @@ func Provider() tfbridge.ProviderInfo {
 			// CMS
 			"alicloud_cms_alarm_contacts":       {Tok: dataSource(cmsMod, "getAlarmContacts")},
 			"alicloud_cms_alarm_contact_groups": {Tok: dataSource(cmsMod, "getAlarmContactGroups")},
+			"alicloud_cms_group_metric_rules":   {Tok: dataSource(cmsMod, "getGroupMetricRules")},
 
 			// Config
 			"alicloud_config_configuration_recorders": {Tok: dataSource(cfgMod, "getConfigurationRecorders")},
