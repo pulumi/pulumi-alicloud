@@ -50,6 +50,14 @@ class Policy(pulumi.CustomResource):
             policy_name="abc12345")
         ```
 
+        ## Import
+
+        Resource Manager Policy can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_version: The version of the policy. Default to v1.
@@ -75,7 +83,7 @@ class Policy(pulumi.CustomResource):
             __props__ = dict()
 
             if default_version is not None:
-                warnings.warn("Field 'default_version' has been deprecated from provider version 1.90.0", DeprecationWarning)
+                warnings.warn("""Field 'default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
                 pulumi.log.warn("default_version is deprecated: Field 'default_version' has been deprecated from provider version 1.90.0")
             __props__['default_version'] = default_version
             __props__['description'] = description

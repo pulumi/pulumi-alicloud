@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -194,6 +193,14 @@ import * as utilities from "../utilities";
  *     bucket: "bucket_name",
  *     redundancyType: "ZRS",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * OSS bucket can be imported using the bucket name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
  * ```
  */
 export class Bucket extends pulumi.CustomResource {

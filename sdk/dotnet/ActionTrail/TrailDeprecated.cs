@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Action trail can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+    /// ```
+    /// </summary>
     [Obsolete(@"Resource renamed to `Trail`")]
     public partial class TrailDeprecated : Pulumi.CustomResource
     {

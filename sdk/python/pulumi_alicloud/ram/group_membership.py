@@ -53,6 +53,14 @@ class GroupMembership(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        RAM Group membership can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.

@@ -52,6 +52,14 @@ import * as utilities from "../utilities";
  *     dbNames: db.map(__item => __item.name),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * RDS account privilege can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:rds/accountPrivilege:AccountPrivilege example "rm-12345:tf_account:ReadOnly"
+ * ```
  */
 export class AccountPrivilege extends pulumi.CustomResource {
     /**

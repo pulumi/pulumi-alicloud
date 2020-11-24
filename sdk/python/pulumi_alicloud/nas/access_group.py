@@ -58,6 +58,14 @@ class AccessGroup(pulumi.CustomResource):
             file_system_type="extreme")
         ```
 
+        ## Import
+
+        NAS Access Group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_group_name: A Name of one Access Group.

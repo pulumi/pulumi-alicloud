@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -53,6 +54,14 @@ import (
 //  The following attributes are exported:
 //
 // * `id` - ID of the image.
+//
+// ## Import
+//
+// image can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
+// ```
 type ImageCopy struct {
 	pulumi.CustomResourceState
 
@@ -210,4 +219,43 @@ type ImageCopyArgs struct {
 
 func (ImageCopyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageCopyArgs)(nil)).Elem()
+}
+
+type ImageCopyInput interface {
+	pulumi.Input
+
+	ToImageCopyOutput() ImageCopyOutput
+	ToImageCopyOutputWithContext(ctx context.Context) ImageCopyOutput
+}
+
+func (ImageCopy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageCopy)(nil)).Elem()
+}
+
+func (i ImageCopy) ToImageCopyOutput() ImageCopyOutput {
+	return i.ToImageCopyOutputWithContext(context.Background())
+}
+
+func (i ImageCopy) ToImageCopyOutputWithContext(ctx context.Context) ImageCopyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageCopyOutput)
+}
+
+type ImageCopyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageCopyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageCopyOutput)(nil)).Elem()
+}
+
+func (o ImageCopyOutput) ToImageCopyOutput() ImageCopyOutput {
+	return o
+}
+
+func (o ImageCopyOutput) ToImageCopyOutputWithContext(ctx context.Context) ImageCopyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ImageCopyOutput{})
 }

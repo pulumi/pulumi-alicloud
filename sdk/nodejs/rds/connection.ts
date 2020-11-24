@@ -41,6 +41,14 @@ import * as utilities from "../utilities";
  *     connectionPrefix: "testabc",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * RDS connection can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:rds/connection:Connection example abc12345678
+ * ```
  */
 export class Connection extends pulumi.CustomResource {
     /**

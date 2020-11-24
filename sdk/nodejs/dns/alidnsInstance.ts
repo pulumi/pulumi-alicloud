@@ -26,6 +26,14 @@ import * as utilities from "../utilities";
  *     versionCode: "version_personal",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * DNS instance be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
+ * ```
  */
 export class AlidnsInstance extends pulumi.CustomResource {
     /**

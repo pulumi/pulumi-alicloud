@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * SSL-VPN server can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpn/sslVpnServer:SslVpnServer example vss-abc123456
+ * ```
+ */
 export class SslVpnServer extends pulumi.CustomResource {
     /**
      * Get an existing SslVpnServer resource's state with the given name, ID, and optional extra

@@ -23,6 +23,14 @@ import * as utilities from "../utilities";
  *     alarmContactGroupName: "tf-test",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * CMS Alarm Contact Group can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cms/alarmContactGroup:AlarmContactGroup example tf-testacc123
+ * ```
  */
 export class AlarmContactGroup extends pulumi.CustomResource {
     /**

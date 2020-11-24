@@ -4,6 +4,7 @@
 package cms
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -47,6 +48,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Alarm rule can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cms/siteMonitor:SiteMonitor alarm abc12345
 // ```
 type SiteMonitor struct {
 	pulumi.CustomResourceState
@@ -187,4 +196,43 @@ type SiteMonitorArgs struct {
 
 func (SiteMonitorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*siteMonitorArgs)(nil)).Elem()
+}
+
+type SiteMonitorInput interface {
+	pulumi.Input
+
+	ToSiteMonitorOutput() SiteMonitorOutput
+	ToSiteMonitorOutputWithContext(ctx context.Context) SiteMonitorOutput
+}
+
+func (SiteMonitor) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteMonitor)(nil)).Elem()
+}
+
+func (i SiteMonitor) ToSiteMonitorOutput() SiteMonitorOutput {
+	return i.ToSiteMonitorOutputWithContext(context.Background())
+}
+
+func (i SiteMonitor) ToSiteMonitorOutputWithContext(ctx context.Context) SiteMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorOutput)
+}
+
+type SiteMonitorOutput struct {
+	*pulumi.OutputState
+}
+
+func (SiteMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteMonitorOutput)(nil)).Elem()
+}
+
+func (o SiteMonitorOutput) ToSiteMonitorOutput() SiteMonitorOutput {
+	return o
+}
+
+func (o SiteMonitorOutput) ToSiteMonitorOutputWithContext(ctx context.Context) SiteMonitorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SiteMonitorOutput{})
 }

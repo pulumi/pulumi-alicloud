@@ -39,6 +39,14 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Ddosbgp instance can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+    /// ```
     /// </summary>
     public partial class DdosBgpInstance : Pulumi.CustomResource
     {

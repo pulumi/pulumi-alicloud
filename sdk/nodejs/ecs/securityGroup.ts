@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Security Group can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
+ * ```
+ */
 export class SecurityGroup extends pulumi.CustomResource {
     /**
      * Get an existing SecurityGroup resource's state with the given name, ID, and optional extra

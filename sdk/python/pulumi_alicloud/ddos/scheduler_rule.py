@@ -59,6 +59,14 @@ class SchedulerRule(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        DdosCoo Scheduler Rule can be imported using the id or the rule name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.

@@ -4,6 +4,7 @@
 package ddos
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,6 +43,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Ddosbgp instance can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
 // ```
 type DdosBgpInstance struct {
 	pulumi.CustomResourceState
@@ -179,4 +188,43 @@ type DdosBgpInstanceArgs struct {
 
 func (DdosBgpInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ddosBgpInstanceArgs)(nil)).Elem()
+}
+
+type DdosBgpInstanceInput interface {
+	pulumi.Input
+
+	ToDdosBgpInstanceOutput() DdosBgpInstanceOutput
+	ToDdosBgpInstanceOutputWithContext(ctx context.Context) DdosBgpInstanceOutput
+}
+
+func (DdosBgpInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdosBgpInstance)(nil)).Elem()
+}
+
+func (i DdosBgpInstance) ToDdosBgpInstanceOutput() DdosBgpInstanceOutput {
+	return i.ToDdosBgpInstanceOutputWithContext(context.Background())
+}
+
+func (i DdosBgpInstance) ToDdosBgpInstanceOutputWithContext(ctx context.Context) DdosBgpInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosBgpInstanceOutput)
+}
+
+type DdosBgpInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (DdosBgpInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdosBgpInstanceOutput)(nil)).Elem()
+}
+
+func (o DdosBgpInstanceOutput) ToDdosBgpInstanceOutput() DdosBgpInstanceOutput {
+	return o
+}
+
+func (o DdosBgpInstanceOutput) ToDdosBgpInstanceOutputWithContext(ctx context.Context) DdosBgpInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DdosBgpInstanceOutput{})
 }

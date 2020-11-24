@@ -4,12 +4,20 @@
 package vpn
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// SSL-VPN client certificates can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpn/sslVpnClientCert:SslVpnClientCert example vsc-abc123456
+// ```
 type SslVpnClientCert struct {
 	pulumi.CustomResourceState
 
@@ -114,4 +122,43 @@ type SslVpnClientCertArgs struct {
 
 func (SslVpnClientCertArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslVpnClientCertArgs)(nil)).Elem()
+}
+
+type SslVpnClientCertInput interface {
+	pulumi.Input
+
+	ToSslVpnClientCertOutput() SslVpnClientCertOutput
+	ToSslVpnClientCertOutputWithContext(ctx context.Context) SslVpnClientCertOutput
+}
+
+func (SslVpnClientCert) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslVpnClientCert)(nil)).Elem()
+}
+
+func (i SslVpnClientCert) ToSslVpnClientCertOutput() SslVpnClientCertOutput {
+	return i.ToSslVpnClientCertOutputWithContext(context.Background())
+}
+
+func (i SslVpnClientCert) ToSslVpnClientCertOutputWithContext(ctx context.Context) SslVpnClientCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslVpnClientCertOutput)
+}
+
+type SslVpnClientCertOutput struct {
+	*pulumi.OutputState
+}
+
+func (SslVpnClientCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslVpnClientCertOutput)(nil)).Elem()
+}
+
+func (o SslVpnClientCertOutput) ToSslVpnClientCertOutput() SslVpnClientCertOutput {
+	return o
+}
+
+func (o SslVpnClientCertOutput) ToSslVpnClientCertOutputWithContext(ctx context.Context) SslVpnClientCertOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SslVpnClientCertOutput{})
 }

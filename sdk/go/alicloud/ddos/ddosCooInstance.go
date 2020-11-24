@@ -4,6 +4,7 @@
 package ddos
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -46,6 +47,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Ddoscoo instance can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ddos/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
 // ```
 type DdosCooInstance struct {
 	pulumi.CustomResourceState
@@ -189,4 +198,43 @@ type DdosCooInstanceArgs struct {
 
 func (DdosCooInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ddosCooInstanceArgs)(nil)).Elem()
+}
+
+type DdosCooInstanceInput interface {
+	pulumi.Input
+
+	ToDdosCooInstanceOutput() DdosCooInstanceOutput
+	ToDdosCooInstanceOutputWithContext(ctx context.Context) DdosCooInstanceOutput
+}
+
+func (DdosCooInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdosCooInstance)(nil)).Elem()
+}
+
+func (i DdosCooInstance) ToDdosCooInstanceOutput() DdosCooInstanceOutput {
+	return i.ToDdosCooInstanceOutputWithContext(context.Background())
+}
+
+func (i DdosCooInstance) ToDdosCooInstanceOutputWithContext(ctx context.Context) DdosCooInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosCooInstanceOutput)
+}
+
+type DdosCooInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (DdosCooInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdosCooInstanceOutput)(nil)).Elem()
+}
+
+func (o DdosCooInstanceOutput) ToDdosCooInstanceOutput() DdosCooInstanceOutput {
+	return o
+}
+
+func (o DdosCooInstanceOutput) ToDdosCooInstanceOutputWithContext(ctx context.Context) DdosCooInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DdosCooInstanceOutput{})
 }

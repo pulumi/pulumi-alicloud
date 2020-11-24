@@ -76,6 +76,14 @@ class Cluster(pulumi.CustomResource):
 
         This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
 
+        ## Import
+
+        Cassandra cluster can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.

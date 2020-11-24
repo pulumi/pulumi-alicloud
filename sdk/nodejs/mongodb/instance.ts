@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * MongoDB can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
+ * ```
+ */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra

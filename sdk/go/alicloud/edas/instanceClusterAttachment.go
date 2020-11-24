@@ -4,6 +4,7 @@
 package edas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -134,4 +135,43 @@ type InstanceClusterAttachmentArgs struct {
 
 func (InstanceClusterAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceClusterAttachmentArgs)(nil)).Elem()
+}
+
+type InstanceClusterAttachmentInput interface {
+	pulumi.Input
+
+	ToInstanceClusterAttachmentOutput() InstanceClusterAttachmentOutput
+	ToInstanceClusterAttachmentOutputWithContext(ctx context.Context) InstanceClusterAttachmentOutput
+}
+
+func (InstanceClusterAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceClusterAttachment)(nil)).Elem()
+}
+
+func (i InstanceClusterAttachment) ToInstanceClusterAttachmentOutput() InstanceClusterAttachmentOutput {
+	return i.ToInstanceClusterAttachmentOutputWithContext(context.Background())
+}
+
+func (i InstanceClusterAttachment) ToInstanceClusterAttachmentOutputWithContext(ctx context.Context) InstanceClusterAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAttachmentOutput)
+}
+
+type InstanceClusterAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceClusterAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceClusterAttachmentOutput)(nil)).Elem()
+}
+
+func (o InstanceClusterAttachmentOutput) ToInstanceClusterAttachmentOutput() InstanceClusterAttachmentOutput {
+	return o
+}
+
+func (o InstanceClusterAttachmentOutput) ToInstanceClusterAttachmentOutputWithContext(ctx context.Context) InstanceClusterAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceClusterAttachmentOutput{})
 }

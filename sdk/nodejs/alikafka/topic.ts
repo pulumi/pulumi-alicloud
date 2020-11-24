@@ -48,6 +48,14 @@ import * as utilities from "../utilities";
  *     remark: "dafault_kafka_topic_remark",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ALIKAFKA TOPIC can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+ * ```
  */
 export class Topic extends pulumi.CustomResource {
     /**

@@ -6,6 +6,14 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a snat resource.
+ *
+ * ## Import
+ *
+ * Snat Entry can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+ * ```
  */
 export class SnatEntry extends pulumi.CustomResource {
     /**

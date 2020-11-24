@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Api gateway app can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:apigateway/app:App example "7379660"
+ * ```
+ */
 export class App extends pulumi.CustomResource {
     /**
      * Get an existing App resource's state with the given name, ID, and optional extra

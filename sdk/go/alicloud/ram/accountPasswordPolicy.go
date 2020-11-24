@@ -4,11 +4,19 @@
 package ram
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// RAM account password policy can be imported using the `id`, e.g. bash
+//
+// ```sh
+//  $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+// ```
 type AccountPasswordPolicy struct {
 	pulumi.CustomResourceState
 
@@ -150,4 +158,43 @@ type AccountPasswordPolicyArgs struct {
 
 func (AccountPasswordPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountPasswordPolicyArgs)(nil)).Elem()
+}
+
+type AccountPasswordPolicyInput interface {
+	pulumi.Input
+
+	ToAccountPasswordPolicyOutput() AccountPasswordPolicyOutput
+	ToAccountPasswordPolicyOutputWithContext(ctx context.Context) AccountPasswordPolicyOutput
+}
+
+func (AccountPasswordPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountPasswordPolicy)(nil)).Elem()
+}
+
+func (i AccountPasswordPolicy) ToAccountPasswordPolicyOutput() AccountPasswordPolicyOutput {
+	return i.ToAccountPasswordPolicyOutputWithContext(context.Background())
+}
+
+func (i AccountPasswordPolicy) ToAccountPasswordPolicyOutputWithContext(ctx context.Context) AccountPasswordPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountPasswordPolicyOutput)
+}
+
+type AccountPasswordPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountPasswordPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountPasswordPolicyOutput)(nil)).Elem()
+}
+
+func (o AccountPasswordPolicyOutput) ToAccountPasswordPolicyOutput() AccountPasswordPolicyOutput {
+	return o
+}
+
+func (o AccountPasswordPolicyOutput) ToAccountPasswordPolicyOutputWithContext(ctx context.Context) AccountPasswordPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountPasswordPolicyOutput{})
 }

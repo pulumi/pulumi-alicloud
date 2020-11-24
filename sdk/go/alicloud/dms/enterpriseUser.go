@@ -4,6 +4,7 @@
 package dms
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -40,6 +41,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// DMS Enterprise User can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
 // ```
 type EnterpriseUser struct {
 	pulumi.CustomResourceState
@@ -195,4 +204,43 @@ type EnterpriseUserArgs struct {
 
 func (EnterpriseUserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*enterpriseUserArgs)(nil)).Elem()
+}
+
+type EnterpriseUserInput interface {
+	pulumi.Input
+
+	ToEnterpriseUserOutput() EnterpriseUserOutput
+	ToEnterpriseUserOutputWithContext(ctx context.Context) EnterpriseUserOutput
+}
+
+func (EnterpriseUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseUser)(nil)).Elem()
+}
+
+func (i EnterpriseUser) ToEnterpriseUserOutput() EnterpriseUserOutput {
+	return i.ToEnterpriseUserOutputWithContext(context.Background())
+}
+
+func (i EnterpriseUser) ToEnterpriseUserOutputWithContext(ctx context.Context) EnterpriseUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserOutput)
+}
+
+type EnterpriseUserOutput struct {
+	*pulumi.OutputState
+}
+
+func (EnterpriseUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseUserOutput)(nil)).Elem()
+}
+
+func (o EnterpriseUserOutput) ToEnterpriseUserOutput() EnterpriseUserOutput {
+	return o
+}
+
+func (o EnterpriseUserOutput) ToEnterpriseUserOutputWithContext(ctx context.Context) EnterpriseUserOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EnterpriseUserOutput{})
 }

@@ -65,6 +65,14 @@ class Instance(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        AnalyticDB for PostgreSQL can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:gpdb/instance:Instance example gp-bp1291daeda44194
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The name of DB instance. It a string of 2 to 256 characters.

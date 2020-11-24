@@ -77,6 +77,14 @@ class SaslAcl(pulumi.CustomResource):
             acl_operation_type="Write")
         ```
 
+        ## Import
+
+        ALIKAFKA GROUP can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_operation_type: Operation type for this acl. The operation type can only be "Write" and "Read".

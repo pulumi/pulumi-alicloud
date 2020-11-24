@@ -39,6 +39,14 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// reservedInstance can be imported using id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
+    /// ```
     /// </summary>
     public partial class ReservedInstance : Pulumi.CustomResource
     {

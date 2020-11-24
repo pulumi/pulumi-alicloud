@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ram
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// RAM policy can be imported using the id or name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ram/policy:Policy example my-policy
+    /// ```
+    /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>

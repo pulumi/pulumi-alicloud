@@ -28,7 +28,14 @@ class Eip(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Eip resource with the given unique name, props, and options.
+        ## Import
+
+        Elastic IP address can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.

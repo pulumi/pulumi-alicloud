@@ -4,6 +4,7 @@
 package ess
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,6 +43,14 @@ import (
 // * `vserverGroupId` - (Required) ID of VServer Group.
 // * `port` - (Required) - The port will be used for VServer Group backend server.
 // * `weight` - (Required) The weight of an ECS instance attached to the VServer Group.
+//
+// ## Import
+//
+// ESS vserver groups can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
+// ```
 type ScalingGroupVServerGroups struct {
 	pulumi.CustomResourceState
 
@@ -129,4 +138,43 @@ type ScalingGroupVServerGroupsArgs struct {
 
 func (ScalingGroupVServerGroupsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingGroupVServerGroupsArgs)(nil)).Elem()
+}
+
+type ScalingGroupVServerGroupsInput interface {
+	pulumi.Input
+
+	ToScalingGroupVServerGroupsOutput() ScalingGroupVServerGroupsOutput
+	ToScalingGroupVServerGroupsOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsOutput
+}
+
+func (ScalingGroupVServerGroups) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingGroupVServerGroups)(nil)).Elem()
+}
+
+func (i ScalingGroupVServerGroups) ToScalingGroupVServerGroupsOutput() ScalingGroupVServerGroupsOutput {
+	return i.ToScalingGroupVServerGroupsOutputWithContext(context.Background())
+}
+
+func (i ScalingGroupVServerGroups) ToScalingGroupVServerGroupsOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsOutput)
+}
+
+type ScalingGroupVServerGroupsOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScalingGroupVServerGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingGroupVServerGroupsOutput)(nil)).Elem()
+}
+
+func (o ScalingGroupVServerGroupsOutput) ToScalingGroupVServerGroupsOutput() ScalingGroupVServerGroupsOutput {
+	return o
+}
+
+func (o ScalingGroupVServerGroupsOutput) ToScalingGroupVServerGroupsOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ScalingGroupVServerGroupsOutput{})
 }

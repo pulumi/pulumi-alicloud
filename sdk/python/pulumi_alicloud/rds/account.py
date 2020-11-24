@@ -59,6 +59,14 @@ class Account(pulumi.CustomResource):
             password="Test12345")
         ```
 
+        ## Import
+
+        RDS account can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rds/account:Account example "rm-12345:tf_account"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.

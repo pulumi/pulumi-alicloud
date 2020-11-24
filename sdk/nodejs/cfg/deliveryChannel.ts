@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Alicloud Config Delivery Channel can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
+ * ```
+ */
 export class DeliveryChannel extends pulumi.CustomResource {
     /**
      * Get an existing DeliveryChannel resource's state with the given name, ID, and optional extra

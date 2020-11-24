@@ -57,6 +57,14 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RAM Group membership can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
+    /// ```
     /// </summary>
     public partial class GroupMembership : Pulumi.CustomResource
     {

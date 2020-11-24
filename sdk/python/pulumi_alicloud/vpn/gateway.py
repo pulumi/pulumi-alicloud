@@ -29,7 +29,14 @@ class Gateway(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Gateway resource with the given unique name, props, and options.
+        ## Import
+
+        VPN gateway can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpn/gateway:Gateway example vpn-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the VPN instance.

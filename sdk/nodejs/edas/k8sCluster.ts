@@ -21,6 +21,14 @@ import * as utilities from "../utilities";
  *     csClusterId: "xxxx-xxx-xxx",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EDAS cluster can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:edas/k8sCluster:K8sCluster cluster cluster_id
+ * ```
  */
 export class K8sCluster extends pulumi.CustomResource {
     /**

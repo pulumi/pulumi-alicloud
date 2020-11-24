@@ -64,6 +64,14 @@ class InstanceGrant(pulumi.CustomResource):
                 depends_on=[foo_instance_grant]))
         ```
 
+        ## Import
+
+        CEN instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN.

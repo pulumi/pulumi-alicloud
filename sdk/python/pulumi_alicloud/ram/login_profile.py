@@ -43,6 +43,14 @@ class LoginProfile(pulumi.CustomResource):
             password="Yourpassword1234")
         ```
 
+        ## Import
+
+        RAM login profile can be imported using the id or user name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] mfa_bind_required: This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.

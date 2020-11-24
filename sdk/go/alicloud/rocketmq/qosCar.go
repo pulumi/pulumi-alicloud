@@ -4,6 +4,7 @@
 package rocketmq
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -54,6 +55,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// The Sag Qos Car can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
 // ```
 type QosCar struct {
 	pulumi.CustomResourceState
@@ -215,4 +224,43 @@ type QosCarArgs struct {
 
 func (QosCarArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosCarArgs)(nil)).Elem()
+}
+
+type QosCarInput interface {
+	pulumi.Input
+
+	ToQosCarOutput() QosCarOutput
+	ToQosCarOutputWithContext(ctx context.Context) QosCarOutput
+}
+
+func (QosCar) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosCar)(nil)).Elem()
+}
+
+func (i QosCar) ToQosCarOutput() QosCarOutput {
+	return i.ToQosCarOutputWithContext(context.Background())
+}
+
+func (i QosCar) ToQosCarOutputWithContext(ctx context.Context) QosCarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosCarOutput)
+}
+
+type QosCarOutput struct {
+	*pulumi.OutputState
+}
+
+func (QosCarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosCarOutput)(nil)).Elem()
+}
+
+func (o QosCarOutput) ToQosCarOutput() QosCarOutput {
+	return o
+}
+
+func (o QosCarOutput) ToQosCarOutputWithContext(ctx context.Context) QosCarOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QosCarOutput{})
 }

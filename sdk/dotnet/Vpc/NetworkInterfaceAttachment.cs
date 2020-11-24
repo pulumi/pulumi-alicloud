@@ -106,6 +106,14 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Network Interfaces Attachment resource can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment eni eni-abc123456789000:i-abc123456789000
+    /// ```
     /// </summary>
     public partial class NetworkInterfaceAttachment : Pulumi.CustomResource
     {

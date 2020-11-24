@@ -4,6 +4,7 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -13,6 +14,14 @@ import (
 // Provides an Alicloud ECS Elastic Network Interface Attachment as a resource to attach ENI to or detach ENI from ECS Instances.
 //
 // For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
+//
+// ## Import
+//
+// Network Interfaces Attachment resource can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment eni eni-abc123456789000:i-abc123456789000
+// ```
 type NetworkInterfaceAttachment struct {
 	pulumi.CustomResourceState
 
@@ -90,4 +99,43 @@ type NetworkInterfaceAttachmentArgs struct {
 
 func (NetworkInterfaceAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkInterfaceAttachmentArgs)(nil)).Elem()
+}
+
+type NetworkInterfaceAttachmentInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceAttachmentOutput() NetworkInterfaceAttachmentOutput
+	ToNetworkInterfaceAttachmentOutputWithContext(ctx context.Context) NetworkInterfaceAttachmentOutput
+}
+
+func (NetworkInterfaceAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceAttachment)(nil)).Elem()
+}
+
+func (i NetworkInterfaceAttachment) ToNetworkInterfaceAttachmentOutput() NetworkInterfaceAttachmentOutput {
+	return i.ToNetworkInterfaceAttachmentOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceAttachment) ToNetworkInterfaceAttachmentOutputWithContext(ctx context.Context) NetworkInterfaceAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceAttachmentOutput)
+}
+
+type NetworkInterfaceAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfaceAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceAttachmentOutput)(nil)).Elem()
+}
+
+func (o NetworkInterfaceAttachmentOutput) ToNetworkInterfaceAttachmentOutput() NetworkInterfaceAttachmentOutput {
+	return o
+}
+
+func (o NetworkInterfaceAttachmentOutput) ToNetworkInterfaceAttachmentOutputWithContext(ctx context.Context) NetworkInterfaceAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkInterfaceAttachmentOutput{})
 }

@@ -48,6 +48,14 @@ class BandwidthPackage(pulumi.CustomResource):
             geographic_region_b_id="China")
         ```
 
+        ## Import
+
+        CEN bandwidth package can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
@@ -83,18 +91,18 @@ class BandwidthPackage(pulumi.CustomResource):
             __props__['bandwidth'] = bandwidth
             __props__['cen_bandwidth_package_name'] = cen_bandwidth_package_name
             if charge_type is not None:
-                warnings.warn("Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.", DeprecationWarning)
+                warnings.warn("""Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""", DeprecationWarning)
                 pulumi.log.warn("charge_type is deprecated: Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.")
             __props__['charge_type'] = charge_type
             __props__['description'] = description
             __props__['geographic_region_a_id'] = geographic_region_a_id
             __props__['geographic_region_b_id'] = geographic_region_b_id
             if geographic_region_ids is not None:
-                warnings.warn("Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.", DeprecationWarning)
+                warnings.warn("""Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""", DeprecationWarning)
                 pulumi.log.warn("geographic_region_ids is deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.")
             __props__['geographic_region_ids'] = geographic_region_ids
             if name is not None:
-                warnings.warn("Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.", DeprecationWarning)
+                warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""", DeprecationWarning)
                 pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.")
             __props__['name'] = name
             __props__['payment_type'] = payment_type

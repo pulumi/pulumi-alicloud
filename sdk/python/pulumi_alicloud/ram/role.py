@@ -26,7 +26,14 @@ class Role(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        ## Import
+
+        RAM role can be imported using the id or name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/role:Role example my-role
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the RAM role. This name can have a string of 1 to 1024 characters.
@@ -59,15 +66,15 @@ class Role(pulumi.CustomResource):
             __props__['force'] = force
             __props__['name'] = name
             if ram_users is not None:
-                warnings.warn("Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. ", DeprecationWarning)
+                warnings.warn("""Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
                 pulumi.log.warn("ram_users is deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
             __props__['ram_users'] = ram_users
             if services is not None:
-                warnings.warn("Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. ", DeprecationWarning)
+                warnings.warn("""Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
                 pulumi.log.warn("services is deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
             __props__['services'] = services
             if version is not None:
-                warnings.warn("Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. ", DeprecationWarning)
+                warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
                 pulumi.log.warn("version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
             __props__['version'] = version
             __props__['arn'] = None

@@ -4,12 +4,20 @@
 package cs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+//
+// ```sh
+//  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster-id
+// ```
 type ManagedKubernetes struct {
 	pulumi.CustomResourceState
 
@@ -705,4 +713,43 @@ type ManagedKubernetesArgs struct {
 
 func (ManagedKubernetesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedKubernetesArgs)(nil)).Elem()
+}
+
+type ManagedKubernetesInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesOutput() ManagedKubernetesOutput
+	ToManagedKubernetesOutputWithContext(ctx context.Context) ManagedKubernetesOutput
+}
+
+func (ManagedKubernetes) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetes)(nil)).Elem()
+}
+
+func (i ManagedKubernetes) ToManagedKubernetesOutput() ManagedKubernetesOutput {
+	return i.ToManagedKubernetesOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetes) ToManagedKubernetesOutputWithContext(ctx context.Context) ManagedKubernetesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesOutput)
+}
+
+type ManagedKubernetesOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagedKubernetesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesOutput)(nil)).Elem()
+}
+
+func (o ManagedKubernetesOutput) ToManagedKubernetesOutput() ManagedKubernetesOutput {
+	return o
+}
+
+func (o ManagedKubernetesOutput) ToManagedKubernetesOutputWithContext(ctx context.Context) ManagedKubernetesOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ManagedKubernetesOutput{})
 }

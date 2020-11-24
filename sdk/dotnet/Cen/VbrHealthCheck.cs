@@ -61,6 +61,14 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CEN VBR HealthCheck can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
+    /// ```
     /// </summary>
     public partial class VbrHealthCheck : Pulumi.CustomResource
     {

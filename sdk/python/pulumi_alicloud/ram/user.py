@@ -25,7 +25,14 @@ class User(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a User resource with the given unique name, props, and options.
+        ## Import
+
+        RAM user can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/user:User example 123456789xxx
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comments: Comment of the RAM user. This parameter can have a string of 1 to 128 characters.

@@ -57,6 +57,14 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RDS instance can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:rds/instance:Instance example rm-abc12345678
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

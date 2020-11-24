@@ -43,6 +43,14 @@ namespace Pulumi.AliCloud.Drds
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Distributed Relational Database Service (DRDS) can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

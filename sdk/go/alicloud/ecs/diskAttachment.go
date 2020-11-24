@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -166,4 +167,43 @@ type DiskAttachmentArgs struct {
 
 func (DiskAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskAttachmentArgs)(nil)).Elem()
+}
+
+type DiskAttachmentInput interface {
+	pulumi.Input
+
+	ToDiskAttachmentOutput() DiskAttachmentOutput
+	ToDiskAttachmentOutputWithContext(ctx context.Context) DiskAttachmentOutput
+}
+
+func (DiskAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAttachment)(nil)).Elem()
+}
+
+func (i DiskAttachment) ToDiskAttachmentOutput() DiskAttachmentOutput {
+	return i.ToDiskAttachmentOutputWithContext(context.Background())
+}
+
+func (i DiskAttachment) ToDiskAttachmentOutputWithContext(ctx context.Context) DiskAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskAttachmentOutput)
+}
+
+type DiskAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (DiskAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAttachmentOutput)(nil)).Elem()
+}
+
+func (o DiskAttachmentOutput) ToDiskAttachmentOutput() DiskAttachmentOutput {
+	return o
+}
+
+func (o DiskAttachmentOutput) ToDiskAttachmentOutputWithContext(ctx context.Context) DiskAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DiskAttachmentOutput{})
 }

@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.MarketPlace
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Market order can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:marketplace/order:Order order your-order-id
+    /// ```
+    /// </summary>
     public partial class Order : Pulumi.CustomResource
     {
         /// <summary>

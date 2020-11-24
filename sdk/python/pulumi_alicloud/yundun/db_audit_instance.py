@@ -48,6 +48,14 @@ class DBAuditInstance(pulumi.CustomResource):
             vswitch_id="v-testVswitch")
         ```
 
+        ## Import
+
+        Yundun_dbaudit instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.

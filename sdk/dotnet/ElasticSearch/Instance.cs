@@ -53,6 +53,14 @@ namespace Pulumi.AliCloud.ElasticSearch
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Elasticsearch can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:elasticsearch/instance:Instance example es-cn-abcde123456
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package rocketmq
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -17,6 +18,14 @@ import (
 // > **NOTE:** Available in 1.60.0+
 //
 // > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+//
+// ## Import
+//
+// The Sag Acl Rule can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
+// ```
 type AclRule struct {
 	pulumi.CustomResourceState
 
@@ -192,4 +201,43 @@ type AclRuleArgs struct {
 
 func (AclRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclRuleArgs)(nil)).Elem()
+}
+
+type AclRuleInput interface {
+	pulumi.Input
+
+	ToAclRuleOutput() AclRuleOutput
+	ToAclRuleOutputWithContext(ctx context.Context) AclRuleOutput
+}
+
+func (AclRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRule)(nil)).Elem()
+}
+
+func (i AclRule) ToAclRuleOutput() AclRuleOutput {
+	return i.ToAclRuleOutputWithContext(context.Background())
+}
+
+func (i AclRule) ToAclRuleOutputWithContext(ctx context.Context) AclRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclRuleOutput)
+}
+
+type AclRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRuleOutput)(nil)).Elem()
+}
+
+func (o AclRuleOutput) ToAclRuleOutput() AclRuleOutput {
+	return o
+}
+
+func (o AclRuleOutput) ToAclRuleOutputWithContext(ctx context.Context) AclRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AclRuleOutput{})
 }

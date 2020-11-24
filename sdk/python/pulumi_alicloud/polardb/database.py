@@ -58,6 +58,14 @@ class Database(pulumi.CustomResource):
             db_name="tftestdatabase")
         ```
 
+        ## Import
+
+        PolarDB database can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).

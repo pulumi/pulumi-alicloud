@@ -4,6 +4,7 @@
 package polardb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,6 +86,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// PolarDB endpoint address can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
 // ```
 type EndpointAddress struct {
 	pulumi.CustomResourceState
@@ -201,4 +210,43 @@ type EndpointAddressArgs struct {
 
 func (EndpointAddressArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointAddressArgs)(nil)).Elem()
+}
+
+type EndpointAddressInput interface {
+	pulumi.Input
+
+	ToEndpointAddressOutput() EndpointAddressOutput
+	ToEndpointAddressOutputWithContext(ctx context.Context) EndpointAddressOutput
+}
+
+func (EndpointAddress) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointAddress)(nil)).Elem()
+}
+
+func (i EndpointAddress) ToEndpointAddressOutput() EndpointAddressOutput {
+	return i.ToEndpointAddressOutputWithContext(context.Background())
+}
+
+func (i EndpointAddress) ToEndpointAddressOutputWithContext(ctx context.Context) EndpointAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointAddressOutput)
+}
+
+type EndpointAddressOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointAddressOutput)(nil)).Elem()
+}
+
+func (o EndpointAddressOutput) ToEndpointAddressOutput() EndpointAddressOutput {
+	return o
+}
+
+func (o EndpointAddressOutput) ToEndpointAddressOutputWithContext(ctx context.Context) EndpointAddressOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EndpointAddressOutput{})
 }

@@ -56,6 +56,16 @@ class MountTarget(pulumi.CustomResource):
             access_group_name=example_access_group.access_group_name)
         ```
 
+        ## Import
+
+        NAS MountTarget
+
+        can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.

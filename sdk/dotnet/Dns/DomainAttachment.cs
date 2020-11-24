@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// DNS domain attachment can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:dns/domainAttachment:DomainAttachment example dns-cn-v0h1ldjhxxx
+    /// ```
+    /// </summary>
     public partial class DomainAttachment : Pulumi.CustomResource
     {
         /// <summary>

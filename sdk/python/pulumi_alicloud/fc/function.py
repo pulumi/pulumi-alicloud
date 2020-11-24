@@ -40,7 +40,14 @@ class Function(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Function resource with the given unique name, props, and options.
+        ## Import
+
+        Function Compute function can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:fc/function:Function foo my-fc-service:hello-world
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] ca_port: The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).

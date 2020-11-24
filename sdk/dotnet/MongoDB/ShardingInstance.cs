@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.MongoDB
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// MongoDB can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
+    /// ```
+    /// </summary>
     public partial class ShardingInstance : Pulumi.CustomResource
     {
         /// <summary>

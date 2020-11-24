@@ -22,6 +22,14 @@ import * as utilities from "../utilities";
  *     specificationType: "OdpsStandard",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MaxCompute project can be imported using the *name* or ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:maxcompute/project:Project example tf_maxcompute_project
+ * ```
  */
 export class Project extends pulumi.CustomResource {
     /**

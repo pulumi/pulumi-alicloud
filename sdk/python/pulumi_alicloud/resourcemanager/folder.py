@@ -39,6 +39,14 @@ class Folder(pulumi.CustomResource):
         example = alicloud.resourcemanager.Folder("example", folder_name="test")
         ```
 
+        ## Import
+
+        Resource Manager Folder can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****	
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] folder_name: The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).

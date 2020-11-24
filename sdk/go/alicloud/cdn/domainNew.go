@@ -4,6 +4,7 @@
 package cdn
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -48,6 +49,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CDN domain can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cdn/domainNew:DomainNew example xxxx.com
 // ```
 type DomainNew struct {
 	pulumi.CustomResourceState
@@ -185,4 +194,43 @@ type DomainNewArgs struct {
 
 func (DomainNewArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainNewArgs)(nil)).Elem()
+}
+
+type DomainNewInput interface {
+	pulumi.Input
+
+	ToDomainNewOutput() DomainNewOutput
+	ToDomainNewOutputWithContext(ctx context.Context) DomainNewOutput
+}
+
+func (DomainNew) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainNew)(nil)).Elem()
+}
+
+func (i DomainNew) ToDomainNewOutput() DomainNewOutput {
+	return i.ToDomainNewOutputWithContext(context.Background())
+}
+
+func (i DomainNew) ToDomainNewOutputWithContext(ctx context.Context) DomainNewOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNewOutput)
+}
+
+type DomainNewOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainNewOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainNewOutput)(nil)).Elem()
+}
+
+func (o DomainNewOutput) ToDomainNewOutput() DomainNewOutput {
+	return o
+}
+
+func (o DomainNewOutput) ToDomainNewOutputWithContext(ctx context.Context) DomainNewOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainNewOutput{})
 }

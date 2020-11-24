@@ -45,6 +45,14 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
+    /// ```
     /// </summary>
     public partial class RegistryEnterpriseSyncRule : Pulumi.CustomResource
     {

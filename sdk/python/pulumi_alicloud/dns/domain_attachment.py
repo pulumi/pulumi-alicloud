@@ -21,7 +21,14 @@ class DomainAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a DomainAttachment resource with the given unique name, props, and options.
+        ## Import
+
+        DNS domain attachment can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dns/domainAttachment:DomainAttachment example dns-cn-v0h1ldjhxxx
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: The domain names bound to the DNS instance.

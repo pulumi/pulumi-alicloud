@@ -32,7 +32,14 @@ class ScalingRule(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ScalingRule resource with the given unique name, props, and options.
+        ## Import
+
+        ESS scaling rule can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] adjustment_type: Adjustment mode of a scaling rule. Optional values:

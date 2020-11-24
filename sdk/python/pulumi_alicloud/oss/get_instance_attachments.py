@@ -15,7 +15,7 @@ __all__ = [
     'get_instance_attachments',
 ]
 
-warnings.warn("alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments", DeprecationWarning)
+warnings.warn("""alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments""", DeprecationWarning)
 
 @pulumi.output_type
 class GetInstanceAttachmentsResult:

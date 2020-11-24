@@ -63,6 +63,14 @@ import * as utilities from "../utilities";
  * });
  * // The connection must start from the accepting side.
  * ```
+ *
+ * ## Import
+ *
+ * The router interface connection can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection foo ri-abc123456
+ * ```
  */
 export class RouterInterfaceConnection extends pulumi.CustomResource {
     /**

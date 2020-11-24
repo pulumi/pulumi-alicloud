@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -47,6 +48,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Key pair can be imported using the name, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
 // ```
 type KeyPair struct {
 	pulumi.CustomResourceState
@@ -152,4 +161,43 @@ type KeyPairArgs struct {
 
 func (KeyPairArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyPairArgs)(nil)).Elem()
+}
+
+type KeyPairInput interface {
+	pulumi.Input
+
+	ToKeyPairOutput() KeyPairOutput
+	ToKeyPairOutputWithContext(ctx context.Context) KeyPairOutput
+}
+
+func (KeyPair) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyPair)(nil)).Elem()
+}
+
+func (i KeyPair) ToKeyPairOutput() KeyPairOutput {
+	return i.ToKeyPairOutputWithContext(context.Background())
+}
+
+func (i KeyPair) ToKeyPairOutputWithContext(ctx context.Context) KeyPairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyPairOutput)
+}
+
+type KeyPairOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyPairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyPairOutput)(nil)).Elem()
+}
+
+func (o KeyPairOutput) ToKeyPairOutput() KeyPairOutput {
+	return o
+}
+
+func (o KeyPairOutput) ToKeyPairOutputWithContext(ctx context.Context) KeyPairOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KeyPairOutput{})
 }

@@ -38,6 +38,14 @@ class Subscription(pulumi.CustomResource):
             topic_name="tf_datahub_topic")
         ```
 
+        ## Import
+
+        Datahub subscription can be imported using the ID, e.g.
+
+        ```sh
+         $ pulumi import alicloud:datahub/subscription:Subscription example tf_datahub_project:tf_datahub_topic:1539073399567UgCzY
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comment of the datahub subscription. It cannot be longer than 255 characters.

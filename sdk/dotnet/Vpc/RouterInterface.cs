@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// The router interface can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
+    /// ```
+    /// </summary>
     public partial class RouterInterface : Pulumi.CustomResource
     {
         /// <summary>

@@ -24,7 +24,14 @@ class MachineGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a MachineGroup resource with the given unique name, props, and options.
+        ## Import
+
+        Log machine group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identify_lists: The specific machine identification, which can be an IP address or user-defined identity.

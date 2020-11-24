@@ -4,12 +4,20 @@
 package cs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`
+//
+// ```sh
+//  $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes alicloud_cs_edge_kubernetes.main cluster-id
+// ```
 type EdgeKubernetes struct {
 	pulumi.CustomResourceState
 
@@ -420,4 +428,43 @@ type EdgeKubernetesArgs struct {
 
 func (EdgeKubernetesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgeKubernetesArgs)(nil)).Elem()
+}
+
+type EdgeKubernetesInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesOutput() EdgeKubernetesOutput
+	ToEdgeKubernetesOutputWithContext(ctx context.Context) EdgeKubernetesOutput
+}
+
+func (EdgeKubernetes) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetes)(nil)).Elem()
+}
+
+func (i EdgeKubernetes) ToEdgeKubernetesOutput() EdgeKubernetesOutput {
+	return i.ToEdgeKubernetesOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetes) ToEdgeKubernetesOutputWithContext(ctx context.Context) EdgeKubernetesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesOutput)
+}
+
+type EdgeKubernetesOutput struct {
+	*pulumi.OutputState
+}
+
+func (EdgeKubernetesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesOutput)(nil)).Elem()
+}
+
+func (o EdgeKubernetesOutput) ToEdgeKubernetesOutput() EdgeKubernetesOutput {
+	return o
+}
+
+func (o EdgeKubernetesOutput) ToEdgeKubernetesOutputWithContext(ctx context.Context) EdgeKubernetesOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EdgeKubernetesOutput{})
 }

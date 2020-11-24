@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * The route table attachemnt can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+ * ```
+ */
 export class RouteTableAttachment extends pulumi.CustomResource {
     /**
      * Get an existing RouteTableAttachment resource's state with the given name, ID, and optional extra

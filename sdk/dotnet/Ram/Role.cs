@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ram
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// RAM role can be imported using the id or name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ram/role:Role example my-role
+    /// ```
+    /// </summary>
     public partial class Role : Pulumi.CustomResource
     {
         /// <summary>

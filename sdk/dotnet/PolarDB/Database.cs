@@ -59,6 +59,14 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// PolarDB database can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
+    /// ```
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {

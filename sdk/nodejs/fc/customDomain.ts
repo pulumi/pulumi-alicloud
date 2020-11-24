@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -60,6 +59,14 @@ import * as utilities from "../utilities";
  *         certificate: "your certificate data",
  *     },
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Function Compute custom domain can be imported using the id or the domain name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
  * ```
  */
 export class CustomDomain extends pulumi.CustomResource {

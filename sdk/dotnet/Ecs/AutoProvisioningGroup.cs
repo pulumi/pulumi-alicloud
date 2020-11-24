@@ -86,6 +86,14 @@ namespace Pulumi.AliCloud.Ecs
     /// * `vswitch_id` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.
     /// * `weighted_capacity` - (Required) The weight of the instance type specified in the Nth extended configurations of the launch template.
     /// * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
+    /// 
+    /// ## Import
+    /// 
+    /// ECS auto provisioning group can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
+    /// ```
     /// </summary>
     public partial class AutoProvisioningGroup : Pulumi.CustomResource
     {

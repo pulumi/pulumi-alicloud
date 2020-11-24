@@ -4,6 +4,7 @@
 package cms
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -62,6 +63,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Alarm contact can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
 // ```
 type AlarmContact struct {
 	pulumi.CustomResourceState
@@ -190,4 +199,43 @@ type AlarmContactArgs struct {
 
 func (AlarmContactArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alarmContactArgs)(nil)).Elem()
+}
+
+type AlarmContactInput interface {
+	pulumi.Input
+
+	ToAlarmContactOutput() AlarmContactOutput
+	ToAlarmContactOutputWithContext(ctx context.Context) AlarmContactOutput
+}
+
+func (AlarmContact) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmContact)(nil)).Elem()
+}
+
+func (i AlarmContact) ToAlarmContactOutput() AlarmContactOutput {
+	return i.ToAlarmContactOutputWithContext(context.Background())
+}
+
+func (i AlarmContact) ToAlarmContactOutputWithContext(ctx context.Context) AlarmContactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmContactOutput)
+}
+
+type AlarmContactOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlarmContactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmContactOutput)(nil)).Elem()
+}
+
+func (o AlarmContactOutput) ToAlarmContactOutput() AlarmContactOutput {
+	return o
+}
+
+func (o AlarmContactOutput) ToAlarmContactOutputWithContext(ctx context.Context) AlarmContactOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AlarmContactOutput{})
 }

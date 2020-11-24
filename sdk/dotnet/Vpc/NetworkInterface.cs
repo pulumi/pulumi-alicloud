@@ -60,6 +60,14 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ENI can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
+    /// ```
     /// </summary>
     public partial class NetworkInterface : Pulumi.CustomResource
     {

@@ -40,6 +40,14 @@ class Connection(pulumi.CustomResource):
             port="6370")
         ```
 
+        ## Import
+
+        KVStore connection can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_string_prefix: The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.

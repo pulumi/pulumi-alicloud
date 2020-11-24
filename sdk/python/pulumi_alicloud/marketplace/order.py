@@ -27,7 +27,14 @@ class Order(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Order resource with the given unique name, props, and options.
+        ## Import
+
+        Market order can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:marketplace/order:Order order your-order-id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] components: Service providers customize additional components.

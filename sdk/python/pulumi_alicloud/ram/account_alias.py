@@ -32,6 +32,14 @@ class AccountAlias(pulumi.CustomResource):
         alias = alicloud.ram.AccountAlias("alias", account_alias="hallo")
         ```
 
+        ## Import
+
+        RAM account alias can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_alias: Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.

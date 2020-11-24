@@ -61,6 +61,14 @@ class ImageImport(pulumi.CustomResource):
 
         * `id` - ID of the image.
 
+        ## Import
+
+        image can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/imageImport:ImageImport default m-uf66871ape***yg1q***
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] architecture: Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.

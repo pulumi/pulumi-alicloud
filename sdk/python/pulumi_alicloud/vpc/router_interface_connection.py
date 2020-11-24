@@ -79,6 +79,14 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         # The connection must start from the accepting side.
         ```
 
+        ## Import
+
+        The router interface connection can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection foo ri-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] interface_id: One side router interface ID.

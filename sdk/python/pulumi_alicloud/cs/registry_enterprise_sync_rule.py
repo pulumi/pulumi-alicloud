@@ -55,6 +55,14 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
             target_repo_name="my-target-repo")
         ```
 
+        ## Import
+
+        Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition source instance.

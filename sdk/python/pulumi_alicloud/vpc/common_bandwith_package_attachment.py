@@ -21,7 +21,14 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a CommonBandwithPackageAttachment resource with the given unique name, props, and options.
+        ## Import
+
+        The common bandwidth package attachemnt can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo cbwp-abc123456:eip-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.

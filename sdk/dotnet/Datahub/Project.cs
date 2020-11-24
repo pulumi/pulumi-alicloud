@@ -34,6 +34,14 @@ namespace Pulumi.AliCloud.Datahub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Datahub project can be imported using the *name* or ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:datahub/project:Project example tf_datahub_project
+    /// ```
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {

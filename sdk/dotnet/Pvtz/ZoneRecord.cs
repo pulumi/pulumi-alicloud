@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Pvtz
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Private Zone Record can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
+    /// ```
+    /// </summary>
     public partial class ZoneRecord : Pulumi.CustomResource
     {
         /// <summary>

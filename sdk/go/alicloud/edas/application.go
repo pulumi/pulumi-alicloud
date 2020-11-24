@@ -4,6 +4,7 @@
 package edas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -13,6 +14,14 @@ import (
 // Creates an EDAS ecs application on EDAS. The application will be deployed when `groupId` and `warUrl` are given.
 //
 // > **NOTE:** Available in 1.82.0+
+//
+// ## Import
+//
+// EDAS application can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:edas/application:Application app app_Id
+// ```
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -183,4 +192,43 @@ type ApplicationArgs struct {
 
 func (ApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationArgs)(nil)).Elem()
+}
+
+type ApplicationInput interface {
+	pulumi.Input
+
+	ToApplicationOutput() ApplicationOutput
+	ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput
+}
+
+func (Application) ElementType() reflect.Type {
+	return reflect.TypeOf((*Application)(nil)).Elem()
+}
+
+func (i Application) ToApplicationOutput() ApplicationOutput {
+	return i.ToApplicationOutputWithContext(context.Background())
+}
+
+func (i Application) ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOutput)
+}
+
+type ApplicationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOutput)(nil)).Elem()
+}
+
+func (o ApplicationOutput) ToApplicationOutput() ApplicationOutput {
+	return o
+}
+
+func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApplicationOutput{})
 }

@@ -54,6 +54,16 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// NAS MountTarget
+    /// 
+    /// can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
+    /// ```
     /// </summary>
     public partial class MountTarget : Pulumi.CustomResource
     {

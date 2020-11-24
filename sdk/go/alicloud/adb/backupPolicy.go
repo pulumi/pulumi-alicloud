@@ -4,12 +4,20 @@
 package adb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// ADB backup policy can be imported using the id or cluster id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example "am-12345678"
+// ```
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 
@@ -106,4 +114,43 @@ type BackupPolicyArgs struct {
 
 func (BackupPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPolicyArgs)(nil)).Elem()
+}
+
+type BackupPolicyInput interface {
+	pulumi.Input
+
+	ToBackupPolicyOutput() BackupPolicyOutput
+	ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput
+}
+
+func (BackupPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicy)(nil)).Elem()
+}
+
+func (i BackupPolicy) ToBackupPolicyOutput() BackupPolicyOutput {
+	return i.ToBackupPolicyOutputWithContext(context.Background())
+}
+
+func (i BackupPolicy) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyOutput)
+}
+
+type BackupPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicyOutput)(nil)).Elem()
+}
+
+func (o BackupPolicyOutput) ToBackupPolicyOutput() BackupPolicyOutput {
+	return o
+}
+
+func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BackupPolicyOutput{})
 }

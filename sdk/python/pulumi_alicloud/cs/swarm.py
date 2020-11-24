@@ -60,6 +60,14 @@ class Swarm(pulumi.CustomResource):
             vswitch_id=var["vswitch_id"])
         ```
 
+        ## Import
+
+        Swarm cluster can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cs/swarm:Swarm foo cf123456789
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The CIDR block for the Container. It can not be same as the CIDR used by the VPC.
@@ -116,7 +124,7 @@ class Swarm(pulumi.CustomResource):
             __props__['password'] = password
             __props__['release_eip'] = release_eip
             if size is not None:
-                warnings.warn("Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.", DeprecationWarning)
+                warnings.warn("""Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""", DeprecationWarning)
                 pulumi.log.warn("size is deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.")
             __props__['size'] = size
             if vswitch_id is None:

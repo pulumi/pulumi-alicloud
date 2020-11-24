@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * RAM user can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ram/user:User example 123456789xxx
+ * ```
+ */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra

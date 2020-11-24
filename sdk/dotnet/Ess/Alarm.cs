@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ess
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Ess alarm can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
+    /// ```
+    /// </summary>
     public partial class Alarm : Pulumi.CustomResource
     {
         /// <summary>

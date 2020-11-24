@@ -65,6 +65,14 @@ class SaslUser(pulumi.CustomResource):
             password=password)
         ```
 
+        ## Import
+
+        ALIKAFKA GROUP can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:alikafka/saslUser:SaslUser user alikafka_post-cn-123455abc:username
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.

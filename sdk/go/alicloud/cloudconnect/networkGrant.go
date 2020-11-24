@@ -4,6 +4,7 @@
 package cloudconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,6 +71,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// The Cloud Connect Network Grant can be imported using the instance_id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cloudconnect/networkGrant:NetworkGrant example ccn-abc123456:cen-abc123456
 // ```
 type NetworkGrant struct {
 	pulumi.CustomResourceState
@@ -161,4 +170,43 @@ type NetworkGrantArgs struct {
 
 func (NetworkGrantArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkGrantArgs)(nil)).Elem()
+}
+
+type NetworkGrantInput interface {
+	pulumi.Input
+
+	ToNetworkGrantOutput() NetworkGrantOutput
+	ToNetworkGrantOutputWithContext(ctx context.Context) NetworkGrantOutput
+}
+
+func (NetworkGrant) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkGrant)(nil)).Elem()
+}
+
+func (i NetworkGrant) ToNetworkGrantOutput() NetworkGrantOutput {
+	return i.ToNetworkGrantOutputWithContext(context.Background())
+}
+
+func (i NetworkGrant) ToNetworkGrantOutputWithContext(ctx context.Context) NetworkGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantOutput)
+}
+
+type NetworkGrantOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkGrantOutput)(nil)).Elem()
+}
+
+func (o NetworkGrantOutput) ToNetworkGrantOutput() NetworkGrantOutput {
+	return o
+}
+
+func (o NetworkGrantOutput) ToNetworkGrantOutputWithContext(ctx context.Context) NetworkGrantOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkGrantOutput{})
 }

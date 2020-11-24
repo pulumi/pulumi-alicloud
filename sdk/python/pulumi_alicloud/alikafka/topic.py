@@ -67,6 +67,14 @@ class Topic(pulumi.CustomResource):
             remark="dafault_kafka_topic_remark")
         ```
 
+        ## Import
+
+        ALIKAFKA TOPIC can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] compact_topic: Whether the topic is compactTopic or not. Compact topic must be a localTopic.

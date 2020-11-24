@@ -37,6 +37,14 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DNS domain attachment can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
+    /// ```
     /// </summary>
     public partial class AlidnsDomainAttachment : Pulumi.CustomResource
     {

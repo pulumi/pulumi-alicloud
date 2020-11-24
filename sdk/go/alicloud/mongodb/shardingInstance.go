@@ -4,12 +4,20 @@
 package mongodb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// MongoDB can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
+// ```
 type ShardingInstance struct {
 	pulumi.CustomResourceState
 
@@ -251,4 +259,43 @@ type ShardingInstanceArgs struct {
 
 func (ShardingInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*shardingInstanceArgs)(nil)).Elem()
+}
+
+type ShardingInstanceInput interface {
+	pulumi.Input
+
+	ToShardingInstanceOutput() ShardingInstanceOutput
+	ToShardingInstanceOutputWithContext(ctx context.Context) ShardingInstanceOutput
+}
+
+func (ShardingInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingInstance)(nil)).Elem()
+}
+
+func (i ShardingInstance) ToShardingInstanceOutput() ShardingInstanceOutput {
+	return i.ToShardingInstanceOutputWithContext(context.Background())
+}
+
+func (i ShardingInstance) ToShardingInstanceOutputWithContext(ctx context.Context) ShardingInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceOutput)
+}
+
+type ShardingInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (ShardingInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingInstanceOutput)(nil)).Elem()
+}
+
+func (o ShardingInstanceOutput) ToShardingInstanceOutput() ShardingInstanceOutput {
+	return o
+}
+
+func (o ShardingInstanceOutput) ToShardingInstanceOutputWithContext(ctx context.Context) ShardingInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ShardingInstanceOutput{})
 }

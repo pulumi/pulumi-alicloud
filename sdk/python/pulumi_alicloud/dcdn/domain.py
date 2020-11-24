@@ -64,6 +64,14 @@ class Domain(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        DCDN Domain can be imported using the id or DCDN Domain name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dcdn/domain:Domain example example.com
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cert_name: Indicates the name of the certificate if the HTTPS protocol is enabled.

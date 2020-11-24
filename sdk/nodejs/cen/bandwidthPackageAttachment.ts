@@ -29,6 +29,14 @@ import * as utilities from "../utilities";
  *     bandwidthPackageId: bwp.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * CEN bandwidth package attachment resource can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment example bwp-abc123456
+ * ```
  */
 export class BandwidthPackageAttachment extends pulumi.CustomResource {
     /**

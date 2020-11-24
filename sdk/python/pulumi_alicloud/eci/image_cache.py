@@ -53,6 +53,14 @@ class ImageCache(pulumi.CustomResource):
             vswitch_id="vsw-2zef9k7ng82xxxx")
         ```
 
+        ## Import
+
+        ECI Image Cache can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)

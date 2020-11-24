@@ -61,6 +61,14 @@ class Instance(pulumi.CustomResource):
             waf_log="false")
         ```
 
+        ## Import
+
+        WAF instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:waf/instance:Instance default waf-cn-132435
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] big_screen: Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.

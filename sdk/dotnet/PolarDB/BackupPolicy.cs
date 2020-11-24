@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.PolarDB
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// PolarDB backup policy can be imported using the id or cluster id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example "rm-12345678"
+    /// ```
+    /// </summary>
     public partial class BackupPolicy : Pulumi.CustomResource
     {
         /// <summary>

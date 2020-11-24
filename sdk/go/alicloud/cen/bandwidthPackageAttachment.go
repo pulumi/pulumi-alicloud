@@ -4,6 +4,7 @@
 package cen
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -52,6 +53,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CEN bandwidth package attachment resource can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment example bwp-abc123456
 // ```
 type BandwidthPackageAttachment struct {
 	pulumi.CustomResourceState
@@ -130,4 +139,43 @@ type BandwidthPackageAttachmentArgs struct {
 
 func (BandwidthPackageAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bandwidthPackageAttachmentArgs)(nil)).Elem()
+}
+
+type BandwidthPackageAttachmentInput interface {
+	pulumi.Input
+
+	ToBandwidthPackageAttachmentOutput() BandwidthPackageAttachmentOutput
+	ToBandwidthPackageAttachmentOutputWithContext(ctx context.Context) BandwidthPackageAttachmentOutput
+}
+
+func (BandwidthPackageAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthPackageAttachment)(nil)).Elem()
+}
+
+func (i BandwidthPackageAttachment) ToBandwidthPackageAttachmentOutput() BandwidthPackageAttachmentOutput {
+	return i.ToBandwidthPackageAttachmentOutputWithContext(context.Background())
+}
+
+func (i BandwidthPackageAttachment) ToBandwidthPackageAttachmentOutputWithContext(ctx context.Context) BandwidthPackageAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageAttachmentOutput)
+}
+
+type BandwidthPackageAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (BandwidthPackageAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthPackageAttachmentOutput)(nil)).Elem()
+}
+
+func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentOutput() BandwidthPackageAttachmentOutput {
+	return o
+}
+
+func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentOutputWithContext(ctx context.Context) BandwidthPackageAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BandwidthPackageAttachmentOutput{})
 }

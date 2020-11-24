@@ -22,7 +22,14 @@ class PolicyVersion(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a PolicyVersion resource with the given unique name, props, and options.
+        ## Import
+
+        Resource Manager Policy Version can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
@@ -47,7 +54,7 @@ class PolicyVersion(pulumi.CustomResource):
             __props__ = dict()
 
             if is_default_version is not None:
-                warnings.warn("Field 'is_default_version' has been deprecated from provider version 1.90.0", DeprecationWarning)
+                warnings.warn("""Field 'is_default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
                 pulumi.log.warn("is_default_version is deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0")
             __props__['is_default_version'] = is_default_version
             if policy_document is None:

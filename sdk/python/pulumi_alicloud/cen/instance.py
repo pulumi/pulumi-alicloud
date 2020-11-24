@@ -41,6 +41,14 @@ class Instance(pulumi.CustomResource):
             description="an example for cen")
         ```
 
+        ## Import
+
+        CEN instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_instance_name: The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
@@ -69,7 +77,7 @@ class Instance(pulumi.CustomResource):
             __props__['cen_instance_name'] = cen_instance_name
             __props__['description'] = description
             if name is not None:
-                warnings.warn("Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.", DeprecationWarning)
+                warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.")
             __props__['name'] = name
             __props__['protection_level'] = protection_level

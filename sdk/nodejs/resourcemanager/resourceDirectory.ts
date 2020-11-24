@@ -27,6 +27,14 @@ import * as utilities from "../utilities";
  *
  * const example = new alicloud.resourcemanager.ResourceDirectory("example", {});
  * ```
+ *
+ * ## Import
+ *
+ * Resource Manager Resource Directory can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
+ * ```
  */
 export class ResourceDirectory extends pulumi.CustomResource {
     /**

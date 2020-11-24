@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -117,4 +118,43 @@ type EipAssociationArgs struct {
 
 func (EipAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eipAssociationArgs)(nil)).Elem()
+}
+
+type EipAssociationInput interface {
+	pulumi.Input
+
+	ToEipAssociationOutput() EipAssociationOutput
+	ToEipAssociationOutputWithContext(ctx context.Context) EipAssociationOutput
+}
+
+func (EipAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*EipAssociation)(nil)).Elem()
+}
+
+func (i EipAssociation) ToEipAssociationOutput() EipAssociationOutput {
+	return i.ToEipAssociationOutputWithContext(context.Background())
+}
+
+func (i EipAssociation) ToEipAssociationOutputWithContext(ctx context.Context) EipAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EipAssociationOutput)
+}
+
+type EipAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (EipAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EipAssociationOutput)(nil)).Elem()
+}
+
+func (o EipAssociationOutput) ToEipAssociationOutput() EipAssociationOutput {
+	return o
+}
+
+func (o EipAssociationOutput) ToEipAssociationOutputWithContext(ctx context.Context) EipAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EipAssociationOutput{})
 }

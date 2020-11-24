@@ -41,7 +41,14 @@ class Instance(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        ## Import
+
+        MongoDB can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.

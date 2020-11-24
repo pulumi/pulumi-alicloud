@@ -27,6 +27,14 @@ import * as utilities from "../utilities";
  *     vswitchId: "vsw-123456",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MSE Cluster can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
+ * ```
  */
 export class Cluster extends pulumi.CustomResource {
     /**

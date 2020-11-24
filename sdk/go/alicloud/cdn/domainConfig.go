@@ -4,6 +4,7 @@
 package cdn
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -63,6 +64,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CDN domain config can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example cdn:config-abc123456
 // ```
 type DomainConfig struct {
 	pulumi.CustomResourceState
@@ -154,4 +163,43 @@ type DomainConfigArgs struct {
 
 func (DomainConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainConfigArgs)(nil)).Elem()
+}
+
+type DomainConfigInput interface {
+	pulumi.Input
+
+	ToDomainConfigOutput() DomainConfigOutput
+	ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput
+}
+
+func (DomainConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainConfig)(nil)).Elem()
+}
+
+func (i DomainConfig) ToDomainConfigOutput() DomainConfigOutput {
+	return i.ToDomainConfigOutputWithContext(context.Background())
+}
+
+func (i DomainConfig) ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigOutput)
+}
+
+type DomainConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainConfigOutput)(nil)).Elem()
+}
+
+func (o DomainConfigOutput) ToDomainConfigOutput() DomainConfigOutput {
+	return o
+}
+
+func (o DomainConfigOutput) ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainConfigOutput{})
 }

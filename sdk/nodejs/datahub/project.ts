@@ -21,6 +21,14 @@ import * as utilities from "../utilities";
  *     comment: "created by terraform",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Datahub project can be imported using the *name* or ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:datahub/project:Project example tf_datahub_project
+ * ```
  */
 export class Project extends pulumi.CustomResource {
     /**

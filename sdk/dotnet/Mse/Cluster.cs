@@ -43,6 +43,14 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// MSE Cluster can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
+    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

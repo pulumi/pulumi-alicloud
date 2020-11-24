@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -39,6 +38,14 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * DdosCoo Scheduler Rule can be imported using the id or the rule name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
  * ```
  */
 export class SchedulerRule extends pulumi.CustomResource {

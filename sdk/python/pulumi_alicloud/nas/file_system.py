@@ -44,6 +44,14 @@ class FileSystem(pulumi.CustomResource):
             storage_type="Performance")
         ```
 
+        ## Import
+
+        Nas File System can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The File System description.

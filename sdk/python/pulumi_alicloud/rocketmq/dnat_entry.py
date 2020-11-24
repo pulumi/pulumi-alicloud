@@ -52,6 +52,14 @@ class DnatEntry(pulumi.CustomResource):
             type="Intranet")
         ```
 
+        ## Import
+
+        The Sag DnatEntry can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] external_ip: The external public IP address.when "type" is "Internet",automatically identify the external ip.

@@ -4,6 +4,7 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -155,4 +156,43 @@ type NetworkAclAttachmentArgs struct {
 
 func (NetworkAclAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAclAttachmentArgs)(nil)).Elem()
+}
+
+type NetworkAclAttachmentInput interface {
+	pulumi.Input
+
+	ToNetworkAclAttachmentOutput() NetworkAclAttachmentOutput
+	ToNetworkAclAttachmentOutputWithContext(ctx context.Context) NetworkAclAttachmentOutput
+}
+
+func (NetworkAclAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclAttachment)(nil)).Elem()
+}
+
+func (i NetworkAclAttachment) ToNetworkAclAttachmentOutput() NetworkAclAttachmentOutput {
+	return i.ToNetworkAclAttachmentOutputWithContext(context.Background())
+}
+
+func (i NetworkAclAttachment) ToNetworkAclAttachmentOutputWithContext(ctx context.Context) NetworkAclAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclAttachmentOutput)
+}
+
+type NetworkAclAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkAclAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclAttachmentOutput)(nil)).Elem()
+}
+
+func (o NetworkAclAttachmentOutput) ToNetworkAclAttachmentOutput() NetworkAclAttachmentOutput {
+	return o
+}
+
+func (o NetworkAclAttachmentOutput) ToNetworkAclAttachmentOutputWithContext(ctx context.Context) NetworkAclAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkAclAttachmentOutput{})
 }

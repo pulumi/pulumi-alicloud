@@ -37,6 +37,14 @@ namespace Pulumi.AliCloud.ActionTrail
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Action trail can be imported using the id or trail_name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:actiontrail/trail:Trail default abc12345678
+    /// ```
     /// </summary>
     public partial class Trail : Pulumi.CustomResource
     {

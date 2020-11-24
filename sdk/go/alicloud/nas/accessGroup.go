@@ -4,6 +4,7 @@
 package nas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -66,6 +67,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// NAS Access Group can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
 // ```
 type AccessGroup struct {
 	pulumi.CustomResourceState
@@ -178,4 +187,43 @@ type AccessGroupArgs struct {
 
 func (AccessGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessGroupArgs)(nil)).Elem()
+}
+
+type AccessGroupInput interface {
+	pulumi.Input
+
+	ToAccessGroupOutput() AccessGroupOutput
+	ToAccessGroupOutputWithContext(ctx context.Context) AccessGroupOutput
+}
+
+func (AccessGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroup)(nil)).Elem()
+}
+
+func (i AccessGroup) ToAccessGroupOutput() AccessGroupOutput {
+	return i.ToAccessGroupOutputWithContext(context.Background())
+}
+
+func (i AccessGroup) ToAccessGroupOutputWithContext(ctx context.Context) AccessGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupOutput)
+}
+
+type AccessGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupOutput)(nil)).Elem()
+}
+
+func (o AccessGroupOutput) ToAccessGroupOutput() AccessGroupOutput {
+	return o
+}
+
+func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) AccessGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessGroupOutput{})
 }

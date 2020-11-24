@@ -113,6 +113,14 @@ namespace Pulumi.AliCloud.Slb
     /// * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100].
     /// * `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`. Default to `ecs`.
     /// * `server_ip` - (Optional, Available in 1.93.0+) ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `server_ip` parameter.
+    /// 
+    /// ## Import
+    /// 
+    /// Load balancer backend server can be imported using the load balancer id.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:slb/backendServer:BackendServer example lb-abc123456
+    /// ```
     /// </summary>
     public partial class BackendServer : Pulumi.CustomResource
     {

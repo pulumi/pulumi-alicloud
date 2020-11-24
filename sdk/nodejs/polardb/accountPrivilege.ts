@@ -52,6 +52,14 @@ import * as utilities from "../utilities";
  *     dbNames: [db.dbName],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * PolarDB account privilege can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:polardb/accountPrivilege:AccountPrivilege example "pc-12345:tf_account:ReadOnly"
+ * ```
  */
 export class AccountPrivilege extends pulumi.CustomResource {
     /**

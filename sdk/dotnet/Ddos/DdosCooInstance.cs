@@ -43,6 +43,14 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Ddoscoo instance can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ddos/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+    /// ```
     /// </summary>
     public partial class DdosCooInstance : Pulumi.CustomResource
     {

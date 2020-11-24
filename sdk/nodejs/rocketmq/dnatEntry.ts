@@ -31,6 +31,14 @@ import * as utilities from "../utilities";
  *     type: "Intranet",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The Sag DnatEntry can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
+ * ```
  */
 export class DnatEntry extends pulumi.CustomResource {
     /**

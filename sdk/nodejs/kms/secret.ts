@@ -25,6 +25,14 @@ import * as utilities from "../utilities";
  *     versionId: "000000000001",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * KMS secret can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:kms/secret:Secret default secret-foo
+ * ```
  */
 export class Secret extends pulumi.CustomResource {
     /**

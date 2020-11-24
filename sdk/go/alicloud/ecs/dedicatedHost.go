@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -75,6 +76,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Ecs dedicated host can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ecs/dedicatedHost:DedicatedHost default dh-2zedmxxxx
 // ```
 type DedicatedHost struct {
 	pulumi.CustomResourceState
@@ -306,4 +315,43 @@ type DedicatedHostArgs struct {
 
 func (DedicatedHostArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dedicatedHostArgs)(nil)).Elem()
+}
+
+type DedicatedHostInput interface {
+	pulumi.Input
+
+	ToDedicatedHostOutput() DedicatedHostOutput
+	ToDedicatedHostOutputWithContext(ctx context.Context) DedicatedHostOutput
+}
+
+func (DedicatedHost) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedHost)(nil)).Elem()
+}
+
+func (i DedicatedHost) ToDedicatedHostOutput() DedicatedHostOutput {
+	return i.ToDedicatedHostOutputWithContext(context.Background())
+}
+
+func (i DedicatedHost) ToDedicatedHostOutputWithContext(ctx context.Context) DedicatedHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostOutput)
+}
+
+type DedicatedHostOutput struct {
+	*pulumi.OutputState
+}
+
+func (DedicatedHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedHostOutput)(nil)).Elem()
+}
+
+func (o DedicatedHostOutput) ToDedicatedHostOutput() DedicatedHostOutput {
+	return o
+}
+
+func (o DedicatedHostOutput) ToDedicatedHostOutputWithContext(ctx context.Context) DedicatedHostOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DedicatedHostOutput{})
 }

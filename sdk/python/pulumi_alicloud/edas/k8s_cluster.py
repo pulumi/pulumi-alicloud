@@ -36,6 +36,14 @@ class K8sCluster(pulumi.CustomResource):
         default = alicloud.edas.K8sCluster("default", cs_cluster_id="xxxx-xxx-xxx")
         ```
 
+        ## Import
+
+        EDAS cluster can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:edas/k8sCluster:K8sCluster cluster cluster_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cs_cluster_id: The ID of the alicloud container service kubernetes cluster that you want to import.

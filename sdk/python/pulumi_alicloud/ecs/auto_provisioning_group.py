@@ -91,6 +91,14 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         * `weighted_capacity` - (Required) The weight of the instance type specified in the Nth extended configurations of the launch template.
         * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
 
+        ## Import
+
+        ECS auto provisioning group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_provisioning_group_name: The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)

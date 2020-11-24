@@ -4,6 +4,7 @@
 package resourcemanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -42,6 +43,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Resource Manager Resource Directory can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
 // ```
 type ResourceDirectory struct {
 	pulumi.CustomResourceState
@@ -112,4 +121,43 @@ type ResourceDirectoryArgs struct {
 
 func (ResourceDirectoryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceDirectoryArgs)(nil)).Elem()
+}
+
+type ResourceDirectoryInput interface {
+	pulumi.Input
+
+	ToResourceDirectoryOutput() ResourceDirectoryOutput
+	ToResourceDirectoryOutputWithContext(ctx context.Context) ResourceDirectoryOutput
+}
+
+func (ResourceDirectory) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDirectory)(nil)).Elem()
+}
+
+func (i ResourceDirectory) ToResourceDirectoryOutput() ResourceDirectoryOutput {
+	return i.ToResourceDirectoryOutputWithContext(context.Background())
+}
+
+func (i ResourceDirectory) ToResourceDirectoryOutputWithContext(ctx context.Context) ResourceDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDirectoryOutput)
+}
+
+type ResourceDirectoryOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDirectoryOutput)(nil)).Elem()
+}
+
+func (o ResourceDirectoryOutput) ToResourceDirectoryOutput() ResourceDirectoryOutput {
+	return o
+}
+
+func (o ResourceDirectoryOutput) ToResourceDirectoryOutputWithContext(ctx context.Context) ResourceDirectoryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResourceDirectoryOutput{})
 }

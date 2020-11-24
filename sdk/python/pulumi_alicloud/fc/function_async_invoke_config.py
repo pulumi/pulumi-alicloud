@@ -78,6 +78,14 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         # ... other configuration ...
         ```
 
+        ## Import
+
+        Function Compute Function Async Invoke Configs can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig example my_function
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']] destination_config: Configuration block with destination configuration. See below for details.

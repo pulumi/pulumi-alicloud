@@ -54,6 +54,14 @@ class Rule(pulumi.CustomResource):
 
         > **NOTE:** Only rule's virtual server group can be modified.
 
+        ## Import
+
+        Load balancer forwarding rule can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/rule:Rule example rule-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.

@@ -4,6 +4,7 @@
 package datahub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -36,6 +37,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Datahub project can be imported using the *name* or ID, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:datahub/project:Project example tf_datahub_project
 // ```
 type Project struct {
 	pulumi.CustomResourceState
@@ -120,4 +129,43 @@ type ProjectArgs struct {
 
 func (ProjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectArgs)(nil)).Elem()
+}
+
+type ProjectInput interface {
+	pulumi.Input
+
+	ToProjectOutput() ProjectOutput
+	ToProjectOutputWithContext(ctx context.Context) ProjectOutput
+}
+
+func (Project) ElementType() reflect.Type {
+	return reflect.TypeOf((*Project)(nil)).Elem()
+}
+
+func (i Project) ToProjectOutput() ProjectOutput {
+	return i.ToProjectOutputWithContext(context.Background())
+}
+
+func (i Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
+}
+
+type ProjectOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectOutput)(nil)).Elem()
+}
+
+func (o ProjectOutput) ToProjectOutput() ProjectOutput {
+	return o
+}
+
+func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectOutput{})
 }

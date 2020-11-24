@@ -4,6 +4,7 @@
 package alikafka
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -86,6 +87,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ALIKAFKA GROUP can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:alikafka/saslUser:SaslUser user alikafka_post-cn-123455abc:username
 // ```
 type SaslUser struct {
 	pulumi.CustomResourceState
@@ -194,4 +203,43 @@ type SaslUserArgs struct {
 
 func (SaslUserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*saslUserArgs)(nil)).Elem()
+}
+
+type SaslUserInput interface {
+	pulumi.Input
+
+	ToSaslUserOutput() SaslUserOutput
+	ToSaslUserOutputWithContext(ctx context.Context) SaslUserOutput
+}
+
+func (SaslUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaslUser)(nil)).Elem()
+}
+
+func (i SaslUser) ToSaslUserOutput() SaslUserOutput {
+	return i.ToSaslUserOutputWithContext(context.Background())
+}
+
+func (i SaslUser) ToSaslUserOutputWithContext(ctx context.Context) SaslUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaslUserOutput)
+}
+
+type SaslUserOutput struct {
+	*pulumi.OutputState
+}
+
+func (SaslUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaslUserOutput)(nil)).Elem()
+}
+
+func (o SaslUserOutput) ToSaslUserOutput() SaslUserOutput {
+	return o
+}
+
+func (o SaslUserOutput) ToSaslUserOutputWithContext(ctx context.Context) SaslUserOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SaslUserOutput{})
 }

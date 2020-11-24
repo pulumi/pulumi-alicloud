@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -88,6 +87,14 @@ import * as utilities from "../utilities";
  * * `vserverGroupId` - (Required) ID of VServer Group.
  * * `port` - (Required) - The port will be used for VServer Group backend server.
  * * `weight` - (Required) The weight of an ECS instance attached to the VServer Group.
+ *
+ * ## Import
+ *
+ * ESS vserver groups can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
+ * ```
  */
 export class ScalingGroupVServerGroups extends pulumi.CustomResource {
     /**

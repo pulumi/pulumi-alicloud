@@ -30,6 +30,14 @@ import * as utilities from "../utilities";
  *     vswitchId: "v-testVswitch",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Yundun_bastionhost instance can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
+ * ```
  */
 export class BastionHostInstance extends pulumi.CustomResource {
     /**

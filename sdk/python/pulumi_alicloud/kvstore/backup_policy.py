@@ -65,6 +65,14 @@ class BackupPolicy(pulumi.CustomResource):
             backup_time="10:00Z-11:00Z")
         ```
 
+        ## Import
+
+        KVStore backup policy can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday

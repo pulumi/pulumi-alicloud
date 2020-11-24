@@ -4,11 +4,19 @@
 package ess
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// ESS schedule task can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ess/scheduledTask:ScheduledTask example abc123456
+// ```
 type ScheduledTask struct {
 	pulumi.CustomResourceState
 
@@ -250,4 +258,43 @@ type ScheduledTaskArgs struct {
 
 func (ScheduledTaskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduledTaskArgs)(nil)).Elem()
+}
+
+type ScheduledTaskInput interface {
+	pulumi.Input
+
+	ToScheduledTaskOutput() ScheduledTaskOutput
+	ToScheduledTaskOutputWithContext(ctx context.Context) ScheduledTaskOutput
+}
+
+func (ScheduledTask) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledTask)(nil)).Elem()
+}
+
+func (i ScheduledTask) ToScheduledTaskOutput() ScheduledTaskOutput {
+	return i.ToScheduledTaskOutputWithContext(context.Background())
+}
+
+func (i ScheduledTask) ToScheduledTaskOutputWithContext(ctx context.Context) ScheduledTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledTaskOutput)
+}
+
+type ScheduledTaskOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScheduledTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledTaskOutput)(nil)).Elem()
+}
+
+func (o ScheduledTaskOutput) ToScheduledTaskOutput() ScheduledTaskOutput {
+	return o
+}
+
+func (o ScheduledTaskOutput) ToScheduledTaskOutputWithContext(ctx context.Context) ScheduledTaskOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ScheduledTaskOutput{})
 }

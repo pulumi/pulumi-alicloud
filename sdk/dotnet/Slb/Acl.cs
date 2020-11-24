@@ -74,6 +74,14 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// * `entry` - (Required) An IP addresses or CIDR blocks.
     /// * `comment` - (Optional) the comment of the entry.
+    /// 
+    /// ## Import
+    /// 
+    /// Server Load balancer access control list can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:slb/acl:Acl example acl-abc123456
+    /// ```
     /// </summary>
     public partial class Acl : Pulumi.CustomResource
     {

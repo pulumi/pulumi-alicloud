@@ -58,6 +58,14 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RDS backup policy can be imported using the id or instance id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:rds/backupPolicy:BackupPolicy example "rm-12345678"
+    /// ```
     /// </summary>
     public partial class BackupPolicy : Pulumi.CustomResource
     {

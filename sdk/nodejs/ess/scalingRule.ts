@@ -2,10 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * ESS scaling rule can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
+ * ```
+ */
 export class ScalingRule extends pulumi.CustomResource {
     /**
      * Get an existing ScalingRule resource's state with the given name, ID, and optional extra

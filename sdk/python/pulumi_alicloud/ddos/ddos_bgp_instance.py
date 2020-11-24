@@ -47,6 +47,14 @@ class DdosBgpInstance(pulumi.CustomResource):
             ip_type="IPv4")
         ```
 
+        ## Import
+
+        Ddosbgp instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.

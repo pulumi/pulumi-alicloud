@@ -39,6 +39,14 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DNS instance be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
+    /// ```
     /// </summary>
     public partial class AlidnsInstance : Pulumi.CustomResource
     {

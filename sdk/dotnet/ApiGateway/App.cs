@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.ApiGateway
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Api gateway app can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:apigateway/app:App example "7379660"
+    /// ```
+    /// </summary>
     public partial class App : Pulumi.CustomResource
     {
         /// <summary>

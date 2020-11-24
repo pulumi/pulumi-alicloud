@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['TrailDeprecated']
 
-warnings.warn("Resource renamed to `Trail`", DeprecationWarning)
+warnings.warn("""Resource renamed to `Trail`""", DeprecationWarning)
 
 
 class TrailDeprecated(pulumi.CustomResource):
-    warnings.warn("Resource renamed to `Trail`", DeprecationWarning)
+    warnings.warn("""Resource renamed to `Trail`""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,
@@ -35,7 +35,14 @@ class TrailDeprecated(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a TrailDeprecated resource with the given unique name, props, and options.
+        ## Import
+
+        Action trail can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
@@ -68,7 +75,7 @@ class TrailDeprecated(pulumi.CustomResource):
             __props__['is_organization_trail'] = is_organization_trail
             __props__['mns_topic_arn'] = mns_topic_arn
             if name is not None:
-                warnings.warn("Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.", DeprecationWarning)
+                warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.")
             __props__['name'] = name
             __props__['oss_bucket_name'] = oss_bucket_name

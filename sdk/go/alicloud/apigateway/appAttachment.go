@@ -4,6 +4,7 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -113,4 +114,43 @@ type AppAttachmentArgs struct {
 
 func (AppAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*appAttachmentArgs)(nil)).Elem()
+}
+
+type AppAttachmentInput interface {
+	pulumi.Input
+
+	ToAppAttachmentOutput() AppAttachmentOutput
+	ToAppAttachmentOutputWithContext(ctx context.Context) AppAttachmentOutput
+}
+
+func (AppAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppAttachment)(nil)).Elem()
+}
+
+func (i AppAttachment) ToAppAttachmentOutput() AppAttachmentOutput {
+	return i.ToAppAttachmentOutputWithContext(context.Background())
+}
+
+func (i AppAttachment) ToAppAttachmentOutputWithContext(ctx context.Context) AppAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppAttachmentOutput)
+}
+
+type AppAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppAttachmentOutput)(nil)).Elem()
+}
+
+func (o AppAttachmentOutput) ToAppAttachmentOutput() AppAttachmentOutput {
+	return o
+}
+
+func (o AppAttachmentOutput) ToAppAttachmentOutputWithContext(ctx context.Context) AppAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AppAttachmentOutput{})
 }

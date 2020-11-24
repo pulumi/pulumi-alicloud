@@ -22,7 +22,14 @@ class HAVip(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a HAVip resource with the given unique name, props, and options.
+        ## Import
+
+        The havip can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the HaVip instance.

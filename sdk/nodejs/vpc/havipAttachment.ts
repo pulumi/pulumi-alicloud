@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * The havip attachemnt can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment foo havip-abc123456:i-abc123456
+ * ```
+ */
 export class HAVipAttachment extends pulumi.CustomResource {
     /**
      * Get an existing HAVipAttachment resource's state with the given name, ID, and optional extra

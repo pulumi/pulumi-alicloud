@@ -75,6 +75,14 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Log alert can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:log/audit:Audit example tf-audit-test
+    /// ```
     /// </summary>
     public partial class Audit : Pulumi.CustomResource
     {

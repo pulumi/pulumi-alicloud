@@ -60,6 +60,14 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RDS connection can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:rds/connection:Connection example abc12345678
+    /// ```
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {

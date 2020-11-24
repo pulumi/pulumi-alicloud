@@ -40,7 +40,14 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ServerlessKubernetes resource with the given unique name, props, and options.
+        ## Import
+
+        Serverless Kubernetes cluster can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -100,7 +107,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
             if vswitch_id is not None:
-                warnings.warn("Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.", DeprecationWarning)
+                warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
                 pulumi.log.warn("vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.")
             __props__['vswitch_id'] = vswitch_id
             __props__['vswitch_ids'] = vswitch_ids

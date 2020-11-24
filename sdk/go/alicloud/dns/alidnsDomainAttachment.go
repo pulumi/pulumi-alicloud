@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,6 +40,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// DNS domain attachment can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
 // ```
 type AlidnsDomainAttachment struct {
 	pulumi.CustomResourceState
@@ -117,4 +126,43 @@ type AlidnsDomainAttachmentArgs struct {
 
 func (AlidnsDomainAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alidnsDomainAttachmentArgs)(nil)).Elem()
+}
+
+type AlidnsDomainAttachmentInput interface {
+	pulumi.Input
+
+	ToAlidnsDomainAttachmentOutput() AlidnsDomainAttachmentOutput
+	ToAlidnsDomainAttachmentOutputWithContext(ctx context.Context) AlidnsDomainAttachmentOutput
+}
+
+func (AlidnsDomainAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlidnsDomainAttachment)(nil)).Elem()
+}
+
+func (i AlidnsDomainAttachment) ToAlidnsDomainAttachmentOutput() AlidnsDomainAttachmentOutput {
+	return i.ToAlidnsDomainAttachmentOutputWithContext(context.Background())
+}
+
+func (i AlidnsDomainAttachment) ToAlidnsDomainAttachmentOutputWithContext(ctx context.Context) AlidnsDomainAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainAttachmentOutput)
+}
+
+type AlidnsDomainAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlidnsDomainAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlidnsDomainAttachmentOutput)(nil)).Elem()
+}
+
+func (o AlidnsDomainAttachmentOutput) ToAlidnsDomainAttachmentOutput() AlidnsDomainAttachmentOutput {
+	return o
+}
+
+func (o AlidnsDomainAttachmentOutput) ToAlidnsDomainAttachmentOutputWithContext(ctx context.Context) AlidnsDomainAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AlidnsDomainAttachmentOutput{})
 }

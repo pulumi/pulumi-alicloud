@@ -4,12 +4,20 @@
 package ess
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Ess alarm can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
+// ```
 type Alarm struct {
 	pulumi.CustomResourceState
 
@@ -219,4 +227,43 @@ type AlarmArgs struct {
 
 func (AlarmArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alarmArgs)(nil)).Elem()
+}
+
+type AlarmInput interface {
+	pulumi.Input
+
+	ToAlarmOutput() AlarmOutput
+	ToAlarmOutputWithContext(ctx context.Context) AlarmOutput
+}
+
+func (Alarm) ElementType() reflect.Type {
+	return reflect.TypeOf((*Alarm)(nil)).Elem()
+}
+
+func (i Alarm) ToAlarmOutput() AlarmOutput {
+	return i.ToAlarmOutputWithContext(context.Background())
+}
+
+func (i Alarm) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmOutput)
+}
+
+type AlarmOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlarmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmOutput)(nil)).Elem()
+}
+
+func (o AlarmOutput) ToAlarmOutput() AlarmOutput {
+	return o
+}
+
+func (o AlarmOutput) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AlarmOutput{})
 }

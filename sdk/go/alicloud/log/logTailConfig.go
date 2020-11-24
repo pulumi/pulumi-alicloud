@@ -4,12 +4,20 @@
 package log
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Logtial config can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
+// ```
 type LogTailConfig struct {
 	pulumi.CustomResourceState
 
@@ -146,4 +154,43 @@ type LogTailConfigArgs struct {
 
 func (LogTailConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logTailConfigArgs)(nil)).Elem()
+}
+
+type LogTailConfigInput interface {
+	pulumi.Input
+
+	ToLogTailConfigOutput() LogTailConfigOutput
+	ToLogTailConfigOutputWithContext(ctx context.Context) LogTailConfigOutput
+}
+
+func (LogTailConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogTailConfig)(nil)).Elem()
+}
+
+func (i LogTailConfig) ToLogTailConfigOutput() LogTailConfigOutput {
+	return i.ToLogTailConfigOutputWithContext(context.Background())
+}
+
+func (i LogTailConfig) ToLogTailConfigOutputWithContext(ctx context.Context) LogTailConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogTailConfigOutput)
+}
+
+type LogTailConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogTailConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogTailConfigOutput)(nil)).Elem()
+}
+
+func (o LogTailConfigOutput) ToLogTailConfigOutput() LogTailConfigOutput {
+	return o
+}
+
+func (o LogTailConfigOutput) ToLogTailConfigOutputWithContext(ctx context.Context) LogTailConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogTailConfigOutput{})
 }

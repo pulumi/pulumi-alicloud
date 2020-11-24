@@ -60,6 +60,14 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CDN domain config can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example cdn:config-abc123456
+    /// ```
     /// </summary>
     public partial class DomainConfig : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package cs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -46,6 +47,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Swarm cluster can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cs/swarm:Swarm foo cf123456789
 // ```
 type Swarm struct {
 	pulumi.CustomResourceState
@@ -305,4 +314,43 @@ type SwarmArgs struct {
 
 func (SwarmArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*swarmArgs)(nil)).Elem()
+}
+
+type SwarmInput interface {
+	pulumi.Input
+
+	ToSwarmOutput() SwarmOutput
+	ToSwarmOutputWithContext(ctx context.Context) SwarmOutput
+}
+
+func (Swarm) ElementType() reflect.Type {
+	return reflect.TypeOf((*Swarm)(nil)).Elem()
+}
+
+func (i Swarm) ToSwarmOutput() SwarmOutput {
+	return i.ToSwarmOutputWithContext(context.Background())
+}
+
+func (i Swarm) ToSwarmOutputWithContext(ctx context.Context) SwarmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwarmOutput)
+}
+
+type SwarmOutput struct {
+	*pulumi.OutputState
+}
+
+func (SwarmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwarmOutput)(nil)).Elem()
+}
+
+func (o SwarmOutput) ToSwarmOutput() SwarmOutput {
+	return o
+}
+
+func (o SwarmOutput) ToSwarmOutputWithContext(ctx context.Context) SwarmOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SwarmOutput{})
 }

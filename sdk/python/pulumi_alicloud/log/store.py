@@ -29,7 +29,14 @@ class Store(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Store resource with the given unique name, props, and options.
+        ## Import
+
+        Log store can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:log/store:Store example tf-log:tf-log-store
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.

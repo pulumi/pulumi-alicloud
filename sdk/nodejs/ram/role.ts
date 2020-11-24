@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * RAM role can be imported using the id or name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ram/role:Role example my-role
+ * ```
+ */
 export class Role extends pulumi.CustomResource {
     /**
      * Get an existing Role resource's state with the given name, ID, and optional extra

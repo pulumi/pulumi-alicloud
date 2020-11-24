@@ -23,7 +23,14 @@ class RouteTable(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a RouteTable resource with the given unique name, props, and options.
+        ## Import
+
+        The route table can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/routeTable:RouteTable foo vtb-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the route table instance.

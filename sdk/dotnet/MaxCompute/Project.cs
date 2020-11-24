@@ -35,6 +35,14 @@ namespace Pulumi.AliCloud.MaxCompute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// MaxCompute project can be imported using the *name* or ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:maxcompute/project:Project example tf_maxcompute_project
+    /// ```
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {

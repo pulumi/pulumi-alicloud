@@ -43,6 +43,14 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Swarm cluster can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cs/swarm:Swarm foo cf123456789
+    /// ```
     /// </summary>
     public partial class Swarm : Pulumi.CustomResource
     {

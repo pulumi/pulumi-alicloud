@@ -34,6 +34,14 @@ class Application(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.82.0+
 
+        ## Import
+
+        EDAS application can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:edas/application:Application app app_Id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_name: Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.

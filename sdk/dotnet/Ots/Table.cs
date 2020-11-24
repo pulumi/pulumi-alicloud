@@ -67,6 +67,14 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// OTS table can be imported using id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ots/table:Table table "my-ots:ots_table"
+    /// ```
     /// </summary>
     public partial class Table : Pulumi.CustomResource
     {

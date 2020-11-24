@@ -4,6 +4,7 @@
 package ram
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,6 +56,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// RAM User Policy attachment can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
 // ```
 type UserPolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -146,4 +155,43 @@ type UserPolicyAttachmentArgs struct {
 
 func (UserPolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userPolicyAttachmentArgs)(nil)).Elem()
+}
+
+type UserPolicyAttachmentInput interface {
+	pulumi.Input
+
+	ToUserPolicyAttachmentOutput() UserPolicyAttachmentOutput
+	ToUserPolicyAttachmentOutputWithContext(ctx context.Context) UserPolicyAttachmentOutput
+}
+
+func (UserPolicyAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPolicyAttachment)(nil)).Elem()
+}
+
+func (i UserPolicyAttachment) ToUserPolicyAttachmentOutput() UserPolicyAttachmentOutput {
+	return i.ToUserPolicyAttachmentOutputWithContext(context.Background())
+}
+
+func (i UserPolicyAttachment) ToUserPolicyAttachmentOutputWithContext(ctx context.Context) UserPolicyAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPolicyAttachmentOutput)
+}
+
+type UserPolicyAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserPolicyAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPolicyAttachmentOutput)(nil)).Elem()
+}
+
+func (o UserPolicyAttachmentOutput) ToUserPolicyAttachmentOutput() UserPolicyAttachmentOutput {
+	return o
+}
+
+func (o UserPolicyAttachmentOutput) ToUserPolicyAttachmentOutputWithContext(ctx context.Context) UserPolicyAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserPolicyAttachmentOutput{})
 }

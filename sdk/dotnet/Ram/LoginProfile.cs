@@ -40,6 +40,14 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RAM login profile can be imported using the id or user name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+    /// ```
     /// </summary>
     public partial class LoginProfile : Pulumi.CustomResource
     {

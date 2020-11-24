@@ -27,7 +27,14 @@ class SslVpnServer(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a SslVpnServer resource with the given unique name, props, and options.
+        ## Import
+
+        SSL-VPN server can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpn/sslVpnServer:SslVpnServer example vss-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cipher: The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none

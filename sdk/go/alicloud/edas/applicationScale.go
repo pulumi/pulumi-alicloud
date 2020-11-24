@@ -4,6 +4,7 @@
 package edas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -147,4 +148,43 @@ type ApplicationScaleArgs struct {
 
 func (ApplicationScaleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationScaleArgs)(nil)).Elem()
+}
+
+type ApplicationScaleInput interface {
+	pulumi.Input
+
+	ToApplicationScaleOutput() ApplicationScaleOutput
+	ToApplicationScaleOutputWithContext(ctx context.Context) ApplicationScaleOutput
+}
+
+func (ApplicationScale) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScale)(nil)).Elem()
+}
+
+func (i ApplicationScale) ToApplicationScaleOutput() ApplicationScaleOutput {
+	return i.ToApplicationScaleOutputWithContext(context.Background())
+}
+
+func (i ApplicationScale) ToApplicationScaleOutputWithContext(ctx context.Context) ApplicationScaleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScaleOutput)
+}
+
+type ApplicationScaleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationScaleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScaleOutput)(nil)).Elem()
+}
+
+func (o ApplicationScaleOutput) ToApplicationScaleOutput() ApplicationScaleOutput {
+	return o
+}
+
+func (o ApplicationScaleOutput) ToApplicationScaleOutputWithContext(ctx context.Context) ApplicationScaleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApplicationScaleOutput{})
 }

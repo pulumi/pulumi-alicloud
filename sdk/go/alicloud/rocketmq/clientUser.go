@@ -4,6 +4,7 @@
 package rocketmq
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -46,6 +47,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// The Sag ClientUser can be imported using the name, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
 // ```
 type ClientUser struct {
 	pulumi.CustomResourceState
@@ -177,4 +186,43 @@ type ClientUserArgs struct {
 
 func (ClientUserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientUserArgs)(nil)).Elem()
+}
+
+type ClientUserInput interface {
+	pulumi.Input
+
+	ToClientUserOutput() ClientUserOutput
+	ToClientUserOutputWithContext(ctx context.Context) ClientUserOutput
+}
+
+func (ClientUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientUser)(nil)).Elem()
+}
+
+func (i ClientUser) ToClientUserOutput() ClientUserOutput {
+	return i.ToClientUserOutputWithContext(context.Background())
+}
+
+func (i ClientUser) ToClientUserOutputWithContext(ctx context.Context) ClientUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientUserOutput)
+}
+
+type ClientUserOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClientUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientUserOutput)(nil)).Elem()
+}
+
+func (o ClientUserOutput) ToClientUserOutput() ClientUserOutput {
+	return o
+}
+
+func (o ClientUserOutput) ToClientUserOutputWithContext(ctx context.Context) ClientUserOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClientUserOutput{})
 }

@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * MNS QUEUE can be imported using the id or name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:mns/queue:Queue queue queuename
+ * ```
+ */
 export class Queue extends pulumi.CustomResource {
     /**
      * Get an existing Queue resource's state with the given name, ID, and optional extra

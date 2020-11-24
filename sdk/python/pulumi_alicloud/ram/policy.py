@@ -27,7 +27,14 @@ class Policy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Policy resource with the given unique name, props, and options.
+        ## Import
+
+        RAM policy can be imported using the id or name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/policy:Policy example my-policy
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the RAM policy. This name can have a string of 1 to 1024 characters.
@@ -59,11 +66,11 @@ class Policy(pulumi.CustomResource):
             __props__['force'] = force
             __props__['name'] = name
             if statements is not None:
-                warnings.warn("Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ", DeprecationWarning)
+                warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
                 pulumi.log.warn("statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
             __props__['statements'] = statements
             if version is not None:
-                warnings.warn("Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. ", DeprecationWarning)
+                warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
                 pulumi.log.warn("version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
             __props__['version'] = version
             __props__['attachment_count'] = None

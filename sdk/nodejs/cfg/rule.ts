@@ -36,6 +36,14 @@ import * as utilities from "../utilities";
  *     sourceOwner: "ALIYUN",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Alicloud Config Rule can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cfg/rule:Rule this cr-ed4bad756057********
+ * ```
  */
 export class Rule extends pulumi.CustomResource {
     /**

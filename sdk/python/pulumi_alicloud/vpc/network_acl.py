@@ -40,6 +40,14 @@ class NetworkAcl(pulumi.CustomResource):
             description="network_acl")
         ```
 
+        ## Import
+
+        The network acl can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/networkAcl:NetworkAcl default nacl-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the network acl instance.

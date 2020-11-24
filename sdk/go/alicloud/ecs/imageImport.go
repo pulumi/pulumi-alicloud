@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -57,6 +58,14 @@ import (
 //  The following attributes are exported:
 //
 // * `id` - ID of the image.
+//
+// ## Import
+//
+// image can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ecs/imageImport:ImageImport default m-uf66871ape***yg1q***
+// ```
 type ImageImport struct {
 	pulumi.CustomResourceState
 
@@ -181,4 +190,43 @@ type ImageImportArgs struct {
 
 func (ImageImportArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageImportArgs)(nil)).Elem()
+}
+
+type ImageImportInput interface {
+	pulumi.Input
+
+	ToImageImportOutput() ImageImportOutput
+	ToImageImportOutputWithContext(ctx context.Context) ImageImportOutput
+}
+
+func (ImageImport) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImport)(nil)).Elem()
+}
+
+func (i ImageImport) ToImageImportOutput() ImageImportOutput {
+	return i.ToImageImportOutputWithContext(context.Background())
+}
+
+func (i ImageImport) ToImageImportOutputWithContext(ctx context.Context) ImageImportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImportOutput)
+}
+
+type ImageImportOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageImportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImportOutput)(nil)).Elem()
+}
+
+func (o ImageImportOutput) ToImageImportOutput() ImageImportOutput {
+	return o
+}
+
+func (o ImageImportOutput) ToImageImportOutputWithContext(ctx context.Context) ImageImportOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ImageImportOutput{})
 }

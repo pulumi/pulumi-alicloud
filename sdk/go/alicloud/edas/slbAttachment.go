@@ -4,6 +4,7 @@
 package edas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -178,4 +179,43 @@ type SlbAttachmentArgs struct {
 
 func (SlbAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*slbAttachmentArgs)(nil)).Elem()
+}
+
+type SlbAttachmentInput interface {
+	pulumi.Input
+
+	ToSlbAttachmentOutput() SlbAttachmentOutput
+	ToSlbAttachmentOutputWithContext(ctx context.Context) SlbAttachmentOutput
+}
+
+func (SlbAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlbAttachment)(nil)).Elem()
+}
+
+func (i SlbAttachment) ToSlbAttachmentOutput() SlbAttachmentOutput {
+	return i.ToSlbAttachmentOutputWithContext(context.Background())
+}
+
+func (i SlbAttachment) ToSlbAttachmentOutputWithContext(ctx context.Context) SlbAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlbAttachmentOutput)
+}
+
+type SlbAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (SlbAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlbAttachmentOutput)(nil)).Elem()
+}
+
+func (o SlbAttachmentOutput) ToSlbAttachmentOutput() SlbAttachmentOutput {
+	return o
+}
+
+func (o SlbAttachmentOutput) ToSlbAttachmentOutputWithContext(ctx context.Context) SlbAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SlbAttachmentOutput{})
 }

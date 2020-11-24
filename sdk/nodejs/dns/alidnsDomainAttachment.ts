@@ -23,6 +23,14 @@ import * as utilities from "../utilities";
  *     instanceId: "dns-cn-mp91lyq9xxxx",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * DNS domain attachment can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
+ * ```
  */
 export class AlidnsDomainAttachment extends pulumi.CustomResource {
     /**

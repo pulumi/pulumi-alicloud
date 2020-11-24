@@ -40,6 +40,14 @@ class Handshake(pulumi.CustomResource):
             target_type="Account")
         ```
 
+        ## Import
+
+        Resource Manager handshake can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] note: Remarks. The maximum length is 1024 characters.

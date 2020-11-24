@@ -4,6 +4,7 @@
 package polardb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -100,6 +101,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// PolarDB account privilege can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:polardb/accountPrivilege:AccountPrivilege example "pc-12345:tf_account:ReadOnly"
 // ```
 type AccountPrivilege struct {
 	pulumi.CustomResourceState
@@ -201,4 +210,43 @@ type AccountPrivilegeArgs struct {
 
 func (AccountPrivilegeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountPrivilegeArgs)(nil)).Elem()
+}
+
+type AccountPrivilegeInput interface {
+	pulumi.Input
+
+	ToAccountPrivilegeOutput() AccountPrivilegeOutput
+	ToAccountPrivilegeOutputWithContext(ctx context.Context) AccountPrivilegeOutput
+}
+
+func (AccountPrivilege) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountPrivilege)(nil)).Elem()
+}
+
+func (i AccountPrivilege) ToAccountPrivilegeOutput() AccountPrivilegeOutput {
+	return i.ToAccountPrivilegeOutputWithContext(context.Background())
+}
+
+func (i AccountPrivilege) ToAccountPrivilegeOutputWithContext(ctx context.Context) AccountPrivilegeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegeOutput)
+}
+
+type AccountPrivilegeOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountPrivilegeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountPrivilegeOutput)(nil)).Elem()
+}
+
+func (o AccountPrivilegeOutput) ToAccountPrivilegeOutput() AccountPrivilegeOutput {
+	return o
+}
+
+func (o AccountPrivilegeOutput) ToAccountPrivilegeOutputWithContext(ctx context.Context) AccountPrivilegeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountPrivilegeOutput{})
 }

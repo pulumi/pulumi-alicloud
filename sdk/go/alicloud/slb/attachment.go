@@ -4,12 +4,20 @@
 package slb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Load balancer attachment can be imported using the id or load balancer id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
+// ```
 type Attachment struct {
 	pulumi.CustomResourceState
 
@@ -127,4 +135,43 @@ type AttachmentArgs struct {
 
 func (AttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*attachmentArgs)(nil)).Elem()
+}
+
+type AttachmentInput interface {
+	pulumi.Input
+
+	ToAttachmentOutput() AttachmentOutput
+	ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput
+}
+
+func (Attachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*Attachment)(nil)).Elem()
+}
+
+func (i Attachment) ToAttachmentOutput() AttachmentOutput {
+	return i.ToAttachmentOutputWithContext(context.Background())
+}
+
+func (i Attachment) ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachmentOutput)
+}
+
+type AttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (AttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachmentOutput)(nil)).Elem()
+}
+
+func (o AttachmentOutput) ToAttachmentOutput() AttachmentOutput {
+	return o
+}
+
+func (o AttachmentOutput) ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AttachmentOutput{})
 }

@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CS
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Serverless Kubernetes cluster can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
+    /// ```
+    /// </summary>
     public partial class ServerlessKubernetes : Pulumi.CustomResource
     {
         [Output("addons")]

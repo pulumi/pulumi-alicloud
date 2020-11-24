@@ -27,7 +27,14 @@ class SecurityGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a SecurityGroup resource with the given unique name, props, and options.
+        ## Import
+
+        Security Group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The security group description. Defaults to null.
@@ -60,7 +67,7 @@ class SecurityGroup(pulumi.CustomResource):
 
             __props__['description'] = description
             if inner_access is not None:
-                warnings.warn("Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.", DeprecationWarning)
+                warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
                 pulumi.log.warn("inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.")
             __props__['inner_access'] = inner_access
             __props__['inner_access_policy'] = inner_access_policy

@@ -37,6 +37,14 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Container Registry namespace can be imported using the namespace, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
+    /// ```
     /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {

@@ -64,6 +64,14 @@ namespace Pulumi.AliCloud.Waf
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// WAF domain can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
+    /// ```
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

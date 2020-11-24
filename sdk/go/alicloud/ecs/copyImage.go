@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -117,4 +118,43 @@ type CopyImageArgs struct {
 
 func (CopyImageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*copyImageArgs)(nil)).Elem()
+}
+
+type CopyImageInput interface {
+	pulumi.Input
+
+	ToCopyImageOutput() CopyImageOutput
+	ToCopyImageOutputWithContext(ctx context.Context) CopyImageOutput
+}
+
+func (CopyImage) ElementType() reflect.Type {
+	return reflect.TypeOf((*CopyImage)(nil)).Elem()
+}
+
+func (i CopyImage) ToCopyImageOutput() CopyImageOutput {
+	return i.ToCopyImageOutputWithContext(context.Background())
+}
+
+func (i CopyImage) ToCopyImageOutputWithContext(ctx context.Context) CopyImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CopyImageOutput)
+}
+
+type CopyImageOutput struct {
+	*pulumi.OutputState
+}
+
+func (CopyImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CopyImageOutput)(nil)).Elem()
+}
+
+func (o CopyImageOutput) ToCopyImageOutput() CopyImageOutput {
+	return o
+}
+
+func (o CopyImageOutput) ToCopyImageOutputWithContext(ctx context.Context) CopyImageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CopyImageOutput{})
 }

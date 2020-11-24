@@ -40,6 +40,14 @@ class ConfigurationRecorder(pulumi.CustomResource):
         ])
         ```
 
+        ## Import
+
+        Alicloud Config Configuration Recorder can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cfg/configurationRecorder:ConfigurationRecorder example 122378463********
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enterprise_edition: - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.

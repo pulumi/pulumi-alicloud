@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Mns
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// MNS Topic subscription can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
+    /// ```
+    /// </summary>
     public partial class TopicSubscription : Pulumi.CustomResource
     {
         /// <summary>

@@ -37,6 +37,14 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Snapshot can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
+    /// ```
     /// </summary>
     public partial class Snapshot : Pulumi.CustomResource
     {

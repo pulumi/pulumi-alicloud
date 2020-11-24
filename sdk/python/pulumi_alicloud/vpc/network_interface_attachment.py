@@ -75,6 +75,14 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
                 network_interface_id=[__item.id for __item in interface][range["index"]]))
         ```
 
+        ## Import
+
+        Network Interfaces Attachment resource can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment eni eni-abc123456789000:i-abc123456789000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: The instance ID to attach.

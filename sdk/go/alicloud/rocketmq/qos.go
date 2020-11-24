@@ -4,6 +4,7 @@
 package rocketmq
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -38,6 +39,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// The Sag Qos can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
 // ```
 type Qos struct {
 	pulumi.CustomResourceState
@@ -100,4 +109,43 @@ type QosArgs struct {
 
 func (QosArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosArgs)(nil)).Elem()
+}
+
+type QosInput interface {
+	pulumi.Input
+
+	ToQosOutput() QosOutput
+	ToQosOutputWithContext(ctx context.Context) QosOutput
+}
+
+func (Qos) ElementType() reflect.Type {
+	return reflect.TypeOf((*Qos)(nil)).Elem()
+}
+
+func (i Qos) ToQosOutput() QosOutput {
+	return i.ToQosOutputWithContext(context.Background())
+}
+
+func (i Qos) ToQosOutputWithContext(ctx context.Context) QosOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosOutput)
+}
+
+type QosOutput struct {
+	*pulumi.OutputState
+}
+
+func (QosOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosOutput)(nil)).Elem()
+}
+
+func (o QosOutput) ToQosOutput() QosOutput {
+	return o
+}
+
+func (o QosOutput) ToQosOutputWithContext(ctx context.Context) QosOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QosOutput{})
 }

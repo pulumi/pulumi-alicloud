@@ -4,6 +4,7 @@
 package cassandra
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -74,6 +75,14 @@ import (
 // ```
 //
 // This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
+//
+// ## Import
+//
+// If you need full function, please import Cassandra cluster first. Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
+// ```
 type DataCenter struct {
 	pulumi.CustomResourceState
 
@@ -284,4 +293,43 @@ type DataCenterArgs struct {
 
 func (DataCenterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataCenterArgs)(nil)).Elem()
+}
+
+type DataCenterInput interface {
+	pulumi.Input
+
+	ToDataCenterOutput() DataCenterOutput
+	ToDataCenterOutputWithContext(ctx context.Context) DataCenterOutput
+}
+
+func (DataCenter) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCenter)(nil)).Elem()
+}
+
+func (i DataCenter) ToDataCenterOutput() DataCenterOutput {
+	return i.ToDataCenterOutputWithContext(context.Background())
+}
+
+func (i DataCenter) ToDataCenterOutputWithContext(ctx context.Context) DataCenterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCenterOutput)
+}
+
+type DataCenterOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataCenterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCenterOutput)(nil)).Elem()
+}
+
+func (o DataCenterOutput) ToDataCenterOutput() DataCenterOutput {
+	return o
+}
+
+func (o DataCenterOutput) ToDataCenterOutputWithContext(ctx context.Context) DataCenterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataCenterOutput{})
 }

@@ -68,6 +68,14 @@ namespace Pulumi.AliCloud.Cassandra
     /// ```
     /// 
     /// This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
+    /// 
+    /// ## Import
+    /// 
+    /// If you need full function, please import Cassandra cluster first. Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
+    /// ```
     /// </summary>
     public partial class DataCenter : Pulumi.CustomResource
     {

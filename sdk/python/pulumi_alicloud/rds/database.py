@@ -56,6 +56,14 @@ class Database(pulumi.CustomResource):
         default_database = alicloud.rds.Database("defaultDatabase", instance_id=instance.id)
         ```
 
+        ## Import
+
+        RDS database can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rds/database:Database example "rm-12345:tf_database"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] character_set: Character set. The value range is limited to the following:

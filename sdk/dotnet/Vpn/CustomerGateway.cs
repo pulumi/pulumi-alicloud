@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpn
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// VPN customer gateway can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
+    /// ```
+    /// </summary>
     public partial class CustomerGateway : Pulumi.CustomResource
     {
         /// <summary>

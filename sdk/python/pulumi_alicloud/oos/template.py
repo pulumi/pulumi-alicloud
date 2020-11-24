@@ -67,6 +67,14 @@ class Template(pulumi.CustomResource):
             version_name="test")
         ```
 
+        ## Import
+
+        OOS Template can be imported using the id or template_name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:oos/template:Template example template_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_delete_executions: When deleting a template, whether to delete its related executions. Default to `false`.

@@ -55,6 +55,14 @@ class Topic(pulumi.CustomResource):
             remark="dafault_ons_topic_remark")
         ```
 
+        ## Import
+
+        ONS TOPIC can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rocketmq/topic:Topic topic MQ_INST_1234567890_Baso1234567:onsTopicDemo
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the topics.
@@ -94,7 +102,7 @@ class Topic(pulumi.CustomResource):
             __props__['remark'] = remark
             __props__['tags'] = tags
             if topic is not None:
-                warnings.warn("Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.", DeprecationWarning)
+                warnings.warn("""Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("topic is deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.")
             __props__['topic'] = topic
             __props__['topic_name'] = topic_name

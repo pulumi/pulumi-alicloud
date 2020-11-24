@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['DdosCooInstance']
 
-warnings.warn("alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance", DeprecationWarning)
+warnings.warn("""alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance""", DeprecationWarning)
 
 
 class DdosCooInstance(pulumi.CustomResource):
-    warnings.warn("alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance", DeprecationWarning)
+    warnings.warn("""alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,
@@ -53,6 +53,14 @@ class DdosCooInstance(pulumi.CustomResource):
             period=1,
             port_count="50",
             service_bandwidth="100")
+        ```
+
+        ## Import
+
+        Ddoscoo instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
         ```
 
         :param str resource_name: The name of the resource.

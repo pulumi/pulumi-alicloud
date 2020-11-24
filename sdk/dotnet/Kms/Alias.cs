@@ -38,6 +38,14 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// KMS alias can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
+    /// ```
     /// </summary>
     public partial class Alias : Pulumi.CustomResource
     {

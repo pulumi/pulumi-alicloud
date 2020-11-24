@@ -26,6 +26,14 @@ import * as utilities from "../utilities";
  *     password: "Yourpassword1234",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * RAM login profile can be imported using the id or user name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+ * ```
  */
 export class LoginProfile extends pulumi.CustomResource {
     /**

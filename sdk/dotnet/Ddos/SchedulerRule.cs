@@ -54,6 +54,14 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DdosCoo Scheduler Rule can be imported using the id or the rule name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
+    /// ```
     /// </summary>
     public partial class SchedulerRule : Pulumi.CustomResource
     {

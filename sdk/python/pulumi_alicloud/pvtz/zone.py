@@ -25,7 +25,14 @@ class Zone(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Zone resource with the given unique name, props, and options.
+        ## Import
+
+        Private Zone can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:pvtz/zone:Zone example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lang: The language. Valid values: "zh", "en", "jp".

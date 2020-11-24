@@ -23,6 +23,14 @@ import * as utilities from "../utilities";
  *     port: "6370",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * KVStore connection can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
+ * ```
  */
 export class Connection extends pulumi.CustomResource {
     /**

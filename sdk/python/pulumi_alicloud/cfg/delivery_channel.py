@@ -26,7 +26,14 @@ class DeliveryChannel(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a DeliveryChannel resource with the given unique name, props, and options.
+        ## Import
+
+        Alicloud Config Delivery Channel can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] delivery_channel_assume_role_arn: The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.

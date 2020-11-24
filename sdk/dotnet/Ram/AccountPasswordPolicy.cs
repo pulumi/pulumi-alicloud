@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ram
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// RAM account password policy can be imported using the `id`, e.g. bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+    /// ```
+    /// </summary>
     public partial class AccountPasswordPolicy : Pulumi.CustomResource
     {
         /// <summary>

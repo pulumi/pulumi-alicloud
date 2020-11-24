@@ -4,6 +4,7 @@
 package edas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -37,6 +38,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// EDAS cluster can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:edas/k8sCluster:K8sCluster cluster cluster_id
 // ```
 type K8sCluster struct {
 	pulumi.CustomResourceState
@@ -154,4 +163,43 @@ type K8sClusterArgs struct {
 
 func (K8sClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*k8sClusterArgs)(nil)).Elem()
+}
+
+type K8sClusterInput interface {
+	pulumi.Input
+
+	ToK8sClusterOutput() K8sClusterOutput
+	ToK8sClusterOutputWithContext(ctx context.Context) K8sClusterOutput
+}
+
+func (K8sCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sCluster)(nil)).Elem()
+}
+
+func (i K8sCluster) ToK8sClusterOutput() K8sClusterOutput {
+	return i.ToK8sClusterOutputWithContext(context.Background())
+}
+
+func (i K8sCluster) ToK8sClusterOutputWithContext(ctx context.Context) K8sClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterOutput)
+}
+
+type K8sClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (K8sClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sClusterOutput)(nil)).Elem()
+}
+
+func (o K8sClusterOutput) ToK8sClusterOutput() K8sClusterOutput {
+	return o
+}
+
+func (o K8sClusterOutput) ToK8sClusterOutputWithContext(ctx context.Context) K8sClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(K8sClusterOutput{})
 }

@@ -83,6 +83,14 @@ class Acl(pulumi.CustomResource):
         * `entry` - (Required) An IP addresses or CIDR blocks.
         * `comment` - (Optional) the comment of the entry.
 
+        ## Import
+
+        Server Load balancer access control list can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/acl:Acl example acl-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]] entry_lists: A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.

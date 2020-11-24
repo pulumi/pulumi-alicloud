@@ -15,7 +15,7 @@ __all__ = [
     'get_instances',
 ]
 
-warnings.warn("alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances", DeprecationWarning)
+warnings.warn("""alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances""", DeprecationWarning)
 
 @pulumi.output_type
 class GetInstancesResult:

@@ -84,6 +84,14 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Logtial to machine group can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
+    /// ```
     /// </summary>
     public partial class LogTailAttachment : Pulumi.CustomResource
     {

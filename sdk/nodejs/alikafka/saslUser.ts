@@ -46,6 +46,14 @@ import * as utilities from "../utilities";
  *     password: password,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ALIKAFKA GROUP can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:alikafka/saslUser:SaslUser user alikafka_post-cn-123455abc:username
+ * ```
  */
 export class SaslUser extends pulumi.CustomResource {
     /**

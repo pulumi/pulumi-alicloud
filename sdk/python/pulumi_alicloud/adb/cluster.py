@@ -71,6 +71,14 @@ class Cluster(pulumi.CustomResource):
             vswitch_id=default_switch.id)
         ```
 
+        ## Import
+
+        ADB cluster can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:adb/cluster:Cluster example am-abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.

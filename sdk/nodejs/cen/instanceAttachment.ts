@@ -28,6 +28,14 @@ import * as utilities from "../utilities";
  *     childInstanceRegionId: "cn-beijing",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * CEN instance can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cen/instanceAttachment:InstanceAttachment example cen-m7i7pjmkon********:vpc-2ze2w07mcy9nz********:VPC:cn-beijing
+ * ```
  */
 export class InstanceAttachment extends pulumi.CustomResource {
     /**

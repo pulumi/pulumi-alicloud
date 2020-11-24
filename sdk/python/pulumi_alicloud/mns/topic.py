@@ -22,7 +22,14 @@ class Topic(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Topic resource with the given unique name, props, and options.
+        ## Import
+
+        MNS Topic can be imported using the id or name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:mns/topic:Topic topic topicName
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] logging_enabled: Is logging enabled? true or false. Default value to false.

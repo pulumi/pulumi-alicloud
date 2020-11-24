@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -111,6 +112,14 @@ import (
 // * `vswitchId` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.
 // * `weightedCapacity` - (Required) The weight of the instance type specified in the Nth extended configurations of the launch template.
 // * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
+//
+// ## Import
+//
+// ECS auto provisioning group can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
+// ```
 type AutoProvisioningGroup struct {
 	pulumi.CustomResourceState
 
@@ -371,4 +380,43 @@ type AutoProvisioningGroupArgs struct {
 
 func (AutoProvisioningGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoProvisioningGroupArgs)(nil)).Elem()
+}
+
+type AutoProvisioningGroupInput interface {
+	pulumi.Input
+
+	ToAutoProvisioningGroupOutput() AutoProvisioningGroupOutput
+	ToAutoProvisioningGroupOutputWithContext(ctx context.Context) AutoProvisioningGroupOutput
+}
+
+func (AutoProvisioningGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProvisioningGroup)(nil)).Elem()
+}
+
+func (i AutoProvisioningGroup) ToAutoProvisioningGroupOutput() AutoProvisioningGroupOutput {
+	return i.ToAutoProvisioningGroupOutputWithContext(context.Background())
+}
+
+func (i AutoProvisioningGroup) ToAutoProvisioningGroupOutputWithContext(ctx context.Context) AutoProvisioningGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupOutput)
+}
+
+type AutoProvisioningGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (AutoProvisioningGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProvisioningGroupOutput)(nil)).Elem()
+}
+
+func (o AutoProvisioningGroupOutput) ToAutoProvisioningGroupOutput() AutoProvisioningGroupOutput {
+	return o
+}
+
+func (o AutoProvisioningGroupOutput) ToAutoProvisioningGroupOutputWithContext(ctx context.Context) AutoProvisioningGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AutoProvisioningGroupOutput{})
 }

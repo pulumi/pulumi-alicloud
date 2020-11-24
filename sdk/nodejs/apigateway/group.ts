@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Api gateway group can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:apigateway/group:Group example "ab2351f2ce904edaa8d92a0510832b91"
+ * ```
+ */
 export class Group extends pulumi.CustomResource {
     /**
      * Get an existing Group resource's state with the given name, ID, and optional extra

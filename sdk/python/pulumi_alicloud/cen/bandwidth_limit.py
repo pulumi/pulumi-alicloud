@@ -81,6 +81,14 @@ class BandwidthLimit(pulumi.CustomResource):
                 ]))
         ```
 
+        ## Import
+
+        CEN bandwidth limit can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/bandwidthLimit:BandwidthLimit example cen-abc123456:cn-beijing:eu-west-1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.

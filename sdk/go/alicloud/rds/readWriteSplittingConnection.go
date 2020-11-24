@@ -4,6 +4,7 @@
 package rds
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -103,6 +104,14 @@ import (
 // ```
 //
 // > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `dependsOn` statement is necessary.
+//
+// ## Import
+//
+// RDS read write splitting connection can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection example abc12345678
+// ```
 type ReadWriteSplittingConnection struct {
 	pulumi.CustomResourceState
 
@@ -226,4 +235,43 @@ type ReadWriteSplittingConnectionArgs struct {
 
 func (ReadWriteSplittingConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*readWriteSplittingConnectionArgs)(nil)).Elem()
+}
+
+type ReadWriteSplittingConnectionInput interface {
+	pulumi.Input
+
+	ToReadWriteSplittingConnectionOutput() ReadWriteSplittingConnectionOutput
+	ToReadWriteSplittingConnectionOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionOutput
+}
+
+func (ReadWriteSplittingConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReadWriteSplittingConnection)(nil)).Elem()
+}
+
+func (i ReadWriteSplittingConnection) ToReadWriteSplittingConnectionOutput() ReadWriteSplittingConnectionOutput {
+	return i.ToReadWriteSplittingConnectionOutputWithContext(context.Background())
+}
+
+func (i ReadWriteSplittingConnection) ToReadWriteSplittingConnectionOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReadWriteSplittingConnectionOutput)
+}
+
+type ReadWriteSplittingConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReadWriteSplittingConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReadWriteSplittingConnectionOutput)(nil)).Elem()
+}
+
+func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionOutput() ReadWriteSplittingConnectionOutput {
+	return o
+}
+
+func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReadWriteSplittingConnectionOutput{})
 }

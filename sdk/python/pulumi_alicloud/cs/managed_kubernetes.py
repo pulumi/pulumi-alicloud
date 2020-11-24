@@ -80,7 +80,14 @@ class ManagedKubernetes(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ManagedKubernetes resource with the given unique name, props, and options.
+        ## Import
+
+        Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+
+        ```sh
+         $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster-id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.

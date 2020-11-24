@@ -31,6 +31,14 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RAM account alias can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+    /// ```
     /// </summary>
     public partial class AccountAlias : Pulumi.CustomResource
     {

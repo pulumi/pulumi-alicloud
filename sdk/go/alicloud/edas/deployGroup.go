@@ -4,6 +4,7 @@
 package edas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -38,6 +39,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// EDAS deploy group can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:edas/deployGroup:DeployGroup group app_id:group_name:group_id
 // ```
 type DeployGroup struct {
 	pulumi.CustomResourceState
@@ -122,4 +131,43 @@ type DeployGroupArgs struct {
 
 func (DeployGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*deployGroupArgs)(nil)).Elem()
+}
+
+type DeployGroupInput interface {
+	pulumi.Input
+
+	ToDeployGroupOutput() DeployGroupOutput
+	ToDeployGroupOutputWithContext(ctx context.Context) DeployGroupOutput
+}
+
+func (DeployGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployGroup)(nil)).Elem()
+}
+
+func (i DeployGroup) ToDeployGroupOutput() DeployGroupOutput {
+	return i.ToDeployGroupOutputWithContext(context.Background())
+}
+
+func (i DeployGroup) ToDeployGroupOutputWithContext(ctx context.Context) DeployGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployGroupOutput)
+}
+
+type DeployGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (DeployGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployGroupOutput)(nil)).Elem()
+}
+
+func (o DeployGroupOutput) ToDeployGroupOutput() DeployGroupOutput {
+	return o
+}
+
+func (o DeployGroupOutput) ToDeployGroupOutputWithContext(ctx context.Context) DeployGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DeployGroupOutput{})
 }

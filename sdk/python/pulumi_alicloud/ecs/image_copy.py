@@ -59,6 +59,14 @@ class ImageCopy(pulumi.CustomResource):
 
         * `id` - ID of the image.
 
+        ## Import
+
+        image can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
@@ -95,7 +103,7 @@ class ImageCopy(pulumi.CustomResource):
             __props__['image_name'] = image_name
             __props__['kms_key_id'] = kms_key_id
             if name is not None:
-                warnings.warn("Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.", DeprecationWarning)
+                warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
                 pulumi.log.warn("name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.")
             __props__['name'] = name
             if source_image_id is None:

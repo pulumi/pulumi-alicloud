@@ -26,7 +26,14 @@ class LifecycleHook(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a LifecycleHook resource with the given unique name, props, and options.
+        ## Import
+
+        Ess lifecycle hook can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_result: Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.

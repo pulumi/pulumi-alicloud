@@ -57,6 +57,14 @@ class Application(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Swarm application can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cs/application:Application app my-first-swarm:wordpress
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blue_green: Wherther to use "Blue Green" method when release a new version. Default to false.

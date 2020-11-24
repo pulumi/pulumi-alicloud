@@ -36,6 +36,14 @@ import * as utilities from "../utilities";
  *     channelsMail: "terraform.test.com",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Alarm contact can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
+ * ```
  */
 export class AlarmContact extends pulumi.CustomResource {
     /**

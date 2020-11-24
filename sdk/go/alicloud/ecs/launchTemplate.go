@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -91,6 +92,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Launch Template can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
 // ```
 type LaunchTemplate struct {
 	pulumi.CustomResourceState
@@ -528,4 +537,43 @@ type LaunchTemplateArgs struct {
 
 func (LaunchTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*launchTemplateArgs)(nil)).Elem()
+}
+
+type LaunchTemplateInput interface {
+	pulumi.Input
+
+	ToLaunchTemplateOutput() LaunchTemplateOutput
+	ToLaunchTemplateOutputWithContext(ctx context.Context) LaunchTemplateOutput
+}
+
+func (LaunchTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*LaunchTemplate)(nil)).Elem()
+}
+
+func (i LaunchTemplate) ToLaunchTemplateOutput() LaunchTemplateOutput {
+	return i.ToLaunchTemplateOutputWithContext(context.Background())
+}
+
+func (i LaunchTemplate) ToLaunchTemplateOutputWithContext(ctx context.Context) LaunchTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateOutput)
+}
+
+type LaunchTemplateOutput struct {
+	*pulumi.OutputState
+}
+
+func (LaunchTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LaunchTemplateOutput)(nil)).Elem()
+}
+
+func (o LaunchTemplateOutput) ToLaunchTemplateOutput() LaunchTemplateOutput {
+	return o
+}
+
+func (o LaunchTemplateOutput) ToLaunchTemplateOutputWithContext(ctx context.Context) LaunchTemplateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LaunchTemplateOutput{})
 }

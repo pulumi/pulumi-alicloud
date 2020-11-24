@@ -36,6 +36,14 @@ class DomainGroup(pulumi.CustomResource):
         example = alicloud.dns.DomainGroup("example", domain_group_name="tf-testDG")
         ```
 
+        ## Import
+
+        Alidns domain group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_group_name: Name of the domain group.
@@ -61,7 +69,7 @@ class DomainGroup(pulumi.CustomResource):
 
             __props__['domain_group_name'] = domain_group_name
             if group_name is not None:
-                warnings.warn("Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.", DeprecationWarning)
+                warnings.warn("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.")
             __props__['group_name'] = group_name
             __props__['lang'] = lang

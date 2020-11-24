@@ -38,6 +38,14 @@ import * as utilities from "../utilities";
  *     password: "Test12345",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * RDS account can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:rds/account:Account example "rm-12345:tf_account"
+ * ```
  */
 export class Account extends pulumi.CustomResource {
     /**

@@ -23,6 +23,14 @@ import * as utilities from "../utilities";
  *
  * const defaultAcl = new alicloud.rocketmq.Acl("default", {});
  * ```
+ *
+ * ## Import
+ *
+ * The Sag Acl can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:rocketmq/acl:Acl example acl-abc123456
+ * ```
  */
 export class Acl extends pulumi.CustomResource {
     /**

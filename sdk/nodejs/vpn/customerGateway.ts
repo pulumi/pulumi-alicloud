@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * VPN customer gateway can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
+ * ```
+ */
 export class CustomerGateway extends pulumi.CustomResource {
     /**
      * Get an existing CustomerGateway resource's state with the given name, ID, and optional extra

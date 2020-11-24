@@ -37,6 +37,14 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The Sag Acl can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:rocketmq/acl:Acl example acl-abc123456
+    /// ```
     /// </summary>
     public partial class Acl : Pulumi.CustomResource
     {

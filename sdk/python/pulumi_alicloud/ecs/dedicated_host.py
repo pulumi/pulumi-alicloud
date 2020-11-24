@@ -79,6 +79,14 @@ class DedicatedHost(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Ecs dedicated host can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/dedicatedHost:DedicatedHost default dh-2zedmxxxx
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_on_maintenance: The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.

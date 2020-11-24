@@ -71,6 +71,14 @@ class Table(pulumi.CustomResource):
             deviation_cell_version_in_sec="1")
         ```
 
+        ## Import
+
+        OTS table can be imported using id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ots/table:Table table "my-ots:ots_table"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.

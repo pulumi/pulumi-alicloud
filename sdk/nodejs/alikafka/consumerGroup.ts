@@ -44,6 +44,14 @@ import * as utilities from "../utilities";
  *     instanceId: defaultInstance.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ALIKAFKA GROUP can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
+ * ```
  */
 export class ConsumerGroup extends pulumi.CustomResource {
     /**

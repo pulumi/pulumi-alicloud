@@ -37,6 +37,14 @@ import * as utilities from "../utilities";
  * });
  * const policy = new alicloud.rds.BackupPolicy("policy", {instanceId: instance.id});
  * ```
+ *
+ * ## Import
+ *
+ * RDS backup policy can be imported using the id or instance id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:rds/backupPolicy:BackupPolicy example "rm-12345678"
+ * ```
  */
 export class BackupPolicy extends pulumi.CustomResource {
     /**

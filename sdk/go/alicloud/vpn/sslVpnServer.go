@@ -4,12 +4,20 @@
 package vpn
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// SSL-VPN server can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpn/sslVpnServer:SslVpnServer example vss-abc123456
+// ```
 type SslVpnServer struct {
 	pulumi.CustomResourceState
 
@@ -168,4 +176,43 @@ type SslVpnServerArgs struct {
 
 func (SslVpnServerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslVpnServerArgs)(nil)).Elem()
+}
+
+type SslVpnServerInput interface {
+	pulumi.Input
+
+	ToSslVpnServerOutput() SslVpnServerOutput
+	ToSslVpnServerOutputWithContext(ctx context.Context) SslVpnServerOutput
+}
+
+func (SslVpnServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslVpnServer)(nil)).Elem()
+}
+
+func (i SslVpnServer) ToSslVpnServerOutput() SslVpnServerOutput {
+	return i.ToSslVpnServerOutputWithContext(context.Background())
+}
+
+func (i SslVpnServer) ToSslVpnServerOutputWithContext(ctx context.Context) SslVpnServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslVpnServerOutput)
+}
+
+type SslVpnServerOutput struct {
+	*pulumi.OutputState
+}
+
+func (SslVpnServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslVpnServerOutput)(nil)).Elem()
+}
+
+func (o SslVpnServerOutput) ToSslVpnServerOutput() SslVpnServerOutput {
+	return o
+}
+
+func (o SslVpnServerOutput) ToSslVpnServerOutputWithContext(ctx context.Context) SslVpnServerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SslVpnServerOutput{})
 }

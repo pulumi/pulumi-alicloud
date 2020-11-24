@@ -4,6 +4,7 @@
 package slb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,6 +79,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Load balancer domain_extension can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
 // ```
 type DomainExtension struct {
 	pulumi.CustomResourceState
@@ -192,4 +201,43 @@ type DomainExtensionArgs struct {
 
 func (DomainExtensionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainExtensionArgs)(nil)).Elem()
+}
+
+type DomainExtensionInput interface {
+	pulumi.Input
+
+	ToDomainExtensionOutput() DomainExtensionOutput
+	ToDomainExtensionOutputWithContext(ctx context.Context) DomainExtensionOutput
+}
+
+func (DomainExtension) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainExtension)(nil)).Elem()
+}
+
+func (i DomainExtension) ToDomainExtensionOutput() DomainExtensionOutput {
+	return i.ToDomainExtensionOutputWithContext(context.Background())
+}
+
+func (i DomainExtension) ToDomainExtensionOutputWithContext(ctx context.Context) DomainExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainExtensionOutput)
+}
+
+type DomainExtensionOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainExtensionOutput)(nil)).Elem()
+}
+
+func (o DomainExtensionOutput) ToDomainExtensionOutput() DomainExtensionOutput {
+	return o
+}
+
+func (o DomainExtensionOutput) ToDomainExtensionOutputWithContext(ctx context.Context) DomainExtensionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainExtensionOutput{})
 }

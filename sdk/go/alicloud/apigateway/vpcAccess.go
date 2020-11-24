@@ -4,12 +4,20 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Api gateway app can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
+// ```
 type VpcAccess struct {
 	pulumi.CustomResourceState
 
@@ -110,4 +118,43 @@ type VpcAccessArgs struct {
 
 func (VpcAccessArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcAccessArgs)(nil)).Elem()
+}
+
+type VpcAccessInput interface {
+	pulumi.Input
+
+	ToVpcAccessOutput() VpcAccessOutput
+	ToVpcAccessOutputWithContext(ctx context.Context) VpcAccessOutput
+}
+
+func (VpcAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAccess)(nil)).Elem()
+}
+
+func (i VpcAccess) ToVpcAccessOutput() VpcAccessOutput {
+	return i.ToVpcAccessOutputWithContext(context.Background())
+}
+
+func (i VpcAccess) ToVpcAccessOutputWithContext(ctx context.Context) VpcAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessOutput)
+}
+
+type VpcAccessOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAccessOutput)(nil)).Elem()
+}
+
+func (o VpcAccessOutput) ToVpcAccessOutput() VpcAccessOutput {
+	return o
+}
+
+func (o VpcAccessOutput) ToVpcAccessOutputWithContext(ctx context.Context) VpcAccessOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcAccessOutput{})
 }

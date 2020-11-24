@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['DdosBgpInstance']
 
-warnings.warn("alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance", DeprecationWarning)
+warnings.warn("""alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance""", DeprecationWarning)
 
 
 class DdosBgpInstance(pulumi.CustomResource):
-    warnings.warn("alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance", DeprecationWarning)
+    warnings.warn("""alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,
@@ -49,6 +49,14 @@ class DdosBgpInstance(pulumi.CustomResource):
             base_bandwidth=20,
             ip_count=100,
             ip_type="IPv4")
+        ```
+
+        ## Import
+
+        Ddosbgp instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dns/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
         ```
 
         :param str resource_name: The name of the resource.

@@ -58,6 +58,14 @@ import * as utilities from "../utilities";
  *     projectName: "tf-project",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Log Dashboard can be imported using the id or name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
+ * ```
  */
 export class Dashboard extends pulumi.CustomResource {
     /**

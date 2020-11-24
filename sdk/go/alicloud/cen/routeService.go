@@ -4,6 +4,7 @@
 package cen
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,6 +73,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CEN Route Service can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cen/routeService:RouteService example cen-ahixm0efqh********:cn-shanghai:100.118.28.52/32:cn-shanghai
 // ```
 type RouteService struct {
 	pulumi.CustomResourceState
@@ -205,4 +214,43 @@ type RouteServiceArgs struct {
 
 func (RouteServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeServiceArgs)(nil)).Elem()
+}
+
+type RouteServiceInput interface {
+	pulumi.Input
+
+	ToRouteServiceOutput() RouteServiceOutput
+	ToRouteServiceOutputWithContext(ctx context.Context) RouteServiceOutput
+}
+
+func (RouteService) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteService)(nil)).Elem()
+}
+
+func (i RouteService) ToRouteServiceOutput() RouteServiceOutput {
+	return i.ToRouteServiceOutputWithContext(context.Background())
+}
+
+func (i RouteService) ToRouteServiceOutputWithContext(ctx context.Context) RouteServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteServiceOutput)
+}
+
+type RouteServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteServiceOutput)(nil)).Elem()
+}
+
+func (o RouteServiceOutput) ToRouteServiceOutput() RouteServiceOutput {
+	return o
+}
+
+func (o RouteServiceOutput) ToRouteServiceOutputWithContext(ctx context.Context) RouteServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouteServiceOutput{})
 }

@@ -44,6 +44,14 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Container Registry repository can be imported using the `namespace/repository`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
+    /// ```
     /// </summary>
     public partial class Repo : Pulumi.CustomResource
     {

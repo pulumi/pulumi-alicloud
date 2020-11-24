@@ -30,6 +30,14 @@ import * as utilities from "../utilities";
  *     serviceBandwidth: "100",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Ddoscoo instance can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ddos/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+ * ```
  */
 export class DdosCooInstance extends pulumi.CustomResource {
     /**

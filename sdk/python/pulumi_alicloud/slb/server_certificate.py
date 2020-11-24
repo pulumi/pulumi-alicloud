@@ -67,6 +67,14 @@ class ServerCertificate(pulumi.CustomResource):
             private_key=(lambda path: open(path).read())(f"{path['module']}/private_key.pem"))
         ```
 
+        ## Import
+
+        Server Load balancer Server Certificate can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
@@ -96,11 +104,11 @@ class ServerCertificate(pulumi.CustomResource):
             __props__ = dict()
 
             if alicloud_certifacte_id is not None:
-                warnings.warn("Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.", DeprecationWarning)
+                warnings.warn("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""", DeprecationWarning)
                 pulumi.log.warn("alicloud_certifacte_id is deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.")
             __props__['alicloud_certifacte_id'] = alicloud_certifacte_id
             if alicloud_certifacte_name is not None:
-                warnings.warn("Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.", DeprecationWarning)
+                warnings.warn("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""", DeprecationWarning)
                 pulumi.log.warn("alicloud_certifacte_name is deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.")
             __props__['alicloud_certifacte_name'] = alicloud_certifacte_name
             __props__['alicloud_certificate_id'] = alicloud_certificate_id

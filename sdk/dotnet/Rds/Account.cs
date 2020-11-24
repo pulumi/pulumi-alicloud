@@ -57,6 +57,14 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RDS account can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:rds/account:Account example "rm-12345:tf_account"
+    /// ```
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

@@ -4,12 +4,20 @@
 package vpn
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// VPN connection can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpn/connection:Connection example vco-abc123456
+// ```
 type Connection struct {
 	pulumi.CustomResourceState
 
@@ -159,4 +167,43 @@ type ConnectionArgs struct {
 
 func (ConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionArgs)(nil)).Elem()
+}
+
+type ConnectionInput interface {
+	pulumi.Input
+
+	ToConnectionOutput() ConnectionOutput
+	ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput
+}
+
+func (Connection) ElementType() reflect.Type {
+	return reflect.TypeOf((*Connection)(nil)).Elem()
+}
+
+func (i Connection) ToConnectionOutput() ConnectionOutput {
+	return i.ToConnectionOutputWithContext(context.Background())
+}
+
+func (i Connection) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOutput)
+}
+
+type ConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOutput)(nil)).Elem()
+}
+
+func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
+	return o
+}
+
+func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConnectionOutput{})
 }

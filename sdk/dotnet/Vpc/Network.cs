@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// VPC can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpc/network:Network example vpc-abc123456
+    /// ```
+    /// </summary>
     public partial class Network : Pulumi.CustomResource
     {
         /// <summary>

@@ -4,6 +4,7 @@
 package cr
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -49,6 +50,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Container Registry repository can be imported using the `namespace/repository`, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
 // ```
 type Repo struct {
 	pulumi.CustomResourceState
@@ -166,4 +175,43 @@ type RepoArgs struct {
 
 func (RepoArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*repoArgs)(nil)).Elem()
+}
+
+type RepoInput interface {
+	pulumi.Input
+
+	ToRepoOutput() RepoOutput
+	ToRepoOutputWithContext(ctx context.Context) RepoOutput
+}
+
+func (Repo) ElementType() reflect.Type {
+	return reflect.TypeOf((*Repo)(nil)).Elem()
+}
+
+func (i Repo) ToRepoOutput() RepoOutput {
+	return i.ToRepoOutputWithContext(context.Background())
+}
+
+func (i Repo) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepoOutput)
+}
+
+type RepoOutput struct {
+	*pulumi.OutputState
+}
+
+func (RepoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepoOutput)(nil)).Elem()
+}
+
+func (o RepoOutput) ToRepoOutput() RepoOutput {
+	return o
+}
+
+func (o RepoOutput) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RepoOutput{})
 }

@@ -4,6 +4,7 @@
 package slb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -14,6 +15,14 @@ import (
 // For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
 //
 // For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
+//
+// ## Import
+//
+// Server Load balancer Server Certificate can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
+// ```
 type ServerCertificate struct {
 	pulumi.CustomResourceState
 
@@ -165,4 +174,43 @@ type ServerCertificateArgs struct {
 
 func (ServerCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverCertificateArgs)(nil)).Elem()
+}
+
+type ServerCertificateInput interface {
+	pulumi.Input
+
+	ToServerCertificateOutput() ServerCertificateOutput
+	ToServerCertificateOutputWithContext(ctx context.Context) ServerCertificateOutput
+}
+
+func (ServerCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerCertificate)(nil)).Elem()
+}
+
+func (i ServerCertificate) ToServerCertificateOutput() ServerCertificateOutput {
+	return i.ToServerCertificateOutputWithContext(context.Background())
+}
+
+func (i ServerCertificate) ToServerCertificateOutputWithContext(ctx context.Context) ServerCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerCertificateOutput)
+}
+
+type ServerCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerCertificateOutput)(nil)).Elem()
+}
+
+func (o ServerCertificateOutput) ToServerCertificateOutput() ServerCertificateOutput {
+	return o
+}
+
+func (o ServerCertificateOutput) ToServerCertificateOutputWithContext(ctx context.Context) ServerCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServerCertificateOutput{})
 }

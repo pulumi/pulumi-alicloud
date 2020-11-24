@@ -49,6 +49,14 @@ class SnapshotPolicy(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        Snapshot can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/snapshotPolicy:SnapshotPolicy snapshot sp-abc1234567890000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The snapshot policy name.

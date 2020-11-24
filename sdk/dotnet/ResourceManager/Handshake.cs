@@ -36,6 +36,14 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Resource Manager handshake can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+    /// ```
     /// </summary>
     public partial class Handshake : Pulumi.CustomResource
     {

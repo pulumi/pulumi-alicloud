@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * ESS schedule task can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ess/scheduledTask:ScheduledTask example abc123456
+ * ```
+ */
 export class ScheduledTask extends pulumi.CustomResource {
     /**
      * Get an existing ScheduledTask resource's state with the given name, ID, and optional extra

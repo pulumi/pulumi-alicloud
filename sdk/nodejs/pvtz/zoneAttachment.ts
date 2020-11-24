@@ -2,10 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Private Zone attachment can be imported using the id(same with `zone_id`), e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:pvtz/zoneAttachment:ZoneAttachment example abc123456
+ * ```
+ */
 export class ZoneAttachment extends pulumi.CustomResource {
     /**
      * Get an existing ZoneAttachment resource's state with the given name, ID, and optional extra

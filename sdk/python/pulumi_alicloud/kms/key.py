@@ -48,6 +48,14 @@ class Key(pulumi.CustomResource):
             pending_window_in_days=7)
         ```
 
+        ## Import
+
+        Alikms key can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:kms/key:Key example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default:"Disabled".
@@ -81,12 +89,12 @@ class Key(pulumi.CustomResource):
 
             __props__['automatic_rotation'] = automatic_rotation
             if deletion_window_in_days is not None:
-                warnings.warn("Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.", DeprecationWarning)
+                warnings.warn("""Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""", DeprecationWarning)
                 pulumi.log.warn("deletion_window_in_days is deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.")
             __props__['deletion_window_in_days'] = deletion_window_in_days
             __props__['description'] = description
             if is_enabled is not None:
-                warnings.warn("Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.", DeprecationWarning)
+                warnings.warn("""Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""", DeprecationWarning)
                 pulumi.log.warn("is_enabled is deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.")
             __props__['is_enabled'] = is_enabled
             __props__['key_spec'] = key_spec

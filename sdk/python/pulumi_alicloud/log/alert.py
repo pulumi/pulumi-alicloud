@@ -93,6 +93,14 @@ class Alert(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        Log alert can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:log/alert:Alert example tf-log:tf-log-alert
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_description: Alert description.

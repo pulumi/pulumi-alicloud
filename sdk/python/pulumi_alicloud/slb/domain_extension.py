@@ -116,6 +116,14 @@ class DomainExtension(pulumi.CustomResource):
             server_certificate_id=foo.id)
         ```
 
+        ## Import
+
+        Load balancer domain_extension can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.

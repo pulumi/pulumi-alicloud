@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -42,6 +41,14 @@ import * as utilities from "../utilities";
  *         argValue: "110.110.110.110",
  *     }],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * CDN domain config can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example cdn:config-abc123456
  * ```
  */
 export class DomainConfig extends pulumi.CustomResource {

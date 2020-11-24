@@ -15,7 +15,7 @@ __all__ = [
     'get_trails_deprecated',
 ]
 
-warnings.warn("DataSource has been renamed to `getTrails`", DeprecationWarning)
+warnings.warn("""DataSource has been renamed to `getTrails`""", DeprecationWarning)
 
 @pulumi.output_type
 class GetTrailsDeprecatedResult:
@@ -26,7 +26,7 @@ class GetTrailsDeprecatedResult:
         if actiontrails and not isinstance(actiontrails, list):
             raise TypeError("Expected argument 'actiontrails' to be a list")
         if actiontrails is not None:
-            warnings.warn("Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.", DeprecationWarning)
+            warnings.warn("""Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""", DeprecationWarning)
             pulumi.log.warn("actiontrails is deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.")
 
         pulumi.set(__self__, "actiontrails", actiontrails)

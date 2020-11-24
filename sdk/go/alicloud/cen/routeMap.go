@@ -4,6 +4,7 @@
 package cen
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -144,6 +145,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CEN RouteMap can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
 // ```
 type RouteMap struct {
 	pulumi.CustomResourceState
@@ -490,4 +499,43 @@ type RouteMapArgs struct {
 
 func (RouteMapArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeMapArgs)(nil)).Elem()
+}
+
+type RouteMapInput interface {
+	pulumi.Input
+
+	ToRouteMapOutput() RouteMapOutput
+	ToRouteMapOutputWithContext(ctx context.Context) RouteMapOutput
+}
+
+func (RouteMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteMap)(nil)).Elem()
+}
+
+func (i RouteMap) ToRouteMapOutput() RouteMapOutput {
+	return i.ToRouteMapOutputWithContext(context.Background())
+}
+
+func (i RouteMap) ToRouteMapOutputWithContext(ctx context.Context) RouteMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteMapOutput)
+}
+
+type RouteMapOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteMapOutput)(nil)).Elem()
+}
+
+func (o RouteMapOutput) ToRouteMapOutput() RouteMapOutput {
+	return o
+}
+
+func (o RouteMapOutput) ToRouteMapOutputWithContext(ctx context.Context) RouteMapOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouteMapOutput{})
 }

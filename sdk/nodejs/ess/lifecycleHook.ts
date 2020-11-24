@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Ess lifecycle hook can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
+ * ```
+ */
 export class LifecycleHook extends pulumi.CustomResource {
     /**
      * Get an existing LifecycleHook resource's state with the given name, ID, and optional extra

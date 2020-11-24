@@ -4,6 +4,7 @@
 package ddos
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -54,6 +55,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// DdosCoo Scheduler Rule can be imported using the id or the rule name, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
 // ```
 type SchedulerRule struct {
 	pulumi.CustomResourceState
@@ -236,4 +245,43 @@ type SchedulerRuleArgs struct {
 
 func (SchedulerRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*schedulerRuleArgs)(nil)).Elem()
+}
+
+type SchedulerRuleInput interface {
+	pulumi.Input
+
+	ToSchedulerRuleOutput() SchedulerRuleOutput
+	ToSchedulerRuleOutputWithContext(ctx context.Context) SchedulerRuleOutput
+}
+
+func (SchedulerRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulerRule)(nil)).Elem()
+}
+
+func (i SchedulerRule) ToSchedulerRuleOutput() SchedulerRuleOutput {
+	return i.ToSchedulerRuleOutputWithContext(context.Background())
+}
+
+func (i SchedulerRule) ToSchedulerRuleOutputWithContext(ctx context.Context) SchedulerRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleOutput)
+}
+
+type SchedulerRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (SchedulerRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulerRuleOutput)(nil)).Elem()
+}
+
+func (o SchedulerRuleOutput) ToSchedulerRuleOutput() SchedulerRuleOutput {
+	return o
+}
+
+func (o SchedulerRuleOutput) ToSchedulerRuleOutputWithContext(ctx context.Context) SchedulerRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SchedulerRuleOutput{})
 }

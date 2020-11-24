@@ -74,6 +74,14 @@ class Dashboard(pulumi.CustomResource):
             project_name="tf-project")
         ```
 
+        ## Import
+
+        Log Dashboard can be imported using the id or name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] char_list: Configuration of charts in the dashboard.

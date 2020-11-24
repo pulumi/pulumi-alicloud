@@ -44,6 +44,14 @@ import * as utilities from "../utilities";
  *     internalPort: "8080",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Forward Entry can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry foo ftb-1aece3:fwd-232ce2
+ * ```
  */
 export class ForwardEntry extends pulumi.CustomResource {
     /**

@@ -44,6 +44,14 @@ class NetworkAttachment(pulumi.CustomResource):
             opts=ResourceOptions(depends_on=[ccn]))
         ```
 
+        ## Import
+
+        The Cloud Connect Network Attachment can be imported using the instance_id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cloudconnect/networkAttachment:NetworkAttachment example ccn-abc123456:sag-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ccn_id: The ID of the CCN instance.

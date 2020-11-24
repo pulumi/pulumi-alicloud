@@ -81,6 +81,14 @@ class DataCenter(pulumi.CustomResource):
 
         This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
 
+        ## Import
+
+        If you need full function, please import Cassandra cluster first. Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.

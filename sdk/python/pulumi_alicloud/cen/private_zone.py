@@ -59,6 +59,14 @@ class PrivateZone(pulumi.CustomResource):
             opts=ResourceOptions(depends_on=[default_instance_attachment]))
         ```
 
+        ## Import
+
+        CEN Private Zone can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_region_id: The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.

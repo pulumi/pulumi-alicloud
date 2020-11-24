@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CS
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster-id
+    /// ```
+    /// </summary>
     public partial class ManagedKubernetes : Pulumi.CustomResource
     {
         [Output("addons")]

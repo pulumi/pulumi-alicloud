@@ -39,6 +39,14 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Alicloud Config Configuration Recorder can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cfg/configurationRecorder:ConfigurationRecorder example 122378463********
+    /// ```
     /// </summary>
     public partial class ConfigurationRecorder : Pulumi.CustomResource
     {

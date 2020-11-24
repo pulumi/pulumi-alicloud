@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Log
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Logtial config can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
+    /// ```
+    /// </summary>
     public partial class LogTailConfig : Pulumi.CustomResource
     {
         /// <summary>

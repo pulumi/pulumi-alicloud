@@ -59,6 +59,14 @@ class QosCar(pulumi.CustomResource):
             percent_source_type="InternetUpBandwidth")
         ```
 
+        ## Import
+
+        The Sag Qos Car can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the QoS speed limiting rule.

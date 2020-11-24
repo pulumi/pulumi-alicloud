@@ -69,6 +69,14 @@ class Instance(pulumi.CustomResource):
             vswitch_id=default_switch.id)
         ```
 
+        ## Import
+
+        ALIKAFKA TOPIC can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] deploy_type: The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.

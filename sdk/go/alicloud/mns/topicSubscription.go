@@ -4,12 +4,20 @@
 package mns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// MNS Topic subscription can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
+// ```
 type TopicSubscription struct {
 	pulumi.CustomResourceState
 
@@ -142,4 +150,43 @@ type TopicSubscriptionArgs struct {
 
 func (TopicSubscriptionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicSubscriptionArgs)(nil)).Elem()
+}
+
+type TopicSubscriptionInput interface {
+	pulumi.Input
+
+	ToTopicSubscriptionOutput() TopicSubscriptionOutput
+	ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput
+}
+
+func (TopicSubscription) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicSubscription)(nil)).Elem()
+}
+
+func (i TopicSubscription) ToTopicSubscriptionOutput() TopicSubscriptionOutput {
+	return i.ToTopicSubscriptionOutputWithContext(context.Background())
+}
+
+func (i TopicSubscription) ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicSubscriptionOutput)
+}
+
+type TopicSubscriptionOutput struct {
+	*pulumi.OutputState
+}
+
+func (TopicSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicSubscriptionOutput)(nil)).Elem()
+}
+
+func (o TopicSubscriptionOutput) ToTopicSubscriptionOutput() TopicSubscriptionOutput {
+	return o
+}
+
+func (o TopicSubscriptionOutput) ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TopicSubscriptionOutput{})
 }

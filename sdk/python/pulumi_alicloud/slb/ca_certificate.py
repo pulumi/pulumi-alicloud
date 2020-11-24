@@ -53,6 +53,14 @@ class CaCertificate(pulumi.CustomResource):
         foo_file = alicloud.slb.CaCertificate("foo-file", ca_certificate=(lambda path: open(path).read())(f"{path['module']}/ca_certificate.pem"))
         ```
 
+        ## Import
+
+        Server Load balancer CA Certificate can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/caCertificate:CaCertificate example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.

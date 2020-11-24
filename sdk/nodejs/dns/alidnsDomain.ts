@@ -27,6 +27,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Alidns domain can be imported using the id or domain name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:dns/alidnsDomain:AlidnsDomain example aliyun.com
+ * ```
  */
 export class AlidnsDomain extends pulumi.CustomResource {
     /**

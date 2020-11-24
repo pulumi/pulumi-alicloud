@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Slb
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Load balancer attachment can be imported using the id or load balancer id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
+    /// ```
+    /// </summary>
     public partial class Attachment : Pulumi.CustomResource
     {
         /// <summary>

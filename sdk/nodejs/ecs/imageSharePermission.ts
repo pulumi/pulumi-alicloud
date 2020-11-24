@@ -31,6 +31,14 @@ import * as utilities from "../utilities";
  *  The following attributes are exported:
  *
  * * `id` - ID of the image. It formats as `<image_id>:<account_id>`
+ *
+ * ## Import
+ *
+ * image can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
+ * ```
  */
 export class ImageSharePermission extends pulumi.CustomResource {
     /**

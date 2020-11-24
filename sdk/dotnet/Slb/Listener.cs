@@ -132,6 +132,14 @@ namespace Pulumi.AliCloud.Slb
     /// server_group_id    | http &amp; https &amp; tcp &amp; udp | the id of resource alicloud.slb.ServerGroup |
     /// 
     /// The listener mapping supports the following:
+    /// 
+    /// ## Import
+    /// 
+    /// Load balancer listener can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:slb/listener:Listener example "lb-abc123456:22"
+    /// ```
     /// </summary>
     public partial class Listener : Pulumi.CustomResource
     {

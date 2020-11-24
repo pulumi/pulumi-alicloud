@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Log machine group can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
+ * ```
+ */
 export class MachineGroup extends pulumi.CustomResource {
     /**
      * Get an existing MachineGroup resource's state with the given name, ID, and optional extra

@@ -74,6 +74,14 @@ class EnterpriseInstance(pulumi.CustomResource):
             tid=12345)
         ```
 
+        ## Import
+
+        DMS Enterprise can be imported using host and port, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dms/enterpriseInstance:EnterpriseInstance example rm-uf648hgs7874xxxx.mysql.rds.aliyuncs.com:3306
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] data_link_name: Cross-database query datalink name.
@@ -140,7 +148,7 @@ class EnterpriseInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'host'")
             __props__['host'] = host
             if instance_alias is not None:
-                warnings.warn("Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.", DeprecationWarning)
+                warnings.warn("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.")
             __props__['instance_alias'] = instance_alias
             __props__['instance_id'] = instance_id

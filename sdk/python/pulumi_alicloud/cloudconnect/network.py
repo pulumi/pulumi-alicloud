@@ -45,6 +45,14 @@ class Network(pulumi.CustomResource):
             is_default=True)
         ```
 
+        ## Import
+
+        The cloud connect network instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cloudconnect/network:Network example ccn-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The CidrBlock of the CCN instance. Defaults to null.

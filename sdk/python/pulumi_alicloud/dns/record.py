@@ -26,7 +26,14 @@ class Record(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Record resource with the given unique name, props, and options.
+        ## Import
+
+        RDS record can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dns/record:Record example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] host_record: Host record for the domain record. This host_record can have at most 253 characters, and each part split with "." can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as "-",".","*","@",  and must not begin or end with "-".

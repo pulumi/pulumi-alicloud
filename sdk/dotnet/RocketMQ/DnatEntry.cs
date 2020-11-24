@@ -44,6 +44,14 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The Sag DnatEntry can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
+    /// ```
     /// </summary>
     public partial class DnatEntry : Pulumi.CustomResource
     {

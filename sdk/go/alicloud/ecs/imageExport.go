@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -136,4 +137,43 @@ type ImageExportArgs struct {
 
 func (ImageExportArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageExportArgs)(nil)).Elem()
+}
+
+type ImageExportInput interface {
+	pulumi.Input
+
+	ToImageExportOutput() ImageExportOutput
+	ToImageExportOutputWithContext(ctx context.Context) ImageExportOutput
+}
+
+func (ImageExport) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageExport)(nil)).Elem()
+}
+
+func (i ImageExport) ToImageExportOutput() ImageExportOutput {
+	return i.ToImageExportOutputWithContext(context.Background())
+}
+
+func (i ImageExport) ToImageExportOutputWithContext(ctx context.Context) ImageExportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageExportOutput)
+}
+
+type ImageExportOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageExportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageExportOutput)(nil)).Elem()
+}
+
+func (o ImageExportOutput) ToImageExportOutput() ImageExportOutput {
+	return o
+}
+
+func (o ImageExportOutput) ToImageExportOutputWithContext(ctx context.Context) ImageExportOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ImageExportOutput{})
 }

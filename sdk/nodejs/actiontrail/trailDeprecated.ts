@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Import
+ *
+ * Action trail can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+ * ```
+ *
  * @deprecated Resource renamed to `Trail`
  */
 export class TrailDeprecated extends pulumi.CustomResource {

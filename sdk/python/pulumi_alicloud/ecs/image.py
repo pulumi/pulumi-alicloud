@@ -60,6 +60,14 @@ class Image(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+         image can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/image:Image default m-uf66871ape***yg1q***
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] architecture: Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
@@ -99,7 +107,7 @@ class Image(pulumi.CustomResource):
             __props__['image_name'] = image_name
             __props__['instance_id'] = instance_id
             if name is not None:
-                warnings.warn("Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.", DeprecationWarning)
+                warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
                 pulumi.log.warn("name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.")
             __props__['name'] = name
             __props__['platform'] = platform

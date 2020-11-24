@@ -44,6 +44,14 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
             bandwidth_package_id=bwp.id)
         ```
 
+        ## Import
+
+        CEN bandwidth package attachment resource can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment example bwp-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth package.

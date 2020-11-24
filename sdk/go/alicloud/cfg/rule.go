@@ -4,6 +4,7 @@
 package cfg
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -53,6 +54,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Alicloud Config Rule can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cfg/rule:Rule this cr-ed4bad756057********
 // ```
 type Rule struct {
 	pulumi.CustomResourceState
@@ -243,4 +252,43 @@ type RuleArgs struct {
 
 func (RuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleArgs)(nil)).Elem()
+}
+
+type RuleInput interface {
+	pulumi.Input
+
+	ToRuleOutput() RuleOutput
+	ToRuleOutputWithContext(ctx context.Context) RuleOutput
+}
+
+func (Rule) ElementType() reflect.Type {
+	return reflect.TypeOf((*Rule)(nil)).Elem()
+}
+
+func (i Rule) ToRuleOutput() RuleOutput {
+	return i.ToRuleOutputWithContext(context.Background())
+}
+
+func (i Rule) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleOutput)
+}
+
+type RuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (RuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleOutput)(nil)).Elem()
+}
+
+func (o RuleOutput) ToRuleOutput() RuleOutput {
+	return o
+}
+
+func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RuleOutput{})
 }

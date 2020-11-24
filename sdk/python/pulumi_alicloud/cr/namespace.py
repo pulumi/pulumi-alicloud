@@ -41,6 +41,14 @@ class Namespace(pulumi.CustomResource):
             default_visibility="PUBLIC")
         ```
 
+        ## Import
+
+        Container Registry namespace can be imported using the namespace, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.

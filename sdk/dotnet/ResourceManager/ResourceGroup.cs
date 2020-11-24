@@ -35,6 +35,14 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Resource Manager Resource Group can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
+    /// ```
     /// </summary>
     public partial class ResourceGroup : Pulumi.CustomResource
     {

@@ -36,6 +36,14 @@ import * as utilities from "../utilities";
  *     endTime: "2019-10-26T16:41:33+0800",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The Sag Qos Policy can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:rocketmq/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
+ * ```
  */
 export class QosPolicy extends pulumi.CustomResource {
     /**

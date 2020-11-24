@@ -26,7 +26,14 @@ class LogTailConfig(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a LogTailConfig resource with the given unique name, props, and options.
+        ## Import
+
+        Logtial config can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] input_detail: The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))

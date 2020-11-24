@@ -21,7 +21,14 @@ class SslVpnClientCert(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a SslVpnClientCert resource with the given unique name, props, and options.
+        ## Import
+
+        SSL-VPN client certificates can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpn/sslVpnClientCert:SslVpnClientCert example vsc-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the client certificate.

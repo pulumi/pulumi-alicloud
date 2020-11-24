@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * DNS domain attachment can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:dns/domainAttachment:DomainAttachment example dns-cn-v0h1ldjhxxx
+ * ```
+ */
 export class DomainAttachment extends pulumi.CustomResource {
     /**
      * Get an existing DomainAttachment resource's state with the given name, ID, and optional extra

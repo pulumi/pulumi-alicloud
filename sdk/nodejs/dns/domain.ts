@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Import
+ *
+ * DNS can be imported using the id or domain name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:dns/domain:Domain example "aliyun.com"
+ * ```
+ *
  * @deprecated This resource has been deprecated in favour of DnsDomain
  */
 export class Domain extends pulumi.CustomResource {

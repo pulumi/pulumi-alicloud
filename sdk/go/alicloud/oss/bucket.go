@@ -4,6 +4,7 @@
 package oss
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -329,6 +330,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// OSS bucket can be imported using the bucket name, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
+// ```
 type Bucket struct {
 	pulumi.CustomResourceState
 
@@ -565,4 +574,43 @@ type BucketArgs struct {
 
 func (BucketArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketArgs)(nil)).Elem()
+}
+
+type BucketInput interface {
+	pulumi.Input
+
+	ToBucketOutput() BucketOutput
+	ToBucketOutputWithContext(ctx context.Context) BucketOutput
+}
+
+func (Bucket) ElementType() reflect.Type {
+	return reflect.TypeOf((*Bucket)(nil)).Elem()
+}
+
+func (i Bucket) ToBucketOutput() BucketOutput {
+	return i.ToBucketOutputWithContext(context.Background())
+}
+
+func (i Bucket) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOutput)
+}
+
+type BucketOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOutput)(nil)).Elem()
+}
+
+func (o BucketOutput) ToBucketOutput() BucketOutput {
+	return o
+}
+
+func (o BucketOutput) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BucketOutput{})
 }

@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Adb
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// ADB backup policy can be imported using the id or cluster id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example "am-12345678"
+    /// ```
+    /// </summary>
     public partial class BackupPolicy : Pulumi.CustomResource
     {
         /// <summary>

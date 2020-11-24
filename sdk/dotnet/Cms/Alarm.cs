@@ -53,6 +53,14 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Alarm rule can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cms/alarm:Alarm alarm abc12345
+    /// ```
     /// </summary>
     public partial class Alarm : Pulumi.CustomResource
     {

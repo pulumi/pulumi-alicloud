@@ -4,12 +4,20 @@
 package ess
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// ESS scaling configuration can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ess/scalingConfiguration:ScalingConfiguration example asg-abc123456
+// ```
 type ScalingConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -444,4 +452,43 @@ type ScalingConfigurationArgs struct {
 
 func (ScalingConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingConfigurationArgs)(nil)).Elem()
+}
+
+type ScalingConfigurationInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationOutput() ScalingConfigurationOutput
+	ToScalingConfigurationOutputWithContext(ctx context.Context) ScalingConfigurationOutput
+}
+
+func (ScalingConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfiguration)(nil)).Elem()
+}
+
+func (i ScalingConfiguration) ToScalingConfigurationOutput() ScalingConfigurationOutput {
+	return i.ToScalingConfigurationOutputWithContext(context.Background())
+}
+
+func (i ScalingConfiguration) ToScalingConfigurationOutputWithContext(ctx context.Context) ScalingConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationOutput)
+}
+
+type ScalingConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScalingConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationOutput)(nil)).Elem()
+}
+
+func (o ScalingConfigurationOutput) ToScalingConfigurationOutput() ScalingConfigurationOutput {
+	return o
+}
+
+func (o ScalingConfigurationOutput) ToScalingConfigurationOutputWithContext(ctx context.Context) ScalingConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ScalingConfigurationOutput{})
 }

@@ -50,6 +50,14 @@ class InstanceAttachment(pulumi.CustomResource):
             child_instance_region_id="cn-beijing")
         ```
 
+        ## Import
+
+        CEN instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/instanceAttachment:InstanceAttachment example cen-m7i7pjmkon********:vpc-2ze2w07mcy9nz********:VPC:cn-beijing
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] cen_owner_id: The account ID to which the CEN instance belongs.

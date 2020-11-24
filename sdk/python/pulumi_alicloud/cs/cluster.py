@@ -75,7 +75,7 @@ class Cluster(pulumi.CustomResource):
             __props__['password'] = password
             __props__['release_eip'] = release_eip
             if size is not None:
-                warnings.warn("Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.", DeprecationWarning)
+                warnings.warn("""Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""", DeprecationWarning)
                 pulumi.log.warn("size is deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.")
             __props__['size'] = size
             if vswitch_id is None:

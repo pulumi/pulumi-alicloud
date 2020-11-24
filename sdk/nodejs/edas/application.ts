@@ -32,6 +32,14 @@ import * as utilities from "../utilities";
  *     warUrl: "http://xxx",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EDAS application can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:edas/application:Application app app_Id
+ * ```
  */
 export class Application extends pulumi.CustomResource {
     /**

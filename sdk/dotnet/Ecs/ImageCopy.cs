@@ -50,6 +50,14 @@ namespace Pulumi.AliCloud.Ecs
     ///  The following attributes are exported:
     /// 
     /// * `id` - ID of the image.
+    /// 
+    /// ## Import
+    /// 
+    /// image can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
+    /// ```
     /// </summary>
     public partial class ImageCopy : Pulumi.CustomResource
     {
