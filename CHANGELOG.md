@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.25.1 (2020-11-24)
 * Upgrade to v1.103.2 of the AliCloud Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.13.2  
   * This adds support for import specific examples in documentation
-
----
 
 ## 2.25.0 (2020-11-03)
 * Upgrade to v1.103.0 of the AliCloud Terraform Provider
