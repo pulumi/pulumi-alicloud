@@ -40,6 +40,14 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The Sag SnatEntry can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:rocketmq/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
+    /// ```
     /// </summary>
     public partial class SnatEntry : Pulumi.CustomResource
     {

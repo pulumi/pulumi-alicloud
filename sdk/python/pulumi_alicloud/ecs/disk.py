@@ -56,6 +56,14 @@ class Disk(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Cloud disk can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The Zone to create the disk in.

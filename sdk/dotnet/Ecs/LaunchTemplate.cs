@@ -88,6 +88,14 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Launch Template can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
+    /// ```
     /// </summary>
     public partial class LaunchTemplate : Pulumi.CustomResource
     {

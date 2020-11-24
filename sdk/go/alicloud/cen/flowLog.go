@@ -4,6 +4,7 @@
 package cen
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -66,6 +67,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CEN flowlog can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
 // ```
 type FlowLog struct {
 	pulumi.CustomResourceState
@@ -187,4 +196,43 @@ type FlowLogArgs struct {
 
 func (FlowLogArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*flowLogArgs)(nil)).Elem()
+}
+
+type FlowLogInput interface {
+	pulumi.Input
+
+	ToFlowLogOutput() FlowLogOutput
+	ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput
+}
+
+func (FlowLog) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowLog)(nil)).Elem()
+}
+
+func (i FlowLog) ToFlowLogOutput() FlowLogOutput {
+	return i.ToFlowLogOutputWithContext(context.Background())
+}
+
+func (i FlowLog) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowLogOutput)
+}
+
+type FlowLogOutput struct {
+	*pulumi.OutputState
+}
+
+func (FlowLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowLogOutput)(nil)).Elem()
+}
+
+func (o FlowLogOutput) ToFlowLogOutput() FlowLogOutput {
+	return o
+}
+
+func (o FlowLogOutput) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FlowLogOutput{})
 }

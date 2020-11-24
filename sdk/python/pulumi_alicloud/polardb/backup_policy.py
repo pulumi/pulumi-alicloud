@@ -22,7 +22,14 @@ class BackupPolicy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a BackupPolicy resource with the given unique name, props, and options.
+        ## Import
+
+        PolarDB backup policy can be imported using the id or cluster id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example "rm-12345678"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.

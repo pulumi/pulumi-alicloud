@@ -23,6 +23,14 @@ import * as utilities from "../utilities";
  *     targetType: "Account",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Resource Manager handshake can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+ * ```
  */
 export class Handshake extends pulumi.CustomResource {
     /**

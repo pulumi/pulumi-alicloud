@@ -4,6 +4,7 @@
 package resourcemanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -38,6 +39,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Resource Manager handshake can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
 // ```
 type Handshake struct {
 	pulumi.CustomResourceState
@@ -162,4 +171,43 @@ type HandshakeArgs struct {
 
 func (HandshakeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*handshakeArgs)(nil)).Elem()
+}
+
+type HandshakeInput interface {
+	pulumi.Input
+
+	ToHandshakeOutput() HandshakeOutput
+	ToHandshakeOutputWithContext(ctx context.Context) HandshakeOutput
+}
+
+func (Handshake) ElementType() reflect.Type {
+	return reflect.TypeOf((*Handshake)(nil)).Elem()
+}
+
+func (i Handshake) ToHandshakeOutput() HandshakeOutput {
+	return i.ToHandshakeOutputWithContext(context.Background())
+}
+
+func (i Handshake) ToHandshakeOutputWithContext(ctx context.Context) HandshakeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HandshakeOutput)
+}
+
+type HandshakeOutput struct {
+	*pulumi.OutputState
+}
+
+func (HandshakeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HandshakeOutput)(nil)).Elem()
+}
+
+func (o HandshakeOutput) ToHandshakeOutput() HandshakeOutput {
+	return o
+}
+
+func (o HandshakeOutput) ToHandshakeOutputWithContext(ctx context.Context) HandshakeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HandshakeOutput{})
 }

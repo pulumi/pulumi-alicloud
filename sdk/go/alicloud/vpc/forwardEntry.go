@@ -4,6 +4,7 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -87,6 +88,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Forward Entry can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry foo ftb-1aece3:fwd-232ce2
 // ```
 type ForwardEntry struct {
 	pulumi.CustomResourceState
@@ -233,4 +242,43 @@ type ForwardEntryArgs struct {
 
 func (ForwardEntryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*forwardEntryArgs)(nil)).Elem()
+}
+
+type ForwardEntryInput interface {
+	pulumi.Input
+
+	ToForwardEntryOutput() ForwardEntryOutput
+	ToForwardEntryOutputWithContext(ctx context.Context) ForwardEntryOutput
+}
+
+func (ForwardEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardEntry)(nil)).Elem()
+}
+
+func (i ForwardEntry) ToForwardEntryOutput() ForwardEntryOutput {
+	return i.ToForwardEntryOutputWithContext(context.Background())
+}
+
+func (i ForwardEntry) ToForwardEntryOutputWithContext(ctx context.Context) ForwardEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardEntryOutput)
+}
+
+type ForwardEntryOutput struct {
+	*pulumi.OutputState
+}
+
+func (ForwardEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardEntryOutput)(nil)).Elem()
+}
+
+func (o ForwardEntryOutput) ToForwardEntryOutput() ForwardEntryOutput {
+	return o
+}
+
+func (o ForwardEntryOutput) ToForwardEntryOutputWithContext(ctx context.Context) ForwardEntryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ForwardEntryOutput{})
 }

@@ -4,6 +4,7 @@
 package slb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,14 @@ import (
 // * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100].
 // * `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`. Default to `ecs`.
 // * `serverIp` - (Optional, Available in 1.93.0+) ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
+//
+// ## Import
+//
+// Load balancer backend server can be imported using the load balancer id.
+//
+// ```sh
+//  $ pulumi import alicloud:slb/backendServer:BackendServer example lb-abc123456
+// ```
 type BackendServer struct {
 	pulumi.CustomResourceState
 
@@ -106,4 +115,43 @@ type BackendServerArgs struct {
 
 func (BackendServerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendServerArgs)(nil)).Elem()
+}
+
+type BackendServerInput interface {
+	pulumi.Input
+
+	ToBackendServerOutput() BackendServerOutput
+	ToBackendServerOutputWithContext(ctx context.Context) BackendServerOutput
+}
+
+func (BackendServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServer)(nil)).Elem()
+}
+
+func (i BackendServer) ToBackendServerOutput() BackendServerOutput {
+	return i.ToBackendServerOutputWithContext(context.Background())
+}
+
+func (i BackendServer) ToBackendServerOutputWithContext(ctx context.Context) BackendServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServerOutput)
+}
+
+type BackendServerOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackendServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServerOutput)(nil)).Elem()
+}
+
+func (o BackendServerOutput) ToBackendServerOutput() BackendServerOutput {
+	return o
+}
+
+func (o BackendServerOutput) ToBackendServerOutputWithContext(ctx context.Context) BackendServerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BackendServerOutput{})
 }

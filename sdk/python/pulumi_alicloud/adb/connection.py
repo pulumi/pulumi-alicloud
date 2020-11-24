@@ -61,6 +61,14 @@ class Connection(pulumi.CustomResource):
             connection_prefix="testabc")
         ```
 
+        ## Import
+
+        ADB connection can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:adb/connection:Connection example am-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_prefix: Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.

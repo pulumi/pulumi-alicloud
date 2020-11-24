@@ -4,6 +4,7 @@
 package nas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -50,6 +51,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Nas Access Rule can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
 // ```
 type AccessRule struct {
 	pulumi.CustomResourceState
@@ -164,4 +173,43 @@ type AccessRuleArgs struct {
 
 func (AccessRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessRuleArgs)(nil)).Elem()
+}
+
+type AccessRuleInput interface {
+	pulumi.Input
+
+	ToAccessRuleOutput() AccessRuleOutput
+	ToAccessRuleOutputWithContext(ctx context.Context) AccessRuleOutput
+}
+
+func (AccessRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessRule)(nil)).Elem()
+}
+
+func (i AccessRule) ToAccessRuleOutput() AccessRuleOutput {
+	return i.ToAccessRuleOutputWithContext(context.Background())
+}
+
+func (i AccessRule) ToAccessRuleOutputWithContext(ctx context.Context) AccessRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessRuleOutput)
+}
+
+type AccessRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessRuleOutput)(nil)).Elem()
+}
+
+func (o AccessRuleOutput) ToAccessRuleOutput() AccessRuleOutput {
+	return o
+}
+
+func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) AccessRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessRuleOutput{})
 }

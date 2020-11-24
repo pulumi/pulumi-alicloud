@@ -25,7 +25,14 @@ class RouteEntry(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a RouteEntry resource with the given unique name, props, and options.
+        ## Import
+
+        Router entry can be imported using the id, e.g (formatted as<route_table_id:router_id:destination_cidrblock:nexthop_type:nexthop_id>).
+
+        ```sh
+         $ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
@@ -60,7 +67,7 @@ class RouteEntry(pulumi.CustomResource):
                 raise TypeError("Missing required property 'route_table_id'")
             __props__['route_table_id'] = route_table_id
             if router_id is not None:
-                warnings.warn("Attribute router_id has been deprecated and suggest removing it from your template.", DeprecationWarning)
+                warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
                 pulumi.log.warn("router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.")
             __props__['router_id'] = router_id
         super(RouteEntry, __self__).__init__(

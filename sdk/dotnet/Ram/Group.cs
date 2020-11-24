@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ram
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// RAM group can be imported using the id or name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ram/group:Group example my-group
+    /// ```
+    /// </summary>
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

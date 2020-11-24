@@ -35,7 +35,14 @@ class ScalingGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ScalingGroup resource with the given unique name, props, and options.
+        ## Import
+
+        ESS scaling group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_instance_ids: If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
@@ -102,7 +109,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__['spot_instance_pools'] = spot_instance_pools
             __props__['spot_instance_remedy'] = spot_instance_remedy
             if vswitch_id is not None:
-                warnings.warn("Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.", DeprecationWarning)
+                warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
                 pulumi.log.warn("vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.")
             __props__['vswitch_id'] = vswitch_id
             __props__['vswitch_ids'] = vswitch_ids

@@ -64,6 +64,14 @@ class Notification(pulumi.CustomResource):
             notification_arn=default_queue.name.apply(lambda name: f"acs:ess:{default_regions.regions[0].id}:{default_account.id}:queue/{name}"))
         ```
 
+        ## Import
+
+        Ess notification can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/notification:Notification example 'scaling_group_id:notification_arn'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.

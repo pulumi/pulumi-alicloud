@@ -24,7 +24,14 @@ class RouteEntry(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a RouteEntry resource with the given unique name, props, and options.
+        ## Import
+
+        VPN route entry can be imported using the id(VpnGatewayId +":"+ NextHop +":"+ RouteDest), e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpn/routeEntry:RouteEntry example vpn-abc123456:vco-abc123456:10.0.0.10/24
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] next_hop: The next hop of the destination route.

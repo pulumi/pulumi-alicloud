@@ -59,6 +59,14 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ADB cluster can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:adb/cluster:Cluster example am-abc12345678
+    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

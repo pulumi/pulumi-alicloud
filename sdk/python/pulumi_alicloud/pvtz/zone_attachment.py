@@ -26,7 +26,14 @@ class ZoneAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ZoneAttachment resource with the given unique name, props, and options.
+        ## Import
+
+        Private Zone attachment can be imported using the id(same with `zone_id`), e.g.
+
+        ```sh
+         $ pulumi import alicloud:pvtz/zoneAttachment:ZoneAttachment example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lang: The language of code.

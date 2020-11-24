@@ -4,6 +4,7 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -194,4 +195,43 @@ type NetworkAclEntriesArgs struct {
 
 func (NetworkAclEntriesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAclEntriesArgs)(nil)).Elem()
+}
+
+type NetworkAclEntriesInput interface {
+	pulumi.Input
+
+	ToNetworkAclEntriesOutput() NetworkAclEntriesOutput
+	ToNetworkAclEntriesOutputWithContext(ctx context.Context) NetworkAclEntriesOutput
+}
+
+func (NetworkAclEntries) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclEntries)(nil)).Elem()
+}
+
+func (i NetworkAclEntries) ToNetworkAclEntriesOutput() NetworkAclEntriesOutput {
+	return i.ToNetworkAclEntriesOutputWithContext(context.Background())
+}
+
+func (i NetworkAclEntries) ToNetworkAclEntriesOutputWithContext(ctx context.Context) NetworkAclEntriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclEntriesOutput)
+}
+
+type NetworkAclEntriesOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkAclEntriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclEntriesOutput)(nil)).Elem()
+}
+
+func (o NetworkAclEntriesOutput) ToNetworkAclEntriesOutput() NetworkAclEntriesOutput {
+	return o
+}
+
+func (o NetworkAclEntriesOutput) ToNetworkAclEntriesOutputWithContext(ctx context.Context) NetworkAclEntriesOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkAclEntriesOutput{})
 }

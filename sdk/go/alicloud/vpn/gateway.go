@@ -4,12 +4,20 @@
 package vpn
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// VPN gateway can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpn/gateway:Gateway example vpn-abc123456
+// ```
 type Gateway struct {
 	pulumi.CustomResourceState
 
@@ -190,4 +198,43 @@ type GatewayArgs struct {
 
 func (GatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayArgs)(nil)).Elem()
+}
+
+type GatewayInput interface {
+	pulumi.Input
+
+	ToGatewayOutput() GatewayOutput
+	ToGatewayOutputWithContext(ctx context.Context) GatewayOutput
+}
+
+func (Gateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*Gateway)(nil)).Elem()
+}
+
+func (i Gateway) ToGatewayOutput() GatewayOutput {
+	return i.ToGatewayOutputWithContext(context.Background())
+}
+
+func (i Gateway) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayOutput)
+}
+
+type GatewayOutput struct {
+	*pulumi.OutputState
+}
+
+func (GatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayOutput)(nil)).Elem()
+}
+
+func (o GatewayOutput) ToGatewayOutput() GatewayOutput {
+	return o
+}
+
+func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GatewayOutput{})
 }

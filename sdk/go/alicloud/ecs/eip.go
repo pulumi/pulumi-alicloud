@@ -4,11 +4,19 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Elastic IP address can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
+// ```
 type Eip struct {
 	pulumi.CustomResourceState
 
@@ -167,4 +175,43 @@ type EipArgs struct {
 
 func (EipArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eipArgs)(nil)).Elem()
+}
+
+type EipInput interface {
+	pulumi.Input
+
+	ToEipOutput() EipOutput
+	ToEipOutputWithContext(ctx context.Context) EipOutput
+}
+
+func (Eip) ElementType() reflect.Type {
+	return reflect.TypeOf((*Eip)(nil)).Elem()
+}
+
+func (i Eip) ToEipOutput() EipOutput {
+	return i.ToEipOutputWithContext(context.Background())
+}
+
+func (i Eip) ToEipOutputWithContext(ctx context.Context) EipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EipOutput)
+}
+
+type EipOutput struct {
+	*pulumi.OutputState
+}
+
+func (EipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EipOutput)(nil)).Elem()
+}
+
+func (o EipOutput) ToEipOutput() EipOutput {
+	return o
+}
+
+func (o EipOutput) ToEipOutputWithContext(ctx context.Context) EipOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EipOutput{})
 }

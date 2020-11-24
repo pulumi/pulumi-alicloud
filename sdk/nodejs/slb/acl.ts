@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -60,6 +59,14 @@ import * as utilities from "../utilities";
  *
  * * `entry` - (Required) An IP addresses or CIDR blocks.
  * * `comment` - (Optional) the comment of the entry.
+ *
+ * ## Import
+ *
+ * Server Load balancer access control list can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:slb/acl:Acl example acl-abc123456
+ * ```
  */
 export class Acl extends pulumi.CustomResource {
     /**

@@ -30,6 +30,14 @@ import * as utilities from "../utilities";
  *     zoneId: "cn-hangzhou-e",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Distributed Relational Database Service (DRDS) can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

@@ -43,6 +43,14 @@ import * as utilities from "../utilities";
  *     privateKey: fs.readFileSync(`${path.module}/private_key.pem`),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Server Load balancer Server Certificate can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
+ * ```
  */
 export class ServerCertificate extends pulumi.CustomResource {
     /**

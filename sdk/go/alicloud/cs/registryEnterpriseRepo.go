@@ -4,6 +4,7 @@
 package cs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -53,6 +54,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
 // ```
 type RegistryEnterpriseRepo struct {
 	pulumi.CustomResourceState
@@ -183,4 +192,43 @@ type RegistryEnterpriseRepoArgs struct {
 
 func (RegistryEnterpriseRepoArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryEnterpriseRepoArgs)(nil)).Elem()
+}
+
+type RegistryEnterpriseRepoInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseRepoOutput() RegistryEnterpriseRepoOutput
+	ToRegistryEnterpriseRepoOutputWithContext(ctx context.Context) RegistryEnterpriseRepoOutput
+}
+
+func (RegistryEnterpriseRepo) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseRepo)(nil)).Elem()
+}
+
+func (i RegistryEnterpriseRepo) ToRegistryEnterpriseRepoOutput() RegistryEnterpriseRepoOutput {
+	return i.ToRegistryEnterpriseRepoOutputWithContext(context.Background())
+}
+
+func (i RegistryEnterpriseRepo) ToRegistryEnterpriseRepoOutputWithContext(ctx context.Context) RegistryEnterpriseRepoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseRepoOutput)
+}
+
+type RegistryEnterpriseRepoOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegistryEnterpriseRepoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseRepoOutput)(nil)).Elem()
+}
+
+func (o RegistryEnterpriseRepoOutput) ToRegistryEnterpriseRepoOutput() RegistryEnterpriseRepoOutput {
+	return o
+}
+
+func (o RegistryEnterpriseRepoOutput) ToRegistryEnterpriseRepoOutputWithContext(ctx context.Context) RegistryEnterpriseRepoOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegistryEnterpriseRepoOutput{})
 }

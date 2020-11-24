@@ -56,6 +56,14 @@ class Role(pulumi.CustomResource):
             role_name="testrd")
         ```
 
+        ## Import
+
+        Resource Manager can be imported using the id or role_name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/role:Role example testrd
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] assume_role_policy_document: The content of the permissions strategy that plays a role.

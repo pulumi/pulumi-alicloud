@@ -4,6 +4,7 @@
 package cen
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -122,6 +123,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// CEN bandwidth limit can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cen/bandwidthLimit:BandwidthLimit example cen-abc123456:cn-beijing:eu-west-1
+// ```
 type BandwidthLimit struct {
 	pulumi.CustomResourceState
 
@@ -212,4 +221,43 @@ type BandwidthLimitArgs struct {
 
 func (BandwidthLimitArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bandwidthLimitArgs)(nil)).Elem()
+}
+
+type BandwidthLimitInput interface {
+	pulumi.Input
+
+	ToBandwidthLimitOutput() BandwidthLimitOutput
+	ToBandwidthLimitOutputWithContext(ctx context.Context) BandwidthLimitOutput
+}
+
+func (BandwidthLimit) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthLimit)(nil)).Elem()
+}
+
+func (i BandwidthLimit) ToBandwidthLimitOutput() BandwidthLimitOutput {
+	return i.ToBandwidthLimitOutputWithContext(context.Background())
+}
+
+func (i BandwidthLimit) ToBandwidthLimitOutputWithContext(ctx context.Context) BandwidthLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitOutput)
+}
+
+type BandwidthLimitOutput struct {
+	*pulumi.OutputState
+}
+
+func (BandwidthLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthLimitOutput)(nil)).Elem()
+}
+
+func (o BandwidthLimitOutput) ToBandwidthLimitOutput() BandwidthLimitOutput {
+	return o
+}
+
+func (o BandwidthLimitOutput) ToBandwidthLimitOutputWithContext(ctx context.Context) BandwidthLimitOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BandwidthLimitOutput{})
 }

@@ -39,6 +39,14 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The network acl can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpc/networkAcl:NetworkAcl default nacl-abc123456
+    /// ```
     /// </summary>
     public partial class NetworkAcl : Pulumi.CustomResource
     {

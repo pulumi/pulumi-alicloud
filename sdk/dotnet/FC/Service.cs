@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.FC
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Function Compute Service can be imported using the id or name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:fc/service:Service foo my-fc-service
+    /// ```
+    /// </summary>
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ess
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Ess lifecycle hook can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
+    /// ```
+    /// </summary>
     public partial class LifecycleHook : Pulumi.CustomResource
     {
         /// <summary>

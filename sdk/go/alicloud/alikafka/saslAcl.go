@@ -4,6 +4,7 @@
 package alikafka
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -105,6 +106,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ALIKAFKA GROUP can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
 // ```
 type SaslAcl struct {
 	pulumi.CustomResourceState
@@ -241,4 +250,43 @@ type SaslAclArgs struct {
 
 func (SaslAclArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*saslAclArgs)(nil)).Elem()
+}
+
+type SaslAclInput interface {
+	pulumi.Input
+
+	ToSaslAclOutput() SaslAclOutput
+	ToSaslAclOutputWithContext(ctx context.Context) SaslAclOutput
+}
+
+func (SaslAcl) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaslAcl)(nil)).Elem()
+}
+
+func (i SaslAcl) ToSaslAclOutput() SaslAclOutput {
+	return i.ToSaslAclOutputWithContext(context.Background())
+}
+
+func (i SaslAcl) ToSaslAclOutputWithContext(ctx context.Context) SaslAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaslAclOutput)
+}
+
+type SaslAclOutput struct {
+	*pulumi.OutputState
+}
+
+func (SaslAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaslAclOutput)(nil)).Elem()
+}
+
+func (o SaslAclOutput) ToSaslAclOutput() SaslAclOutput {
+	return o
+}
+
+func (o SaslAclOutput) ToSaslAclOutputWithContext(ctx context.Context) SaslAclOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SaslAclOutput{})
 }

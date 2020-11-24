@@ -4,6 +4,7 @@
 package slb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -81,6 +82,14 @@ import (
 //
 // * `entry` - (Required) An IP addresses or CIDR blocks.
 // * `comment` - (Optional) the comment of the entry.
+//
+// ## Import
+//
+// Server Load balancer access control list can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:slb/acl:Acl example acl-abc123456
+// ```
 type Acl struct {
 	pulumi.CustomResourceState
 
@@ -182,4 +191,43 @@ type AclArgs struct {
 
 func (AclArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclArgs)(nil)).Elem()
+}
+
+type AclInput interface {
+	pulumi.Input
+
+	ToAclOutput() AclOutput
+	ToAclOutputWithContext(ctx context.Context) AclOutput
+}
+
+func (Acl) ElementType() reflect.Type {
+	return reflect.TypeOf((*Acl)(nil)).Elem()
+}
+
+func (i Acl) ToAclOutput() AclOutput {
+	return i.ToAclOutputWithContext(context.Background())
+}
+
+func (i Acl) ToAclOutputWithContext(ctx context.Context) AclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclOutput)
+}
+
+type AclOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclOutput)(nil)).Elem()
+}
+
+func (o AclOutput) ToAclOutput() AclOutput {
+	return o
+}
+
+func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AclOutput{})
 }

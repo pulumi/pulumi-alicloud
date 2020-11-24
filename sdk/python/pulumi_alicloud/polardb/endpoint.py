@@ -60,6 +60,14 @@ class Endpoint(pulumi.CustomResource):
             endpoint_type="Custom")
         ```
 
+        ## Import
+
+        PolarDB endpoint can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:polardb/endpoint:Endpoint example pc-abc123456:pe-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. Default to `Disable`.

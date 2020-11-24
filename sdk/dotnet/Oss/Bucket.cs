@@ -302,6 +302,14 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// OSS bucket can be imported using the bucket name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
+    /// ```
     /// </summary>
     public partial class Bucket : Pulumi.CustomResource
     {

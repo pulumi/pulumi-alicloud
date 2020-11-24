@@ -4,6 +4,7 @@
 package cen
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -63,6 +64,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CEN VBR HealthCheck can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
 // ```
 type VbrHealthCheck struct {
 	pulumi.CustomResourceState
@@ -207,4 +216,43 @@ type VbrHealthCheckArgs struct {
 
 func (VbrHealthCheckArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vbrHealthCheckArgs)(nil)).Elem()
+}
+
+type VbrHealthCheckInput interface {
+	pulumi.Input
+
+	ToVbrHealthCheckOutput() VbrHealthCheckOutput
+	ToVbrHealthCheckOutputWithContext(ctx context.Context) VbrHealthCheckOutput
+}
+
+func (VbrHealthCheck) ElementType() reflect.Type {
+	return reflect.TypeOf((*VbrHealthCheck)(nil)).Elem()
+}
+
+func (i VbrHealthCheck) ToVbrHealthCheckOutput() VbrHealthCheckOutput {
+	return i.ToVbrHealthCheckOutputWithContext(context.Background())
+}
+
+func (i VbrHealthCheck) ToVbrHealthCheckOutputWithContext(ctx context.Context) VbrHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VbrHealthCheckOutput)
+}
+
+type VbrHealthCheckOutput struct {
+	*pulumi.OutputState
+}
+
+func (VbrHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VbrHealthCheckOutput)(nil)).Elem()
+}
+
+func (o VbrHealthCheckOutput) ToVbrHealthCheckOutput() VbrHealthCheckOutput {
+	return o
+}
+
+func (o VbrHealthCheckOutput) ToVbrHealthCheckOutputWithContext(ctx context.Context) VbrHealthCheckOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VbrHealthCheckOutput{})
 }

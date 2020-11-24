@@ -25,7 +25,14 @@ class Attachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Attachment resource with the given unique name, props, and options.
+        ## Import
+
+        Load balancer attachment can be imported using the id or load balancer id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_servers: The backend servers of the load balancer.

@@ -22,7 +22,14 @@ class Group(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Group resource with the given unique name, props, and options.
+        ## Import
+
+        RAM group can be imported using the id or name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/group:Group example my-group
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comments: Comment of the RAM group. This parameter can have a string of 1 to 128 characters.

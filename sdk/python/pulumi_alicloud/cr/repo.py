@@ -50,6 +50,14 @@ class Repo(pulumi.CustomResource):
             detail="this is a public repo")
         ```
 
+        ## Import
+
+        Container Registry repository can be imported using the `namespace/repository`, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.

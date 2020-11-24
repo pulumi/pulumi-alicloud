@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Market order can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:marketplace/order:Order order your-order-id
+ * ```
+ */
 export class Order extends pulumi.CustomResource {
     /**
      * Get an existing Order resource's state with the given name, ID, and optional extra

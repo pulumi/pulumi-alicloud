@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Pvtz
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Private Zone can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:pvtz/zone:Zone example abc123456
+    /// ```
+    /// </summary>
     public partial class Zone : Pulumi.CustomResource
     {
         [Output("creationTime")]

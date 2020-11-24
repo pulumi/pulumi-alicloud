@@ -34,6 +34,14 @@ namespace Pulumi.AliCloud.Datahub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Datahub subscription can be imported using the ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:datahub/subscription:Subscription example tf_datahub_project:tf_datahub_topic:1539073399567UgCzY
+    /// ```
     /// </summary>
     public partial class Subscription : Pulumi.CustomResource
     {

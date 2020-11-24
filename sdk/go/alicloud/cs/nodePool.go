@@ -4,6 +4,7 @@
 package cs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -267,4 +268,43 @@ type NodePoolArgs struct {
 
 func (NodePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodePoolArgs)(nil)).Elem()
+}
+
+type NodePoolInput interface {
+	pulumi.Input
+
+	ToNodePoolOutput() NodePoolOutput
+	ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput
+}
+
+func (NodePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePool)(nil)).Elem()
+}
+
+func (i NodePool) ToNodePoolOutput() NodePoolOutput {
+	return i.ToNodePoolOutputWithContext(context.Background())
+}
+
+func (i NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolOutput)
+}
+
+type NodePoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (NodePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolOutput)(nil)).Elem()
+}
+
+func (o NodePoolOutput) ToNodePoolOutput() NodePoolOutput {
+	return o
+}
+
+func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NodePoolOutput{})
 }

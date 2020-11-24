@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Log
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Log machine group can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
+    /// ```
+    /// </summary>
     public partial class MachineGroup : Pulumi.CustomResource
     {
         /// <summary>

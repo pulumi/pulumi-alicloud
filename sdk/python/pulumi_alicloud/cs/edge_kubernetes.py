@@ -53,7 +53,14 @@ class EdgeKubernetes(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a EdgeKubernetes resource with the given unique name, props, and options.
+        ## Import
+
+        Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`
+
+        ```sh
+         $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes alicloud_cs_edge_kubernetes.main cluster-id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The ID of availability zone.

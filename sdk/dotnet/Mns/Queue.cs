@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Mns
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// MNS QUEUE can be imported using the id or name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:mns/queue:Queue queue queuename
+    /// ```
+    /// </summary>
     public partial class Queue : Pulumi.CustomResource
     {
         /// <summary>

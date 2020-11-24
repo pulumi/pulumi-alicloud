@@ -21,7 +21,14 @@ class RouteTableAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a RouteTableAttachment resource with the given unique name, props, and options.
+        ## Import
+
+        The route table attachemnt can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] route_table_id: The route_table_id of the route table attachment, the field can't be changed.

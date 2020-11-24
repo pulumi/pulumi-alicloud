@@ -4,6 +4,7 @@
 package rocketmq
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -47,6 +48,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// The Sag DnatEntry can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
 // ```
 type DnatEntry struct {
 	pulumi.CustomResourceState
@@ -187,4 +196,43 @@ type DnatEntryArgs struct {
 
 func (DnatEntryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnatEntryArgs)(nil)).Elem()
+}
+
+type DnatEntryInput interface {
+	pulumi.Input
+
+	ToDnatEntryOutput() DnatEntryOutput
+	ToDnatEntryOutputWithContext(ctx context.Context) DnatEntryOutput
+}
+
+func (DnatEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnatEntry)(nil)).Elem()
+}
+
+func (i DnatEntry) ToDnatEntryOutput() DnatEntryOutput {
+	return i.ToDnatEntryOutputWithContext(context.Background())
+}
+
+func (i DnatEntry) ToDnatEntryOutputWithContext(ctx context.Context) DnatEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryOutput)
+}
+
+type DnatEntryOutput struct {
+	*pulumi.OutputState
+}
+
+func (DnatEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnatEntryOutput)(nil)).Elem()
+}
+
+func (o DnatEntryOutput) ToDnatEntryOutput() DnatEntryOutput {
+	return o
+}
+
+func (o DnatEntryOutput) ToDnatEntryOutputWithContext(ctx context.Context) DnatEntryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DnatEntryOutput{})
 }

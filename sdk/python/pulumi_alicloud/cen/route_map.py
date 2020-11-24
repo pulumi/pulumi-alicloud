@@ -115,6 +115,14 @@ class RouteMap(pulumi.CustomResource):
                 ]))
         ```
 
+        ## Import
+
+        CEN RouteMap can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] as_path_match_mode: A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].

@@ -36,6 +36,14 @@ class Project(pulumi.CustomResource):
         example = alicloud.datahub.Project("example", comment="created by terraform")
         ```
 
+        ## Import
+
+        Datahub project can be imported using the *name* or ID, e.g.
+
+        ```sh
+         $ pulumi import alicloud:datahub/project:Project example tf_datahub_project
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comment of the datahub project. It cannot be longer than 255 characters.

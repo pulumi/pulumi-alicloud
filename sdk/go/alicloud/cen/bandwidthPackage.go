@@ -4,6 +4,7 @@
 package cen
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -40,6 +41,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CEN bandwidth package can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
 // ```
 type BandwidthPackage struct {
 	pulumi.CustomResourceState
@@ -237,4 +246,43 @@ type BandwidthPackageArgs struct {
 
 func (BandwidthPackageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bandwidthPackageArgs)(nil)).Elem()
+}
+
+type BandwidthPackageInput interface {
+	pulumi.Input
+
+	ToBandwidthPackageOutput() BandwidthPackageOutput
+	ToBandwidthPackageOutputWithContext(ctx context.Context) BandwidthPackageOutput
+}
+
+func (BandwidthPackage) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthPackage)(nil)).Elem()
+}
+
+func (i BandwidthPackage) ToBandwidthPackageOutput() BandwidthPackageOutput {
+	return i.ToBandwidthPackageOutputWithContext(context.Background())
+}
+
+func (i BandwidthPackage) ToBandwidthPackageOutputWithContext(ctx context.Context) BandwidthPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageOutput)
+}
+
+type BandwidthPackageOutput struct {
+	*pulumi.OutputState
+}
+
+func (BandwidthPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthPackageOutput)(nil)).Elem()
+}
+
+func (o BandwidthPackageOutput) ToBandwidthPackageOutput() BandwidthPackageOutput {
+	return o
+}
+
+func (o BandwidthPackageOutput) ToBandwidthPackageOutputWithContext(ctx context.Context) BandwidthPackageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BandwidthPackageOutput{})
 }

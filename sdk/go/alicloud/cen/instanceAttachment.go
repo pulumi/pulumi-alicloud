@@ -4,6 +4,7 @@
 package cen
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -59,6 +60,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CEN instance can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cen/instanceAttachment:InstanceAttachment example cen-m7i7pjmkon********:vpc-2ze2w07mcy9nz********:VPC:cn-beijing
 // ```
 type InstanceAttachment struct {
 	pulumi.CustomResourceState
@@ -189,4 +198,43 @@ type InstanceAttachmentArgs struct {
 
 func (InstanceAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceAttachmentArgs)(nil)).Elem()
+}
+
+type InstanceAttachmentInput interface {
+	pulumi.Input
+
+	ToInstanceAttachmentOutput() InstanceAttachmentOutput
+	ToInstanceAttachmentOutputWithContext(ctx context.Context) InstanceAttachmentOutput
+}
+
+func (InstanceAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAttachment)(nil)).Elem()
+}
+
+func (i InstanceAttachment) ToInstanceAttachmentOutput() InstanceAttachmentOutput {
+	return i.ToInstanceAttachmentOutputWithContext(context.Background())
+}
+
+func (i InstanceAttachment) ToInstanceAttachmentOutputWithContext(ctx context.Context) InstanceAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttachmentOutput)
+}
+
+type InstanceAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAttachmentOutput)(nil)).Elem()
+}
+
+func (o InstanceAttachmentOutput) ToInstanceAttachmentOutput() InstanceAttachmentOutput {
+	return o
+}
+
+func (o InstanceAttachmentOutput) ToInstanceAttachmentOutputWithContext(ctx context.Context) InstanceAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceAttachmentOutput{})
 }

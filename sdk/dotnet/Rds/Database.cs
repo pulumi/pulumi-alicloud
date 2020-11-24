@@ -58,6 +58,14 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RDS database can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:rds/database:Database example "rm-12345:tf_database"
+    /// ```
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {

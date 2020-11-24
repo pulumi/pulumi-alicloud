@@ -70,6 +70,14 @@ class Instance(pulumi.CustomResource):
 
         this is a example for class netType instance. you can find more detail with the examples/hbase dir.
 
+        ## Import
+
+        HBase can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:hbase/instance:Instance example hb-wz96815u13k659fvd
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: `true`, `false`, System default to `false`, valid when pay_type = PrePaid.

@@ -4,6 +4,7 @@
 package dms
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -50,6 +51,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// DMS Enterprise can be imported using host and port, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:dms/enterpriseInstance:EnterpriseInstance example rm-uf648hgs7874xxxx.mysql.rds.aliyuncs.com:3306
 // ```
 type EnterpriseInstance struct {
 	pulumi.CustomResourceState
@@ -412,4 +421,43 @@ type EnterpriseInstanceArgs struct {
 
 func (EnterpriseInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*enterpriseInstanceArgs)(nil)).Elem()
+}
+
+type EnterpriseInstanceInput interface {
+	pulumi.Input
+
+	ToEnterpriseInstanceOutput() EnterpriseInstanceOutput
+	ToEnterpriseInstanceOutputWithContext(ctx context.Context) EnterpriseInstanceOutput
+}
+
+func (EnterpriseInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseInstance)(nil)).Elem()
+}
+
+func (i EnterpriseInstance) ToEnterpriseInstanceOutput() EnterpriseInstanceOutput {
+	return i.ToEnterpriseInstanceOutputWithContext(context.Background())
+}
+
+func (i EnterpriseInstance) ToEnterpriseInstanceOutputWithContext(ctx context.Context) EnterpriseInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstanceOutput)
+}
+
+type EnterpriseInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (EnterpriseInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseInstanceOutput)(nil)).Elem()
+}
+
+func (o EnterpriseInstanceOutput) ToEnterpriseInstanceOutput() EnterpriseInstanceOutput {
+	return o
+}
+
+func (o EnterpriseInstanceOutput) ToEnterpriseInstanceOutputWithContext(ctx context.Context) EnterpriseInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EnterpriseInstanceOutput{})
 }

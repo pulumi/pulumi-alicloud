@@ -41,6 +41,14 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Resource Manager Resource Directory can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
+    /// ```
     /// </summary>
     public partial class ResourceDirectory : Pulumi.CustomResource
     {

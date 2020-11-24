@@ -4,6 +4,7 @@
 package ram
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -44,6 +45,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// RAM login profile can be imported using the id or user name, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
 // ```
 type LoginProfile struct {
 	pulumi.CustomResourceState
@@ -142,4 +151,43 @@ type LoginProfileArgs struct {
 
 func (LoginProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*loginProfileArgs)(nil)).Elem()
+}
+
+type LoginProfileInput interface {
+	pulumi.Input
+
+	ToLoginProfileOutput() LoginProfileOutput
+	ToLoginProfileOutputWithContext(ctx context.Context) LoginProfileOutput
+}
+
+func (LoginProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoginProfile)(nil)).Elem()
+}
+
+func (i LoginProfile) ToLoginProfileOutput() LoginProfileOutput {
+	return i.ToLoginProfileOutputWithContext(context.Background())
+}
+
+func (i LoginProfile) ToLoginProfileOutputWithContext(ctx context.Context) LoginProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoginProfileOutput)
+}
+
+type LoginProfileOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoginProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoginProfileOutput)(nil)).Elem()
+}
+
+func (o LoginProfileOutput) ToLoginProfileOutput() LoginProfileOutput {
+	return o
+}
+
+func (o LoginProfileOutput) ToLoginProfileOutputWithContext(ctx context.Context) LoginProfileOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LoginProfileOutput{})
 }

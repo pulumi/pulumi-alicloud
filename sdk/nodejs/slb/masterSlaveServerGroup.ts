@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -130,6 +129,14 @@ import * as utilities from "../utilities";
  * * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
  * * `serverType` - (Optional) The server type of the backend server. Valid value Master, Slave.
  * * `isBackup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1.
+ *
+ * ## Import
+ *
+ * Load balancer master slave server group can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
+ * ```
  */
 export class MasterSlaveServerGroup extends pulumi.CustomResource {
     /**

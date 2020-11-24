@@ -69,6 +69,14 @@ namespace Pulumi.AliCloud.CloudConnect
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The Cloud Connect Network Grant can be imported using the instance_id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cloudconnect/networkGrant:NetworkGrant example ccn-abc123456:cen-abc123456
+    /// ```
     /// </summary>
     public partial class NetworkGrant : Pulumi.CustomResource
     {

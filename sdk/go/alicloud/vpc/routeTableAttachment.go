@@ -4,12 +4,20 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// The route table attachemnt can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+// ```
 type RouteTableAttachment struct {
 	pulumi.CustomResourceState
 
@@ -87,4 +95,43 @@ type RouteTableAttachmentArgs struct {
 
 func (RouteTableAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeTableAttachmentArgs)(nil)).Elem()
+}
+
+type RouteTableAttachmentInput interface {
+	pulumi.Input
+
+	ToRouteTableAttachmentOutput() RouteTableAttachmentOutput
+	ToRouteTableAttachmentOutputWithContext(ctx context.Context) RouteTableAttachmentOutput
+}
+
+func (RouteTableAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTableAttachment)(nil)).Elem()
+}
+
+func (i RouteTableAttachment) ToRouteTableAttachmentOutput() RouteTableAttachmentOutput {
+	return i.ToRouteTableAttachmentOutputWithContext(context.Background())
+}
+
+func (i RouteTableAttachment) ToRouteTableAttachmentOutputWithContext(ctx context.Context) RouteTableAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTableAttachmentOutput)
+}
+
+type RouteTableAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteTableAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTableAttachmentOutput)(nil)).Elem()
+}
+
+func (o RouteTableAttachmentOutput) ToRouteTableAttachmentOutput() RouteTableAttachmentOutput {
+	return o
+}
+
+func (o RouteTableAttachmentOutput) ToRouteTableAttachmentOutputWithContext(ctx context.Context) RouteTableAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouteTableAttachmentOutput{})
 }

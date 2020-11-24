@@ -39,6 +39,14 @@ class Project(pulumi.CustomResource):
             specification_type="OdpsStandard")
         ```
 
+        ## Import
+
+        MaxCompute project can be imported using the *name* or ID, e.g.
+
+        ```sh
+         $ pulumi import alicloud:maxcompute/project:Project example tf_maxcompute_project
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the maxcompute project.

@@ -214,6 +214,14 @@ class Bucket(pulumi.CustomResource):
             redundancy_type="ZRS")
         ```
 
+        ## Import
+
+        OSS bucket can be imported using the bucket name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
@@ -255,7 +263,7 @@ class Bucket(pulumi.CustomResource):
             __props__['lifecycle_rules'] = lifecycle_rules
             __props__['logging'] = logging
             if logging_isenable is not None:
-                warnings.warn("Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.", DeprecationWarning)
+                warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
                 pulumi.log.warn("logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.")
             __props__['logging_isenable'] = logging_isenable
             __props__['policy'] = policy

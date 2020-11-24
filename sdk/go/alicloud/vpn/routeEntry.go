@@ -4,12 +4,20 @@
 package vpn
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// VPN route entry can be imported using the id(VpnGatewayId +":"+ NextHop +":"+ RouteDest), e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpn/routeEntry:RouteEntry example vpn-abc123456:vco-abc123456:10.0.0.10/24
+// ```
 type RouteEntry struct {
 	pulumi.CustomResourceState
 
@@ -126,4 +134,43 @@ type RouteEntryArgs struct {
 
 func (RouteEntryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeEntryArgs)(nil)).Elem()
+}
+
+type RouteEntryInput interface {
+	pulumi.Input
+
+	ToRouteEntryOutput() RouteEntryOutput
+	ToRouteEntryOutputWithContext(ctx context.Context) RouteEntryOutput
+}
+
+func (RouteEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteEntry)(nil)).Elem()
+}
+
+func (i RouteEntry) ToRouteEntryOutput() RouteEntryOutput {
+	return i.ToRouteEntryOutputWithContext(context.Background())
+}
+
+func (i RouteEntry) ToRouteEntryOutputWithContext(ctx context.Context) RouteEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryOutput)
+}
+
+type RouteEntryOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteEntryOutput)(nil)).Elem()
+}
+
+func (o RouteEntryOutput) ToRouteEntryOutput() RouteEntryOutput {
+	return o
+}
+
+func (o RouteEntryOutput) ToRouteEntryOutputWithContext(ctx context.Context) RouteEntryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouteEntryOutput{})
 }

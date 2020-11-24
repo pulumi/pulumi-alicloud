@@ -4,6 +4,7 @@
 package ess
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -163,6 +164,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ESS attachment can be imported using the id or scaling group id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ess/attachment:Attachment example asg-abc123456
+// ```
 type Attachment struct {
 	pulumi.CustomResourceState
 
@@ -250,4 +259,43 @@ type AttachmentArgs struct {
 
 func (AttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*attachmentArgs)(nil)).Elem()
+}
+
+type AttachmentInput interface {
+	pulumi.Input
+
+	ToAttachmentOutput() AttachmentOutput
+	ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput
+}
+
+func (Attachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*Attachment)(nil)).Elem()
+}
+
+func (i Attachment) ToAttachmentOutput() AttachmentOutput {
+	return i.ToAttachmentOutputWithContext(context.Background())
+}
+
+func (i Attachment) ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachmentOutput)
+}
+
+type AttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (AttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachmentOutput)(nil)).Elem()
+}
+
+func (o AttachmentOutput) ToAttachmentOutput() AttachmentOutput {
+	return o
+}
+
+func (o AttachmentOutput) ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AttachmentOutput{})
 }

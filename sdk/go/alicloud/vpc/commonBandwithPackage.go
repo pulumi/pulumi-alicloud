@@ -4,12 +4,20 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// The common bandwidth package can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage foo cbwp-abc123456
+// ```
 type CommonBandwithPackage struct {
 	pulumi.CustomResourceState
 
@@ -134,4 +142,43 @@ type CommonBandwithPackageArgs struct {
 
 func (CommonBandwithPackageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*commonBandwithPackageArgs)(nil)).Elem()
+}
+
+type CommonBandwithPackageInput interface {
+	pulumi.Input
+
+	ToCommonBandwithPackageOutput() CommonBandwithPackageOutput
+	ToCommonBandwithPackageOutputWithContext(ctx context.Context) CommonBandwithPackageOutput
+}
+
+func (CommonBandwithPackage) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonBandwithPackage)(nil)).Elem()
+}
+
+func (i CommonBandwithPackage) ToCommonBandwithPackageOutput() CommonBandwithPackageOutput {
+	return i.ToCommonBandwithPackageOutputWithContext(context.Background())
+}
+
+func (i CommonBandwithPackage) ToCommonBandwithPackageOutputWithContext(ctx context.Context) CommonBandwithPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageOutput)
+}
+
+type CommonBandwithPackageOutput struct {
+	*pulumi.OutputState
+}
+
+func (CommonBandwithPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonBandwithPackageOutput)(nil)).Elem()
+}
+
+func (o CommonBandwithPackageOutput) ToCommonBandwithPackageOutput() CommonBandwithPackageOutput {
+	return o
+}
+
+func (o CommonBandwithPackageOutput) ToCommonBandwithPackageOutputWithContext(ctx context.Context) CommonBandwithPackageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CommonBandwithPackageOutput{})
 }

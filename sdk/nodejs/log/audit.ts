@@ -51,6 +51,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Log alert can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:log/audit:Audit example tf-audit-test
+ * ```
  */
 export class Audit extends pulumi.CustomResource {
     /**

@@ -39,6 +39,14 @@ class Alias(pulumi.CustomResource):
             key_id=this_key.id)
         ```
 
+        ## Import
+
+        KMS alias can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias_name: The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.

@@ -44,6 +44,14 @@ class KeyPair(pulumi.CustomResource):
             public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
         ```
 
+        ## Import
+
+        Key pair can be imported using the name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.

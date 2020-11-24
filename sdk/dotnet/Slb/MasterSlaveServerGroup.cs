@@ -173,6 +173,14 @@ namespace Pulumi.AliCloud.Slb
     /// * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
     /// * `server_type` - (Optional) The server type of the backend server. Valid value Master, Slave.
     /// * `is_backup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1.
+    /// 
+    /// ## Import
+    /// 
+    /// Load balancer master slave server group can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
+    /// ```
     /// </summary>
     public partial class MasterSlaveServerGroup : Pulumi.CustomResource
     {

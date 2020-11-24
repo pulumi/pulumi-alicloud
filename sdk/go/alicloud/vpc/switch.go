@@ -4,12 +4,20 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Vswitch can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpc/switch:Switch example vsw-abc123456
+// ```
 type Switch struct {
 	pulumi.CustomResourceState
 
@@ -130,4 +138,43 @@ type SwitchArgs struct {
 
 func (SwitchArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*switchArgs)(nil)).Elem()
+}
+
+type SwitchInput interface {
+	pulumi.Input
+
+	ToSwitchOutput() SwitchOutput
+	ToSwitchOutputWithContext(ctx context.Context) SwitchOutput
+}
+
+func (Switch) ElementType() reflect.Type {
+	return reflect.TypeOf((*Switch)(nil)).Elem()
+}
+
+func (i Switch) ToSwitchOutput() SwitchOutput {
+	return i.ToSwitchOutputWithContext(context.Background())
+}
+
+func (i Switch) ToSwitchOutputWithContext(ctx context.Context) SwitchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchOutput)
+}
+
+type SwitchOutput struct {
+	*pulumi.OutputState
+}
+
+func (SwitchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchOutput)(nil)).Elem()
+}
+
+func (o SwitchOutput) ToSwitchOutput() SwitchOutput {
+	return o
+}
+
+func (o SwitchOutput) ToSwitchOutputWithContext(ctx context.Context) SwitchOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SwitchOutput{})
 }

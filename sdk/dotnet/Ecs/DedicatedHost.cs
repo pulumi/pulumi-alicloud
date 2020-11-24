@@ -70,6 +70,14 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Ecs dedicated host can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ecs/dedicatedHost:DedicatedHost default dh-2zedmxxxx
+    /// ```
     /// </summary>
     public partial class DedicatedHost : Pulumi.CustomResource
     {

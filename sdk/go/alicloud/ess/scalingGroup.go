@@ -4,12 +4,20 @@
 package ess
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// ESS scaling group can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
+// ```
 type ScalingGroup struct {
 	pulumi.CustomResourceState
 
@@ -292,4 +300,43 @@ type ScalingGroupArgs struct {
 
 func (ScalingGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingGroupArgs)(nil)).Elem()
+}
+
+type ScalingGroupInput interface {
+	pulumi.Input
+
+	ToScalingGroupOutput() ScalingGroupOutput
+	ToScalingGroupOutputWithContext(ctx context.Context) ScalingGroupOutput
+}
+
+func (ScalingGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingGroup)(nil)).Elem()
+}
+
+func (i ScalingGroup) ToScalingGroupOutput() ScalingGroupOutput {
+	return i.ToScalingGroupOutputWithContext(context.Background())
+}
+
+func (i ScalingGroup) ToScalingGroupOutputWithContext(ctx context.Context) ScalingGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupOutput)
+}
+
+type ScalingGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScalingGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingGroupOutput)(nil)).Elem()
+}
+
+func (o ScalingGroupOutput) ToScalingGroupOutput() ScalingGroupOutput {
+	return o
+}
+
+func (o ScalingGroupOutput) ToScalingGroupOutputWithContext(ctx context.Context) ScalingGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ScalingGroupOutput{})
 }

@@ -36,6 +36,14 @@ import * as utilities from "../utilities";
  *
  * const foo_file = new alicloud.slb.CaCertificate("foo-file", {caCertificate: fs.readFileSync(`${path.module}/ca_certificate.pem`)});
  * ```
+ *
+ * ## Import
+ *
+ * Server Load balancer CA Certificate can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:slb/caCertificate:CaCertificate example abc123456
+ * ```
  */
 export class CaCertificate extends pulumi.CustomResource {
     /**

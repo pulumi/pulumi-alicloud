@@ -4,6 +4,7 @@
 package rds
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -90,6 +91,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// RDS readonly instance can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:rds/readOnlyInstance:ReadOnlyInstance example rm-abc12345678
 // ```
 type ReadOnlyInstance struct {
 	pulumi.CustomResourceState
@@ -282,4 +291,43 @@ type ReadOnlyInstanceArgs struct {
 
 func (ReadOnlyInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*readOnlyInstanceArgs)(nil)).Elem()
+}
+
+type ReadOnlyInstanceInput interface {
+	pulumi.Input
+
+	ToReadOnlyInstanceOutput() ReadOnlyInstanceOutput
+	ToReadOnlyInstanceOutputWithContext(ctx context.Context) ReadOnlyInstanceOutput
+}
+
+func (ReadOnlyInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReadOnlyInstance)(nil)).Elem()
+}
+
+func (i ReadOnlyInstance) ToReadOnlyInstanceOutput() ReadOnlyInstanceOutput {
+	return i.ToReadOnlyInstanceOutputWithContext(context.Background())
+}
+
+func (i ReadOnlyInstance) ToReadOnlyInstanceOutputWithContext(ctx context.Context) ReadOnlyInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstanceOutput)
+}
+
+type ReadOnlyInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReadOnlyInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReadOnlyInstanceOutput)(nil)).Elem()
+}
+
+func (o ReadOnlyInstanceOutput) ToReadOnlyInstanceOutput() ReadOnlyInstanceOutput {
+	return o
+}
+
+func (o ReadOnlyInstanceOutput) ToReadOnlyInstanceOutputWithContext(ctx context.Context) ReadOnlyInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReadOnlyInstanceOutput{})
 }

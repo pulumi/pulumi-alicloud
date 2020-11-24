@@ -4,6 +4,7 @@
 package kms
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -41,6 +42,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Alikms key version can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:kms/keyVersion:KeyVersion example 72da539a-2fa8-4f2d-b854-*****
 // ```
 type KeyVersion struct {
 	pulumi.CustomResourceState
@@ -118,4 +127,43 @@ type KeyVersionArgs struct {
 
 func (KeyVersionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyVersionArgs)(nil)).Elem()
+}
+
+type KeyVersionInput interface {
+	pulumi.Input
+
+	ToKeyVersionOutput() KeyVersionOutput
+	ToKeyVersionOutputWithContext(ctx context.Context) KeyVersionOutput
+}
+
+func (KeyVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVersion)(nil)).Elem()
+}
+
+func (i KeyVersion) ToKeyVersionOutput() KeyVersionOutput {
+	return i.ToKeyVersionOutputWithContext(context.Background())
+}
+
+func (i KeyVersion) ToKeyVersionOutputWithContext(ctx context.Context) KeyVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionOutput)
+}
+
+type KeyVersionOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVersionOutput)(nil)).Elem()
+}
+
+func (o KeyVersionOutput) ToKeyVersionOutput() KeyVersionOutput {
+	return o
+}
+
+func (o KeyVersionOutput) ToKeyVersionOutputWithContext(ctx context.Context) KeyVersionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KeyVersionOutput{})
 }

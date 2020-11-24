@@ -40,6 +40,14 @@ import * as utilities from "../utilities";
  *     dependsOn: [defaultInstanceAttachment],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * CEN VBR HealthCheck can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
+ * ```
  */
 export class VbrHealthCheck extends pulumi.CustomResource {
     /**

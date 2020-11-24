@@ -13,6 +13,14 @@ namespace Pulumi.AliCloud.Edas
     /// Creates an EDAS ecs application on EDAS. The application will be deployed when `group_id` and `war_url` are given.
     /// 
     /// &gt; **NOTE:** Available in 1.82.0+
+    /// 
+    /// ## Import
+    /// 
+    /// EDAS application can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:edas/application:Application app app_Id
+    /// ```
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

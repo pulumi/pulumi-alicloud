@@ -4,6 +4,7 @@
 package eci
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -129,4 +130,43 @@ type OpenApiImageCacheArgs struct {
 
 func (OpenApiImageCacheArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*openApiImageCacheArgs)(nil)).Elem()
+}
+
+type OpenApiImageCacheInput interface {
+	pulumi.Input
+
+	ToOpenApiImageCacheOutput() OpenApiImageCacheOutput
+	ToOpenApiImageCacheOutputWithContext(ctx context.Context) OpenApiImageCacheOutput
+}
+
+func (OpenApiImageCache) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiImageCache)(nil)).Elem()
+}
+
+func (i OpenApiImageCache) ToOpenApiImageCacheOutput() OpenApiImageCacheOutput {
+	return i.ToOpenApiImageCacheOutputWithContext(context.Background())
+}
+
+func (i OpenApiImageCache) ToOpenApiImageCacheOutputWithContext(ctx context.Context) OpenApiImageCacheOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiImageCacheOutput)
+}
+
+type OpenApiImageCacheOutput struct {
+	*pulumi.OutputState
+}
+
+func (OpenApiImageCacheOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiImageCacheOutput)(nil)).Elem()
+}
+
+func (o OpenApiImageCacheOutput) ToOpenApiImageCacheOutput() OpenApiImageCacheOutput {
+	return o
+}
+
+func (o OpenApiImageCacheOutput) ToOpenApiImageCacheOutputWithContext(ctx context.Context) OpenApiImageCacheOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OpenApiImageCacheOutput{})
 }

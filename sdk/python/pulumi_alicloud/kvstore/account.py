@@ -68,6 +68,14 @@ class Account(pulumi.CustomResource):
             instance_id=default_instance.id)
         ```
 
+        ## Import
+
+        KVStore account can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.

@@ -25,7 +25,14 @@ class DnsDomain(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a DnsDomain resource with the given unique name, props, and options.
+        ## Import
+
+        DNS domain can be imported using the id or domain name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dns/dnsDomain:DnsDomain example aliyun.com
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.

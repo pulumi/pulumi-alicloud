@@ -59,6 +59,14 @@ import * as utilities from "../utilities";
  *     aclOperationType: "Write",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ALIKAFKA GROUP can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+ * ```
  */
 export class SaslAcl extends pulumi.CustomResource {
     /**

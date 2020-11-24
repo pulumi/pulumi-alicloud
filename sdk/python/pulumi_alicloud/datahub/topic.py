@@ -66,6 +66,14 @@ class Topic(pulumi.CustomResource):
             shard_count=3)
         ```
 
+        ## Import
+
+        Datahub topic can be imported using the ID, e.g.
+
+        ```sh
+         $ pulumi import alicloud:datahub/topic:Topic example tf_datahub_project:tf_datahub_topic
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.

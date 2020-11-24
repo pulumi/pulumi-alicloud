@@ -51,6 +51,14 @@ import * as utilities from "../utilities";
  *     notificationArn: pulumi.all([defaultRegions, defaultAccount, defaultQueue.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:ess:${defaultRegions.regions[0].id}:${defaultAccount.id}:queue/${name}`),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Ess notification can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ess/notification:Notification example 'scaling_group_id:notification_arn'
+ * ```
  */
 export class Notification extends pulumi.CustomResource {
     /**

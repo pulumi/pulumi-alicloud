@@ -85,6 +85,14 @@ class Instance(pulumi.CustomResource):
             monitoring_period=60)
         ```
 
+        ## Import
+
+        RDS instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rds/instance:Instance example rm-abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
@@ -176,7 +184,7 @@ class Instance(pulumi.CustomResource):
             __props__['period'] = period
             __props__['resource_group_id'] = resource_group_id
             if security_group_id is not None:
-                warnings.warn("Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.", DeprecationWarning)
+                warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
                 pulumi.log.warn("security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.")
             __props__['security_group_id'] = security_group_id
             __props__['security_group_ids'] = security_group_ids

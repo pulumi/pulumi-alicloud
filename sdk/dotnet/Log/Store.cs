@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Log
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Log store can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:log/store:Store example tf-log:tf-log-store
+    /// ```
+    /// </summary>
     public partial class Store : Pulumi.CustomResource
     {
         /// <summary>

@@ -54,7 +54,7 @@ class GetAccessGroupsResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         if type is not None:
-            warnings.warn("Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.", DeprecationWarning)
+            warnings.warn("""Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.""", DeprecationWarning)
             pulumi.log.warn("type is deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.")
 
         pulumi.set(__self__, "type", type)

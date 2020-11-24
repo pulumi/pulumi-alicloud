@@ -26,7 +26,14 @@ class ZoneRecord(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ZoneRecord resource with the given unique name, props, and options.
+        ## Import
+
+        Private Zone Record can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.

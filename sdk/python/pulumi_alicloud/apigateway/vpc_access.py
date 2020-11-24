@@ -23,7 +23,14 @@ class VpcAccess(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a VpcAccess resource with the given unique name, props, and options.
+        ## Import
+
+        Api gateway app can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of the instance in VPC (ECS/Server Load Balance).

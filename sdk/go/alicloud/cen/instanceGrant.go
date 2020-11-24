@@ -4,6 +4,7 @@
 package cen
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,6 +84,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CEN instance can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
 // ```
 type InstanceGrant struct {
 	pulumi.CustomResourceState
@@ -174,4 +183,43 @@ type InstanceGrantArgs struct {
 
 func (InstanceGrantArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceGrantArgs)(nil)).Elem()
+}
+
+type InstanceGrantInput interface {
+	pulumi.Input
+
+	ToInstanceGrantOutput() InstanceGrantOutput
+	ToInstanceGrantOutputWithContext(ctx context.Context) InstanceGrantOutput
+}
+
+func (InstanceGrant) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGrant)(nil)).Elem()
+}
+
+func (i InstanceGrant) ToInstanceGrantOutput() InstanceGrantOutput {
+	return i.ToInstanceGrantOutputWithContext(context.Background())
+}
+
+func (i InstanceGrant) ToInstanceGrantOutputWithContext(ctx context.Context) InstanceGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGrantOutput)
+}
+
+type InstanceGrantOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGrantOutput)(nil)).Elem()
+}
+
+func (o InstanceGrantOutput) ToInstanceGrantOutput() InstanceGrantOutput {
+	return o
+}
+
+func (o InstanceGrantOutput) ToInstanceGrantOutputWithContext(ctx context.Context) InstanceGrantOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceGrantOutput{})
 }

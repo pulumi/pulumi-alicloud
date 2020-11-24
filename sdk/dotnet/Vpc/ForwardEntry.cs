@@ -66,6 +66,14 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Forward Entry can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry foo ftb-1aece3:fwd-232ce2
+    /// ```
     /// </summary>
     public partial class ForwardEntry : Pulumi.CustomResource
     {

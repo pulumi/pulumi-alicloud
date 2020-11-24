@@ -29,6 +29,14 @@ class PolicyAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.93.0+.
 
+        ## Import
+
+        Resource Manager Policy Attachment can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).

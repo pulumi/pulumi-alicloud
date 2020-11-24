@@ -52,6 +52,14 @@ class ClientUser(pulumi.CustomResource):
             user_name="th-username-xxxxx")
         ```
 
+        ## Import
+
+        The Sag ClientUser can be imported using the name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.

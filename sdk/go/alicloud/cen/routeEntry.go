@@ -4,6 +4,7 @@
 package cen
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -149,6 +150,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// CEN instance can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cen/routeEntry:RouteEntry example cen-abc123456:vtb-abc123:192.168.0.0/24
+// ```
 type RouteEntry struct {
 	pulumi.CustomResourceState
 
@@ -239,4 +248,43 @@ type RouteEntryArgs struct {
 
 func (RouteEntryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeEntryArgs)(nil)).Elem()
+}
+
+type RouteEntryInput interface {
+	pulumi.Input
+
+	ToRouteEntryOutput() RouteEntryOutput
+	ToRouteEntryOutputWithContext(ctx context.Context) RouteEntryOutput
+}
+
+func (RouteEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteEntry)(nil)).Elem()
+}
+
+func (i RouteEntry) ToRouteEntryOutput() RouteEntryOutput {
+	return i.ToRouteEntryOutputWithContext(context.Background())
+}
+
+func (i RouteEntry) ToRouteEntryOutputWithContext(ctx context.Context) RouteEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryOutput)
+}
+
+type RouteEntryOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteEntryOutput)(nil)).Elem()
+}
+
+func (o RouteEntryOutput) ToRouteEntryOutput() RouteEntryOutput {
+	return o
+}
+
+func (o RouteEntryOutput) ToRouteEntryOutputWithContext(ctx context.Context) RouteEntryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouteEntryOutput{})
 }

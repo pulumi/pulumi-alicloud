@@ -4,6 +4,7 @@
 package ram
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -186,4 +187,43 @@ type AccessKeyArgs struct {
 
 func (AccessKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessKeyArgs)(nil)).Elem()
+}
+
+type AccessKeyInput interface {
+	pulumi.Input
+
+	ToAccessKeyOutput() AccessKeyOutput
+	ToAccessKeyOutputWithContext(ctx context.Context) AccessKeyOutput
+}
+
+func (AccessKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKey)(nil)).Elem()
+}
+
+func (i AccessKey) ToAccessKeyOutput() AccessKeyOutput {
+	return i.ToAccessKeyOutputWithContext(context.Background())
+}
+
+func (i AccessKey) ToAccessKeyOutputWithContext(ctx context.Context) AccessKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessKeyOutput)
+}
+
+type AccessKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeyOutput)(nil)).Elem()
+}
+
+func (o AccessKeyOutput) ToAccessKeyOutput() AccessKeyOutput {
+	return o
+}
+
+func (o AccessKeyOutput) ToAccessKeyOutputWithContext(ctx context.Context) AccessKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessKeyOutput{})
 }

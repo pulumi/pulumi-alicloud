@@ -47,6 +47,14 @@ class ImageSharePermission(pulumi.CustomResource):
 
         * `id` - ID of the image. It formats as `<image_id>:<account_id>`
 
+        ## Import
+
+        image can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Alibaba Cloud Account ID. It is used to share images.

@@ -43,6 +43,14 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The Sag ClientUser can be imported using the name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
+    /// ```
     /// </summary>
     public partial class ClientUser : Pulumi.CustomResource
     {

@@ -22,6 +22,14 @@ import * as utilities from "../utilities";
  *     groupName: _var.group_name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EDAS deploy group can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:edas/deployGroup:DeployGroup group app_id:group_name:group_id
+ * ```
  */
 export class DeployGroup extends pulumi.CustomResource {
     /**

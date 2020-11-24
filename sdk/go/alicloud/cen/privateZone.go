@@ -4,6 +4,7 @@
 package cen
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -69,6 +70,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// CEN Private Zone can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
 // ```
 type PrivateZone struct {
 	pulumi.CustomResourceState
@@ -179,4 +188,43 @@ type PrivateZoneArgs struct {
 
 func (PrivateZoneArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*privateZoneArgs)(nil)).Elem()
+}
+
+type PrivateZoneInput interface {
+	pulumi.Input
+
+	ToPrivateZoneOutput() PrivateZoneOutput
+	ToPrivateZoneOutputWithContext(ctx context.Context) PrivateZoneOutput
+}
+
+func (PrivateZone) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateZone)(nil)).Elem()
+}
+
+func (i PrivateZone) ToPrivateZoneOutput() PrivateZoneOutput {
+	return i.ToPrivateZoneOutputWithContext(context.Background())
+}
+
+func (i PrivateZone) ToPrivateZoneOutputWithContext(ctx context.Context) PrivateZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateZoneOutput)
+}
+
+type PrivateZoneOutput struct {
+	*pulumi.OutputState
+}
+
+func (PrivateZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateZoneOutput)(nil)).Elem()
+}
+
+func (o PrivateZoneOutput) ToPrivateZoneOutput() PrivateZoneOutput {
+	return o
+}
+
+func (o PrivateZoneOutput) ToPrivateZoneOutputWithContext(ctx context.Context) PrivateZoneOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PrivateZoneOutput{})
 }

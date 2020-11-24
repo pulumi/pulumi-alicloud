@@ -68,6 +68,14 @@ class Domain(pulumi.CustomResource):
             source_ips=["1.1.1.1"])
         ```
 
+        ## Import
+
+        WAF domain can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_type: The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
@@ -111,7 +119,7 @@ class Domain(pulumi.CustomResource):
             __props__['cluster_type'] = cluster_type
             __props__['connection_time'] = connection_time
             if domain is not None:
-                warnings.warn("Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.", DeprecationWarning)
+                warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.")
             __props__['domain'] = domain
             __props__['domain_name'] = domain_name

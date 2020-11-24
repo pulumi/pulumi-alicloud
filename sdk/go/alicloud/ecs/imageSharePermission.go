@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -48,6 +49,14 @@ import (
 //  The following attributes are exported:
 //
 // * `id` - ID of the image. It formats as `<image_id>:<account_id>`
+//
+// ## Import
+//
+// image can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
+// ```
 type ImageSharePermission struct {
 	pulumi.CustomResourceState
 
@@ -125,4 +134,43 @@ type ImageSharePermissionArgs struct {
 
 func (ImageSharePermissionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageSharePermissionArgs)(nil)).Elem()
+}
+
+type ImageSharePermissionInput interface {
+	pulumi.Input
+
+	ToImageSharePermissionOutput() ImageSharePermissionOutput
+	ToImageSharePermissionOutputWithContext(ctx context.Context) ImageSharePermissionOutput
+}
+
+func (ImageSharePermission) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageSharePermission)(nil)).Elem()
+}
+
+func (i ImageSharePermission) ToImageSharePermissionOutput() ImageSharePermissionOutput {
+	return i.ToImageSharePermissionOutputWithContext(context.Background())
+}
+
+func (i ImageSharePermission) ToImageSharePermissionOutputWithContext(ctx context.Context) ImageSharePermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageSharePermissionOutput)
+}
+
+type ImageSharePermissionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageSharePermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageSharePermissionOutput)(nil)).Elem()
+}
+
+func (o ImageSharePermissionOutput) ToImageSharePermissionOutput() ImageSharePermissionOutput {
+	return o
+}
+
+func (o ImageSharePermissionOutput) ToImageSharePermissionOutputWithContext(ctx context.Context) ImageSharePermissionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ImageSharePermissionOutput{})
 }

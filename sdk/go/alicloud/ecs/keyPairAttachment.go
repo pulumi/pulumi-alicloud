@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -226,4 +227,43 @@ type KeyPairAttachmentArgs struct {
 
 func (KeyPairAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyPairAttachmentArgs)(nil)).Elem()
+}
+
+type KeyPairAttachmentInput interface {
+	pulumi.Input
+
+	ToKeyPairAttachmentOutput() KeyPairAttachmentOutput
+	ToKeyPairAttachmentOutputWithContext(ctx context.Context) KeyPairAttachmentOutput
+}
+
+func (KeyPairAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyPairAttachment)(nil)).Elem()
+}
+
+func (i KeyPairAttachment) ToKeyPairAttachmentOutput() KeyPairAttachmentOutput {
+	return i.ToKeyPairAttachmentOutputWithContext(context.Background())
+}
+
+func (i KeyPairAttachment) ToKeyPairAttachmentOutputWithContext(ctx context.Context) KeyPairAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyPairAttachmentOutput)
+}
+
+type KeyPairAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyPairAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyPairAttachmentOutput)(nil)).Elem()
+}
+
+func (o KeyPairAttachmentOutput) ToKeyPairAttachmentOutput() KeyPairAttachmentOutput {
+	return o
+}
+
+func (o KeyPairAttachmentOutput) ToKeyPairAttachmentOutputWithContext(ctx context.Context) KeyPairAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KeyPairAttachmentOutput{})
 }

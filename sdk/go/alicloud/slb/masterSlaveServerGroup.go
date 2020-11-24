@@ -4,6 +4,7 @@
 package slb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,14 @@ import (
 // * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
 // * `serverType` - (Optional) The server type of the backend server. Valid value Master, Slave.
 // * `isBackup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1.
+//
+// ## Import
+//
+// Load balancer master slave server group can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
+// ```
 type MasterSlaveServerGroup struct {
 	pulumi.CustomResourceState
 
@@ -130,4 +139,43 @@ type MasterSlaveServerGroupArgs struct {
 
 func (MasterSlaveServerGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*masterSlaveServerGroupArgs)(nil)).Elem()
+}
+
+type MasterSlaveServerGroupInput interface {
+	pulumi.Input
+
+	ToMasterSlaveServerGroupOutput() MasterSlaveServerGroupOutput
+	ToMasterSlaveServerGroupOutputWithContext(ctx context.Context) MasterSlaveServerGroupOutput
+}
+
+func (MasterSlaveServerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*MasterSlaveServerGroup)(nil)).Elem()
+}
+
+func (i MasterSlaveServerGroup) ToMasterSlaveServerGroupOutput() MasterSlaveServerGroupOutput {
+	return i.ToMasterSlaveServerGroupOutputWithContext(context.Background())
+}
+
+func (i MasterSlaveServerGroup) ToMasterSlaveServerGroupOutputWithContext(ctx context.Context) MasterSlaveServerGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupOutput)
+}
+
+type MasterSlaveServerGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (MasterSlaveServerGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MasterSlaveServerGroupOutput)(nil)).Elem()
+}
+
+func (o MasterSlaveServerGroupOutput) ToMasterSlaveServerGroupOutput() MasterSlaveServerGroupOutput {
+	return o
+}
+
+func (o MasterSlaveServerGroupOutput) ToMasterSlaveServerGroupOutputWithContext(ctx context.Context) MasterSlaveServerGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MasterSlaveServerGroupOutput{})
 }

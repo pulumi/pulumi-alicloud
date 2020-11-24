@@ -28,7 +28,14 @@ class Trigger(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Trigger resource with the given unique name, props, and options.
+        ## Import
+
+        Function Compute trigger can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:fc/trigger:Trigger foo my-fc-service:hello-world:hello-trigger
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.

@@ -62,6 +62,14 @@ class EndpointAddress(pulumi.CustomResource):
             net_type="Public")
         ```
 
+        ## Import
+
+        PolarDB endpoint address can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_prefix: Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.

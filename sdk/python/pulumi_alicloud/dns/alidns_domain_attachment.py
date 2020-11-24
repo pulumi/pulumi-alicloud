@@ -39,6 +39,14 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
             instance_id="dns-cn-mp91lyq9xxxx")
         ```
 
+        ## Import
+
+        DNS domain attachment can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: The domain names bound to the DNS instance.

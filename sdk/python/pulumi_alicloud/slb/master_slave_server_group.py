@@ -137,6 +137,14 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         * `server_type` - (Optional) The server type of the backend server. Valid value Master, Slave.
         * `is_backup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1.
 
+        ## Import
+
+        Load balancer master slave server group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.

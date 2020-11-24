@@ -31,6 +31,14 @@ namespace Pulumi.AliCloud.Slb
     /// * `port` - (Required) The port used by the backend server. Valid value range: [1-65535].
     /// * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
     /// * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
+    /// 
+    /// ## Import
+    /// 
+    /// Load balancer backend server group can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:slb/serverGroup:ServerGroup example abc123456
+    /// ```
     /// </summary>
     public partial class ServerGroup : Pulumi.CustomResource
     {

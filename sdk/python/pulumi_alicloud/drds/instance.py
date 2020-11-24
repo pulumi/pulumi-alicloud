@@ -50,6 +50,14 @@ class Instance(pulumi.CustomResource):
             zone_id="cn-hangzhou-e")
         ```
 
+        ## Import
+
+        Distributed Relational Database Service (DRDS) can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.

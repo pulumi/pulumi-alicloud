@@ -40,6 +40,14 @@ class Account(pulumi.CustomResource):
             folder_id=f1.id)
         ```
 
+        ## Import
+
+        Resource Manager Account can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).

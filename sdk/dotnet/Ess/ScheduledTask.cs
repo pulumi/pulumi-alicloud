@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ess
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// ESS schedule task can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ess/scheduledTask:ScheduledTask example abc123456
+    /// ```
+    /// </summary>
     public partial class ScheduledTask : Pulumi.CustomResource
     {
         /// <summary>

@@ -174,6 +174,14 @@ class Listener(pulumi.CustomResource):
 
         The listener mapping supports the following:
 
+        ## Import
+
+        Load balancer listener can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/listener:Listener example "lb-abc123456:22"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_id: the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
@@ -261,15 +269,15 @@ class Listener(pulumi.CustomResource):
             __props__['healthy_threshold'] = healthy_threshold
             __props__['idle_timeout'] = idle_timeout
             if instance_port is not None:
-                warnings.warn("Field 'instance_port' has been deprecated, and using 'backend_port' to replace.", DeprecationWarning)
+                warnings.warn("""Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""", DeprecationWarning)
                 pulumi.log.warn("instance_port is deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.")
             __props__['instance_port'] = instance_port
             if lb_port is not None:
-                warnings.warn("Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.", DeprecationWarning)
+                warnings.warn("""Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""", DeprecationWarning)
                 pulumi.log.warn("lb_port is deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.")
             __props__['lb_port'] = lb_port
             if lb_protocol is not None:
-                warnings.warn("Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.", DeprecationWarning)
+                warnings.warn("""Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""", DeprecationWarning)
                 pulumi.log.warn("lb_protocol is deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.")
             __props__['lb_protocol'] = lb_protocol
             __props__['listener_forward'] = listener_forward
@@ -286,7 +294,7 @@ class Listener(pulumi.CustomResource):
             __props__['server_certificate_id'] = server_certificate_id
             __props__['server_group_id'] = server_group_id
             if ssl_certificate_id is not None:
-                warnings.warn("Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.", DeprecationWarning)
+                warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
                 pulumi.log.warn("ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.")
             __props__['ssl_certificate_id'] = ssl_certificate_id
             __props__['sticky_session'] = sticky_session

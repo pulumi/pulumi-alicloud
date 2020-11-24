@@ -90,6 +90,14 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Function Compute Function Async Invoke Configs can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig example my_function
+    /// ```
     /// </summary>
     public partial class FunctionAsyncInvokeConfig : Pulumi.CustomResource
     {

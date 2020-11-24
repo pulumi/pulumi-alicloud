@@ -4,12 +4,20 @@
 package pvtz
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Private Zone Record can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
+// ```
 type ZoneRecord struct {
 	pulumi.CustomResourceState
 
@@ -149,4 +157,43 @@ type ZoneRecordArgs struct {
 
 func (ZoneRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneRecordArgs)(nil)).Elem()
+}
+
+type ZoneRecordInput interface {
+	pulumi.Input
+
+	ToZoneRecordOutput() ZoneRecordOutput
+	ToZoneRecordOutputWithContext(ctx context.Context) ZoneRecordOutput
+}
+
+func (ZoneRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneRecord)(nil)).Elem()
+}
+
+func (i ZoneRecord) ToZoneRecordOutput() ZoneRecordOutput {
+	return i.ToZoneRecordOutputWithContext(context.Background())
+}
+
+func (i ZoneRecord) ToZoneRecordOutputWithContext(ctx context.Context) ZoneRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneRecordOutput)
+}
+
+type ZoneRecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneRecordOutput)(nil)).Elem()
+}
+
+func (o ZoneRecordOutput) ToZoneRecordOutput() ZoneRecordOutput {
+	return o
+}
+
+func (o ZoneRecordOutput) ToZoneRecordOutputWithContext(ctx context.Context) ZoneRecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ZoneRecordOutput{})
 }

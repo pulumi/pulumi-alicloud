@@ -54,6 +54,14 @@ class Group(pulumi.CustomResource):
             remark="dafault_ons_group_remark")
         ```
 
+        ## Import
+
+        ONS GROUP can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rocketmq/group:Group group MQ_INST_1234567890_Baso1234567:GID-onsGroupDemo
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: Replaced by `group_name` after version 1.98.0.
@@ -84,7 +92,7 @@ class Group(pulumi.CustomResource):
             __props__ = dict()
 
             if group_id is not None:
-                warnings.warn("Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.", DeprecationWarning)
+                warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.")
             __props__['group_id'] = group_id
             __props__['group_name'] = group_name

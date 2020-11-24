@@ -4,6 +4,7 @@
 package ram
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -52,6 +53,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// RAM Group Policy attachment can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
 // ```
 type GroupPolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -143,4 +152,43 @@ type GroupPolicyAttachmentArgs struct {
 
 func (GroupPolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupPolicyAttachmentArgs)(nil)).Elem()
+}
+
+type GroupPolicyAttachmentInput interface {
+	pulumi.Input
+
+	ToGroupPolicyAttachmentOutput() GroupPolicyAttachmentOutput
+	ToGroupPolicyAttachmentOutputWithContext(ctx context.Context) GroupPolicyAttachmentOutput
+}
+
+func (GroupPolicyAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupPolicyAttachment)(nil)).Elem()
+}
+
+func (i GroupPolicyAttachment) ToGroupPolicyAttachmentOutput() GroupPolicyAttachmentOutput {
+	return i.ToGroupPolicyAttachmentOutputWithContext(context.Background())
+}
+
+func (i GroupPolicyAttachment) ToGroupPolicyAttachmentOutputWithContext(ctx context.Context) GroupPolicyAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupPolicyAttachmentOutput)
+}
+
+type GroupPolicyAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupPolicyAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupPolicyAttachmentOutput)(nil)).Elem()
+}
+
+func (o GroupPolicyAttachmentOutput) ToGroupPolicyAttachmentOutput() GroupPolicyAttachmentOutput {
+	return o
+}
+
+func (o GroupPolicyAttachmentOutput) ToGroupPolicyAttachmentOutputWithContext(ctx context.Context) GroupPolicyAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GroupPolicyAttachmentOutput{})
 }

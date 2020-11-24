@@ -37,6 +37,14 @@ import * as utilities from "../utilities";
  *     roleName: "testrd",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Resource Manager can be imported using the id or role_name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:resourcemanager/role:Role example testrd
+ * ```
  */
 export class Role extends pulumi.CustomResource {
     /**

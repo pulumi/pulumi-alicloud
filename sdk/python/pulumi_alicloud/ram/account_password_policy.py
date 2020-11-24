@@ -28,7 +28,14 @@ class AccountPasswordPolicy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a AccountPasswordPolicy resource with the given unique name, props, and options.
+        ## Import
+
+        RAM account password policy can be imported using the `id`, e.g. bash
+
+        ```sh
+         $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] hard_expiry: Specifies if a password can expire in a hard way. Default to false.

@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,6 +43,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// reservedInstance can be imported using id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
 // ```
 type ReservedInstance struct {
 	pulumi.CustomResourceState
@@ -202,4 +211,43 @@ type ReservedInstanceArgs struct {
 
 func (ReservedInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservedInstanceArgs)(nil)).Elem()
+}
+
+type ReservedInstanceInput interface {
+	pulumi.Input
+
+	ToReservedInstanceOutput() ReservedInstanceOutput
+	ToReservedInstanceOutputWithContext(ctx context.Context) ReservedInstanceOutput
+}
+
+func (ReservedInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservedInstance)(nil)).Elem()
+}
+
+func (i ReservedInstance) ToReservedInstanceOutput() ReservedInstanceOutput {
+	return i.ToReservedInstanceOutputWithContext(context.Background())
+}
+
+func (i ReservedInstance) ToReservedInstanceOutputWithContext(ctx context.Context) ReservedInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservedInstanceOutput)
+}
+
+type ReservedInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReservedInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservedInstanceOutput)(nil)).Elem()
+}
+
+func (o ReservedInstanceOutput) ToReservedInstanceOutput() ReservedInstanceOutput {
+	return o
+}
+
+func (o ReservedInstanceOutput) ToReservedInstanceOutputWithContext(ctx context.Context) ReservedInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReservedInstanceOutput{})
 }

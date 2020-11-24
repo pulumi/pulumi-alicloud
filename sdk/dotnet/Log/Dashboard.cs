@@ -74,6 +74,14 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Log Dashboard can be imported using the id or name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
+    /// ```
     /// </summary>
     public partial class Dashboard : Pulumi.CustomResource
     {

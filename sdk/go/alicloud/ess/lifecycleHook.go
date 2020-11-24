@@ -4,12 +4,20 @@
 package ess
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Ess lifecycle hook can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
+// ```
 type LifecycleHook struct {
 	pulumi.CustomResourceState
 
@@ -137,4 +145,43 @@ type LifecycleHookArgs struct {
 
 func (LifecycleHookArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*lifecycleHookArgs)(nil)).Elem()
+}
+
+type LifecycleHookInput interface {
+	pulumi.Input
+
+	ToLifecycleHookOutput() LifecycleHookOutput
+	ToLifecycleHookOutputWithContext(ctx context.Context) LifecycleHookOutput
+}
+
+func (LifecycleHook) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecycleHook)(nil)).Elem()
+}
+
+func (i LifecycleHook) ToLifecycleHookOutput() LifecycleHookOutput {
+	return i.ToLifecycleHookOutputWithContext(context.Background())
+}
+
+func (i LifecycleHook) ToLifecycleHookOutputWithContext(ctx context.Context) LifecycleHookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecycleHookOutput)
+}
+
+type LifecycleHookOutput struct {
+	*pulumi.OutputState
+}
+
+func (LifecycleHookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecycleHookOutput)(nil)).Elem()
+}
+
+func (o LifecycleHookOutput) ToLifecycleHookOutput() LifecycleHookOutput {
+	return o
+}
+
+func (o LifecycleHookOutput) ToLifecycleHookOutputWithContext(ctx context.Context) LifecycleHookOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LifecycleHookOutput{})
 }

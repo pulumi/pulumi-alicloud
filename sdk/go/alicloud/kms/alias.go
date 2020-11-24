@@ -4,6 +4,7 @@
 package kms
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,6 +43,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// KMS alias can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
 // ```
 type Alias struct {
 	pulumi.CustomResourceState
@@ -120,4 +129,43 @@ type AliasArgs struct {
 
 func (AliasArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aliasArgs)(nil)).Elem()
+}
+
+type AliasInput interface {
+	pulumi.Input
+
+	ToAliasOutput() AliasOutput
+	ToAliasOutputWithContext(ctx context.Context) AliasOutput
+}
+
+func (Alias) ElementType() reflect.Type {
+	return reflect.TypeOf((*Alias)(nil)).Elem()
+}
+
+func (i Alias) ToAliasOutput() AliasOutput {
+	return i.ToAliasOutputWithContext(context.Background())
+}
+
+func (i Alias) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasOutput)
+}
+
+type AliasOutput struct {
+	*pulumi.OutputState
+}
+
+func (AliasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AliasOutput)(nil)).Elem()
+}
+
+func (o AliasOutput) ToAliasOutput() AliasOutput {
+	return o
+}
+
+func (o AliasOutput) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AliasOutput{})
 }

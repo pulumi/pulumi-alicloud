@@ -63,6 +63,14 @@ class UserPolicyAttachment(pulumi.CustomResource):
             user_name=user.name)
         ```
 
+        ## Import
+
+        RAM User Policy attachment can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.

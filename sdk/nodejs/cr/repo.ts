@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -31,6 +30,14 @@ import * as utilities from "../utilities";
  *     repoType: "PUBLIC",
  *     detail: "this is a public repo",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Container Registry repository can be imported using the `namespace/repository`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
  * ```
  */
 export class Repo extends pulumi.CustomResource {

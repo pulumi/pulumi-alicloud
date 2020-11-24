@@ -24,7 +24,14 @@ class Network(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Network resource with the given unique name, props, and options.
+        ## Import
+
+        VPC can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/network:Network example vpc-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The CIDR block for the VPC.

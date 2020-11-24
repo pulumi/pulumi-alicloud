@@ -44,6 +44,14 @@ class Cluster(pulumi.CustomResource):
             vpc_id=var["vpc_id"])
         ```
 
+        ## Import
+
+        EDAS cluster can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: The name of the cluster that you want to create.

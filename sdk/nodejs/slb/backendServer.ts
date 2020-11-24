@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -78,6 +77,14 @@ import * as utilities from "../utilities";
  * * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100].
  * * `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`. Default to `ecs`.
  * * `serverIp` - (Optional, Available in 1.93.0+) ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
+ *
+ * ## Import
+ *
+ * Load balancer backend server can be imported using the load balancer id.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:slb/backendServer:BackendServer example lb-abc123456
+ * ```
  */
 export class BackendServer extends pulumi.CustomResource {
     /**

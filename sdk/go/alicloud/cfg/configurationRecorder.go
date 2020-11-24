@@ -4,6 +4,7 @@
 package cfg
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -40,6 +41,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Alicloud Config Configuration Recorder can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cfg/configurationRecorder:ConfigurationRecorder example 122378463********
 // ```
 type ConfigurationRecorder struct {
 	pulumi.CustomResourceState
@@ -130,4 +139,43 @@ type ConfigurationRecorderArgs struct {
 
 func (ConfigurationRecorderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*configurationRecorderArgs)(nil)).Elem()
+}
+
+type ConfigurationRecorderInput interface {
+	pulumi.Input
+
+	ToConfigurationRecorderOutput() ConfigurationRecorderOutput
+	ToConfigurationRecorderOutputWithContext(ctx context.Context) ConfigurationRecorderOutput
+}
+
+func (ConfigurationRecorder) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationRecorder)(nil)).Elem()
+}
+
+func (i ConfigurationRecorder) ToConfigurationRecorderOutput() ConfigurationRecorderOutput {
+	return i.ToConfigurationRecorderOutputWithContext(context.Background())
+}
+
+func (i ConfigurationRecorder) ToConfigurationRecorderOutputWithContext(ctx context.Context) ConfigurationRecorderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationRecorderOutput)
+}
+
+type ConfigurationRecorderOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConfigurationRecorderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationRecorderOutput)(nil)).Elem()
+}
+
+func (o ConfigurationRecorderOutput) ToConfigurationRecorderOutput() ConfigurationRecorderOutput {
+	return o
+}
+
+func (o ConfigurationRecorderOutput) ToConfigurationRecorderOutputWithContext(ctx context.Context) ConfigurationRecorderOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConfigurationRecorderOutput{})
 }

@@ -4,6 +4,7 @@
 package resourcemanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -38,6 +39,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Resource Manager Resource Group can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
 // ```
 type ResourceGroup struct {
 	pulumi.CustomResourceState
@@ -137,4 +146,43 @@ type ResourceGroupArgs struct {
 
 func (ResourceGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceGroupArgs)(nil)).Elem()
+}
+
+type ResourceGroupInput interface {
+	pulumi.Input
+
+	ToResourceGroupOutput() ResourceGroupOutput
+	ToResourceGroupOutputWithContext(ctx context.Context) ResourceGroupOutput
+}
+
+func (ResourceGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroup)(nil)).Elem()
+}
+
+func (i ResourceGroup) ToResourceGroupOutput() ResourceGroupOutput {
+	return i.ToResourceGroupOutputWithContext(context.Background())
+}
+
+func (i ResourceGroup) ToResourceGroupOutputWithContext(ctx context.Context) ResourceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupOutput)
+}
+
+type ResourceGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupOutput)(nil)).Elem()
+}
+
+func (o ResourceGroupOutput) ToResourceGroupOutput() ResourceGroupOutput {
+	return o
+}
+
+func (o ResourceGroupOutput) ToResourceGroupOutputWithContext(ctx context.Context) ResourceGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResourceGroupOutput{})
 }

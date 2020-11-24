@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ram
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// RAM user can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ram/user:User example 123456789xxx
+    /// ```
+    /// </summary>
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>

@@ -49,6 +49,14 @@ class Secret(pulumi.CustomResource):
             version_id="000000000001")
         ```
 
+        ## Import
+
+        KMS secret can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:kms/secret:Secret default secret-foo
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the secret.

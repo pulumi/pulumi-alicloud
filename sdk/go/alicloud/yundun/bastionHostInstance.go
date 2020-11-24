@@ -4,6 +4,7 @@
 package yundun
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -46,6 +47,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Yundun_bastionhost instance can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
 // ```
 type BastionHostInstance struct {
 	pulumi.CustomResourceState
@@ -180,4 +189,43 @@ type BastionHostInstanceArgs struct {
 
 func (BastionHostInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bastionHostInstanceArgs)(nil)).Elem()
+}
+
+type BastionHostInstanceInput interface {
+	pulumi.Input
+
+	ToBastionHostInstanceOutput() BastionHostInstanceOutput
+	ToBastionHostInstanceOutputWithContext(ctx context.Context) BastionHostInstanceOutput
+}
+
+func (BastionHostInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*BastionHostInstance)(nil)).Elem()
+}
+
+func (i BastionHostInstance) ToBastionHostInstanceOutput() BastionHostInstanceOutput {
+	return i.ToBastionHostInstanceOutputWithContext(context.Background())
+}
+
+func (i BastionHostInstance) ToBastionHostInstanceOutputWithContext(ctx context.Context) BastionHostInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceOutput)
+}
+
+type BastionHostInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (BastionHostInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BastionHostInstanceOutput)(nil)).Elem()
+}
+
+func (o BastionHostInstanceOutput) ToBastionHostInstanceOutput() BastionHostInstanceOutput {
+	return o
+}
+
+func (o BastionHostInstanceOutput) ToBastionHostInstanceOutputWithContext(ctx context.Context) BastionHostInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BastionHostInstanceOutput{})
 }

@@ -50,6 +50,14 @@ class Trail(pulumi.CustomResource):
             trail_region="cn-hangzhou")
         ```
 
+        ## Import
+
+        Action trail can be imported using the id or trail_name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:actiontrail/trail:Trail default abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
@@ -85,7 +93,7 @@ class Trail(pulumi.CustomResource):
             __props__['is_organization_trail'] = is_organization_trail
             __props__['mns_topic_arn'] = mns_topic_arn
             if name is not None:
-                warnings.warn("Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.", DeprecationWarning)
+                warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.")
             __props__['name'] = name
             __props__['oss_bucket_name'] = oss_bucket_name

@@ -150,6 +150,14 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CEN RouteMap can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+    /// ```
     /// </summary>
     public partial class RouteMap : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -99,6 +100,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// The router interface connection can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection foo ri-abc123456
 // ```
 type RouterInterfaceConnection struct {
 	pulumi.CustomResourceState
@@ -202,4 +211,43 @@ type RouterInterfaceConnectionArgs struct {
 
 func (RouterInterfaceConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerInterfaceConnectionArgs)(nil)).Elem()
+}
+
+type RouterInterfaceConnectionInput interface {
+	pulumi.Input
+
+	ToRouterInterfaceConnectionOutput() RouterInterfaceConnectionOutput
+	ToRouterInterfaceConnectionOutputWithContext(ctx context.Context) RouterInterfaceConnectionOutput
+}
+
+func (RouterInterfaceConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterInterfaceConnection)(nil)).Elem()
+}
+
+func (i RouterInterfaceConnection) ToRouterInterfaceConnectionOutput() RouterInterfaceConnectionOutput {
+	return i.ToRouterInterfaceConnectionOutputWithContext(context.Background())
+}
+
+func (i RouterInterfaceConnection) ToRouterInterfaceConnectionOutputWithContext(ctx context.Context) RouterInterfaceConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceConnectionOutput)
+}
+
+type RouterInterfaceConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouterInterfaceConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterInterfaceConnectionOutput)(nil)).Elem()
+}
+
+func (o RouterInterfaceConnectionOutput) ToRouterInterfaceConnectionOutput() RouterInterfaceConnectionOutput {
+	return o
+}
+
+func (o RouterInterfaceConnectionOutput) ToRouterInterfaceConnectionOutputWithContext(ctx context.Context) RouterInterfaceConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouterInterfaceConnectionOutput{})
 }

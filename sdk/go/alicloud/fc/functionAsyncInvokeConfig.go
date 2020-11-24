@@ -4,6 +4,7 @@
 package fc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -97,6 +98,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Function Compute Function Async Invoke Configs can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig example my_function
 // ```
 type FunctionAsyncInvokeConfig struct {
 	pulumi.CustomResourceState
@@ -227,4 +236,43 @@ type FunctionAsyncInvokeConfigArgs struct {
 
 func (FunctionAsyncInvokeConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionAsyncInvokeConfigArgs)(nil)).Elem()
+}
+
+type FunctionAsyncInvokeConfigInput interface {
+	pulumi.Input
+
+	ToFunctionAsyncInvokeConfigOutput() FunctionAsyncInvokeConfigOutput
+	ToFunctionAsyncInvokeConfigOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigOutput
+}
+
+func (FunctionAsyncInvokeConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAsyncInvokeConfig)(nil)).Elem()
+}
+
+func (i FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigOutput() FunctionAsyncInvokeConfigOutput {
+	return i.ToFunctionAsyncInvokeConfigOutputWithContext(context.Background())
+}
+
+func (i FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigOutput)
+}
+
+type FunctionAsyncInvokeConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionAsyncInvokeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAsyncInvokeConfigOutput)(nil)).Elem()
+}
+
+func (o FunctionAsyncInvokeConfigOutput) ToFunctionAsyncInvokeConfigOutput() FunctionAsyncInvokeConfigOutput {
+	return o
+}
+
+func (o FunctionAsyncInvokeConfigOutput) ToFunctionAsyncInvokeConfigOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FunctionAsyncInvokeConfigOutput{})
 }

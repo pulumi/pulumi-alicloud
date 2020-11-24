@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -61,6 +60,14 @@ import * as utilities from "../utilities";
  * * `vswitchId` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.
  * * `weightedCapacity` - (Required) The weight of the instance type specified in the Nth extended configurations of the launch template.
  * * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
+ *
+ * ## Import
+ *
+ * ECS auto provisioning group can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
+ * ```
  */
 export class AutoProvisioningGroup extends pulumi.CustomResource {
     /**

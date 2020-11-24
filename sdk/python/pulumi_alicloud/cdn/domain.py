@@ -77,70 +77,70 @@ class Domain(pulumi.CustomResource):
             __props__ = dict()
 
             if auth_config is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("auth_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['auth_config'] = auth_config
             if block_ips is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("block_ips is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['block_ips'] = block_ips
             if cache_configs is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("cache_configs is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['cache_configs'] = cache_configs
             if cdn_type is None:
                 raise TypeError("Missing required property 'cdn_type'")
             __props__['cdn_type'] = cdn_type
             if certificate_config is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("certificate_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['certificate_config'] = certificate_config
             if domain_name is None:
                 raise TypeError("Missing required property 'domain_name'")
             __props__['domain_name'] = domain_name
             if http_header_configs is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("http_header_configs is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['http_header_configs'] = http_header_configs
             if optimize_enable is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("optimize_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['optimize_enable'] = optimize_enable
             if page404_config is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("page404_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['page404_config'] = page404_config
             if page_compress_enable is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("page_compress_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['page_compress_enable'] = page_compress_enable
             if parameter_filter_config is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("parameter_filter_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['parameter_filter_config'] = parameter_filter_config
             if range_enable is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("range_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['range_enable'] = range_enable
             if refer_config is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("refer_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['refer_config'] = refer_config
             __props__['scope'] = scope
             if source_port is not None:
-                warnings.warn("Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.""", DeprecationWarning)
                 pulumi.log.warn("source_port is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.")
             __props__['source_port'] = source_port
             if source_type is not None:
-                warnings.warn("Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.""", DeprecationWarning)
                 pulumi.log.warn("source_type is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.")
             __props__['source_type'] = source_type
             if sources is not None:
-                warnings.warn("Use `alicloud_cdn_domain_new` configuration `sources` argument instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` argument instead.""", DeprecationWarning)
                 pulumi.log.warn("sources is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` argument instead.")
             __props__['sources'] = sources
             if video_seek_enable is not None:
-                warnings.warn("Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.", DeprecationWarning)
+                warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
                 pulumi.log.warn("video_seek_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")
             __props__['video_seek_enable'] = video_seek_enable
         super(Domain, __self__).__init__(

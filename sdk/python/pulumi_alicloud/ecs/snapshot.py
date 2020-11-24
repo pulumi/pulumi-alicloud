@@ -42,6 +42,14 @@ class Snapshot(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Snapshot can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.

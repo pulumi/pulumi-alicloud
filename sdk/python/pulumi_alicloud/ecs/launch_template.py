@@ -115,6 +115,14 @@ class LaunchTemplate(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        Launch Template can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.

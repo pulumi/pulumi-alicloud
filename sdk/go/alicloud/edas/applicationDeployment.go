@@ -4,6 +4,7 @@
 package edas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -147,4 +148,43 @@ type ApplicationDeploymentArgs struct {
 
 func (ApplicationDeploymentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationDeploymentArgs)(nil)).Elem()
+}
+
+type ApplicationDeploymentInput interface {
+	pulumi.Input
+
+	ToApplicationDeploymentOutput() ApplicationDeploymentOutput
+	ToApplicationDeploymentOutputWithContext(ctx context.Context) ApplicationDeploymentOutput
+}
+
+func (ApplicationDeployment) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationDeployment)(nil)).Elem()
+}
+
+func (i ApplicationDeployment) ToApplicationDeploymentOutput() ApplicationDeploymentOutput {
+	return i.ToApplicationDeploymentOutputWithContext(context.Background())
+}
+
+func (i ApplicationDeployment) ToApplicationDeploymentOutputWithContext(ctx context.Context) ApplicationDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDeploymentOutput)
+}
+
+type ApplicationDeploymentOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationDeploymentOutput)(nil)).Elem()
+}
+
+func (o ApplicationDeploymentOutput) ToApplicationDeploymentOutput() ApplicationDeploymentOutput {
+	return o
+}
+
+func (o ApplicationDeploymentOutput) ToApplicationDeploymentOutputWithContext(ctx context.Context) ApplicationDeploymentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApplicationDeploymentOutput{})
 }

@@ -38,6 +38,14 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DMS Enterprise User can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
+    /// ```
     /// </summary>
     public partial class EnterpriseUser : Pulumi.CustomResource
     {

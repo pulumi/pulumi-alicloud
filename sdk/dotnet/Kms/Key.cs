@@ -36,6 +36,14 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Alikms key can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:kms/key:Key example abc123456
+    /// ```
     /// </summary>
     public partial class Key : Pulumi.CustomResource
     {

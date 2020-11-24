@@ -21,7 +21,14 @@ class Group(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Group resource with the given unique name, props, and options.
+        ## Import
+
+        Api gateway group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:apigateway/group:Group example "ab2351f2ce904edaa8d92a0510832b91"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the api gateway group. Defaults to null.

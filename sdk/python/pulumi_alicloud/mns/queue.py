@@ -25,7 +25,14 @@ class Queue(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Queue resource with the given unique name, props, and options.
+        ## Import
+
+        MNS QUEUE can be imported using the id or name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:mns/queue:Queue queue queuename
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] delay_seconds: This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.

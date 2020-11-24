@@ -33,7 +33,14 @@ class Alarm(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Alarm resource with the given unique name, props, and options.
+        ## Import
+
+        Ess alarm can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alarm_actions: The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.

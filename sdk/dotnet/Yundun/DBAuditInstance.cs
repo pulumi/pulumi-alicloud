@@ -41,6 +41,14 @@ namespace Pulumi.AliCloud.Yundun
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Yundun_dbaudit instance can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
+    /// ```
     /// </summary>
     public partial class DBAuditInstance : Pulumi.CustomResource
     {

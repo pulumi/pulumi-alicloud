@@ -9,6 +9,14 @@ import * as utilities from "../utilities";
  * For information about Resource Manager Policy Attachment and how to use it, see [How to authorize and manage resource groups](https://www.alibabacloud.com/help/en/doc-detail/94490.htm).
  *
  * > **NOTE:** Available in v1.93.0+.
+ *
+ * ## Import
+ *
+ * Resource Manager Policy Attachment can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
+ * ```
  */
 export class PolicyAttachment extends pulumi.CustomResource {
     /**

@@ -76,6 +76,14 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RAM Role Policy attachment can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:my-policy:Custom:my-role
+    /// ```
     /// </summary>
     public partial class RolePolicyAttachment : Pulumi.CustomResource
     {

@@ -38,6 +38,14 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// KMS secret can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:kms/secret:Secret default secret-foo
+    /// ```
     /// </summary>
     public partial class Secret : Pulumi.CustomResource
     {

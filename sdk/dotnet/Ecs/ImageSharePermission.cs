@@ -44,6 +44,14 @@ namespace Pulumi.AliCloud.Ecs
     ///  The following attributes are exported:
     /// 
     /// * `id` - ID of the image. It formats as `&lt;image_id&gt;:&lt;account_id&gt;`
+    /// 
+    /// ## Import
+    /// 
+    /// image can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
+    /// ```
     /// </summary>
     public partial class ImageSharePermission : Pulumi.CustomResource
     {

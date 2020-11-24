@@ -123,6 +123,14 @@ class Instance(pulumi.CustomResource):
             zone_id="cn-beijing-h")
         ```
 
+        ## Import
+
+        KVStore instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
@@ -193,7 +201,7 @@ class Instance(pulumi.CustomResource):
             __props__['auto_renew_period'] = auto_renew_period
             __props__['auto_use_coupon'] = auto_use_coupon
             if availability_zone is not None:
-                warnings.warn("Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.", DeprecationWarning)
+                warnings.warn("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""", DeprecationWarning)
                 pulumi.log.warn("availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.")
             __props__['availability_zone'] = availability_zone
             __props__['backup_id'] = backup_id
@@ -201,14 +209,14 @@ class Instance(pulumi.CustomResource):
             __props__['capacity'] = capacity
             __props__['config'] = config
             if connection_string_prefix is not None:
-                warnings.warn("Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.", DeprecationWarning)
+                warnings.warn("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
                 pulumi.log.warn("connection_string_prefix is deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.")
             __props__['connection_string_prefix'] = connection_string_prefix
             __props__['coupon_no'] = coupon_no
             __props__['db_instance_name'] = db_instance_name
             __props__['dedicated_host_group_id'] = dedicated_host_group_id
             if enable_public is not None:
-                warnings.warn("Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.", DeprecationWarning)
+                warnings.warn("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
                 pulumi.log.warn("enable_public is deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.")
             __props__['enable_public'] = enable_public
             __props__['engine_version'] = engine_version
@@ -216,12 +224,12 @@ class Instance(pulumi.CustomResource):
             __props__['global_instance'] = global_instance
             __props__['global_instance_id'] = global_instance_id
             if instance_charge_type is not None:
-                warnings.warn("Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.", DeprecationWarning)
+                warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
                 pulumi.log.warn("instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.")
             __props__['instance_charge_type'] = instance_charge_type
             __props__['instance_class'] = instance_class
             if instance_name is not None:
-                warnings.warn("Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.", DeprecationWarning)
+                warnings.warn("""Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("instance_name is deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.")
             __props__['instance_name'] = instance_name
             __props__['instance_release_protection'] = instance_release_protection
@@ -234,7 +242,7 @@ class Instance(pulumi.CustomResource):
             __props__['node_type'] = node_type
             __props__['order_type'] = order_type
             if parameters is not None:
-                warnings.warn("Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.", DeprecationWarning)
+                warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
                 pulumi.log.warn("parameters is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.")
             __props__['parameters'] = parameters
             __props__['password'] = password

@@ -26,7 +26,14 @@ class Instance(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        ## Import
+
+        DNS instance be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dns/instance:Instance example dns-cn-v0h1ldjhfff
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dns_security: DNS security level. Valid values: `no`, `basic`, `advanced`.

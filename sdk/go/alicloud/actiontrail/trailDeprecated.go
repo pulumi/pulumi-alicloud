@@ -4,11 +4,20 @@
 package actiontrail
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Action trail can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+// ```
+//
 // Deprecated: Resource renamed to `Trail`
 type TrailDeprecated struct {
 	pulumi.CustomResourceState
@@ -166,4 +175,43 @@ type TrailDeprecatedArgs struct {
 
 func (TrailDeprecatedArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*trailDeprecatedArgs)(nil)).Elem()
+}
+
+type TrailDeprecatedInput interface {
+	pulumi.Input
+
+	ToTrailDeprecatedOutput() TrailDeprecatedOutput
+	ToTrailDeprecatedOutputWithContext(ctx context.Context) TrailDeprecatedOutput
+}
+
+func (TrailDeprecated) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailDeprecated)(nil)).Elem()
+}
+
+func (i TrailDeprecated) ToTrailDeprecatedOutput() TrailDeprecatedOutput {
+	return i.ToTrailDeprecatedOutputWithContext(context.Background())
+}
+
+func (i TrailDeprecated) ToTrailDeprecatedOutputWithContext(ctx context.Context) TrailDeprecatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailDeprecatedOutput)
+}
+
+type TrailDeprecatedOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrailDeprecatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailDeprecatedOutput)(nil)).Elem()
+}
+
+func (o TrailDeprecatedOutput) ToTrailDeprecatedOutput() TrailDeprecatedOutput {
+	return o
+}
+
+func (o TrailDeprecatedOutput) ToTrailDeprecatedOutputWithContext(ctx context.Context) TrailDeprecatedOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TrailDeprecatedOutput{})
 }

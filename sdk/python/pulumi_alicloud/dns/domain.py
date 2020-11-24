@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['Domain']
 
-warnings.warn("This resource has been deprecated in favour of DnsDomain", DeprecationWarning)
+warnings.warn("""This resource has been deprecated in favour of DnsDomain""", DeprecationWarning)
 
 
 class Domain(pulumi.CustomResource):
-    warnings.warn("This resource has been deprecated in favour of DnsDomain", DeprecationWarning)
+    warnings.warn("""This resource has been deprecated in favour of DnsDomain""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,
@@ -26,7 +26,14 @@ class Domain(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Domain resource with the given unique name, props, and options.
+        ## Import
+
+        DNS can be imported using the id or domain name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dns/domain:Domain example "aliyun.com"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: Id of the group in which the domain will add. If not supplied, then use default group.

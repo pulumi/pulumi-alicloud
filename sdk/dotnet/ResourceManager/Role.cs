@@ -51,6 +51,14 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Resource Manager can be imported using the id or role_name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:resourcemanager/role:Role example testrd
+    /// ```
     /// </summary>
     public partial class Role : Pulumi.CustomResource
     {

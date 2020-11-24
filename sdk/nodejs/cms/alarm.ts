@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -36,6 +35,14 @@ import * as utilities from "../utilities";
  *     project: "acs_ecs_dashboard",
  *     webhook: pulumi.interpolate`https://${alicloud_account_current.id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/`,
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Alarm rule can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cms/alarm:Alarm alarm abc12345
  * ```
  */
 export class Alarm extends pulumi.CustomResource {

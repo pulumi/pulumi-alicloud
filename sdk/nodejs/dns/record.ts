@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * RDS record can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:dns/record:Record example abc123456
+ * ```
+ */
 export class Record extends pulumi.CustomResource {
     /**
      * Get an existing Record resource's state with the given name, ID, and optional extra

@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * The common bandwidth package can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage foo cbwp-abc123456
+ * ```
+ */
 export class CommonBandwithPackage extends pulumi.CustomResource {
     /**
      * Get an existing CommonBandwithPackage resource's state with the given name, ID, and optional extra

@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Api gateway app can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
+ * ```
+ */
 export class VpcAccess extends pulumi.CustomResource {
     /**
      * Get an existing VpcAccess resource's state with the given name, ID, and optional extra

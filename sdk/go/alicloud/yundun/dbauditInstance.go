@@ -4,6 +4,7 @@
 package yundun
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -44,6 +45,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Yundun_dbaudit instance can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
 // ```
 type DBAuditInstance struct {
 	pulumi.CustomResourceState
@@ -165,4 +174,43 @@ type DBAuditInstanceArgs struct {
 
 func (DBAuditInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbauditInstanceArgs)(nil)).Elem()
+}
+
+type DBAuditInstanceInput interface {
+	pulumi.Input
+
+	ToDBAuditInstanceOutput() DBAuditInstanceOutput
+	ToDBAuditInstanceOutputWithContext(ctx context.Context) DBAuditInstanceOutput
+}
+
+func (DBAuditInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*DBAuditInstance)(nil)).Elem()
+}
+
+func (i DBAuditInstance) ToDBAuditInstanceOutput() DBAuditInstanceOutput {
+	return i.ToDBAuditInstanceOutputWithContext(context.Background())
+}
+
+func (i DBAuditInstance) ToDBAuditInstanceOutputWithContext(ctx context.Context) DBAuditInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstanceOutput)
+}
+
+type DBAuditInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (DBAuditInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DBAuditInstanceOutput)(nil)).Elem()
+}
+
+func (o DBAuditInstanceOutput) ToDBAuditInstanceOutput() DBAuditInstanceOutput {
+	return o
+}
+
+func (o DBAuditInstanceOutput) ToDBAuditInstanceOutputWithContext(ctx context.Context) DBAuditInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DBAuditInstanceOutput{})
 }

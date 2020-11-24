@@ -56,6 +56,14 @@ class AlarmContact(pulumi.CustomResource):
             channels_mail="terraform.test.com")
         ```
 
+        ## Import
+
+        Alarm contact can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alarm_contact_name: The name of the alarm contact.

@@ -36,6 +36,14 @@ import * as utilities from "../utilities";
  *     privateIpsCount: 3,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ENI can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
+ * ```
  */
 export class NetworkInterface extends pulumi.CustomResource {
     /**

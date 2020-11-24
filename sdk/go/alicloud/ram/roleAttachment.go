@@ -4,6 +4,7 @@
 package ram
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,4 +89,43 @@ type RoleAttachmentArgs struct {
 
 func (RoleAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleAttachmentArgs)(nil)).Elem()
+}
+
+type RoleAttachmentInput interface {
+	pulumi.Input
+
+	ToRoleAttachmentOutput() RoleAttachmentOutput
+	ToRoleAttachmentOutputWithContext(ctx context.Context) RoleAttachmentOutput
+}
+
+func (RoleAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAttachment)(nil)).Elem()
+}
+
+func (i RoleAttachment) ToRoleAttachmentOutput() RoleAttachmentOutput {
+	return i.ToRoleAttachmentOutputWithContext(context.Background())
+}
+
+func (i RoleAttachment) ToRoleAttachmentOutputWithContext(ctx context.Context) RoleAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentOutput)
+}
+
+type RoleAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAttachmentOutput)(nil)).Elem()
+}
+
+func (o RoleAttachmentOutput) ToRoleAttachmentOutput() RoleAttachmentOutput {
+	return o
+}
+
+func (o RoleAttachmentOutput) ToRoleAttachmentOutputWithContext(ctx context.Context) RoleAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RoleAttachmentOutput{})
 }

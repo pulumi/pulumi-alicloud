@@ -26,6 +26,14 @@ import * as utilities from "../utilities";
  *     ipType: "IPv4",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Ddosbgp instance can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+ * ```
  */
 export class DdosBgpInstance extends pulumi.CustomResource {
     /**

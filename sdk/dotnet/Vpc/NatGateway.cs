@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Nat gateway can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpc/natGateway:NatGateway example ngw-abc123456
+    /// ```
+    /// </summary>
     public partial class NatGateway : Pulumi.CustomResource
     {
         /// <summary>

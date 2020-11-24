@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.FC
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Function Compute trigger can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:fc/trigger:Trigger foo my-fc-service:hello-world:hello-trigger
+    /// ```
+    /// </summary>
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>

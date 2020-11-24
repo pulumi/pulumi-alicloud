@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Instance can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
+    /// ```
+    /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

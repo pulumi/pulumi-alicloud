@@ -43,6 +43,14 @@ namespace Pulumi.AliCloud.Yundun
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Yundun_bastionhost instance can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
+    /// ```
     /// </summary>
     public partial class BastionHostInstance : Pulumi.CustomResource
     {

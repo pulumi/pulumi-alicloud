@@ -22,7 +22,14 @@ class CustomerGateway(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a CustomerGateway resource with the given unique name, props, and options.
+        ## Import
+
+        VPN customer gateway can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the VPN customer gateway instance.

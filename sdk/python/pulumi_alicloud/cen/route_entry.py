@@ -91,6 +91,14 @@ class RouteEntry(pulumi.CustomResource):
                 depends_on=[attach]))
         ```
 
+        ## Import
+
+        CEN instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/routeEntry:RouteEntry example cen-abc123456:vtb-abc123:192.168.0.0/24
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The destination CIDR block of the route entry to publish.

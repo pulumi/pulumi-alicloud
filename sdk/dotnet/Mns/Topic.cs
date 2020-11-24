@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Mns
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// MNS Topic can be imported using the id or name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:mns/topic:Topic topic topicName
+    /// ```
+    /// </summary>
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>

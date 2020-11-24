@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * VPN gateway can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpn/gateway:Gateway example vpn-abc123456
+ * ```
+ */
 export class Gateway extends pulumi.CustomResource {
     /**
      * Get an existing Gateway resource's state with the given name, ID, and optional extra

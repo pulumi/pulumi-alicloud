@@ -80,6 +80,14 @@ class Instance(pulumi.CustomResource):
             zone_count=2)
         ```
 
+        ## Import
+
+        Elasticsearch can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:elasticsearch/instance:Instance example es-cn-abcde123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.

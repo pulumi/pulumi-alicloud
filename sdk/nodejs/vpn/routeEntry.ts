@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * VPN route entry can be imported using the id(VpnGatewayId +":"+ NextHop +":"+ RouteDest), e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpn/routeEntry:RouteEntry example vpn-abc123456:vco-abc123456:10.0.0.10/24
+ * ```
+ */
 export class RouteEntry extends pulumi.CustomResource {
     /**
      * Get an existing RouteEntry resource's state with the given name, ID, and optional extra

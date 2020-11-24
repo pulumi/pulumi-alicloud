@@ -59,6 +59,14 @@ class DomainConfig(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        CDN domain config can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example cdn:config-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.

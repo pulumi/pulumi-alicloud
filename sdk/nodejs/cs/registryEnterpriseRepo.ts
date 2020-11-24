@@ -34,6 +34,14 @@ import * as utilities from "../utilities";
  *     detail: "this is a public repo",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
+ * ```
  */
 export class RegistryEnterpriseRepo extends pulumi.CustomResource {
     /**

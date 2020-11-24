@@ -4,12 +4,20 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// The route table can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpc/routeTable:RouteTable foo vtb-abc123456
+// ```
 type RouteTable struct {
 	pulumi.CustomResourceState
 
@@ -104,4 +112,43 @@ type RouteTableArgs struct {
 
 func (RouteTableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeTableArgs)(nil)).Elem()
+}
+
+type RouteTableInput interface {
+	pulumi.Input
+
+	ToRouteTableOutput() RouteTableOutput
+	ToRouteTableOutputWithContext(ctx context.Context) RouteTableOutput
+}
+
+func (RouteTable) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTable)(nil)).Elem()
+}
+
+func (i RouteTable) ToRouteTableOutput() RouteTableOutput {
+	return i.ToRouteTableOutputWithContext(context.Background())
+}
+
+func (i RouteTable) ToRouteTableOutputWithContext(ctx context.Context) RouteTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTableOutput)
+}
+
+type RouteTableOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTableOutput)(nil)).Elem()
+}
+
+func (o RouteTableOutput) ToRouteTableOutput() RouteTableOutput {
+	return o
+}
+
+func (o RouteTableOutput) ToRouteTableOutputWithContext(ctx context.Context) RouteTableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouteTableOutput{})
 }

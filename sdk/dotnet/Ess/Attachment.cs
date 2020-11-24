@@ -130,6 +130,14 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ESS attachment can be imported using the id or scaling group id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ess/attachment:Attachment example asg-abc123456
+    /// ```
     /// </summary>
     public partial class Attachment : Pulumi.CustomResource
     {

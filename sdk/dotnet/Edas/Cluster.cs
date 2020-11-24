@@ -38,6 +38,14 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EDAS cluster can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
+    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

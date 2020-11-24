@@ -67,7 +67,14 @@ class Instance(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        ## Import
+
+        Instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
@@ -157,7 +164,7 @@ class Instance(pulumi.CustomResource):
             __props__ = dict()
 
             if allocate_public_ip is not None:
-                warnings.warn("Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.", DeprecationWarning)
+                warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
                 pulumi.log.warn("allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.")
             __props__['allocate_public_ip'] = allocate_public_ip
             __props__['auto_release_time'] = auto_release_time
@@ -183,7 +190,7 @@ class Instance(pulumi.CustomResource):
             __props__['internet_max_bandwidth_in'] = internet_max_bandwidth_in
             __props__['internet_max_bandwidth_out'] = internet_max_bandwidth_out
             if io_optimized is not None:
-                warnings.warn("Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.", DeprecationWarning)
+                warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
                 pulumi.log.warn("io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.")
             __props__['io_optimized'] = io_optimized
             __props__['is_outdated'] = is_outdated

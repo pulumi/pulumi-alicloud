@@ -53,6 +53,14 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Alicloud Config Rule can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cfg/rule:Rule this cr-ed4bad756057********
+    /// ```
     /// </summary>
     public partial class Rule : Pulumi.CustomResource
     {

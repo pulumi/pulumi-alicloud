@@ -30,7 +30,14 @@ class Service(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Service resource with the given unique name, props, and options.
+        ## Import
+
+        Function Compute Service can be imported using the id or name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:fc/service:Service foo my-fc-service
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The Function Compute Service description.

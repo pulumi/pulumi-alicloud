@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,6 +43,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// DNS instance be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
 // ```
 type AlidnsInstance struct {
 	pulumi.CustomResourceState
@@ -179,4 +188,43 @@ type AlidnsInstanceArgs struct {
 
 func (AlidnsInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alidnsInstanceArgs)(nil)).Elem()
+}
+
+type AlidnsInstanceInput interface {
+	pulumi.Input
+
+	ToAlidnsInstanceOutput() AlidnsInstanceOutput
+	ToAlidnsInstanceOutputWithContext(ctx context.Context) AlidnsInstanceOutput
+}
+
+func (AlidnsInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlidnsInstance)(nil)).Elem()
+}
+
+func (i AlidnsInstance) ToAlidnsInstanceOutput() AlidnsInstanceOutput {
+	return i.ToAlidnsInstanceOutputWithContext(context.Background())
+}
+
+func (i AlidnsInstance) ToAlidnsInstanceOutputWithContext(ctx context.Context) AlidnsInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlidnsInstanceOutput)
+}
+
+type AlidnsInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlidnsInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlidnsInstanceOutput)(nil)).Elem()
+}
+
+func (o AlidnsInstanceOutput) ToAlidnsInstanceOutput() AlidnsInstanceOutput {
+	return o
+}
+
+func (o AlidnsInstanceOutput) ToAlidnsInstanceOutputWithContext(ctx context.Context) AlidnsInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AlidnsInstanceOutput{})
 }

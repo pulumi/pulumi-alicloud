@@ -4,6 +4,7 @@
 package slb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,6 +32,14 @@ import (
 // * `port` - (Required) The port used by the backend server. Valid value range: [1-65535].
 // * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
 // * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
+//
+// ## Import
+//
+// Load balancer backend server group can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:slb/serverGroup:ServerGroup example abc123456
+// ```
 type ServerGroup struct {
 	pulumi.CustomResourceState
 
@@ -125,4 +134,43 @@ type ServerGroupArgs struct {
 
 func (ServerGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverGroupArgs)(nil)).Elem()
+}
+
+type ServerGroupInput interface {
+	pulumi.Input
+
+	ToServerGroupOutput() ServerGroupOutput
+	ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput
+}
+
+func (ServerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroup)(nil)).Elem()
+}
+
+func (i ServerGroup) ToServerGroupOutput() ServerGroupOutput {
+	return i.ToServerGroupOutputWithContext(context.Background())
+}
+
+func (i ServerGroup) ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupOutput)
+}
+
+type ServerGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupOutput)(nil)).Elem()
+}
+
+func (o ServerGroupOutput) ToServerGroupOutput() ServerGroupOutput {
+	return o
+}
+
+func (o ServerGroupOutput) ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServerGroupOutput{})
 }

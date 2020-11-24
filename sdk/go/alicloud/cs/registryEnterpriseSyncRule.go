@@ -4,6 +4,7 @@
 package cs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -48,6 +49,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
 // ```
 type RegistryEnterpriseSyncRule struct {
 	pulumi.CustomResourceState
@@ -226,4 +235,43 @@ type RegistryEnterpriseSyncRuleArgs struct {
 
 func (RegistryEnterpriseSyncRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryEnterpriseSyncRuleArgs)(nil)).Elem()
+}
+
+type RegistryEnterpriseSyncRuleInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseSyncRuleOutput() RegistryEnterpriseSyncRuleOutput
+	ToRegistryEnterpriseSyncRuleOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleOutput
+}
+
+func (RegistryEnterpriseSyncRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseSyncRule)(nil)).Elem()
+}
+
+func (i RegistryEnterpriseSyncRule) ToRegistryEnterpriseSyncRuleOutput() RegistryEnterpriseSyncRuleOutput {
+	return i.ToRegistryEnterpriseSyncRuleOutputWithContext(context.Background())
+}
+
+func (i RegistryEnterpriseSyncRule) ToRegistryEnterpriseSyncRuleOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseSyncRuleOutput)
+}
+
+type RegistryEnterpriseSyncRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegistryEnterpriseSyncRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseSyncRuleOutput)(nil)).Elem()
+}
+
+func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRuleOutput() RegistryEnterpriseSyncRuleOutput {
+	return o
+}
+
+func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRuleOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegistryEnterpriseSyncRuleOutput{})
 }

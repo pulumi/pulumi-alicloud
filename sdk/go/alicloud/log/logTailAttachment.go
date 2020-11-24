@@ -4,6 +4,7 @@
 package log
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,6 +86,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Logtial to machine group can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
 // ```
 type LogTailAttachment struct {
 	pulumi.CustomResourceState
@@ -176,4 +185,43 @@ type LogTailAttachmentArgs struct {
 
 func (LogTailAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logTailAttachmentArgs)(nil)).Elem()
+}
+
+type LogTailAttachmentInput interface {
+	pulumi.Input
+
+	ToLogTailAttachmentOutput() LogTailAttachmentOutput
+	ToLogTailAttachmentOutputWithContext(ctx context.Context) LogTailAttachmentOutput
+}
+
+func (LogTailAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogTailAttachment)(nil)).Elem()
+}
+
+func (i LogTailAttachment) ToLogTailAttachmentOutput() LogTailAttachmentOutput {
+	return i.ToLogTailAttachmentOutputWithContext(context.Background())
+}
+
+func (i LogTailAttachment) ToLogTailAttachmentOutputWithContext(ctx context.Context) LogTailAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogTailAttachmentOutput)
+}
+
+type LogTailAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogTailAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogTailAttachmentOutput)(nil)).Elem()
+}
+
+func (o LogTailAttachmentOutput) ToLogTailAttachmentOutput() LogTailAttachmentOutput {
+	return o
+}
+
+func (o LogTailAttachmentOutput) ToLogTailAttachmentOutputWithContext(ctx context.Context) LogTailAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogTailAttachmentOutput{})
 }

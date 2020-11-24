@@ -17,6 +17,14 @@ namespace Pulumi.AliCloud.RocketMQ
     /// &gt; **NOTE:** Available in 1.60.0+
     /// 
     /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+    /// 
+    /// ## Import
+    /// 
+    /// The Sag Acl Rule can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
+    /// ```
     /// </summary>
     public partial class AclRule : Pulumi.CustomResource
     {

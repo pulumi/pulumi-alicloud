@@ -4,6 +4,7 @@
 package eci
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -45,6 +46,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ECI Image Cache can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
 // ```
 type ImageCache struct {
 	pulumi.CustomResourceState
@@ -221,4 +230,43 @@ type ImageCacheArgs struct {
 
 func (ImageCacheArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageCacheArgs)(nil)).Elem()
+}
+
+type ImageCacheInput interface {
+	pulumi.Input
+
+	ToImageCacheOutput() ImageCacheOutput
+	ToImageCacheOutputWithContext(ctx context.Context) ImageCacheOutput
+}
+
+func (ImageCache) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageCache)(nil)).Elem()
+}
+
+func (i ImageCache) ToImageCacheOutput() ImageCacheOutput {
+	return i.ToImageCacheOutputWithContext(context.Background())
+}
+
+func (i ImageCache) ToImageCacheOutputWithContext(ctx context.Context) ImageCacheOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheOutput)
+}
+
+type ImageCacheOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageCacheOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageCacheOutput)(nil)).Elem()
+}
+
+func (o ImageCacheOutput) ToImageCacheOutput() ImageCacheOutput {
+	return o
+}
+
+func (o ImageCacheOutput) ToImageCacheOutputWithContext(ctx context.Context) ImageCacheOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ImageCacheOutput{})
 }

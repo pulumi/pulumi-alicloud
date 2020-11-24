@@ -2,10 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Serverless Kubernetes cluster can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
+ * ```
+ */
 export class ServerlessKubernetes extends pulumi.CustomResource {
     /**
      * Get an existing ServerlessKubernetes resource's state with the given name, ID, and optional extra

@@ -101,6 +101,14 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         * `port` - (Required) - The port will be used for VServer Group backend server.
         * `weight` - (Required) The weight of an ECS instance attached to the VServer Group.
 
+        ## Import
+
+        ESS vserver groups can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.

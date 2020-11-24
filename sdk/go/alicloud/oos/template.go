@@ -4,6 +4,7 @@
 package oos
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -43,6 +44,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// OOS Template can be imported using the id or template_name, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:oos/template:Template example template_name
 // ```
 type Template struct {
 	pulumi.CustomResourceState
@@ -217,4 +226,43 @@ type TemplateArgs struct {
 
 func (TemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*templateArgs)(nil)).Elem()
+}
+
+type TemplateInput interface {
+	pulumi.Input
+
+	ToTemplateOutput() TemplateOutput
+	ToTemplateOutputWithContext(ctx context.Context) TemplateOutput
+}
+
+func (Template) ElementType() reflect.Type {
+	return reflect.TypeOf((*Template)(nil)).Elem()
+}
+
+func (i Template) ToTemplateOutput() TemplateOutput {
+	return i.ToTemplateOutputWithContext(context.Background())
+}
+
+func (i Template) ToTemplateOutputWithContext(ctx context.Context) TemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateOutput)
+}
+
+type TemplateOutput struct {
+	*pulumi.OutputState
+}
+
+func (TemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateOutput)(nil)).Elem()
+}
+
+func (o TemplateOutput) ToTemplateOutput() TemplateOutput {
+	return o
+}
+
+func (o TemplateOutput) ToTemplateOutputWithContext(ctx context.Context) TemplateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TemplateOutput{})
 }

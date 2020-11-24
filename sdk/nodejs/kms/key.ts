@@ -23,6 +23,14 @@ import * as utilities from "../utilities";
  *     pendingWindowInDays: 7,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Alikms key can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:kms/key:Key example abc123456
+ * ```
  */
 export class Key extends pulumi.CustomResource {
     /**

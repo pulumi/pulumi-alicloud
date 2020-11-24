@@ -4,6 +4,7 @@
 package resourcemanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -14,6 +15,14 @@ import (
 // For information about Resource Manager Policy Attachment and how to use it, see [How to authorize and manage resource groups](https://www.alibabacloud.com/help/en/doc-detail/94490.htm).
 //
 // > **NOTE:** Available in v1.93.0+.
+//
+// ## Import
+//
+// Resource Manager Policy Attachment can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
+// ```
 type PolicyAttachment struct {
 	pulumi.CustomResourceState
 
@@ -130,4 +139,43 @@ type PolicyAttachmentArgs struct {
 
 func (PolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyAttachmentArgs)(nil)).Elem()
+}
+
+type PolicyAttachmentInput interface {
+	pulumi.Input
+
+	ToPolicyAttachmentOutput() PolicyAttachmentOutput
+	ToPolicyAttachmentOutputWithContext(ctx context.Context) PolicyAttachmentOutput
+}
+
+func (PolicyAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAttachment)(nil)).Elem()
+}
+
+func (i PolicyAttachment) ToPolicyAttachmentOutput() PolicyAttachmentOutput {
+	return i.ToPolicyAttachmentOutputWithContext(context.Background())
+}
+
+func (i PolicyAttachment) ToPolicyAttachmentOutputWithContext(ctx context.Context) PolicyAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAttachmentOutput)
+}
+
+type PolicyAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (PolicyAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAttachmentOutput)(nil)).Elem()
+}
+
+func (o PolicyAttachmentOutput) ToPolicyAttachmentOutput() PolicyAttachmentOutput {
+	return o
+}
+
+func (o PolicyAttachmentOutput) ToPolicyAttachmentOutputWithContext(ctx context.Context) PolicyAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PolicyAttachmentOutput{})
 }

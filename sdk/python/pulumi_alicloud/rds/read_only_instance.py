@@ -74,6 +74,14 @@ class ReadOnlyInstance(pulumi.CustomResource):
             vswitch_id=default_switch.id)
         ```
 
+        ## Import
+
+        RDS readonly instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rds/readOnlyInstance:ReadOnlyInstance example rm-abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.

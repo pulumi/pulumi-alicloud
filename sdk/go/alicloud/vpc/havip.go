@@ -4,12 +4,20 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// The havip can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
+// ```
 type HAVip struct {
 	pulumi.CustomResourceState
 
@@ -94,4 +102,43 @@ type HAVipArgs struct {
 
 func (HAVipArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*havipArgs)(nil)).Elem()
+}
+
+type HAVipInput interface {
+	pulumi.Input
+
+	ToHAVipOutput() HAVipOutput
+	ToHAVipOutputWithContext(ctx context.Context) HAVipOutput
+}
+
+func (HAVip) ElementType() reflect.Type {
+	return reflect.TypeOf((*HAVip)(nil)).Elem()
+}
+
+func (i HAVip) ToHAVipOutput() HAVipOutput {
+	return i.ToHAVipOutputWithContext(context.Background())
+}
+
+func (i HAVip) ToHAVipOutputWithContext(ctx context.Context) HAVipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HAVipOutput)
+}
+
+type HAVipOutput struct {
+	*pulumi.OutputState
+}
+
+func (HAVipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HAVipOutput)(nil)).Elem()
+}
+
+func (o HAVipOutput) ToHAVipOutput() HAVipOutput {
+	return o
+}
+
+func (o HAVipOutput) ToHAVipOutputWithContext(ctx context.Context) HAVipOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HAVipOutput{})
 }

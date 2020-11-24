@@ -75,6 +75,14 @@ class LoadBalancer(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Load balancer can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
@@ -124,7 +132,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['delete_protection'] = delete_protection
             __props__['instance_charge_type'] = instance_charge_type
             if internet is not None:
-                warnings.warn("Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.", DeprecationWarning)
+                warnings.warn("""Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.""", DeprecationWarning)
                 pulumi.log.warn("internet is deprecated: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.")
             __props__['internet'] = internet
             __props__['internet_charge_type'] = internet_charge_type

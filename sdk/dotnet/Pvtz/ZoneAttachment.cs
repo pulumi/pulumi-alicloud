@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Pvtz
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Private Zone attachment can be imported using the id(same with `zone_id`), e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:pvtz/zoneAttachment:ZoneAttachment example abc123456
+    /// ```
+    /// </summary>
     public partial class ZoneAttachment : Pulumi.CustomResource
     {
         /// <summary>

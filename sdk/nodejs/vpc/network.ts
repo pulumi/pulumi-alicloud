@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * VPC can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpc/network:Network example vpc-abc123456
+ * ```
+ */
 export class Network extends pulumi.CustomResource {
     /**
      * Get an existing Network resource's state with the given name, ID, and optional extra

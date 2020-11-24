@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// The common bandwidth package attachemnt can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo cbwp-abc123456:eip-abc123456
+    /// ```
+    /// </summary>
     public partial class CommonBandwithPackageAttachment : Pulumi.CustomResource
     {
         /// <summary>

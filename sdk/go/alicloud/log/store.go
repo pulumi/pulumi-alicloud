@@ -4,12 +4,20 @@
 package log
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Log store can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:log/store:Store example tf-log:tf-log-store
+// ```
 type Store struct {
 	pulumi.CustomResourceState
 
@@ -147,4 +155,43 @@ type StoreArgs struct {
 
 func (StoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*storeArgs)(nil)).Elem()
+}
+
+type StoreInput interface {
+	pulumi.Input
+
+	ToStoreOutput() StoreOutput
+	ToStoreOutputWithContext(ctx context.Context) StoreOutput
+}
+
+func (Store) ElementType() reflect.Type {
+	return reflect.TypeOf((*Store)(nil)).Elem()
+}
+
+func (i Store) ToStoreOutput() StoreOutput {
+	return i.ToStoreOutputWithContext(context.Background())
+}
+
+func (i Store) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreOutput)
+}
+
+type StoreOutput struct {
+	*pulumi.OutputState
+}
+
+func (StoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreOutput)(nil)).Elem()
+}
+
+func (o StoreOutput) ToStoreOutput() StoreOutput {
+	return o
+}
+
+func (o StoreOutput) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StoreOutput{})
 }

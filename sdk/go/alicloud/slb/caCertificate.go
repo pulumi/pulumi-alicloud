@@ -4,6 +4,7 @@
 package slb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -15,6 +16,14 @@ import (
 // For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
 //
 // For information about CA Certificate and how to use it, see [Configure CA Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
+//
+// ## Import
+//
+// Server Load balancer CA Certificate can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:slb/caCertificate:CaCertificate example abc123456
+// ```
 type CaCertificate struct {
 	pulumi.CustomResourceState
 
@@ -109,4 +118,43 @@ type CaCertificateArgs struct {
 
 func (CaCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*caCertificateArgs)(nil)).Elem()
+}
+
+type CaCertificateInput interface {
+	pulumi.Input
+
+	ToCaCertificateOutput() CaCertificateOutput
+	ToCaCertificateOutputWithContext(ctx context.Context) CaCertificateOutput
+}
+
+func (CaCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaCertificate)(nil)).Elem()
+}
+
+func (i CaCertificate) ToCaCertificateOutput() CaCertificateOutput {
+	return i.ToCaCertificateOutputWithContext(context.Background())
+}
+
+func (i CaCertificate) ToCaCertificateOutputWithContext(ctx context.Context) CaCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaCertificateOutput)
+}
+
+type CaCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (CaCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaCertificateOutput)(nil)).Elem()
+}
+
+func (o CaCertificateOutput) ToCaCertificateOutput() CaCertificateOutput {
+	return o
+}
+
+func (o CaCertificateOutput) ToCaCertificateOutputWithContext(ctx context.Context) CaCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CaCertificateOutput{})
 }

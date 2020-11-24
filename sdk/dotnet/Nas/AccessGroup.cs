@@ -60,6 +60,14 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// NAS Access Group can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
+    /// ```
     /// </summary>
     public partial class AccessGroup : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,6 +43,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Alidns domain can be imported using the id or domain name, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:dns/alidnsDomain:AlidnsDomain example aliyun.com
 // ```
 type AlidnsDomain struct {
 	pulumi.CustomResourceState
@@ -188,4 +197,43 @@ type AlidnsDomainArgs struct {
 
 func (AlidnsDomainArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alidnsDomainArgs)(nil)).Elem()
+}
+
+type AlidnsDomainInput interface {
+	pulumi.Input
+
+	ToAlidnsDomainOutput() AlidnsDomainOutput
+	ToAlidnsDomainOutputWithContext(ctx context.Context) AlidnsDomainOutput
+}
+
+func (AlidnsDomain) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlidnsDomain)(nil)).Elem()
+}
+
+func (i AlidnsDomain) ToAlidnsDomainOutput() AlidnsDomainOutput {
+	return i.ToAlidnsDomainOutputWithContext(context.Background())
+}
+
+func (i AlidnsDomain) ToAlidnsDomainOutputWithContext(ctx context.Context) AlidnsDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainOutput)
+}
+
+type AlidnsDomainOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlidnsDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlidnsDomainOutput)(nil)).Elem()
+}
+
+func (o AlidnsDomainOutput) ToAlidnsDomainOutput() AlidnsDomainOutput {
+	return o
+}
+
+func (o AlidnsDomainOutput) ToAlidnsDomainOutputWithContext(ctx context.Context) AlidnsDomainOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AlidnsDomainOutput{})
 }

@@ -88,6 +88,14 @@ class BackendServer(pulumi.CustomResource):
         * `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`. Default to `ecs`.
         * `server_ip` - (Optional, Available in 1.93.0+) ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `server_ip` parameter.
 
+        ## Import
+
+        Load balancer backend server can be imported using the load balancer id.
+
+        ```sh
+         $ pulumi import alicloud:slb/backendServer:BackendServer example lb-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServerBackendServerArgs']]]] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.

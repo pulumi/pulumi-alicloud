@@ -28,6 +28,14 @@ import * as utilities from "../utilities";
  *     vswitchId: "v-testVswitch",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Yundun_dbaudit instance can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
+ * ```
  */
 export class DBAuditInstance extends pulumi.CustomResource {
     /**

@@ -25,7 +25,14 @@ class TopicSubscription(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a TopicSubscription resource with the given unique name, props, and options.
+        ## Import
+
+        MNS Topic subscription can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:

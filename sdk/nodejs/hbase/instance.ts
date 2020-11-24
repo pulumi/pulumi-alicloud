@@ -38,6 +38,14 @@ import * as utilities from "../utilities";
  * ```
  *
  * this is a example for class netType instance. you can find more detail with the examples/hbase dir.
+ *
+ * ## Import
+ *
+ * HBase can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:hbase/instance:Instance example hb-wz96815u13k659fvd
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

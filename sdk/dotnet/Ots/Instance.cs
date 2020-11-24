@@ -38,6 +38,14 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// OTS instance can be imported using instance id or name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ots/instance:Instance foo "my-ots-instance"
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

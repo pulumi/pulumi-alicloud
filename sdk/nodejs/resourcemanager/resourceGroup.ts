@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -23,6 +22,14 @@ import * as utilities from "../utilities";
  * const example = new alicloud.resourcemanager.ResourceGroup("example", {
  *     displayName: "testrd",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Resource Manager Resource Group can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
  * ```
  */
 export class ResourceGroup extends pulumi.CustomResource {

@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * PolarDB backup policy can be imported using the id or cluster id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example "rm-12345678"
+ * ```
+ */
 export class BackupPolicy extends pulumi.CustomResource {
     /**
      * Get an existing BackupPolicy resource's state with the given name, ID, and optional extra

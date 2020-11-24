@@ -22,6 +22,14 @@ import * as utilities from "../utilities";
  *     userName: "tf-test",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * DMS Enterprise User can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
+ * ```
  */
 export class EnterpriseUser extends pulumi.CustomResource {
     /**

@@ -60,6 +60,14 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RAM Group Policy attachment can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+    /// ```
     /// </summary>
     public partial class GroupPolicyAttachment : Pulumi.CustomResource
     {

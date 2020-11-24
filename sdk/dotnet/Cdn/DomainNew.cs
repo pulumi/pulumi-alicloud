@@ -47,6 +47,14 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CDN domain can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cdn/domainNew:DomainNew example xxxx.com
+    /// ```
     /// </summary>
     public partial class DomainNew : Pulumi.CustomResource
     {

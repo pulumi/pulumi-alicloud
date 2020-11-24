@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Function Compute trigger can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:fc/trigger:Trigger foo my-fc-service:hello-world:hello-trigger
+ * ```
+ */
 export class Trigger extends pulumi.CustomResource {
     /**
      * Get an existing Trigger resource's state with the given name, ID, and optional extra

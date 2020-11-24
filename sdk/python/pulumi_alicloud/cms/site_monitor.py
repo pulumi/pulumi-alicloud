@@ -52,6 +52,14 @@ class SiteMonitor(pulumi.CustomResource):
             task_type="HTTP")
         ```
 
+        ## Import
+
+        Alarm rule can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cms/siteMonitor:SiteMonitor alarm abc12345
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The URL or IP address monitored by the site monitoring task.

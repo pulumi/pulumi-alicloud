@@ -26,6 +26,14 @@ import * as utilities from "../utilities";
  *     period: "1",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * reservedInstance can be imported using id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
+ * ```
  */
 export class ReservedInstance extends pulumi.CustomResource {
     /**

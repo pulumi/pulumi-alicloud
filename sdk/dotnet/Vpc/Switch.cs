@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Vswitch can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpc/switch:Switch example vsw-abc123456
+    /// ```
+    /// </summary>
     public partial class Switch : Pulumi.CustomResource
     {
         /// <summary>

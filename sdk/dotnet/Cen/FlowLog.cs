@@ -58,6 +58,14 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CEN flowlog can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
+    /// ```
     /// </summary>
     public partial class FlowLog : Pulumi.CustomResource
     {

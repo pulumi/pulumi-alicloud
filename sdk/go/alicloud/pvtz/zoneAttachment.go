@@ -4,12 +4,20 @@
 package pvtz
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Private Zone attachment can be imported using the id(same with `zone_id`), e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:pvtz/zoneAttachment:ZoneAttachment example abc123456
+// ```
 type ZoneAttachment struct {
 	pulumi.CustomResourceState
 
@@ -114,4 +122,43 @@ type ZoneAttachmentArgs struct {
 
 func (ZoneAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneAttachmentArgs)(nil)).Elem()
+}
+
+type ZoneAttachmentInput interface {
+	pulumi.Input
+
+	ToZoneAttachmentOutput() ZoneAttachmentOutput
+	ToZoneAttachmentOutputWithContext(ctx context.Context) ZoneAttachmentOutput
+}
+
+func (ZoneAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneAttachment)(nil)).Elem()
+}
+
+func (i ZoneAttachment) ToZoneAttachmentOutput() ZoneAttachmentOutput {
+	return i.ToZoneAttachmentOutputWithContext(context.Background())
+}
+
+func (i ZoneAttachment) ToZoneAttachmentOutputWithContext(ctx context.Context) ZoneAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentOutput)
+}
+
+type ZoneAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneAttachmentOutput)(nil)).Elem()
+}
+
+func (o ZoneAttachmentOutput) ToZoneAttachmentOutput() ZoneAttachmentOutput {
+	return o
+}
+
+func (o ZoneAttachmentOutput) ToZoneAttachmentOutputWithContext(ctx context.Context) ZoneAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ZoneAttachmentOutput{})
 }

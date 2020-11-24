@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Private Zone Record can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
+ * ```
+ */
 export class ZoneRecord extends pulumi.CustomResource {
     /**
      * Get an existing ZoneRecord resource's state with the given name, ID, and optional extra

@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -34,6 +35,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Alidns domain group can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
 // ```
 type DomainGroup struct {
 	pulumi.CustomResourceState
@@ -126,4 +135,43 @@ type DomainGroupArgs struct {
 
 func (DomainGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainGroupArgs)(nil)).Elem()
+}
+
+type DomainGroupInput interface {
+	pulumi.Input
+
+	ToDomainGroupOutput() DomainGroupOutput
+	ToDomainGroupOutputWithContext(ctx context.Context) DomainGroupOutput
+}
+
+func (DomainGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainGroup)(nil)).Elem()
+}
+
+func (i DomainGroup) ToDomainGroupOutput() DomainGroupOutput {
+	return i.ToDomainGroupOutputWithContext(context.Background())
+}
+
+func (i DomainGroup) ToDomainGroupOutputWithContext(ctx context.Context) DomainGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainGroupOutput)
+}
+
+type DomainGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainGroupOutput)(nil)).Elem()
+}
+
+func (o DomainGroupOutput) ToDomainGroupOutput() DomainGroupOutput {
+	return o
+}
+
+func (o DomainGroupOutput) ToDomainGroupOutputWithContext(ctx context.Context) DomainGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainGroupOutput{})
 }

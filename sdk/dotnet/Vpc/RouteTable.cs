@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// The route table can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpc/routeTable:RouteTable foo vtb-abc123456
+    /// ```
+    /// </summary>
     public partial class RouteTable : Pulumi.CustomResource
     {
         /// <summary>

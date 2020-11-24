@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -30,6 +29,14 @@ import * as utilities from "../utilities";
  *     taskName: "tf-testAccCmsSiteMonitor_basic",
  *     taskType: "HTTP",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Alarm rule can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cms/siteMonitor:SiteMonitor alarm abc12345
  * ```
  */
 export class SiteMonitor extends pulumi.CustomResource {

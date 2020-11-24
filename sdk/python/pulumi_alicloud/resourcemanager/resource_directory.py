@@ -42,6 +42,14 @@ class ResourceDirectory(pulumi.CustomResource):
         example = alicloud.resourcemanager.ResourceDirectory("example")
         ```
 
+        ## Import
+
+        Resource Manager Resource Directory can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """

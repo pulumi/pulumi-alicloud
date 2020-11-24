@@ -26,6 +26,14 @@ class SnatEntry(pulumi.CustomResource):
         """
         Provides a snat resource.
 
+        ## Import
+
+        Snat Entry can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] snat_entry_name: The name of snat entry.

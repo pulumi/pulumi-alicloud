@@ -17,6 +17,14 @@ import * as utilities from "../utilities";
  * > **NOTE:** Rule only be created in the `HTTP` or `HTTPS` listener.
  *
  * > **NOTE:** Only rule's virtual server group can be modified.
+ *
+ * ## Import
+ *
+ * Load balancer forwarding rule can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:slb/rule:Rule example rule-abc123456
+ * ```
  */
 export class Rule extends pulumi.CustomResource {
     /**

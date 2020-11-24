@@ -4,6 +4,7 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -11,6 +12,14 @@ import (
 )
 
 // Provides a snat resource.
+//
+// ## Import
+//
+// Snat Entry can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+// ```
 type SnatEntry struct {
 	pulumi.CustomResourceState
 
@@ -124,4 +133,43 @@ type SnatEntryArgs struct {
 
 func (SnatEntryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*snatEntryArgs)(nil)).Elem()
+}
+
+type SnatEntryInput interface {
+	pulumi.Input
+
+	ToSnatEntryOutput() SnatEntryOutput
+	ToSnatEntryOutputWithContext(ctx context.Context) SnatEntryOutput
+}
+
+func (SnatEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnatEntry)(nil)).Elem()
+}
+
+func (i SnatEntry) ToSnatEntryOutput() SnatEntryOutput {
+	return i.ToSnatEntryOutputWithContext(context.Background())
+}
+
+func (i SnatEntry) ToSnatEntryOutputWithContext(ctx context.Context) SnatEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnatEntryOutput)
+}
+
+type SnatEntryOutput struct {
+	*pulumi.OutputState
+}
+
+func (SnatEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnatEntryOutput)(nil)).Elem()
+}
+
+func (o SnatEntryOutput) ToSnatEntryOutput() SnatEntryOutput {
+	return o
+}
+
+func (o SnatEntryOutput) ToSnatEntryOutputWithContext(ctx context.Context) SnatEntryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SnatEntryOutput{})
 }

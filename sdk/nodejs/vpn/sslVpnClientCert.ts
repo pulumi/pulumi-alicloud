@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * SSL-VPN client certificates can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:vpn/sslVpnClientCert:SslVpnClientCert example vsc-abc123456
+ * ```
+ */
 export class SslVpnClientCert extends pulumi.CustomResource {
     /**
      * Get an existing SslVpnClientCert resource's state with the given name, ID, and optional extra

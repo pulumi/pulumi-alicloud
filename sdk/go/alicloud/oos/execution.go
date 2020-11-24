@@ -4,6 +4,7 @@
 package oos
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,6 +52,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// OOS Execution can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
 // ```
 type Execution struct {
 	pulumi.CustomResourceState
@@ -258,4 +267,43 @@ type ExecutionArgs struct {
 
 func (ExecutionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*executionArgs)(nil)).Elem()
+}
+
+type ExecutionInput interface {
+	pulumi.Input
+
+	ToExecutionOutput() ExecutionOutput
+	ToExecutionOutputWithContext(ctx context.Context) ExecutionOutput
+}
+
+func (Execution) ElementType() reflect.Type {
+	return reflect.TypeOf((*Execution)(nil)).Elem()
+}
+
+func (i Execution) ToExecutionOutput() ExecutionOutput {
+	return i.ToExecutionOutputWithContext(context.Background())
+}
+
+func (i Execution) ToExecutionOutputWithContext(ctx context.Context) ExecutionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionOutput)
+}
+
+type ExecutionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExecutionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionOutput)(nil)).Elem()
+}
+
+func (o ExecutionOutput) ToExecutionOutput() ExecutionOutput {
+	return o
+}
+
+func (o ExecutionOutput) ToExecutionOutputWithContext(ctx context.Context) ExecutionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ExecutionOutput{})
 }

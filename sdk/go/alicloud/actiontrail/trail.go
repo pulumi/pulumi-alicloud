@@ -4,6 +4,7 @@
 package actiontrail
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -38,6 +39,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Action trail can be imported using the id or trail_name, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:actiontrail/trail:Trail default abc12345678
 // ```
 type Trail struct {
 	pulumi.CustomResourceState
@@ -215,4 +224,43 @@ type TrailArgs struct {
 
 func (TrailArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*trailArgs)(nil)).Elem()
+}
+
+type TrailInput interface {
+	pulumi.Input
+
+	ToTrailOutput() TrailOutput
+	ToTrailOutputWithContext(ctx context.Context) TrailOutput
+}
+
+func (Trail) ElementType() reflect.Type {
+	return reflect.TypeOf((*Trail)(nil)).Elem()
+}
+
+func (i Trail) ToTrailOutput() TrailOutput {
+	return i.ToTrailOutputWithContext(context.Background())
+}
+
+func (i Trail) ToTrailOutputWithContext(ctx context.Context) TrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailOutput)
+}
+
+type TrailOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailOutput)(nil)).Elem()
+}
+
+func (o TrailOutput) ToTrailOutput() TrailOutput {
+	return o
+}
+
+func (o TrailOutput) ToTrailOutputWithContext(ctx context.Context) TrailOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TrailOutput{})
 }

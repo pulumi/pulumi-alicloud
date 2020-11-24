@@ -56,6 +56,14 @@ class DomainNew(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        CDN domain can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cdn/domainNew:DomainNew example xxxx.com
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.

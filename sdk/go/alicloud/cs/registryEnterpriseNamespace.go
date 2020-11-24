@@ -4,6 +4,7 @@
 package cs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -43,6 +44,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
 // ```
 type RegistryEnterpriseNamespace struct {
 	pulumi.CustomResourceState
@@ -144,4 +153,43 @@ type RegistryEnterpriseNamespaceArgs struct {
 
 func (RegistryEnterpriseNamespaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryEnterpriseNamespaceArgs)(nil)).Elem()
+}
+
+type RegistryEnterpriseNamespaceInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseNamespaceOutput() RegistryEnterpriseNamespaceOutput
+	ToRegistryEnterpriseNamespaceOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceOutput
+}
+
+func (RegistryEnterpriseNamespace) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseNamespace)(nil)).Elem()
+}
+
+func (i RegistryEnterpriseNamespace) ToRegistryEnterpriseNamespaceOutput() RegistryEnterpriseNamespaceOutput {
+	return i.ToRegistryEnterpriseNamespaceOutputWithContext(context.Background())
+}
+
+func (i RegistryEnterpriseNamespace) ToRegistryEnterpriseNamespaceOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseNamespaceOutput)
+}
+
+type RegistryEnterpriseNamespaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegistryEnterpriseNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseNamespaceOutput)(nil)).Elem()
+}
+
+func (o RegistryEnterpriseNamespaceOutput) ToRegistryEnterpriseNamespaceOutput() RegistryEnterpriseNamespaceOutput {
+	return o
+}
+
+func (o RegistryEnterpriseNamespaceOutput) ToRegistryEnterpriseNamespaceOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegistryEnterpriseNamespaceOutput{})
 }

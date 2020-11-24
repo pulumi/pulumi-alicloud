@@ -21,7 +21,14 @@ class HAVipAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a HAVipAttachment resource with the given unique name, props, and options.
+        ## Import
+
+        The havip attachemnt can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment foo havip-abc123456:i-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] havip_id: The havip_id of the havip attachment, the field can't be changed.

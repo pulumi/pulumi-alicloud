@@ -21,6 +21,14 @@ import * as utilities from "../utilities";
  *     topicName: "tf_datahub_topic",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Datahub subscription can be imported using the ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:datahub/subscription:Subscription example tf_datahub_project:tf_datahub_topic:1539073399567UgCzY
+ * ```
  */
 export class Subscription extends pulumi.CustomResource {
     /**

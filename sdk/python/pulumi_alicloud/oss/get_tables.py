@@ -15,7 +15,7 @@ __all__ = [
     'get_tables',
 ]
 
-warnings.warn("alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables", DeprecationWarning)
+warnings.warn("""alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables""", DeprecationWarning)
 
 @pulumi.output_type
 class GetTablesResult:

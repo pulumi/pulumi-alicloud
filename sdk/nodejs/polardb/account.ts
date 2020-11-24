@@ -42,6 +42,14 @@ import * as utilities from "../utilities";
  *     accountDescription: name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * PolarDB account can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:polardb/account:Account example "pc-12345:tf_account"
+ * ```
  */
 export class Account extends pulumi.CustomResource {
     /**

@@ -20,6 +20,14 @@ import * as utilities from "../utilities";
  *     domainGroupName: "tf-testDG",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Alidns domain group can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
+ * ```
  */
 export class DomainGroup extends pulumi.CustomResource {
     /**

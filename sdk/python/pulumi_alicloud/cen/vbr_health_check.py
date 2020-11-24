@@ -60,6 +60,14 @@ class VbrHealthCheck(pulumi.CustomResource):
             opts=ResourceOptions(depends_on=[default_instance_attachment]))
         ```
 
+        ## Import
+
+        CEN VBR HealthCheck can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.

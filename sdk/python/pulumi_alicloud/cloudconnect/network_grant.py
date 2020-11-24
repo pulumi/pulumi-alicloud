@@ -57,6 +57,14 @@ class NetworkGrant(pulumi.CustomResource):
                 ]))
         ```
 
+        ## Import
+
+        The Cloud Connect Network Grant can be imported using the instance_id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cloudconnect/networkGrant:NetworkGrant example ccn-abc123456:cen-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ccn_id: The ID of the CCN instance.

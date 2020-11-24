@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// DNS can be imported using the id or domain name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:dns/domain:Domain example "aliyun.com"
+    /// ```
+    /// </summary>
     [Obsolete(@"This resource has been deprecated in favour of DnsDomain")]
     public partial class Domain : Pulumi.CustomResource
     {

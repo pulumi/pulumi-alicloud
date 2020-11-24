@@ -31,7 +31,14 @@ class NatGateway(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a NatGateway resource with the given unique name, props, and options.
+        ## Import
+
+        Nat gateway can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/natGateway:NatGateway example ngw-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatGatewayBandwidthPackageArgs']]]] bandwidth_packages: A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
@@ -69,7 +76,7 @@ class NatGateway(pulumi.CustomResource):
             __props__['nat_type'] = nat_type
             __props__['period'] = period
             if spec is not None:
-                warnings.warn("Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.", DeprecationWarning)
+                warnings.warn("""Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.""", DeprecationWarning)
                 pulumi.log.warn("spec is deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.")
             __props__['spec'] = spec
             __props__['specification'] = specification

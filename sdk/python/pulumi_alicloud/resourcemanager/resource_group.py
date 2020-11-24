@@ -39,6 +39,14 @@ class ResourceGroup(pulumi.CustomResource):
         example = alicloud.resourcemanager.ResourceGroup("example", display_name="testrd")
         ```
 
+        ## Import
+
+        Resource Manager Resource Group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).

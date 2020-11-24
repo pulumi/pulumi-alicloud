@@ -22,7 +22,14 @@ class App(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a App resource with the given unique name, props, and options.
+        ## Import
+
+        Api gateway app can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:apigateway/app:App example "7379660"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the app. Defaults to null.

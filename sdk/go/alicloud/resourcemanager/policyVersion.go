@@ -4,12 +4,20 @@
 package resourcemanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Resource Manager Policy Version can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
+// ```
 type PolicyVersion struct {
 	pulumi.CustomResourceState
 
@@ -107,4 +115,43 @@ type PolicyVersionArgs struct {
 
 func (PolicyVersionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyVersionArgs)(nil)).Elem()
+}
+
+type PolicyVersionInput interface {
+	pulumi.Input
+
+	ToPolicyVersionOutput() PolicyVersionOutput
+	ToPolicyVersionOutputWithContext(ctx context.Context) PolicyVersionOutput
+}
+
+func (PolicyVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyVersion)(nil)).Elem()
+}
+
+func (i PolicyVersion) ToPolicyVersionOutput() PolicyVersionOutput {
+	return i.ToPolicyVersionOutputWithContext(context.Background())
+}
+
+func (i PolicyVersion) ToPolicyVersionOutputWithContext(ctx context.Context) PolicyVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVersionOutput)
+}
+
+type PolicyVersionOutput struct {
+	*pulumi.OutputState
+}
+
+func (PolicyVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyVersionOutput)(nil)).Elem()
+}
+
+func (o PolicyVersionOutput) ToPolicyVersionOutput() PolicyVersionOutput {
+	return o
+}
+
+func (o PolicyVersionOutput) ToPolicyVersionOutputWithContext(ctx context.Context) PolicyVersionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PolicyVersionOutput{})
 }

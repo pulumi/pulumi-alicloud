@@ -4,12 +4,20 @@
 package cs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Serverless Kubernetes cluster can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
+// ```
 type ServerlessKubernetes struct {
 	pulumi.CustomResourceState
 
@@ -264,4 +272,43 @@ type ServerlessKubernetesArgs struct {
 
 func (ServerlessKubernetesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverlessKubernetesArgs)(nil)).Elem()
+}
+
+type ServerlessKubernetesInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesOutput() ServerlessKubernetesOutput
+	ToServerlessKubernetesOutputWithContext(ctx context.Context) ServerlessKubernetesOutput
+}
+
+func (ServerlessKubernetes) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetes)(nil)).Elem()
+}
+
+func (i ServerlessKubernetes) ToServerlessKubernetesOutput() ServerlessKubernetesOutput {
+	return i.ToServerlessKubernetesOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetes) ToServerlessKubernetesOutputWithContext(ctx context.Context) ServerlessKubernetesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesOutput)
+}
+
+type ServerlessKubernetesOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerlessKubernetesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesOutput)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesOutput) ToServerlessKubernetesOutput() ServerlessKubernetesOutput {
+	return o
+}
+
+func (o ServerlessKubernetesOutput) ToServerlessKubernetesOutputWithContext(ctx context.Context) ServerlessKubernetesOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServerlessKubernetesOutput{})
 }

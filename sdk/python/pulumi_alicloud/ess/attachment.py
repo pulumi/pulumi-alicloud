@@ -99,6 +99,14 @@ class Attachment(pulumi.CustomResource):
             force=True)
         ```
 
+        ## Import
+
+        ESS attachment can be imported using the id or scaling group id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/attachment:Attachment example asg-abc123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.

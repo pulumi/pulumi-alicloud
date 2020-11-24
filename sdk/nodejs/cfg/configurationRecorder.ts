@@ -25,6 +25,14 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Alicloud Config Configuration Recorder can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cfg/configurationRecorder:ConfigurationRecorder example 122378463********
+ * ```
  */
 export class ConfigurationRecorder extends pulumi.CustomResource {
     /**

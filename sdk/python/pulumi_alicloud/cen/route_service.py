@@ -60,6 +60,14 @@ class RouteService(pulumi.CustomResource):
             host="100.118.28.52/32")
         ```
 
+        ## Import
+
+        CEN Route Service can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/routeService:RouteService example cen-ahixm0efqh********:cn-shanghai:100.118.28.52/32:cn-shanghai
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_region_id: The region of the network instances that access the cloud services.

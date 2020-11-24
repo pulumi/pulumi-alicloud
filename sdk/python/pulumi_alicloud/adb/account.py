@@ -64,6 +64,14 @@ class Account(pulumi.CustomResource):
             account_description=name)
         ```
 
+        ## Import
+
+        ADB account can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:adb/account:Account example "am-12345:tf_account"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_description: Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.

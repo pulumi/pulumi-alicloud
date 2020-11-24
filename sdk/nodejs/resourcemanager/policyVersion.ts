@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Resource Manager Policy Version can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
+ * ```
+ */
 export class PolicyVersion extends pulumi.CustomResource {
     /**
      * Get an existing PolicyVersion resource's state with the given name, ID, and optional extra

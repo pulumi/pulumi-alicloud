@@ -43,6 +43,14 @@ class Instance(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        OTS instance can be imported using instance id or name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ots/instance:Instance foo "my-ots-instance"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accessed_by: The network limitation of accessing instance. Valid values:

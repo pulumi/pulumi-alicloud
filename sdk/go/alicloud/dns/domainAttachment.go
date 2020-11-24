@@ -4,12 +4,20 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// DNS domain attachment can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:dns/domainAttachment:DomainAttachment example dns-cn-v0h1ldjhxxx
+// ```
 type DomainAttachment struct {
 	pulumi.CustomResourceState
 
@@ -87,4 +95,43 @@ type DomainAttachmentArgs struct {
 
 func (DomainAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainAttachmentArgs)(nil)).Elem()
+}
+
+type DomainAttachmentInput interface {
+	pulumi.Input
+
+	ToDomainAttachmentOutput() DomainAttachmentOutput
+	ToDomainAttachmentOutputWithContext(ctx context.Context) DomainAttachmentOutput
+}
+
+func (DomainAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainAttachment)(nil)).Elem()
+}
+
+func (i DomainAttachment) ToDomainAttachmentOutput() DomainAttachmentOutput {
+	return i.ToDomainAttachmentOutputWithContext(context.Background())
+}
+
+func (i DomainAttachment) ToDomainAttachmentOutputWithContext(ctx context.Context) DomainAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainAttachmentOutput)
+}
+
+type DomainAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainAttachmentOutput)(nil)).Elem()
+}
+
+func (o DomainAttachmentOutput) ToDomainAttachmentOutput() DomainAttachmentOutput {
+	return o
+}
+
+func (o DomainAttachmentOutput) ToDomainAttachmentOutputWithContext(ctx context.Context) DomainAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainAttachmentOutput{})
 }

@@ -35,6 +35,14 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CEN instance can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

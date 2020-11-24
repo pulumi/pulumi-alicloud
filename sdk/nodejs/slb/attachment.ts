@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Load balancer attachment can be imported using the id or load balancer id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
+ * ```
+ */
 export class Attachment extends pulumi.CustomResource {
     /**
      * Get an existing Attachment resource's state with the given name, ID, and optional extra

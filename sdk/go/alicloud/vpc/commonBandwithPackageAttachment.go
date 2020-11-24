@@ -4,12 +4,20 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// The common bandwidth package attachemnt can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo cbwp-abc123456:eip-abc123456
+// ```
 type CommonBandwithPackageAttachment struct {
 	pulumi.CustomResourceState
 
@@ -87,4 +95,43 @@ type CommonBandwithPackageAttachmentArgs struct {
 
 func (CommonBandwithPackageAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*commonBandwithPackageAttachmentArgs)(nil)).Elem()
+}
+
+type CommonBandwithPackageAttachmentInput interface {
+	pulumi.Input
+
+	ToCommonBandwithPackageAttachmentOutput() CommonBandwithPackageAttachmentOutput
+	ToCommonBandwithPackageAttachmentOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentOutput
+}
+
+func (CommonBandwithPackageAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonBandwithPackageAttachment)(nil)).Elem()
+}
+
+func (i CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentOutput() CommonBandwithPackageAttachmentOutput {
+	return i.ToCommonBandwithPackageAttachmentOutputWithContext(context.Background())
+}
+
+func (i CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageAttachmentOutput)
+}
+
+type CommonBandwithPackageAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (CommonBandwithPackageAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonBandwithPackageAttachmentOutput)(nil)).Elem()
+}
+
+func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachmentOutput() CommonBandwithPackageAttachmentOutput {
+	return o
+}
+
+func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachmentOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CommonBandwithPackageAttachmentOutput{})
 }

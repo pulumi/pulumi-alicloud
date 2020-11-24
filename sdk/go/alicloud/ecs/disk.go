@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -43,6 +44,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Cloud disk can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
 // ```
 type Disk struct {
 	pulumi.CustomResourceState
@@ -267,4 +276,43 @@ type DiskArgs struct {
 
 func (DiskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskArgs)(nil)).Elem()
+}
+
+type DiskInput interface {
+	pulumi.Input
+
+	ToDiskOutput() DiskOutput
+	ToDiskOutputWithContext(ctx context.Context) DiskOutput
+}
+
+func (Disk) ElementType() reflect.Type {
+	return reflect.TypeOf((*Disk)(nil)).Elem()
+}
+
+func (i Disk) ToDiskOutput() DiskOutput {
+	return i.ToDiskOutputWithContext(context.Background())
+}
+
+func (i Disk) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskOutput)
+}
+
+type DiskOutput struct {
+	*pulumi.OutputState
+}
+
+func (DiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskOutput)(nil)).Elem()
+}
+
+func (o DiskOutput) ToDiskOutput() DiskOutput {
+	return o
+}
+
+func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DiskOutput{})
 }

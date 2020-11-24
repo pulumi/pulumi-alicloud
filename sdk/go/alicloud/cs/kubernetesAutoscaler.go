@@ -4,6 +4,7 @@
 package cs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -260,4 +261,43 @@ type KubernetesAutoscalerArgs struct {
 
 func (KubernetesAutoscalerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesAutoscalerArgs)(nil)).Elem()
+}
+
+type KubernetesAutoscalerInput interface {
+	pulumi.Input
+
+	ToKubernetesAutoscalerOutput() KubernetesAutoscalerOutput
+	ToKubernetesAutoscalerOutputWithContext(ctx context.Context) KubernetesAutoscalerOutput
+}
+
+func (KubernetesAutoscaler) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesAutoscaler)(nil)).Elem()
+}
+
+func (i KubernetesAutoscaler) ToKubernetesAutoscalerOutput() KubernetesAutoscalerOutput {
+	return i.ToKubernetesAutoscalerOutputWithContext(context.Background())
+}
+
+func (i KubernetesAutoscaler) ToKubernetesAutoscalerOutputWithContext(ctx context.Context) KubernetesAutoscalerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAutoscalerOutput)
+}
+
+type KubernetesAutoscalerOutput struct {
+	*pulumi.OutputState
+}
+
+func (KubernetesAutoscalerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesAutoscalerOutput)(nil)).Elem()
+}
+
+func (o KubernetesAutoscalerOutput) ToKubernetesAutoscalerOutput() KubernetesAutoscalerOutput {
+	return o
+}
+
+func (o KubernetesAutoscalerOutput) ToKubernetesAutoscalerOutputWithContext(ctx context.Context) KubernetesAutoscalerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KubernetesAutoscalerOutput{})
 }

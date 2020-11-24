@@ -28,6 +28,14 @@ import * as utilities from "../utilities";
  *     publicKey: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Key pair can be imported using the name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
+ * ```
  */
 export class KeyPair extends pulumi.CustomResource {
     /**

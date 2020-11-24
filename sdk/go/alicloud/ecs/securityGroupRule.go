@@ -4,6 +4,7 @@
 package ecs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -185,4 +186,43 @@ type SecurityGroupRuleArgs struct {
 
 func (SecurityGroupRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGroupRuleArgs)(nil)).Elem()
+}
+
+type SecurityGroupRuleInput interface {
+	pulumi.Input
+
+	ToSecurityGroupRuleOutput() SecurityGroupRuleOutput
+	ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput
+}
+
+func (SecurityGroupRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupRule)(nil)).Elem()
+}
+
+func (i SecurityGroupRule) ToSecurityGroupRuleOutput() SecurityGroupRuleOutput {
+	return i.ToSecurityGroupRuleOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupRule) ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRuleOutput)
+}
+
+type SecurityGroupRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupRuleOutput)(nil)).Elem()
+}
+
+func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutput() SecurityGroupRuleOutput {
+	return o
+}
+
+func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecurityGroupRuleOutput{})
 }

@@ -51,6 +51,14 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DCDN Domain can be imported using the id or DCDN Domain name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:dcdn/domain:Domain example example.com
+    /// ```
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

@@ -60,6 +60,14 @@ class Connection(pulumi.CustomResource):
             connection_prefix="testAbc")
         ```
 
+        ## Import
+
+        AnalyticDB for PostgreSQL's connection can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:gpdb/connection:Connection example abc12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.

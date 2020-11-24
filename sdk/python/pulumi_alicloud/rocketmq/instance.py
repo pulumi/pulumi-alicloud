@@ -44,6 +44,14 @@ class Instance(pulumi.CustomResource):
             remark="tf-example-ons-instance-remark")
         ```
 
+        ## Import
+
+        ONS INSTANCE can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rocketmq/instance:Instance instance MQ_INST_1234567890_Baso1234567
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
@@ -72,7 +80,7 @@ class Instance(pulumi.CustomResource):
 
             __props__['instance_name'] = instance_name
             if name is not None:
-                warnings.warn("Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.", DeprecationWarning)
+                warnings.warn("""Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.")
             __props__['name'] = name
             __props__['remark'] = remark

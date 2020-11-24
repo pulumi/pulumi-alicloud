@@ -45,6 +45,14 @@ class EnterpriseUser(pulumi.CustomResource):
             user_name="tf-test")
         ```
 
+        ## Import
+
+        DMS Enterprise User can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] max_execute_count: Maximum number of inquiries on the day.
@@ -78,7 +86,7 @@ class EnterpriseUser(pulumi.CustomResource):
             __props__['max_result_count'] = max_result_count
             __props__['mobile'] = mobile
             if nick_name is not None:
-                warnings.warn("Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.", DeprecationWarning)
+                warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.")
             __props__['nick_name'] = nick_name
             __props__['role_names'] = role_names

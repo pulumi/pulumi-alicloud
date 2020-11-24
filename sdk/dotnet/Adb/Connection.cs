@@ -64,6 +64,14 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ADB connection can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:adb/connection:Connection example am-12345678
+    /// ```
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {

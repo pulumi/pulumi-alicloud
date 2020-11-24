@@ -52,6 +52,14 @@ import * as utilities from "../utilities";
  *     parameters: "				{\"Status\":\"Running\"}\n",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * OOS Execution can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
+ * ```
  */
 export class Execution extends pulumi.CustomResource {
     /**

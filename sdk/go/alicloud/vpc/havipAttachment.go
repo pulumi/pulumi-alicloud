@@ -4,12 +4,20 @@
 package vpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// The havip attachemnt can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment foo havip-abc123456:i-abc123456
+// ```
 type HAVipAttachment struct {
 	pulumi.CustomResourceState
 
@@ -87,4 +95,43 @@ type HAVipAttachmentArgs struct {
 
 func (HAVipAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*havipAttachmentArgs)(nil)).Elem()
+}
+
+type HAVipAttachmentInput interface {
+	pulumi.Input
+
+	ToHAVipAttachmentOutput() HAVipAttachmentOutput
+	ToHAVipAttachmentOutputWithContext(ctx context.Context) HAVipAttachmentOutput
+}
+
+func (HAVipAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*HAVipAttachment)(nil)).Elem()
+}
+
+func (i HAVipAttachment) ToHAVipAttachmentOutput() HAVipAttachmentOutput {
+	return i.ToHAVipAttachmentOutputWithContext(context.Background())
+}
+
+func (i HAVipAttachment) ToHAVipAttachmentOutputWithContext(ctx context.Context) HAVipAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HAVipAttachmentOutput)
+}
+
+type HAVipAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (HAVipAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HAVipAttachmentOutput)(nil)).Elem()
+}
+
+func (o HAVipAttachmentOutput) ToHAVipAttachmentOutput() HAVipAttachmentOutput {
+	return o
+}
+
+func (o HAVipAttachmentOutput) ToHAVipAttachmentOutputWithContext(ctx context.Context) HAVipAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HAVipAttachmentOutput{})
 }

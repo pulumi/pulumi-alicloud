@@ -4,12 +4,20 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// DNS domain can be imported using the id or domain name, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:dns/dnsDomain:DnsDomain example aliyun.com
+// ```
 type DnsDomain struct {
 	pulumi.CustomResourceState
 
@@ -149,4 +157,43 @@ type DnsDomainArgs struct {
 
 func (DnsDomainArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsDomainArgs)(nil)).Elem()
+}
+
+type DnsDomainInput interface {
+	pulumi.Input
+
+	ToDnsDomainOutput() DnsDomainOutput
+	ToDnsDomainOutputWithContext(ctx context.Context) DnsDomainOutput
+}
+
+func (DnsDomain) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsDomain)(nil)).Elem()
+}
+
+func (i DnsDomain) ToDnsDomainOutput() DnsDomainOutput {
+	return i.ToDnsDomainOutputWithContext(context.Background())
+}
+
+func (i DnsDomain) ToDnsDomainOutputWithContext(ctx context.Context) DnsDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsDomainOutput)
+}
+
+type DnsDomainOutput struct {
+	*pulumi.OutputState
+}
+
+func (DnsDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsDomainOutput)(nil)).Elem()
+}
+
+func (o DnsDomainOutput) ToDnsDomainOutput() DnsDomainOutput {
+	return o
+}
+
+func (o DnsDomainOutput) ToDnsDomainOutputWithContext(ctx context.Context) DnsDomainOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DnsDomainOutput{})
 }

@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ess
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// ESS scaling group can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
+    /// ```
+    /// </summary>
     public partial class ScalingGroup : Pulumi.CustomResource
     {
         /// <summary>

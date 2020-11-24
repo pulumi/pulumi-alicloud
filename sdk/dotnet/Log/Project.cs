@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Log
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Log project can be imported using the id or name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:log/project:Project example tf-log
+    /// ```
+    /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>

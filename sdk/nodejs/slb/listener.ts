@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -115,6 +114,14 @@ import * as utilities from "../utilities";
  * serverGroupId    | http & https & tcp & udp | the id of resource alicloud.slb.ServerGroup |
  *
  * The listener mapping supports the following:
+ *
+ * ## Import
+ *
+ * Load balancer listener can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:slb/listener:Listener example "lb-abc123456:22"
+ * ```
  */
 export class Listener extends pulumi.CustomResource {
     /**

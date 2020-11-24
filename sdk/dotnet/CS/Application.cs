@@ -47,6 +47,14 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Swarm application can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cs/application:Application app my-first-swarm:wordpress
+    /// ```
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

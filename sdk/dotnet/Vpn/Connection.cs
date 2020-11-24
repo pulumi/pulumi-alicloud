@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpn
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// VPN connection can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:vpn/connection:Connection example vco-abc123456
+    /// ```
+    /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>

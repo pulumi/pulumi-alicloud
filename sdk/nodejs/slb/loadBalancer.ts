@@ -46,6 +46,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load balancer can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
+ * ```
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**

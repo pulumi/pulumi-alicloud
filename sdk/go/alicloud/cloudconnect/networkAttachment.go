@@ -4,6 +4,7 @@
 package cloudconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -50,6 +51,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// The Cloud Connect Network Attachment can be imported using the instance_id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:cloudconnect/networkAttachment:NetworkAttachment example ccn-abc123456:sag-abc123456
 // ```
 type NetworkAttachment struct {
 	pulumi.CustomResourceState
@@ -128,4 +137,43 @@ type NetworkAttachmentArgs struct {
 
 func (NetworkAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAttachmentArgs)(nil)).Elem()
+}
+
+type NetworkAttachmentInput interface {
+	pulumi.Input
+
+	ToNetworkAttachmentOutput() NetworkAttachmentOutput
+	ToNetworkAttachmentOutputWithContext(ctx context.Context) NetworkAttachmentOutput
+}
+
+func (NetworkAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAttachment)(nil)).Elem()
+}
+
+func (i NetworkAttachment) ToNetworkAttachmentOutput() NetworkAttachmentOutput {
+	return i.ToNetworkAttachmentOutputWithContext(context.Background())
+}
+
+func (i NetworkAttachment) ToNetworkAttachmentOutputWithContext(ctx context.Context) NetworkAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentOutput)
+}
+
+type NetworkAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAttachmentOutput)(nil)).Elem()
+}
+
+func (o NetworkAttachmentOutput) ToNetworkAttachmentOutput() NetworkAttachmentOutput {
+	return o
+}
+
+func (o NetworkAttachmentOutput) ToNetworkAttachmentOutputWithContext(ctx context.Context) NetworkAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkAttachmentOutput{})
 }

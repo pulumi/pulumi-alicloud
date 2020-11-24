@@ -4,12 +4,20 @@
 package ess
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// ESS scaling rule can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
+// ```
 type ScalingRule struct {
 	pulumi.CustomResourceState
 
@@ -207,4 +215,43 @@ type ScalingRuleArgs struct {
 
 func (ScalingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingRuleArgs)(nil)).Elem()
+}
+
+type ScalingRuleInput interface {
+	pulumi.Input
+
+	ToScalingRuleOutput() ScalingRuleOutput
+	ToScalingRuleOutputWithContext(ctx context.Context) ScalingRuleOutput
+}
+
+func (ScalingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingRule)(nil)).Elem()
+}
+
+func (i ScalingRule) ToScalingRuleOutput() ScalingRuleOutput {
+	return i.ToScalingRuleOutputWithContext(context.Background())
+}
+
+func (i ScalingRule) ToScalingRuleOutputWithContext(ctx context.Context) ScalingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleOutput)
+}
+
+type ScalingRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScalingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingRuleOutput)(nil)).Elem()
+}
+
+func (o ScalingRuleOutput) ToScalingRuleOutput() ScalingRuleOutput {
+	return o
+}
+
+func (o ScalingRuleOutput) ToScalingRuleOutputWithContext(ctx context.Context) ScalingRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ScalingRuleOutput{})
 }

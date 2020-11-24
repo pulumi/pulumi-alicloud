@@ -80,6 +80,14 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ALIKAFKA GROUP can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+    /// ```
     /// </summary>
     public partial class SaslAcl : Pulumi.CustomResource
     {
