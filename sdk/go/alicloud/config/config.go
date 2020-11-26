@@ -123,3 +123,9 @@ func GetSharedCredentialsFile(ctx *pulumi.Context) string {
 func GetSkipRegionValidation(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "alicloud:skipRegionValidation")
 }
+
+// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+// console.
+func GetSourceIp(ctx *pulumi.Context) string {
+	return config.Get(ctx, "alicloud:sourceIp")
+}

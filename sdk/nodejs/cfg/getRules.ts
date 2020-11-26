@@ -39,6 +39,7 @@ export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Prom
         "enableDetails": args.enableDetails,
         "ids": args.ids,
         "memberId": args.memberId,
+        "messageType": args.messageType,
         "multiAccount": args.multiAccount,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -66,6 +67,10 @@ export interface GetRulesArgs {
      * The ID of the member account to which the rule to be queried belongs. The default is empty. When `multiAccount` is set to true, this parameter is valid.
      */
     readonly memberId?: number;
+    /**
+     * Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
+     */
+    readonly messageType?: string;
     /**
      * Whether the enterprise management account queries the rule details of member accounts.
      */
@@ -96,6 +101,7 @@ export interface GetRulesResult {
      */
     readonly ids: string[];
     readonly memberId?: number;
+    readonly messageType?: string;
     readonly multiAccount?: boolean;
     readonly nameRegex?: string;
     /**

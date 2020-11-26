@@ -33,6 +33,7 @@ class Provider(pulumi.ProviderResource):
                  security_token: Optional[pulumi.Input[str]] = None,
                  shared_credentials_file: Optional[pulumi.Input[str]] = None,
                  skip_region_validation: Optional[pulumi.Input[bool]] = None,
+                 source_ip: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -59,6 +60,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
         :param pulumi.Input[bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
                that are not public (yet).
+        :param pulumi.Input[str] source_ip: The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+               console.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -122,6 +125,7 @@ class Provider(pulumi.ProviderResource):
                 shared_credentials_file = _utilities.get_env('ALICLOUD_SHARED_CREDENTIALS_FILE')
             __props__['shared_credentials_file'] = shared_credentials_file
             __props__['skip_region_validation'] = pulumi.Output.from_input(skip_region_validation).apply(pulumi.runtime.to_json) if skip_region_validation is not None else None
+            __props__['source_ip'] = source_ip
         super(Provider, __self__).__init__(
             'alicloud',
             resource_name,

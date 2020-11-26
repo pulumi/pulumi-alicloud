@@ -22,6 +22,8 @@ class Instance(pulumi.CustomResource):
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
+                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_time: Optional[pulumi.Input[str]] = None,
                  business_info: Optional[pulumi.Input[str]] = None,
                  capacity: Optional[pulumi.Input[int]] = None,
                  config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -29,6 +31,7 @@ class Instance(pulumi.CustomResource):
                  coupon_no: Optional[pulumi.Input[str]] = None,
                  db_instance_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+                 enable_backup_log: Optional[pulumi.Input[int]] = None,
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_upgrade: Optional[pulumi.Input[bool]] = None,
@@ -138,6 +141,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_use_coupon: Specifies whether to use a coupon. Default to: `false`.
         :param pulumi.Input[str] availability_zone: It has been deprecated from provider version 1.101.0 and `zone_id` instead.
         :param pulumi.Input[str] backup_id: The ID of the backup file of the source instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup period.
+        :param pulumi.Input[str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
@@ -145,6 +150,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] coupon_no: The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        :param pulumi.Input[int] enable_backup_log: Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         :param pulumi.Input[bool] enable_public: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcibly change the type. Default to: `true`.
@@ -205,6 +211,8 @@ class Instance(pulumi.CustomResource):
                 pulumi.log.warn("availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.")
             __props__['availability_zone'] = availability_zone
             __props__['backup_id'] = backup_id
+            __props__['backup_periods'] = backup_periods
+            __props__['backup_time'] = backup_time
             __props__['business_info'] = business_info
             __props__['capacity'] = capacity
             __props__['config'] = config
@@ -215,6 +223,7 @@ class Instance(pulumi.CustomResource):
             __props__['coupon_no'] = coupon_no
             __props__['db_instance_name'] = db_instance_name
             __props__['dedicated_host_group_id'] = dedicated_host_group_id
+            __props__['enable_backup_log'] = enable_backup_log
             if enable_public is not None:
                 warnings.warn("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
                 pulumi.log.warn("enable_public is deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.")
@@ -283,6 +292,8 @@ class Instance(pulumi.CustomResource):
             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             backup_id: Optional[pulumi.Input[str]] = None,
+            backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            backup_time: Optional[pulumi.Input[str]] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
             business_info: Optional[pulumi.Input[str]] = None,
             capacity: Optional[pulumi.Input[int]] = None,
@@ -293,6 +304,7 @@ class Instance(pulumi.CustomResource):
             coupon_no: Optional[pulumi.Input[str]] = None,
             db_instance_name: Optional[pulumi.Input[str]] = None,
             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+            enable_backup_log: Optional[pulumi.Input[int]] = None,
             enable_public: Optional[pulumi.Input[bool]] = None,
             end_time: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
@@ -343,6 +355,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_use_coupon: Specifies whether to use a coupon. Default to: `false`.
         :param pulumi.Input[str] availability_zone: It has been deprecated from provider version 1.101.0 and `zone_id` instead.
         :param pulumi.Input[str] backup_id: The ID of the backup file of the source instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup period.
+        :param pulumi.Input[str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
         :param pulumi.Input[int] bandwidth: The bandwidth.
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
@@ -351,6 +365,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] coupon_no: The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        :param pulumi.Input[int] enable_backup_log: Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         :param pulumi.Input[bool] enable_public: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] end_time: The expiration time of the prepaid instance.
         :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
@@ -399,6 +414,8 @@ class Instance(pulumi.CustomResource):
         __props__["auto_use_coupon"] = auto_use_coupon
         __props__["availability_zone"] = availability_zone
         __props__["backup_id"] = backup_id
+        __props__["backup_periods"] = backup_periods
+        __props__["backup_time"] = backup_time
         __props__["bandwidth"] = bandwidth
         __props__["business_info"] = business_info
         __props__["capacity"] = capacity
@@ -409,6 +426,7 @@ class Instance(pulumi.CustomResource):
         __props__["coupon_no"] = coupon_no
         __props__["db_instance_name"] = db_instance_name
         __props__["dedicated_host_group_id"] = dedicated_host_group_id
+        __props__["enable_backup_log"] = enable_backup_log
         __props__["enable_public"] = enable_public
         __props__["end_time"] = end_time
         __props__["engine_version"] = engine_version
@@ -490,6 +508,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "backup_id")
 
     @property
+    @pulumi.getter(name="backupPeriods")
+    def backup_periods(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Backup period.
+        """
+        return pulumi.get(self, "backup_periods")
+
+    @property
+    @pulumi.getter(name="backupTime")
+    def backup_time(self) -> pulumi.Output[str]:
+        """
+        Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+        """
+        return pulumi.get(self, "backup_time")
+
+    @property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[int]:
         """
@@ -562,6 +596,14 @@ class Instance(pulumi.CustomResource):
         The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
         """
         return pulumi.get(self, "dedicated_host_group_id")
+
+    @property
+    @pulumi.getter(name="enableBackupLog")
+    def enable_backup_log(self) -> pulumi.Output[Optional[int]]:
+        """
+        Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+        """
+        return pulumi.get(self, "enable_backup_log")
 
     @property
     @pulumi.getter(name="enablePublic")

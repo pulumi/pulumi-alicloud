@@ -12,6 +12,10 @@ __all__ = [
     'AlarmEscalationsCriticalArgs',
     'AlarmEscalationsInfoArgs',
     'AlarmEscalationsWarnArgs',
+    'GroupMetricRuleEscalationsArgs',
+    'GroupMetricRuleEscalationsCriticalArgs',
+    'GroupMetricRuleEscalationsInfoArgs',
+    'GroupMetricRuleEscalationsWarnArgs',
     'SiteMonitorIspCityArgs',
 ]
 
@@ -220,6 +224,274 @@ class AlarmEscalationsWarnArgs:
     def times(self) -> Optional[pulumi.Input[int]]:
         """
         Critical level alarm retry times. Default to 3.
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "times", value)
+
+
+@pulumi.input_type
+class GroupMetricRuleEscalationsArgs:
+    def __init__(__self__, *,
+                 critical: Optional[pulumi.Input['GroupMetricRuleEscalationsCriticalArgs']] = None,
+                 info: Optional[pulumi.Input['GroupMetricRuleEscalationsInfoArgs']] = None,
+                 warn: Optional[pulumi.Input['GroupMetricRuleEscalationsWarnArgs']] = None):
+        """
+        :param pulumi.Input['GroupMetricRuleEscalationsCriticalArgs'] critical: The critical level.
+        :param pulumi.Input['GroupMetricRuleEscalationsInfoArgs'] info: The info level.
+        :param pulumi.Input['GroupMetricRuleEscalationsWarnArgs'] warn: The warn level.
+        """
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if info is not None:
+            pulumi.set(__self__, "info", info)
+        if warn is not None:
+            pulumi.set(__self__, "warn", warn)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional[pulumi.Input['GroupMetricRuleEscalationsCriticalArgs']]:
+        """
+        The critical level.
+        """
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: Optional[pulumi.Input['GroupMetricRuleEscalationsCriticalArgs']]):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter
+    def info(self) -> Optional[pulumi.Input['GroupMetricRuleEscalationsInfoArgs']]:
+        """
+        The info level.
+        """
+        return pulumi.get(self, "info")
+
+    @info.setter
+    def info(self, value: Optional[pulumi.Input['GroupMetricRuleEscalationsInfoArgs']]):
+        pulumi.set(self, "info", value)
+
+    @property
+    @pulumi.getter
+    def warn(self) -> Optional[pulumi.Input['GroupMetricRuleEscalationsWarnArgs']]:
+        """
+        The warn level.
+        """
+        return pulumi.get(self, "warn")
+
+    @warn.setter
+    def warn(self, value: Optional[pulumi.Input['GroupMetricRuleEscalationsWarnArgs']]):
+        pulumi.set(self, "warn", value)
+
+
+@pulumi.input_type
+class GroupMetricRuleEscalationsCriticalArgs:
+    def __init__(__self__, *,
+                 comparison_operator: Optional[pulumi.Input[str]] = None,
+                 statistics: Optional[pulumi.Input[str]] = None,
+                 threshold: Optional[pulumi.Input[str]] = None,
+                 times: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] comparison_operator: The comparison operator of the threshold for warn-level alerts.
+        :param pulumi.Input[str] statistics: The statistical aggregation method for warn-level alerts.
+        :param pulumi.Input[str] threshold: The threshold for warn-level alerts.
+        :param pulumi.Input[int] times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The comparison operator of the threshold for warn-level alerts.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @property
+    @pulumi.getter
+    def statistics(self) -> Optional[pulumi.Input[str]]:
+        """
+        The statistical aggregation method for warn-level alerts.
+        """
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "statistics", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        The threshold for warn-level alerts.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter
+    def times(self) -> Optional[pulumi.Input[int]]:
+        """
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "times", value)
+
+
+@pulumi.input_type
+class GroupMetricRuleEscalationsInfoArgs:
+    def __init__(__self__, *,
+                 comparison_operator: Optional[pulumi.Input[str]] = None,
+                 statistics: Optional[pulumi.Input[str]] = None,
+                 threshold: Optional[pulumi.Input[str]] = None,
+                 times: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] comparison_operator: The comparison operator of the threshold for warn-level alerts.
+        :param pulumi.Input[str] statistics: The statistical aggregation method for warn-level alerts.
+        :param pulumi.Input[str] threshold: The threshold for warn-level alerts.
+        :param pulumi.Input[int] times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The comparison operator of the threshold for warn-level alerts.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @property
+    @pulumi.getter
+    def statistics(self) -> Optional[pulumi.Input[str]]:
+        """
+        The statistical aggregation method for warn-level alerts.
+        """
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "statistics", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        The threshold for warn-level alerts.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter
+    def times(self) -> Optional[pulumi.Input[int]]:
+        """
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "times", value)
+
+
+@pulumi.input_type
+class GroupMetricRuleEscalationsWarnArgs:
+    def __init__(__self__, *,
+                 comparison_operator: Optional[pulumi.Input[str]] = None,
+                 statistics: Optional[pulumi.Input[str]] = None,
+                 threshold: Optional[pulumi.Input[str]] = None,
+                 times: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] comparison_operator: The comparison operator of the threshold for warn-level alerts.
+        :param pulumi.Input[str] statistics: The statistical aggregation method for warn-level alerts.
+        :param pulumi.Input[str] threshold: The threshold for warn-level alerts.
+        :param pulumi.Input[int] times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The comparison operator of the threshold for warn-level alerts.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @property
+    @pulumi.getter
+    def statistics(self) -> Optional[pulumi.Input[str]]:
+        """
+        The statistical aggregation method for warn-level alerts.
+        """
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "statistics", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        The threshold for warn-level alerts.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter
+    def times(self) -> Optional[pulumi.Input[int]]:
+        """
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 

@@ -9,6 +9,7 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
+    'AliasRoutingConfigArgs',
     'CustomDomainCertConfigArgs',
     'CustomDomainRouteConfigArgs',
     'FunctionAsyncInvokeConfigDestinationConfigArgs',
@@ -20,6 +21,29 @@ __all__ = [
     'ServiceNasConfigMountPointArgs',
     'ServiceVpcConfigArgs',
 ]
+
+@pulumi.input_type
+class AliasRoutingConfigArgs:
+    def __init__(__self__, *,
+                 additional_version_weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[float]]] additional_version_weights: A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
+        """
+        if additional_version_weights is not None:
+            pulumi.set(__self__, "additional_version_weights", additional_version_weights)
+
+    @property
+    @pulumi.getter(name="additionalVersionWeights")
+    def additional_version_weights(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]]:
+        """
+        A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
+        """
+        return pulumi.get(self, "additional_version_weights")
+
+    @additional_version_weights.setter
+    def additional_version_weights(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]]):
+        pulumi.set(self, "additional_version_weights", value)
+
 
 @pulumi.input_type
 class CustomDomainCertConfigArgs:

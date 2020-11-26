@@ -93,6 +93,9 @@ type providerArgs struct {
 	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
 	// that are not public (yet).
 	SkipRegionValidation *bool `pulumi:"skipRegionValidation"`
+	// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+	// console.
+	SourceIp *string `pulumi:"sourceIp"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -133,6 +136,9 @@ type ProviderArgs struct {
 	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
 	// that are not public (yet).
 	SkipRegionValidation pulumi.BoolPtrInput
+	// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+	// console.
+	SourceIp pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {

@@ -27,6 +27,7 @@ __all__ = [
     'security_token',
     'shared_credentials_file',
     'skip_region_validation',
+    'source_ip',
 ]
 
 __config__ = pulumi.Config('alicloud')
@@ -98,5 +99,11 @@ skip_region_validation = __config__.get('skipRegionValidation')
 """
 Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
 that are not public (yet).
+"""
+
+source_ip = __config__.get('sourceIp')
+"""
+The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+console.
 """
 

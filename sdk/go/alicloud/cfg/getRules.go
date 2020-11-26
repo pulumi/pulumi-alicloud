@@ -59,6 +59,8 @@ type GetRulesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The ID of the member account to which the rule to be queried belongs. The default is empty. When `multiAccount` is set to true, this parameter is valid.
 	MemberId *int `pulumi:"memberId"`
+	// Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
+	MessageType *string `pulumi:"messageType"`
 	// Whether the enterprise management account queries the rule details of member accounts.
 	MultiAccount *bool `pulumi:"multiAccount"`
 	// A regex string to filter results by rule name.
@@ -77,6 +79,7 @@ type GetRulesResult struct {
 	// A list of Config Rule IDs.
 	Ids          []string `pulumi:"ids"`
 	MemberId     *int     `pulumi:"memberId"`
+	MessageType  *string  `pulumi:"messageType"`
 	MultiAccount *bool    `pulumi:"multiAccount"`
 	NameRegex    *string  `pulumi:"nameRegex"`
 	// A list of Config Rule names.

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .alias import *
 from .custom_domain import *
 from .function import *
 from .function_async_invoke_config import *

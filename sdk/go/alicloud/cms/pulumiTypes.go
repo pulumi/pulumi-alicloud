@@ -574,6 +574,739 @@ func (o AlarmEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GroupMetricRuleEscalations struct {
+	// The critical level.
+	Critical *GroupMetricRuleEscalationsCritical `pulumi:"critical"`
+	// The info level.
+	Info *GroupMetricRuleEscalationsInfo `pulumi:"info"`
+	// The warn level.
+	Warn *GroupMetricRuleEscalationsWarn `pulumi:"warn"`
+}
+
+// GroupMetricRuleEscalationsInput is an input type that accepts GroupMetricRuleEscalationsArgs and GroupMetricRuleEscalationsOutput values.
+// You can construct a concrete instance of `GroupMetricRuleEscalationsInput` via:
+//
+//          GroupMetricRuleEscalationsArgs{...}
+type GroupMetricRuleEscalationsInput interface {
+	pulumi.Input
+
+	ToGroupMetricRuleEscalationsOutput() GroupMetricRuleEscalationsOutput
+	ToGroupMetricRuleEscalationsOutputWithContext(context.Context) GroupMetricRuleEscalationsOutput
+}
+
+type GroupMetricRuleEscalationsArgs struct {
+	// The critical level.
+	Critical GroupMetricRuleEscalationsCriticalPtrInput `pulumi:"critical"`
+	// The info level.
+	Info GroupMetricRuleEscalationsInfoPtrInput `pulumi:"info"`
+	// The warn level.
+	Warn GroupMetricRuleEscalationsWarnPtrInput `pulumi:"warn"`
+}
+
+func (GroupMetricRuleEscalationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMetricRuleEscalations)(nil)).Elem()
+}
+
+func (i GroupMetricRuleEscalationsArgs) ToGroupMetricRuleEscalationsOutput() GroupMetricRuleEscalationsOutput {
+	return i.ToGroupMetricRuleEscalationsOutputWithContext(context.Background())
+}
+
+func (i GroupMetricRuleEscalationsArgs) ToGroupMetricRuleEscalationsOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsOutput)
+}
+
+func (i GroupMetricRuleEscalationsArgs) ToGroupMetricRuleEscalationsPtrOutput() GroupMetricRuleEscalationsPtrOutput {
+	return i.ToGroupMetricRuleEscalationsPtrOutputWithContext(context.Background())
+}
+
+func (i GroupMetricRuleEscalationsArgs) ToGroupMetricRuleEscalationsPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsOutput).ToGroupMetricRuleEscalationsPtrOutputWithContext(ctx)
+}
+
+// GroupMetricRuleEscalationsPtrInput is an input type that accepts GroupMetricRuleEscalationsArgs, GroupMetricRuleEscalationsPtr and GroupMetricRuleEscalationsPtrOutput values.
+// You can construct a concrete instance of `GroupMetricRuleEscalationsPtrInput` via:
+//
+//          GroupMetricRuleEscalationsArgs{...}
+//
+//  or:
+//
+//          nil
+type GroupMetricRuleEscalationsPtrInput interface {
+	pulumi.Input
+
+	ToGroupMetricRuleEscalationsPtrOutput() GroupMetricRuleEscalationsPtrOutput
+	ToGroupMetricRuleEscalationsPtrOutputWithContext(context.Context) GroupMetricRuleEscalationsPtrOutput
+}
+
+type groupMetricRuleEscalationsPtrType GroupMetricRuleEscalationsArgs
+
+func GroupMetricRuleEscalationsPtr(v *GroupMetricRuleEscalationsArgs) GroupMetricRuleEscalationsPtrInput {
+	return (*groupMetricRuleEscalationsPtrType)(v)
+}
+
+func (*groupMetricRuleEscalationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupMetricRuleEscalations)(nil)).Elem()
+}
+
+func (i *groupMetricRuleEscalationsPtrType) ToGroupMetricRuleEscalationsPtrOutput() GroupMetricRuleEscalationsPtrOutput {
+	return i.ToGroupMetricRuleEscalationsPtrOutputWithContext(context.Background())
+}
+
+func (i *groupMetricRuleEscalationsPtrType) ToGroupMetricRuleEscalationsPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsPtrOutput)
+}
+
+type GroupMetricRuleEscalationsOutput struct{ *pulumi.OutputState }
+
+func (GroupMetricRuleEscalationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMetricRuleEscalations)(nil)).Elem()
+}
+
+func (o GroupMetricRuleEscalationsOutput) ToGroupMetricRuleEscalationsOutput() GroupMetricRuleEscalationsOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsOutput) ToGroupMetricRuleEscalationsOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsOutput) ToGroupMetricRuleEscalationsPtrOutput() GroupMetricRuleEscalationsPtrOutput {
+	return o.ToGroupMetricRuleEscalationsPtrOutputWithContext(context.Background())
+}
+
+func (o GroupMetricRuleEscalationsOutput) ToGroupMetricRuleEscalationsPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalations) *GroupMetricRuleEscalations {
+		return &v
+	}).(GroupMetricRuleEscalationsPtrOutput)
+}
+
+// The critical level.
+func (o GroupMetricRuleEscalationsOutput) Critical() GroupMetricRuleEscalationsCriticalPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalations) *GroupMetricRuleEscalationsCritical { return v.Critical }).(GroupMetricRuleEscalationsCriticalPtrOutput)
+}
+
+// The info level.
+func (o GroupMetricRuleEscalationsOutput) Info() GroupMetricRuleEscalationsInfoPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalations) *GroupMetricRuleEscalationsInfo { return v.Info }).(GroupMetricRuleEscalationsInfoPtrOutput)
+}
+
+// The warn level.
+func (o GroupMetricRuleEscalationsOutput) Warn() GroupMetricRuleEscalationsWarnPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalations) *GroupMetricRuleEscalationsWarn { return v.Warn }).(GroupMetricRuleEscalationsWarnPtrOutput)
+}
+
+type GroupMetricRuleEscalationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupMetricRuleEscalationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupMetricRuleEscalations)(nil)).Elem()
+}
+
+func (o GroupMetricRuleEscalationsPtrOutput) ToGroupMetricRuleEscalationsPtrOutput() GroupMetricRuleEscalationsPtrOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsPtrOutput) ToGroupMetricRuleEscalationsPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsPtrOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsPtrOutput) Elem() GroupMetricRuleEscalationsOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalations) GroupMetricRuleEscalations { return *v }).(GroupMetricRuleEscalationsOutput)
+}
+
+// The critical level.
+func (o GroupMetricRuleEscalationsPtrOutput) Critical() GroupMetricRuleEscalationsCriticalPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalations) *GroupMetricRuleEscalationsCritical {
+		if v == nil {
+			return nil
+		}
+		return v.Critical
+	}).(GroupMetricRuleEscalationsCriticalPtrOutput)
+}
+
+// The info level.
+func (o GroupMetricRuleEscalationsPtrOutput) Info() GroupMetricRuleEscalationsInfoPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalations) *GroupMetricRuleEscalationsInfo {
+		if v == nil {
+			return nil
+		}
+		return v.Info
+	}).(GroupMetricRuleEscalationsInfoPtrOutput)
+}
+
+// The warn level.
+func (o GroupMetricRuleEscalationsPtrOutput) Warn() GroupMetricRuleEscalationsWarnPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalations) *GroupMetricRuleEscalationsWarn {
+		if v == nil {
+			return nil
+		}
+		return v.Warn
+	}).(GroupMetricRuleEscalationsWarnPtrOutput)
+}
+
+type GroupMetricRuleEscalationsCritical struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics *string `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold *string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times *int `pulumi:"times"`
+}
+
+// GroupMetricRuleEscalationsCriticalInput is an input type that accepts GroupMetricRuleEscalationsCriticalArgs and GroupMetricRuleEscalationsCriticalOutput values.
+// You can construct a concrete instance of `GroupMetricRuleEscalationsCriticalInput` via:
+//
+//          GroupMetricRuleEscalationsCriticalArgs{...}
+type GroupMetricRuleEscalationsCriticalInput interface {
+	pulumi.Input
+
+	ToGroupMetricRuleEscalationsCriticalOutput() GroupMetricRuleEscalationsCriticalOutput
+	ToGroupMetricRuleEscalationsCriticalOutputWithContext(context.Context) GroupMetricRuleEscalationsCriticalOutput
+}
+
+type GroupMetricRuleEscalationsCriticalArgs struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (GroupMetricRuleEscalationsCriticalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMetricRuleEscalationsCritical)(nil)).Elem()
+}
+
+func (i GroupMetricRuleEscalationsCriticalArgs) ToGroupMetricRuleEscalationsCriticalOutput() GroupMetricRuleEscalationsCriticalOutput {
+	return i.ToGroupMetricRuleEscalationsCriticalOutputWithContext(context.Background())
+}
+
+func (i GroupMetricRuleEscalationsCriticalArgs) ToGroupMetricRuleEscalationsCriticalOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsCriticalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsCriticalOutput)
+}
+
+func (i GroupMetricRuleEscalationsCriticalArgs) ToGroupMetricRuleEscalationsCriticalPtrOutput() GroupMetricRuleEscalationsCriticalPtrOutput {
+	return i.ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i GroupMetricRuleEscalationsCriticalArgs) ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsCriticalOutput).ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(ctx)
+}
+
+// GroupMetricRuleEscalationsCriticalPtrInput is an input type that accepts GroupMetricRuleEscalationsCriticalArgs, GroupMetricRuleEscalationsCriticalPtr and GroupMetricRuleEscalationsCriticalPtrOutput values.
+// You can construct a concrete instance of `GroupMetricRuleEscalationsCriticalPtrInput` via:
+//
+//          GroupMetricRuleEscalationsCriticalArgs{...}
+//
+//  or:
+//
+//          nil
+type GroupMetricRuleEscalationsCriticalPtrInput interface {
+	pulumi.Input
+
+	ToGroupMetricRuleEscalationsCriticalPtrOutput() GroupMetricRuleEscalationsCriticalPtrOutput
+	ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(context.Context) GroupMetricRuleEscalationsCriticalPtrOutput
+}
+
+type groupMetricRuleEscalationsCriticalPtrType GroupMetricRuleEscalationsCriticalArgs
+
+func GroupMetricRuleEscalationsCriticalPtr(v *GroupMetricRuleEscalationsCriticalArgs) GroupMetricRuleEscalationsCriticalPtrInput {
+	return (*groupMetricRuleEscalationsCriticalPtrType)(v)
+}
+
+func (*groupMetricRuleEscalationsCriticalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupMetricRuleEscalationsCritical)(nil)).Elem()
+}
+
+func (i *groupMetricRuleEscalationsCriticalPtrType) ToGroupMetricRuleEscalationsCriticalPtrOutput() GroupMetricRuleEscalationsCriticalPtrOutput {
+	return i.ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i *groupMetricRuleEscalationsCriticalPtrType) ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsCriticalPtrOutput)
+}
+
+type GroupMetricRuleEscalationsCriticalOutput struct{ *pulumi.OutputState }
+
+func (GroupMetricRuleEscalationsCriticalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMetricRuleEscalationsCritical)(nil)).Elem()
+}
+
+func (o GroupMetricRuleEscalationsCriticalOutput) ToGroupMetricRuleEscalationsCriticalOutput() GroupMetricRuleEscalationsCriticalOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsCriticalOutput) ToGroupMetricRuleEscalationsCriticalOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsCriticalOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsCriticalOutput) ToGroupMetricRuleEscalationsCriticalPtrOutput() GroupMetricRuleEscalationsCriticalPtrOutput {
+	return o.ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(context.Background())
+}
+
+func (o GroupMetricRuleEscalationsCriticalOutput) ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsCriticalPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsCritical) *GroupMetricRuleEscalationsCritical {
+		return &v
+	}).(GroupMetricRuleEscalationsCriticalPtrOutput)
+}
+
+// The comparison operator of the threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsCriticalOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsCritical) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GroupMetricRuleEscalationsCriticalOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsCritical) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsCriticalOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsCritical) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+func (o GroupMetricRuleEscalationsCriticalOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsCritical) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type GroupMetricRuleEscalationsCriticalPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupMetricRuleEscalationsCriticalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupMetricRuleEscalationsCritical)(nil)).Elem()
+}
+
+func (o GroupMetricRuleEscalationsCriticalPtrOutput) ToGroupMetricRuleEscalationsCriticalPtrOutput() GroupMetricRuleEscalationsCriticalPtrOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsCriticalPtrOutput) ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsCriticalPtrOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsCriticalPtrOutput) Elem() GroupMetricRuleEscalationsCriticalOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsCritical) GroupMetricRuleEscalationsCritical { return *v }).(GroupMetricRuleEscalationsCriticalOutput)
+}
+
+// The comparison operator of the threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsCriticalPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GroupMetricRuleEscalationsCriticalPtrOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Statistics
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsCriticalPtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+func (o GroupMetricRuleEscalationsCriticalPtrOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsCritical) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Times
+	}).(pulumi.IntPtrOutput)
+}
+
+type GroupMetricRuleEscalationsInfo struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics *string `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold *string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times *int `pulumi:"times"`
+}
+
+// GroupMetricRuleEscalationsInfoInput is an input type that accepts GroupMetricRuleEscalationsInfoArgs and GroupMetricRuleEscalationsInfoOutput values.
+// You can construct a concrete instance of `GroupMetricRuleEscalationsInfoInput` via:
+//
+//          GroupMetricRuleEscalationsInfoArgs{...}
+type GroupMetricRuleEscalationsInfoInput interface {
+	pulumi.Input
+
+	ToGroupMetricRuleEscalationsInfoOutput() GroupMetricRuleEscalationsInfoOutput
+	ToGroupMetricRuleEscalationsInfoOutputWithContext(context.Context) GroupMetricRuleEscalationsInfoOutput
+}
+
+type GroupMetricRuleEscalationsInfoArgs struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (GroupMetricRuleEscalationsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMetricRuleEscalationsInfo)(nil)).Elem()
+}
+
+func (i GroupMetricRuleEscalationsInfoArgs) ToGroupMetricRuleEscalationsInfoOutput() GroupMetricRuleEscalationsInfoOutput {
+	return i.ToGroupMetricRuleEscalationsInfoOutputWithContext(context.Background())
+}
+
+func (i GroupMetricRuleEscalationsInfoArgs) ToGroupMetricRuleEscalationsInfoOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsInfoOutput)
+}
+
+func (i GroupMetricRuleEscalationsInfoArgs) ToGroupMetricRuleEscalationsInfoPtrOutput() GroupMetricRuleEscalationsInfoPtrOutput {
+	return i.ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GroupMetricRuleEscalationsInfoArgs) ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsInfoOutput).ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(ctx)
+}
+
+// GroupMetricRuleEscalationsInfoPtrInput is an input type that accepts GroupMetricRuleEscalationsInfoArgs, GroupMetricRuleEscalationsInfoPtr and GroupMetricRuleEscalationsInfoPtrOutput values.
+// You can construct a concrete instance of `GroupMetricRuleEscalationsInfoPtrInput` via:
+//
+//          GroupMetricRuleEscalationsInfoArgs{...}
+//
+//  or:
+//
+//          nil
+type GroupMetricRuleEscalationsInfoPtrInput interface {
+	pulumi.Input
+
+	ToGroupMetricRuleEscalationsInfoPtrOutput() GroupMetricRuleEscalationsInfoPtrOutput
+	ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(context.Context) GroupMetricRuleEscalationsInfoPtrOutput
+}
+
+type groupMetricRuleEscalationsInfoPtrType GroupMetricRuleEscalationsInfoArgs
+
+func GroupMetricRuleEscalationsInfoPtr(v *GroupMetricRuleEscalationsInfoArgs) GroupMetricRuleEscalationsInfoPtrInput {
+	return (*groupMetricRuleEscalationsInfoPtrType)(v)
+}
+
+func (*groupMetricRuleEscalationsInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupMetricRuleEscalationsInfo)(nil)).Elem()
+}
+
+func (i *groupMetricRuleEscalationsInfoPtrType) ToGroupMetricRuleEscalationsInfoPtrOutput() GroupMetricRuleEscalationsInfoPtrOutput {
+	return i.ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *groupMetricRuleEscalationsInfoPtrType) ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsInfoPtrOutput)
+}
+
+type GroupMetricRuleEscalationsInfoOutput struct{ *pulumi.OutputState }
+
+func (GroupMetricRuleEscalationsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMetricRuleEscalationsInfo)(nil)).Elem()
+}
+
+func (o GroupMetricRuleEscalationsInfoOutput) ToGroupMetricRuleEscalationsInfoOutput() GroupMetricRuleEscalationsInfoOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsInfoOutput) ToGroupMetricRuleEscalationsInfoOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsInfoOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsInfoOutput) ToGroupMetricRuleEscalationsInfoPtrOutput() GroupMetricRuleEscalationsInfoPtrOutput {
+	return o.ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GroupMetricRuleEscalationsInfoOutput) ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsInfoPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsInfo) *GroupMetricRuleEscalationsInfo {
+		return &v
+	}).(GroupMetricRuleEscalationsInfoPtrOutput)
+}
+
+// The comparison operator of the threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsInfoOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsInfo) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GroupMetricRuleEscalationsInfoOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsInfo) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsInfoOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsInfo) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+func (o GroupMetricRuleEscalationsInfoOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsInfo) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type GroupMetricRuleEscalationsInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupMetricRuleEscalationsInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupMetricRuleEscalationsInfo)(nil)).Elem()
+}
+
+func (o GroupMetricRuleEscalationsInfoPtrOutput) ToGroupMetricRuleEscalationsInfoPtrOutput() GroupMetricRuleEscalationsInfoPtrOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsInfoPtrOutput) ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsInfoPtrOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsInfoPtrOutput) Elem() GroupMetricRuleEscalationsInfoOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsInfo) GroupMetricRuleEscalationsInfo { return *v }).(GroupMetricRuleEscalationsInfoOutput)
+}
+
+// The comparison operator of the threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsInfoPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GroupMetricRuleEscalationsInfoPtrOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Statistics
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsInfoPtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+func (o GroupMetricRuleEscalationsInfoPtrOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Times
+	}).(pulumi.IntPtrOutput)
+}
+
+type GroupMetricRuleEscalationsWarn struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics *string `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold *string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times *int `pulumi:"times"`
+}
+
+// GroupMetricRuleEscalationsWarnInput is an input type that accepts GroupMetricRuleEscalationsWarnArgs and GroupMetricRuleEscalationsWarnOutput values.
+// You can construct a concrete instance of `GroupMetricRuleEscalationsWarnInput` via:
+//
+//          GroupMetricRuleEscalationsWarnArgs{...}
+type GroupMetricRuleEscalationsWarnInput interface {
+	pulumi.Input
+
+	ToGroupMetricRuleEscalationsWarnOutput() GroupMetricRuleEscalationsWarnOutput
+	ToGroupMetricRuleEscalationsWarnOutputWithContext(context.Context) GroupMetricRuleEscalationsWarnOutput
+}
+
+type GroupMetricRuleEscalationsWarnArgs struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (GroupMetricRuleEscalationsWarnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMetricRuleEscalationsWarn)(nil)).Elem()
+}
+
+func (i GroupMetricRuleEscalationsWarnArgs) ToGroupMetricRuleEscalationsWarnOutput() GroupMetricRuleEscalationsWarnOutput {
+	return i.ToGroupMetricRuleEscalationsWarnOutputWithContext(context.Background())
+}
+
+func (i GroupMetricRuleEscalationsWarnArgs) ToGroupMetricRuleEscalationsWarnOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsWarnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsWarnOutput)
+}
+
+func (i GroupMetricRuleEscalationsWarnArgs) ToGroupMetricRuleEscalationsWarnPtrOutput() GroupMetricRuleEscalationsWarnPtrOutput {
+	return i.ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(context.Background())
+}
+
+func (i GroupMetricRuleEscalationsWarnArgs) ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsWarnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsWarnOutput).ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(ctx)
+}
+
+// GroupMetricRuleEscalationsWarnPtrInput is an input type that accepts GroupMetricRuleEscalationsWarnArgs, GroupMetricRuleEscalationsWarnPtr and GroupMetricRuleEscalationsWarnPtrOutput values.
+// You can construct a concrete instance of `GroupMetricRuleEscalationsWarnPtrInput` via:
+//
+//          GroupMetricRuleEscalationsWarnArgs{...}
+//
+//  or:
+//
+//          nil
+type GroupMetricRuleEscalationsWarnPtrInput interface {
+	pulumi.Input
+
+	ToGroupMetricRuleEscalationsWarnPtrOutput() GroupMetricRuleEscalationsWarnPtrOutput
+	ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(context.Context) GroupMetricRuleEscalationsWarnPtrOutput
+}
+
+type groupMetricRuleEscalationsWarnPtrType GroupMetricRuleEscalationsWarnArgs
+
+func GroupMetricRuleEscalationsWarnPtr(v *GroupMetricRuleEscalationsWarnArgs) GroupMetricRuleEscalationsWarnPtrInput {
+	return (*groupMetricRuleEscalationsWarnPtrType)(v)
+}
+
+func (*groupMetricRuleEscalationsWarnPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupMetricRuleEscalationsWarn)(nil)).Elem()
+}
+
+func (i *groupMetricRuleEscalationsWarnPtrType) ToGroupMetricRuleEscalationsWarnPtrOutput() GroupMetricRuleEscalationsWarnPtrOutput {
+	return i.ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(context.Background())
+}
+
+func (i *groupMetricRuleEscalationsWarnPtrType) ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsWarnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsWarnPtrOutput)
+}
+
+type GroupMetricRuleEscalationsWarnOutput struct{ *pulumi.OutputState }
+
+func (GroupMetricRuleEscalationsWarnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMetricRuleEscalationsWarn)(nil)).Elem()
+}
+
+func (o GroupMetricRuleEscalationsWarnOutput) ToGroupMetricRuleEscalationsWarnOutput() GroupMetricRuleEscalationsWarnOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsWarnOutput) ToGroupMetricRuleEscalationsWarnOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsWarnOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsWarnOutput) ToGroupMetricRuleEscalationsWarnPtrOutput() GroupMetricRuleEscalationsWarnPtrOutput {
+	return o.ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(context.Background())
+}
+
+func (o GroupMetricRuleEscalationsWarnOutput) ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsWarnPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsWarn) *GroupMetricRuleEscalationsWarn {
+		return &v
+	}).(GroupMetricRuleEscalationsWarnPtrOutput)
+}
+
+// The comparison operator of the threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsWarnOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsWarn) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GroupMetricRuleEscalationsWarnOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsWarn) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsWarnOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsWarn) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+func (o GroupMetricRuleEscalationsWarnOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupMetricRuleEscalationsWarn) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type GroupMetricRuleEscalationsWarnPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupMetricRuleEscalationsWarnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupMetricRuleEscalationsWarn)(nil)).Elem()
+}
+
+func (o GroupMetricRuleEscalationsWarnPtrOutput) ToGroupMetricRuleEscalationsWarnPtrOutput() GroupMetricRuleEscalationsWarnPtrOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsWarnPtrOutput) ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsWarnPtrOutput {
+	return o
+}
+
+func (o GroupMetricRuleEscalationsWarnPtrOutput) Elem() GroupMetricRuleEscalationsWarnOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsWarn) GroupMetricRuleEscalationsWarn { return *v }).(GroupMetricRuleEscalationsWarnOutput)
+}
+
+// The comparison operator of the threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsWarnPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsWarn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GroupMetricRuleEscalationsWarnPtrOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsWarn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Statistics
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GroupMetricRuleEscalationsWarnPtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsWarn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+func (o GroupMetricRuleEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsWarn) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Times
+	}).(pulumi.IntPtrOutput)
+}
+
 type SiteMonitorIspCity struct {
 	City string `pulumi:"city"`
 	Isp  string `pulumi:"isp"`
@@ -1009,6 +1742,754 @@ func (o GetAlarmContactsContactArrayOutput) Index(i pulumi.IntInput) GetAlarmCon
 	}).(GetAlarmContactsContactOutput)
 }
 
+type GetGroupMetricRulesRule struct {
+	// Alarm contact group.
+	ContactGroups string `pulumi:"contactGroups"`
+	// The dimensions that specify the resources to be associated with the alert rule.
+	Dimensions string `pulumi:"dimensions"`
+	// The time period during which the alert rule is effective.
+	EffectiveInterval string `pulumi:"effectiveInterval"`
+	// The subject of the alert notification email.
+	EmailSubject string `pulumi:"emailSubject"`
+	// Indicates whether the alert rule is enabled.
+	EnableState bool `pulumi:"enableState"`
+	// Alarm level.
+	Escalations []GetGroupMetricRulesRuleEscalation `pulumi:"escalations"`
+	// The ID of the application group.
+	GroupId string `pulumi:"groupId"`
+	// The name of the alert rule.
+	GroupMetricRuleName string `pulumi:"groupMetricRuleName"`
+	// The ID of the Group Metric Rule.
+	Id string `pulumi:"id"`
+	// The name of the metric.
+	MetricName string `pulumi:"metricName"`
+	// The namespace of the service.
+	Namespace string `pulumi:"namespace"`
+	// The time period during which the alert rule is ineffective.
+	NoEffectiveInterval string `pulumi:"noEffectiveInterval"`
+	// The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
+	Period int `pulumi:"period"`
+	// The resources that are associated with the alert rule.
+	Resources string `pulumi:"resources"`
+	// The ID of the alert rule.
+	RuleId string `pulumi:"ruleId"`
+	// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
+	SilenceTime int `pulumi:"silenceTime"`
+	// The type of the alert rule. The value is fixed to METRIC, indicating an alert rule for time series metrics.
+	SourceType string `pulumi:"sourceType"`
+	// The status of Group Metric Rule..
+	Status string `pulumi:"status"`
+	// The callback URL.
+	Webhook string `pulumi:"webhook"`
+}
+
+// GetGroupMetricRulesRuleInput is an input type that accepts GetGroupMetricRulesRuleArgs and GetGroupMetricRulesRuleOutput values.
+// You can construct a concrete instance of `GetGroupMetricRulesRuleInput` via:
+//
+//          GetGroupMetricRulesRuleArgs{...}
+type GetGroupMetricRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetGroupMetricRulesRuleOutput() GetGroupMetricRulesRuleOutput
+	ToGetGroupMetricRulesRuleOutputWithContext(context.Context) GetGroupMetricRulesRuleOutput
+}
+
+type GetGroupMetricRulesRuleArgs struct {
+	// Alarm contact group.
+	ContactGroups pulumi.StringInput `pulumi:"contactGroups"`
+	// The dimensions that specify the resources to be associated with the alert rule.
+	Dimensions pulumi.StringInput `pulumi:"dimensions"`
+	// The time period during which the alert rule is effective.
+	EffectiveInterval pulumi.StringInput `pulumi:"effectiveInterval"`
+	// The subject of the alert notification email.
+	EmailSubject pulumi.StringInput `pulumi:"emailSubject"`
+	// Indicates whether the alert rule is enabled.
+	EnableState pulumi.BoolInput `pulumi:"enableState"`
+	// Alarm level.
+	Escalations GetGroupMetricRulesRuleEscalationArrayInput `pulumi:"escalations"`
+	// The ID of the application group.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The name of the alert rule.
+	GroupMetricRuleName pulumi.StringInput `pulumi:"groupMetricRuleName"`
+	// The ID of the Group Metric Rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the metric.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The namespace of the service.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The time period during which the alert rule is ineffective.
+	NoEffectiveInterval pulumi.StringInput `pulumi:"noEffectiveInterval"`
+	// The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
+	Period pulumi.IntInput `pulumi:"period"`
+	// The resources that are associated with the alert rule.
+	Resources pulumi.StringInput `pulumi:"resources"`
+	// The ID of the alert rule.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
+	SilenceTime pulumi.IntInput `pulumi:"silenceTime"`
+	// The type of the alert rule. The value is fixed to METRIC, indicating an alert rule for time series metrics.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// The status of Group Metric Rule..
+	Status pulumi.StringInput `pulumi:"status"`
+	// The callback URL.
+	Webhook pulumi.StringInput `pulumi:"webhook"`
+}
+
+func (GetGroupMetricRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesRule)(nil)).Elem()
+}
+
+func (i GetGroupMetricRulesRuleArgs) ToGetGroupMetricRulesRuleOutput() GetGroupMetricRulesRuleOutput {
+	return i.ToGetGroupMetricRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetGroupMetricRulesRuleArgs) ToGetGroupMetricRulesRuleOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleOutput)
+}
+
+// GetGroupMetricRulesRuleArrayInput is an input type that accepts GetGroupMetricRulesRuleArray and GetGroupMetricRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetGroupMetricRulesRuleArrayInput` via:
+//
+//          GetGroupMetricRulesRuleArray{ GetGroupMetricRulesRuleArgs{...} }
+type GetGroupMetricRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupMetricRulesRuleArrayOutput() GetGroupMetricRulesRuleArrayOutput
+	ToGetGroupMetricRulesRuleArrayOutputWithContext(context.Context) GetGroupMetricRulesRuleArrayOutput
+}
+
+type GetGroupMetricRulesRuleArray []GetGroupMetricRulesRuleInput
+
+func (GetGroupMetricRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMetricRulesRule)(nil)).Elem()
+}
+
+func (i GetGroupMetricRulesRuleArray) ToGetGroupMetricRulesRuleArrayOutput() GetGroupMetricRulesRuleArrayOutput {
+	return i.ToGetGroupMetricRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupMetricRulesRuleArray) ToGetGroupMetricRulesRuleArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleArrayOutput)
+}
+
+type GetGroupMetricRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMetricRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesRule)(nil)).Elem()
+}
+
+func (o GetGroupMetricRulesRuleOutput) ToGetGroupMetricRulesRuleOutput() GetGroupMetricRulesRuleOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleOutput) ToGetGroupMetricRulesRuleOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleOutput {
+	return o
+}
+
+// Alarm contact group.
+func (o GetGroupMetricRulesRuleOutput) ContactGroups() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.ContactGroups }).(pulumi.StringOutput)
+}
+
+// The dimensions that specify the resources to be associated with the alert rule.
+func (o GetGroupMetricRulesRuleOutput) Dimensions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.Dimensions }).(pulumi.StringOutput)
+}
+
+// The time period during which the alert rule is effective.
+func (o GetGroupMetricRulesRuleOutput) EffectiveInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.EffectiveInterval }).(pulumi.StringOutput)
+}
+
+// The subject of the alert notification email.
+func (o GetGroupMetricRulesRuleOutput) EmailSubject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.EmailSubject }).(pulumi.StringOutput)
+}
+
+// Indicates whether the alert rule is enabled.
+func (o GetGroupMetricRulesRuleOutput) EnableState() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) bool { return v.EnableState }).(pulumi.BoolOutput)
+}
+
+// Alarm level.
+func (o GetGroupMetricRulesRuleOutput) Escalations() GetGroupMetricRulesRuleEscalationArrayOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) []GetGroupMetricRulesRuleEscalation { return v.Escalations }).(GetGroupMetricRulesRuleEscalationArrayOutput)
+}
+
+// The ID of the application group.
+func (o GetGroupMetricRulesRuleOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The name of the alert rule.
+func (o GetGroupMetricRulesRuleOutput) GroupMetricRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.GroupMetricRuleName }).(pulumi.StringOutput)
+}
+
+// The ID of the Group Metric Rule.
+func (o GetGroupMetricRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the metric.
+func (o GetGroupMetricRulesRuleOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The namespace of the service.
+func (o GetGroupMetricRulesRuleOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The time period during which the alert rule is ineffective.
+func (o GetGroupMetricRulesRuleOutput) NoEffectiveInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.NoEffectiveInterval }).(pulumi.StringOutput)
+}
+
+// The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
+func (o GetGroupMetricRulesRuleOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) int { return v.Period }).(pulumi.IntOutput)
+}
+
+// The resources that are associated with the alert rule.
+func (o GetGroupMetricRulesRuleOutput) Resources() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.Resources }).(pulumi.StringOutput)
+}
+
+// The ID of the alert rule.
+func (o GetGroupMetricRulesRuleOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
+func (o GetGroupMetricRulesRuleOutput) SilenceTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) int { return v.SilenceTime }).(pulumi.IntOutput)
+}
+
+// The type of the alert rule. The value is fixed to METRIC, indicating an alert rule for time series metrics.
+func (o GetGroupMetricRulesRuleOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// The status of Group Metric Rule..
+func (o GetGroupMetricRulesRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The callback URL.
+func (o GetGroupMetricRulesRuleOutput) Webhook() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.Webhook }).(pulumi.StringOutput)
+}
+
+type GetGroupMetricRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMetricRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMetricRulesRule)(nil)).Elem()
+}
+
+func (o GetGroupMetricRulesRuleArrayOutput) ToGetGroupMetricRulesRuleArrayOutput() GetGroupMetricRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleArrayOutput) ToGetGroupMetricRulesRuleArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleArrayOutput) Index(i pulumi.IntInput) GetGroupMetricRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMetricRulesRule {
+		return vs[0].([]GetGroupMetricRulesRule)[vs[1].(int)]
+	}).(GetGroupMetricRulesRuleOutput)
+}
+
+type GetGroupMetricRulesRuleEscalation struct {
+	// The critical level.
+	Criticals []GetGroupMetricRulesRuleEscalationCritical `pulumi:"criticals"`
+	// The info level.
+	Infos []GetGroupMetricRulesRuleEscalationInfo `pulumi:"infos"`
+	// The warn level.
+	Warns []GetGroupMetricRulesRuleEscalationWarn `pulumi:"warns"`
+}
+
+// GetGroupMetricRulesRuleEscalationInput is an input type that accepts GetGroupMetricRulesRuleEscalationArgs and GetGroupMetricRulesRuleEscalationOutput values.
+// You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationInput` via:
+//
+//          GetGroupMetricRulesRuleEscalationArgs{...}
+type GetGroupMetricRulesRuleEscalationInput interface {
+	pulumi.Input
+
+	ToGetGroupMetricRulesRuleEscalationOutput() GetGroupMetricRulesRuleEscalationOutput
+	ToGetGroupMetricRulesRuleEscalationOutputWithContext(context.Context) GetGroupMetricRulesRuleEscalationOutput
+}
+
+type GetGroupMetricRulesRuleEscalationArgs struct {
+	// The critical level.
+	Criticals GetGroupMetricRulesRuleEscalationCriticalArrayInput `pulumi:"criticals"`
+	// The info level.
+	Infos GetGroupMetricRulesRuleEscalationInfoArrayInput `pulumi:"infos"`
+	// The warn level.
+	Warns GetGroupMetricRulesRuleEscalationWarnArrayInput `pulumi:"warns"`
+}
+
+func (GetGroupMetricRulesRuleEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesRuleEscalation)(nil)).Elem()
+}
+
+func (i GetGroupMetricRulesRuleEscalationArgs) ToGetGroupMetricRulesRuleEscalationOutput() GetGroupMetricRulesRuleEscalationOutput {
+	return i.ToGetGroupMetricRulesRuleEscalationOutputWithContext(context.Background())
+}
+
+func (i GetGroupMetricRulesRuleEscalationArgs) ToGetGroupMetricRulesRuleEscalationOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationOutput)
+}
+
+// GetGroupMetricRulesRuleEscalationArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationArray and GetGroupMetricRulesRuleEscalationArrayOutput values.
+// You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationArrayInput` via:
+//
+//          GetGroupMetricRulesRuleEscalationArray{ GetGroupMetricRulesRuleEscalationArgs{...} }
+type GetGroupMetricRulesRuleEscalationArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupMetricRulesRuleEscalationArrayOutput() GetGroupMetricRulesRuleEscalationArrayOutput
+	ToGetGroupMetricRulesRuleEscalationArrayOutputWithContext(context.Context) GetGroupMetricRulesRuleEscalationArrayOutput
+}
+
+type GetGroupMetricRulesRuleEscalationArray []GetGroupMetricRulesRuleEscalationInput
+
+func (GetGroupMetricRulesRuleEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMetricRulesRuleEscalation)(nil)).Elem()
+}
+
+func (i GetGroupMetricRulesRuleEscalationArray) ToGetGroupMetricRulesRuleEscalationArrayOutput() GetGroupMetricRulesRuleEscalationArrayOutput {
+	return i.ToGetGroupMetricRulesRuleEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupMetricRulesRuleEscalationArray) ToGetGroupMetricRulesRuleEscalationArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationArrayOutput)
+}
+
+type GetGroupMetricRulesRuleEscalationOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMetricRulesRuleEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesRuleEscalation)(nil)).Elem()
+}
+
+func (o GetGroupMetricRulesRuleEscalationOutput) ToGetGroupMetricRulesRuleEscalationOutput() GetGroupMetricRulesRuleEscalationOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationOutput) ToGetGroupMetricRulesRuleEscalationOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationOutput {
+	return o
+}
+
+// The critical level.
+func (o GetGroupMetricRulesRuleEscalationOutput) Criticals() GetGroupMetricRulesRuleEscalationCriticalArrayOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalation) []GetGroupMetricRulesRuleEscalationCritical {
+		return v.Criticals
+	}).(GetGroupMetricRulesRuleEscalationCriticalArrayOutput)
+}
+
+// The info level.
+func (o GetGroupMetricRulesRuleEscalationOutput) Infos() GetGroupMetricRulesRuleEscalationInfoArrayOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalation) []GetGroupMetricRulesRuleEscalationInfo { return v.Infos }).(GetGroupMetricRulesRuleEscalationInfoArrayOutput)
+}
+
+// The warn level.
+func (o GetGroupMetricRulesRuleEscalationOutput) Warns() GetGroupMetricRulesRuleEscalationWarnArrayOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalation) []GetGroupMetricRulesRuleEscalationWarn { return v.Warns }).(GetGroupMetricRulesRuleEscalationWarnArrayOutput)
+}
+
+type GetGroupMetricRulesRuleEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMetricRulesRuleEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMetricRulesRuleEscalation)(nil)).Elem()
+}
+
+func (o GetGroupMetricRulesRuleEscalationArrayOutput) ToGetGroupMetricRulesRuleEscalationArrayOutput() GetGroupMetricRulesRuleEscalationArrayOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationArrayOutput) ToGetGroupMetricRulesRuleEscalationArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationArrayOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationArrayOutput) Index(i pulumi.IntInput) GetGroupMetricRulesRuleEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMetricRulesRuleEscalation {
+		return vs[0].([]GetGroupMetricRulesRuleEscalation)[vs[1].(int)]
+	}).(GetGroupMetricRulesRuleEscalationOutput)
+}
+
+type GetGroupMetricRulesRuleEscalationCritical struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times int `pulumi:"times"`
+}
+
+// GetGroupMetricRulesRuleEscalationCriticalInput is an input type that accepts GetGroupMetricRulesRuleEscalationCriticalArgs and GetGroupMetricRulesRuleEscalationCriticalOutput values.
+// You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationCriticalInput` via:
+//
+//          GetGroupMetricRulesRuleEscalationCriticalArgs{...}
+type GetGroupMetricRulesRuleEscalationCriticalInput interface {
+	pulumi.Input
+
+	ToGetGroupMetricRulesRuleEscalationCriticalOutput() GetGroupMetricRulesRuleEscalationCriticalOutput
+	ToGetGroupMetricRulesRuleEscalationCriticalOutputWithContext(context.Context) GetGroupMetricRulesRuleEscalationCriticalOutput
+}
+
+type GetGroupMetricRulesRuleEscalationCriticalArgs struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetGroupMetricRulesRuleEscalationCriticalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesRuleEscalationCritical)(nil)).Elem()
+}
+
+func (i GetGroupMetricRulesRuleEscalationCriticalArgs) ToGetGroupMetricRulesRuleEscalationCriticalOutput() GetGroupMetricRulesRuleEscalationCriticalOutput {
+	return i.ToGetGroupMetricRulesRuleEscalationCriticalOutputWithContext(context.Background())
+}
+
+func (i GetGroupMetricRulesRuleEscalationCriticalArgs) ToGetGroupMetricRulesRuleEscalationCriticalOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationCriticalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationCriticalOutput)
+}
+
+// GetGroupMetricRulesRuleEscalationCriticalArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationCriticalArray and GetGroupMetricRulesRuleEscalationCriticalArrayOutput values.
+// You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationCriticalArrayInput` via:
+//
+//          GetGroupMetricRulesRuleEscalationCriticalArray{ GetGroupMetricRulesRuleEscalationCriticalArgs{...} }
+type GetGroupMetricRulesRuleEscalationCriticalArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupMetricRulesRuleEscalationCriticalArrayOutput() GetGroupMetricRulesRuleEscalationCriticalArrayOutput
+	ToGetGroupMetricRulesRuleEscalationCriticalArrayOutputWithContext(context.Context) GetGroupMetricRulesRuleEscalationCriticalArrayOutput
+}
+
+type GetGroupMetricRulesRuleEscalationCriticalArray []GetGroupMetricRulesRuleEscalationCriticalInput
+
+func (GetGroupMetricRulesRuleEscalationCriticalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMetricRulesRuleEscalationCritical)(nil)).Elem()
+}
+
+func (i GetGroupMetricRulesRuleEscalationCriticalArray) ToGetGroupMetricRulesRuleEscalationCriticalArrayOutput() GetGroupMetricRulesRuleEscalationCriticalArrayOutput {
+	return i.ToGetGroupMetricRulesRuleEscalationCriticalArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupMetricRulesRuleEscalationCriticalArray) ToGetGroupMetricRulesRuleEscalationCriticalArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationCriticalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationCriticalArrayOutput)
+}
+
+type GetGroupMetricRulesRuleEscalationCriticalOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMetricRulesRuleEscalationCriticalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesRuleEscalationCritical)(nil)).Elem()
+}
+
+func (o GetGroupMetricRulesRuleEscalationCriticalOutput) ToGetGroupMetricRulesRuleEscalationCriticalOutput() GetGroupMetricRulesRuleEscalationCriticalOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationCriticalOutput) ToGetGroupMetricRulesRuleEscalationCriticalOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationCriticalOutput {
+	return o
+}
+
+// The comparison operator of the threshold for warn-level alerts.
+func (o GetGroupMetricRulesRuleEscalationCriticalOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GetGroupMetricRulesRuleEscalationCriticalOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GetGroupMetricRulesRuleEscalationCriticalOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+func (o GetGroupMetricRulesRuleEscalationCriticalOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetGroupMetricRulesRuleEscalationCriticalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMetricRulesRuleEscalationCriticalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMetricRulesRuleEscalationCritical)(nil)).Elem()
+}
+
+func (o GetGroupMetricRulesRuleEscalationCriticalArrayOutput) ToGetGroupMetricRulesRuleEscalationCriticalArrayOutput() GetGroupMetricRulesRuleEscalationCriticalArrayOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationCriticalArrayOutput) ToGetGroupMetricRulesRuleEscalationCriticalArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationCriticalArrayOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationCriticalArrayOutput) Index(i pulumi.IntInput) GetGroupMetricRulesRuleEscalationCriticalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMetricRulesRuleEscalationCritical {
+		return vs[0].([]GetGroupMetricRulesRuleEscalationCritical)[vs[1].(int)]
+	}).(GetGroupMetricRulesRuleEscalationCriticalOutput)
+}
+
+type GetGroupMetricRulesRuleEscalationInfo struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times int `pulumi:"times"`
+}
+
+// GetGroupMetricRulesRuleEscalationInfoInput is an input type that accepts GetGroupMetricRulesRuleEscalationInfoArgs and GetGroupMetricRulesRuleEscalationInfoOutput values.
+// You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationInfoInput` via:
+//
+//          GetGroupMetricRulesRuleEscalationInfoArgs{...}
+type GetGroupMetricRulesRuleEscalationInfoInput interface {
+	pulumi.Input
+
+	ToGetGroupMetricRulesRuleEscalationInfoOutput() GetGroupMetricRulesRuleEscalationInfoOutput
+	ToGetGroupMetricRulesRuleEscalationInfoOutputWithContext(context.Context) GetGroupMetricRulesRuleEscalationInfoOutput
+}
+
+type GetGroupMetricRulesRuleEscalationInfoArgs struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetGroupMetricRulesRuleEscalationInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesRuleEscalationInfo)(nil)).Elem()
+}
+
+func (i GetGroupMetricRulesRuleEscalationInfoArgs) ToGetGroupMetricRulesRuleEscalationInfoOutput() GetGroupMetricRulesRuleEscalationInfoOutput {
+	return i.ToGetGroupMetricRulesRuleEscalationInfoOutputWithContext(context.Background())
+}
+
+func (i GetGroupMetricRulesRuleEscalationInfoArgs) ToGetGroupMetricRulesRuleEscalationInfoOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationInfoOutput)
+}
+
+// GetGroupMetricRulesRuleEscalationInfoArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationInfoArray and GetGroupMetricRulesRuleEscalationInfoArrayOutput values.
+// You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationInfoArrayInput` via:
+//
+//          GetGroupMetricRulesRuleEscalationInfoArray{ GetGroupMetricRulesRuleEscalationInfoArgs{...} }
+type GetGroupMetricRulesRuleEscalationInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupMetricRulesRuleEscalationInfoArrayOutput() GetGroupMetricRulesRuleEscalationInfoArrayOutput
+	ToGetGroupMetricRulesRuleEscalationInfoArrayOutputWithContext(context.Context) GetGroupMetricRulesRuleEscalationInfoArrayOutput
+}
+
+type GetGroupMetricRulesRuleEscalationInfoArray []GetGroupMetricRulesRuleEscalationInfoInput
+
+func (GetGroupMetricRulesRuleEscalationInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMetricRulesRuleEscalationInfo)(nil)).Elem()
+}
+
+func (i GetGroupMetricRulesRuleEscalationInfoArray) ToGetGroupMetricRulesRuleEscalationInfoArrayOutput() GetGroupMetricRulesRuleEscalationInfoArrayOutput {
+	return i.ToGetGroupMetricRulesRuleEscalationInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupMetricRulesRuleEscalationInfoArray) ToGetGroupMetricRulesRuleEscalationInfoArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationInfoArrayOutput)
+}
+
+type GetGroupMetricRulesRuleEscalationInfoOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMetricRulesRuleEscalationInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesRuleEscalationInfo)(nil)).Elem()
+}
+
+func (o GetGroupMetricRulesRuleEscalationInfoOutput) ToGetGroupMetricRulesRuleEscalationInfoOutput() GetGroupMetricRulesRuleEscalationInfoOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationInfoOutput) ToGetGroupMetricRulesRuleEscalationInfoOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationInfoOutput {
+	return o
+}
+
+// The comparison operator of the threshold for warn-level alerts.
+func (o GetGroupMetricRulesRuleEscalationInfoOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GetGroupMetricRulesRuleEscalationInfoOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GetGroupMetricRulesRuleEscalationInfoOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+func (o GetGroupMetricRulesRuleEscalationInfoOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetGroupMetricRulesRuleEscalationInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMetricRulesRuleEscalationInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMetricRulesRuleEscalationInfo)(nil)).Elem()
+}
+
+func (o GetGroupMetricRulesRuleEscalationInfoArrayOutput) ToGetGroupMetricRulesRuleEscalationInfoArrayOutput() GetGroupMetricRulesRuleEscalationInfoArrayOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationInfoArrayOutput) ToGetGroupMetricRulesRuleEscalationInfoArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationInfoArrayOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationInfoArrayOutput) Index(i pulumi.IntInput) GetGroupMetricRulesRuleEscalationInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMetricRulesRuleEscalationInfo {
+		return vs[0].([]GetGroupMetricRulesRuleEscalationInfo)[vs[1].(int)]
+	}).(GetGroupMetricRulesRuleEscalationInfoOutput)
+}
+
+type GetGroupMetricRulesRuleEscalationWarn struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times int `pulumi:"times"`
+}
+
+// GetGroupMetricRulesRuleEscalationWarnInput is an input type that accepts GetGroupMetricRulesRuleEscalationWarnArgs and GetGroupMetricRulesRuleEscalationWarnOutput values.
+// You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationWarnInput` via:
+//
+//          GetGroupMetricRulesRuleEscalationWarnArgs{...}
+type GetGroupMetricRulesRuleEscalationWarnInput interface {
+	pulumi.Input
+
+	ToGetGroupMetricRulesRuleEscalationWarnOutput() GetGroupMetricRulesRuleEscalationWarnOutput
+	ToGetGroupMetricRulesRuleEscalationWarnOutputWithContext(context.Context) GetGroupMetricRulesRuleEscalationWarnOutput
+}
+
+type GetGroupMetricRulesRuleEscalationWarnArgs struct {
+	// The comparison operator of the threshold for warn-level alerts.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetGroupMetricRulesRuleEscalationWarnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesRuleEscalationWarn)(nil)).Elem()
+}
+
+func (i GetGroupMetricRulesRuleEscalationWarnArgs) ToGetGroupMetricRulesRuleEscalationWarnOutput() GetGroupMetricRulesRuleEscalationWarnOutput {
+	return i.ToGetGroupMetricRulesRuleEscalationWarnOutputWithContext(context.Background())
+}
+
+func (i GetGroupMetricRulesRuleEscalationWarnArgs) ToGetGroupMetricRulesRuleEscalationWarnOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationWarnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationWarnOutput)
+}
+
+// GetGroupMetricRulesRuleEscalationWarnArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationWarnArray and GetGroupMetricRulesRuleEscalationWarnArrayOutput values.
+// You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationWarnArrayInput` via:
+//
+//          GetGroupMetricRulesRuleEscalationWarnArray{ GetGroupMetricRulesRuleEscalationWarnArgs{...} }
+type GetGroupMetricRulesRuleEscalationWarnArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupMetricRulesRuleEscalationWarnArrayOutput() GetGroupMetricRulesRuleEscalationWarnArrayOutput
+	ToGetGroupMetricRulesRuleEscalationWarnArrayOutputWithContext(context.Context) GetGroupMetricRulesRuleEscalationWarnArrayOutput
+}
+
+type GetGroupMetricRulesRuleEscalationWarnArray []GetGroupMetricRulesRuleEscalationWarnInput
+
+func (GetGroupMetricRulesRuleEscalationWarnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMetricRulesRuleEscalationWarn)(nil)).Elem()
+}
+
+func (i GetGroupMetricRulesRuleEscalationWarnArray) ToGetGroupMetricRulesRuleEscalationWarnArrayOutput() GetGroupMetricRulesRuleEscalationWarnArrayOutput {
+	return i.ToGetGroupMetricRulesRuleEscalationWarnArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupMetricRulesRuleEscalationWarnArray) ToGetGroupMetricRulesRuleEscalationWarnArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationWarnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationWarnArrayOutput)
+}
+
+type GetGroupMetricRulesRuleEscalationWarnOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMetricRulesRuleEscalationWarnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMetricRulesRuleEscalationWarn)(nil)).Elem()
+}
+
+func (o GetGroupMetricRulesRuleEscalationWarnOutput) ToGetGroupMetricRulesRuleEscalationWarnOutput() GetGroupMetricRulesRuleEscalationWarnOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationWarnOutput) ToGetGroupMetricRulesRuleEscalationWarnOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationWarnOutput {
+	return o
+}
+
+// The comparison operator of the threshold for warn-level alerts.
+func (o GetGroupMetricRulesRuleEscalationWarnOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationWarn) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// The statistical aggregation method for warn-level alerts.
+func (o GetGroupMetricRulesRuleEscalationWarnOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationWarn) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// The threshold for warn-level alerts.
+func (o GetGroupMetricRulesRuleEscalationWarnOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationWarn) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+func (o GetGroupMetricRulesRuleEscalationWarnOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationWarn) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetGroupMetricRulesRuleEscalationWarnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMetricRulesRuleEscalationWarnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMetricRulesRuleEscalationWarn)(nil)).Elem()
+}
+
+func (o GetGroupMetricRulesRuleEscalationWarnArrayOutput) ToGetGroupMetricRulesRuleEscalationWarnArrayOutput() GetGroupMetricRulesRuleEscalationWarnArrayOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationWarnArrayOutput) ToGetGroupMetricRulesRuleEscalationWarnArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationWarnArrayOutput {
+	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationWarnArrayOutput) Index(i pulumi.IntInput) GetGroupMetricRulesRuleEscalationWarnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMetricRulesRuleEscalationWarn {
+		return vs[0].([]GetGroupMetricRulesRuleEscalationWarn)[vs[1].(int)]
+	}).(GetGroupMetricRulesRuleEscalationWarnOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalPtrOutput{})
@@ -1016,10 +2497,28 @@ func init() {
 	pulumi.RegisterOutputType(AlarmEscalationsInfoPtrOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsWarnOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsWarnPtrOutput{})
+	pulumi.RegisterOutputType(GroupMetricRuleEscalationsOutput{})
+	pulumi.RegisterOutputType(GroupMetricRuleEscalationsPtrOutput{})
+	pulumi.RegisterOutputType(GroupMetricRuleEscalationsCriticalOutput{})
+	pulumi.RegisterOutputType(GroupMetricRuleEscalationsCriticalPtrOutput{})
+	pulumi.RegisterOutputType(GroupMetricRuleEscalationsInfoOutput{})
+	pulumi.RegisterOutputType(GroupMetricRuleEscalationsInfoPtrOutput{})
+	pulumi.RegisterOutputType(GroupMetricRuleEscalationsWarnOutput{})
+	pulumi.RegisterOutputType(GroupMetricRuleEscalationsWarnPtrOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactsContactOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactsContactArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupMetricRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetGroupMetricRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationOutput{})
+	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationCriticalOutput{})
+	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationCriticalArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationInfoOutput{})
+	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationWarnOutput{})
+	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationWarnArrayOutput{})
 }

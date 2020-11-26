@@ -54,6 +54,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["securityToken"] = (args ? args.securityToken : undefined) || utilities.getEnv("ALICLOUD_SECURITY_TOKEN");
             inputs["sharedCredentialsFile"] = (args ? args.sharedCredentialsFile : undefined) || utilities.getEnv("ALICLOUD_SHARED_CREDENTIALS_FILE");
             inputs["skipRegionValidation"] = pulumi.output(args ? args.skipRegionValidation : undefined).apply(JSON.stringify);
+            inputs["sourceIp"] = args ? args.sourceIp : undefined;
         }
         if (!opts) {
             opts = {}
@@ -134,4 +135,9 @@ export interface ProviderArgs {
      * that are not public (yet).
      */
     readonly skipRegionValidation?: pulumi.Input<boolean>;
+    /**
+     * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+     * console.
+     */
+    readonly sourceIp?: pulumi.Input<string>;
 }

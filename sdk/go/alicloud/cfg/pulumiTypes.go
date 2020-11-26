@@ -322,13 +322,17 @@ func (o GetDeliveryChannelsChannelArrayOutput) Index(i pulumi.IntInput) GetDeliv
 }
 
 type GetRulesRule struct {
-	AccountId     int    `pulumi:"accountId"`
-	ConfigRuleArn string `pulumi:"configRuleArn"`
-	ConfigRuleId  string `pulumi:"configRuleId"`
+	AccountId int `pulumi:"accountId"`
+	// The information about the compliance evaluations based on the rule.
+	Compliances   []GetRulesRuleCompliance `pulumi:"compliances"`
+	ConfigRuleArn string                   `pulumi:"configRuleArn"`
+	ConfigRuleId  string                   `pulumi:"configRuleId"`
 	// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `DELETING_RESULTS`, `EVALUATING` and `INACTIVE`.
 	ConfigRuleState string `pulumi:"configRuleState"`
 	CreateTimestamp int    `pulumi:"createTimestamp"`
 	Description     string `pulumi:"description"`
+	// Event source of the Config Rule.
+	EventSource string `pulumi:"eventSource"`
 	// The ID of the Config Rule.
 	// * `accountId`- The ID of the Alicloud account.
 	// * `configRuleArn`- The ARN of the Config Rule.
@@ -340,16 +344,24 @@ type GetRulesRule struct {
 	// * `modifiedTimestamp`- the timestamp of the Config Rule modified.
 	// * `riskLevel`- The risk level of the Config Rule.
 	// * `ruleName`- The name of the Config Rule.
-	// * `sourceDetails`- The source details of the Config Rule.
 	Id                string                 `pulumi:"id"`
 	InputParameters   map[string]interface{} `pulumi:"inputParameters"`
 	ModifiedTimestamp int                    `pulumi:"modifiedTimestamp"`
 	// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
-	RiskLevel        int                        `pulumi:"riskLevel"`
-	RuleName         string                     `pulumi:"ruleName"`
-	SourceDetails    []GetRulesRuleSourceDetail `pulumi:"sourceDetails"`
-	SourceIdentifier string                     `pulumi:"sourceIdentifier"`
-	SourceOwner      string                     `pulumi:"sourceOwner"`
+	RiskLevel int    `pulumi:"riskLevel"`
+	RuleName  string `pulumi:"ruleName"`
+	// The ID of the resource to be evaluated.
+	ScopeComplianceResourceId string `pulumi:"scopeComplianceResourceId"`
+	// The types of the resources to be evaluated against the rule.
+	ScopeComplianceResourceTypes []string `pulumi:"scopeComplianceResourceTypes"`
+	// Rule trigger mechanism.
+	SourceDetailMessageType string `pulumi:"sourceDetailMessageType"`
+	SourceIdentifier        string `pulumi:"sourceIdentifier"`
+	// Rule execution cycle.
+	// * `sourceIdentifier`- The name of the custom rule or managed rule.
+	// * `sourceOwner`- The source owner of the Config Rule.
+	SourceMaximumExecutionFrequency string `pulumi:"sourceMaximumExecutionFrequency"`
+	SourceOwner                     string `pulumi:"sourceOwner"`
 }
 
 // GetRulesRuleInput is an input type that accepts GetRulesRuleArgs and GetRulesRuleOutput values.
@@ -364,13 +376,17 @@ type GetRulesRuleInput interface {
 }
 
 type GetRulesRuleArgs struct {
-	AccountId     pulumi.IntInput    `pulumi:"accountId"`
-	ConfigRuleArn pulumi.StringInput `pulumi:"configRuleArn"`
-	ConfigRuleId  pulumi.StringInput `pulumi:"configRuleId"`
+	AccountId pulumi.IntInput `pulumi:"accountId"`
+	// The information about the compliance evaluations based on the rule.
+	Compliances   GetRulesRuleComplianceArrayInput `pulumi:"compliances"`
+	ConfigRuleArn pulumi.StringInput               `pulumi:"configRuleArn"`
+	ConfigRuleId  pulumi.StringInput               `pulumi:"configRuleId"`
 	// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `DELETING_RESULTS`, `EVALUATING` and `INACTIVE`.
 	ConfigRuleState pulumi.StringInput `pulumi:"configRuleState"`
 	CreateTimestamp pulumi.IntInput    `pulumi:"createTimestamp"`
 	Description     pulumi.StringInput `pulumi:"description"`
+	// Event source of the Config Rule.
+	EventSource pulumi.StringInput `pulumi:"eventSource"`
 	// The ID of the Config Rule.
 	// * `accountId`- The ID of the Alicloud account.
 	// * `configRuleArn`- The ARN of the Config Rule.
@@ -382,16 +398,24 @@ type GetRulesRuleArgs struct {
 	// * `modifiedTimestamp`- the timestamp of the Config Rule modified.
 	// * `riskLevel`- The risk level of the Config Rule.
 	// * `ruleName`- The name of the Config Rule.
-	// * `sourceDetails`- The source details of the Config Rule.
 	Id                pulumi.StringInput `pulumi:"id"`
 	InputParameters   pulumi.MapInput    `pulumi:"inputParameters"`
 	ModifiedTimestamp pulumi.IntInput    `pulumi:"modifiedTimestamp"`
 	// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
-	RiskLevel        pulumi.IntInput                    `pulumi:"riskLevel"`
-	RuleName         pulumi.StringInput                 `pulumi:"ruleName"`
-	SourceDetails    GetRulesRuleSourceDetailArrayInput `pulumi:"sourceDetails"`
-	SourceIdentifier pulumi.StringInput                 `pulumi:"sourceIdentifier"`
-	SourceOwner      pulumi.StringInput                 `pulumi:"sourceOwner"`
+	RiskLevel pulumi.IntInput    `pulumi:"riskLevel"`
+	RuleName  pulumi.StringInput `pulumi:"ruleName"`
+	// The ID of the resource to be evaluated.
+	ScopeComplianceResourceId pulumi.StringInput `pulumi:"scopeComplianceResourceId"`
+	// The types of the resources to be evaluated against the rule.
+	ScopeComplianceResourceTypes pulumi.StringArrayInput `pulumi:"scopeComplianceResourceTypes"`
+	// Rule trigger mechanism.
+	SourceDetailMessageType pulumi.StringInput `pulumi:"sourceDetailMessageType"`
+	SourceIdentifier        pulumi.StringInput `pulumi:"sourceIdentifier"`
+	// Rule execution cycle.
+	// * `sourceIdentifier`- The name of the custom rule or managed rule.
+	// * `sourceOwner`- The source owner of the Config Rule.
+	SourceMaximumExecutionFrequency pulumi.StringInput `pulumi:"sourceMaximumExecutionFrequency"`
+	SourceOwner                     pulumi.StringInput `pulumi:"sourceOwner"`
 }
 
 func (GetRulesRuleArgs) ElementType() reflect.Type {
@@ -449,6 +473,11 @@ func (o GetRulesRuleOutput) AccountId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRulesRule) int { return v.AccountId }).(pulumi.IntOutput)
 }
 
+// The information about the compliance evaluations based on the rule.
+func (o GetRulesRuleOutput) Compliances() GetRulesRuleComplianceArrayOutput {
+	return o.ApplyT(func(v GetRulesRule) []GetRulesRuleCompliance { return v.Compliances }).(GetRulesRuleComplianceArrayOutput)
+}
+
 func (o GetRulesRuleOutput) ConfigRuleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.ConfigRuleArn }).(pulumi.StringOutput)
 }
@@ -470,6 +499,11 @@ func (o GetRulesRuleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Event source of the Config Rule.
+func (o GetRulesRuleOutput) EventSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.EventSource }).(pulumi.StringOutput)
+}
+
 // The ID of the Config Rule.
 // * `accountId`- The ID of the Alicloud account.
 // * `configRuleArn`- The ARN of the Config Rule.
@@ -481,7 +515,6 @@ func (o GetRulesRuleOutput) Description() pulumi.StringOutput {
 // * `modifiedTimestamp`- the timestamp of the Config Rule modified.
 // * `riskLevel`- The risk level of the Config Rule.
 // * `ruleName`- The name of the Config Rule.
-// * `sourceDetails`- The source details of the Config Rule.
 func (o GetRulesRuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -503,12 +536,30 @@ func (o GetRulesRuleOutput) RuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.RuleName }).(pulumi.StringOutput)
 }
 
-func (o GetRulesRuleOutput) SourceDetails() GetRulesRuleSourceDetailArrayOutput {
-	return o.ApplyT(func(v GetRulesRule) []GetRulesRuleSourceDetail { return v.SourceDetails }).(GetRulesRuleSourceDetailArrayOutput)
+// The ID of the resource to be evaluated.
+func (o GetRulesRuleOutput) ScopeComplianceResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.ScopeComplianceResourceId }).(pulumi.StringOutput)
+}
+
+// The types of the resources to be evaluated against the rule.
+func (o GetRulesRuleOutput) ScopeComplianceResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesRule) []string { return v.ScopeComplianceResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// Rule trigger mechanism.
+func (o GetRulesRuleOutput) SourceDetailMessageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.SourceDetailMessageType }).(pulumi.StringOutput)
 }
 
 func (o GetRulesRuleOutput) SourceIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.SourceIdentifier }).(pulumi.StringOutput)
+}
+
+// Rule execution cycle.
+// * `sourceIdentifier`- The name of the custom rule or managed rule.
+// * `sourceOwner`- The source owner of the Config Rule.
+func (o GetRulesRuleOutput) SourceMaximumExecutionFrequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.SourceMaximumExecutionFrequency }).(pulumi.StringOutput)
 }
 
 func (o GetRulesRuleOutput) SourceOwner() pulumi.StringOutput {
@@ -535,125 +586,110 @@ func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
 	}).(GetRulesRuleOutput)
 }
 
-type GetRulesRuleSourceDetail struct {
-	// Event source of the Config Rule.
-	EventSource string `pulumi:"eventSource"`
-	// Rule execution cycle.
-	MaximumExecutionFrequency string `pulumi:"maximumExecutionFrequency"`
-	// Rule trigger mechanism.
-	// * `sourceIdentifier`- The name of the custom rule or managed rule.
-	// * `sourceOwner`- The source owner of the Config Rule.
-	MessageType string `pulumi:"messageType"`
+type GetRulesRuleCompliance struct {
+	// The compliance evaluation result of the target resources.
+	ComplianceType string `pulumi:"complianceType"`
+	// The number of resources with the specified compliance evaluation result.
+	Count int `pulumi:"count"`
 }
 
-// GetRulesRuleSourceDetailInput is an input type that accepts GetRulesRuleSourceDetailArgs and GetRulesRuleSourceDetailOutput values.
-// You can construct a concrete instance of `GetRulesRuleSourceDetailInput` via:
+// GetRulesRuleComplianceInput is an input type that accepts GetRulesRuleComplianceArgs and GetRulesRuleComplianceOutput values.
+// You can construct a concrete instance of `GetRulesRuleComplianceInput` via:
 //
-//          GetRulesRuleSourceDetailArgs{...}
-type GetRulesRuleSourceDetailInput interface {
+//          GetRulesRuleComplianceArgs{...}
+type GetRulesRuleComplianceInput interface {
 	pulumi.Input
 
-	ToGetRulesRuleSourceDetailOutput() GetRulesRuleSourceDetailOutput
-	ToGetRulesRuleSourceDetailOutputWithContext(context.Context) GetRulesRuleSourceDetailOutput
+	ToGetRulesRuleComplianceOutput() GetRulesRuleComplianceOutput
+	ToGetRulesRuleComplianceOutputWithContext(context.Context) GetRulesRuleComplianceOutput
 }
 
-type GetRulesRuleSourceDetailArgs struct {
-	// Event source of the Config Rule.
-	EventSource pulumi.StringInput `pulumi:"eventSource"`
-	// Rule execution cycle.
-	MaximumExecutionFrequency pulumi.StringInput `pulumi:"maximumExecutionFrequency"`
-	// Rule trigger mechanism.
-	// * `sourceIdentifier`- The name of the custom rule or managed rule.
-	// * `sourceOwner`- The source owner of the Config Rule.
-	MessageType pulumi.StringInput `pulumi:"messageType"`
+type GetRulesRuleComplianceArgs struct {
+	// The compliance evaluation result of the target resources.
+	ComplianceType pulumi.StringInput `pulumi:"complianceType"`
+	// The number of resources with the specified compliance evaluation result.
+	Count pulumi.IntInput `pulumi:"count"`
 }
 
-func (GetRulesRuleSourceDetailArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesRuleSourceDetail)(nil)).Elem()
+func (GetRulesRuleComplianceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleCompliance)(nil)).Elem()
 }
 
-func (i GetRulesRuleSourceDetailArgs) ToGetRulesRuleSourceDetailOutput() GetRulesRuleSourceDetailOutput {
-	return i.ToGetRulesRuleSourceDetailOutputWithContext(context.Background())
+func (i GetRulesRuleComplianceArgs) ToGetRulesRuleComplianceOutput() GetRulesRuleComplianceOutput {
+	return i.ToGetRulesRuleComplianceOutputWithContext(context.Background())
 }
 
-func (i GetRulesRuleSourceDetailArgs) ToGetRulesRuleSourceDetailOutputWithContext(ctx context.Context) GetRulesRuleSourceDetailOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleSourceDetailOutput)
+func (i GetRulesRuleComplianceArgs) ToGetRulesRuleComplianceOutputWithContext(ctx context.Context) GetRulesRuleComplianceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleComplianceOutput)
 }
 
-// GetRulesRuleSourceDetailArrayInput is an input type that accepts GetRulesRuleSourceDetailArray and GetRulesRuleSourceDetailArrayOutput values.
-// You can construct a concrete instance of `GetRulesRuleSourceDetailArrayInput` via:
+// GetRulesRuleComplianceArrayInput is an input type that accepts GetRulesRuleComplianceArray and GetRulesRuleComplianceArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleComplianceArrayInput` via:
 //
-//          GetRulesRuleSourceDetailArray{ GetRulesRuleSourceDetailArgs{...} }
-type GetRulesRuleSourceDetailArrayInput interface {
+//          GetRulesRuleComplianceArray{ GetRulesRuleComplianceArgs{...} }
+type GetRulesRuleComplianceArrayInput interface {
 	pulumi.Input
 
-	ToGetRulesRuleSourceDetailArrayOutput() GetRulesRuleSourceDetailArrayOutput
-	ToGetRulesRuleSourceDetailArrayOutputWithContext(context.Context) GetRulesRuleSourceDetailArrayOutput
+	ToGetRulesRuleComplianceArrayOutput() GetRulesRuleComplianceArrayOutput
+	ToGetRulesRuleComplianceArrayOutputWithContext(context.Context) GetRulesRuleComplianceArrayOutput
 }
 
-type GetRulesRuleSourceDetailArray []GetRulesRuleSourceDetailInput
+type GetRulesRuleComplianceArray []GetRulesRuleComplianceInput
 
-func (GetRulesRuleSourceDetailArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRulesRuleSourceDetail)(nil)).Elem()
+func (GetRulesRuleComplianceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleCompliance)(nil)).Elem()
 }
 
-func (i GetRulesRuleSourceDetailArray) ToGetRulesRuleSourceDetailArrayOutput() GetRulesRuleSourceDetailArrayOutput {
-	return i.ToGetRulesRuleSourceDetailArrayOutputWithContext(context.Background())
+func (i GetRulesRuleComplianceArray) ToGetRulesRuleComplianceArrayOutput() GetRulesRuleComplianceArrayOutput {
+	return i.ToGetRulesRuleComplianceArrayOutputWithContext(context.Background())
 }
 
-func (i GetRulesRuleSourceDetailArray) ToGetRulesRuleSourceDetailArrayOutputWithContext(ctx context.Context) GetRulesRuleSourceDetailArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleSourceDetailArrayOutput)
+func (i GetRulesRuleComplianceArray) ToGetRulesRuleComplianceArrayOutputWithContext(ctx context.Context) GetRulesRuleComplianceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleComplianceArrayOutput)
 }
 
-type GetRulesRuleSourceDetailOutput struct{ *pulumi.OutputState }
+type GetRulesRuleComplianceOutput struct{ *pulumi.OutputState }
 
-func (GetRulesRuleSourceDetailOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesRuleSourceDetail)(nil)).Elem()
+func (GetRulesRuleComplianceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleCompliance)(nil)).Elem()
 }
 
-func (o GetRulesRuleSourceDetailOutput) ToGetRulesRuleSourceDetailOutput() GetRulesRuleSourceDetailOutput {
+func (o GetRulesRuleComplianceOutput) ToGetRulesRuleComplianceOutput() GetRulesRuleComplianceOutput {
 	return o
 }
 
-func (o GetRulesRuleSourceDetailOutput) ToGetRulesRuleSourceDetailOutputWithContext(ctx context.Context) GetRulesRuleSourceDetailOutput {
+func (o GetRulesRuleComplianceOutput) ToGetRulesRuleComplianceOutputWithContext(ctx context.Context) GetRulesRuleComplianceOutput {
 	return o
 }
 
-// Event source of the Config Rule.
-func (o GetRulesRuleSourceDetailOutput) EventSource() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesRuleSourceDetail) string { return v.EventSource }).(pulumi.StringOutput)
+// The compliance evaluation result of the target resources.
+func (o GetRulesRuleComplianceOutput) ComplianceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleCompliance) string { return v.ComplianceType }).(pulumi.StringOutput)
 }
 
-// Rule execution cycle.
-func (o GetRulesRuleSourceDetailOutput) MaximumExecutionFrequency() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesRuleSourceDetail) string { return v.MaximumExecutionFrequency }).(pulumi.StringOutput)
+// The number of resources with the specified compliance evaluation result.
+func (o GetRulesRuleComplianceOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesRuleCompliance) int { return v.Count }).(pulumi.IntOutput)
 }
 
-// Rule trigger mechanism.
-// * `sourceIdentifier`- The name of the custom rule or managed rule.
-// * `sourceOwner`- The source owner of the Config Rule.
-func (o GetRulesRuleSourceDetailOutput) MessageType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesRuleSourceDetail) string { return v.MessageType }).(pulumi.StringOutput)
+type GetRulesRuleComplianceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleComplianceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleCompliance)(nil)).Elem()
 }
 
-type GetRulesRuleSourceDetailArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRulesRuleSourceDetailArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRulesRuleSourceDetail)(nil)).Elem()
-}
-
-func (o GetRulesRuleSourceDetailArrayOutput) ToGetRulesRuleSourceDetailArrayOutput() GetRulesRuleSourceDetailArrayOutput {
+func (o GetRulesRuleComplianceArrayOutput) ToGetRulesRuleComplianceArrayOutput() GetRulesRuleComplianceArrayOutput {
 	return o
 }
 
-func (o GetRulesRuleSourceDetailArrayOutput) ToGetRulesRuleSourceDetailArrayOutputWithContext(ctx context.Context) GetRulesRuleSourceDetailArrayOutput {
+func (o GetRulesRuleComplianceArrayOutput) ToGetRulesRuleComplianceArrayOutputWithContext(ctx context.Context) GetRulesRuleComplianceArrayOutput {
 	return o
 }
 
-func (o GetRulesRuleSourceDetailArrayOutput) Index(i pulumi.IntInput) GetRulesRuleSourceDetailOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleSourceDetail {
-		return vs[0].([]GetRulesRuleSourceDetail)[vs[1].(int)]
-	}).(GetRulesRuleSourceDetailOutput)
+func (o GetRulesRuleComplianceArrayOutput) Index(i pulumi.IntInput) GetRulesRuleComplianceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleCompliance {
+		return vs[0].([]GetRulesRuleCompliance)[vs[1].(int)]
+	}).(GetRulesRuleComplianceOutput)
 }
 
 func init() {
@@ -663,6 +699,6 @@ func init() {
 	pulumi.RegisterOutputType(GetDeliveryChannelsChannelArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleArrayOutput{})
-	pulumi.RegisterOutputType(GetRulesRuleSourceDetailOutput{})
-	pulumi.RegisterOutputType(GetRulesRuleSourceDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleComplianceOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleComplianceArrayOutput{})
 }

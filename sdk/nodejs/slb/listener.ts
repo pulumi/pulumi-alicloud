@@ -172,6 +172,10 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly bandwidth!: pulumi.Output<number | undefined>;
     /**
+     * SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+     */
+    public readonly caCertificateId!: pulumi.Output<string | undefined>;
+    /**
      * The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      */
     public readonly cookie!: pulumi.Output<string | undefined>;
@@ -340,6 +344,7 @@ export class Listener extends pulumi.CustomResource {
             inputs["aclType"] = state ? state.aclType : undefined;
             inputs["backendPort"] = state ? state.backendPort : undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
+            inputs["caCertificateId"] = state ? state.caCertificateId : undefined;
             inputs["cookie"] = state ? state.cookie : undefined;
             inputs["cookieTimeout"] = state ? state.cookieTimeout : undefined;
             inputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
@@ -394,6 +399,7 @@ export class Listener extends pulumi.CustomResource {
             inputs["aclType"] = args ? args.aclType : undefined;
             inputs["backendPort"] = args ? args.backendPort : undefined;
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
+            inputs["caCertificateId"] = args ? args.caCertificateId : undefined;
             inputs["cookie"] = args ? args.cookie : undefined;
             inputs["cookieTimeout"] = args ? args.cookieTimeout : undefined;
             inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
@@ -468,6 +474,10 @@ export interface ListenerState {
      * Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
      */
     readonly bandwidth?: pulumi.Input<number>;
+    /**
+     * SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+     */
+    readonly caCertificateId?: pulumi.Input<string>;
     /**
      * The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      */
@@ -645,6 +655,10 @@ export interface ListenerArgs {
      * Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
      */
     readonly bandwidth?: pulumi.Input<number>;
+    /**
+     * SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+     */
+    readonly caCertificateId?: pulumi.Input<string>;
     /**
      * The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      */

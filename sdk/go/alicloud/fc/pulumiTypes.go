@@ -10,6 +10,137 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type AliasRoutingConfig struct {
+	// A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
+	AdditionalVersionWeights map[string]float64 `pulumi:"additionalVersionWeights"`
+}
+
+// AliasRoutingConfigInput is an input type that accepts AliasRoutingConfigArgs and AliasRoutingConfigOutput values.
+// You can construct a concrete instance of `AliasRoutingConfigInput` via:
+//
+//          AliasRoutingConfigArgs{...}
+type AliasRoutingConfigInput interface {
+	pulumi.Input
+
+	ToAliasRoutingConfigOutput() AliasRoutingConfigOutput
+	ToAliasRoutingConfigOutputWithContext(context.Context) AliasRoutingConfigOutput
+}
+
+type AliasRoutingConfigArgs struct {
+	// A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
+	AdditionalVersionWeights pulumi.Float64MapInput `pulumi:"additionalVersionWeights"`
+}
+
+func (AliasRoutingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AliasRoutingConfig)(nil)).Elem()
+}
+
+func (i AliasRoutingConfigArgs) ToAliasRoutingConfigOutput() AliasRoutingConfigOutput {
+	return i.ToAliasRoutingConfigOutputWithContext(context.Background())
+}
+
+func (i AliasRoutingConfigArgs) ToAliasRoutingConfigOutputWithContext(ctx context.Context) AliasRoutingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingConfigOutput)
+}
+
+func (i AliasRoutingConfigArgs) ToAliasRoutingConfigPtrOutput() AliasRoutingConfigPtrOutput {
+	return i.ToAliasRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AliasRoutingConfigArgs) ToAliasRoutingConfigPtrOutputWithContext(ctx context.Context) AliasRoutingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingConfigOutput).ToAliasRoutingConfigPtrOutputWithContext(ctx)
+}
+
+// AliasRoutingConfigPtrInput is an input type that accepts AliasRoutingConfigArgs, AliasRoutingConfigPtr and AliasRoutingConfigPtrOutput values.
+// You can construct a concrete instance of `AliasRoutingConfigPtrInput` via:
+//
+//          AliasRoutingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AliasRoutingConfigPtrInput interface {
+	pulumi.Input
+
+	ToAliasRoutingConfigPtrOutput() AliasRoutingConfigPtrOutput
+	ToAliasRoutingConfigPtrOutputWithContext(context.Context) AliasRoutingConfigPtrOutput
+}
+
+type aliasRoutingConfigPtrType AliasRoutingConfigArgs
+
+func AliasRoutingConfigPtr(v *AliasRoutingConfigArgs) AliasRoutingConfigPtrInput {
+	return (*aliasRoutingConfigPtrType)(v)
+}
+
+func (*aliasRoutingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AliasRoutingConfig)(nil)).Elem()
+}
+
+func (i *aliasRoutingConfigPtrType) ToAliasRoutingConfigPtrOutput() AliasRoutingConfigPtrOutput {
+	return i.ToAliasRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aliasRoutingConfigPtrType) ToAliasRoutingConfigPtrOutputWithContext(ctx context.Context) AliasRoutingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingConfigPtrOutput)
+}
+
+type AliasRoutingConfigOutput struct{ *pulumi.OutputState }
+
+func (AliasRoutingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AliasRoutingConfig)(nil)).Elem()
+}
+
+func (o AliasRoutingConfigOutput) ToAliasRoutingConfigOutput() AliasRoutingConfigOutput {
+	return o
+}
+
+func (o AliasRoutingConfigOutput) ToAliasRoutingConfigOutputWithContext(ctx context.Context) AliasRoutingConfigOutput {
+	return o
+}
+
+func (o AliasRoutingConfigOutput) ToAliasRoutingConfigPtrOutput() AliasRoutingConfigPtrOutput {
+	return o.ToAliasRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AliasRoutingConfigOutput) ToAliasRoutingConfigPtrOutputWithContext(ctx context.Context) AliasRoutingConfigPtrOutput {
+	return o.ApplyT(func(v AliasRoutingConfig) *AliasRoutingConfig {
+		return &v
+	}).(AliasRoutingConfigPtrOutput)
+}
+
+// A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
+func (o AliasRoutingConfigOutput) AdditionalVersionWeights() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v AliasRoutingConfig) map[string]float64 { return v.AdditionalVersionWeights }).(pulumi.Float64MapOutput)
+}
+
+type AliasRoutingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AliasRoutingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AliasRoutingConfig)(nil)).Elem()
+}
+
+func (o AliasRoutingConfigPtrOutput) ToAliasRoutingConfigPtrOutput() AliasRoutingConfigPtrOutput {
+	return o
+}
+
+func (o AliasRoutingConfigPtrOutput) ToAliasRoutingConfigPtrOutputWithContext(ctx context.Context) AliasRoutingConfigPtrOutput {
+	return o
+}
+
+func (o AliasRoutingConfigPtrOutput) Elem() AliasRoutingConfigOutput {
+	return o.ApplyT(func(v *AliasRoutingConfig) AliasRoutingConfig { return *v }).(AliasRoutingConfigOutput)
+}
+
+// A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
+func (o AliasRoutingConfigPtrOutput) AdditionalVersionWeights() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v *AliasRoutingConfig) map[string]float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalVersionWeights
+	}).(pulumi.Float64MapOutput)
+}
+
 type CustomDomainCertConfig struct {
 	// The name of the certificate, used to distinguish different certificates.
 	CertName string `pulumi:"certName"`
@@ -3019,6 +3150,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(AliasRoutingConfigOutput{})
+	pulumi.RegisterOutputType(AliasRoutingConfigPtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainCertConfigOutput{})
 	pulumi.RegisterOutputType(CustomDomainCertConfigPtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainRouteConfigOutput{})

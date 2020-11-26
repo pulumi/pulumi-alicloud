@@ -22,49 +22,6 @@ class BackupPolicy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a backup policy for ApsaraDB Redis / Memcache instance resource.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "KVStore"
-        multi_az = config.get("multiAz")
-        if multi_az is None:
-            multi_az = "false"
-        name = config.get("name")
-        if name is None:
-            name = "kvstorebackuppolicyvpc"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id)
-        default_instance = alicloud.kvstore.Instance("defaultInstance",
-            instance_class="Memcache",
-            instance_name=name,
-            vswitch_id=default_switch.id,
-            private_ip="172.16.0.10",
-            security_ips=["10.0.0.1"],
-            instance_type="memcache.master.small.default",
-            engine_version="2.8")
-        default_backup_policy = alicloud.kvstore.BackupPolicy("defaultBackupPolicy",
-            instance_id=default_instance.id,
-            backup_periods=[
-                "Tuesday",
-                "Wednesday",
-            ],
-            backup_time="10:00Z-11:00Z")
-        ```
-
         ## Import
 
         KVStore backup policy can be imported using the id, e.g.

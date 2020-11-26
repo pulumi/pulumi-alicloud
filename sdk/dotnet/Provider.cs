@@ -135,6 +135,13 @@ namespace Pulumi.AliCloud
         [Input("skipRegionValidation", json: true)]
         public Input<bool>? SkipRegionValidation { get; set; }
 
+        /// <summary>
+        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+        /// console.
+        /// </summary>
+        [Input("sourceIp")]
+        public Input<string>? SourceIp { get; set; }
+
         public ProviderArgs()
         {
             AccessKey = Utilities.GetEnv("ALICLOUD_ACCESS_KEY");

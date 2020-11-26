@@ -122,6 +122,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly backupId!: pulumi.Output<string | undefined>;
     /**
+     * Backup period.
+     */
+    public readonly backupPeriods!: pulumi.Output<string[]>;
+    /**
+     * Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+     */
+    public readonly backupTime!: pulumi.Output<string>;
+    /**
      * The bandwidth.
      */
     public /*out*/ readonly bandwidth!: pulumi.Output<number>;
@@ -160,6 +168,10 @@ export class Instance extends pulumi.CustomResource {
      * The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
      */
     public readonly dedicatedHostGroupId!: pulumi.Output<string | undefined>;
+    /**
+     * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+     */
+    public readonly enableBackupLog!: pulumi.Output<number | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
@@ -336,6 +348,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["backupId"] = state ? state.backupId : undefined;
+            inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
+            inputs["backupTime"] = state ? state.backupTime : undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["businessInfo"] = state ? state.businessInfo : undefined;
             inputs["capacity"] = state ? state.capacity : undefined;
@@ -346,6 +360,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["couponNo"] = state ? state.couponNo : undefined;
             inputs["dbInstanceName"] = state ? state.dbInstanceName : undefined;
             inputs["dedicatedHostGroupId"] = state ? state.dedicatedHostGroupId : undefined;
+            inputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
             inputs["enablePublic"] = state ? state.enablePublic : undefined;
             inputs["endTime"] = state ? state.endTime : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
@@ -391,6 +406,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             inputs["backupId"] = args ? args.backupId : undefined;
+            inputs["backupPeriods"] = args ? args.backupPeriods : undefined;
+            inputs["backupTime"] = args ? args.backupTime : undefined;
             inputs["businessInfo"] = args ? args.businessInfo : undefined;
             inputs["capacity"] = args ? args.capacity : undefined;
             inputs["config"] = args ? args.config : undefined;
@@ -398,6 +415,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["couponNo"] = args ? args.couponNo : undefined;
             inputs["dbInstanceName"] = args ? args.dbInstanceName : undefined;
             inputs["dedicatedHostGroupId"] = args ? args.dedicatedHostGroupId : undefined;
+            inputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
             inputs["enablePublic"] = args ? args.enablePublic : undefined;
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
             inputs["forceUpgrade"] = args ? args.forceUpgrade : undefined;
@@ -478,6 +496,14 @@ export interface InstanceState {
      */
     readonly backupId?: pulumi.Input<string>;
     /**
+     * Backup period.
+     */
+    readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+     */
+    readonly backupTime?: pulumi.Input<string>;
+    /**
      * The bandwidth.
      */
     readonly bandwidth?: pulumi.Input<number>;
@@ -516,6 +542,10 @@ export interface InstanceState {
      * The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
      */
     readonly dedicatedHostGroupId?: pulumi.Input<string>;
+    /**
+     * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+     */
+    readonly enableBackupLog?: pulumi.Input<number>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
@@ -703,6 +733,14 @@ export interface InstanceArgs {
      */
     readonly backupId?: pulumi.Input<string>;
     /**
+     * Backup period.
+     */
+    readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+     */
+    readonly backupTime?: pulumi.Input<string>;
+    /**
      * The ID of the event or the business information.
      */
     readonly businessInfo?: pulumi.Input<string>;
@@ -732,6 +770,10 @@ export interface InstanceArgs {
      * The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
      */
     readonly dedicatedHostGroupId?: pulumi.Input<string>;
+    /**
+     * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+     */
+    readonly enableBackupLog?: pulumi.Input<number>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *

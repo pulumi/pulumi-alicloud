@@ -77,6 +77,12 @@ namespace Pulumi.AliCloud
         /// </summary>
         public static bool? SkipRegionValidation { get; set; } = __config.GetBoolean("skipRegionValidation");
 
+        /// <summary>
+        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+        /// console.
+        /// </summary>
+        public static string? SourceIp { get; set; } = __config.Get("sourceIp");
+
         public static class Types
         {
 
