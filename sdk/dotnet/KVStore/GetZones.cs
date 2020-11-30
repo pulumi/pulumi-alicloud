@@ -49,6 +49,9 @@ namespace Pulumi.AliCloud.KVStore
 
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
+        [Input("engine")]
+        public string? Engine { get; set; }
+
         /// <summary>
         /// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
         /// </summary>
@@ -73,6 +76,7 @@ namespace Pulumi.AliCloud.KVStore
     [OutputType]
     public sealed class GetZonesResult
     {
+        public readonly string? Engine;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -91,6 +95,8 @@ namespace Pulumi.AliCloud.KVStore
 
         [OutputConstructor]
         private GetZonesResult(
+            string? engine,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -103,6 +109,7 @@ namespace Pulumi.AliCloud.KVStore
 
             ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
+            Engine = engine;
             Id = id;
             Ids = ids;
             InstanceChargeType = instanceChargeType;

@@ -52,6 +52,10 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
+     * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     */
+    public /*out*/ readonly certificateAuthority!: pulumi.Output<outputs.cs.KubernetesCertificateAuthority>;
+    /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
     public readonly clientCert!: pulumi.Output<string | undefined>;
@@ -68,7 +72,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly clusterDomain!: pulumi.Output<string | undefined>;
     /**
-     * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * Map of kubernetes cluster connection information.
      */
     public /*out*/ readonly connections!: pulumi.Output<outputs.cs.KubernetesConnections>;
     /**
@@ -144,7 +148,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly masterInstanceTypes!: pulumi.Output<string[]>;
     /**
-     * List of cluster master nodes. It contains several attributes to `Block Nodes`.
+     * List of cluster master nodes.
      */
     public /*out*/ readonly masterNodes!: pulumi.Output<outputs.cs.KubernetesMasterNode[]>;
     /**
@@ -287,7 +291,7 @@ export class Kubernetes extends pulumi.CustomResource {
      * * cloud_efficiency: ultra disks.
      * * cloud_ssd: SSDs.
      * * cloud_essd: essd.
-     * * `size`: the size of a data disk. Unit: GiB.
+     * * `size`: the size of a data disk, at least 40. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     public readonly workerDataDisks!: pulumi.Output<outputs.cs.KubernetesWorkerDataDisk[] | undefined>;
@@ -308,7 +312,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly workerInstanceTypes!: pulumi.Output<string[]>;
     /**
-     * List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+     * List of cluster worker nodes.
      */
     public /*out*/ readonly workerNodes!: pulumi.Output<outputs.cs.KubernetesWorkerNode[]>;
     /**
@@ -344,6 +348,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["addons"] = state ? state.addons : undefined;
             inputs["apiAudiences"] = state ? state.apiAudiences : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            inputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
             inputs["clientCert"] = state ? state.clientCert : undefined;
             inputs["clientKey"] = state ? state.clientKey : undefined;
             inputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
@@ -499,6 +504,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["workerPeriod"] = args ? args.workerPeriod : undefined;
             inputs["workerPeriodUnit"] = args ? args.workerPeriodUnit : undefined;
             inputs["workerVswitchIds"] = args ? args.workerVswitchIds : undefined;
+            inputs["certificateAuthority"] = undefined /*out*/;
             inputs["connections"] = undefined /*out*/;
             inputs["masterNodes"] = undefined /*out*/;
             inputs["natGatewayId"] = undefined /*out*/;
@@ -534,6 +540,10 @@ export interface KubernetesState {
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**
+     * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     */
+    readonly certificateAuthority?: pulumi.Input<inputs.cs.KubernetesCertificateAuthority>;
+    /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
     readonly clientCert?: pulumi.Input<string>;
@@ -550,7 +560,7 @@ export interface KubernetesState {
      */
     readonly clusterDomain?: pulumi.Input<string>;
     /**
-     * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * Map of kubernetes cluster connection information.
      */
     readonly connections?: pulumi.Input<inputs.cs.KubernetesConnections>;
     /**
@@ -626,7 +636,7 @@ export interface KubernetesState {
      */
     readonly masterInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of cluster master nodes. It contains several attributes to `Block Nodes`.
+     * List of cluster master nodes.
      */
     readonly masterNodes?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesMasterNode>[]>;
     /**
@@ -769,7 +779,7 @@ export interface KubernetesState {
      * * cloud_efficiency: ultra disks.
      * * cloud_ssd: SSDs.
      * * cloud_essd: essd.
-     * * `size`: the size of a data disk. Unit: GiB.
+     * * `size`: the size of a data disk, at least 40. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesWorkerDataDisk>[]>;
@@ -790,7 +800,7 @@ export interface KubernetesState {
      */
     readonly workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+     * List of cluster worker nodes.
      */
     readonly workerNodes?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesWorkerNode>[]>;
     /**
@@ -1036,7 +1046,7 @@ export interface KubernetesArgs {
      * * cloud_efficiency: ultra disks.
      * * cloud_ssd: SSDs.
      * * cloud_essd: essd.
-     * * `size`: the size of a data disk. Unit: GiB.
+     * * `size`: the size of a data disk, at least 40. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesWorkerDataDisk>[]>;

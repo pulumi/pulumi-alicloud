@@ -48,6 +48,10 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
+     * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     */
+    public /*out*/ readonly certificateAuthority!: pulumi.Output<outputs.cs.EdgeKubernetesCertificateAuthority>;
+    /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
     public readonly clientCert!: pulumi.Output<string | undefined>;
@@ -147,10 +151,11 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      * * `category`: the type of the data disks. Valid values:
-     * * cloud: basic disks.
-     * * cloud_efficiency: ultra disks.
-     * * cloud_ssd: SSDs.
-     * * `size`: the size of a data disk. Unit: GiB.
+     * * cloud : basic disks.
+     * * cloudEfficiency : ultra disks.
+     * * cloudSsd : SSDs.
+     * * cloudEssd : ESSDs.
+     * * `size`: the size of a data disk, at least 40. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     public readonly workerDataDisks!: pulumi.Output<outputs.cs.EdgeKubernetesWorkerDataDisk[] | undefined>;
@@ -168,7 +173,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public readonly workerInstanceTypes!: pulumi.Output<string[]>;
     /**
-     * List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+     * List of cluster worker nodes.
      */
     public /*out*/ readonly workerNodes!: pulumi.Output<outputs.cs.EdgeKubernetesWorkerNode[]>;
     /**
@@ -191,6 +196,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             const state = argsOrState as EdgeKubernetesState | undefined;
             inputs["addons"] = state ? state.addons : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            inputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
             inputs["clientCert"] = state ? state.clientCert : undefined;
             inputs["clientKey"] = state ? state.clientKey : undefined;
             inputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
@@ -270,6 +276,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["workerInstanceTypes"] = args ? args.workerInstanceTypes : undefined;
             inputs["workerNumber"] = args ? args.workerNumber : undefined;
             inputs["workerVswitchIds"] = args ? args.workerVswitchIds : undefined;
+            inputs["certificateAuthority"] = undefined /*out*/;
             inputs["connections"] = undefined /*out*/;
             inputs["natGatewayId"] = undefined /*out*/;
             inputs["slbInternet"] = undefined /*out*/;
@@ -297,6 +304,10 @@ export interface EdgeKubernetesState {
      * The ID of availability zone.
      */
     readonly availabilityZone?: pulumi.Input<string>;
+    /**
+     * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     */
+    readonly certificateAuthority?: pulumi.Input<inputs.cs.EdgeKubernetesCertificateAuthority>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
@@ -397,10 +408,11 @@ export interface EdgeKubernetesState {
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      * * `category`: the type of the data disks. Valid values:
-     * * cloud: basic disks.
-     * * cloud_efficiency: ultra disks.
-     * * cloud_ssd: SSDs.
-     * * `size`: the size of a data disk. Unit: GiB.
+     * * cloud : basic disks.
+     * * cloudEfficiency : ultra disks.
+     * * cloudSsd : SSDs.
+     * * cloudEssd : ESSDs.
+     * * `size`: the size of a data disk, at least 40. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
@@ -418,7 +430,7 @@ export interface EdgeKubernetesState {
      */
     readonly workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+     * List of cluster worker nodes.
      */
     readonly workerNodes?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerNode>[]>;
     /**
@@ -523,10 +535,11 @@ export interface EdgeKubernetesArgs {
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      * * `category`: the type of the data disks. Valid values:
-     * * cloud: basic disks.
-     * * cloud_efficiency: ultra disks.
-     * * cloud_ssd: SSDs.
-     * * `size`: the size of a data disk. Unit: GiB.
+     * * cloud : basic disks.
+     * * cloudEfficiency : ultra disks.
+     * * cloudSsd : SSDs.
+     * * cloudEssd : ESSDs.
+     * * `size`: the size of a data disk, at least 40. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;

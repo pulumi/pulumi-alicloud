@@ -42,6 +42,7 @@ from . import (
     emr,
     ess,
     fc,
+    fnf,
     gpdb,
     hbase,
     kms,

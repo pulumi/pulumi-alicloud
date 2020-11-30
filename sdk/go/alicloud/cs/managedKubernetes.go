@@ -26,6 +26,8 @@ type ManagedKubernetes struct {
 	ApiAudiences pulumi.StringArrayOutput `pulumi:"apiAudiences"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
+	// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+	CertificateAuthority ManagedKubernetesCertificateAuthorityOutput `pulumi:"certificateAuthority"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
 	// The path of client key, like `~/.kube/client-key.pem`.
@@ -34,8 +36,11 @@ type ManagedKubernetes struct {
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain pulumi.StringPtrOutput `pulumi:"clusterDomain"`
-	ClusterSpec   pulumi.StringOutput    `pulumi:"clusterSpec"`
-	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+	// * ack.standard : Standard managed clusters.
+	// * ack.pro.small : Professional managed clusters.
+	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
+	// Map of kubernetes cluster connection information.
 	Connections ManagedKubernetesConnectionsOutput `pulumi:"connections"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrOutput `pulumi:"cpuPolicy"`
@@ -132,7 +137,7 @@ type ManagedKubernetes struct {
 	// * cloud_efficiency: ultra disks.
 	// * cloud_ssd: SSDs.
 	// * cloud_essd: essd.
-	// * `size`: the size of a data disk. Unit: GiB.
+	// * `size`: the size of a data disk, at least 40. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayOutput `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
@@ -143,7 +148,7 @@ type ManagedKubernetes struct {
 	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes pulumi.StringArrayOutput `pulumi:"workerInstanceTypes"`
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes ManagedKubernetesWorkerNodeArrayOutput `pulumi:"workerNodes"`
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber pulumi.IntOutput `pulumi:"workerNumber"`
@@ -198,6 +203,8 @@ type managedKubernetesState struct {
 	ApiAudiences []string `pulumi:"apiAudiences"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+	CertificateAuthority *ManagedKubernetesCertificateAuthority `pulumi:"certificateAuthority"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
 	// The path of client key, like `~/.kube/client-key.pem`.
@@ -206,8 +213,11 @@ type managedKubernetesState struct {
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain *string `pulumi:"clusterDomain"`
-	ClusterSpec   *string `pulumi:"clusterSpec"`
-	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+	// * ack.standard : Standard managed clusters.
+	// * ack.pro.small : Professional managed clusters.
+	ClusterSpec *string `pulumi:"clusterSpec"`
+	// Map of kubernetes cluster connection information.
 	Connections *ManagedKubernetesConnections `pulumi:"connections"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
@@ -304,7 +314,7 @@ type managedKubernetesState struct {
 	// * cloud_efficiency: ultra disks.
 	// * cloud_ssd: SSDs.
 	// * cloud_essd: essd.
-	// * `size`: the size of a data disk. Unit: GiB.
+	// * `size`: the size of a data disk, at least 40. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []ManagedKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
@@ -315,7 +325,7 @@ type managedKubernetesState struct {
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes []ManagedKubernetesWorkerNode `pulumi:"workerNodes"`
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber *int `pulumi:"workerNumber"`
@@ -334,6 +344,8 @@ type ManagedKubernetesState struct {
 	ApiAudiences pulumi.StringArrayInput
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone pulumi.StringPtrInput
+	// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+	CertificateAuthority ManagedKubernetesCertificateAuthorityPtrInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
 	// The path of client key, like `~/.kube/client-key.pem`.
@@ -342,8 +354,11 @@ type ManagedKubernetesState struct {
 	ClusterCaCert pulumi.StringPtrInput
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain pulumi.StringPtrInput
-	ClusterSpec   pulumi.StringPtrInput
-	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+	// * ack.standard : Standard managed clusters.
+	// * ack.pro.small : Professional managed clusters.
+	ClusterSpec pulumi.StringPtrInput
+	// Map of kubernetes cluster connection information.
 	Connections ManagedKubernetesConnectionsPtrInput
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrInput
@@ -440,7 +455,7 @@ type ManagedKubernetesState struct {
 	// * cloud_efficiency: ultra disks.
 	// * cloud_ssd: SSDs.
 	// * cloud_essd: essd.
-	// * `size`: the size of a data disk. Unit: GiB.
+	// * `size`: the size of a data disk, at least 40. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
@@ -451,7 +466,7 @@ type ManagedKubernetesState struct {
 	WorkerInstanceChargeType pulumi.StringPtrInput
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes pulumi.StringArrayInput
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes ManagedKubernetesWorkerNodeArrayInput
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber pulumi.IntPtrInput
@@ -482,7 +497,10 @@ type managedKubernetesArgs struct {
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain *string `pulumi:"clusterDomain"`
-	ClusterSpec   *string `pulumi:"clusterSpec"`
+	// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+	// * ack.standard : Standard managed clusters.
+	// * ack.pro.small : Professional managed clusters.
+	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -569,7 +587,7 @@ type managedKubernetesArgs struct {
 	// * cloud_efficiency: ultra disks.
 	// * cloud_ssd: SSDs.
 	// * cloud_essd: essd.
-	// * `size`: the size of a data disk. Unit: GiB.
+	// * `size`: the size of a data disk, at least 40. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []ManagedKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
@@ -604,7 +622,10 @@ type ManagedKubernetesArgs struct {
 	ClusterCaCert pulumi.StringPtrInput
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain pulumi.StringPtrInput
-	ClusterSpec   pulumi.StringPtrInput
+	// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+	// * ack.standard : Standard managed clusters.
+	// * ack.pro.small : Professional managed clusters.
+	ClusterSpec pulumi.StringPtrInput
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -691,7 +712,7 @@ type ManagedKubernetesArgs struct {
 	// * cloud_efficiency: ultra disks.
 	// * cloud_ssd: SSDs.
 	// * cloud_essd: essd.
-	// * `size`: the size of a data disk. Unit: GiB.
+	// * `size`: the size of a data disk, at least 40. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.

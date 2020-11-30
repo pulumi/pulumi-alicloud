@@ -85,6 +85,7 @@ export interface ProviderEndpoint {
     emr?: string;
     ess?: string;
     fc?: string;
+    fnf?: string;
     gpdb?: string;
     kms?: string;
     kvstore?: string;
@@ -2143,6 +2144,7 @@ export namespace config {
         emr?: string;
         ess?: string;
         fc?: string;
+        fnf?: string;
         gpdb?: string;
         kms?: string;
         kvstore?: string;
@@ -2310,6 +2312,21 @@ export namespace cs {
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: string;
+    }
+
+    export interface EdgeKubernetesCertificateAuthority {
+        /**
+         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         */
+        clientCert: string;
+        /**
+         * The path of client key, like `~/.kube/client-key.pem`.
+         */
+        clientKey: string;
+        /**
+         * The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+         */
+        clusterCert: string;
     }
 
     export interface EdgeKubernetesConnections {
@@ -2951,6 +2968,21 @@ export namespace cs {
         taints?: string;
     }
 
+    export interface KubernetesCertificateAuthority {
+        /**
+         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         */
+        clientCert: string;
+        /**
+         * The path of client key, like `~/.kube/client-key.pem`.
+         */
+        clientKey: string;
+        /**
+         * The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+         */
+        clusterCert: string;
+    }
+
     export interface KubernetesConnections {
         /**
          * API Server Internet endpoint.
@@ -3038,6 +3070,21 @@ export namespace cs {
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: string;
+    }
+
+    export interface ManagedKubernetesCertificateAuthority {
+        /**
+         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         */
+        clientCert: string;
+        /**
+         * The path of client key, like `~/.kube/client-key.pem`.
+         */
+        clientKey: string;
+        /**
+         * The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+         */
+        clusterCert: string;
     }
 
     export interface ManagedKubernetesConnections {
@@ -6168,6 +6215,78 @@ export namespace fc {
     }
 }
 
+export namespace fnf {
+    export interface GetFlowsFlow {
+        /**
+         * The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
+         */
+        definition: string;
+        /**
+         * The description of the flow.
+         */
+        description: string;
+        /**
+         * The unique ID of the flow.
+         */
+        flowId: string;
+        /**
+         * The ID of the Flow.
+         */
+        id: string;
+        /**
+         * The time when the flow was last modified.
+         */
+        lastModifiedTime: string;
+        /**
+         * The name of the flow. The name must be unique in an Alibaba Cloud account.
+         */
+        name: string;
+        /**
+         * The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
+         */
+        roleArn: string;
+        /**
+         * The type of the flow. Set the value to `FDL`.
+         */
+        type: string;
+    }
+
+    export interface GetSchedulesSchedule {
+        /**
+         * The CRON expression of the time-based schedule to be created.
+         */
+        cronExpression: string;
+        /**
+         * The description of the time-based schedule to be created.
+         */
+        description: string;
+        /**
+         * Specifies whether to enable the time-based schedule you want to create.
+         */
+        enable: boolean;
+        /**
+         * The ID of the Schedule.
+         */
+        id: string;
+        /**
+         * The time when the time-based schedule was last updated.
+         */
+        lastModifiedTime: string;
+        /**
+         * The trigger message of the time-based schedule to be created. It must be in JSON object format.
+         */
+        payload: string;
+        /**
+         * The ID of the time-based schedule.
+         */
+        scheduleId: string;
+        /**
+         * The name of the time-based schedule to be created.
+         */
+        scheduleName: string;
+    }
+}
+
 export namespace gpdb {
     export interface GetInstancesInstance {
         /**
@@ -6232,40 +6351,43 @@ export namespace gpdb {
 export namespace hbase {
     export interface GetInstancesInstance {
         /**
-         * the Backup Status of the instance.
+         * The Backup Status of the instance.
          */
         backupStatus: string;
         /**
-         * core node disk size, unit:GB.
+         * Core node disk size, unit:GB.
          */
         coreDiskSize: number;
         /**
-         * cloud_ssd or cloud_efficiency
+         * Cloud_ssd or cloud_efficiency
          */
         coreDiskType: string;
         /**
-         * hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+         * Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
          */
         coreInstanceType: string;
         /**
-         * same with "coreInstanceQuantity"
+         * Same with "coreInstanceQuantity"
          */
         coreNodeCount: number;
+        /**
+         * The created time of the instance.
+         */
         createdTime: string;
         /**
-         * the switch of delete protection.
+         * The switch of delete protection.
          */
         deletionProtection: boolean;
         /**
-         * the engine of the instance.
+         * The engine of the instance.
          */
         engine: string;
         /**
-         * the engineVersion of the instance.
+         * The engineVersion of the instance.
          */
         engineVersion: string;
         /**
-         * the expire time of the instance.
+         * The expire time of the instance.
          */
         expireTime: string;
         /**
@@ -6273,11 +6395,11 @@ export namespace hbase {
          */
         id: string;
         /**
-         * hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+         * Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
          */
         masterInstanceType: string;
         /**
-         * the node count of master
+         * The node count of master
          */
         masterNodeCount: number;
         /**
@@ -6327,6 +6449,24 @@ export namespace hbase {
          * A list of zone ids in which the multi zone. Removed from v1.99.0.
          */
         multiZoneIds: string[];
+    }
+
+    export interface InstanceSlbConnAddr {
+        connAddr: string;
+        connAddrPort: string;
+        netType: string;
+    }
+
+    export interface InstanceUiProxyConnAddr {
+        connAddr: string;
+        connAddrPort: string;
+        netType: string;
+    }
+
+    export interface InstanceZkConnAddr {
+        connAddr: string;
+        connAddrPort: string;
+        netType: string;
     }
 }
 

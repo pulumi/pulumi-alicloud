@@ -110,6 +110,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Output("storageEngine")]
         public Output<string> StorageEngine { get; private set; } = null!;
 
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
         /// <summary>
         /// The TDE(Transparent Data Encryption) status.
         /// </summary>
@@ -289,6 +292,14 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The TDE(Transparent Data Encryption) status.
         /// </summary>
@@ -434,6 +445,14 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The TDE(Transparent Data Encryption) status.

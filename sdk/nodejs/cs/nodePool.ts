@@ -97,6 +97,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
+     * (Available in 1.105.0+) Id of the Scaling Group.
+     */
+    public /*out*/ readonly scalingGroupId!: pulumi.Output<string>;
+    /**
      * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
@@ -154,6 +158,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
             inputs["nodeNameMode"] = state ? state.nodeNameMode : undefined;
             inputs["password"] = state ? state.password : undefined;
+            inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
             inputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
@@ -194,6 +199,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["taints"] = args ? args.taints : undefined;
             inputs["userData"] = args ? args.userData : undefined;
             inputs["vswitchIds"] = args ? args.vswitchIds : undefined;
+            inputs["scalingGroupId"] = undefined /*out*/;
             inputs["vpcId"] = undefined /*out*/;
         }
         if (!opts) {
@@ -252,6 +258,10 @@ export interface NodePoolState {
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     readonly password?: pulumi.Input<string>;
+    /**
+     * (Available in 1.105.0+) Id of the Scaling Group.
+     */
+    readonly scalingGroupId?: pulumi.Input<string>;
     /**
      * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */

@@ -41,6 +41,7 @@ export interface ProviderEndpoint {
     emr?: pulumi.Input<string>;
     ess?: pulumi.Input<string>;
     fc?: pulumi.Input<string>;
+    fnf?: pulumi.Input<string>;
     gpdb?: pulumi.Input<string>;
     kms?: pulumi.Input<string>;
     kvstore?: pulumi.Input<string>;
@@ -613,6 +614,21 @@ export namespace cs {
         name?: pulumi.Input<string>;
     }
 
+    export interface EdgeKubernetesCertificateAuthority {
+        /**
+         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         */
+        clientCert?: pulumi.Input<string>;
+        /**
+         * The path of client key, like `~/.kube/client-key.pem`.
+         */
+        clientKey?: pulumi.Input<string>;
+        /**
+         * The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+         */
+        clusterCert?: pulumi.Input<string>;
+    }
+
     export interface EdgeKubernetesConnections {
         apiServerInternet?: pulumi.Input<string>;
         apiServerIntranet?: pulumi.Input<string>;
@@ -667,6 +683,21 @@ export namespace cs {
         id?: pulumi.Input<string>;
         labels?: pulumi.Input<string>;
         taints?: pulumi.Input<string>;
+    }
+
+    export interface KubernetesCertificateAuthority {
+        /**
+         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         */
+        clientCert?: pulumi.Input<string>;
+        /**
+         * The path of client key, like `~/.kube/client-key.pem`.
+         */
+        clientKey?: pulumi.Input<string>;
+        /**
+         * The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+         */
+        clusterCert?: pulumi.Input<string>;
     }
 
     export interface KubernetesConnections {
@@ -756,6 +787,21 @@ export namespace cs {
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: pulumi.Input<string>;
+    }
+
+    export interface ManagedKubernetesCertificateAuthority {
+        /**
+         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         */
+        clientCert?: pulumi.Input<string>;
+        /**
+         * The path of client key, like `~/.kube/client-key.pem`.
+         */
+        clientKey?: pulumi.Input<string>;
+        /**
+         * The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+         */
+        clusterCert?: pulumi.Input<string>;
     }
 
     export interface ManagedKubernetesConnections {
@@ -1381,10 +1427,30 @@ export namespace fc {
     }
 }
 
+export namespace fnf {
+}
+
 export namespace gpdb {
 }
 
 export namespace hbase {
+    export interface InstanceSlbConnAddr {
+        connAddr?: pulumi.Input<string>;
+        connAddrPort?: pulumi.Input<string>;
+        netType?: pulumi.Input<string>;
+    }
+
+    export interface InstanceUiProxyConnAddr {
+        connAddr?: pulumi.Input<string>;
+        connAddrPort?: pulumi.Input<string>;
+        netType?: pulumi.Input<string>;
+    }
+
+    export interface InstanceZkConnAddr {
+        connAddr?: pulumi.Input<string>;
+        connAddrPort?: pulumi.Input<string>;
+        netType?: pulumi.Input<string>;
+    }
 }
 
 export namespace kms {

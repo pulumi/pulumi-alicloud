@@ -32,6 +32,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:kvstore/getZones:getZones", {
+        "engine": args.engine,
         "instanceChargeType": args.instanceChargeType,
         "multi": args.multi,
         "outputFile": args.outputFile,
@@ -42,6 +43,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
+    readonly engine?: string;
     /**
      * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
@@ -57,6 +59,7 @@ export interface GetZonesArgs {
  * A collection of values returned by getZones.
  */
 export interface GetZonesResult {
+    readonly engine?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

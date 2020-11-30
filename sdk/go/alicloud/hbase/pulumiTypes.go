@@ -10,31 +10,350 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type InstanceSlbConnAddr struct {
+	ConnAddr     *string `pulumi:"connAddr"`
+	ConnAddrPort *string `pulumi:"connAddrPort"`
+	NetType      *string `pulumi:"netType"`
+}
+
+// InstanceSlbConnAddrInput is an input type that accepts InstanceSlbConnAddrArgs and InstanceSlbConnAddrOutput values.
+// You can construct a concrete instance of `InstanceSlbConnAddrInput` via:
+//
+//          InstanceSlbConnAddrArgs{...}
+type InstanceSlbConnAddrInput interface {
+	pulumi.Input
+
+	ToInstanceSlbConnAddrOutput() InstanceSlbConnAddrOutput
+	ToInstanceSlbConnAddrOutputWithContext(context.Context) InstanceSlbConnAddrOutput
+}
+
+type InstanceSlbConnAddrArgs struct {
+	ConnAddr     pulumi.StringPtrInput `pulumi:"connAddr"`
+	ConnAddrPort pulumi.StringPtrInput `pulumi:"connAddrPort"`
+	NetType      pulumi.StringPtrInput `pulumi:"netType"`
+}
+
+func (InstanceSlbConnAddrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSlbConnAddr)(nil)).Elem()
+}
+
+func (i InstanceSlbConnAddrArgs) ToInstanceSlbConnAddrOutput() InstanceSlbConnAddrOutput {
+	return i.ToInstanceSlbConnAddrOutputWithContext(context.Background())
+}
+
+func (i InstanceSlbConnAddrArgs) ToInstanceSlbConnAddrOutputWithContext(ctx context.Context) InstanceSlbConnAddrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSlbConnAddrOutput)
+}
+
+// InstanceSlbConnAddrArrayInput is an input type that accepts InstanceSlbConnAddrArray and InstanceSlbConnAddrArrayOutput values.
+// You can construct a concrete instance of `InstanceSlbConnAddrArrayInput` via:
+//
+//          InstanceSlbConnAddrArray{ InstanceSlbConnAddrArgs{...} }
+type InstanceSlbConnAddrArrayInput interface {
+	pulumi.Input
+
+	ToInstanceSlbConnAddrArrayOutput() InstanceSlbConnAddrArrayOutput
+	ToInstanceSlbConnAddrArrayOutputWithContext(context.Context) InstanceSlbConnAddrArrayOutput
+}
+
+type InstanceSlbConnAddrArray []InstanceSlbConnAddrInput
+
+func (InstanceSlbConnAddrArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSlbConnAddr)(nil)).Elem()
+}
+
+func (i InstanceSlbConnAddrArray) ToInstanceSlbConnAddrArrayOutput() InstanceSlbConnAddrArrayOutput {
+	return i.ToInstanceSlbConnAddrArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceSlbConnAddrArray) ToInstanceSlbConnAddrArrayOutputWithContext(ctx context.Context) InstanceSlbConnAddrArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSlbConnAddrArrayOutput)
+}
+
+type InstanceSlbConnAddrOutput struct{ *pulumi.OutputState }
+
+func (InstanceSlbConnAddrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSlbConnAddr)(nil)).Elem()
+}
+
+func (o InstanceSlbConnAddrOutput) ToInstanceSlbConnAddrOutput() InstanceSlbConnAddrOutput {
+	return o
+}
+
+func (o InstanceSlbConnAddrOutput) ToInstanceSlbConnAddrOutputWithContext(ctx context.Context) InstanceSlbConnAddrOutput {
+	return o
+}
+
+func (o InstanceSlbConnAddrOutput) ConnAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSlbConnAddr) *string { return v.ConnAddr }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceSlbConnAddrOutput) ConnAddrPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSlbConnAddr) *string { return v.ConnAddrPort }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceSlbConnAddrOutput) NetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSlbConnAddr) *string { return v.NetType }).(pulumi.StringPtrOutput)
+}
+
+type InstanceSlbConnAddrArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceSlbConnAddrArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSlbConnAddr)(nil)).Elem()
+}
+
+func (o InstanceSlbConnAddrArrayOutput) ToInstanceSlbConnAddrArrayOutput() InstanceSlbConnAddrArrayOutput {
+	return o
+}
+
+func (o InstanceSlbConnAddrArrayOutput) ToInstanceSlbConnAddrArrayOutputWithContext(ctx context.Context) InstanceSlbConnAddrArrayOutput {
+	return o
+}
+
+func (o InstanceSlbConnAddrArrayOutput) Index(i pulumi.IntInput) InstanceSlbConnAddrOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSlbConnAddr {
+		return vs[0].([]InstanceSlbConnAddr)[vs[1].(int)]
+	}).(InstanceSlbConnAddrOutput)
+}
+
+type InstanceUiProxyConnAddr struct {
+	ConnAddr     *string `pulumi:"connAddr"`
+	ConnAddrPort *string `pulumi:"connAddrPort"`
+	NetType      *string `pulumi:"netType"`
+}
+
+// InstanceUiProxyConnAddrInput is an input type that accepts InstanceUiProxyConnAddrArgs and InstanceUiProxyConnAddrOutput values.
+// You can construct a concrete instance of `InstanceUiProxyConnAddrInput` via:
+//
+//          InstanceUiProxyConnAddrArgs{...}
+type InstanceUiProxyConnAddrInput interface {
+	pulumi.Input
+
+	ToInstanceUiProxyConnAddrOutput() InstanceUiProxyConnAddrOutput
+	ToInstanceUiProxyConnAddrOutputWithContext(context.Context) InstanceUiProxyConnAddrOutput
+}
+
+type InstanceUiProxyConnAddrArgs struct {
+	ConnAddr     pulumi.StringPtrInput `pulumi:"connAddr"`
+	ConnAddrPort pulumi.StringPtrInput `pulumi:"connAddrPort"`
+	NetType      pulumi.StringPtrInput `pulumi:"netType"`
+}
+
+func (InstanceUiProxyConnAddrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceUiProxyConnAddr)(nil)).Elem()
+}
+
+func (i InstanceUiProxyConnAddrArgs) ToInstanceUiProxyConnAddrOutput() InstanceUiProxyConnAddrOutput {
+	return i.ToInstanceUiProxyConnAddrOutputWithContext(context.Background())
+}
+
+func (i InstanceUiProxyConnAddrArgs) ToInstanceUiProxyConnAddrOutputWithContext(ctx context.Context) InstanceUiProxyConnAddrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceUiProxyConnAddrOutput)
+}
+
+// InstanceUiProxyConnAddrArrayInput is an input type that accepts InstanceUiProxyConnAddrArray and InstanceUiProxyConnAddrArrayOutput values.
+// You can construct a concrete instance of `InstanceUiProxyConnAddrArrayInput` via:
+//
+//          InstanceUiProxyConnAddrArray{ InstanceUiProxyConnAddrArgs{...} }
+type InstanceUiProxyConnAddrArrayInput interface {
+	pulumi.Input
+
+	ToInstanceUiProxyConnAddrArrayOutput() InstanceUiProxyConnAddrArrayOutput
+	ToInstanceUiProxyConnAddrArrayOutputWithContext(context.Context) InstanceUiProxyConnAddrArrayOutput
+}
+
+type InstanceUiProxyConnAddrArray []InstanceUiProxyConnAddrInput
+
+func (InstanceUiProxyConnAddrArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceUiProxyConnAddr)(nil)).Elem()
+}
+
+func (i InstanceUiProxyConnAddrArray) ToInstanceUiProxyConnAddrArrayOutput() InstanceUiProxyConnAddrArrayOutput {
+	return i.ToInstanceUiProxyConnAddrArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceUiProxyConnAddrArray) ToInstanceUiProxyConnAddrArrayOutputWithContext(ctx context.Context) InstanceUiProxyConnAddrArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceUiProxyConnAddrArrayOutput)
+}
+
+type InstanceUiProxyConnAddrOutput struct{ *pulumi.OutputState }
+
+func (InstanceUiProxyConnAddrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceUiProxyConnAddr)(nil)).Elem()
+}
+
+func (o InstanceUiProxyConnAddrOutput) ToInstanceUiProxyConnAddrOutput() InstanceUiProxyConnAddrOutput {
+	return o
+}
+
+func (o InstanceUiProxyConnAddrOutput) ToInstanceUiProxyConnAddrOutputWithContext(ctx context.Context) InstanceUiProxyConnAddrOutput {
+	return o
+}
+
+func (o InstanceUiProxyConnAddrOutput) ConnAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceUiProxyConnAddr) *string { return v.ConnAddr }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceUiProxyConnAddrOutput) ConnAddrPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceUiProxyConnAddr) *string { return v.ConnAddrPort }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceUiProxyConnAddrOutput) NetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceUiProxyConnAddr) *string { return v.NetType }).(pulumi.StringPtrOutput)
+}
+
+type InstanceUiProxyConnAddrArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceUiProxyConnAddrArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceUiProxyConnAddr)(nil)).Elem()
+}
+
+func (o InstanceUiProxyConnAddrArrayOutput) ToInstanceUiProxyConnAddrArrayOutput() InstanceUiProxyConnAddrArrayOutput {
+	return o
+}
+
+func (o InstanceUiProxyConnAddrArrayOutput) ToInstanceUiProxyConnAddrArrayOutputWithContext(ctx context.Context) InstanceUiProxyConnAddrArrayOutput {
+	return o
+}
+
+func (o InstanceUiProxyConnAddrArrayOutput) Index(i pulumi.IntInput) InstanceUiProxyConnAddrOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceUiProxyConnAddr {
+		return vs[0].([]InstanceUiProxyConnAddr)[vs[1].(int)]
+	}).(InstanceUiProxyConnAddrOutput)
+}
+
+type InstanceZkConnAddr struct {
+	ConnAddr     *string `pulumi:"connAddr"`
+	ConnAddrPort *string `pulumi:"connAddrPort"`
+	NetType      *string `pulumi:"netType"`
+}
+
+// InstanceZkConnAddrInput is an input type that accepts InstanceZkConnAddrArgs and InstanceZkConnAddrOutput values.
+// You can construct a concrete instance of `InstanceZkConnAddrInput` via:
+//
+//          InstanceZkConnAddrArgs{...}
+type InstanceZkConnAddrInput interface {
+	pulumi.Input
+
+	ToInstanceZkConnAddrOutput() InstanceZkConnAddrOutput
+	ToInstanceZkConnAddrOutputWithContext(context.Context) InstanceZkConnAddrOutput
+}
+
+type InstanceZkConnAddrArgs struct {
+	ConnAddr     pulumi.StringPtrInput `pulumi:"connAddr"`
+	ConnAddrPort pulumi.StringPtrInput `pulumi:"connAddrPort"`
+	NetType      pulumi.StringPtrInput `pulumi:"netType"`
+}
+
+func (InstanceZkConnAddrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceZkConnAddr)(nil)).Elem()
+}
+
+func (i InstanceZkConnAddrArgs) ToInstanceZkConnAddrOutput() InstanceZkConnAddrOutput {
+	return i.ToInstanceZkConnAddrOutputWithContext(context.Background())
+}
+
+func (i InstanceZkConnAddrArgs) ToInstanceZkConnAddrOutputWithContext(ctx context.Context) InstanceZkConnAddrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceZkConnAddrOutput)
+}
+
+// InstanceZkConnAddrArrayInput is an input type that accepts InstanceZkConnAddrArray and InstanceZkConnAddrArrayOutput values.
+// You can construct a concrete instance of `InstanceZkConnAddrArrayInput` via:
+//
+//          InstanceZkConnAddrArray{ InstanceZkConnAddrArgs{...} }
+type InstanceZkConnAddrArrayInput interface {
+	pulumi.Input
+
+	ToInstanceZkConnAddrArrayOutput() InstanceZkConnAddrArrayOutput
+	ToInstanceZkConnAddrArrayOutputWithContext(context.Context) InstanceZkConnAddrArrayOutput
+}
+
+type InstanceZkConnAddrArray []InstanceZkConnAddrInput
+
+func (InstanceZkConnAddrArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceZkConnAddr)(nil)).Elem()
+}
+
+func (i InstanceZkConnAddrArray) ToInstanceZkConnAddrArrayOutput() InstanceZkConnAddrArrayOutput {
+	return i.ToInstanceZkConnAddrArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceZkConnAddrArray) ToInstanceZkConnAddrArrayOutputWithContext(ctx context.Context) InstanceZkConnAddrArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceZkConnAddrArrayOutput)
+}
+
+type InstanceZkConnAddrOutput struct{ *pulumi.OutputState }
+
+func (InstanceZkConnAddrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceZkConnAddr)(nil)).Elem()
+}
+
+func (o InstanceZkConnAddrOutput) ToInstanceZkConnAddrOutput() InstanceZkConnAddrOutput {
+	return o
+}
+
+func (o InstanceZkConnAddrOutput) ToInstanceZkConnAddrOutputWithContext(ctx context.Context) InstanceZkConnAddrOutput {
+	return o
+}
+
+func (o InstanceZkConnAddrOutput) ConnAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceZkConnAddr) *string { return v.ConnAddr }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceZkConnAddrOutput) ConnAddrPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceZkConnAddr) *string { return v.ConnAddrPort }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceZkConnAddrOutput) NetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceZkConnAddr) *string { return v.NetType }).(pulumi.StringPtrOutput)
+}
+
+type InstanceZkConnAddrArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceZkConnAddrArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceZkConnAddr)(nil)).Elem()
+}
+
+func (o InstanceZkConnAddrArrayOutput) ToInstanceZkConnAddrArrayOutput() InstanceZkConnAddrArrayOutput {
+	return o
+}
+
+func (o InstanceZkConnAddrArrayOutput) ToInstanceZkConnAddrArrayOutputWithContext(ctx context.Context) InstanceZkConnAddrArrayOutput {
+	return o
+}
+
+func (o InstanceZkConnAddrArrayOutput) Index(i pulumi.IntInput) InstanceZkConnAddrOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceZkConnAddr {
+		return vs[0].([]InstanceZkConnAddr)[vs[1].(int)]
+	}).(InstanceZkConnAddrOutput)
+}
+
 type GetInstancesInstance struct {
-	// the Backup Status of the instance.
+	// The Backup Status of the instance.
 	BackupStatus string `pulumi:"backupStatus"`
-	// core node disk size, unit:GB.
+	// Core node disk size, unit:GB.
 	CoreDiskSize int `pulumi:"coreDiskSize"`
-	// cloud_ssd or cloud_efficiency
+	// Cloud_ssd or cloud_efficiency
 	CoreDiskType string `pulumi:"coreDiskType"`
-	// hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+	// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
 	CoreInstanceType string `pulumi:"coreInstanceType"`
-	// same with "coreInstanceQuantity"
-	CoreNodeCount int    `pulumi:"coreNodeCount"`
-	CreatedTime   string `pulumi:"createdTime"`
-	// the switch of delete protection.
+	// Same with "coreInstanceQuantity"
+	CoreNodeCount int `pulumi:"coreNodeCount"`
+	// The created time of the instance.
+	CreatedTime string `pulumi:"createdTime"`
+	// The switch of delete protection.
 	DeletionProtection bool `pulumi:"deletionProtection"`
-	// the engine of the instance.
+	// The engine of the instance.
 	Engine string `pulumi:"engine"`
-	// the engineVersion of the instance.
+	// The engineVersion of the instance.
 	EngineVersion string `pulumi:"engineVersion"`
-	// the expire time of the instance.
+	// The expire time of the instance.
 	ExpireTime string `pulumi:"expireTime"`
 	// The ID of the HBase instance.
 	Id string `pulumi:"id"`
-	// hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+	// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
 	MasterInstanceType string `pulumi:"masterInstanceType"`
-	// the node count of master
+	// The node count of master
 	MasterNodeCount int `pulumi:"masterNodeCount"`
 	// The name of the HBase instance.
 	Name string `pulumi:"name"`
@@ -68,30 +387,31 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
-	// the Backup Status of the instance.
+	// The Backup Status of the instance.
 	BackupStatus pulumi.StringInput `pulumi:"backupStatus"`
-	// core node disk size, unit:GB.
+	// Core node disk size, unit:GB.
 	CoreDiskSize pulumi.IntInput `pulumi:"coreDiskSize"`
-	// cloud_ssd or cloud_efficiency
+	// Cloud_ssd or cloud_efficiency
 	CoreDiskType pulumi.StringInput `pulumi:"coreDiskType"`
-	// hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+	// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
 	CoreInstanceType pulumi.StringInput `pulumi:"coreInstanceType"`
-	// same with "coreInstanceQuantity"
-	CoreNodeCount pulumi.IntInput    `pulumi:"coreNodeCount"`
-	CreatedTime   pulumi.StringInput `pulumi:"createdTime"`
-	// the switch of delete protection.
+	// Same with "coreInstanceQuantity"
+	CoreNodeCount pulumi.IntInput `pulumi:"coreNodeCount"`
+	// The created time of the instance.
+	CreatedTime pulumi.StringInput `pulumi:"createdTime"`
+	// The switch of delete protection.
 	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
-	// the engine of the instance.
+	// The engine of the instance.
 	Engine pulumi.StringInput `pulumi:"engine"`
-	// the engineVersion of the instance.
+	// The engineVersion of the instance.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
-	// the expire time of the instance.
+	// The expire time of the instance.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// The ID of the HBase instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+	// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
 	MasterInstanceType pulumi.StringInput `pulumi:"masterInstanceType"`
-	// the node count of master
+	// The node count of master
 	MasterNodeCount pulumi.IntInput `pulumi:"masterNodeCount"`
 	// The name of the HBase instance.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -164,51 +484,52 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
-// the Backup Status of the instance.
+// The Backup Status of the instance.
 func (o GetInstancesInstanceOutput) BackupStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.BackupStatus }).(pulumi.StringOutput)
 }
 
-// core node disk size, unit:GB.
+// Core node disk size, unit:GB.
 func (o GetInstancesInstanceOutput) CoreDiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.CoreDiskSize }).(pulumi.IntOutput)
 }
 
-// cloud_ssd or cloud_efficiency
+// Cloud_ssd or cloud_efficiency
 func (o GetInstancesInstanceOutput) CoreDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CoreDiskType }).(pulumi.StringOutput)
 }
 
-// hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
 func (o GetInstancesInstanceOutput) CoreInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CoreInstanceType }).(pulumi.StringOutput)
 }
 
-// same with "coreInstanceQuantity"
+// Same with "coreInstanceQuantity"
 func (o GetInstancesInstanceOutput) CoreNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.CoreNodeCount }).(pulumi.IntOutput)
 }
 
+// The created time of the instance.
 func (o GetInstancesInstanceOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
-// the switch of delete protection.
+// The switch of delete protection.
 func (o GetInstancesInstanceOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
-// the engine of the instance.
+// The engine of the instance.
 func (o GetInstancesInstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-// the engineVersion of the instance.
+// The engineVersion of the instance.
 func (o GetInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
-// the expire time of the instance.
+// The expire time of the instance.
 func (o GetInstancesInstanceOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -218,12 +539,12 @@ func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
 func (o GetInstancesInstanceOutput) MasterInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.MasterInstanceType }).(pulumi.StringOutput)
 }
 
-// the node count of master
+// The node count of master
 func (o GetInstancesInstanceOutput) MasterNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.MasterNodeCount }).(pulumi.IntOutput)
 }
@@ -400,6 +721,12 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(InstanceSlbConnAddrOutput{})
+	pulumi.RegisterOutputType(InstanceSlbConnAddrArrayOutput{})
+	pulumi.RegisterOutputType(InstanceUiProxyConnAddrOutput{})
+	pulumi.RegisterOutputType(InstanceUiProxyConnAddrArrayOutput{})
+	pulumi.RegisterOutputType(InstanceZkConnAddrOutput{})
+	pulumi.RegisterOutputType(InstanceZkConnAddrArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})

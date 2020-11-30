@@ -13,6 +13,7 @@ from .get_clusters import *
 from .get_deploy_groups import *
 from .get_service import *
 from .instance_cluster_attachment import *
+from .k8s_application import *
 from .k8s_cluster import *
 from .slb_attachment import *
 from . import outputs

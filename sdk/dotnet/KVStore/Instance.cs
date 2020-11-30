@@ -93,6 +93,45 @@ namespace Pulumi.AliCloud.KVStore
     /// }
     /// ```
     /// 
+    /// Modify Private Connection String
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.KVStore.Instance("example", new AliCloud.KVStore.InstanceArgs
+    ///         {
+    ///             Config = 
+    ///             {
+    ///                 { "appendonly", "yes" },
+    ///                 { "lazyfree-lazy-eviction", "yes" },
+    ///             },
+    ///             DbInstanceName = "tf-test-basic",
+    ///             EngineVersion = "4.0",
+    ///             InstanceClass = "redis.master.large.default",
+    ///             InstanceType = "Redis",
+    ///             PrivateConnectionPrefix = "privateconnectionstringprefix",
+    ///             ResourceGroupId = "rg-123456",
+    ///             SecurityIps = 
+    ///             {
+    ///                 "10.23.12.24",
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 { "Created", "TF" },
+    ///                 { "For", "Test" },
+    ///             },
+    ///             VswitchId = "vsw-123456",
+    ///             ZoneId = "cn-beijing-h",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// KVStore instance can be imported using the id, e.g.
@@ -339,6 +378,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// Private network connection prefix, used to modify the private network connection address.
+        /// </summary>
+        [Output("privateConnectionPrefix")]
+        public Output<string?> PrivateConnectionPrefix { get; private set; } = null!;
 
         /// <summary>
         /// The internal IP address of the instance.
@@ -722,6 +767,12 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? Port { get; set; }
 
         /// <summary>
+        /// Private network connection prefix, used to modify the private network connection address.
+        /// </summary>
+        [Input("privateConnectionPrefix")]
+        public Input<string>? PrivateConnectionPrefix { get; set; }
+
+        /// <summary>
         /// The internal IP address of the instance.
         /// </summary>
         [Input("privateIp")]
@@ -1079,6 +1130,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
+
+        /// <summary>
+        /// Private network connection prefix, used to modify the private network connection address.
+        /// </summary>
+        [Input("privateConnectionPrefix")]
+        public Input<string>? PrivateConnectionPrefix { get; set; }
 
         /// <summary>
         /// The internal IP address of the instance.

@@ -13,12 +13,14 @@ __all__ = [
     'ApplicationService',
     'ClusterNode',
     'EdgeKubernetesAddon',
+    'EdgeKubernetesCertificateAuthority',
     'EdgeKubernetesConnections',
     'EdgeKubernetesLogConfig',
     'EdgeKubernetesWorkerDataDisk',
     'EdgeKubernetesWorkerNode',
     'KubernetesAddon',
     'KubernetesAutoscalerNodepool',
+    'KubernetesCertificateAuthority',
     'KubernetesConnections',
     'KubernetesMasterNode',
     'KubernetesRuntime',
@@ -26,6 +28,7 @@ __all__ = [
     'KubernetesWorkerDataDisk',
     'KubernetesWorkerNode',
     'ManagedKubernetesAddon',
+    'ManagedKubernetesCertificateAuthority',
     'ManagedKubernetesConnections',
     'ManagedKubernetesRuntime',
     'ManagedKubernetesTaint',
@@ -196,6 +199,52 @@ class EdgeKubernetesAddon(dict):
         The kubernetes cluster's name. It is unique in one Alicloud account.
         """
         return pulumi.get(self, "name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EdgeKubernetesCertificateAuthority(dict):
+    def __init__(__self__, *,
+                 client_cert: Optional[str] = None,
+                 client_key: Optional[str] = None,
+                 cluster_cert: Optional[str] = None):
+        """
+        :param str client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
+        :param str client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        if client_cert is not None:
+            pulumi.set(__self__, "client_cert", client_cert)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if cluster_cert is not None:
+            pulumi.set(__self__, "cluster_cert", cluster_cert)
+
+    @property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> Optional[str]:
+        """
+        The path of client certificate, like `~/.kube/client-cert.pem`.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[str]:
+        """
+        The path of client key, like `~/.kube/client-key.pem`.
+        """
+        return pulumi.get(self, "client_key")
+
+    @property
+    @pulumi.getter(name="clusterCert")
+    def cluster_cert(self) -> Optional[str]:
+        """
+        The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        return pulumi.get(self, "cluster_cert")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -453,6 +502,52 @@ class KubernetesAutoscalerNodepool(dict):
     @pulumi.getter
     def taints(self) -> Optional[str]:
         return pulumi.get(self, "taints")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class KubernetesCertificateAuthority(dict):
+    def __init__(__self__, *,
+                 client_cert: Optional[str] = None,
+                 client_key: Optional[str] = None,
+                 cluster_cert: Optional[str] = None):
+        """
+        :param str client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
+        :param str client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        if client_cert is not None:
+            pulumi.set(__self__, "client_cert", client_cert)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if cluster_cert is not None:
+            pulumi.set(__self__, "cluster_cert", cluster_cert)
+
+    @property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> Optional[str]:
+        """
+        The path of client certificate, like `~/.kube/client-cert.pem`.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[str]:
+        """
+        The path of client key, like `~/.kube/client-key.pem`.
+        """
+        return pulumi.get(self, "client_key")
+
+    @property
+    @pulumi.getter(name="clusterCert")
+    def cluster_cert(self) -> Optional[str]:
+        """
+        The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        return pulumi.get(self, "cluster_cert")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -785,6 +880,52 @@ class ManagedKubernetesAddon(dict):
         The kubernetes cluster's name. It is unique in one Alicloud account.
         """
         return pulumi.get(self, "name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ManagedKubernetesCertificateAuthority(dict):
+    def __init__(__self__, *,
+                 client_cert: Optional[str] = None,
+                 client_key: Optional[str] = None,
+                 cluster_cert: Optional[str] = None):
+        """
+        :param str client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
+        :param str client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        if client_cert is not None:
+            pulumi.set(__self__, "client_cert", client_cert)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if cluster_cert is not None:
+            pulumi.set(__self__, "cluster_cert", cluster_cert)
+
+    @property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> Optional[str]:
+        """
+        The path of client certificate, like `~/.kube/client-cert.pem`.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[str]:
+        """
+        The path of client key, like `~/.kube/client-key.pem`.
+        """
+        return pulumi.get(self, "client_key")
+
+    @property
+    @pulumi.getter(name="clusterCert")
+    def cluster_cert(self) -> Optional[str]:
+        """
+        The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        return pulumi.get(self, "cluster_cert")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

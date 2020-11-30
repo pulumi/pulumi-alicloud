@@ -86,10 +86,11 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
                * `category`: the type of the data disks. Valid values:
-               * cloud: basic disks.
-               * cloud_efficiency: ultra disks.
-               * cloud_ssd: SSDs.
-               * `size`: the size of a data disk. Unit: GiB.
+               * cloud : basic disks.
+               * cloud_efficiency : ultra disks.
+               * cloud_ssd : SSDs.
+               * cloud_essd : ESSDs.
+               * `size`: the size of a data disk, at least 40. Unit: GiB.
                * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
@@ -151,6 +152,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             if worker_vswitch_ids is None:
                 raise TypeError("Missing required property 'worker_vswitch_ids'")
             __props__['worker_vswitch_ids'] = worker_vswitch_ids
+            __props__['certificate_authority'] = None
             __props__['connections'] = None
             __props__['nat_gateway_id'] = None
             __props__['slb_internet'] = None
@@ -169,6 +171,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesAddonArgs']]]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
+            certificate_authority: Optional[pulumi.Input[pulumi.InputType['EdgeKubernetesCertificateAuthorityArgs']]] = None,
             client_cert: Optional[pulumi.Input[str]] = None,
             client_key: Optional[pulumi.Input[str]] = None,
             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
@@ -213,6 +216,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The ID of availability zone.
+        :param pulumi.Input[pulumi.InputType['EdgeKubernetesCertificateAuthorityArgs']] certificate_authority: (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
@@ -238,15 +242,16 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
                * `category`: the type of the data disks. Valid values:
-               * cloud: basic disks.
-               * cloud_efficiency: ultra disks.
-               * cloud_ssd: SSDs.
-               * `size`: the size of a data disk. Unit: GiB.
+               * cloud : basic disks.
+               * cloud_efficiency : ultra disks.
+               * cloud_ssd : SSDs.
+               * cloud_essd : ESSDs.
+               * `size`: the size of a data disk, at least 40. Unit: GiB.
                * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes.
         :param pulumi.Input[int] worker_number: The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -255,6 +260,7 @@ class EdgeKubernetes(pulumi.CustomResource):
 
         __props__["addons"] = addons
         __props__["availability_zone"] = availability_zone
+        __props__["certificate_authority"] = certificate_authority
         __props__["client_cert"] = client_cert
         __props__["client_key"] = client_key
         __props__["cluster_ca_cert"] = cluster_ca_cert
@@ -305,6 +311,14 @@ class EdgeKubernetes(pulumi.CustomResource):
         The ID of availability zone.
         """
         return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> pulumi.Output['outputs.EdgeKubernetesCertificateAuthority']:
+        """
+        (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+        """
+        return pulumi.get(self, "certificate_authority")
 
     @property
     @pulumi.getter(name="clientCert")
@@ -521,10 +535,11 @@ class EdgeKubernetes(pulumi.CustomResource):
         """
         The data disk configurations of worker nodes, such as the disk type and disk size.
         * `category`: the type of the data disks. Valid values:
-        * cloud: basic disks.
-        * cloud_efficiency: ultra disks.
-        * cloud_ssd: SSDs.
-        * `size`: the size of a data disk. Unit: GiB.
+        * cloud : basic disks.
+        * cloud_efficiency : ultra disks.
+        * cloud_ssd : SSDs.
+        * cloud_essd : ESSDs.
+        * `size`: the size of a data disk, at least 40. Unit: GiB.
         * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         """
         return pulumi.get(self, "worker_data_disks")
@@ -562,7 +577,7 @@ class EdgeKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerNodes")
     def worker_nodes(self) -> pulumi.Output[Sequence['outputs.EdgeKubernetesWorkerNode']]:
         """
-        List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        List of cluster worker nodes.
         """
         return pulumi.get(self, "worker_nodes")
 

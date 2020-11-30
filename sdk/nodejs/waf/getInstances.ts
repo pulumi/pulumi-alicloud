@@ -65,7 +65,7 @@ export interface GetInstancesArgs {
     /**
      * The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
      */
-    readonly status?: string;
+    readonly status?: number;
 }
 
 /**
@@ -90,5 +90,5 @@ export interface GetInstancesResult {
     /**
      * Indicates whether the WAF instance has expired.
      */
-    readonly status?: string;
+    readonly status?: number;
 }

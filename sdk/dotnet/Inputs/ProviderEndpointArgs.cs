@@ -99,6 +99,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("fc")]
         public Input<string>? Fc { get; set; }
 
+        [Input("fnf")]
+        public Input<string>? Fnf { get; set; }
+
         [Input("gpdb")]
         public Input<string>? Gpdb { get; set; }
 

@@ -48,6 +48,7 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
+	Engine *string `pulumi:"engine"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
@@ -57,6 +58,7 @@ type GetZonesArgs struct {
 
 // A collection of values returned by getZones.
 type GetZonesResult struct {
+	Engine *string `pulumi:"engine"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of zone IDs.

@@ -52,6 +52,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
+     * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     */
+    public /*out*/ readonly certificateAuthority!: pulumi.Output<outputs.cs.ManagedKubernetesCertificateAuthority>;
+    /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
     public readonly clientCert!: pulumi.Output<string | undefined>;
@@ -67,9 +71,14 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
      */
     public readonly clusterDomain!: pulumi.Output<string | undefined>;
+    /**
+     * The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+     * * ack.standard : Standard managed clusters.
+     * * ack.pro.small : Professional managed clusters.
+     */
     public readonly clusterSpec!: pulumi.Output<string>;
     /**
-     * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * Map of kubernetes cluster connection information.
      */
     public /*out*/ readonly connections!: pulumi.Output<outputs.cs.ManagedKubernetesConnections>;
     /**
@@ -252,7 +261,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * * cloud_efficiency: ultra disks.
      * * cloud_ssd: SSDs.
      * * cloud_essd: essd.
-     * * `size`: the size of a data disk. Unit: GiB.
+     * * `size`: the size of a data disk, at least 40. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     public readonly workerDataDisks!: pulumi.Output<outputs.cs.ManagedKubernetesWorkerDataDisk[] | undefined>;
@@ -273,7 +282,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly workerInstanceTypes!: pulumi.Output<string[]>;
     /**
-     * List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+     * List of cluster worker nodes.
      */
     public /*out*/ readonly workerNodes!: pulumi.Output<outputs.cs.ManagedKubernetesWorkerNode[]>;
     /**
@@ -309,6 +318,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["addons"] = state ? state.addons : undefined;
             inputs["apiAudiences"] = state ? state.apiAudiences : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            inputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
             inputs["clientCert"] = state ? state.clientCert : undefined;
             inputs["clientKey"] = state ? state.clientKey : undefined;
             inputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
@@ -443,6 +453,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["workerPeriod"] = args ? args.workerPeriod : undefined;
             inputs["workerPeriodUnit"] = args ? args.workerPeriodUnit : undefined;
             inputs["workerVswitchIds"] = args ? args.workerVswitchIds : undefined;
+            inputs["certificateAuthority"] = undefined /*out*/;
             inputs["connections"] = undefined /*out*/;
             inputs["natGatewayId"] = undefined /*out*/;
             inputs["slbId"] = undefined /*out*/;
@@ -477,6 +488,10 @@ export interface ManagedKubernetesState {
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**
+     * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     */
+    readonly certificateAuthority?: pulumi.Input<inputs.cs.ManagedKubernetesCertificateAuthority>;
+    /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
     readonly clientCert?: pulumi.Input<string>;
@@ -492,9 +507,14 @@ export interface ManagedKubernetesState {
      * Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
      */
     readonly clusterDomain?: pulumi.Input<string>;
+    /**
+     * The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+     * * ack.standard : Standard managed clusters.
+     * * ack.pro.small : Professional managed clusters.
+     */
     readonly clusterSpec?: pulumi.Input<string>;
     /**
-     * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * Map of kubernetes cluster connection information.
      */
     readonly connections?: pulumi.Input<inputs.cs.ManagedKubernetesConnections>;
     /**
@@ -677,7 +697,7 @@ export interface ManagedKubernetesState {
      * * cloud_efficiency: ultra disks.
      * * cloud_ssd: SSDs.
      * * cloud_essd: essd.
-     * * `size`: the size of a data disk. Unit: GiB.
+     * * `size`: the size of a data disk, at least 40. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesWorkerDataDisk>[]>;
@@ -698,7 +718,7 @@ export interface ManagedKubernetesState {
      */
     readonly workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+     * List of cluster worker nodes.
      */
     readonly workerNodes?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesWorkerNode>[]>;
     /**
@@ -749,6 +769,11 @@ export interface ManagedKubernetesArgs {
      * Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
      */
     readonly clusterDomain?: pulumi.Input<string>;
+    /**
+     * The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+     * * ack.standard : Standard managed clusters.
+     * * ack.pro.small : Professional managed clusters.
+     */
     readonly clusterSpec?: pulumi.Input<string>;
     /**
      * Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
@@ -913,7 +938,7 @@ export interface ManagedKubernetesArgs {
      * * cloud_efficiency: ultra disks.
      * * cloud_ssd: SSDs.
      * * cloud_essd: essd.
-     * * `size`: the size of a data disk. Unit: GiB.
+     * * `size`: the size of a data disk, at least 40. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesWorkerDataDisk>[]>;

@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Waf
         ///             {
         ///                 "waf-cn-09k********",
         ///             },
-        ///             Status = "1",
+        ///             Status = 1,
         ///             ResourceGroupId = "rg-acfmwvv********",
         ///             InstanceSource = "waf-cloud",
         ///         }));
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Waf
         /// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
         /// </summary>
         [Input("status")]
-        public string? Status { get; set; }
+        public int? Status { get; set; }
 
         public GetInstancesArgs()
         {
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Waf
         /// <summary>
         /// Indicates whether the WAF instance has expired.
         /// </summary>
-        public readonly string? Status;
+        public readonly int? Status;
 
         [OutputConstructor]
         private GetInstancesResult(
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Waf
 
             string? resourceGroupId,
 
-            string? status)
+            int? status)
         {
             Id = id;
             Ids = ids;

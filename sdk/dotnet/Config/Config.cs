@@ -125,6 +125,7 @@ namespace Pulumi.AliCloud
                 public string? Emr { get; set; } = null!;
                 public string? Ess { get; set; } = null!;
                 public string? Fc { get; set; } = null!;
+                public string? Fnf { get; set; } = null!;
                 public string? Gpdb { get; set; } = null!;
                 public string? Kms { get; set; } = null!;
                 public string? Kvstore { get; set; } = null!;

@@ -126,9 +126,6 @@ func NewDomain(ctx *pulumi.Context,
 	if args == nil || args.IsAccessProduct == nil {
 		return nil, errors.New("missing required argument 'IsAccessProduct'")
 	}
-	if args == nil || args.SourceIps == nil {
-		return nil, errors.New("missing required argument 'SourceIps'")
-	}
 	if args == nil {
 		args = &DomainArgs{}
 	}

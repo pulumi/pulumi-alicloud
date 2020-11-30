@@ -349,7 +349,7 @@ namespace Pulumi.AliCloud.Waf
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
-        [Input("sourceIps", required: true)]
+        [Input("sourceIps")]
         private InputList<string>? _sourceIps;
 
         /// <summary>

@@ -51,6 +51,7 @@ type ShardingInstance struct {
 	ShardLists ShardingInstanceShardListArrayOutput `pulumi:"shardLists"`
 	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine pulumi.StringOutput `pulumi:"storageEngine"`
+	Tags          pulumi.MapOutput    `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -126,7 +127,8 @@ type shardingInstanceState struct {
 	// the shard-node count can be purchased is in range of [2, 32].
 	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
 	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
-	StorageEngine *string `pulumi:"storageEngine"`
+	StorageEngine *string                `pulumi:"storageEngine"`
+	Tags          map[string]interface{} `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -167,6 +169,7 @@ type ShardingInstanceState struct {
 	ShardLists ShardingInstanceShardListArrayInput
 	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine pulumi.StringPtrInput
+	Tags          pulumi.MapInput
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -208,7 +211,8 @@ type shardingInstanceArgs struct {
 	// the shard-node count can be purchased is in range of [2, 32].
 	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
 	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
-	StorageEngine *string `pulumi:"storageEngine"`
+	StorageEngine *string                `pulumi:"storageEngine"`
+	Tags          map[string]interface{} `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -248,6 +252,7 @@ type ShardingInstanceArgs struct {
 	ShardLists ShardingInstanceShardListArrayInput
 	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine pulumi.StringPtrInput
+	Tags          pulumi.MapInput
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.

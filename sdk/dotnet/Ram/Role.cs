@@ -45,6 +45,12 @@ namespace Pulumi.AliCloud.Ram
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+        /// </summary>
+        [Output("maxSessionDuration")]
+        public Output<int?> MaxSessionDuration { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         /// </summary>
         [Output("name")]
@@ -139,6 +145,12 @@ namespace Pulumi.AliCloud.Ram
         public Input<bool>? Force { get; set; }
 
         /// <summary>
+        /// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+        /// </summary>
+        [Input("maxSessionDuration")]
+        public Input<int>? MaxSessionDuration { get; set; }
+
+        /// <summary>
         /// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         /// </summary>
         [Input("name")]
@@ -206,6 +218,12 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+        /// </summary>
+        [Input("maxSessionDuration")]
+        public Input<int>? MaxSessionDuration { get; set; }
 
         /// <summary>
         /// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.

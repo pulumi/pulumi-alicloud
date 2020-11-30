@@ -145,7 +145,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * List of the IP address or domain of the origin server to which the specified domain points.
      */
-    public readonly sourceIps!: pulumi.Output<string[]>;
+    public readonly sourceIps!: pulumi.Output<string[] | undefined>;
     /**
      * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
      */
@@ -188,9 +188,6 @@ export class Domain extends pulumi.CustomResource {
             }
             if (!args || args.isAccessProduct === undefined) {
                 throw new Error("Missing required property 'isAccessProduct'");
-            }
-            if (!args || args.sourceIps === undefined) {
-                throw new Error("Missing required property 'sourceIps'");
             }
             inputs["clusterType"] = args ? args.clusterType : undefined;
             inputs["connectionTime"] = args ? args.connectionTime : undefined;
@@ -377,7 +374,7 @@ export interface DomainArgs {
     /**
      * List of the IP address or domain of the origin server to which the specified domain points.
      */
-    readonly sourceIps: pulumi.Input<pulumi.Input<string>[]>;
+    readonly sourceIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
      */

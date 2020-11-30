@@ -58,6 +58,7 @@ const (
 	emrMod             = "Emr"
 	essMod             = "Ess"
 	fcMod              = "FC"
+	fnfMod             = "FNF"
 	gpdbMod            = "Gpdb"
 	hbaseMod           = "Hbase"
 	kmsMod             = "Kms"
@@ -367,6 +368,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_edas_instance_cluster_attachment": {Tok: resource(edasMod, "InstanceClusterAttachment")},
 			"alicloud_edas_application_deployment":      {Tok: resource(edasMod, "ApplicationDeployment")},
 			"alicloud_edas_k8s_cluster":                 {Tok: resource(edasMod, "K8sCluster")},
+			"alicloud_edas_k8s_application":             {Tok: resource(edasMod, "K8sApplication")},
 
 			// ESS
 			"alicloud_ess_alarm":      {Tok: resource(essMod, "Alarm")},
@@ -403,6 +405,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fc_custom_domain":                {Tok: resource(fcMod, "CustomDomain")},
 			"alicloud_fc_function_async_invoke_config": {Tok: resource(fcMod, "FunctionAsyncInvokeConfig")},
 			"alicloud_fc_alias":                        {Tok: resource(fcMod, "Alias")},
+
+			// FNF
+			"alicloud_fnf_schedule": {Tok: resource(fnfMod, "Schedule")},
+			"alicloud_fnf_flow":     {Tok: resource(fnfMod, "Flow")},
 
 			// Gpdb
 			"alicloud_gpdb_connection": {Tok: resource(gpdbMod, "Connection")},
@@ -793,6 +799,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fc_triggers":       {Tok: dataSource(fcMod, "getTriggers")},
 			"alicloud_fc_zones":          {Tok: dataSource(fcMod, "getZones")},
 			"alicloud_fc_custom_domains": {Tok: dataSource(fcMod, "getCustomDomains")},
+
+			// FNF
+			"alicloud_fnf_schedules": {Tok: dataSource(fnfMod, "getSchedules")},
+			"alicloud_fnf_flows":     {Tok: dataSource(fnfMod, "getFlows")},
 
 			// Gpdb
 			"alicloud_gpdb_instances": {Tok: dataSource(gpdbMod, "getInstances")},

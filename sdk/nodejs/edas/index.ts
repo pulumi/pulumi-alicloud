@@ -12,5 +12,6 @@ export * from "./getClusters";
 export * from "./getDeployGroups";
 export * from "./getService";
 export * from "./instanceClusterAttachment";
+export * from "./k8sApplication";
 export * from "./k8sCluster";
 export * from "./slbAttachment";
