@@ -162,6 +162,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("resourcemanager")]
         public Input<string>? Resourcemanager { get; set; }
 
+        [Input("ros")]
+        public Input<string>? Ros { get; set; }
+
         [Input("slb")]
         public Input<string>? Slb { get; set; }
 

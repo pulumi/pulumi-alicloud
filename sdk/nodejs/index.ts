@@ -59,6 +59,7 @@ import * as ram from "./ram";
 import * as rds from "./rds";
 import * as resourcemanager from "./resourcemanager";
 import * as rocketmq from "./rocketmq";
+import * as ros from "./ros";
 import * as sag from "./sag";
 import * as slb from "./slb";
 import * as types from "./types";
@@ -117,6 +118,7 @@ export {
     rds,
     resourcemanager,
     rocketmq,
+    ros,
     sag,
     slb,
     types,

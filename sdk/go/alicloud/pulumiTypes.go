@@ -232,6 +232,7 @@ type ProviderEndpoint struct {
 	Ram             *string `pulumi:"ram"`
 	Rds             *string `pulumi:"rds"`
 	Resourcemanager *string `pulumi:"resourcemanager"`
+	Ros             *string `pulumi:"ros"`
 	Slb             *string `pulumi:"slb"`
 	Sts             *string `pulumi:"sts"`
 	Vpc             *string `pulumi:"vpc"`
@@ -300,6 +301,7 @@ type ProviderEndpointArgs struct {
 	Ram             pulumi.StringPtrInput `pulumi:"ram"`
 	Rds             pulumi.StringPtrInput `pulumi:"rds"`
 	Resourcemanager pulumi.StringPtrInput `pulumi:"resourcemanager"`
+	Ros             pulumi.StringPtrInput `pulumi:"ros"`
 	Slb             pulumi.StringPtrInput `pulumi:"slb"`
 	Sts             pulumi.StringPtrInput `pulumi:"sts"`
 	Vpc             pulumi.StringPtrInput `pulumi:"vpc"`
@@ -555,6 +557,10 @@ func (o ProviderEndpointOutput) Rds() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Resourcemanager() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Resourcemanager }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Ros() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ros }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Slb() pulumi.StringPtrOutput {

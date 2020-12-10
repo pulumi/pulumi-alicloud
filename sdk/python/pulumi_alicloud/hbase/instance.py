@@ -43,7 +43,7 @@ class Instance(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a HBase instance resource supports replica set instances only. the HBase provides stable, reliable, and automatic scalable database services.
+        Provides a HBase instance resource supports replica set instances only. The HBase provides stable, reliable, and automatic scalable database services.
         It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
         You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
 
@@ -51,7 +51,7 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:**  The following regions don't support create Classic network HBase instance.
         [`cn-hangzhou`,`cn-shanghai`,`cn-qingdao`,`cn-beijing`,`cn-shenzhen`,`ap-southeast-1a`,.....]
-        the official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
+        The official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
 
         > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
 
@@ -87,27 +87,29 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account: The account of the cluster web ui.
-        :param pulumi.Input[bool] auto_renew: `true`, `false`, System default to `false`, valid when pay_type = PrePaid.
-        :param pulumi.Input[int] cold_storage_size: 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
-        :param pulumi.Input[int] core_disk_size: User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
-               - Custom storage space; value range: [400, 8000]
-               - 40-GB increments.
-        :param pulumi.Input[str] core_disk_type: Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`. local_disk size is fixed.
-        :param pulumi.Input[int] core_instance_quantity: Default=2. if core_instance_quantity > 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
-        :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
-        :param pulumi.Input[str] engine: "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+        :param pulumi.Input[bool] auto_renew: Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+        :param pulumi.Input[int] cold_storage_size: 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true.
+        :param pulumi.Input[int] core_disk_size: User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+               - Custom storage space, value range: [20, 8000].
+               - Cluster min=400GB, 40-GB increments.
+               - Single min=20GB, 1-GB increments.
+        :param pulumi.Input[str] core_disk_type: Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, local_disk size is fixed. When engine=bds, no need to set disk type.
+        :param pulumi.Input[int] core_instance_quantity: Default=2. If core_instance_quantity > 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
+        :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid,  unit: month.
+        :param pulumi.Input[str] engine: Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
         :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+               * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[str] ip_white: The white ip list of the cluster.
-        :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
-        :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
+        :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[str] name: HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
         :param pulumi.Input[str] password: The password of the cluster web ui account.
-        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security group resource of the cluster.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. if vswitch_id is empty, net_type_classic
-        :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. if vswitch_id is not empty, this zone_id can be "" or consistent.
+        :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic.
+        :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -130,8 +132,6 @@ class Instance(pulumi.CustomResource):
             __props__['auto_renew'] = auto_renew
             __props__['cold_storage_size'] = cold_storage_size
             __props__['core_disk_size'] = core_disk_size
-            if core_disk_type is None:
-                raise TypeError("Missing required property 'core_disk_type'")
             __props__['core_disk_type'] = core_disk_type
             __props__['core_instance_quantity'] = core_instance_quantity
             if core_instance_type is None:
@@ -204,32 +204,33 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account: The account of the cluster web ui.
-        :param pulumi.Input[bool] auto_renew: `true`, `false`, System default to `false`, valid when pay_type = PrePaid.
-        :param pulumi.Input[int] cold_storage_size: 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
-        :param pulumi.Input[int] core_disk_size: User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
-               - Custom storage space; value range: [400, 8000]
-               - 40-GB increments.
-        :param pulumi.Input[str] core_disk_type: Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`. local_disk size is fixed.
-        :param pulumi.Input[int] core_instance_quantity: Default=2. if core_instance_quantity > 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
-        :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
-        :param pulumi.Input[str] engine: "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+        :param pulumi.Input[bool] auto_renew: Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+        :param pulumi.Input[int] cold_storage_size: 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true.
+        :param pulumi.Input[int] core_disk_size: User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+               - Custom storage space, value range: [20, 8000].
+               - Cluster min=400GB, 40-GB increments.
+               - Single min=20GB, 1-GB increments.
+        :param pulumi.Input[str] core_disk_type: Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, local_disk size is fixed. When engine=bds, no need to set disk type.
+        :param pulumi.Input[int] core_instance_quantity: Default=2. If core_instance_quantity > 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
+        :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid,  unit: month.
+        :param pulumi.Input[str] engine: Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
         :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+               * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[str] ip_white: The white ip list of the cluster.
-        :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
-        :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
+        :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[int] master_instance_quantity: Count nodes of the master node.
-               * `master_instance_type`、`core_instance_type` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
         :param pulumi.Input[str] name: HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
         :param pulumi.Input[str] password: The password of the cluster web ui account.
-        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security group resource of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSlbConnAddrArgs']]]] slb_conn_addrs: (Optional, Available in 1.105.0+) The slb service addresses of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSlbConnAddrArgs']]]] slb_conn_addrs: (Available in 1.105.0+) The slb service addresses of the cluster.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUiProxyConnAddrArgs']]]] ui_proxy_conn_addrs: (Optional, Available in 1.105.0+) The Web UI proxy addresses of the cluster.
-        :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. if vswitch_id is empty, net_type_classic
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceZkConnAddrArgs']]]] zk_conn_addrs: (Optional, Available in 1.105.0+) The zookeeper addresses of the cluster.
-        :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. if vswitch_id is not empty, this zone_id can be "" or consistent.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUiProxyConnAddrArgs']]]] ui_proxy_conn_addrs: (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+        :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceZkConnAddrArgs']]]] zk_conn_addrs: (Available in 1.105.0+) The zookeeper addresses of the cluster.
+        :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -275,7 +276,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[bool]:
         """
-        `true`, `false`, System default to `false`, valid when pay_type = PrePaid.
+        Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -283,7 +284,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="coldStorageSize")
     def cold_storage_size(self) -> pulumi.Output[Optional[int]]:
         """
-        0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
+        0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true.
         """
         return pulumi.get(self, "cold_storage_size")
 
@@ -291,17 +292,18 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="coreDiskSize")
     def core_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
-        User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
-        - Custom storage space; value range: [400, 8000]
-        - 40-GB increments.
+        User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+        - Custom storage space, value range: [20, 8000].
+        - Cluster min=400GB, 40-GB increments.
+        - Single min=20GB, 1-GB increments.
         """
         return pulumi.get(self, "core_disk_size")
 
     @property
     @pulumi.getter(name="coreDiskType")
-    def core_disk_type(self) -> pulumi.Output[str]:
+    def core_disk_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`. local_disk size is fixed.
+        Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, local_disk size is fixed. When engine=bds, no need to set disk type.
         """
         return pulumi.get(self, "core_disk_type")
 
@@ -309,7 +311,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="coreInstanceQuantity")
     def core_instance_quantity(self) -> pulumi.Output[Optional[int]]:
         """
-        Default=2. if core_instance_quantity > 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
+        Default=2. If core_instance_quantity > 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
         """
         return pulumi.get(self, "core_instance_quantity")
 
@@ -322,7 +324,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+        The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -330,7 +332,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def duration(self) -> pulumi.Output[int]:
         """
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid,  unit: month.
         """
         return pulumi.get(self, "duration")
 
@@ -338,7 +340,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[Optional[str]]:
         """
-        "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+        Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
         """
         return pulumi.get(self, "engine")
 
@@ -347,6 +349,7 @@ class Instance(pulumi.CustomResource):
     def engine_version(self) -> pulumi.Output[str]:
         """
         HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         """
         return pulumi.get(self, "engine_version")
 
@@ -362,7 +365,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="maintainEndTime")
     def maintain_end_time(self) -> pulumi.Output[str]:
         """
-        The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
         """
         return pulumi.get(self, "maintain_end_time")
 
@@ -370,7 +373,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="maintainStartTime")
     def maintain_start_time(self) -> pulumi.Output[str]:
         """
-        The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
         """
         return pulumi.get(self, "maintain_start_time")
 
@@ -379,7 +382,6 @@ class Instance(pulumi.CustomResource):
     def master_instance_quantity(self) -> pulumi.Output[int]:
         """
         Count nodes of the master node.
-        * `master_instance_type`、`core_instance_type` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
         """
         return pulumi.get(self, "master_instance_quantity")
 
@@ -408,7 +410,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="payType")
     def pay_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
         """
         return pulumi.get(self, "pay_type")
 
@@ -424,7 +426,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="slbConnAddrs")
     def slb_conn_addrs(self) -> pulumi.Output[Sequence['outputs.InstanceSlbConnAddr']]:
         """
-        (Optional, Available in 1.105.0+) The slb service addresses of the cluster.
+        (Available in 1.105.0+) The slb service addresses of the cluster.
         """
         return pulumi.get(self, "slb_conn_addrs")
 
@@ -440,7 +442,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="uiProxyConnAddrs")
     def ui_proxy_conn_addrs(self) -> pulumi.Output[Sequence['outputs.InstanceUiProxyConnAddr']]:
         """
-        (Optional, Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+        (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
         """
         return pulumi.get(self, "ui_proxy_conn_addrs")
 
@@ -448,7 +450,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        If vswitch_id is not empty, that mean net_type = vpc and has a same region. if vswitch_id is empty, net_type_classic
+        If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -456,7 +458,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="zkConnAddrs")
     def zk_conn_addrs(self) -> pulumi.Output[Sequence['outputs.InstanceZkConnAddr']]:
         """
-        (Optional, Available in 1.105.0+) The zookeeper addresses of the cluster.
+        (Available in 1.105.0+) The zookeeper addresses of the cluster.
         """
         return pulumi.get(self, "zk_conn_addrs")
 
@@ -464,7 +466,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The Zone to launch the HBase instance. if vswitch_id is not empty, this zone_id can be "" or consistent.
+        The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         return pulumi.get(self, "zone_id")
 

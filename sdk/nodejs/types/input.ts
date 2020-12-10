@@ -62,6 +62,7 @@ export interface ProviderEndpoint {
     ram?: pulumi.Input<string>;
     rds?: pulumi.Input<string>;
     resourcemanager?: pulumi.Input<string>;
+    ros?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
     sts?: pulumi.Input<string>;
     vpc?: pulumi.Input<string>;
@@ -1850,6 +1851,41 @@ export namespace resourcemanager {
 }
 
 export namespace rocketmq {
+}
+
+export namespace ros {
+    export interface ChangeSetParameter {
+        /**
+         * The parameter key.
+         */
+        parameterKey: pulumi.Input<string>;
+        /**
+         * The parameter value.
+         */
+        parameterValue: pulumi.Input<string>;
+    }
+
+    export interface StackGroupParameter {
+        /**
+         * The parameter key.
+         */
+        parameterKey?: pulumi.Input<string>;
+        /**
+         * The parameter value.
+         */
+        parameterValue?: pulumi.Input<string>;
+    }
+
+    export interface StackParameter {
+        /**
+         * The parameter key.
+         */
+        parameterKey?: pulumi.Input<string>;
+        /**
+         * The parameter value.
+         */
+        parameterValue: pulumi.Input<string>;
+    }
 }
 
 export namespace sag {

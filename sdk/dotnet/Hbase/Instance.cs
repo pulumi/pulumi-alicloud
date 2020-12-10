@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hbase
 {
     /// <summary>
-    /// Provides a HBase instance resource supports replica set instances only. the HBase provides stable, reliable, and automatic scalable database services.
+    /// Provides a HBase instance resource supports replica set instances only. The HBase provides stable, reliable, and automatic scalable database services.
     /// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
     /// You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
     /// 
@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Hbase
     /// 
     /// &gt; **NOTE:**  The following regions don't support create Classic network HBase instance.
     /// [`cn-hangzhou`,`cn-shanghai`,`cn-qingdao`,`cn-beijing`,`cn-shenzhen`,`ap-southeast-1a`,.....]
-    /// the official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
+    /// The official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
     /// 
     /// &gt; **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
     /// 
@@ -69,33 +69,34 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string?> Account { get; private set; } = null!;
 
         /// <summary>
-        /// `true`, `false`, System default to `false`, valid when pay_type = PrePaid.
+        /// Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
+        /// 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true.
         /// </summary>
         [Output("coldStorageSize")]
         public Output<int?> ColdStorageSize { get; private set; } = null!;
 
         /// <summary>
-        /// User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
-        /// - Custom storage space; value range: [400, 8000]
-        /// - 40-GB increments.
+        /// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+        /// - Custom storage space, value range: [20, 8000].
+        /// - Cluster min=400GB, 40-GB increments.
+        /// - Single min=20GB, 1-GB increments.
         /// </summary>
         [Output("coreDiskSize")]
         public Output<int?> CoreDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`. local_disk size is fixed.
+        /// Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, local_disk size is fixed. When engine=bds, no need to set disk type.
         /// </summary>
         [Output("coreDiskType")]
-        public Output<string> CoreDiskType { get; private set; } = null!;
+        public Output<string?> CoreDiskType { get; private set; } = null!;
 
         /// <summary>
-        /// Default=2. if core_instance_quantity &gt; 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
+        /// Default=2. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
         /// </summary>
         [Output("coreInstanceQuantity")]
         public Output<int?> CoreInstanceQuantity { get; private set; } = null!;
@@ -104,25 +105,26 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string> CoreInstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+        /// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
+        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid,  unit: month.
         /// </summary>
         [Output("duration")]
         public Output<int> Duration { get; private set; } = null!;
 
         /// <summary>
-        /// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
         /// </summary>
         [Output("engine")]
         public Output<string?> Engine { get; private set; } = null!;
 
         /// <summary>
         /// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        /// * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -134,20 +136,19 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string> IpWhite { get; private set; } = null!;
 
         /// <summary>
-        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
         /// </summary>
         [Output("maintainEndTime")]
         public Output<string> MaintainEndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
         /// </summary>
         [Output("maintainStartTime")]
         public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
         /// Count nodes of the master node.
-        /// * `master_instance_type`、`core_instance_type` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
         /// </summary>
         [Output("masterInstanceQuantity")]
         public Output<int> MasterInstanceQuantity { get; private set; } = null!;
@@ -168,7 +169,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
         /// </summary>
         [Output("payType")]
         public Output<string?> PayType { get; private set; } = null!;
@@ -180,7 +181,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.105.0+) The slb service addresses of the cluster.
+        /// (Available in 1.105.0+) The slb service addresses of the cluster.
         /// </summary>
         [Output("slbConnAddrs")]
         public Output<ImmutableArray<Outputs.InstanceSlbConnAddr>> SlbConnAddrs { get; private set; } = null!;
@@ -192,25 +193,25 @@ namespace Pulumi.AliCloud.Hbase
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+        /// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
         /// </summary>
         [Output("uiProxyConnAddrs")]
         public Output<ImmutableArray<Outputs.InstanceUiProxyConnAddr>> UiProxyConnAddrs { get; private set; } = null!;
 
         /// <summary>
-        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. if vswitch_id is empty, net_type_classic
+        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.105.0+) The zookeeper addresses of the cluster.
+        /// (Available in 1.105.0+) The zookeeper addresses of the cluster.
         /// </summary>
         [Output("zkConnAddrs")]
         public Output<ImmutableArray<Outputs.InstanceZkConnAddr>> ZkConnAddrs { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone to launch the HBase instance. if vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -268,33 +269,34 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? Account { get; set; }
 
         /// <summary>
-        /// `true`, `false`, System default to `false`, valid when pay_type = PrePaid.
+        /// Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
+        /// 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true.
         /// </summary>
         [Input("coldStorageSize")]
         public Input<int>? ColdStorageSize { get; set; }
 
         /// <summary>
-        /// User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
-        /// - Custom storage space; value range: [400, 8000]
-        /// - 40-GB increments.
+        /// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+        /// - Custom storage space, value range: [20, 8000].
+        /// - Cluster min=400GB, 40-GB increments.
+        /// - Single min=20GB, 1-GB increments.
         /// </summary>
         [Input("coreDiskSize")]
         public Input<int>? CoreDiskSize { get; set; }
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`. local_disk size is fixed.
+        /// Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, local_disk size is fixed. When engine=bds, no need to set disk type.
         /// </summary>
-        [Input("coreDiskType", required: true)]
-        public Input<string> CoreDiskType { get; set; } = null!;
+        [Input("coreDiskType")]
+        public Input<string>? CoreDiskType { get; set; }
 
         /// <summary>
-        /// Default=2. if core_instance_quantity &gt; 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
+        /// Default=2. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
         /// </summary>
         [Input("coreInstanceQuantity")]
         public Input<int>? CoreInstanceQuantity { get; set; }
@@ -303,25 +305,26 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string> CoreInstanceType { get; set; } = null!;
 
         /// <summary>
-        /// The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+        /// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
+        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid,  unit: month.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
         /// <summary>
         /// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        /// * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
@@ -333,13 +336,13 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? IpWhite { get; set; }
 
         /// <summary>
-        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
         /// </summary>
         [Input("maintainEndTime")]
         public Input<string>? MaintainEndTime { get; set; }
 
         /// <summary>
-        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
         /// </summary>
         [Input("maintainStartTime")]
         public Input<string>? MaintainStartTime { get; set; }
@@ -360,7 +363,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
@@ -390,13 +393,13 @@ namespace Pulumi.AliCloud.Hbase
         }
 
         /// <summary>
-        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. if vswitch_id is empty, net_type_classic
+        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The Zone to launch the HBase instance. if vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -415,33 +418,34 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? Account { get; set; }
 
         /// <summary>
-        /// `true`, `false`, System default to `false`, valid when pay_type = PrePaid.
+        /// Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true
+        /// 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true.
         /// </summary>
         [Input("coldStorageSize")]
         public Input<int>? ColdStorageSize { get; set; }
 
         /// <summary>
-        /// User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
-        /// - Custom storage space; value range: [400, 8000]
-        /// - 40-GB increments.
+        /// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+        /// - Custom storage space, value range: [20, 8000].
+        /// - Cluster min=400GB, 40-GB increments.
+        /// - Single min=20GB, 1-GB increments.
         /// </summary>
         [Input("coreDiskSize")]
         public Input<int>? CoreDiskSize { get; set; }
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`. local_disk size is fixed.
+        /// Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, local_disk size is fixed. When engine=bds, no need to set disk type.
         /// </summary>
         [Input("coreDiskType")]
         public Input<string>? CoreDiskType { get; set; }
 
         /// <summary>
-        /// Default=2. if core_instance_quantity &gt; 1,this is cluster's instance.  if core_instance_quantity = 1,this is a single instance.
+        /// Default=2. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
         /// </summary>
         [Input("coreInstanceQuantity")]
         public Input<int>? CoreInstanceQuantity { get; set; }
@@ -450,25 +454,26 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? CoreInstanceType { get; set; }
 
         /// <summary>
-        /// The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+        /// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid. unit: month.
+        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid,  unit: month.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
         /// <summary>
         /// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        /// * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -480,20 +485,19 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? IpWhite { get; set; }
 
         /// <summary>
-        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
         /// </summary>
         [Input("maintainEndTime")]
         public Input<string>? MaintainEndTime { get; set; }
 
         /// <summary>
-        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
         /// </summary>
         [Input("maintainStartTime")]
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
         /// Count nodes of the master node.
-        /// * `master_instance_type`、`core_instance_type` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
         /// </summary>
         [Input("masterInstanceQuantity")]
         public Input<int>? MasterInstanceQuantity { get; set; }
@@ -514,7 +518,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
@@ -535,7 +539,7 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceSlbConnAddrGetArgs>? _slbConnAddrs;
 
         /// <summary>
-        /// (Optional, Available in 1.105.0+) The slb service addresses of the cluster.
+        /// (Available in 1.105.0+) The slb service addresses of the cluster.
         /// </summary>
         public InputList<Inputs.InstanceSlbConnAddrGetArgs> SlbConnAddrs
         {
@@ -559,7 +563,7 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceUiProxyConnAddrGetArgs>? _uiProxyConnAddrs;
 
         /// <summary>
-        /// (Optional, Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+        /// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
         /// </summary>
         public InputList<Inputs.InstanceUiProxyConnAddrGetArgs> UiProxyConnAddrs
         {
@@ -568,7 +572,7 @@ namespace Pulumi.AliCloud.Hbase
         }
 
         /// <summary>
-        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. if vswitch_id is empty, net_type_classic
+        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -577,7 +581,7 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceZkConnAddrGetArgs>? _zkConnAddrs;
 
         /// <summary>
-        /// (Optional, Available in 1.105.0+) The zookeeper addresses of the cluster.
+        /// (Available in 1.105.0+) The zookeeper addresses of the cluster.
         /// </summary>
         public InputList<Inputs.InstanceZkConnAddrGetArgs> ZkConnAddrs
         {
@@ -586,7 +590,7 @@ namespace Pulumi.AliCloud.Hbase
         }
 
         /// <summary>
-        /// The Zone to launch the HBase instance. if vswitch_id is not empty, this zone_id can be "" or consistent.
+        /// The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -105,6 +105,7 @@ class Endpoints(dict):
                  ram: Optional[str] = None,
                  rds: Optional[str] = None,
                  resourcemanager: Optional[str] = None,
+                 ros: Optional[str] = None,
                  slb: Optional[str] = None,
                  sts: Optional[str] = None,
                  vpc: Optional[str] = None,
@@ -209,6 +210,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "rds", rds)
         if resourcemanager is not None:
             pulumi.set(__self__, "resourcemanager", resourcemanager)
+        if ros is not None:
+            pulumi.set(__self__, "ros", ros)
         if slb is not None:
             pulumi.set(__self__, "slb", slb)
         if sts is not None:
@@ -467,6 +470,11 @@ class Endpoints(dict):
     @pulumi.getter
     def resourcemanager(self) -> Optional[str]:
         return pulumi.get(self, "resourcemanager")
+
+    @property
+    @pulumi.getter
+    def ros(self) -> Optional[str]:
+        return pulumi.get(self, "ros")
 
     @property
     @pulumi.getter

@@ -133,46 +133,70 @@ class GetZoneRecordsRecordResult(dict):
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  bind_vpcs: Sequence['outputs.GetZonesZoneBindVpcResult'],
+                 create_timestamp: int,
                  creation_time: str,
                  id: str,
                  is_ptr: bool,
                  name: str,
+                 proxy_pattern: str,
                  record_count: int,
                  remark: str,
-                 update_time: str):
+                 resource_group_id: str,
+                 slave_dns: bool,
+                 update_time: str,
+                 update_timestamp: int,
+                 zone_id: str,
+                 zone_name: str):
         """
-        :param Sequence['GetZonesZoneBindVpcArgs'] bind_vpcs: List of the VPCs is bound to the Private Zone.
-        :param str creation_time: Time of creation of the Private Zone.
+        :param Sequence['GetZonesZoneBindVpcArgs'] bind_vpcs: List of the VPCs is bound to the Private Zone:
+        :param int create_timestamp: Time of create of the Private Zone.
         :param str id: ID of the Private Zone.
-        :param bool is_ptr: Whether the Private Zone is ptr
+        :param bool is_ptr: Whether the Private Zone is ptr.
         :param str name: Name of the Private Zone.
+        :param str proxy_pattern: The recursive DNS proxy.
         :param int record_count: Count of the Private Zone Record.
         :param str remark: Remark of the Private Zone.
-        :param str update_time: Time of update of the Private Zone.
+        :param str resource_group_id: resource_group_id for zone resourceGroupId.
+        :param bool slave_dns: Whether to turn on secondary DNS.
+        :param int update_timestamp: Time of update of the Private Zone.
+        :param str zone_id: ZoneId of the Private Zone.
+        :param str zone_name: ZoneName of the Private Zone.
         """
         pulumi.set(__self__, "bind_vpcs", bind_vpcs)
+        pulumi.set(__self__, "create_timestamp", create_timestamp)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "is_ptr", is_ptr)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "proxy_pattern", proxy_pattern)
         pulumi.set(__self__, "record_count", record_count)
         pulumi.set(__self__, "remark", remark)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "slave_dns", slave_dns)
         pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "update_timestamp", update_timestamp)
+        pulumi.set(__self__, "zone_id", zone_id)
+        pulumi.set(__self__, "zone_name", zone_name)
 
     @property
     @pulumi.getter(name="bindVpcs")
     def bind_vpcs(self) -> Sequence['outputs.GetZonesZoneBindVpcResult']:
         """
-        List of the VPCs is bound to the Private Zone.
+        List of the VPCs is bound to the Private Zone:
         """
         return pulumi.get(self, "bind_vpcs")
 
     @property
+    @pulumi.getter(name="createTimestamp")
+    def create_timestamp(self) -> int:
+        """
+        Time of create of the Private Zone.
+        """
+        return pulumi.get(self, "create_timestamp")
+
+    @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        Time of creation of the Private Zone.
-        """
         return pulumi.get(self, "creation_time")
 
     @property
@@ -187,7 +211,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="isPtr")
     def is_ptr(self) -> bool:
         """
-        Whether the Private Zone is ptr
+        Whether the Private Zone is ptr.
         """
         return pulumi.get(self, "is_ptr")
 
@@ -198,6 +222,14 @@ class GetZonesZoneResult(dict):
         Name of the Private Zone.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="proxyPattern")
+    def proxy_pattern(self) -> str:
+        """
+        The recursive DNS proxy.
+        """
+        return pulumi.get(self, "proxy_pattern")
 
     @property
     @pulumi.getter(name="recordCount")
@@ -216,32 +248,90 @@ class GetZonesZoneResult(dict):
         return pulumi.get(self, "remark")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        resource_group_id for zone resourceGroupId.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="slaveDns")
+    def slave_dns(self) -> bool:
+        """
+        Whether to turn on secondary DNS.
+        """
+        return pulumi.get(self, "slave_dns")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="updateTimestamp")
+    def update_timestamp(self) -> int:
         """
         Time of update of the Private Zone.
         """
-        return pulumi.get(self, "update_time")
+        return pulumi.get(self, "update_timestamp")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        ZoneId of the Private Zone.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> str:
+        """
+        ZoneName of the Private Zone.
+        """
+        return pulumi.get(self, "zone_name")
 
 
 @pulumi.output_type
 class GetZonesZoneBindVpcResult(dict):
     def __init__(__self__, *,
                  region_id: str,
+                 region_name: str,
                  vpc_id: str,
                  vpc_name: str):
+        """
+        :param str region_id: Binding the regionId of VPC.
+        :param str region_name: Binding the regionName of VPC.
+        :param str vpc_id: Binding the vpcId of VPC.
+        """
         pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "region_name", region_name)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> str:
+        """
+        Binding the regionId of VPC.
+        """
         return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="regionName")
+    def region_name(self) -> str:
+        """
+        Binding the regionName of VPC.
+        """
+        return pulumi.get(self, "region_name")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
+        """
+        Binding the vpcId of VPC.
+        """
         return pulumi.get(self, "vpc_id")
 
     @property

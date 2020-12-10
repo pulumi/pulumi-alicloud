@@ -47,6 +47,12 @@ namespace Pulumi.AliCloud.Pvtz
 
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -65,8 +71,43 @@ namespace Pulumi.AliCloud.Pvtz
         [Input("keyword")]
         public string? Keyword { get; set; }
 
+        /// <summary>
+        /// User language.
+        /// </summary>
+        [Input("lang")]
+        public string? Lang { get; set; }
+
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        /// <summary>
+        /// query_region_id for zone regionId.
+        /// </summary>
+        [Input("queryRegionId")]
+        public string? QueryRegionId { get; set; }
+
+        /// <summary>
+        /// query_vpc_id for zone vpcId.
+        /// </summary>
+        [Input("queryVpcId")]
+        public string? QueryVpcId { get; set; }
+
+        /// <summary>
+        /// resource_group_id for zone resourceGroupId.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public string? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Search mode. Value: 
+        /// - LIKE: fuzzy search.
+        /// - EXACT: precise search. It is not filled in by default.
+        /// </summary>
+        [Input("searchMode")]
+        public string? SearchMode { get; set; }
 
         public GetZonesArgs()
         {
@@ -77,6 +118,7 @@ namespace Pulumi.AliCloud.Pvtz
     [OutputType]
     public sealed class GetZonesResult
     {
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -86,11 +128,20 @@ namespace Pulumi.AliCloud.Pvtz
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? Keyword;
+        public readonly string? Lang;
+        public readonly string? NameRegex;
         /// <summary>
         /// A list of zone names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly string? QueryRegionId;
+        public readonly string? QueryVpcId;
+        /// <summary>
+        /// The Id of resource group which the Private Zone belongs.
+        /// </summary>
+        public readonly string? ResourceGroupId;
+        public readonly string? SearchMode;
         /// <summary>
         /// A list of zones. Each element contains the following attributes:
         /// </summary>
@@ -98,23 +149,44 @@ namespace Pulumi.AliCloud.Pvtz
 
         [OutputConstructor]
         private GetZonesResult(
+            bool? enableDetails,
+
             string id,
 
             ImmutableArray<string> ids,
 
             string? keyword,
 
+            string? lang,
+
+            string? nameRegex,
+
             ImmutableArray<string> names,
 
             string? outputFile,
 
+            string? queryRegionId,
+
+            string? queryVpcId,
+
+            string? resourceGroupId,
+
+            string? searchMode,
+
             ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             Keyword = keyword;
+            Lang = lang;
+            NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            QueryRegionId = queryRegionId;
+            QueryVpcId = queryVpcId;
+            ResourceGroupId = resourceGroupId;
+            SearchMode = searchMode;
             Zones = zones;
         }
     }

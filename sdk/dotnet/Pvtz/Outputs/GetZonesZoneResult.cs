@@ -14,25 +14,30 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     public sealed class GetZonesZoneResult
     {
         /// <summary>
-        /// List of the VPCs is bound to the Private Zone.
+        /// List of the VPCs is bound to the Private Zone:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZonesZoneBindVpcResult> BindVpcs;
         /// <summary>
-        /// Time of creation of the Private Zone.
+        /// Time of create of the Private Zone.
         /// </summary>
+        public readonly int CreateTimestamp;
         public readonly string CreationTime;
         /// <summary>
         /// ID of the Private Zone.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Whether the Private Zone is ptr
+        /// Whether the Private Zone is ptr.
         /// </summary>
         public readonly bool IsPtr;
         /// <summary>
         /// Name of the Private Zone.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The recursive DNS proxy.
+        /// </summary>
+        public readonly string ProxyPattern;
         /// <summary>
         /// Count of the Private Zone Record.
         /// </summary>
@@ -42,13 +47,32 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
         /// </summary>
         public readonly string Remark;
         /// <summary>
+        /// resource_group_id for zone resourceGroupId.
+        /// </summary>
+        public readonly string ResourceGroupId;
+        /// <summary>
+        /// Whether to turn on secondary DNS.
+        /// </summary>
+        public readonly bool SlaveDns;
+        public readonly string UpdateTime;
+        /// <summary>
         /// Time of update of the Private Zone.
         /// </summary>
-        public readonly string UpdateTime;
+        public readonly int UpdateTimestamp;
+        /// <summary>
+        /// ZoneId of the Private Zone.
+        /// </summary>
+        public readonly string ZoneId;
+        /// <summary>
+        /// ZoneName of the Private Zone.
+        /// </summary>
+        public readonly string ZoneName;
 
         [OutputConstructor]
         private GetZonesZoneResult(
             ImmutableArray<Outputs.GetZonesZoneBindVpcResult> bindVpcs,
+
+            int createTimestamp,
 
             string creationTime,
 
@@ -58,20 +82,39 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
 
             string name,
 
+            string proxyPattern,
+
             int recordCount,
 
             string remark,
 
-            string updateTime)
+            string resourceGroupId,
+
+            bool slaveDns,
+
+            string updateTime,
+
+            int updateTimestamp,
+
+            string zoneId,
+
+            string zoneName)
         {
             BindVpcs = bindVpcs;
+            CreateTimestamp = createTimestamp;
             CreationTime = creationTime;
             Id = id;
             IsPtr = isPtr;
             Name = name;
+            ProxyPattern = proxyPattern;
             RecordCount = recordCount;
             Remark = remark;
+            ResourceGroupId = resourceGroupId;
+            SlaveDns = slaveDns;
             UpdateTime = updateTime;
+            UpdateTimestamp = updateTimestamp;
+            ZoneId = zoneId;
+            ZoneName = zoneName;
         }
     }
 }

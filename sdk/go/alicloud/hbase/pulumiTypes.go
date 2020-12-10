@@ -328,6 +328,121 @@ func (o InstanceZkConnAddrArrayOutput) Index(i pulumi.IntInput) InstanceZkConnAd
 	}).(InstanceZkConnAddrOutput)
 }
 
+type GetInstanceTypesType struct {
+	// Cpu size of the instance type.
+	CpuSize int `pulumi:"cpuSize"`
+	// Mem size of the instance type.
+	MemSize int `pulumi:"memSize"`
+	// Name of the instance type.
+	Value string `pulumi:"value"`
+}
+
+// GetInstanceTypesTypeInput is an input type that accepts GetInstanceTypesTypeArgs and GetInstanceTypesTypeOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypeInput` via:
+//
+//          GetInstanceTypesTypeArgs{...}
+type GetInstanceTypesTypeInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypeOutput() GetInstanceTypesTypeOutput
+	ToGetInstanceTypesTypeOutputWithContext(context.Context) GetInstanceTypesTypeOutput
+}
+
+type GetInstanceTypesTypeArgs struct {
+	// Cpu size of the instance type.
+	CpuSize pulumi.IntInput `pulumi:"cpuSize"`
+	// Mem size of the instance type.
+	MemSize pulumi.IntInput `pulumi:"memSize"`
+	// Name of the instance type.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetInstanceTypesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesType)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypeArgs) ToGetInstanceTypesTypeOutput() GetInstanceTypesTypeOutput {
+	return i.ToGetInstanceTypesTypeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypeArgs) ToGetInstanceTypesTypeOutputWithContext(ctx context.Context) GetInstanceTypesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeOutput)
+}
+
+// GetInstanceTypesTypeArrayInput is an input type that accepts GetInstanceTypesTypeArray and GetInstanceTypesTypeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypeArrayInput` via:
+//
+//          GetInstanceTypesTypeArray{ GetInstanceTypesTypeArgs{...} }
+type GetInstanceTypesTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypeArrayOutput() GetInstanceTypesTypeArrayOutput
+	ToGetInstanceTypesTypeArrayOutputWithContext(context.Context) GetInstanceTypesTypeArrayOutput
+}
+
+type GetInstanceTypesTypeArray []GetInstanceTypesTypeInput
+
+func (GetInstanceTypesTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesType)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypeArray) ToGetInstanceTypesTypeArrayOutput() GetInstanceTypesTypeArrayOutput {
+	return i.ToGetInstanceTypesTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypeArray) ToGetInstanceTypesTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeArrayOutput)
+}
+
+type GetInstanceTypesTypeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesType)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypeOutput) ToGetInstanceTypesTypeOutput() GetInstanceTypesTypeOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeOutput) ToGetInstanceTypesTypeOutputWithContext(ctx context.Context) GetInstanceTypesTypeOutput {
+	return o
+}
+
+// Cpu size of the instance type.
+func (o GetInstanceTypesTypeOutput) CpuSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) int { return v.CpuSize }).(pulumi.IntOutput)
+}
+
+// Mem size of the instance type.
+func (o GetInstanceTypesTypeOutput) MemSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) int { return v.MemSize }).(pulumi.IntOutput)
+}
+
+// Name of the instance type.
+func (o GetInstanceTypesTypeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetInstanceTypesTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesType)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypeArrayOutput) ToGetInstanceTypesTypeArrayOutput() GetInstanceTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeArrayOutput) ToGetInstanceTypesTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesType {
+		return vs[0].([]GetInstanceTypesType)[vs[1].(int)]
+	}).(GetInstanceTypesTypeOutput)
+}
+
 type GetInstancesInstance struct {
 	// The Backup Status of the instance.
 	BackupStatus string `pulumi:"backupStatus"`
@@ -727,6 +842,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceUiProxyConnAddrArrayOutput{})
 	pulumi.RegisterOutputType(InstanceZkConnAddrOutput{})
 	pulumi.RegisterOutputType(InstanceZkConnAddrArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypeOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})

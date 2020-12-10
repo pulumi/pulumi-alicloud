@@ -63,6 +63,7 @@ from . import (
     rds,
     resourcemanager,
     rocketmq,
+    ros,
     sag,
     slb,
     vpc,

@@ -146,6 +146,7 @@ namespace Pulumi.AliCloud
                 public string? Ram { get; set; } = null!;
                 public string? Rds { get; set; } = null!;
                 public string? Resourcemanager { get; set; } = null!;
+                public string? Ros { get; set; } = null!;
                 public string? Slb { get; set; } = null!;
                 public string? Sts { get; set; } = null!;
                 public string? Vpc { get; set; } = null!;

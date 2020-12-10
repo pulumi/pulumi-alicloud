@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Provides a HBase instance resource supports replica set instances only. the HBase provides stable, reliable, and automatic scalable database services.
+ * Provides a HBase instance resource supports replica set instances only. The HBase provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
  *
@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:**  The following regions don't support create Classic network HBase instance.
  * [`cn-hangzhou`,`cn-shanghai`,`cn-qingdao`,`cn-beijing`,`cn-shenzhen`,`ap-southeast-1a`,.....]
- * the official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
+ * The official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
  *
  * > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
  *
@@ -81,42 +81,44 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly account!: pulumi.Output<string | undefined>;
     /**
-     * `true`, `false`, System default to `false`, valid when payType = PrePaid.
+     * Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
      */
     public readonly autoRenew!: pulumi.Output<boolean>;
     /**
-     * 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true
+     * 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true.
      */
     public readonly coldStorageSize!: pulumi.Output<number | undefined>;
     /**
-     * User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
-     * - Custom storage space; value range: [400, 8000]
-     * - 40-GB increments.
+     * User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+     * - Custom storage space, value range: [20, 8000].
+     * - Cluster min=400GB, 40-GB increments.
+     * - Single min=20GB, 1-GB increments.
      */
     public readonly coreDiskSize!: pulumi.Output<number | undefined>;
     /**
-     * Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`. localDisk size is fixed.
+     * Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, localDisk size is fixed. When engine=bds, no need to set disk type.
      */
-    public readonly coreDiskType!: pulumi.Output<string>;
+    public readonly coreDiskType!: pulumi.Output<string | undefined>;
     /**
-     * Default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
+     * Default=2. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
     public readonly coreInstanceQuantity!: pulumi.Output<number | undefined>;
     public readonly coreInstanceType!: pulumi.Output<string>;
     /**
-     * The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+     * The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
+     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid,  unit: month.
      */
     public readonly duration!: pulumi.Output<number>;
     /**
-     * "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+     * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
      */
     public readonly engine!: pulumi.Output<string | undefined>;
     /**
      * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+     * * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -124,16 +126,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly ipWhite!: pulumi.Output<string>;
     /**
-     * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
      */
     public readonly maintainEndTime!: pulumi.Output<string>;
     /**
-     * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
      */
     public readonly maintainStartTime!: pulumi.Output<string>;
     /**
      * Count nodes of the master node.
-     * * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
      */
     public /*out*/ readonly masterInstanceQuantity!: pulumi.Output<number>;
     public readonly masterInstanceType!: pulumi.Output<string>;
@@ -146,7 +147,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
      */
     public readonly payType!: pulumi.Output<string | undefined>;
     /**
@@ -154,7 +155,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
     /**
-     * (Optional, Available in 1.105.0+) The slb service addresses of the cluster.
+     * (Available in 1.105.0+) The slb service addresses of the cluster.
      */
     public /*out*/ readonly slbConnAddrs!: pulumi.Output<outputs.hbase.InstanceSlbConnAddr[]>;
     /**
@@ -162,19 +163,19 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * (Optional, Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+     * (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
      */
     public /*out*/ readonly uiProxyConnAddrs!: pulumi.Output<outputs.hbase.InstanceUiProxyConnAddr[]>;
     /**
-     * If vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
+     * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Available in 1.105.0+) The zookeeper addresses of the cluster.
+     * (Available in 1.105.0+) The zookeeper addresses of the cluster.
      */
     public /*out*/ readonly zkConnAddrs!: pulumi.Output<outputs.hbase.InstanceZkConnAddr[]>;
     /**
-     * The Zone to launch the HBase instance. if vswitchId is not empty, this zoneId can be "" or consistent.
+     * The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -218,9 +219,6 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.coreDiskType === undefined) {
-                throw new Error("Missing required property 'coreDiskType'");
-            }
             if (!args || args.coreInstanceType === undefined) {
                 throw new Error("Missing required property 'coreInstanceType'");
             }
@@ -277,42 +275,44 @@ export interface InstanceState {
      */
     readonly account?: pulumi.Input<string>;
     /**
-     * `true`, `false`, System default to `false`, valid when payType = PrePaid.
+     * Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
      */
     readonly autoRenew?: pulumi.Input<boolean>;
     /**
-     * 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true
+     * 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true.
      */
     readonly coldStorageSize?: pulumi.Input<number>;
     /**
-     * User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
-     * - Custom storage space; value range: [400, 8000]
-     * - 40-GB increments.
+     * User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+     * - Custom storage space, value range: [20, 8000].
+     * - Cluster min=400GB, 40-GB increments.
+     * - Single min=20GB, 1-GB increments.
      */
     readonly coreDiskSize?: pulumi.Input<number>;
     /**
-     * Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`. localDisk size is fixed.
+     * Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, localDisk size is fixed. When engine=bds, no need to set disk type.
      */
     readonly coreDiskType?: pulumi.Input<string>;
     /**
-     * Default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
+     * Default=2. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
     readonly coreInstanceQuantity?: pulumi.Input<number>;
     readonly coreInstanceType?: pulumi.Input<string>;
     /**
-     * The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+     * The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
-     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
+     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid,  unit: month.
      */
     readonly duration?: pulumi.Input<number>;
     /**
-     * "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+     * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
      */
     readonly engine?: pulumi.Input<string>;
     /**
      * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+     * * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
     readonly engineVersion?: pulumi.Input<string>;
     /**
@@ -320,16 +320,15 @@ export interface InstanceState {
      */
     readonly ipWhite?: pulumi.Input<string>;
     /**
-     * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
      */
     readonly maintainEndTime?: pulumi.Input<string>;
     /**
-     * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
      */
     readonly maintainStartTime?: pulumi.Input<string>;
     /**
      * Count nodes of the master node.
-     * * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
      */
     readonly masterInstanceQuantity?: pulumi.Input<number>;
     readonly masterInstanceType?: pulumi.Input<string>;
@@ -342,7 +341,7 @@ export interface InstanceState {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
      */
     readonly payType?: pulumi.Input<string>;
     /**
@@ -350,7 +349,7 @@ export interface InstanceState {
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Optional, Available in 1.105.0+) The slb service addresses of the cluster.
+     * (Available in 1.105.0+) The slb service addresses of the cluster.
      */
     readonly slbConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceSlbConnAddr>[]>;
     /**
@@ -358,19 +357,19 @@ export interface InstanceState {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * (Optional, Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+     * (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
      */
     readonly uiProxyConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceUiProxyConnAddr>[]>;
     /**
-     * If vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
+     * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**
-     * (Optional, Available in 1.105.0+) The zookeeper addresses of the cluster.
+     * (Available in 1.105.0+) The zookeeper addresses of the cluster.
      */
     readonly zkConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceZkConnAddr>[]>;
     /**
-     * The Zone to launch the HBase instance. if vswitchId is not empty, this zoneId can be "" or consistent.
+     * The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -384,42 +383,44 @@ export interface InstanceArgs {
      */
     readonly account?: pulumi.Input<string>;
     /**
-     * `true`, `false`, System default to `false`, valid when payType = PrePaid.
+     * Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
      */
     readonly autoRenew?: pulumi.Input<boolean>;
     /**
-     * 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true
+     * 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true.
      */
     readonly coldStorageSize?: pulumi.Input<number>;
     /**
-     * User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
-     * - Custom storage space; value range: [400, 8000]
-     * - 40-GB increments.
+     * User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+     * - Custom storage space, value range: [20, 8000].
+     * - Cluster min=400GB, 40-GB increments.
+     * - Single min=20GB, 1-GB increments.
      */
     readonly coreDiskSize?: pulumi.Input<number>;
     /**
-     * Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`. localDisk size is fixed.
+     * Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, localDisk size is fixed. When engine=bds, no need to set disk type.
      */
-    readonly coreDiskType: pulumi.Input<string>;
+    readonly coreDiskType?: pulumi.Input<string>;
     /**
-     * Default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
+     * Default=2. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
     readonly coreInstanceQuantity?: pulumi.Input<number>;
     readonly coreInstanceType: pulumi.Input<string>;
     /**
-     * The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+     * The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
-     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
+     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid,  unit: month.
      */
     readonly duration?: pulumi.Input<number>;
     /**
-     * "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and `bds `
+     * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
      */
     readonly engine?: pulumi.Input<string>;
     /**
      * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+     * * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
     readonly engineVersion: pulumi.Input<string>;
     /**
@@ -427,11 +428,11 @@ export interface InstanceArgs {
      */
     readonly ipWhite?: pulumi.Input<string>;
     /**
-     * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
      */
     readonly maintainEndTime?: pulumi.Input<string>;
     /**
-     * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
      */
     readonly maintainStartTime?: pulumi.Input<string>;
     readonly masterInstanceType: pulumi.Input<string>;
@@ -444,7 +445,7 @@ export interface InstanceArgs {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
      */
     readonly payType?: pulumi.Input<string>;
     /**
@@ -456,11 +457,11 @@ export interface InstanceArgs {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * If vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
+     * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**
-     * The Zone to launch the HBase instance. if vswitchId is not empty, this zoneId can be "" or consistent.
+     * The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
      */
     readonly zoneId?: pulumi.Input<string>;
 }

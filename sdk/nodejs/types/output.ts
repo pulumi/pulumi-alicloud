@@ -106,6 +106,7 @@ export interface ProviderEndpoint {
     ram?: string;
     rds?: string;
     resourcemanager?: string;
+    ros?: string;
     slb?: string;
     sts?: string;
     vpc?: string;
@@ -1548,6 +1549,49 @@ export namespace cen {
         transmitDirection: string;
     }
 
+    export interface GetRouteServicesService {
+        /**
+         * The region of the network instances that access the cloud services.
+         */
+        accessRegionId: string;
+        /**
+         * -(Required, ForceNew) The ID of the CEN instance.
+         */
+        cenId: string;
+        /**
+         * The IP address of the cloud service.
+         */
+        cidrs: string[];
+        /**
+         * The description of the cloud service.
+         */
+        description: string;
+        /**
+         * -(Optional, ForceNew) The domain name or IP address of the cloud service.
+         */
+        host: string;
+        /**
+         * The region of the cloud service.
+         */
+        hostRegionId: string;
+        /**
+         * The VPC associated with the cloud service.
+         */
+        hostVpcId: string;
+        /**
+         * The ID of the route service.
+         */
+        id: string;
+        /**
+         * The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
+         */
+        status: string;
+        /**
+         * The update interval. Default value: 5. The value cannot be modified.
+         */
+        updateInterval: string;
+    }
+
     export interface GetVbrHealthChecksCheck {
         /**
          * The ID of the Cloud Enterprise Network (CEN) instance.
@@ -2165,6 +2209,7 @@ export namespace config {
         ram?: string;
         rds?: string;
         resourcemanager?: string;
+        ros?: string;
         slb?: string;
         sts?: string;
         vpc?: string;
@@ -6349,6 +6394,21 @@ export namespace gpdb {
 }
 
 export namespace hbase {
+    export interface GetInstanceTypesType {
+        /**
+         * Cpu size of the instance type.
+         */
+        cpuSize: number;
+        /**
+         * Mem size of the instance type.
+         */
+        memSize: number;
+        /**
+         * Name of the instance type.
+         */
+        value: string;
+    }
+
     export interface GetInstancesInstance {
         /**
          * The Backup Status of the instance.
@@ -8716,25 +8776,30 @@ export namespace pvtz {
 
     export interface GetZonesZone {
         /**
-         * List of the VPCs is bound to the Private Zone.
+         * List of the VPCs is bound to the Private Zone:
          */
         bindVpcs: outputs.pvtz.GetZonesZoneBindVpc[];
         /**
-         * Time of creation of the Private Zone.
+         * Time of create of the Private Zone.
          */
+        createTimestamp: number;
         creationTime: string;
         /**
          * ID of the Private Zone.
          */
         id: string;
         /**
-         * Whether the Private Zone is ptr
+         * Whether the Private Zone is ptr.
          */
         isPtr: boolean;
         /**
          * Name of the Private Zone.
          */
         name: string;
+        /**
+         * The recursive DNS proxy.
+         */
+        proxyPattern: string;
         /**
          * Count of the Private Zone Record.
          */
@@ -8744,13 +8809,40 @@ export namespace pvtz {
          */
         remark: string;
         /**
+         * resource_group_id for zone resourceGroupId.
+         */
+        resourceGroupId: string;
+        /**
+         * Whether to turn on secondary DNS.
+         */
+        slaveDns: boolean;
+        updateTime: string;
+        /**
          * Time of update of the Private Zone.
          */
-        updateTime: string;
+        updateTimestamp: number;
+        /**
+         * ZoneId of the Private Zone.
+         */
+        zoneId: string;
+        /**
+         * ZoneName of the Private Zone.
+         */
+        zoneName: string;
     }
 
     export interface GetZonesZoneBindVpc {
+        /**
+         * Binding the regionId of VPC.
+         */
         regionId: string;
+        /**
+         * Binding the regionName of VPC.
+         */
+        regionName: string;
+        /**
+         * Binding the vpcId of VPC.
+         */
         vpcId: string;
         vpcName: string;
     }
@@ -9495,6 +9587,243 @@ export namespace rocketmq {
          * The name of the topic.
          */
         topicName: string;
+    }
+}
+
+export namespace ros {
+    export interface ChangeSetParameter {
+        /**
+         * The parameter key.
+         */
+        parameterKey: string;
+        /**
+         * The parameter value.
+         */
+        parameterValue: string;
+    }
+
+    export interface GetChangeSetsSet {
+        /**
+         * The ID of the change set.
+         */
+        changeSetId: string;
+        /**
+         * The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+         */
+        changeSetName: string;
+        /**
+         * The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
+         */
+        changeSetType: string;
+        /**
+         * The description of the change set. The description can be up to 1,024 bytes in length.
+         */
+        description: string;
+        /**
+         * Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
+         */
+        disableRollback: boolean;
+        /**
+         * The execution status of change set N. Maximum value of N: 5. Valid values:  UNAVAILABLE AVAILABLE EXECUTE_IN_PROGRESS EXECUTE_COMPLETE EXECUTE_FAILED OBSOLETE.
+         */
+        executionStatus: string;
+        /**
+         * The ID of the Change Set.
+         */
+        id: string;
+        /**
+         * Parameters.
+         */
+        parameters: outputs.ros.GetChangeSetsSetParameter[];
+        /**
+         * The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+         */
+        stackId: string;
+        /**
+         * The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
+         */
+        stackName: string;
+        /**
+         * The status of the change set.
+         */
+        status: string;
+        /**
+         * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
+         */
+        templateBody: string;
+        /**
+         * Timeout In Minutes.
+         */
+        timeoutInMinutes: number;
+    }
+
+    export interface GetChangeSetsSetParameter {
+        /**
+         * The parameters.
+         */
+        parameterKey: string;
+        /**
+         * The parameters.
+         */
+        parameterValue: string;
+    }
+
+    export interface GetStackGroupsGroup {
+        /**
+         * The name of the RAM administrator role assumed by ROS.
+         */
+        administrationRoleName: string;
+        /**
+         * The description of the stack group.
+         */
+        description: string;
+        /**
+         * The name of the RAM execution role assumed by the administrator role.
+         */
+        executionRoleName: string;
+        /**
+         * The ID of the Stack Group.
+         */
+        id: string;
+        /**
+         * The parameters.
+         */
+        parameters: outputs.ros.GetStackGroupsGroupParameter[];
+        /**
+         * The id of Stack Group.
+         */
+        stackGroupId: string;
+        /**
+         * The name of the stack group..
+         */
+        stackGroupName: string;
+        /**
+         * The status of Stack Group.
+         */
+        status: string;
+        /**
+         * The structure that contains the template body.
+         */
+        templateBody: string;
+    }
+
+    export interface GetStackGroupsGroupParameter {
+        /**
+         * The parameter key.
+         */
+        parameterKey: string;
+        /**
+         * The parameter value.
+         */
+        parameterValue: string;
+    }
+
+    export interface GetStacksStack {
+        /**
+         * Specifies whether to enable deletion protection on the stack.
+         */
+        deletionProtection: string;
+        /**
+         * The Description of the Stack.
+         */
+        description: string;
+        /**
+         * Specifies whether to disable rollback on stack creation failure..
+         */
+        disableRollback: boolean;
+        /**
+         * Drift DetectionTime.
+         */
+        driftDetectionTime: string;
+        /**
+         * The ID of the Stack.
+         */
+        id: string;
+        /**
+         * The parameters.
+         */
+        parameters: outputs.ros.GetStacksStackParameter[];
+        /**
+         * Parent Stack Id.
+         */
+        parentStackId: string;
+        /**
+         * The RamRoleName.
+         */
+        ramRoleName: string;
+        /**
+         * Root Stack Id.
+         */
+        rootStackId: string;
+        /**
+         * Stack DriftStatus.
+         */
+        stackDriftStatus: string;
+        /**
+         * Stack Id.
+         */
+        stackId: string;
+        /**
+         * Stack Name.
+         */
+        stackName: string;
+        /**
+         * The structure that contains the stack policy body.
+         */
+        stackPolicyBody: string;
+        /**
+         * The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
+         */
+        status: string;
+        /**
+         * Status Reason.
+         */
+        statusReason: string;
+        /**
+         * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+         */
+        tags: {[key: string]: any};
+        /**
+         * Template Description.
+         */
+        templateDescription: string;
+        /**
+         * Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
+         */
+        timeoutInMinutes: number;
+    }
+
+    export interface GetStacksStackParameter {
+        /**
+         * The key of parameters.
+         */
+        parameterKey: string;
+        /**
+         * The value of parameters.
+         */
+        parameterValue: string;
+    }
+
+    export interface StackGroupParameter {
+        /**
+         * The parameter key.
+         */
+        parameterKey?: string;
+        /**
+         * The parameter value.
+         */
+        parameterValue?: string;
+    }
+
+    export interface StackParameter {
+        /**
+         * The parameter key.
+         */
+        parameterKey?: string;
+        /**
+         * The parameter value.
+         */
+        parameterValue: string;
     }
 }
 

@@ -118,6 +118,7 @@ class ProviderEndpointArgs:
                  ram: Optional[pulumi.Input[str]] = None,
                  rds: Optional[pulumi.Input[str]] = None,
                  resourcemanager: Optional[pulumi.Input[str]] = None,
+                 ros: Optional[pulumi.Input[str]] = None,
                  slb: Optional[pulumi.Input[str]] = None,
                  sts: Optional[pulumi.Input[str]] = None,
                  vpc: Optional[pulumi.Input[str]] = None,
@@ -222,6 +223,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "rds", rds)
         if resourcemanager is not None:
             pulumi.set(__self__, "resourcemanager", resourcemanager)
+        if ros is not None:
+            pulumi.set(__self__, "ros", ros)
         if slb is not None:
             pulumi.set(__self__, "slb", slb)
         if sts is not None:
@@ -680,6 +683,15 @@ class ProviderEndpointArgs:
     @resourcemanager.setter
     def resourcemanager(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resourcemanager", value)
+
+    @property
+    @pulumi.getter
+    def ros(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ros")
+
+    @ros.setter
+    def ros(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ros", value)
 
     @property
     @pulumi.getter

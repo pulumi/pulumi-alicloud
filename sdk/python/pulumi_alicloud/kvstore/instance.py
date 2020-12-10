@@ -198,7 +198,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
-        :param pulumi.Input[str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address.
+        :param pulumi.Input[str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         :param pulumi.Input[str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] restore_time: The point in time of a backup file.
@@ -417,7 +417,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
-        :param pulumi.Input[str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address.
+        :param pulumi.Input[str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         :param pulumi.Input[str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[int] qps: Theoretical maximum QPS value.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
@@ -821,7 +821,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="privateConnectionPrefix")
     def private_connection_prefix(self) -> pulumi.Output[Optional[str]]:
         """
-        Private network connection prefix, used to modify the private network connection address.
+        Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         """
         return pulumi.get(self, "private_connection_prefix")
 

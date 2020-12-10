@@ -12,6 +12,7 @@ __all__ = [
     'InstanceSlbConnAddr',
     'InstanceUiProxyConnAddr',
     'InstanceZkConnAddr',
+    'GetInstanceTypesTypeResult',
     'GetInstancesInstanceResult',
     'GetZonesZoneResult',
 ]
@@ -110,6 +111,46 @@ class InstanceZkConnAddr(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetInstanceTypesTypeResult(dict):
+    def __init__(__self__, *,
+                 cpu_size: int,
+                 mem_size: int,
+                 value: str):
+        """
+        :param int cpu_size: Cpu size of the instance type.
+        :param int mem_size: Mem size of the instance type.
+        :param str value: Name of the instance type.
+        """
+        pulumi.set(__self__, "cpu_size", cpu_size)
+        pulumi.set(__self__, "mem_size", mem_size)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="cpuSize")
+    def cpu_size(self) -> int:
+        """
+        Cpu size of the instance type.
+        """
+        return pulumi.get(self, "cpu_size")
+
+    @property
+    @pulumi.getter(name="memSize")
+    def mem_size(self) -> int:
+        """
+        Mem size of the instance type.
+        """
+        return pulumi.get(self, "mem_size")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Name of the instance type.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
