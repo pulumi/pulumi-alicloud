@@ -154,7 +154,7 @@ class Kubernetes(pulumi.CustomResource):
                * cloud_efficiency: ultra disks.
                * cloud_ssd: SSDs.
                * cloud_essd: essd.
-               * `size`: the size of a data disk. Unit: GiB.
+               * `size`: the size of a data disk, at least 40. Unit: GiB.
                * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
@@ -260,6 +260,7 @@ class Kubernetes(pulumi.CustomResource):
             if worker_vswitch_ids is None:
                 raise TypeError("Missing required property 'worker_vswitch_ids'")
             __props__['worker_vswitch_ids'] = worker_vswitch_ids
+            __props__['certificate_authority'] = None
             __props__['connections'] = None
             __props__['master_nodes'] = None
             __props__['nat_gateway_id'] = None
@@ -282,6 +283,7 @@ class Kubernetes(pulumi.CustomResource):
             addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAddonArgs']]]]] = None,
             api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
+            certificate_authority: Optional[pulumi.Input[pulumi.InputType['KubernetesCertificateAuthorityArgs']]] = None,
             client_cert: Optional[pulumi.Input[str]] = None,
             client_key: Optional[pulumi.Input[str]] = None,
             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
@@ -363,11 +365,12 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
+        :param pulumi.Input[pulumi.InputType['KubernetesCertificateAuthorityArgs']] certificate_authority: (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
-        :param pulumi.Input[pulumi.InputType['KubernetesConnectionsArgs']] connections: Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        :param pulumi.Input[pulumi.InputType['KubernetesConnectionsArgs']] connections: Map of kubernetes cluster connection information.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -386,7 +389,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[int] master_disk_size: The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
         :param pulumi.Input[str] master_instance_charge_type: Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesMasterNodeArgs']]]] master_nodes: List of cluster master nodes. It contains several attributes to `Block Nodes`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesMasterNodeArgs']]]] master_nodes: List of cluster master nodes.
         :param pulumi.Input[int] master_period: Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] master_period_unit: Master payment period unit, the valid value is `Month`.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -423,13 +426,13 @@ class Kubernetes(pulumi.CustomResource):
                * cloud_efficiency: ultra disks.
                * cloud_ssd: SSDs.
                * cloud_essd: essd.
-               * `size`: the size of a data disk. Unit: GiB.
+               * `size`: the size of a data disk, at least 40. Unit: GiB.
                * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes.
         :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         :param pulumi.Input[int] worker_period: Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
@@ -442,6 +445,7 @@ class Kubernetes(pulumi.CustomResource):
         __props__["addons"] = addons
         __props__["api_audiences"] = api_audiences
         __props__["availability_zone"] = availability_zone
+        __props__["certificate_authority"] = certificate_authority
         __props__["client_cert"] = client_cert
         __props__["client_key"] = client_key
         __props__["cluster_ca_cert"] = cluster_ca_cert
@@ -538,6 +542,14 @@ class Kubernetes(pulumi.CustomResource):
         return pulumi.get(self, "availability_zone")
 
     @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> pulumi.Output['outputs.KubernetesCertificateAuthority']:
+        """
+        (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> pulumi.Output[Optional[str]]:
         """
@@ -573,7 +585,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter
     def connections(self) -> pulumi.Output['outputs.KubernetesConnections']:
         """
-        Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        Map of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -725,7 +737,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="masterNodes")
     def master_nodes(self) -> pulumi.Output[Sequence['outputs.KubernetesMasterNode']]:
         """
-        List of cluster master nodes. It contains several attributes to `Block Nodes`.
+        List of cluster master nodes.
         """
         return pulumi.get(self, "master_nodes")
 
@@ -1014,7 +1026,7 @@ class Kubernetes(pulumi.CustomResource):
         * cloud_efficiency: ultra disks.
         * cloud_ssd: SSDs.
         * cloud_essd: essd.
-        * `size`: the size of a data disk. Unit: GiB.
+        * `size`: the size of a data disk, at least 40. Unit: GiB.
         * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         """
         return pulumi.get(self, "worker_data_disks")
@@ -1055,7 +1067,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerNodes")
     def worker_nodes(self) -> pulumi.Output[Sequence['outputs.KubernetesWorkerNode']]:
         """
-        List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        List of cluster worker nodes.
         """
         return pulumi.get(self, "worker_nodes")
 

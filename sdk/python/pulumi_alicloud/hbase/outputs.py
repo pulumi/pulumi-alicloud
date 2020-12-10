@@ -9,9 +9,108 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
+    'InstanceSlbConnAddr',
+    'InstanceUiProxyConnAddr',
+    'InstanceZkConnAddr',
     'GetInstancesInstanceResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class InstanceSlbConnAddr(dict):
+    def __init__(__self__, *,
+                 conn_addr: Optional[str] = None,
+                 conn_addr_port: Optional[str] = None,
+                 net_type: Optional[str] = None):
+        if conn_addr is not None:
+            pulumi.set(__self__, "conn_addr", conn_addr)
+        if conn_addr_port is not None:
+            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
+        if net_type is not None:
+            pulumi.set(__self__, "net_type", net_type)
+
+    @property
+    @pulumi.getter(name="connAddr")
+    def conn_addr(self) -> Optional[str]:
+        return pulumi.get(self, "conn_addr")
+
+    @property
+    @pulumi.getter(name="connAddrPort")
+    def conn_addr_port(self) -> Optional[str]:
+        return pulumi.get(self, "conn_addr_port")
+
+    @property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> Optional[str]:
+        return pulumi.get(self, "net_type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceUiProxyConnAddr(dict):
+    def __init__(__self__, *,
+                 conn_addr: Optional[str] = None,
+                 conn_addr_port: Optional[str] = None,
+                 net_type: Optional[str] = None):
+        if conn_addr is not None:
+            pulumi.set(__self__, "conn_addr", conn_addr)
+        if conn_addr_port is not None:
+            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
+        if net_type is not None:
+            pulumi.set(__self__, "net_type", net_type)
+
+    @property
+    @pulumi.getter(name="connAddr")
+    def conn_addr(self) -> Optional[str]:
+        return pulumi.get(self, "conn_addr")
+
+    @property
+    @pulumi.getter(name="connAddrPort")
+    def conn_addr_port(self) -> Optional[str]:
+        return pulumi.get(self, "conn_addr_port")
+
+    @property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> Optional[str]:
+        return pulumi.get(self, "net_type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceZkConnAddr(dict):
+    def __init__(__self__, *,
+                 conn_addr: Optional[str] = None,
+                 conn_addr_port: Optional[str] = None,
+                 net_type: Optional[str] = None):
+        if conn_addr is not None:
+            pulumi.set(__self__, "conn_addr", conn_addr)
+        if conn_addr_port is not None:
+            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
+        if net_type is not None:
+            pulumi.set(__self__, "net_type", net_type)
+
+    @property
+    @pulumi.getter(name="connAddr")
+    def conn_addr(self) -> Optional[str]:
+        return pulumi.get(self, "conn_addr")
+
+    @property
+    @pulumi.getter(name="connAddrPort")
+    def conn_addr_port(self) -> Optional[str]:
+        return pulumi.get(self, "conn_addr_port")
+
+    @property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> Optional[str]:
+        return pulumi.get(self, "net_type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):
@@ -39,18 +138,19 @@ class GetInstancesInstanceResult(dict):
                  zone_id: str,
                  tags: Optional[Mapping[str, Any]] = None):
         """
-        :param str backup_status: the Backup Status of the instance.
-        :param int core_disk_size: core node disk size, unit:GB.
-        :param str core_disk_type: cloud_ssd or cloud_efficiency
-        :param str core_instance_type: hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
-        :param int core_node_count: same with "core_instance_quantity"
-        :param bool deletion_protection: the switch of delete protection.
-        :param str engine: the engine of the instance.
-        :param str engine_version: the engine_version of the instance.
-        :param str expire_time: the expire time of the instance.
+        :param str backup_status: The Backup Status of the instance.
+        :param int core_disk_size: Core node disk size, unit:GB.
+        :param str core_disk_type: Cloud_ssd or cloud_efficiency
+        :param str core_instance_type: Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        :param int core_node_count: Same with "core_instance_quantity"
+        :param str created_time: The created time of the instance.
+        :param bool deletion_protection: The switch of delete protection.
+        :param str engine: The engine of the instance.
+        :param str engine_version: The engine_version of the instance.
+        :param str expire_time: The expire time of the instance.
         :param str id: The ID of the HBase instance.
-        :param str master_instance_type: hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
-        :param int master_node_count: the node count of master
+        :param str master_instance_type: Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        :param int master_node_count: The node count of master
         :param str name: The name of the HBase instance.
         :param str network_type: Classic network or VPC.
         :param str pay_type: Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
@@ -89,7 +189,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="backupStatus")
     def backup_status(self) -> str:
         """
-        the Backup Status of the instance.
+        The Backup Status of the instance.
         """
         return pulumi.get(self, "backup_status")
 
@@ -97,7 +197,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="coreDiskSize")
     def core_disk_size(self) -> int:
         """
-        core node disk size, unit:GB.
+        Core node disk size, unit:GB.
         """
         return pulumi.get(self, "core_disk_size")
 
@@ -105,7 +205,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="coreDiskType")
     def core_disk_type(self) -> str:
         """
-        cloud_ssd or cloud_efficiency
+        Cloud_ssd or cloud_efficiency
         """
         return pulumi.get(self, "core_disk_type")
 
@@ -113,7 +213,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="coreInstanceType")
     def core_instance_type(self) -> str:
         """
-        hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
         """
         return pulumi.get(self, "core_instance_type")
 
@@ -121,20 +221,23 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="coreNodeCount")
     def core_node_count(self) -> int:
         """
-        same with "core_instance_quantity"
+        Same with "core_instance_quantity"
         """
         return pulumi.get(self, "core_node_count")
 
     @property
     @pulumi.getter(name="createdTime")
     def created_time(self) -> str:
+        """
+        The created time of the instance.
+        """
         return pulumi.get(self, "created_time")
 
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> bool:
         """
-        the switch of delete protection.
+        The switch of delete protection.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -142,7 +245,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def engine(self) -> str:
         """
-        the engine of the instance.
+        The engine of the instance.
         """
         return pulumi.get(self, "engine")
 
@@ -150,7 +253,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> str:
         """
-        the engine_version of the instance.
+        The engine_version of the instance.
         """
         return pulumi.get(self, "engine_version")
 
@@ -158,7 +261,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> str:
         """
-        the expire time of the instance.
+        The expire time of the instance.
         """
         return pulumi.get(self, "expire_time")
 
@@ -174,7 +277,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="masterInstanceType")
     def master_instance_type(self) -> str:
         """
-        hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
         """
         return pulumi.get(self, "master_instance_type")
 
@@ -182,7 +285,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="masterNodeCount")
     def master_node_count(self) -> int:
         """
-        the node count of master
+        The node count of master
         """
         return pulumi.get(self, "master_node_count")
 

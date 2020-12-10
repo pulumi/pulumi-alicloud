@@ -36,6 +36,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+        /// </summary>
+        [Output("certificateAuthority")]
+        public Output<Outputs.ManagedKubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
+
+        /// <summary>
         /// The path of client certificate, like `~/.kube/client-cert.pem`.
         /// </summary>
         [Output("clientCert")]
@@ -59,11 +65,16 @@ namespace Pulumi.AliCloud.CS
         [Output("clusterDomain")]
         public Output<string?> ClusterDomain { get; private set; } = null!;
 
+        /// <summary>
+        /// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+        /// * ack.standard : Standard managed clusters.
+        /// * ack.pro.small : Professional managed clusters.
+        /// </summary>
         [Output("clusterSpec")]
         public Output<string> ClusterSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        /// Map of kubernetes cluster connection information.
         /// </summary>
         [Output("connections")]
         public Output<Outputs.ManagedKubernetesConnections> Connections { get; private set; } = null!;
@@ -339,7 +350,7 @@ namespace Pulumi.AliCloud.CS
         /// * cloud_efficiency: ultra disks.
         /// * cloud_ssd: SSDs.
         /// * cloud_essd: essd.
-        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
         /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         [Output("workerDataDisks")]
@@ -370,7 +381,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> WorkerInstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        /// List of cluster worker nodes.
         /// </summary>
         [Output("workerNodes")]
         public Output<ImmutableArray<Outputs.ManagedKubernetesWorkerNode>> WorkerNodes { get; private set; } = null!;
@@ -498,6 +509,11 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterDomain")]
         public Input<string>? ClusterDomain { get; set; }
 
+        /// <summary>
+        /// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+        /// * ack.standard : Standard managed clusters.
+        /// * ack.pro.small : Professional managed clusters.
+        /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
@@ -780,7 +796,7 @@ namespace Pulumi.AliCloud.CS
         /// * cloud_efficiency: ultra disks.
         /// * cloud_ssd: SSDs.
         /// * cloud_essd: essd.
-        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
         /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesWorkerDataDiskArgs> WorkerDataDisks
@@ -879,6 +895,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
+        /// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+        /// </summary>
+        [Input("certificateAuthority")]
+        public Input<Inputs.ManagedKubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
+
+        /// <summary>
         /// The path of client certificate, like `~/.kube/client-cert.pem`.
         /// </summary>
         [Input("clientCert")]
@@ -902,11 +924,16 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterDomain")]
         public Input<string>? ClusterDomain { get; set; }
 
+        /// <summary>
+        /// The cluster specifications of kubernetes cluster,which can be empty.Valid values:
+        /// * ack.standard : Standard managed clusters.
+        /// * ack.pro.small : Professional managed clusters.
+        /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
         /// <summary>
-        /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        /// Map of kubernetes cluster connection information.
         /// </summary>
         [Input("connections")]
         public Input<Inputs.ManagedKubernetesConnectionsGetArgs>? Connections { get; set; }
@@ -1214,7 +1241,7 @@ namespace Pulumi.AliCloud.CS
         /// * cloud_efficiency: ultra disks.
         /// * cloud_ssd: SSDs.
         /// * cloud_essd: essd.
-        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
         /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesWorkerDataDiskGetArgs> WorkerDataDisks
@@ -1257,7 +1284,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ManagedKubernetesWorkerNodeGetArgs>? _workerNodes;
 
         /// <summary>
-        /// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        /// List of cluster worker nodes.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesWorkerNodeGetArgs> WorkerNodes
         {

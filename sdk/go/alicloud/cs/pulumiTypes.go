@@ -361,6 +361,175 @@ func (o EdgeKubernetesAddonArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesA
 	}).(EdgeKubernetesAddonOutput)
 }
 
+type EdgeKubernetesCertificateAuthority struct {
+	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	ClientCert *string `pulumi:"clientCert"`
+	// The path of client key, like `~/.kube/client-key.pem`.
+	ClientKey *string `pulumi:"clientKey"`
+	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+	ClusterCert *string `pulumi:"clusterCert"`
+}
+
+// EdgeKubernetesCertificateAuthorityInput is an input type that accepts EdgeKubernetesCertificateAuthorityArgs and EdgeKubernetesCertificateAuthorityOutput values.
+// You can construct a concrete instance of `EdgeKubernetesCertificateAuthorityInput` via:
+//
+//          EdgeKubernetesCertificateAuthorityArgs{...}
+type EdgeKubernetesCertificateAuthorityInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesCertificateAuthorityOutput() EdgeKubernetesCertificateAuthorityOutput
+	ToEdgeKubernetesCertificateAuthorityOutputWithContext(context.Context) EdgeKubernetesCertificateAuthorityOutput
+}
+
+type EdgeKubernetesCertificateAuthorityArgs struct {
+	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
+	// The path of client key, like `~/.kube/client-key.pem`.
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+	ClusterCert pulumi.StringPtrInput `pulumi:"clusterCert"`
+}
+
+func (EdgeKubernetesCertificateAuthorityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (i EdgeKubernetesCertificateAuthorityArgs) ToEdgeKubernetesCertificateAuthorityOutput() EdgeKubernetesCertificateAuthorityOutput {
+	return i.ToEdgeKubernetesCertificateAuthorityOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesCertificateAuthorityArgs) ToEdgeKubernetesCertificateAuthorityOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesCertificateAuthorityOutput)
+}
+
+func (i EdgeKubernetesCertificateAuthorityArgs) ToEdgeKubernetesCertificateAuthorityPtrOutput() EdgeKubernetesCertificateAuthorityPtrOutput {
+	return i.ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesCertificateAuthorityArgs) ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesCertificateAuthorityOutput).ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(ctx)
+}
+
+// EdgeKubernetesCertificateAuthorityPtrInput is an input type that accepts EdgeKubernetesCertificateAuthorityArgs, EdgeKubernetesCertificateAuthorityPtr and EdgeKubernetesCertificateAuthorityPtrOutput values.
+// You can construct a concrete instance of `EdgeKubernetesCertificateAuthorityPtrInput` via:
+//
+//          EdgeKubernetesCertificateAuthorityArgs{...}
+//
+//  or:
+//
+//          nil
+type EdgeKubernetesCertificateAuthorityPtrInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesCertificateAuthorityPtrOutput() EdgeKubernetesCertificateAuthorityPtrOutput
+	ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(context.Context) EdgeKubernetesCertificateAuthorityPtrOutput
+}
+
+type edgeKubernetesCertificateAuthorityPtrType EdgeKubernetesCertificateAuthorityArgs
+
+func EdgeKubernetesCertificateAuthorityPtr(v *EdgeKubernetesCertificateAuthorityArgs) EdgeKubernetesCertificateAuthorityPtrInput {
+	return (*edgeKubernetesCertificateAuthorityPtrType)(v)
+}
+
+func (*edgeKubernetesCertificateAuthorityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeKubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (i *edgeKubernetesCertificateAuthorityPtrType) ToEdgeKubernetesCertificateAuthorityPtrOutput() EdgeKubernetesCertificateAuthorityPtrOutput {
+	return i.ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeKubernetesCertificateAuthorityPtrType) ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesCertificateAuthorityPtrOutput)
+}
+
+type EdgeKubernetesCertificateAuthorityOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesCertificateAuthorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAuthorityOutput() EdgeKubernetesCertificateAuthorityOutput {
+	return o
+}
+
+func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAuthorityOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityOutput {
+	return o
+}
+
+func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAuthorityPtrOutput() EdgeKubernetesCertificateAuthorityPtrOutput {
+	return o.ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *EdgeKubernetesCertificateAuthority {
+		return &v
+	}).(EdgeKubernetesCertificateAuthorityPtrOutput)
+}
+
+// The path of client certificate, like `~/.kube/client-cert.pem`.
+func (o EdgeKubernetesCertificateAuthorityOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// The path of client key, like `~/.kube/client-key.pem`.
+func (o EdgeKubernetesCertificateAuthorityOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+func (o EdgeKubernetesCertificateAuthorityOutput) ClusterCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *string { return v.ClusterCert }).(pulumi.StringPtrOutput)
+}
+
+type EdgeKubernetesCertificateAuthorityPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesCertificateAuthorityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeKubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (o EdgeKubernetesCertificateAuthorityPtrOutput) ToEdgeKubernetesCertificateAuthorityPtrOutput() EdgeKubernetesCertificateAuthorityPtrOutput {
+	return o
+}
+
+func (o EdgeKubernetesCertificateAuthorityPtrOutput) ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityPtrOutput {
+	return o
+}
+
+func (o EdgeKubernetesCertificateAuthorityPtrOutput) Elem() EdgeKubernetesCertificateAuthorityOutput {
+	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) EdgeKubernetesCertificateAuthority { return *v }).(EdgeKubernetesCertificateAuthorityOutput)
+}
+
+// The path of client certificate, like `~/.kube/client-cert.pem`.
+func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCert
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path of client key, like `~/.kube/client-key.pem`.
+func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClusterCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterCert
+	}).(pulumi.StringPtrOutput)
+}
+
 type EdgeKubernetesConnections struct {
 	ApiServerInternet *string `pulumi:"apiServerInternet"`
 	ApiServerIntranet *string `pulumi:"apiServerIntranet"`
@@ -1140,6 +1309,175 @@ func (o KubernetesAutoscalerNodepoolArrayOutput) Index(i pulumi.IntInput) Kubern
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesAutoscalerNodepool {
 		return vs[0].([]KubernetesAutoscalerNodepool)[vs[1].(int)]
 	}).(KubernetesAutoscalerNodepoolOutput)
+}
+
+type KubernetesCertificateAuthority struct {
+	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	ClientCert *string `pulumi:"clientCert"`
+	// The path of client key, like `~/.kube/client-key.pem`.
+	ClientKey *string `pulumi:"clientKey"`
+	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+	ClusterCert *string `pulumi:"clusterCert"`
+}
+
+// KubernetesCertificateAuthorityInput is an input type that accepts KubernetesCertificateAuthorityArgs and KubernetesCertificateAuthorityOutput values.
+// You can construct a concrete instance of `KubernetesCertificateAuthorityInput` via:
+//
+//          KubernetesCertificateAuthorityArgs{...}
+type KubernetesCertificateAuthorityInput interface {
+	pulumi.Input
+
+	ToKubernetesCertificateAuthorityOutput() KubernetesCertificateAuthorityOutput
+	ToKubernetesCertificateAuthorityOutputWithContext(context.Context) KubernetesCertificateAuthorityOutput
+}
+
+type KubernetesCertificateAuthorityArgs struct {
+	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
+	// The path of client key, like `~/.kube/client-key.pem`.
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+	ClusterCert pulumi.StringPtrInput `pulumi:"clusterCert"`
+}
+
+func (KubernetesCertificateAuthorityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (i KubernetesCertificateAuthorityArgs) ToKubernetesCertificateAuthorityOutput() KubernetesCertificateAuthorityOutput {
+	return i.ToKubernetesCertificateAuthorityOutputWithContext(context.Background())
+}
+
+func (i KubernetesCertificateAuthorityArgs) ToKubernetesCertificateAuthorityOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesCertificateAuthorityOutput)
+}
+
+func (i KubernetesCertificateAuthorityArgs) ToKubernetesCertificateAuthorityPtrOutput() KubernetesCertificateAuthorityPtrOutput {
+	return i.ToKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesCertificateAuthorityArgs) ToKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesCertificateAuthorityOutput).ToKubernetesCertificateAuthorityPtrOutputWithContext(ctx)
+}
+
+// KubernetesCertificateAuthorityPtrInput is an input type that accepts KubernetesCertificateAuthorityArgs, KubernetesCertificateAuthorityPtr and KubernetesCertificateAuthorityPtrOutput values.
+// You can construct a concrete instance of `KubernetesCertificateAuthorityPtrInput` via:
+//
+//          KubernetesCertificateAuthorityArgs{...}
+//
+//  or:
+//
+//          nil
+type KubernetesCertificateAuthorityPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesCertificateAuthorityPtrOutput() KubernetesCertificateAuthorityPtrOutput
+	ToKubernetesCertificateAuthorityPtrOutputWithContext(context.Context) KubernetesCertificateAuthorityPtrOutput
+}
+
+type kubernetesCertificateAuthorityPtrType KubernetesCertificateAuthorityArgs
+
+func KubernetesCertificateAuthorityPtr(v *KubernetesCertificateAuthorityArgs) KubernetesCertificateAuthorityPtrInput {
+	return (*kubernetesCertificateAuthorityPtrType)(v)
+}
+
+func (*kubernetesCertificateAuthorityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (i *kubernetesCertificateAuthorityPtrType) ToKubernetesCertificateAuthorityPtrOutput() KubernetesCertificateAuthorityPtrOutput {
+	return i.ToKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesCertificateAuthorityPtrType) ToKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesCertificateAuthorityPtrOutput)
+}
+
+type KubernetesCertificateAuthorityOutput struct{ *pulumi.OutputState }
+
+func (KubernetesCertificateAuthorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityOutput() KubernetesCertificateAuthorityOutput {
+	return o
+}
+
+func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityOutput {
+	return o
+}
+
+func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityPtrOutput() KubernetesCertificateAuthorityPtrOutput {
+	return o.ToKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityPtrOutput {
+	return o.ApplyT(func(v KubernetesCertificateAuthority) *KubernetesCertificateAuthority {
+		return &v
+	}).(KubernetesCertificateAuthorityPtrOutput)
+}
+
+// The path of client certificate, like `~/.kube/client-cert.pem`.
+func (o KubernetesCertificateAuthorityOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesCertificateAuthority) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// The path of client key, like `~/.kube/client-key.pem`.
+func (o KubernetesCertificateAuthorityOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesCertificateAuthority) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+func (o KubernetesCertificateAuthorityOutput) ClusterCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesCertificateAuthority) *string { return v.ClusterCert }).(pulumi.StringPtrOutput)
+}
+
+type KubernetesCertificateAuthorityPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesCertificateAuthorityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (o KubernetesCertificateAuthorityPtrOutput) ToKubernetesCertificateAuthorityPtrOutput() KubernetesCertificateAuthorityPtrOutput {
+	return o
+}
+
+func (o KubernetesCertificateAuthorityPtrOutput) ToKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityPtrOutput {
+	return o
+}
+
+func (o KubernetesCertificateAuthorityPtrOutput) Elem() KubernetesCertificateAuthorityOutput {
+	return o.ApplyT(func(v *KubernetesCertificateAuthority) KubernetesCertificateAuthority { return *v }).(KubernetesCertificateAuthorityOutput)
+}
+
+// The path of client certificate, like `~/.kube/client-cert.pem`.
+func (o KubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesCertificateAuthority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCert
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path of client key, like `~/.kube/client-key.pem`.
+func (o KubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesCertificateAuthority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+func (o KubernetesCertificateAuthorityPtrOutput) ClusterCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesCertificateAuthority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterCert
+	}).(pulumi.StringPtrOutput)
 }
 
 type KubernetesConnections struct {
@@ -2062,6 +2400,175 @@ func (o ManagedKubernetesAddonArrayOutput) Index(i pulumi.IntInput) ManagedKuber
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesAddon {
 		return vs[0].([]ManagedKubernetesAddon)[vs[1].(int)]
 	}).(ManagedKubernetesAddonOutput)
+}
+
+type ManagedKubernetesCertificateAuthority struct {
+	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	ClientCert *string `pulumi:"clientCert"`
+	// The path of client key, like `~/.kube/client-key.pem`.
+	ClientKey *string `pulumi:"clientKey"`
+	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+	ClusterCert *string `pulumi:"clusterCert"`
+}
+
+// ManagedKubernetesCertificateAuthorityInput is an input type that accepts ManagedKubernetesCertificateAuthorityArgs and ManagedKubernetesCertificateAuthorityOutput values.
+// You can construct a concrete instance of `ManagedKubernetesCertificateAuthorityInput` via:
+//
+//          ManagedKubernetesCertificateAuthorityArgs{...}
+type ManagedKubernetesCertificateAuthorityInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesCertificateAuthorityOutput() ManagedKubernetesCertificateAuthorityOutput
+	ToManagedKubernetesCertificateAuthorityOutputWithContext(context.Context) ManagedKubernetesCertificateAuthorityOutput
+}
+
+type ManagedKubernetesCertificateAuthorityArgs struct {
+	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
+	// The path of client key, like `~/.kube/client-key.pem`.
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+	ClusterCert pulumi.StringPtrInput `pulumi:"clusterCert"`
+}
+
+func (ManagedKubernetesCertificateAuthorityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (i ManagedKubernetesCertificateAuthorityArgs) ToManagedKubernetesCertificateAuthorityOutput() ManagedKubernetesCertificateAuthorityOutput {
+	return i.ToManagedKubernetesCertificateAuthorityOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesCertificateAuthorityArgs) ToManagedKubernetesCertificateAuthorityOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesCertificateAuthorityOutput)
+}
+
+func (i ManagedKubernetesCertificateAuthorityArgs) ToManagedKubernetesCertificateAuthorityPtrOutput() ManagedKubernetesCertificateAuthorityPtrOutput {
+	return i.ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesCertificateAuthorityArgs) ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesCertificateAuthorityOutput).ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesCertificateAuthorityPtrInput is an input type that accepts ManagedKubernetesCertificateAuthorityArgs, ManagedKubernetesCertificateAuthorityPtr and ManagedKubernetesCertificateAuthorityPtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesCertificateAuthorityPtrInput` via:
+//
+//          ManagedKubernetesCertificateAuthorityArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedKubernetesCertificateAuthorityPtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesCertificateAuthorityPtrOutput() ManagedKubernetesCertificateAuthorityPtrOutput
+	ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(context.Context) ManagedKubernetesCertificateAuthorityPtrOutput
+}
+
+type managedKubernetesCertificateAuthorityPtrType ManagedKubernetesCertificateAuthorityArgs
+
+func ManagedKubernetesCertificateAuthorityPtr(v *ManagedKubernetesCertificateAuthorityArgs) ManagedKubernetesCertificateAuthorityPtrInput {
+	return (*managedKubernetesCertificateAuthorityPtrType)(v)
+}
+
+func (*managedKubernetesCertificateAuthorityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (i *managedKubernetesCertificateAuthorityPtrType) ToManagedKubernetesCertificateAuthorityPtrOutput() ManagedKubernetesCertificateAuthorityPtrOutput {
+	return i.ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesCertificateAuthorityPtrType) ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesCertificateAuthorityPtrOutput)
+}
+
+type ManagedKubernetesCertificateAuthorityOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesCertificateAuthorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertificateAuthorityOutput() ManagedKubernetesCertificateAuthorityOutput {
+	return o
+}
+
+func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertificateAuthorityOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityOutput {
+	return o
+}
+
+func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertificateAuthorityPtrOutput() ManagedKubernetesCertificateAuthorityPtrOutput {
+	return o.ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesCertificateAuthority) *ManagedKubernetesCertificateAuthority {
+		return &v
+	}).(ManagedKubernetesCertificateAuthorityPtrOutput)
+}
+
+// The path of client certificate, like `~/.kube/client-cert.pem`.
+func (o ManagedKubernetesCertificateAuthorityOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesCertificateAuthority) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// The path of client key, like `~/.kube/client-key.pem`.
+func (o ManagedKubernetesCertificateAuthorityOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesCertificateAuthority) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+func (o ManagedKubernetesCertificateAuthorityOutput) ClusterCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesCertificateAuthority) *string { return v.ClusterCert }).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesCertificateAuthorityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesCertificateAuthorityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesCertificateAuthority)(nil)).Elem()
+}
+
+func (o ManagedKubernetesCertificateAuthorityPtrOutput) ToManagedKubernetesCertificateAuthorityPtrOutput() ManagedKubernetesCertificateAuthorityPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesCertificateAuthorityPtrOutput) ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesCertificateAuthorityPtrOutput) Elem() ManagedKubernetesCertificateAuthorityOutput {
+	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) ManagedKubernetesCertificateAuthority { return *v }).(ManagedKubernetesCertificateAuthorityOutput)
+}
+
+// The path of client certificate, like `~/.kube/client-cert.pem`.
+func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCert
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path of client key, like `~/.kube/client-key.pem`.
+func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClusterCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterCert
+	}).(pulumi.StringPtrOutput)
 }
 
 type ManagedKubernetesConnections struct {
@@ -6156,6 +6663,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeArrayOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesAddonArrayOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesCertificateAuthorityOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesCertificateAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesConnectionsOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesConnectionsPtrOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesLogConfigOutput{})
@@ -6168,6 +6677,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesAutoscalerNodepoolOutput{})
 	pulumi.RegisterOutputType(KubernetesAutoscalerNodepoolArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesCertificateAuthorityOutput{})
+	pulumi.RegisterOutputType(KubernetesCertificateAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesConnectionsOutput{})
 	pulumi.RegisterOutputType(KubernetesConnectionsPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeOutput{})
@@ -6182,6 +6693,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAddonArrayOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRuntimeOutput{})

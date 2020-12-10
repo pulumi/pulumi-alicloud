@@ -30,6 +30,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+        /// </summary>
+        [Output("certificateAuthority")]
+        public Output<Outputs.EdgeKubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
+
+        /// <summary>
         /// The path of client certificate, like `~/.kube/client-cert.pem`.
         /// </summary>
         [Output("clientCert")]
@@ -185,10 +191,11 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
         /// * `category`: the type of the data disks. Valid values:
-        /// * cloud: basic disks.
-        /// * cloud_efficiency: ultra disks.
-        /// * cloud_ssd: SSDs.
-        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * cloud : basic disks.
+        /// * cloud_efficiency : ultra disks.
+        /// * cloud_ssd : SSDs.
+        /// * cloud_essd : ESSDs.
+        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
         /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         [Output("workerDataDisks")]
@@ -216,7 +223,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> WorkerInstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        /// List of cluster worker nodes.
         /// </summary>
         [Output("workerNodes")]
         public Output<ImmutableArray<Outputs.EdgeKubernetesWorkerNode>> WorkerNodes { get; private set; } = null!;
@@ -430,10 +437,11 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
         /// * `category`: the type of the data disks. Valid values:
-        /// * cloud: basic disks.
-        /// * cloud_efficiency: ultra disks.
-        /// * cloud_ssd: SSDs.
-        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * cloud : basic disks.
+        /// * cloud_efficiency : ultra disks.
+        /// * cloud_ssd : SSDs.
+        /// * cloud_essd : ESSDs.
+        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
         /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.EdgeKubernetesWorkerDataDiskArgs> WorkerDataDisks
@@ -503,6 +511,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+        /// </summary>
+        [Input("certificateAuthority")]
+        public Input<Inputs.EdgeKubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
 
         /// <summary>
         /// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -668,10 +682,11 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
         /// * `category`: the type of the data disks. Valid values:
-        /// * cloud: basic disks.
-        /// * cloud_efficiency: ultra disks.
-        /// * cloud_ssd: SSDs.
-        /// * `size`: the size of a data disk. Unit: GiB.
+        /// * cloud : basic disks.
+        /// * cloud_efficiency : ultra disks.
+        /// * cloud_ssd : SSDs.
+        /// * cloud_essd : ESSDs.
+        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
         /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.EdgeKubernetesWorkerDataDiskGetArgs> WorkerDataDisks
@@ -711,7 +726,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.EdgeKubernetesWorkerNodeGetArgs>? _workerNodes;
 
         /// <summary>
-        /// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        /// List of cluster worker nodes.
         /// </summary>
         public InputList<Inputs.EdgeKubernetesWorkerNodeGetArgs> WorkerNodes
         {

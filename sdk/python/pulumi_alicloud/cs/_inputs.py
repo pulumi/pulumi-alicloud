@@ -12,12 +12,14 @@ __all__ = [
     'ApplicationServiceArgs',
     'ClusterNodeArgs',
     'EdgeKubernetesAddonArgs',
+    'EdgeKubernetesCertificateAuthorityArgs',
     'EdgeKubernetesConnectionsArgs',
     'EdgeKubernetesLogConfigArgs',
     'EdgeKubernetesWorkerDataDiskArgs',
     'EdgeKubernetesWorkerNodeArgs',
     'KubernetesAddonArgs',
     'KubernetesAutoscalerNodepoolArgs',
+    'KubernetesCertificateAuthorityArgs',
     'KubernetesConnectionsArgs',
     'KubernetesMasterNodeArgs',
     'KubernetesRuntimeArgs',
@@ -25,6 +27,7 @@ __all__ = [
     'KubernetesWorkerDataDiskArgs',
     'KubernetesWorkerNodeArgs',
     'ManagedKubernetesAddonArgs',
+    'ManagedKubernetesCertificateAuthorityArgs',
     'ManagedKubernetesConnectionsArgs',
     'ManagedKubernetesRuntimeArgs',
     'ManagedKubernetesTaintArgs',
@@ -218,6 +221,61 @@ class EdgeKubernetesAddonArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class EdgeKubernetesCertificateAuthorityArgs:
+    def __init__(__self__, *,
+                 client_cert: Optional[pulumi.Input[str]] = None,
+                 client_key: Optional[pulumi.Input[str]] = None,
+                 cluster_cert: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
+        :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param pulumi.Input[str] cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        if client_cert is not None:
+            pulumi.set(__self__, "client_cert", client_cert)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if cluster_cert is not None:
+            pulumi.set(__self__, "cluster_cert", cluster_cert)
+
+    @property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of client certificate, like `~/.kube/client-cert.pem`.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @client_cert.setter
+    def client_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_cert", value)
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of client key, like `~/.kube/client-key.pem`.
+        """
+        return pulumi.get(self, "client_key")
+
+    @client_key.setter
+    def client_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_key", value)
+
+    @property
+    @pulumi.getter(name="clusterCert")
+    def cluster_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        return pulumi.get(self, "cluster_cert")
+
+    @cluster_cert.setter
+    def cluster_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_cert", value)
 
 
 @pulumi.input_type
@@ -549,6 +607,61 @@ class KubernetesAutoscalerNodepoolArgs:
     @taints.setter
     def taints(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "taints", value)
+
+
+@pulumi.input_type
+class KubernetesCertificateAuthorityArgs:
+    def __init__(__self__, *,
+                 client_cert: Optional[pulumi.Input[str]] = None,
+                 client_key: Optional[pulumi.Input[str]] = None,
+                 cluster_cert: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
+        :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param pulumi.Input[str] cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        if client_cert is not None:
+            pulumi.set(__self__, "client_cert", client_cert)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if cluster_cert is not None:
+            pulumi.set(__self__, "cluster_cert", cluster_cert)
+
+    @property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of client certificate, like `~/.kube/client-cert.pem`.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @client_cert.setter
+    def client_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_cert", value)
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of client key, like `~/.kube/client-key.pem`.
+        """
+        return pulumi.get(self, "client_key")
+
+    @client_key.setter
+    def client_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_key", value)
+
+    @property
+    @pulumi.getter(name="clusterCert")
+    def cluster_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        return pulumi.get(self, "cluster_cert")
+
+    @cluster_cert.setter
+    def cluster_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_cert", value)
 
 
 @pulumi.input_type
@@ -964,6 +1077,61 @@ class ManagedKubernetesAddonArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class ManagedKubernetesCertificateAuthorityArgs:
+    def __init__(__self__, *,
+                 client_cert: Optional[pulumi.Input[str]] = None,
+                 client_key: Optional[pulumi.Input[str]] = None,
+                 cluster_cert: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
+        :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param pulumi.Input[str] cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        if client_cert is not None:
+            pulumi.set(__self__, "client_cert", client_cert)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if cluster_cert is not None:
+            pulumi.set(__self__, "cluster_cert", cluster_cert)
+
+    @property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of client certificate, like `~/.kube/client-cert.pem`.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @client_cert.setter
+    def client_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_cert", value)
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of client key, like `~/.kube/client-key.pem`.
+        """
+        return pulumi.get(self, "client_key")
+
+    @client_key.setter
+    def client_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_key", value)
+
+    @property
+    @pulumi.getter(name="clusterCert")
+    def cluster_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+        """
+        return pulumi.get(self, "cluster_cert")
+
+    @cluster_cert.setter
+    def cluster_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_cert", value)
 
 
 @pulumi.input_type

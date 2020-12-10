@@ -24,6 +24,8 @@ type EdgeKubernetes struct {
 	Addons EdgeKubernetesAddonArrayOutput `pulumi:"addons"`
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
+	// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+	CertificateAuthority EdgeKubernetesCertificateAuthorityOutput `pulumi:"certificateAuthority"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
 	// The path of client key, like `~/.kube/client-key.pem`.
@@ -77,10 +79,11 @@ type EdgeKubernetes struct {
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * `size`: the size of a data disk. Unit: GiB.
+	// * cloud : basic disks.
+	// * cloudEfficiency : ultra disks.
+	// * cloudSsd : SSDs.
+	// * cloudEssd : ESSDs.
+	// * `size`: the size of a data disk, at least 40. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks EdgeKubernetesWorkerDataDiskArrayOutput `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
@@ -90,7 +93,7 @@ type EdgeKubernetes struct {
 	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
 	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
 	WorkerInstanceTypes pulumi.StringArrayOutput `pulumi:"workerInstanceTypes"`
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes EdgeKubernetesWorkerNodeArrayOutput `pulumi:"workerNodes"`
 	// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber     pulumi.IntOutput         `pulumi:"workerNumber"`
@@ -137,6 +140,8 @@ type edgeKubernetesState struct {
 	Addons []EdgeKubernetesAddon `pulumi:"addons"`
 	// The ID of availability zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+	CertificateAuthority *EdgeKubernetesCertificateAuthority `pulumi:"certificateAuthority"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
 	// The path of client key, like `~/.kube/client-key.pem`.
@@ -190,10 +195,11 @@ type edgeKubernetesState struct {
 	VpcId *string `pulumi:"vpcId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * `size`: the size of a data disk. Unit: GiB.
+	// * cloud : basic disks.
+	// * cloudEfficiency : ultra disks.
+	// * cloudSsd : SSDs.
+	// * cloudEssd : ESSDs.
+	// * `size`: the size of a data disk, at least 40. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []EdgeKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
@@ -203,7 +209,7 @@ type edgeKubernetesState struct {
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
 	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes []EdgeKubernetesWorkerNode `pulumi:"workerNodes"`
 	// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber     *int     `pulumi:"workerNumber"`
@@ -214,6 +220,8 @@ type EdgeKubernetesState struct {
 	Addons EdgeKubernetesAddonArrayInput
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringPtrInput
+	// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+	CertificateAuthority EdgeKubernetesCertificateAuthorityPtrInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
 	// The path of client key, like `~/.kube/client-key.pem`.
@@ -267,10 +275,11 @@ type EdgeKubernetesState struct {
 	VpcId pulumi.StringPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * `size`: the size of a data disk. Unit: GiB.
+	// * cloud : basic disks.
+	// * cloudEfficiency : ultra disks.
+	// * cloudSsd : SSDs.
+	// * cloudEssd : ESSDs.
+	// * `size`: the size of a data disk, at least 40. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks EdgeKubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
@@ -280,7 +289,7 @@ type EdgeKubernetesState struct {
 	WorkerInstanceChargeType pulumi.StringPtrInput
 	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
 	WorkerInstanceTypes pulumi.StringArrayInput
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes EdgeKubernetesWorkerNodeArrayInput
 	// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber     pulumi.IntPtrInput
@@ -340,10 +349,11 @@ type edgeKubernetesArgs struct {
 	Version *string `pulumi:"version"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * `size`: the size of a data disk. Unit: GiB.
+	// * cloud : basic disks.
+	// * cloudEfficiency : ultra disks.
+	// * cloudSsd : SSDs.
+	// * cloudEssd : ESSDs.
+	// * `size`: the size of a data disk, at least 40. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []EdgeKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
@@ -408,10 +418,11 @@ type EdgeKubernetesArgs struct {
 	Version pulumi.StringPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * `size`: the size of a data disk. Unit: GiB.
+	// * cloud : basic disks.
+	// * cloudEfficiency : ultra disks.
+	// * cloudSsd : SSDs.
+	// * cloudEssd : ESSDs.
+	// * `size`: the size of a data disk, at least 40. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks EdgeKubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.

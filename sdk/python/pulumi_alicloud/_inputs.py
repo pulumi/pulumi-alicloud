@@ -97,6 +97,7 @@ class ProviderEndpointArgs:
                  emr: Optional[pulumi.Input[str]] = None,
                  ess: Optional[pulumi.Input[str]] = None,
                  fc: Optional[pulumi.Input[str]] = None,
+                 fnf: Optional[pulumi.Input[str]] = None,
                  gpdb: Optional[pulumi.Input[str]] = None,
                  kms: Optional[pulumi.Input[str]] = None,
                  kvstore: Optional[pulumi.Input[str]] = None,
@@ -179,6 +180,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "ess", ess)
         if fc is not None:
             pulumi.set(__self__, "fc", fc)
+        if fnf is not None:
+            pulumi.set(__self__, "fnf", fnf)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
         if kms is not None:
@@ -488,6 +491,15 @@ class ProviderEndpointArgs:
     @fc.setter
     def fc(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fc", value)
+
+    @property
+    @pulumi.getter
+    def fnf(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fnf")
+
+    @fnf.setter
+    def fnf(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fnf", value)
 
     @property
     @pulumi.getter

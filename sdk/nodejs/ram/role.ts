@@ -58,6 +58,10 @@ export class Role extends pulumi.CustomResource {
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
+     * The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+     */
+    public readonly maxSessionDuration!: pulumi.Output<number | undefined>;
+    /**
      * Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */
     public readonly name!: pulumi.Output<string>;
@@ -100,6 +104,7 @@ export class Role extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["document"] = state ? state.document : undefined;
             inputs["force"] = state ? state.force : undefined;
+            inputs["maxSessionDuration"] = state ? state.maxSessionDuration : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["ramUsers"] = state ? state.ramUsers : undefined;
             inputs["roleId"] = state ? state.roleId : undefined;
@@ -110,6 +115,7 @@ export class Role extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["document"] = args ? args.document : undefined;
             inputs["force"] = args ? args.force : undefined;
+            inputs["maxSessionDuration"] = args ? args.maxSessionDuration : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["ramUsers"] = args ? args.ramUsers : undefined;
             inputs["services"] = args ? args.services : undefined;
@@ -148,6 +154,10 @@ export interface RoleState {
      * This parameter is used for resource destroy. Default value is `false`.
      */
     readonly force?: pulumi.Input<boolean>;
+    /**
+     * The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+     */
+    readonly maxSessionDuration?: pulumi.Input<number>;
     /**
      * Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */
@@ -192,6 +202,10 @@ export interface RoleArgs {
      * This parameter is used for resource destroy. Default value is `false`.
      */
     readonly force?: pulumi.Input<boolean>;
+    /**
+     * The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+     */
+    readonly maxSessionDuration?: pulumi.Input<number>;
     /**
      * Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */

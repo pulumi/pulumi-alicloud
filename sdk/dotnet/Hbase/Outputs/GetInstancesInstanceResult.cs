@@ -14,40 +14,43 @@ namespace Pulumi.AliCloud.Hbase.Outputs
     public sealed class GetInstancesInstanceResult
     {
         /// <summary>
-        /// the Backup Status of the instance.
+        /// The Backup Status of the instance.
         /// </summary>
         public readonly string BackupStatus;
         /// <summary>
-        /// core node disk size, unit:GB.
+        /// Core node disk size, unit:GB.
         /// </summary>
         public readonly int CoreDiskSize;
         /// <summary>
-        /// cloud_ssd or cloud_efficiency
+        /// Cloud_ssd or cloud_efficiency
         /// </summary>
         public readonly string CoreDiskType;
         /// <summary>
-        /// hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        /// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
         /// </summary>
         public readonly string CoreInstanceType;
         /// <summary>
-        /// same with "core_instance_quantity"
+        /// Same with "core_instance_quantity"
         /// </summary>
         public readonly int CoreNodeCount;
+        /// <summary>
+        /// The created time of the instance.
+        /// </summary>
         public readonly string CreatedTime;
         /// <summary>
-        /// the switch of delete protection.
+        /// The switch of delete protection.
         /// </summary>
         public readonly bool DeletionProtection;
         /// <summary>
-        /// the engine of the instance.
+        /// The engine of the instance.
         /// </summary>
         public readonly string Engine;
         /// <summary>
-        /// the engine_version of the instance.
+        /// The engine_version of the instance.
         /// </summary>
         public readonly string EngineVersion;
         /// <summary>
-        /// the expire time of the instance.
+        /// The expire time of the instance.
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
@@ -55,11 +58,11 @@ namespace Pulumi.AliCloud.Hbase.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        /// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
         /// </summary>
         public readonly string MasterInstanceType;
         /// <summary>
-        /// the node count of master
+        /// The node count of master
         /// </summary>
         public readonly int MasterNodeCount;
         /// <summary>

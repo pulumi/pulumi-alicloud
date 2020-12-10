@@ -102,6 +102,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     public readonly storageEngine!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The TDE(Transparent Data Encryption) status.
      */
@@ -143,6 +144,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             inputs["securityIpLists"] = state ? state.securityIpLists : undefined;
             inputs["shardLists"] = state ? state.shardLists : undefined;
             inputs["storageEngine"] = state ? state.storageEngine : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
@@ -171,6 +173,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             inputs["securityIpLists"] = args ? args.securityIpLists : undefined;
             inputs["shardLists"] = args ? args.shardLists : undefined;
             inputs["storageEngine"] = args ? args.storageEngine : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
@@ -251,6 +254,7 @@ export interface ShardingInstanceState {
      * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     readonly storageEngine?: pulumi.Input<string>;
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The TDE(Transparent Data Encryption) status.
      */
@@ -326,6 +330,7 @@ export interface ShardingInstanceArgs {
      * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     readonly storageEngine?: pulumi.Input<string>;
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The TDE(Transparent Data Encryption) status.
      */

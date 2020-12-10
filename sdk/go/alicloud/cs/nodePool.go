@@ -38,6 +38,8 @@ type NodePool struct {
 	NodeNameMode pulumi.StringOutput `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// (Available in 1.105.0+) Id of the Scaling Group.
+	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
@@ -119,6 +121,8 @@ type nodePoolState struct {
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
+	// (Available in 1.105.0+) Id of the Scaling Group.
+	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
@@ -161,6 +165,8 @@ type NodePoolState struct {
 	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
+	// (Available in 1.105.0+) Id of the Scaling Group.
+	ScalingGroupId pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	SecurityGroupId pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.

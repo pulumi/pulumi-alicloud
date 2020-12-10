@@ -108,6 +108,7 @@ class NodePool(pulumi.CustomResource):
             if vswitch_ids is None:
                 raise TypeError("Missing required property 'vswitch_ids'")
             __props__['vswitch_ids'] = vswitch_ids
+            __props__['scaling_group_id'] = None
             __props__['vpc_id'] = None
         super(NodePool, __self__).__init__(
             'alicloud:cs/nodePool:NodePool',
@@ -130,6 +131,7 @@ class NodePool(pulumi.CustomResource):
             node_count: Optional[pulumi.Input[int]] = None,
             node_name_mode: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
+            scaling_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
             system_disk_size: Optional[pulumi.Input[int]] = None,
@@ -155,6 +157,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] node_count: The worker node number of the node pool.
         :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[str] scaling_group_id: (Available in 1.105.0+) Id of the Scaling Group.
         :param pulumi.Input[str] security_group_id: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -181,6 +184,7 @@ class NodePool(pulumi.CustomResource):
         __props__["node_count"] = node_count
         __props__["node_name_mode"] = node_name_mode
         __props__["password"] = password
+        __props__["scaling_group_id"] = scaling_group_id
         __props__["security_group_id"] = security_group_id
         __props__["system_disk_category"] = system_disk_category
         __props__["system_disk_size"] = system_disk_size
@@ -275,6 +279,14 @@ class NodePool(pulumi.CustomResource):
         The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.105.0+) Id of the Scaling Group.
+        """
+        return pulumi.get(self, "scaling_group_id")
 
     @property
     @pulumi.getter(name="securityGroupId")

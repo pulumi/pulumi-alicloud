@@ -54,6 +54,7 @@ class Instance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 private_connection_prefix: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restore_time: Optional[pulumi.Input[str]] = None,
@@ -126,6 +127,31 @@ class Instance(pulumi.CustomResource):
             zone_id="cn-beijing-h")
         ```
 
+        Modify Private Connection String
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.kvstore.Instance("example",
+            config={
+                "appendonly": "yes",
+                "lazyfree-lazy-eviction": "yes",
+            },
+            db_instance_name="tf-test-basic",
+            engine_version="4.0",
+            instance_class="redis.master.large.default",
+            instance_type="Redis",
+            private_connection_prefix="privateconnectionstringprefix",
+            resource_group_id="rg-123456",
+            security_ips=["10.23.12.24"],
+            tags={
+                "Created": "TF",
+                "For": "Test",
+            },
+            vswitch_id="vsw-123456",
+            zone_id="cn-beijing-h")
+        ```
+
         ## Import
 
         KVStore instance can be imported using the id, e.g.
@@ -172,6 +198,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        :param pulumi.Input[str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address.
         :param pulumi.Input[str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] restore_time: The point in time of a backup file.
@@ -258,6 +285,7 @@ class Instance(pulumi.CustomResource):
             __props__['payment_type'] = payment_type
             __props__['period'] = period
             __props__['port'] = port
+            __props__['private_connection_prefix'] = private_connection_prefix
             __props__['private_ip'] = private_ip
             __props__['resource_group_id'] = resource_group_id
             __props__['restore_time'] = restore_time
@@ -328,6 +356,7 @@ class Instance(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
+            private_connection_prefix: Optional[pulumi.Input[str]] = None,
             private_ip: Optional[pulumi.Input[str]] = None,
             qps: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -388,6 +417,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        :param pulumi.Input[str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address.
         :param pulumi.Input[str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[int] qps: Theoretical maximum QPS value.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
@@ -450,6 +480,7 @@ class Instance(pulumi.CustomResource):
         __props__["payment_type"] = payment_type
         __props__["period"] = period
         __props__["port"] = port
+        __props__["private_connection_prefix"] = private_connection_prefix
         __props__["private_ip"] = private_ip
         __props__["qps"] = qps
         __props__["resource_group_id"] = resource_group_id
@@ -785,6 +816,14 @@ class Instance(pulumi.CustomResource):
         It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="privateConnectionPrefix")
+    def private_connection_prefix(self) -> pulumi.Output[Optional[str]]:
+        """
+        Private network connection prefix, used to modify the private network connection address.
+        """
+        return pulumi.get(self, "private_connection_prefix")
 
     @property
     @pulumi.getter(name="privateIp")

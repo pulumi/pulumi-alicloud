@@ -28,6 +28,8 @@ type Role struct {
 	Document pulumi.StringOutput `pulumi:"document"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
+	// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+	MaxSessionDuration pulumi.IntPtrOutput `pulumi:"maxSessionDuration"`
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
@@ -82,6 +84,8 @@ type roleState struct {
 	Document *string `pulumi:"document"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force *bool `pulumi:"force"`
+	// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+	MaxSessionDuration *int `pulumi:"maxSessionDuration"`
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name *string `pulumi:"name"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
@@ -109,6 +113,8 @@ type RoleState struct {
 	Document pulumi.StringPtrInput
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrInput
+	// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+	MaxSessionDuration pulumi.IntPtrInput
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name pulumi.StringPtrInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
@@ -138,6 +144,8 @@ type roleArgs struct {
 	Document *string `pulumi:"document"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force *bool `pulumi:"force"`
+	// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+	MaxSessionDuration *int `pulumi:"maxSessionDuration"`
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name *string `pulumi:"name"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
@@ -162,6 +170,8 @@ type RoleArgs struct {
 	Document pulumi.StringPtrInput
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrInput
+	// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+	MaxSessionDuration pulumi.IntPtrInput
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name pulumi.StringPtrInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.

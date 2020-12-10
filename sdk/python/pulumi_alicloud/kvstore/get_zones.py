@@ -20,7 +20,10 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, id=None, ids=None, instance_charge_type=None, multi=None, output_file=None, zones=None):
+    def __init__(__self__, engine=None, id=None, ids=None, instance_charge_type=None, multi=None, output_file=None, zones=None):
+        if engine and not isinstance(engine, str):
+            raise TypeError("Expected argument 'engine' to be a str")
+        pulumi.set(__self__, "engine", engine)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +42,11 @@ class GetZonesResult:
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> Optional[str]:
+        return pulumi.get(self, "engine")
 
     @property
     @pulumi.getter
@@ -86,6 +94,7 @@ class AwaitableGetZonesResult(GetZonesResult):
         if False:
             yield self
         return GetZonesResult(
+            engine=self.engine,
             id=self.id,
             ids=self.ids,
             instance_charge_type=self.instance_charge_type,
@@ -94,7 +103,8 @@ class AwaitableGetZonesResult(GetZonesResult):
             zones=self.zones)
 
 
-def get_zones(instance_charge_type: Optional[str] = None,
+def get_zones(engine: Optional[str] = None,
+              instance_charge_type: Optional[str] = None,
               multi: Optional[bool] = None,
               output_file: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
@@ -120,6 +130,7 @@ def get_zones(instance_charge_type: Optional[str] = None,
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
     """
     __args__ = dict()
+    __args__['engine'] = engine
     __args__['instanceChargeType'] = instance_charge_type
     __args__['multi'] = multi
     __args__['outputFile'] = output_file
@@ -130,6 +141,7 @@ def get_zones(instance_charge_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:kvstore/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
+        engine=__ret__.engine,
         id=__ret__.id,
         ids=__ret__.ids,
         instance_charge_type=__ret__.instance_charge_type,

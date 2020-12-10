@@ -67,41 +67,57 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The account of the cluster web ui.
+	Account pulumi.StringPtrOutput `pulumi:"account"`
 	// `true`, `false`, System default to `false`, valid when payType = PrePaid.
 	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
 	// 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true
-	ColdStorageSize pulumi.IntOutput `pulumi:"coldStorageSize"`
-	// User-defined HBase instance one core node's storage space.Unit: GB. Value range:
+	ColdStorageSize pulumi.IntPtrOutput `pulumi:"coldStorageSize"`
+	// User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space; value range: [400, 8000]
 	// - 40-GB increments.
 	CoreDiskSize pulumi.IntPtrOutput `pulumi:"coreDiskSize"`
 	// Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`. localDisk size is fixed.
 	CoreDiskType pulumi.StringOutput `pulumi:"coreDiskType"`
-	// default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
+	// Default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
 	CoreInstanceQuantity pulumi.IntPtrOutput `pulumi:"coreInstanceQuantity"`
 	CoreInstanceType     pulumi.StringOutput `pulumi:"coreInstanceType"`
-	// the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+	// The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
 	Duration pulumi.IntOutput `pulumi:"duration"`
 	// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and ` bds  `
 	Engine pulumi.StringPtrOutput `pulumi:"engine"`
-	// hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
+	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
+	// The white ip list of the cluster.
+	IpWhite pulumi.StringOutput `pulumi:"ipWhite"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
-	MaintainStartTime  pulumi.StringOutput `pulumi:"maintainStartTime"`
-	MasterInstanceType pulumi.StringOutput `pulumi:"masterInstanceType"`
+	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
+	// Count nodes of the master node.
+	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
+	MasterInstanceQuantity pulumi.IntOutput    `pulumi:"masterInstanceQuantity"`
+	MasterInstanceType     pulumi.StringOutput `pulumi:"masterInstanceType"`
 	// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The password of the cluster web ui account.
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	PayType pulumi.StringPtrOutput `pulumi:"payType"`
+	// The security group resource of the cluster.
+	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
+	// (Optional, Available in 1.105.0+) The slb service addresses of the cluster.
+	SlbConnAddrs InstanceSlbConnAddrArrayOutput `pulumi:"slbConnAddrs"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// if vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
+	// (Optional, Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+	UiProxyConnAddrs InstanceUiProxyConnAddrArrayOutput `pulumi:"uiProxyConnAddrs"`
+	// If vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	// (Optional, Available in 1.105.0+) The zookeeper addresses of the cluster.
+	ZkConnAddrs InstanceZkConnAddrArrayOutput `pulumi:"zkConnAddrs"`
 	// The Zone to launch the HBase instance. if vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -146,81 +162,113 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// The account of the cluster web ui.
+	Account *string `pulumi:"account"`
 	// `true`, `false`, System default to `false`, valid when payType = PrePaid.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true
 	ColdStorageSize *int `pulumi:"coldStorageSize"`
-	// User-defined HBase instance one core node's storage space.Unit: GB. Value range:
+	// User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space; value range: [400, 8000]
 	// - 40-GB increments.
 	CoreDiskSize *int `pulumi:"coreDiskSize"`
 	// Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`. localDisk size is fixed.
 	CoreDiskType *string `pulumi:"coreDiskType"`
-	// default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
+	// Default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
 	CoreInstanceQuantity *int    `pulumi:"coreInstanceQuantity"`
 	CoreInstanceType     *string `pulumi:"coreInstanceType"`
-	// the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+	// The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
 	Duration *int `pulumi:"duration"`
 	// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and ` bds  `
 	Engine *string `pulumi:"engine"`
-	// hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
+	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	EngineVersion *string `pulumi:"engineVersion"`
+	// The white ip list of the cluster.
+	IpWhite *string `pulumi:"ipWhite"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
-	MaintainStartTime  *string `pulumi:"maintainStartTime"`
-	MasterInstanceType *string `pulumi:"masterInstanceType"`
+	MaintainStartTime *string `pulumi:"maintainStartTime"`
+	// Count nodes of the master node.
+	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
+	MasterInstanceQuantity *int    `pulumi:"masterInstanceQuantity"`
+	MasterInstanceType     *string `pulumi:"masterInstanceType"`
 	// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	Name *string `pulumi:"name"`
+	// The password of the cluster web ui account.
+	Password *string `pulumi:"password"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	PayType *string `pulumi:"payType"`
+	// The security group resource of the cluster.
+	SecurityGroups []string `pulumi:"securityGroups"`
+	// (Optional, Available in 1.105.0+) The slb service addresses of the cluster.
+	SlbConnAddrs []InstanceSlbConnAddr `pulumi:"slbConnAddrs"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// if vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
+	// (Optional, Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+	UiProxyConnAddrs []InstanceUiProxyConnAddr `pulumi:"uiProxyConnAddrs"`
+	// If vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
 	VswitchId *string `pulumi:"vswitchId"`
+	// (Optional, Available in 1.105.0+) The zookeeper addresses of the cluster.
+	ZkConnAddrs []InstanceZkConnAddr `pulumi:"zkConnAddrs"`
 	// The Zone to launch the HBase instance. if vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type InstanceState struct {
+	// The account of the cluster web ui.
+	Account pulumi.StringPtrInput
 	// `true`, `false`, System default to `false`, valid when payType = PrePaid.
 	AutoRenew pulumi.BoolPtrInput
 	// 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true
 	ColdStorageSize pulumi.IntPtrInput
-	// User-defined HBase instance one core node's storage space.Unit: GB. Value range:
+	// User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space; value range: [400, 8000]
 	// - 40-GB increments.
 	CoreDiskSize pulumi.IntPtrInput
 	// Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`. localDisk size is fixed.
 	CoreDiskType pulumi.StringPtrInput
-	// default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
+	// Default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
 	CoreInstanceQuantity pulumi.IntPtrInput
 	CoreInstanceType     pulumi.StringPtrInput
-	// the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+	// The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
 	DeletionProtection pulumi.BoolPtrInput
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
 	Duration pulumi.IntPtrInput
 	// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and ` bds  `
 	Engine pulumi.StringPtrInput
-	// hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
+	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	EngineVersion pulumi.StringPtrInput
+	// The white ip list of the cluster.
+	IpWhite pulumi.StringPtrInput
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
-	MaintainStartTime  pulumi.StringPtrInput
-	MasterInstanceType pulumi.StringPtrInput
+	MaintainStartTime pulumi.StringPtrInput
+	// Count nodes of the master node.
+	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
+	MasterInstanceQuantity pulumi.IntPtrInput
+	MasterInstanceType     pulumi.StringPtrInput
 	// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	Name pulumi.StringPtrInput
+	// The password of the cluster web ui account.
+	Password pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	PayType pulumi.StringPtrInput
+	// The security group resource of the cluster.
+	SecurityGroups pulumi.StringArrayInput
+	// (Optional, Available in 1.105.0+) The slb service addresses of the cluster.
+	SlbConnAddrs InstanceSlbConnAddrArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// if vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
+	// (Optional, Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+	UiProxyConnAddrs InstanceUiProxyConnAddrArrayInput
+	// If vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
 	VswitchId pulumi.StringPtrInput
+	// (Optional, Available in 1.105.0+) The zookeeper addresses of the cluster.
+	ZkConnAddrs InstanceZkConnAddrArrayInput
 	// The Zone to launch the HBase instance. if vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId pulumi.StringPtrInput
 }
@@ -230,28 +278,31 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// The account of the cluster web ui.
+	Account *string `pulumi:"account"`
 	// `true`, `false`, System default to `false`, valid when payType = PrePaid.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true
 	ColdStorageSize *int `pulumi:"coldStorageSize"`
-	// User-defined HBase instance one core node's storage space.Unit: GB. Value range:
+	// User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space; value range: [400, 8000]
 	// - 40-GB increments.
 	CoreDiskSize *int `pulumi:"coreDiskSize"`
 	// Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`. localDisk size is fixed.
 	CoreDiskType string `pulumi:"coreDiskType"`
-	// default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
+	// Default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
 	CoreInstanceQuantity *int   `pulumi:"coreInstanceQuantity"`
 	CoreInstanceType     string `pulumi:"coreInstanceType"`
-	// the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+	// The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
 	Duration *int `pulumi:"duration"`
 	// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and ` bds  `
 	Engine *string `pulumi:"engine"`
-	// hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
+	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	EngineVersion string `pulumi:"engineVersion"`
+	// The white ip list of the cluster.
+	IpWhite *string `pulumi:"ipWhite"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -259,11 +310,15 @@ type instanceArgs struct {
 	MasterInstanceType string  `pulumi:"masterInstanceType"`
 	// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	Name *string `pulumi:"name"`
+	// The password of the cluster web ui account.
+	Password *string `pulumi:"password"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	PayType *string `pulumi:"payType"`
+	// The security group resource of the cluster.
+	SecurityGroups []string `pulumi:"securityGroups"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// if vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
+	// If vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the HBase instance. if vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId *string `pulumi:"zoneId"`
@@ -271,28 +326,31 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// The account of the cluster web ui.
+	Account pulumi.StringPtrInput
 	// `true`, `false`, System default to `false`, valid when payType = PrePaid.
 	AutoRenew pulumi.BoolPtrInput
 	// 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true
 	ColdStorageSize pulumi.IntPtrInput
-	// User-defined HBase instance one core node's storage space.Unit: GB. Value range:
+	// User-defined HBase instance one core node's storage, Valid when engine=hbase/hbaseue, bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space; value range: [400, 8000]
 	// - 40-GB increments.
 	CoreDiskSize pulumi.IntPtrInput
 	// Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`. localDisk size is fixed.
 	CoreDiskType pulumi.StringInput
-	// default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
+	// Default=2. if coreInstanceQuantity > 1,this is cluster's instance.  if coreInstanceQuantity = 1,this is a single instance.
 	CoreInstanceQuantity pulumi.IntPtrInput
 	CoreInstanceType     pulumi.StringInput
-	// the switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
+	// The switch of delete protection. true: delete protect, false: no delete protect. you must set false when you want to delete cluster.
 	DeletionProtection pulumi.BoolPtrInput
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid. unit: month.
 	Duration pulumi.IntPtrInput
 	// "hbase/hbaseue/bds", The following types are supported after v1.73.0: `hbaseue` and ` bds  `
 	Engine pulumi.StringPtrInput
-	// hbase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-	// * `masterInstanceType`、`coreInstanceType` - (Required, ForceNew) Instance specification. see [Instance specifications](https://help.aliyun.com/document_detail/53532.html). or you can call describeInstanceType api.
+	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	EngineVersion pulumi.StringInput
+	// The white ip list of the cluster.
+	IpWhite pulumi.StringPtrInput
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -300,11 +358,15 @@ type InstanceArgs struct {
 	MasterInstanceType pulumi.StringInput
 	// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	Name pulumi.StringPtrInput
+	// The password of the cluster web ui account.
+	Password pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	PayType pulumi.StringPtrInput
+	// The security group resource of the cluster.
+	SecurityGroups pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// if vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
+	// If vswitchId is not empty, that mean netType = vpc and has a same region. if vswitchId is empty, net_type_classic
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the HBase instance. if vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId pulumi.StringPtrInput

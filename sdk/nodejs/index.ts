@@ -38,6 +38,7 @@ import * as elasticsearch from "./elasticsearch";
 import * as emr from "./emr";
 import * as ess from "./ess";
 import * as fc from "./fc";
+import * as fnf from "./fnf";
 import * as gpdb from "./gpdb";
 import * as hbase from "./hbase";
 import * as kms from "./kms";
@@ -95,6 +96,7 @@ export {
     emr,
     ess,
     fc,
+    fnf,
     gpdb,
     hbase,
     kms,

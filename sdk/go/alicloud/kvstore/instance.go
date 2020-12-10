@@ -95,6 +95,46 @@ import (
 // }
 // ```
 //
+// Modify Private Connection String
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/kvstore"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := kvstore.NewInstance(ctx, "example", &kvstore.InstanceArgs{
+// 			Config: pulumi.StringMap{
+// 				"appendonly":             pulumi.String("yes"),
+// 				"lazyfree-lazy-eviction": pulumi.String("yes"),
+// 			},
+// 			DbInstanceName:          pulumi.String("tf-test-basic"),
+// 			EngineVersion:           pulumi.String("4.0"),
+// 			InstanceClass:           pulumi.String("redis.master.large.default"),
+// 			InstanceType:            pulumi.String("Redis"),
+// 			PrivateConnectionPrefix: pulumi.String("privateconnectionstringprefix"),
+// 			ResourceGroupId:         pulumi.String("rg-123456"),
+// 			SecurityIps: pulumi.StringArray{
+// 				pulumi.String("10.23.12.24"),
+// 			},
+// 			Tags: pulumi.StringMap{
+// 				"Created": pulumi.String("TF"),
+// 				"For":     pulumi.String("Test"),
+// 			},
+// 			VswitchId: pulumi.String("vsw-123456"),
+// 			ZoneId:    pulumi.String("cn-beijing-h"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // KVStore instance can be imported using the id, e.g.
@@ -197,6 +237,8 @@ type Instance struct {
 	Period pulumi.StringPtrOutput `pulumi:"period"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
+	// Private network connection prefix, used to modify the private network connection address.
+	PrivateConnectionPrefix pulumi.StringPtrOutput `pulumi:"privateConnectionPrefix"`
 	// The internal IP address of the instance.
 	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
 	// Theoretical maximum QPS value.
@@ -350,6 +392,8 @@ type instanceState struct {
 	Period *string `pulumi:"period"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port *int `pulumi:"port"`
+	// Private network connection prefix, used to modify the private network connection address.
+	PrivateConnectionPrefix *string `pulumi:"privateConnectionPrefix"`
 	// The internal IP address of the instance.
 	PrivateIp *string `pulumi:"privateIp"`
 	// Theoretical maximum QPS value.
@@ -476,6 +520,8 @@ type InstanceState struct {
 	Period pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port pulumi.IntPtrInput
+	// Private network connection prefix, used to modify the private network connection address.
+	PrivateConnectionPrefix pulumi.StringPtrInput
 	// The internal IP address of the instance.
 	PrivateIp pulumi.StringPtrInput
 	// Theoretical maximum QPS value.
@@ -599,6 +645,8 @@ type instanceArgs struct {
 	Period *string `pulumi:"period"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port *int `pulumi:"port"`
+	// Private network connection prefix, used to modify the private network connection address.
+	PrivateConnectionPrefix *string `pulumi:"privateConnectionPrefix"`
 	// The internal IP address of the instance.
 	PrivateIp *string `pulumi:"privateIp"`
 	// The ID of resource group which the resource belongs.
@@ -714,6 +762,8 @@ type InstanceArgs struct {
 	Period pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port pulumi.IntPtrInput
+	// Private network connection prefix, used to modify the private network connection address.
+	PrivateConnectionPrefix pulumi.StringPtrInput
 	// The internal IP address of the instance.
 	PrivateIp pulumi.StringPtrInput
 	// The ID of resource group which the resource belongs.

@@ -63,6 +63,32 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Modify Private Connection String
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.kvstore.Instance("example", {
+ *     config: {
+ *         appendonly: "yes",
+ *         "lazyfree-lazy-eviction": "yes",
+ *     },
+ *     dbInstanceName: "tf-test-basic",
+ *     engineVersion: "4.0",
+ *     instanceClass: "redis.master.large.default",
+ *     instanceType: "Redis",
+ *     privateConnectionPrefix: "privateconnectionstringprefix",
+ *     resourceGroupId: "rg-123456",
+ *     securityIps: ["10.23.12.24"],
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Test",
+ *     },
+ *     vswitchId: "vsw-123456",
+ *     zoneId: "cn-beijing-h",
+ * });
+ * ```
+ *
  * ## Import
  *
  * KVStore instance can be imported using the id, e.g.
@@ -270,6 +296,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
+     * Private network connection prefix, used to modify the private network connection address.
+     */
+    public readonly privateConnectionPrefix!: pulumi.Output<string | undefined>;
+    /**
      * The internal IP address of the instance.
      */
     public readonly privateIp!: pulumi.Output<string>;
@@ -384,6 +414,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["paymentType"] = state ? state.paymentType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["port"] = state ? state.port : undefined;
+            inputs["privateConnectionPrefix"] = state ? state.privateConnectionPrefix : undefined;
             inputs["privateIp"] = state ? state.privateIp : undefined;
             inputs["qps"] = state ? state.qps : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -438,6 +469,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["paymentType"] = args ? args.paymentType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["port"] = args ? args.port : undefined;
+            inputs["privateConnectionPrefix"] = args ? args.privateConnectionPrefix : undefined;
             inputs["privateIp"] = args ? args.privateIp : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["restoreTime"] = args ? args.restoreTime : undefined;
@@ -643,6 +675,10 @@ export interface InstanceState {
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      */
     readonly port?: pulumi.Input<number>;
+    /**
+     * Private network connection prefix, used to modify the private network connection address.
+     */
+    readonly privateConnectionPrefix?: pulumi.Input<string>;
     /**
      * The internal IP address of the instance.
      */
@@ -867,6 +903,10 @@ export interface InstanceArgs {
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      */
     readonly port?: pulumi.Input<number>;
+    /**
+     * Private network connection prefix, used to modify the private network connection address.
+     */
+    readonly privateConnectionPrefix?: pulumi.Input<string>;
     /**
      * The internal IP address of the instance.
      */

@@ -80,6 +80,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.105.0+) Id of the Scaling Group.
+        /// </summary>
+        [Output("scalingGroupId")]
+        public Output<string> ScalingGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         /// </summary>
         [Output("securityGroupId")]
@@ -403,6 +409,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// (Available in 1.105.0+) Id of the Scaling Group.
+        /// </summary>
+        [Input("scalingGroupId")]
+        public Input<string>? ScalingGroupId { get; set; }
 
         /// <summary>
         /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.

@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "1"
+// 		opt0 := 1
 // 		opt1 := "rg-acfmwvv********"
 // 		opt2 := "waf-cloud"
 // 		_default, err := waf.GetInstances(ctx, &waf.GetInstancesArgs{
@@ -63,7 +63,7 @@ type GetInstancesArgs struct {
 	// The ID of resource group to which WAF instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
-	Status *string `pulumi:"status"`
+	Status *int `pulumi:"status"`
 }
 
 // A collection of values returned by getInstances.
@@ -78,5 +78,5 @@ type GetInstancesResult struct {
 	OutputFile      *string                `pulumi:"outputFile"`
 	ResourceGroupId *string                `pulumi:"resourceGroupId"`
 	// Indicates whether the WAF instance has expired.
-	Status *string `pulumi:"status"`
+	Status *int `pulumi:"status"`
 }

@@ -138,8 +138,6 @@ class Domain(pulumi.CustomResource):
             __props__['log_headers'] = log_headers
             __props__['read_time'] = read_time
             __props__['resource_group_id'] = resource_group_id
-            if source_ips is None:
-                raise TypeError("Missing required property 'source_ips'")
             __props__['source_ips'] = source_ips
             __props__['write_time'] = write_time
             __props__['cname'] = None
@@ -357,7 +355,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceIps")
-    def source_ips(self) -> pulumi.Output[Sequence[str]]:
+    def source_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of the IP address or domain of the origin server to which the specified domain points.
         """

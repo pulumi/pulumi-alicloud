@@ -39,8 +39,8 @@ class GetInstancesResult:
         if resource_group_id and not isinstance(resource_group_id, str):
             raise TypeError("Expected argument 'resource_group_id' to be a str")
         pulumi.set(__self__, "resource_group_id", resource_group_id)
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
+        if status and not isinstance(status, int):
+            raise TypeError("Expected argument 'status' to be a int")
         pulumi.set(__self__, "status", status)
 
     @property
@@ -84,7 +84,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[str]:
+    def status(self) -> Optional[int]:
         """
         Indicates whether the WAF instance has expired.
         """
@@ -110,7 +110,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
                   instance_source: Optional[str] = None,
                   output_file: Optional[str] = None,
                   resource_group_id: Optional[str] = None,
-                  status: Optional[str] = None,
+                  status: Optional[int] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
     Provides a WAF datasource to retrieve instances.
@@ -126,7 +126,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     import pulumi_alicloud as alicloud
 
     default = alicloud.waf.get_instances(ids=["waf-cn-09k********"],
-        status="1",
+        status=1,
         resource_group_id="rg-acfmwvv********",
         instance_source="waf-cloud")
     pulumi.export("theFirstWafInstanceId", default.instances[0].id)
@@ -136,7 +136,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of WAF instance IDs.
     :param str instance_source: The source of the WAF instance.
     :param str resource_group_id: The ID of resource group to which WAF instance belongs.
-    :param str status: The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
+    :param int status: The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
     """
     __args__ = dict()
     __args__['ids'] = ids

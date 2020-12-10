@@ -31,6 +31,7 @@ class ShardingInstance(pulumi.CustomResource):
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceShardListArgs']]]]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -104,6 +105,7 @@ class ShardingInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'shard_lists'")
             __props__['shard_lists'] = shard_lists
             __props__['storage_engine'] = storage_engine
+            __props__['tags'] = tags
             __props__['tde_status'] = tde_status
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id
@@ -133,6 +135,7 @@ class ShardingInstance(pulumi.CustomResource):
             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceShardListArgs']]]]] = None,
             storage_engine: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ShardingInstance':
@@ -182,6 +185,7 @@ class ShardingInstance(pulumi.CustomResource):
         __props__["security_ip_lists"] = security_ip_lists
         __props__["shard_lists"] = shard_lists
         __props__["storage_engine"] = storage_engine
+        __props__["tags"] = tags
         __props__["tde_status"] = tde_status
         __props__["vswitch_id"] = vswitch_id
         __props__["zone_id"] = zone_id
@@ -306,6 +310,11 @@ class ShardingInstance(pulumi.CustomResource):
         Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         """
         return pulumi.get(self, "storage_engine")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tdeStatus")
