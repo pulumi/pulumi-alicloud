@@ -19,6 +19,7 @@ __all__ = [
     'GetStackGroupsGroupParameterResult',
     'GetStacksStackResult',
     'GetStacksStackParameterResult',
+    'GetTemplatesTemplateResult',
 ]
 
 @pulumi.output_type
@@ -666,5 +667,133 @@ class GetStacksStackParameterResult(dict):
         The value of parameters.
         """
         return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class GetTemplatesTemplateResult(dict):
+    def __init__(__self__, *,
+                 change_set_id: str,
+                 description: str,
+                 id: str,
+                 share_type: str,
+                 stack_group_name: str,
+                 stack_id: str,
+                 tags: Mapping[str, Any],
+                 template_body: str,
+                 template_id: str,
+                 template_name: str,
+                 template_version: str):
+        """
+        :param str change_set_id: The ID of the change set.
+        :param str description: The description of the template. The description can be up to 256 characters in length.
+        :param str id: The ID of the Template.
+        :param str share_type: Share Type.
+        :param str stack_group_name: The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        :param str stack_id: The ID of the stack.
+        :param Mapping[str, Any] tags: Tags.
+        :param str template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
+        :param str template_id: The ID of the template.
+        :param str template_name: The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        :param str template_version: Template Version.
+        """
+        pulumi.set(__self__, "change_set_id", change_set_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "share_type", share_type)
+        pulumi.set(__self__, "stack_group_name", stack_group_name)
+        pulumi.set(__self__, "stack_id", stack_id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "template_body", template_body)
+        pulumi.set(__self__, "template_id", template_id)
+        pulumi.set(__self__, "template_name", template_name)
+        pulumi.set(__self__, "template_version", template_version)
+
+    @property
+    @pulumi.getter(name="changeSetId")
+    def change_set_id(self) -> str:
+        """
+        The ID of the change set.
+        """
+        return pulumi.get(self, "change_set_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the template. The description can be up to 256 characters in length.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Template.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> str:
+        """
+        Share Type.
+        """
+        return pulumi.get(self, "share_type")
+
+    @property
+    @pulumi.getter(name="stackGroupName")
+    def stack_group_name(self) -> str:
+        """
+        The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        """
+        return pulumi.get(self, "stack_group_name")
+
+    @property
+    @pulumi.getter(name="stackId")
+    def stack_id(self) -> str:
+        """
+        The ID of the stack.
+        """
+        return pulumi.get(self, "stack_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        Tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="templateBody")
+    def template_body(self) -> str:
+        """
+        The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
+        """
+        return pulumi.get(self, "template_body")
+
+    @property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> str:
+        """
+        The ID of the template.
+        """
+        return pulumi.get(self, "template_id")
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> str:
+        """
+        The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        """
+        return pulumi.get(self, "template_name")
+
+    @property
+    @pulumi.getter(name="templateVersion")
+    def template_version(self) -> str:
+        """
+        Template Version.
+        """
+        return pulumi.get(self, "template_version")
 
 

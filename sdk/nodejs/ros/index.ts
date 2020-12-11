@@ -6,5 +6,7 @@ export * from "./changeSet";
 export * from "./getChangeSets";
 export * from "./getStackGroups";
 export * from "./getStacks";
+export * from "./getTemplates";
 export * from "./stack";
 export * from "./stackGroup";
+export * from "./template";

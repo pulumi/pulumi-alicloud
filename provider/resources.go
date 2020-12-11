@@ -562,6 +562,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ros_change_set":  {Tok: resource(rosMod, "ChangeSet")},
 			"alicloud_ros_stack_group": {Tok: resource(rosMod, "StackGroup")},
 			"alicloud_ros_stack":       {Tok: resource(rosMod, "Stack")},
+			"alicloud_ros_template":    {Tok: resource(rosMod, "Template")},
 
 			// Sag
 			"alicloud_sag_acl":         {Tok: resource(rocketMqMod, "Acl")},
@@ -828,6 +829,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kms_key_versions":    {Tok: dataSource(kmsMod, "getKeyVersions")},
 			"alicloud_kms_secrets":         {Tok: dataSource(kmsMod, "getSecrets")},
 			"alicloud_kms_secret_versions": {Tok: dataSource(kmsMod, "getSecretVersions")},
+			"alicloud_kms_service":         {Tok: dataSource(kmsMod, "getService")},
 
 			// KvStore
 			"alicloud_kvstore_instances":        {Tok: dataSource(kvstoreMod, "getInstances")},
@@ -926,6 +928,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ros_change_sets":  {Tok: dataSource(rosMod, "getChangeSets")},
 			"alicloud_ros_stack_groups": {Tok: dataSource(rosMod, "getStackGroups")},
 			"alicloud_ros_stacks":       {Tok: dataSource(rosMod, "getStacks")},
+			"alicloud_ros_templates":    {Tok: dataSource(rosMod, "getTemplates")},
 
 			// Sag
 			"alicloud_sag_acls": {Tok: dataSource(sagMod, "getAcls")},

@@ -12,6 +12,7 @@ from .get_keys import *
 from .get_plaintext import *
 from .get_secret_versions import *
 from .get_secrets import *
+from .get_service import *
 from .key import *
 from .key_version import *
 from .secret import *

@@ -5074,6 +5074,15 @@ export namespace ecs {
          */
         name?: string;
         /**
+         * The performance level of the ESSD used as data disk:
+         * - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+         * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+         * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+         * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+         * Default to `PL1`.
+         */
+        performanceLevel?: string;
+        /**
          * The size of the data disk.
          * - cloud：[5, 2000]
          * - cloud_efficiency：[20, 32768]
@@ -9802,6 +9811,53 @@ export namespace ros {
          * The value of parameters.
          */
         parameterValue: string;
+    }
+
+    export interface GetTemplatesTemplate {
+        /**
+         * The ID of the change set.
+         */
+        changeSetId: string;
+        /**
+         * The description of the template. The description can be up to 256 characters in length.
+         */
+        description: string;
+        /**
+         * The ID of the Template.
+         */
+        id: string;
+        /**
+         * Share Type.
+         */
+        shareType: string;
+        /**
+         * The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+         */
+        stackGroupName: string;
+        /**
+         * The ID of the stack.
+         */
+        stackId: string;
+        /**
+         * Tags.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
+         */
+        templateBody: string;
+        /**
+         * The ID of the template.
+         */
+        templateId: string;
+        /**
+         * The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+         */
+        templateName: string;
+        /**
+         * Template Version.
+         */
+        templateVersion: string;
     }
 
     export interface StackGroupParameter {

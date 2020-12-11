@@ -1270,6 +1270,193 @@ func (o GetStacksStackParameterArrayOutput) Index(i pulumi.IntInput) GetStacksSt
 	}).(GetStacksStackParameterOutput)
 }
 
+type GetTemplatesTemplate struct {
+	// The ID of the change set.
+	ChangeSetId string `pulumi:"changeSetId"`
+	// The description of the template. The description can be up to 256 characters in length.
+	Description string `pulumi:"description"`
+	// The ID of the Template.
+	Id string `pulumi:"id"`
+	// Share Type.
+	ShareType string `pulumi:"shareType"`
+	// The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+	StackGroupName string `pulumi:"stackGroupName"`
+	// The ID of the stack.
+	StackId string `pulumi:"stackId"`
+	// Tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
+	TemplateBody string `pulumi:"templateBody"`
+	// The ID of the template.
+	TemplateId string `pulumi:"templateId"`
+	// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+	TemplateName string `pulumi:"templateName"`
+	// Template Version.
+	TemplateVersion string `pulumi:"templateVersion"`
+}
+
+// GetTemplatesTemplateInput is an input type that accepts GetTemplatesTemplateArgs and GetTemplatesTemplateOutput values.
+// You can construct a concrete instance of `GetTemplatesTemplateInput` via:
+//
+//          GetTemplatesTemplateArgs{...}
+type GetTemplatesTemplateInput interface {
+	pulumi.Input
+
+	ToGetTemplatesTemplateOutput() GetTemplatesTemplateOutput
+	ToGetTemplatesTemplateOutputWithContext(context.Context) GetTemplatesTemplateOutput
+}
+
+type GetTemplatesTemplateArgs struct {
+	// The ID of the change set.
+	ChangeSetId pulumi.StringInput `pulumi:"changeSetId"`
+	// The description of the template. The description can be up to 256 characters in length.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Template.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Share Type.
+	ShareType pulumi.StringInput `pulumi:"shareType"`
+	// The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+	StackGroupName pulumi.StringInput `pulumi:"stackGroupName"`
+	// The ID of the stack.
+	StackId pulumi.StringInput `pulumi:"stackId"`
+	// Tags.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
+	TemplateBody pulumi.StringInput `pulumi:"templateBody"`
+	// The ID of the template.
+	TemplateId pulumi.StringInput `pulumi:"templateId"`
+	// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+	TemplateName pulumi.StringInput `pulumi:"templateName"`
+	// Template Version.
+	TemplateVersion pulumi.StringInput `pulumi:"templateVersion"`
+}
+
+func (GetTemplatesTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetTemplatesTemplateArgs) ToGetTemplatesTemplateOutput() GetTemplatesTemplateOutput {
+	return i.ToGetTemplatesTemplateOutputWithContext(context.Background())
+}
+
+func (i GetTemplatesTemplateArgs) ToGetTemplatesTemplateOutputWithContext(ctx context.Context) GetTemplatesTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplatesTemplateOutput)
+}
+
+// GetTemplatesTemplateArrayInput is an input type that accepts GetTemplatesTemplateArray and GetTemplatesTemplateArrayOutput values.
+// You can construct a concrete instance of `GetTemplatesTemplateArrayInput` via:
+//
+//          GetTemplatesTemplateArray{ GetTemplatesTemplateArgs{...} }
+type GetTemplatesTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetTemplatesTemplateArrayOutput() GetTemplatesTemplateArrayOutput
+	ToGetTemplatesTemplateArrayOutputWithContext(context.Context) GetTemplatesTemplateArrayOutput
+}
+
+type GetTemplatesTemplateArray []GetTemplatesTemplateInput
+
+func (GetTemplatesTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetTemplatesTemplateArray) ToGetTemplatesTemplateArrayOutput() GetTemplatesTemplateArrayOutput {
+	return i.ToGetTemplatesTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetTemplatesTemplateArray) ToGetTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetTemplatesTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplatesTemplateArrayOutput)
+}
+
+type GetTemplatesTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetTemplatesTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetTemplatesTemplateOutput) ToGetTemplatesTemplateOutput() GetTemplatesTemplateOutput {
+	return o
+}
+
+func (o GetTemplatesTemplateOutput) ToGetTemplatesTemplateOutputWithContext(ctx context.Context) GetTemplatesTemplateOutput {
+	return o
+}
+
+// The ID of the change set.
+func (o GetTemplatesTemplateOutput) ChangeSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.ChangeSetId }).(pulumi.StringOutput)
+}
+
+// The description of the template. The description can be up to 256 characters in length.
+func (o GetTemplatesTemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Template.
+func (o GetTemplatesTemplateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Share Type.
+func (o GetTemplatesTemplateOutput) ShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.ShareType }).(pulumi.StringOutput)
+}
+
+// The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+func (o GetTemplatesTemplateOutput) StackGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.StackGroupName }).(pulumi.StringOutput)
+}
+
+// The ID of the stack.
+func (o GetTemplatesTemplateOutput) StackId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.StackId }).(pulumi.StringOutput)
+}
+
+// Tags.
+func (o GetTemplatesTemplateOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
+func (o GetTemplatesTemplateOutput) TemplateBody() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.TemplateBody }).(pulumi.StringOutput)
+}
+
+// The ID of the template.
+func (o GetTemplatesTemplateOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+func (o GetTemplatesTemplateOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// Template Version.
+func (o GetTemplatesTemplateOutput) TemplateVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.TemplateVersion }).(pulumi.StringOutput)
+}
+
+type GetTemplatesTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTemplatesTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetTemplatesTemplateArrayOutput) ToGetTemplatesTemplateArrayOutput() GetTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetTemplatesTemplateArrayOutput) ToGetTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetTemplatesTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplatesTemplate {
+		return vs[0].([]GetTemplatesTemplate)[vs[1].(int)]
+	}).(GetTemplatesTemplateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ChangeSetParameterOutput{})
 	pulumi.RegisterOutputType(ChangeSetParameterArrayOutput{})
@@ -1289,4 +1476,6 @@ func init() {
 	pulumi.RegisterOutputType(GetStacksStackArrayOutput{})
 	pulumi.RegisterOutputType(GetStacksStackParameterOutput{})
 	pulumi.RegisterOutputType(GetStacksStackParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetTemplatesTemplateOutput{})
+	pulumi.RegisterOutputType(GetTemplatesTemplateArrayOutput{})
 }

@@ -512,6 +512,13 @@ type InstanceDataDisk struct {
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// The name of the data disk.
 	Name *string `pulumi:"name"`
+	// The performance level of the ESSD used as data disk:
+	// - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	//   Default to `PL1`.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The size of the data disk.
 	// - cloud：[5, 2000]
 	// - cloud_efficiency：[20, 32768]
@@ -555,6 +562,13 @@ type InstanceDataDiskArgs struct {
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The name of the data disk.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The performance level of the ESSD used as data disk:
+	// - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	//   Default to `PL1`.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// The size of the data disk.
 	// - cloud：[5, 2000]
 	// - cloud_efficiency：[20, 32768]
@@ -656,6 +670,16 @@ func (o InstanceDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 // The name of the data disk.
 func (o InstanceDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The performance level of the ESSD used as data disk:
+// - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+//   Default to `PL1`.
+func (o InstanceDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
 // The size of the data disk.
