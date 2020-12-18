@@ -57,11 +57,13 @@ export interface ProviderEndpoint {
     oss?: pulumi.Input<string>;
     ots?: pulumi.Input<string>;
     polardb?: pulumi.Input<string>;
+    privatelink?: pulumi.Input<string>;
     pvtz?: pulumi.Input<string>;
     rKvstore?: pulumi.Input<string>;
     ram?: pulumi.Input<string>;
     rds?: pulumi.Input<string>;
     resourcemanager?: pulumi.Input<string>;
+    ros?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
     sts?: pulumi.Input<string>;
     vpc?: pulumi.Input<string>;
@@ -1099,6 +1101,15 @@ export namespace ecs {
          * The name of the data disk.
          */
         name?: pulumi.Input<string>;
+        /**
+         * The performance level of the ESSD used as data disk:
+         * - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+         * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+         * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+         * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+         * Default to `PL1`.
+         */
+        performanceLevel?: pulumi.Input<string>;
         /**
          * The size of the data disk.
          * - cloud：[5, 2000]

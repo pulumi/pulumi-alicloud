@@ -17,6 +17,61 @@ import (
 //
 // > **NOTE:** Available in v1.104.0+.
 //
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cms"
+// 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		thisRandomUuid, err := random.NewRandomUuid(ctx, "thisRandomUuid", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cms.NewGroupMetricRule(ctx, "thisGroupMetricRule", &cms.GroupMetricRuleArgs{
+// 			GroupId:             pulumi.String("539****"),
+// 			RuleId:              thisRandomUuid.ID(),
+// 			Category:            pulumi.String("ecs"),
+// 			Namespace:           pulumi.String("acs_ecs_dashboard"),
+// 			MetricName:          pulumi.String("cpu_total"),
+// 			Period:              pulumi.Int(60),
+// 			GroupMetricRuleName: pulumi.String("tf-testacc-rule-name"),
+// 			EmailSubject:        pulumi.String("tf-testacc-rule-name-warning"),
+// 			Interval:            pulumi.String("3600"),
+// 			SilenceTime:         pulumi.Int(85800),
+// 			NoEffectiveInterval: pulumi.String("00:00-05:30"),
+// 			Webhook:             pulumi.String("http://www.aliyun.com"),
+// 			Escalations: &cms.GroupMetricRuleEscalationsArgs{
+// 				Warn: &cms.GroupMetricRuleEscalationsWarnArgs{
+// 					ComparisonOperator: pulumi.String("GreaterThanOrEqualToThreshold"),
+// 					Statistics:         pulumi.String("Average"),
+// 					Threshold:          pulumi.String("90"),
+// 					Times:              pulumi.Int(3),
+// 				},
+// 				Info: &cms.GroupMetricRuleEscalationsInfoArgs{
+// 					ComparisonOperator: pulumi.String("LessThanLastWeek"),
+// 					Statistics:         pulumi.String("Average"),
+// 					Threshold:          pulumi.String("90"),
+// 					Times:              pulumi.Int(5),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.

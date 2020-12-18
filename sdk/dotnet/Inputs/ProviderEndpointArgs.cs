@@ -147,6 +147,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("polardb")]
         public Input<string>? Polardb { get; set; }
 
+        [Input("privatelink")]
+        public Input<string>? Privatelink { get; set; }
+
         [Input("pvtz")]
         public Input<string>? Pvtz { get; set; }
 
@@ -161,6 +164,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("resourcemanager")]
         public Input<string>? Resourcemanager { get; set; }
+
+        [Input("ros")]
+        public Input<string>? Ros { get; set; }
 
         [Input("slb")]
         public Input<string>? Slb { get; set; }

@@ -44,23 +44,46 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
+	// -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of zone IDs.
 	Ids []string `pulumi:"ids"`
 	// keyword for zone name.
-	Keyword    *string `pulumi:"keyword"`
+	Keyword *string `pulumi:"keyword"`
+	// User language.
+	Lang       *string `pulumi:"lang"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	// query_region_id for zone regionId.
+	QueryRegionId *string `pulumi:"queryRegionId"`
+	// query_vpc_id for zone vpcId.
+	QueryVpcId *string `pulumi:"queryVpcId"`
+	// resource_group_id for zone resourceGroupId.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Search mode. Value:
+	// - LIKE: fuzzy search.
+	// - EXACT: precise search. It is not filled in by default.
+	SearchMode *string `pulumi:"searchMode"`
 }
 
 // A collection of values returned by getZones.
 type GetZonesResult struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of zone IDs.
-	Ids     []string `pulumi:"ids"`
-	Keyword *string  `pulumi:"keyword"`
+	Ids       []string `pulumi:"ids"`
+	Keyword   *string  `pulumi:"keyword"`
+	Lang      *string  `pulumi:"lang"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of zone names.
-	Names      []string `pulumi:"names"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Names         []string `pulumi:"names"`
+	OutputFile    *string  `pulumi:"outputFile"`
+	QueryRegionId *string  `pulumi:"queryRegionId"`
+	QueryVpcId    *string  `pulumi:"queryVpcId"`
+	// The Id of resource group which the Private Zone belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	SearchMode      *string `pulumi:"searchMode"`
 	// A list of zones. Each element contains the following attributes:
 	Zones []GetZonesZone `pulumi:"zones"`
 }

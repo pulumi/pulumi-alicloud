@@ -296,7 +296,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
-     * Private network connection prefix, used to modify the private network connection address.
+     * Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
      */
     public readonly privateConnectionPrefix!: pulumi.Output<string | undefined>;
     /**
@@ -676,7 +676,7 @@ export interface InstanceState {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * Private network connection prefix, used to modify the private network connection address.
+     * Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
      */
     readonly privateConnectionPrefix?: pulumi.Input<string>;
     /**
@@ -904,7 +904,7 @@ export interface InstanceArgs {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * Private network connection prefix, used to modify the private network connection address.
+     * Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
      */
     readonly privateConnectionPrefix?: pulumi.Input<string>;
     /**

@@ -103,18 +103,6 @@ def get_zones(instance_charge_type: Optional[str] = None,
 
     > **NOTE:** Available in v1.73.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    zones_ids = alicloud.rds.get_zones()
-    # Create an RDS instance with the first matched zone
-    db = alicloud.rds.Instance("db", zone_id=zones_ids.zones[0])
-    # Other properties...
-    ```
-
 
     :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.

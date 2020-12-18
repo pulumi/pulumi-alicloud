@@ -31,9 +31,16 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:pvtz/getZones:getZones", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "keyword": args.keyword,
+        "lang": args.lang,
+        "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "queryRegionId": args.queryRegionId,
+        "queryVpcId": args.queryVpcId,
+        "resourceGroupId": args.resourceGroupId,
+        "searchMode": args.searchMode,
     }, opts);
 }
 
@@ -42,6 +49,10 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetZonesArgs {
     /**
+     * -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
+    /**
      * A list of zone IDs.
      */
     readonly ids?: string[];
@@ -49,13 +60,37 @@ export interface GetZonesArgs {
      * keyword for zone name.
      */
     readonly keyword?: string;
+    /**
+     * User language.
+     */
+    readonly lang?: string;
+    readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * query_region_id for zone regionId.
+     */
+    readonly queryRegionId?: string;
+    /**
+     * query_vpc_id for zone vpcId.
+     */
+    readonly queryVpcId?: string;
+    /**
+     * resource_group_id for zone resourceGroupId.
+     */
+    readonly resourceGroupId?: string;
+    /**
+     * Search mode. Value: 
+     * - LIKE: fuzzy search.
+     * - EXACT: precise search. It is not filled in by default.
+     */
+    readonly searchMode?: string;
 }
 
 /**
  * A collection of values returned by getZones.
  */
 export interface GetZonesResult {
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -65,11 +100,20 @@ export interface GetZonesResult {
      */
     readonly ids: string[];
     readonly keyword?: string;
+    readonly lang?: string;
+    readonly nameRegex?: string;
     /**
      * A list of zone names.
      */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly queryRegionId?: string;
+    readonly queryVpcId?: string;
+    /**
+     * The Id of resource group which the Private Zone belongs.
+     */
+    readonly resourceGroupId?: string;
+    readonly searchMode?: string;
     /**
      * A list of zones. Each element contains the following attributes:
      */

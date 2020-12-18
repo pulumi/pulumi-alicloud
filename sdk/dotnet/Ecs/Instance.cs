@@ -287,6 +287,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SystemDiskName { get; private set; } = null!;
 
         /// <summary>
+        /// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL0`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+        /// </summary>
+        [Output("systemDiskPerformanceLevel")]
+        public Output<string> SystemDiskPerformanceLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         /// </summary>
         [Output("systemDiskSize")]
@@ -645,6 +651,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
+        /// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL0`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+        /// </summary>
+        [Input("systemDiskPerformanceLevel")]
+        public Input<string>? SystemDiskPerformanceLevel { get; set; }
+
+        /// <summary>
         /// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         /// </summary>
         [Input("systemDiskSize")]
@@ -980,6 +992,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("systemDiskName")]
         public Input<string>? SystemDiskName { get; set; }
+
+        /// <summary>
+        /// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL0`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+        /// </summary>
+        [Input("systemDiskPerformanceLevel")]
+        public Input<string>? SystemDiskPerformanceLevel { get; set; }
 
         /// <summary>
         /// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.

@@ -79,7 +79,7 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
-     * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'tf'.
+     * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
      */
     public readonly connectionPrefix!: pulumi.Output<string>;
     /**
@@ -95,7 +95,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipAddress!: pulumi.Output<string>;
     /**
-     * Internet connection port. Valid value: [3001-3999]. Default to 3306.
+     * Internet connection port. Valid value: [1000-5999]. Default to 3306.
      */
     public readonly port!: pulumi.Output<string | undefined>;
 
@@ -143,7 +143,7 @@ export class Connection extends pulumi.CustomResource {
  */
 export interface ConnectionState {
     /**
-     * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'tf'.
+     * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
      */
     readonly connectionPrefix?: pulumi.Input<string>;
     /**
@@ -159,7 +159,7 @@ export interface ConnectionState {
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**
-     * Internet connection port. Valid value: [3001-3999]. Default to 3306.
+     * Internet connection port. Valid value: [1000-5999]. Default to 3306.
      */
     readonly port?: pulumi.Input<string>;
 }
@@ -169,7 +169,7 @@ export interface ConnectionState {
  */
 export interface ConnectionArgs {
     /**
-     * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'tf'.
+     * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
      */
     readonly connectionPrefix?: pulumi.Input<string>;
     /**
@@ -177,7 +177,7 @@ export interface ConnectionArgs {
      */
     readonly instanceId: pulumi.Input<string>;
     /**
-     * Internet connection port. Valid value: [3001-3999]. Default to 3306.
+     * Internet connection port. Valid value: [1000-5999]. Default to 3306.
      */
     readonly port?: pulumi.Input<string>;
 }

@@ -20,9 +20,9 @@ namespace Pulumi.AliCloud.Pvtz
     /// </summary>
     public partial class Zone : Pulumi.CustomResource
     {
-        [Output("creationTime")]
-        public Output<string> CreationTime { get; private set; } = null!;
-
+        /// <summary>
+        /// Whether the Private Zone is ptr.
+        /// </summary>
         [Output("isPtr")]
         public Output<bool> IsPtr { get; private set; } = null!;
 
@@ -42,6 +42,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// The recursive DNS proxy. Valid values:
         /// - ZONE: indicates that the recursive DNS proxy is disabled.
         /// - RECORD: indicates that the recursive DNS proxy is enabled.
+        /// Default to "ZONE".
         /// </summary>
         [Output("proxyPattern")]
         public Output<string?> ProxyPattern { get; private set; } = null!;
@@ -62,16 +63,19 @@ namespace Pulumi.AliCloud.Pvtz
         /// The Id of resource group which the Private Zone belongs.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string> ResourceGroupId { get; private set; } = null!;
-
-        [Output("updateTime")]
-        public Output<string> UpdateTime { get; private set; } = null!;
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The IP address of the client.
         /// </summary>
         [Output("userClientIp")]
         public Output<string?> UserClientIp { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone_name of the Private Zone.
+        /// </summary>
+        [Output("zoneName")]
+        public Output<string> ZoneName { get; private set; } = null!;
 
 
         /// <summary>
@@ -135,6 +139,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// The recursive DNS proxy. Valid values:
         /// - ZONE: indicates that the recursive DNS proxy is disabled.
         /// - RECORD: indicates that the recursive DNS proxy is enabled.
+        /// Default to "ZONE".
         /// </summary>
         [Input("proxyPattern")]
         public Input<string>? ProxyPattern { get; set; }
@@ -157,6 +162,12 @@ namespace Pulumi.AliCloud.Pvtz
         [Input("userClientIp")]
         public Input<string>? UserClientIp { get; set; }
 
+        /// <summary>
+        /// The zone_name of the Private Zone.
+        /// </summary>
+        [Input("zoneName")]
+        public Input<string>? ZoneName { get; set; }
+
         public ZoneArgs()
         {
         }
@@ -164,9 +175,9 @@ namespace Pulumi.AliCloud.Pvtz
 
     public sealed class ZoneState : Pulumi.ResourceArgs
     {
-        [Input("creationTime")]
-        public Input<string>? CreationTime { get; set; }
-
+        /// <summary>
+        /// Whether the Private Zone is ptr.
+        /// </summary>
         [Input("isPtr")]
         public Input<bool>? IsPtr { get; set; }
 
@@ -186,6 +197,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// The recursive DNS proxy. Valid values:
         /// - ZONE: indicates that the recursive DNS proxy is disabled.
         /// - RECORD: indicates that the recursive DNS proxy is enabled.
+        /// Default to "ZONE".
         /// </summary>
         [Input("proxyPattern")]
         public Input<string>? ProxyPattern { get; set; }
@@ -208,14 +220,17 @@ namespace Pulumi.AliCloud.Pvtz
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
-
         /// <summary>
         /// The IP address of the client.
         /// </summary>
         [Input("userClientIp")]
         public Input<string>? UserClientIp { get; set; }
+
+        /// <summary>
+        /// The zone_name of the Private Zone.
+        /// </summary>
+        [Input("zoneName")]
+        public Input<string>? ZoneName { get; set; }
 
         public ZoneState()
         {

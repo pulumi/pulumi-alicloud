@@ -380,7 +380,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Private network connection prefix, used to modify the private network connection address.
+        /// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         /// </summary>
         [Output("privateConnectionPrefix")]
         public Output<string?> PrivateConnectionPrefix { get; private set; } = null!;
@@ -767,7 +767,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Private network connection prefix, used to modify the private network connection address.
+        /// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         /// </summary>
         [Input("privateConnectionPrefix")]
         public Input<string>? PrivateConnectionPrefix { get; set; }
@@ -1132,7 +1132,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Private network connection prefix, used to modify the private network connection address.
+        /// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         /// </summary>
         [Input("privateConnectionPrefix")]
         public Input<string>? PrivateConnectionPrefix { get; set; }

@@ -12,6 +12,46 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.104.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const thisRandomUuid = new random.RandomUuid("thisRandomUuid", {});
+ * const thisGroupMetricRule = new alicloud.cms.GroupMetricRule("thisGroupMetricRule", {
+ *     groupId: "539****",
+ *     ruleId: thisRandomUuid.id,
+ *     category: "ecs",
+ *     namespace: "acs_ecs_dashboard",
+ *     metricName: "cpu_total",
+ *     period: "60",
+ *     groupMetricRuleName: "tf-testacc-rule-name",
+ *     emailSubject: "tf-testacc-rule-name-warning",
+ *     interval: "3600",
+ *     silenceTime: 85800,
+ *     noEffectiveInterval: "00:00-05:30",
+ *     webhook: "http://www.aliyun.com",
+ *     escalations: {
+ *         warn: {
+ *             comparisonOperator: "GreaterThanOrEqualToThreshold",
+ *             statistics: "Average",
+ *             threshold: "90",
+ *             times: 3,
+ *         },
+ *         info: {
+ *             comparisonOperator: "LessThanLastWeek",
+ *             statistics: "Average",
+ *             threshold: "90",
+ *             times: 5,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.

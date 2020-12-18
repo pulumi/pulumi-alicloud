@@ -101,11 +101,13 @@ export interface ProviderEndpoint {
     oss?: string;
     ots?: string;
     polardb?: string;
+    privatelink?: string;
     pvtz?: string;
     rKvstore?: string;
     ram?: string;
     rds?: string;
     resourcemanager?: string;
+    ros?: string;
     slb?: string;
     sts?: string;
     vpc?: string;
@@ -2160,11 +2162,13 @@ export namespace config {
         oss?: string;
         ots?: string;
         polardb?: string;
+        privatelink?: string;
         pvtz?: string;
         rKvstore?: string;
         ram?: string;
         rds?: string;
         resourcemanager?: string;
+        ros?: string;
         slb?: string;
         sts?: string;
         vpc?: string;
@@ -5028,6 +5032,15 @@ export namespace ecs {
          * The name of the data disk.
          */
         name?: string;
+        /**
+         * The performance level of the ESSD used as data disk:
+         * - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+         * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+         * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+         * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+         * Default to `PL1`.
+         */
+        performanceLevel: string;
         /**
          * The size of the data disk.
          * - cloud：[5, 2000]
@@ -8690,15 +8703,32 @@ export namespace pvtz {
         /**
          * ID of the Private Zone Record.
          */
-        id: number;
+        id: string;
         /**
          * Priority of the Private Zone Record.
          */
         priority: number;
         /**
+         * RecordId of the Private Zone Record.
+         */
+        recordId: number;
+        /**
+         * Remark of the Private Zone Record.
+         */
+        remark: string;
+        /**
          * Resource record of the Private Zone Record.
          */
         resourceRecord: string;
+        /**
+         * Rr of the Private Zone Record.
+         */
+        rr: string;
+        /**
+         * Resolve record status. Value:
+         * - ENABLE: enable resolution.
+         * - DISABLE: pause parsing.
+         */
         status: string;
         /**
          * Ttl of the Private Zone Record.
@@ -8716,25 +8746,30 @@ export namespace pvtz {
 
     export interface GetZonesZone {
         /**
-         * List of the VPCs is bound to the Private Zone.
+         * List of the VPCs is bound to the Private Zone:
          */
         bindVpcs: outputs.pvtz.GetZonesZoneBindVpc[];
         /**
-         * Time of creation of the Private Zone.
+         * Time of create of the Private Zone.
          */
+        createTimestamp: number;
         creationTime: string;
         /**
          * ID of the Private Zone.
          */
         id: string;
         /**
-         * Whether the Private Zone is ptr
+         * Whether the Private Zone is ptr.
          */
         isPtr: boolean;
         /**
          * Name of the Private Zone.
          */
         name: string;
+        /**
+         * The recursive DNS proxy.
+         */
+        proxyPattern: string;
         /**
          * Count of the Private Zone Record.
          */
@@ -8744,13 +8779,40 @@ export namespace pvtz {
          */
         remark: string;
         /**
+         * resource_group_id for zone resourceGroupId.
+         */
+        resourceGroupId: string;
+        /**
+         * Whether to turn on secondary DNS.
+         */
+        slaveDns: boolean;
+        updateTime: string;
+        /**
          * Time of update of the Private Zone.
          */
-        updateTime: string;
+        updateTimestamp: number;
+        /**
+         * ZoneId of the Private Zone.
+         */
+        zoneId: string;
+        /**
+         * ZoneName of the Private Zone.
+         */
+        zoneName: string;
     }
 
     export interface GetZonesZoneBindVpc {
+        /**
+         * Binding the regionId of VPC.
+         */
         regionId: string;
+        /**
+         * Binding the regionName of VPC.
+         */
+        regionName: string;
+        /**
+         * Binding the vpcId of VPC.
+         */
         vpcId: string;
         vpcName: string;
     }

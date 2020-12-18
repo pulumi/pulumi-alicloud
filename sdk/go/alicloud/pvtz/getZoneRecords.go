@@ -48,8 +48,22 @@ type GetZoneRecordsArgs struct {
 	// A list of Private Zone Record IDs.
 	Ids []string `pulumi:"ids"`
 	// Keyword for record rr and value.
-	Keyword    *string `pulumi:"keyword"`
+	Keyword *string `pulumi:"keyword"`
+	// User language.
+	Lang       *string `pulumi:"lang"`
 	OutputFile *string `pulumi:"outputFile"`
+	// Search mode. Value:
+	// - LIKE: fuzzy search.
+	// - EXACT: precise search. It is not filled in by default.
+	SearchMode *string `pulumi:"searchMode"`
+	// Resolve record status. Value:
+	// - ENABLE: enable resolution.
+	// - DISABLE: pause parsing.
+	Status *string `pulumi:"status"`
+	// It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+	Tag *string `pulumi:"tag"`
+	// User ip.
+	UserClientIp *string `pulumi:"userClientIp"`
 	// ID of the Private Zone.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -61,8 +75,14 @@ type GetZoneRecordsResult struct {
 	// A list of Private Zone Record IDs.
 	Ids        []string `pulumi:"ids"`
 	Keyword    *string  `pulumi:"keyword"`
+	Lang       *string  `pulumi:"lang"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of zone records. Each element contains the following attributes:
-	Records []GetZoneRecordsRecord `pulumi:"records"`
-	ZoneId  string                 `pulumi:"zoneId"`
+	Records    []GetZoneRecordsRecord `pulumi:"records"`
+	SearchMode *string                `pulumi:"searchMode"`
+	// Status of the Private Zone Record.
+	Status       *string `pulumi:"status"`
+	Tag          *string `pulumi:"tag"`
+	UserClientIp *string `pulumi:"userClientIp"`
+	ZoneId       string  `pulumi:"zoneId"`
 }

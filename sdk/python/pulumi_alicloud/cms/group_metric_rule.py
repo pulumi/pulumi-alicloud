@@ -43,6 +43,45 @@ class GroupMetricRule(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.104.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        this_random_uuid = random.RandomUuid("thisRandomUuid")
+        this_group_metric_rule = alicloud.cms.GroupMetricRule("thisGroupMetricRule",
+            group_id="539****",
+            rule_id=this_random_uuid.id,
+            category="ecs",
+            namespace="acs_ecs_dashboard",
+            metric_name="cpu_total",
+            period=60,
+            group_metric_rule_name="tf-testacc-rule-name",
+            email_subject="tf-testacc-rule-name-warning",
+            interval="3600",
+            silence_time=85800,
+            no_effective_interval="00:00-05:30",
+            webhook="http://www.aliyun.com",
+            escalations=alicloud.cms.GroupMetricRuleEscalationsArgs(
+                warn=alicloud.cms.GroupMetricRuleEscalationsWarnArgs(
+                    comparison_operator="GreaterThanOrEqualToThreshold",
+                    statistics="Average",
+                    threshold="90",
+                    times=3,
+                ),
+                info=alicloud.cms.GroupMetricRuleEscalationsInfoArgs(
+                    comparison_operator="LessThanLastWeek",
+                    statistics="Average",
+                    threshold="90",
+                    times=5,
+                ),
+            ))
+        ```
+
         ## Import
 
         Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.

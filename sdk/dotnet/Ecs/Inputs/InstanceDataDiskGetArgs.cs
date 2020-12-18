@@ -61,6 +61,17 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The performance level of the ESSD used as data disk:
+        /// - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        /// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        /// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+        /// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+        /// Default to `PL1`.
+        /// </summary>
+        [Input("performanceLevel")]
+        public Input<string>? PerformanceLevel { get; set; }
+
+        /// <summary>
         /// The size of the data disk.
         /// - cloud：[5, 2000]
         /// - cloud_efficiency：[20, 32768]

@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> LocalLogRetentionHours { get; private set; } = null!;
 
         /// <summary>
-        /// Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
+        /// Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         /// </summary>
         [Output("localLogRetentionSpace")]
         public Output<int> LocalLogRetentionSpace { get; private set; } = null!;
@@ -303,7 +303,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? LocalLogRetentionHours { get; set; }
 
         /// <summary>
-        /// Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
+        /// Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         /// </summary>
         [Input("localLogRetentionSpace")]
         public Input<int>? LocalLogRetentionSpace { get; set; }
@@ -437,7 +437,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? LocalLogRetentionHours { get; set; }
 
         /// <summary>
-        /// Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
+        /// Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         /// </summary>
         [Input("localLogRetentionSpace")]
         public Input<int>? LocalLogRetentionSpace { get; set; }
