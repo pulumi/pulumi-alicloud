@@ -52,24 +52,36 @@ class ZoneAttachmentVpc(dict):
 @pulumi.output_type
 class GetZoneRecordsRecordResult(dict):
     def __init__(__self__, *,
-                 id: int,
+                 id: str,
                  priority: int,
+                 record_id: int,
+                 remark: str,
                  resource_record: str,
+                 rr: str,
                  status: str,
                  ttl: int,
                  type: str,
                  value: str):
         """
-        :param int id: ID of the Private Zone Record.
+        :param str id: ID of the Private Zone Record.
         :param int priority: Priority of the Private Zone Record.
+        :param int record_id: RecordId of the Private Zone Record.
+        :param str remark: Remark of the Private Zone Record.
         :param str resource_record: Resource record of the Private Zone Record.
+        :param str rr: Rr of the Private Zone Record.
+        :param str status: Resolve record status. Value:
+               - ENABLE: enable resolution.
+               - DISABLE: pause parsing.
         :param int ttl: Ttl of the Private Zone Record.
         :param str type: Type of the Private Zone Record.
         :param str value: Value of the Private Zone Record.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "record_id", record_id)
+        pulumi.set(__self__, "remark", remark)
         pulumi.set(__self__, "resource_record", resource_record)
+        pulumi.set(__self__, "rr", rr)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "ttl", ttl)
         pulumi.set(__self__, "type", type)
@@ -77,7 +89,7 @@ class GetZoneRecordsRecordResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> int:
+    def id(self) -> str:
         """
         ID of the Private Zone Record.
         """
@@ -92,6 +104,22 @@ class GetZoneRecordsRecordResult(dict):
         return pulumi.get(self, "priority")
 
     @property
+    @pulumi.getter(name="recordId")
+    def record_id(self) -> int:
+        """
+        RecordId of the Private Zone Record.
+        """
+        return pulumi.get(self, "record_id")
+
+    @property
+    @pulumi.getter
+    def remark(self) -> str:
+        """
+        Remark of the Private Zone Record.
+        """
+        return pulumi.get(self, "remark")
+
+    @property
     @pulumi.getter(name="resourceRecord")
     def resource_record(self) -> str:
         """
@@ -101,7 +129,20 @@ class GetZoneRecordsRecordResult(dict):
 
     @property
     @pulumi.getter
+    def rr(self) -> str:
+        """
+        Rr of the Private Zone Record.
+        """
+        return pulumi.get(self, "rr")
+
+    @property
+    @pulumi.getter
     def status(self) -> str:
+        """
+        Resolve record status. Value:
+        - ENABLE: enable resolution.
+        - DISABLE: pause parsing.
+        """
         return pulumi.get(self, "status")
 
     @property

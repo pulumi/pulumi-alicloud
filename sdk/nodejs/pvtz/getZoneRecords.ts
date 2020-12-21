@@ -33,7 +33,12 @@ export function getZoneRecords(args: GetZoneRecordsArgs, opts?: pulumi.InvokeOpt
     return pulumi.runtime.invoke("alicloud:pvtz/getZoneRecords:getZoneRecords", {
         "ids": args.ids,
         "keyword": args.keyword,
+        "lang": args.lang,
         "outputFile": args.outputFile,
+        "searchMode": args.searchMode,
+        "status": args.status,
+        "tag": args.tag,
+        "userClientIp": args.userClientIp,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -50,7 +55,31 @@ export interface GetZoneRecordsArgs {
      * Keyword for record rr and value.
      */
     readonly keyword?: string;
+    /**
+     * User language.
+     */
+    readonly lang?: string;
     readonly outputFile?: string;
+    /**
+     * Search mode. Value: 
+     * - LIKE: fuzzy search.
+     * - EXACT: precise search. It is not filled in by default.
+     */
+    readonly searchMode?: string;
+    /**
+     * Resolve record status. Value:
+     * - ENABLE: enable resolution.
+     * - DISABLE: pause parsing.
+     */
+    readonly status?: string;
+    /**
+     * It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+     */
+    readonly tag?: string;
+    /**
+     * User ip.
+     */
+    readonly userClientIp?: string;
     /**
      * ID of the Private Zone.
      */
@@ -70,10 +99,18 @@ export interface GetZoneRecordsResult {
      */
     readonly ids: string[];
     readonly keyword?: string;
+    readonly lang?: string;
     readonly outputFile?: string;
     /**
      * A list of zone records. Each element contains the following attributes:
      */
     readonly records: outputs.pvtz.GetZoneRecordsRecord[];
+    readonly searchMode?: string;
+    /**
+     * Status of the Private Zone Record.
+     */
+    readonly status?: string;
+    readonly tag?: string;
+    readonly userClientIp?: string;
     readonly zoneId: string;
 }

@@ -15,32 +15,6 @@ namespace Pulumi.AliCloud.Rds
         /// This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available in v1.73.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var zonesIds = Output.Create(AliCloud.Rds.GetZones.InvokeAsync());
-        ///         // Create an RDS instance with the first matched zone
-        ///         var db = new AliCloud.Rds.Instance("db", new AliCloud.Rds.InstanceArgs
-        ///         {
-        ///             ZoneId = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones[0]),
-        ///         });
-        ///         // Other properties...
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:rds/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());

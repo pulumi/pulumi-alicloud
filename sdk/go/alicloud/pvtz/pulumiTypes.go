@@ -118,12 +118,21 @@ func (o ZoneAttachmentVpcArrayOutput) Index(i pulumi.IntInput) ZoneAttachmentVpc
 
 type GetZoneRecordsRecord struct {
 	// ID of the Private Zone Record.
-	Id int `pulumi:"id"`
+	Id string `pulumi:"id"`
 	// Priority of the Private Zone Record.
 	Priority int `pulumi:"priority"`
+	// RecordId of the Private Zone Record.
+	RecordId int `pulumi:"recordId"`
+	// Remark of the Private Zone Record.
+	Remark string `pulumi:"remark"`
 	// Resource record of the Private Zone Record.
 	ResourceRecord string `pulumi:"resourceRecord"`
-	Status         string `pulumi:"status"`
+	// Rr of the Private Zone Record.
+	Rr string `pulumi:"rr"`
+	// Resolve record status. Value:
+	// - ENABLE: enable resolution.
+	// - DISABLE: pause parsing.
+	Status string `pulumi:"status"`
 	// Ttl of the Private Zone Record.
 	Ttl int `pulumi:"ttl"`
 	// Type of the Private Zone Record.
@@ -145,12 +154,21 @@ type GetZoneRecordsRecordInput interface {
 
 type GetZoneRecordsRecordArgs struct {
 	// ID of the Private Zone Record.
-	Id pulumi.IntInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
 	// Priority of the Private Zone Record.
 	Priority pulumi.IntInput `pulumi:"priority"`
+	// RecordId of the Private Zone Record.
+	RecordId pulumi.IntInput `pulumi:"recordId"`
+	// Remark of the Private Zone Record.
+	Remark pulumi.StringInput `pulumi:"remark"`
 	// Resource record of the Private Zone Record.
 	ResourceRecord pulumi.StringInput `pulumi:"resourceRecord"`
-	Status         pulumi.StringInput `pulumi:"status"`
+	// Rr of the Private Zone Record.
+	Rr pulumi.StringInput `pulumi:"rr"`
+	// Resolve record status. Value:
+	// - ENABLE: enable resolution.
+	// - DISABLE: pause parsing.
+	Status pulumi.StringInput `pulumi:"status"`
 	// Ttl of the Private Zone Record.
 	Ttl pulumi.IntInput `pulumi:"ttl"`
 	// Type of the Private Zone Record.
@@ -211,8 +229,8 @@ func (o GetZoneRecordsRecordOutput) ToGetZoneRecordsRecordOutputWithContext(ctx 
 }
 
 // ID of the Private Zone Record.
-func (o GetZoneRecordsRecordOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetZoneRecordsRecord) int { return v.Id }).(pulumi.IntOutput)
+func (o GetZoneRecordsRecordOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Priority of the Private Zone Record.
@@ -220,11 +238,29 @@ func (o GetZoneRecordsRecordOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
 }
 
+// RecordId of the Private Zone Record.
+func (o GetZoneRecordsRecordOutput) RecordId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZoneRecordsRecord) int { return v.RecordId }).(pulumi.IntOutput)
+}
+
+// Remark of the Private Zone Record.
+func (o GetZoneRecordsRecordOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Remark }).(pulumi.StringOutput)
+}
+
 // Resource record of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) ResourceRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.ResourceRecord }).(pulumi.StringOutput)
 }
 
+// Rr of the Private Zone Record.
+func (o GetZoneRecordsRecordOutput) Rr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Rr }).(pulumi.StringOutput)
+}
+
+// Resolve record status. Value:
+// - ENABLE: enable resolution.
+// - DISABLE: pause parsing.
 func (o GetZoneRecordsRecordOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Status }).(pulumi.StringOutput)
 }

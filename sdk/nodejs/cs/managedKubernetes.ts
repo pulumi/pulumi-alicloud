@@ -118,7 +118,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly isEnterpriseSecurityGroup!: pulumi.Output<boolean>;
     /**
-     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
     public readonly keyName!: pulumi.Output<string | undefined>;
     /**
@@ -133,6 +133,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * The path of kube config, like `~/.kube/config`.
      */
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
+    /**
+     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+     */
+    public readonly maintenanceWindow!: pulumi.Output<outputs.cs.ManagedKubernetesMaintenanceWindow>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
@@ -163,7 +167,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly osType!: pulumi.Output<string | undefined>;
     /**
-     * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -256,13 +260,9 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     public readonly workerDataDiskSize!: pulumi.Output<number | undefined>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values:
-     * * cloud: basic disks.
-     * * cloud_efficiency: ultra disks.
-     * * cloud_ssd: SSDs.
-     * * cloud_essd: essd.
+     * * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
      * * `size`: the size of a data disk, at least 40. Unit: GiB.
-     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
      */
     public readonly workerDataDisks!: pulumi.Output<outputs.cs.ManagedKubernetesWorkerDataDisk[] | undefined>;
     /**
@@ -270,7 +270,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly workerDiskCategory!: pulumi.Output<string | undefined>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+     * The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
      */
     public readonly workerDiskSize!: pulumi.Output<number | undefined>;
     /**
@@ -278,17 +278,17 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly workerInstanceChargeType!: pulumi.Output<string | undefined>;
     /**
-     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
-    public readonly workerInstanceTypes!: pulumi.Output<string[]>;
+    public readonly workerInstanceTypes!: pulumi.Output<string[] | undefined>;
     /**
      * List of cluster worker nodes.
      */
     public /*out*/ readonly workerNodes!: pulumi.Output<outputs.cs.ManagedKubernetesWorkerNode[]>;
     /**
-     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
-    public readonly workerNumber!: pulumi.Output<number>;
+    public readonly workerNumber!: pulumi.Output<number | undefined>;
     /**
      * Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
      */
@@ -338,6 +338,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
+            inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
             inputs["natGatewayId"] = state ? state.natGatewayId : undefined;
@@ -385,12 +386,6 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
         } else {
             const args = argsOrState as ManagedKubernetesArgs | undefined;
-            if (!args || args.workerInstanceTypes === undefined) {
-                throw new Error("Missing required property 'workerInstanceTypes'");
-            }
-            if (!args || args.workerNumber === undefined) {
-                throw new Error("Missing required property 'workerNumber'");
-            }
             if (!args || args.workerVswitchIds === undefined) {
                 throw new Error("Missing required property 'workerVswitchIds'");
             }
@@ -415,6 +410,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             inputs["kubeConfig"] = args ? args.kubeConfig : undefined;
+            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
             inputs["newNatGateway"] = args ? args.newNatGateway : undefined;
@@ -554,7 +550,7 @@ export interface ManagedKubernetesState {
      */
     readonly isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
-     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
     readonly keyName?: pulumi.Input<string>;
     /**
@@ -569,6 +565,10 @@ export interface ManagedKubernetesState {
      * The path of kube config, like `~/.kube/config`.
      */
     readonly kubeConfig?: pulumi.Input<string>;
+    /**
+     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+     */
+    readonly maintenanceWindow?: pulumi.Input<inputs.cs.ManagedKubernetesMaintenanceWindow>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
@@ -599,7 +599,7 @@ export interface ManagedKubernetesState {
      */
     readonly osType?: pulumi.Input<string>;
     /**
-     * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
     readonly password?: pulumi.Input<string>;
     /**
@@ -692,13 +692,9 @@ export interface ManagedKubernetesState {
     readonly workerDataDiskSize?: pulumi.Input<number>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values:
-     * * cloud: basic disks.
-     * * cloud_efficiency: ultra disks.
-     * * cloud_ssd: SSDs.
-     * * cloud_essd: essd.
+     * * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
      * * `size`: the size of a data disk, at least 40. Unit: GiB.
-     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesWorkerDataDisk>[]>;
     /**
@@ -706,7 +702,7 @@ export interface ManagedKubernetesState {
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+     * The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
      */
     readonly workerDiskSize?: pulumi.Input<number>;
     /**
@@ -714,7 +710,7 @@ export interface ManagedKubernetesState {
      */
     readonly workerInstanceChargeType?: pulumi.Input<string>;
     /**
-     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
     readonly workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -722,7 +718,7 @@ export interface ManagedKubernetesState {
      */
     readonly workerNodes?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesWorkerNode>[]>;
     /**
-     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
     readonly workerNumber?: pulumi.Input<number>;
     /**
@@ -812,7 +808,7 @@ export interface ManagedKubernetesArgs {
      */
     readonly isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
-     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
     readonly keyName?: pulumi.Input<string>;
     /**
@@ -827,6 +823,10 @@ export interface ManagedKubernetesArgs {
      * The path of kube config, like `~/.kube/config`.
      */
     readonly kubeConfig?: pulumi.Input<string>;
+    /**
+     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+     */
+    readonly maintenanceWindow?: pulumi.Input<inputs.cs.ManagedKubernetesMaintenanceWindow>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
@@ -853,7 +853,7 @@ export interface ManagedKubernetesArgs {
      */
     readonly osType?: pulumi.Input<string>;
     /**
-     * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
     readonly password?: pulumi.Input<string>;
     /**
@@ -933,13 +933,9 @@ export interface ManagedKubernetesArgs {
     readonly workerDataDiskSize?: pulumi.Input<number>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values:
-     * * cloud: basic disks.
-     * * cloud_efficiency: ultra disks.
-     * * cloud_ssd: SSDs.
-     * * cloud_essd: essd.
+     * * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
      * * `size`: the size of a data disk, at least 40. Unit: GiB.
-     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesWorkerDataDisk>[]>;
     /**
@@ -947,7 +943,7 @@ export interface ManagedKubernetesArgs {
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+     * The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
      */
     readonly workerDiskSize?: pulumi.Input<number>;
     /**
@@ -955,13 +951,13 @@ export interface ManagedKubernetesArgs {
      */
     readonly workerInstanceChargeType?: pulumi.Input<string>;
     /**
-     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
-    readonly workerInstanceTypes: pulumi.Input<pulumi.Input<string>[]>;
+    readonly workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      */
-    readonly workerNumber: pulumi.Input<number>;
+    readonly workerNumber?: pulumi.Input<number>;
     /**
      * Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
      */

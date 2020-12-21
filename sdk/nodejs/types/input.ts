@@ -57,6 +57,7 @@ export interface ProviderEndpoint {
     oss?: pulumi.Input<string>;
     ots?: pulumi.Input<string>;
     polardb?: pulumi.Input<string>;
+    privatelink?: pulumi.Input<string>;
     pvtz?: pulumi.Input<string>;
     rKvstore?: pulumi.Input<string>;
     ram?: pulumi.Input<string>;
@@ -824,6 +825,25 @@ export namespace cs {
         serviceDomain?: pulumi.Input<string>;
     }
 
+    export interface ManagedKubernetesMaintenanceWindow {
+        /**
+         * The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+         */
+        enable: pulumi.Input<boolean>;
+        /**
+         * Initial maintenance time, For example:"03:00:00Z".
+         */
+        maintenanceTime: pulumi.Input<string>;
+        /**
+         * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+         */
+        weeklyPeriod: pulumi.Input<string>;
+    }
+
     export interface ManagedKubernetesRuntime {
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -887,6 +907,29 @@ export namespace cs {
     export interface NodePoolLabel {
         key: pulumi.Input<string>;
         value?: pulumi.Input<string>;
+    }
+
+    export interface NodePoolManagement {
+        /**
+         * Whether automatic repair, Default to `false`.
+         */
+        autoRepair?: pulumi.Input<boolean>;
+        /**
+         * Whether auto upgrade, Default to `false`.
+         */
+        autoUpgrade?: pulumi.Input<boolean>;
+        /**
+         * Max number of unavailable nodes. Default to `1`.
+         */
+        maxUnavailable: pulumi.Input<number>;
+        /**
+         * Number of additional nodes. You have to specify one of surge, surge_percentage.
+         */
+        surge?: pulumi.Input<number>;
+        /**
+         * Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+         */
+        surgePercentage?: pulumi.Input<number>;
     }
 
     export interface NodePoolTaint {
@@ -1802,6 +1845,30 @@ export namespace polardb {
         value: pulumi.Input<string>;
     }
 
+}
+
+export namespace privatelink {
+    export interface VpcEndpointServiceResource {
+        /**
+         * The id of service resources added to the endpoint service.
+         */
+        resourceId?: pulumi.Input<string>;
+        /**
+         * The type of service resource added to the endpoint service.
+         */
+        resourceType?: pulumi.Input<string>;
+    }
+
+    export interface VpcEndpointZone {
+        /**
+         * To create the vswitch of the terminal node network card in the available zone.
+         */
+        vswitchId?: pulumi.Input<string>;
+        /**
+         * Availability zone corresponding to terminal node service.
+         */
+        zoneId?: pulumi.Input<string>;
+    }
 }
 
 export namespace pvtz {

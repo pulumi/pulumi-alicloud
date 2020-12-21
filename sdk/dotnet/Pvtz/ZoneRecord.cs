@@ -21,7 +21,13 @@ namespace Pulumi.AliCloud.Pvtz
     public partial class ZoneRecord : Pulumi.CustomResource
     {
         /// <summary>
-        /// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+        /// User language.
+        /// </summary>
+        [Output("lang")]
+        public Output<string?> Lang { get; private set; } = null!;
+
+        /// <summary>
+        /// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
@@ -45,16 +51,33 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string> ResourceRecord { get; private set; } = null!;
 
         /// <summary>
-        /// The ttl of the Private Zone Record.
+        /// The rr of the Private Zone Record.
+        /// </summary>
+        [Output("rr")]
+        public Output<string> Rr { get; private set; } = null!;
+
+        /// <summary>
+        /// Resolve record status. Value:
+        /// - ENABLE: enable resolution.
+        /// - DISABLE: pause parsing.
+        /// </summary>
+        [Output("status")]
+        public Output<string?> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The ttl of the Private Zone Record. Default to `60`.
         /// </summary>
         [Output("ttl")]
         public Output<int?> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
+        /// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        [Output("userClientIp")]
+        public Output<string?> UserClientIp { get; private set; } = null!;
 
         /// <summary>
         /// The value of the Private Zone Record.
@@ -115,7 +138,13 @@ namespace Pulumi.AliCloud.Pvtz
     public sealed class ZoneRecordArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+        /// User language.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
+
+        /// <summary>
+        /// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -129,20 +158,37 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// The resource record of the Private Zone Record.
         /// </summary>
-        [Input("resourceRecord", required: true)]
-        public Input<string> ResourceRecord { get; set; } = null!;
+        [Input("resourceRecord")]
+        public Input<string>? ResourceRecord { get; set; }
 
         /// <summary>
-        /// The ttl of the Private Zone Record.
+        /// The rr of the Private Zone Record.
+        /// </summary>
+        [Input("rr")]
+        public Input<string>? Rr { get; set; }
+
+        /// <summary>
+        /// Resolve record status. Value:
+        /// - ENABLE: enable resolution.
+        /// - DISABLE: pause parsing.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ttl of the Private Zone Record. Default to `60`.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
+        /// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
+
+        [Input("userClientIp")]
+        public Input<string>? UserClientIp { get; set; }
 
         /// <summary>
         /// The value of the Private Zone Record.
@@ -164,7 +210,13 @@ namespace Pulumi.AliCloud.Pvtz
     public sealed class ZoneRecordState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+        /// User language.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
+
+        /// <summary>
+        /// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -188,16 +240,33 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? ResourceRecord { get; set; }
 
         /// <summary>
-        /// The ttl of the Private Zone Record.
+        /// The rr of the Private Zone Record.
+        /// </summary>
+        [Input("rr")]
+        public Input<string>? Rr { get; set; }
+
+        /// <summary>
+        /// Resolve record status. Value:
+        /// - ENABLE: enable resolution.
+        /// - DISABLE: pause parsing.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ttl of the Private Zone Record. Default to `60`.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
+        /// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        [Input("userClientIp")]
+        public Input<string>? UserClientIp { get; set; }
 
         /// <summary>
         /// The value of the Private Zone Record.

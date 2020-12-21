@@ -146,17 +146,13 @@ type Kubernetes struct {
 	WorkerDataDiskCategory pulumi.StringPtrOutput `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     pulumi.IntPtrOutput    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * cloud_essd: essd.
-	// * `size`: the size of a data disk, at least 40. Unit: GiB.
+	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks KubernetesWorkerDataDiskArrayOutput `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrOutput `pulumi:"workerDiskCategory"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrOutput `pulumi:"workerDiskSize"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
@@ -343,17 +339,13 @@ type kubernetesState struct {
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * cloud_essd: essd.
-	// * `size`: the size of a data disk, at least 40. Unit: GiB.
+	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []KubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
@@ -498,17 +490,13 @@ type KubernetesState struct {
 	WorkerDataDiskCategory pulumi.StringPtrInput
 	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * cloud_essd: essd.
-	// * `size`: the size of a data disk, at least 40. Unit: GiB.
+	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks KubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrInput
@@ -642,17 +630,13 @@ type kubernetesArgs struct {
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * cloud_essd: essd.
-	// * `size`: the size of a data disk, at least 40. Unit: GiB.
+	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []KubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
@@ -779,17 +763,13 @@ type KubernetesArgs struct {
 	WorkerDataDiskCategory pulumi.StringPtrInput
 	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * cloud_essd: essd.
-	// * `size`: the size of a data disk, at least 40. Unit: GiB.
+	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
 	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks KubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrInput

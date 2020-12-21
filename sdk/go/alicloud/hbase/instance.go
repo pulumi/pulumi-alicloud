@@ -71,27 +71,29 @@ type Instance struct {
 	Account pulumi.StringPtrOutput `pulumi:"account"`
 	// Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
 	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
-	// 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true.
+	// 0 or 800+. 0 means isColdStorage = false. 800+ means isColdStorage = true.
 	ColdStorageSize pulumi.IntPtrOutput `pulumi:"coldStorageSize"`
 	// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space, value range: [20, 8000].
 	// - Cluster min=400GB, 40-GB increments.
 	// - Single min=20GB, 1-GB increments.
 	CoreDiskSize pulumi.IntPtrOutput `pulumi:"coreDiskSize"`
-	// Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, localDisk size is fixed. When engine=bds, no need to set disk type.
+	// Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, ``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
 	CoreDiskType pulumi.StringPtrOutput `pulumi:"coreDiskType"`
 	// Default=2. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
 	CoreInstanceQuantity pulumi.IntPtrOutput `pulumi:"coreInstanceQuantity"`
 	CoreInstanceType     pulumi.StringOutput `pulumi:"coreInstanceType"`
 	// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid,  unit: month.
+	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
 	Duration pulumi.IntOutput `pulumi:"duration"`
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and ` bds  `.
 	Engine pulumi.StringPtrOutput `pulumi:"engine"`
 	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	// * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
+	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+	ImmediateDeleteFlag pulumi.BoolPtrOutput `pulumi:"immediateDeleteFlag"`
 	// The white ip list of the cluster.
 	IpWhite pulumi.StringOutput `pulumi:"ipWhite"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
@@ -105,7 +107,7 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The password of the cluster web ui account.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
 	PayType pulumi.StringPtrOutput `pulumi:"payType"`
 	// The security group resource of the cluster.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
@@ -164,27 +166,29 @@ type instanceState struct {
 	Account *string `pulumi:"account"`
 	// Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true.
+	// 0 or 800+. 0 means isColdStorage = false. 800+ means isColdStorage = true.
 	ColdStorageSize *int `pulumi:"coldStorageSize"`
 	// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space, value range: [20, 8000].
 	// - Cluster min=400GB, 40-GB increments.
 	// - Single min=20GB, 1-GB increments.
 	CoreDiskSize *int `pulumi:"coreDiskSize"`
-	// Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, localDisk size is fixed. When engine=bds, no need to set disk type.
+	// Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, ``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
 	CoreDiskType *string `pulumi:"coreDiskType"`
 	// Default=2. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
 	CoreInstanceQuantity *int    `pulumi:"coreInstanceQuantity"`
 	CoreInstanceType     *string `pulumi:"coreInstanceType"`
 	// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid,  unit: month.
+	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
 	Duration *int `pulumi:"duration"`
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and ` bds  `.
 	Engine *string `pulumi:"engine"`
 	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	// * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
 	EngineVersion *string `pulumi:"engineVersion"`
+	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+	ImmediateDeleteFlag *bool `pulumi:"immediateDeleteFlag"`
 	// The white ip list of the cluster.
 	IpWhite *string `pulumi:"ipWhite"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
@@ -198,7 +202,7 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// The password of the cluster web ui account.
 	Password *string `pulumi:"password"`
-	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
 	PayType *string `pulumi:"payType"`
 	// The security group resource of the cluster.
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -221,27 +225,29 @@ type InstanceState struct {
 	Account pulumi.StringPtrInput
 	// Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
 	AutoRenew pulumi.BoolPtrInput
-	// 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true.
+	// 0 or 800+. 0 means isColdStorage = false. 800+ means isColdStorage = true.
 	ColdStorageSize pulumi.IntPtrInput
 	// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space, value range: [20, 8000].
 	// - Cluster min=400GB, 40-GB increments.
 	// - Single min=20GB, 1-GB increments.
 	CoreDiskSize pulumi.IntPtrInput
-	// Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, localDisk size is fixed. When engine=bds, no need to set disk type.
+	// Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, ``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
 	CoreDiskType pulumi.StringPtrInput
 	// Default=2. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
 	CoreInstanceQuantity pulumi.IntPtrInput
 	CoreInstanceType     pulumi.StringPtrInput
 	// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
 	DeletionProtection pulumi.BoolPtrInput
-	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid,  unit: month.
+	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
 	Duration pulumi.IntPtrInput
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and ` bds  `.
 	Engine pulumi.StringPtrInput
 	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	// * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
 	EngineVersion pulumi.StringPtrInput
+	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+	ImmediateDeleteFlag pulumi.BoolPtrInput
 	// The white ip list of the cluster.
 	IpWhite pulumi.StringPtrInput
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
@@ -255,7 +261,7 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// The password of the cluster web ui account.
 	Password pulumi.StringPtrInput
-	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
 	PayType pulumi.StringPtrInput
 	// The security group resource of the cluster.
 	SecurityGroups pulumi.StringArrayInput
@@ -282,27 +288,29 @@ type instanceArgs struct {
 	Account *string `pulumi:"account"`
 	// Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true.
+	// 0 or 800+. 0 means isColdStorage = false. 800+ means isColdStorage = true.
 	ColdStorageSize *int `pulumi:"coldStorageSize"`
 	// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space, value range: [20, 8000].
 	// - Cluster min=400GB, 40-GB increments.
 	// - Single min=20GB, 1-GB increments.
 	CoreDiskSize *int `pulumi:"coreDiskSize"`
-	// Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, localDisk size is fixed. When engine=bds, no need to set disk type.
+	// Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, ``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
 	CoreDiskType *string `pulumi:"coreDiskType"`
 	// Default=2. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
 	CoreInstanceQuantity *int   `pulumi:"coreInstanceQuantity"`
 	CoreInstanceType     string `pulumi:"coreInstanceType"`
 	// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid,  unit: month.
+	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
 	Duration *int `pulumi:"duration"`
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and ` bds  `.
 	Engine *string `pulumi:"engine"`
 	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	// * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
 	EngineVersion string `pulumi:"engineVersion"`
+	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+	ImmediateDeleteFlag *bool `pulumi:"immediateDeleteFlag"`
 	// The white ip list of the cluster.
 	IpWhite *string `pulumi:"ipWhite"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
@@ -314,7 +322,7 @@ type instanceArgs struct {
 	Name *string `pulumi:"name"`
 	// The password of the cluster web ui account.
 	Password *string `pulumi:"password"`
-	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
 	PayType *string `pulumi:"payType"`
 	// The security group resource of the cluster.
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -332,27 +340,29 @@ type InstanceArgs struct {
 	Account pulumi.StringPtrInput
 	// Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
 	AutoRenew pulumi.BoolPtrInput
-	// 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true.
+	// 0 or 800+. 0 means isColdStorage = false. 800+ means isColdStorage = true.
 	ColdStorageSize pulumi.IntPtrInput
 	// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space, value range: [20, 8000].
 	// - Cluster min=400GB, 40-GB increments.
 	// - Single min=20GB, 1-GB increments.
 	CoreDiskSize pulumi.IntPtrInput
-	// Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, localDisk size is fixed. When engine=bds, no need to set disk type.
+	// Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, ``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
 	CoreDiskType pulumi.StringPtrInput
 	// Default=2. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
 	CoreInstanceQuantity pulumi.IntPtrInput
 	CoreInstanceType     pulumi.StringInput
 	// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
 	DeletionProtection pulumi.BoolPtrInput
-	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid,  unit: month.
+	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
 	Duration pulumi.IntPtrInput
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and ` bds  `.
 	Engine pulumi.StringPtrInput
 	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
 	// * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
 	EngineVersion pulumi.StringInput
+	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+	ImmediateDeleteFlag pulumi.BoolPtrInput
 	// The white ip list of the cluster.
 	IpWhite pulumi.StringPtrInput
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
@@ -364,7 +374,7 @@ type InstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// The password of the cluster web ui account.
 	Password pulumi.StringPtrInput
-	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
 	PayType pulumi.StringPtrInput
 	// The security group resource of the cluster.
 	SecurityGroups pulumi.StringArrayInput

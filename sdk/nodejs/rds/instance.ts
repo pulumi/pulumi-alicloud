@@ -141,6 +141,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
+     * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+     */
+    public readonly encryptionKey!: pulumi.Output<string | undefined>;
+    /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
      */
     public readonly engine!: pulumi.Output<string>;
@@ -278,6 +282,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["autoUpgradeMinorVersion"] = state ? state.autoUpgradeMinorVersion : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
             inputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
+            inputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             inputs["engine"] = state ? state.engine : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
             inputs["forceRestart"] = state ? state.forceRestart : undefined;
@@ -323,6 +328,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["autoUpgradeMinorVersion"] = args ? args.autoUpgradeMinorVersion : undefined;
             inputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
+            inputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             inputs["engine"] = args ? args.engine : undefined;
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
             inputs["forceRestart"] = args ? args.forceRestart : undefined;
@@ -394,6 +400,10 @@ export interface InstanceState {
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
      */
     readonly dbInstanceStorageType?: pulumi.Input<string>;
+    /**
+     * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+     */
+    readonly encryptionKey?: pulumi.Input<string>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
      */
@@ -543,6 +553,10 @@ export interface InstanceArgs {
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
      */
     readonly dbInstanceStorageType?: pulumi.Input<string>;
+    /**
+     * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+     */
+    readonly encryptionKey?: pulumi.Input<string>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
      */

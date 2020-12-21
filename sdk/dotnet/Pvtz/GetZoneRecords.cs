@@ -66,8 +66,42 @@ namespace Pulumi.AliCloud.Pvtz
         [Input("keyword")]
         public string? Keyword { get; set; }
 
+        /// <summary>
+        /// User language.
+        /// </summary>
+        [Input("lang")]
+        public string? Lang { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        /// <summary>
+        /// Search mode. Value: 
+        /// - LIKE: fuzzy search.
+        /// - EXACT: precise search. It is not filled in by default.
+        /// </summary>
+        [Input("searchMode")]
+        public string? SearchMode { get; set; }
+
+        /// <summary>
+        /// Resolve record status. Value:
+        /// - ENABLE: enable resolution.
+        /// - DISABLE: pause parsing.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
+        /// <summary>
+        /// It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+        /// </summary>
+        [Input("tag")]
+        public string? Tag { get; set; }
+
+        /// <summary>
+        /// User ip.
+        /// </summary>
+        [Input("userClientIp")]
+        public string? UserClientIp { get; set; }
 
         /// <summary>
         /// ID of the Private Zone.
@@ -93,11 +127,19 @@ namespace Pulumi.AliCloud.Pvtz
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? Keyword;
+        public readonly string? Lang;
         public readonly string? OutputFile;
         /// <summary>
         /// A list of zone records. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZoneRecordsRecordResult> Records;
+        public readonly string? SearchMode;
+        /// <summary>
+        /// Status of the Private Zone Record.
+        /// </summary>
+        public readonly string? Status;
+        public readonly string? Tag;
+        public readonly string? UserClientIp;
         public readonly string ZoneId;
 
         [OutputConstructor]
@@ -108,17 +150,32 @@ namespace Pulumi.AliCloud.Pvtz
 
             string? keyword,
 
+            string? lang,
+
             string? outputFile,
 
             ImmutableArray<Outputs.GetZoneRecordsRecordResult> records,
+
+            string? searchMode,
+
+            string? status,
+
+            string? tag,
+
+            string? userClientIp,
 
             string zoneId)
         {
             Id = id;
             Ids = ids;
             Keyword = keyword;
+            Lang = lang;
             OutputFile = outputFile;
             Records = records;
+            SearchMode = searchMode;
+            Status = status;
+            Tag = tag;
+            UserClientIp = userClientIp;
             ZoneId = zoneId;
         }
     }

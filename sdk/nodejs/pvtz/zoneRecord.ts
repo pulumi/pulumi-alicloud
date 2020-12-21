@@ -42,7 +42,11 @@ export class ZoneRecord extends pulumi.CustomResource {
     }
 
     /**
-     * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+     * User language.
+     */
+    public readonly lang!: pulumi.Output<string | undefined>;
+    /**
+     * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
@@ -55,16 +59,29 @@ export class ZoneRecord extends pulumi.CustomResource {
     public readonly remark!: pulumi.Output<string | undefined>;
     /**
      * The resource record of the Private Zone Record.
+     *
+     * @deprecated Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
      */
     public readonly resourceRecord!: pulumi.Output<string>;
     /**
-     * The ttl of the Private Zone Record.
+     * The rr of the Private Zone Record.
+     */
+    public readonly rr!: pulumi.Output<string>;
+    /**
+     * Resolve record status. Value:
+     * - ENABLE: enable resolution.
+     * - DISABLE: pause parsing.
+     */
+    public readonly status!: pulumi.Output<string | undefined>;
+    /**
+     * The ttl of the Private Zone Record. Default to `60`.
      */
     public readonly ttl!: pulumi.Output<number | undefined>;
     /**
-     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
+     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
      */
     public readonly type!: pulumi.Output<string>;
+    public readonly userClientIp!: pulumi.Output<string | undefined>;
     /**
      * The value of the Private Zone Record.
      */
@@ -86,19 +103,20 @@ export class ZoneRecord extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ZoneRecordState | undefined;
+            inputs["lang"] = state ? state.lang : undefined;
             inputs["priority"] = state ? state.priority : undefined;
             inputs["recordId"] = state ? state.recordId : undefined;
             inputs["remark"] = state ? state.remark : undefined;
             inputs["resourceRecord"] = state ? state.resourceRecord : undefined;
+            inputs["rr"] = state ? state.rr : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["ttl"] = state ? state.ttl : undefined;
             inputs["type"] = state ? state.type : undefined;
+            inputs["userClientIp"] = state ? state.userClientIp : undefined;
             inputs["value"] = state ? state.value : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneRecordArgs | undefined;
-            if (!args || args.resourceRecord === undefined) {
-                throw new Error("Missing required property 'resourceRecord'");
-            }
             if (!args || args.type === undefined) {
                 throw new Error("Missing required property 'type'");
             }
@@ -108,11 +126,15 @@ export class ZoneRecord extends pulumi.CustomResource {
             if (!args || args.zoneId === undefined) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            inputs["lang"] = args ? args.lang : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["remark"] = args ? args.remark : undefined;
             inputs["resourceRecord"] = args ? args.resourceRecord : undefined;
+            inputs["rr"] = args ? args.rr : undefined;
+            inputs["status"] = args ? args.status : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["userClientIp"] = args ? args.userClientIp : undefined;
             inputs["value"] = args ? args.value : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["recordId"] = undefined /*out*/;
@@ -133,7 +155,11 @@ export class ZoneRecord extends pulumi.CustomResource {
  */
 export interface ZoneRecordState {
     /**
-     * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+     * User language.
+     */
+    readonly lang?: pulumi.Input<string>;
+    /**
+     * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
      */
     readonly priority?: pulumi.Input<number>;
     /**
@@ -146,16 +172,29 @@ export interface ZoneRecordState {
     readonly remark?: pulumi.Input<string>;
     /**
      * The resource record of the Private Zone Record.
+     *
+     * @deprecated Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
      */
     readonly resourceRecord?: pulumi.Input<string>;
     /**
-     * The ttl of the Private Zone Record.
+     * The rr of the Private Zone Record.
+     */
+    readonly rr?: pulumi.Input<string>;
+    /**
+     * Resolve record status. Value:
+     * - ENABLE: enable resolution.
+     * - DISABLE: pause parsing.
+     */
+    readonly status?: pulumi.Input<string>;
+    /**
+     * The ttl of the Private Zone Record. Default to `60`.
      */
     readonly ttl?: pulumi.Input<number>;
     /**
-     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
+     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
      */
     readonly type?: pulumi.Input<string>;
+    readonly userClientIp?: pulumi.Input<string>;
     /**
      * The value of the Private Zone Record.
      */
@@ -171,7 +210,11 @@ export interface ZoneRecordState {
  */
 export interface ZoneRecordArgs {
     /**
-     * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+     * User language.
+     */
+    readonly lang?: pulumi.Input<string>;
+    /**
+     * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
      */
     readonly priority?: pulumi.Input<number>;
     /**
@@ -180,16 +223,29 @@ export interface ZoneRecordArgs {
     readonly remark?: pulumi.Input<string>;
     /**
      * The resource record of the Private Zone Record.
+     *
+     * @deprecated Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
      */
-    readonly resourceRecord: pulumi.Input<string>;
+    readonly resourceRecord?: pulumi.Input<string>;
     /**
-     * The ttl of the Private Zone Record.
+     * The rr of the Private Zone Record.
+     */
+    readonly rr?: pulumi.Input<string>;
+    /**
+     * Resolve record status. Value:
+     * - ENABLE: enable resolution.
+     * - DISABLE: pause parsing.
+     */
+    readonly status?: pulumi.Input<string>;
+    /**
+     * The ttl of the Private Zone Record. Default to `60`.
      */
     readonly ttl?: pulumi.Input<number>;
     /**
-     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
+     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
      */
     readonly type: pulumi.Input<string>;
+    readonly userClientIp?: pulumi.Input<string>;
     /**
      * The value of the Private Zone Record.
      */

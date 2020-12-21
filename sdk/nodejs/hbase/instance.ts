@@ -85,7 +85,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly autoRenew!: pulumi.Output<boolean>;
     /**
-     * 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true.
+     * 0 or 800+. 0 means isColdStorage = false. 800+ means isColdStorage = true.
      */
     public readonly coldStorageSize!: pulumi.Output<number | undefined>;
     /**
@@ -96,7 +96,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly coreDiskSize!: pulumi.Output<number | undefined>;
     /**
-     * Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, localDisk size is fixed. When engine=bds, no need to set disk type.
+     * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, ``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      */
     public readonly coreDiskType!: pulumi.Output<string | undefined>;
     /**
@@ -109,7 +109,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid,  unit: month.
+     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
      */
     public readonly duration!: pulumi.Output<number>;
     /**
@@ -121,6 +121,10 @@ export class Instance extends pulumi.CustomResource {
      * * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
     public readonly engineVersion!: pulumi.Output<string>;
+    /**
+     * The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+     */
+    public readonly immediateDeleteFlag!: pulumi.Output<boolean | undefined>;
     /**
      * The white ip list of the cluster.
      */
@@ -147,7 +151,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
      */
     public readonly payType!: pulumi.Output<string | undefined>;
     /**
@@ -202,6 +206,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["duration"] = state ? state.duration : undefined;
             inputs["engine"] = state ? state.engine : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
+            inputs["immediateDeleteFlag"] = state ? state.immediateDeleteFlag : undefined;
             inputs["ipWhite"] = state ? state.ipWhite : undefined;
             inputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
             inputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
@@ -239,6 +244,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["duration"] = args ? args.duration : undefined;
             inputs["engine"] = args ? args.engine : undefined;
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
+            inputs["immediateDeleteFlag"] = args ? args.immediateDeleteFlag : undefined;
             inputs["ipWhite"] = args ? args.ipWhite : undefined;
             inputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
             inputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
@@ -279,7 +285,7 @@ export interface InstanceState {
      */
     readonly autoRenew?: pulumi.Input<boolean>;
     /**
-     * 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true.
+     * 0 or 800+. 0 means isColdStorage = false. 800+ means isColdStorage = true.
      */
     readonly coldStorageSize?: pulumi.Input<number>;
     /**
@@ -290,7 +296,7 @@ export interface InstanceState {
      */
     readonly coreDiskSize?: pulumi.Input<number>;
     /**
-     * Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, localDisk size is fixed. When engine=bds, no need to set disk type.
+     * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, ``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      */
     readonly coreDiskType?: pulumi.Input<string>;
     /**
@@ -303,7 +309,7 @@ export interface InstanceState {
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
-     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid,  unit: month.
+     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
      */
     readonly duration?: pulumi.Input<number>;
     /**
@@ -315,6 +321,10 @@ export interface InstanceState {
      * * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
     readonly engineVersion?: pulumi.Input<string>;
+    /**
+     * The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+     */
+    readonly immediateDeleteFlag?: pulumi.Input<boolean>;
     /**
      * The white ip list of the cluster.
      */
@@ -341,7 +351,7 @@ export interface InstanceState {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
      */
     readonly payType?: pulumi.Input<string>;
     /**
@@ -387,7 +397,7 @@ export interface InstanceArgs {
      */
     readonly autoRenew?: pulumi.Input<boolean>;
     /**
-     * 0 or 0+. 0 means isColdStorage = false. 0+ means isColdStorage = true.
+     * 0 or 800+. 0 means isColdStorage = false. 800+ means isColdStorage = true.
      */
     readonly coldStorageSize?: pulumi.Input<number>;
     /**
@@ -398,7 +408,7 @@ export interface InstanceArgs {
      */
     readonly coreDiskSize?: pulumi.Input<number>;
     /**
-     * Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, localDisk size is fixed. When engine=bds, no need to set disk type.
+     * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, ``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      */
     readonly coreDiskType?: pulumi.Input<string>;
     /**
@@ -411,7 +421,7 @@ export interface InstanceArgs {
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
-     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when payType = PrePaid,  unit: month.
+     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
      */
     readonly duration?: pulumi.Input<number>;
     /**
@@ -423,6 +433,10 @@ export interface InstanceArgs {
      * * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
     readonly engineVersion: pulumi.Input<string>;
+    /**
+     * The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+     */
+    readonly immediateDeleteFlag?: pulumi.Input<boolean>;
     /**
      * The white ip list of the cluster.
      */
@@ -445,7 +459,7 @@ export interface InstanceArgs {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
      */
     readonly payType?: pulumi.Input<string>;
     /**

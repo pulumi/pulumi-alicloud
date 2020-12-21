@@ -129,7 +129,7 @@ type Instance struct {
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
+	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The ID of VSwitch.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
@@ -244,7 +244,7 @@ type instanceState struct {
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
+	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version *string `pulumi:"version"`
 	// The ID of VSwitch.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -314,7 +314,7 @@ type InstanceState struct {
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags pulumi.MapInput
-	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
+	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version pulumi.StringPtrInput
 	// The ID of VSwitch.
 	VswitchId pulumi.StringPtrInput
@@ -378,7 +378,7 @@ type instanceArgs struct {
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
+	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version string `pulumi:"version"`
 	// The ID of VSwitch.
 	VswitchId string `pulumi:"vswitchId"`
@@ -439,7 +439,7 @@ type InstanceArgs struct {
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags pulumi.MapInput
-	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
+	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version pulumi.StringInput
 	// The ID of VSwitch.
 	VswitchId pulumi.StringInput

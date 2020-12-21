@@ -118,7 +118,7 @@ type BackupPolicy struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
 	LocalLogRetentionHours pulumi.IntOutput `pulumi:"localLogRetentionHours"`
-	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
 	LocalLogRetentionSpace pulumi.IntOutput `pulumi:"localLogRetentionSpace"`
 	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
 	//
@@ -199,7 +199,7 @@ type backupPolicyState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
 	LocalLogRetentionHours *int `pulumi:"localLogRetentionHours"`
-	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
 	LocalLogRetentionSpace *int `pulumi:"localLogRetentionSpace"`
 	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
 	//
@@ -250,7 +250,7 @@ type BackupPolicyState struct {
 	InstanceId pulumi.StringPtrInput
 	// Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
 	LocalLogRetentionHours pulumi.IntPtrInput
-	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
 	LocalLogRetentionSpace pulumi.IntPtrInput
 	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
 	//
@@ -305,7 +305,7 @@ type backupPolicyArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
 	LocalLogRetentionHours *int `pulumi:"localLogRetentionHours"`
-	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
 	LocalLogRetentionSpace *int `pulumi:"localLogRetentionSpace"`
 	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
 	//
@@ -357,7 +357,7 @@ type BackupPolicyArgs struct {
 	InstanceId pulumi.StringInput
 	// Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
 	LocalLogRetentionHours pulumi.IntPtrInput
-	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
 	LocalLogRetentionSpace pulumi.IntPtrInput
 	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
 	//

@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.108.0 of the AliCloud Terraform Provider
+* Upgrade to v1.109.1.0 of the AliCloud Terraform Provider
 
 ---
 

@@ -16,15 +16,32 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
         /// <summary>
         /// ID of the Private Zone Record.
         /// </summary>
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
         /// Priority of the Private Zone Record.
         /// </summary>
         public readonly int Priority;
         /// <summary>
+        /// RecordId of the Private Zone Record.
+        /// </summary>
+        public readonly int RecordId;
+        /// <summary>
+        /// Remark of the Private Zone Record.
+        /// </summary>
+        public readonly string Remark;
+        /// <summary>
         /// Resource record of the Private Zone Record.
         /// </summary>
         public readonly string ResourceRecord;
+        /// <summary>
+        /// Rr of the Private Zone Record.
+        /// </summary>
+        public readonly string Rr;
+        /// <summary>
+        /// Resolve record status. Value:
+        /// - ENABLE: enable resolution.
+        /// - DISABLE: pause parsing.
+        /// </summary>
         public readonly string Status;
         /// <summary>
         /// Ttl of the Private Zone Record.
@@ -41,11 +58,17 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
 
         [OutputConstructor]
         private GetZoneRecordsRecordResult(
-            int id,
+            string id,
 
             int priority,
 
+            int recordId,
+
+            string remark,
+
             string resourceRecord,
+
+            string rr,
 
             string status,
 
@@ -57,7 +80,10 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
         {
             Id = id;
             Priority = priority;
+            RecordId = recordId;
+            Remark = remark;
             ResourceRecord = resourceRecord;
+            Rr = rr;
             Status = status;
             Ttl = ttl;
             Type = type;

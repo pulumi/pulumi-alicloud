@@ -74,6 +74,7 @@ const (
 	ossMod             = "Oss"
 	otsMod             = "Ots"
 	polarDbMod         = "PolarDB"
+	privateLinkMod     = "PrivateLink"
 	pvtzMod            = "Pvtz"
 	ramMod             = "Ram"
 	resourceManagerMod = "ResourceManager"
@@ -491,6 +492,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ots_instance_attachment": {Tok: resource(otsMod, "InstanceAttachment")},
 			"alicloud_ots_table":               {Tok: resource(otsMod, "Table")},
 
+			// PrivateLink
+			"alicloud_privatelink_vpc_endpoint":         {Tok: resource(privateLinkMod, "VpcEndpoint")},
+			"alicloud_privatelink_vpc_endpoint_service": {Tok: resource(privateLinkMod, "VpcEndpointService")},
+
 			// PolarDB
 			"alicloud_polardb_account": {Tok: resource(polarDbMod, "Account")},
 			"alicloud_polardb_account_privilege": {
@@ -877,6 +882,10 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Ots
 			"alicloud_ots_service": {Tok: dataSource(otsMod, "getService")},
+
+			// PrivateLink
+			"alicloud_privatelink_vpc_endpoints":         {Tok: dataSource(privateLinkMod, "getVpcEndpoints")},
+			"alicloud_privatelink_vpc_endpoint_services": {Tok: dataSource(privateLinkMod, "getVpcEndpointServices")},
 
 			// PolarDb
 			"alicloud_polardb_clusters":     {Tok: dataSource(polarDbMod, "getClusters")},

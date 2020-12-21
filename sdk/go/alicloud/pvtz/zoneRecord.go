@@ -21,18 +21,29 @@ import (
 type ZoneRecord struct {
 	pulumi.CustomResourceState
 
-	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+	// User language.
+	Lang pulumi.StringPtrOutput `pulumi:"lang"`
+	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The Private Zone Record ID.
 	RecordId pulumi.IntOutput `pulumi:"recordId"`
 	// The remark of the Private Zone Record.
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// The resource record of the Private Zone Record.
+	//
+	// Deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
 	ResourceRecord pulumi.StringOutput `pulumi:"resourceRecord"`
-	// The ttl of the Private Zone Record.
+	// The rr of the Private Zone Record.
+	Rr pulumi.StringOutput `pulumi:"rr"`
+	// Resolve record status. Value:
+	// - ENABLE: enable resolution.
+	// - DISABLE: pause parsing.
+	Status pulumi.StringPtrOutput `pulumi:"status"`
+	// The ttl of the Private Zone Record. Default to `60`.
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
-	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
-	Type pulumi.StringOutput `pulumi:"type"`
+	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+	Type         pulumi.StringOutput    `pulumi:"type"`
+	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
 	// The value of the Private Zone Record.
 	Value pulumi.StringOutput `pulumi:"value"`
 	// The name of the Private Zone Record.
@@ -42,9 +53,6 @@ type ZoneRecord struct {
 // NewZoneRecord registers a new resource with the given unique name, arguments, and options.
 func NewZoneRecord(ctx *pulumi.Context,
 	name string, args *ZoneRecordArgs, opts ...pulumi.ResourceOption) (*ZoneRecord, error) {
-	if args == nil || args.ResourceRecord == nil {
-		return nil, errors.New("missing required argument 'ResourceRecord'")
-	}
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
@@ -79,18 +87,29 @@ func GetZoneRecord(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneRecord resources.
 type zoneRecordState struct {
-	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+	// User language.
+	Lang *string `pulumi:"lang"`
+	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
 	Priority *int `pulumi:"priority"`
 	// The Private Zone Record ID.
 	RecordId *int `pulumi:"recordId"`
 	// The remark of the Private Zone Record.
 	Remark *string `pulumi:"remark"`
 	// The resource record of the Private Zone Record.
+	//
+	// Deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
 	ResourceRecord *string `pulumi:"resourceRecord"`
-	// The ttl of the Private Zone Record.
+	// The rr of the Private Zone Record.
+	Rr *string `pulumi:"rr"`
+	// Resolve record status. Value:
+	// - ENABLE: enable resolution.
+	// - DISABLE: pause parsing.
+	Status *string `pulumi:"status"`
+	// The ttl of the Private Zone Record. Default to `60`.
 	Ttl *int `pulumi:"ttl"`
-	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
-	Type *string `pulumi:"type"`
+	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+	Type         *string `pulumi:"type"`
+	UserClientIp *string `pulumi:"userClientIp"`
 	// The value of the Private Zone Record.
 	Value *string `pulumi:"value"`
 	// The name of the Private Zone Record.
@@ -98,18 +117,29 @@ type zoneRecordState struct {
 }
 
 type ZoneRecordState struct {
-	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+	// User language.
+	Lang pulumi.StringPtrInput
+	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
 	Priority pulumi.IntPtrInput
 	// The Private Zone Record ID.
 	RecordId pulumi.IntPtrInput
 	// The remark of the Private Zone Record.
 	Remark pulumi.StringPtrInput
 	// The resource record of the Private Zone Record.
+	//
+	// Deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
 	ResourceRecord pulumi.StringPtrInput
-	// The ttl of the Private Zone Record.
+	// The rr of the Private Zone Record.
+	Rr pulumi.StringPtrInput
+	// Resolve record status. Value:
+	// - ENABLE: enable resolution.
+	// - DISABLE: pause parsing.
+	Status pulumi.StringPtrInput
+	// The ttl of the Private Zone Record. Default to `60`.
 	Ttl pulumi.IntPtrInput
-	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
-	Type pulumi.StringPtrInput
+	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+	Type         pulumi.StringPtrInput
+	UserClientIp pulumi.StringPtrInput
 	// The value of the Private Zone Record.
 	Value pulumi.StringPtrInput
 	// The name of the Private Zone Record.
@@ -121,16 +151,27 @@ func (ZoneRecordState) ElementType() reflect.Type {
 }
 
 type zoneRecordArgs struct {
-	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+	// User language.
+	Lang *string `pulumi:"lang"`
+	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
 	Priority *int `pulumi:"priority"`
 	// The remark of the Private Zone Record.
 	Remark *string `pulumi:"remark"`
 	// The resource record of the Private Zone Record.
-	ResourceRecord string `pulumi:"resourceRecord"`
-	// The ttl of the Private Zone Record.
+	//
+	// Deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
+	ResourceRecord *string `pulumi:"resourceRecord"`
+	// The rr of the Private Zone Record.
+	Rr *string `pulumi:"rr"`
+	// Resolve record status. Value:
+	// - ENABLE: enable resolution.
+	// - DISABLE: pause parsing.
+	Status *string `pulumi:"status"`
+	// The ttl of the Private Zone Record. Default to `60`.
 	Ttl *int `pulumi:"ttl"`
-	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
-	Type string `pulumi:"type"`
+	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+	Type         string  `pulumi:"type"`
+	UserClientIp *string `pulumi:"userClientIp"`
 	// The value of the Private Zone Record.
 	Value string `pulumi:"value"`
 	// The name of the Private Zone Record.
@@ -139,16 +180,27 @@ type zoneRecordArgs struct {
 
 // The set of arguments for constructing a ZoneRecord resource.
 type ZoneRecordArgs struct {
-	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+	// User language.
+	Lang pulumi.StringPtrInput
+	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
 	Priority pulumi.IntPtrInput
 	// The remark of the Private Zone Record.
 	Remark pulumi.StringPtrInput
 	// The resource record of the Private Zone Record.
-	ResourceRecord pulumi.StringInput
-	// The ttl of the Private Zone Record.
+	//
+	// Deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
+	ResourceRecord pulumi.StringPtrInput
+	// The rr of the Private Zone Record.
+	Rr pulumi.StringPtrInput
+	// Resolve record status. Value:
+	// - ENABLE: enable resolution.
+	// - DISABLE: pause parsing.
+	Status pulumi.StringPtrInput
+	// The ttl of the Private Zone Record. Default to `60`.
 	Ttl pulumi.IntPtrInput
-	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
-	Type pulumi.StringInput
+	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+	Type         pulumi.StringInput
+	UserClientIp pulumi.StringPtrInput
 	// The value of the Private Zone Record.
 	Value pulumi.StringInput
 	// The name of the Private Zone Record.

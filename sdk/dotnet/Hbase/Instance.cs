@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<bool> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true.
+        /// 0 or 800+. 0 means is_cold_storage = false. 800+ means is_cold_storage = true.
         /// </summary>
         [Output("coldStorageSize")]
         public Output<int?> ColdStorageSize { get; private set; } = null!;
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<int?> CoreDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, local_disk size is fixed. When engine=bds, no need to set disk type.
+        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, ``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
         /// </summary>
         [Output("coreDiskType")]
         public Output<string?> CoreDiskType { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid,  unit: month.
+        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         /// </summary>
         [Output("duration")]
         public Output<int> Duration { get; private set; } = null!;
@@ -128,6 +128,12 @@ namespace Pulumi.AliCloud.Hbase
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+        /// </summary>
+        [Output("immediateDeleteFlag")]
+        public Output<bool?> ImmediateDeleteFlag { get; private set; } = null!;
 
         /// <summary>
         /// The white ip list of the cluster.
@@ -169,7 +175,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
         /// </summary>
         [Output("payType")]
         public Output<string?> PayType { get; private set; } = null!;
@@ -275,7 +281,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true.
+        /// 0 or 800+. 0 means is_cold_storage = false. 800+ means is_cold_storage = true.
         /// </summary>
         [Input("coldStorageSize")]
         public Input<int>? ColdStorageSize { get; set; }
@@ -290,7 +296,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<int>? CoreDiskSize { get; set; }
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, local_disk size is fixed. When engine=bds, no need to set disk type.
+        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, ``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
         /// </summary>
         [Input("coreDiskType")]
         public Input<string>? CoreDiskType { get; set; }
@@ -311,7 +317,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid,  unit: month.
+        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
@@ -328,6 +334,12 @@ namespace Pulumi.AliCloud.Hbase
         /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
+
+        /// <summary>
+        /// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+        /// </summary>
+        [Input("immediateDeleteFlag")]
+        public Input<bool>? ImmediateDeleteFlag { get; set; }
 
         /// <summary>
         /// The white ip list of the cluster.
@@ -363,7 +375,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
@@ -424,7 +436,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// 0 or 0+. 0 means is_cold_storage = false. 0+ means is_cold_storage = true.
+        /// 0 or 800+. 0 means is_cold_storage = false. 800+ means is_cold_storage = true.
         /// </summary>
         [Input("coldStorageSize")]
         public Input<int>? ColdStorageSize { get; set; }
@@ -439,7 +451,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<int>? CoreDiskSize { get; set; }
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, local_disk size is fixed. When engine=bds, no need to set disk type.
+        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, ``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
         /// </summary>
         [Input("coreDiskType")]
         public Input<string>? CoreDiskType { get; set; }
@@ -460,7 +472,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60, valid when pay_type = PrePaid,  unit: month.
+        /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
@@ -477,6 +489,12 @@ namespace Pulumi.AliCloud.Hbase
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
+
+        /// <summary>
+        /// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+        /// </summary>
+        [Input("immediateDeleteFlag")]
+        public Input<bool>? ImmediateDeleteFlag { get; set; }
 
         /// <summary>
         /// The white ip list of the cluster.
@@ -518,7 +536,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }

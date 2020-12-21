@@ -286,12 +286,8 @@ export class Kubernetes extends pulumi.CustomResource {
     public readonly workerDataDiskSize!: pulumi.Output<number | undefined>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values:
-     * * cloud: basic disks.
-     * * cloud_efficiency: ultra disks.
-     * * cloud_ssd: SSDs.
-     * * cloud_essd: essd.
-     * * `size`: the size of a data disk, at least 40. Unit: GiB.
+     * * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+     * * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     public readonly workerDataDisks!: pulumi.Output<outputs.cs.KubernetesWorkerDataDisk[] | undefined>;
@@ -300,7 +296,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly workerDiskCategory!: pulumi.Output<string | undefined>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+     * The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
      */
     public readonly workerDiskSize!: pulumi.Output<number | undefined>;
     /**
@@ -774,12 +770,8 @@ export interface KubernetesState {
     readonly workerDataDiskSize?: pulumi.Input<number>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values:
-     * * cloud: basic disks.
-     * * cloud_efficiency: ultra disks.
-     * * cloud_ssd: SSDs.
-     * * cloud_essd: essd.
-     * * `size`: the size of a data disk, at least 40. Unit: GiB.
+     * * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+     * * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesWorkerDataDisk>[]>;
@@ -788,7 +780,7 @@ export interface KubernetesState {
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+     * The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
      */
     readonly workerDiskSize?: pulumi.Input<number>;
     /**
@@ -1041,12 +1033,8 @@ export interface KubernetesArgs {
     readonly workerDataDiskSize?: pulumi.Input<number>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values:
-     * * cloud: basic disks.
-     * * cloud_efficiency: ultra disks.
-     * * cloud_ssd: SSDs.
-     * * cloud_essd: essd.
-     * * `size`: the size of a data disk, at least 40. Unit: GiB.
+     * * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+     * * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
      * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesWorkerDataDisk>[]>;
@@ -1055,7 +1043,7 @@ export interface KubernetesArgs {
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+     * The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
      */
     readonly workerDiskSize?: pulumi.Input<number>;
     /**

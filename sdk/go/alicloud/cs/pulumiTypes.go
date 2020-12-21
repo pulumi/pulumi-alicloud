@@ -2759,6 +2759,194 @@ func (o ManagedKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedKubernetesMaintenanceWindow struct {
+	// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+	Duration string `pulumi:"duration"`
+	// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+	Enable bool `pulumi:"enable"`
+	// Initial maintenance time, For example:"03:00:00Z".
+	MaintenanceTime string `pulumi:"maintenanceTime"`
+	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+	WeeklyPeriod string `pulumi:"weeklyPeriod"`
+}
+
+// ManagedKubernetesMaintenanceWindowInput is an input type that accepts ManagedKubernetesMaintenanceWindowArgs and ManagedKubernetesMaintenanceWindowOutput values.
+// You can construct a concrete instance of `ManagedKubernetesMaintenanceWindowInput` via:
+//
+//          ManagedKubernetesMaintenanceWindowArgs{...}
+type ManagedKubernetesMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesMaintenanceWindowOutput() ManagedKubernetesMaintenanceWindowOutput
+	ToManagedKubernetesMaintenanceWindowOutputWithContext(context.Context) ManagedKubernetesMaintenanceWindowOutput
+}
+
+type ManagedKubernetesMaintenanceWindowArgs struct {
+	// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Initial maintenance time, For example:"03:00:00Z".
+	MaintenanceTime pulumi.StringInput `pulumi:"maintenanceTime"`
+	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+	WeeklyPeriod pulumi.StringInput `pulumi:"weeklyPeriod"`
+}
+
+func (ManagedKubernetesMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesMaintenanceWindow)(nil)).Elem()
+}
+
+func (i ManagedKubernetesMaintenanceWindowArgs) ToManagedKubernetesMaintenanceWindowOutput() ManagedKubernetesMaintenanceWindowOutput {
+	return i.ToManagedKubernetesMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesMaintenanceWindowArgs) ToManagedKubernetesMaintenanceWindowOutputWithContext(ctx context.Context) ManagedKubernetesMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesMaintenanceWindowOutput)
+}
+
+func (i ManagedKubernetesMaintenanceWindowArgs) ToManagedKubernetesMaintenanceWindowPtrOutput() ManagedKubernetesMaintenanceWindowPtrOutput {
+	return i.ToManagedKubernetesMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesMaintenanceWindowArgs) ToManagedKubernetesMaintenanceWindowPtrOutputWithContext(ctx context.Context) ManagedKubernetesMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesMaintenanceWindowOutput).ToManagedKubernetesMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesMaintenanceWindowPtrInput is an input type that accepts ManagedKubernetesMaintenanceWindowArgs, ManagedKubernetesMaintenanceWindowPtr and ManagedKubernetesMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesMaintenanceWindowPtrInput` via:
+//
+//          ManagedKubernetesMaintenanceWindowArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedKubernetesMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesMaintenanceWindowPtrOutput() ManagedKubernetesMaintenanceWindowPtrOutput
+	ToManagedKubernetesMaintenanceWindowPtrOutputWithContext(context.Context) ManagedKubernetesMaintenanceWindowPtrOutput
+}
+
+type managedKubernetesMaintenanceWindowPtrType ManagedKubernetesMaintenanceWindowArgs
+
+func ManagedKubernetesMaintenanceWindowPtr(v *ManagedKubernetesMaintenanceWindowArgs) ManagedKubernetesMaintenanceWindowPtrInput {
+	return (*managedKubernetesMaintenanceWindowPtrType)(v)
+}
+
+func (*managedKubernetesMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *managedKubernetesMaintenanceWindowPtrType) ToManagedKubernetesMaintenanceWindowPtrOutput() ManagedKubernetesMaintenanceWindowPtrOutput {
+	return i.ToManagedKubernetesMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesMaintenanceWindowPtrType) ToManagedKubernetesMaintenanceWindowPtrOutputWithContext(ctx context.Context) ManagedKubernetesMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesMaintenanceWindowPtrOutput)
+}
+
+type ManagedKubernetesMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesMaintenanceWindow)(nil)).Elem()
+}
+
+func (o ManagedKubernetesMaintenanceWindowOutput) ToManagedKubernetesMaintenanceWindowOutput() ManagedKubernetesMaintenanceWindowOutput {
+	return o
+}
+
+func (o ManagedKubernetesMaintenanceWindowOutput) ToManagedKubernetesMaintenanceWindowOutputWithContext(ctx context.Context) ManagedKubernetesMaintenanceWindowOutput {
+	return o
+}
+
+func (o ManagedKubernetesMaintenanceWindowOutput) ToManagedKubernetesMaintenanceWindowPtrOutput() ManagedKubernetesMaintenanceWindowPtrOutput {
+	return o.ToManagedKubernetesMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesMaintenanceWindowOutput) ToManagedKubernetesMaintenanceWindowPtrOutputWithContext(ctx context.Context) ManagedKubernetesMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) *ManagedKubernetesMaintenanceWindow {
+		return &v
+	}).(ManagedKubernetesMaintenanceWindowPtrOutput)
+}
+
+// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+func (o ManagedKubernetesMaintenanceWindowOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+func (o ManagedKubernetesMaintenanceWindowOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Initial maintenance time, For example:"03:00:00Z".
+func (o ManagedKubernetesMaintenanceWindowOutput) MaintenanceTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) string { return v.MaintenanceTime }).(pulumi.StringOutput)
+}
+
+// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+func (o ManagedKubernetesMaintenanceWindowOutput) WeeklyPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) string { return v.WeeklyPeriod }).(pulumi.StringOutput)
+}
+
+type ManagedKubernetesMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesMaintenanceWindow)(nil)).Elem()
+}
+
+func (o ManagedKubernetesMaintenanceWindowPtrOutput) ToManagedKubernetesMaintenanceWindowPtrOutput() ManagedKubernetesMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesMaintenanceWindowPtrOutput) ToManagedKubernetesMaintenanceWindowPtrOutputWithContext(ctx context.Context) ManagedKubernetesMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesMaintenanceWindowPtrOutput) Elem() ManagedKubernetesMaintenanceWindowOutput {
+	return o.ApplyT(func(v *ManagedKubernetesMaintenanceWindow) ManagedKubernetesMaintenanceWindow { return *v }).(ManagedKubernetesMaintenanceWindowOutput)
+}
+
+// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+func (o ManagedKubernetesMaintenanceWindowPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+func (o ManagedKubernetesMaintenanceWindowPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesMaintenanceWindow) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Initial maintenance time, For example:"03:00:00Z".
+func (o ManagedKubernetesMaintenanceWindowPtrOutput) MaintenanceTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaintenanceTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+func (o ManagedKubernetesMaintenanceWindowPtrOutput) WeeklyPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WeeklyPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
 type ManagedKubernetesRuntime struct {
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
@@ -3506,6 +3694,213 @@ func (o NodePoolLabelArrayOutput) Index(i pulumi.IntInput) NodePoolLabelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolLabel {
 		return vs[0].([]NodePoolLabel)[vs[1].(int)]
 	}).(NodePoolLabelOutput)
+}
+
+type NodePoolManagement struct {
+	// Whether automatic repair, Default to `false`.
+	AutoRepair *bool `pulumi:"autoRepair"`
+	// Whether auto upgrade, Default to `false`.
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// Max number of unavailable nodes. Default to `1`.
+	MaxUnavailable int `pulumi:"maxUnavailable"`
+	// Number of additional nodes. You have to specify one of surge, surge_percentage.
+	Surge *int `pulumi:"surge"`
+	// Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+	SurgePercentage *int `pulumi:"surgePercentage"`
+}
+
+// NodePoolManagementInput is an input type that accepts NodePoolManagementArgs and NodePoolManagementOutput values.
+// You can construct a concrete instance of `NodePoolManagementInput` via:
+//
+//          NodePoolManagementArgs{...}
+type NodePoolManagementInput interface {
+	pulumi.Input
+
+	ToNodePoolManagementOutput() NodePoolManagementOutput
+	ToNodePoolManagementOutputWithContext(context.Context) NodePoolManagementOutput
+}
+
+type NodePoolManagementArgs struct {
+	// Whether automatic repair, Default to `false`.
+	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
+	// Whether auto upgrade, Default to `false`.
+	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
+	// Max number of unavailable nodes. Default to `1`.
+	MaxUnavailable pulumi.IntInput `pulumi:"maxUnavailable"`
+	// Number of additional nodes. You have to specify one of surge, surge_percentage.
+	Surge pulumi.IntPtrInput `pulumi:"surge"`
+	// Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+	SurgePercentage pulumi.IntPtrInput `pulumi:"surgePercentage"`
+}
+
+func (NodePoolManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolManagement)(nil)).Elem()
+}
+
+func (i NodePoolManagementArgs) ToNodePoolManagementOutput() NodePoolManagementOutput {
+	return i.ToNodePoolManagementOutputWithContext(context.Background())
+}
+
+func (i NodePoolManagementArgs) ToNodePoolManagementOutputWithContext(ctx context.Context) NodePoolManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementOutput)
+}
+
+func (i NodePoolManagementArgs) ToNodePoolManagementPtrOutput() NodePoolManagementPtrOutput {
+	return i.ToNodePoolManagementPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolManagementArgs) ToNodePoolManagementPtrOutputWithContext(ctx context.Context) NodePoolManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementOutput).ToNodePoolManagementPtrOutputWithContext(ctx)
+}
+
+// NodePoolManagementPtrInput is an input type that accepts NodePoolManagementArgs, NodePoolManagementPtr and NodePoolManagementPtrOutput values.
+// You can construct a concrete instance of `NodePoolManagementPtrInput` via:
+//
+//          NodePoolManagementArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolManagementPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolManagementPtrOutput() NodePoolManagementPtrOutput
+	ToNodePoolManagementPtrOutputWithContext(context.Context) NodePoolManagementPtrOutput
+}
+
+type nodePoolManagementPtrType NodePoolManagementArgs
+
+func NodePoolManagementPtr(v *NodePoolManagementArgs) NodePoolManagementPtrInput {
+	return (*nodePoolManagementPtrType)(v)
+}
+
+func (*nodePoolManagementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolManagement)(nil)).Elem()
+}
+
+func (i *nodePoolManagementPtrType) ToNodePoolManagementPtrOutput() NodePoolManagementPtrOutput {
+	return i.ToNodePoolManagementPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolManagementPtrType) ToNodePoolManagementPtrOutputWithContext(ctx context.Context) NodePoolManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementPtrOutput)
+}
+
+type NodePoolManagementOutput struct{ *pulumi.OutputState }
+
+func (NodePoolManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolManagement)(nil)).Elem()
+}
+
+func (o NodePoolManagementOutput) ToNodePoolManagementOutput() NodePoolManagementOutput {
+	return o
+}
+
+func (o NodePoolManagementOutput) ToNodePoolManagementOutputWithContext(ctx context.Context) NodePoolManagementOutput {
+	return o
+}
+
+func (o NodePoolManagementOutput) ToNodePoolManagementPtrOutput() NodePoolManagementPtrOutput {
+	return o.ToNodePoolManagementPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolManagementOutput) ToNodePoolManagementPtrOutputWithContext(ctx context.Context) NodePoolManagementPtrOutput {
+	return o.ApplyT(func(v NodePoolManagement) *NodePoolManagement {
+		return &v
+	}).(NodePoolManagementPtrOutput)
+}
+
+// Whether automatic repair, Default to `false`.
+func (o NodePoolManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
+}
+
+// Whether auto upgrade, Default to `false`.
+func (o NodePoolManagementOutput) AutoUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// Max number of unavailable nodes. Default to `1`.
+func (o NodePoolManagementOutput) MaxUnavailable() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolManagement) int { return v.MaxUnavailable }).(pulumi.IntOutput)
+}
+
+// Number of additional nodes. You have to specify one of surge, surge_percentage.
+func (o NodePoolManagementOutput) Surge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolManagement) *int { return v.Surge }).(pulumi.IntPtrOutput)
+}
+
+// Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+func (o NodePoolManagementOutput) SurgePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolManagement) *int { return v.SurgePercentage }).(pulumi.IntPtrOutput)
+}
+
+type NodePoolManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolManagement)(nil)).Elem()
+}
+
+func (o NodePoolManagementPtrOutput) ToNodePoolManagementPtrOutput() NodePoolManagementPtrOutput {
+	return o
+}
+
+func (o NodePoolManagementPtrOutput) ToNodePoolManagementPtrOutputWithContext(ctx context.Context) NodePoolManagementPtrOutput {
+	return o
+}
+
+func (o NodePoolManagementPtrOutput) Elem() NodePoolManagementOutput {
+	return o.ApplyT(func(v *NodePoolManagement) NodePoolManagement { return *v }).(NodePoolManagementOutput)
+}
+
+// Whether automatic repair, Default to `false`.
+func (o NodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagement) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoRepair
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether auto upgrade, Default to `false`.
+func (o NodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagement) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoUpgrade
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Max number of unavailable nodes. Default to `1`.
+func (o NodePoolManagementPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagement) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of additional nodes. You have to specify one of surge, surge_percentage.
+func (o NodePoolManagementPtrOutput) Surge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagement) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Surge
+	}).(pulumi.IntPtrOutput)
+}
+
+// Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+func (o NodePoolManagementPtrOutput) SurgePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagement) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SurgePercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 type NodePoolTaint struct {
@@ -6697,6 +7092,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRuntimeOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRuntimePtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesTaintOutput{})
@@ -6709,6 +7106,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolLabelOutput{})
 	pulumi.RegisterOutputType(NodePoolLabelArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolManagementOutput{})
+	pulumi.RegisterOutputType(NodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolTaintOutput{})
 	pulumi.RegisterOutputType(NodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonOutput{})

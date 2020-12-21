@@ -101,6 +101,7 @@ export interface ProviderEndpoint {
     oss?: string;
     ots?: string;
     polardb?: string;
+    privatelink?: string;
     pvtz?: string;
     rKvstore?: string;
     ram?: string;
@@ -2204,6 +2205,7 @@ export namespace config {
         oss?: string;
         ots?: string;
         polardb?: string;
+        privatelink?: string;
         pvtz?: string;
         rKvstore?: string;
         ram?: string;
@@ -3151,6 +3153,25 @@ export namespace cs {
         serviceDomain: string;
     }
 
+    export interface ManagedKubernetesMaintenanceWindow {
+        /**
+         * The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+         */
+        duration: string;
+        /**
+         * Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+         */
+        enable: boolean;
+        /**
+         * Initial maintenance time, For example:"03:00:00Z".
+         */
+        maintenanceTime: string;
+        /**
+         * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+         */
+        weeklyPeriod: string;
+    }
+
     export interface ManagedKubernetesRuntime {
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -3214,6 +3235,29 @@ export namespace cs {
     export interface NodePoolLabel {
         key: string;
         value?: string;
+    }
+
+    export interface NodePoolManagement {
+        /**
+         * Whether automatic repair, Default to `false`.
+         */
+        autoRepair?: boolean;
+        /**
+         * Whether auto upgrade, Default to `false`.
+         */
+        autoUpgrade?: boolean;
+        /**
+         * Max number of unavailable nodes. Default to `1`.
+         */
+        maxUnavailable: number;
+        /**
+         * Number of additional nodes. You have to specify one of surge, surge_percentage.
+         */
+        surge?: number;
+        /**
+         * Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+         */
+        surgePercentage?: number;
     }
 
     export interface NodePoolTaint {
@@ -5081,7 +5125,7 @@ export namespace ecs {
          * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
          * Default to `PL1`.
          */
-        performanceLevel?: string;
+        performanceLevel: string;
         /**
          * The size of the data disk.
          * - cloud：[5, 2000]
@@ -8754,20 +8798,185 @@ export namespace polardb {
     }
 }
 
+export namespace privatelink {
+    export interface GetVpcEndpointServicesService {
+        /**
+         * Whether to automatically accept terminal node connections..
+         */
+        autoAcceptConnection: boolean;
+        /**
+         * The connection bandwidth.
+         */
+        connectBandwidth: number;
+        /**
+         * The ID of the Vpc Endpoint Service.
+         */
+        id: string;
+        /**
+         * Service resources added to the endpoint service.
+         */
+        resources: outputs.privatelink.GetVpcEndpointServicesServiceResource[];
+        /**
+         * The business status of the terminal node service..
+         */
+        serviceBusinessStatus: string;
+        /**
+         * The description of the terminal node service.
+         */
+        serviceDescription: string;
+        /**
+         * The domain of service.
+         */
+        serviceDomain: string;
+        /**
+         * The ID of the Vpc Endpoint Service.
+         */
+        serviceId: string;
+        /**
+         * The Status of Vpc Endpoint Service.
+         */
+        status: string;
+        /**
+         * The name of Vpc Endpoint Service.
+         */
+        vpcEndpointServiceName: string;
+    }
+
+    export interface GetVpcEndpointServicesServiceResource {
+        /**
+         * The id of service resources added to the endpoint service.
+         */
+        resourceId: string;
+        /**
+         * The type of service resource added to the endpoint service.
+         */
+        resourceType: string;
+    }
+
+    export interface GetVpcEndpointsEndpoint {
+        /**
+         * The Bandwidth.
+         */
+        bandwidth: number;
+        /**
+         * The status of Connection.
+         */
+        connectionStatus: string;
+        /**
+         * The status of Endpoint Business.
+         */
+        endpointBusinessStatus: string;
+        /**
+         * The description of Vpc Endpoint.
+         */
+        endpointDescription: string;
+        /**
+         * The Endpoint Domain.
+         */
+        endpointDomain: string;
+        /**
+         * The ID of the Vpc Endpoint.
+         */
+        endpointId: string;
+        /**
+         * The ID of the Vpc Endpoint.
+         */
+        id: string;
+        /**
+         * The security group associated with the terminal node network card.
+         */
+        securityGroupIds: string[];
+        /**
+         * The terminal node service associated with the terminal node..
+         */
+        serviceId: string;
+        /**
+         * The name of the terminal node service associated with the terminal node.
+         */
+        serviceName: string;
+        /**
+         * The status of Vpc Endpoint.
+         */
+        status: string;
+        /**
+         * The name of Vpc Endpoint.
+         */
+        vpcEndpointName: string;
+        /**
+         * The private network to which the terminal node belongs.
+         */
+        vpcId: string;
+        /**
+         * Availability zone.
+         */
+        zones: outputs.privatelink.GetVpcEndpointsEndpointZone[];
+    }
+
+    export interface GetVpcEndpointsEndpointZone {
+        /**
+         * To create the vswitch of the terminal node network card in the available zone.
+         */
+        vswitchId: string;
+        /**
+         * Availability zone corresponding to terminal node service.
+         */
+        zoneId: string;
+    }
+
+    export interface VpcEndpointServiceResource {
+        /**
+         * The id of service resources added to the endpoint service.
+         */
+        resourceId?: string;
+        /**
+         * The type of service resource added to the endpoint service.
+         */
+        resourceType?: string;
+    }
+
+    export interface VpcEndpointZone {
+        /**
+         * To create the vswitch of the terminal node network card in the available zone.
+         */
+        vswitchId?: string;
+        /**
+         * Availability zone corresponding to terminal node service.
+         */
+        zoneId?: string;
+    }
+}
+
 export namespace pvtz {
     export interface GetZoneRecordsRecord {
         /**
          * ID of the Private Zone Record.
          */
-        id: number;
+        id: string;
         /**
          * Priority of the Private Zone Record.
          */
         priority: number;
         /**
+         * RecordId of the Private Zone Record.
+         */
+        recordId: number;
+        /**
+         * Remark of the Private Zone Record.
+         */
+        remark: string;
+        /**
          * Resource record of the Private Zone Record.
          */
         resourceRecord: string;
+        /**
+         * Rr of the Private Zone Record.
+         */
+        rr: string;
+        /**
+         * Resolve record status. Value:
+         * - ENABLE: enable resolution.
+         * - DISABLE: pause parsing.
+         */
         status: string;
         /**
          * Ttl of the Private Zone Record.

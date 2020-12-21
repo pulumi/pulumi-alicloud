@@ -92,7 +92,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
-        :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
+        :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
         :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
@@ -201,7 +201,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
-        :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
+        :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
         :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
@@ -327,7 +327,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="localLogRetentionSpace")
     def local_log_retention_space(self) -> pulumi.Output[int]:
         """
-        Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
+        Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         """
         return pulumi.get(self, "local_log_retention_space")
 

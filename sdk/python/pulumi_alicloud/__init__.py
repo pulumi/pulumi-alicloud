@@ -58,6 +58,7 @@ from . import (
     oss,
     ots,
     polardb,
+    privatelink,
     pvtz,
     ram,
     rds,

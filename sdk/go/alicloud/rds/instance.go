@@ -106,6 +106,8 @@ type Instance struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
+	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -231,6 +233,8 @@ type instanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
+	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine *string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -317,6 +321,8 @@ type InstanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringPtrInput
+	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -405,6 +411,8 @@ type instanceArgs struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
+	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -486,6 +494,8 @@ type InstanceArgs struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringPtrInput
+	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine pulumi.StringInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.

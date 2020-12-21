@@ -15,11 +15,15 @@ class ZoneRecord(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 lang: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_record: Optional[pulumi.Input[str]] = None,
+                 rr: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 user_client_ip: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -36,11 +40,16 @@ class ZoneRecord(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+        :param pulumi.Input[str] lang: User language.
+        :param pulumi.Input[int] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
         :param pulumi.Input[str] remark: The remark of the Private Zone Record.
         :param pulumi.Input[str] resource_record: The resource record of the Private Zone Record.
-        :param pulumi.Input[int] ttl: The ttl of the Private Zone Record.
-        :param pulumi.Input[str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
+        :param pulumi.Input[str] rr: The rr of the Private Zone Record.
+        :param pulumi.Input[str] status: Resolve record status. Value:
+               - ENABLE: enable resolution.
+               - DISABLE: pause parsing.
+        :param pulumi.Input[int] ttl: The ttl of the Private Zone Record. Default to `60`.
+        :param pulumi.Input[str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
         :param pulumi.Input[str] value: The value of the Private Zone Record.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
         """
@@ -61,15 +70,20 @@ class ZoneRecord(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['lang'] = lang
             __props__['priority'] = priority
             __props__['remark'] = remark
-            if resource_record is None:
-                raise TypeError("Missing required property 'resource_record'")
+            if resource_record is not None:
+                warnings.warn("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""", DeprecationWarning)
+                pulumi.log.warn("resource_record is deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.")
             __props__['resource_record'] = resource_record
+            __props__['rr'] = rr
+            __props__['status'] = status
             __props__['ttl'] = ttl
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
+            __props__['user_client_ip'] = user_client_ip
             if value is None:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
@@ -87,12 +101,16 @@ class ZoneRecord(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            lang: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             record_id: Optional[pulumi.Input[int]] = None,
             remark: Optional[pulumi.Input[str]] = None,
             resource_record: Optional[pulumi.Input[str]] = None,
+            rr: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             ttl: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
+            user_client_ip: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ZoneRecord':
         """
@@ -102,12 +120,17 @@ class ZoneRecord(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+        :param pulumi.Input[str] lang: User language.
+        :param pulumi.Input[int] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
         :param pulumi.Input[int] record_id: The Private Zone Record ID.
         :param pulumi.Input[str] remark: The remark of the Private Zone Record.
         :param pulumi.Input[str] resource_record: The resource record of the Private Zone Record.
-        :param pulumi.Input[int] ttl: The ttl of the Private Zone Record.
-        :param pulumi.Input[str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
+        :param pulumi.Input[str] rr: The rr of the Private Zone Record.
+        :param pulumi.Input[str] status: Resolve record status. Value:
+               - ENABLE: enable resolution.
+               - DISABLE: pause parsing.
+        :param pulumi.Input[int] ttl: The ttl of the Private Zone Record. Default to `60`.
+        :param pulumi.Input[str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
         :param pulumi.Input[str] value: The value of the Private Zone Record.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
         """
@@ -115,21 +138,33 @@ class ZoneRecord(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["lang"] = lang
         __props__["priority"] = priority
         __props__["record_id"] = record_id
         __props__["remark"] = remark
         __props__["resource_record"] = resource_record
+        __props__["rr"] = rr
+        __props__["status"] = status
         __props__["ttl"] = ttl
         __props__["type"] = type
+        __props__["user_client_ip"] = user_client_ip
         __props__["value"] = value
         __props__["zone_id"] = zone_id
         return ZoneRecord(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
+    def lang(self) -> pulumi.Output[Optional[str]]:
+        """
+        User language.
+        """
+        return pulumi.get(self, "lang")
+
+    @property
+    @pulumi.getter
     def priority(self) -> pulumi.Output[Optional[int]]:
         """
-        The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+        The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
         """
         return pulumi.get(self, "priority")
 
@@ -159,9 +194,27 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def rr(self) -> pulumi.Output[str]:
+        """
+        The rr of the Private Zone Record.
+        """
+        return pulumi.get(self, "rr")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[Optional[str]]:
+        """
+        Resolve record status. Value:
+        - ENABLE: enable resolution.
+        - DISABLE: pause parsing.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
     def ttl(self) -> pulumi.Output[Optional[int]]:
         """
-        The ttl of the Private Zone Record.
+        The ttl of the Private Zone Record. Default to `60`.
         """
         return pulumi.get(self, "ttl")
 
@@ -169,9 +222,14 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
+        The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="userClientIp")
+    def user_client_ip(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "user_client_ip")
 
     @property
     @pulumi.getter

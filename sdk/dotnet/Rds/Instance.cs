@@ -106,6 +106,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DbInstanceStorageType { get; private set; } = null!;
 
         /// <summary>
+        /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+        /// </summary>
+        [Output("encryptionKey")]
+        public Output<string?> EncryptionKey { get; private set; } = null!;
+
+        /// <summary>
         /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         /// </summary>
         [Output("engine")]
@@ -355,6 +361,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceStorageType { get; set; }
 
         /// <summary>
+        /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+        /// </summary>
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
         /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         /// </summary>
         [Input("engine", required: true)]
@@ -581,6 +593,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("dbInstanceStorageType")]
         public Input<string>? DbInstanceStorageType { get; set; }
+
+        /// <summary>
+        /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+        /// </summary>
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
         /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
