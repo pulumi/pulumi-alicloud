@@ -10,22 +10,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.97.0+.
  *
- * ## Example Usage
+ * > **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
  *
- * nodePool in Kubernetes Cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.cs.NodePool("default", {
- *     clusterId: _var.cluster_id,
- *     vswitchIds: ["alicloud_vswitch.default.id"],
- *     instanceTypes: ["data.alicloud_instance_types.default.instance_types.0.id"],
- *     coolDownDuration: "var.cool_down_duration",
- *     nodeCount: 2,
- * });
- * ```
+ * > **NOTE:** From version 1.109.1, support remove node pool nodes.
  */
 export class NodePool extends pulumi.CustomResource {
     /**
@@ -69,7 +56,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly instanceTypes!: pulumi.Output<string[]>;
     /**
-     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
      */
     public readonly keyName!: pulumi.Output<string | undefined>;
     /**
@@ -80,6 +67,10 @@ export class NodePool extends pulumi.CustomResource {
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
      */
     public readonly labels!: pulumi.Output<outputs.cs.NodePoolLabel[] | undefined>;
+    /**
+     * Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+     */
+    public readonly management!: pulumi.Output<outputs.cs.NodePoolManagement | undefined>;
     /**
      * The name of node pool.
      */
@@ -101,7 +92,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly scalingGroupId!: pulumi.Output<string>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+     * The system disk size of worker node.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
@@ -109,13 +100,13 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+     * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      */
     public readonly systemDiskSize!: pulumi.Output<number | undefined>;
     /**
      * A List of tags to assign to the resource. It will be applied for ECS instances finally.
-     * - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-     * - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+     * * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+     * * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -154,6 +145,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["management"] = state ? state.management : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
             inputs["nodeNameMode"] = state ? state.nodeNameMode : undefined;
@@ -188,6 +180,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["management"] = args ? args.management : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["nodeNameMode"] = args ? args.nodeNameMode : undefined;
@@ -231,7 +224,7 @@ export interface NodePoolState {
      */
     readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
      */
     readonly keyName?: pulumi.Input<string>;
     /**
@@ -242,6 +235,10 @@ export interface NodePoolState {
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
+    /**
+     * Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+     */
+    readonly management?: pulumi.Input<inputs.cs.NodePoolManagement>;
     /**
      * The name of node pool.
      */
@@ -263,7 +260,7 @@ export interface NodePoolState {
      */
     readonly scalingGroupId?: pulumi.Input<string>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+     * The system disk size of worker node.
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**
@@ -271,13 +268,13 @@ export interface NodePoolState {
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+     * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      */
     readonly systemDiskSize?: pulumi.Input<number>;
     /**
      * A List of tags to assign to the resource. It will be applied for ECS instances finally.
-     * - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-     * - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+     * * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+     * * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -316,7 +313,7 @@ export interface NodePoolArgs {
      */
     readonly instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
      */
     readonly keyName?: pulumi.Input<string>;
     /**
@@ -327,6 +324,10 @@ export interface NodePoolArgs {
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
+    /**
+     * Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+     */
+    readonly management?: pulumi.Input<inputs.cs.NodePoolManagement>;
     /**
      * The name of node pool.
      */
@@ -344,7 +345,7 @@ export interface NodePoolArgs {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+     * The system disk size of worker node.
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**
@@ -352,13 +353,13 @@ export interface NodePoolArgs {
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+     * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      */
     readonly systemDiskSize?: pulumi.Input<number>;
     /**
      * A List of tags to assign to the resource. It will be applied for ECS instances finally.
-     * - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-     * - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+     * * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+     * * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**

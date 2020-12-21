@@ -13,6 +13,10 @@ namespace Pulumi.AliCloud.CS
     /// This resource will help you to manager node pool in Kubernetes Cluster.
     /// 
     /// &gt; **NOTE:** Available in 1.97.0+.
+    /// 
+    /// &gt; **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
+    /// 
+    /// &gt; **NOTE:** From version 1.109.1, support remove node pool nodes.
     /// </summary>
     public partial class NodePool : Pulumi.CustomResource
     {
@@ -38,7 +42,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         /// </summary>
         [Output("keyName")]
         public Output<string?> KeyName { get; private set; } = null!;
@@ -54,6 +58,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.NodePoolLabel>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+        /// </summary>
+        [Output("management")]
+        public Output<Outputs.NodePoolManagement?> Management { get; private set; } = null!;
 
         /// <summary>
         /// The name of node pool.
@@ -86,7 +96,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        /// The system disk size of worker node.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
@@ -98,15 +108,15 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> SystemDiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         /// </summary>
         [Output("systemDiskSize")]
         public Output<int?> SystemDiskSize { get; private set; } = null!;
 
         /// <summary>
         /// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-        /// - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-        /// - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        /// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+        /// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -214,7 +224,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -236,6 +246,12 @@ namespace Pulumi.AliCloud.CS
             get => _labels ?? (_labels = new InputList<Inputs.NodePoolLabelArgs>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+        /// </summary>
+        [Input("management")]
+        public Input<Inputs.NodePoolManagementArgs>? Management { get; set; }
 
         /// <summary>
         /// The name of node pool.
@@ -262,7 +278,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        /// The system disk size of worker node.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -274,7 +290,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SystemDiskCategory { get; set; }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
@@ -284,8 +300,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-        /// - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-        /// - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        /// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+        /// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -363,7 +379,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -385,6 +401,12 @@ namespace Pulumi.AliCloud.CS
             get => _labels ?? (_labels = new InputList<Inputs.NodePoolLabelGetArgs>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+        /// </summary>
+        [Input("management")]
+        public Input<Inputs.NodePoolManagementGetArgs>? Management { get; set; }
 
         /// <summary>
         /// The name of node pool.
@@ -417,7 +439,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ScalingGroupId { get; set; }
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        /// The system disk size of worker node.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -429,7 +451,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SystemDiskCategory { get; set; }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
@@ -439,8 +461,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-        /// - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-        /// - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        /// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+        /// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
         /// </summary>
         public InputMap<object> Tags
         {

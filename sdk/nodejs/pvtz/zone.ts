@@ -41,7 +41,9 @@ export class Zone extends pulumi.CustomResource {
         return obj['__pulumiType'] === Zone.__pulumiType;
     }
 
-    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    /**
+     * Whether the Private Zone is ptr.
+     */
     public /*out*/ readonly isPtr!: pulumi.Output<boolean>;
     /**
      * The language. Valid values: "zh", "en", "jp".
@@ -49,12 +51,15 @@ export class Zone extends pulumi.CustomResource {
     public readonly lang!: pulumi.Output<string | undefined>;
     /**
      * The name of the Private Zone.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
+     * Default to "ZONE".
      */
     public readonly proxyPattern!: pulumi.Output<string | undefined>;
     /**
@@ -68,12 +73,15 @@ export class Zone extends pulumi.CustomResource {
     /**
      * The Id of resource group which the Private Zone belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
      * The IP address of the client.
      */
     public readonly userClientIp!: pulumi.Output<string | undefined>;
+    /**
+     * The zoneName of the Private Zone.
+     */
+    public readonly zoneName!: pulumi.Output<string>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -87,7 +95,6 @@ export class Zone extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ZoneState | undefined;
-            inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["isPtr"] = state ? state.isPtr : undefined;
             inputs["lang"] = state ? state.lang : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -95,8 +102,8 @@ export class Zone extends pulumi.CustomResource {
             inputs["recordCount"] = state ? state.recordCount : undefined;
             inputs["remark"] = state ? state.remark : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
             inputs["userClientIp"] = state ? state.userClientIp : undefined;
+            inputs["zoneName"] = state ? state.zoneName : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
             inputs["lang"] = args ? args.lang : undefined;
@@ -105,10 +112,9 @@ export class Zone extends pulumi.CustomResource {
             inputs["remark"] = args ? args.remark : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["userClientIp"] = args ? args.userClientIp : undefined;
-            inputs["creationTime"] = undefined /*out*/;
+            inputs["zoneName"] = args ? args.zoneName : undefined;
             inputs["isPtr"] = undefined /*out*/;
             inputs["recordCount"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -125,7 +131,9 @@ export class Zone extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Zone resources.
  */
 export interface ZoneState {
-    readonly creationTime?: pulumi.Input<string>;
+    /**
+     * Whether the Private Zone is ptr.
+     */
     readonly isPtr?: pulumi.Input<boolean>;
     /**
      * The language. Valid values: "zh", "en", "jp".
@@ -133,12 +141,15 @@ export interface ZoneState {
     readonly lang?: pulumi.Input<string>;
     /**
      * The name of the Private Zone.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
      * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
+     * Default to "ZONE".
      */
     readonly proxyPattern?: pulumi.Input<string>;
     /**
@@ -153,11 +164,14 @@ export interface ZoneState {
      * The Id of resource group which the Private Zone belongs.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
-    readonly updateTime?: pulumi.Input<string>;
     /**
      * The IP address of the client.
      */
     readonly userClientIp?: pulumi.Input<string>;
+    /**
+     * The zoneName of the Private Zone.
+     */
+    readonly zoneName?: pulumi.Input<string>;
 }
 
 /**
@@ -170,12 +184,15 @@ export interface ZoneArgs {
     readonly lang?: pulumi.Input<string>;
     /**
      * The name of the Private Zone.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
      * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
+     * Default to "ZONE".
      */
     readonly proxyPattern?: pulumi.Input<string>;
     /**
@@ -190,4 +207,8 @@ export interface ZoneArgs {
      * The IP address of the client.
      */
     readonly userClientIp?: pulumi.Input<string>;
+    /**
+     * The zoneName of the Private Zone.
+     */
+    readonly zoneName?: pulumi.Input<string>;
 }

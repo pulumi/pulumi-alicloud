@@ -20,6 +20,7 @@ __all__ = [
     'GetRouteEntriesEntryResult',
     'GetRouteEntriesEntryConflictResult',
     'GetRouteMapsMapResult',
+    'GetRouteServicesServiceResult',
     'GetVbrHealthChecksCheckResult',
 ]
 
@@ -1253,6 +1254,123 @@ class GetRouteMapsMapResult(dict):
         The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
         """
         return pulumi.get(self, "transmit_direction")
+
+
+@pulumi.output_type
+class GetRouteServicesServiceResult(dict):
+    def __init__(__self__, *,
+                 access_region_id: str,
+                 cen_id: str,
+                 cidrs: Sequence[str],
+                 description: str,
+                 host: str,
+                 host_region_id: str,
+                 host_vpc_id: str,
+                 id: str,
+                 status: str,
+                 update_interval: str):
+        """
+        :param str access_region_id: The region of the network instances that access the cloud services.
+        :param str cen_id: -(Required, ForceNew) The ID of the CEN instance.
+        :param Sequence[str] cidrs: The IP address of the cloud service.
+        :param str description: The description of the cloud service.
+        :param str host: -(Optional, ForceNew) The domain name or IP address of the cloud service.
+        :param str host_region_id: The region of the cloud service.
+        :param str host_vpc_id: The VPC associated with the cloud service.
+        :param str id: The ID of the route service.
+        :param str status: The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
+        :param str update_interval: The update interval. Default value: 5. The value cannot be modified.
+        """
+        pulumi.set(__self__, "access_region_id", access_region_id)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cidrs", cidrs)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "host_region_id", host_region_id)
+        pulumi.set(__self__, "host_vpc_id", host_vpc_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "update_interval", update_interval)
+
+    @property
+    @pulumi.getter(name="accessRegionId")
+    def access_region_id(self) -> str:
+        """
+        The region of the network instances that access the cloud services.
+        """
+        return pulumi.get(self, "access_region_id")
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> str:
+        """
+        -(Required, ForceNew) The ID of the CEN instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @property
+    @pulumi.getter
+    def cidrs(self) -> Sequence[str]:
+        """
+        The IP address of the cloud service.
+        """
+        return pulumi.get(self, "cidrs")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the cloud service.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        -(Optional, ForceNew) The domain name or IP address of the cloud service.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="hostRegionId")
+    def host_region_id(self) -> str:
+        """
+        The region of the cloud service.
+        """
+        return pulumi.get(self, "host_region_id")
+
+    @property
+    @pulumi.getter(name="hostVpcId")
+    def host_vpc_id(self) -> str:
+        """
+        The VPC associated with the cloud service.
+        """
+        return pulumi.get(self, "host_vpc_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the route service.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updateInterval")
+    def update_interval(self) -> str:
+        """
+        The update interval. Default value: 5. The value cannot be modified.
+        """
+        return pulumi.get(self, "update_interval")
 
 
 @pulumi.output_type

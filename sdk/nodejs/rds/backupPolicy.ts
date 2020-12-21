@@ -123,7 +123,7 @@ export class BackupPolicy extends pulumi.CustomResource {
      */
     public readonly localLogRetentionHours!: pulumi.Output<number>;
     /**
-     * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+     * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
      */
     public readonly localLogRetentionSpace!: pulumi.Output<number>;
     /**
@@ -281,7 +281,7 @@ export interface BackupPolicyState {
      */
     readonly localLogRetentionHours?: pulumi.Input<number>;
     /**
-     * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+     * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
      */
     readonly localLogRetentionSpace?: pulumi.Input<number>;
     /**
@@ -373,7 +373,7 @@ export interface BackupPolicyArgs {
      */
     readonly localLogRetentionHours?: pulumi.Input<number>;
     /**
-     * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+     * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
      */
     readonly localLogRetentionSpace?: pulumi.Input<number>;
     /**

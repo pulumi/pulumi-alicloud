@@ -149,15 +149,11 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
         :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-               * `category`: the type of the data disks. Valid values:
-               * cloud: basic disks.
-               * cloud_efficiency: ultra disks.
-               * cloud_ssd: SSDs.
-               * cloud_essd: essd.
-               * `size`: the size of a data disk, at least 40. Unit: GiB.
+               * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+               * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
                * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
@@ -421,15 +417,11 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
         :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-               * `category`: the type of the data disks. Valid values:
-               * cloud: basic disks.
-               * cloud_efficiency: ultra disks.
-               * cloud_ssd: SSDs.
-               * cloud_essd: essd.
-               * `size`: the size of a data disk, at least 40. Unit: GiB.
+               * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+               * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
                * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes.
@@ -1021,12 +1013,8 @@ class Kubernetes(pulumi.CustomResource):
     def worker_data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesWorkerDataDisk']]]:
         """
         The data disk configurations of worker nodes, such as the disk type and disk size.
-        * `category`: the type of the data disks. Valid values:
-        * cloud: basic disks.
-        * cloud_efficiency: ultra disks.
-        * cloud_ssd: SSDs.
-        * cloud_essd: essd.
-        * `size`: the size of a data disk, at least 40. Unit: GiB.
+        * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
         * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         """
         return pulumi.get(self, "worker_data_disks")
@@ -1043,7 +1031,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerDiskSize")
     def worker_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
-        The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         """
         return pulumi.get(self, "worker_disk_size")
 

@@ -29,12 +29,14 @@ __all__ = [
     'ManagedKubernetesAddonArgs',
     'ManagedKubernetesCertificateAuthorityArgs',
     'ManagedKubernetesConnectionsArgs',
+    'ManagedKubernetesMaintenanceWindowArgs',
     'ManagedKubernetesRuntimeArgs',
     'ManagedKubernetesTaintArgs',
     'ManagedKubernetesWorkerDataDiskArgs',
     'ManagedKubernetesWorkerNodeArgs',
     'NodePoolDataDiskArgs',
     'NodePoolLabelArgs',
+    'NodePoolManagementArgs',
     'NodePoolTaintArgs',
     'ServerlessKubernetesAddonArgs',
     'SwarmNodeArgs',
@@ -1206,6 +1208,73 @@ class ManagedKubernetesConnectionsArgs:
 
 
 @pulumi.input_type
+class ManagedKubernetesMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[str],
+                 enable: pulumi.Input[bool],
+                 maintenance_time: pulumi.Input[str],
+                 weekly_period: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] duration: The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+        :param pulumi.Input[bool] enable: Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+        :param pulumi.Input[str] maintenance_time: Initial maintenance time, For example:"03:00:00Z".
+        :param pulumi.Input[str] weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "maintenance_time", maintenance_time)
+        pulumi.set(__self__, "weekly_period", weekly_period)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[str]:
+        """
+        The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> pulumi.Input[bool]:
+        """
+        Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter(name="maintenanceTime")
+    def maintenance_time(self) -> pulumi.Input[str]:
+        """
+        Initial maintenance time, For example:"03:00:00Z".
+        """
+        return pulumi.get(self, "maintenance_time")
+
+    @maintenance_time.setter
+    def maintenance_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "maintenance_time", value)
+
+    @property
+    @pulumi.getter(name="weeklyPeriod")
+    def weekly_period(self) -> pulumi.Input[str]:
+        """
+        Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+        """
+        return pulumi.get(self, "weekly_period")
+
+    @weekly_period.setter
+    def weekly_period(self, value: pulumi.Input[str]):
+        pulumi.set(self, "weekly_period", value)
+
+
+@pulumi.input_type
 class ManagedKubernetesRuntimeArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1580,6 +1649,92 @@ class NodePoolLabelArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class NodePoolManagementArgs:
+    def __init__(__self__, *,
+                 max_unavailable: pulumi.Input[int],
+                 auto_repair: Optional[pulumi.Input[bool]] = None,
+                 auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 surge: Optional[pulumi.Input[int]] = None,
+                 surge_percentage: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_unavailable: Max number of unavailable nodes. Default to `1`.
+        :param pulumi.Input[bool] auto_repair: Whether automatic repair, Default to `false`.
+        :param pulumi.Input[bool] auto_upgrade: Whether auto upgrade, Default to `false`.
+        :param pulumi.Input[int] surge: Number of additional nodes. You have to specify one of surge, surge_percentage.
+        :param pulumi.Input[int] surge_percentage: Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+        """
+        pulumi.set(__self__, "max_unavailable", max_unavailable)
+        if auto_repair is not None:
+            pulumi.set(__self__, "auto_repair", auto_repair)
+        if auto_upgrade is not None:
+            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if surge is not None:
+            pulumi.set(__self__, "surge", surge)
+        if surge_percentage is not None:
+            pulumi.set(__self__, "surge_percentage", surge_percentage)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> pulumi.Input[int]:
+        """
+        Max number of unavailable nodes. Default to `1`.
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @max_unavailable.setter
+    def max_unavailable(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_unavailable", value)
+
+    @property
+    @pulumi.getter(name="autoRepair")
+    def auto_repair(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether automatic repair, Default to `false`.
+        """
+        return pulumi.get(self, "auto_repair")
+
+    @auto_repair.setter
+    def auto_repair(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_repair", value)
+
+    @property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether auto upgrade, Default to `false`.
+        """
+        return pulumi.get(self, "auto_upgrade")
+
+    @auto_upgrade.setter
+    def auto_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_upgrade", value)
+
+    @property
+    @pulumi.getter
+    def surge(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of additional nodes. You have to specify one of surge, surge_percentage.
+        """
+        return pulumi.get(self, "surge")
+
+    @surge.setter
+    def surge(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "surge", value)
+
+    @property
+    @pulumi.getter(name="surgePercentage")
+    def surge_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+        """
+        return pulumi.get(self, "surge_percentage")
+
+    @surge_percentage.setter
+    def surge_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "surge_percentage", value)
 
 
 @pulumi.input_type

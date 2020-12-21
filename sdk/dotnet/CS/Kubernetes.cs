@@ -388,12 +388,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values:
-        /// * cloud: basic disks.
-        /// * cloud_efficiency: ultra disks.
-        /// * cloud_ssd: SSDs.
-        /// * cloud_essd: essd.
-        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
+        /// * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        /// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
         /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         [Output("workerDataDisks")]
@@ -406,7 +402,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> WorkerDiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        /// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         /// </summary>
         [Output("workerDiskSize")]
         public Output<int?> WorkerDiskSize { get; private set; } = null!;
@@ -882,12 +878,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values:
-        /// * cloud: basic disks.
-        /// * cloud_efficiency: ultra disks.
-        /// * cloud_ssd: SSDs.
-        /// * cloud_essd: essd.
-        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
+        /// * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        /// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
         /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.KubernetesWorkerDataDiskArgs> WorkerDataDisks
@@ -903,7 +895,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        /// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }
@@ -1387,12 +1379,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values:
-        /// * cloud: basic disks.
-        /// * cloud_efficiency: ultra disks.
-        /// * cloud_ssd: SSDs.
-        /// * cloud_essd: essd.
-        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
+        /// * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        /// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
         /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.KubernetesWorkerDataDiskGetArgs> WorkerDataDisks
@@ -1408,7 +1396,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        /// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }

@@ -74,10 +74,12 @@ const (
 	ossMod             = "Oss"
 	otsMod             = "Ots"
 	polarDbMod         = "PolarDB"
+	privateLinkMod     = "PrivateLink"
 	pvtzMod            = "Pvtz"
 	ramMod             = "Ram"
 	resourceManagerMod = "ResourceManager"
 	rocketMqMod        = "RocketMQ"
+	rosMod             = "Ros"
 	rdsMod             = "Rds"
 	sagMod             = "Sag"
 	slbMod             = "Slb"
@@ -490,6 +492,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ots_instance_attachment": {Tok: resource(otsMod, "InstanceAttachment")},
 			"alicloud_ots_table":               {Tok: resource(otsMod, "Table")},
 
+			// PrivateLink
+			"alicloud_privatelink_vpc_endpoint":         {Tok: resource(privateLinkMod, "VpcEndpoint")},
+			"alicloud_privatelink_vpc_endpoint_service": {Tok: resource(privateLinkMod, "VpcEndpointService")},
+
 			// PolarDB
 			"alicloud_polardb_account": {Tok: resource(polarDbMod, "Account")},
 			"alicloud_polardb_account_privilege": {
@@ -556,6 +562,12 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+
+			// ros
+			"alicloud_ros_change_set":  {Tok: resource(rosMod, "ChangeSet")},
+			"alicloud_ros_stack_group": {Tok: resource(rosMod, "StackGroup")},
+			"alicloud_ros_stack":       {Tok: resource(rosMod, "Stack")},
+			"alicloud_ros_template":    {Tok: resource(rosMod, "Template")},
 
 			// Sag
 			"alicloud_sag_acl":         {Tok: resource(rocketMqMod, "Acl")},
@@ -693,6 +705,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_private_zones":        {Tok: dataSource(cenMod, "getPrivateZones")},
 			"alicloud_cen_instance_attachments": {Tok: dataSource(cenMod, "getInstanceAttachments")},
 			"alicloud_cen_vbr_health_checks":    {Tok: dataSource(cenMod, "getVbrHealthChecks")},
+			"alicloud_cen_route_services":       {Tok: dataSource(cenMod, "getRouteServices")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_networks": {Tok: dataSource(cloudConnectMod, "getNetworks")},
@@ -809,8 +822,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_gpdb_zones":     {Tok: dataSource(gpdbMod, "getZones")},
 
 			// Hbase
-			"alicloud_hbase_instances": {Tok: dataSource(hbaseMod, "getInstances")},
-			"alicloud_hbase_zones":     {Tok: dataSource(hbaseMod, "getZones")},
+			"alicloud_hbase_instances":      {Tok: dataSource(hbaseMod, "getInstances")},
+			"alicloud_hbase_zones":          {Tok: dataSource(hbaseMod, "getZones")},
+			"alicloud_hbase_instance_types": {Tok: dataSource(hbaseMod, "getInstanceTypes")},
 
 			// Kms
 			"alicloud_kms_ciphertext":      {Tok: dataSource(kmsMod, "getCiphertext")},
@@ -820,6 +834,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kms_key_versions":    {Tok: dataSource(kmsMod, "getKeyVersions")},
 			"alicloud_kms_secrets":         {Tok: dataSource(kmsMod, "getSecrets")},
 			"alicloud_kms_secret_versions": {Tok: dataSource(kmsMod, "getSecretVersions")},
+			"alicloud_kms_service":         {Tok: dataSource(kmsMod, "getService")},
 
 			// KvStore
 			"alicloud_kvstore_instances":        {Tok: dataSource(kvstoreMod, "getInstances")},
@@ -868,6 +883,10 @@ func Provider() tfbridge.ProviderInfo {
 			// Ots
 			"alicloud_ots_service": {Tok: dataSource(otsMod, "getService")},
 
+			// PrivateLink
+			"alicloud_privatelink_vpc_endpoints":         {Tok: dataSource(privateLinkMod, "getVpcEndpoints")},
+			"alicloud_privatelink_vpc_endpoint_services": {Tok: dataSource(privateLinkMod, "getVpcEndpointServices")},
+
 			// PolarDb
 			"alicloud_polardb_clusters":     {Tok: dataSource(polarDbMod, "getClusters")},
 			"alicloud_polardb_endpoints":    {Tok: dataSource(polarDbMod, "getEndpoints")},
@@ -913,6 +932,12 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ons_groups":    {Tok: dataSource(rocketMqMod, "getGroups")},
 			"alicloud_ons_instances": {Tok: dataSource(rocketMqMod, "getInstances")},
 			"alicloud_ons_topics":    {Tok: dataSource(rocketMqMod, "getTopics")},
+
+			//Ros
+			"alicloud_ros_change_sets":  {Tok: dataSource(rosMod, "getChangeSets")},
+			"alicloud_ros_stack_groups": {Tok: dataSource(rosMod, "getStackGroups")},
+			"alicloud_ros_stacks":       {Tok: dataSource(rosMod, "getStacks")},
+			"alicloud_ros_templates":    {Tok: dataSource(rosMod, "getTemplates")},
 
 			// Sag
 			"alicloud_sag_acls": {Tok: dataSource(sagMod, "getAcls")},

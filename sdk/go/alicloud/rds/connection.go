@@ -94,7 +94,7 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'tf'.
+	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix pulumi.StringOutput `pulumi:"connectionPrefix"`
 	// Connection instance string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
@@ -102,7 +102,7 @@ type Connection struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The ip address of connection string.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// Internet connection port. Valid value: [3001-3999]. Default to 3306.
+	// Internet connection port. Valid value: [1000-5999]. Default to 3306.
 	Port pulumi.StringPtrOutput `pulumi:"port"`
 }
 
@@ -137,7 +137,7 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'tf'.
+	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`
 	// Connection instance string.
 	ConnectionString *string `pulumi:"connectionString"`
@@ -145,12 +145,12 @@ type connectionState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The ip address of connection string.
 	IpAddress *string `pulumi:"ipAddress"`
-	// Internet connection port. Valid value: [3001-3999]. Default to 3306.
+	// Internet connection port. Valid value: [1000-5999]. Default to 3306.
 	Port *string `pulumi:"port"`
 }
 
 type ConnectionState struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'tf'.
+	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix pulumi.StringPtrInput
 	// Connection instance string.
 	ConnectionString pulumi.StringPtrInput
@@ -158,7 +158,7 @@ type ConnectionState struct {
 	InstanceId pulumi.StringPtrInput
 	// The ip address of connection string.
 	IpAddress pulumi.StringPtrInput
-	// Internet connection port. Valid value: [3001-3999]. Default to 3306.
+	// Internet connection port. Valid value: [1000-5999]. Default to 3306.
 	Port pulumi.StringPtrInput
 }
 
@@ -167,21 +167,21 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'tf'.
+	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`
 	// The Id of instance that can run database.
 	InstanceId string `pulumi:"instanceId"`
-	// Internet connection port. Valid value: [3001-3999]. Default to 3306.
+	// Internet connection port. Valid value: [1000-5999]. Default to 3306.
 	Port *string `pulumi:"port"`
 }
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
-	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'tf'.
+	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix pulumi.StringPtrInput
 	// The Id of instance that can run database.
 	InstanceId pulumi.StringInput
-	// Internet connection port. Valid value: [3001-3999]. Default to 3306.
+	// Internet connection port. Valid value: [1000-5999]. Default to 3306.
 	Port pulumi.StringPtrInput
 }
 

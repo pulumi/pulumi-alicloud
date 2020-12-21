@@ -123,11 +123,13 @@ type Endpoints struct {
 	Oss             *string `pulumi:"oss"`
 	Ots             *string `pulumi:"ots"`
 	Polardb         *string `pulumi:"polardb"`
+	Privatelink     *string `pulumi:"privatelink"`
 	Pvtz            *string `pulumi:"pvtz"`
 	RKvstore        *string `pulumi:"rKvstore"`
 	Ram             *string `pulumi:"ram"`
 	Rds             *string `pulumi:"rds"`
 	Resourcemanager *string `pulumi:"resourcemanager"`
+	Ros             *string `pulumi:"ros"`
 	Slb             *string `pulumi:"slb"`
 	Sts             *string `pulumi:"sts"`
 	Vpc             *string `pulumi:"vpc"`
@@ -191,11 +193,13 @@ type EndpointsArgs struct {
 	Oss             pulumi.StringPtrInput `pulumi:"oss"`
 	Ots             pulumi.StringPtrInput `pulumi:"ots"`
 	Polardb         pulumi.StringPtrInput `pulumi:"polardb"`
+	Privatelink     pulumi.StringPtrInput `pulumi:"privatelink"`
 	Pvtz            pulumi.StringPtrInput `pulumi:"pvtz"`
 	RKvstore        pulumi.StringPtrInput `pulumi:"rKvstore"`
 	Ram             pulumi.StringPtrInput `pulumi:"ram"`
 	Rds             pulumi.StringPtrInput `pulumi:"rds"`
 	Resourcemanager pulumi.StringPtrInput `pulumi:"resourcemanager"`
+	Ros             pulumi.StringPtrInput `pulumi:"ros"`
 	Slb             pulumi.StringPtrInput `pulumi:"slb"`
 	Sts             pulumi.StringPtrInput `pulumi:"sts"`
 	Vpc             pulumi.StringPtrInput `pulumi:"vpc"`
@@ -433,6 +437,10 @@ func (o EndpointsOutput) Polardb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Polardb }).(pulumi.StringPtrOutput)
 }
 
+func (o EndpointsOutput) Privatelink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Privatelink }).(pulumi.StringPtrOutput)
+}
+
 func (o EndpointsOutput) Pvtz() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Pvtz }).(pulumi.StringPtrOutput)
 }
@@ -451,6 +459,10 @@ func (o EndpointsOutput) Rds() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Resourcemanager() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Resourcemanager }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Ros() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Ros }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Slb() pulumi.StringPtrOutput {

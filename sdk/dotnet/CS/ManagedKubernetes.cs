@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool> IsEnterpriseSecurityGroup { get; private set; } = null!;
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
         [Output("keyName")]
         public Output<string?> KeyName { get; private set; } = null!;
@@ -156,6 +156,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("kubeConfig")]
         public Output<string?> KubeConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+        /// </summary>
+        [Output("maintenanceWindow")]
+        public Output<Outputs.ManagedKubernetesMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
 
         /// <summary>
         /// The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -203,7 +209,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> OsType { get; private set; } = null!;
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -345,13 +351,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values:
-        /// * cloud: basic disks.
-        /// * cloud_efficiency: ultra disks.
-        /// * cloud_ssd: SSDs.
-        /// * cloud_essd: essd.
+        /// * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         /// * `size`: the size of a data disk, at least 40. Unit: GiB.
-        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
         /// </summary>
         [Output("workerDataDisks")]
         public Output<ImmutableArray<Outputs.ManagedKubernetesWorkerDataDisk>> WorkerDataDisks { get; private set; } = null!;
@@ -363,7 +365,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> WorkerDiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        /// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         /// </summary>
         [Output("workerDiskSize")]
         public Output<int?> WorkerDiskSize { get; private set; } = null!;
@@ -375,7 +377,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> WorkerInstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
         [Output("workerInstanceTypes")]
         public Output<ImmutableArray<string>> WorkerInstanceTypes { get; private set; } = null!;
@@ -387,10 +389,10 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.ManagedKubernetesWorkerNode>> WorkerNodes { get; private set; } = null!;
 
         /// <summary>
-        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
         [Output("workerNumber")]
-        public Output<int> WorkerNumber { get; private set; } = null!;
+        public Output<int?> WorkerNumber { get; private set; } = null!;
 
         /// <summary>
         /// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
@@ -572,7 +574,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -600,6 +602,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
+
+        /// <summary>
+        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+        /// </summary>
+        [Input("maintenanceWindow")]
+        public Input<Inputs.ManagedKubernetesMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
         /// The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -641,7 +649,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? OsType { get; set; }
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -791,13 +799,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values:
-        /// * cloud: basic disks.
-        /// * cloud_efficiency: ultra disks.
-        /// * cloud_ssd: SSDs.
-        /// * cloud_essd: essd.
+        /// * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         /// * `size`: the size of a data disk, at least 40. Unit: GiB.
-        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesWorkerDataDiskArgs> WorkerDataDisks
         {
@@ -812,7 +816,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        /// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }
@@ -823,11 +827,11 @@ namespace Pulumi.AliCloud.CS
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
 
-        [Input("workerInstanceTypes", required: true)]
+        [Input("workerInstanceTypes")]
         private InputList<string>? _workerInstanceTypes;
 
         /// <summary>
-        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
         public InputList<string> WorkerInstanceTypes
         {
@@ -836,10 +840,10 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
-        [Input("workerNumber", required: true)]
-        public Input<int> WorkerNumber { get; set; } = null!;
+        [Input("workerNumber")]
+        public Input<int>? WorkerNumber { get; set; }
 
         /// <summary>
         /// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
@@ -993,7 +997,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -1021,6 +1025,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
+
+        /// <summary>
+        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+        /// </summary>
+        [Input("maintenanceWindow")]
+        public Input<Inputs.ManagedKubernetesMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
         /// The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -1068,7 +1078,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? OsType { get; set; }
 
         /// <summary>
-        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -1236,13 +1246,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values:
-        /// * cloud: basic disks.
-        /// * cloud_efficiency: ultra disks.
-        /// * cloud_ssd: SSDs.
-        /// * cloud_essd: essd.
+        /// * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         /// * `size`: the size of a data disk, at least 40. Unit: GiB.
-        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesWorkerDataDiskGetArgs> WorkerDataDisks
         {
@@ -1257,7 +1263,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        /// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }
@@ -1272,7 +1278,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerInstanceTypes;
 
         /// <summary>
-        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
         public InputList<string> WorkerInstanceTypes
         {
@@ -1293,7 +1299,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
         [Input("workerNumber")]
         public Input<int>? WorkerNumber { get; set; }

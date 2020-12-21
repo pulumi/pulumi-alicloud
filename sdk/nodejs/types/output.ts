@@ -101,11 +101,13 @@ export interface ProviderEndpoint {
     oss?: string;
     ots?: string;
     polardb?: string;
+    privatelink?: string;
     pvtz?: string;
     rKvstore?: string;
     ram?: string;
     rds?: string;
     resourcemanager?: string;
+    ros?: string;
     slb?: string;
     sts?: string;
     vpc?: string;
@@ -1548,6 +1550,49 @@ export namespace cen {
         transmitDirection: string;
     }
 
+    export interface GetRouteServicesService {
+        /**
+         * The region of the network instances that access the cloud services.
+         */
+        accessRegionId: string;
+        /**
+         * -(Required, ForceNew) The ID of the CEN instance.
+         */
+        cenId: string;
+        /**
+         * The IP address of the cloud service.
+         */
+        cidrs: string[];
+        /**
+         * The description of the cloud service.
+         */
+        description: string;
+        /**
+         * -(Optional, ForceNew) The domain name or IP address of the cloud service.
+         */
+        host: string;
+        /**
+         * The region of the cloud service.
+         */
+        hostRegionId: string;
+        /**
+         * The VPC associated with the cloud service.
+         */
+        hostVpcId: string;
+        /**
+         * The ID of the route service.
+         */
+        id: string;
+        /**
+         * The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
+         */
+        status: string;
+        /**
+         * The update interval. Default value: 5. The value cannot be modified.
+         */
+        updateInterval: string;
+    }
+
     export interface GetVbrHealthChecksCheck {
         /**
          * The ID of the Cloud Enterprise Network (CEN) instance.
@@ -2160,11 +2205,13 @@ export namespace config {
         oss?: string;
         ots?: string;
         polardb?: string;
+        privatelink?: string;
         pvtz?: string;
         rKvstore?: string;
         ram?: string;
         rds?: string;
         resourcemanager?: string;
+        ros?: string;
         slb?: string;
         sts?: string;
         vpc?: string;
@@ -3106,6 +3153,25 @@ export namespace cs {
         serviceDomain: string;
     }
 
+    export interface ManagedKubernetesMaintenanceWindow {
+        /**
+         * The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+         */
+        duration: string;
+        /**
+         * Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+         */
+        enable: boolean;
+        /**
+         * Initial maintenance time, For example:"03:00:00Z".
+         */
+        maintenanceTime: string;
+        /**
+         * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+         */
+        weeklyPeriod: string;
+    }
+
     export interface ManagedKubernetesRuntime {
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -3169,6 +3235,29 @@ export namespace cs {
     export interface NodePoolLabel {
         key: string;
         value?: string;
+    }
+
+    export interface NodePoolManagement {
+        /**
+         * Whether automatic repair, Default to `false`.
+         */
+        autoRepair?: boolean;
+        /**
+         * Whether auto upgrade, Default to `false`.
+         */
+        autoUpgrade?: boolean;
+        /**
+         * Max number of unavailable nodes. Default to `1`.
+         */
+        maxUnavailable: number;
+        /**
+         * Number of additional nodes. You have to specify one of surge, surge_percentage.
+         */
+        surge?: number;
+        /**
+         * Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+         */
+        surgePercentage?: number;
     }
 
     export interface NodePoolTaint {
@@ -5029,6 +5118,15 @@ export namespace ecs {
          */
         name?: string;
         /**
+         * The performance level of the ESSD used as data disk:
+         * - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+         * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+         * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+         * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+         * Default to `PL1`.
+         */
+        performanceLevel: string;
+        /**
          * The size of the data disk.
          * - cloud：[5, 2000]
          * - cloud_efficiency：[20, 32768]
@@ -6349,6 +6447,21 @@ export namespace gpdb {
 }
 
 export namespace hbase {
+    export interface GetInstanceTypesType {
+        /**
+         * Cpu size of the instance type.
+         */
+        cpuSize: number;
+        /**
+         * Mem size of the instance type.
+         */
+        memSize: number;
+        /**
+         * Name of the instance type.
+         */
+        value: string;
+    }
+
     export interface GetInstancesInstance {
         /**
          * The Backup Status of the instance.
@@ -8685,20 +8798,185 @@ export namespace polardb {
     }
 }
 
+export namespace privatelink {
+    export interface GetVpcEndpointServicesService {
+        /**
+         * Whether to automatically accept terminal node connections..
+         */
+        autoAcceptConnection: boolean;
+        /**
+         * The connection bandwidth.
+         */
+        connectBandwidth: number;
+        /**
+         * The ID of the Vpc Endpoint Service.
+         */
+        id: string;
+        /**
+         * Service resources added to the endpoint service.
+         */
+        resources: outputs.privatelink.GetVpcEndpointServicesServiceResource[];
+        /**
+         * The business status of the terminal node service..
+         */
+        serviceBusinessStatus: string;
+        /**
+         * The description of the terminal node service.
+         */
+        serviceDescription: string;
+        /**
+         * The domain of service.
+         */
+        serviceDomain: string;
+        /**
+         * The ID of the Vpc Endpoint Service.
+         */
+        serviceId: string;
+        /**
+         * The Status of Vpc Endpoint Service.
+         */
+        status: string;
+        /**
+         * The name of Vpc Endpoint Service.
+         */
+        vpcEndpointServiceName: string;
+    }
+
+    export interface GetVpcEndpointServicesServiceResource {
+        /**
+         * The id of service resources added to the endpoint service.
+         */
+        resourceId: string;
+        /**
+         * The type of service resource added to the endpoint service.
+         */
+        resourceType: string;
+    }
+
+    export interface GetVpcEndpointsEndpoint {
+        /**
+         * The Bandwidth.
+         */
+        bandwidth: number;
+        /**
+         * The status of Connection.
+         */
+        connectionStatus: string;
+        /**
+         * The status of Endpoint Business.
+         */
+        endpointBusinessStatus: string;
+        /**
+         * The description of Vpc Endpoint.
+         */
+        endpointDescription: string;
+        /**
+         * The Endpoint Domain.
+         */
+        endpointDomain: string;
+        /**
+         * The ID of the Vpc Endpoint.
+         */
+        endpointId: string;
+        /**
+         * The ID of the Vpc Endpoint.
+         */
+        id: string;
+        /**
+         * The security group associated with the terminal node network card.
+         */
+        securityGroupIds: string[];
+        /**
+         * The terminal node service associated with the terminal node..
+         */
+        serviceId: string;
+        /**
+         * The name of the terminal node service associated with the terminal node.
+         */
+        serviceName: string;
+        /**
+         * The status of Vpc Endpoint.
+         */
+        status: string;
+        /**
+         * The name of Vpc Endpoint.
+         */
+        vpcEndpointName: string;
+        /**
+         * The private network to which the terminal node belongs.
+         */
+        vpcId: string;
+        /**
+         * Availability zone.
+         */
+        zones: outputs.privatelink.GetVpcEndpointsEndpointZone[];
+    }
+
+    export interface GetVpcEndpointsEndpointZone {
+        /**
+         * To create the vswitch of the terminal node network card in the available zone.
+         */
+        vswitchId: string;
+        /**
+         * Availability zone corresponding to terminal node service.
+         */
+        zoneId: string;
+    }
+
+    export interface VpcEndpointServiceResource {
+        /**
+         * The id of service resources added to the endpoint service.
+         */
+        resourceId?: string;
+        /**
+         * The type of service resource added to the endpoint service.
+         */
+        resourceType?: string;
+    }
+
+    export interface VpcEndpointZone {
+        /**
+         * To create the vswitch of the terminal node network card in the available zone.
+         */
+        vswitchId?: string;
+        /**
+         * Availability zone corresponding to terminal node service.
+         */
+        zoneId?: string;
+    }
+}
+
 export namespace pvtz {
     export interface GetZoneRecordsRecord {
         /**
          * ID of the Private Zone Record.
          */
-        id: number;
+        id: string;
         /**
          * Priority of the Private Zone Record.
          */
         priority: number;
         /**
+         * RecordId of the Private Zone Record.
+         */
+        recordId: number;
+        /**
+         * Remark of the Private Zone Record.
+         */
+        remark: string;
+        /**
          * Resource record of the Private Zone Record.
          */
         resourceRecord: string;
+        /**
+         * Rr of the Private Zone Record.
+         */
+        rr: string;
+        /**
+         * Resolve record status. Value:
+         * - ENABLE: enable resolution.
+         * - DISABLE: pause parsing.
+         */
         status: string;
         /**
          * Ttl of the Private Zone Record.
@@ -8716,25 +8994,30 @@ export namespace pvtz {
 
     export interface GetZonesZone {
         /**
-         * List of the VPCs is bound to the Private Zone.
+         * List of the VPCs is bound to the Private Zone:
          */
         bindVpcs: outputs.pvtz.GetZonesZoneBindVpc[];
         /**
-         * Time of creation of the Private Zone.
+         * Time of create of the Private Zone.
          */
+        createTimestamp: number;
         creationTime: string;
         /**
          * ID of the Private Zone.
          */
         id: string;
         /**
-         * Whether the Private Zone is ptr
+         * Whether the Private Zone is ptr.
          */
         isPtr: boolean;
         /**
          * Name of the Private Zone.
          */
         name: string;
+        /**
+         * The recursive DNS proxy.
+         */
+        proxyPattern: string;
         /**
          * Count of the Private Zone Record.
          */
@@ -8744,13 +9027,40 @@ export namespace pvtz {
          */
         remark: string;
         /**
+         * resource_group_id for zone resourceGroupId.
+         */
+        resourceGroupId: string;
+        /**
+         * Whether to turn on secondary DNS.
+         */
+        slaveDns: boolean;
+        updateTime: string;
+        /**
          * Time of update of the Private Zone.
          */
-        updateTime: string;
+        updateTimestamp: number;
+        /**
+         * ZoneId of the Private Zone.
+         */
+        zoneId: string;
+        /**
+         * ZoneName of the Private Zone.
+         */
+        zoneName: string;
     }
 
     export interface GetZonesZoneBindVpc {
+        /**
+         * Binding the regionId of VPC.
+         */
         regionId: string;
+        /**
+         * Binding the regionName of VPC.
+         */
+        regionName: string;
+        /**
+         * Binding the vpcId of VPC.
+         */
         vpcId: string;
         vpcName: string;
     }
@@ -9495,6 +9805,290 @@ export namespace rocketmq {
          * The name of the topic.
          */
         topicName: string;
+    }
+}
+
+export namespace ros {
+    export interface ChangeSetParameter {
+        /**
+         * The parameter key.
+         */
+        parameterKey: string;
+        /**
+         * The parameter value.
+         */
+        parameterValue: string;
+    }
+
+    export interface GetChangeSetsSet {
+        /**
+         * The ID of the change set.
+         */
+        changeSetId: string;
+        /**
+         * The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+         */
+        changeSetName: string;
+        /**
+         * The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
+         */
+        changeSetType: string;
+        /**
+         * The description of the change set. The description can be up to 1,024 bytes in length.
+         */
+        description: string;
+        /**
+         * Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
+         */
+        disableRollback: boolean;
+        /**
+         * The execution status of change set N. Maximum value of N: 5. Valid values:  UNAVAILABLE AVAILABLE EXECUTE_IN_PROGRESS EXECUTE_COMPLETE EXECUTE_FAILED OBSOLETE.
+         */
+        executionStatus: string;
+        /**
+         * The ID of the Change Set.
+         */
+        id: string;
+        /**
+         * Parameters.
+         */
+        parameters: outputs.ros.GetChangeSetsSetParameter[];
+        /**
+         * The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+         */
+        stackId: string;
+        /**
+         * The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
+         */
+        stackName: string;
+        /**
+         * The status of the change set.
+         */
+        status: string;
+        /**
+         * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
+         */
+        templateBody: string;
+        /**
+         * Timeout In Minutes.
+         */
+        timeoutInMinutes: number;
+    }
+
+    export interface GetChangeSetsSetParameter {
+        /**
+         * The parameters.
+         */
+        parameterKey: string;
+        /**
+         * The parameters.
+         */
+        parameterValue: string;
+    }
+
+    export interface GetStackGroupsGroup {
+        /**
+         * The name of the RAM administrator role assumed by ROS.
+         */
+        administrationRoleName: string;
+        /**
+         * The description of the stack group.
+         */
+        description: string;
+        /**
+         * The name of the RAM execution role assumed by the administrator role.
+         */
+        executionRoleName: string;
+        /**
+         * The ID of the Stack Group.
+         */
+        id: string;
+        /**
+         * The parameters.
+         */
+        parameters: outputs.ros.GetStackGroupsGroupParameter[];
+        /**
+         * The id of Stack Group.
+         */
+        stackGroupId: string;
+        /**
+         * The name of the stack group..
+         */
+        stackGroupName: string;
+        /**
+         * The status of Stack Group.
+         */
+        status: string;
+        /**
+         * The structure that contains the template body.
+         */
+        templateBody: string;
+    }
+
+    export interface GetStackGroupsGroupParameter {
+        /**
+         * The parameter key.
+         */
+        parameterKey: string;
+        /**
+         * The parameter value.
+         */
+        parameterValue: string;
+    }
+
+    export interface GetStacksStack {
+        /**
+         * Specifies whether to enable deletion protection on the stack.
+         */
+        deletionProtection: string;
+        /**
+         * The Description of the Stack.
+         */
+        description: string;
+        /**
+         * Specifies whether to disable rollback on stack creation failure..
+         */
+        disableRollback: boolean;
+        /**
+         * Drift DetectionTime.
+         */
+        driftDetectionTime: string;
+        /**
+         * The ID of the Stack.
+         */
+        id: string;
+        /**
+         * The parameters.
+         */
+        parameters: outputs.ros.GetStacksStackParameter[];
+        /**
+         * Parent Stack Id.
+         */
+        parentStackId: string;
+        /**
+         * The RamRoleName.
+         */
+        ramRoleName: string;
+        /**
+         * Root Stack Id.
+         */
+        rootStackId: string;
+        /**
+         * Stack DriftStatus.
+         */
+        stackDriftStatus: string;
+        /**
+         * Stack Id.
+         */
+        stackId: string;
+        /**
+         * Stack Name.
+         */
+        stackName: string;
+        /**
+         * The structure that contains the stack policy body.
+         */
+        stackPolicyBody: string;
+        /**
+         * The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
+         */
+        status: string;
+        /**
+         * Status Reason.
+         */
+        statusReason: string;
+        /**
+         * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+         */
+        tags: {[key: string]: any};
+        /**
+         * Template Description.
+         */
+        templateDescription: string;
+        /**
+         * Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
+         */
+        timeoutInMinutes: number;
+    }
+
+    export interface GetStacksStackParameter {
+        /**
+         * The key of parameters.
+         */
+        parameterKey: string;
+        /**
+         * The value of parameters.
+         */
+        parameterValue: string;
+    }
+
+    export interface GetTemplatesTemplate {
+        /**
+         * The ID of the change set.
+         */
+        changeSetId: string;
+        /**
+         * The description of the template. The description can be up to 256 characters in length.
+         */
+        description: string;
+        /**
+         * The ID of the Template.
+         */
+        id: string;
+        /**
+         * Share Type.
+         */
+        shareType: string;
+        /**
+         * The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+         */
+        stackGroupName: string;
+        /**
+         * The ID of the stack.
+         */
+        stackId: string;
+        /**
+         * Tags.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
+         */
+        templateBody: string;
+        /**
+         * The ID of the template.
+         */
+        templateId: string;
+        /**
+         * The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+         */
+        templateName: string;
+        /**
+         * Template Version.
+         */
+        templateVersion: string;
+    }
+
+    export interface StackGroupParameter {
+        /**
+         * The parameter key.
+         */
+        parameterKey?: string;
+        /**
+         * The parameter value.
+         */
+        parameterValue?: string;
+    }
+
+    export interface StackParameter {
+        /**
+         * The parameter key.
+         */
+        parameterKey?: string;
+        /**
+         * The parameter value.
+         */
+        parameterValue: string;
     }
 }
 

@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Rds
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>
-        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + 'tf'.
+        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to &lt;instance_id&gt; + 'tf'.
         /// </summary>
         [Output("connectionPrefix")]
         public Output<string> ConnectionPrefix { get; private set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Internet connection port. Valid value: [3001-3999]. Default to 3306.
+        /// Internet connection port. Valid value: [1000-5999]. Default to 3306.
         /// </summary>
         [Output("port")]
         public Output<string?> Port { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class ConnectionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + 'tf'.
+        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to &lt;instance_id&gt; + 'tf'.
         /// </summary>
         [Input("connectionPrefix")]
         public Input<string>? ConnectionPrefix { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Internet connection port. Valid value: [3001-3999]. Default to 3306.
+        /// Internet connection port. Valid value: [1000-5999]. Default to 3306.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class ConnectionState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + 'tf'.
+        /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to &lt;instance_id&gt; + 'tf'.
         /// </summary>
         [Input("connectionPrefix")]
         public Input<string>? ConnectionPrefix { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// Internet connection port. Valid value: [3001-3999]. Default to 3306.
+        /// Internet connection port. Valid value: [1000-5999]. Default to 3306.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }

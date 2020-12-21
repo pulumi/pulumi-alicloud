@@ -237,7 +237,7 @@ type Instance struct {
 	Period pulumi.StringPtrOutput `pulumi:"period"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// Private network connection prefix, used to modify the private network connection address.
+	// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
 	PrivateConnectionPrefix pulumi.StringPtrOutput `pulumi:"privateConnectionPrefix"`
 	// The internal IP address of the instance.
 	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
@@ -392,7 +392,7 @@ type instanceState struct {
 	Period *string `pulumi:"period"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port *int `pulumi:"port"`
-	// Private network connection prefix, used to modify the private network connection address.
+	// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
 	PrivateConnectionPrefix *string `pulumi:"privateConnectionPrefix"`
 	// The internal IP address of the instance.
 	PrivateIp *string `pulumi:"privateIp"`
@@ -520,7 +520,7 @@ type InstanceState struct {
 	Period pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port pulumi.IntPtrInput
-	// Private network connection prefix, used to modify the private network connection address.
+	// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
 	PrivateConnectionPrefix pulumi.StringPtrInput
 	// The internal IP address of the instance.
 	PrivateIp pulumi.StringPtrInput
@@ -645,7 +645,7 @@ type instanceArgs struct {
 	Period *string `pulumi:"period"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port *int `pulumi:"port"`
-	// Private network connection prefix, used to modify the private network connection address.
+	// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
 	PrivateConnectionPrefix *string `pulumi:"privateConnectionPrefix"`
 	// The internal IP address of the instance.
 	PrivateIp *string `pulumi:"privateIp"`
@@ -762,7 +762,7 @@ type InstanceArgs struct {
 	Period pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port pulumi.IntPtrInput
-	// Private network connection prefix, used to modify the private network connection address.
+	// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
 	PrivateConnectionPrefix pulumi.StringPtrInput
 	// The internal IP address of the instance.
 	PrivateIp pulumi.StringPtrInput

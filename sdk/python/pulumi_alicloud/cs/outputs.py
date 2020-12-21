@@ -30,12 +30,14 @@ __all__ = [
     'ManagedKubernetesAddon',
     'ManagedKubernetesCertificateAuthority',
     'ManagedKubernetesConnections',
+    'ManagedKubernetesMaintenanceWindow',
     'ManagedKubernetesRuntime',
     'ManagedKubernetesTaint',
     'ManagedKubernetesWorkerDataDisk',
     'ManagedKubernetesWorkerNode',
     'NodePoolDataDisk',
     'NodePoolLabel',
+    'NodePoolManagement',
     'NodePoolTaint',
     'ServerlessKubernetesAddon',
     'SwarmNode',
@@ -990,6 +992,60 @@ class ManagedKubernetesConnections(dict):
 
 
 @pulumi.output_type
+class ManagedKubernetesMaintenanceWindow(dict):
+    def __init__(__self__, *,
+                 duration: str,
+                 enable: bool,
+                 maintenance_time: str,
+                 weekly_period: str):
+        """
+        :param str duration: The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+        :param bool enable: Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+        :param str maintenance_time: Initial maintenance time, For example:"03:00:00Z".
+        :param str weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "maintenance_time", maintenance_time)
+        pulumi.set(__self__, "weekly_period", weekly_period)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        """
+        Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="maintenanceTime")
+    def maintenance_time(self) -> str:
+        """
+        Initial maintenance time, For example:"03:00:00Z".
+        """
+        return pulumi.get(self, "maintenance_time")
+
+    @property
+    @pulumi.getter(name="weeklyPeriod")
+    def weekly_period(self) -> str:
+        """
+        Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+        """
+        return pulumi.get(self, "weekly_period")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class ManagedKubernetesRuntime(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
@@ -1275,6 +1331,75 @@ class NodePoolLabel(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class NodePoolManagement(dict):
+    def __init__(__self__, *,
+                 max_unavailable: int,
+                 auto_repair: Optional[bool] = None,
+                 auto_upgrade: Optional[bool] = None,
+                 surge: Optional[int] = None,
+                 surge_percentage: Optional[int] = None):
+        """
+        :param int max_unavailable: Max number of unavailable nodes. Default to `1`.
+        :param bool auto_repair: Whether automatic repair, Default to `false`.
+        :param bool auto_upgrade: Whether auto upgrade, Default to `false`.
+        :param int surge: Number of additional nodes. You have to specify one of surge, surge_percentage.
+        :param int surge_percentage: Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+        """
+        pulumi.set(__self__, "max_unavailable", max_unavailable)
+        if auto_repair is not None:
+            pulumi.set(__self__, "auto_repair", auto_repair)
+        if auto_upgrade is not None:
+            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if surge is not None:
+            pulumi.set(__self__, "surge", surge)
+        if surge_percentage is not None:
+            pulumi.set(__self__, "surge_percentage", surge_percentage)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> int:
+        """
+        Max number of unavailable nodes. Default to `1`.
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @property
+    @pulumi.getter(name="autoRepair")
+    def auto_repair(self) -> Optional[bool]:
+        """
+        Whether automatic repair, Default to `false`.
+        """
+        return pulumi.get(self, "auto_repair")
+
+    @property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> Optional[bool]:
+        """
+        Whether auto upgrade, Default to `false`.
+        """
+        return pulumi.get(self, "auto_upgrade")
+
+    @property
+    @pulumi.getter
+    def surge(self) -> Optional[int]:
+        """
+        Number of additional nodes. You have to specify one of surge, surge_percentage.
+        """
+        return pulumi.get(self, "surge")
+
+    @property
+    @pulumi.getter(name="surgePercentage")
+    def surge_percentage(self) -> Optional[int]:
+        """
+        Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+        """
+        return pulumi.get(self, "surge_percentage")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

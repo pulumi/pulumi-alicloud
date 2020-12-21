@@ -60,7 +60,7 @@ type ManagedKubernetes struct {
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolOutput `pulumi:"isEnterpriseSecurityGroup"`
-	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
@@ -68,6 +68,8 @@ type ManagedKubernetes struct {
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
+	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+	MaintenanceWindow ManagedKubernetesMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
@@ -83,7 +85,7 @@ type ManagedKubernetes struct {
 	NodePortRange pulumi.StringPtrOutput `pulumi:"nodePortRange"`
 	// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
 	OsType pulumi.StringPtrOutput `pulumi:"osType"`
-	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
 	Platform pulumi.StringPtrOutput `pulumi:"platform"`
@@ -132,26 +134,22 @@ type ManagedKubernetes struct {
 	WorkerDataDiskCategory pulumi.StringPtrOutput `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     pulumi.IntPtrOutput    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * cloud_essd: essd.
+	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	// * `size`: the size of a data disk, at least 40. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
 	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayOutput `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrOutput `pulumi:"workerDiskCategory"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrOutput `pulumi:"workerDiskSize"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	WorkerInstanceTypes pulumi.StringArrayOutput `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes.
 	WorkerNodes ManagedKubernetesWorkerNodeArrayOutput `pulumi:"workerNodes"`
-	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-	WorkerNumber pulumi.IntOutput `pulumi:"workerNumber"`
+	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	WorkerNumber pulumi.IntPtrOutput `pulumi:"workerNumber"`
 	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod pulumi.IntPtrOutput `pulumi:"workerPeriod"`
 	// Worker payment period unit, the valid value is `Month`.
@@ -164,12 +162,6 @@ type ManagedKubernetes struct {
 // NewManagedKubernetes registers a new resource with the given unique name, arguments, and options.
 func NewManagedKubernetes(ctx *pulumi.Context,
 	name string, args *ManagedKubernetesArgs, opts ...pulumi.ResourceOption) (*ManagedKubernetes, error) {
-	if args == nil || args.WorkerInstanceTypes == nil {
-		return nil, errors.New("missing required argument 'WorkerInstanceTypes'")
-	}
-	if args == nil || args.WorkerNumber == nil {
-		return nil, errors.New("missing required argument 'WorkerNumber'")
-	}
 	if args == nil || args.WorkerVswitchIds == nil {
 		return nil, errors.New("missing required argument 'WorkerVswitchIds'")
 	}
@@ -237,7 +229,7 @@ type managedKubernetesState struct {
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
-	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -245,6 +237,8 @@ type managedKubernetesState struct {
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
+	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -260,7 +254,7 @@ type managedKubernetesState struct {
 	NodePortRange *string `pulumi:"nodePortRange"`
 	// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
 	OsType *string `pulumi:"osType"`
-	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	Password *string `pulumi:"password"`
 	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
 	Platform *string `pulumi:"platform"`
@@ -309,25 +303,21 @@ type managedKubernetesState struct {
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * cloud_essd: essd.
+	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	// * `size`: the size of a data disk, at least 40. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
 	WorkerDataDisks []ManagedKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes.
 	WorkerNodes []ManagedKubernetesWorkerNode `pulumi:"workerNodes"`
-	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	WorkerNumber *int `pulumi:"workerNumber"`
 	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod *int `pulumi:"workerPeriod"`
@@ -378,7 +368,7 @@ type ManagedKubernetesState struct {
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
-	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -386,6 +376,8 @@ type ManagedKubernetesState struct {
 	KmsEncryptionContext pulumi.MapInput
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
+	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
@@ -401,7 +393,7 @@ type ManagedKubernetesState struct {
 	NodePortRange pulumi.StringPtrInput
 	// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
 	OsType pulumi.StringPtrInput
-	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	Password pulumi.StringPtrInput
 	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
 	Platform pulumi.StringPtrInput
@@ -450,25 +442,21 @@ type ManagedKubernetesState struct {
 	WorkerDataDiskCategory pulumi.StringPtrInput
 	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * cloud_essd: essd.
+	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	// * `size`: the size of a data disk, at least 40. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
 	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrInput
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	WorkerInstanceTypes pulumi.StringArrayInput
 	// List of cluster worker nodes.
 	WorkerNodes ManagedKubernetesWorkerNodeArrayInput
-	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	WorkerNumber pulumi.IntPtrInput
 	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod pulumi.IntPtrInput
@@ -519,7 +507,7 @@ type managedKubernetesArgs struct {
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
-	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -527,6 +515,8 @@ type managedKubernetesArgs struct {
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
+	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -540,7 +530,7 @@ type managedKubernetesArgs struct {
 	NodePortRange *string `pulumi:"nodePortRange"`
 	// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
 	OsType *string `pulumi:"osType"`
-	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	Password *string `pulumi:"password"`
 	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
 	Platform *string `pulumi:"platform"`
@@ -582,24 +572,20 @@ type managedKubernetesArgs struct {
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * cloud_essd: essd.
+	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	// * `size`: the size of a data disk, at least 40. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
 	WorkerDataDisks []ManagedKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
-	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-	WorkerNumber int `pulumi:"workerNumber"`
+	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	WorkerNumber *int `pulumi:"workerNumber"`
 	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod *int `pulumi:"workerPeriod"`
 	// Worker payment period unit, the valid value is `Month`.
@@ -644,7 +630,7 @@ type ManagedKubernetesArgs struct {
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
-	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -652,6 +638,8 @@ type ManagedKubernetesArgs struct {
 	KmsEncryptionContext pulumi.MapInput
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
+	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
@@ -665,7 +653,7 @@ type ManagedKubernetesArgs struct {
 	NodePortRange pulumi.StringPtrInput
 	// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
 	OsType pulumi.StringPtrInput
-	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	Password pulumi.StringPtrInput
 	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
 	Platform pulumi.StringPtrInput
@@ -707,24 +695,20 @@ type ManagedKubernetesArgs struct {
 	WorkerDataDiskCategory pulumi.StringPtrInput
 	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud: basic disks.
-	// * cloud_efficiency: ultra disks.
-	// * cloud_ssd: SSDs.
-	// * cloud_essd: essd.
+	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	// * `size`: the size of a data disk, at least 40. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
 	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrInput
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	WorkerInstanceTypes pulumi.StringArrayInput
-	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-	WorkerNumber pulumi.IntInput
+	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	WorkerNumber pulumi.IntPtrInput
 	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod pulumi.IntPtrInput
 	// Worker payment period unit, the valid value is `Month`.

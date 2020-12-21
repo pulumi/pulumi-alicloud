@@ -1841,6 +1841,184 @@ func (o GetRouteMapsMapArrayOutput) Index(i pulumi.IntInput) GetRouteMapsMapOutp
 	}).(GetRouteMapsMapOutput)
 }
 
+type GetRouteServicesService struct {
+	// The region of the network instances that access the cloud services.
+	AccessRegionId string `pulumi:"accessRegionId"`
+	// -(Required, ForceNew) The ID of the CEN instance.
+	CenId string `pulumi:"cenId"`
+	// The IP address of the cloud service.
+	Cidrs []string `pulumi:"cidrs"`
+	// The description of the cloud service.
+	Description string `pulumi:"description"`
+	// -(Optional, ForceNew) The domain name or IP address of the cloud service.
+	Host string `pulumi:"host"`
+	// The region of the cloud service.
+	HostRegionId string `pulumi:"hostRegionId"`
+	// The VPC associated with the cloud service.
+	HostVpcId string `pulumi:"hostVpcId"`
+	// The ID of the route service.
+	Id string `pulumi:"id"`
+	// The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
+	Status string `pulumi:"status"`
+	// The update interval. Default value: 5. The value cannot be modified.
+	UpdateInterval string `pulumi:"updateInterval"`
+}
+
+// GetRouteServicesServiceInput is an input type that accepts GetRouteServicesServiceArgs and GetRouteServicesServiceOutput values.
+// You can construct a concrete instance of `GetRouteServicesServiceInput` via:
+//
+//          GetRouteServicesServiceArgs{...}
+type GetRouteServicesServiceInput interface {
+	pulumi.Input
+
+	ToGetRouteServicesServiceOutput() GetRouteServicesServiceOutput
+	ToGetRouteServicesServiceOutputWithContext(context.Context) GetRouteServicesServiceOutput
+}
+
+type GetRouteServicesServiceArgs struct {
+	// The region of the network instances that access the cloud services.
+	AccessRegionId pulumi.StringInput `pulumi:"accessRegionId"`
+	// -(Required, ForceNew) The ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// The IP address of the cloud service.
+	Cidrs pulumi.StringArrayInput `pulumi:"cidrs"`
+	// The description of the cloud service.
+	Description pulumi.StringInput `pulumi:"description"`
+	// -(Optional, ForceNew) The domain name or IP address of the cloud service.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The region of the cloud service.
+	HostRegionId pulumi.StringInput `pulumi:"hostRegionId"`
+	// The VPC associated with the cloud service.
+	HostVpcId pulumi.StringInput `pulumi:"hostVpcId"`
+	// The ID of the route service.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The update interval. Default value: 5. The value cannot be modified.
+	UpdateInterval pulumi.StringInput `pulumi:"updateInterval"`
+}
+
+func (GetRouteServicesServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteServicesService)(nil)).Elem()
+}
+
+func (i GetRouteServicesServiceArgs) ToGetRouteServicesServiceOutput() GetRouteServicesServiceOutput {
+	return i.ToGetRouteServicesServiceOutputWithContext(context.Background())
+}
+
+func (i GetRouteServicesServiceArgs) ToGetRouteServicesServiceOutputWithContext(ctx context.Context) GetRouteServicesServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteServicesServiceOutput)
+}
+
+// GetRouteServicesServiceArrayInput is an input type that accepts GetRouteServicesServiceArray and GetRouteServicesServiceArrayOutput values.
+// You can construct a concrete instance of `GetRouteServicesServiceArrayInput` via:
+//
+//          GetRouteServicesServiceArray{ GetRouteServicesServiceArgs{...} }
+type GetRouteServicesServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteServicesServiceArrayOutput() GetRouteServicesServiceArrayOutput
+	ToGetRouteServicesServiceArrayOutputWithContext(context.Context) GetRouteServicesServiceArrayOutput
+}
+
+type GetRouteServicesServiceArray []GetRouteServicesServiceInput
+
+func (GetRouteServicesServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteServicesService)(nil)).Elem()
+}
+
+func (i GetRouteServicesServiceArray) ToGetRouteServicesServiceArrayOutput() GetRouteServicesServiceArrayOutput {
+	return i.ToGetRouteServicesServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteServicesServiceArray) ToGetRouteServicesServiceArrayOutputWithContext(ctx context.Context) GetRouteServicesServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteServicesServiceArrayOutput)
+}
+
+type GetRouteServicesServiceOutput struct{ *pulumi.OutputState }
+
+func (GetRouteServicesServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteServicesService)(nil)).Elem()
+}
+
+func (o GetRouteServicesServiceOutput) ToGetRouteServicesServiceOutput() GetRouteServicesServiceOutput {
+	return o
+}
+
+func (o GetRouteServicesServiceOutput) ToGetRouteServicesServiceOutputWithContext(ctx context.Context) GetRouteServicesServiceOutput {
+	return o
+}
+
+// The region of the network instances that access the cloud services.
+func (o GetRouteServicesServiceOutput) AccessRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteServicesService) string { return v.AccessRegionId }).(pulumi.StringOutput)
+}
+
+// -(Required, ForceNew) The ID of the CEN instance.
+func (o GetRouteServicesServiceOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteServicesService) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The IP address of the cloud service.
+func (o GetRouteServicesServiceOutput) Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteServicesService) []string { return v.Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// The description of the cloud service.
+func (o GetRouteServicesServiceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteServicesService) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// -(Optional, ForceNew) The domain name or IP address of the cloud service.
+func (o GetRouteServicesServiceOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteServicesService) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The region of the cloud service.
+func (o GetRouteServicesServiceOutput) HostRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteServicesService) string { return v.HostRegionId }).(pulumi.StringOutput)
+}
+
+// The VPC associated with the cloud service.
+func (o GetRouteServicesServiceOutput) HostVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteServicesService) string { return v.HostVpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the route service.
+func (o GetRouteServicesServiceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteServicesService) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
+func (o GetRouteServicesServiceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteServicesService) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The update interval. Default value: 5. The value cannot be modified.
+func (o GetRouteServicesServiceOutput) UpdateInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteServicesService) string { return v.UpdateInterval }).(pulumi.StringOutput)
+}
+
+type GetRouteServicesServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteServicesServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteServicesService)(nil)).Elem()
+}
+
+func (o GetRouteServicesServiceArrayOutput) ToGetRouteServicesServiceArrayOutput() GetRouteServicesServiceArrayOutput {
+	return o
+}
+
+func (o GetRouteServicesServiceArrayOutput) ToGetRouteServicesServiceArrayOutputWithContext(ctx context.Context) GetRouteServicesServiceArrayOutput {
+	return o
+}
+
+func (o GetRouteServicesServiceArrayOutput) Index(i pulumi.IntInput) GetRouteServicesServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteServicesService {
+		return vs[0].([]GetRouteServicesService)[vs[1].(int)]
+	}).(GetRouteServicesServiceOutput)
+}
+
 type GetVbrHealthChecksCheck struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId string `pulumi:"cenId"`
@@ -2022,6 +2200,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRouteEntriesEntryConflictArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteMapsMapOutput{})
 	pulumi.RegisterOutputType(GetRouteMapsMapArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteServicesServiceOutput{})
+	pulumi.RegisterOutputType(GetRouteServicesServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetVbrHealthChecksCheckOutput{})
 	pulumi.RegisterOutputType(GetVbrHealthChecksCheckArrayOutput{})
 }

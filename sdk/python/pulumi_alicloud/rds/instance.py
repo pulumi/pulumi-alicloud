@@ -21,6 +21,7 @@ class Instance(pulumi.CustomResource):
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
@@ -106,6 +107,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -163,6 +165,7 @@ class Instance(pulumi.CustomResource):
             __props__['auto_renew_period'] = auto_renew_period
             __props__['auto_upgrade_minor_version'] = auto_upgrade_minor_version
             __props__['db_instance_storage_type'] = db_instance_storage_type
+            __props__['encryption_key'] = encryption_key
             if engine is None:
                 raise TypeError("Missing required property 'engine'")
             __props__['engine'] = engine
@@ -217,6 +220,7 @@ class Instance(pulumi.CustomResource):
             auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+            encryption_key: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             force_restart: Optional[pulumi.Input[bool]] = None,
@@ -263,6 +267,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -310,6 +315,7 @@ class Instance(pulumi.CustomResource):
         __props__["auto_upgrade_minor_version"] = auto_upgrade_minor_version
         __props__["connection_string"] = connection_string
         __props__["db_instance_storage_type"] = db_instance_storage_type
+        __props__["encryption_key"] = encryption_key
         __props__["engine"] = engine
         __props__["engine_version"] = engine_version
         __props__["force_restart"] = force_restart
@@ -385,6 +391,14 @@ class Instance(pulumi.CustomResource):
         - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         """
         return pulumi.get(self, "db_instance_storage_type")
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL.
+        """
+        return pulumi.get(self, "encryption_key")
 
     @property
     @pulumi.getter

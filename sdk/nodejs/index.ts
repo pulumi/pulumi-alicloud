@@ -54,11 +54,13 @@ import * as oos from "./oos";
 import * as oss from "./oss";
 import * as ots from "./ots";
 import * as polardb from "./polardb";
+import * as privatelink from "./privatelink";
 import * as pvtz from "./pvtz";
 import * as ram from "./ram";
 import * as rds from "./rds";
 import * as resourcemanager from "./resourcemanager";
 import * as rocketmq from "./rocketmq";
+import * as ros from "./ros";
 import * as sag from "./sag";
 import * as slb from "./slb";
 import * as types from "./types";
@@ -112,11 +114,13 @@ export {
     oss,
     ots,
     polardb,
+    privatelink,
     pvtz,
     ram,
     rds,
     resourcemanager,
     rocketmq,
+    ros,
     sag,
     slb,
     types,

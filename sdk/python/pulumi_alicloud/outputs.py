@@ -102,11 +102,13 @@ class ProviderEndpoint(dict):
                  oss: Optional[str] = None,
                  ots: Optional[str] = None,
                  polardb: Optional[str] = None,
+                 privatelink: Optional[str] = None,
                  pvtz: Optional[str] = None,
                  r_kvstore: Optional[str] = None,
                  ram: Optional[str] = None,
                  rds: Optional[str] = None,
                  resourcemanager: Optional[str] = None,
+                 ros: Optional[str] = None,
                  slb: Optional[str] = None,
                  sts: Optional[str] = None,
                  vpc: Optional[str] = None,
@@ -201,6 +203,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "ots", ots)
         if polardb is not None:
             pulumi.set(__self__, "polardb", polardb)
+        if privatelink is not None:
+            pulumi.set(__self__, "privatelink", privatelink)
         if pvtz is not None:
             pulumi.set(__self__, "pvtz", pvtz)
         if r_kvstore is not None:
@@ -211,6 +215,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "rds", rds)
         if resourcemanager is not None:
             pulumi.set(__self__, "resourcemanager", resourcemanager)
+        if ros is not None:
+            pulumi.set(__self__, "ros", ros)
         if slb is not None:
             pulumi.set(__self__, "slb", slb)
         if sts is not None:
@@ -447,6 +453,11 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
+    def privatelink(self) -> Optional[str]:
+        return pulumi.get(self, "privatelink")
+
+    @property
+    @pulumi.getter
     def pvtz(self) -> Optional[str]:
         return pulumi.get(self, "pvtz")
 
@@ -469,6 +480,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def resourcemanager(self) -> Optional[str]:
         return pulumi.get(self, "resourcemanager")
+
+    @property
+    @pulumi.getter
+    def ros(self) -> Optional[str]:
+        return pulumi.get(self, "ros")
 
     @property
     @pulumi.getter

@@ -11,6 +11,7 @@ export * from "./getKeys";
 export * from "./getPlaintext";
 export * from "./getSecretVersions";
 export * from "./getSecrets";
+export * from "./getService";
 export * from "./key";
 export * from "./keyVersion";
 export * from "./secret";

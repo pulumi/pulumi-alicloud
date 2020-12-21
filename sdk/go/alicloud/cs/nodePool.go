@@ -14,6 +14,10 @@ import (
 // This resource will help you to manager node pool in Kubernetes Cluster.
 //
 // > **NOTE:** Available in 1.97.0+.
+//
+// > **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
+//
+// > **NOTE:** From version 1.109.1, support remove node pool nodes.
 type NodePool struct {
 	pulumi.CustomResourceState
 
@@ -24,12 +28,14 @@ type NodePool struct {
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
-	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels NodePoolLabelArrayOutput `pulumi:"labels"`
+	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+	Management NodePoolManagementPtrOutput `pulumi:"management"`
 	// The name of node pool.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The worker node number of the node pool.
@@ -40,15 +46,15 @@ type NodePool struct {
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
 	// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-	// - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-	// - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+	// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+	// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints NodePoolTaintArrayOutput `pulumi:"taints"`
@@ -107,12 +113,14 @@ type nodePoolState struct {
 	ImageId *string `pulumi:"imageId"`
 	// The instance type of worker node.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels []NodePoolLabel `pulumi:"labels"`
+	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+	Management *NodePoolManagement `pulumi:"management"`
 	// The name of node pool.
 	Name *string `pulumi:"name"`
 	// The worker node number of the node pool.
@@ -123,15 +131,15 @@ type nodePoolState struct {
 	Password *string `pulumi:"password"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-	// - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-	// - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+	// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+	// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints []NodePoolTaint `pulumi:"taints"`
@@ -151,12 +159,14 @@ type NodePoolState struct {
 	ImageId pulumi.StringPtrInput
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayInput
-	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels NodePoolLabelArrayInput
+	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+	Management NodePoolManagementPtrInput
 	// The name of node pool.
 	Name pulumi.StringPtrInput
 	// The worker node number of the node pool.
@@ -167,15 +177,15 @@ type NodePoolState struct {
 	Password pulumi.StringPtrInput
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringPtrInput
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node.
 	SecurityGroupId pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrInput
 	// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-	// - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-	// - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+	// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+	// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
 	Tags pulumi.MapInput
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints NodePoolTaintArrayInput
@@ -199,12 +209,14 @@ type nodePoolArgs struct {
 	ImageId *string `pulumi:"imageId"`
 	// The instance type of worker node.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels []NodePoolLabel `pulumi:"labels"`
+	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+	Management *NodePoolManagement `pulumi:"management"`
 	// The name of node pool.
 	Name *string `pulumi:"name"`
 	// The worker node number of the node pool.
@@ -213,15 +225,15 @@ type nodePoolArgs struct {
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-	// - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-	// - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+	// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+	// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints []NodePoolTaint `pulumi:"taints"`
@@ -240,12 +252,14 @@ type NodePoolArgs struct {
 	ImageId pulumi.StringPtrInput
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayInput
-	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels NodePoolLabelArrayInput
+	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+	Management NodePoolManagementPtrInput
 	// The name of node pool.
 	Name pulumi.StringPtrInput
 	// The worker node number of the node pool.
@@ -254,15 +268,15 @@ type NodePoolArgs struct {
 	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+	// The system disk size of worker node.
 	SecurityGroupId pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrInput
 	// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-	// - key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-	// - value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+	// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+	// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
 	Tags pulumi.MapInput
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints NodePoolTaintArrayInput

@@ -117,7 +117,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
                - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
                - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
-        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
+        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
@@ -263,7 +263,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
                - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
                - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
-        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
+        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
@@ -544,7 +544,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
+        Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
         """
         return pulumi.get(self, "version")
 

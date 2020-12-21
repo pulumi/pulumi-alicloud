@@ -38,6 +38,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  kube_config: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
@@ -108,17 +109,18 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. Default to `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
-        :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[pulumi.InputType['ManagedKubernetesMaintenanceWindowArgs']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
         :param pulumi.Input[str] node_port_range: The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         :param pulumi.Input[str] os_type: The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
-        :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] platform: The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
         :param pulumi.Input[str] pod_cidr: - [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
@@ -138,18 +140,14 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
         :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-               * `category`: the type of the data disks. Valid values:
-               * cloud: basic disks.
-               * cloud_efficiency: ultra disks.
-               * cloud_ssd: SSDs.
-               * cloud_essd: essd.
+               * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
                * `size`: the size of a data disk, at least 40. Unit: GiB.
-               * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+               * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[int] worker_period: Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
         """
@@ -191,6 +189,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['kms_encrypted_password'] = kms_encrypted_password
             __props__['kms_encryption_context'] = kms_encryption_context
             __props__['kube_config'] = kube_config
+            __props__['maintenance_window'] = maintenance_window
             __props__['name'] = name
             __props__['name_prefix'] = name_prefix
             __props__['new_nat_gateway'] = new_nat_gateway
@@ -224,11 +223,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['worker_disk_category'] = worker_disk_category
             __props__['worker_disk_size'] = worker_disk_size
             __props__['worker_instance_charge_type'] = worker_instance_charge_type
-            if worker_instance_types is None:
-                raise TypeError("Missing required property 'worker_instance_types'")
             __props__['worker_instance_types'] = worker_instance_types
-            if worker_number is None:
-                raise TypeError("Missing required property 'worker_number'")
             __props__['worker_number'] = worker_number
             __props__['worker_period'] = worker_period
             __props__['worker_period_unit'] = worker_period_unit
@@ -277,6 +272,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             kube_config: Optional[pulumi.Input[str]] = None,
+            maintenance_window: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesMaintenanceWindowArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
             nat_gateway_id: Optional[pulumi.Input[str]] = None,
@@ -349,10 +345,11 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. Default to `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
-        :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[pulumi.InputType['ManagedKubernetesMaintenanceWindowArgs']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
@@ -360,7 +357,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
         :param pulumi.Input[str] node_port_range: The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         :param pulumi.Input[str] os_type: The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
-        :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] platform: The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
         :param pulumi.Input[str] pod_cidr: - [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
@@ -382,19 +379,15 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
         :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-               * `category`: the type of the data disks. Valid values:
-               * cloud: basic disks.
-               * cloud_efficiency: ultra disks.
-               * cloud_ssd: SSDs.
-               * cloud_essd: essd.
+               * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
                * `size`: the size of a data disk, at least 40. Unit: GiB.
-               * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+               * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes.
-        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[int] worker_period: Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
@@ -426,6 +419,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["kms_encrypted_password"] = kms_encrypted_password
         __props__["kms_encryption_context"] = kms_encryption_context
         __props__["kube_config"] = kube_config
+        __props__["maintenance_window"] = maintenance_window
         __props__["name"] = name
         __props__["name_prefix"] = name_prefix
         __props__["nat_gateway_id"] = nat_gateway_id
@@ -628,7 +622,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="keyName")
     def key_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         """
         return pulumi.get(self, "key_name")
 
@@ -655,6 +649,14 @@ class ManagedKubernetes(pulumi.CustomResource):
         The path of kube config, like `~/.kube/config`.
         """
         return pulumi.get(self, "kube_config")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> pulumi.Output['outputs.ManagedKubernetesMaintenanceWindow']:
+        """
+        The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+        """
+        return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter
@@ -721,7 +723,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         """
         return pulumi.get(self, "password")
 
@@ -915,13 +917,9 @@ class ManagedKubernetes(pulumi.CustomResource):
     def worker_data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedKubernetesWorkerDataDisk']]]:
         """
         The data disk configurations of worker nodes, such as the disk type and disk size.
-        * `category`: the type of the data disks. Valid values:
-        * cloud: basic disks.
-        * cloud_efficiency: ultra disks.
-        * cloud_ssd: SSDs.
-        * cloud_essd: essd.
+        * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         * `size`: the size of a data disk, at least 40. Unit: GiB.
-        * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
+        * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
         """
         return pulumi.get(self, "worker_data_disks")
 
@@ -937,7 +935,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerDiskSize")
     def worker_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
-        The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         """
         return pulumi.get(self, "worker_disk_size")
 
@@ -951,9 +949,9 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerInstanceTypes")
-    def worker_instance_types(self) -> pulumi.Output[Sequence[str]]:
+    def worker_instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         """
         return pulumi.get(self, "worker_instance_types")
 
@@ -967,9 +965,9 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerNumber")
-    def worker_number(self) -> pulumi.Output[int]:
+    def worker_number(self) -> pulumi.Output[Optional[int]]:
         """
-        The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         """
         return pulumi.get(self, "worker_number")
 
