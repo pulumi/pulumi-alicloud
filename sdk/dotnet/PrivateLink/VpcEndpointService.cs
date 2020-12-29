@@ -32,14 +32,6 @@ namespace Pulumi.AliCloud.PrivateLink
     ///         {
     ///             AutoAcceptConnection = false,
     ///             ConnectBandwidth = 103,
-    ///             Resources = 
-    ///             {
-    ///                 new AliCloud.PrivateLink.Inputs.VpcEndpointServiceResourceArgs
-    ///                 {
-    ///                     ResourceId = "lb-gw8nxxxxxxx",
-    ///                     ResourceType = "slb",
-    ///                 },
-    ///             },
     ///             ServiceDescription = "tftest",
     ///         });
     ///     }
@@ -80,12 +72,6 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         [Output("payer")]
         public Output<string?> Payer { get; private set; } = null!;
-
-        /// <summary>
-        /// Service resources added to the endpoint service.
-        /// </summary>
-        [Output("resources")]
-        public Output<ImmutableArray<Outputs.VpcEndpointServiceResource>> Resources { get; private set; } = null!;
 
         /// <summary>
         /// The business status of Vpc Endpoint Service.
@@ -181,18 +167,6 @@ namespace Pulumi.AliCloud.PrivateLink
         [Input("payer")]
         public Input<string>? Payer { get; set; }
 
-        [Input("resources")]
-        private InputList<Inputs.VpcEndpointServiceResourceArgs>? _resources;
-
-        /// <summary>
-        /// Service resources added to the endpoint service.
-        /// </summary>
-        public InputList<Inputs.VpcEndpointServiceResourceArgs> Resources
-        {
-            get => _resources ?? (_resources = new InputList<Inputs.VpcEndpointServiceResourceArgs>());
-            set => _resources = value;
-        }
-
         /// <summary>
         /// The description of the terminal node service.
         /// </summary>
@@ -229,18 +203,6 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         [Input("payer")]
         public Input<string>? Payer { get; set; }
-
-        [Input("resources")]
-        private InputList<Inputs.VpcEndpointServiceResourceGetArgs>? _resources;
-
-        /// <summary>
-        /// Service resources added to the endpoint service.
-        /// </summary>
-        public InputList<Inputs.VpcEndpointServiceResourceGetArgs> Resources
-        {
-            get => _resources ?? (_resources = new InputList<Inputs.VpcEndpointServiceResourceGetArgs>());
-            set => _resources = value;
-        }
 
         /// <summary>
         /// The business status of Vpc Endpoint Service.

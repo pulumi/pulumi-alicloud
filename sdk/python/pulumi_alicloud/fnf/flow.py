@@ -79,7 +79,7 @@ class Flow(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the flow.
         :param pulumi.Input[str] name: The name of the flow. The name must be unique in an Alibaba Cloud account.
         :param pulumi.Input[str] role_arn: The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
-        :param pulumi.Input[str] type: The type of the flow. Set the value to `FDL`.
+        :param pulumi.Input[str] type: The type of the flow. Valid values are `FDL` or `DEFAULT`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -141,7 +141,7 @@ class Flow(pulumi.CustomResource):
         :param pulumi.Input[str] last_modified_time: The time when the flow was last modified.
         :param pulumi.Input[str] name: The name of the flow. The name must be unique in an Alibaba Cloud account.
         :param pulumi.Input[str] role_arn: The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
-        :param pulumi.Input[str] type: The type of the flow. Set the value to `FDL`.
+        :param pulumi.Input[str] type: The type of the flow. Valid values are `FDL` or `DEFAULT`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -208,7 +208,7 @@ class Flow(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of the flow. Set the value to `FDL`.
+        The type of the flow. Valid values are `FDL` or `DEFAULT`.
         """
         return pulumi.get(self, "type")
 

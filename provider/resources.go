@@ -495,6 +495,15 @@ func Provider() tfbridge.ProviderInfo {
 			// PrivateLink
 			"alicloud_privatelink_vpc_endpoint":         {Tok: resource(privateLinkMod, "VpcEndpoint")},
 			"alicloud_privatelink_vpc_endpoint_service": {Tok: resource(privateLinkMod, "VpcEndpointService")},
+			"alicloud_privatelink_vpc_endpoint_service_resource": {
+				Tok: resource(privateLinkMod, "VpcEndpointServiceResource"),
+			},
+			"alicloud_privatelink_vpc_endpoint_service_user": {
+				Tok: resource(privateLinkMod, "VpcEndpointServiceUser"),
+			},
+			"alicloud_privatelink_vpc_endpoint_connection": {
+				Tok: resource(privateLinkMod, "VpcEndpointServiceConnection"),
+			},
 
 			// PolarDB
 			"alicloud_polardb_account": {Tok: resource(polarDbMod, "Account")},
@@ -884,8 +893,19 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ots_service": {Tok: dataSource(otsMod, "getService")},
 
 			// PrivateLink
-			"alicloud_privatelink_vpc_endpoints":         {Tok: dataSource(privateLinkMod, "getVpcEndpoints")},
-			"alicloud_privatelink_vpc_endpoint_services": {Tok: dataSource(privateLinkMod, "getVpcEndpointServices")},
+			"alicloud_privatelink_vpc_endpoints": {Tok: dataSource(privateLinkMod, "getVpcEndpoints")},
+			"alicloud_privatelink_vpc_endpoint_services": {
+				Tok: dataSource(privateLinkMod, "getVpcEndpointServices"),
+			},
+			"alicloud_privatelink_vpc_endpoint_service_resources": {
+				Tok: dataSource(privateLinkMod, "getVpcEndpointServiceResources"),
+			},
+			"alicloud_privatelink_vpc_endpoint_service_users": {
+				Tok: dataSource(privateLinkMod, "getVpcEndpointServiceUsers"),
+			},
+			"alicloud_privatelink_vpc_endpoint_connections": {
+				Tok: dataSource(privateLinkMod, "getVpcEndpointConnections"),
+			},
 
 			// PolarDb
 			"alicloud_polardb_clusters":     {Tok: dataSource(polarDbMod, "getClusters")},

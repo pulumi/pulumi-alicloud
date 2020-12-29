@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
-        /// The terminal node service associated with the terminal node..
+        /// The terminal node service associated with the terminal node.
         /// </summary>
         public readonly string ServiceId;
         /// <summary>

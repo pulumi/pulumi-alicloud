@@ -10,112 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-type VpcEndpointServiceResource struct {
-	// The id of service resources added to the endpoint service.
-	ResourceId *string `pulumi:"resourceId"`
-	// The type of service resource added to the endpoint service.
-	ResourceType *string `pulumi:"resourceType"`
-}
-
-// VpcEndpointServiceResourceInput is an input type that accepts VpcEndpointServiceResourceArgs and VpcEndpointServiceResourceOutput values.
-// You can construct a concrete instance of `VpcEndpointServiceResourceInput` via:
-//
-//          VpcEndpointServiceResourceArgs{...}
-type VpcEndpointServiceResourceInput interface {
-	pulumi.Input
-
-	ToVpcEndpointServiceResourceOutput() VpcEndpointServiceResourceOutput
-	ToVpcEndpointServiceResourceOutputWithContext(context.Context) VpcEndpointServiceResourceOutput
-}
-
-type VpcEndpointServiceResourceArgs struct {
-	// The id of service resources added to the endpoint service.
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// The type of service resource added to the endpoint service.
-	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
-}
-
-func (VpcEndpointServiceResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointServiceResource)(nil)).Elem()
-}
-
-func (i VpcEndpointServiceResourceArgs) ToVpcEndpointServiceResourceOutput() VpcEndpointServiceResourceOutput {
-	return i.ToVpcEndpointServiceResourceOutputWithContext(context.Background())
-}
-
-func (i VpcEndpointServiceResourceArgs) ToVpcEndpointServiceResourceOutputWithContext(ctx context.Context) VpcEndpointServiceResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceResourceOutput)
-}
-
-// VpcEndpointServiceResourceArrayInput is an input type that accepts VpcEndpointServiceResourceArray and VpcEndpointServiceResourceArrayOutput values.
-// You can construct a concrete instance of `VpcEndpointServiceResourceArrayInput` via:
-//
-//          VpcEndpointServiceResourceArray{ VpcEndpointServiceResourceArgs{...} }
-type VpcEndpointServiceResourceArrayInput interface {
-	pulumi.Input
-
-	ToVpcEndpointServiceResourceArrayOutput() VpcEndpointServiceResourceArrayOutput
-	ToVpcEndpointServiceResourceArrayOutputWithContext(context.Context) VpcEndpointServiceResourceArrayOutput
-}
-
-type VpcEndpointServiceResourceArray []VpcEndpointServiceResourceInput
-
-func (VpcEndpointServiceResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VpcEndpointServiceResource)(nil)).Elem()
-}
-
-func (i VpcEndpointServiceResourceArray) ToVpcEndpointServiceResourceArrayOutput() VpcEndpointServiceResourceArrayOutput {
-	return i.ToVpcEndpointServiceResourceArrayOutputWithContext(context.Background())
-}
-
-func (i VpcEndpointServiceResourceArray) ToVpcEndpointServiceResourceArrayOutputWithContext(ctx context.Context) VpcEndpointServiceResourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceResourceArrayOutput)
-}
-
-type VpcEndpointServiceResourceOutput struct{ *pulumi.OutputState }
-
-func (VpcEndpointServiceResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointServiceResource)(nil)).Elem()
-}
-
-func (o VpcEndpointServiceResourceOutput) ToVpcEndpointServiceResourceOutput() VpcEndpointServiceResourceOutput {
-	return o
-}
-
-func (o VpcEndpointServiceResourceOutput) ToVpcEndpointServiceResourceOutputWithContext(ctx context.Context) VpcEndpointServiceResourceOutput {
-	return o
-}
-
-// The id of service resources added to the endpoint service.
-func (o VpcEndpointServiceResourceOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VpcEndpointServiceResource) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-// The type of service resource added to the endpoint service.
-func (o VpcEndpointServiceResourceOutput) ResourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VpcEndpointServiceResource) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
-}
-
-type VpcEndpointServiceResourceArrayOutput struct{ *pulumi.OutputState }
-
-func (VpcEndpointServiceResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VpcEndpointServiceResource)(nil)).Elem()
-}
-
-func (o VpcEndpointServiceResourceArrayOutput) ToVpcEndpointServiceResourceArrayOutput() VpcEndpointServiceResourceArrayOutput {
-	return o
-}
-
-func (o VpcEndpointServiceResourceArrayOutput) ToVpcEndpointServiceResourceArrayOutputWithContext(ctx context.Context) VpcEndpointServiceResourceArrayOutput {
-	return o
-}
-
-func (o VpcEndpointServiceResourceArrayOutput) Index(i pulumi.IntInput) VpcEndpointServiceResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcEndpointServiceResource {
-		return vs[0].([]VpcEndpointServiceResource)[vs[1].(int)]
-	}).(VpcEndpointServiceResourceOutput)
-}
-
 type VpcEndpointZone struct {
 	// To create the vswitch of the terminal node network card in the available zone.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -222,6 +116,351 @@ func (o VpcEndpointZoneArrayOutput) Index(i pulumi.IntInput) VpcEndpointZoneOutp
 	}).(VpcEndpointZoneOutput)
 }
 
+type GetVpcEndpointConnectionsConnection struct {
+	// The Bandwidth.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The ID of the Vpc Endpoint.
+	EndpointId string `pulumi:"endpointId"`
+	// The ID of the Vpc Endpoint Connection.
+	Id string `pulumi:"id"`
+	// The status of Vpc Endpoint Connection.
+	Status string `pulumi:"status"`
+}
+
+// GetVpcEndpointConnectionsConnectionInput is an input type that accepts GetVpcEndpointConnectionsConnectionArgs and GetVpcEndpointConnectionsConnectionOutput values.
+// You can construct a concrete instance of `GetVpcEndpointConnectionsConnectionInput` via:
+//
+//          GetVpcEndpointConnectionsConnectionArgs{...}
+type GetVpcEndpointConnectionsConnectionInput interface {
+	pulumi.Input
+
+	ToGetVpcEndpointConnectionsConnectionOutput() GetVpcEndpointConnectionsConnectionOutput
+	ToGetVpcEndpointConnectionsConnectionOutputWithContext(context.Context) GetVpcEndpointConnectionsConnectionOutput
+}
+
+type GetVpcEndpointConnectionsConnectionArgs struct {
+	// The Bandwidth.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The ID of the Vpc Endpoint.
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// The ID of the Vpc Endpoint Connection.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of Vpc Endpoint Connection.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetVpcEndpointConnectionsConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointConnectionsConnection)(nil)).Elem()
+}
+
+func (i GetVpcEndpointConnectionsConnectionArgs) ToGetVpcEndpointConnectionsConnectionOutput() GetVpcEndpointConnectionsConnectionOutput {
+	return i.ToGetVpcEndpointConnectionsConnectionOutputWithContext(context.Background())
+}
+
+func (i GetVpcEndpointConnectionsConnectionArgs) ToGetVpcEndpointConnectionsConnectionOutputWithContext(ctx context.Context) GetVpcEndpointConnectionsConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointConnectionsConnectionOutput)
+}
+
+// GetVpcEndpointConnectionsConnectionArrayInput is an input type that accepts GetVpcEndpointConnectionsConnectionArray and GetVpcEndpointConnectionsConnectionArrayOutput values.
+// You can construct a concrete instance of `GetVpcEndpointConnectionsConnectionArrayInput` via:
+//
+//          GetVpcEndpointConnectionsConnectionArray{ GetVpcEndpointConnectionsConnectionArgs{...} }
+type GetVpcEndpointConnectionsConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcEndpointConnectionsConnectionArrayOutput() GetVpcEndpointConnectionsConnectionArrayOutput
+	ToGetVpcEndpointConnectionsConnectionArrayOutputWithContext(context.Context) GetVpcEndpointConnectionsConnectionArrayOutput
+}
+
+type GetVpcEndpointConnectionsConnectionArray []GetVpcEndpointConnectionsConnectionInput
+
+func (GetVpcEndpointConnectionsConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcEndpointConnectionsConnection)(nil)).Elem()
+}
+
+func (i GetVpcEndpointConnectionsConnectionArray) ToGetVpcEndpointConnectionsConnectionArrayOutput() GetVpcEndpointConnectionsConnectionArrayOutput {
+	return i.ToGetVpcEndpointConnectionsConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcEndpointConnectionsConnectionArray) ToGetVpcEndpointConnectionsConnectionArrayOutputWithContext(ctx context.Context) GetVpcEndpointConnectionsConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointConnectionsConnectionArrayOutput)
+}
+
+type GetVpcEndpointConnectionsConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointConnectionsConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointConnectionsConnection)(nil)).Elem()
+}
+
+func (o GetVpcEndpointConnectionsConnectionOutput) ToGetVpcEndpointConnectionsConnectionOutput() GetVpcEndpointConnectionsConnectionOutput {
+	return o
+}
+
+func (o GetVpcEndpointConnectionsConnectionOutput) ToGetVpcEndpointConnectionsConnectionOutputWithContext(ctx context.Context) GetVpcEndpointConnectionsConnectionOutput {
+	return o
+}
+
+// The Bandwidth.
+func (o GetVpcEndpointConnectionsConnectionOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsConnection) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The ID of the Vpc Endpoint.
+func (o GetVpcEndpointConnectionsConnectionOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsConnection) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// The ID of the Vpc Endpoint Connection.
+func (o GetVpcEndpointConnectionsConnectionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of Vpc Endpoint Connection.
+func (o GetVpcEndpointConnectionsConnectionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetVpcEndpointConnectionsConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointConnectionsConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcEndpointConnectionsConnection)(nil)).Elem()
+}
+
+func (o GetVpcEndpointConnectionsConnectionArrayOutput) ToGetVpcEndpointConnectionsConnectionArrayOutput() GetVpcEndpointConnectionsConnectionArrayOutput {
+	return o
+}
+
+func (o GetVpcEndpointConnectionsConnectionArrayOutput) ToGetVpcEndpointConnectionsConnectionArrayOutputWithContext(ctx context.Context) GetVpcEndpointConnectionsConnectionArrayOutput {
+	return o
+}
+
+func (o GetVpcEndpointConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointConnectionsConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcEndpointConnectionsConnection {
+		return vs[0].([]GetVpcEndpointConnectionsConnection)[vs[1].(int)]
+	}).(GetVpcEndpointConnectionsConnectionOutput)
+}
+
+type GetVpcEndpointServiceResourcesResource struct {
+	// The ID of the Vpc Endpoint Service Resource.
+	Id string `pulumi:"id"`
+	// The ID of Resource.
+	ResourceId string `pulumi:"resourceId"`
+	// The type of Resource.
+	ResourceType string `pulumi:"resourceType"`
+}
+
+// GetVpcEndpointServiceResourcesResourceInput is an input type that accepts GetVpcEndpointServiceResourcesResourceArgs and GetVpcEndpointServiceResourcesResourceOutput values.
+// You can construct a concrete instance of `GetVpcEndpointServiceResourcesResourceInput` via:
+//
+//          GetVpcEndpointServiceResourcesResourceArgs{...}
+type GetVpcEndpointServiceResourcesResourceInput interface {
+	pulumi.Input
+
+	ToGetVpcEndpointServiceResourcesResourceOutput() GetVpcEndpointServiceResourcesResourceOutput
+	ToGetVpcEndpointServiceResourcesResourceOutputWithContext(context.Context) GetVpcEndpointServiceResourcesResourceOutput
+}
+
+type GetVpcEndpointServiceResourcesResourceArgs struct {
+	// The ID of the Vpc Endpoint Service Resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of Resource.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The type of Resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+}
+
+func (GetVpcEndpointServiceResourcesResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointServiceResourcesResource)(nil)).Elem()
+}
+
+func (i GetVpcEndpointServiceResourcesResourceArgs) ToGetVpcEndpointServiceResourcesResourceOutput() GetVpcEndpointServiceResourcesResourceOutput {
+	return i.ToGetVpcEndpointServiceResourcesResourceOutputWithContext(context.Background())
+}
+
+func (i GetVpcEndpointServiceResourcesResourceArgs) ToGetVpcEndpointServiceResourcesResourceOutputWithContext(ctx context.Context) GetVpcEndpointServiceResourcesResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServiceResourcesResourceOutput)
+}
+
+// GetVpcEndpointServiceResourcesResourceArrayInput is an input type that accepts GetVpcEndpointServiceResourcesResourceArray and GetVpcEndpointServiceResourcesResourceArrayOutput values.
+// You can construct a concrete instance of `GetVpcEndpointServiceResourcesResourceArrayInput` via:
+//
+//          GetVpcEndpointServiceResourcesResourceArray{ GetVpcEndpointServiceResourcesResourceArgs{...} }
+type GetVpcEndpointServiceResourcesResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcEndpointServiceResourcesResourceArrayOutput() GetVpcEndpointServiceResourcesResourceArrayOutput
+	ToGetVpcEndpointServiceResourcesResourceArrayOutputWithContext(context.Context) GetVpcEndpointServiceResourcesResourceArrayOutput
+}
+
+type GetVpcEndpointServiceResourcesResourceArray []GetVpcEndpointServiceResourcesResourceInput
+
+func (GetVpcEndpointServiceResourcesResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcEndpointServiceResourcesResource)(nil)).Elem()
+}
+
+func (i GetVpcEndpointServiceResourcesResourceArray) ToGetVpcEndpointServiceResourcesResourceArrayOutput() GetVpcEndpointServiceResourcesResourceArrayOutput {
+	return i.ToGetVpcEndpointServiceResourcesResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcEndpointServiceResourcesResourceArray) ToGetVpcEndpointServiceResourcesResourceArrayOutputWithContext(ctx context.Context) GetVpcEndpointServiceResourcesResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServiceResourcesResourceArrayOutput)
+}
+
+type GetVpcEndpointServiceResourcesResourceOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointServiceResourcesResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointServiceResourcesResource)(nil)).Elem()
+}
+
+func (o GetVpcEndpointServiceResourcesResourceOutput) ToGetVpcEndpointServiceResourcesResourceOutput() GetVpcEndpointServiceResourcesResourceOutput {
+	return o
+}
+
+func (o GetVpcEndpointServiceResourcesResourceOutput) ToGetVpcEndpointServiceResourcesResourceOutputWithContext(ctx context.Context) GetVpcEndpointServiceResourcesResourceOutput {
+	return o
+}
+
+// The ID of the Vpc Endpoint Service Resource.
+func (o GetVpcEndpointServiceResourcesResourceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointServiceResourcesResource) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of Resource.
+func (o GetVpcEndpointServiceResourcesResourceOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointServiceResourcesResource) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The type of Resource.
+func (o GetVpcEndpointServiceResourcesResourceOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointServiceResourcesResource) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+type GetVpcEndpointServiceResourcesResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointServiceResourcesResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcEndpointServiceResourcesResource)(nil)).Elem()
+}
+
+func (o GetVpcEndpointServiceResourcesResourceArrayOutput) ToGetVpcEndpointServiceResourcesResourceArrayOutput() GetVpcEndpointServiceResourcesResourceArrayOutput {
+	return o
+}
+
+func (o GetVpcEndpointServiceResourcesResourceArrayOutput) ToGetVpcEndpointServiceResourcesResourceArrayOutputWithContext(ctx context.Context) GetVpcEndpointServiceResourcesResourceArrayOutput {
+	return o
+}
+
+func (o GetVpcEndpointServiceResourcesResourceArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointServiceResourcesResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcEndpointServiceResourcesResource {
+		return vs[0].([]GetVpcEndpointServiceResourcesResource)[vs[1].(int)]
+	}).(GetVpcEndpointServiceResourcesResourceOutput)
+}
+
+type GetVpcEndpointServiceUsersUser struct {
+	// The ID of the Vpc Endpoint Service User.
+	Id string `pulumi:"id"`
+	// The Id of Ram User.
+	UserId string `pulumi:"userId"`
+}
+
+// GetVpcEndpointServiceUsersUserInput is an input type that accepts GetVpcEndpointServiceUsersUserArgs and GetVpcEndpointServiceUsersUserOutput values.
+// You can construct a concrete instance of `GetVpcEndpointServiceUsersUserInput` via:
+//
+//          GetVpcEndpointServiceUsersUserArgs{...}
+type GetVpcEndpointServiceUsersUserInput interface {
+	pulumi.Input
+
+	ToGetVpcEndpointServiceUsersUserOutput() GetVpcEndpointServiceUsersUserOutput
+	ToGetVpcEndpointServiceUsersUserOutputWithContext(context.Context) GetVpcEndpointServiceUsersUserOutput
+}
+
+type GetVpcEndpointServiceUsersUserArgs struct {
+	// The ID of the Vpc Endpoint Service User.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Id of Ram User.
+	UserId pulumi.StringInput `pulumi:"userId"`
+}
+
+func (GetVpcEndpointServiceUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointServiceUsersUser)(nil)).Elem()
+}
+
+func (i GetVpcEndpointServiceUsersUserArgs) ToGetVpcEndpointServiceUsersUserOutput() GetVpcEndpointServiceUsersUserOutput {
+	return i.ToGetVpcEndpointServiceUsersUserOutputWithContext(context.Background())
+}
+
+func (i GetVpcEndpointServiceUsersUserArgs) ToGetVpcEndpointServiceUsersUserOutputWithContext(ctx context.Context) GetVpcEndpointServiceUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServiceUsersUserOutput)
+}
+
+// GetVpcEndpointServiceUsersUserArrayInput is an input type that accepts GetVpcEndpointServiceUsersUserArray and GetVpcEndpointServiceUsersUserArrayOutput values.
+// You can construct a concrete instance of `GetVpcEndpointServiceUsersUserArrayInput` via:
+//
+//          GetVpcEndpointServiceUsersUserArray{ GetVpcEndpointServiceUsersUserArgs{...} }
+type GetVpcEndpointServiceUsersUserArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcEndpointServiceUsersUserArrayOutput() GetVpcEndpointServiceUsersUserArrayOutput
+	ToGetVpcEndpointServiceUsersUserArrayOutputWithContext(context.Context) GetVpcEndpointServiceUsersUserArrayOutput
+}
+
+type GetVpcEndpointServiceUsersUserArray []GetVpcEndpointServiceUsersUserInput
+
+func (GetVpcEndpointServiceUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcEndpointServiceUsersUser)(nil)).Elem()
+}
+
+func (i GetVpcEndpointServiceUsersUserArray) ToGetVpcEndpointServiceUsersUserArrayOutput() GetVpcEndpointServiceUsersUserArrayOutput {
+	return i.ToGetVpcEndpointServiceUsersUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcEndpointServiceUsersUserArray) ToGetVpcEndpointServiceUsersUserArrayOutputWithContext(ctx context.Context) GetVpcEndpointServiceUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServiceUsersUserArrayOutput)
+}
+
+type GetVpcEndpointServiceUsersUserOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointServiceUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointServiceUsersUser)(nil)).Elem()
+}
+
+func (o GetVpcEndpointServiceUsersUserOutput) ToGetVpcEndpointServiceUsersUserOutput() GetVpcEndpointServiceUsersUserOutput {
+	return o
+}
+
+func (o GetVpcEndpointServiceUsersUserOutput) ToGetVpcEndpointServiceUsersUserOutputWithContext(ctx context.Context) GetVpcEndpointServiceUsersUserOutput {
+	return o
+}
+
+// The ID of the Vpc Endpoint Service User.
+func (o GetVpcEndpointServiceUsersUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointServiceUsersUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Id of Ram User.
+func (o GetVpcEndpointServiceUsersUserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointServiceUsersUser) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+type GetVpcEndpointServiceUsersUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointServiceUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcEndpointServiceUsersUser)(nil)).Elem()
+}
+
+func (o GetVpcEndpointServiceUsersUserArrayOutput) ToGetVpcEndpointServiceUsersUserArrayOutput() GetVpcEndpointServiceUsersUserArrayOutput {
+	return o
+}
+
+func (o GetVpcEndpointServiceUsersUserArrayOutput) ToGetVpcEndpointServiceUsersUserArrayOutputWithContext(ctx context.Context) GetVpcEndpointServiceUsersUserArrayOutput {
+	return o
+}
+
+func (o GetVpcEndpointServiceUsersUserArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointServiceUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcEndpointServiceUsersUser {
+		return vs[0].([]GetVpcEndpointServiceUsersUser)[vs[1].(int)]
+	}).(GetVpcEndpointServiceUsersUserOutput)
+}
+
 type GetVpcEndpointServicesService struct {
 	// Whether to automatically accept terminal node connections..
 	AutoAcceptConnection bool `pulumi:"autoAcceptConnection"`
@@ -229,8 +468,6 @@ type GetVpcEndpointServicesService struct {
 	ConnectBandwidth int `pulumi:"connectBandwidth"`
 	// The ID of the Vpc Endpoint Service.
 	Id string `pulumi:"id"`
-	// Service resources added to the endpoint service.
-	Resources []GetVpcEndpointServicesServiceResource `pulumi:"resources"`
 	// The business status of the terminal node service..
 	ServiceBusinessStatus string `pulumi:"serviceBusinessStatus"`
 	// The description of the terminal node service.
@@ -263,8 +500,6 @@ type GetVpcEndpointServicesServiceArgs struct {
 	ConnectBandwidth pulumi.IntInput `pulumi:"connectBandwidth"`
 	// The ID of the Vpc Endpoint Service.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Service resources added to the endpoint service.
-	Resources GetVpcEndpointServicesServiceResourceArrayInput `pulumi:"resources"`
 	// The business status of the terminal node service..
 	ServiceBusinessStatus pulumi.StringInput `pulumi:"serviceBusinessStatus"`
 	// The description of the terminal node service.
@@ -345,11 +580,6 @@ func (o GetVpcEndpointServicesServiceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesService) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Service resources added to the endpoint service.
-func (o GetVpcEndpointServicesServiceOutput) Resources() GetVpcEndpointServicesServiceResourceArrayOutput {
-	return o.ApplyT(func(v GetVpcEndpointServicesService) []GetVpcEndpointServicesServiceResource { return v.Resources }).(GetVpcEndpointServicesServiceResourceArrayOutput)
-}
-
 // The business status of the terminal node service..
 func (o GetVpcEndpointServicesServiceOutput) ServiceBusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesService) string { return v.ServiceBusinessStatus }).(pulumi.StringOutput)
@@ -400,112 +630,6 @@ func (o GetVpcEndpointServicesServiceArrayOutput) Index(i pulumi.IntInput) GetVp
 	}).(GetVpcEndpointServicesServiceOutput)
 }
 
-type GetVpcEndpointServicesServiceResource struct {
-	// The id of service resources added to the endpoint service.
-	ResourceId string `pulumi:"resourceId"`
-	// The type of service resource added to the endpoint service.
-	ResourceType string `pulumi:"resourceType"`
-}
-
-// GetVpcEndpointServicesServiceResourceInput is an input type that accepts GetVpcEndpointServicesServiceResourceArgs and GetVpcEndpointServicesServiceResourceOutput values.
-// You can construct a concrete instance of `GetVpcEndpointServicesServiceResourceInput` via:
-//
-//          GetVpcEndpointServicesServiceResourceArgs{...}
-type GetVpcEndpointServicesServiceResourceInput interface {
-	pulumi.Input
-
-	ToGetVpcEndpointServicesServiceResourceOutput() GetVpcEndpointServicesServiceResourceOutput
-	ToGetVpcEndpointServicesServiceResourceOutputWithContext(context.Context) GetVpcEndpointServicesServiceResourceOutput
-}
-
-type GetVpcEndpointServicesServiceResourceArgs struct {
-	// The id of service resources added to the endpoint service.
-	ResourceId pulumi.StringInput `pulumi:"resourceId"`
-	// The type of service resource added to the endpoint service.
-	ResourceType pulumi.StringInput `pulumi:"resourceType"`
-}
-
-func (GetVpcEndpointServicesServiceResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVpcEndpointServicesServiceResource)(nil)).Elem()
-}
-
-func (i GetVpcEndpointServicesServiceResourceArgs) ToGetVpcEndpointServicesServiceResourceOutput() GetVpcEndpointServicesServiceResourceOutput {
-	return i.ToGetVpcEndpointServicesServiceResourceOutputWithContext(context.Background())
-}
-
-func (i GetVpcEndpointServicesServiceResourceArgs) ToGetVpcEndpointServicesServiceResourceOutputWithContext(ctx context.Context) GetVpcEndpointServicesServiceResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServicesServiceResourceOutput)
-}
-
-// GetVpcEndpointServicesServiceResourceArrayInput is an input type that accepts GetVpcEndpointServicesServiceResourceArray and GetVpcEndpointServicesServiceResourceArrayOutput values.
-// You can construct a concrete instance of `GetVpcEndpointServicesServiceResourceArrayInput` via:
-//
-//          GetVpcEndpointServicesServiceResourceArray{ GetVpcEndpointServicesServiceResourceArgs{...} }
-type GetVpcEndpointServicesServiceResourceArrayInput interface {
-	pulumi.Input
-
-	ToGetVpcEndpointServicesServiceResourceArrayOutput() GetVpcEndpointServicesServiceResourceArrayOutput
-	ToGetVpcEndpointServicesServiceResourceArrayOutputWithContext(context.Context) GetVpcEndpointServicesServiceResourceArrayOutput
-}
-
-type GetVpcEndpointServicesServiceResourceArray []GetVpcEndpointServicesServiceResourceInput
-
-func (GetVpcEndpointServicesServiceResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVpcEndpointServicesServiceResource)(nil)).Elem()
-}
-
-func (i GetVpcEndpointServicesServiceResourceArray) ToGetVpcEndpointServicesServiceResourceArrayOutput() GetVpcEndpointServicesServiceResourceArrayOutput {
-	return i.ToGetVpcEndpointServicesServiceResourceArrayOutputWithContext(context.Background())
-}
-
-func (i GetVpcEndpointServicesServiceResourceArray) ToGetVpcEndpointServicesServiceResourceArrayOutputWithContext(ctx context.Context) GetVpcEndpointServicesServiceResourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServicesServiceResourceArrayOutput)
-}
-
-type GetVpcEndpointServicesServiceResourceOutput struct{ *pulumi.OutputState }
-
-func (GetVpcEndpointServicesServiceResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVpcEndpointServicesServiceResource)(nil)).Elem()
-}
-
-func (o GetVpcEndpointServicesServiceResourceOutput) ToGetVpcEndpointServicesServiceResourceOutput() GetVpcEndpointServicesServiceResourceOutput {
-	return o
-}
-
-func (o GetVpcEndpointServicesServiceResourceOutput) ToGetVpcEndpointServicesServiceResourceOutputWithContext(ctx context.Context) GetVpcEndpointServicesServiceResourceOutput {
-	return o
-}
-
-// The id of service resources added to the endpoint service.
-func (o GetVpcEndpointServicesServiceResourceOutput) ResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpcEndpointServicesServiceResource) string { return v.ResourceId }).(pulumi.StringOutput)
-}
-
-// The type of service resource added to the endpoint service.
-func (o GetVpcEndpointServicesServiceResourceOutput) ResourceType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpcEndpointServicesServiceResource) string { return v.ResourceType }).(pulumi.StringOutput)
-}
-
-type GetVpcEndpointServicesServiceResourceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVpcEndpointServicesServiceResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVpcEndpointServicesServiceResource)(nil)).Elem()
-}
-
-func (o GetVpcEndpointServicesServiceResourceArrayOutput) ToGetVpcEndpointServicesServiceResourceArrayOutput() GetVpcEndpointServicesServiceResourceArrayOutput {
-	return o
-}
-
-func (o GetVpcEndpointServicesServiceResourceArrayOutput) ToGetVpcEndpointServicesServiceResourceArrayOutputWithContext(ctx context.Context) GetVpcEndpointServicesServiceResourceArrayOutput {
-	return o
-}
-
-func (o GetVpcEndpointServicesServiceResourceArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointServicesServiceResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcEndpointServicesServiceResource {
-		return vs[0].([]GetVpcEndpointServicesServiceResource)[vs[1].(int)]
-	}).(GetVpcEndpointServicesServiceResourceOutput)
-}
-
 type GetVpcEndpointsEndpoint struct {
 	// The Bandwidth.
 	Bandwidth int `pulumi:"bandwidth"`
@@ -523,7 +647,7 @@ type GetVpcEndpointsEndpoint struct {
 	Id string `pulumi:"id"`
 	// The security group associated with the terminal node network card.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The terminal node service associated with the terminal node..
+	// The terminal node service associated with the terminal node.
 	ServiceId string `pulumi:"serviceId"`
 	// The name of the terminal node service associated with the terminal node.
 	ServiceName string `pulumi:"serviceName"`
@@ -565,7 +689,7 @@ type GetVpcEndpointsEndpointArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The security group associated with the terminal node network card.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// The terminal node service associated with the terminal node..
+	// The terminal node service associated with the terminal node.
 	ServiceId pulumi.StringInput `pulumi:"serviceId"`
 	// The name of the terminal node service associated with the terminal node.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -670,7 +794,7 @@ func (o GetVpcEndpointsEndpointOutput) SecurityGroupIds() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetVpcEndpointsEndpoint) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The terminal node service associated with the terminal node..
+// The terminal node service associated with the terminal node.
 func (o GetVpcEndpointsEndpointOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointsEndpoint) string { return v.ServiceId }).(pulumi.StringOutput)
 }
@@ -827,14 +951,16 @@ func (o GetVpcEndpointsEndpointZoneArrayOutput) Index(i pulumi.IntInput) GetVpcE
 }
 
 func init() {
-	pulumi.RegisterOutputType(VpcEndpointServiceResourceOutput{})
-	pulumi.RegisterOutputType(VpcEndpointServiceResourceArrayOutput{})
 	pulumi.RegisterOutputType(VpcEndpointZoneOutput{})
 	pulumi.RegisterOutputType(VpcEndpointZoneArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcEndpointConnectionsConnectionOutput{})
+	pulumi.RegisterOutputType(GetVpcEndpointConnectionsConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcEndpointServiceResourcesResourceOutput{})
+	pulumi.RegisterOutputType(GetVpcEndpointServiceResourcesResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcEndpointServiceUsersUserOutput{})
+	pulumi.RegisterOutputType(GetVpcEndpointServiceUsersUserArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointServicesServiceOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointServicesServiceArrayOutput{})
-	pulumi.RegisterOutputType(GetVpcEndpointServicesServiceResourceOutput{})
-	pulumi.RegisterOutputType(GetVpcEndpointServicesServiceResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointsEndpointOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointsEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointsEndpointZoneOutput{})

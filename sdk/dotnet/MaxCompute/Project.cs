@@ -29,6 +29,7 @@ namespace Pulumi.AliCloud.MaxCompute
     ///         var example = new AliCloud.MaxCompute.Project("example", new AliCloud.MaxCompute.ProjectArgs
     ///         {
     ///             OrderType = "PayAsYouGo",
+    ///             ProjectName = "tf_maxcompute_project",
     ///             SpecificationType = "OdpsStandard",
     ///         });
     ///     }
@@ -47,7 +48,7 @@ namespace Pulumi.AliCloud.MaxCompute
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the maxcompute project.
+        /// It has been deprecated from provider version 1.110.0 and `project_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -57,6 +58,12 @@ namespace Pulumi.AliCloud.MaxCompute
         /// </summary>
         [Output("orderType")]
         public Output<string> OrderType { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the maxcompute project.
+        /// </summary>
+        [Output("projectName")]
+        public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
         /// The type of resource Specification, only `OdpsStandard` supported currently.
@@ -111,7 +118,7 @@ namespace Pulumi.AliCloud.MaxCompute
     public sealed class ProjectArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the maxcompute project.
+        /// It has been deprecated from provider version 1.110.0 and `project_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -121,6 +128,12 @@ namespace Pulumi.AliCloud.MaxCompute
         /// </summary>
         [Input("orderType", required: true)]
         public Input<string> OrderType { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the maxcompute project.
+        /// </summary>
+        [Input("projectName")]
+        public Input<string>? ProjectName { get; set; }
 
         /// <summary>
         /// The type of resource Specification, only `OdpsStandard` supported currently.
@@ -136,7 +149,7 @@ namespace Pulumi.AliCloud.MaxCompute
     public sealed class ProjectState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the maxcompute project.
+        /// It has been deprecated from provider version 1.110.0 and `project_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -146,6 +159,12 @@ namespace Pulumi.AliCloud.MaxCompute
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
+
+        /// <summary>
+        /// The name of the maxcompute project.
+        /// </summary>
+        [Input("projectName")]
+        public Input<string>? ProjectName { get; set; }
 
         /// <summary>
         /// The type of resource Specification, only `OdpsStandard` supported currently.

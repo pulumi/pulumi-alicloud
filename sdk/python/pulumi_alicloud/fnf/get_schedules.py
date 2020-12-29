@@ -20,7 +20,7 @@ class GetSchedulesResult:
     """
     A collection of values returned by getSchedules.
     """
-    def __init__(__self__, flow_name=None, id=None, ids=None, name_regex=None, names=None, output_file=None, schedules=None):
+    def __init__(__self__, flow_name=None, id=None, ids=None, limit=None, name_regex=None, names=None, output_file=None, schedules=None):
         if flow_name and not isinstance(flow_name, str):
             raise TypeError("Expected argument 'flow_name' to be a str")
         pulumi.set(__self__, "flow_name", flow_name)
@@ -30,6 +30,9 @@ class GetSchedulesResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if limit and not isinstance(limit, int):
+            raise TypeError("Expected argument 'limit' to be a int")
+        pulumi.set(__self__, "limit", limit)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         pulumi.set(__self__, "name_regex", name_regex)
@@ -62,6 +65,11 @@ class GetSchedulesResult:
         return pulumi.get(self, "ids")
 
     @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        return pulumi.get(self, "limit")
+
+    @property
     @pulumi.getter(name="nameRegex")
     def name_regex(self) -> Optional[str]:
         return pulumi.get(self, "name_regex")
@@ -91,6 +99,7 @@ class AwaitableGetSchedulesResult(GetSchedulesResult):
             flow_name=self.flow_name,
             id=self.id,
             ids=self.ids,
+            limit=self.limit,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
@@ -99,6 +108,7 @@ class AwaitableGetSchedulesResult(GetSchedulesResult):
 
 def get_schedules(flow_name: Optional[str] = None,
                   ids: Optional[Sequence[str]] = None,
+                  limit: Optional[int] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSchedulesResult:
@@ -124,11 +134,13 @@ def get_schedules(flow_name: Optional[str] = None,
 
     :param str flow_name: The name of the flow bound to the time-based schedule you want to create.
     :param Sequence[str] ids: A list of Schedule IDs.
+    :param int limit: The number of resource queries.
     :param str name_regex: A regex string to filter results by Schedule name.
     """
     __args__ = dict()
     __args__['flowName'] = flow_name
     __args__['ids'] = ids
+    __args__['limit'] = limit
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     if opts is None:
@@ -141,6 +153,7 @@ def get_schedules(flow_name: Optional[str] = None,
         flow_name=__ret__.flow_name,
         id=__ret__.id,
         ids=__ret__.ids,
+        limit=__ret__.limit,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,

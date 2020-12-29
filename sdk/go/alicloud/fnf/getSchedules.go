@@ -56,6 +56,8 @@ type GetSchedulesArgs struct {
 	FlowName string `pulumi:"flowName"`
 	// A list of Schedule IDs.
 	Ids []string `pulumi:"ids"`
+	// The number of resource queries.
+	Limit *int `pulumi:"limit"`
 	// A regex string to filter results by Schedule name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -67,6 +69,7 @@ type GetSchedulesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id         string                 `pulumi:"id"`
 	Ids        []string               `pulumi:"ids"`
+	Limit      *int                   `pulumi:"limit"`
 	NameRegex  *string                `pulumi:"nameRegex"`
 	Names      []string               `pulumi:"names"`
 	OutputFile *string                `pulumi:"outputFile"`

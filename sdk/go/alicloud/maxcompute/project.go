@@ -31,6 +31,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := maxcompute.NewProject(ctx, "example", &maxcompute.ProjectArgs{
 // 			OrderType:         pulumi.String("PayAsYouGo"),
+// 			ProjectName:       pulumi.String("tf_maxcompute_project"),
 // 			SpecificationType: pulumi.String("OdpsStandard"),
 // 		})
 // 		if err != nil {
@@ -51,10 +52,12 @@ import (
 type Project struct {
 	pulumi.CustomResourceState
 
-	// The name of the maxcompute project.
+	// It has been deprecated from provider version 1.110.0 and `projectName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The type of payment, only `PayAsYouGo` supported currently.
 	OrderType pulumi.StringOutput `pulumi:"orderType"`
+	// The name of the maxcompute project.
+	ProjectName pulumi.StringOutput `pulumi:"projectName"`
 	// The type of resource Specification, only `OdpsStandard` supported currently.
 	SpecificationType pulumi.StringOutput `pulumi:"specificationType"`
 }
@@ -93,19 +96,23 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// The name of the maxcompute project.
+	// It has been deprecated from provider version 1.110.0 and `projectName` instead.
 	Name *string `pulumi:"name"`
 	// The type of payment, only `PayAsYouGo` supported currently.
 	OrderType *string `pulumi:"orderType"`
+	// The name of the maxcompute project.
+	ProjectName *string `pulumi:"projectName"`
 	// The type of resource Specification, only `OdpsStandard` supported currently.
 	SpecificationType *string `pulumi:"specificationType"`
 }
 
 type ProjectState struct {
-	// The name of the maxcompute project.
+	// It has been deprecated from provider version 1.110.0 and `projectName` instead.
 	Name pulumi.StringPtrInput
 	// The type of payment, only `PayAsYouGo` supported currently.
 	OrderType pulumi.StringPtrInput
+	// The name of the maxcompute project.
+	ProjectName pulumi.StringPtrInput
 	// The type of resource Specification, only `OdpsStandard` supported currently.
 	SpecificationType pulumi.StringPtrInput
 }
@@ -115,20 +122,24 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// The name of the maxcompute project.
+	// It has been deprecated from provider version 1.110.0 and `projectName` instead.
 	Name *string `pulumi:"name"`
 	// The type of payment, only `PayAsYouGo` supported currently.
 	OrderType string `pulumi:"orderType"`
+	// The name of the maxcompute project.
+	ProjectName *string `pulumi:"projectName"`
 	// The type of resource Specification, only `OdpsStandard` supported currently.
 	SpecificationType string `pulumi:"specificationType"`
 }
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// The name of the maxcompute project.
+	// It has been deprecated from provider version 1.110.0 and `projectName` instead.
 	Name pulumi.StringPtrInput
 	// The type of payment, only `PayAsYouGo` supported currently.
 	OrderType pulumi.StringInput
+	// The name of the maxcompute project.
+	ProjectName pulumi.StringPtrInput
 	// The type of resource Specification, only `OdpsStandard` supported currently.
 	SpecificationType pulumi.StringInput
 }
