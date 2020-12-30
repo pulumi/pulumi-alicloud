@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -23,10 +22,6 @@ import * as utilities from "../utilities";
  * const example = new alicloud.privatelink.VpcEndpointService("example", {
  *     autoAcceptConnection: false,
  *     connectBandwidth: 103,
- *     resources: [{
- *         resourceId: "lb-gw8nxxxxxxx",
- *         resourceType: "slb",
- *     }],
  *     serviceDescription: "tftest",
  * });
  * ```
@@ -84,10 +79,6 @@ export class VpcEndpointService extends pulumi.CustomResource {
      */
     public readonly payer!: pulumi.Output<string | undefined>;
     /**
-     * Service resources added to the endpoint service.
-     */
-    public readonly resources!: pulumi.Output<outputs.privatelink.VpcEndpointServiceResource[] | undefined>;
-    /**
      * The business status of Vpc Endpoint Service.
      */
     public /*out*/ readonly serviceBusinessStatus!: pulumi.Output<string>;
@@ -120,7 +111,6 @@ export class VpcEndpointService extends pulumi.CustomResource {
             inputs["connectBandwidth"] = state ? state.connectBandwidth : undefined;
             inputs["dryRun"] = state ? state.dryRun : undefined;
             inputs["payer"] = state ? state.payer : undefined;
-            inputs["resources"] = state ? state.resources : undefined;
             inputs["serviceBusinessStatus"] = state ? state.serviceBusinessStatus : undefined;
             inputs["serviceDescription"] = state ? state.serviceDescription : undefined;
             inputs["serviceDomain"] = state ? state.serviceDomain : undefined;
@@ -131,7 +121,6 @@ export class VpcEndpointService extends pulumi.CustomResource {
             inputs["connectBandwidth"] = args ? args.connectBandwidth : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["payer"] = args ? args.payer : undefined;
-            inputs["resources"] = args ? args.resources : undefined;
             inputs["serviceDescription"] = args ? args.serviceDescription : undefined;
             inputs["serviceBusinessStatus"] = undefined /*out*/;
             inputs["serviceDomain"] = undefined /*out*/;
@@ -168,10 +157,6 @@ export interface VpcEndpointServiceState {
      * The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
      */
     readonly payer?: pulumi.Input<string>;
-    /**
-     * Service resources added to the endpoint service.
-     */
-    readonly resources?: pulumi.Input<pulumi.Input<inputs.privatelink.VpcEndpointServiceResource>[]>;
     /**
      * The business status of Vpc Endpoint Service.
      */
@@ -210,10 +195,6 @@ export interface VpcEndpointServiceArgs {
      * The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
      */
     readonly payer?: pulumi.Input<string>;
-    /**
-     * Service resources added to the endpoint service.
-     */
-    readonly resources?: pulumi.Input<pulumi.Input<inputs.privatelink.VpcEndpointServiceResource>[]>;
     /**
      * The description of the terminal node service.
      */

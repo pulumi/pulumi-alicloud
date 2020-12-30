@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.FNF
         public Output<string?> RoleArn { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the flow. Set the value to `FDL`.
+        /// The type of the flow. Valid values are `FDL` or `DEFAULT`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.FNF
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// The type of the flow. Set the value to `FDL`.
+        /// The type of the flow. Valid values are `FDL` or `DEFAULT`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.FNF
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// The type of the flow. Set the value to `FDL`.
+        /// The type of the flow. Valid values are `FDL` or `DEFAULT`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -76,7 +76,7 @@ type Flow struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
 	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
-	// The type of the flow. Set the value to `FDL`.
+	// The type of the flow. Valid values are `FDL` or `DEFAULT`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -129,7 +129,7 @@ type flowState struct {
 	Name *string `pulumi:"name"`
 	// The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
 	RoleArn *string `pulumi:"roleArn"`
-	// The type of the flow. Set the value to `FDL`.
+	// The type of the flow. Valid values are `FDL` or `DEFAULT`.
 	Type *string `pulumi:"type"`
 }
 
@@ -146,7 +146,7 @@ type FlowState struct {
 	Name pulumi.StringPtrInput
 	// The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
 	RoleArn pulumi.StringPtrInput
-	// The type of the flow. Set the value to `FDL`.
+	// The type of the flow. Valid values are `FDL` or `DEFAULT`.
 	Type pulumi.StringPtrInput
 }
 
@@ -163,7 +163,7 @@ type flowArgs struct {
 	Name *string `pulumi:"name"`
 	// The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
 	RoleArn *string `pulumi:"roleArn"`
-	// The type of the flow. Set the value to `FDL`.
+	// The type of the flow. Valid values are `FDL` or `DEFAULT`.
 	Type string `pulumi:"type"`
 }
 
@@ -177,7 +177,7 @@ type FlowArgs struct {
 	Name pulumi.StringPtrInput
 	// The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
 	RoleArn pulumi.StringPtrInput
-	// The type of the flow. Set the value to `FDL`.
+	// The type of the flow. Valid values are `FDL` or `DEFAULT`.
 	Type pulumi.StringInput
 }
 

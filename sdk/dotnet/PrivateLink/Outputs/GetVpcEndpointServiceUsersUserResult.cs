@@ -11,25 +11,25 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
 {
 
     [OutputType]
-    public sealed class VpcEndpointServiceResource
+    public sealed class GetVpcEndpointServiceUsersUserResult
     {
         /// <summary>
-        /// The id of service resources added to the endpoint service.
+        /// The ID of the Vpc Endpoint Service User.
         /// </summary>
-        public readonly string? ResourceId;
+        public readonly string Id;
         /// <summary>
-        /// The type of service resource added to the endpoint service.
+        /// The Id of Ram User.
         /// </summary>
-        public readonly string? ResourceType;
+        public readonly string UserId;
 
         [OutputConstructor]
-        private VpcEndpointServiceResource(
-            string? resourceId,
+        private GetVpcEndpointServiceUsersUserResult(
+            string id,
 
-            string? resourceType)
+            string userId)
         {
-            ResourceId = resourceId;
-            ResourceType = resourceType;
+            Id = id;
+            UserId = userId;
         }
     }
 }

@@ -36,7 +36,6 @@ export function getVpcEndpointServices(args?: GetVpcEndpointServicesArgs, opts?:
     }
     return pulumi.runtime.invoke("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", {
         "autoAcceptConnection": args.autoAcceptConnection,
-        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -54,10 +53,6 @@ export interface GetVpcEndpointServicesArgs {
      * Whether to automatically accept terminal node connections..
      */
     readonly autoAcceptConnection?: boolean;
-    /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
-     */
-    readonly enableDetails?: boolean;
     /**
      * A list of Vpc Endpoint Service IDs.
      */
@@ -86,7 +81,6 @@ export interface GetVpcEndpointServicesArgs {
  */
 export interface GetVpcEndpointServicesResult {
     readonly autoAcceptConnection?: boolean;
-    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

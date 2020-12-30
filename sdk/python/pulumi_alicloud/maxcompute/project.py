@@ -17,6 +17,7 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
                  specification_type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -36,6 +37,7 @@ class Project(pulumi.CustomResource):
 
         example = alicloud.maxcompute.Project("example",
             order_type="PayAsYouGo",
+            project_name="tf_maxcompute_project",
             specification_type="OdpsStandard")
         ```
 
@@ -49,8 +51,9 @@ class Project(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the maxcompute project.
+        :param pulumi.Input[str] name: It has been deprecated from provider version 1.110.0 and `project_name` instead.
         :param pulumi.Input[str] order_type: The type of payment, only `PayAsYouGo` supported currently.
+        :param pulumi.Input[str] project_name: The name of the maxcompute project.
         :param pulumi.Input[str] specification_type: The type of resource Specification, only `OdpsStandard` supported currently.
         """
         if __name__ is not None:
@@ -74,6 +77,7 @@ class Project(pulumi.CustomResource):
             if order_type is None:
                 raise TypeError("Missing required property 'order_type'")
             __props__['order_type'] = order_type
+            __props__['project_name'] = project_name
             if specification_type is None:
                 raise TypeError("Missing required property 'specification_type'")
             __props__['specification_type'] = specification_type
@@ -89,6 +93,7 @@ class Project(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
             order_type: Optional[pulumi.Input[str]] = None,
+            project_name: Optional[pulumi.Input[str]] = None,
             specification_type: Optional[pulumi.Input[str]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
@@ -97,8 +102,9 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the maxcompute project.
+        :param pulumi.Input[str] name: It has been deprecated from provider version 1.110.0 and `project_name` instead.
         :param pulumi.Input[str] order_type: The type of payment, only `PayAsYouGo` supported currently.
+        :param pulumi.Input[str] project_name: The name of the maxcompute project.
         :param pulumi.Input[str] specification_type: The type of resource Specification, only `OdpsStandard` supported currently.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -107,6 +113,7 @@ class Project(pulumi.CustomResource):
 
         __props__["name"] = name
         __props__["order_type"] = order_type
+        __props__["project_name"] = project_name
         __props__["specification_type"] = specification_type
         return Project(resource_name, opts=opts, __props__=__props__)
 
@@ -114,7 +121,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the maxcompute project.
+        It has been deprecated from provider version 1.110.0 and `project_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -125,6 +132,14 @@ class Project(pulumi.CustomResource):
         The type of payment, only `PayAsYouGo` supported currently.
         """
         return pulumi.get(self, "order_type")
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> pulumi.Output[str]:
+        """
+        The name of the maxcompute project.
+        """
+        return pulumi.get(self, "project_name")
 
     @property
     @pulumi.getter(name="specificationType")

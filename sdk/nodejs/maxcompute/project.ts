@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *
  * const example = new alicloud.maxcompute.Project("example", {
  *     orderType: "PayAsYouGo",
+ *     projectName: "tf_maxcompute_project",
  *     specificationType: "OdpsStandard",
  * });
  * ```
@@ -60,13 +61,17 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the maxcompute project.
+     * It has been deprecated from provider version 1.110.0 and `projectName` instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * The type of payment, only `PayAsYouGo` supported currently.
      */
     public readonly orderType!: pulumi.Output<string>;
+    /**
+     * The name of the maxcompute project.
+     */
+    public readonly projectName!: pulumi.Output<string>;
     /**
      * The type of resource Specification, only `OdpsStandard` supported currently.
      */
@@ -86,6 +91,7 @@ export class Project extends pulumi.CustomResource {
             const state = argsOrState as ProjectState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["orderType"] = state ? state.orderType : undefined;
+            inputs["projectName"] = state ? state.projectName : undefined;
             inputs["specificationType"] = state ? state.specificationType : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
@@ -97,6 +103,7 @@ export class Project extends pulumi.CustomResource {
             }
             inputs["name"] = args ? args.name : undefined;
             inputs["orderType"] = args ? args.orderType : undefined;
+            inputs["projectName"] = args ? args.projectName : undefined;
             inputs["specificationType"] = args ? args.specificationType : undefined;
         }
         if (!opts) {
@@ -115,13 +122,17 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * The name of the maxcompute project.
+     * It has been deprecated from provider version 1.110.0 and `projectName` instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
      * The type of payment, only `PayAsYouGo` supported currently.
      */
     readonly orderType?: pulumi.Input<string>;
+    /**
+     * The name of the maxcompute project.
+     */
+    readonly projectName?: pulumi.Input<string>;
     /**
      * The type of resource Specification, only `OdpsStandard` supported currently.
      */
@@ -133,13 +144,17 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * The name of the maxcompute project.
+     * It has been deprecated from provider version 1.110.0 and `projectName` instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
      * The type of payment, only `PayAsYouGo` supported currently.
      */
     readonly orderType: pulumi.Input<string>;
+    /**
+     * The name of the maxcompute project.
+     */
+    readonly projectName?: pulumi.Input<string>;
     /**
      * The type of resource Specification, only `OdpsStandard` supported currently.
      */

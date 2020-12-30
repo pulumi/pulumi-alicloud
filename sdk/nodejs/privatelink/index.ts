@@ -2,7 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./getVpcEndpointConnections";
+export * from "./getVpcEndpointServiceResources";
+export * from "./getVpcEndpointServiceUsers";
 export * from "./getVpcEndpointServices";
 export * from "./getVpcEndpoints";
 export * from "./vpcEndpoint";
 export * from "./vpcEndpointService";
+export * from "./vpcEndpointServiceConnection";
+export * from "./vpcEndpointServiceResource";
+export * from "./vpcEndpointServiceUser";

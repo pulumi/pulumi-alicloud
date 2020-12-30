@@ -1848,17 +1848,6 @@ export namespace polardb {
 }
 
 export namespace privatelink {
-    export interface VpcEndpointServiceResource {
-        /**
-         * The id of service resources added to the endpoint service.
-         */
-        resourceId?: pulumi.Input<string>;
-        /**
-         * The type of service resource added to the endpoint service.
-         */
-        resourceType?: pulumi.Input<string>;
-    }
-
     export interface VpcEndpointZone {
         /**
          * To create the vswitch of the terminal node network card in the available zone.

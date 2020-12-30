@@ -68,6 +68,12 @@ namespace Pulumi.AliCloud.FNF
         }
 
         /// <summary>
+        /// The number of resource queries.
+        /// </summary>
+        [Input("limit")]
+        public int? Limit { get; set; }
+
+        /// <summary>
         /// A regex string to filter results by Flow name.
         /// </summary>
         [Input("nameRegex")]
@@ -91,6 +97,7 @@ namespace Pulumi.AliCloud.FNF
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        public readonly int? Limit;
         public readonly string? NameRegex;
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
@@ -103,6 +110,8 @@ namespace Pulumi.AliCloud.FNF
 
             ImmutableArray<string> ids,
 
+            int? limit,
+
             string? nameRegex,
 
             ImmutableArray<string> names,
@@ -112,6 +121,7 @@ namespace Pulumi.AliCloud.FNF
             Flows = flows;
             Id = id;
             Ids = ids;
+            Limit = limit;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;

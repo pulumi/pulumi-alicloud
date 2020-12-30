@@ -53,8 +53,6 @@ func GetVpcEndpointServices(ctx *pulumi.Context, args *GetVpcEndpointServicesArg
 type GetVpcEndpointServicesArgs struct {
 	// Whether to automatically accept terminal node connections..
 	AutoAcceptConnection *bool `pulumi:"autoAcceptConnection"`
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
-	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Vpc Endpoint Service IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Vpc Endpoint Service name.
@@ -71,7 +69,6 @@ type GetVpcEndpointServicesArgs struct {
 // A collection of values returned by getVpcEndpointServices.
 type GetVpcEndpointServicesResult struct {
 	AutoAcceptConnection *bool `pulumi:"autoAcceptConnection"`
-	EnableDetails        *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                     string                          `pulumi:"id"`
 	Ids                    []string                        `pulumi:"ids"`

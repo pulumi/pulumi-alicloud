@@ -26,10 +26,6 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Service resources added to the endpoint service.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetVpcEndpointServicesServiceResourceResult> Resources;
-        /// <summary>
         /// The business status of the terminal node service..
         /// </summary>
         public readonly string ServiceBusinessStatus;
@@ -62,8 +58,6 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
 
             string id,
 
-            ImmutableArray<Outputs.GetVpcEndpointServicesServiceResourceResult> resources,
-
             string serviceBusinessStatus,
 
             string serviceDescription,
@@ -79,7 +73,6 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
             AutoAcceptConnection = autoAcceptConnection;
             ConnectBandwidth = connectBandwidth;
             Id = id;
-            Resources = resources;
             ServiceBusinessStatus = serviceBusinessStatus;
             ServiceDescription = serviceDescription;
             ServiceDomain = serviceDomain;

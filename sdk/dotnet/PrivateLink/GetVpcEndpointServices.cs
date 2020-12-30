@@ -61,12 +61,6 @@ namespace Pulumi.AliCloud.PrivateLink
         [Input("autoAcceptConnection")]
         public bool? AutoAcceptConnection { get; set; }
 
-        /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
-        /// </summary>
-        [Input("enableDetails")]
-        public bool? EnableDetails { get; set; }
-
         [Input("ids")]
         private List<string>? _ids;
 
@@ -116,7 +110,6 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class GetVpcEndpointServicesResult
     {
         public readonly bool? AutoAcceptConnection;
-        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -133,8 +126,6 @@ namespace Pulumi.AliCloud.PrivateLink
         [OutputConstructor]
         private GetVpcEndpointServicesResult(
             bool? autoAcceptConnection,
-
-            bool? enableDetails,
 
             string id,
 
@@ -155,7 +146,6 @@ namespace Pulumi.AliCloud.PrivateLink
             string? vpcEndpointServiceName)
         {
             AutoAcceptConnection = autoAcceptConnection;
-            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             NameRegex = nameRegex;

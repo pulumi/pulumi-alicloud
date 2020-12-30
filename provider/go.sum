@@ -154,8 +154,8 @@ github.com/aliyun/credentials-go v1.1.2 h1:qU1vwGIBb3UJ8BwunHDRFtAhS6jnQLnde/yk0
 github.com/aliyun/credentials-go v1.1.2/go.mod h1:ozcZaMR5kLM7pwtCMEpVmQ242suV6qTJya2bDq4X1Tw=
 github.com/aliyun/fc-go-sdk v0.0.0-20200925033337-c013428cbe21 h1:0kcRapGFTtwZIgbGSaM+N1y+GrnLaY4Vz78FqPnt164=
 github.com/aliyun/fc-go-sdk v0.0.0-20200925033337-c013428cbe21/go.mod h1:X4Pc3TFz4LRXaQPhyzBU4Ec8pL/QvaJ36CFtLJsroIM=
-github.com/aliyun/terraform-provider-alicloud v1.109.1 h1:6rib1FEynrbHahMQQPDOKOyJxP4A8e/0B+mAH8Pw4Bs=
-github.com/aliyun/terraform-provider-alicloud v1.109.1/go.mod h1:x5lwO4WPnuaH/4VliMcxTaRUBqz0E0Dbi/eeNdd3+7U=
+github.com/aliyun/terraform-provider-alicloud v1.110.0 h1:rBX6P2LRlK7EObLhusMTeih8A8o5BE3TQMBEoD0FhoI=
+github.com/aliyun/terraform-provider-alicloud v1.110.0/go.mod h1:x5lwO4WPnuaH/4VliMcxTaRUBqz0E0Dbi/eeNdd3+7U=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239 h1:kFOfPq6dUM1hTo4JG6LR5AXSUEsOjtdm0kw0FtQtMJA=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239/go.mod h1:2FmKhYUyUczH0OGQWaF5ceTx0UBShxjsH6f8oGKYe2c=
 github.com/apache/thrift v0.12.0/go.mod h1:cp2SuWMxlEZw2r+iP2GNCdIi4C1qmUzdZFSVb+bacwQ=
@@ -256,8 +256,6 @@ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/denisenkom/go-mssqldb v0.0.0-20190412130859-3b1d194e553a/go.mod h1:zAg7JM8CkOJ43xKXIj7eRO9kmWm/TW578qo+oDO6tuM=
-github.com/denverdino/aliyungo v0.0.0-20201127010231-19d40697f3a3 h1:RoXB7YHvYe9HkwCsICGVQlC0jKDTLRCGCmUeTkPXTjc=
-github.com/denverdino/aliyungo v0.0.0-20201127010231-19d40697f3a3/go.mod h1:dV8lFg6daOBZbT6/BDGIz6Y3WFGn8juu6G+CQ6LHtl0=
 github.com/denverdino/aliyungo v0.0.0-20201215054313-f635de23c5e0 h1:e1w8ltprC3V935s7qcCVbBukcWixdSPONEjHYRvhX5c=
 github.com/denverdino/aliyungo v0.0.0-20201215054313-f635de23c5e0/go.mod h1:dV8lFg6daOBZbT6/BDGIz6Y3WFGn8juu6G+CQ6LHtl0=
 github.com/devigned/tab v0.1.1/go.mod h1:XG9mPq0dFghrYvoBF3xdRrJzSTX1b7IQrvaL9mzjeJY=

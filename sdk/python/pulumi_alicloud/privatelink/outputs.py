@@ -10,47 +10,14 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
-    'VpcEndpointServiceResource',
     'VpcEndpointZone',
+    'GetVpcEndpointConnectionsConnectionResult',
+    'GetVpcEndpointServiceResourcesResourceResult',
+    'GetVpcEndpointServiceUsersUserResult',
     'GetVpcEndpointServicesServiceResult',
-    'GetVpcEndpointServicesServiceResourceResult',
     'GetVpcEndpointsEndpointResult',
     'GetVpcEndpointsEndpointZoneResult',
 ]
-
-@pulumi.output_type
-class VpcEndpointServiceResource(dict):
-    def __init__(__self__, *,
-                 resource_id: Optional[str] = None,
-                 resource_type: Optional[str] = None):
-        """
-        :param str resource_id: The id of service resources added to the endpoint service.
-        :param str resource_type: The type of service resource added to the endpoint service.
-        """
-        if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
-        if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
-
-    @property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[str]:
-        """
-        The id of service resources added to the endpoint service.
-        """
-        return pulumi.get(self, "resource_id")
-
-    @property
-    @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[str]:
-        """
-        The type of service resource added to the endpoint service.
-        """
-        return pulumi.get(self, "resource_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VpcEndpointZone(dict):
@@ -87,12 +54,131 @@ class VpcEndpointZone(dict):
 
 
 @pulumi.output_type
+class GetVpcEndpointConnectionsConnectionResult(dict):
+    def __init__(__self__, *,
+                 bandwidth: int,
+                 endpoint_id: str,
+                 id: str,
+                 status: str):
+        """
+        :param int bandwidth: The Bandwidth.
+        :param str endpoint_id: The ID of the Vpc Endpoint.
+        :param str id: The ID of the Vpc Endpoint Connection.
+        :param str status: The status of Vpc Endpoint Connection.
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The Bandwidth.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> str:
+        """
+        The ID of the Vpc Endpoint.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Vpc Endpoint Connection.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of Vpc Endpoint Connection.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetVpcEndpointServiceResourcesResourceResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 resource_id: str,
+                 resource_type: str):
+        """
+        :param str id: The ID of the Vpc Endpoint Service Resource.
+        :param str resource_id: The ID of Resource.
+        :param str resource_type: The type of Resource.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Vpc Endpoint Service Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The ID of Resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The type of Resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class GetVpcEndpointServiceUsersUserResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 user_id: str):
+        """
+        :param str id: The ID of the Vpc Endpoint Service User.
+        :param str user_id: The Id of Ram User.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Vpc Endpoint Service User.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        The Id of Ram User.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
 class GetVpcEndpointServicesServiceResult(dict):
     def __init__(__self__, *,
                  auto_accept_connection: bool,
                  connect_bandwidth: int,
                  id: str,
-                 resources: Sequence['outputs.GetVpcEndpointServicesServiceResourceResult'],
                  service_business_status: str,
                  service_description: str,
                  service_domain: str,
@@ -103,7 +189,6 @@ class GetVpcEndpointServicesServiceResult(dict):
         :param bool auto_accept_connection: Whether to automatically accept terminal node connections..
         :param int connect_bandwidth: The connection bandwidth.
         :param str id: The ID of the Vpc Endpoint Service.
-        :param Sequence['GetVpcEndpointServicesServiceResourceArgs'] resources: Service resources added to the endpoint service.
         :param str service_business_status: The business status of the terminal node service..
         :param str service_description: The description of the terminal node service.
         :param str service_domain: The domain of service.
@@ -114,7 +199,6 @@ class GetVpcEndpointServicesServiceResult(dict):
         pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
         pulumi.set(__self__, "connect_bandwidth", connect_bandwidth)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resources", resources)
         pulumi.set(__self__, "service_business_status", service_business_status)
         pulumi.set(__self__, "service_description", service_description)
         pulumi.set(__self__, "service_domain", service_domain)
@@ -145,14 +229,6 @@ class GetVpcEndpointServicesServiceResult(dict):
         The ID of the Vpc Endpoint Service.
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def resources(self) -> Sequence['outputs.GetVpcEndpointServicesServiceResourceResult']:
-        """
-        Service resources added to the endpoint service.
-        """
-        return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter(name="serviceBusinessStatus")
@@ -204,35 +280,6 @@ class GetVpcEndpointServicesServiceResult(dict):
 
 
 @pulumi.output_type
-class GetVpcEndpointServicesServiceResourceResult(dict):
-    def __init__(__self__, *,
-                 resource_id: str,
-                 resource_type: str):
-        """
-        :param str resource_id: The id of service resources added to the endpoint service.
-        :param str resource_type: The type of service resource added to the endpoint service.
-        """
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-
-    @property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> str:
-        """
-        The id of service resources added to the endpoint service.
-        """
-        return pulumi.get(self, "resource_id")
-
-    @property
-    @pulumi.getter(name="resourceType")
-    def resource_type(self) -> str:
-        """
-        The type of service resource added to the endpoint service.
-        """
-        return pulumi.get(self, "resource_type")
-
-
-@pulumi.output_type
 class GetVpcEndpointsEndpointResult(dict):
     def __init__(__self__, *,
                  bandwidth: int,
@@ -258,7 +305,7 @@ class GetVpcEndpointsEndpointResult(dict):
         :param str endpoint_id: The ID of the Vpc Endpoint.
         :param str id: The ID of the Vpc Endpoint.
         :param Sequence[str] security_group_ids: The security group associated with the terminal node network card.
-        :param str service_id: The terminal node service associated with the terminal node..
+        :param str service_id: The terminal node service associated with the terminal node.
         :param str service_name: The name of the terminal node service associated with the terminal node.
         :param str status: The status of Vpc Endpoint.
         :param str vpc_endpoint_name: The name of Vpc Endpoint.
@@ -348,7 +395,7 @@ class GetVpcEndpointsEndpointResult(dict):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> str:
         """
-        The terminal node service associated with the terminal node..
+        The terminal node service associated with the terminal node.
         """
         return pulumi.get(self, "service_id")
 

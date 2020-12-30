@@ -108,7 +108,7 @@ export class Flow extends pulumi.CustomResource {
      */
     public readonly roleArn!: pulumi.Output<string | undefined>;
     /**
-     * The type of the flow. Set the value to `FDL`.
+     * The type of the flow. Valid values are `FDL` or `DEFAULT`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -190,7 +190,7 @@ export interface FlowState {
      */
     readonly roleArn?: pulumi.Input<string>;
     /**
-     * The type of the flow. Set the value to `FDL`.
+     * The type of the flow. Valid values are `FDL` or `DEFAULT`.
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -216,7 +216,7 @@ export interface FlowArgs {
      */
     readonly roleArn?: pulumi.Input<string>;
     /**
-     * The type of the flow. Set the value to `FDL`.
+     * The type of the flow. Valid values are `FDL` or `DEFAULT`.
      */
     readonly type: pulumi.Input<string>;
 }

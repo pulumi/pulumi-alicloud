@@ -8799,6 +8799,51 @@ export namespace polardb {
 }
 
 export namespace privatelink {
+    export interface GetVpcEndpointConnectionsConnection {
+        /**
+         * The Bandwidth.
+         */
+        bandwidth: number;
+        /**
+         * The ID of the Vpc Endpoint.
+         */
+        endpointId: string;
+        /**
+         * The ID of the Vpc Endpoint Connection.
+         */
+        id: string;
+        /**
+         * The status of Vpc Endpoint Connection.
+         */
+        status: string;
+    }
+
+    export interface GetVpcEndpointServiceResourcesResource {
+        /**
+         * The ID of the Vpc Endpoint Service Resource.
+         */
+        id: string;
+        /**
+         * The ID of Resource.
+         */
+        resourceId: string;
+        /**
+         * The type of Resource.
+         */
+        resourceType: string;
+    }
+
+    export interface GetVpcEndpointServiceUsersUser {
+        /**
+         * The ID of the Vpc Endpoint Service User.
+         */
+        id: string;
+        /**
+         * The Id of Ram User.
+         */
+        userId: string;
+    }
+
     export interface GetVpcEndpointServicesService {
         /**
          * Whether to automatically accept terminal node connections..
@@ -8812,10 +8857,6 @@ export namespace privatelink {
          * The ID of the Vpc Endpoint Service.
          */
         id: string;
-        /**
-         * Service resources added to the endpoint service.
-         */
-        resources: outputs.privatelink.GetVpcEndpointServicesServiceResource[];
         /**
          * The business status of the terminal node service..
          */
@@ -8840,17 +8881,6 @@ export namespace privatelink {
          * The name of Vpc Endpoint Service.
          */
         vpcEndpointServiceName: string;
-    }
-
-    export interface GetVpcEndpointServicesServiceResource {
-        /**
-         * The id of service resources added to the endpoint service.
-         */
-        resourceId: string;
-        /**
-         * The type of service resource added to the endpoint service.
-         */
-        resourceType: string;
     }
 
     export interface GetVpcEndpointsEndpoint {
@@ -8887,7 +8917,7 @@ export namespace privatelink {
          */
         securityGroupIds: string[];
         /**
-         * The terminal node service associated with the terminal node..
+         * The terminal node service associated with the terminal node.
          */
         serviceId: string;
         /**
@@ -8921,17 +8951,6 @@ export namespace privatelink {
          * Availability zone corresponding to terminal node service.
          */
         zoneId: string;
-    }
-
-    export interface VpcEndpointServiceResource {
-        /**
-         * The id of service resources added to the endpoint service.
-         */
-        resourceId?: string;
-        /**
-         * The type of service resource added to the endpoint service.
-         */
-        resourceType?: string;
     }
 
     export interface VpcEndpointZone {

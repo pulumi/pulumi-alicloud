@@ -37,6 +37,7 @@ export function getSchedules(args: GetSchedulesArgs, opts?: pulumi.InvokeOptions
     return pulumi.runtime.invoke("alicloud:fnf/getSchedules:getSchedules", {
         "flowName": args.flowName,
         "ids": args.ids,
+        "limit": args.limit,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
@@ -55,6 +56,10 @@ export interface GetSchedulesArgs {
      */
     readonly ids?: string[];
     /**
+     * The number of resource queries.
+     */
+    readonly limit?: number;
+    /**
      * A regex string to filter results by Schedule name.
      */
     readonly nameRegex?: string;
@@ -71,6 +76,7 @@ export interface GetSchedulesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    readonly limit?: number;
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;

@@ -33,13 +33,7 @@ import (
 // 		_, err := privatelink.NewVpcEndpointService(ctx, "example", &privatelink.VpcEndpointServiceArgs{
 // 			AutoAcceptConnection: pulumi.Bool(false),
 // 			ConnectBandwidth:     pulumi.Int(103),
-// 			Resources: privatelink.VpcEndpointServiceResourceArray{
-// 				&privatelink.VpcEndpointServiceResourceArgs{
-// 					ResourceId:   pulumi.String("lb-gw8nxxxxxxx"),
-// 					ResourceType: pulumi.String("slb"),
-// 				},
-// 			},
-// 			ServiceDescription: pulumi.String("tftest"),
+// 			ServiceDescription:   pulumi.String("tftest"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -67,8 +61,6 @@ type VpcEndpointService struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
 	Payer pulumi.StringPtrOutput `pulumi:"payer"`
-	// Service resources added to the endpoint service.
-	Resources VpcEndpointServiceResourceArrayOutput `pulumi:"resources"`
 	// The business status of Vpc Endpoint Service.
 	ServiceBusinessStatus pulumi.StringOutput `pulumi:"serviceBusinessStatus"`
 	// The description of the terminal node service.
@@ -115,8 +107,6 @@ type vpcEndpointServiceState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
 	Payer *string `pulumi:"payer"`
-	// Service resources added to the endpoint service.
-	Resources []VpcEndpointServiceResource `pulumi:"resources"`
 	// The business status of Vpc Endpoint Service.
 	ServiceBusinessStatus *string `pulumi:"serviceBusinessStatus"`
 	// The description of the terminal node service.
@@ -136,8 +126,6 @@ type VpcEndpointServiceState struct {
 	DryRun pulumi.BoolPtrInput
 	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
 	Payer pulumi.StringPtrInput
-	// Service resources added to the endpoint service.
-	Resources VpcEndpointServiceResourceArrayInput
 	// The business status of Vpc Endpoint Service.
 	ServiceBusinessStatus pulumi.StringPtrInput
 	// The description of the terminal node service.
@@ -161,8 +149,6 @@ type vpcEndpointServiceArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
 	Payer *string `pulumi:"payer"`
-	// Service resources added to the endpoint service.
-	Resources []VpcEndpointServiceResource `pulumi:"resources"`
 	// The description of the terminal node service.
 	ServiceDescription *string `pulumi:"serviceDescription"`
 }
@@ -177,8 +163,6 @@ type VpcEndpointServiceArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
 	Payer pulumi.StringPtrInput
-	// Service resources added to the endpoint service.
-	Resources VpcEndpointServiceResourceArrayInput
 	// The description of the terminal node service.
 	ServiceDescription pulumi.StringPtrInput
 }

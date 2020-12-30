@@ -7,8 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
-from . import outputs
-from ._inputs import *
 
 __all__ = ['VpcEndpointService']
 
@@ -21,7 +19,6 @@ class VpcEndpointService(pulumi.CustomResource):
                  connect_bandwidth: Optional[pulumi.Input[int]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  payer: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpcEndpointServiceResourceArgs']]]]] = None,
                  service_description: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -44,10 +41,6 @@ class VpcEndpointService(pulumi.CustomResource):
         example = alicloud.privatelink.VpcEndpointService("example",
             auto_accept_connection=False,
             connect_bandwidth=103,
-            resources=[alicloud.privatelink.VpcEndpointServiceResourceArgs(
-                resource_id="lb-gw8nxxxxxxx",
-                resource_type="slb",
-            )],
             service_description="tftest")
         ```
 
@@ -65,7 +58,6 @@ class VpcEndpointService(pulumi.CustomResource):
         :param pulumi.Input[int] connect_bandwidth: The connection bandwidth.
         :param pulumi.Input[bool] dry_run: Whether to pre-check this request only. Default to: `false`
         :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpcEndpointServiceResourceArgs']]]] resources: Service resources added to the endpoint service.
         :param pulumi.Input[str] service_description: The description of the terminal node service.
         """
         if __name__ is not None:
@@ -89,7 +81,6 @@ class VpcEndpointService(pulumi.CustomResource):
             __props__['connect_bandwidth'] = connect_bandwidth
             __props__['dry_run'] = dry_run
             __props__['payer'] = payer
-            __props__['resources'] = resources
             __props__['service_description'] = service_description
             __props__['service_business_status'] = None
             __props__['service_domain'] = None
@@ -108,7 +99,6 @@ class VpcEndpointService(pulumi.CustomResource):
             connect_bandwidth: Optional[pulumi.Input[int]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             payer: Optional[pulumi.Input[str]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpcEndpointServiceResourceArgs']]]]] = None,
             service_business_status: Optional[pulumi.Input[str]] = None,
             service_description: Optional[pulumi.Input[str]] = None,
             service_domain: Optional[pulumi.Input[str]] = None,
@@ -124,7 +114,6 @@ class VpcEndpointService(pulumi.CustomResource):
         :param pulumi.Input[int] connect_bandwidth: The connection bandwidth.
         :param pulumi.Input[bool] dry_run: Whether to pre-check this request only. Default to: `false`
         :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpcEndpointServiceResourceArgs']]]] resources: Service resources added to the endpoint service.
         :param pulumi.Input[str] service_business_status: The business status of Vpc Endpoint Service.
         :param pulumi.Input[str] service_description: The description of the terminal node service.
         :param pulumi.Input[str] service_domain: Service Domain.
@@ -138,7 +127,6 @@ class VpcEndpointService(pulumi.CustomResource):
         __props__["connect_bandwidth"] = connect_bandwidth
         __props__["dry_run"] = dry_run
         __props__["payer"] = payer
-        __props__["resources"] = resources
         __props__["service_business_status"] = service_business_status
         __props__["service_description"] = service_description
         __props__["service_domain"] = service_domain
@@ -176,14 +164,6 @@ class VpcEndpointService(pulumi.CustomResource):
         The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
         """
         return pulumi.get(self, "payer")
-
-    @property
-    @pulumi.getter
-    def resources(self) -> pulumi.Output[Optional[Sequence['outputs.VpcEndpointServiceResource']]]:
-        """
-        Service resources added to the endpoint service.
-        """
-        return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter(name="serviceBusinessStatus")

@@ -36,6 +36,7 @@ export function getFlows(args?: GetFlowsArgs, opts?: pulumi.InvokeOptions): Prom
     }
     return pulumi.runtime.invoke("alicloud:fnf/getFlows:getFlows", {
         "ids": args.ids,
+        "limit": args.limit,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
@@ -49,6 +50,10 @@ export interface GetFlowsArgs {
      * A list of Flow IDs.
      */
     readonly ids?: string[];
+    /**
+     * The number of resource queries.
+     */
+    readonly limit?: number;
     /**
      * A regex string to filter results by Flow name.
      */
@@ -66,6 +71,7 @@ export interface GetFlowsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    readonly limit?: number;
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;

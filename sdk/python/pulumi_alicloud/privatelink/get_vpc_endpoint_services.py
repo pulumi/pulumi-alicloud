@@ -20,13 +20,10 @@ class GetVpcEndpointServicesResult:
     """
     A collection of values returned by getVpcEndpointServices.
     """
-    def __init__(__self__, auto_accept_connection=None, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None, service_business_status=None, services=None, status=None, vpc_endpoint_service_name=None):
+    def __init__(__self__, auto_accept_connection=None, id=None, ids=None, name_regex=None, names=None, output_file=None, service_business_status=None, services=None, status=None, vpc_endpoint_service_name=None):
         if auto_accept_connection and not isinstance(auto_accept_connection, bool):
             raise TypeError("Expected argument 'auto_accept_connection' to be a bool")
         pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
-        if enable_details and not isinstance(enable_details, bool):
-            raise TypeError("Expected argument 'enable_details' to be a bool")
-        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -59,11 +56,6 @@ class GetVpcEndpointServicesResult:
     @pulumi.getter(name="autoAcceptConnection")
     def auto_accept_connection(self) -> Optional[bool]:
         return pulumi.get(self, "auto_accept_connection")
-
-    @property
-    @pulumi.getter(name="enableDetails")
-    def enable_details(self) -> Optional[bool]:
-        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -121,7 +113,6 @@ class AwaitableGetVpcEndpointServicesResult(GetVpcEndpointServicesResult):
             yield self
         return GetVpcEndpointServicesResult(
             auto_accept_connection=self.auto_accept_connection,
-            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
@@ -134,7 +125,6 @@ class AwaitableGetVpcEndpointServicesResult(GetVpcEndpointServicesResult):
 
 
 def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
-                              enable_details: Optional[bool] = None,
                               ids: Optional[Sequence[str]] = None,
                               name_regex: Optional[str] = None,
                               output_file: Optional[str] = None,
@@ -162,7 +152,6 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
 
 
     :param bool auto_accept_connection: Whether to automatically accept terminal node connections..
-    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Vpc Endpoint Service IDs.
     :param str name_regex: A regex string to filter results by Vpc Endpoint Service name.
     :param str service_business_status: The business status of the terminal node service..
@@ -171,7 +160,6 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
     """
     __args__ = dict()
     __args__['autoAcceptConnection'] = auto_accept_connection
-    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -186,7 +174,6 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
 
     return AwaitableGetVpcEndpointServicesResult(
         auto_accept_connection=__ret__.auto_accept_connection,
-        enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
         name_regex=__ret__.name_regex,
