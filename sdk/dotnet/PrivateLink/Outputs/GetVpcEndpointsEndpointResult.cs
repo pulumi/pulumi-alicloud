@@ -65,10 +65,6 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// The private network to which the terminal node belongs.
         /// </summary>
         public readonly string VpcId;
-        /// <summary>
-        /// Availability zone.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetVpcEndpointsEndpointZoneResult> Zones;
 
         [OutputConstructor]
         private GetVpcEndpointsEndpointResult(
@@ -96,9 +92,7 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
 
             string vpcEndpointName,
 
-            string vpcId,
-
-            ImmutableArray<Outputs.GetVpcEndpointsEndpointZoneResult> zones)
+            string vpcId)
         {
             Bandwidth = bandwidth;
             ConnectionStatus = connectionStatus;
@@ -113,7 +107,6 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
             Status = status;
             VpcEndpointName = vpcEndpointName;
             VpcId = vpcId;
-            Zones = zones;
         }
     }
 }

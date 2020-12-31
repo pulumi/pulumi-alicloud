@@ -10,112 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-type VpcEndpointZone struct {
-	// To create the vswitch of the terminal node network card in the available zone.
-	VswitchId *string `pulumi:"vswitchId"`
-	// Availability zone corresponding to terminal node service.
-	ZoneId *string `pulumi:"zoneId"`
-}
-
-// VpcEndpointZoneInput is an input type that accepts VpcEndpointZoneArgs and VpcEndpointZoneOutput values.
-// You can construct a concrete instance of `VpcEndpointZoneInput` via:
-//
-//          VpcEndpointZoneArgs{...}
-type VpcEndpointZoneInput interface {
-	pulumi.Input
-
-	ToVpcEndpointZoneOutput() VpcEndpointZoneOutput
-	ToVpcEndpointZoneOutputWithContext(context.Context) VpcEndpointZoneOutput
-}
-
-type VpcEndpointZoneArgs struct {
-	// To create the vswitch of the terminal node network card in the available zone.
-	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
-	// Availability zone corresponding to terminal node service.
-	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
-}
-
-func (VpcEndpointZoneArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointZone)(nil)).Elem()
-}
-
-func (i VpcEndpointZoneArgs) ToVpcEndpointZoneOutput() VpcEndpointZoneOutput {
-	return i.ToVpcEndpointZoneOutputWithContext(context.Background())
-}
-
-func (i VpcEndpointZoneArgs) ToVpcEndpointZoneOutputWithContext(ctx context.Context) VpcEndpointZoneOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointZoneOutput)
-}
-
-// VpcEndpointZoneArrayInput is an input type that accepts VpcEndpointZoneArray and VpcEndpointZoneArrayOutput values.
-// You can construct a concrete instance of `VpcEndpointZoneArrayInput` via:
-//
-//          VpcEndpointZoneArray{ VpcEndpointZoneArgs{...} }
-type VpcEndpointZoneArrayInput interface {
-	pulumi.Input
-
-	ToVpcEndpointZoneArrayOutput() VpcEndpointZoneArrayOutput
-	ToVpcEndpointZoneArrayOutputWithContext(context.Context) VpcEndpointZoneArrayOutput
-}
-
-type VpcEndpointZoneArray []VpcEndpointZoneInput
-
-func (VpcEndpointZoneArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VpcEndpointZone)(nil)).Elem()
-}
-
-func (i VpcEndpointZoneArray) ToVpcEndpointZoneArrayOutput() VpcEndpointZoneArrayOutput {
-	return i.ToVpcEndpointZoneArrayOutputWithContext(context.Background())
-}
-
-func (i VpcEndpointZoneArray) ToVpcEndpointZoneArrayOutputWithContext(ctx context.Context) VpcEndpointZoneArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointZoneArrayOutput)
-}
-
-type VpcEndpointZoneOutput struct{ *pulumi.OutputState }
-
-func (VpcEndpointZoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointZone)(nil)).Elem()
-}
-
-func (o VpcEndpointZoneOutput) ToVpcEndpointZoneOutput() VpcEndpointZoneOutput {
-	return o
-}
-
-func (o VpcEndpointZoneOutput) ToVpcEndpointZoneOutputWithContext(ctx context.Context) VpcEndpointZoneOutput {
-	return o
-}
-
-// To create the vswitch of the terminal node network card in the available zone.
-func (o VpcEndpointZoneOutput) VswitchId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VpcEndpointZone) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
-}
-
-// Availability zone corresponding to terminal node service.
-func (o VpcEndpointZoneOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VpcEndpointZone) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
-}
-
-type VpcEndpointZoneArrayOutput struct{ *pulumi.OutputState }
-
-func (VpcEndpointZoneArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VpcEndpointZone)(nil)).Elem()
-}
-
-func (o VpcEndpointZoneArrayOutput) ToVpcEndpointZoneArrayOutput() VpcEndpointZoneArrayOutput {
-	return o
-}
-
-func (o VpcEndpointZoneArrayOutput) ToVpcEndpointZoneArrayOutputWithContext(ctx context.Context) VpcEndpointZoneArrayOutput {
-	return o
-}
-
-func (o VpcEndpointZoneArrayOutput) Index(i pulumi.IntInput) VpcEndpointZoneOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcEndpointZone {
-		return vs[0].([]VpcEndpointZone)[vs[1].(int)]
-	}).(VpcEndpointZoneOutput)
-}
-
 type GetVpcEndpointConnectionsConnection struct {
 	// The Bandwidth.
 	Bandwidth int `pulumi:"bandwidth"`
@@ -630,6 +524,157 @@ func (o GetVpcEndpointServicesServiceArrayOutput) Index(i pulumi.IntInput) GetVp
 	}).(GetVpcEndpointServicesServiceOutput)
 }
 
+type GetVpcEndpointZonesZone struct {
+	// Terminal node network card.
+	EniId string `pulumi:"eniId"`
+	// IP address of the terminal node network card.
+	EniIp string `pulumi:"eniIp"`
+	// The ID of the Vpc Endpoint Zone.
+	Id string `pulumi:"id"`
+	// The Status of Vpc Endpoint Zone..
+	Status string `pulumi:"status"`
+	// The VSwitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// The Zone Domain.
+	ZoneDomain string `pulumi:"zoneDomain"`
+	// The Zone Id.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetVpcEndpointZonesZoneInput is an input type that accepts GetVpcEndpointZonesZoneArgs and GetVpcEndpointZonesZoneOutput values.
+// You can construct a concrete instance of `GetVpcEndpointZonesZoneInput` via:
+//
+//          GetVpcEndpointZonesZoneArgs{...}
+type GetVpcEndpointZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetVpcEndpointZonesZoneOutput() GetVpcEndpointZonesZoneOutput
+	ToGetVpcEndpointZonesZoneOutputWithContext(context.Context) GetVpcEndpointZonesZoneOutput
+}
+
+type GetVpcEndpointZonesZoneArgs struct {
+	// Terminal node network card.
+	EniId pulumi.StringInput `pulumi:"eniId"`
+	// IP address of the terminal node network card.
+	EniIp pulumi.StringInput `pulumi:"eniIp"`
+	// The ID of the Vpc Endpoint Zone.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Status of Vpc Endpoint Zone..
+	Status pulumi.StringInput `pulumi:"status"`
+	// The VSwitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The Zone Domain.
+	ZoneDomain pulumi.StringInput `pulumi:"zoneDomain"`
+	// The Zone Id.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetVpcEndpointZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointZonesZone)(nil)).Elem()
+}
+
+func (i GetVpcEndpointZonesZoneArgs) ToGetVpcEndpointZonesZoneOutput() GetVpcEndpointZonesZoneOutput {
+	return i.ToGetVpcEndpointZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetVpcEndpointZonesZoneArgs) ToGetVpcEndpointZonesZoneOutputWithContext(ctx context.Context) GetVpcEndpointZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointZonesZoneOutput)
+}
+
+// GetVpcEndpointZonesZoneArrayInput is an input type that accepts GetVpcEndpointZonesZoneArray and GetVpcEndpointZonesZoneArrayOutput values.
+// You can construct a concrete instance of `GetVpcEndpointZonesZoneArrayInput` via:
+//
+//          GetVpcEndpointZonesZoneArray{ GetVpcEndpointZonesZoneArgs{...} }
+type GetVpcEndpointZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcEndpointZonesZoneArrayOutput() GetVpcEndpointZonesZoneArrayOutput
+	ToGetVpcEndpointZonesZoneArrayOutputWithContext(context.Context) GetVpcEndpointZonesZoneArrayOutput
+}
+
+type GetVpcEndpointZonesZoneArray []GetVpcEndpointZonesZoneInput
+
+func (GetVpcEndpointZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcEndpointZonesZone)(nil)).Elem()
+}
+
+func (i GetVpcEndpointZonesZoneArray) ToGetVpcEndpointZonesZoneArrayOutput() GetVpcEndpointZonesZoneArrayOutput {
+	return i.ToGetVpcEndpointZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcEndpointZonesZoneArray) ToGetVpcEndpointZonesZoneArrayOutputWithContext(ctx context.Context) GetVpcEndpointZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointZonesZoneArrayOutput)
+}
+
+type GetVpcEndpointZonesZoneOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointZonesZone)(nil)).Elem()
+}
+
+func (o GetVpcEndpointZonesZoneOutput) ToGetVpcEndpointZonesZoneOutput() GetVpcEndpointZonesZoneOutput {
+	return o
+}
+
+func (o GetVpcEndpointZonesZoneOutput) ToGetVpcEndpointZonesZoneOutputWithContext(ctx context.Context) GetVpcEndpointZonesZoneOutput {
+	return o
+}
+
+// Terminal node network card.
+func (o GetVpcEndpointZonesZoneOutput) EniId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesZone) string { return v.EniId }).(pulumi.StringOutput)
+}
+
+// IP address of the terminal node network card.
+func (o GetVpcEndpointZonesZoneOutput) EniIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesZone) string { return v.EniIp }).(pulumi.StringOutput)
+}
+
+// The ID of the Vpc Endpoint Zone.
+func (o GetVpcEndpointZonesZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Status of Vpc Endpoint Zone..
+func (o GetVpcEndpointZonesZoneOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesZone) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The VSwitch id.
+func (o GetVpcEndpointZonesZoneOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesZone) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone Domain.
+func (o GetVpcEndpointZonesZoneOutput) ZoneDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesZone) string { return v.ZoneDomain }).(pulumi.StringOutput)
+}
+
+// The Zone Id.
+func (o GetVpcEndpointZonesZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesZone) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetVpcEndpointZonesZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcEndpointZonesZone)(nil)).Elem()
+}
+
+func (o GetVpcEndpointZonesZoneArrayOutput) ToGetVpcEndpointZonesZoneArrayOutput() GetVpcEndpointZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetVpcEndpointZonesZoneArrayOutput) ToGetVpcEndpointZonesZoneArrayOutputWithContext(ctx context.Context) GetVpcEndpointZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetVpcEndpointZonesZoneArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcEndpointZonesZone {
+		return vs[0].([]GetVpcEndpointZonesZone)[vs[1].(int)]
+	}).(GetVpcEndpointZonesZoneOutput)
+}
+
 type GetVpcEndpointsEndpoint struct {
 	// The Bandwidth.
 	Bandwidth int `pulumi:"bandwidth"`
@@ -657,8 +702,6 @@ type GetVpcEndpointsEndpoint struct {
 	VpcEndpointName string `pulumi:"vpcEndpointName"`
 	// The private network to which the terminal node belongs.
 	VpcId string `pulumi:"vpcId"`
-	// Availability zone.
-	Zones []GetVpcEndpointsEndpointZone `pulumi:"zones"`
 }
 
 // GetVpcEndpointsEndpointInput is an input type that accepts GetVpcEndpointsEndpointArgs and GetVpcEndpointsEndpointOutput values.
@@ -699,8 +742,6 @@ type GetVpcEndpointsEndpointArgs struct {
 	VpcEndpointName pulumi.StringInput `pulumi:"vpcEndpointName"`
 	// The private network to which the terminal node belongs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// Availability zone.
-	Zones GetVpcEndpointsEndpointZoneArrayInput `pulumi:"zones"`
 }
 
 func (GetVpcEndpointsEndpointArgs) ElementType() reflect.Type {
@@ -819,11 +860,6 @@ func (o GetVpcEndpointsEndpointOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointsEndpoint) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// Availability zone.
-func (o GetVpcEndpointsEndpointOutput) Zones() GetVpcEndpointsEndpointZoneArrayOutput {
-	return o.ApplyT(func(v GetVpcEndpointsEndpoint) []GetVpcEndpointsEndpointZone { return v.Zones }).(GetVpcEndpointsEndpointZoneArrayOutput)
-}
-
 type GetVpcEndpointsEndpointArrayOutput struct{ *pulumi.OutputState }
 
 func (GetVpcEndpointsEndpointArrayOutput) ElementType() reflect.Type {
@@ -844,115 +880,7 @@ func (o GetVpcEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetVpcEndpo
 	}).(GetVpcEndpointsEndpointOutput)
 }
 
-type GetVpcEndpointsEndpointZone struct {
-	// To create the vswitch of the terminal node network card in the available zone.
-	VswitchId string `pulumi:"vswitchId"`
-	// Availability zone corresponding to terminal node service.
-	ZoneId string `pulumi:"zoneId"`
-}
-
-// GetVpcEndpointsEndpointZoneInput is an input type that accepts GetVpcEndpointsEndpointZoneArgs and GetVpcEndpointsEndpointZoneOutput values.
-// You can construct a concrete instance of `GetVpcEndpointsEndpointZoneInput` via:
-//
-//          GetVpcEndpointsEndpointZoneArgs{...}
-type GetVpcEndpointsEndpointZoneInput interface {
-	pulumi.Input
-
-	ToGetVpcEndpointsEndpointZoneOutput() GetVpcEndpointsEndpointZoneOutput
-	ToGetVpcEndpointsEndpointZoneOutputWithContext(context.Context) GetVpcEndpointsEndpointZoneOutput
-}
-
-type GetVpcEndpointsEndpointZoneArgs struct {
-	// To create the vswitch of the terminal node network card in the available zone.
-	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// Availability zone corresponding to terminal node service.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
-}
-
-func (GetVpcEndpointsEndpointZoneArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVpcEndpointsEndpointZone)(nil)).Elem()
-}
-
-func (i GetVpcEndpointsEndpointZoneArgs) ToGetVpcEndpointsEndpointZoneOutput() GetVpcEndpointsEndpointZoneOutput {
-	return i.ToGetVpcEndpointsEndpointZoneOutputWithContext(context.Background())
-}
-
-func (i GetVpcEndpointsEndpointZoneArgs) ToGetVpcEndpointsEndpointZoneOutputWithContext(ctx context.Context) GetVpcEndpointsEndpointZoneOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointsEndpointZoneOutput)
-}
-
-// GetVpcEndpointsEndpointZoneArrayInput is an input type that accepts GetVpcEndpointsEndpointZoneArray and GetVpcEndpointsEndpointZoneArrayOutput values.
-// You can construct a concrete instance of `GetVpcEndpointsEndpointZoneArrayInput` via:
-//
-//          GetVpcEndpointsEndpointZoneArray{ GetVpcEndpointsEndpointZoneArgs{...} }
-type GetVpcEndpointsEndpointZoneArrayInput interface {
-	pulumi.Input
-
-	ToGetVpcEndpointsEndpointZoneArrayOutput() GetVpcEndpointsEndpointZoneArrayOutput
-	ToGetVpcEndpointsEndpointZoneArrayOutputWithContext(context.Context) GetVpcEndpointsEndpointZoneArrayOutput
-}
-
-type GetVpcEndpointsEndpointZoneArray []GetVpcEndpointsEndpointZoneInput
-
-func (GetVpcEndpointsEndpointZoneArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVpcEndpointsEndpointZone)(nil)).Elem()
-}
-
-func (i GetVpcEndpointsEndpointZoneArray) ToGetVpcEndpointsEndpointZoneArrayOutput() GetVpcEndpointsEndpointZoneArrayOutput {
-	return i.ToGetVpcEndpointsEndpointZoneArrayOutputWithContext(context.Background())
-}
-
-func (i GetVpcEndpointsEndpointZoneArray) ToGetVpcEndpointsEndpointZoneArrayOutputWithContext(ctx context.Context) GetVpcEndpointsEndpointZoneArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointsEndpointZoneArrayOutput)
-}
-
-type GetVpcEndpointsEndpointZoneOutput struct{ *pulumi.OutputState }
-
-func (GetVpcEndpointsEndpointZoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVpcEndpointsEndpointZone)(nil)).Elem()
-}
-
-func (o GetVpcEndpointsEndpointZoneOutput) ToGetVpcEndpointsEndpointZoneOutput() GetVpcEndpointsEndpointZoneOutput {
-	return o
-}
-
-func (o GetVpcEndpointsEndpointZoneOutput) ToGetVpcEndpointsEndpointZoneOutputWithContext(ctx context.Context) GetVpcEndpointsEndpointZoneOutput {
-	return o
-}
-
-// To create the vswitch of the terminal node network card in the available zone.
-func (o GetVpcEndpointsEndpointZoneOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpcEndpointsEndpointZone) string { return v.VswitchId }).(pulumi.StringOutput)
-}
-
-// Availability zone corresponding to terminal node service.
-func (o GetVpcEndpointsEndpointZoneOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpcEndpointsEndpointZone) string { return v.ZoneId }).(pulumi.StringOutput)
-}
-
-type GetVpcEndpointsEndpointZoneArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVpcEndpointsEndpointZoneArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVpcEndpointsEndpointZone)(nil)).Elem()
-}
-
-func (o GetVpcEndpointsEndpointZoneArrayOutput) ToGetVpcEndpointsEndpointZoneArrayOutput() GetVpcEndpointsEndpointZoneArrayOutput {
-	return o
-}
-
-func (o GetVpcEndpointsEndpointZoneArrayOutput) ToGetVpcEndpointsEndpointZoneArrayOutputWithContext(ctx context.Context) GetVpcEndpointsEndpointZoneArrayOutput {
-	return o
-}
-
-func (o GetVpcEndpointsEndpointZoneArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointsEndpointZoneOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcEndpointsEndpointZone {
-		return vs[0].([]GetVpcEndpointsEndpointZone)[vs[1].(int)]
-	}).(GetVpcEndpointsEndpointZoneOutput)
-}
-
 func init() {
-	pulumi.RegisterOutputType(VpcEndpointZoneOutput{})
-	pulumi.RegisterOutputType(VpcEndpointZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointConnectionsConnectionOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointConnectionsConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointServiceResourcesResourceOutput{})
@@ -961,8 +889,8 @@ func init() {
 	pulumi.RegisterOutputType(GetVpcEndpointServiceUsersUserArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointServicesServiceOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointServicesServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcEndpointZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetVpcEndpointZonesZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointsEndpointOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointsEndpointArrayOutput{})
-	pulumi.RegisterOutputType(GetVpcEndpointsEndpointZoneOutput{})
-	pulumi.RegisterOutputType(GetVpcEndpointsEndpointZoneArrayOutput{})
 }

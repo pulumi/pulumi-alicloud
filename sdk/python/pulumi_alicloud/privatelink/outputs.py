@@ -7,51 +7,15 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
-from . import outputs
 
 __all__ = [
-    'VpcEndpointZone',
     'GetVpcEndpointConnectionsConnectionResult',
     'GetVpcEndpointServiceResourcesResourceResult',
     'GetVpcEndpointServiceUsersUserResult',
     'GetVpcEndpointServicesServiceResult',
+    'GetVpcEndpointZonesZoneResult',
     'GetVpcEndpointsEndpointResult',
-    'GetVpcEndpointsEndpointZoneResult',
 ]
-
-@pulumi.output_type
-class VpcEndpointZone(dict):
-    def __init__(__self__, *,
-                 vswitch_id: Optional[str] = None,
-                 zone_id: Optional[str] = None):
-        """
-        :param str vswitch_id: To create the vswitch of the terminal node network card in the available zone.
-        :param str zone_id: Availability zone corresponding to terminal node service.
-        """
-        if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[str]:
-        """
-        To create the vswitch of the terminal node network card in the available zone.
-        """
-        return pulumi.get(self, "vswitch_id")
-
-    @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[str]:
-        """
-        Availability zone corresponding to terminal node service.
-        """
-        return pulumi.get(self, "zone_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GetVpcEndpointConnectionsConnectionResult(dict):
@@ -280,6 +244,90 @@ class GetVpcEndpointServicesServiceResult(dict):
 
 
 @pulumi.output_type
+class GetVpcEndpointZonesZoneResult(dict):
+    def __init__(__self__, *,
+                 eni_id: str,
+                 eni_ip: str,
+                 id: str,
+                 status: str,
+                 vswitch_id: str,
+                 zone_domain: str,
+                 zone_id: str):
+        """
+        :param str eni_id: Terminal node network card.
+        :param str eni_ip: IP address of the terminal node network card.
+        :param str id: The ID of the Vpc Endpoint Zone.
+        :param str status: The Status of Vpc Endpoint Zone..
+        :param str vswitch_id: The VSwitch id.
+        :param str zone_domain: The Zone Domain.
+        :param str zone_id: The Zone Id.
+        """
+        pulumi.set(__self__, "eni_id", eni_id)
+        pulumi.set(__self__, "eni_ip", eni_ip)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_domain", zone_domain)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="eniId")
+    def eni_id(self) -> str:
+        """
+        Terminal node network card.
+        """
+        return pulumi.get(self, "eni_id")
+
+    @property
+    @pulumi.getter(name="eniIp")
+    def eni_ip(self) -> str:
+        """
+        IP address of the terminal node network card.
+        """
+        return pulumi.get(self, "eni_ip")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Vpc Endpoint Zone.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The Status of Vpc Endpoint Zone..
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The VSwitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneDomain")
+    def zone_domain(self) -> str:
+        """
+        The Zone Domain.
+        """
+        return pulumi.get(self, "zone_domain")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The Zone Id.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
 class GetVpcEndpointsEndpointResult(dict):
     def __init__(__self__, *,
                  bandwidth: int,
@@ -294,8 +342,7 @@ class GetVpcEndpointsEndpointResult(dict):
                  service_name: str,
                  status: str,
                  vpc_endpoint_name: str,
-                 vpc_id: str,
-                 zones: Sequence['outputs.GetVpcEndpointsEndpointZoneResult']):
+                 vpc_id: str):
         """
         :param int bandwidth: The Bandwidth.
         :param str connection_status: The status of Connection.
@@ -310,7 +357,6 @@ class GetVpcEndpointsEndpointResult(dict):
         :param str status: The status of Vpc Endpoint.
         :param str vpc_endpoint_name: The name of Vpc Endpoint.
         :param str vpc_id: The private network to which the terminal node belongs.
-        :param Sequence['GetVpcEndpointsEndpointZoneArgs'] zones: Availability zone.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "connection_status", connection_status)
@@ -325,7 +371,6 @@ class GetVpcEndpointsEndpointResult(dict):
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
         pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter
@@ -430,42 +475,5 @@ class GetVpcEndpointsEndpointResult(dict):
         The private network to which the terminal node belongs.
         """
         return pulumi.get(self, "vpc_id")
-
-    @property
-    @pulumi.getter
-    def zones(self) -> Sequence['outputs.GetVpcEndpointsEndpointZoneResult']:
-        """
-        Availability zone.
-        """
-        return pulumi.get(self, "zones")
-
-
-@pulumi.output_type
-class GetVpcEndpointsEndpointZoneResult(dict):
-    def __init__(__self__, *,
-                 vswitch_id: str,
-                 zone_id: str):
-        """
-        :param str vswitch_id: To create the vswitch of the terminal node network card in the available zone.
-        :param str zone_id: Availability zone corresponding to terminal node service.
-        """
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> str:
-        """
-        To create the vswitch of the terminal node network card in the available zone.
-        """
-        return pulumi.get(self, "vswitch_id")
-
-    @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
-        """
-        Availability zone corresponding to terminal node service.
-        """
-        return pulumi.get(self, "zone_id")
 
 

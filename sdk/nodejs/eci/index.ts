@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./containerGroup";
+export * from "./getContainerGroups";
 export * from "./getImageCaches";
 export * from "./imageCache";
 export * from "./openApiImageCache";

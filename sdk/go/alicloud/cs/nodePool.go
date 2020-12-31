@@ -18,6 +18,8 @@ import (
 // > **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
 //
 // > **NOTE:** From version 1.109.1, support remove node pool nodes.
+//
+// > **NOTE:** From version 1.111.0, support auto scaling node pool.
 type NodePool struct {
 	pulumi.CustomResourceState
 
@@ -38,12 +40,14 @@ type NodePool struct {
 	Management NodePoolManagementPtrOutput `pulumi:"management"`
 	// The name of node pool.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The worker node number of the node pool.
+	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
 	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
 	NodeNameMode pulumi.StringOutput `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
+	ScalingConfig NodePoolScalingConfigOutput `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
 	// The system disk size of worker node.
@@ -74,9 +78,6 @@ func NewNodePool(ctx *pulumi.Context,
 	}
 	if args == nil || args.InstanceTypes == nil {
 		return nil, errors.New("missing required argument 'InstanceTypes'")
-	}
-	if args == nil || args.NodeCount == nil {
-		return nil, errors.New("missing required argument 'NodeCount'")
 	}
 	if args == nil || args.VswitchIds == nil {
 		return nil, errors.New("missing required argument 'VswitchIds'")
@@ -123,12 +124,14 @@ type nodePoolState struct {
 	Management *NodePoolManagement `pulumi:"management"`
 	// The name of node pool.
 	Name *string `pulumi:"name"`
-	// The worker node number of the node pool.
+	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
 	NodeCount *int `pulumi:"nodeCount"`
 	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
+	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
+	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// The system disk size of worker node.
@@ -169,12 +172,14 @@ type NodePoolState struct {
 	Management NodePoolManagementPtrInput
 	// The name of node pool.
 	Name pulumi.StringPtrInput
-	// The worker node number of the node pool.
+	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
 	NodeCount pulumi.IntPtrInput
 	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
 	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
+	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
+	ScalingConfig NodePoolScalingConfigPtrInput
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringPtrInput
 	// The system disk size of worker node.
@@ -219,12 +224,14 @@ type nodePoolArgs struct {
 	Management *NodePoolManagement `pulumi:"management"`
 	// The name of node pool.
 	Name *string `pulumi:"name"`
-	// The worker node number of the node pool.
-	NodeCount int `pulumi:"nodeCount"`
+	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
+	NodeCount *int `pulumi:"nodeCount"`
 	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
+	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
+	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
 	// The system disk size of worker node.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
@@ -262,12 +269,14 @@ type NodePoolArgs struct {
 	Management NodePoolManagementPtrInput
 	// The name of node pool.
 	Name pulumi.StringPtrInput
-	// The worker node number of the node pool.
-	NodeCount pulumi.IntInput
+	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
+	NodeCount pulumi.IntPtrInput
 	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
 	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
+	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
+	ScalingConfig NodePoolScalingConfigPtrInput
 	// The system disk size of worker node.
 	SecurityGroupId pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.

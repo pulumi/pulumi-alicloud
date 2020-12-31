@@ -17,35 +17,6 @@ import (
 //
 // > **NOTE:** Available in v1.109.0+.
 //
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/privatelink"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := privatelink.NewVpcEndpoint(ctx, "example", &privatelink.VpcEndpointArgs{
-// 			SecurityGroupIds: pulumi.StringArray{
-// 				pulumi.String("sg-ercx1234"),
-// 			},
-// 			ServiceId: pulumi.String("YourServiceId"),
-// 			VpcId:     pulumi.String("YourVpcId"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Private Link Vpc Endpoint can be imported using the id, e.g.
@@ -80,8 +51,6 @@ type VpcEndpoint struct {
 	VpcEndpointName pulumi.StringPtrOutput `pulumi:"vpcEndpointName"`
 	// The private network to which the terminal node belongs.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// Availability zone.
-	Zones VpcEndpointZoneArrayOutput `pulumi:"zones"`
 }
 
 // NewVpcEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -142,8 +111,6 @@ type vpcEndpointState struct {
 	VpcEndpointName *string `pulumi:"vpcEndpointName"`
 	// The private network to which the terminal node belongs.
 	VpcId *string `pulumi:"vpcId"`
-	// Availability zone.
-	Zones []VpcEndpointZone `pulumi:"zones"`
 }
 
 type VpcEndpointState struct {
@@ -171,8 +138,6 @@ type VpcEndpointState struct {
 	VpcEndpointName pulumi.StringPtrInput
 	// The private network to which the terminal node belongs.
 	VpcId pulumi.StringPtrInput
-	// Availability zone.
-	Zones VpcEndpointZoneArrayInput
 }
 
 func (VpcEndpointState) ElementType() reflect.Type {
@@ -194,8 +159,6 @@ type vpcEndpointArgs struct {
 	VpcEndpointName *string `pulumi:"vpcEndpointName"`
 	// The private network to which the terminal node belongs.
 	VpcId string `pulumi:"vpcId"`
-	// Availability zone.
-	Zones []VpcEndpointZone `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a VpcEndpoint resource.
@@ -214,8 +177,6 @@ type VpcEndpointArgs struct {
 	VpcEndpointName pulumi.StringPtrInput
 	// The private network to which the terminal node belongs.
 	VpcId pulumi.StringInput
-	// Availability zone.
-	Zones VpcEndpointZoneArrayInput
 }
 
 func (VpcEndpointArgs) ElementType() reflect.Type {

@@ -42,7 +42,7 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetServiceArgs {
     /**
-     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off".
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
      */
     readonly enable?: string;
 }

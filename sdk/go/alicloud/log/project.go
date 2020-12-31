@@ -24,6 +24,8 @@ type Project struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the log project. It is the only in one Alicloud account.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Log project tags.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -58,6 +60,8 @@ type projectState struct {
 	Description *string `pulumi:"description"`
 	// The name of the log project. It is the only in one Alicloud account.
 	Name *string `pulumi:"name"`
+	// Log project tags.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type ProjectState struct {
@@ -65,6 +69,8 @@ type ProjectState struct {
 	Description pulumi.StringPtrInput
 	// The name of the log project. It is the only in one Alicloud account.
 	Name pulumi.StringPtrInput
+	// Log project tags.
+	Tags pulumi.MapInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -76,6 +82,8 @@ type projectArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the log project. It is the only in one Alicloud account.
 	Name *string `pulumi:"name"`
+	// Log project tags.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -84,6 +92,8 @@ type ProjectArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the log project. It is the only in one Alicloud account.
 	Name pulumi.StringPtrInput
+	// Log project tags.
+	Tags pulumi.MapInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {

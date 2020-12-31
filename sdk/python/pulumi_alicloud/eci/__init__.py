@@ -3,6 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .container_group import *
+from .get_container_groups import *
 from .get_image_caches import *
 from .image_cache import *
 from .open_api_image_cache import *

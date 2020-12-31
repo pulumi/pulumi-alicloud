@@ -86,6 +86,7 @@ export interface ProviderEndpoint {
     ess?: string;
     fc?: string;
     fnf?: string;
+    ga?: string;
     gpdb?: string;
     kms?: string;
     kvstore?: string;
@@ -107,6 +108,7 @@ export interface ProviderEndpoint {
     ram?: string;
     rds?: string;
     resourcemanager?: string;
+    resourcesharing?: string;
     ros?: string;
     slb?: string;
     sts?: string;
@@ -2190,6 +2192,7 @@ export namespace config {
         ess?: string;
         fc?: string;
         fnf?: string;
+        ga?: string;
         gpdb?: string;
         kms?: string;
         kvstore?: string;
@@ -2211,6 +2214,7 @@ export namespace config {
         ram?: string;
         rds?: string;
         resourcemanager?: string;
+        resourcesharing?: string;
         ros?: string;
         slb?: string;
         sts?: string;
@@ -3260,6 +3264,33 @@ export namespace cs {
         surgePercentage?: number;
     }
 
+    export interface NodePoolScalingConfig {
+        /**
+         * Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+         */
+        eipBandwidth?: number;
+        /**
+         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+         */
+        eipInternetChargeType?: string;
+        /**
+         * Whether to bind EIP for an instance. Default: `false`.
+         */
+        isBondEip?: boolean;
+        /**
+         * Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+         */
+        maxSize: number;
+        /**
+         * Max number of instances in a auto scaling group, its valid value range [0~1000].
+         */
+        minSize: number;
+        /**
+         * Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+         */
+        type?: string;
+    }
+
     export interface NodePoolTaint {
         effect?: string;
         key: string;
@@ -4096,6 +4127,752 @@ export namespace drds {
 }
 
 export namespace eci {
+    export interface ContainerGroupContainer {
+        /**
+         * The arguments passed to the commands.
+         */
+        args?: string[];
+        /**
+         * The commands run by the init container.
+         */
+        commands?: string[];
+        /**
+         * The amount of CPU resources allocated to the container.
+         */
+        cpu?: number;
+        /**
+         * The structure of environmentVars.
+         */
+        environmentVars?: outputs.eci.ContainerGroupContainerEnvironmentVar[];
+        /**
+         * The number GPUs.
+         */
+        gpu?: number;
+        /**
+         * The image of the container.
+         */
+        image: string;
+        /**
+         * The restart policy of the image.
+         */
+        imagePullPolicy?: string;
+        /**
+         * The amount of memory resources allocated to the container.
+         */
+        memory?: number;
+        /**
+         * The name of the mounted volume.
+         */
+        name: string;
+        /**
+         * The structure of port.
+         */
+        ports?: outputs.eci.ContainerGroupContainerPort[];
+        ready: boolean;
+        restartCount: number;
+        /**
+         * The structure of volumeMounts.
+         */
+        volumeMounts?: outputs.eci.ContainerGroupContainerVolumeMount[];
+        /**
+         * The working directory of the container.
+         */
+        workingDir?: string;
+    }
+
+    export interface ContainerGroupContainerEnvironmentVar {
+        /**
+         * The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
+         */
+        key?: string;
+        /**
+         * The value of the variable. The value can be 0 to 256 characters in length.
+         */
+        value?: string;
+    }
+
+    export interface ContainerGroupContainerPort {
+        /**
+         * The port number. Valid values: 1 to 65535.
+         */
+        port?: number;
+        /**
+         * Valid values: TCP and UDP.
+         */
+        protocol?: string;
+    }
+
+    export interface ContainerGroupContainerVolumeMount {
+        /**
+         * The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+         */
+        mountPath?: string;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: string;
+        /**
+         * Default to `false`.
+         */
+        readOnly?: boolean;
+    }
+
+    export interface ContainerGroupDnsConfig {
+        /**
+         * The list of DNS server IP addresses.
+         */
+        nameServers?: string[];
+        /**
+         * The structure of options.
+         */
+        options?: outputs.eci.ContainerGroupDnsConfigOption[];
+        /**
+         * The list of DNS lookup domains.
+         */
+        searches?: string[];
+    }
+
+    export interface ContainerGroupDnsConfigOption {
+        /**
+         * The name of the mounted volume.
+         */
+        name?: string;
+        /**
+         * The value of the variable. The value can be 0 to 256 characters in length.
+         */
+        value?: string;
+    }
+
+    export interface ContainerGroupEciSecurityContext {
+        sysctls?: outputs.eci.ContainerGroupEciSecurityContextSysctl[];
+    }
+
+    export interface ContainerGroupEciSecurityContextSysctl {
+        /**
+         * The name of the mounted volume.
+         */
+        name?: string;
+        /**
+         * The value of the variable. The value can be 0 to 256 characters in length.
+         */
+        value?: string;
+    }
+
+    export interface ContainerGroupHostAlias {
+        /**
+         * Adds a host name.
+         */
+        hostnames?: string[];
+        /**
+         * Adds an IP address.
+         */
+        ip?: string;
+    }
+
+    export interface ContainerGroupInitContainer {
+        /**
+         * The arguments passed to the commands.
+         */
+        args?: string[];
+        /**
+         * The commands run by the init container.
+         */
+        commands?: string[];
+        /**
+         * The amount of CPU resources allocated to the container.
+         */
+        cpu?: number;
+        /**
+         * The structure of environmentVars.
+         */
+        environmentVars?: outputs.eci.ContainerGroupInitContainerEnvironmentVar[];
+        /**
+         * The number GPUs.
+         */
+        gpu?: number;
+        /**
+         * The image of the container.
+         */
+        image?: string;
+        /**
+         * The restart policy of the image.
+         */
+        imagePullPolicy?: string;
+        /**
+         * The amount of memory resources allocated to the container.
+         */
+        memory?: number;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: string;
+        /**
+         * The structure of port.
+         */
+        ports?: outputs.eci.ContainerGroupInitContainerPort[];
+        ready: boolean;
+        restartCount: number;
+        /**
+         * The structure of volumeMounts.
+         */
+        volumeMounts?: outputs.eci.ContainerGroupInitContainerVolumeMount[];
+        /**
+         * The working directory of the container.
+         */
+        workingDir?: string;
+    }
+
+    export interface ContainerGroupInitContainerEnvironmentVar {
+        /**
+         * The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
+         */
+        key?: string;
+        /**
+         * The value of the variable. The value can be 0 to 256 characters in length.
+         */
+        value?: string;
+    }
+
+    export interface ContainerGroupInitContainerPort {
+        /**
+         * The port number. Valid values: 1 to 65535.
+         */
+        port?: number;
+        /**
+         * Valid values: TCP and UDP.
+         */
+        protocol?: string;
+    }
+
+    export interface ContainerGroupInitContainerVolumeMount {
+        /**
+         * The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+         */
+        mountPath?: string;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: string;
+        /**
+         * Default to `false`.
+         */
+        readOnly?: boolean;
+    }
+
+    export interface ContainerGroupVolume {
+        /**
+         * ConfigFileVolumeConfigFileToPaths.
+         */
+        configFileVolumeConfigFileToPaths?: outputs.eci.ContainerGroupVolumeConfigFileVolumeConfigFileToPath[];
+        /**
+         * The ID of DiskVolume.
+         */
+        diskVolumeDiskId?: string;
+        /**
+         * The system type of DiskVolume.
+         */
+        diskVolumeFsType?: string;
+        /**
+         * The name of the FlexVolume driver.
+         */
+        flexVolumeDriver?: string;
+        /**
+         * The type of the mounted file system. The default value is determined by the script of FlexVolume.
+         */
+        flexVolumeFsType?: string;
+        /**
+         * The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
+         */
+        flexVolumeOptions?: string;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: string;
+        /**
+         * The path to the NFS volume.
+         */
+        nfsVolumePath?: string;
+        /**
+         * The nfs volume read only. Default to `false`.
+         */
+        nfsVolumeReadOnly?: boolean;
+        /**
+         * The address of the NFS server.
+         */
+        nfsVolumeServer?: string;
+        /**
+         * The type of the volume.
+         */
+        type?: string;
+    }
+
+    export interface ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
+        /**
+         * The content of the configuration file. Maximum size: 32 KB.
+         */
+        content?: string;
+        /**
+         * The relative file path.
+         */
+        path?: string;
+    }
+
+    export interface GetContainerGroupsGroup {
+        /**
+         * The id if ContainerGroup.
+         */
+        containerGroupId: string;
+        /**
+         * The name of ContainerGroup.
+         */
+        containerGroupName: string;
+        /**
+         * A list of containers. Each element contains the following attributes:
+         */
+        containers: outputs.eci.GetContainerGroupsGroupContainer[];
+        /**
+         * The amount of CPU resources allocated to the container.
+         */
+        cpu: number;
+        discount: number;
+        /**
+         * The DNS settings.
+         */
+        dnsConfigs: outputs.eci.GetContainerGroupsGroupDnsConfig[];
+        /**
+         * The security context of the container group.
+         */
+        eciSecurityContexts: outputs.eci.GetContainerGroupsGroupEciSecurityContext[];
+        /**
+         * The ID of the ENI instance.
+         */
+        eniInstanceId: string;
+        /**
+         * The events of the container group. Maximum: `50`.
+         */
+        events: outputs.eci.GetContainerGroupsGroupEvent[];
+        /**
+         * The time when the container group failed to run due to overdue payments. The timestamp follows the UTC and RFC3339 formats.
+         */
+        expiredTime: string;
+        /**
+         * The time when the container failed to run tasks. The timestamp follows the UTC and RFC3339 formats.
+         */
+        failedTime: string;
+        /**
+         * The mapping between host names and IP addresses for a container in the container group.
+         */
+        hostAliases: outputs.eci.GetContainerGroupsGroupHostAlias[];
+        /**
+         * The ID of the Container Group.
+         */
+        id: string;
+        /**
+         * A list of init containers. Each element contains the following attributes:
+         */
+        initContainers: outputs.eci.GetContainerGroupsGroupInitContainer[];
+        /**
+         * The type of the ECS instance.
+         */
+        instanceType: string;
+        /**
+         * The public IP address of the container group.
+         */
+        internetIp: string;
+        /**
+         * The internal IP address of the container group.
+         */
+        intranetIp: string;
+        /**
+         * The IPv6 address.
+         */
+        ipv6Address: string;
+        /**
+         * The amount of memory resources allocated to the container group.
+         */
+        memory: number;
+        /**
+         * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
+         */
+        ramRoleName: string;
+        /**
+         * The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The restart policy of the container group.
+         */
+        restartPolicy: string;
+        /**
+         * The ID of the security group.
+         */
+        securityGroupId: string;
+        /**
+         * The status of container.
+         */
+        status: string;
+        /**
+         * The time when all containers in the container group completed running the specified tasks. The timestamp follows the UTC and RFC 3339 formats. For example, 2018-08-02T15:00:00Z.
+         */
+        succeededTime: string;
+        /**
+         * The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The information about the mounted volume. You can mount up to 20 volumes.
+         */
+        volumes: outputs.eci.GetContainerGroupsGroupVolume[];
+        /**
+         * The if of vpc.
+         */
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+        /**
+         * The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+         */
+        zoneId: string;
+    }
+
+    export interface GetContainerGroupsGroupContainer {
+        /**
+         * The arguments passed to the commands.
+         */
+        args: string[];
+        /**
+         * The commands run by the container.
+         */
+        commands: string[];
+        /**
+         * The amount of CPU resources allocated to the container.
+         */
+        cpu: number;
+        /**
+         * The environment variables.
+         */
+        environmentVars: outputs.eci.GetContainerGroupsGroupContainerEnvironmentVar[];
+        /**
+         * The amount of GPU resources allocated to the container.
+         */
+        gpu: number;
+        /**
+         * The image of the container.
+         */
+        image: string;
+        /**
+         * The policy for pulling an image.
+         */
+        imagePullPolicy: string;
+        /**
+         * The amount of memory resources allocated to the container group.
+         */
+        memory: number;
+        /**
+         * The name of the volume.
+         */
+        name: string;
+        /**
+         * The exposed ports and protocols. Maximum: `100`.
+         */
+        ports: outputs.eci.GetContainerGroupsGroupContainerPort[];
+        /**
+         * Indicates whether the container is ready.
+         */
+        ready: boolean;
+        /**
+         * The number of times that the container has restarted.
+         */
+        restartCount: number;
+        /**
+         * The list of volumes mounted to the container.
+         */
+        volumeMounts: outputs.eci.GetContainerGroupsGroupContainerVolumeMount[];
+        /**
+         * The working directory of the container.
+         */
+        workingDir: string;
+    }
+
+    export interface GetContainerGroupsGroupContainerEnvironmentVar {
+        /**
+         * The name of the variable.
+         */
+        key: string;
+        /**
+         * The value of the variable.
+         */
+        value: string;
+    }
+
+    export interface GetContainerGroupsGroupContainerPort {
+        /**
+         * The port number. Valid values: 1 to 65535.
+         */
+        port: number;
+        /**
+         * Valid values: `TCP` and `UDP`.
+         */
+        protocol: string;
+    }
+
+    export interface GetContainerGroupsGroupContainerVolumeMount {
+        /**
+         * The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+         */
+        mountPath: string;
+        /**
+         * The name of the volume.
+         */
+        name: string;
+        /**
+         * Default value: `false`.
+         */
+        readOnly: boolean;
+    }
+
+    export interface GetContainerGroupsGroupDnsConfig {
+        /**
+         * The list of DNS server IP addresses.
+         */
+        nameServers: string[];
+        /**
+         * The list of objects. Each object is a name-value pair. The value is optional.
+         */
+        options: outputs.eci.GetContainerGroupsGroupDnsConfigOption[];
+        /**
+         * The list of DNS lookup domains.
+         */
+        searches: string[];
+    }
+
+    export interface GetContainerGroupsGroupDnsConfigOption {
+        /**
+         * The name of the volume.
+         */
+        name: string;
+        /**
+         * The value of the variable.
+         */
+        value: string;
+    }
+
+    export interface GetContainerGroupsGroupEciSecurityContext {
+        /**
+         * The system information.
+         */
+        sysctls: outputs.eci.GetContainerGroupsGroupEciSecurityContextSysctl[];
+    }
+
+    export interface GetContainerGroupsGroupEciSecurityContextSysctl {
+        /**
+         * The name of the volume.
+         */
+        name: string;
+        /**
+         * The value of the variable.
+         */
+        value: string;
+    }
+
+    export interface GetContainerGroupsGroupEvent {
+        /**
+         * The number of events.
+         */
+        count: number;
+        /**
+         * The time when the event started.
+         */
+        firstTimestamp: string;
+        /**
+         * The time when the event ended.
+         */
+        lastTimestamp: string;
+        /**
+         * The content of the event.
+         */
+        message: string;
+        /**
+         * The name of the volume.
+         */
+        name: string;
+        /**
+         * The name of the event.
+         */
+        reason: string;
+        /**
+         * The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+         */
+        type: string;
+    }
+
+    export interface GetContainerGroupsGroupHostAlias {
+        /**
+         * The name of the host.
+         */
+        hostnames: string[];
+        /**
+         * The IP address of the container.
+         */
+        ip: string;
+    }
+
+    export interface GetContainerGroupsGroupInitContainer {
+        /**
+         * The arguments passed to the commands.
+         */
+        args: string[];
+        /**
+         * The commands run by the container.
+         */
+        commands: string[];
+        /**
+         * The amount of CPU resources allocated to the container.
+         */
+        cpu: number;
+        /**
+         * The environment variables.
+         */
+        environmentVars: outputs.eci.GetContainerGroupsGroupInitContainerEnvironmentVar[];
+        /**
+         * The amount of GPU resources allocated to the container.
+         */
+        gpu: number;
+        /**
+         * The image of the container.
+         */
+        image: string;
+        /**
+         * The policy for pulling an image.
+         */
+        imagePullPolicy: string;
+        /**
+         * The amount of memory resources allocated to the container group.
+         */
+        memory: number;
+        /**
+         * The name of the volume.
+         */
+        name: string;
+        /**
+         * The exposed ports and protocols. Maximum: `100`.
+         */
+        ports: outputs.eci.GetContainerGroupsGroupInitContainerPort[];
+        /**
+         * Indicates whether the container is ready.
+         */
+        ready: boolean;
+        /**
+         * The number of times that the container has restarted.
+         */
+        restartCount: number;
+        /**
+         * The list of volumes mounted to the container.
+         */
+        volumeMounts: outputs.eci.GetContainerGroupsGroupInitContainerVolumeMount[];
+        /**
+         * The working directory of the container.
+         */
+        workingDir: string;
+    }
+
+    export interface GetContainerGroupsGroupInitContainerEnvironmentVar {
+        /**
+         * The name of the variable.
+         */
+        key: string;
+        /**
+         * The value of the variable.
+         */
+        value: string;
+    }
+
+    export interface GetContainerGroupsGroupInitContainerPort {
+        /**
+         * The port number. Valid values: 1 to 65535.
+         */
+        port: number;
+        /**
+         * Valid values: `TCP` and `UDP`.
+         */
+        protocol: string;
+    }
+
+    export interface GetContainerGroupsGroupInitContainerVolumeMount {
+        /**
+         * The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+         */
+        mountPath: string;
+        /**
+         * The name of the volume.
+         */
+        name: string;
+        /**
+         * Default value: `false`.
+         */
+        readOnly: boolean;
+    }
+
+    export interface GetContainerGroupsGroupVolume {
+        /**
+         * The list of configuration file paths.
+         */
+        configFileVolumeConfigFileToPaths: outputs.eci.GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath[];
+        /**
+         * The ID of DiskVolume.
+         */
+        diskVolumeDiskId: string;
+        /**
+         * The type of DiskVolume.
+         */
+        diskVolumeFsType: string;
+        /**
+         * The name of the FlexVolume driver.
+         */
+        flexVolumeDriver: string;
+        /**
+         * The type of the mounted file system. The default value is determined by the script of FlexVolume.
+         */
+        flexVolumeFsType: string;
+        /**
+         * The list of FlexVolume objects.
+         */
+        flexVolumeOptions: string;
+        /**
+         * The name of the volume.
+         */
+        name: string;
+        /**
+         * The path to the NFS volume.
+         */
+        nfsVolumePath: string;
+        /**
+         * Default value: `false`.
+         */
+        nfsVolumeReadOnly: boolean;
+        /**
+         * The address of the NFS server.
+         */
+        nfsVolumeServer: string;
+        /**
+         * The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+         */
+        type: string;
+    }
+
+    export interface GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath {
+        /**
+         * The content of the configuration file. Maximum size: 32 KB.
+         */
+        content: string;
+        /**
+         * The relative file path.
+         */
+        path: string;
+    }
+
     export interface GetImageCachesCach {
         /**
          * The id of container group.
@@ -6382,6 +7159,172 @@ export namespace fnf {
          * The name of the time-based schedule to be created.
          */
         scheduleName: string;
+    }
+}
+
+export namespace ga {
+    export interface GetAcceleratorsAccelerator {
+        /**
+         * The ID of the GA instance to query.
+         */
+        acceleratorId: string;
+        /**
+         * The Name of the GA instance.
+         */
+        acceleratorName: string;
+        /**
+         * Details of the basic bandwidth package bound to the global acceleration instance.
+         */
+        basicBandwidthPackages: outputs.ga.GetAcceleratorsAcceleratorBasicBandwidthPackage[];
+        /**
+         * The cloud enterprise network instance ID bound to the global acceleration instance.
+         */
+        cenId: string;
+        /**
+         * Details of the cross-domain acceleration package bound to the global acceleration instance.
+         */
+        crossDomainBandwidthPackages: outputs.ga.GetAcceleratorsAcceleratorCrossDomainBandwidthPackage[];
+        /**
+         * DDoS high-defense instance ID that is unbound from the global acceleration instance.
+         */
+        ddosId: string;
+        /**
+         * Descriptive information of the global acceleration instance.
+         */
+        description: string;
+        /**
+         * CNAME address assigned by Global Acceleration instance.
+         */
+        dnsName: string;
+        /**
+         * Time when the global acceleration instance expires.
+         */
+        expiredTime: number;
+        /**
+         * The ID of the Accelerator.
+         */
+        id: string;
+        /**
+         * The Payment Typethe GA instance.
+         */
+        paymentType: string;
+        /**
+         * CNAME of the Global Acceleration Linkage DDoS High Defense Instance.
+         */
+        secondDnsName: string;
+        /**
+         * The instance type of the GA instance.
+         */
+        spec: string;
+        /**
+         * The status of the GA instance.
+         */
+        status: string;
+    }
+
+    export interface GetAcceleratorsAcceleratorBasicBandwidthPackage {
+        /**
+         * Bandwidth value of cross-domain acceleration package.
+         */
+        bandwidth: number;
+        /**
+         * The bandwidth type of the basic bandwidth package.
+         */
+        bandwidthType: string;
+        /**
+         * Instance ID of the cross-domain acceleration package.
+         */
+        instanceId: string;
+    }
+
+    export interface GetAcceleratorsAcceleratorCrossDomainBandwidthPackage {
+        /**
+         * Bandwidth value of cross-domain acceleration package.
+         */
+        bandwidth: number;
+        /**
+         * Instance ID of the cross-domain acceleration package.
+         */
+        instanceId: string;
+    }
+
+    export interface GetListenersListener {
+        /**
+         * The certificates of the listener.
+         */
+        certificates: outputs.ga.GetListenersListenerCertificate[];
+        /**
+         * The clientAffinity of the listener.
+         */
+        clientAffinity: string;
+        /**
+         * The description of the listener.
+         */
+        description: string;
+        /**
+         * The ID of the Listener.
+         */
+        id: string;
+        /**
+         * The listenerId of the listener.
+         */
+        listenerId: string;
+        /**
+         * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
+         */
+        name: string;
+        /**
+         * The portRanges of the listener.
+         */
+        portRanges: outputs.ga.GetListenersListenerPortRange[];
+        /**
+         * Type of network transport protocol monitored.
+         */
+        protocol: string;
+        /**
+         * The status of the listener.
+         */
+        status: string;
+    }
+
+    export interface GetListenersListenerCertificate {
+        /**
+         * The ID of the Listener.
+         */
+        id: string;
+        /**
+         * The type of the certificate.
+         */
+        type: string;
+    }
+
+    export interface GetListenersListenerPortRange {
+        /**
+         * The initial listening port used to receive requests and forward them to terminal nodes.
+         */
+        fromPort: number;
+        /**
+         * The end listening port used to receive requests and forward them to terminal nodes.
+         */
+        toPort: number;
+    }
+
+    export interface ListenerCertificate {
+        /**
+         * The id of the certificate.
+         */
+        id?: string;
+    }
+
+    export interface ListenerPortRange {
+        /**
+         * The initial listening port used to receive requests and forward them to terminal nodes.
+         */
+        fromPort: number;
+        /**
+         * The end listening port used to receive requests and forward them to terminal nodes.
+         */
+        toPort: number;
     }
 }
 
@@ -8883,6 +9826,37 @@ export namespace privatelink {
         vpcEndpointServiceName: string;
     }
 
+    export interface GetVpcEndpointZonesZone {
+        /**
+         * Terminal node network card.
+         */
+        eniId: string;
+        /**
+         * IP address of the terminal node network card.
+         */
+        eniIp: string;
+        /**
+         * The ID of the Vpc Endpoint Zone.
+         */
+        id: string;
+        /**
+         * The Status of Vpc Endpoint Zone..
+         */
+        status: string;
+        /**
+         * The VSwitch id.
+         */
+        vswitchId: string;
+        /**
+         * The Zone Domain.
+         */
+        zoneDomain: string;
+        /**
+         * The Zone Id.
+         */
+        zoneId: string;
+    }
+
     export interface GetVpcEndpointsEndpoint {
         /**
          * The Bandwidth.
@@ -8936,32 +9910,6 @@ export namespace privatelink {
          * The private network to which the terminal node belongs.
          */
         vpcId: string;
-        /**
-         * Availability zone.
-         */
-        zones: outputs.privatelink.GetVpcEndpointsEndpointZone[];
-    }
-
-    export interface GetVpcEndpointsEndpointZone {
-        /**
-         * To create the vswitch of the terminal node network card in the available zone.
-         */
-        vswitchId: string;
-        /**
-         * Availability zone corresponding to terminal node service.
-         */
-        zoneId: string;
-    }
-
-    export interface VpcEndpointZone {
-        /**
-         * To create the vswitch of the terminal node network card in the available zone.
-         */
-        vswitchId?: string;
-        /**
-         * Availability zone corresponding to terminal node service.
-         */
-        zoneId?: string;
     }
 }
 
@@ -9647,6 +10595,29 @@ export namespace resourcemanager {
         status: string;
     }
 
+    export interface GetResourceSharesShare {
+        /**
+         * The ID of the Resource Share.
+         */
+        id: string;
+        /**
+         * The ID of the resource share.
+         */
+        resourceShareId: string;
+        /**
+         * The name of resource share.
+         */
+        resourceShareName: string;
+        /**
+         * The owner of resource share.
+         */
+        resourceShareOwner: string;
+        /**
+         * The status of resource share.
+         */
+        status: string;
+    }
+
     export interface GetRolesRole {
         arn: string;
         createDate: string;
@@ -9666,6 +10637,48 @@ export namespace resourcemanager {
         roleId: string;
         roleName: string;
         updateDate: string;
+    }
+
+    export interface GetSharedResourcesResource {
+        /**
+         * The ID of the Shared Resource.
+         */
+        id: string;
+        /**
+         * The ID of the shared resource.
+         */
+        resourceId: string;
+        /**
+         * The resource share ID of resource manager.
+         */
+        resourceShareId: string;
+        /**
+         * The type of shared resource.
+         */
+        resourceType: string;
+        /**
+         * The status of shared resource.
+         */
+        status: string;
+    }
+
+    export interface GetSharedTargetsTarget {
+        /**
+         * The ID of the Shared Target.
+         */
+        id: string;
+        /**
+         * The resource shared ID of resource manager.
+         */
+        resourceShareId: string;
+        /**
+         * The status of shared target.
+         */
+        status: string;
+        /**
+         * The member account ID in resource directory.
+         */
+        targetId: string;
     }
 
     export interface ResourceGroupRegionStatus {

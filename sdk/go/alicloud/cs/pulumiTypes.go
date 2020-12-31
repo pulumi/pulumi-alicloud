@@ -3903,6 +3903,232 @@ func (o NodePoolManagementPtrOutput) SurgePercentage() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type NodePoolScalingConfig struct {
+	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+	EipBandwidth *int `pulumi:"eipBandwidth"`
+	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+	EipInternetChargeType *string `pulumi:"eipInternetChargeType"`
+	// Whether to bind EIP for an instance. Default: `false`.
+	IsBondEip *bool `pulumi:"isBondEip"`
+	// Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+	MaxSize int `pulumi:"maxSize"`
+	// Max number of instances in a auto scaling group, its valid value range [0~1000].
+	MinSize int `pulumi:"minSize"`
+	// Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+	Type *string `pulumi:"type"`
+}
+
+// NodePoolScalingConfigInput is an input type that accepts NodePoolScalingConfigArgs and NodePoolScalingConfigOutput values.
+// You can construct a concrete instance of `NodePoolScalingConfigInput` via:
+//
+//          NodePoolScalingConfigArgs{...}
+type NodePoolScalingConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolScalingConfigOutput() NodePoolScalingConfigOutput
+	ToNodePoolScalingConfigOutputWithContext(context.Context) NodePoolScalingConfigOutput
+}
+
+type NodePoolScalingConfigArgs struct {
+	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+	EipBandwidth pulumi.IntPtrInput `pulumi:"eipBandwidth"`
+	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+	EipInternetChargeType pulumi.StringPtrInput `pulumi:"eipInternetChargeType"`
+	// Whether to bind EIP for an instance. Default: `false`.
+	IsBondEip pulumi.BoolPtrInput `pulumi:"isBondEip"`
+	// Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+	MaxSize pulumi.IntInput `pulumi:"maxSize"`
+	// Max number of instances in a auto scaling group, its valid value range [0~1000].
+	MinSize pulumi.IntInput `pulumi:"minSize"`
+	// Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (NodePoolScalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolScalingConfig)(nil)).Elem()
+}
+
+func (i NodePoolScalingConfigArgs) ToNodePoolScalingConfigOutput() NodePoolScalingConfigOutput {
+	return i.ToNodePoolScalingConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolScalingConfigArgs) ToNodePoolScalingConfigOutputWithContext(ctx context.Context) NodePoolScalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolScalingConfigOutput)
+}
+
+func (i NodePoolScalingConfigArgs) ToNodePoolScalingConfigPtrOutput() NodePoolScalingConfigPtrOutput {
+	return i.ToNodePoolScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolScalingConfigArgs) ToNodePoolScalingConfigPtrOutputWithContext(ctx context.Context) NodePoolScalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolScalingConfigOutput).ToNodePoolScalingConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolScalingConfigPtrInput is an input type that accepts NodePoolScalingConfigArgs, NodePoolScalingConfigPtr and NodePoolScalingConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolScalingConfigPtrInput` via:
+//
+//          NodePoolScalingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolScalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolScalingConfigPtrOutput() NodePoolScalingConfigPtrOutput
+	ToNodePoolScalingConfigPtrOutputWithContext(context.Context) NodePoolScalingConfigPtrOutput
+}
+
+type nodePoolScalingConfigPtrType NodePoolScalingConfigArgs
+
+func NodePoolScalingConfigPtr(v *NodePoolScalingConfigArgs) NodePoolScalingConfigPtrInput {
+	return (*nodePoolScalingConfigPtrType)(v)
+}
+
+func (*nodePoolScalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolScalingConfig)(nil)).Elem()
+}
+
+func (i *nodePoolScalingConfigPtrType) ToNodePoolScalingConfigPtrOutput() NodePoolScalingConfigPtrOutput {
+	return i.ToNodePoolScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolScalingConfigPtrType) ToNodePoolScalingConfigPtrOutputWithContext(ctx context.Context) NodePoolScalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolScalingConfigPtrOutput)
+}
+
+type NodePoolScalingConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolScalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolScalingConfig)(nil)).Elem()
+}
+
+func (o NodePoolScalingConfigOutput) ToNodePoolScalingConfigOutput() NodePoolScalingConfigOutput {
+	return o
+}
+
+func (o NodePoolScalingConfigOutput) ToNodePoolScalingConfigOutputWithContext(ctx context.Context) NodePoolScalingConfigOutput {
+	return o
+}
+
+func (o NodePoolScalingConfigOutput) ToNodePoolScalingConfigPtrOutput() NodePoolScalingConfigPtrOutput {
+	return o.ToNodePoolScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolScalingConfigOutput) ToNodePoolScalingConfigPtrOutputWithContext(ctx context.Context) NodePoolScalingConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolScalingConfig) *NodePoolScalingConfig {
+		return &v
+	}).(NodePoolScalingConfigPtrOutput)
+}
+
+// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+func (o NodePoolScalingConfigOutput) EipBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolScalingConfig) *int { return v.EipBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+func (o NodePoolScalingConfigOutput) EipInternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolScalingConfig) *string { return v.EipInternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to bind EIP for an instance. Default: `false`.
+func (o NodePoolScalingConfigOutput) IsBondEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolScalingConfig) *bool { return v.IsBondEip }).(pulumi.BoolPtrOutput)
+}
+
+// Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+func (o NodePoolScalingConfigOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolScalingConfig) int { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// Max number of instances in a auto scaling group, its valid value range [0~1000].
+func (o NodePoolScalingConfigOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolScalingConfig) int { return v.MinSize }).(pulumi.IntOutput)
+}
+
+// Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+func (o NodePoolScalingConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolScalingConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolScalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolScalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolScalingConfig)(nil)).Elem()
+}
+
+func (o NodePoolScalingConfigPtrOutput) ToNodePoolScalingConfigPtrOutput() NodePoolScalingConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolScalingConfigPtrOutput) ToNodePoolScalingConfigPtrOutputWithContext(ctx context.Context) NodePoolScalingConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolScalingConfigPtrOutput) Elem() NodePoolScalingConfigOutput {
+	return o.ApplyT(func(v *NodePoolScalingConfig) NodePoolScalingConfig { return *v }).(NodePoolScalingConfigOutput)
+}
+
+// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+func (o NodePoolScalingConfigPtrOutput) EipBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolScalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EipBandwidth
+	}).(pulumi.IntPtrOutput)
+}
+
+// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+func (o NodePoolScalingConfigPtrOutput) EipInternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolScalingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EipInternetChargeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to bind EIP for an instance. Default: `false`.
+func (o NodePoolScalingConfigPtrOutput) IsBondEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolScalingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsBondEip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+func (o NodePoolScalingConfigPtrOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolScalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max number of instances in a auto scaling group, its valid value range [0~1000].
+func (o NodePoolScalingConfigPtrOutput) MinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolScalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+func (o NodePoolScalingConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolScalingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type NodePoolTaint struct {
 	Effect *string `pulumi:"effect"`
 	Key    string  `pulumi:"key"`
@@ -7108,6 +7334,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolLabelArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolManagementOutput{})
 	pulumi.RegisterOutputType(NodePoolManagementPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolScalingConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolScalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolTaintOutput{})
 	pulumi.RegisterOutputType(NodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonOutput{})

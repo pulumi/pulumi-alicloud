@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -21,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.privatelink.VpcEndpoint("example", {
- *     securityGroupIds: ["sg-ercx1234"],
+ *     securityGroupId: ["sg-ercx1234"],
  *     serviceId: "YourServiceId",
  *     vpcId: "YourVpcId",
  * });
@@ -111,10 +110,6 @@ export class VpcEndpoint extends pulumi.CustomResource {
      * The private network to which the terminal node belongs.
      */
     public readonly vpcId!: pulumi.Output<string>;
-    /**
-     * Availability zone.
-     */
-    public readonly zones!: pulumi.Output<outputs.privatelink.VpcEndpointZone[] | undefined>;
 
     /**
      * Create a VpcEndpoint resource with the given unique name, arguments, and options.
@@ -140,7 +135,6 @@ export class VpcEndpoint extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
             inputs["vpcEndpointName"] = state ? state.vpcEndpointName : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as VpcEndpointArgs | undefined;
             if (!args || args.securityGroupIds === undefined) {
@@ -156,7 +150,6 @@ export class VpcEndpoint extends pulumi.CustomResource {
             inputs["serviceName"] = args ? args.serviceName : undefined;
             inputs["vpcEndpointName"] = args ? args.vpcEndpointName : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["zones"] = args ? args.zones : undefined;
             inputs["bandwidth"] = undefined /*out*/;
             inputs["connectionStatus"] = undefined /*out*/;
             inputs["endpointBusinessStatus"] = undefined /*out*/;
@@ -226,10 +219,6 @@ export interface VpcEndpointState {
      * The private network to which the terminal node belongs.
      */
     readonly vpcId?: pulumi.Input<string>;
-    /**
-     * Availability zone.
-     */
-    readonly zones?: pulumi.Input<pulumi.Input<inputs.privatelink.VpcEndpointZone>[]>;
 }
 
 /**
@@ -264,8 +253,4 @@ export interface VpcEndpointArgs {
      * The private network to which the terminal node belongs.
      */
     readonly vpcId: pulumi.Input<string>;
-    /**
-     * Availability zone.
-     */
-    readonly zones?: pulumi.Input<pulumi.Input<inputs.privatelink.VpcEndpointZone>[]>;
 }

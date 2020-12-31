@@ -82,7 +82,7 @@ def get_service(enable: Optional[str] = None,
     ```
 
 
-    :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off".
+    :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
     """
     __args__ = dict()
     __args__['enable'] = enable

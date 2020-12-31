@@ -29,6 +29,7 @@ class NodePool(pulumi.CustomResource):
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_name_mode: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
@@ -48,6 +49,8 @@ class NodePool(pulumi.CustomResource):
 
         > **NOTE:** From version 1.109.1, support remove node pool nodes.
 
+        > **NOTE:** From version 1.111.0, support auto scaling node pool.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
@@ -58,9 +61,10 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
-        :param pulumi.Input[int] node_count: The worker node number of the node pool.
+        :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`.
         :param pulumi.Input[str] security_group_id: The system disk size of worker node.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
@@ -101,11 +105,10 @@ class NodePool(pulumi.CustomResource):
             __props__['labels'] = labels
             __props__['management'] = management
             __props__['name'] = name
-            if node_count is None:
-                raise TypeError("Missing required property 'node_count'")
             __props__['node_count'] = node_count
             __props__['node_name_mode'] = node_name_mode
             __props__['password'] = password
+            __props__['scaling_config'] = scaling_config
             __props__['security_group_id'] = security_group_id
             __props__['system_disk_category'] = system_disk_category
             __props__['system_disk_size'] = system_disk_size
@@ -139,6 +142,7 @@ class NodePool(pulumi.CustomResource):
             node_count: Optional[pulumi.Input[int]] = None,
             node_name_mode: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
+            scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -163,9 +167,10 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
-        :param pulumi.Input[int] node_count: The worker node number of the node pool.
+        :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`.
         :param pulumi.Input[str] scaling_group_id: (Available in 1.105.0+) Id of the Scaling Group.
         :param pulumi.Input[str] security_group_id: The system disk size of worker node.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -194,6 +199,7 @@ class NodePool(pulumi.CustomResource):
         __props__["node_count"] = node_count
         __props__["node_name_mode"] = node_name_mode
         __props__["password"] = password
+        __props__["scaling_config"] = scaling_config
         __props__["scaling_group_id"] = scaling_group_id
         __props__["security_group_id"] = security_group_id
         __props__["system_disk_category"] = system_disk_category
@@ -278,7 +284,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> pulumi.Output[int]:
         """
-        The worker node number of the node pool.
+        The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         """
         return pulumi.get(self, "node_count")
 
@@ -297,6 +303,14 @@ class NodePool(pulumi.CustomResource):
         The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="scalingConfig")
+    def scaling_config(self) -> pulumi.Output['outputs.NodePoolScalingConfig']:
+        """
+        Auto scaling node pool configuration. For more details, see `scaling_config`.
+        """
+        return pulumi.get(self, "scaling_config")
 
     @property
     @pulumi.getter(name="scalingGroupId")

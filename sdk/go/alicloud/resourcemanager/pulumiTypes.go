@@ -1330,6 +1330,139 @@ func (o GetResourceGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetResourceG
 	}).(GetResourceGroupsGroupOutput)
 }
 
+type GetResourceSharesShare struct {
+	// The ID of the Resource Share.
+	Id string `pulumi:"id"`
+	// The ID of the resource share.
+	ResourceShareId string `pulumi:"resourceShareId"`
+	// The name of resource share.
+	ResourceShareName string `pulumi:"resourceShareName"`
+	// The owner of resource share.
+	ResourceShareOwner string `pulumi:"resourceShareOwner"`
+	// The status of resource share.
+	Status string `pulumi:"status"`
+}
+
+// GetResourceSharesShareInput is an input type that accepts GetResourceSharesShareArgs and GetResourceSharesShareOutput values.
+// You can construct a concrete instance of `GetResourceSharesShareInput` via:
+//
+//          GetResourceSharesShareArgs{...}
+type GetResourceSharesShareInput interface {
+	pulumi.Input
+
+	ToGetResourceSharesShareOutput() GetResourceSharesShareOutput
+	ToGetResourceSharesShareOutputWithContext(context.Context) GetResourceSharesShareOutput
+}
+
+type GetResourceSharesShareArgs struct {
+	// The ID of the Resource Share.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the resource share.
+	ResourceShareId pulumi.StringInput `pulumi:"resourceShareId"`
+	// The name of resource share.
+	ResourceShareName pulumi.StringInput `pulumi:"resourceShareName"`
+	// The owner of resource share.
+	ResourceShareOwner pulumi.StringInput `pulumi:"resourceShareOwner"`
+	// The status of resource share.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetResourceSharesShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceSharesShare)(nil)).Elem()
+}
+
+func (i GetResourceSharesShareArgs) ToGetResourceSharesShareOutput() GetResourceSharesShareOutput {
+	return i.ToGetResourceSharesShareOutputWithContext(context.Background())
+}
+
+func (i GetResourceSharesShareArgs) ToGetResourceSharesShareOutputWithContext(ctx context.Context) GetResourceSharesShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceSharesShareOutput)
+}
+
+// GetResourceSharesShareArrayInput is an input type that accepts GetResourceSharesShareArray and GetResourceSharesShareArrayOutput values.
+// You can construct a concrete instance of `GetResourceSharesShareArrayInput` via:
+//
+//          GetResourceSharesShareArray{ GetResourceSharesShareArgs{...} }
+type GetResourceSharesShareArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceSharesShareArrayOutput() GetResourceSharesShareArrayOutput
+	ToGetResourceSharesShareArrayOutputWithContext(context.Context) GetResourceSharesShareArrayOutput
+}
+
+type GetResourceSharesShareArray []GetResourceSharesShareInput
+
+func (GetResourceSharesShareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceSharesShare)(nil)).Elem()
+}
+
+func (i GetResourceSharesShareArray) ToGetResourceSharesShareArrayOutput() GetResourceSharesShareArrayOutput {
+	return i.ToGetResourceSharesShareArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceSharesShareArray) ToGetResourceSharesShareArrayOutputWithContext(ctx context.Context) GetResourceSharesShareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceSharesShareArrayOutput)
+}
+
+type GetResourceSharesShareOutput struct{ *pulumi.OutputState }
+
+func (GetResourceSharesShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceSharesShare)(nil)).Elem()
+}
+
+func (o GetResourceSharesShareOutput) ToGetResourceSharesShareOutput() GetResourceSharesShareOutput {
+	return o
+}
+
+func (o GetResourceSharesShareOutput) ToGetResourceSharesShareOutputWithContext(ctx context.Context) GetResourceSharesShareOutput {
+	return o
+}
+
+// The ID of the Resource Share.
+func (o GetResourceSharesShareOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceSharesShare) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the resource share.
+func (o GetResourceSharesShareOutput) ResourceShareId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceSharesShare) string { return v.ResourceShareId }).(pulumi.StringOutput)
+}
+
+// The name of resource share.
+func (o GetResourceSharesShareOutput) ResourceShareName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceSharesShare) string { return v.ResourceShareName }).(pulumi.StringOutput)
+}
+
+// The owner of resource share.
+func (o GetResourceSharesShareOutput) ResourceShareOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceSharesShare) string { return v.ResourceShareOwner }).(pulumi.StringOutput)
+}
+
+// The status of resource share.
+func (o GetResourceSharesShareOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceSharesShare) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetResourceSharesShareArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceSharesShareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceSharesShare)(nil)).Elem()
+}
+
+func (o GetResourceSharesShareArrayOutput) ToGetResourceSharesShareArrayOutput() GetResourceSharesShareArrayOutput {
+	return o
+}
+
+func (o GetResourceSharesShareArrayOutput) ToGetResourceSharesShareArrayOutputWithContext(ctx context.Context) GetResourceSharesShareArrayOutput {
+	return o
+}
+
+func (o GetResourceSharesShareArrayOutput) Index(i pulumi.IntInput) GetResourceSharesShareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceSharesShare {
+		return vs[0].([]GetResourceSharesShare)[vs[1].(int)]
+	}).(GetResourceSharesShareOutput)
+}
+
 type GetRolesRole struct {
 	Arn         string `pulumi:"arn"`
 	CreateDate  string `pulumi:"createDate"`
@@ -1490,6 +1623,263 @@ func (o GetRolesRoleArrayOutput) Index(i pulumi.IntInput) GetRolesRoleOutput {
 	}).(GetRolesRoleOutput)
 }
 
+type GetSharedResourcesResource struct {
+	// The ID of the Shared Resource.
+	Id string `pulumi:"id"`
+	// The ID of the shared resource.
+	ResourceId string `pulumi:"resourceId"`
+	// The resource share ID of resource manager.
+	ResourceShareId string `pulumi:"resourceShareId"`
+	// The type of shared resource.
+	ResourceType string `pulumi:"resourceType"`
+	// The status of shared resource.
+	Status string `pulumi:"status"`
+}
+
+// GetSharedResourcesResourceInput is an input type that accepts GetSharedResourcesResourceArgs and GetSharedResourcesResourceOutput values.
+// You can construct a concrete instance of `GetSharedResourcesResourceInput` via:
+//
+//          GetSharedResourcesResourceArgs{...}
+type GetSharedResourcesResourceInput interface {
+	pulumi.Input
+
+	ToGetSharedResourcesResourceOutput() GetSharedResourcesResourceOutput
+	ToGetSharedResourcesResourceOutputWithContext(context.Context) GetSharedResourcesResourceOutput
+}
+
+type GetSharedResourcesResourceArgs struct {
+	// The ID of the Shared Resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the shared resource.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The resource share ID of resource manager.
+	ResourceShareId pulumi.StringInput `pulumi:"resourceShareId"`
+	// The type of shared resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The status of shared resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetSharedResourcesResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSharedResourcesResource)(nil)).Elem()
+}
+
+func (i GetSharedResourcesResourceArgs) ToGetSharedResourcesResourceOutput() GetSharedResourcesResourceOutput {
+	return i.ToGetSharedResourcesResourceOutputWithContext(context.Background())
+}
+
+func (i GetSharedResourcesResourceArgs) ToGetSharedResourcesResourceOutputWithContext(ctx context.Context) GetSharedResourcesResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSharedResourcesResourceOutput)
+}
+
+// GetSharedResourcesResourceArrayInput is an input type that accepts GetSharedResourcesResourceArray and GetSharedResourcesResourceArrayOutput values.
+// You can construct a concrete instance of `GetSharedResourcesResourceArrayInput` via:
+//
+//          GetSharedResourcesResourceArray{ GetSharedResourcesResourceArgs{...} }
+type GetSharedResourcesResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetSharedResourcesResourceArrayOutput() GetSharedResourcesResourceArrayOutput
+	ToGetSharedResourcesResourceArrayOutputWithContext(context.Context) GetSharedResourcesResourceArrayOutput
+}
+
+type GetSharedResourcesResourceArray []GetSharedResourcesResourceInput
+
+func (GetSharedResourcesResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSharedResourcesResource)(nil)).Elem()
+}
+
+func (i GetSharedResourcesResourceArray) ToGetSharedResourcesResourceArrayOutput() GetSharedResourcesResourceArrayOutput {
+	return i.ToGetSharedResourcesResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetSharedResourcesResourceArray) ToGetSharedResourcesResourceArrayOutputWithContext(ctx context.Context) GetSharedResourcesResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSharedResourcesResourceArrayOutput)
+}
+
+type GetSharedResourcesResourceOutput struct{ *pulumi.OutputState }
+
+func (GetSharedResourcesResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSharedResourcesResource)(nil)).Elem()
+}
+
+func (o GetSharedResourcesResourceOutput) ToGetSharedResourcesResourceOutput() GetSharedResourcesResourceOutput {
+	return o
+}
+
+func (o GetSharedResourcesResourceOutput) ToGetSharedResourcesResourceOutputWithContext(ctx context.Context) GetSharedResourcesResourceOutput {
+	return o
+}
+
+// The ID of the Shared Resource.
+func (o GetSharedResourcesResourceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedResourcesResource) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the shared resource.
+func (o GetSharedResourcesResourceOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedResourcesResource) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The resource share ID of resource manager.
+func (o GetSharedResourcesResourceOutput) ResourceShareId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedResourcesResource) string { return v.ResourceShareId }).(pulumi.StringOutput)
+}
+
+// The type of shared resource.
+func (o GetSharedResourcesResourceOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedResourcesResource) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The status of shared resource.
+func (o GetSharedResourcesResourceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedResourcesResource) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetSharedResourcesResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSharedResourcesResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSharedResourcesResource)(nil)).Elem()
+}
+
+func (o GetSharedResourcesResourceArrayOutput) ToGetSharedResourcesResourceArrayOutput() GetSharedResourcesResourceArrayOutput {
+	return o
+}
+
+func (o GetSharedResourcesResourceArrayOutput) ToGetSharedResourcesResourceArrayOutputWithContext(ctx context.Context) GetSharedResourcesResourceArrayOutput {
+	return o
+}
+
+func (o GetSharedResourcesResourceArrayOutput) Index(i pulumi.IntInput) GetSharedResourcesResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSharedResourcesResource {
+		return vs[0].([]GetSharedResourcesResource)[vs[1].(int)]
+	}).(GetSharedResourcesResourceOutput)
+}
+
+type GetSharedTargetsTarget struct {
+	// The ID of the Shared Target.
+	Id string `pulumi:"id"`
+	// The resource shared ID of resource manager.
+	ResourceShareId string `pulumi:"resourceShareId"`
+	// The status of shared target.
+	Status string `pulumi:"status"`
+	// The member account ID in resource directory.
+	TargetId string `pulumi:"targetId"`
+}
+
+// GetSharedTargetsTargetInput is an input type that accepts GetSharedTargetsTargetArgs and GetSharedTargetsTargetOutput values.
+// You can construct a concrete instance of `GetSharedTargetsTargetInput` via:
+//
+//          GetSharedTargetsTargetArgs{...}
+type GetSharedTargetsTargetInput interface {
+	pulumi.Input
+
+	ToGetSharedTargetsTargetOutput() GetSharedTargetsTargetOutput
+	ToGetSharedTargetsTargetOutputWithContext(context.Context) GetSharedTargetsTargetOutput
+}
+
+type GetSharedTargetsTargetArgs struct {
+	// The ID of the Shared Target.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The resource shared ID of resource manager.
+	ResourceShareId pulumi.StringInput `pulumi:"resourceShareId"`
+	// The status of shared target.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The member account ID in resource directory.
+	TargetId pulumi.StringInput `pulumi:"targetId"`
+}
+
+func (GetSharedTargetsTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSharedTargetsTarget)(nil)).Elem()
+}
+
+func (i GetSharedTargetsTargetArgs) ToGetSharedTargetsTargetOutput() GetSharedTargetsTargetOutput {
+	return i.ToGetSharedTargetsTargetOutputWithContext(context.Background())
+}
+
+func (i GetSharedTargetsTargetArgs) ToGetSharedTargetsTargetOutputWithContext(ctx context.Context) GetSharedTargetsTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSharedTargetsTargetOutput)
+}
+
+// GetSharedTargetsTargetArrayInput is an input type that accepts GetSharedTargetsTargetArray and GetSharedTargetsTargetArrayOutput values.
+// You can construct a concrete instance of `GetSharedTargetsTargetArrayInput` via:
+//
+//          GetSharedTargetsTargetArray{ GetSharedTargetsTargetArgs{...} }
+type GetSharedTargetsTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetSharedTargetsTargetArrayOutput() GetSharedTargetsTargetArrayOutput
+	ToGetSharedTargetsTargetArrayOutputWithContext(context.Context) GetSharedTargetsTargetArrayOutput
+}
+
+type GetSharedTargetsTargetArray []GetSharedTargetsTargetInput
+
+func (GetSharedTargetsTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSharedTargetsTarget)(nil)).Elem()
+}
+
+func (i GetSharedTargetsTargetArray) ToGetSharedTargetsTargetArrayOutput() GetSharedTargetsTargetArrayOutput {
+	return i.ToGetSharedTargetsTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetSharedTargetsTargetArray) ToGetSharedTargetsTargetArrayOutputWithContext(ctx context.Context) GetSharedTargetsTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSharedTargetsTargetArrayOutput)
+}
+
+type GetSharedTargetsTargetOutput struct{ *pulumi.OutputState }
+
+func (GetSharedTargetsTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSharedTargetsTarget)(nil)).Elem()
+}
+
+func (o GetSharedTargetsTargetOutput) ToGetSharedTargetsTargetOutput() GetSharedTargetsTargetOutput {
+	return o
+}
+
+func (o GetSharedTargetsTargetOutput) ToGetSharedTargetsTargetOutputWithContext(ctx context.Context) GetSharedTargetsTargetOutput {
+	return o
+}
+
+// The ID of the Shared Target.
+func (o GetSharedTargetsTargetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedTargetsTarget) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The resource shared ID of resource manager.
+func (o GetSharedTargetsTargetOutput) ResourceShareId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedTargetsTarget) string { return v.ResourceShareId }).(pulumi.StringOutput)
+}
+
+// The status of shared target.
+func (o GetSharedTargetsTargetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedTargetsTarget) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The member account ID in resource directory.
+func (o GetSharedTargetsTargetOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedTargetsTarget) string { return v.TargetId }).(pulumi.StringOutput)
+}
+
+type GetSharedTargetsTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSharedTargetsTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSharedTargetsTarget)(nil)).Elem()
+}
+
+func (o GetSharedTargetsTargetArrayOutput) ToGetSharedTargetsTargetArrayOutput() GetSharedTargetsTargetArrayOutput {
+	return o
+}
+
+func (o GetSharedTargetsTargetArrayOutput) ToGetSharedTargetsTargetArrayOutputWithContext(ctx context.Context) GetSharedTargetsTargetArrayOutput {
+	return o
+}
+
+func (o GetSharedTargetsTargetArrayOutput) Index(i pulumi.IntInput) GetSharedTargetsTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSharedTargetsTarget {
+		return vs[0].([]GetSharedTargetsTarget)[vs[1].(int)]
+	}).(GetSharedTargetsTargetOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusOutput{})
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusArrayOutput{})
@@ -1509,6 +1899,12 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceDirectoriesDirectoryArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceSharesShareOutput{})
+	pulumi.RegisterOutputType(GetResourceSharesShareArrayOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetSharedResourcesResourceOutput{})
+	pulumi.RegisterOutputType(GetSharedResourcesResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetSharedTargetsTargetOutput{})
+	pulumi.RegisterOutputType(GetSharedTargetsTargetArrayOutput{})
 }

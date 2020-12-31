@@ -7,29 +7,29 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.PrivateLink.Outputs
+namespace Pulumi.AliCloud.Eci.Outputs
 {
 
     [OutputType]
-    public sealed class VpcEndpointZone
+    public sealed class ContainerGroupEciSecurityContextSysctl
     {
         /// <summary>
-        /// To create the vswitch of the terminal node network card in the available zone.
+        /// The name of the mounted volume.
         /// </summary>
-        public readonly string? VswitchId;
+        public readonly string? Name;
         /// <summary>
-        /// Availability zone corresponding to terminal node service.
+        /// The value of the variable. The value can be 0 to 256 characters in length.
         /// </summary>
-        public readonly string? ZoneId;
+        public readonly string? Value;
 
         [OutputConstructor]
-        private VpcEndpointZone(
-            string? vswitchId,
+        private ContainerGroupEciSecurityContextSysctl(
+            string? name,
 
-            string? zoneId)
+            string? value)
         {
-            VswitchId = vswitchId;
-            ZoneId = zoneId;
+            Name = name;
+            Value = value;
         }
     }
 }

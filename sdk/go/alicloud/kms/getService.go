@@ -47,7 +47,7 @@ func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getService.
 type GetServiceArgs struct {
-	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off".
+	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
 	Enable *string `pulumi:"enable"`
 }
 

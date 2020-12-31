@@ -43,6 +43,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Ess;
         public readonly string? Fc;
         public readonly string? Fnf;
+        public readonly string? Ga;
         public readonly string? Gpdb;
         public readonly string? Kms;
         public readonly string? Kvstore;
@@ -64,6 +65,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Ram;
         public readonly string? Rds;
         public readonly string? Resourcemanager;
+        public readonly string? Resourcesharing;
         public readonly string? Ros;
         public readonly string? Slb;
         public readonly string? Sts;
@@ -132,6 +134,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? fnf,
 
+            string? ga,
+
             string? gpdb,
 
             string? kms,
@@ -174,6 +178,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? resourcemanager,
 
+            string? resourcesharing,
+
             string? ros,
 
             string? slb,
@@ -214,6 +220,7 @@ namespace Pulumi.AliCloud.Outputs
             Ess = ess;
             Fc = fc;
             Fnf = fnf;
+            Ga = ga;
             Gpdb = gpdb;
             Kms = kms;
             Kvstore = kvstore;
@@ -235,6 +242,7 @@ namespace Pulumi.AliCloud.Outputs
             Ram = ram;
             Rds = rds;
             Resourcemanager = resourcemanager;
+            Resourcesharing = resourcesharing;
             Ros = ros;
             Slb = slb;
             Sts = sts;

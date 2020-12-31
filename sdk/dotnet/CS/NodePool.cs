@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
     /// 
     /// &gt; **NOTE:** From version 1.109.1, support remove node pool nodes.
+    /// 
+    /// &gt; **NOTE:** From version 1.111.0, support auto scaling node pool.
     /// </summary>
     public partial class NodePool : Pulumi.CustomResource
     {
@@ -72,7 +74,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The worker node number of the node pool.
+        /// The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         /// </summary>
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -88,6 +90,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// Auto scaling node pool configuration. For more details, see `scaling_config`.
+        /// </summary>
+        [Output("scalingConfig")]
+        public Output<Outputs.NodePoolScalingConfig> ScalingConfig { get; private set; } = null!;
 
         /// <summary>
         /// (Available in 1.105.0+) Id of the Scaling Group.
@@ -260,10 +268,10 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The worker node number of the node pool.
+        /// The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         /// </summary>
-        [Input("nodeCount", required: true)]
-        public Input<int> NodeCount { get; set; } = null!;
+        [Input("nodeCount")]
+        public Input<int>? NodeCount { get; set; }
 
         /// <summary>
         /// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
@@ -276,6 +284,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Auto scaling node pool configuration. For more details, see `scaling_config`.
+        /// </summary>
+        [Input("scalingConfig")]
+        public Input<Inputs.NodePoolScalingConfigArgs>? ScalingConfig { get; set; }
 
         /// <summary>
         /// The system disk size of worker node.
@@ -415,7 +429,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The worker node number of the node pool.
+        /// The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -431,6 +445,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Auto scaling node pool configuration. For more details, see `scaling_config`.
+        /// </summary>
+        [Input("scalingConfig")]
+        public Input<Inputs.NodePoolScalingConfigGetArgs>? ScalingConfig { get; set; }
 
         /// <summary>
         /// (Available in 1.105.0+) Id of the Scaling Group.
