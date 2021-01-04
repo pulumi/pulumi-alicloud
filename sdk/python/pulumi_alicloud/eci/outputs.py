@@ -10,11 +10,949 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'ContainerGroupContainer',
+    'ContainerGroupContainerEnvironmentVar',
+    'ContainerGroupContainerPort',
+    'ContainerGroupContainerVolumeMount',
+    'ContainerGroupDnsConfig',
+    'ContainerGroupDnsConfigOption',
+    'ContainerGroupEciSecurityContext',
+    'ContainerGroupEciSecurityContextSysctl',
+    'ContainerGroupHostAlias',
+    'ContainerGroupInitContainer',
+    'ContainerGroupInitContainerEnvironmentVar',
+    'ContainerGroupInitContainerPort',
+    'ContainerGroupInitContainerVolumeMount',
+    'ContainerGroupVolume',
+    'ContainerGroupVolumeConfigFileVolumeConfigFileToPath',
     'ImageCacheImageRegistryCredential',
     'OpenApiImageCacheImageRegistryCredential',
+    'GetContainerGroupsGroupResult',
+    'GetContainerGroupsGroupContainerResult',
+    'GetContainerGroupsGroupContainerEnvironmentVarResult',
+    'GetContainerGroupsGroupContainerPortResult',
+    'GetContainerGroupsGroupContainerVolumeMountResult',
+    'GetContainerGroupsGroupDnsConfigResult',
+    'GetContainerGroupsGroupDnsConfigOptionResult',
+    'GetContainerGroupsGroupEciSecurityContextResult',
+    'GetContainerGroupsGroupEciSecurityContextSysctlResult',
+    'GetContainerGroupsGroupEventResult',
+    'GetContainerGroupsGroupHostAliasResult',
+    'GetContainerGroupsGroupInitContainerResult',
+    'GetContainerGroupsGroupInitContainerEnvironmentVarResult',
+    'GetContainerGroupsGroupInitContainerPortResult',
+    'GetContainerGroupsGroupInitContainerVolumeMountResult',
+    'GetContainerGroupsGroupVolumeResult',
+    'GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathResult',
     'GetImageCachesCachResult',
     'GetImageCachesCachEventResult',
 ]
+
+@pulumi.output_type
+class ContainerGroupContainer(dict):
+    def __init__(__self__, *,
+                 image: str,
+                 name: str,
+                 args: Optional[Sequence[str]] = None,
+                 commands: Optional[Sequence[str]] = None,
+                 cpu: Optional[float] = None,
+                 environment_vars: Optional[Sequence['outputs.ContainerGroupContainerEnvironmentVar']] = None,
+                 gpu: Optional[int] = None,
+                 image_pull_policy: Optional[str] = None,
+                 memory: Optional[float] = None,
+                 ports: Optional[Sequence['outputs.ContainerGroupContainerPort']] = None,
+                 ready: Optional[bool] = None,
+                 restart_count: Optional[int] = None,
+                 volume_mounts: Optional[Sequence['outputs.ContainerGroupContainerVolumeMount']] = None,
+                 working_dir: Optional[str] = None):
+        """
+        :param str image: The image of the container.
+        :param str name: The name of the mounted volume.
+        :param Sequence[str] args: The arguments passed to the commands.
+        :param Sequence[str] commands: The commands run by the init container.
+        :param float cpu: The amount of CPU resources allocated to the container.
+        :param Sequence['ContainerGroupContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars.
+        :param int gpu: The number GPUs.
+        :param str image_pull_policy: The restart policy of the image.
+        :param float memory: The amount of memory resources allocated to the container.
+        :param Sequence['ContainerGroupContainerPortArgs'] ports: The structure of port.
+        :param Sequence['ContainerGroupContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts.
+        :param str working_dir: The working directory of the container.
+        """
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "name", name)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if environment_vars is not None:
+            pulumi.set(__self__, "environment_vars", environment_vars)
+        if gpu is not None:
+            pulumi.set(__self__, "gpu", gpu)
+        if image_pull_policy is not None:
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if ready is not None:
+            pulumi.set(__self__, "ready", ready)
+        if restart_count is not None:
+            pulumi.set(__self__, "restart_count", restart_count)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
+        """
+        The image of the container.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        The arguments passed to the commands.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        The commands run by the init container.
+        """
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[float]:
+        """
+        The amount of CPU resources allocated to the container.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Optional[Sequence['outputs.ContainerGroupContainerEnvironmentVar']]:
+        """
+        The structure of environmentVars.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @property
+    @pulumi.getter
+    def gpu(self) -> Optional[int]:
+        """
+        The number GPUs.
+        """
+        return pulumi.get(self, "gpu")
+
+    @property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> Optional[str]:
+        """
+        The restart policy of the image.
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[float]:
+        """
+        The amount of memory resources allocated to the container.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence['outputs.ContainerGroupContainerPort']]:
+        """
+        The structure of port.
+        """
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def ready(self) -> Optional[bool]:
+        return pulumi.get(self, "ready")
+
+    @property
+    @pulumi.getter(name="restartCount")
+    def restart_count(self) -> Optional[int]:
+        return pulumi.get(self, "restart_count")
+
+    @property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Optional[Sequence['outputs.ContainerGroupContainerVolumeMount']]:
+        """
+        The structure of volumeMounts.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> Optional[str]:
+        """
+        The working directory of the container.
+        """
+        return pulumi.get(self, "working_dir")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupContainerEnvironmentVar(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
+        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        return pulumi.get(self, "value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupContainerPort(dict):
+    def __init__(__self__, *,
+                 port: Optional[int] = None,
+                 protocol: Optional[str] = None):
+        """
+        :param int port: The port number. Valid values: 1 to 65535.
+        :param str protocol: Valid values: TCP and UDP.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port number. Valid values: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        Valid values: TCP and UDP.
+        """
+        return pulumi.get(self, "protocol")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupContainerVolumeMount(dict):
+    def __init__(__self__, *,
+                 mount_path: Optional[str] = None,
+                 name: Optional[str] = None,
+                 read_only: Optional[bool] = None):
+        """
+        :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+        :param str name: The name of the mounted volume.
+        :param bool read_only: Default to `false`.
+        """
+        if mount_path is not None:
+            pulumi.set(__self__, "mount_path", mount_path)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> Optional[str]:
+        """
+        The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        """
+        Default to `false`.
+        """
+        return pulumi.get(self, "read_only")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupDnsConfig(dict):
+    def __init__(__self__, *,
+                 name_servers: Optional[Sequence[str]] = None,
+                 options: Optional[Sequence['outputs.ContainerGroupDnsConfigOption']] = None,
+                 searches: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] name_servers: The list of DNS server IP addresses.
+        :param Sequence['ContainerGroupDnsConfigOptionArgs'] options: The structure of options.
+        :param Sequence[str] searches: The list of DNS lookup domains.
+        """
+        if name_servers is not None:
+            pulumi.set(__self__, "name_servers", name_servers)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if searches is not None:
+            pulumi.set(__self__, "searches", searches)
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Optional[Sequence[str]]:
+        """
+        The list of DNS server IP addresses.
+        """
+        return pulumi.get(self, "name_servers")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[Sequence['outputs.ContainerGroupDnsConfigOption']]:
+        """
+        The structure of options.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
+    def searches(self) -> Optional[Sequence[str]]:
+        """
+        The list of DNS lookup domains.
+        """
+        return pulumi.get(self, "searches")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupDnsConfigOption(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: The name of the mounted volume.
+        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        return pulumi.get(self, "value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupEciSecurityContext(dict):
+    def __init__(__self__, *,
+                 sysctls: Optional[Sequence['outputs.ContainerGroupEciSecurityContextSysctl']] = None):
+        if sysctls is not None:
+            pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Optional[Sequence['outputs.ContainerGroupEciSecurityContextSysctl']]:
+        return pulumi.get(self, "sysctls")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupEciSecurityContextSysctl(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: The name of the mounted volume.
+        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        return pulumi.get(self, "value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupHostAlias(dict):
+    def __init__(__self__, *,
+                 hostnames: Optional[Sequence[str]] = None,
+                 ip: Optional[str] = None):
+        """
+        :param Sequence[str] hostnames: Adds a host name.
+        :param str ip: Adds an IP address.
+        """
+        if hostnames is not None:
+            pulumi.set(__self__, "hostnames", hostnames)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> Optional[Sequence[str]]:
+        """
+        Adds a host name.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        Adds an IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupInitContainer(dict):
+    def __init__(__self__, *,
+                 args: Optional[Sequence[str]] = None,
+                 commands: Optional[Sequence[str]] = None,
+                 cpu: Optional[float] = None,
+                 environment_vars: Optional[Sequence['outputs.ContainerGroupInitContainerEnvironmentVar']] = None,
+                 gpu: Optional[int] = None,
+                 image: Optional[str] = None,
+                 image_pull_policy: Optional[str] = None,
+                 memory: Optional[float] = None,
+                 name: Optional[str] = None,
+                 ports: Optional[Sequence['outputs.ContainerGroupInitContainerPort']] = None,
+                 ready: Optional[bool] = None,
+                 restart_count: Optional[int] = None,
+                 volume_mounts: Optional[Sequence['outputs.ContainerGroupInitContainerVolumeMount']] = None,
+                 working_dir: Optional[str] = None):
+        """
+        :param Sequence[str] args: The arguments passed to the commands.
+        :param Sequence[str] commands: The commands run by the init container.
+        :param float cpu: The amount of CPU resources allocated to the container.
+        :param Sequence['ContainerGroupInitContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars.
+        :param int gpu: The number GPUs.
+        :param str image: The image of the container.
+        :param str image_pull_policy: The restart policy of the image.
+        :param float memory: The amount of memory resources allocated to the container.
+        :param str name: The name of the mounted volume.
+        :param Sequence['ContainerGroupInitContainerPortArgs'] ports: The structure of port.
+        :param Sequence['ContainerGroupInitContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts.
+        :param str working_dir: The working directory of the container.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if environment_vars is not None:
+            pulumi.set(__self__, "environment_vars", environment_vars)
+        if gpu is not None:
+            pulumi.set(__self__, "gpu", gpu)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_pull_policy is not None:
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if ready is not None:
+            pulumi.set(__self__, "ready", ready)
+        if restart_count is not None:
+            pulumi.set(__self__, "restart_count", restart_count)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        The arguments passed to the commands.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        The commands run by the init container.
+        """
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[float]:
+        """
+        The amount of CPU resources allocated to the container.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Optional[Sequence['outputs.ContainerGroupInitContainerEnvironmentVar']]:
+        """
+        The structure of environmentVars.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @property
+    @pulumi.getter
+    def gpu(self) -> Optional[int]:
+        """
+        The number GPUs.
+        """
+        return pulumi.get(self, "gpu")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        """
+        The image of the container.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> Optional[str]:
+        """
+        The restart policy of the image.
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[float]:
+        """
+        The amount of memory resources allocated to the container.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence['outputs.ContainerGroupInitContainerPort']]:
+        """
+        The structure of port.
+        """
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def ready(self) -> Optional[bool]:
+        return pulumi.get(self, "ready")
+
+    @property
+    @pulumi.getter(name="restartCount")
+    def restart_count(self) -> Optional[int]:
+        return pulumi.get(self, "restart_count")
+
+    @property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Optional[Sequence['outputs.ContainerGroupInitContainerVolumeMount']]:
+        """
+        The structure of volumeMounts.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> Optional[str]:
+        """
+        The working directory of the container.
+        """
+        return pulumi.get(self, "working_dir")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupInitContainerEnvironmentVar(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
+        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        return pulumi.get(self, "value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupInitContainerPort(dict):
+    def __init__(__self__, *,
+                 port: Optional[int] = None,
+                 protocol: Optional[str] = None):
+        """
+        :param int port: The port number. Valid values: 1 to 65535.
+        :param str protocol: Valid values: TCP and UDP.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port number. Valid values: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        Valid values: TCP and UDP.
+        """
+        return pulumi.get(self, "protocol")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupInitContainerVolumeMount(dict):
+    def __init__(__self__, *,
+                 mount_path: Optional[str] = None,
+                 name: Optional[str] = None,
+                 read_only: Optional[bool] = None):
+        """
+        :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+        :param str name: The name of the mounted volume.
+        :param bool read_only: Default to `false`.
+        """
+        if mount_path is not None:
+            pulumi.set(__self__, "mount_path", mount_path)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> Optional[str]:
+        """
+        The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        """
+        Default to `false`.
+        """
+        return pulumi.get(self, "read_only")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupVolume(dict):
+    def __init__(__self__, *,
+                 config_file_volume_config_file_to_paths: Optional[Sequence['outputs.ContainerGroupVolumeConfigFileVolumeConfigFileToPath']] = None,
+                 disk_volume_disk_id: Optional[str] = None,
+                 disk_volume_fs_type: Optional[str] = None,
+                 flex_volume_driver: Optional[str] = None,
+                 flex_volume_fs_type: Optional[str] = None,
+                 flex_volume_options: Optional[str] = None,
+                 name: Optional[str] = None,
+                 nfs_volume_path: Optional[str] = None,
+                 nfs_volume_read_only: Optional[bool] = None,
+                 nfs_volume_server: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param Sequence['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs'] config_file_volume_config_file_to_paths: ConfigFileVolumeConfigFileToPaths.
+        :param str disk_volume_disk_id: The ID of DiskVolume.
+        :param str disk_volume_fs_type: The system type of DiskVolume.
+        :param str flex_volume_driver: The name of the FlexVolume driver.
+        :param str flex_volume_fs_type: The type of the mounted file system. The default value is determined by the script of FlexVolume.
+        :param str flex_volume_options: The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
+        :param str name: The name of the mounted volume.
+        :param str nfs_volume_path: The path to the NFS volume.
+        :param bool nfs_volume_read_only: The nfs volume read only. Default to `false`.
+        :param str nfs_volume_server: The address of the NFS server.
+        :param str type: The type of the volume.
+        """
+        if config_file_volume_config_file_to_paths is not None:
+            pulumi.set(__self__, "config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
+        if disk_volume_disk_id is not None:
+            pulumi.set(__self__, "disk_volume_disk_id", disk_volume_disk_id)
+        if disk_volume_fs_type is not None:
+            pulumi.set(__self__, "disk_volume_fs_type", disk_volume_fs_type)
+        if flex_volume_driver is not None:
+            pulumi.set(__self__, "flex_volume_driver", flex_volume_driver)
+        if flex_volume_fs_type is not None:
+            pulumi.set(__self__, "flex_volume_fs_type", flex_volume_fs_type)
+        if flex_volume_options is not None:
+            pulumi.set(__self__, "flex_volume_options", flex_volume_options)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nfs_volume_path is not None:
+            pulumi.set(__self__, "nfs_volume_path", nfs_volume_path)
+        if nfs_volume_read_only is not None:
+            pulumi.set(__self__, "nfs_volume_read_only", nfs_volume_read_only)
+        if nfs_volume_server is not None:
+            pulumi.set(__self__, "nfs_volume_server", nfs_volume_server)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="configFileVolumeConfigFileToPaths")
+    def config_file_volume_config_file_to_paths(self) -> Optional[Sequence['outputs.ContainerGroupVolumeConfigFileVolumeConfigFileToPath']]:
+        """
+        ConfigFileVolumeConfigFileToPaths.
+        """
+        return pulumi.get(self, "config_file_volume_config_file_to_paths")
+
+    @property
+    @pulumi.getter(name="diskVolumeDiskId")
+    def disk_volume_disk_id(self) -> Optional[str]:
+        """
+        The ID of DiskVolume.
+        """
+        return pulumi.get(self, "disk_volume_disk_id")
+
+    @property
+    @pulumi.getter(name="diskVolumeFsType")
+    def disk_volume_fs_type(self) -> Optional[str]:
+        """
+        The system type of DiskVolume.
+        """
+        return pulumi.get(self, "disk_volume_fs_type")
+
+    @property
+    @pulumi.getter(name="flexVolumeDriver")
+    def flex_volume_driver(self) -> Optional[str]:
+        """
+        The name of the FlexVolume driver.
+        """
+        return pulumi.get(self, "flex_volume_driver")
+
+    @property
+    @pulumi.getter(name="flexVolumeFsType")
+    def flex_volume_fs_type(self) -> Optional[str]:
+        """
+        The type of the mounted file system. The default value is determined by the script of FlexVolume.
+        """
+        return pulumi.get(self, "flex_volume_fs_type")
+
+    @property
+    @pulumi.getter(name="flexVolumeOptions")
+    def flex_volume_options(self) -> Optional[str]:
+        """
+        The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
+        """
+        return pulumi.get(self, "flex_volume_options")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nfsVolumePath")
+    def nfs_volume_path(self) -> Optional[str]:
+        """
+        The path to the NFS volume.
+        """
+        return pulumi.get(self, "nfs_volume_path")
+
+    @property
+    @pulumi.getter(name="nfsVolumeReadOnly")
+    def nfs_volume_read_only(self) -> Optional[bool]:
+        """
+        The nfs volume read only. Default to `false`.
+        """
+        return pulumi.get(self, "nfs_volume_read_only")
+
+    @property
+    @pulumi.getter(name="nfsVolumeServer")
+    def nfs_volume_server(self) -> Optional[str]:
+        """
+        The address of the NFS server.
+        """
+        return pulumi.get(self, "nfs_volume_server")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of the volume.
+        """
+        return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContainerGroupVolumeConfigFileVolumeConfigFileToPath(dict):
+    def __init__(__self__, *,
+                 content: Optional[str] = None,
+                 path: Optional[str] = None):
+        """
+        :param str content: The content of the configuration file. Maximum size: 32 KB.
+        :param str path: The relative file path.
+        """
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[str]:
+        """
+        The content of the configuration file. Maximum size: 32 KB.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The relative file path.
+        """
+        return pulumi.get(self, "path")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class ImageCacheImageRegistryCredential(dict):
@@ -92,6 +1030,1243 @@ class OpenApiImageCacheImageRegistryCredential(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 container_group_id: str,
+                 container_group_name: str,
+                 containers: Sequence['outputs.GetContainerGroupsGroupContainerResult'],
+                 cpu: float,
+                 discount: int,
+                 dns_configs: Sequence['outputs.GetContainerGroupsGroupDnsConfigResult'],
+                 eci_security_contexts: Sequence['outputs.GetContainerGroupsGroupEciSecurityContextResult'],
+                 eni_instance_id: str,
+                 events: Sequence['outputs.GetContainerGroupsGroupEventResult'],
+                 expired_time: str,
+                 failed_time: str,
+                 host_aliases: Sequence['outputs.GetContainerGroupsGroupHostAliasResult'],
+                 id: str,
+                 init_containers: Sequence['outputs.GetContainerGroupsGroupInitContainerResult'],
+                 instance_type: str,
+                 internet_ip: str,
+                 intranet_ip: str,
+                 ipv6_address: str,
+                 memory: float,
+                 ram_role_name: str,
+                 resource_group_id: str,
+                 restart_policy: str,
+                 security_group_id: str,
+                 status: str,
+                 succeeded_time: str,
+                 tags: Mapping[str, Any],
+                 volumes: Sequence['outputs.GetContainerGroupsGroupVolumeResult'],
+                 vpc_id: str,
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param str container_group_id: The id if ContainerGroup.
+        :param str container_group_name: The name of ContainerGroup.
+        :param Sequence['GetContainerGroupsGroupContainerArgs'] containers: A list of containers. Each element contains the following attributes:
+        :param float cpu: The amount of CPU resources allocated to the container.
+        :param Sequence['GetContainerGroupsGroupDnsConfigArgs'] dns_configs: The DNS settings.
+        :param Sequence['GetContainerGroupsGroupEciSecurityContextArgs'] eci_security_contexts: The security context of the container group.
+        :param str eni_instance_id: The ID of the ENI instance.
+        :param Sequence['GetContainerGroupsGroupEventArgs'] events: The events of the container group. Maximum: `50`.
+        :param str expired_time: The time when the container group failed to run due to overdue payments. The timestamp follows the UTC and RFC3339 formats.
+        :param str failed_time: The time when the container failed to run tasks. The timestamp follows the UTC and RFC3339 formats.
+        :param Sequence['GetContainerGroupsGroupHostAliasArgs'] host_aliases: The mapping between host names and IP addresses for a container in the container group.
+        :param str id: The ID of the Container Group.
+        :param Sequence['GetContainerGroupsGroupInitContainerArgs'] init_containers: A list of init containers. Each element contains the following attributes:
+        :param str instance_type: The type of the ECS instance.
+        :param str internet_ip: The public IP address of the container group.
+        :param str intranet_ip: The internal IP address of the container group.
+        :param str ipv6_address: The IPv6 address.
+        :param float memory: The amount of memory resources allocated to the container group.
+        :param str ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
+        :param str resource_group_id: The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
+        :param str restart_policy: The restart policy of the container group.
+        :param str security_group_id: The ID of the security group.
+        :param str status: The status of container.
+        :param str succeeded_time: The time when all containers in the container group completed running the specified tasks. The timestamp follows the UTC and RFC 3339 formats. For example, 2018-08-02T15:00:00Z.
+        :param Mapping[str, Any] tags: The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+        :param Sequence['GetContainerGroupsGroupVolumeArgs'] volumes: The information about the mounted volume. You can mount up to 20 volumes.
+        :param str vpc_id: The if of vpc.
+        :param str vswitch_id: The vswitch id.
+        :param str zone_id: The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+        """
+        pulumi.set(__self__, "container_group_id", container_group_id)
+        pulumi.set(__self__, "container_group_name", container_group_name)
+        pulumi.set(__self__, "containers", containers)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "discount", discount)
+        pulumi.set(__self__, "dns_configs", dns_configs)
+        pulumi.set(__self__, "eci_security_contexts", eci_security_contexts)
+        pulumi.set(__self__, "eni_instance_id", eni_instance_id)
+        pulumi.set(__self__, "events", events)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "failed_time", failed_time)
+        pulumi.set(__self__, "host_aliases", host_aliases)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "init_containers", init_containers)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_ip", internet_ip)
+        pulumi.set(__self__, "intranet_ip", intranet_ip)
+        pulumi.set(__self__, "ipv6_address", ipv6_address)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "ram_role_name", ram_role_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "restart_policy", restart_policy)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "succeeded_time", succeeded_time)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "volumes", volumes)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="containerGroupId")
+    def container_group_id(self) -> str:
+        """
+        The id if ContainerGroup.
+        """
+        return pulumi.get(self, "container_group_id")
+
+    @property
+    @pulumi.getter(name="containerGroupName")
+    def container_group_name(self) -> str:
+        """
+        The name of ContainerGroup.
+        """
+        return pulumi.get(self, "container_group_name")
+
+    @property
+    @pulumi.getter
+    def containers(self) -> Sequence['outputs.GetContainerGroupsGroupContainerResult']:
+        """
+        A list of containers. Each element contains the following attributes:
+        """
+        return pulumi.get(self, "containers")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> float:
+        """
+        The amount of CPU resources allocated to the container.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def discount(self) -> int:
+        return pulumi.get(self, "discount")
+
+    @property
+    @pulumi.getter(name="dnsConfigs")
+    def dns_configs(self) -> Sequence['outputs.GetContainerGroupsGroupDnsConfigResult']:
+        """
+        The DNS settings.
+        """
+        return pulumi.get(self, "dns_configs")
+
+    @property
+    @pulumi.getter(name="eciSecurityContexts")
+    def eci_security_contexts(self) -> Sequence['outputs.GetContainerGroupsGroupEciSecurityContextResult']:
+        """
+        The security context of the container group.
+        """
+        return pulumi.get(self, "eci_security_contexts")
+
+    @property
+    @pulumi.getter(name="eniInstanceId")
+    def eni_instance_id(self) -> str:
+        """
+        The ID of the ENI instance.
+        """
+        return pulumi.get(self, "eni_instance_id")
+
+    @property
+    @pulumi.getter
+    def events(self) -> Sequence['outputs.GetContainerGroupsGroupEventResult']:
+        """
+        The events of the container group. Maximum: `50`.
+        """
+        return pulumi.get(self, "events")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        The time when the container group failed to run due to overdue payments. The timestamp follows the UTC and RFC3339 formats.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="failedTime")
+    def failed_time(self) -> str:
+        """
+        The time when the container failed to run tasks. The timestamp follows the UTC and RFC3339 formats.
+        """
+        return pulumi.get(self, "failed_time")
+
+    @property
+    @pulumi.getter(name="hostAliases")
+    def host_aliases(self) -> Sequence['outputs.GetContainerGroupsGroupHostAliasResult']:
+        """
+        The mapping between host names and IP addresses for a container in the container group.
+        """
+        return pulumi.get(self, "host_aliases")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Container Group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="initContainers")
+    def init_containers(self) -> Sequence['outputs.GetContainerGroupsGroupInitContainerResult']:
+        """
+        A list of init containers. Each element contains the following attributes:
+        """
+        return pulumi.get(self, "init_containers")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The type of the ECS instance.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> str:
+        """
+        The public IP address of the container group.
+        """
+        return pulumi.get(self, "internet_ip")
+
+    @property
+    @pulumi.getter(name="intranetIp")
+    def intranet_ip(self) -> str:
+        """
+        The internal IP address of the container group.
+        """
+        return pulumi.get(self, "intranet_ip")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> str:
+        """
+        The IPv6 address.
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> float:
+        """
+        The amount of memory resources allocated to the container group.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> str:
+        """
+        The RAM role that the container group assumes. ECI and ECS share the same RAM role.
+        """
+        return pulumi.get(self, "ram_role_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="restartPolicy")
+    def restart_policy(self) -> str:
+        """
+        The restart policy of the container group.
+        """
+        return pulumi.get(self, "restart_policy")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of container.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="succeededTime")
+    def succeeded_time(self) -> str:
+        """
+        The time when all containers in the container group completed running the specified tasks. The timestamp follows the UTC and RFC 3339 formats. For example, 2018-08-02T15:00:00Z.
+        """
+        return pulumi.get(self, "succeeded_time")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Sequence['outputs.GetContainerGroupsGroupVolumeResult']:
+        """
+        The information about the mounted volume. You can mount up to 20 volumes.
+        """
+        return pulumi.get(self, "volumes")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The if of vpc.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupContainerResult(dict):
+    def __init__(__self__, *,
+                 args: Sequence[str],
+                 commands: Sequence[str],
+                 cpu: float,
+                 environment_vars: Sequence['outputs.GetContainerGroupsGroupContainerEnvironmentVarResult'],
+                 gpu: int,
+                 image: str,
+                 image_pull_policy: str,
+                 memory: float,
+                 name: str,
+                 ports: Sequence['outputs.GetContainerGroupsGroupContainerPortResult'],
+                 ready: bool,
+                 restart_count: int,
+                 volume_mounts: Sequence['outputs.GetContainerGroupsGroupContainerVolumeMountResult'],
+                 working_dir: str):
+        """
+        :param Sequence[str] args: The arguments passed to the commands.
+        :param Sequence[str] commands: The commands run by the container.
+        :param float cpu: The amount of CPU resources allocated to the container.
+        :param Sequence['GetContainerGroupsGroupContainerEnvironmentVarArgs'] environment_vars: The environment variables.
+        :param int gpu: The amount of GPU resources allocated to the container.
+        :param str image: The image of the container.
+        :param str image_pull_policy: The policy for pulling an image.
+        :param float memory: The amount of memory resources allocated to the container group.
+        :param str name: The name of the volume.
+        :param Sequence['GetContainerGroupsGroupContainerPortArgs'] ports: The exposed ports and protocols. Maximum: `100`.
+        :param bool ready: Indicates whether the container is ready.
+        :param int restart_count: The number of times that the container has restarted.
+        :param Sequence['GetContainerGroupsGroupContainerVolumeMountArgs'] volume_mounts: The list of volumes mounted to the container.
+        :param str working_dir: The working directory of the container.
+        """
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "commands", commands)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "environment_vars", environment_vars)
+        pulumi.set(__self__, "gpu", gpu)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "ready", ready)
+        pulumi.set(__self__, "restart_count", restart_count)
+        pulumi.set(__self__, "volume_mounts", volume_mounts)
+        pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Sequence[str]:
+        """
+        The arguments passed to the commands.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Sequence[str]:
+        """
+        The commands run by the container.
+        """
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> float:
+        """
+        The amount of CPU resources allocated to the container.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Sequence['outputs.GetContainerGroupsGroupContainerEnvironmentVarResult']:
+        """
+        The environment variables.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @property
+    @pulumi.getter
+    def gpu(self) -> int:
+        """
+        The amount of GPU resources allocated to the container.
+        """
+        return pulumi.get(self, "gpu")
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
+        """
+        The image of the container.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> str:
+        """
+        The policy for pulling an image.
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> float:
+        """
+        The amount of memory resources allocated to the container group.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Sequence['outputs.GetContainerGroupsGroupContainerPortResult']:
+        """
+        The exposed ports and protocols. Maximum: `100`.
+        """
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def ready(self) -> bool:
+        """
+        Indicates whether the container is ready.
+        """
+        return pulumi.get(self, "ready")
+
+    @property
+    @pulumi.getter(name="restartCount")
+    def restart_count(self) -> int:
+        """
+        The number of times that the container has restarted.
+        """
+        return pulumi.get(self, "restart_count")
+
+    @property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Sequence['outputs.GetContainerGroupsGroupContainerVolumeMountResult']:
+        """
+        The list of volumes mounted to the container.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> str:
+        """
+        The working directory of the container.
+        """
+        return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupContainerEnvironmentVarResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: The name of the variable.
+        :param str value: The value of the variable.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The name of the variable.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the variable.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupContainerPortResult(dict):
+    def __init__(__self__, *,
+                 port: int,
+                 protocol: str):
+        """
+        :param int port: The port number. Valid values: 1 to 65535.
+        :param str protocol: Valid values: `TCP` and `UDP`.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port number. Valid values: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Valid values: `TCP` and `UDP`.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupContainerVolumeMountResult(dict):
+    def __init__(__self__, *,
+                 mount_path: str,
+                 name: str,
+                 read_only: bool):
+        """
+        :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+        :param str name: The name of the volume.
+        :param bool read_only: Default value: `false`.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        """
+        The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> bool:
+        """
+        Default value: `false`.
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupDnsConfigResult(dict):
+    def __init__(__self__, *,
+                 name_servers: Sequence[str],
+                 options: Sequence['outputs.GetContainerGroupsGroupDnsConfigOptionResult'],
+                 searches: Sequence[str]):
+        """
+        :param Sequence[str] name_servers: The list of DNS server IP addresses.
+        :param Sequence['GetContainerGroupsGroupDnsConfigOptionArgs'] options: The list of objects. Each object is a name-value pair. The value is optional.
+        :param Sequence[str] searches: The list of DNS lookup domains.
+        """
+        pulumi.set(__self__, "name_servers", name_servers)
+        pulumi.set(__self__, "options", options)
+        pulumi.set(__self__, "searches", searches)
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Sequence[str]:
+        """
+        The list of DNS server IP addresses.
+        """
+        return pulumi.get(self, "name_servers")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Sequence['outputs.GetContainerGroupsGroupDnsConfigOptionResult']:
+        """
+        The list of objects. Each object is a name-value pair. The value is optional.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
+    def searches(self) -> Sequence[str]:
+        """
+        The list of DNS lookup domains.
+        """
+        return pulumi.get(self, "searches")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupDnsConfigOptionResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: The name of the volume.
+        :param str value: The value of the variable.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the variable.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupEciSecurityContextResult(dict):
+    def __init__(__self__, *,
+                 sysctls: Sequence['outputs.GetContainerGroupsGroupEciSecurityContextSysctlResult']):
+        """
+        :param Sequence['GetContainerGroupsGroupEciSecurityContextSysctlArgs'] sysctls: The system information.
+        """
+        pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Sequence['outputs.GetContainerGroupsGroupEciSecurityContextSysctlResult']:
+        """
+        The system information.
+        """
+        return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupEciSecurityContextSysctlResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: The name of the volume.
+        :param str value: The value of the variable.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the variable.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupEventResult(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 first_timestamp: str,
+                 last_timestamp: str,
+                 message: str,
+                 name: str,
+                 reason: str,
+                 type: str):
+        """
+        :param int count: The number of events.
+        :param str first_timestamp: The time when the event started.
+        :param str last_timestamp: The time when the event ended.
+        :param str message: The content of the event.
+        :param str name: The name of the volume.
+        :param str reason: The name of the event.
+        :param str type: The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "first_timestamp", first_timestamp)
+        pulumi.set(__self__, "last_timestamp", last_timestamp)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "reason", reason)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        The number of events.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="firstTimestamp")
+    def first_timestamp(self) -> str:
+        """
+        The time when the event started.
+        """
+        return pulumi.get(self, "first_timestamp")
+
+    @property
+    @pulumi.getter(name="lastTimestamp")
+    def last_timestamp(self) -> str:
+        """
+        The time when the event ended.
+        """
+        return pulumi.get(self, "last_timestamp")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        The content of the event.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        The name of the event.
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupHostAliasResult(dict):
+    def __init__(__self__, *,
+                 hostnames: Sequence[str],
+                 ip: str):
+        """
+        :param Sequence[str] hostnames: The name of the host.
+        :param str ip: The IP address of the container.
+        """
+        pulumi.set(__self__, "hostnames", hostnames)
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> Sequence[str]:
+        """
+        The name of the host.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The IP address of the container.
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupInitContainerResult(dict):
+    def __init__(__self__, *,
+                 args: Sequence[str],
+                 commands: Sequence[str],
+                 cpu: float,
+                 environment_vars: Sequence['outputs.GetContainerGroupsGroupInitContainerEnvironmentVarResult'],
+                 gpu: int,
+                 image: str,
+                 image_pull_policy: str,
+                 memory: float,
+                 name: str,
+                 ports: Sequence['outputs.GetContainerGroupsGroupInitContainerPortResult'],
+                 ready: bool,
+                 restart_count: int,
+                 volume_mounts: Sequence['outputs.GetContainerGroupsGroupInitContainerVolumeMountResult'],
+                 working_dir: str):
+        """
+        :param Sequence[str] args: The arguments passed to the commands.
+        :param Sequence[str] commands: The commands run by the container.
+        :param float cpu: The amount of CPU resources allocated to the container.
+        :param Sequence['GetContainerGroupsGroupInitContainerEnvironmentVarArgs'] environment_vars: The environment variables.
+        :param int gpu: The amount of GPU resources allocated to the container.
+        :param str image: The image of the container.
+        :param str image_pull_policy: The policy for pulling an image.
+        :param float memory: The amount of memory resources allocated to the container group.
+        :param str name: The name of the volume.
+        :param Sequence['GetContainerGroupsGroupInitContainerPortArgs'] ports: The exposed ports and protocols. Maximum: `100`.
+        :param bool ready: Indicates whether the container is ready.
+        :param int restart_count: The number of times that the container has restarted.
+        :param Sequence['GetContainerGroupsGroupInitContainerVolumeMountArgs'] volume_mounts: The list of volumes mounted to the container.
+        :param str working_dir: The working directory of the container.
+        """
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "commands", commands)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "environment_vars", environment_vars)
+        pulumi.set(__self__, "gpu", gpu)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "ready", ready)
+        pulumi.set(__self__, "restart_count", restart_count)
+        pulumi.set(__self__, "volume_mounts", volume_mounts)
+        pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Sequence[str]:
+        """
+        The arguments passed to the commands.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Sequence[str]:
+        """
+        The commands run by the container.
+        """
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> float:
+        """
+        The amount of CPU resources allocated to the container.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Sequence['outputs.GetContainerGroupsGroupInitContainerEnvironmentVarResult']:
+        """
+        The environment variables.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @property
+    @pulumi.getter
+    def gpu(self) -> int:
+        """
+        The amount of GPU resources allocated to the container.
+        """
+        return pulumi.get(self, "gpu")
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
+        """
+        The image of the container.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> str:
+        """
+        The policy for pulling an image.
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> float:
+        """
+        The amount of memory resources allocated to the container group.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Sequence['outputs.GetContainerGroupsGroupInitContainerPortResult']:
+        """
+        The exposed ports and protocols. Maximum: `100`.
+        """
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def ready(self) -> bool:
+        """
+        Indicates whether the container is ready.
+        """
+        return pulumi.get(self, "ready")
+
+    @property
+    @pulumi.getter(name="restartCount")
+    def restart_count(self) -> int:
+        """
+        The number of times that the container has restarted.
+        """
+        return pulumi.get(self, "restart_count")
+
+    @property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Sequence['outputs.GetContainerGroupsGroupInitContainerVolumeMountResult']:
+        """
+        The list of volumes mounted to the container.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> str:
+        """
+        The working directory of the container.
+        """
+        return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupInitContainerEnvironmentVarResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: The name of the variable.
+        :param str value: The value of the variable.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The name of the variable.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the variable.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupInitContainerPortResult(dict):
+    def __init__(__self__, *,
+                 port: int,
+                 protocol: str):
+        """
+        :param int port: The port number. Valid values: 1 to 65535.
+        :param str protocol: Valid values: `TCP` and `UDP`.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port number. Valid values: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Valid values: `TCP` and `UDP`.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupInitContainerVolumeMountResult(dict):
+    def __init__(__self__, *,
+                 mount_path: str,
+                 name: str,
+                 read_only: bool):
+        """
+        :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+        :param str name: The name of the volume.
+        :param bool read_only: Default value: `false`.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        """
+        The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> bool:
+        """
+        Default value: `false`.
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupVolumeResult(dict):
+    def __init__(__self__, *,
+                 config_file_volume_config_file_to_paths: Sequence['outputs.GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathResult'],
+                 disk_volume_disk_id: str,
+                 disk_volume_fs_type: str,
+                 flex_volume_driver: str,
+                 flex_volume_fs_type: str,
+                 flex_volume_options: str,
+                 name: str,
+                 nfs_volume_path: str,
+                 nfs_volume_read_only: bool,
+                 nfs_volume_server: str,
+                 type: str):
+        """
+        :param Sequence['GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArgs'] config_file_volume_config_file_to_paths: The list of configuration file paths.
+        :param str disk_volume_disk_id: The ID of DiskVolume.
+        :param str disk_volume_fs_type: The type of DiskVolume.
+        :param str flex_volume_driver: The name of the FlexVolume driver.
+        :param str flex_volume_fs_type: The type of the mounted file system. The default value is determined by the script of FlexVolume.
+        :param str flex_volume_options: The list of FlexVolume objects.
+        :param str name: The name of the volume.
+        :param str nfs_volume_path: The path to the NFS volume.
+        :param bool nfs_volume_read_only: Default value: `false`.
+        :param str nfs_volume_server: The address of the NFS server.
+        :param str type: The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+        """
+        pulumi.set(__self__, "config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
+        pulumi.set(__self__, "disk_volume_disk_id", disk_volume_disk_id)
+        pulumi.set(__self__, "disk_volume_fs_type", disk_volume_fs_type)
+        pulumi.set(__self__, "flex_volume_driver", flex_volume_driver)
+        pulumi.set(__self__, "flex_volume_fs_type", flex_volume_fs_type)
+        pulumi.set(__self__, "flex_volume_options", flex_volume_options)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nfs_volume_path", nfs_volume_path)
+        pulumi.set(__self__, "nfs_volume_read_only", nfs_volume_read_only)
+        pulumi.set(__self__, "nfs_volume_server", nfs_volume_server)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="configFileVolumeConfigFileToPaths")
+    def config_file_volume_config_file_to_paths(self) -> Sequence['outputs.GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathResult']:
+        """
+        The list of configuration file paths.
+        """
+        return pulumi.get(self, "config_file_volume_config_file_to_paths")
+
+    @property
+    @pulumi.getter(name="diskVolumeDiskId")
+    def disk_volume_disk_id(self) -> str:
+        """
+        The ID of DiskVolume.
+        """
+        return pulumi.get(self, "disk_volume_disk_id")
+
+    @property
+    @pulumi.getter(name="diskVolumeFsType")
+    def disk_volume_fs_type(self) -> str:
+        """
+        The type of DiskVolume.
+        """
+        return pulumi.get(self, "disk_volume_fs_type")
+
+    @property
+    @pulumi.getter(name="flexVolumeDriver")
+    def flex_volume_driver(self) -> str:
+        """
+        The name of the FlexVolume driver.
+        """
+        return pulumi.get(self, "flex_volume_driver")
+
+    @property
+    @pulumi.getter(name="flexVolumeFsType")
+    def flex_volume_fs_type(self) -> str:
+        """
+        The type of the mounted file system. The default value is determined by the script of FlexVolume.
+        """
+        return pulumi.get(self, "flex_volume_fs_type")
+
+    @property
+    @pulumi.getter(name="flexVolumeOptions")
+    def flex_volume_options(self) -> str:
+        """
+        The list of FlexVolume objects.
+        """
+        return pulumi.get(self, "flex_volume_options")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nfsVolumePath")
+    def nfs_volume_path(self) -> str:
+        """
+        The path to the NFS volume.
+        """
+        return pulumi.get(self, "nfs_volume_path")
+
+    @property
+    @pulumi.getter(name="nfsVolumeReadOnly")
+    def nfs_volume_read_only(self) -> bool:
+        """
+        Default value: `false`.
+        """
+        return pulumi.get(self, "nfs_volume_read_only")
+
+    @property
+    @pulumi.getter(name="nfsVolumeServer")
+    def nfs_volume_server(self) -> str:
+        """
+        The address of the NFS server.
+        """
+        return pulumi.get(self, "nfs_volume_server")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathResult(dict):
+    def __init__(__self__, *,
+                 content: str,
+                 path: str):
+        """
+        :param str content: The content of the configuration file. Maximum size: 32 KB.
+        :param str path: The relative file path.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def content(self) -> str:
+        """
+        The content of the configuration file. Maximum size: 32 KB.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The relative file path.
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type

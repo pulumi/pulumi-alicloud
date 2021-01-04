@@ -39,6 +39,7 @@ import * as emr from "./emr";
 import * as ess from "./ess";
 import * as fc from "./fc";
 import * as fnf from "./fnf";
+import * as ga from "./ga";
 import * as gpdb from "./gpdb";
 import * as hbase from "./hbase";
 import * as kms from "./kms";
@@ -99,6 +100,7 @@ export {
     ess,
     fc,
     fnf,
+    ga,
     gpdb,
     hbase,
     kms,

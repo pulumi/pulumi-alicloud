@@ -212,6 +212,7 @@ type ProviderEndpoint struct {
 	Ess             *string `pulumi:"ess"`
 	Fc              *string `pulumi:"fc"`
 	Fnf             *string `pulumi:"fnf"`
+	Ga              *string `pulumi:"ga"`
 	Gpdb            *string `pulumi:"gpdb"`
 	Kms             *string `pulumi:"kms"`
 	Kvstore         *string `pulumi:"kvstore"`
@@ -233,6 +234,7 @@ type ProviderEndpoint struct {
 	Ram             *string `pulumi:"ram"`
 	Rds             *string `pulumi:"rds"`
 	Resourcemanager *string `pulumi:"resourcemanager"`
+	Resourcesharing *string `pulumi:"resourcesharing"`
 	Ros             *string `pulumi:"ros"`
 	Slb             *string `pulumi:"slb"`
 	Sts             *string `pulumi:"sts"`
@@ -282,6 +284,7 @@ type ProviderEndpointArgs struct {
 	Ess             pulumi.StringPtrInput `pulumi:"ess"`
 	Fc              pulumi.StringPtrInput `pulumi:"fc"`
 	Fnf             pulumi.StringPtrInput `pulumi:"fnf"`
+	Ga              pulumi.StringPtrInput `pulumi:"ga"`
 	Gpdb            pulumi.StringPtrInput `pulumi:"gpdb"`
 	Kms             pulumi.StringPtrInput `pulumi:"kms"`
 	Kvstore         pulumi.StringPtrInput `pulumi:"kvstore"`
@@ -303,6 +306,7 @@ type ProviderEndpointArgs struct {
 	Ram             pulumi.StringPtrInput `pulumi:"ram"`
 	Rds             pulumi.StringPtrInput `pulumi:"rds"`
 	Resourcemanager pulumi.StringPtrInput `pulumi:"resourcemanager"`
+	Resourcesharing pulumi.StringPtrInput `pulumi:"resourcesharing"`
 	Ros             pulumi.StringPtrInput `pulumi:"ros"`
 	Slb             pulumi.StringPtrInput `pulumi:"slb"`
 	Sts             pulumi.StringPtrInput `pulumi:"sts"`
@@ -481,6 +485,10 @@ func (o ProviderEndpointOutput) Fnf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Fnf }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Ga() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ga }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Gpdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Gpdb }).(pulumi.StringPtrOutput)
 }
@@ -563,6 +571,10 @@ func (o ProviderEndpointOutput) Rds() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Resourcemanager() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Resourcemanager }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Resourcesharing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Resourcesharing }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ros() pulumi.StringPtrOutput {

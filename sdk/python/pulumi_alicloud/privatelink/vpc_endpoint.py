@@ -7,8 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
-from . import outputs
-from ._inputs import *
 
 __all__ = ['VpcEndpoint']
 
@@ -24,7 +22,6 @@ class VpcEndpoint(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpcEndpointZoneArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -34,20 +31,6 @@ class VpcEndpoint(pulumi.CustomResource):
         For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://help.aliyun.com/document_detail/120479.html).
 
         > **NOTE:** Available in v1.109.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.privatelink.VpcEndpoint("example",
-            security_group_ids=["sg-ercx1234"],
-            service_id="YourServiceId",
-            vpc_id="YourVpcId")
-        ```
 
         ## Import
 
@@ -66,7 +49,6 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] service_name: The name of the terminal node service associated with the terminal node.
         :param pulumi.Input[str] vpc_endpoint_name: The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
         :param pulumi.Input[str] vpc_id: The private network to which the terminal node belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpcEndpointZoneArgs']]]] zones: Availability zone.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,7 +78,6 @@ class VpcEndpoint(pulumi.CustomResource):
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
-            __props__['zones'] = zones
             __props__['bandwidth'] = None
             __props__['connection_status'] = None
             __props__['endpoint_business_status'] = None
@@ -123,8 +104,7 @@ class VpcEndpoint(pulumi.CustomResource):
             service_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
-            vpc_id: Optional[pulumi.Input[str]] = None,
-            zones: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpcEndpointZoneArgs']]]]] = None) -> 'VpcEndpoint':
+            vpc_id: Optional[pulumi.Input[str]] = None) -> 'VpcEndpoint':
         """
         Get an existing VpcEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -144,7 +124,6 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of Vpc Endpoint.
         :param pulumi.Input[str] vpc_endpoint_name: The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
         :param pulumi.Input[str] vpc_id: The private network to which the terminal node belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpcEndpointZoneArgs']]]] zones: Availability zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -162,7 +141,6 @@ class VpcEndpoint(pulumi.CustomResource):
         __props__["status"] = status
         __props__["vpc_endpoint_name"] = vpc_endpoint_name
         __props__["vpc_id"] = vpc_id
-        __props__["zones"] = zones
         return VpcEndpoint(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -260,14 +238,6 @@ class VpcEndpoint(pulumi.CustomResource):
         The private network to which the terminal node belongs.
         """
         return pulumi.get(self, "vpc_id")
-
-    @property
-    @pulumi.getter
-    def zones(self) -> pulumi.Output[Optional[Sequence['outputs.VpcEndpointZone']]]:
-        """
-        Availability zone.
-        """
-        return pulumi.get(self, "zones")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

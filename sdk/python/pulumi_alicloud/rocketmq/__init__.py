@@ -9,6 +9,7 @@ from .client_user import *
 from .dnat_entry import *
 from .get_groups import *
 from .get_instances import *
+from .get_service import *
 from .get_topics import *
 from .group import *
 from .instance import *

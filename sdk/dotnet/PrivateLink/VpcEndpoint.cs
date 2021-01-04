@@ -16,32 +16,6 @@ namespace Pulumi.AliCloud.PrivateLink
     /// 
     /// &gt; **NOTE:** Available in v1.109.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new AliCloud.PrivateLink.VpcEndpoint("example", new AliCloud.PrivateLink.VpcEndpointArgs
-    ///         {
-    ///             SecurityGroupIds = 
-    ///             {
-    ///                 "sg-ercx1234",
-    ///             },
-    ///             ServiceId = "YourServiceId",
-    ///             VpcId = "YourVpcId",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Private Link Vpc Endpoint can be imported using the id, e.g.
@@ -123,12 +97,6 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
-
-        /// <summary>
-        /// Availability zone.
-        /// </summary>
-        [Output("zones")]
-        public Output<ImmutableArray<Outputs.VpcEndpointZone>> Zones { get; private set; } = null!;
 
 
         /// <summary>
@@ -224,18 +192,6 @@ namespace Pulumi.AliCloud.PrivateLink
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
-        [Input("zones")]
-        private InputList<Inputs.VpcEndpointZoneArgs>? _zones;
-
-        /// <summary>
-        /// Availability zone.
-        /// </summary>
-        public InputList<Inputs.VpcEndpointZoneArgs> Zones
-        {
-            get => _zones ?? (_zones = new InputList<Inputs.VpcEndpointZoneArgs>());
-            set => _zones = value;
-        }
-
         public VpcEndpointArgs()
         {
         }
@@ -320,18 +276,6 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
-
-        [Input("zones")]
-        private InputList<Inputs.VpcEndpointZoneGetArgs>? _zones;
-
-        /// <summary>
-        /// Availability zone.
-        /// </summary>
-        public InputList<Inputs.VpcEndpointZoneGetArgs> Zones
-        {
-            get => _zones ?? (_zones = new InputList<Inputs.VpcEndpointZoneGetArgs>());
-            set => _zones = value;
-        }
 
         public VpcEndpointState()
         {

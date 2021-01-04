@@ -5,5 +5,6 @@
 # Export this package's modules as members:
 from .domain import *
 from .get_domains import *
+from .get_service import *
 from ._inputs import *
 from . import outputs

@@ -17,6 +17,7 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -33,6 +34,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the log project.
         :param pulumi.Input[str] name: The name of the log project. It is the only in one Alicloud account.
+        :param pulumi.Input[Mapping[str, Any]] tags: Log project tags.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -53,6 +55,7 @@ class Project(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
+            __props__['tags'] = tags
         super(Project, __self__).__init__(
             'alicloud:log/project:Project',
             resource_name,
@@ -64,7 +67,8 @@ class Project(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'Project':
+            name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -74,6 +78,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the log project.
         :param pulumi.Input[str] name: The name of the log project. It is the only in one Alicloud account.
+        :param pulumi.Input[Mapping[str, Any]] tags: Log project tags.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -81,6 +86,7 @@ class Project(pulumi.CustomResource):
 
         __props__["description"] = description
         __props__["name"] = name
+        __props__["tags"] = tags
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -98,6 +104,14 @@ class Project(pulumi.CustomResource):
         The name of the log project. It is the only in one Alicloud account.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Log project tags.
+        """
+        return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

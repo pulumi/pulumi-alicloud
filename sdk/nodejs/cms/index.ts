@@ -8,5 +8,6 @@ export * from "./alarmContactGroup";
 export * from "./getAlarmContactGroups";
 export * from "./getAlarmContacts";
 export * from "./getGroupMetricRules";
+export * from "./getService";
 export * from "./groupMetricRule";
 export * from "./siteMonitor";

@@ -42,6 +42,7 @@ export interface ProviderEndpoint {
     ess?: pulumi.Input<string>;
     fc?: pulumi.Input<string>;
     fnf?: pulumi.Input<string>;
+    ga?: pulumi.Input<string>;
     gpdb?: pulumi.Input<string>;
     kms?: pulumi.Input<string>;
     kvstore?: pulumi.Input<string>;
@@ -63,6 +64,7 @@ export interface ProviderEndpoint {
     ram?: pulumi.Input<string>;
     rds?: pulumi.Input<string>;
     resourcemanager?: pulumi.Input<string>;
+    resourcesharing?: pulumi.Input<string>;
     ros?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
     sts?: pulumi.Input<string>;
@@ -932,6 +934,33 @@ export namespace cs {
         surgePercentage?: pulumi.Input<number>;
     }
 
+    export interface NodePoolScalingConfig {
+        /**
+         * Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+         */
+        eipBandwidth?: pulumi.Input<number>;
+        /**
+         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+         */
+        eipInternetChargeType?: pulumi.Input<string>;
+        /**
+         * Whether to bind EIP for an instance. Default: `false`.
+         */
+        isBondEip?: pulumi.Input<boolean>;
+        /**
+         * Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+         */
+        maxSize: pulumi.Input<number>;
+        /**
+         * Max number of instances in a auto scaling group, its valid value range [0~1000].
+         */
+        minSize: pulumi.Input<number>;
+        /**
+         * Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+         */
+        type?: pulumi.Input<string>;
+    }
+
     export interface NodePoolTaint {
         effect?: pulumi.Input<string>;
         key: pulumi.Input<string>;
@@ -1024,6 +1053,296 @@ export namespace drds {
 }
 
 export namespace eci {
+    export interface ContainerGroupContainer {
+        /**
+         * The arguments passed to the commands.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The commands run by the init container.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The amount of CPU resources allocated to the container.
+         */
+        cpu?: pulumi.Input<number>;
+        /**
+         * The structure of environmentVars.
+         */
+        environmentVars?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerEnvironmentVar>[]>;
+        /**
+         * The number GPUs.
+         */
+        gpu?: pulumi.Input<number>;
+        /**
+         * The image of the container.
+         */
+        image: pulumi.Input<string>;
+        /**
+         * The restart policy of the image.
+         */
+        imagePullPolicy?: pulumi.Input<string>;
+        /**
+         * The amount of memory resources allocated to the container.
+         */
+        memory?: pulumi.Input<number>;
+        /**
+         * The name of the mounted volume.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The structure of port.
+         */
+        ports?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerPort>[]>;
+        ready?: pulumi.Input<boolean>;
+        restartCount?: pulumi.Input<number>;
+        /**
+         * The structure of volumeMounts.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerVolumeMount>[]>;
+        /**
+         * The working directory of the container.
+         */
+        workingDir?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupContainerEnvironmentVar {
+        /**
+         * The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of the variable. The value can be 0 to 256 characters in length.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupContainerPort {
+        /**
+         * The port number. Valid values: 1 to 65535.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Valid values: TCP and UDP.
+         */
+        protocol?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupContainerVolumeMount {
+        /**
+         * The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+         */
+        mountPath?: pulumi.Input<string>;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Default to `false`.
+         */
+        readOnly?: pulumi.Input<boolean>;
+    }
+
+    export interface ContainerGroupDnsConfig {
+        /**
+         * The list of DNS server IP addresses.
+         */
+        nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The structure of options.
+         */
+        options?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupDnsConfigOption>[]>;
+        /**
+         * The list of DNS lookup domains.
+         */
+        searches?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ContainerGroupDnsConfigOption {
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The value of the variable. The value can be 0 to 256 characters in length.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupEciSecurityContext {
+        sysctls?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupEciSecurityContextSysctl>[]>;
+    }
+
+    export interface ContainerGroupEciSecurityContextSysctl {
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The value of the variable. The value can be 0 to 256 characters in length.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupHostAlias {
+        /**
+         * Adds a host name.
+         */
+        hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Adds an IP address.
+         */
+        ip?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupInitContainer {
+        /**
+         * The arguments passed to the commands.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The commands run by the init container.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The amount of CPU resources allocated to the container.
+         */
+        cpu?: pulumi.Input<number>;
+        /**
+         * The structure of environmentVars.
+         */
+        environmentVars?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainerEnvironmentVar>[]>;
+        /**
+         * The number GPUs.
+         */
+        gpu?: pulumi.Input<number>;
+        /**
+         * The image of the container.
+         */
+        image?: pulumi.Input<string>;
+        /**
+         * The restart policy of the image.
+         */
+        imagePullPolicy?: pulumi.Input<string>;
+        /**
+         * The amount of memory resources allocated to the container.
+         */
+        memory?: pulumi.Input<number>;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The structure of port.
+         */
+        ports?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainerPort>[]>;
+        ready?: pulumi.Input<boolean>;
+        restartCount?: pulumi.Input<number>;
+        /**
+         * The structure of volumeMounts.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainerVolumeMount>[]>;
+        /**
+         * The working directory of the container.
+         */
+        workingDir?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupInitContainerEnvironmentVar {
+        /**
+         * The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of the variable. The value can be 0 to 256 characters in length.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupInitContainerPort {
+        /**
+         * The port number. Valid values: 1 to 65535.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Valid values: TCP and UDP.
+         */
+        protocol?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupInitContainerVolumeMount {
+        /**
+         * The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
+         */
+        mountPath?: pulumi.Input<string>;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Default to `false`.
+         */
+        readOnly?: pulumi.Input<boolean>;
+    }
+
+    export interface ContainerGroupVolume {
+        /**
+         * ConfigFileVolumeConfigFileToPaths.
+         */
+        configFileVolumeConfigFileToPaths?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolumeConfigFileVolumeConfigFileToPath>[]>;
+        /**
+         * The ID of DiskVolume.
+         */
+        diskVolumeDiskId?: pulumi.Input<string>;
+        /**
+         * The system type of DiskVolume.
+         */
+        diskVolumeFsType?: pulumi.Input<string>;
+        /**
+         * The name of the FlexVolume driver.
+         */
+        flexVolumeDriver?: pulumi.Input<string>;
+        /**
+         * The type of the mounted file system. The default value is determined by the script of FlexVolume.
+         */
+        flexVolumeFsType?: pulumi.Input<string>;
+        /**
+         * The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
+         */
+        flexVolumeOptions?: pulumi.Input<string>;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The path to the NFS volume.
+         */
+        nfsVolumePath?: pulumi.Input<string>;
+        /**
+         * The nfs volume read only. Default to `false`.
+         */
+        nfsVolumeReadOnly?: pulumi.Input<boolean>;
+        /**
+         * The address of the NFS server.
+         */
+        nfsVolumeServer?: pulumi.Input<string>;
+        /**
+         * The type of the volume.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
+        /**
+         * The content of the configuration file. Maximum size: 32 KB.
+         */
+        content?: pulumi.Input<string>;
+        /**
+         * The relative file path.
+         */
+        path?: pulumi.Input<string>;
+    }
+
     export interface ImageCacheImageRegistryCredential {
         /**
          * The password of the Image Registry.
@@ -1483,6 +1802,26 @@ export namespace fc {
 export namespace fnf {
 }
 
+export namespace ga {
+    export interface ListenerCertificate {
+        /**
+         * The id of the certificate.
+         */
+        id?: pulumi.Input<string>;
+    }
+
+    export interface ListenerPortRange {
+        /**
+         * The initial listening port used to receive requests and forward them to terminal nodes.
+         */
+        fromPort: pulumi.Input<number>;
+        /**
+         * The end listening port used to receive requests and forward them to terminal nodes.
+         */
+        toPort: pulumi.Input<number>;
+    }
+}
+
 export namespace gpdb {
 }
 
@@ -1848,16 +2187,6 @@ export namespace polardb {
 }
 
 export namespace privatelink {
-    export interface VpcEndpointZone {
-        /**
-         * To create the vswitch of the terminal node network card in the available zone.
-         */
-        vswitchId?: pulumi.Input<string>;
-        /**
-         * Availability zone corresponding to terminal node service.
-         */
-        zoneId?: pulumi.Input<string>;
-    }
 }
 
 export namespace pvtz {

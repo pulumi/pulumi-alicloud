@@ -102,6 +102,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("fnf")]
         public Input<string>? Fnf { get; set; }
 
+        [Input("ga")]
+        public Input<string>? Ga { get; set; }
+
         [Input("gpdb")]
         public Input<string>? Gpdb { get; set; }
 
@@ -164,6 +167,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("resourcemanager")]
         public Input<string>? Resourcemanager { get; set; }
+
+        [Input("resourcesharing")]
+        public Input<string>? Resourcesharing { get; set; }
 
         [Input("ros")]
         public Input<string>? Ros { get; set; }

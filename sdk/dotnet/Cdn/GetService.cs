@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class GetServiceArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off".
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
         /// </summary>
         [Input("enable")]
         public string? Enable { get; set; }

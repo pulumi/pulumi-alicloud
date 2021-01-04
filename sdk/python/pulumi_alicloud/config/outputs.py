@@ -85,6 +85,7 @@ class Endpoints(dict):
                  ess: Optional[str] = None,
                  fc: Optional[str] = None,
                  fnf: Optional[str] = None,
+                 ga: Optional[str] = None,
                  gpdb: Optional[str] = None,
                  kms: Optional[str] = None,
                  kvstore: Optional[str] = None,
@@ -106,6 +107,7 @@ class Endpoints(dict):
                  ram: Optional[str] = None,
                  rds: Optional[str] = None,
                  resourcemanager: Optional[str] = None,
+                 resourcesharing: Optional[str] = None,
                  ros: Optional[str] = None,
                  slb: Optional[str] = None,
                  sts: Optional[str] = None,
@@ -171,6 +173,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "fc", fc)
         if fnf is not None:
             pulumi.set(__self__, "fnf", fnf)
+        if ga is not None:
+            pulumi.set(__self__, "ga", ga)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
         if kms is not None:
@@ -213,6 +217,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "rds", rds)
         if resourcemanager is not None:
             pulumi.set(__self__, "resourcemanager", resourcemanager)
+        if resourcesharing is not None:
+            pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
         if slb is not None:
@@ -376,6 +382,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def ga(self) -> Optional[str]:
+        return pulumi.get(self, "ga")
+
+    @property
+    @pulumi.getter
     def gpdb(self) -> Optional[str]:
         return pulumi.get(self, "gpdb")
 
@@ -478,6 +489,11 @@ class Endpoints(dict):
     @pulumi.getter
     def resourcemanager(self) -> Optional[str]:
         return pulumi.get(self, "resourcemanager")
+
+    @property
+    @pulumi.getter
+    def resourcesharing(self) -> Optional[str]:
+        return pulumi.get(self, "resourcesharing")
 
     @property
     @pulumi.getter

@@ -98,6 +98,7 @@ class ProviderEndpointArgs:
                  ess: Optional[pulumi.Input[str]] = None,
                  fc: Optional[pulumi.Input[str]] = None,
                  fnf: Optional[pulumi.Input[str]] = None,
+                 ga: Optional[pulumi.Input[str]] = None,
                  gpdb: Optional[pulumi.Input[str]] = None,
                  kms: Optional[pulumi.Input[str]] = None,
                  kvstore: Optional[pulumi.Input[str]] = None,
@@ -119,6 +120,7 @@ class ProviderEndpointArgs:
                  ram: Optional[pulumi.Input[str]] = None,
                  rds: Optional[pulumi.Input[str]] = None,
                  resourcemanager: Optional[pulumi.Input[str]] = None,
+                 resourcesharing: Optional[pulumi.Input[str]] = None,
                  ros: Optional[pulumi.Input[str]] = None,
                  slb: Optional[pulumi.Input[str]] = None,
                  sts: Optional[pulumi.Input[str]] = None,
@@ -184,6 +186,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "fc", fc)
         if fnf is not None:
             pulumi.set(__self__, "fnf", fnf)
+        if ga is not None:
+            pulumi.set(__self__, "ga", ga)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
         if kms is not None:
@@ -226,6 +230,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "rds", rds)
         if resourcemanager is not None:
             pulumi.set(__self__, "resourcemanager", resourcemanager)
+        if resourcesharing is not None:
+            pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
         if slb is not None:
@@ -509,6 +515,15 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
+    def ga(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ga")
+
+    @ga.setter
+    def ga(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ga", value)
+
+    @property
+    @pulumi.getter
     def gpdb(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "gpdb")
 
@@ -695,6 +710,15 @@ class ProviderEndpointArgs:
     @resourcemanager.setter
     def resourcemanager(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resourcemanager", value)
+
+    @property
+    @pulumi.getter
+    def resourcesharing(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resourcesharing")
+
+    @resourcesharing.setter
+    def resourcesharing(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resourcesharing", value)
 
     @property
     @pulumi.getter

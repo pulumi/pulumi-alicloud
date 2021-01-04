@@ -59,6 +59,7 @@ const (
 	essMod             = "Ess"
 	fcMod              = "FC"
 	fnfMod             = "FNF"
+	gaMod              = "Ga"
 	gpdbMod            = "Gpdb"
 	hbaseMod           = "Hbase"
 	kmsMod             = "Kms"
@@ -337,6 +338,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Eci
 			"alicloud_eci_openapi_image_cache": {Tok: resource(eciMod, "OpenApiImageCache")},
 			"alicloud_eci_image_cache":         {Tok: resource(eciMod, "ImageCache")},
+			"alicloud_eci_container_group":     {Tok: resource(eciMod, "ContainerGroup")},
 
 			// ECS
 			"alicloud_auto_provisioning_group": {Tok: resource(ecsMod, "AutoProvisioningGroup")},
@@ -411,6 +413,10 @@ func Provider() tfbridge.ProviderInfo {
 			// FNF
 			"alicloud_fnf_schedule": {Tok: resource(fnfMod, "Schedule")},
 			"alicloud_fnf_flow":     {Tok: resource(fnfMod, "Flow")},
+
+			// Ga
+			"alicloud_ga_listener":    {Tok: resource(gaMod, "Listener")},
+			"alicloud_ga_accelerator": {Tok: resource(gaMod, "Accelerator")},
 
 			// Gpdb
 			"alicloud_gpdb_connection": {Tok: resource(gpdbMod, "Connection")},
@@ -495,6 +501,7 @@ func Provider() tfbridge.ProviderInfo {
 			// PrivateLink
 			"alicloud_privatelink_vpc_endpoint":         {Tok: resource(privateLinkMod, "VpcEndpoint")},
 			"alicloud_privatelink_vpc_endpoint_service": {Tok: resource(privateLinkMod, "VpcEndpointService")},
+			"alicloud_privatelink_vpc_endpoint_zone":    {Tok: resource(privateLinkMod, "VpcEndpointZone")},
 			"alicloud_privatelink_vpc_endpoint_service_resource": {
 				Tok: resource(privateLinkMod, "VpcEndpointServiceResource"),
 			},
@@ -559,6 +566,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_resource_manager_resource_directory": {Tok: resource(resourceManagerMod, "ResourceDirectory")},
 			"alicloud_resource_manager_policy_version":     {Tok: resource(resourceManagerMod, "PolicyVersion")},
 			"alicloud_resource_manager_policy_attachment":  {Tok: resource(resourceManagerMod, "PolicyAttachment")},
+			"alicloud_resource_manager_shared_resource":    {Tok: resource(resourceManagerMod, "SharedResource")},
+			"alicloud_resource_manager_shared_target":      {Tok: resource(resourceManagerMod, "SharedTarget")},
+			"alicloud_resource_manager_resource_share":     {Tok: resource(resourceManagerMod, "ResourceShare")},
 
 			// RocketMQ
 			"alicloud_ons_group":    {Tok: resource(rocketMqMod, "Group")},
@@ -723,6 +733,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cms_alarm_contacts":       {Tok: dataSource(cmsMod, "getAlarmContacts")},
 			"alicloud_cms_alarm_contact_groups": {Tok: dataSource(cmsMod, "getAlarmContactGroups")},
 			"alicloud_cms_group_metric_rules":   {Tok: dataSource(cmsMod, "getGroupMetricRules")},
+			"alicloud_cms_service":              {Tok: dataSource(cmsMod, "getService")},
 
 			// Config
 			"alicloud_config_configuration_recorders": {Tok: dataSource(cfgMod, "getConfigurationRecorders")},
@@ -743,8 +754,12 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cr_ee_repos":                       {Tok: dataSource(csMod, "getRegistryEnterpriseRepos")},
 			"alicloud_cr_ee_sync_rules":                  {Tok: dataSource(csMod, "getRegistryEnterpriseSyncRules")},
 
+			// Datahub
+			"alicloud_datahub_service": {Tok: dataSource(datahubMod, "getService")},
+
 			// Dcdn
 			"alicloud_dcdn_domains": {Tok: dataSource(dcdnMod, "getDomains")},
+			"alicloud_dcdn_service": {Tok: dataSource(dcdnMod, "getService")},
 
 			// Dds
 			"alicloud_mongo_instances": {Tok: dataSource(ddsMod, "getMongoInstances")},
@@ -775,7 +790,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_drds_instances": {Tok: dataSource(drdsMod, "getInstances")},
 
 			// Eci
-			"alicloud_eci_image_caches": {Tok: dataSource(eciMod, "getImageCaches")},
+			"alicloud_eci_image_caches":     {Tok: dataSource(eciMod, "getImageCaches")},
+			"alicloud_eci_container_groups": {Tok: dataSource(eciMod, "getContainerGroups")},
 
 			// Ecs
 			"alicloud_images":                 {Tok: dataSource(ecsMod, "getImages")},
@@ -825,6 +841,10 @@ func Provider() tfbridge.ProviderInfo {
 			// FNF
 			"alicloud_fnf_schedules": {Tok: dataSource(fnfMod, "getSchedules")},
 			"alicloud_fnf_flows":     {Tok: dataSource(fnfMod, "getFlows")},
+
+			// Ga
+			"alicloud_ga_listeners":    {Tok: dataSource(gaMod, "getListeners")},
+			"alicloud_ga_accelerators": {Tok: dataSource(gaMod, "getAccelerators")},
 
 			// Gpdb
 			"alicloud_gpdb_instances": {Tok: dataSource(gpdbMod, "getInstances")},
@@ -893,7 +913,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ots_service": {Tok: dataSource(otsMod, "getService")},
 
 			// PrivateLink
-			"alicloud_privatelink_vpc_endpoints": {Tok: dataSource(privateLinkMod, "getVpcEndpoints")},
+			"alicloud_privatelink_vpc_endpoints":      {Tok: dataSource(privateLinkMod, "getVpcEndpoints")},
+			"alicloud_privatelink_vpc_endpoint_zones": {Tok: dataSource(privateLinkMod, "getVpcEndpointZones")},
 			"alicloud_privatelink_vpc_endpoint_services": {
 				Tok: dataSource(privateLinkMod, "getVpcEndpointServices"),
 			},
@@ -934,13 +955,16 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_db_zones":            {Tok: dataSource(rdsMod, "getZones")},
 
 			// ResourceManager
-			"alicloud_resource_manager_folders":         {Tok: dataSource(resourceManagerMod, "getFolders")},
-			"alicloud_resource_manager_resource_groups": {Tok: dataSource(resourceManagerMod, "getResourceGroups")},
-			"alicloud_resource_manager_policy_versions": {Tok: dataSource(resourceManagerMod, "getPolicyVersions")},
-			"alicloud_resource_manager_handshakes":      {Tok: dataSource(resourceManagerMod, "getHandshakes")},
-			"alicloud_resource_manager_accounts":        {Tok: dataSource(resourceManagerMod, "getAccounts")},
-			"alicloud_resource_manager_roles":           {Tok: dataSource(resourceManagerMod, "getRoles")},
-			"alicloud_resource_manager_policies":        {Tok: dataSource(resourceManagerMod, "getPolicies")},
+			"alicloud_resource_manager_folders":          {Tok: dataSource(resourceManagerMod, "getFolders")},
+			"alicloud_resource_manager_resource_groups":  {Tok: dataSource(resourceManagerMod, "getResourceGroups")},
+			"alicloud_resource_manager_policy_versions":  {Tok: dataSource(resourceManagerMod, "getPolicyVersions")},
+			"alicloud_resource_manager_handshakes":       {Tok: dataSource(resourceManagerMod, "getHandshakes")},
+			"alicloud_resource_manager_accounts":         {Tok: dataSource(resourceManagerMod, "getAccounts")},
+			"alicloud_resource_manager_roles":            {Tok: dataSource(resourceManagerMod, "getRoles")},
+			"alicloud_resource_manager_policies":         {Tok: dataSource(resourceManagerMod, "getPolicies")},
+			"alicloud_resource_manager_shared_resources": {Tok: dataSource(resourceManagerMod, "getSharedResources")},
+			"alicloud_resource_manager_shared_targets":   {Tok: dataSource(resourceManagerMod, "getSharedTargets")},
+			"alicloud_resource_manager_resource_shares":  {Tok: dataSource(resourceManagerMod, "getResourceShares")},
 			"alicloud_resource_manager_resource_directories": {
 				Tok: dataSource(resourceManagerMod, "getResourceDirectories"),
 			},
@@ -952,6 +976,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ons_groups":    {Tok: dataSource(rocketMqMod, "getGroups")},
 			"alicloud_ons_instances": {Tok: dataSource(rocketMqMod, "getInstances")},
 			"alicloud_ons_topics":    {Tok: dataSource(rocketMqMod, "getTopics")},
+			"alicloud_ons_service":   {Tok: dataSource(rocketMqMod, "getService")},
 
 			//Ros
 			"alicloud_ros_change_sets":  {Tok: dataSource(rosMod, "getChangeSets")},

@@ -49,6 +49,10 @@ export class Project extends pulumi.CustomResource {
      * The name of the log project. It is the only in one Alicloud account.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Log project tags.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -64,10 +68,12 @@ export class Project extends pulumi.CustomResource {
             const state = argsOrState as ProjectState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
         }
         if (!opts) {
             opts = {}
@@ -92,6 +98,10 @@ export interface ProjectState {
      * The name of the log project. It is the only in one Alicloud account.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Log project tags.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -106,4 +116,8 @@ export interface ProjectArgs {
      * The name of the log project. It is the only in one Alicloud account.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Log project tags.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }

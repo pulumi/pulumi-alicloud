@@ -18,7 +18,10 @@ __all__ = [
     'GetPolicyVersionsVersionResult',
     'GetResourceDirectoriesDirectoryResult',
     'GetResourceGroupsGroupResult',
+    'GetResourceSharesShareResult',
     'GetRolesRoleResult',
+    'GetSharedResourcesResourceResult',
+    'GetSharedTargetsTargetResult',
 ]
 
 @pulumi.output_type
@@ -705,6 +708,68 @@ class GetResourceGroupsGroupResult(dict):
 
 
 @pulumi.output_type
+class GetResourceSharesShareResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 resource_share_id: str,
+                 resource_share_name: str,
+                 resource_share_owner: str,
+                 status: str):
+        """
+        :param str id: The ID of the Resource Share.
+        :param str resource_share_id: The ID of the resource share.
+        :param str resource_share_name: The name of resource share.
+        :param str resource_share_owner: The owner of resource share.
+        :param str status: The status of resource share.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_share_id", resource_share_id)
+        pulumi.set(__self__, "resource_share_name", resource_share_name)
+        pulumi.set(__self__, "resource_share_owner", resource_share_owner)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Resource Share.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="resourceShareId")
+    def resource_share_id(self) -> str:
+        """
+        The ID of the resource share.
+        """
+        return pulumi.get(self, "resource_share_id")
+
+    @property
+    @pulumi.getter(name="resourceShareName")
+    def resource_share_name(self) -> str:
+        """
+        The name of resource share.
+        """
+        return pulumi.get(self, "resource_share_name")
+
+    @property
+    @pulumi.getter(name="resourceShareOwner")
+    def resource_share_owner(self) -> str:
+        """
+        The owner of resource share.
+        """
+        return pulumi.get(self, "resource_share_owner")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of resource share.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class GetRolesRoleResult(dict):
     def __init__(__self__, *,
                  arn: str,
@@ -783,5 +848,118 @@ class GetRolesRoleResult(dict):
     @pulumi.getter(name="updateDate")
     def update_date(self) -> str:
         return pulumi.get(self, "update_date")
+
+
+@pulumi.output_type
+class GetSharedResourcesResourceResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 resource_id: str,
+                 resource_share_id: str,
+                 resource_type: str,
+                 status: str):
+        """
+        :param str id: The ID of the Shared Resource.
+        :param str resource_id: The ID of the shared resource.
+        :param str resource_share_id: The resource share ID of resource manager.
+        :param str resource_type: The type of shared resource.
+        :param str status: The status of shared resource.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_share_id", resource_share_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Shared Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The ID of the shared resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceShareId")
+    def resource_share_id(self) -> str:
+        """
+        The resource share ID of resource manager.
+        """
+        return pulumi.get(self, "resource_share_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The type of shared resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of shared resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetSharedTargetsTargetResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 resource_share_id: str,
+                 status: str,
+                 target_id: str):
+        """
+        :param str id: The ID of the Shared Target.
+        :param str resource_share_id: The resource shared ID of resource manager.
+        :param str status: The status of shared target.
+        :param str target_id: The member account ID in resource directory.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_share_id", resource_share_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "target_id", target_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Shared Target.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="resourceShareId")
+    def resource_share_id(self) -> str:
+        """
+        The resource shared ID of resource manager.
+        """
+        return pulumi.get(self, "resource_share_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of shared target.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="targetId")
+    def target_id(self) -> str:
+        """
+        The member account ID in resource directory.
+        """
+        return pulumi.get(self, "target_id")
 
 

@@ -126,6 +126,7 @@ namespace Pulumi.AliCloud
                 public string? Ess { get; set; } = null!;
                 public string? Fc { get; set; } = null!;
                 public string? Fnf { get; set; } = null!;
+                public string? Ga { get; set; } = null!;
                 public string? Gpdb { get; set; } = null!;
                 public string? Kms { get; set; } = null!;
                 public string? Kvstore { get; set; } = null!;
@@ -147,6 +148,7 @@ namespace Pulumi.AliCloud
                 public string? Ram { get; set; } = null!;
                 public string? Rds { get; set; } = null!;
                 public string? Resourcemanager { get; set; } = null!;
+                public string? Resourcesharing { get; set; } = null!;
                 public string? Ros { get; set; } = null!;
                 public string? Slb { get; set; } = null!;
                 public string? Sts { get; set; } = null!;

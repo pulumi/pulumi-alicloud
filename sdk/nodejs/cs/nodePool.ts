@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
  *
  * > **NOTE:** From version 1.109.1, support remove node pool nodes.
+ *
+ * > **NOTE:** From version 1.111.0, support auto scaling node pool.
  */
 export class NodePool extends pulumi.CustomResource {
     /**
@@ -76,7 +78,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The worker node number of the node pool.
+     * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
@@ -87,6 +89,10 @@ export class NodePool extends pulumi.CustomResource {
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     public readonly password!: pulumi.Output<string | undefined>;
+    /**
+     * Auto scaling node pool configuration. For more details, see `scalingConfig`.
+     */
+    public readonly scalingConfig!: pulumi.Output<outputs.cs.NodePoolScalingConfig>;
     /**
      * (Available in 1.105.0+) Id of the Scaling Group.
      */
@@ -150,6 +156,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
             inputs["nodeNameMode"] = state ? state.nodeNameMode : undefined;
             inputs["password"] = state ? state.password : undefined;
+            inputs["scalingConfig"] = state ? state.scalingConfig : undefined;
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
@@ -167,9 +174,6 @@ export class NodePool extends pulumi.CustomResource {
             if (!args || args.instanceTypes === undefined) {
                 throw new Error("Missing required property 'instanceTypes'");
             }
-            if (!args || args.nodeCount === undefined) {
-                throw new Error("Missing required property 'nodeCount'");
-            }
             if (!args || args.vswitchIds === undefined) {
                 throw new Error("Missing required property 'vswitchIds'");
             }
@@ -185,6 +189,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["nodeNameMode"] = args ? args.nodeNameMode : undefined;
             inputs["password"] = args ? args.password : undefined;
+            inputs["scalingConfig"] = args ? args.scalingConfig : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
             inputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
@@ -244,7 +249,7 @@ export interface NodePoolState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The worker node number of the node pool.
+     * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
      */
     readonly nodeCount?: pulumi.Input<number>;
     /**
@@ -255,6 +260,10 @@ export interface NodePoolState {
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     readonly password?: pulumi.Input<string>;
+    /**
+     * Auto scaling node pool configuration. For more details, see `scalingConfig`.
+     */
+    readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
     /**
      * (Available in 1.105.0+) Id of the Scaling Group.
      */
@@ -333,9 +342,9 @@ export interface NodePoolArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The worker node number of the node pool.
+     * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
      */
-    readonly nodeCount: pulumi.Input<number>;
+    readonly nodeCount?: pulumi.Input<number>;
     /**
      * Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
      */
@@ -344,6 +353,10 @@ export interface NodePoolArgs {
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     readonly password?: pulumi.Input<string>;
+    /**
+     * Auto scaling node pool configuration. For more details, see `scalingConfig`.
+     */
+    readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
     /**
      * The system disk size of worker node.
      */

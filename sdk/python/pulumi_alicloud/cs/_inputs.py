@@ -37,6 +37,7 @@ __all__ = [
     'NodePoolDataDiskArgs',
     'NodePoolLabelArgs',
     'NodePoolManagementArgs',
+    'NodePoolScalingConfigArgs',
     'NodePoolTaintArgs',
     'ServerlessKubernetesAddonArgs',
     'SwarmNodeArgs',
@@ -1735,6 +1736,107 @@ class NodePoolManagementArgs:
     @surge_percentage.setter
     def surge_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "surge_percentage", value)
+
+
+@pulumi.input_type
+class NodePoolScalingConfigArgs:
+    def __init__(__self__, *,
+                 max_size: pulumi.Input[int],
+                 min_size: pulumi.Input[int],
+                 eip_bandwidth: Optional[pulumi.Input[int]] = None,
+                 eip_internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 is_bond_eip: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] max_size: Min number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+        :param pulumi.Input[int] min_size: Max number of instances in a auto scaling group, its valid value range [0~1000].
+        :param pulumi.Input[int] eip_bandwidth: Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+        :param pulumi.Input[str] eip_internet_charge_type: EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+        :param pulumi.Input[bool] is_bond_eip: Whether to bind EIP for an instance. Default: `false`.
+        :param pulumi.Input[str] type: Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+        """
+        pulumi.set(__self__, "max_size", max_size)
+        pulumi.set(__self__, "min_size", min_size)
+        if eip_bandwidth is not None:
+            pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
+        if eip_internet_charge_type is not None:
+            pulumi.set(__self__, "eip_internet_charge_type", eip_internet_charge_type)
+        if is_bond_eip is not None:
+            pulumi.set(__self__, "is_bond_eip", is_bond_eip)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> pulumi.Input[int]:
+        """
+        Min number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+        """
+        return pulumi.get(self, "max_size")
+
+    @max_size.setter
+    def max_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_size", value)
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> pulumi.Input[int]:
+        """
+        Max number of instances in a auto scaling group, its valid value range [0~1000].
+        """
+        return pulumi.get(self, "min_size")
+
+    @min_size.setter
+    def min_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_size", value)
+
+    @property
+    @pulumi.getter(name="eipBandwidth")
+    def eip_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+        """
+        return pulumi.get(self, "eip_bandwidth")
+
+    @eip_bandwidth.setter
+    def eip_bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "eip_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="eipInternetChargeType")
+    def eip_internet_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+        """
+        return pulumi.get(self, "eip_internet_charge_type")
+
+    @eip_internet_charge_type.setter
+    def eip_internet_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eip_internet_charge_type", value)
+
+    @property
+    @pulumi.getter(name="isBondEip")
+    def is_bond_eip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to bind EIP for an instance. Default: `false`.
+        """
+        return pulumi.get(self, "is_bond_eip")
+
+    @is_bond_eip.setter
+    def is_bond_eip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_bond_eip", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

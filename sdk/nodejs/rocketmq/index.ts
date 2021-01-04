@@ -8,6 +8,7 @@ export * from "./clientUser";
 export * from "./dnatEntry";
 export * from "./getGroups";
 export * from "./getInstances";
+export * from "./getService";
 export * from "./getTopics";
 export * from "./group";
 export * from "./instance";
