@@ -84,6 +84,7 @@ const (
 	rdsMod             = "Rds"
 	sagMod             = "Sag"
 	slbMod             = "Slb"
+	tsdbMod            = "Tsdb"
 	vpcMod             = "Vpc"
 	vpnMod             = "Vpn"
 	wafMod             = "Waf"
@@ -415,8 +416,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fnf_flow":     {Tok: resource(fnfMod, "Flow")},
 
 			// Ga
-			"alicloud_ga_listener":    {Tok: resource(gaMod, "Listener")},
-			"alicloud_ga_accelerator": {Tok: resource(gaMod, "Accelerator")},
+			"alicloud_ga_listener":          {Tok: resource(gaMod, "Listener")},
+			"alicloud_ga_accelerator":       {Tok: resource(gaMod, "Accelerator")},
+			"alicloud_ga_bandwidth_package": {Tok: resource(gaMod, "BandwidthPackage")},
+			"alicloud_ga_endpoint_group":    {Tok: resource(gaMod, "EndpointGroup")},
 
 			// Gpdb
 			"alicloud_gpdb_connection": {Tok: resource(gpdbMod, "Connection")},
@@ -624,6 +627,9 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+
+			// Tsdb
+			"alicloud_tsdb_instance": {Tok: resource(tsdbMod, "Instance")},
 
 			// VPC
 			"alicloud_subnet":                       {Tok: resource(vpcMod, "Subnet")},
@@ -837,14 +843,17 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fc_triggers":       {Tok: dataSource(fcMod, "getTriggers")},
 			"alicloud_fc_zones":          {Tok: dataSource(fcMod, "getZones")},
 			"alicloud_fc_custom_domains": {Tok: dataSource(fcMod, "getCustomDomains")},
+			"alicloud_fc_service":        {Tok: dataSource(fcMod, "getService")},
 
 			// FNF
 			"alicloud_fnf_schedules": {Tok: dataSource(fnfMod, "getSchedules")},
 			"alicloud_fnf_flows":     {Tok: dataSource(fnfMod, "getFlows")},
 
 			// Ga
-			"alicloud_ga_listeners":    {Tok: dataSource(gaMod, "getListeners")},
-			"alicloud_ga_accelerators": {Tok: dataSource(gaMod, "getAccelerators")},
+			"alicloud_ga_listeners":          {Tok: dataSource(gaMod, "getListeners")},
+			"alicloud_ga_accelerators":       {Tok: dataSource(gaMod, "getAccelerators")},
+			"alicloud_ga_bandwidth_packages": {Tok: dataSource(gaMod, "getBandwidthPackages")},
+			"alicloud_ga_endpoint_groups":    {Tok: dataSource(gaMod, "getEndpointGroups")},
 
 			// Gpdb
 			"alicloud_gpdb_instances": {Tok: dataSource(gpdbMod, "getInstances")},
@@ -1000,6 +1009,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_slb_master_slave_server_groups": {Tok: dataSource(slbMod, "getMasterSlaveServerGroups")},
 			"alicloud_slb_server_certificates":        {Tok: dataSource(slbMod, "getServerCertificates")},
 			"alicloud_slb_zones":                      {Tok: dataSource(slbMod, "getZones")},
+
+			//
+			"alicloud_tsdb_instances": {Tok: dataSource(tsdbMod, "getInstances")},
+			"alicloud_tsdb_zones":     {Tok: dataSource(tsdbMod, "getZones")},
 
 			// Vpc
 			"alicloud_vpcs":                         {Tok: dataSource(vpcMod, "getNetworks")},

@@ -33,6 +33,7 @@ export function getTrails(args?: GetTrailsArgs, opts?: pulumi.InvokeOptions): Pr
     }
     return pulumi.runtime.invoke("alicloud:actiontrail/getTrails:getTrails", {
         "ids": args.ids,
+        "includeOrganizationTrail": args.includeOrganizationTrail,
         "includeShadowTrails": args.includeShadowTrails,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -48,6 +49,10 @@ export interface GetTrailsArgs {
      * A list of ActionTrail Trail IDs. It is the same as trail name.
      */
     readonly ids?: string[];
+    /**
+     * Whether to show organization tracking. Default to `false`.
+     */
+    readonly includeOrganizationTrail?: boolean;
     /**
      * Whether to show shadow tracking. Default to `false`.
      */
@@ -81,6 +86,7 @@ export interface GetTrailsResult {
      * A list of ActionTrail Trail ids. It is the same as trail name.
      */
     readonly ids: string[];
+    readonly includeOrganizationTrail?: boolean;
     readonly includeShadowTrails?: boolean;
     readonly nameRegex?: string;
     /**

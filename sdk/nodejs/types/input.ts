@@ -44,6 +44,7 @@ export interface ProviderEndpoint {
     fnf?: pulumi.Input<string>;
     ga?: pulumi.Input<string>;
     gpdb?: pulumi.Input<string>;
+    hitsdb?: pulumi.Input<string>;
     kms?: pulumi.Input<string>;
     kvstore?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
@@ -1803,6 +1804,44 @@ export namespace fnf {
 }
 
 export namespace ga {
+    export interface EndpointGroupEndpointConfiguration {
+        /**
+         * Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+         */
+        enableClientipPreservation?: pulumi.Input<boolean>;
+        /**
+         * The IP address or domain name of Endpoint N in the endpoint group.
+         */
+        endpoint: pulumi.Input<string>;
+        /**
+         * Probe Port.
+         */
+        probePort?: pulumi.Input<number>;
+        /**
+         * Probe Protocol.
+         */
+        probeProtocol?: pulumi.Input<string>;
+        /**
+         * The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+         */
+        type: pulumi.Input<string>;
+        /**
+         * The weight of Endpoint N in the endpoint group.
+         */
+        weight: pulumi.Input<number>;
+    }
+
+    export interface EndpointGroupPortOverrides {
+        /**
+         * Forwarding port.
+         */
+        endpointPort?: pulumi.Input<number>;
+        /**
+         * Listener port.
+         */
+        listenerPort?: pulumi.Input<number>;
+    }
+
     export interface ListenerCertificate {
         /**
          * The id of the certificate.
@@ -2329,6 +2368,9 @@ export namespace slb {
         type?: pulumi.Input<string>;
         weight?: pulumi.Input<number>;
     }
+}
+
+export namespace tsdb {
 }
 
 export namespace vpc {

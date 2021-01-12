@@ -4,7 +4,11 @@
 
 # Export this package's modules as members:
 from .accelerator import *
+from .bandwidth_package import *
+from .endpoint_group import *
 from .get_accelerators import *
+from .get_bandwidth_packages import *
+from .get_endpoint_groups import *
 from .get_listeners import *
 from .listener import *
 from ._inputs import *

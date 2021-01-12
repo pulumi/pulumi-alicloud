@@ -22,6 +22,7 @@ __all__ = [
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
+                 config: str,
                  create_time: str,
                  deploy_type: int,
                  disk_size: int,
@@ -34,12 +35,14 @@ class GetInstancesInstanceResult(dict):
                  paid_type: str,
                  security_group: str,
                  service_status: int,
+                 service_version: str,
                  spec_type: str,
                  topic_quota: int,
                  vpc_id: str,
                  vswitch_id: str,
                  zone_id: str):
         """
+        :param str config: The config the instance.
         :param str create_time: The create time of the instance.
         :param int deploy_type: The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
         :param int disk_size: The disk size of the instance.
@@ -52,12 +55,14 @@ class GetInstancesInstanceResult(dict):
         :param str paid_type: The paid type of the instance.
         :param str security_group: The security group of the instance.
         :param int service_status: The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
+        :param str service_version: The kafka openSource version of the instance.
         :param str spec_type: The spec type of the instance.
         :param int topic_quota: The max num of topic can be create of the instance.
         :param str vpc_id: The ID of attaching VPC to instance.
         :param str vswitch_id: The ID of attaching vswitch to instance.
         :param str zone_id: The ID of attaching zone to instance.
         """
+        pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "deploy_type", deploy_type)
         pulumi.set(__self__, "disk_size", disk_size)
@@ -70,11 +75,20 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "paid_type", paid_type)
         pulumi.set(__self__, "security_group", security_group)
         pulumi.set(__self__, "service_status", service_status)
+        pulumi.set(__self__, "service_version", service_version)
         pulumi.set(__self__, "spec_type", spec_type)
         pulumi.set(__self__, "topic_quota", topic_quota)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def config(self) -> str:
+        """
+        The config the instance.
+        """
+        return pulumi.get(self, "config")
 
     @property
     @pulumi.getter(name="createTime")
@@ -171,6 +185,14 @@ class GetInstancesInstanceResult(dict):
         The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
         """
         return pulumi.get(self, "service_status")
+
+    @property
+    @pulumi.getter(name="serviceVersion")
+    def service_version(self) -> str:
+        """
+        The kafka openSource version of the instance.
+        """
+        return pulumi.get(self, "service_version")
 
     @property
     @pulumi.getter(name="specType")
@@ -404,6 +426,7 @@ class GetTrailsActiontrailResult(dict):
     def __init__(__self__, *,
                  event_rw: str,
                  id: str,
+                 mns_topic_arn: str,
                  oss_bucket_name: str,
                  oss_key_prefix: str,
                  role_name: str,
@@ -415,6 +438,7 @@ class GetTrailsActiontrailResult(dict):
         """
         :param str event_rw: Indicates whether the event is a read or a write event.
         :param str id: The id of the ActionTrail Trail. It is the same as trail name.
+        :param str mns_topic_arn: The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
         :param str oss_bucket_name: The name of the specified OSS bucket.
         :param str oss_key_prefix: The prefix of the specified OSS bucket name.
         :param str role_name: The role in ActionTrail Trail.
@@ -426,6 +450,7 @@ class GetTrailsActiontrailResult(dict):
         """
         pulumi.set(__self__, "event_rw", event_rw)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
         pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
         pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
         pulumi.set(__self__, "role_name", role_name)
@@ -450,6 +475,14 @@ class GetTrailsActiontrailResult(dict):
         The id of the ActionTrail Trail. It is the same as trail name.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="mnsTopicArn")
+    def mns_topic_arn(self) -> str:
+        """
+        The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
+        """
+        return pulumi.get(self, "mns_topic_arn")
 
     @property
     @pulumi.getter(name="ossBucketName")
@@ -521,6 +554,7 @@ class GetTrailsDeprecatedActiontrailResult(dict):
     def __init__(__self__, *,
                  event_rw: str,
                  id: str,
+                 mns_topic_arn: str,
                  oss_bucket_name: str,
                  oss_key_prefix: str,
                  role_name: str,
@@ -539,6 +573,7 @@ class GetTrailsDeprecatedActiontrailResult(dict):
         """
         pulumi.set(__self__, "event_rw", event_rw)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
         pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
         pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
         pulumi.set(__self__, "role_name", role_name)
@@ -560,6 +595,11 @@ class GetTrailsDeprecatedActiontrailResult(dict):
     @pulumi.getter
     def id(self) -> str:
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="mnsTopicArn")
+    def mns_topic_arn(self) -> str:
+        return pulumi.get(self, "mns_topic_arn")
 
     @property
     @pulumi.getter(name="ossBucketName")
@@ -622,6 +662,7 @@ class GetTrailsDeprecatedTrailResult(dict):
     def __init__(__self__, *,
                  event_rw: str,
                  id: str,
+                 mns_topic_arn: str,
                  oss_bucket_name: str,
                  oss_key_prefix: str,
                  role_name: str,
@@ -640,6 +681,7 @@ class GetTrailsDeprecatedTrailResult(dict):
         """
         pulumi.set(__self__, "event_rw", event_rw)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
         pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
         pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
         pulumi.set(__self__, "role_name", role_name)
@@ -661,6 +703,11 @@ class GetTrailsDeprecatedTrailResult(dict):
     @pulumi.getter
     def id(self) -> str:
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="mnsTopicArn")
+    def mns_topic_arn(self) -> str:
+        return pulumi.get(self, "mns_topic_arn")
 
     @property
     @pulumi.getter(name="ossBucketName")
@@ -723,6 +770,7 @@ class GetTrailsTrailResult(dict):
     def __init__(__self__, *,
                  event_rw: str,
                  id: str,
+                 mns_topic_arn: str,
                  oss_bucket_name: str,
                  oss_key_prefix: str,
                  role_name: str,
@@ -734,6 +782,7 @@ class GetTrailsTrailResult(dict):
         """
         :param str event_rw: Indicates whether the event is a read or a write event.
         :param str id: The id of the ActionTrail Trail. It is the same as trail name.
+        :param str mns_topic_arn: The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
         :param str oss_bucket_name: The name of the specified OSS bucket.
         :param str oss_key_prefix: The prefix of the specified OSS bucket name.
         :param str role_name: The role in ActionTrail Trail.
@@ -745,6 +794,7 @@ class GetTrailsTrailResult(dict):
         """
         pulumi.set(__self__, "event_rw", event_rw)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
         pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
         pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
         pulumi.set(__self__, "role_name", role_name)
@@ -769,6 +819,14 @@ class GetTrailsTrailResult(dict):
         The id of the ActionTrail Trail. It is the same as trail name.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="mnsTopicArn")
+    def mns_topic_arn(self) -> str:
+        """
+        The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
+        """
+        return pulumi.get(self, "mns_topic_arn")
 
     @property
     @pulumi.getter(name="ossBucketName")

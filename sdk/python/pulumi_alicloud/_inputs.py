@@ -100,6 +100,7 @@ class ProviderEndpointArgs:
                  fnf: Optional[pulumi.Input[str]] = None,
                  ga: Optional[pulumi.Input[str]] = None,
                  gpdb: Optional[pulumi.Input[str]] = None,
+                 hitsdb: Optional[pulumi.Input[str]] = None,
                  kms: Optional[pulumi.Input[str]] = None,
                  kvstore: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -190,6 +191,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "ga", ga)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
+        if hitsdb is not None:
+            pulumi.set(__self__, "hitsdb", hitsdb)
         if kms is not None:
             pulumi.set(__self__, "kms", kms)
         if kvstore is not None:
@@ -530,6 +533,15 @@ class ProviderEndpointArgs:
     @gpdb.setter
     def gpdb(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gpdb", value)
+
+    @property
+    @pulumi.getter
+    def hitsdb(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "hitsdb")
+
+    @hitsdb.setter
+    def hitsdb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hitsdb", value)
 
     @property
     @pulumi.getter

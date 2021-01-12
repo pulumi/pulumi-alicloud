@@ -70,6 +70,10 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly routerTableId!: pulumi.Output<string>;
     /**
+     * The secondary CIDR blocks for the VPC.
+     */
+    public readonly secondaryCidrBlocks!: pulumi.Output<string[] | undefined>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -93,6 +97,7 @@ export class Network extends pulumi.CustomResource {
             inputs["routeTableId"] = state ? state.routeTableId : undefined;
             inputs["routerId"] = state ? state.routerId : undefined;
             inputs["routerTableId"] = state ? state.routerTableId : undefined;
+            inputs["secondaryCidrBlocks"] = state ? state.secondaryCidrBlocks : undefined;
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
@@ -103,6 +108,7 @@ export class Network extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["secondaryCidrBlocks"] = args ? args.secondaryCidrBlocks : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["routeTableId"] = undefined /*out*/;
             inputs["routerId"] = undefined /*out*/;
@@ -152,6 +158,10 @@ export interface NetworkState {
      */
     readonly routerTableId?: pulumi.Input<string>;
     /**
+     * The secondary CIDR blocks for the VPC.
+     */
+    readonly secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
@@ -177,6 +187,10 @@ export interface NetworkArgs {
      * The Id of resource group which the VPC belongs.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The secondary CIDR blocks for the VPC.
+     */
+    readonly secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */

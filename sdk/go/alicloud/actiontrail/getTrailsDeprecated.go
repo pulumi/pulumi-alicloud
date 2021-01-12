@@ -19,8 +19,9 @@ func GetTrailsDeprecated(ctx *pulumi.Context, args *GetTrailsDeprecatedArgs, opt
 
 // A collection of arguments for invoking getTrailsDeprecated.
 type GetTrailsDeprecatedArgs struct {
-	Ids                 []string `pulumi:"ids"`
-	IncludeShadowTrails *bool    `pulumi:"includeShadowTrails"`
+	Ids                      []string `pulumi:"ids"`
+	IncludeOrganizationTrail *bool    `pulumi:"includeOrganizationTrail"`
+	IncludeShadowTrails      *bool    `pulumi:"includeShadowTrails"`
 	// A regex string to filter results action trail name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -34,10 +35,11 @@ type GetTrailsDeprecatedResult struct {
 	// Deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.
 	Actiontrails []GetTrailsDeprecatedActiontrail `pulumi:"actiontrails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string   `pulumi:"id"`
-	Ids                 []string `pulumi:"ids"`
-	IncludeShadowTrails *bool    `pulumi:"includeShadowTrails"`
-	NameRegex           *string  `pulumi:"nameRegex"`
+	Id                       string   `pulumi:"id"`
+	Ids                      []string `pulumi:"ids"`
+	IncludeOrganizationTrail *bool    `pulumi:"includeOrganizationTrail"`
+	IncludeShadowTrails      *bool    `pulumi:"includeShadowTrails"`
+	NameRegex                *string  `pulumi:"nameRegex"`
 	// A list of trail names.
 	Names      []string                   `pulumi:"names"`
 	OutputFile *string                    `pulumi:"outputFile"`

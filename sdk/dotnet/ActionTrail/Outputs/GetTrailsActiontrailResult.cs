@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
+        /// </summary>
+        public readonly string MnsTopicArn;
+        /// <summary>
         /// The name of the specified OSS bucket.
         /// </summary>
         public readonly string OssBucketName;
@@ -60,6 +64,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string id,
 
+            string mnsTopicArn,
+
             string ossBucketName,
 
             string ossKeyPrefix,
@@ -78,6 +84,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         {
             EventRw = eventRw;
             Id = id;
+            MnsTopicArn = mnsTopicArn;
             OssBucketName = ossBucketName;
             OssKeyPrefix = ossKeyPrefix;
             RoleName = roleName;

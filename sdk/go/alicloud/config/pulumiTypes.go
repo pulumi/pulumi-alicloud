@@ -110,6 +110,7 @@ type Endpoints struct {
 	Fnf             *string `pulumi:"fnf"`
 	Ga              *string `pulumi:"ga"`
 	Gpdb            *string `pulumi:"gpdb"`
+	Hitsdb          *string `pulumi:"hitsdb"`
 	Kms             *string `pulumi:"kms"`
 	Kvstore         *string `pulumi:"kvstore"`
 	Location        *string `pulumi:"location"`
@@ -182,6 +183,7 @@ type EndpointsArgs struct {
 	Fnf             pulumi.StringPtrInput `pulumi:"fnf"`
 	Ga              pulumi.StringPtrInput `pulumi:"ga"`
 	Gpdb            pulumi.StringPtrInput `pulumi:"gpdb"`
+	Hitsdb          pulumi.StringPtrInput `pulumi:"hitsdb"`
 	Kms             pulumi.StringPtrInput `pulumi:"kms"`
 	Kvstore         pulumi.StringPtrInput `pulumi:"kvstore"`
 	Location        pulumi.StringPtrInput `pulumi:"location"`
@@ -387,6 +389,10 @@ func (o EndpointsOutput) Ga() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Gpdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Gpdb }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Hitsdb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Hitsdb }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Kms() pulumi.StringPtrOutput {

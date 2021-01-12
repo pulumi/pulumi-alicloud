@@ -82,6 +82,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+     */
+    public readonly config!: pulumi.Output<string>;
+    /**
      * The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
      */
     public readonly deployType!: pulumi.Output<number>;
@@ -117,6 +121,10 @@ export class Instance extends pulumi.CustomResource {
      * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
     public readonly securityGroup!: pulumi.Output<string | undefined>;
+    /**
+     * （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+     */
+    public readonly serviceVersion!: pulumi.Output<string>;
     /**
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
@@ -154,6 +162,7 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            inputs["config"] = state ? state.config : undefined;
             inputs["deployType"] = state ? state.deployType : undefined;
             inputs["diskSize"] = state ? state.diskSize : undefined;
             inputs["diskType"] = state ? state.diskType : undefined;
@@ -163,6 +172,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["paidType"] = state ? state.paidType : undefined;
             inputs["securityGroup"] = state ? state.securityGroup : undefined;
+            inputs["serviceVersion"] = state ? state.serviceVersion : undefined;
             inputs["specType"] = state ? state.specType : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["topicQuota"] = state ? state.topicQuota : undefined;
@@ -189,6 +199,7 @@ export class Instance extends pulumi.CustomResource {
             if (!args || args.vswitchId === undefined) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            inputs["config"] = args ? args.config : undefined;
             inputs["deployType"] = args ? args.deployType : undefined;
             inputs["diskSize"] = args ? args.diskSize : undefined;
             inputs["diskType"] = args ? args.diskType : undefined;
@@ -197,6 +208,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["paidType"] = args ? args.paidType : undefined;
             inputs["securityGroup"] = args ? args.securityGroup : undefined;
+            inputs["serviceVersion"] = args ? args.serviceVersion : undefined;
             inputs["specType"] = args ? args.specType : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["topicQuota"] = args ? args.topicQuota : undefined;
@@ -220,6 +232,10 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+     */
+    readonly config?: pulumi.Input<string>;
     /**
      * The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
      */
@@ -257,6 +273,10 @@ export interface InstanceState {
      */
     readonly securityGroup?: pulumi.Input<string>;
     /**
+     * （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+     */
+    readonly serviceVersion?: pulumi.Input<string>;
+    /**
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
     readonly specType?: pulumi.Input<string>;
@@ -286,6 +306,10 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+     */
+    readonly config?: pulumi.Input<string>;
     /**
      * The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
      */
@@ -318,6 +342,10 @@ export interface InstanceArgs {
      * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
     readonly securityGroup?: pulumi.Input<string>;
+    /**
+     * （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+     */
+    readonly serviceVersion?: pulumi.Input<string>;
     /**
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */

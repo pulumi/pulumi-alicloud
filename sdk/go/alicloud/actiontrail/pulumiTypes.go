@@ -11,6 +11,8 @@ import (
 )
 
 type GetInstancesInstance struct {
+	// The config the instance.
+	Config string `pulumi:"config"`
 	// The create time of the instance.
 	CreateTime string `pulumi:"createTime"`
 	// The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
@@ -35,6 +37,8 @@ type GetInstancesInstance struct {
 	SecurityGroup string `pulumi:"securityGroup"`
 	// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
 	ServiceStatus int `pulumi:"serviceStatus"`
+	// The kafka openSource version of the instance.
+	ServiceVersion string `pulumi:"serviceVersion"`
 	// The spec type of the instance.
 	SpecType string `pulumi:"specType"`
 	// The max num of topic can be create of the instance.
@@ -59,6 +63,8 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
+	// The config the instance.
+	Config pulumi.StringInput `pulumi:"config"`
 	// The create time of the instance.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
@@ -83,6 +89,8 @@ type GetInstancesInstanceArgs struct {
 	SecurityGroup pulumi.StringInput `pulumi:"securityGroup"`
 	// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
 	ServiceStatus pulumi.IntInput `pulumi:"serviceStatus"`
+	// The kafka openSource version of the instance.
+	ServiceVersion pulumi.StringInput `pulumi:"serviceVersion"`
 	// The spec type of the instance.
 	SpecType pulumi.StringInput `pulumi:"specType"`
 	// The max num of topic can be create of the instance.
@@ -146,6 +154,11 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
+// The config the instance.
+func (o GetInstancesInstanceOutput) Config() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Config }).(pulumi.StringOutput)
+}
+
 // The create time of the instance.
 func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -204,6 +217,11 @@ func (o GetInstancesInstanceOutput) SecurityGroup() pulumi.StringOutput {
 // The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
 func (o GetInstancesInstanceOutput) ServiceStatus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.ServiceStatus }).(pulumi.IntOutput)
+}
+
+// The kafka openSource version of the instance.
+func (o GetInstancesInstanceOutput) ServiceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ServiceVersion }).(pulumi.StringOutput)
 }
 
 // The spec type of the instance.
@@ -655,6 +673,8 @@ type GetTrailsActiontrail struct {
 	EventRw string `pulumi:"eventRw"`
 	// The id of the ActionTrail Trail. It is the same as trail name.
 	Id string `pulumi:"id"`
+	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
+	MnsTopicArn string `pulumi:"mnsTopicArn"`
 	// The name of the specified OSS bucket.
 	OssBucketName string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
@@ -689,6 +709,8 @@ type GetTrailsActiontrailArgs struct {
 	EventRw pulumi.StringInput `pulumi:"eventRw"`
 	// The id of the ActionTrail Trail. It is the same as trail name.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
+	MnsTopicArn pulumi.StringInput `pulumi:"mnsTopicArn"`
 	// The name of the specified OSS bucket.
 	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
@@ -768,6 +790,11 @@ func (o GetTrailsActiontrailOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
+func (o GetTrailsActiontrailOutput) MnsTopicArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.MnsTopicArn }).(pulumi.StringOutput)
+}
+
 // The name of the specified OSS bucket.
 func (o GetTrailsActiontrailOutput) OssBucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.OssBucketName }).(pulumi.StringOutput)
@@ -830,8 +857,9 @@ func (o GetTrailsActiontrailArrayOutput) Index(i pulumi.IntInput) GetTrailsActio
 
 type GetTrailsDeprecatedActiontrail struct {
 	// Indicates whether the event is a read or a write event.
-	EventRw string `pulumi:"eventRw"`
-	Id      string `pulumi:"id"`
+	EventRw     string `pulumi:"eventRw"`
+	Id          string `pulumi:"id"`
+	MnsTopicArn string `pulumi:"mnsTopicArn"`
 	// The name of the specified OSS bucket.
 	OssBucketName string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
@@ -860,8 +888,9 @@ type GetTrailsDeprecatedActiontrailInput interface {
 
 type GetTrailsDeprecatedActiontrailArgs struct {
 	// Indicates whether the event is a read or a write event.
-	EventRw pulumi.StringInput `pulumi:"eventRw"`
-	Id      pulumi.StringInput `pulumi:"id"`
+	EventRw     pulumi.StringInput `pulumi:"eventRw"`
+	Id          pulumi.StringInput `pulumi:"id"`
+	MnsTopicArn pulumi.StringInput `pulumi:"mnsTopicArn"`
 	// The name of the specified OSS bucket.
 	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
@@ -937,6 +966,10 @@ func (o GetTrailsDeprecatedActiontrailOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetTrailsDeprecatedActiontrailOutput) MnsTopicArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.MnsTopicArn }).(pulumi.StringOutput)
+}
+
 // The name of the specified OSS bucket.
 func (o GetTrailsDeprecatedActiontrailOutput) OssBucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedActiontrail) string { return v.OssBucketName }).(pulumi.StringOutput)
@@ -996,8 +1029,9 @@ func (o GetTrailsDeprecatedActiontrailArrayOutput) Index(i pulumi.IntInput) GetT
 
 type GetTrailsDeprecatedTrail struct {
 	// Indicates whether the event is a read or a write event.
-	EventRw string `pulumi:"eventRw"`
-	Id      string `pulumi:"id"`
+	EventRw     string `pulumi:"eventRw"`
+	Id          string `pulumi:"id"`
+	MnsTopicArn string `pulumi:"mnsTopicArn"`
 	// The name of the specified OSS bucket.
 	OssBucketName string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
@@ -1026,8 +1060,9 @@ type GetTrailsDeprecatedTrailInput interface {
 
 type GetTrailsDeprecatedTrailArgs struct {
 	// Indicates whether the event is a read or a write event.
-	EventRw pulumi.StringInput `pulumi:"eventRw"`
-	Id      pulumi.StringInput `pulumi:"id"`
+	EventRw     pulumi.StringInput `pulumi:"eventRw"`
+	Id          pulumi.StringInput `pulumi:"id"`
+	MnsTopicArn pulumi.StringInput `pulumi:"mnsTopicArn"`
 	// The name of the specified OSS bucket.
 	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
@@ -1103,6 +1138,10 @@ func (o GetTrailsDeprecatedTrailOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetTrailsDeprecatedTrailOutput) MnsTopicArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.MnsTopicArn }).(pulumi.StringOutput)
+}
+
 // The name of the specified OSS bucket.
 func (o GetTrailsDeprecatedTrailOutput) OssBucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsDeprecatedTrail) string { return v.OssBucketName }).(pulumi.StringOutput)
@@ -1165,6 +1204,8 @@ type GetTrailsTrail struct {
 	EventRw string `pulumi:"eventRw"`
 	// The id of the ActionTrail Trail. It is the same as trail name.
 	Id string `pulumi:"id"`
+	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
+	MnsTopicArn string `pulumi:"mnsTopicArn"`
 	// The name of the specified OSS bucket.
 	OssBucketName string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
@@ -1199,6 +1240,8 @@ type GetTrailsTrailArgs struct {
 	EventRw pulumi.StringInput `pulumi:"eventRw"`
 	// The id of the ActionTrail Trail. It is the same as trail name.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
+	MnsTopicArn pulumi.StringInput `pulumi:"mnsTopicArn"`
 	// The name of the specified OSS bucket.
 	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name.
@@ -1276,6 +1319,11 @@ func (o GetTrailsTrailOutput) EventRw() pulumi.StringOutput {
 // The id of the ActionTrail Trail. It is the same as trail name.
 func (o GetTrailsTrailOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrailsTrail) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
+func (o GetTrailsTrailOutput) MnsTopicArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsTrail) string { return v.MnsTopicArn }).(pulumi.StringOutput)
 }
 
 // The name of the specified OSS bucket.

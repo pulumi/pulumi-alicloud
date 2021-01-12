@@ -62,6 +62,12 @@ namespace Pulumi.AliCloud.ActionTrail
         }
 
         /// <summary>
+        /// Whether to show organization tracking. Default to `false`.
+        /// </summary>
+        [Input("includeOrganizationTrail")]
+        public bool? IncludeOrganizationTrail { get; set; }
+
+        /// <summary>
         /// Whether to show shadow tracking. Default to `false`.
         /// </summary>
         [Input("includeShadowTrails")]
@@ -103,6 +109,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// A list of ActionTrail Trail ids. It is the same as trail name.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly bool? IncludeOrganizationTrail;
         public readonly bool? IncludeShadowTrails;
         public readonly string? NameRegex;
         /// <summary>
@@ -127,6 +134,8 @@ namespace Pulumi.AliCloud.ActionTrail
 
             ImmutableArray<string> ids,
 
+            bool? includeOrganizationTrail,
+
             bool? includeShadowTrails,
 
             string? nameRegex,
@@ -142,6 +151,7 @@ namespace Pulumi.AliCloud.ActionTrail
             Actiontrails = actiontrails;
             Id = id;
             Ids = ids;
+            IncludeOrganizationTrail = includeOrganizationTrail;
             IncludeShadowTrails = includeShadowTrails;
             NameRegex = nameRegex;
             Names = names;

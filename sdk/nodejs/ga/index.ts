@@ -3,6 +3,10 @@
 
 // Export members:
 export * from "./accelerator";
+export * from "./bandwidthPackage";
+export * from "./endpointGroup";
 export * from "./getAccelerators";
+export * from "./getBandwidthPackages";
+export * from "./getEndpointGroups";
 export * from "./getListeners";
 export * from "./listener";

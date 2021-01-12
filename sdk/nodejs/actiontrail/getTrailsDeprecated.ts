@@ -18,6 +18,7 @@ export function getTrailsDeprecated(args?: GetTrailsDeprecatedArgs, opts?: pulum
     }
     return pulumi.runtime.invoke("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", {
         "ids": args.ids,
+        "includeOrganizationTrail": args.includeOrganizationTrail,
         "includeShadowTrails": args.includeShadowTrails,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -30,6 +31,7 @@ export function getTrailsDeprecated(args?: GetTrailsDeprecatedArgs, opts?: pulum
  */
 export interface GetTrailsDeprecatedArgs {
     readonly ids?: string[];
+    readonly includeOrganizationTrail?: boolean;
     readonly includeShadowTrails?: boolean;
     /**
      * A regex string to filter results action trail name.
@@ -54,6 +56,7 @@ export interface GetTrailsDeprecatedResult {
      */
     readonly id: string;
     readonly ids: string[];
+    readonly includeOrganizationTrail?: boolean;
     readonly includeShadowTrails?: boolean;
     readonly nameRegex?: string;
     /**

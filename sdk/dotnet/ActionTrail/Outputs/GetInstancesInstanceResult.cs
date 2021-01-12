@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
     public sealed class GetInstancesInstanceResult
     {
         /// <summary>
+        /// The config the instance.
+        /// </summary>
+        public readonly string Config;
+        /// <summary>
         /// The create time of the instance.
         /// </summary>
         public readonly string CreateTime;
@@ -62,6 +66,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly int ServiceStatus;
         /// <summary>
+        /// The kafka openSource version of the instance.
+        /// </summary>
+        public readonly string ServiceVersion;
+        /// <summary>
         /// The spec type of the instance.
         /// </summary>
         public readonly string SpecType;
@@ -84,6 +92,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
+            string config,
+
             string createTime,
 
             int deployType,
@@ -108,6 +118,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             int serviceStatus,
 
+            string serviceVersion,
+
             string specType,
 
             int topicQuota,
@@ -118,6 +130,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string zoneId)
         {
+            Config = config;
             CreateTime = createTime;
             DeployType = deployType;
             DiskSize = diskSize;
@@ -130,6 +143,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
             PaidType = paidType;
             SecurityGroup = securityGroup;
             ServiceStatus = serviceStatus;
+            ServiceVersion = serviceVersion;
             SpecType = specType;
             TopicQuota = topicQuota;
             VpcId = vpcId;

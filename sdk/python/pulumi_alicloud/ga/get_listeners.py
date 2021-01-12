@@ -113,7 +113,7 @@ def get_listeners(accelerator_id: Optional[str] = None,
                   status: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetListenersResult:
     """
-    This data source provides the Ga Listeners of the current Alibaba Cloud user.
+    This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.111.0+.
 
