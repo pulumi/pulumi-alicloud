@@ -68,6 +68,7 @@ from . import (
     ros,
     sag,
     slb,
+    tsdb,
     vpc,
     vpn,
     waf,

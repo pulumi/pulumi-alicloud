@@ -74,6 +74,12 @@ namespace Pulumi.AliCloud.AliKafka
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        /// </summary>
+        [Output("config")]
+        public Output<string> Config { get; private set; } = null!;
+
+        /// <summary>
         /// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
         /// </summary>
         [Output("deployType")]
@@ -126,6 +132,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Output("securityGroup")]
         public Output<string?> SecurityGroup { get; private set; } = null!;
+
+        /// <summary>
+        /// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        /// </summary>
+        [Output("serviceVersion")]
+        public Output<string> ServiceVersion { get; private set; } = null!;
 
         /// <summary>
         /// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
@@ -210,6 +222,12 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        /// </summary>
+        [Input("config")]
+        public Input<string>? Config { get; set; }
+
+        /// <summary>
         /// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
         /// </summary>
         [Input("deployType", required: true)]
@@ -258,6 +276,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? SecurityGroup { get; set; }
 
         /// <summary>
+        /// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        /// </summary>
+        [Input("serviceVersion")]
+        public Input<string>? ServiceVersion { get; set; }
+
+        /// <summary>
         /// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         /// </summary>
         [Input("specType")]
@@ -294,6 +318,12 @@ namespace Pulumi.AliCloud.AliKafka
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        /// </summary>
+        [Input("config")]
+        public Input<string>? Config { get; set; }
+
         /// <summary>
         /// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
         /// </summary>
@@ -347,6 +377,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("securityGroup")]
         public Input<string>? SecurityGroup { get; set; }
+
+        /// <summary>
+        /// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        /// </summary>
+        [Input("serviceVersion")]
+        public Input<string>? ServiceVersion { get; set; }
 
         /// <summary>
         /// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.

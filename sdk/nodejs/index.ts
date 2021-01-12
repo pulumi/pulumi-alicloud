@@ -64,6 +64,7 @@ import * as rocketmq from "./rocketmq";
 import * as ros from "./ros";
 import * as sag from "./sag";
 import * as slb from "./slb";
+import * as tsdb from "./tsdb";
 import * as types from "./types";
 import * as vpc from "./vpc";
 import * as vpn from "./vpn";
@@ -125,6 +126,7 @@ export {
     ros,
     sag,
     slb,
+    tsdb,
     types,
     vpc,
     vpn,

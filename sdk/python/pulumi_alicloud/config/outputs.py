@@ -87,6 +87,7 @@ class Endpoints(dict):
                  fnf: Optional[str] = None,
                  ga: Optional[str] = None,
                  gpdb: Optional[str] = None,
+                 hitsdb: Optional[str] = None,
                  kms: Optional[str] = None,
                  kvstore: Optional[str] = None,
                  location: Optional[str] = None,
@@ -177,6 +178,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "ga", ga)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
+        if hitsdb is not None:
+            pulumi.set(__self__, "hitsdb", hitsdb)
         if kms is not None:
             pulumi.set(__self__, "kms", kms)
         if kvstore is not None:
@@ -389,6 +392,11 @@ class Endpoints(dict):
     @pulumi.getter
     def gpdb(self) -> Optional[str]:
         return pulumi.get(self, "gpdb")
+
+    @property
+    @pulumi.getter
+    def hitsdb(self) -> Optional[str]:
+        return pulumi.get(self, "hitsdb")
 
     @property
     @pulumi.getter

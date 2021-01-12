@@ -48,6 +48,8 @@ func GetTrails(ctx *pulumi.Context, args *GetTrailsArgs, opts ...pulumi.InvokeOp
 type GetTrailsArgs struct {
 	// A list of ActionTrail Trail IDs. It is the same as trail name.
 	Ids []string `pulumi:"ids"`
+	// Whether to show organization tracking. Default to `false`.
+	IncludeOrganizationTrail *bool `pulumi:"includeOrganizationTrail"`
 	// Whether to show shadow tracking. Default to `false`.
 	IncludeShadowTrails *bool `pulumi:"includeShadowTrails"`
 	// A regex string to filter results by trail name.
@@ -66,9 +68,10 @@ type GetTrailsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of ActionTrail Trail ids. It is the same as trail name.
-	Ids                 []string `pulumi:"ids"`
-	IncludeShadowTrails *bool    `pulumi:"includeShadowTrails"`
-	NameRegex           *string  `pulumi:"nameRegex"`
+	Ids                      []string `pulumi:"ids"`
+	IncludeOrganizationTrail *bool    `pulumi:"includeOrganizationTrail"`
+	IncludeShadowTrails      *bool    `pulumi:"includeShadowTrails"`
+	NameRegex                *string  `pulumi:"nameRegex"`
 	// A list of trail names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`

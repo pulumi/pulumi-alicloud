@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string EventRw;
         public readonly string Id;
+        public readonly string MnsTopicArn;
         /// <summary>
         /// The name of the specified OSS bucket.
         /// </summary>
@@ -48,6 +49,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string id,
 
+            string mnsTopicArn,
+
             string ossBucketName,
 
             string ossKeyPrefix,
@@ -66,6 +69,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         {
             EventRw = eventRw;
             Id = id;
+            MnsTopicArn = mnsTopicArn;
             OssBucketName = ossBucketName;
             OssKeyPrefix = ossKeyPrefix;
             RoleName = roleName;

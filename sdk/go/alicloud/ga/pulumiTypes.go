@@ -10,6 +10,298 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type EndpointGroupEndpointConfiguration struct {
+	// Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+	EnableClientipPreservation *bool `pulumi:"enableClientipPreservation"`
+	// The IP address or domain name of Endpoint N in the endpoint group.
+	Endpoint string `pulumi:"endpoint"`
+	// Probe Port.
+	ProbePort *int `pulumi:"probePort"`
+	// Probe Protocol.
+	ProbeProtocol *string `pulumi:"probeProtocol"`
+	// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+	Type string `pulumi:"type"`
+	// The weight of Endpoint N in the endpoint group.
+	Weight int `pulumi:"weight"`
+}
+
+// EndpointGroupEndpointConfigurationInput is an input type that accepts EndpointGroupEndpointConfigurationArgs and EndpointGroupEndpointConfigurationOutput values.
+// You can construct a concrete instance of `EndpointGroupEndpointConfigurationInput` via:
+//
+//          EndpointGroupEndpointConfigurationArgs{...}
+type EndpointGroupEndpointConfigurationInput interface {
+	pulumi.Input
+
+	ToEndpointGroupEndpointConfigurationOutput() EndpointGroupEndpointConfigurationOutput
+	ToEndpointGroupEndpointConfigurationOutputWithContext(context.Context) EndpointGroupEndpointConfigurationOutput
+}
+
+type EndpointGroupEndpointConfigurationArgs struct {
+	// Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+	EnableClientipPreservation pulumi.BoolPtrInput `pulumi:"enableClientipPreservation"`
+	// The IP address or domain name of Endpoint N in the endpoint group.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Probe Port.
+	ProbePort pulumi.IntPtrInput `pulumi:"probePort"`
+	// Probe Protocol.
+	ProbeProtocol pulumi.StringPtrInput `pulumi:"probeProtocol"`
+	// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The weight of Endpoint N in the endpoint group.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (EndpointGroupEndpointConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGroupEndpointConfiguration)(nil)).Elem()
+}
+
+func (i EndpointGroupEndpointConfigurationArgs) ToEndpointGroupEndpointConfigurationOutput() EndpointGroupEndpointConfigurationOutput {
+	return i.ToEndpointGroupEndpointConfigurationOutputWithContext(context.Background())
+}
+
+func (i EndpointGroupEndpointConfigurationArgs) ToEndpointGroupEndpointConfigurationOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupEndpointConfigurationOutput)
+}
+
+// EndpointGroupEndpointConfigurationArrayInput is an input type that accepts EndpointGroupEndpointConfigurationArray and EndpointGroupEndpointConfigurationArrayOutput values.
+// You can construct a concrete instance of `EndpointGroupEndpointConfigurationArrayInput` via:
+//
+//          EndpointGroupEndpointConfigurationArray{ EndpointGroupEndpointConfigurationArgs{...} }
+type EndpointGroupEndpointConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToEndpointGroupEndpointConfigurationArrayOutput() EndpointGroupEndpointConfigurationArrayOutput
+	ToEndpointGroupEndpointConfigurationArrayOutputWithContext(context.Context) EndpointGroupEndpointConfigurationArrayOutput
+}
+
+type EndpointGroupEndpointConfigurationArray []EndpointGroupEndpointConfigurationInput
+
+func (EndpointGroupEndpointConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointGroupEndpointConfiguration)(nil)).Elem()
+}
+
+func (i EndpointGroupEndpointConfigurationArray) ToEndpointGroupEndpointConfigurationArrayOutput() EndpointGroupEndpointConfigurationArrayOutput {
+	return i.ToEndpointGroupEndpointConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i EndpointGroupEndpointConfigurationArray) ToEndpointGroupEndpointConfigurationArrayOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupEndpointConfigurationArrayOutput)
+}
+
+type EndpointGroupEndpointConfigurationOutput struct{ *pulumi.OutputState }
+
+func (EndpointGroupEndpointConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGroupEndpointConfiguration)(nil)).Elem()
+}
+
+func (o EndpointGroupEndpointConfigurationOutput) ToEndpointGroupEndpointConfigurationOutput() EndpointGroupEndpointConfigurationOutput {
+	return o
+}
+
+func (o EndpointGroupEndpointConfigurationOutput) ToEndpointGroupEndpointConfigurationOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationOutput {
+	return o
+}
+
+// Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+func (o EndpointGroupEndpointConfigurationOutput) EnableClientipPreservation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *bool { return v.EnableClientipPreservation }).(pulumi.BoolPtrOutput)
+}
+
+// The IP address or domain name of Endpoint N in the endpoint group.
+func (o EndpointGroupEndpointConfigurationOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Probe Port.
+func (o EndpointGroupEndpointConfigurationOutput) ProbePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *int { return v.ProbePort }).(pulumi.IntPtrOutput)
+}
+
+// Probe Protocol.
+func (o EndpointGroupEndpointConfigurationOutput) ProbeProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *string { return v.ProbeProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+func (o EndpointGroupEndpointConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The weight of Endpoint N in the endpoint group.
+func (o EndpointGroupEndpointConfigurationOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type EndpointGroupEndpointConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointGroupEndpointConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointGroupEndpointConfiguration)(nil)).Elem()
+}
+
+func (o EndpointGroupEndpointConfigurationArrayOutput) ToEndpointGroupEndpointConfigurationArrayOutput() EndpointGroupEndpointConfigurationArrayOutput {
+	return o
+}
+
+func (o EndpointGroupEndpointConfigurationArrayOutput) ToEndpointGroupEndpointConfigurationArrayOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationArrayOutput {
+	return o
+}
+
+func (o EndpointGroupEndpointConfigurationArrayOutput) Index(i pulumi.IntInput) EndpointGroupEndpointConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointGroupEndpointConfiguration {
+		return vs[0].([]EndpointGroupEndpointConfiguration)[vs[1].(int)]
+	}).(EndpointGroupEndpointConfigurationOutput)
+}
+
+type EndpointGroupPortOverrides struct {
+	// Forwarding port.
+	EndpointPort *int `pulumi:"endpointPort"`
+	// Listener port.
+	ListenerPort *int `pulumi:"listenerPort"`
+}
+
+// EndpointGroupPortOverridesInput is an input type that accepts EndpointGroupPortOverridesArgs and EndpointGroupPortOverridesOutput values.
+// You can construct a concrete instance of `EndpointGroupPortOverridesInput` via:
+//
+//          EndpointGroupPortOverridesArgs{...}
+type EndpointGroupPortOverridesInput interface {
+	pulumi.Input
+
+	ToEndpointGroupPortOverridesOutput() EndpointGroupPortOverridesOutput
+	ToEndpointGroupPortOverridesOutputWithContext(context.Context) EndpointGroupPortOverridesOutput
+}
+
+type EndpointGroupPortOverridesArgs struct {
+	// Forwarding port.
+	EndpointPort pulumi.IntPtrInput `pulumi:"endpointPort"`
+	// Listener port.
+	ListenerPort pulumi.IntPtrInput `pulumi:"listenerPort"`
+}
+
+func (EndpointGroupPortOverridesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGroupPortOverrides)(nil)).Elem()
+}
+
+func (i EndpointGroupPortOverridesArgs) ToEndpointGroupPortOverridesOutput() EndpointGroupPortOverridesOutput {
+	return i.ToEndpointGroupPortOverridesOutputWithContext(context.Background())
+}
+
+func (i EndpointGroupPortOverridesArgs) ToEndpointGroupPortOverridesOutputWithContext(ctx context.Context) EndpointGroupPortOverridesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupPortOverridesOutput)
+}
+
+func (i EndpointGroupPortOverridesArgs) ToEndpointGroupPortOverridesPtrOutput() EndpointGroupPortOverridesPtrOutput {
+	return i.ToEndpointGroupPortOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointGroupPortOverridesArgs) ToEndpointGroupPortOverridesPtrOutputWithContext(ctx context.Context) EndpointGroupPortOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupPortOverridesOutput).ToEndpointGroupPortOverridesPtrOutputWithContext(ctx)
+}
+
+// EndpointGroupPortOverridesPtrInput is an input type that accepts EndpointGroupPortOverridesArgs, EndpointGroupPortOverridesPtr and EndpointGroupPortOverridesPtrOutput values.
+// You can construct a concrete instance of `EndpointGroupPortOverridesPtrInput` via:
+//
+//          EndpointGroupPortOverridesArgs{...}
+//
+//  or:
+//
+//          nil
+type EndpointGroupPortOverridesPtrInput interface {
+	pulumi.Input
+
+	ToEndpointGroupPortOverridesPtrOutput() EndpointGroupPortOverridesPtrOutput
+	ToEndpointGroupPortOverridesPtrOutputWithContext(context.Context) EndpointGroupPortOverridesPtrOutput
+}
+
+type endpointGroupPortOverridesPtrType EndpointGroupPortOverridesArgs
+
+func EndpointGroupPortOverridesPtr(v *EndpointGroupPortOverridesArgs) EndpointGroupPortOverridesPtrInput {
+	return (*endpointGroupPortOverridesPtrType)(v)
+}
+
+func (*endpointGroupPortOverridesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointGroupPortOverrides)(nil)).Elem()
+}
+
+func (i *endpointGroupPortOverridesPtrType) ToEndpointGroupPortOverridesPtrOutput() EndpointGroupPortOverridesPtrOutput {
+	return i.ToEndpointGroupPortOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i *endpointGroupPortOverridesPtrType) ToEndpointGroupPortOverridesPtrOutputWithContext(ctx context.Context) EndpointGroupPortOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupPortOverridesPtrOutput)
+}
+
+type EndpointGroupPortOverridesOutput struct{ *pulumi.OutputState }
+
+func (EndpointGroupPortOverridesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGroupPortOverrides)(nil)).Elem()
+}
+
+func (o EndpointGroupPortOverridesOutput) ToEndpointGroupPortOverridesOutput() EndpointGroupPortOverridesOutput {
+	return o
+}
+
+func (o EndpointGroupPortOverridesOutput) ToEndpointGroupPortOverridesOutputWithContext(ctx context.Context) EndpointGroupPortOverridesOutput {
+	return o
+}
+
+func (o EndpointGroupPortOverridesOutput) ToEndpointGroupPortOverridesPtrOutput() EndpointGroupPortOverridesPtrOutput {
+	return o.ToEndpointGroupPortOverridesPtrOutputWithContext(context.Background())
+}
+
+func (o EndpointGroupPortOverridesOutput) ToEndpointGroupPortOverridesPtrOutputWithContext(ctx context.Context) EndpointGroupPortOverridesPtrOutput {
+	return o.ApplyT(func(v EndpointGroupPortOverrides) *EndpointGroupPortOverrides {
+		return &v
+	}).(EndpointGroupPortOverridesPtrOutput)
+}
+
+// Forwarding port.
+func (o EndpointGroupPortOverridesOutput) EndpointPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EndpointGroupPortOverrides) *int { return v.EndpointPort }).(pulumi.IntPtrOutput)
+}
+
+// Listener port.
+func (o EndpointGroupPortOverridesOutput) ListenerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EndpointGroupPortOverrides) *int { return v.ListenerPort }).(pulumi.IntPtrOutput)
+}
+
+type EndpointGroupPortOverridesPtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointGroupPortOverridesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointGroupPortOverrides)(nil)).Elem()
+}
+
+func (o EndpointGroupPortOverridesPtrOutput) ToEndpointGroupPortOverridesPtrOutput() EndpointGroupPortOverridesPtrOutput {
+	return o
+}
+
+func (o EndpointGroupPortOverridesPtrOutput) ToEndpointGroupPortOverridesPtrOutputWithContext(ctx context.Context) EndpointGroupPortOverridesPtrOutput {
+	return o
+}
+
+func (o EndpointGroupPortOverridesPtrOutput) Elem() EndpointGroupPortOverridesOutput {
+	return o.ApplyT(func(v *EndpointGroupPortOverrides) EndpointGroupPortOverrides { return *v }).(EndpointGroupPortOverridesOutput)
+}
+
+// Forwarding port.
+func (o EndpointGroupPortOverridesPtrOutput) EndpointPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EndpointGroupPortOverrides) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Listener port.
+func (o EndpointGroupPortOverridesPtrOutput) ListenerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EndpointGroupPortOverrides) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ListenerPort
+	}).(pulumi.IntPtrOutput)
+}
+
 type ListenerCertificate struct {
 	// The id of the certificate.
 	Id *string `pulumi:"id"`
@@ -652,6 +944,675 @@ func (o GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput) Index(
 	}).(GetAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput)
 }
 
+type GetBandwidthPackagesPackage struct {
+	// The bandwidth value of bandwidth packet.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The Resource ID of the bandwidth.
+	BandwidthPackageId string `pulumi:"bandwidthPackageId"`
+	// The name of the bandwidth packet.
+	BandwidthPackageName string `pulumi:"bandwidthPackageName"`
+	// The bandwidth type of the bandwidth.
+	BandwidthType string `pulumi:"bandwidthType"`
+	// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter.
+	CbnGeographicRegionIda string `pulumi:"cbnGeographicRegionIda"`
+	// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter.
+	CbnGeographicRegionIdb string `pulumi:"cbnGeographicRegionIdb"`
+	// The description of bandwidth package.
+	Description string `pulumi:"description"`
+	// Bandwidth package expiration time.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// The ID of the Bandwidth Package.
+	Id string `pulumi:"id"`
+	// The payment type of the bandwidth.
+	PaymentType string `pulumi:"paymentType"`
+	// The status of the bandwidth plan.
+	Status string `pulumi:"status"`
+	// The type of the bandwidth packet. China station only supports return to basic.
+	Type string `pulumi:"type"`
+}
+
+// GetBandwidthPackagesPackageInput is an input type that accepts GetBandwidthPackagesPackageArgs and GetBandwidthPackagesPackageOutput values.
+// You can construct a concrete instance of `GetBandwidthPackagesPackageInput` via:
+//
+//          GetBandwidthPackagesPackageArgs{...}
+type GetBandwidthPackagesPackageInput interface {
+	pulumi.Input
+
+	ToGetBandwidthPackagesPackageOutput() GetBandwidthPackagesPackageOutput
+	ToGetBandwidthPackagesPackageOutputWithContext(context.Context) GetBandwidthPackagesPackageOutput
+}
+
+type GetBandwidthPackagesPackageArgs struct {
+	// The bandwidth value of bandwidth packet.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The Resource ID of the bandwidth.
+	BandwidthPackageId pulumi.StringInput `pulumi:"bandwidthPackageId"`
+	// The name of the bandwidth packet.
+	BandwidthPackageName pulumi.StringInput `pulumi:"bandwidthPackageName"`
+	// The bandwidth type of the bandwidth.
+	BandwidthType pulumi.StringInput `pulumi:"bandwidthType"`
+	// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter.
+	CbnGeographicRegionIda pulumi.StringInput `pulumi:"cbnGeographicRegionIda"`
+	// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter.
+	CbnGeographicRegionIdb pulumi.StringInput `pulumi:"cbnGeographicRegionIdb"`
+	// The description of bandwidth package.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Bandwidth package expiration time.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// The ID of the Bandwidth Package.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The payment type of the bandwidth.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The status of the bandwidth plan.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The type of the bandwidth packet. China station only supports return to basic.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetBandwidthPackagesPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBandwidthPackagesPackage)(nil)).Elem()
+}
+
+func (i GetBandwidthPackagesPackageArgs) ToGetBandwidthPackagesPackageOutput() GetBandwidthPackagesPackageOutput {
+	return i.ToGetBandwidthPackagesPackageOutputWithContext(context.Background())
+}
+
+func (i GetBandwidthPackagesPackageArgs) ToGetBandwidthPackagesPackageOutputWithContext(ctx context.Context) GetBandwidthPackagesPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBandwidthPackagesPackageOutput)
+}
+
+// GetBandwidthPackagesPackageArrayInput is an input type that accepts GetBandwidthPackagesPackageArray and GetBandwidthPackagesPackageArrayOutput values.
+// You can construct a concrete instance of `GetBandwidthPackagesPackageArrayInput` via:
+//
+//          GetBandwidthPackagesPackageArray{ GetBandwidthPackagesPackageArgs{...} }
+type GetBandwidthPackagesPackageArrayInput interface {
+	pulumi.Input
+
+	ToGetBandwidthPackagesPackageArrayOutput() GetBandwidthPackagesPackageArrayOutput
+	ToGetBandwidthPackagesPackageArrayOutputWithContext(context.Context) GetBandwidthPackagesPackageArrayOutput
+}
+
+type GetBandwidthPackagesPackageArray []GetBandwidthPackagesPackageInput
+
+func (GetBandwidthPackagesPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBandwidthPackagesPackage)(nil)).Elem()
+}
+
+func (i GetBandwidthPackagesPackageArray) ToGetBandwidthPackagesPackageArrayOutput() GetBandwidthPackagesPackageArrayOutput {
+	return i.ToGetBandwidthPackagesPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GetBandwidthPackagesPackageArray) ToGetBandwidthPackagesPackageArrayOutputWithContext(ctx context.Context) GetBandwidthPackagesPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBandwidthPackagesPackageArrayOutput)
+}
+
+type GetBandwidthPackagesPackageOutput struct{ *pulumi.OutputState }
+
+func (GetBandwidthPackagesPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBandwidthPackagesPackage)(nil)).Elem()
+}
+
+func (o GetBandwidthPackagesPackageOutput) ToGetBandwidthPackagesPackageOutput() GetBandwidthPackagesPackageOutput {
+	return o
+}
+
+func (o GetBandwidthPackagesPackageOutput) ToGetBandwidthPackagesPackageOutputWithContext(ctx context.Context) GetBandwidthPackagesPackageOutput {
+	return o
+}
+
+// The bandwidth value of bandwidth packet.
+func (o GetBandwidthPackagesPackageOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The Resource ID of the bandwidth.
+func (o GetBandwidthPackagesPackageOutput) BandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.BandwidthPackageId }).(pulumi.StringOutput)
+}
+
+// The name of the bandwidth packet.
+func (o GetBandwidthPackagesPackageOutput) BandwidthPackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.BandwidthPackageName }).(pulumi.StringOutput)
+}
+
+// The bandwidth type of the bandwidth.
+func (o GetBandwidthPackagesPackageOutput) BandwidthType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.BandwidthType }).(pulumi.StringOutput)
+}
+
+// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter.
+func (o GetBandwidthPackagesPackageOutput) CbnGeographicRegionIda() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.CbnGeographicRegionIda }).(pulumi.StringOutput)
+}
+
+// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter.
+func (o GetBandwidthPackagesPackageOutput) CbnGeographicRegionIdb() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.CbnGeographicRegionIdb }).(pulumi.StringOutput)
+}
+
+// The description of bandwidth package.
+func (o GetBandwidthPackagesPackageOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Bandwidth package expiration time.
+func (o GetBandwidthPackagesPackageOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Bandwidth Package.
+func (o GetBandwidthPackagesPackageOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The payment type of the bandwidth.
+func (o GetBandwidthPackagesPackageOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The status of the bandwidth plan.
+func (o GetBandwidthPackagesPackageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of the bandwidth packet. China station only supports return to basic.
+func (o GetBandwidthPackagesPackageOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetBandwidthPackagesPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBandwidthPackagesPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBandwidthPackagesPackage)(nil)).Elem()
+}
+
+func (o GetBandwidthPackagesPackageArrayOutput) ToGetBandwidthPackagesPackageArrayOutput() GetBandwidthPackagesPackageArrayOutput {
+	return o
+}
+
+func (o GetBandwidthPackagesPackageArrayOutput) ToGetBandwidthPackagesPackageArrayOutputWithContext(ctx context.Context) GetBandwidthPackagesPackageArrayOutput {
+	return o
+}
+
+func (o GetBandwidthPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetBandwidthPackagesPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBandwidthPackagesPackage {
+		return vs[0].([]GetBandwidthPackagesPackage)[vs[1].(int)]
+	}).(GetBandwidthPackagesPackageOutput)
+}
+
+type GetEndpointGroupsGroup struct {
+	// The description of the endpoint group.
+	Description string `pulumi:"description"`
+	// The endpointConfigurations of the endpoint group.
+	EndpointConfigurations []GetEndpointGroupsGroupEndpointConfiguration `pulumi:"endpointConfigurations"`
+	// The endpointGroupId of the Endpoint Group.
+	EndpointGroupId string `pulumi:"endpointGroupId"`
+	// The ID of the region where the endpoint group is deployed.
+	EndpointGroupRegion string `pulumi:"endpointGroupRegion"`
+	// The interval between two consecutive health checks. Unit: seconds.
+	HealthCheckIntervalSeconds int `pulumi:"healthCheckIntervalSeconds"`
+	// The path specified as the destination of the targets for health checks.
+	HealthCheckPath string `pulumi:"healthCheckPath"`
+	// The port that is used for health checks.
+	HealthCheckPort int `pulumi:"healthCheckPort"`
+	// The protocol that is used to connect to the targets for health checks.
+	HealthCheckProtocol string `pulumi:"healthCheckProtocol"`
+	// The ID of the Endpoint Group.
+	Id string `pulumi:"id"`
+	// The ID of the listener that is associated with the endpoint group.
+	ListenerId string `pulumi:"listenerId"`
+	// The name of the endpoint group.
+	Name string `pulumi:"name"`
+	// Mapping between listening port and forwarding port of boarding point.
+	PortOverrides []GetEndpointGroupsGroupPortOverride `pulumi:"portOverrides"`
+	// The status of the endpoint group.
+	Status string `pulumi:"status"`
+	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
+	ThresholdCount int `pulumi:"thresholdCount"`
+	// The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
+	TrafficPercentage int `pulumi:"trafficPercentage"`
+}
+
+// GetEndpointGroupsGroupInput is an input type that accepts GetEndpointGroupsGroupArgs and GetEndpointGroupsGroupOutput values.
+// You can construct a concrete instance of `GetEndpointGroupsGroupInput` via:
+//
+//          GetEndpointGroupsGroupArgs{...}
+type GetEndpointGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetEndpointGroupsGroupOutput() GetEndpointGroupsGroupOutput
+	ToGetEndpointGroupsGroupOutputWithContext(context.Context) GetEndpointGroupsGroupOutput
+}
+
+type GetEndpointGroupsGroupArgs struct {
+	// The description of the endpoint group.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The endpointConfigurations of the endpoint group.
+	EndpointConfigurations GetEndpointGroupsGroupEndpointConfigurationArrayInput `pulumi:"endpointConfigurations"`
+	// The endpointGroupId of the Endpoint Group.
+	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
+	// The ID of the region where the endpoint group is deployed.
+	EndpointGroupRegion pulumi.StringInput `pulumi:"endpointGroupRegion"`
+	// The interval between two consecutive health checks. Unit: seconds.
+	HealthCheckIntervalSeconds pulumi.IntInput `pulumi:"healthCheckIntervalSeconds"`
+	// The path specified as the destination of the targets for health checks.
+	HealthCheckPath pulumi.StringInput `pulumi:"healthCheckPath"`
+	// The port that is used for health checks.
+	HealthCheckPort pulumi.IntInput `pulumi:"healthCheckPort"`
+	// The protocol that is used to connect to the targets for health checks.
+	HealthCheckProtocol pulumi.StringInput `pulumi:"healthCheckProtocol"`
+	// The ID of the Endpoint Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the listener that is associated with the endpoint group.
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// The name of the endpoint group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Mapping between listening port and forwarding port of boarding point.
+	PortOverrides GetEndpointGroupsGroupPortOverrideArrayInput `pulumi:"portOverrides"`
+	// The status of the endpoint group.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
+	ThresholdCount pulumi.IntInput `pulumi:"thresholdCount"`
+	// The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
+	TrafficPercentage pulumi.IntInput `pulumi:"trafficPercentage"`
+}
+
+func (GetEndpointGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointGroupsGroup)(nil)).Elem()
+}
+
+func (i GetEndpointGroupsGroupArgs) ToGetEndpointGroupsGroupOutput() GetEndpointGroupsGroupOutput {
+	return i.ToGetEndpointGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetEndpointGroupsGroupArgs) ToGetEndpointGroupsGroupOutputWithContext(ctx context.Context) GetEndpointGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointGroupsGroupOutput)
+}
+
+// GetEndpointGroupsGroupArrayInput is an input type that accepts GetEndpointGroupsGroupArray and GetEndpointGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetEndpointGroupsGroupArrayInput` via:
+//
+//          GetEndpointGroupsGroupArray{ GetEndpointGroupsGroupArgs{...} }
+type GetEndpointGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetEndpointGroupsGroupArrayOutput() GetEndpointGroupsGroupArrayOutput
+	ToGetEndpointGroupsGroupArrayOutputWithContext(context.Context) GetEndpointGroupsGroupArrayOutput
+}
+
+type GetEndpointGroupsGroupArray []GetEndpointGroupsGroupInput
+
+func (GetEndpointGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointGroupsGroup)(nil)).Elem()
+}
+
+func (i GetEndpointGroupsGroupArray) ToGetEndpointGroupsGroupArrayOutput() GetEndpointGroupsGroupArrayOutput {
+	return i.ToGetEndpointGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetEndpointGroupsGroupArray) ToGetEndpointGroupsGroupArrayOutputWithContext(ctx context.Context) GetEndpointGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointGroupsGroupArrayOutput)
+}
+
+type GetEndpointGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointGroupsGroup)(nil)).Elem()
+}
+
+func (o GetEndpointGroupsGroupOutput) ToGetEndpointGroupsGroupOutput() GetEndpointGroupsGroupOutput {
+	return o
+}
+
+func (o GetEndpointGroupsGroupOutput) ToGetEndpointGroupsGroupOutputWithContext(ctx context.Context) GetEndpointGroupsGroupOutput {
+	return o
+}
+
+// The description of the endpoint group.
+func (o GetEndpointGroupsGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The endpointConfigurations of the endpoint group.
+func (o GetEndpointGroupsGroupOutput) EndpointConfigurations() GetEndpointGroupsGroupEndpointConfigurationArrayOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) []GetEndpointGroupsGroupEndpointConfiguration {
+		return v.EndpointConfigurations
+	}).(GetEndpointGroupsGroupEndpointConfigurationArrayOutput)
+}
+
+// The endpointGroupId of the Endpoint Group.
+func (o GetEndpointGroupsGroupOutput) EndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.EndpointGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the region where the endpoint group is deployed.
+func (o GetEndpointGroupsGroupOutput) EndpointGroupRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.EndpointGroupRegion }).(pulumi.StringOutput)
+}
+
+// The interval between two consecutive health checks. Unit: seconds.
+func (o GetEndpointGroupsGroupOutput) HealthCheckIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) int { return v.HealthCheckIntervalSeconds }).(pulumi.IntOutput)
+}
+
+// The path specified as the destination of the targets for health checks.
+func (o GetEndpointGroupsGroupOutput) HealthCheckPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.HealthCheckPath }).(pulumi.StringOutput)
+}
+
+// The port that is used for health checks.
+func (o GetEndpointGroupsGroupOutput) HealthCheckPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) int { return v.HealthCheckPort }).(pulumi.IntOutput)
+}
+
+// The protocol that is used to connect to the targets for health checks.
+func (o GetEndpointGroupsGroupOutput) HealthCheckProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.HealthCheckProtocol }).(pulumi.StringOutput)
+}
+
+// The ID of the Endpoint Group.
+func (o GetEndpointGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the listener that is associated with the endpoint group.
+func (o GetEndpointGroupsGroupOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// The name of the endpoint group.
+func (o GetEndpointGroupsGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Mapping between listening port and forwarding port of boarding point.
+func (o GetEndpointGroupsGroupOutput) PortOverrides() GetEndpointGroupsGroupPortOverrideArrayOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) []GetEndpointGroupsGroupPortOverride { return v.PortOverrides }).(GetEndpointGroupsGroupPortOverrideArrayOutput)
+}
+
+// The status of the endpoint group.
+func (o GetEndpointGroupsGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
+func (o GetEndpointGroupsGroupOutput) ThresholdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) int { return v.ThresholdCount }).(pulumi.IntOutput)
+}
+
+// The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
+func (o GetEndpointGroupsGroupOutput) TrafficPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) int { return v.TrafficPercentage }).(pulumi.IntOutput)
+}
+
+type GetEndpointGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointGroupsGroup)(nil)).Elem()
+}
+
+func (o GetEndpointGroupsGroupArrayOutput) ToGetEndpointGroupsGroupArrayOutput() GetEndpointGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetEndpointGroupsGroupArrayOutput) ToGetEndpointGroupsGroupArrayOutputWithContext(ctx context.Context) GetEndpointGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetEndpointGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetEndpointGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEndpointGroupsGroup {
+		return vs[0].([]GetEndpointGroupsGroup)[vs[1].(int)]
+	}).(GetEndpointGroupsGroupOutput)
+}
+
+type GetEndpointGroupsGroupEndpointConfiguration struct {
+	// Indicates whether client IP addresses are reserved.
+	EnableClientipPreservation bool `pulumi:"enableClientipPreservation"`
+	// The IP address or domain name of Endpoint N in the endpoint group.
+	Endpoint string `pulumi:"endpoint"`
+	// Probe Port.
+	ProbePort int `pulumi:"probePort"`
+	// Probe Protocol.
+	ProbeProtocol string `pulumi:"probeProtocol"`
+	// The type of Endpoint N in the endpoint group.
+	Type string `pulumi:"type"`
+	// The weight of Endpoint N in the endpoint group.
+	Weight int `pulumi:"weight"`
+}
+
+// GetEndpointGroupsGroupEndpointConfigurationInput is an input type that accepts GetEndpointGroupsGroupEndpointConfigurationArgs and GetEndpointGroupsGroupEndpointConfigurationOutput values.
+// You can construct a concrete instance of `GetEndpointGroupsGroupEndpointConfigurationInput` via:
+//
+//          GetEndpointGroupsGroupEndpointConfigurationArgs{...}
+type GetEndpointGroupsGroupEndpointConfigurationInput interface {
+	pulumi.Input
+
+	ToGetEndpointGroupsGroupEndpointConfigurationOutput() GetEndpointGroupsGroupEndpointConfigurationOutput
+	ToGetEndpointGroupsGroupEndpointConfigurationOutputWithContext(context.Context) GetEndpointGroupsGroupEndpointConfigurationOutput
+}
+
+type GetEndpointGroupsGroupEndpointConfigurationArgs struct {
+	// Indicates whether client IP addresses are reserved.
+	EnableClientipPreservation pulumi.BoolInput `pulumi:"enableClientipPreservation"`
+	// The IP address or domain name of Endpoint N in the endpoint group.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Probe Port.
+	ProbePort pulumi.IntInput `pulumi:"probePort"`
+	// Probe Protocol.
+	ProbeProtocol pulumi.StringInput `pulumi:"probeProtocol"`
+	// The type of Endpoint N in the endpoint group.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The weight of Endpoint N in the endpoint group.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetEndpointGroupsGroupEndpointConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointGroupsGroupEndpointConfiguration)(nil)).Elem()
+}
+
+func (i GetEndpointGroupsGroupEndpointConfigurationArgs) ToGetEndpointGroupsGroupEndpointConfigurationOutput() GetEndpointGroupsGroupEndpointConfigurationOutput {
+	return i.ToGetEndpointGroupsGroupEndpointConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetEndpointGroupsGroupEndpointConfigurationArgs) ToGetEndpointGroupsGroupEndpointConfigurationOutputWithContext(ctx context.Context) GetEndpointGroupsGroupEndpointConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointGroupsGroupEndpointConfigurationOutput)
+}
+
+// GetEndpointGroupsGroupEndpointConfigurationArrayInput is an input type that accepts GetEndpointGroupsGroupEndpointConfigurationArray and GetEndpointGroupsGroupEndpointConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetEndpointGroupsGroupEndpointConfigurationArrayInput` via:
+//
+//          GetEndpointGroupsGroupEndpointConfigurationArray{ GetEndpointGroupsGroupEndpointConfigurationArgs{...} }
+type GetEndpointGroupsGroupEndpointConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetEndpointGroupsGroupEndpointConfigurationArrayOutput() GetEndpointGroupsGroupEndpointConfigurationArrayOutput
+	ToGetEndpointGroupsGroupEndpointConfigurationArrayOutputWithContext(context.Context) GetEndpointGroupsGroupEndpointConfigurationArrayOutput
+}
+
+type GetEndpointGroupsGroupEndpointConfigurationArray []GetEndpointGroupsGroupEndpointConfigurationInput
+
+func (GetEndpointGroupsGroupEndpointConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointGroupsGroupEndpointConfiguration)(nil)).Elem()
+}
+
+func (i GetEndpointGroupsGroupEndpointConfigurationArray) ToGetEndpointGroupsGroupEndpointConfigurationArrayOutput() GetEndpointGroupsGroupEndpointConfigurationArrayOutput {
+	return i.ToGetEndpointGroupsGroupEndpointConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetEndpointGroupsGroupEndpointConfigurationArray) ToGetEndpointGroupsGroupEndpointConfigurationArrayOutputWithContext(ctx context.Context) GetEndpointGroupsGroupEndpointConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointGroupsGroupEndpointConfigurationArrayOutput)
+}
+
+type GetEndpointGroupsGroupEndpointConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointGroupsGroupEndpointConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointGroupsGroupEndpointConfiguration)(nil)).Elem()
+}
+
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) ToGetEndpointGroupsGroupEndpointConfigurationOutput() GetEndpointGroupsGroupEndpointConfigurationOutput {
+	return o
+}
+
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) ToGetEndpointGroupsGroupEndpointConfigurationOutputWithContext(ctx context.Context) GetEndpointGroupsGroupEndpointConfigurationOutput {
+	return o
+}
+
+// Indicates whether client IP addresses are reserved.
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) EnableClientipPreservation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) bool { return v.EnableClientipPreservation }).(pulumi.BoolOutput)
+}
+
+// The IP address or domain name of Endpoint N in the endpoint group.
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Probe Port.
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) ProbePort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) int { return v.ProbePort }).(pulumi.IntOutput)
+}
+
+// Probe Protocol.
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) ProbeProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) string { return v.ProbeProtocol }).(pulumi.StringOutput)
+}
+
+// The type of Endpoint N in the endpoint group.
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The weight of Endpoint N in the endpoint group.
+func (o GetEndpointGroupsGroupEndpointConfigurationOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupEndpointConfiguration) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetEndpointGroupsGroupEndpointConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointGroupsGroupEndpointConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointGroupsGroupEndpointConfiguration)(nil)).Elem()
+}
+
+func (o GetEndpointGroupsGroupEndpointConfigurationArrayOutput) ToGetEndpointGroupsGroupEndpointConfigurationArrayOutput() GetEndpointGroupsGroupEndpointConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEndpointGroupsGroupEndpointConfigurationArrayOutput) ToGetEndpointGroupsGroupEndpointConfigurationArrayOutputWithContext(ctx context.Context) GetEndpointGroupsGroupEndpointConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEndpointGroupsGroupEndpointConfigurationArrayOutput) Index(i pulumi.IntInput) GetEndpointGroupsGroupEndpointConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEndpointGroupsGroupEndpointConfiguration {
+		return vs[0].([]GetEndpointGroupsGroupEndpointConfiguration)[vs[1].(int)]
+	}).(GetEndpointGroupsGroupEndpointConfigurationOutput)
+}
+
+type GetEndpointGroupsGroupPortOverride struct {
+	// Forwarding port.
+	EndpointPort int `pulumi:"endpointPort"`
+	// Listener port.
+	ListenerPort int `pulumi:"listenerPort"`
+}
+
+// GetEndpointGroupsGroupPortOverrideInput is an input type that accepts GetEndpointGroupsGroupPortOverrideArgs and GetEndpointGroupsGroupPortOverrideOutput values.
+// You can construct a concrete instance of `GetEndpointGroupsGroupPortOverrideInput` via:
+//
+//          GetEndpointGroupsGroupPortOverrideArgs{...}
+type GetEndpointGroupsGroupPortOverrideInput interface {
+	pulumi.Input
+
+	ToGetEndpointGroupsGroupPortOverrideOutput() GetEndpointGroupsGroupPortOverrideOutput
+	ToGetEndpointGroupsGroupPortOverrideOutputWithContext(context.Context) GetEndpointGroupsGroupPortOverrideOutput
+}
+
+type GetEndpointGroupsGroupPortOverrideArgs struct {
+	// Forwarding port.
+	EndpointPort pulumi.IntInput `pulumi:"endpointPort"`
+	// Listener port.
+	ListenerPort pulumi.IntInput `pulumi:"listenerPort"`
+}
+
+func (GetEndpointGroupsGroupPortOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointGroupsGroupPortOverride)(nil)).Elem()
+}
+
+func (i GetEndpointGroupsGroupPortOverrideArgs) ToGetEndpointGroupsGroupPortOverrideOutput() GetEndpointGroupsGroupPortOverrideOutput {
+	return i.ToGetEndpointGroupsGroupPortOverrideOutputWithContext(context.Background())
+}
+
+func (i GetEndpointGroupsGroupPortOverrideArgs) ToGetEndpointGroupsGroupPortOverrideOutputWithContext(ctx context.Context) GetEndpointGroupsGroupPortOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointGroupsGroupPortOverrideOutput)
+}
+
+// GetEndpointGroupsGroupPortOverrideArrayInput is an input type that accepts GetEndpointGroupsGroupPortOverrideArray and GetEndpointGroupsGroupPortOverrideArrayOutput values.
+// You can construct a concrete instance of `GetEndpointGroupsGroupPortOverrideArrayInput` via:
+//
+//          GetEndpointGroupsGroupPortOverrideArray{ GetEndpointGroupsGroupPortOverrideArgs{...} }
+type GetEndpointGroupsGroupPortOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetEndpointGroupsGroupPortOverrideArrayOutput() GetEndpointGroupsGroupPortOverrideArrayOutput
+	ToGetEndpointGroupsGroupPortOverrideArrayOutputWithContext(context.Context) GetEndpointGroupsGroupPortOverrideArrayOutput
+}
+
+type GetEndpointGroupsGroupPortOverrideArray []GetEndpointGroupsGroupPortOverrideInput
+
+func (GetEndpointGroupsGroupPortOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointGroupsGroupPortOverride)(nil)).Elem()
+}
+
+func (i GetEndpointGroupsGroupPortOverrideArray) ToGetEndpointGroupsGroupPortOverrideArrayOutput() GetEndpointGroupsGroupPortOverrideArrayOutput {
+	return i.ToGetEndpointGroupsGroupPortOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetEndpointGroupsGroupPortOverrideArray) ToGetEndpointGroupsGroupPortOverrideArrayOutputWithContext(ctx context.Context) GetEndpointGroupsGroupPortOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointGroupsGroupPortOverrideArrayOutput)
+}
+
+type GetEndpointGroupsGroupPortOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointGroupsGroupPortOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointGroupsGroupPortOverride)(nil)).Elem()
+}
+
+func (o GetEndpointGroupsGroupPortOverrideOutput) ToGetEndpointGroupsGroupPortOverrideOutput() GetEndpointGroupsGroupPortOverrideOutput {
+	return o
+}
+
+func (o GetEndpointGroupsGroupPortOverrideOutput) ToGetEndpointGroupsGroupPortOverrideOutputWithContext(ctx context.Context) GetEndpointGroupsGroupPortOverrideOutput {
+	return o
+}
+
+// Forwarding port.
+func (o GetEndpointGroupsGroupPortOverrideOutput) EndpointPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupPortOverride) int { return v.EndpointPort }).(pulumi.IntOutput)
+}
+
+// Listener port.
+func (o GetEndpointGroupsGroupPortOverrideOutput) ListenerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroupPortOverride) int { return v.ListenerPort }).(pulumi.IntOutput)
+}
+
+type GetEndpointGroupsGroupPortOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointGroupsGroupPortOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointGroupsGroupPortOverride)(nil)).Elem()
+}
+
+func (o GetEndpointGroupsGroupPortOverrideArrayOutput) ToGetEndpointGroupsGroupPortOverrideArrayOutput() GetEndpointGroupsGroupPortOverrideArrayOutput {
+	return o
+}
+
+func (o GetEndpointGroupsGroupPortOverrideArrayOutput) ToGetEndpointGroupsGroupPortOverrideArrayOutputWithContext(ctx context.Context) GetEndpointGroupsGroupPortOverrideArrayOutput {
+	return o
+}
+
+func (o GetEndpointGroupsGroupPortOverrideArrayOutput) Index(i pulumi.IntInput) GetEndpointGroupsGroupPortOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEndpointGroupsGroupPortOverride {
+		return vs[0].([]GetEndpointGroupsGroupPortOverride)[vs[1].(int)]
+	}).(GetEndpointGroupsGroupPortOverrideOutput)
+}
+
 type GetListenersListener struct {
 	// The certificates of the listener.
 	Certificates []GetListenersListenerCertificate `pulumi:"certificates"`
@@ -1034,6 +1995,10 @@ func (o GetListenersListenerPortRangeArrayOutput) Index(i pulumi.IntInput) GetLi
 }
 
 func init() {
+	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationOutput{})
+	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(EndpointGroupPortOverridesOutput{})
+	pulumi.RegisterOutputType(EndpointGroupPortOverridesPtrOutput{})
 	pulumi.RegisterOutputType(ListenerCertificateOutput{})
 	pulumi.RegisterOutputType(ListenerCertificateArrayOutput{})
 	pulumi.RegisterOutputType(ListenerPortRangeOutput{})
@@ -1044,6 +2009,14 @@ func init() {
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput{})
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetBandwidthPackagesPackageOutput{})
+	pulumi.RegisterOutputType(GetBandwidthPackagesPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetEndpointGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetEndpointGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetEndpointGroupsGroupEndpointConfigurationOutput{})
+	pulumi.RegisterOutputType(GetEndpointGroupsGroupEndpointConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetEndpointGroupsGroupPortOverrideOutput{})
+	pulumi.RegisterOutputType(GetEndpointGroupsGroupPortOverrideArrayOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerArrayOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerCertificateOutput{})

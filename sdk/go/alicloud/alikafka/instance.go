@@ -91,6 +91,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	Config pulumi.StringOutput `pulumi:"config"`
 	// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
 	DeployType pulumi.IntOutput `pulumi:"deployType"`
 	// The disk size of the instance. When modify this value, it only support adjust to a greater value.
@@ -109,6 +111,8 @@ type Instance struct {
 	PaidType pulumi.StringPtrOutput `pulumi:"paidType"`
 	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrOutput `pulumi:"securityGroup"`
+	// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrOutput `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
@@ -169,6 +173,8 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	Config *string `pulumi:"config"`
 	// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
 	DeployType *int `pulumi:"deployType"`
 	// The disk size of the instance. When modify this value, it only support adjust to a greater value.
@@ -187,6 +193,8 @@ type instanceState struct {
 	PaidType *string `pulumi:"paidType"`
 	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
+	// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
@@ -202,6 +210,8 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	Config pulumi.StringPtrInput
 	// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
 	DeployType pulumi.IntPtrInput
 	// The disk size of the instance. When modify this value, it only support adjust to a greater value.
@@ -220,6 +230,8 @@ type InstanceState struct {
 	PaidType pulumi.StringPtrInput
 	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
+	// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	ServiceVersion pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -239,6 +251,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	Config *string `pulumi:"config"`
 	// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
 	DeployType int `pulumi:"deployType"`
 	// The disk size of the instance. When modify this value, it only support adjust to a greater value.
@@ -255,6 +269,8 @@ type instanceArgs struct {
 	PaidType *string `pulumi:"paidType"`
 	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
+	// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
@@ -267,6 +283,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	Config pulumi.StringPtrInput
 	// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
 	DeployType pulumi.IntInput
 	// The disk size of the instance. When modify this value, it only support adjust to a greater value.
@@ -283,6 +301,8 @@ type InstanceArgs struct {
 	PaidType pulumi.StringPtrInput
 	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
+	// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	ServiceVersion pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.

@@ -88,6 +88,7 @@ export interface ProviderEndpoint {
     fnf?: string;
     ga?: string;
     gpdb?: string;
+    hitsdb?: string;
     kms?: string;
     kvstore?: string;
     location?: string;
@@ -117,6 +118,10 @@ export interface ProviderEndpoint {
 }
 export namespace actiontrail {
     export interface GetInstancesInstance {
+        /**
+         * The config the instance.
+         */
+        config: string;
         /**
          * The create time of the instance.
          */
@@ -165,6 +170,10 @@ export namespace actiontrail {
          * The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
          */
         serviceStatus: number;
+        /**
+         * The kafka openSource version of the instance.
+         */
+        serviceVersion: string;
         /**
          * The spec type of the instance.
          */
@@ -266,6 +275,10 @@ export namespace actiontrail {
          */
         id: string;
         /**
+         * The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
+         */
+        mnsTopicArn: string;
+        /**
          * The name of the specified OSS bucket.
          */
         ossBucketName: string;
@@ -305,6 +318,7 @@ export namespace actiontrail {
          */
         eventRw: string;
         id: string;
+        mnsTopicArn: string;
         /**
          * The name of the specified OSS bucket.
          */
@@ -336,6 +350,7 @@ export namespace actiontrail {
          */
         eventRw: string;
         id: string;
+        mnsTopicArn: string;
         /**
          * The name of the specified OSS bucket.
          */
@@ -370,6 +385,10 @@ export namespace actiontrail {
          * The id of the ActionTrail Trail. It is the same as trail name.
          */
         id: string;
+        /**
+         * The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
+         */
+        mnsTopicArn: string;
         /**
          * The name of the specified OSS bucket.
          */
@@ -2194,6 +2213,7 @@ export namespace config {
         fnf?: string;
         ga?: string;
         gpdb?: string;
+        hitsdb?: string;
         kms?: string;
         kvstore?: string;
         location?: string;
@@ -7163,6 +7183,44 @@ export namespace fnf {
 }
 
 export namespace ga {
+    export interface EndpointGroupEndpointConfiguration {
+        /**
+         * Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+         */
+        enableClientipPreservation?: boolean;
+        /**
+         * The IP address or domain name of Endpoint N in the endpoint group.
+         */
+        endpoint: string;
+        /**
+         * Probe Port.
+         */
+        probePort: number;
+        /**
+         * Probe Protocol.
+         */
+        probeProtocol: string;
+        /**
+         * The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+         */
+        type: string;
+        /**
+         * The weight of Endpoint N in the endpoint group.
+         */
+        weight: number;
+    }
+
+    export interface EndpointGroupPortOverrides {
+        /**
+         * Forwarding port.
+         */
+        endpointPort?: number;
+        /**
+         * Listener port.
+         */
+        listenerPort?: number;
+    }
+
     export interface GetAcceleratorsAccelerator {
         /**
          * The ID of the GA instance to query.
@@ -7246,6 +7304,158 @@ export namespace ga {
          * Instance ID of the cross-domain acceleration package.
          */
         instanceId: string;
+    }
+
+    export interface GetBandwidthPackagesPackage {
+        /**
+         * The bandwidth value of bandwidth packet.
+         */
+        bandwidth: number;
+        /**
+         * The Resource ID of the bandwidth.
+         */
+        bandwidthPackageId: string;
+        /**
+         * The name of the bandwidth packet.
+         */
+        bandwidthPackageName: string;
+        /**
+         * The bandwidth type of the bandwidth.
+         */
+        bandwidthType: string;
+        /**
+         * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter.
+         */
+        cbnGeographicRegionIda: string;
+        /**
+         * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter.
+         */
+        cbnGeographicRegionIdb: string;
+        /**
+         * The description of bandwidth package.
+         */
+        description: string;
+        /**
+         * Bandwidth package expiration time.
+         */
+        expiredTime: string;
+        /**
+         * The ID of the Bandwidth Package.
+         */
+        id: string;
+        /**
+         * The payment type of the bandwidth.
+         */
+        paymentType: string;
+        /**
+         * The status of the bandwidth plan.
+         */
+        status: string;
+        /**
+         * The type of the bandwidth packet. China station only supports return to basic.
+         */
+        type: string;
+    }
+
+    export interface GetEndpointGroupsGroup {
+        /**
+         * The description of the endpoint group.
+         */
+        description: string;
+        /**
+         * The endpointConfigurations of the endpoint group.
+         */
+        endpointConfigurations: outputs.ga.GetEndpointGroupsGroupEndpointConfiguration[];
+        /**
+         * The endpointGroupId of the Endpoint Group.
+         */
+        endpointGroupId: string;
+        /**
+         * The ID of the region where the endpoint group is deployed.
+         */
+        endpointGroupRegion: string;
+        /**
+         * The interval between two consecutive health checks. Unit: seconds.
+         */
+        healthCheckIntervalSeconds: number;
+        /**
+         * The path specified as the destination of the targets for health checks.
+         */
+        healthCheckPath: string;
+        /**
+         * The port that is used for health checks.
+         */
+        healthCheckPort: number;
+        /**
+         * The protocol that is used to connect to the targets for health checks.
+         */
+        healthCheckProtocol: string;
+        /**
+         * The ID of the Endpoint Group.
+         */
+        id: string;
+        /**
+         * The ID of the listener that is associated with the endpoint group.
+         */
+        listenerId: string;
+        /**
+         * The name of the endpoint group.
+         */
+        name: string;
+        /**
+         * Mapping between listening port and forwarding port of boarding point.
+         */
+        portOverrides: outputs.ga.GetEndpointGroupsGroupPortOverride[];
+        /**
+         * The status of the endpoint group.
+         */
+        status: string;
+        /**
+         * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
+         */
+        thresholdCount: number;
+        /**
+         * The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
+         */
+        trafficPercentage: number;
+    }
+
+    export interface GetEndpointGroupsGroupEndpointConfiguration {
+        /**
+         * Indicates whether client IP addresses are reserved.
+         */
+        enableClientipPreservation: boolean;
+        /**
+         * The IP address or domain name of Endpoint N in the endpoint group.
+         */
+        endpoint: string;
+        /**
+         * Probe Port.
+         */
+        probePort: number;
+        /**
+         * Probe Protocol.
+         */
+        probeProtocol: string;
+        /**
+         * The type of Endpoint N in the endpoint group.
+         */
+        type: string;
+        /**
+         * The weight of Endpoint N in the endpoint group.
+         */
+        weight: number;
+    }
+
+    export interface GetEndpointGroupsGroupPortOverride {
+        /**
+         * Forwarding port.
+         */
+        endpointPort: number;
+        /**
+         * Listener port.
+         */
+        listenerPort: number;
     }
 
     export interface GetListenersListener {
@@ -11683,6 +11893,98 @@ export namespace slb {
         serverIds: string[];
         type?: string;
         weight?: number;
+    }
+}
+
+export namespace tsdb {
+    export interface GetInstancesInstance {
+        /**
+         * Auto renew.
+         */
+        autoRenew: string;
+        /**
+         * The cpu core number of instance.
+         */
+        cpuNumber: string;
+        /**
+         * The disk type of instance. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk,cloud_essd refers to ESSD PL1 disk.
+         */
+        diskCategory: string;
+        /**
+         * The engine type of instance. Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
+         */
+        engineType: string;
+        /**
+         * Instance expiration time.
+         */
+        expiredTime: number;
+        /**
+         * The ID of the Instance.
+         */
+        id: string;
+        /**
+         * The alias of the instance.
+         */
+        instanceAlias: string;
+        /**
+         * The specification of the instance.
+         */
+        instanceClass: string;
+        /**
+         * The ID of the instance.
+         */
+        instanceId: string;
+        /**
+         * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+         */
+        instanceStorage: string;
+        /**
+         * The memory size of instance.
+         */
+        memorySize: string;
+        /**
+         * Instance network type.
+         */
+        networkType: string;
+        /**
+         * The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
+         */
+        paymentType: string;
+        /**
+         * Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+         */
+        status: string;
+        /**
+         * The vpc connection address of instance.
+         */
+        vpcConnectionAddress: string;
+        /**
+         * The ID of the virtual private cloud (VPC) that is connected to the instance.
+         */
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+        /**
+         * The zone ID of the instance.
+         */
+        zoneId: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * The ID of zone.
+         */
+        id: string;
+        /**
+         * The local name.
+         */
+        localName: string;
+        /**
+         * The zone ID.
+         */
+        zoneId: string;
     }
 }
 

@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// This data source provides the Ga Listeners of the current Alibaba Cloud user.
+// This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.111.0+.
 //

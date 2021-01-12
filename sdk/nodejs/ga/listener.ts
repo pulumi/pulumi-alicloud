@@ -6,9 +6,9 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Ga Listener resource.
+ * Provides a Global Accelerator (GA) Listener resource.
  *
- * For information about Ga Listener and how to use it, see [What is Listener](https://help.aliyun.com/document_detail/153253.html).
+ * For information about Global Accelerator (GA) Listener and how to use it, see [What is Listener](https://help.aliyun.com/document_detail/153253.html).
  *
  * > **NOTE:** Available in v1.111.0+.
  *

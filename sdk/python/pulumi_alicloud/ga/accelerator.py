@@ -24,9 +24,9 @@ class Accelerator(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Ga Accelerator resource.
+        Provides a Global Accelerator (GA) Accelerator resource.
 
-        For information about Ga Accelerator and how to use it, see [What is Accelerator](https://help.aliyun.com/document_detail/153235.html).
+        For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://help.aliyun.com/document_detail/153235.html).
 
         > **NOTE:** Available in v1.111.0+.
 

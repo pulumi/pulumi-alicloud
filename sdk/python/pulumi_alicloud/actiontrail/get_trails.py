@@ -20,7 +20,7 @@ class GetTrailsResult:
     """
     A collection of values returned by getTrails.
     """
-    def __init__(__self__, actiontrails=None, id=None, ids=None, include_shadow_trails=None, name_regex=None, names=None, output_file=None, status=None, trails=None):
+    def __init__(__self__, actiontrails=None, id=None, ids=None, include_organization_trail=None, include_shadow_trails=None, name_regex=None, names=None, output_file=None, status=None, trails=None):
         if actiontrails and not isinstance(actiontrails, list):
             raise TypeError("Expected argument 'actiontrails' to be a list")
         if actiontrails is not None:
@@ -34,6 +34,9 @@ class GetTrailsResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if include_organization_trail and not isinstance(include_organization_trail, bool):
+            raise TypeError("Expected argument 'include_organization_trail' to be a bool")
+        pulumi.set(__self__, "include_organization_trail", include_organization_trail)
         if include_shadow_trails and not isinstance(include_shadow_trails, bool):
             raise TypeError("Expected argument 'include_shadow_trails' to be a bool")
         pulumi.set(__self__, "include_shadow_trails", include_shadow_trails)
@@ -76,6 +79,11 @@ class GetTrailsResult:
         A list of ActionTrail Trail ids. It is the same as trail name.
         """
         return pulumi.get(self, "ids")
+
+    @property
+    @pulumi.getter(name="includeOrganizationTrail")
+    def include_organization_trail(self) -> Optional[bool]:
+        return pulumi.get(self, "include_organization_trail")
 
     @property
     @pulumi.getter(name="includeShadowTrails")
@@ -126,6 +134,7 @@ class AwaitableGetTrailsResult(GetTrailsResult):
             actiontrails=self.actiontrails,
             id=self.id,
             ids=self.ids,
+            include_organization_trail=self.include_organization_trail,
             include_shadow_trails=self.include_shadow_trails,
             name_regex=self.name_regex,
             names=self.names,
@@ -135,6 +144,7 @@ class AwaitableGetTrailsResult(GetTrailsResult):
 
 
 def get_trails(ids: Optional[Sequence[str]] = None,
+               include_organization_trail: Optional[bool] = None,
                include_shadow_trails: Optional[bool] = None,
                name_regex: Optional[str] = None,
                output_file: Optional[str] = None,
@@ -157,12 +167,14 @@ def get_trails(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of ActionTrail Trail IDs. It is the same as trail name.
+    :param bool include_organization_trail: Whether to show organization tracking. Default to `false`.
     :param bool include_shadow_trails: Whether to show shadow tracking. Default to `false`.
     :param str name_regex: A regex string to filter results by trail name.
     :param str status: Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['includeOrganizationTrail'] = include_organization_trail
     __args__['includeShadowTrails'] = include_shadow_trails
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -177,6 +189,7 @@ def get_trails(ids: Optional[Sequence[str]] = None,
         actiontrails=__ret__.actiontrails,
         id=__ret__.id,
         ids=__ret__.ids,
+        include_organization_trail=__ret__.include_organization_trail,
         include_shadow_trails=__ret__.include_shadow_trails,
         name_regex=__ret__.name_regex,
         names=__ret__.names,

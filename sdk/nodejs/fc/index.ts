@@ -8,6 +8,7 @@ export * from "./function";
 export * from "./functionAsyncInvokeConfig";
 export * from "./getCustomDomains";
 export * from "./getFunctions";
+export * from "./getService";
 export * from "./getServices";
 export * from "./getTriggers";
 export * from "./getZones";

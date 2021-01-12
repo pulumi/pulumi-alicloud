@@ -27,6 +27,9 @@ namespace Pulumi.AliCloud.ActionTrail
             set => _ids = value;
         }
 
+        [Input("includeOrganizationTrail")]
+        public bool? IncludeOrganizationTrail { get; set; }
+
         [Input("includeShadowTrails")]
         public bool? IncludeShadowTrails { get; set; }
 
@@ -60,6 +63,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        public readonly bool? IncludeOrganizationTrail;
         public readonly bool? IncludeShadowTrails;
         public readonly string? NameRegex;
         /// <summary>
@@ -78,6 +82,8 @@ namespace Pulumi.AliCloud.ActionTrail
 
             ImmutableArray<string> ids,
 
+            bool? includeOrganizationTrail,
+
             bool? includeShadowTrails,
 
             string? nameRegex,
@@ -93,6 +99,7 @@ namespace Pulumi.AliCloud.ActionTrail
             Actiontrails = actiontrails;
             Id = id;
             Ids = ids;
+            IncludeOrganizationTrail = includeOrganizationTrail;
             IncludeShadowTrails = includeShadowTrails;
             NameRegex = nameRegex;
             Names = names;

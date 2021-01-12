@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ga
     public static class GetAccelerators
     {
         /// <summary>
-        /// This data source provides the Ga Accelerators of the current Alibaba Cloud user.
+        /// This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.111.0+.
         /// 

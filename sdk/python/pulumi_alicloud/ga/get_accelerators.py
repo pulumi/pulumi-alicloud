@@ -103,7 +103,7 @@ def get_accelerators(ids: Optional[Sequence[str]] = None,
                      status: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcceleratorsResult:
     """
-    This data source provides the Ga Accelerators of the current Alibaba Cloud user.
+    This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.111.0+.
 

@@ -35,6 +35,8 @@ type Network struct {
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
 	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
 	RouterTableId pulumi.StringOutput `pulumi:"routerTableId"`
+	// The secondary CIDR blocks for the VPC.
+	SecondaryCidrBlocks pulumi.StringArrayOutput `pulumi:"secondaryCidrBlocks"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
@@ -84,6 +86,8 @@ type networkState struct {
 	RouterId *string `pulumi:"routerId"`
 	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
 	RouterTableId *string `pulumi:"routerTableId"`
+	// The secondary CIDR blocks for the VPC.
+	SecondaryCidrBlocks []string `pulumi:"secondaryCidrBlocks"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -103,6 +107,8 @@ type NetworkState struct {
 	RouterId pulumi.StringPtrInput
 	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
 	RouterTableId pulumi.StringPtrInput
+	// The secondary CIDR blocks for the VPC.
+	SecondaryCidrBlocks pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
@@ -120,6 +126,8 @@ type networkArgs struct {
 	Name *string `pulumi:"name"`
 	// The Id of resource group which the VPC belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The secondary CIDR blocks for the VPC.
+	SecondaryCidrBlocks []string `pulumi:"secondaryCidrBlocks"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -134,6 +142,8 @@ type NetworkArgs struct {
 	Name pulumi.StringPtrInput
 	// The Id of resource group which the VPC belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// The secondary CIDR blocks for the VPC.
+	SecondaryCidrBlocks pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

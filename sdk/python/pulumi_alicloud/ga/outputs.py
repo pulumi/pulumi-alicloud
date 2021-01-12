@@ -10,15 +10,134 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'EndpointGroupEndpointConfiguration',
+    'EndpointGroupPortOverrides',
     'ListenerCertificate',
     'ListenerPortRange',
     'GetAcceleratorsAcceleratorResult',
     'GetAcceleratorsAcceleratorBasicBandwidthPackageResult',
     'GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult',
+    'GetBandwidthPackagesPackageResult',
+    'GetEndpointGroupsGroupResult',
+    'GetEndpointGroupsGroupEndpointConfigurationResult',
+    'GetEndpointGroupsGroupPortOverrideResult',
     'GetListenersListenerResult',
     'GetListenersListenerCertificateResult',
     'GetListenersListenerPortRangeResult',
 ]
+
+@pulumi.output_type
+class EndpointGroupEndpointConfiguration(dict):
+    def __init__(__self__, *,
+                 endpoint: str,
+                 type: str,
+                 weight: int,
+                 enable_clientip_preservation: Optional[bool] = None,
+                 probe_port: Optional[int] = None,
+                 probe_protocol: Optional[str] = None):
+        """
+        :param str endpoint: The IP address or domain name of Endpoint N in the endpoint group.
+        :param str type: The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+        :param int weight: The weight of Endpoint N in the endpoint group.
+        :param bool enable_clientip_preservation: Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+        :param int probe_port: Probe Port.
+        :param str probe_protocol: Probe Protocol.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "weight", weight)
+        if enable_clientip_preservation is not None:
+            pulumi.set(__self__, "enable_clientip_preservation", enable_clientip_preservation)
+        if probe_port is not None:
+            pulumi.set(__self__, "probe_port", probe_port)
+        if probe_protocol is not None:
+            pulumi.set(__self__, "probe_protocol", probe_protocol)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The IP address or domain name of Endpoint N in the endpoint group.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        """
+        The weight of Endpoint N in the endpoint group.
+        """
+        return pulumi.get(self, "weight")
+
+    @property
+    @pulumi.getter(name="enableClientipPreservation")
+    def enable_clientip_preservation(self) -> Optional[bool]:
+        """
+        Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+        """
+        return pulumi.get(self, "enable_clientip_preservation")
+
+    @property
+    @pulumi.getter(name="probePort")
+    def probe_port(self) -> Optional[int]:
+        """
+        Probe Port.
+        """
+        return pulumi.get(self, "probe_port")
+
+    @property
+    @pulumi.getter(name="probeProtocol")
+    def probe_protocol(self) -> Optional[str]:
+        """
+        Probe Protocol.
+        """
+        return pulumi.get(self, "probe_protocol")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EndpointGroupPortOverrides(dict):
+    def __init__(__self__, *,
+                 endpoint_port: Optional[int] = None,
+                 listener_port: Optional[int] = None):
+        """
+        :param int endpoint_port: Forwarding port.
+        :param int listener_port: Listener port.
+        """
+        if endpoint_port is not None:
+            pulumi.set(__self__, "endpoint_port", endpoint_port)
+        if listener_port is not None:
+            pulumi.set(__self__, "listener_port", listener_port)
+
+    @property
+    @pulumi.getter(name="endpointPort")
+    def endpoint_port(self) -> Optional[int]:
+        """
+        Forwarding port.
+        """
+        return pulumi.get(self, "endpoint_port")
+
+    @property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> Optional[int]:
+        """
+        Listener port.
+        """
+        return pulumi.get(self, "listener_port")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class ListenerCertificate(dict):
@@ -302,6 +421,419 @@ class GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult(dict):
         Instance ID of the cross-domain acceleration package.
         """
         return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
+class GetBandwidthPackagesPackageResult(dict):
+    def __init__(__self__, *,
+                 bandwidth: int,
+                 bandwidth_package_id: str,
+                 bandwidth_package_name: str,
+                 bandwidth_type: str,
+                 cbn_geographic_region_ida: str,
+                 cbn_geographic_region_idb: str,
+                 description: str,
+                 expired_time: str,
+                 id: str,
+                 payment_type: str,
+                 status: str,
+                 type: str):
+        """
+        :param int bandwidth: The bandwidth value of bandwidth packet.
+        :param str bandwidth_package_id: The Resource ID of the bandwidth.
+        :param str bandwidth_package_name: The name of the bandwidth packet.
+        :param str bandwidth_type: The bandwidth type of the bandwidth.
+        :param str cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter.
+        :param str cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter.
+        :param str description: The description of bandwidth package.
+        :param str expired_time: Bandwidth package expiration time.
+        :param str id: The ID of the Bandwidth Package.
+        :param str payment_type: The payment type of the bandwidth.
+        :param str status: The status of the bandwidth plan.
+        :param str type: The type of the bandwidth packet. China station only supports return to basic.
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        pulumi.set(__self__, "bandwidth_package_name", bandwidth_package_name)
+        pulumi.set(__self__, "bandwidth_type", bandwidth_type)
+        pulumi.set(__self__, "cbn_geographic_region_ida", cbn_geographic_region_ida)
+        pulumi.set(__self__, "cbn_geographic_region_idb", cbn_geographic_region_idb)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The bandwidth value of bandwidth packet.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="bandwidthPackageId")
+    def bandwidth_package_id(self) -> str:
+        """
+        The Resource ID of the bandwidth.
+        """
+        return pulumi.get(self, "bandwidth_package_id")
+
+    @property
+    @pulumi.getter(name="bandwidthPackageName")
+    def bandwidth_package_name(self) -> str:
+        """
+        The name of the bandwidth packet.
+        """
+        return pulumi.get(self, "bandwidth_package_name")
+
+    @property
+    @pulumi.getter(name="bandwidthType")
+    def bandwidth_type(self) -> str:
+        """
+        The bandwidth type of the bandwidth.
+        """
+        return pulumi.get(self, "bandwidth_type")
+
+    @property
+    @pulumi.getter(name="cbnGeographicRegionIda")
+    def cbn_geographic_region_ida(self) -> str:
+        """
+        Interworking area A of cross domain acceleration package. Only international stations support returning this parameter.
+        """
+        return pulumi.get(self, "cbn_geographic_region_ida")
+
+    @property
+    @pulumi.getter(name="cbnGeographicRegionIdb")
+    def cbn_geographic_region_idb(self) -> str:
+        """
+        Interworking area B of cross domain acceleration package. Only international stations support returning this parameter.
+        """
+        return pulumi.get(self, "cbn_geographic_region_idb")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of bandwidth package.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        Bandwidth package expiration time.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Bandwidth Package.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the bandwidth.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the bandwidth plan.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the bandwidth packet. China station only supports return to basic.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetEndpointGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 endpoint_configurations: Sequence['outputs.GetEndpointGroupsGroupEndpointConfigurationResult'],
+                 endpoint_group_id: str,
+                 endpoint_group_region: str,
+                 health_check_interval_seconds: int,
+                 health_check_path: str,
+                 health_check_port: int,
+                 health_check_protocol: str,
+                 id: str,
+                 listener_id: str,
+                 name: str,
+                 port_overrides: Sequence['outputs.GetEndpointGroupsGroupPortOverrideResult'],
+                 status: str,
+                 threshold_count: int,
+                 traffic_percentage: int):
+        """
+        :param str description: The description of the endpoint group.
+        :param Sequence['GetEndpointGroupsGroupEndpointConfigurationArgs'] endpoint_configurations: The endpointConfigurations of the endpoint group.
+        :param str endpoint_group_id: The endpoint_group_id of the Endpoint Group.
+        :param str endpoint_group_region: The ID of the region where the endpoint group is deployed.
+        :param int health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
+        :param str health_check_path: The path specified as the destination of the targets for health checks.
+        :param int health_check_port: The port that is used for health checks.
+        :param str health_check_protocol: The protocol that is used to connect to the targets for health checks.
+        :param str id: The ID of the Endpoint Group.
+        :param str listener_id: The ID of the listener that is associated with the endpoint group.
+        :param str name: The name of the endpoint group.
+        :param Sequence['GetEndpointGroupsGroupPortOverrideArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point.
+        :param str status: The status of the endpoint group.
+        :param int threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
+        :param int traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "endpoint_configurations", endpoint_configurations)
+        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
+        pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
+        pulumi.set(__self__, "health_check_path", health_check_path)
+        pulumi.set(__self__, "health_check_port", health_check_port)
+        pulumi.set(__self__, "health_check_protocol", health_check_protocol)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port_overrides", port_overrides)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "threshold_count", threshold_count)
+        pulumi.set(__self__, "traffic_percentage", traffic_percentage)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the endpoint group.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="endpointConfigurations")
+    def endpoint_configurations(self) -> Sequence['outputs.GetEndpointGroupsGroupEndpointConfigurationResult']:
+        """
+        The endpointConfigurations of the endpoint group.
+        """
+        return pulumi.get(self, "endpoint_configurations")
+
+    @property
+    @pulumi.getter(name="endpointGroupId")
+    def endpoint_group_id(self) -> str:
+        """
+        The endpoint_group_id of the Endpoint Group.
+        """
+        return pulumi.get(self, "endpoint_group_id")
+
+    @property
+    @pulumi.getter(name="endpointGroupRegion")
+    def endpoint_group_region(self) -> str:
+        """
+        The ID of the region where the endpoint group is deployed.
+        """
+        return pulumi.get(self, "endpoint_group_region")
+
+    @property
+    @pulumi.getter(name="healthCheckIntervalSeconds")
+    def health_check_interval_seconds(self) -> int:
+        """
+        The interval between two consecutive health checks. Unit: seconds.
+        """
+        return pulumi.get(self, "health_check_interval_seconds")
+
+    @property
+    @pulumi.getter(name="healthCheckPath")
+    def health_check_path(self) -> str:
+        """
+        The path specified as the destination of the targets for health checks.
+        """
+        return pulumi.get(self, "health_check_path")
+
+    @property
+    @pulumi.getter(name="healthCheckPort")
+    def health_check_port(self) -> int:
+        """
+        The port that is used for health checks.
+        """
+        return pulumi.get(self, "health_check_port")
+
+    @property
+    @pulumi.getter(name="healthCheckProtocol")
+    def health_check_protocol(self) -> str:
+        """
+        The protocol that is used to connect to the targets for health checks.
+        """
+        return pulumi.get(self, "health_check_protocol")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Endpoint Group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> str:
+        """
+        The ID of the listener that is associated with the endpoint group.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the endpoint group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="portOverrides")
+    def port_overrides(self) -> Sequence['outputs.GetEndpointGroupsGroupPortOverrideResult']:
+        """
+        Mapping between listening port and forwarding port of boarding point.
+        """
+        return pulumi.get(self, "port_overrides")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the endpoint group.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="thresholdCount")
+    def threshold_count(self) -> int:
+        """
+        The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
+        """
+        return pulumi.get(self, "threshold_count")
+
+    @property
+    @pulumi.getter(name="trafficPercentage")
+    def traffic_percentage(self) -> int:
+        """
+        The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
+        """
+        return pulumi.get(self, "traffic_percentage")
+
+
+@pulumi.output_type
+class GetEndpointGroupsGroupEndpointConfigurationResult(dict):
+    def __init__(__self__, *,
+                 enable_clientip_preservation: bool,
+                 endpoint: str,
+                 probe_port: int,
+                 probe_protocol: str,
+                 type: str,
+                 weight: int):
+        """
+        :param bool enable_clientip_preservation: Indicates whether client IP addresses are reserved.
+        :param str endpoint: The IP address or domain name of Endpoint N in the endpoint group.
+        :param int probe_port: Probe Port.
+        :param str probe_protocol: Probe Protocol.
+        :param str type: The type of Endpoint N in the endpoint group.
+        :param int weight: The weight of Endpoint N in the endpoint group.
+        """
+        pulumi.set(__self__, "enable_clientip_preservation", enable_clientip_preservation)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "probe_port", probe_port)
+        pulumi.set(__self__, "probe_protocol", probe_protocol)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="enableClientipPreservation")
+    def enable_clientip_preservation(self) -> bool:
+        """
+        Indicates whether client IP addresses are reserved.
+        """
+        return pulumi.get(self, "enable_clientip_preservation")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The IP address or domain name of Endpoint N in the endpoint group.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="probePort")
+    def probe_port(self) -> int:
+        """
+        Probe Port.
+        """
+        return pulumi.get(self, "probe_port")
+
+    @property
+    @pulumi.getter(name="probeProtocol")
+    def probe_protocol(self) -> str:
+        """
+        Probe Protocol.
+        """
+        return pulumi.get(self, "probe_protocol")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of Endpoint N in the endpoint group.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        """
+        The weight of Endpoint N in the endpoint group.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetEndpointGroupsGroupPortOverrideResult(dict):
+    def __init__(__self__, *,
+                 endpoint_port: int,
+                 listener_port: int):
+        """
+        :param int endpoint_port: Forwarding port.
+        :param int listener_port: Listener port.
+        """
+        pulumi.set(__self__, "endpoint_port", endpoint_port)
+        pulumi.set(__self__, "listener_port", listener_port)
+
+    @property
+    @pulumi.getter(name="endpointPort")
+    def endpoint_port(self) -> int:
+        """
+        Forwarding port.
+        """
+        return pulumi.get(self, "endpoint_port")
+
+    @property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> int:
+        """
+        Listener port.
+        """
+        return pulumi.get(self, "listener_port")
 
 
 @pulumi.output_type

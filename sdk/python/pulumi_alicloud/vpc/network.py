@@ -19,6 +19,7 @@ class Network(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None,
                  __name__=None,
@@ -38,6 +39,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] description: The VPC description. Defaults to null.
         :param pulumi.Input[str] name: The name of the VPC. Defaults to null.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the VPC belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: The secondary CIDR blocks for the VPC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
@@ -63,6 +65,7 @@ class Network(pulumi.CustomResource):
             __props__['description'] = description
             __props__['name'] = name
             __props__['resource_group_id'] = resource_group_id
+            __props__['secondary_cidr_blocks'] = secondary_cidr_blocks
             __props__['tags'] = tags
             __props__['route_table_id'] = None
             __props__['router_id'] = None
@@ -84,6 +87,7 @@ class Network(pulumi.CustomResource):
             route_table_id: Optional[pulumi.Input[str]] = None,
             router_id: Optional[pulumi.Input[str]] = None,
             router_table_id: Optional[pulumi.Input[str]] = None,
+            secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
@@ -98,6 +102,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_id: The ID of the router created by default on VPC creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: The secondary CIDR blocks for the VPC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -111,6 +116,7 @@ class Network(pulumi.CustomResource):
         __props__["route_table_id"] = route_table_id
         __props__["router_id"] = router_id
         __props__["router_table_id"] = router_table_id
+        __props__["secondary_cidr_blocks"] = secondary_cidr_blocks
         __props__["tags"] = tags
         return Network(resource_name, opts=opts, __props__=__props__)
 
@@ -166,6 +172,14 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="routerTableId")
     def router_table_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "router_table_id")
+
+    @property
+    @pulumi.getter(name="secondaryCidrBlocks")
+    def secondary_cidr_blocks(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The secondary CIDR blocks for the VPC.
+        """
+        return pulumi.get(self, "secondary_cidr_blocks")
 
     @property
     @pulumi.getter

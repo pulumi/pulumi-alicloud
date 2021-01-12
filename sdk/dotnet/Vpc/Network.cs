@@ -60,6 +60,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouterTableId { get; private set; } = null!;
 
         /// <summary>
+        /// The secondary CIDR blocks for the VPC.
+        /// </summary>
+        [Output("secondaryCidrBlocks")]
+        public Output<ImmutableArray<string>> SecondaryCidrBlocks { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
@@ -135,6 +141,18 @@ namespace Pulumi.AliCloud.Vpc
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("secondaryCidrBlocks")]
+        private InputList<string>? _secondaryCidrBlocks;
+
+        /// <summary>
+        /// The secondary CIDR blocks for the VPC.
+        /// </summary>
+        public InputList<string> SecondaryCidrBlocks
+        {
+            get => _secondaryCidrBlocks ?? (_secondaryCidrBlocks = new InputList<string>());
+            set => _secondaryCidrBlocks = value;
+        }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -192,6 +210,18 @@ namespace Pulumi.AliCloud.Vpc
 
         [Input("routerTableId")]
         public Input<string>? RouterTableId { get; set; }
+
+        [Input("secondaryCidrBlocks")]
+        private InputList<string>? _secondaryCidrBlocks;
+
+        /// <summary>
+        /// The secondary CIDR blocks for the VPC.
+        /// </summary>
+        public InputList<string> SecondaryCidrBlocks
+        {
+            get => _secondaryCidrBlocks ?? (_secondaryCidrBlocks = new InputList<string>());
+            set => _secondaryCidrBlocks = value;
+        }
 
         [Input("tags")]
         private InputMap<object>? _tags;

@@ -45,6 +45,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Fnf;
         public readonly string? Ga;
         public readonly string? Gpdb;
+        public readonly string? Hitsdb;
         public readonly string? Kms;
         public readonly string? Kvstore;
         public readonly string? Location;
@@ -138,6 +139,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? gpdb,
 
+            string? hitsdb,
+
             string? kms,
 
             string? kvstore,
@@ -222,6 +225,7 @@ namespace Pulumi.AliCloud.Outputs
             Fnf = fnf;
             Ga = ga;
             Gpdb = gpdb;
+            Hitsdb = hitsdb;
             Kms = kms;
             Kvstore = kvstore;
             Location = location;

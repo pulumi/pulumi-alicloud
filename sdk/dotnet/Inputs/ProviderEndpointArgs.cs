@@ -108,6 +108,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("gpdb")]
         public Input<string>? Gpdb { get; set; }
 
+        [Input("hitsdb")]
+        public Input<string>? Hitsdb { get; set; }
+
         [Input("kms")]
         public Input<string>? Kms { get; set; }
 
