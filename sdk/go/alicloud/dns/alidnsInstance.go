@@ -76,17 +76,18 @@ type AlidnsInstance struct {
 // NewAlidnsInstance registers a new resource with the given unique name, arguments, and options.
 func NewAlidnsInstance(ctx *pulumi.Context,
 	name string, args *AlidnsInstanceArgs, opts ...pulumi.ResourceOption) (*AlidnsInstance, error) {
-	if args == nil || args.DnsSecurity == nil {
-		return nil, errors.New("missing required argument 'DnsSecurity'")
-	}
-	if args == nil || args.DomainNumbers == nil {
-		return nil, errors.New("missing required argument 'DomainNumbers'")
-	}
-	if args == nil || args.VersionCode == nil {
-		return nil, errors.New("missing required argument 'VersionCode'")
-	}
 	if args == nil {
-		args = &AlidnsInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DnsSecurity == nil {
+		return nil, errors.New("invalid value for required argument 'DnsSecurity'")
+	}
+	if args.DomainNumbers == nil {
+		return nil, errors.New("invalid value for required argument 'DomainNumbers'")
+	}
+	if args.VersionCode == nil {
+		return nil, errors.New("invalid value for required argument 'VersionCode'")
 	}
 	var resource AlidnsInstance
 	err := ctx.RegisterResource("alicloud:dns/alidnsInstance:AlidnsInstance", name, args, &resource, opts...)

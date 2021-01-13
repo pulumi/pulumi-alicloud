@@ -86,19 +86,19 @@ class BastionHostInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if description is None:
+            if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__['description'] = description
-            if license_code is None:
+            if license_code is None and not opts.urn:
                 raise TypeError("Missing required property 'license_code'")
             __props__['license_code'] = license_code
             __props__['period'] = period
             __props__['resource_group_id'] = resource_group_id
-            if security_group_ids is None:
+            if security_group_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_ids'")
             __props__['security_group_ids'] = security_group_ids
             __props__['tags'] = tags
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
         super(BastionHostInstance, __self__).__init__(

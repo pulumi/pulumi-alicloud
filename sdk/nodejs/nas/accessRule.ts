@@ -113,10 +113,10 @@ export class AccessRule extends pulumi.CustomResource {
             inputs["userAccessType"] = state ? state.userAccessType : undefined;
         } else {
             const args = argsOrState as AccessRuleArgs | undefined;
-            if (!args || args.accessGroupName === undefined) {
+            if ((!args || args.accessGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessGroupName'");
             }
-            if (!args || args.sourceCidrIp === undefined) {
+            if ((!args || args.sourceCidrIp === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceCidrIp'");
             }
             inputs["accessGroupName"] = args ? args.accessGroupName : undefined;

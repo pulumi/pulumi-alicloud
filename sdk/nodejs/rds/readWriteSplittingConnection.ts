@@ -144,10 +144,10 @@ export class ReadWriteSplittingConnection extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as ReadWriteSplittingConnectionArgs | undefined;
-            if (!args || args.distributionType === undefined) {
+            if ((!args || args.distributionType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'distributionType'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;

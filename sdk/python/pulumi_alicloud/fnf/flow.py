@@ -98,15 +98,15 @@ class Flow(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if definition is None:
+            if definition is None and not opts.urn:
                 raise TypeError("Missing required property 'definition'")
             __props__['definition'] = definition
-            if description is None:
+            if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__['description'] = description
             __props__['name'] = name
             __props__['role_arn'] = role_arn
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['flow_id'] = None

@@ -135,13 +135,13 @@ export class BandwidthLimit extends pulumi.CustomResource {
             inputs["regionIds"] = state ? state.regionIds : undefined;
         } else {
             const args = argsOrState as BandwidthLimitArgs | undefined;
-            if (!args || args.bandwidthLimit === undefined) {
+            if ((!args || args.bandwidthLimit === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bandwidthLimit'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (!args || args.regionIds === undefined) {
+            if ((!args || args.regionIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'regionIds'");
             }
             inputs["bandwidthLimit"] = args ? args.bandwidthLimit : undefined;

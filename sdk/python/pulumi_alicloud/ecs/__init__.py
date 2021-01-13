@@ -38,3 +38,86 @@ from .snapshot import *
 from .snapshot_policy import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup":
+                return AutoProvisioningGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/copyImage:CopyImage":
+                return CopyImage(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/dedicatedHost:DedicatedHost":
+                return DedicatedHost(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/disk:Disk":
+                return Disk(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/diskAttachment:DiskAttachment":
+                return DiskAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/eip:Eip":
+                return Eip(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/eipAssociation:EipAssociation":
+                return EipAssociation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/image:Image":
+                return Image(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/imageCopy:ImageCopy":
+                return ImageCopy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/imageExport:ImageExport":
+                return ImageExport(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/imageImport:ImageImport":
+                return ImageImport(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/imageSharePermission:ImageSharePermission":
+                return ImageSharePermission(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/instance:Instance":
+                return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/keyPair:KeyPair":
+                return KeyPair(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/keyPairAttachment:KeyPairAttachment":
+                return KeyPairAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/launchTemplate:LaunchTemplate":
+                return LaunchTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/reservedInstance:ReservedInstance":
+                return ReservedInstance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/securityGroup:SecurityGroup":
+                return SecurityGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/securityGroupRule:SecurityGroupRule":
+                return SecurityGroupRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/snapshot:Snapshot":
+                return Snapshot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/snapshotPolicy:SnapshotPolicy":
+                return SnapshotPolicy(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "ecs/autoProvisioningGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/copyImage", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/dedicatedHost", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/disk", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/diskAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/eip", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/eipAssociation", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/image", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/imageCopy", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/imageExport", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/imageImport", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/imageSharePermission", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/instance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/keyPair", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/keyPairAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/launchTemplate", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/reservedInstance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/securityGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/securityGroupRule", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/snapshot", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/snapshotPolicy", _module_instance)
+
+_register_module()

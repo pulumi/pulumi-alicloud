@@ -45,11 +45,12 @@ type BackendServer struct {
 // NewBackendServer registers a new resource with the given unique name, arguments, and options.
 func NewBackendServer(ctx *pulumi.Context,
 	name string, args *BackendServerArgs, opts ...pulumi.ResourceOption) (*BackendServer, error) {
-	if args == nil || args.LoadBalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerId'")
-	}
 	if args == nil {
-		args = &BackendServerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LoadBalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerId'")
 	}
 	var resource BackendServer
 	err := ctx.RegisterResource("alicloud:slb/backendServer:BackendServer", name, args, &resource, opts...)

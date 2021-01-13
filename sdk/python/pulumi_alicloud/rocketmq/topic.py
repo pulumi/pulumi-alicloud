@@ -92,16 +92,16 @@ class Topic(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
-            if message_type is None:
+            if message_type is None and not opts.urn:
                 raise TypeError("Missing required property 'message_type'")
             __props__['message_type'] = message_type
             __props__['perm'] = perm
             __props__['remark'] = remark
             __props__['tags'] = tags
-            if topic is not None:
+            if topic is not None and not opts.urn:
                 warnings.warn("""Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("topic is deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.")
             __props__['topic'] = topic

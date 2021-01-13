@@ -101,23 +101,24 @@ type Table struct {
 // NewTable registers a new resource with the given unique name, arguments, and options.
 func NewTable(ctx *pulumi.Context,
 	name string, args *TableArgs, opts ...pulumi.ResourceOption) (*Table, error) {
-	if args == nil || args.InstanceName == nil {
-		return nil, errors.New("missing required argument 'InstanceName'")
-	}
-	if args == nil || args.MaxVersion == nil {
-		return nil, errors.New("missing required argument 'MaxVersion'")
-	}
-	if args == nil || args.PrimaryKeys == nil {
-		return nil, errors.New("missing required argument 'PrimaryKeys'")
-	}
-	if args == nil || args.TableName == nil {
-		return nil, errors.New("missing required argument 'TableName'")
-	}
-	if args == nil || args.TimeToLive == nil {
-		return nil, errors.New("missing required argument 'TimeToLive'")
-	}
 	if args == nil {
-		args = &TableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceName == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceName'")
+	}
+	if args.MaxVersion == nil {
+		return nil, errors.New("invalid value for required argument 'MaxVersion'")
+	}
+	if args.PrimaryKeys == nil {
+		return nil, errors.New("invalid value for required argument 'PrimaryKeys'")
+	}
+	if args.TableName == nil {
+		return nil, errors.New("invalid value for required argument 'TableName'")
+	}
+	if args.TimeToLive == nil {
+		return nil, errors.New("invalid value for required argument 'TimeToLive'")
 	}
 	var resource Table
 	err := ctx.RegisterResource("alicloud:ots/table:Table", name, args, &resource, opts...)

@@ -68,9 +68,9 @@ class RouteMap(pulumi.CustomResource):
         vpc00_region = pulumi.providers.Alicloud("vpc00Region", region="cn-hangzhou")
         vpc01_region = pulumi.providers.Alicloud("vpc01Region", region="cn-shanghai")
         vpc00 = alicloud.vpc.Network("vpc00", cidr_block="172.16.0.0/12",
-        opts=ResourceOptions(provider=alicloud["vpc00_region"]))
+        opts=pulumi.ResourceOptions(provider=alicloud["vpc00_region"]))
         vpc01 = alicloud.vpc.Network("vpc01", cidr_block="172.16.0.0/12",
-        opts=ResourceOptions(provider=alicloud["vpc01_region"]))
+        opts=pulumi.ResourceOptions(provider=alicloud["vpc01_region"]))
         default00 = alicloud.cen.InstanceAttachment("default00",
             instance_id=default_instance.id,
             child_instance_id=vpc00.id,
@@ -109,7 +109,7 @@ class RouteMap(pulumi.CustomResource):
             operate_community_sets=["65501:1"],
             preference=20,
             prepend_as_paths=["65501"],
-            opts=ResourceOptions(depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     default00,
                     default01,
                 ]))
@@ -171,10 +171,10 @@ class RouteMap(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['as_path_match_mode'] = as_path_match_mode
-            if cen_id is None:
+            if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
             __props__['cen_id'] = cen_id
-            if cen_region_id is None:
+            if cen_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_region_id'")
             __props__['cen_region_id'] = cen_region_id
             __props__['cidr_match_mode'] = cidr_match_mode
@@ -186,7 +186,7 @@ class RouteMap(pulumi.CustomResource):
             __props__['destination_instance_ids'] = destination_instance_ids
             __props__['destination_instance_ids_reverse_match'] = destination_instance_ids_reverse_match
             __props__['destination_route_table_ids'] = destination_route_table_ids
-            if map_result is None:
+            if map_result is None and not opts.urn:
                 raise TypeError("Missing required property 'map_result'")
             __props__['map_result'] = map_result
             __props__['match_asns'] = match_asns
@@ -195,7 +195,7 @@ class RouteMap(pulumi.CustomResource):
             __props__['operate_community_sets'] = operate_community_sets
             __props__['preference'] = preference
             __props__['prepend_as_paths'] = prepend_as_paths
-            if priority is None:
+            if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
             __props__['priority'] = priority
             __props__['route_types'] = route_types
@@ -204,7 +204,7 @@ class RouteMap(pulumi.CustomResource):
             __props__['source_instance_ids_reverse_match'] = source_instance_ids_reverse_match
             __props__['source_region_ids'] = source_region_ids
             __props__['source_route_table_ids'] = source_route_table_ids
-            if transmit_direction is None:
+            if transmit_direction is None and not opts.urn:
                 raise TypeError("Missing required property 'transmit_direction'")
             __props__['transmit_direction'] = transmit_direction
             __props__['route_map_id'] = None

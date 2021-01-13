@@ -91,16 +91,16 @@ class DomainNew(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cdn_type is None:
+            if cdn_type is None and not opts.urn:
                 raise TypeError("Missing required property 'cdn_type'")
             __props__['cdn_type'] = cdn_type
             __props__['certificate_config'] = certificate_config
-            if domain_name is None:
+            if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__['domain_name'] = domain_name
             __props__['resource_group_id'] = resource_group_id
             __props__['scope'] = scope
-            if sources is None:
+            if sources is None and not opts.urn:
                 raise TypeError("Missing required property 'sources'")
             __props__['sources'] = sources
             __props__['tags'] = tags

@@ -76,11 +76,11 @@ class LoginProfile(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['mfa_bind_required'] = mfa_bind_required
-            if password is None:
+            if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
             __props__['password_reset_required'] = password_reset_required
-            if user_name is None:
+            if user_name is None and not opts.urn:
                 raise TypeError("Missing required property 'user_name'")
             __props__['user_name'] = user_name
         super(LoginProfile, __self__).__init__(

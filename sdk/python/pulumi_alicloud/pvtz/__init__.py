@@ -10,3 +10,32 @@ from .zone_attachment import *
 from .zone_record import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:pvtz/zone:Zone":
+                return Zone(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:pvtz/zoneAttachment:ZoneAttachment":
+                return ZoneAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:pvtz/zoneRecord:ZoneRecord":
+                return ZoneRecord(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "pvtz/zone", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "pvtz/zoneAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "pvtz/zoneRecord", _module_instance)
+
+_register_module()

@@ -134,14 +134,15 @@ type ReadWriteSplittingConnection struct {
 // NewReadWriteSplittingConnection registers a new resource with the given unique name, arguments, and options.
 func NewReadWriteSplittingConnection(ctx *pulumi.Context,
 	name string, args *ReadWriteSplittingConnectionArgs, opts ...pulumi.ResourceOption) (*ReadWriteSplittingConnection, error) {
-	if args == nil || args.DistributionType == nil {
-		return nil, errors.New("missing required argument 'DistributionType'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &ReadWriteSplittingConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DistributionType == nil {
+		return nil, errors.New("invalid value for required argument 'DistributionType'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource ReadWriteSplittingConnection
 	err := ctx.RegisterResource("alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection", name, args, &resource, opts...)

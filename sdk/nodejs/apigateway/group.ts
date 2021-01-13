@@ -76,7 +76,7 @@ export class Group extends pulumi.CustomResource {
             inputs["vpcDomain"] = state ? state.vpcDomain : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if (!args || args.description === undefined) {
+            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'description'");
             }
             inputs["description"] = args ? args.description : undefined;

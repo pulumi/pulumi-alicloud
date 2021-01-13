@@ -145,17 +145,18 @@ type BandwidthLimit struct {
 // NewBandwidthLimit registers a new resource with the given unique name, arguments, and options.
 func NewBandwidthLimit(ctx *pulumi.Context,
 	name string, args *BandwidthLimitArgs, opts ...pulumi.ResourceOption) (*BandwidthLimit, error) {
-	if args == nil || args.BandwidthLimit == nil {
-		return nil, errors.New("missing required argument 'BandwidthLimit'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
-	if args == nil || args.RegionIds == nil {
-		return nil, errors.New("missing required argument 'RegionIds'")
-	}
 	if args == nil {
-		args = &BandwidthLimitArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BandwidthLimit == nil {
+		return nil, errors.New("invalid value for required argument 'BandwidthLimit'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
+	if args.RegionIds == nil {
+		return nil, errors.New("invalid value for required argument 'RegionIds'")
 	}
 	var resource BandwidthLimit
 	err := ctx.RegisterResource("alicloud:cen/bandwidthLimit:BandwidthLimit", name, args, &resource, opts...)

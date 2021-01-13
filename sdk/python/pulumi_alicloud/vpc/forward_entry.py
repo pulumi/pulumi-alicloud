@@ -97,22 +97,22 @@ class ForwardEntry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if external_ip is None:
+            if external_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'external_ip'")
             __props__['external_ip'] = external_ip
-            if external_port is None:
+            if external_port is None and not opts.urn:
                 raise TypeError("Missing required property 'external_port'")
             __props__['external_port'] = external_port
-            if forward_table_id is None:
+            if forward_table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'forward_table_id'")
             __props__['forward_table_id'] = forward_table_id
-            if internal_ip is None:
+            if internal_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'internal_ip'")
             __props__['internal_ip'] = internal_ip
-            if internal_port is None:
+            if internal_port is None and not opts.urn:
                 raise TypeError("Missing required property 'internal_port'")
             __props__['internal_port'] = internal_port
-            if ip_protocol is None:
+            if ip_protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_protocol'")
             __props__['ip_protocol'] = ip_protocol
             __props__['name'] = name

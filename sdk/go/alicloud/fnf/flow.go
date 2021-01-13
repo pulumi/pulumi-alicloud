@@ -83,17 +83,18 @@ type Flow struct {
 // NewFlow registers a new resource with the given unique name, arguments, and options.
 func NewFlow(ctx *pulumi.Context,
 	name string, args *FlowArgs, opts ...pulumi.ResourceOption) (*Flow, error) {
-	if args == nil || args.Definition == nil {
-		return nil, errors.New("missing required argument 'Definition'")
-	}
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &FlowArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Definition == nil {
+		return nil, errors.New("invalid value for required argument 'Definition'")
+	}
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource Flow
 	err := ctx.RegisterResource("alicloud:fnf/flow:Flow", name, args, &resource, opts...)

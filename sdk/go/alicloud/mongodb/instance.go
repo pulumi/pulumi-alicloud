@@ -80,17 +80,18 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.DbInstanceClass == nil {
-		return nil, errors.New("missing required argument 'DbInstanceClass'")
-	}
-	if args == nil || args.DbInstanceStorage == nil {
-		return nil, errors.New("missing required argument 'DbInstanceStorage'")
-	}
-	if args == nil || args.EngineVersion == nil {
-		return nil, errors.New("missing required argument 'EngineVersion'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DbInstanceClass == nil {
+		return nil, errors.New("invalid value for required argument 'DbInstanceClass'")
+	}
+	if args.DbInstanceStorage == nil {
+		return nil, errors.New("invalid value for required argument 'DbInstanceStorage'")
+	}
+	if args.EngineVersion == nil {
+		return nil, errors.New("invalid value for required argument 'EngineVersion'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:mongodb/instance:Instance", name, args, &resource, opts...)

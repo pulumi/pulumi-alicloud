@@ -128,17 +128,18 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.CoreInstanceType == nil {
-		return nil, errors.New("missing required argument 'CoreInstanceType'")
-	}
-	if args == nil || args.EngineVersion == nil {
-		return nil, errors.New("missing required argument 'EngineVersion'")
-	}
-	if args == nil || args.MasterInstanceType == nil {
-		return nil, errors.New("missing required argument 'MasterInstanceType'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CoreInstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'CoreInstanceType'")
+	}
+	if args.EngineVersion == nil {
+		return nil, errors.New("invalid value for required argument 'EngineVersion'")
+	}
+	if args.MasterInstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'MasterInstanceType'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:hbase/instance:Instance", name, args, &resource, opts...)

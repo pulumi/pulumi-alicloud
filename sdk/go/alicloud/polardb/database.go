@@ -106,14 +106,15 @@ type Database struct {
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
 func NewDatabase(ctx *pulumi.Context,
 	name string, args *DatabaseArgs, opts ...pulumi.ResourceOption) (*Database, error) {
-	if args == nil || args.DbClusterId == nil {
-		return nil, errors.New("missing required argument 'DbClusterId'")
-	}
-	if args == nil || args.DbName == nil {
-		return nil, errors.New("missing required argument 'DbName'")
-	}
 	if args == nil {
-		args = &DatabaseArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DbClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'DbClusterId'")
+	}
+	if args.DbName == nil {
+		return nil, errors.New("invalid value for required argument 'DbName'")
 	}
 	var resource Database
 	err := ctx.RegisterResource("alicloud:polardb/database:Database", name, args, &resource, opts...)

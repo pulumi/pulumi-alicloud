@@ -75,13 +75,13 @@ class SnatEntry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cidr_block is None:
+            if cidr_block is None and not opts.urn:
                 raise TypeError("Missing required property 'cidr_block'")
             __props__['cidr_block'] = cidr_block
-            if sag_id is None:
+            if sag_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sag_id'")
             __props__['sag_id'] = sag_id
-            if snat_ip is None:
+            if snat_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'snat_ip'")
             __props__['snat_ip'] = snat_ip
         super(SnatEntry, __self__).__init__(

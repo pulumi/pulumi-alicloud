@@ -66,10 +66,10 @@ export class HAVipAttachment extends pulumi.CustomResource {
             inputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as HAVipAttachmentArgs | undefined;
-            if (!args || args.havipId === undefined) {
+            if ((!args || args.havipId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'havipId'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["havipId"] = args ? args.havipId : undefined;

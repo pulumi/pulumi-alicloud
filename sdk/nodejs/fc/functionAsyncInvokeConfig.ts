@@ -151,10 +151,10 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
             inputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as FunctionAsyncInvokeConfigArgs | undefined;
-            if (!args || args.functionName === undefined) {
+            if ((!args || args.functionName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'functionName'");
             }
-            if (!args || args.serviceName === undefined) {
+            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["destinationConfig"] = args ? args.destinationConfig : undefined;

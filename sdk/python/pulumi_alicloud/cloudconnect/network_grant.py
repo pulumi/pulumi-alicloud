@@ -44,14 +44,14 @@ class NetworkGrant(pulumi.CustomResource):
             region="cn-hangzhou",
             access_key="xxxxxx",
             secret_key="xxxxxx")
-        cen = alicloud.cen.Instance("cen", opts=ResourceOptions(provider=alicloud["cen_account"]))
+        cen = alicloud.cen.Instance("cen", opts=pulumi.ResourceOptions(provider=alicloud["cen_account"]))
         ccn = alicloud.cloudconnect.Network("ccn", is_default=True,
-        opts=ResourceOptions(provider=alicloud["ccn_account"]))
+        opts=pulumi.ResourceOptions(provider=alicloud["ccn_account"]))
         default = alicloud.cloudconnect.NetworkGrant("default",
             ccn_id=ccn.id,
             cen_id=cen.id,
             cen_uid="xxxxxx",
-            opts=ResourceOptions(depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     ccn,
                     cen,
                 ]))
@@ -88,13 +88,13 @@ class NetworkGrant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if ccn_id is None:
+            if ccn_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ccn_id'")
             __props__['ccn_id'] = ccn_id
-            if cen_id is None:
+            if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
             __props__['cen_id'] = cen_id
-            if cen_uid is None:
+            if cen_uid is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_uid'")
             __props__['cen_uid'] = cen_uid
         super(NetworkGrant, __self__).__init__(

@@ -77,7 +77,7 @@ class Snapshot(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if disk_id is None:
+            if disk_id is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_id'")
             __props__['disk_id'] = disk_id
             __props__['name'] = name

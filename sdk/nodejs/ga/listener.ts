@@ -132,10 +132,10 @@ export class Listener extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
-            if (!args || args.acceleratorId === undefined) {
+            if ((!args || args.acceleratorId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if (!args || args.portRanges === undefined) {
+            if ((!args || args.portRanges === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'portRanges'");
             }
             inputs["acceleratorId"] = args ? args.acceleratorId : undefined;

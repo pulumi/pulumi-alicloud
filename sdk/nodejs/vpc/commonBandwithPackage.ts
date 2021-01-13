@@ -91,7 +91,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
         } else {
             const args = argsOrState as CommonBandwithPackageArgs | undefined;
-            if (!args || args.bandwidth === undefined) {
+            if ((!args || args.bandwidth === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bandwidth'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;

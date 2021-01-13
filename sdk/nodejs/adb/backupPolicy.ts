@@ -76,13 +76,13 @@ export class BackupPolicy extends pulumi.CustomResource {
             inputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
-            if (!args || args.dbClusterId === undefined) {
+            if ((!args || args.dbClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if (!args || args.preferredBackupPeriods === undefined) {
+            if ((!args || args.preferredBackupPeriods === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'preferredBackupPeriods'");
             }
-            if (!args || args.preferredBackupTime === undefined) {
+            if ((!args || args.preferredBackupTime === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'preferredBackupTime'");
             }
             inputs["dbClusterId"] = args ? args.dbClusterId : undefined;

@@ -72,10 +72,10 @@ class ImageExport(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if image_id is None:
+            if image_id is None and not opts.urn:
                 raise TypeError("Missing required property 'image_id'")
             __props__['image_id'] = image_id
-            if oss_bucket is None:
+            if oss_bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'oss_bucket'")
             __props__['oss_bucket'] = oss_bucket
             __props__['oss_prefix'] = oss_prefix

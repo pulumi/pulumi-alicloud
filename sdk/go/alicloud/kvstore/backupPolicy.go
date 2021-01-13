@@ -32,11 +32,12 @@ type BackupPolicy struct {
 // NewBackupPolicy registers a new resource with the given unique name, arguments, and options.
 func NewBackupPolicy(ctx *pulumi.Context,
 	name string, args *BackupPolicyArgs, opts ...pulumi.ResourceOption) (*BackupPolicy, error) {
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &BackupPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource BackupPolicy
 	err := ctx.RegisterResource("alicloud:kvstore/backupPolicy:BackupPolicy", name, args, &resource, opts...)

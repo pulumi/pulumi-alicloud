@@ -40,23 +40,24 @@ type LogTailConfig struct {
 // NewLogTailConfig registers a new resource with the given unique name, arguments, and options.
 func NewLogTailConfig(ctx *pulumi.Context,
 	name string, args *LogTailConfigArgs, opts ...pulumi.ResourceOption) (*LogTailConfig, error) {
-	if args == nil || args.InputDetail == nil {
-		return nil, errors.New("missing required argument 'InputDetail'")
-	}
-	if args == nil || args.InputType == nil {
-		return nil, errors.New("missing required argument 'InputType'")
-	}
-	if args == nil || args.Logstore == nil {
-		return nil, errors.New("missing required argument 'Logstore'")
-	}
-	if args == nil || args.OutputType == nil {
-		return nil, errors.New("missing required argument 'OutputType'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &LogTailConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InputDetail == nil {
+		return nil, errors.New("invalid value for required argument 'InputDetail'")
+	}
+	if args.InputType == nil {
+		return nil, errors.New("invalid value for required argument 'InputType'")
+	}
+	if args.Logstore == nil {
+		return nil, errors.New("invalid value for required argument 'Logstore'")
+	}
+	if args.OutputType == nil {
+		return nil, errors.New("invalid value for required argument 'OutputType'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource LogTailConfig
 	err := ctx.RegisterResource("alicloud:log/logTailConfig:LogTailConfig", name, args, &resource, opts...)

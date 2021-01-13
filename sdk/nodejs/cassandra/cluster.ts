@@ -192,19 +192,19 @@ export class Cluster extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if (!args || args.instanceType === undefined) {
+            if ((!args || args.instanceType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if (!args || args.majorVersion === undefined) {
+            if ((!args || args.majorVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'majorVersion'");
             }
-            if (!args || args.nodeCount === undefined) {
+            if ((!args || args.nodeCount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            if (!args || args.payType === undefined) {
+            if ((!args || args.payType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'payType'");
             }
-            if (!args || args.vswitchId === undefined) {
+            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["autoRenew"] = args ? args.autoRenew : undefined;

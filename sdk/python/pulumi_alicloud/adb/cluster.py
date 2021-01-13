@@ -117,17 +117,17 @@ class Cluster(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['auto_renew_period'] = auto_renew_period
-            if db_cluster_category is None:
+            if db_cluster_category is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_category'")
             __props__['db_cluster_category'] = db_cluster_category
             __props__['db_cluster_version'] = db_cluster_version
-            if db_node_class is None:
+            if db_node_class is None and not opts.urn:
                 raise TypeError("Missing required property 'db_node_class'")
             __props__['db_node_class'] = db_node_class
-            if db_node_count is None:
+            if db_node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'db_node_count'")
             __props__['db_node_count'] = db_node_count
-            if db_node_storage is None:
+            if db_node_storage is None and not opts.urn:
                 raise TypeError("Missing required property 'db_node_storage'")
             __props__['db_node_storage'] = db_node_storage
             __props__['description'] = description
@@ -137,7 +137,7 @@ class Cluster(pulumi.CustomResource):
             __props__['renewal_status'] = renewal_status
             __props__['security_ips'] = security_ips
             __props__['tags'] = tags
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id

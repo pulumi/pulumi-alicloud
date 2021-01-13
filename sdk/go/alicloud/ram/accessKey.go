@@ -107,6 +107,7 @@ func NewAccessKey(ctx *pulumi.Context,
 	if args == nil {
 		args = &AccessKeyArgs{}
 	}
+
 	var resource AccessKey
 	err := ctx.RegisterResource("alicloud:ram/accessKey:AccessKey", name, args, &resource, opts...)
 	if err != nil {

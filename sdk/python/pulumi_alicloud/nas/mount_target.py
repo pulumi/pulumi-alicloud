@@ -91,10 +91,10 @@ class MountTarget(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if access_group_name is None:
+            if access_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'access_group_name'")
             __props__['access_group_name'] = access_group_name
-            if file_system_id is None:
+            if file_system_id is None and not opts.urn:
                 raise TypeError("Missing required property 'file_system_id'")
             __props__['file_system_id'] = file_system_id
             __props__['security_group_id'] = security_group_id

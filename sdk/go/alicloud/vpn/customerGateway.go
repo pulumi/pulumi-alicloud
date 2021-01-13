@@ -32,11 +32,12 @@ type CustomerGateway struct {
 // NewCustomerGateway registers a new resource with the given unique name, arguments, and options.
 func NewCustomerGateway(ctx *pulumi.Context,
 	name string, args *CustomerGatewayArgs, opts ...pulumi.ResourceOption) (*CustomerGateway, error) {
-	if args == nil || args.IpAddress == nil {
-		return nil, errors.New("missing required argument 'IpAddress'")
-	}
 	if args == nil {
-		args = &CustomerGatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IpAddress == nil {
+		return nil, errors.New("invalid value for required argument 'IpAddress'")
 	}
 	var resource CustomerGateway
 	err := ctx.RegisterResource("alicloud:vpn/customerGateway:CustomerGateway", name, args, &resource, opts...)

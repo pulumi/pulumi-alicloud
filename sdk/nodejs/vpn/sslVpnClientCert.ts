@@ -91,7 +91,7 @@ export class SslVpnClientCert extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as SslVpnClientCertArgs | undefined;
-            if (!args || args.sslVpnServerId === undefined) {
+            if ((!args || args.sslVpnServerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sslVpnServerId'");
             }
             inputs["name"] = args ? args.name : undefined;

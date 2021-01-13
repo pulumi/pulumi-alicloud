@@ -92,24 +92,24 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['name'] = name
-            if namespace_name is None:
+            if namespace_name is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_name'")
             __props__['namespace_name'] = namespace_name
             __props__['repo_name'] = repo_name
-            if tag_filter is None:
+            if tag_filter is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_filter'")
             __props__['tag_filter'] = tag_filter
-            if target_instance_id is None:
+            if target_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_instance_id'")
             __props__['target_instance_id'] = target_instance_id
-            if target_namespace_name is None:
+            if target_namespace_name is None and not opts.urn:
                 raise TypeError("Missing required property 'target_namespace_name'")
             __props__['target_namespace_name'] = target_namespace_name
-            if target_region_id is None:
+            if target_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_region_id'")
             __props__['target_region_id'] = target_region_id
             __props__['target_repo_name'] = target_repo_name

@@ -121,10 +121,10 @@ export class Topic extends pulumi.CustomResource {
             inputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (!args || args.messageType === undefined) {
+            if ((!args || args.messageType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'messageType'");
             }
             inputs["instanceId"] = args ? args.instanceId : undefined;

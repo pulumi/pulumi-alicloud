@@ -90,26 +90,27 @@ type RegistryEnterpriseSyncRule struct {
 // NewRegistryEnterpriseSyncRule registers a new resource with the given unique name, arguments, and options.
 func NewRegistryEnterpriseSyncRule(ctx *pulumi.Context,
 	name string, args *RegistryEnterpriseSyncRuleArgs, opts ...pulumi.ResourceOption) (*RegistryEnterpriseSyncRule, error) {
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.TagFilter == nil {
-		return nil, errors.New("missing required argument 'TagFilter'")
-	}
-	if args == nil || args.TargetInstanceId == nil {
-		return nil, errors.New("missing required argument 'TargetInstanceId'")
-	}
-	if args == nil || args.TargetNamespaceName == nil {
-		return nil, errors.New("missing required argument 'TargetNamespaceName'")
-	}
-	if args == nil || args.TargetRegionId == nil {
-		return nil, errors.New("missing required argument 'TargetRegionId'")
-	}
 	if args == nil {
-		args = &RegistryEnterpriseSyncRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.TagFilter == nil {
+		return nil, errors.New("invalid value for required argument 'TagFilter'")
+	}
+	if args.TargetInstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetInstanceId'")
+	}
+	if args.TargetNamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'TargetNamespaceName'")
+	}
+	if args.TargetRegionId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetRegionId'")
 	}
 	var resource RegistryEnterpriseSyncRule
 	err := ctx.RegisterResource("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule", name, args, &resource, opts...)

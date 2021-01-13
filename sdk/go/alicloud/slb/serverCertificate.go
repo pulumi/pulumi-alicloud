@@ -54,6 +54,7 @@ func NewServerCertificate(ctx *pulumi.Context,
 	if args == nil {
 		args = &ServerCertificateArgs{}
 	}
+
 	var resource ServerCertificate
 	err := ctx.RegisterResource("alicloud:slb/serverCertificate:ServerCertificate", name, args, &resource, opts...)
 	if err != nil {

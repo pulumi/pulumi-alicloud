@@ -156,13 +156,13 @@ export class RouteEntry extends pulumi.CustomResource {
             inputs["routeTableId"] = state ? state.routeTableId : undefined;
         } else {
             const args = argsOrState as RouteEntryArgs | undefined;
-            if (!args || args.cidrBlock === undefined) {
+            if ((!args || args.cidrBlock === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (!args || args.routeTableId === undefined) {
+            if ((!args || args.routeTableId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'routeTableId'");
             }
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;

@@ -95,26 +95,27 @@ type Rule struct {
 // NewRule registers a new resource with the given unique name, arguments, and options.
 func NewRule(ctx *pulumi.Context,
 	name string, args *RuleArgs, opts ...pulumi.ResourceOption) (*Rule, error) {
-	if args == nil || args.RiskLevel == nil {
-		return nil, errors.New("missing required argument 'RiskLevel'")
-	}
-	if args == nil || args.RuleName == nil {
-		return nil, errors.New("missing required argument 'RuleName'")
-	}
-	if args == nil || args.ScopeComplianceResourceTypes == nil {
-		return nil, errors.New("missing required argument 'ScopeComplianceResourceTypes'")
-	}
-	if args == nil || args.SourceDetailMessageType == nil {
-		return nil, errors.New("missing required argument 'SourceDetailMessageType'")
-	}
-	if args == nil || args.SourceIdentifier == nil {
-		return nil, errors.New("missing required argument 'SourceIdentifier'")
-	}
-	if args == nil || args.SourceOwner == nil {
-		return nil, errors.New("missing required argument 'SourceOwner'")
-	}
 	if args == nil {
-		args = &RuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RiskLevel == nil {
+		return nil, errors.New("invalid value for required argument 'RiskLevel'")
+	}
+	if args.RuleName == nil {
+		return nil, errors.New("invalid value for required argument 'RuleName'")
+	}
+	if args.ScopeComplianceResourceTypes == nil {
+		return nil, errors.New("invalid value for required argument 'ScopeComplianceResourceTypes'")
+	}
+	if args.SourceDetailMessageType == nil {
+		return nil, errors.New("invalid value for required argument 'SourceDetailMessageType'")
+	}
+	if args.SourceIdentifier == nil {
+		return nil, errors.New("invalid value for required argument 'SourceIdentifier'")
+	}
+	if args.SourceOwner == nil {
+		return nil, errors.New("invalid value for required argument 'SourceOwner'")
 	}
 	var resource Rule
 	err := ctx.RegisterResource("alicloud:cfg/rule:Rule", name, args, &resource, opts...)

@@ -112,13 +112,13 @@ export class GroupPolicyAttachment extends pulumi.CustomResource {
             inputs["policyType"] = state ? state.policyType : undefined;
         } else {
             const args = argsOrState as GroupPolicyAttachmentArgs | undefined;
-            if (!args || args.groupName === undefined) {
+            if ((!args || args.groupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupName'");
             }
-            if (!args || args.policyName === undefined) {
+            if ((!args || args.policyName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if (!args || args.policyType === undefined) {
+            if ((!args || args.policyType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyType'");
             }
             inputs["groupName"] = args ? args.groupName : undefined;

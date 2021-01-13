@@ -82,13 +82,13 @@ export class SharedResource extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as SharedResourceArgs | undefined;
-            if (!args || args.resourceId === undefined) {
+            if ((!args || args.resourceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            if (!args || args.resourceShareId === undefined) {
+            if ((!args || args.resourceShareId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceShareId'");
             }
-            if (!args || args.resourceType === undefined) {
+            if ((!args || args.resourceType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceType'");
             }
             inputs["resourceId"] = args ? args.resourceId : undefined;

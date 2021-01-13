@@ -143,13 +143,13 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__['worker_disk_category'] = worker_disk_category
             __props__['worker_disk_size'] = worker_disk_size
             __props__['worker_instance_charge_type'] = worker_instance_charge_type
-            if worker_instance_types is None:
+            if worker_instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_instance_types'")
             __props__['worker_instance_types'] = worker_instance_types
-            if worker_number is None:
+            if worker_number is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_number'")
             __props__['worker_number'] = worker_number
-            if worker_vswitch_ids is None:
+            if worker_vswitch_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_vswitch_ids'")
             __props__['worker_vswitch_ids'] = worker_vswitch_ids
             __props__['certificate_authority'] = None

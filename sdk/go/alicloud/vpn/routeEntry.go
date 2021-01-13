@@ -36,23 +36,24 @@ type RouteEntry struct {
 // NewRouteEntry registers a new resource with the given unique name, arguments, and options.
 func NewRouteEntry(ctx *pulumi.Context,
 	name string, args *RouteEntryArgs, opts ...pulumi.ResourceOption) (*RouteEntry, error) {
-	if args == nil || args.NextHop == nil {
-		return nil, errors.New("missing required argument 'NextHop'")
-	}
-	if args == nil || args.PublishVpc == nil {
-		return nil, errors.New("missing required argument 'PublishVpc'")
-	}
-	if args == nil || args.RouteDest == nil {
-		return nil, errors.New("missing required argument 'RouteDest'")
-	}
-	if args == nil || args.VpnGatewayId == nil {
-		return nil, errors.New("missing required argument 'VpnGatewayId'")
-	}
-	if args == nil || args.Weight == nil {
-		return nil, errors.New("missing required argument 'Weight'")
-	}
 	if args == nil {
-		args = &RouteEntryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NextHop == nil {
+		return nil, errors.New("invalid value for required argument 'NextHop'")
+	}
+	if args.PublishVpc == nil {
+		return nil, errors.New("invalid value for required argument 'PublishVpc'")
+	}
+	if args.RouteDest == nil {
+		return nil, errors.New("invalid value for required argument 'RouteDest'")
+	}
+	if args.VpnGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'VpnGatewayId'")
+	}
+	if args.Weight == nil {
+		return nil, errors.New("invalid value for required argument 'Weight'")
 	}
 	var resource RouteEntry
 	err := ctx.RegisterResource("alicloud:vpn/routeEntry:RouteEntry", name, args, &resource, opts...)

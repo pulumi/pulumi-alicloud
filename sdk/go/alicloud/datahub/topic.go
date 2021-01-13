@@ -115,11 +115,12 @@ type Topic struct {
 // NewTopic registers a new resource with the given unique name, arguments, and options.
 func NewTopic(ctx *pulumi.Context,
 	name string, args *TopicArgs, opts ...pulumi.ResourceOption) (*Topic, error) {
-	if args == nil || args.ProjectName == nil {
-		return nil, errors.New("missing required argument 'ProjectName'")
-	}
 	if args == nil {
-		args = &TopicArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProjectName == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectName'")
 	}
 	var resource Topic
 	err := ctx.RegisterResource("alicloud:datahub/topic:Topic", name, args, &resource, opts...)

@@ -91,10 +91,10 @@ export class Namespace extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if (!args || args.autoCreate === undefined) {
+            if ((!args || args.autoCreate === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'autoCreate'");
             }
-            if (!args || args.defaultVisibility === undefined) {
+            if ((!args || args.defaultVisibility === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'defaultVisibility'");
             }
             inputs["autoCreate"] = args ? args.autoCreate : undefined;

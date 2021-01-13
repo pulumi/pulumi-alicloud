@@ -115,14 +115,15 @@ type NetworkInterface struct {
 // NewNetworkInterface registers a new resource with the given unique name, arguments, and options.
 func NewNetworkInterface(ctx *pulumi.Context,
 	name string, args *NetworkInterfaceArgs, opts ...pulumi.ResourceOption) (*NetworkInterface, error) {
-	if args == nil || args.SecurityGroups == nil {
-		return nil, errors.New("missing required argument 'SecurityGroups'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &NetworkInterfaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.SecurityGroups == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroups'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource NetworkInterface
 	err := ctx.RegisterResource("alicloud:vpc/networkInterface:NetworkInterface", name, args, &resource, opts...)

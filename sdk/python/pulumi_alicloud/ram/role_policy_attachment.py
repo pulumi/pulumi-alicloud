@@ -107,13 +107,13 @@ class RolePolicyAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if policy_name is None:
+            if policy_name is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_name'")
             __props__['policy_name'] = policy_name
-            if policy_type is None:
+            if policy_type is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_type'")
             __props__['policy_type'] = policy_type
-            if role_name is None:
+            if role_name is None and not opts.urn:
                 raise TypeError("Missing required property 'role_name'")
             __props__['role_name'] = role_name
         super(RolePolicyAttachment, __self__).__init__(

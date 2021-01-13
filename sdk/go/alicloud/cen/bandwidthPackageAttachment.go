@@ -74,14 +74,15 @@ type BandwidthPackageAttachment struct {
 // NewBandwidthPackageAttachment registers a new resource with the given unique name, arguments, and options.
 func NewBandwidthPackageAttachment(ctx *pulumi.Context,
 	name string, args *BandwidthPackageAttachmentArgs, opts ...pulumi.ResourceOption) (*BandwidthPackageAttachment, error) {
-	if args == nil || args.BandwidthPackageId == nil {
-		return nil, errors.New("missing required argument 'BandwidthPackageId'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &BandwidthPackageAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BandwidthPackageId == nil {
+		return nil, errors.New("invalid value for required argument 'BandwidthPackageId'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource BandwidthPackageAttachment
 	err := ctx.RegisterResource("alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment", name, args, &resource, opts...)

@@ -102,7 +102,7 @@ class Disk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if availability_zone is None:
+            if availability_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'availability_zone'")
             __props__['availability_zone'] = availability_zone
             __props__['category'] = category
@@ -115,7 +115,7 @@ class Disk(pulumi.CustomResource):
             __props__['name'] = name
             __props__['performance_level'] = performance_level
             __props__['resource_group_id'] = resource_group_id
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['snapshot_id'] = snapshot_id

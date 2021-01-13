@@ -98,7 +98,7 @@ class QosCar(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if limit_type is None:
+            if limit_type is None and not opts.urn:
                 raise TypeError("Missing required property 'limit_type'")
             __props__['limit_type'] = limit_type
             __props__['max_bandwidth_abs'] = max_bandwidth_abs
@@ -107,10 +107,10 @@ class QosCar(pulumi.CustomResource):
             __props__['min_bandwidth_percent'] = min_bandwidth_percent
             __props__['name'] = name
             __props__['percent_source_type'] = percent_source_type
-            if priority is None:
+            if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
             __props__['priority'] = priority
-            if qos_id is None:
+            if qos_id is None and not opts.urn:
                 raise TypeError("Missing required property 'qos_id'")
             __props__['qos_id'] = qos_id
         super(QosCar, __self__).__init__(

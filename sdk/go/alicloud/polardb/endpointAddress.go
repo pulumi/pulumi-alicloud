@@ -117,14 +117,15 @@ type EndpointAddress struct {
 // NewEndpointAddress registers a new resource with the given unique name, arguments, and options.
 func NewEndpointAddress(ctx *pulumi.Context,
 	name string, args *EndpointAddressArgs, opts ...pulumi.ResourceOption) (*EndpointAddress, error) {
-	if args == nil || args.DbClusterId == nil {
-		return nil, errors.New("missing required argument 'DbClusterId'")
-	}
-	if args == nil || args.DbEndpointId == nil {
-		return nil, errors.New("missing required argument 'DbEndpointId'")
-	}
 	if args == nil {
-		args = &EndpointAddressArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DbClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'DbClusterId'")
+	}
+	if args.DbEndpointId == nil {
+		return nil, errors.New("invalid value for required argument 'DbEndpointId'")
 	}
 	var resource EndpointAddress
 	err := ctx.RegisterResource("alicloud:polardb/endpointAddress:EndpointAddress", name, args, &resource, opts...)

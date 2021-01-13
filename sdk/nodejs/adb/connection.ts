@@ -122,7 +122,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["port"] = state ? state.port : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if (!args || args.dbClusterId === undefined) {
+            if ((!args || args.dbClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
             inputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;

@@ -95,10 +95,10 @@ export class Project extends pulumi.CustomResource {
             inputs["specificationType"] = state ? state.specificationType : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if (!args || args.orderType === undefined) {
+            if ((!args || args.orderType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'orderType'");
             }
-            if (!args || args.specificationType === undefined) {
+            if ((!args || args.specificationType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'specificationType'");
             }
             inputs["name"] = args ? args.name : undefined;

@@ -66,14 +66,14 @@ class Order(pulumi.CustomResource):
             __props__['components'] = components
             __props__['coupon_id'] = coupon_id
             __props__['duration'] = duration
-            if package_version is None:
+            if package_version is None and not opts.urn:
                 raise TypeError("Missing required property 'package_version'")
             __props__['package_version'] = package_version
             __props__['pay_type'] = pay_type
-            if pricing_cycle is None:
+            if pricing_cycle is None and not opts.urn:
                 raise TypeError("Missing required property 'pricing_cycle'")
             __props__['pricing_cycle'] = pricing_cycle
-            if product_code is None:
+            if product_code is None and not opts.urn:
                 raise TypeError("Missing required property 'product_code'")
             __props__['product_code'] = product_code
             __props__['quantity'] = quantity

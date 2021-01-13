@@ -98,13 +98,13 @@ class Instance(pulumi.CustomResource):
             __props__['account_password'] = account_password
             __props__['backup_periods'] = backup_periods
             __props__['backup_time'] = backup_time
-            if db_instance_class is None:
+            if db_instance_class is None and not opts.urn:
                 raise TypeError("Missing required property 'db_instance_class'")
             __props__['db_instance_class'] = db_instance_class
-            if db_instance_storage is None:
+            if db_instance_storage is None and not opts.urn:
                 raise TypeError("Missing required property 'db_instance_storage'")
             __props__['db_instance_storage'] = db_instance_storage
-            if engine_version is None:
+            if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__['engine_version'] = engine_version
             __props__['instance_charge_type'] = instance_charge_type

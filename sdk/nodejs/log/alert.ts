@@ -180,25 +180,25 @@ export class Alert extends pulumi.CustomResource {
             inputs["throttling"] = state ? state.throttling : undefined;
         } else {
             const args = argsOrState as AlertArgs | undefined;
-            if (!args || args.alertDisplayname === undefined) {
+            if ((!args || args.alertDisplayname === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'alertDisplayname'");
             }
-            if (!args || args.alertName === undefined) {
+            if ((!args || args.alertName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'alertName'");
             }
-            if (!args || args.condition === undefined) {
+            if ((!args || args.condition === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'condition'");
             }
-            if (!args || args.dashboard === undefined) {
+            if ((!args || args.dashboard === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dashboard'");
             }
-            if (!args || args.notificationLists === undefined) {
+            if ((!args || args.notificationLists === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'notificationLists'");
             }
-            if (!args || args.projectName === undefined) {
+            if ((!args || args.projectName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if (!args || args.queryLists === undefined) {
+            if ((!args || args.queryLists === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'queryLists'");
             }
             inputs["alertDescription"] = args ? args.alertDescription : undefined;

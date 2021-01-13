@@ -60,17 +60,18 @@ type ApplicationScale struct {
 // NewApplicationScale registers a new resource with the given unique name, arguments, and options.
 func NewApplicationScale(ctx *pulumi.Context,
 	name string, args *ApplicationScaleArgs, opts ...pulumi.ResourceOption) (*ApplicationScale, error) {
-	if args == nil || args.AppId == nil {
-		return nil, errors.New("missing required argument 'AppId'")
-	}
-	if args == nil || args.DeployGroup == nil {
-		return nil, errors.New("missing required argument 'DeployGroup'")
-	}
-	if args == nil || args.EcuInfos == nil {
-		return nil, errors.New("missing required argument 'EcuInfos'")
-	}
 	if args == nil {
-		args = &ApplicationScaleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
+	}
+	if args.DeployGroup == nil {
+		return nil, errors.New("invalid value for required argument 'DeployGroup'")
+	}
+	if args.EcuInfos == nil {
+		return nil, errors.New("invalid value for required argument 'EcuInfos'")
 	}
 	var resource ApplicationScale
 	err := ctx.RegisterResource("alicloud:edas/applicationScale:ApplicationScale", name, args, &resource, opts...)

@@ -74,11 +74,11 @@ class Project(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            if order_type is None:
+            if order_type is None and not opts.urn:
                 raise TypeError("Missing required property 'order_type'")
             __props__['order_type'] = order_type
             __props__['project_name'] = project_name
-            if specification_type is None:
+            if specification_type is None and not opts.urn:
                 raise TypeError("Missing required property 'specification_type'")
             __props__['specification_type'] = specification_type
         super(Project, __self__).__init__(

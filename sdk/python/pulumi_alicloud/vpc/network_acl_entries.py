@@ -104,7 +104,7 @@ class NetworkAclEntries(pulumi.CustomResource):
 
             __props__['egresses'] = egresses
             __props__['ingresses'] = ingresses
-            if network_acl_id is None:
+            if network_acl_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_acl_id'")
             __props__['network_acl_id'] = network_acl_id
         super(NetworkAclEntries, __self__).__init__(

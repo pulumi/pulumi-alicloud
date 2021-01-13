@@ -112,10 +112,10 @@ export class Database extends pulumi.CustomResource {
             inputs["dbName"] = state ? state.dbName : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if (!args || args.dbClusterId === undefined) {
+            if ((!args || args.dbClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if (!args || args.dbName === undefined) {
+            if ((!args || args.dbName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbName'");
             }
             inputs["characterSetName"] = args ? args.characterSetName : undefined;

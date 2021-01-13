@@ -88,7 +88,7 @@ export class RouteEntry extends pulumi.CustomResource {
             inputs["routerId"] = state ? state.routerId : undefined;
         } else {
             const args = argsOrState as RouteEntryArgs | undefined;
-            if (!args || args.routeTableId === undefined) {
+            if ((!args || args.routeTableId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'routeTableId'");
             }
             inputs["destinationCidrblock"] = args ? args.destinationCidrblock : undefined;

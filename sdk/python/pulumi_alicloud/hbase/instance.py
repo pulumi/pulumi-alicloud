@@ -136,20 +136,20 @@ class Instance(pulumi.CustomResource):
             __props__['core_disk_size'] = core_disk_size
             __props__['core_disk_type'] = core_disk_type
             __props__['core_instance_quantity'] = core_instance_quantity
-            if core_instance_type is None:
+            if core_instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'core_instance_type'")
             __props__['core_instance_type'] = core_instance_type
             __props__['deletion_protection'] = deletion_protection
             __props__['duration'] = duration
             __props__['engine'] = engine
-            if engine_version is None:
+            if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__['engine_version'] = engine_version
             __props__['immediate_delete_flag'] = immediate_delete_flag
             __props__['ip_white'] = ip_white
             __props__['maintain_end_time'] = maintain_end_time
             __props__['maintain_start_time'] = maintain_start_time
-            if master_instance_type is None:
+            if master_instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'master_instance_type'")
             __props__['master_instance_type'] = master_instance_type
             __props__['name'] = name

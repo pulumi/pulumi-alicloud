@@ -120,7 +120,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["port"] = state ? state.port : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;

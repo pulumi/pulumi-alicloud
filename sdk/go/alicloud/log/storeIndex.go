@@ -34,14 +34,15 @@ type StoreIndex struct {
 // NewStoreIndex registers a new resource with the given unique name, arguments, and options.
 func NewStoreIndex(ctx *pulumi.Context,
 	name string, args *StoreIndexArgs, opts ...pulumi.ResourceOption) (*StoreIndex, error) {
-	if args == nil || args.Logstore == nil {
-		return nil, errors.New("missing required argument 'Logstore'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &StoreIndexArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Logstore == nil {
+		return nil, errors.New("invalid value for required argument 'Logstore'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource StoreIndex
 	err := ctx.RegisterResource("alicloud:log/storeIndex:StoreIndex", name, args, &resource, opts...)

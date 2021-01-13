@@ -31,20 +31,21 @@ type OpenApiImageCache struct {
 // NewOpenApiImageCache registers a new resource with the given unique name, arguments, and options.
 func NewOpenApiImageCache(ctx *pulumi.Context,
 	name string, args *OpenApiImageCacheArgs, opts ...pulumi.ResourceOption) (*OpenApiImageCache, error) {
-	if args == nil || args.ImageCacheName == nil {
-		return nil, errors.New("missing required argument 'ImageCacheName'")
-	}
-	if args == nil || args.Images == nil {
-		return nil, errors.New("missing required argument 'Images'")
-	}
-	if args == nil || args.SecurityGroupId == nil {
-		return nil, errors.New("missing required argument 'SecurityGroupId'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &OpenApiImageCacheArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ImageCacheName == nil {
+		return nil, errors.New("invalid value for required argument 'ImageCacheName'")
+	}
+	if args.Images == nil {
+		return nil, errors.New("invalid value for required argument 'Images'")
+	}
+	if args.SecurityGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroupId'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource OpenApiImageCache
 	err := ctx.RegisterResource("alicloud:eci/openApiImageCache:OpenApiImageCache", name, args, &resource, opts...)

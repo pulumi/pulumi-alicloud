@@ -98,7 +98,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
             __props__['auto_pay'] = auto_pay
             __props__['auto_use_coupon'] = auto_use_coupon
-            if bandwidth is None:
+            if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__['bandwidth'] = bandwidth
             __props__['bandwidth_package_name'] = bandwidth_package_name
@@ -110,7 +110,7 @@ class BandwidthPackage(pulumi.CustomResource):
             __props__['duration'] = duration
             __props__['payment_type'] = payment_type
             __props__['ratio'] = ratio
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['status'] = None

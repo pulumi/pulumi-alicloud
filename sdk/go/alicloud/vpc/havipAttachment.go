@@ -30,14 +30,15 @@ type HAVipAttachment struct {
 // NewHAVipAttachment registers a new resource with the given unique name, arguments, and options.
 func NewHAVipAttachment(ctx *pulumi.Context,
 	name string, args *HAVipAttachmentArgs, opts ...pulumi.ResourceOption) (*HAVipAttachment, error) {
-	if args == nil || args.HavipId == nil {
-		return nil, errors.New("missing required argument 'HavipId'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &HAVipAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.HavipId == nil {
+		return nil, errors.New("invalid value for required argument 'HavipId'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource HAVipAttachment
 	err := ctx.RegisterResource("alicloud:vpc/hAVipAttachment:HAVipAttachment", name, args, &resource, opts...)

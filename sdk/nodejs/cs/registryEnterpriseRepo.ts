@@ -121,16 +121,16 @@ export class RegistryEnterpriseRepo extends pulumi.CustomResource {
             inputs["summary"] = state ? state.summary : undefined;
         } else {
             const args = argsOrState as RegistryEnterpriseRepoArgs | undefined;
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (!args || args.namespace === undefined) {
+            if ((!args || args.namespace === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if (!args || args.repoType === undefined) {
+            if ((!args || args.repoType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'repoType'");
             }
-            if (!args || args.summary === undefined) {
+            if ((!args || args.summary === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'summary'");
             }
             inputs["detail"] = args ? args.detail : undefined;

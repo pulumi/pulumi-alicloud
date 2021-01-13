@@ -69,6 +69,7 @@ func NewResourceDirectory(ctx *pulumi.Context,
 	if args == nil {
 		args = &ResourceDirectoryArgs{}
 	}
+
 	var resource ResourceDirectory
 	err := ctx.RegisterResource("alicloud:resourcemanager/resourceDirectory:ResourceDirectory", name, args, &resource, opts...)
 	if err != nil {

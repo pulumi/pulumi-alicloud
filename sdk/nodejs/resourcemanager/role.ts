@@ -126,10 +126,10 @@ export class Role extends pulumi.CustomResource {
             inputs["updateDate"] = state ? state.updateDate : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            if (!args || args.assumeRolePolicyDocument === undefined) {
+            if ((!args || args.assumeRolePolicyDocument === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'assumeRolePolicyDocument'");
             }
-            if (!args || args.roleName === undefined) {
+            if ((!args || args.roleName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'roleName'");
             }
             inputs["assumeRolePolicyDocument"] = args ? args.assumeRolePolicyDocument : undefined;

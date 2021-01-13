@@ -201,16 +201,16 @@ class Kubernetes(pulumi.CustomResource):
             __props__['master_disk_category'] = master_disk_category
             __props__['master_disk_size'] = master_disk_size
             __props__['master_instance_charge_type'] = master_instance_charge_type
-            if master_instance_types is None:
+            if master_instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'master_instance_types'")
             __props__['master_instance_types'] = master_instance_types
             __props__['master_period'] = master_period
             __props__['master_period_unit'] = master_period_unit
-            if master_vswitch_ids is None:
+            if master_vswitch_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'master_vswitch_ids'")
             __props__['master_vswitch_ids'] = master_vswitch_ids
             __props__['name'] = name
-            if name_prefix is not None:
+            if name_prefix is not None and not opts.urn:
                 warnings.warn("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""", DeprecationWarning)
                 pulumi.log.warn("name_prefix is deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.")
             __props__['name_prefix'] = name_prefix
@@ -245,15 +245,15 @@ class Kubernetes(pulumi.CustomResource):
             __props__['worker_disk_category'] = worker_disk_category
             __props__['worker_disk_size'] = worker_disk_size
             __props__['worker_instance_charge_type'] = worker_instance_charge_type
-            if worker_instance_types is None:
+            if worker_instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_instance_types'")
             __props__['worker_instance_types'] = worker_instance_types
-            if worker_number is None:
+            if worker_number is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_number'")
             __props__['worker_number'] = worker_number
             __props__['worker_period'] = worker_period
             __props__['worker_period_unit'] = worker_period_unit
-            if worker_vswitch_ids is None:
+            if worker_vswitch_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_vswitch_ids'")
             __props__['worker_vswitch_ids'] = worker_vswitch_ids
             __props__['certificate_authority'] = None

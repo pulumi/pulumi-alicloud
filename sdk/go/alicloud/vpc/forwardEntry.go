@@ -121,26 +121,27 @@ type ForwardEntry struct {
 // NewForwardEntry registers a new resource with the given unique name, arguments, and options.
 func NewForwardEntry(ctx *pulumi.Context,
 	name string, args *ForwardEntryArgs, opts ...pulumi.ResourceOption) (*ForwardEntry, error) {
-	if args == nil || args.ExternalIp == nil {
-		return nil, errors.New("missing required argument 'ExternalIp'")
-	}
-	if args == nil || args.ExternalPort == nil {
-		return nil, errors.New("missing required argument 'ExternalPort'")
-	}
-	if args == nil || args.ForwardTableId == nil {
-		return nil, errors.New("missing required argument 'ForwardTableId'")
-	}
-	if args == nil || args.InternalIp == nil {
-		return nil, errors.New("missing required argument 'InternalIp'")
-	}
-	if args == nil || args.InternalPort == nil {
-		return nil, errors.New("missing required argument 'InternalPort'")
-	}
-	if args == nil || args.IpProtocol == nil {
-		return nil, errors.New("missing required argument 'IpProtocol'")
-	}
 	if args == nil {
-		args = &ForwardEntryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ExternalIp == nil {
+		return nil, errors.New("invalid value for required argument 'ExternalIp'")
+	}
+	if args.ExternalPort == nil {
+		return nil, errors.New("invalid value for required argument 'ExternalPort'")
+	}
+	if args.ForwardTableId == nil {
+		return nil, errors.New("invalid value for required argument 'ForwardTableId'")
+	}
+	if args.InternalIp == nil {
+		return nil, errors.New("invalid value for required argument 'InternalIp'")
+	}
+	if args.InternalPort == nil {
+		return nil, errors.New("invalid value for required argument 'InternalPort'")
+	}
+	if args.IpProtocol == nil {
+		return nil, errors.New("invalid value for required argument 'IpProtocol'")
 	}
 	var resource ForwardEntry
 	err := ctx.RegisterResource("alicloud:vpc/forwardEntry:ForwardEntry", name, args, &resource, opts...)

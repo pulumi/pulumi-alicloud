@@ -42,17 +42,18 @@ type SecurityGroupRule struct {
 // NewSecurityGroupRule registers a new resource with the given unique name, arguments, and options.
 func NewSecurityGroupRule(ctx *pulumi.Context,
 	name string, args *SecurityGroupRuleArgs, opts ...pulumi.ResourceOption) (*SecurityGroupRule, error) {
-	if args == nil || args.IpProtocol == nil {
-		return nil, errors.New("missing required argument 'IpProtocol'")
-	}
-	if args == nil || args.SecurityGroupId == nil {
-		return nil, errors.New("missing required argument 'SecurityGroupId'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &SecurityGroupRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IpProtocol == nil {
+		return nil, errors.New("invalid value for required argument 'IpProtocol'")
+	}
+	if args.SecurityGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroupId'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource SecurityGroupRule
 	err := ctx.RegisterResource("alicloud:ecs/securityGroupRule:SecurityGroupRule", name, args, &resource, opts...)

@@ -168,16 +168,16 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ReadOnlyInstanceArgs | undefined;
-            if (!args || args.engineVersion === undefined) {
+            if ((!args || args.engineVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if (!args || args.instanceStorage === undefined) {
+            if ((!args || args.instanceStorage === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceStorage'");
             }
-            if (!args || args.instanceType === undefined) {
+            if ((!args || args.instanceType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if (!args || args.masterDbInstanceId === undefined) {
+            if ((!args || args.masterDbInstanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'masterDbInstanceId'");
             }
             inputs["engineVersion"] = args ? args.engineVersion : undefined;

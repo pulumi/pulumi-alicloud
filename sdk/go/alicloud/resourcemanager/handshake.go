@@ -74,14 +74,15 @@ type Handshake struct {
 // NewHandshake registers a new resource with the given unique name, arguments, and options.
 func NewHandshake(ctx *pulumi.Context,
 	name string, args *HandshakeArgs, opts ...pulumi.ResourceOption) (*Handshake, error) {
-	if args == nil || args.TargetEntity == nil {
-		return nil, errors.New("missing required argument 'TargetEntity'")
-	}
-	if args == nil || args.TargetType == nil {
-		return nil, errors.New("missing required argument 'TargetType'")
-	}
 	if args == nil {
-		args = &HandshakeArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.TargetEntity == nil {
+		return nil, errors.New("invalid value for required argument 'TargetEntity'")
+	}
+	if args.TargetType == nil {
+		return nil, errors.New("invalid value for required argument 'TargetType'")
 	}
 	var resource Handshake
 	err := ctx.RegisterResource("alicloud:resourcemanager/handshake:Handshake", name, args, &resource, opts...)

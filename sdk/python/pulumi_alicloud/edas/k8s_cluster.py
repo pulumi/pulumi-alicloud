@@ -66,7 +66,7 @@ class K8sCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cs_cluster_id is None:
+            if cs_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cs_cluster_id'")
             __props__['cs_cluster_id'] = cs_cluster_id
             __props__['namespace_id'] = namespace_id

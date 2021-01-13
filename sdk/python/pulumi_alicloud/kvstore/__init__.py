@@ -15,3 +15,35 @@ from .get_zones import *
 from .instance import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:kvstore/account:Account":
+                return Account(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:kvstore/backupPolicy:BackupPolicy":
+                return BackupPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:kvstore/connection:Connection":
+                return Connection(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:kvstore/instance:Instance":
+                return Instance(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "kvstore/account", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "kvstore/backupPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "kvstore/connection", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "kvstore/instance", _module_instance)
+
+_register_module()

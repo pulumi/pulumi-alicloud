@@ -65,11 +65,12 @@ type AlarmContactGroup struct {
 // NewAlarmContactGroup registers a new resource with the given unique name, arguments, and options.
 func NewAlarmContactGroup(ctx *pulumi.Context,
 	name string, args *AlarmContactGroupArgs, opts ...pulumi.ResourceOption) (*AlarmContactGroup, error) {
-	if args == nil || args.AlarmContactGroupName == nil {
-		return nil, errors.New("missing required argument 'AlarmContactGroupName'")
-	}
 	if args == nil {
-		args = &AlarmContactGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AlarmContactGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'AlarmContactGroupName'")
 	}
 	var resource AlarmContactGroup
 	err := ctx.RegisterResource("alicloud:cms/alarmContactGroup:AlarmContactGroup", name, args, &resource, opts...)

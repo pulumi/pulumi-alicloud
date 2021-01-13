@@ -126,14 +126,15 @@ type RouterInterfaceConnection struct {
 // NewRouterInterfaceConnection registers a new resource with the given unique name, arguments, and options.
 func NewRouterInterfaceConnection(ctx *pulumi.Context,
 	name string, args *RouterInterfaceConnectionArgs, opts ...pulumi.ResourceOption) (*RouterInterfaceConnection, error) {
-	if args == nil || args.InterfaceId == nil {
-		return nil, errors.New("missing required argument 'InterfaceId'")
-	}
-	if args == nil || args.OppositeInterfaceId == nil {
-		return nil, errors.New("missing required argument 'OppositeInterfaceId'")
-	}
 	if args == nil {
-		args = &RouterInterfaceConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InterfaceId == nil {
+		return nil, errors.New("invalid value for required argument 'InterfaceId'")
+	}
+	if args.OppositeInterfaceId == nil {
+		return nil, errors.New("invalid value for required argument 'OppositeInterfaceId'")
 	}
 	var resource RouterInterfaceConnection
 	err := ctx.RegisterResource("alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection", name, args, &resource, opts...)

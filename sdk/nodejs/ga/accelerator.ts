@@ -113,10 +113,10 @@ export class Accelerator extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AcceleratorArgs | undefined;
-            if (!args || args.duration === undefined) {
+            if ((!args || args.duration === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'duration'");
             }
-            if (!args || args.spec === undefined) {
+            if ((!args || args.spec === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'spec'");
             }
             inputs["acceleratorName"] = args ? args.acceleratorName : undefined;

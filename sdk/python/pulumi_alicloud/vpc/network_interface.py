@@ -101,11 +101,11 @@ class NetworkInterface(pulumi.CustomResource):
             __props__['private_ips'] = private_ips
             __props__['private_ips_count'] = private_ips_count
             __props__['resource_group_id'] = resource_group_id
-            if security_groups is None:
+            if security_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'security_groups'")
             __props__['security_groups'] = security_groups
             __props__['tags'] = tags
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['mac'] = None

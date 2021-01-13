@@ -55,7 +55,7 @@ class BackupPolicy(pulumi.CustomResource):
 
             __props__['backup_periods'] = backup_periods
             __props__['backup_time'] = backup_time
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
         super(BackupPolicy, __self__).__init__(

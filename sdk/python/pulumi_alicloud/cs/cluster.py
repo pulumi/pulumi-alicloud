@@ -56,13 +56,13 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cidr_block is None:
+            if cidr_block is None and not opts.urn:
                 raise TypeError("Missing required property 'cidr_block'")
             __props__['cidr_block'] = cidr_block
             __props__['disk_category'] = disk_category
             __props__['disk_size'] = disk_size
             __props__['image_id'] = image_id
-            if instance_type is None:
+            if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__['instance_type'] = instance_type
             __props__['is_outdated'] = is_outdated
@@ -70,15 +70,15 @@ class Cluster(pulumi.CustomResource):
             __props__['name_prefix'] = name_prefix
             __props__['need_slb'] = need_slb
             __props__['node_number'] = node_number
-            if password is None:
+            if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
             __props__['release_eip'] = release_eip
-            if size is not None:
+            if size is not None and not opts.urn:
                 warnings.warn("""Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""", DeprecationWarning)
                 pulumi.log.warn("size is deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.")
             __props__['size'] = size
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['agent_version'] = None

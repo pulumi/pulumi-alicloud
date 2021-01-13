@@ -90,14 +90,15 @@ type ImageCopy struct {
 // NewImageCopy registers a new resource with the given unique name, arguments, and options.
 func NewImageCopy(ctx *pulumi.Context,
 	name string, args *ImageCopyArgs, opts ...pulumi.ResourceOption) (*ImageCopy, error) {
-	if args == nil || args.SourceImageId == nil {
-		return nil, errors.New("missing required argument 'SourceImageId'")
-	}
-	if args == nil || args.SourceRegionId == nil {
-		return nil, errors.New("missing required argument 'SourceRegionId'")
-	}
 	if args == nil {
-		args = &ImageCopyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.SourceImageId == nil {
+		return nil, errors.New("invalid value for required argument 'SourceImageId'")
+	}
+	if args.SourceRegionId == nil {
+		return nil, errors.New("invalid value for required argument 'SourceRegionId'")
 	}
 	var resource ImageCopy
 	err := ctx.RegisterResource("alicloud:ecs/imageCopy:ImageCopy", name, args, &resource, opts...)

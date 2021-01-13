@@ -72,14 +72,15 @@ type Role struct {
 // NewRole registers a new resource with the given unique name, arguments, and options.
 func NewRole(ctx *pulumi.Context,
 	name string, args *RoleArgs, opts ...pulumi.ResourceOption) (*Role, error) {
-	if args == nil || args.AssumeRolePolicyDocument == nil {
-		return nil, errors.New("missing required argument 'AssumeRolePolicyDocument'")
-	}
-	if args == nil || args.RoleName == nil {
-		return nil, errors.New("missing required argument 'RoleName'")
-	}
 	if args == nil {
-		args = &RoleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AssumeRolePolicyDocument == nil {
+		return nil, errors.New("invalid value for required argument 'AssumeRolePolicyDocument'")
+	}
+	if args.RoleName == nil {
+		return nil, errors.New("invalid value for required argument 'RoleName'")
 	}
 	var resource Role
 	err := ctx.RegisterResource("alicloud:resourcemanager/role:Role", name, args, &resource, opts...)

@@ -51,6 +51,7 @@ func NewZone(ctx *pulumi.Context,
 	if args == nil {
 		args = &ZoneArgs{}
 	}
+
 	var resource Zone
 	err := ctx.RegisterResource("alicloud:pvtz/zone:Zone", name, args, &resource, opts...)
 	if err != nil {

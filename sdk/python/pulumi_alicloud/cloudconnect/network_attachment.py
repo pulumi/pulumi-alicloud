@@ -41,7 +41,7 @@ class NetworkAttachment(pulumi.CustomResource):
         default = alicloud.cloudconnect.NetworkAttachment("default",
             ccn_id=ccn.id,
             sag_id="sag-xxxxx",
-            opts=ResourceOptions(depends_on=[ccn]))
+            opts=pulumi.ResourceOptions(depends_on=[ccn]))
         ```
 
         ## Import
@@ -74,10 +74,10 @@ class NetworkAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if ccn_id is None:
+            if ccn_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ccn_id'")
             __props__['ccn_id'] = ccn_id
-            if sag_id is None:
+            if sag_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sag_id'")
             __props__['sag_id'] = sag_id
         super(NetworkAttachment, __self__).__init__(

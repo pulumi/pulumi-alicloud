@@ -109,11 +109,12 @@ type Execution struct {
 // NewExecution registers a new resource with the given unique name, arguments, and options.
 func NewExecution(ctx *pulumi.Context,
 	name string, args *ExecutionArgs, opts ...pulumi.ResourceOption) (*Execution, error) {
-	if args == nil || args.TemplateName == nil {
-		return nil, errors.New("missing required argument 'TemplateName'")
-	}
 	if args == nil {
-		args = &ExecutionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.TemplateName == nil {
+		return nil, errors.New("invalid value for required argument 'TemplateName'")
 	}
 	var resource Execution
 	err := ctx.RegisterResource("alicloud:oos/execution:Execution", name, args, &resource, opts...)

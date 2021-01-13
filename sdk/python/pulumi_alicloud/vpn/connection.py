@@ -65,20 +65,20 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if customer_gateway_id is None:
+            if customer_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'customer_gateway_id'")
             __props__['customer_gateway_id'] = customer_gateway_id
             __props__['effect_immediately'] = effect_immediately
             __props__['ike_configs'] = ike_configs
             __props__['ipsec_configs'] = ipsec_configs
-            if local_subnets is None:
+            if local_subnets is None and not opts.urn:
                 raise TypeError("Missing required property 'local_subnets'")
             __props__['local_subnets'] = local_subnets
             __props__['name'] = name
-            if remote_subnets is None:
+            if remote_subnets is None and not opts.urn:
                 raise TypeError("Missing required property 'remote_subnets'")
             __props__['remote_subnets'] = remote_subnets
-            if vpn_gateway_id is None:
+            if vpn_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpn_gateway_id'")
             __props__['vpn_gateway_id'] = vpn_gateway_id
             __props__['status'] = None

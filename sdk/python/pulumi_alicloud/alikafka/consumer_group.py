@@ -90,10 +90,10 @@ class ConsumerGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if consumer_id is None:
+            if consumer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consumer_id'")
             __props__['consumer_id'] = consumer_id
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['tags'] = tags

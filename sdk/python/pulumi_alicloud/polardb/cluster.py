@@ -122,14 +122,14 @@ class Cluster(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['auto_renew_period'] = auto_renew_period
-            if db_node_class is None:
+            if db_node_class is None and not opts.urn:
                 raise TypeError("Missing required property 'db_node_class'")
             __props__['db_node_class'] = db_node_class
             __props__['db_node_count'] = db_node_count
-            if db_type is None:
+            if db_type is None and not opts.urn:
                 raise TypeError("Missing required property 'db_type'")
             __props__['db_type'] = db_type
-            if db_version is None:
+            if db_version is None and not opts.urn:
                 raise TypeError("Missing required property 'db_version'")
             __props__['db_version'] = db_version
             __props__['description'] = description

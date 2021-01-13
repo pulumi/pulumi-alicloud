@@ -124,19 +124,19 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.description === undefined) {
+            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'description'");
             }
-            if (!args || args.instanceSeries === undefined) {
+            if ((!args || args.instanceSeries === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceSeries'");
             }
-            if (!args || args.specification === undefined) {
+            if ((!args || args.specification === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'specification'");
             }
-            if (!args || args.vswitchId === undefined) {
+            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["description"] = args ? args.description : undefined;

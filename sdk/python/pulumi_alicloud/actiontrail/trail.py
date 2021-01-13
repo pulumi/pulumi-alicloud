@@ -92,7 +92,7 @@ class Trail(pulumi.CustomResource):
             __props__['event_rw'] = event_rw
             __props__['is_organization_trail'] = is_organization_trail
             __props__['mns_topic_arn'] = mns_topic_arn
-            if name is not None:
+            if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.")
             __props__['name'] = name

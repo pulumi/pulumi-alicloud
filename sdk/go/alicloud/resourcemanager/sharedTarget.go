@@ -38,14 +38,15 @@ type SharedTarget struct {
 // NewSharedTarget registers a new resource with the given unique name, arguments, and options.
 func NewSharedTarget(ctx *pulumi.Context,
 	name string, args *SharedTargetArgs, opts ...pulumi.ResourceOption) (*SharedTarget, error) {
-	if args == nil || args.ResourceShareId == nil {
-		return nil, errors.New("missing required argument 'ResourceShareId'")
-	}
-	if args == nil || args.TargetId == nil {
-		return nil, errors.New("missing required argument 'TargetId'")
-	}
 	if args == nil {
-		args = &SharedTargetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceShareId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceShareId'")
+	}
+	if args.TargetId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetId'")
 	}
 	var resource SharedTarget
 	err := ctx.RegisterResource("alicloud:resourcemanager/sharedTarget:SharedTarget", name, args, &resource, opts...)

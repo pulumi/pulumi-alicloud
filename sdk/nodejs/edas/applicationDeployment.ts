@@ -93,13 +93,13 @@ export class ApplicationDeployment extends pulumi.CustomResource {
             inputs["warUrl"] = state ? state.warUrl : undefined;
         } else {
             const args = argsOrState as ApplicationDeploymentArgs | undefined;
-            if (!args || args.appId === undefined) {
+            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'appId'");
             }
-            if (!args || args.groupId === undefined) {
+            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (!args || args.warUrl === undefined) {
+            if ((!args || args.warUrl === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'warUrl'");
             }
             inputs["appId"] = args ? args.appId : undefined;

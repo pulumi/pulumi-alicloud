@@ -227,7 +227,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['worker_number'] = worker_number
             __props__['worker_period'] = worker_period
             __props__['worker_period_unit'] = worker_period_unit
-            if worker_vswitch_ids is None:
+            if worker_vswitch_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_vswitch_ids'")
             __props__['worker_vswitch_ids'] = worker_vswitch_ids
             __props__['certificate_authority'] = None

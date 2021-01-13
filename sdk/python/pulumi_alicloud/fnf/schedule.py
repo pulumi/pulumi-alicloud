@@ -91,16 +91,16 @@ class Schedule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cron_expression is None:
+            if cron_expression is None and not opts.urn:
                 raise TypeError("Missing required property 'cron_expression'")
             __props__['cron_expression'] = cron_expression
             __props__['description'] = description
             __props__['enable'] = enable
-            if flow_name is None:
+            if flow_name is None and not opts.urn:
                 raise TypeError("Missing required property 'flow_name'")
             __props__['flow_name'] = flow_name
             __props__['payload'] = payload
-            if schedule_name is None:
+            if schedule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule_name'")
             __props__['schedule_name'] = schedule_name
             __props__['last_modified_time'] = None

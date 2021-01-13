@@ -78,23 +78,24 @@ type DdosCooInstance struct {
 // NewDdosCooInstance registers a new resource with the given unique name, arguments, and options.
 func NewDdosCooInstance(ctx *pulumi.Context,
 	name string, args *DdosCooInstanceArgs, opts ...pulumi.ResourceOption) (*DdosCooInstance, error) {
-	if args == nil || args.Bandwidth == nil {
-		return nil, errors.New("missing required argument 'Bandwidth'")
-	}
-	if args == nil || args.BaseBandwidth == nil {
-		return nil, errors.New("missing required argument 'BaseBandwidth'")
-	}
-	if args == nil || args.DomainCount == nil {
-		return nil, errors.New("missing required argument 'DomainCount'")
-	}
-	if args == nil || args.PortCount == nil {
-		return nil, errors.New("missing required argument 'PortCount'")
-	}
-	if args == nil || args.ServiceBandwidth == nil {
-		return nil, errors.New("missing required argument 'ServiceBandwidth'")
-	}
 	if args == nil {
-		args = &DdosCooInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bandwidth == nil {
+		return nil, errors.New("invalid value for required argument 'Bandwidth'")
+	}
+	if args.BaseBandwidth == nil {
+		return nil, errors.New("invalid value for required argument 'BaseBandwidth'")
+	}
+	if args.DomainCount == nil {
+		return nil, errors.New("invalid value for required argument 'DomainCount'")
+	}
+	if args.PortCount == nil {
+		return nil, errors.New("invalid value for required argument 'PortCount'")
+	}
+	if args.ServiceBandwidth == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceBandwidth'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{

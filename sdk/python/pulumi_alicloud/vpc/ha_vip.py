@@ -55,7 +55,7 @@ class HAVip(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['ip_address'] = ip_address
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
         super(HAVip, __self__).__init__(

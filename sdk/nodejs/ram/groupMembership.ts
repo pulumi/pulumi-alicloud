@@ -102,10 +102,10 @@ export class GroupMembership extends pulumi.CustomResource {
             inputs["userNames"] = state ? state.userNames : undefined;
         } else {
             const args = argsOrState as GroupMembershipArgs | undefined;
-            if (!args || args.groupName === undefined) {
+            if ((!args || args.groupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupName'");
             }
-            if (!args || args.userNames === undefined) {
+            if ((!args || args.userNames === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'userNames'");
             }
             inputs["groupName"] = args ? args.groupName : undefined;

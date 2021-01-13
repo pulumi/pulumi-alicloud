@@ -89,23 +89,24 @@ type Cluster struct {
 // NewCluster registers a new resource with the given unique name, arguments, and options.
 func NewCluster(ctx *pulumi.Context,
 	name string, args *ClusterArgs, opts ...pulumi.ResourceOption) (*Cluster, error) {
-	if args == nil || args.ClusterSpecification == nil {
-		return nil, errors.New("missing required argument 'ClusterSpecification'")
-	}
-	if args == nil || args.ClusterType == nil {
-		return nil, errors.New("missing required argument 'ClusterType'")
-	}
-	if args == nil || args.ClusterVersion == nil {
-		return nil, errors.New("missing required argument 'ClusterVersion'")
-	}
-	if args == nil || args.InstanceCount == nil {
-		return nil, errors.New("missing required argument 'InstanceCount'")
-	}
-	if args == nil || args.NetType == nil {
-		return nil, errors.New("missing required argument 'NetType'")
-	}
 	if args == nil {
-		args = &ClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterSpecification == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterSpecification'")
+	}
+	if args.ClusterType == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterType'")
+	}
+	if args.ClusterVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterVersion'")
+	}
+	if args.InstanceCount == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceCount'")
+	}
+	if args.NetType == nil {
+		return nil, errors.New("invalid value for required argument 'NetType'")
 	}
 	var resource Cluster
 	err := ctx.RegisterResource("alicloud:mse/cluster:Cluster", name, args, &resource, opts...)

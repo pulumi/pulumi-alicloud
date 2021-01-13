@@ -79,17 +79,18 @@ type Repo struct {
 // NewRepo registers a new resource with the given unique name, arguments, and options.
 func NewRepo(ctx *pulumi.Context,
 	name string, args *RepoArgs, opts ...pulumi.ResourceOption) (*Repo, error) {
-	if args == nil || args.Namespace == nil {
-		return nil, errors.New("missing required argument 'Namespace'")
-	}
-	if args == nil || args.RepoType == nil {
-		return nil, errors.New("missing required argument 'RepoType'")
-	}
-	if args == nil || args.Summary == nil {
-		return nil, errors.New("missing required argument 'Summary'")
-	}
 	if args == nil {
-		args = &RepoArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Namespace == nil {
+		return nil, errors.New("invalid value for required argument 'Namespace'")
+	}
+	if args.RepoType == nil {
+		return nil, errors.New("invalid value for required argument 'RepoType'")
+	}
+	if args.Summary == nil {
+		return nil, errors.New("invalid value for required argument 'Summary'")
 	}
 	var resource Repo
 	err := ctx.RegisterResource("alicloud:cr/repo:Repo", name, args, &resource, opts...)

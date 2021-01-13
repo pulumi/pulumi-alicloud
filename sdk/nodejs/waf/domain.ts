@@ -183,10 +183,10 @@ export class Domain extends pulumi.CustomResource {
             inputs["writeTime"] = state ? state.writeTime : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (!args || args.isAccessProduct === undefined) {
+            if ((!args || args.isAccessProduct === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'isAccessProduct'");
             }
             inputs["clusterType"] = args ? args.clusterType : undefined;

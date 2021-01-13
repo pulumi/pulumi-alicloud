@@ -88,23 +88,24 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.InstanceSeries == nil {
-		return nil, errors.New("missing required argument 'InstanceSeries'")
-	}
-	if args == nil || args.Specification == nil {
-		return nil, errors.New("missing required argument 'Specification'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.InstanceSeries == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceSeries'")
+	}
+	if args.Specification == nil {
+		return nil, errors.New("invalid value for required argument 'Specification'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:drds/instance:Instance", name, args, &resource, opts...)

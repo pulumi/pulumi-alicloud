@@ -154,16 +154,16 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["specification"] = state ? state.specification : undefined;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
-            if (!args || args.oppositeRegion === undefined) {
+            if ((!args || args.oppositeRegion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'oppositeRegion'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.routerId === undefined) {
+            if ((!args || args.routerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'routerId'");
             }
-            if (!args || args.routerType === undefined) {
+            if ((!args || args.routerType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'routerType'");
             }
             inputs["description"] = args ? args.description : undefined;

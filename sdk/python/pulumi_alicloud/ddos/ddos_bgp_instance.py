@@ -82,14 +82,14 @@ class DdosBgpInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bandwidth is None:
+            if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__['bandwidth'] = bandwidth
             __props__['base_bandwidth'] = base_bandwidth
-            if ip_count is None:
+            if ip_count is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_count'")
             __props__['ip_count'] = ip_count
-            if ip_type is None:
+            if ip_type is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_type'")
             __props__['ip_type'] = ip_type
             __props__['name'] = name

@@ -30,14 +30,15 @@ type CommonBandwithPackageAttachment struct {
 // NewCommonBandwithPackageAttachment registers a new resource with the given unique name, arguments, and options.
 func NewCommonBandwithPackageAttachment(ctx *pulumi.Context,
 	name string, args *CommonBandwithPackageAttachmentArgs, opts ...pulumi.ResourceOption) (*CommonBandwithPackageAttachment, error) {
-	if args == nil || args.BandwidthPackageId == nil {
-		return nil, errors.New("missing required argument 'BandwidthPackageId'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &CommonBandwithPackageAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BandwidthPackageId == nil {
+		return nil, errors.New("invalid value for required argument 'BandwidthPackageId'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource CommonBandwithPackageAttachment
 	err := ctx.RegisterResource("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment", name, args, &resource, opts...)

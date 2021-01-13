@@ -97,17 +97,18 @@ type SchedulerRule struct {
 // NewSchedulerRule registers a new resource with the given unique name, arguments, and options.
 func NewSchedulerRule(ctx *pulumi.Context,
 	name string, args *SchedulerRuleArgs, opts ...pulumi.ResourceOption) (*SchedulerRule, error) {
-	if args == nil || args.RuleName == nil {
-		return nil, errors.New("missing required argument 'RuleName'")
-	}
-	if args == nil || args.RuleType == nil {
-		return nil, errors.New("missing required argument 'RuleType'")
-	}
-	if args == nil || args.Rules == nil {
-		return nil, errors.New("missing required argument 'Rules'")
-	}
 	if args == nil {
-		args = &SchedulerRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RuleName == nil {
+		return nil, errors.New("invalid value for required argument 'RuleName'")
+	}
+	if args.RuleType == nil {
+		return nil, errors.New("invalid value for required argument 'RuleType'")
+	}
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
 	var resource SchedulerRule
 	err := ctx.RegisterResource("alicloud:ddos/schedulerRule:SchedulerRule", name, args, &resource, opts...)

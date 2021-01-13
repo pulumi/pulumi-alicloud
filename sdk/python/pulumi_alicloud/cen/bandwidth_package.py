@@ -86,22 +86,22 @@ class BandwidthPackage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bandwidth is None:
+            if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__['bandwidth'] = bandwidth
             __props__['cen_bandwidth_package_name'] = cen_bandwidth_package_name
-            if charge_type is not None:
+            if charge_type is not None and not opts.urn:
                 warnings.warn("""Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""", DeprecationWarning)
                 pulumi.log.warn("charge_type is deprecated: Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.")
             __props__['charge_type'] = charge_type
             __props__['description'] = description
             __props__['geographic_region_a_id'] = geographic_region_a_id
             __props__['geographic_region_b_id'] = geographic_region_b_id
-            if geographic_region_ids is not None:
+            if geographic_region_ids is not None and not opts.urn:
                 warnings.warn("""Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""", DeprecationWarning)
                 pulumi.log.warn("geographic_region_ids is deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.")
             __props__['geographic_region_ids'] = geographic_region_ids
-            if name is not None:
+            if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""", DeprecationWarning)
                 pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.")
             __props__['name'] = name

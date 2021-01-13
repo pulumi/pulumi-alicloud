@@ -121,13 +121,13 @@ export class Notification extends pulumi.CustomResource {
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
         } else {
             const args = argsOrState as NotificationArgs | undefined;
-            if (!args || args.notificationArn === undefined) {
+            if ((!args || args.notificationArn === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'notificationArn'");
             }
-            if (!args || args.notificationTypes === undefined) {
+            if ((!args || args.notificationTypes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'notificationTypes'");
             }
-            if (!args || args.scalingGroupId === undefined) {
+            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
             inputs["notificationArn"] = args ? args.notificationArn : undefined;

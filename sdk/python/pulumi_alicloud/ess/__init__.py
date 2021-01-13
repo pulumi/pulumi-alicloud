@@ -22,3 +22,53 @@ from .schedule import *
 from .scheduled_task import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:ess/alarm:Alarm":
+                return Alarm(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ess/attachment:Attachment":
+                return Attachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ess/lifecycleHook:LifecycleHook":
+                return LifecycleHook(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ess/notification:Notification":
+                return Notification(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ess/scalingConfiguration:ScalingConfiguration":
+                return ScalingConfiguration(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ess/scalingGroup:ScalingGroup":
+                return ScalingGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups":
+                return ScalingGroupVServerGroups(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ess/scalingRule:ScalingRule":
+                return ScalingRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ess/schedule:Schedule":
+                return Schedule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ess/scheduledTask:ScheduledTask":
+                return ScheduledTask(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "ess/alarm", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ess/attachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ess/lifecycleHook", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ess/notification", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ess/scalingConfiguration", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ess/scalingGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ess/scalingGroupVServerGroups", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ess/scalingRule", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ess/schedule", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ess/scheduledTask", _module_instance)
+
+_register_module()

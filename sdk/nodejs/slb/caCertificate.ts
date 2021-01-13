@@ -108,7 +108,7 @@ export class CaCertificate extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as CaCertificateArgs | undefined;
-            if (!args || args.caCertificate === undefined) {
+            if ((!args || args.caCertificate === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'caCertificate'");
             }
             inputs["caCertificate"] = args ? args.caCertificate : undefined;

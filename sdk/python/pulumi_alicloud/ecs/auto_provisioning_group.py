@@ -144,10 +144,10 @@ class AutoProvisioningGroup(pulumi.CustomResource):
             __props__['default_target_capacity_type'] = default_target_capacity_type
             __props__['description'] = description
             __props__['excess_capacity_termination_policy'] = excess_capacity_termination_policy
-            if launch_template_configs is None:
+            if launch_template_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'launch_template_configs'")
             __props__['launch_template_configs'] = launch_template_configs
-            if launch_template_id is None:
+            if launch_template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'launch_template_id'")
             __props__['launch_template_id'] = launch_template_id
             __props__['launch_template_version'] = launch_template_version
@@ -160,7 +160,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
             __props__['spot_target_capacity'] = spot_target_capacity
             __props__['terminate_instances'] = terminate_instances
             __props__['terminate_instances_with_expiration'] = terminate_instances_with_expiration
-            if total_target_capacity is None:
+            if total_target_capacity is None and not opts.urn:
                 raise TypeError("Missing required property 'total_target_capacity'")
             __props__['total_target_capacity'] = total_target_capacity
             __props__['valid_from'] = valid_from

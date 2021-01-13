@@ -34,6 +34,7 @@ func NewProject(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProjectArgs{}
 	}
+
 	var resource Project
 	err := ctx.RegisterResource("alicloud:log/project:Project", name, args, &resource, opts...)
 	if err != nil {

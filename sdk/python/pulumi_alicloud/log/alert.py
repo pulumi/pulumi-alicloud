@@ -134,27 +134,27 @@ class Alert(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['alert_description'] = alert_description
-            if alert_displayname is None:
+            if alert_displayname is None and not opts.urn:
                 raise TypeError("Missing required property 'alert_displayname'")
             __props__['alert_displayname'] = alert_displayname
-            if alert_name is None:
+            if alert_name is None and not opts.urn:
                 raise TypeError("Missing required property 'alert_name'")
             __props__['alert_name'] = alert_name
-            if condition is None:
+            if condition is None and not opts.urn:
                 raise TypeError("Missing required property 'condition'")
             __props__['condition'] = condition
-            if dashboard is None:
+            if dashboard is None and not opts.urn:
                 raise TypeError("Missing required property 'dashboard'")
             __props__['dashboard'] = dashboard
             __props__['mute_until'] = mute_until
-            if notification_lists is None:
+            if notification_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'notification_lists'")
             __props__['notification_lists'] = notification_lists
             __props__['notify_threshold'] = notify_threshold
-            if project_name is None:
+            if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
             __props__['project_name'] = project_name
-            if query_lists is None:
+            if query_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'query_lists'")
             __props__['query_lists'] = query_lists
             __props__['schedule_interval'] = schedule_interval

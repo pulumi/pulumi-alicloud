@@ -164,16 +164,16 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.instanceClass === undefined) {
+            if ((!args || args.instanceClass === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceClass'");
             }
-            if (!args || args.instanceStorage === undefined) {
+            if ((!args || args.instanceStorage === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceStorage'");
             }
-            if (!args || args.paymentType === undefined) {
+            if ((!args || args.paymentType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if (!args || args.vswitchId === undefined) {
+            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["appKey"] = args ? args.appKey : undefined;

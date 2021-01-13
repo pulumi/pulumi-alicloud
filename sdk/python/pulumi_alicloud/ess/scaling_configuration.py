@@ -128,7 +128,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__['force_delete'] = force_delete
             __props__['image_id'] = image_id
             __props__['image_name'] = image_name
-            if instance_ids is not None:
+            if instance_ids is not None and not opts.urn:
                 warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
                 pulumi.log.warn("instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.")
             __props__['instance_ids'] = instance_ids
@@ -138,7 +138,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__['internet_charge_type'] = internet_charge_type
             __props__['internet_max_bandwidth_in'] = internet_max_bandwidth_in
             __props__['internet_max_bandwidth_out'] = internet_max_bandwidth_out
-            if io_optimized is not None:
+            if io_optimized is not None and not opts.urn:
                 warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
                 pulumi.log.warn("io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.")
             __props__['io_optimized'] = io_optimized
@@ -151,7 +151,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__['password_inherit'] = password_inherit
             __props__['role_name'] = role_name
             __props__['scaling_configuration_name'] = scaling_configuration_name
-            if scaling_group_id is None:
+            if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__['scaling_group_id'] = scaling_group_id
             __props__['security_group_id'] = security_group_id

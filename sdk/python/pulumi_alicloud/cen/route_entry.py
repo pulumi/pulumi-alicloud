@@ -50,16 +50,16 @@ class RouteEntry(pulumi.CustomResource):
             most_recent=True,
             owners="system")
         vpc = alicloud.vpc.Network("vpc", cidr_block="172.16.0.0/12",
-        opts=ResourceOptions(provider=alicloud["hz"]))
+        opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=vpc.id,
             cidr_block="172.16.0.0/21",
             availability_zone=default_zones.zones[0].id,
-            opts=ResourceOptions(provider=alicloud["hz"]))
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
             description="foo",
             vpc_id=vpc.id,
-            opts=ResourceOptions(provider=alicloud["hz"]))
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         default_instance = alicloud.ecs.Instance("defaultInstance",
             vswitch_id=default_switch.id,
             image_id=default_images.images[0].id,
@@ -69,25 +69,25 @@ class RouteEntry(pulumi.CustomResource):
             internet_max_bandwidth_out=5,
             security_groups=[default_security_group.id],
             instance_name=name,
-            opts=ResourceOptions(provider=alicloud["hz"]))
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         cen = alicloud.cen.Instance("cen")
         attach = alicloud.cen.InstanceAttachment("attach",
             instance_id=cen.id,
             child_instance_id=vpc.id,
             child_instance_type="VPC",
             child_instance_region_id="cn-hangzhou",
-            opts=ResourceOptions(depends_on=[default_switch]))
+            opts=pulumi.ResourceOptions(depends_on=[default_switch]))
         route = alicloud.vpc.RouteEntry("route",
             route_table_id=vpc.route_table_id,
             destination_cidrblock="11.0.0.0/16",
             nexthop_type="Instance",
             nexthop_id=default_instance.id,
-            opts=ResourceOptions(provider=alicloud["hz"]))
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         foo = alicloud.cen.RouteEntry("foo",
             instance_id=cen.id,
             route_table_id=vpc.route_table_id,
             cidr_block=route.destination_cidrblock,
-            opts=ResourceOptions(provider=alicloud["hz"],
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"],
                 depends_on=[attach]))
         ```
 
@@ -122,13 +122,13 @@ class RouteEntry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cidr_block is None:
+            if cidr_block is None and not opts.urn:
                 raise TypeError("Missing required property 'cidr_block'")
             __props__['cidr_block'] = cidr_block
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
-            if route_table_id is None:
+            if route_table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'route_table_id'")
             __props__['route_table_id'] = route_table_id
         super(RouteEntry, __self__).__init__(

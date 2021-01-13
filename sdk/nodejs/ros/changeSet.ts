@@ -175,7 +175,7 @@ export class ChangeSet extends pulumi.CustomResource {
             inputs["usePreviousParameters"] = state ? state.usePreviousParameters : undefined;
         } else {
             const args = argsOrState as ChangeSetArgs | undefined;
-            if (!args || args.changeSetName === undefined) {
+            if ((!args || args.changeSetName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'changeSetName'");
             }
             inputs["changeSetName"] = args ? args.changeSetName : undefined;

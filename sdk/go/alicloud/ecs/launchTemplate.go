@@ -189,6 +189,7 @@ func NewLaunchTemplate(ctx *pulumi.Context,
 	if args == nil {
 		args = &LaunchTemplateArgs{}
 	}
+
 	var resource LaunchTemplate
 	err := ctx.RegisterResource("alicloud:ecs/launchTemplate:LaunchTemplate", name, args, &resource, opts...)
 	if err != nil {

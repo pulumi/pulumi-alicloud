@@ -130,27 +130,27 @@ class Cluster(pulumi.CustomResource):
             __props__['disk_size'] = disk_size
             __props__['disk_type'] = disk_type
             __props__['enable_public'] = enable_public
-            if instance_type is None:
+            if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__['instance_type'] = instance_type
             __props__['ip_white'] = ip_white
             __props__['maintain_end_time'] = maintain_end_time
             __props__['maintain_start_time'] = maintain_start_time
-            if major_version is None:
+            if major_version is None and not opts.urn:
                 raise TypeError("Missing required property 'major_version'")
             __props__['major_version'] = major_version
-            if node_count is None:
+            if node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'node_count'")
             __props__['node_count'] = node_count
             __props__['password'] = password
-            if pay_type is None:
+            if pay_type is None and not opts.urn:
                 raise TypeError("Missing required property 'pay_type'")
             __props__['pay_type'] = pay_type
             __props__['period'] = period
             __props__['period_unit'] = period_unit
             __props__['security_groups'] = security_groups
             __props__['tags'] = tags
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id

@@ -130,7 +130,7 @@ class DedicatedHost(pulumi.CustomResource):
             __props__['auto_renew'] = auto_renew
             __props__['auto_renew_period'] = auto_renew_period
             __props__['dedicated_host_name'] = dedicated_host_name
-            if dedicated_host_type is None:
+            if dedicated_host_type is None and not opts.urn:
                 raise TypeError("Missing required property 'dedicated_host_type'")
             __props__['dedicated_host_type'] = dedicated_host_type
             __props__['description'] = description

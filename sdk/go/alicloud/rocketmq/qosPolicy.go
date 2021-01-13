@@ -95,29 +95,30 @@ type QosPolicy struct {
 // NewQosPolicy registers a new resource with the given unique name, arguments, and options.
 func NewQosPolicy(ctx *pulumi.Context,
 	name string, args *QosPolicyArgs, opts ...pulumi.ResourceOption) (*QosPolicy, error) {
-	if args == nil || args.DestCidr == nil {
-		return nil, errors.New("missing required argument 'DestCidr'")
-	}
-	if args == nil || args.DestPortRange == nil {
-		return nil, errors.New("missing required argument 'DestPortRange'")
-	}
-	if args == nil || args.IpProtocol == nil {
-		return nil, errors.New("missing required argument 'IpProtocol'")
-	}
-	if args == nil || args.Priority == nil {
-		return nil, errors.New("missing required argument 'Priority'")
-	}
-	if args == nil || args.QosId == nil {
-		return nil, errors.New("missing required argument 'QosId'")
-	}
-	if args == nil || args.SourceCidr == nil {
-		return nil, errors.New("missing required argument 'SourceCidr'")
-	}
-	if args == nil || args.SourcePortRange == nil {
-		return nil, errors.New("missing required argument 'SourcePortRange'")
-	}
 	if args == nil {
-		args = &QosPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DestCidr == nil {
+		return nil, errors.New("invalid value for required argument 'DestCidr'")
+	}
+	if args.DestPortRange == nil {
+		return nil, errors.New("invalid value for required argument 'DestPortRange'")
+	}
+	if args.IpProtocol == nil {
+		return nil, errors.New("invalid value for required argument 'IpProtocol'")
+	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
+	}
+	if args.QosId == nil {
+		return nil, errors.New("invalid value for required argument 'QosId'")
+	}
+	if args.SourceCidr == nil {
+		return nil, errors.New("invalid value for required argument 'SourceCidr'")
+	}
+	if args.SourcePortRange == nil {
+		return nil, errors.New("invalid value for required argument 'SourcePortRange'")
 	}
 	var resource QosPolicy
 	err := ctx.RegisterResource("alicloud:rocketmq/qosPolicy:QosPolicy", name, args, &resource, opts...)

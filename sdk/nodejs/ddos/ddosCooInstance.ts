@@ -117,19 +117,19 @@ export class DdosCooInstance extends pulumi.CustomResource {
             inputs["serviceBandwidth"] = state ? state.serviceBandwidth : undefined;
         } else {
             const args = argsOrState as DdosCooInstanceArgs | undefined;
-            if (!args || args.bandwidth === undefined) {
+            if ((!args || args.bandwidth === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if (!args || args.baseBandwidth === undefined) {
+            if ((!args || args.baseBandwidth === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'baseBandwidth'");
             }
-            if (!args || args.domainCount === undefined) {
+            if ((!args || args.domainCount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domainCount'");
             }
-            if (!args || args.portCount === undefined) {
+            if ((!args || args.portCount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'portCount'");
             }
-            if (!args || args.serviceBandwidth === undefined) {
+            if ((!args || args.serviceBandwidth === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceBandwidth'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;

@@ -88,11 +88,12 @@ type StackGroup struct {
 // NewStackGroup registers a new resource with the given unique name, arguments, and options.
 func NewStackGroup(ctx *pulumi.Context,
 	name string, args *StackGroupArgs, opts ...pulumi.ResourceOption) (*StackGroup, error) {
-	if args == nil || args.StackGroupName == nil {
-		return nil, errors.New("missing required argument 'StackGroupName'")
-	}
 	if args == nil {
-		args = &StackGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.StackGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'StackGroupName'")
 	}
 	var resource StackGroup
 	err := ctx.RegisterResource("alicloud:ros/stackGroup:StackGroup", name, args, &resource, opts...)

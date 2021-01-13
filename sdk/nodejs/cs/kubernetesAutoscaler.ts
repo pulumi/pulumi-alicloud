@@ -150,16 +150,16 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
             inputs["utilization"] = state ? state.utilization : undefined;
         } else {
             const args = argsOrState as KubernetesAutoscalerArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.coolDownDuration === undefined) {
+            if ((!args || args.coolDownDuration === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'coolDownDuration'");
             }
-            if (!args || args.deferScaleInDuration === undefined) {
+            if ((!args || args.deferScaleInDuration === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deferScaleInDuration'");
             }
-            if (!args || args.utilization === undefined) {
+            if ((!args || args.utilization === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'utilization'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;

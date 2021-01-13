@@ -94,17 +94,18 @@ type NetworkGrant struct {
 // NewNetworkGrant registers a new resource with the given unique name, arguments, and options.
 func NewNetworkGrant(ctx *pulumi.Context,
 	name string, args *NetworkGrantArgs, opts ...pulumi.ResourceOption) (*NetworkGrant, error) {
-	if args == nil || args.CcnId == nil {
-		return nil, errors.New("missing required argument 'CcnId'")
-	}
-	if args == nil || args.CenId == nil {
-		return nil, errors.New("missing required argument 'CenId'")
-	}
-	if args == nil || args.CenUid == nil {
-		return nil, errors.New("missing required argument 'CenUid'")
-	}
 	if args == nil {
-		args = &NetworkGrantArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CcnId == nil {
+		return nil, errors.New("invalid value for required argument 'CcnId'")
+	}
+	if args.CenId == nil {
+		return nil, errors.New("invalid value for required argument 'CenId'")
+	}
+	if args.CenUid == nil {
+		return nil, errors.New("invalid value for required argument 'CenUid'")
 	}
 	var resource NetworkGrant
 	err := ctx.RegisterResource("alicloud:cloudconnect/networkGrant:NetworkGrant", name, args, &resource, opts...)

@@ -61,17 +61,17 @@ class Record(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if host_record is None:
+            if host_record is None and not opts.urn:
                 raise TypeError("Missing required property 'host_record'")
             __props__['host_record'] = host_record
             __props__['name'] = name
             __props__['priority'] = priority
             __props__['routing'] = routing
             __props__['ttl'] = ttl
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
-            if value is None:
+            if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
             __props__['locked'] = None

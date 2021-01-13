@@ -118,7 +118,7 @@ class Domain(pulumi.CustomResource):
 
             __props__['cluster_type'] = cluster_type
             __props__['connection_time'] = connection_time
-            if domain is not None:
+            if domain is not None and not opts.urn:
                 warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.")
             __props__['domain'] = domain
@@ -128,10 +128,10 @@ class Domain(pulumi.CustomResource):
             __props__['http_to_user_ip'] = http_to_user_ip
             __props__['https_ports'] = https_ports
             __props__['https_redirect'] = https_redirect
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
-            if is_access_product is None:
+            if is_access_product is None and not opts.urn:
                 raise TypeError("Missing required property 'is_access_product'")
             __props__['is_access_product'] = is_access_product
             __props__['load_balancing'] = load_balancing

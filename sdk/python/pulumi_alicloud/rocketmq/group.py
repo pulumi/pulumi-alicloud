@@ -91,13 +91,13 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if group_id is not None:
+            if group_id is not None and not opts.urn:
                 warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.")
             __props__['group_id'] = group_id
             __props__['group_name'] = group_name
             __props__['group_type'] = group_type
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['read_enable'] = read_enable

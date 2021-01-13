@@ -85,10 +85,10 @@ export class AlidnsDomainAttachment extends pulumi.CustomResource {
             inputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as AlidnsDomainAttachmentArgs | undefined;
-            if (!args || args.domainNames === undefined) {
+            if ((!args || args.domainNames === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domainNames'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["domainNames"] = args ? args.domainNames : undefined;

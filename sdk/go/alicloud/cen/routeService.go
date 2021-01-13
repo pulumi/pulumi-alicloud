@@ -104,23 +104,24 @@ type RouteService struct {
 // NewRouteService registers a new resource with the given unique name, arguments, and options.
 func NewRouteService(ctx *pulumi.Context,
 	name string, args *RouteServiceArgs, opts ...pulumi.ResourceOption) (*RouteService, error) {
-	if args == nil || args.AccessRegionId == nil {
-		return nil, errors.New("missing required argument 'AccessRegionId'")
-	}
-	if args == nil || args.CenId == nil {
-		return nil, errors.New("missing required argument 'CenId'")
-	}
-	if args == nil || args.Host == nil {
-		return nil, errors.New("missing required argument 'Host'")
-	}
-	if args == nil || args.HostRegionId == nil {
-		return nil, errors.New("missing required argument 'HostRegionId'")
-	}
-	if args == nil || args.HostVpcId == nil {
-		return nil, errors.New("missing required argument 'HostVpcId'")
-	}
 	if args == nil {
-		args = &RouteServiceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccessRegionId == nil {
+		return nil, errors.New("invalid value for required argument 'AccessRegionId'")
+	}
+	if args.CenId == nil {
+		return nil, errors.New("invalid value for required argument 'CenId'")
+	}
+	if args.Host == nil {
+		return nil, errors.New("invalid value for required argument 'Host'")
+	}
+	if args.HostRegionId == nil {
+		return nil, errors.New("invalid value for required argument 'HostRegionId'")
+	}
+	if args.HostVpcId == nil {
+		return nil, errors.New("invalid value for required argument 'HostVpcId'")
 	}
 	var resource RouteService
 	err := ctx.RegisterResource("alicloud:cen/routeService:RouteService", name, args, &resource, opts...)

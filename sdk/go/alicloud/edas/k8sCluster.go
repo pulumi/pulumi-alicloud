@@ -73,11 +73,12 @@ type K8sCluster struct {
 // NewK8sCluster registers a new resource with the given unique name, arguments, and options.
 func NewK8sCluster(ctx *pulumi.Context,
 	name string, args *K8sClusterArgs, opts ...pulumi.ResourceOption) (*K8sCluster, error) {
-	if args == nil || args.CsClusterId == nil {
-		return nil, errors.New("missing required argument 'CsClusterId'")
-	}
 	if args == nil {
-		args = &K8sClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CsClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'CsClusterId'")
 	}
 	var resource K8sCluster
 	err := ctx.RegisterResource("alicloud:edas/k8sCluster:K8sCluster", name, args, &resource, opts...)

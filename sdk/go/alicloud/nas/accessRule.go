@@ -80,14 +80,15 @@ type AccessRule struct {
 // NewAccessRule registers a new resource with the given unique name, arguments, and options.
 func NewAccessRule(ctx *pulumi.Context,
 	name string, args *AccessRuleArgs, opts ...pulumi.ResourceOption) (*AccessRule, error) {
-	if args == nil || args.AccessGroupName == nil {
-		return nil, errors.New("missing required argument 'AccessGroupName'")
-	}
-	if args == nil || args.SourceCidrIp == nil {
-		return nil, errors.New("missing required argument 'SourceCidrIp'")
-	}
 	if args == nil {
-		args = &AccessRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccessGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'AccessGroupName'")
+	}
+	if args.SourceCidrIp == nil {
+		return nil, errors.New("invalid value for required argument 'SourceCidrIp'")
 	}
 	var resource AccessRule
 	err := ctx.RegisterResource("alicloud:nas/accessRule:AccessRule", name, args, &resource, opts...)

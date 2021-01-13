@@ -34,6 +34,7 @@ func NewSchedule(ctx *pulumi.Context,
 	if args == nil {
 		args = &ScheduleArgs{}
 	}
+
 	var resource Schedule
 	err := ctx.RegisterResource("alicloud:ess/schedule:Schedule", name, args, &resource, opts...)
 	if err != nil {

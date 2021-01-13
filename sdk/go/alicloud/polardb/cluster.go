@@ -133,17 +133,18 @@ type Cluster struct {
 // NewCluster registers a new resource with the given unique name, arguments, and options.
 func NewCluster(ctx *pulumi.Context,
 	name string, args *ClusterArgs, opts ...pulumi.ResourceOption) (*Cluster, error) {
-	if args == nil || args.DbNodeClass == nil {
-		return nil, errors.New("missing required argument 'DbNodeClass'")
-	}
-	if args == nil || args.DbType == nil {
-		return nil, errors.New("missing required argument 'DbType'")
-	}
-	if args == nil || args.DbVersion == nil {
-		return nil, errors.New("missing required argument 'DbVersion'")
-	}
 	if args == nil {
-		args = &ClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DbNodeClass == nil {
+		return nil, errors.New("invalid value for required argument 'DbNodeClass'")
+	}
+	if args.DbType == nil {
+		return nil, errors.New("invalid value for required argument 'DbType'")
+	}
+	if args.DbVersion == nil {
+		return nil, errors.New("invalid value for required argument 'DbVersion'")
 	}
 	var resource Cluster
 	err := ctx.RegisterResource("alicloud:polardb/cluster:Cluster", name, args, &resource, opts...)

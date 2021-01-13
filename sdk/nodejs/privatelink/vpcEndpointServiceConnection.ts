@@ -102,10 +102,10 @@ export class VpcEndpointServiceConnection extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as VpcEndpointServiceConnectionArgs | undefined;
-            if (!args || args.endpointId === undefined) {
+            if ((!args || args.endpointId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            if (!args || args.serviceId === undefined) {
+            if ((!args || args.serviceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceId'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;

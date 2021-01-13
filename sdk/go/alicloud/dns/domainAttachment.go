@@ -30,14 +30,15 @@ type DomainAttachment struct {
 // NewDomainAttachment registers a new resource with the given unique name, arguments, and options.
 func NewDomainAttachment(ctx *pulumi.Context,
 	name string, args *DomainAttachmentArgs, opts ...pulumi.ResourceOption) (*DomainAttachment, error) {
-	if args == nil || args.DomainNames == nil {
-		return nil, errors.New("missing required argument 'DomainNames'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &DomainAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DomainNames == nil {
+		return nil, errors.New("invalid value for required argument 'DomainNames'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource DomainAttachment
 	err := ctx.RegisterResource("alicloud:dns/domainAttachment:DomainAttachment", name, args, &resource, opts...)

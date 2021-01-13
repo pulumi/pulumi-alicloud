@@ -50,7 +50,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
             name = "alicloudRouterInterfaceConnectionBasic"
         foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
         bar_network = alicloud.vpc.Network("barNetwork", cidr_block="192.168.0.0/16",
-        opts=ResourceOptions(provider=alicloud))
+        opts=pulumi.ResourceOptions(provider=alicloud))
         initiate = alicloud.vpc.RouterInterface("initiate",
             opposite_region=region,
             router_type="VRouter",
@@ -66,16 +66,16 @@ class RouterInterfaceConnection(pulumi.CustomResource):
             role="AcceptingSide",
             specification="Large.1",
             description=f"{name}-opposite",
-            opts=ResourceOptions(provider=alicloud))
+            opts=pulumi.ResourceOptions(provider=alicloud))
         bar_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("barRouterInterfaceConnection",
             interface_id=opposite.id,
             opposite_interface_id=initiate.id,
-            opts=ResourceOptions(provider=alicloud))
+            opts=pulumi.ResourceOptions(provider=alicloud))
         # A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
         foo_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("fooRouterInterfaceConnection",
             interface_id=initiate.id,
             opposite_interface_id=opposite.id,
-            opts=ResourceOptions(depends_on=[bar_router_interface_connection]))
+            opts=pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
         # The connection must start from the accepting side.
         ```
 
@@ -111,10 +111,10 @@ class RouterInterfaceConnection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if interface_id is None:
+            if interface_id is None and not opts.urn:
                 raise TypeError("Missing required property 'interface_id'")
             __props__['interface_id'] = interface_id
-            if opposite_interface_id is None:
+            if opposite_interface_id is None and not opts.urn:
                 raise TypeError("Missing required property 'opposite_interface_id'")
             __props__['opposite_interface_id'] = opposite_interface_id
             __props__['opposite_interface_owner_id'] = opposite_interface_owner_id

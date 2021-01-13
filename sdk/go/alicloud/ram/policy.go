@@ -48,6 +48,7 @@ func NewPolicy(ctx *pulumi.Context,
 	if args == nil {
 		args = &PolicyArgs{}
 	}
+
 	var resource Policy
 	err := ctx.RegisterResource("alicloud:ram/policy:Policy", name, args, &resource, opts...)
 	if err != nil {

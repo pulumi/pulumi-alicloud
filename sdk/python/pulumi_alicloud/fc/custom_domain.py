@@ -112,10 +112,10 @@ class CustomDomain(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['cert_config'] = cert_config
-            if domain_name is None:
+            if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__['domain_name'] = domain_name
-            if protocol is None:
+            if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
             __props__['route_configs'] = route_configs

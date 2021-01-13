@@ -150,13 +150,13 @@ export class ShardingInstance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ShardingInstanceArgs | undefined;
-            if (!args || args.engineVersion === undefined) {
+            if ((!args || args.engineVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if (!args || args.mongoLists === undefined) {
+            if ((!args || args.mongoLists === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'mongoLists'");
             }
-            if (!args || args.shardLists === undefined) {
+            if ((!args || args.shardLists === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'shardLists'");
             }
             inputs["accountPassword"] = args ? args.accountPassword : undefined;

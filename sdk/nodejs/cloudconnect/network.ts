@@ -99,7 +99,7 @@ export class Network extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            if (!args || args.isDefault === undefined) {
+            if ((!args || args.isDefault === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'isDefault'");
             }
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;

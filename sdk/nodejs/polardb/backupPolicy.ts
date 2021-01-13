@@ -76,7 +76,7 @@ export class BackupPolicy extends pulumi.CustomResource {
             inputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
-            if (!args || args.dbClusterId === undefined) {
+            if ((!args || args.dbClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
             inputs["dbClusterId"] = args ? args.dbClusterId : undefined;

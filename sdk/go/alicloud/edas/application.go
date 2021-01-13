@@ -52,17 +52,18 @@ type Application struct {
 // NewApplication registers a new resource with the given unique name, arguments, and options.
 func NewApplication(ctx *pulumi.Context,
 	name string, args *ApplicationArgs, opts ...pulumi.ResourceOption) (*Application, error) {
-	if args == nil || args.ApplicationName == nil {
-		return nil, errors.New("missing required argument 'ApplicationName'")
-	}
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.PackageType == nil {
-		return nil, errors.New("missing required argument 'PackageType'")
-	}
 	if args == nil {
-		args = &ApplicationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApplicationName == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationName'")
+	}
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.PackageType == nil {
+		return nil, errors.New("invalid value for required argument 'PackageType'")
 	}
 	var resource Application
 	err := ctx.RegisterResource("alicloud:edas/application:Application", name, args, &resource, opts...)

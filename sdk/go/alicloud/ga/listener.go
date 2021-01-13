@@ -91,14 +91,15 @@ type Listener struct {
 // NewListener registers a new resource with the given unique name, arguments, and options.
 func NewListener(ctx *pulumi.Context,
 	name string, args *ListenerArgs, opts ...pulumi.ResourceOption) (*Listener, error) {
-	if args == nil || args.AcceleratorId == nil {
-		return nil, errors.New("missing required argument 'AcceleratorId'")
-	}
-	if args == nil || args.PortRanges == nil {
-		return nil, errors.New("missing required argument 'PortRanges'")
-	}
 	if args == nil {
-		args = &ListenerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AcceleratorId == nil {
+		return nil, errors.New("invalid value for required argument 'AcceleratorId'")
+	}
+	if args.PortRanges == nil {
+		return nil, errors.New("invalid value for required argument 'PortRanges'")
 	}
 	var resource Listener
 	err := ctx.RegisterResource("alicloud:ga/listener:Listener", name, args, &resource, opts...)

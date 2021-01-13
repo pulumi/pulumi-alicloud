@@ -63,13 +63,13 @@ class LifecycleHook(pulumi.CustomResource):
 
             __props__['default_result'] = default_result
             __props__['heartbeat_timeout'] = heartbeat_timeout
-            if lifecycle_transition is None:
+            if lifecycle_transition is None and not opts.urn:
                 raise TypeError("Missing required property 'lifecycle_transition'")
             __props__['lifecycle_transition'] = lifecycle_transition
             __props__['name'] = name
             __props__['notification_arn'] = notification_arn
             __props__['notification_metadata'] = notification_metadata
-            if scaling_group_id is None:
+            if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__['scaling_group_id'] = scaling_group_id
         super(LifecycleHook, __self__).__init__(

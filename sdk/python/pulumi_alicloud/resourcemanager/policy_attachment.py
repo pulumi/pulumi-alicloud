@@ -62,19 +62,19 @@ class PolicyAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if policy_name is None:
+            if policy_name is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_name'")
             __props__['policy_name'] = policy_name
-            if policy_type is None:
+            if policy_type is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_type'")
             __props__['policy_type'] = policy_type
-            if principal_name is None:
+            if principal_name is None and not opts.urn:
                 raise TypeError("Missing required property 'principal_name'")
             __props__['principal_name'] = principal_name
-            if principal_type is None:
+            if principal_type is None and not opts.urn:
                 raise TypeError("Missing required property 'principal_type'")
             __props__['principal_type'] = principal_type
-            if resource_group_id is None:
+            if resource_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_id'")
             __props__['resource_group_id'] = resource_group_id
         super(PolicyAttachment, __self__).__init__(

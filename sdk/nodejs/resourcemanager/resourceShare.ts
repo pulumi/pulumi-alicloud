@@ -90,7 +90,7 @@ export class ResourceShare extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ResourceShareArgs | undefined;
-            if (!args || args.resourceShareName === undefined) {
+            if ((!args || args.resourceShareName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceShareName'");
             }
             inputs["resourceShareName"] = args ? args.resourceShareName : undefined;

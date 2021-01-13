@@ -67,17 +67,17 @@ class Trigger(pulumi.CustomResource):
 
             __props__['config'] = config
             __props__['config_mns'] = config_mns
-            if function is None:
+            if function is None and not opts.urn:
                 raise TypeError("Missing required property 'function'")
             __props__['function'] = function
             __props__['name'] = name
             __props__['name_prefix'] = name_prefix
             __props__['role'] = role
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['source_arn'] = source_arn
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['last_modified'] = None

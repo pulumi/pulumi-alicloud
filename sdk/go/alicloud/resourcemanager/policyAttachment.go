@@ -41,23 +41,24 @@ type PolicyAttachment struct {
 // NewPolicyAttachment registers a new resource with the given unique name, arguments, and options.
 func NewPolicyAttachment(ctx *pulumi.Context,
 	name string, args *PolicyAttachmentArgs, opts ...pulumi.ResourceOption) (*PolicyAttachment, error) {
-	if args == nil || args.PolicyName == nil {
-		return nil, errors.New("missing required argument 'PolicyName'")
-	}
-	if args == nil || args.PolicyType == nil {
-		return nil, errors.New("missing required argument 'PolicyType'")
-	}
-	if args == nil || args.PrincipalName == nil {
-		return nil, errors.New("missing required argument 'PrincipalName'")
-	}
-	if args == nil || args.PrincipalType == nil {
-		return nil, errors.New("missing required argument 'PrincipalType'")
-	}
-	if args == nil || args.ResourceGroupId == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupId'")
-	}
 	if args == nil {
-		args = &PolicyAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PolicyName == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyName'")
+	}
+	if args.PolicyType == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyType'")
+	}
+	if args.PrincipalName == nil {
+		return nil, errors.New("invalid value for required argument 'PrincipalName'")
+	}
+	if args.PrincipalType == nil {
+		return nil, errors.New("invalid value for required argument 'PrincipalType'")
+	}
+	if args.ResourceGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupId'")
 	}
 	var resource PolicyAttachment
 	err := ctx.RegisterResource("alicloud:resourcemanager/policyAttachment:PolicyAttachment", name, args, &resource, opts...)

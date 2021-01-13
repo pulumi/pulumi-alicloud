@@ -131,16 +131,16 @@ export class Alarm extends pulumi.CustomResource {
             inputs["threshold"] = state ? state.threshold : undefined;
         } else {
             const args = argsOrState as AlarmArgs | undefined;
-            if (!args || args.alarmActions === undefined) {
+            if ((!args || args.alarmActions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'alarmActions'");
             }
-            if (!args || args.metricName === undefined) {
+            if ((!args || args.metricName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'metricName'");
             }
-            if (!args || args.scalingGroupId === undefined) {
+            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            if (!args || args.threshold === undefined) {
+            if ((!args || args.threshold === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'threshold'");
             }
             inputs["alarmActions"] = args ? args.alarmActions : undefined;

@@ -135,10 +135,10 @@ export class RoleAttachment extends pulumi.CustomResource {
             inputs["roleName"] = state ? state.roleName : undefined;
         } else {
             const args = argsOrState as RoleAttachmentArgs | undefined;
-            if (!args || args.instanceIds === undefined) {
+            if ((!args || args.instanceIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if (!args || args.roleName === undefined) {
+            if ((!args || args.roleName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'roleName'");
             }
             inputs["instanceIds"] = args ? args.instanceIds : undefined;

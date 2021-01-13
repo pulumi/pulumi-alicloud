@@ -69,11 +69,12 @@ type Network struct {
 // NewNetwork registers a new resource with the given unique name, arguments, and options.
 func NewNetwork(ctx *pulumi.Context,
 	name string, args *NetworkArgs, opts ...pulumi.ResourceOption) (*Network, error) {
-	if args == nil || args.IsDefault == nil {
-		return nil, errors.New("missing required argument 'IsDefault'")
-	}
 	if args == nil {
-		args = &NetworkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IsDefault == nil {
+		return nil, errors.New("invalid value for required argument 'IsDefault'")
 	}
 	var resource Network
 	err := ctx.RegisterResource("alicloud:cloudconnect/network:Network", name, args, &resource, opts...)

@@ -159,10 +159,10 @@ export class Attachment extends pulumi.CustomResource {
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
         } else {
             const args = argsOrState as AttachmentArgs | undefined;
-            if (!args || args.instanceIds === undefined) {
+            if ((!args || args.instanceIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if (!args || args.scalingGroupId === undefined) {
+            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
             inputs["force"] = args ? args.force : undefined;

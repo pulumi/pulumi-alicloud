@@ -51,6 +51,7 @@ func NewEip(ctx *pulumi.Context,
 	if args == nil {
 		args = &EipArgs{}
 	}
+
 	var resource Eip
 	err := ctx.RegisterResource("alicloud:ecs/eip:Eip", name, args, &resource, opts...)
 	if err != nil {

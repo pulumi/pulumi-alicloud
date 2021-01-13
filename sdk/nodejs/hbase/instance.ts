@@ -224,13 +224,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.coreInstanceType === undefined) {
+            if ((!args || args.coreInstanceType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'coreInstanceType'");
             }
-            if (!args || args.engineVersion === undefined) {
+            if ((!args || args.engineVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if (!args || args.masterInstanceType === undefined) {
+            if ((!args || args.masterInstanceType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'masterInstanceType'");
             }
             inputs["account"] = args ? args.account : undefined;

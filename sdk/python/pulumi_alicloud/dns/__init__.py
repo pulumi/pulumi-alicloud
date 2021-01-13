@@ -29,3 +29,62 @@ from .group import *
 from .instance import *
 from .record import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:dns/alidnsDomain:AlidnsDomain":
+                return AlidnsDomain(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment":
+                return AlidnsDomainAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/alidnsInstance:AlidnsInstance":
+                return AlidnsInstance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/alidnsRecord:AlidnsRecord":
+                return AlidnsRecord(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/ddosBgpInstance:DdosBgpInstance":
+                return DdosBgpInstance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/ddosCooInstance:DdosCooInstance":
+                return DdosCooInstance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/dnsDomain:DnsDomain":
+                return DnsDomain(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/domain:Domain":
+                return Domain(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/domainAttachment:DomainAttachment":
+                return DomainAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/domainGroup:DomainGroup":
+                return DomainGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/group:Group":
+                return Group(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/instance:Instance":
+                return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:dns/record:Record":
+                return Record(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "dns/alidnsDomain", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/alidnsDomainAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/alidnsInstance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/alidnsRecord", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/ddosBgpInstance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/ddosCooInstance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/dnsDomain", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/domain", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/domainAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/domainGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/group", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/instance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "dns/record", _module_instance)
+
+_register_module()

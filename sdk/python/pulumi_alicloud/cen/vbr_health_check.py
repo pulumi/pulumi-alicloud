@@ -57,7 +57,7 @@ class VbrHealthCheck(pulumi.CustomResource):
             vbr_instance_region_id="cn-hangzhou",
             health_check_interval=2,
             healthy_threshold=8,
-            opts=ResourceOptions(depends_on=[default_instance_attachment]))
+            opts=pulumi.ResourceOptions(depends_on=[default_instance_attachment]))
         ```
 
         ## Import
@@ -96,20 +96,20 @@ class VbrHealthCheck(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cen_id is None:
+            if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
             __props__['cen_id'] = cen_id
             __props__['health_check_interval'] = health_check_interval
             __props__['health_check_source_ip'] = health_check_source_ip
-            if health_check_target_ip is None:
+            if health_check_target_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'health_check_target_ip'")
             __props__['health_check_target_ip'] = health_check_target_ip
             __props__['healthy_threshold'] = healthy_threshold
-            if vbr_instance_id is None:
+            if vbr_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vbr_instance_id'")
             __props__['vbr_instance_id'] = vbr_instance_id
             __props__['vbr_instance_owner_id'] = vbr_instance_owner_id
-            if vbr_instance_region_id is None:
+            if vbr_instance_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vbr_instance_region_id'")
             __props__['vbr_instance_region_id'] = vbr_instance_region_id
         super(VbrHealthCheck, __self__).__init__(

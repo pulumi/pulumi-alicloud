@@ -64,15 +64,15 @@ class DeliveryChannel(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if delivery_channel_assume_role_arn is None:
+            if delivery_channel_assume_role_arn is None and not opts.urn:
                 raise TypeError("Missing required property 'delivery_channel_assume_role_arn'")
             __props__['delivery_channel_assume_role_arn'] = delivery_channel_assume_role_arn
             __props__['delivery_channel_condition'] = delivery_channel_condition
             __props__['delivery_channel_name'] = delivery_channel_name
-            if delivery_channel_target_arn is None:
+            if delivery_channel_target_arn is None and not opts.urn:
                 raise TypeError("Missing required property 'delivery_channel_target_arn'")
             __props__['delivery_channel_target_arn'] = delivery_channel_target_arn
-            if delivery_channel_type is None:
+            if delivery_channel_type is None and not opts.urn:
                 raise TypeError("Missing required property 'delivery_channel_type'")
             __props__['delivery_channel_type'] = delivery_channel_type
             __props__['description'] = description

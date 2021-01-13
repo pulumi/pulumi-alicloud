@@ -144,19 +144,19 @@ export class Cluster extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if (!args || args.clusterSpecification === undefined) {
+            if ((!args || args.clusterSpecification === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterSpecification'");
             }
-            if (!args || args.clusterType === undefined) {
+            if ((!args || args.clusterType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterType'");
             }
-            if (!args || args.clusterVersion === undefined) {
+            if ((!args || args.clusterVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterVersion'");
             }
-            if (!args || args.instanceCount === undefined) {
+            if ((!args || args.instanceCount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceCount'");
             }
-            if (!args || args.netType === undefined) {
+            if ((!args || args.netType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'netType'");
             }
             inputs["aclEntryLists"] = args ? args.aclEntryLists : undefined;

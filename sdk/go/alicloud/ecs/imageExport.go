@@ -64,14 +64,15 @@ type ImageExport struct {
 // NewImageExport registers a new resource with the given unique name, arguments, and options.
 func NewImageExport(ctx *pulumi.Context,
 	name string, args *ImageExportArgs, opts ...pulumi.ResourceOption) (*ImageExport, error) {
-	if args == nil || args.ImageId == nil {
-		return nil, errors.New("missing required argument 'ImageId'")
-	}
-	if args == nil || args.OssBucket == nil {
-		return nil, errors.New("missing required argument 'OssBucket'")
-	}
 	if args == nil {
-		args = &ImageExportArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ImageId == nil {
+		return nil, errors.New("invalid value for required argument 'ImageId'")
+	}
+	if args.OssBucket == nil {
+		return nil, errors.New("invalid value for required argument 'OssBucket'")
 	}
 	var resource ImageExport
 	err := ctx.RegisterResource("alicloud:ecs/imageExport:ImageExport", name, args, &resource, opts...)

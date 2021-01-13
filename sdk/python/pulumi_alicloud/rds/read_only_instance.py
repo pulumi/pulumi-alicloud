@@ -114,17 +114,17 @@ class ReadOnlyInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if engine_version is None:
+            if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__['engine_version'] = engine_version
             __props__['instance_name'] = instance_name
-            if instance_storage is None:
+            if instance_storage is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_storage'")
             __props__['instance_storage'] = instance_storage
-            if instance_type is None:
+            if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__['instance_type'] = instance_type
-            if master_db_instance_id is None:
+            if master_db_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'master_db_instance_id'")
             __props__['master_db_instance_id'] = master_db_instance_id
             __props__['parameters'] = parameters

@@ -106,24 +106,24 @@ class Rule(pulumi.CustomResource):
             __props__['input_parameters'] = input_parameters
             __props__['member_id'] = member_id
             __props__['multi_account'] = multi_account
-            if risk_level is None:
+            if risk_level is None and not opts.urn:
                 raise TypeError("Missing required property 'risk_level'")
             __props__['risk_level'] = risk_level
-            if rule_name is None:
+            if rule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_name'")
             __props__['rule_name'] = rule_name
             __props__['scope_compliance_resource_id'] = scope_compliance_resource_id
-            if scope_compliance_resource_types is None:
+            if scope_compliance_resource_types is None and not opts.urn:
                 raise TypeError("Missing required property 'scope_compliance_resource_types'")
             __props__['scope_compliance_resource_types'] = scope_compliance_resource_types
-            if source_detail_message_type is None:
+            if source_detail_message_type is None and not opts.urn:
                 raise TypeError("Missing required property 'source_detail_message_type'")
             __props__['source_detail_message_type'] = source_detail_message_type
-            if source_identifier is None:
+            if source_identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'source_identifier'")
             __props__['source_identifier'] = source_identifier
             __props__['source_maximum_execution_frequency'] = source_maximum_execution_frequency
-            if source_owner is None:
+            if source_owner is None and not opts.urn:
                 raise TypeError("Missing required property 'source_owner'")
             __props__['source_owner'] = source_owner
         super(Rule, __self__).__init__(

@@ -91,10 +91,10 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
             inputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as BandwidthPackageAttachmentArgs | undefined;
-            if (!args || args.bandwidthPackageId === undefined) {
+            if ((!args || args.bandwidthPackageId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bandwidthPackageId'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;

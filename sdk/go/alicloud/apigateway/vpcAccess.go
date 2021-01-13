@@ -34,17 +34,18 @@ type VpcAccess struct {
 // NewVpcAccess registers a new resource with the given unique name, arguments, and options.
 func NewVpcAccess(ctx *pulumi.Context,
 	name string, args *VpcAccessArgs, opts ...pulumi.ResourceOption) (*VpcAccess, error) {
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
-	if args == nil || args.Port == nil {
-		return nil, errors.New("missing required argument 'Port'")
-	}
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
 	if args == nil {
-		args = &VpcAccessArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
+	if args.Port == nil {
+		return nil, errors.New("invalid value for required argument 'Port'")
+	}
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
 	var resource VpcAccess
 	err := ctx.RegisterResource("alicloud:apigateway/vpcAccess:VpcAccess", name, args, &resource, opts...)

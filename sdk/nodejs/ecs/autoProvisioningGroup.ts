@@ -212,13 +212,13 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
             inputs["validUntil"] = state ? state.validUntil : undefined;
         } else {
             const args = argsOrState as AutoProvisioningGroupArgs | undefined;
-            if (!args || args.launchTemplateConfigs === undefined) {
+            if ((!args || args.launchTemplateConfigs === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'launchTemplateConfigs'");
             }
-            if (!args || args.launchTemplateId === undefined) {
+            if ((!args || args.launchTemplateId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'launchTemplateId'");
             }
-            if (!args || args.totalTargetCapacity === undefined) {
+            if ((!args || args.totalTargetCapacity === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'totalTargetCapacity'");
             }
             inputs["autoProvisioningGroupName"] = args ? args.autoProvisioningGroupName : undefined;

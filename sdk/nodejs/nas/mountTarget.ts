@@ -118,10 +118,10 @@ export class MountTarget extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as MountTargetArgs | undefined;
-            if (!args || args.accessGroupName === undefined) {
+            if ((!args || args.accessGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessGroupName'");
             }
-            if (!args || args.fileSystemId === undefined) {
+            if ((!args || args.fileSystemId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
             inputs["accessGroupName"] = args ? args.accessGroupName : undefined;

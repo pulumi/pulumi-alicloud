@@ -137,26 +137,27 @@ type SaslAcl struct {
 // NewSaslAcl registers a new resource with the given unique name, arguments, and options.
 func NewSaslAcl(ctx *pulumi.Context,
 	name string, args *SaslAclArgs, opts ...pulumi.ResourceOption) (*SaslAcl, error) {
-	if args == nil || args.AclOperationType == nil {
-		return nil, errors.New("missing required argument 'AclOperationType'")
-	}
-	if args == nil || args.AclResourceName == nil {
-		return nil, errors.New("missing required argument 'AclResourceName'")
-	}
-	if args == nil || args.AclResourcePatternType == nil {
-		return nil, errors.New("missing required argument 'AclResourcePatternType'")
-	}
-	if args == nil || args.AclResourceType == nil {
-		return nil, errors.New("missing required argument 'AclResourceType'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &SaslAclArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AclOperationType == nil {
+		return nil, errors.New("invalid value for required argument 'AclOperationType'")
+	}
+	if args.AclResourceName == nil {
+		return nil, errors.New("invalid value for required argument 'AclResourceName'")
+	}
+	if args.AclResourcePatternType == nil {
+		return nil, errors.New("invalid value for required argument 'AclResourcePatternType'")
+	}
+	if args.AclResourceType == nil {
+		return nil, errors.New("invalid value for required argument 'AclResourceType'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource SaslAcl
 	err := ctx.RegisterResource("alicloud:alikafka/saslAcl:SaslAcl", name, args, &resource, opts...)

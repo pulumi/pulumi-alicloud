@@ -82,12 +82,12 @@ class AccessRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if access_group_name is None:
+            if access_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'access_group_name'")
             __props__['access_group_name'] = access_group_name
             __props__['priority'] = priority
             __props__['rw_access_type'] = rw_access_type
-            if source_cidr_ip is None:
+            if source_cidr_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'source_cidr_ip'")
             __props__['source_cidr_ip'] = source_cidr_ip
             __props__['user_access_type'] = user_access_type

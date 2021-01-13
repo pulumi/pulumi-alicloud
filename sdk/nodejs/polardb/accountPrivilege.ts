@@ -124,13 +124,13 @@ export class AccountPrivilege extends pulumi.CustomResource {
             inputs["dbNames"] = state ? state.dbNames : undefined;
         } else {
             const args = argsOrState as AccountPrivilegeArgs | undefined;
-            if (!args || args.accountName === undefined) {
+            if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if (!args || args.dbClusterId === undefined) {
+            if ((!args || args.dbClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if (!args || args.dbNames === undefined) {
+            if ((!args || args.dbNames === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbNames'");
             }
             inputs["accountName"] = args ? args.accountName : undefined;

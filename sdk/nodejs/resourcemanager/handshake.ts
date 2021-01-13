@@ -120,10 +120,10 @@ export class Handshake extends pulumi.CustomResource {
             inputs["targetType"] = state ? state.targetType : undefined;
         } else {
             const args = argsOrState as HandshakeArgs | undefined;
-            if (!args || args.targetEntity === undefined) {
+            if ((!args || args.targetEntity === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'targetEntity'");
             }
-            if (!args || args.targetType === undefined) {
+            if ((!args || args.targetType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'targetType'");
             }
             inputs["note"] = args ? args.note : undefined;

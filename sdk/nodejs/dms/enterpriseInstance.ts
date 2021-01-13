@@ -223,40 +223,40 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as EnterpriseInstanceArgs | undefined;
-            if (!args || args.databasePassword === undefined) {
+            if ((!args || args.databasePassword === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'databasePassword'");
             }
-            if (!args || args.databaseUser === undefined) {
+            if ((!args || args.databaseUser === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'databaseUser'");
             }
-            if (!args || args.dbaUid === undefined) {
+            if ((!args || args.dbaUid === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbaUid'");
             }
-            if (!args || args.envType === undefined) {
+            if ((!args || args.envType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'envType'");
             }
-            if (!args || args.exportTimeout === undefined) {
+            if ((!args || args.exportTimeout === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'exportTimeout'");
             }
-            if (!args || args.host === undefined) {
+            if ((!args || args.host === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'host'");
             }
-            if (!args || args.instanceSource === undefined) {
+            if ((!args || args.instanceSource === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceSource'");
             }
-            if (!args || args.instanceType === undefined) {
+            if ((!args || args.instanceType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if (!args || args.networkType === undefined) {
+            if ((!args || args.networkType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkType'");
             }
-            if (!args || args.port === undefined) {
+            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'port'");
             }
-            if (!args || args.queryTimeout === undefined) {
+            if ((!args || args.queryTimeout === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'queryTimeout'");
             }
-            if (!args || args.safeRule === undefined) {
+            if ((!args || args.safeRule === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'safeRule'");
             }
             inputs["dataLinkName"] = args ? args.dataLinkName : undefined;

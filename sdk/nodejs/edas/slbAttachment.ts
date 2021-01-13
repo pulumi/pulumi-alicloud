@@ -110,16 +110,16 @@ export class SlbAttachment extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as SlbAttachmentArgs | undefined;
-            if (!args || args.appId === undefined) {
+            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'appId'");
             }
-            if (!args || args.slbId === undefined) {
+            if ((!args || args.slbId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'slbId'");
             }
-            if (!args || args.slbIp === undefined) {
+            if ((!args || args.slbIp === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'slbIp'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["appId"] = args ? args.appId : undefined;

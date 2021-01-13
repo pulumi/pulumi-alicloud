@@ -57,19 +57,19 @@ class RouteEntry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if next_hop is None:
+            if next_hop is None and not opts.urn:
                 raise TypeError("Missing required property 'next_hop'")
             __props__['next_hop'] = next_hop
-            if publish_vpc is None:
+            if publish_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'publish_vpc'")
             __props__['publish_vpc'] = publish_vpc
-            if route_dest is None:
+            if route_dest is None and not opts.urn:
                 raise TypeError("Missing required property 'route_dest'")
             __props__['route_dest'] = route_dest
-            if vpn_gateway_id is None:
+            if vpn_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpn_gateway_id'")
             __props__['vpn_gateway_id'] = vpn_gateway_id
-            if weight is None:
+            if weight is None and not opts.urn:
                 raise TypeError("Missing required property 'weight'")
             __props__['weight'] = weight
         super(RouteEntry, __self__).__init__(

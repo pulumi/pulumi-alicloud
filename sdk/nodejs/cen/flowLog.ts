@@ -121,13 +121,13 @@ export class FlowLog extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as FlowLogArgs | undefined;
-            if (!args || args.cenId === undefined) {
+            if ((!args || args.cenId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if (!args || args.logStoreName === undefined) {
+            if ((!args || args.logStoreName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'logStoreName'");
             }
-            if (!args || args.projectName === undefined) {
+            if ((!args || args.projectName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectName'");
             }
             inputs["cenId"] = args ? args.cenId : undefined;

@@ -120,7 +120,7 @@ export class ScalingRule extends pulumi.CustomResource {
             inputs["targetValue"] = state ? state.targetValue : undefined;
         } else {
             const args = argsOrState as ScalingRuleArgs | undefined;
-            if (!args || args.scalingGroupId === undefined) {
+            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
             inputs["adjustmentType"] = args ? args.adjustmentType : undefined;

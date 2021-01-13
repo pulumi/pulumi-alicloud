@@ -68,15 +68,15 @@ class Role(pulumi.CustomResource):
             __props__['force'] = force
             __props__['max_session_duration'] = max_session_duration
             __props__['name'] = name
-            if ram_users is not None:
+            if ram_users is not None and not opts.urn:
                 warnings.warn("""Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
                 pulumi.log.warn("ram_users is deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
             __props__['ram_users'] = ram_users
-            if services is not None:
+            if services is not None and not opts.urn:
                 warnings.warn("""Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
                 pulumi.log.warn("services is deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
             __props__['services'] = services
-            if version is not None:
+            if version is not None and not opts.urn:
                 warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
                 pulumi.log.warn("version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
             __props__['version'] = version

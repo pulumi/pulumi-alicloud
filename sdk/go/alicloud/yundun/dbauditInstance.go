@@ -74,17 +74,18 @@ type DBAuditInstance struct {
 // NewDBAuditInstance registers a new resource with the given unique name, arguments, and options.
 func NewDBAuditInstance(ctx *pulumi.Context,
 	name string, args *DBAuditInstanceArgs, opts ...pulumi.ResourceOption) (*DBAuditInstance, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.PlanCode == nil {
-		return nil, errors.New("missing required argument 'PlanCode'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &DBAuditInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.PlanCode == nil {
+		return nil, errors.New("invalid value for required argument 'PlanCode'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource DBAuditInstance
 	err := ctx.RegisterResource("alicloud:yundun/dBAuditInstance:DBAuditInstance", name, args, &resource, opts...)

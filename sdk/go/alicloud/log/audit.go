@@ -105,14 +105,15 @@ type Audit struct {
 // NewAudit registers a new resource with the given unique name, arguments, and options.
 func NewAudit(ctx *pulumi.Context,
 	name string, args *AuditArgs, opts ...pulumi.ResourceOption) (*Audit, error) {
-	if args == nil || args.Aliuid == nil {
-		return nil, errors.New("missing required argument 'Aliuid'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
 	if args == nil {
-		args = &AuditArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Aliuid == nil {
+		return nil, errors.New("invalid value for required argument 'Aliuid'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	var resource Audit
 	err := ctx.RegisterResource("alicloud:log/audit:Audit", name, args, &resource, opts...)

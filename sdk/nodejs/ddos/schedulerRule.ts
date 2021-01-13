@@ -132,13 +132,13 @@ export class SchedulerRule extends pulumi.CustomResource {
             inputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as SchedulerRuleArgs | undefined;
-            if (!args || args.ruleName === undefined) {
+            if ((!args || args.ruleName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            if (!args || args.ruleType === undefined) {
+            if ((!args || args.ruleType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ruleType'");
             }
-            if (!args || args.rules === undefined) {
+            if ((!args || args.rules === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'rules'");
             }
             inputs["param"] = args ? args.param : undefined;

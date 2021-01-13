@@ -32,11 +32,12 @@ type HAVip struct {
 // NewHAVip registers a new resource with the given unique name, arguments, and options.
 func NewHAVip(ctx *pulumi.Context,
 	name string, args *HAVipArgs, opts ...pulumi.ResourceOption) (*HAVip, error) {
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &HAVipArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource HAVip
 	err := ctx.RegisterResource("alicloud:vpc/hAVip:HAVip", name, args, &resource, opts...)

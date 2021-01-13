@@ -91,19 +91,19 @@ export class LogTailConfig extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as LogTailConfigArgs | undefined;
-            if (!args || args.inputDetail === undefined) {
+            if ((!args || args.inputDetail === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'inputDetail'");
             }
-            if (!args || args.inputType === undefined) {
+            if ((!args || args.inputType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'inputType'");
             }
-            if (!args || args.logstore === undefined) {
+            if ((!args || args.logstore === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'logstore'");
             }
-            if (!args || args.outputType === undefined) {
+            if ((!args || args.outputType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'outputType'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["inputDetail"] = args ? args.inputDetail : undefined;

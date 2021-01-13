@@ -72,17 +72,17 @@ class SlbAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if app_id is None:
+            if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
             __props__['app_id'] = app_id
             __props__['listener_port'] = listener_port
-            if slb_id is None:
+            if slb_id is None and not opts.urn:
                 raise TypeError("Missing required property 'slb_id'")
             __props__['slb_id'] = slb_id
-            if slb_ip is None:
+            if slb_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'slb_ip'")
             __props__['slb_ip'] = slb_ip
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['vserver_group_id'] = vserver_group_id

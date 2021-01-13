@@ -70,7 +70,7 @@ class Store(pulumi.CustomResource):
             __props__['enable_web_tracking'] = enable_web_tracking
             __props__['max_split_shard_count'] = max_split_shard_count
             __props__['name'] = name
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['retention_period'] = retention_period

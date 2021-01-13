@@ -140,6 +140,7 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	if args == nil {
 		args = &LoadBalancerArgs{}
 	}
+
 	var resource LoadBalancer
 	err := ctx.RegisterResource("alicloud:slb/loadBalancer:LoadBalancer", name, args, &resource, opts...)
 	if err != nil {

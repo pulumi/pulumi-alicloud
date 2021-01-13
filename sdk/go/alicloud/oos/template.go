@@ -93,14 +93,15 @@ type Template struct {
 // NewTemplate registers a new resource with the given unique name, arguments, and options.
 func NewTemplate(ctx *pulumi.Context,
 	name string, args *TemplateArgs, opts ...pulumi.ResourceOption) (*Template, error) {
-	if args == nil || args.Content == nil {
-		return nil, errors.New("missing required argument 'Content'")
-	}
-	if args == nil || args.TemplateName == nil {
-		return nil, errors.New("missing required argument 'TemplateName'")
-	}
 	if args == nil {
-		args = &TemplateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Content == nil {
+		return nil, errors.New("invalid value for required argument 'Content'")
+	}
+	if args.TemplateName == nil {
+		return nil, errors.New("invalid value for required argument 'TemplateName'")
 	}
 	var resource Template
 	err := ctx.RegisterResource("alicloud:oos/template:Template", name, args, &resource, opts...)

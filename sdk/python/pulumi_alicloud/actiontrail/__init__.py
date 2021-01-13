@@ -13,3 +13,29 @@ from .get_trails_deprecated import *
 from .trail import *
 from .trail_deprecated import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:actiontrail/trail:Trail":
+                return Trail(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:actiontrail/trailDeprecated:TrailDeprecated":
+                return TrailDeprecated(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "actiontrail/trail", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "actiontrail/trailDeprecated", _module_instance)
+
+_register_module()

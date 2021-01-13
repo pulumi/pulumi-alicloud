@@ -42,17 +42,18 @@ type Order struct {
 // NewOrder registers a new resource with the given unique name, arguments, and options.
 func NewOrder(ctx *pulumi.Context,
 	name string, args *OrderArgs, opts ...pulumi.ResourceOption) (*Order, error) {
-	if args == nil || args.PackageVersion == nil {
-		return nil, errors.New("missing required argument 'PackageVersion'")
-	}
-	if args == nil || args.PricingCycle == nil {
-		return nil, errors.New("missing required argument 'PricingCycle'")
-	}
-	if args == nil || args.ProductCode == nil {
-		return nil, errors.New("missing required argument 'ProductCode'")
-	}
 	if args == nil {
-		args = &OrderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PackageVersion == nil {
+		return nil, errors.New("invalid value for required argument 'PackageVersion'")
+	}
+	if args.PricingCycle == nil {
+		return nil, errors.New("invalid value for required argument 'PricingCycle'")
+	}
+	if args.ProductCode == nil {
+		return nil, errors.New("invalid value for required argument 'ProductCode'")
 	}
 	var resource Order
 	err := ctx.RegisterResource("alicloud:marketplace/order:Order", name, args, &resource, opts...)

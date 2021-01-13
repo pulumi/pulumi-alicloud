@@ -84,7 +84,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
             utilization=var["utilization"],
             cool_down_duration=var["cool_down_duration"],
             defer_scale_in_duration=var["defer_scale_in_duration"],
-            opts=ResourceOptions(depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     alicloud_ess_scaling_group["defalut"],
                     default_scaling_configuration,
                 ]))
@@ -118,18 +118,18 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
-            if cool_down_duration is None:
+            if cool_down_duration is None and not opts.urn:
                 raise TypeError("Missing required property 'cool_down_duration'")
             __props__['cool_down_duration'] = cool_down_duration
-            if defer_scale_in_duration is None:
+            if defer_scale_in_duration is None and not opts.urn:
                 raise TypeError("Missing required property 'defer_scale_in_duration'")
             __props__['defer_scale_in_duration'] = defer_scale_in_duration
             __props__['nodepools'] = nodepools
             __props__['use_ecs_ram_role_token'] = use_ecs_ram_role_token
-            if utilization is None:
+            if utilization is None and not opts.urn:
                 raise TypeError("Missing required property 'utilization'")
             __props__['utilization'] = utilization
         super(KubernetesAutoscaler, __self__).__init__(

@@ -40,11 +40,12 @@ type SslVpnClientCert struct {
 // NewSslVpnClientCert registers a new resource with the given unique name, arguments, and options.
 func NewSslVpnClientCert(ctx *pulumi.Context,
 	name string, args *SslVpnClientCertArgs, opts ...pulumi.ResourceOption) (*SslVpnClientCert, error) {
-	if args == nil || args.SslVpnServerId == nil {
-		return nil, errors.New("missing required argument 'SslVpnServerId'")
-	}
 	if args == nil {
-		args = &SslVpnClientCertArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.SslVpnServerId == nil {
+		return nil, errors.New("invalid value for required argument 'SslVpnServerId'")
 	}
 	var resource SslVpnClientCert
 	err := ctx.RegisterResource("alicloud:vpn/sslVpnClientCert:SslVpnClientCert", name, args, &resource, opts...)

@@ -88,12 +88,12 @@ class Role(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if assume_role_policy_document is None:
+            if assume_role_policy_document is None and not opts.urn:
                 raise TypeError("Missing required property 'assume_role_policy_document'")
             __props__['assume_role_policy_document'] = assume_role_policy_document
             __props__['description'] = description
             __props__['max_session_duration'] = max_session_duration
-            if role_name is None:
+            if role_name is None and not opts.urn:
                 raise TypeError("Missing required property 'role_name'")
             __props__['role_name'] = role_name
             __props__['arn'] = None

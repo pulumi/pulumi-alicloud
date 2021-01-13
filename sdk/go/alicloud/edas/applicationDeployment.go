@@ -60,17 +60,18 @@ type ApplicationDeployment struct {
 // NewApplicationDeployment registers a new resource with the given unique name, arguments, and options.
 func NewApplicationDeployment(ctx *pulumi.Context,
 	name string, args *ApplicationDeploymentArgs, opts ...pulumi.ResourceOption) (*ApplicationDeployment, error) {
-	if args == nil || args.AppId == nil {
-		return nil, errors.New("missing required argument 'AppId'")
-	}
-	if args == nil || args.GroupId == nil {
-		return nil, errors.New("missing required argument 'GroupId'")
-	}
-	if args == nil || args.WarUrl == nil {
-		return nil, errors.New("missing required argument 'WarUrl'")
-	}
 	if args == nil {
-		args = &ApplicationDeploymentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
+	}
+	if args.GroupId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupId'")
+	}
+	if args.WarUrl == nil {
+		return nil, errors.New("invalid value for required argument 'WarUrl'")
 	}
 	var resource ApplicationDeployment
 	err := ctx.RegisterResource("alicloud:edas/applicationDeployment:ApplicationDeployment", name, args, &resource, opts...)

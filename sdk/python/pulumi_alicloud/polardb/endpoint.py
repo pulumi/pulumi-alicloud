@@ -95,11 +95,11 @@ class Endpoint(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['auto_add_new_nodes'] = auto_add_new_nodes
-            if db_cluster_id is None:
+            if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__['db_cluster_id'] = db_cluster_id
             __props__['endpoint_config'] = endpoint_config
-            if endpoint_type is None:
+            if endpoint_type is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_type'")
             __props__['endpoint_type'] = endpoint_type
             __props__['nodes'] = nodes

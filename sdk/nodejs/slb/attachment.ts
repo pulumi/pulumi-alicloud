@@ -86,10 +86,10 @@ export class Attachment extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as AttachmentArgs | undefined;
-            if (!args || args.instanceIds === undefined) {
+            if ((!args || args.instanceIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if (!args || args.loadBalancerId === undefined) {
+            if ((!args || args.loadBalancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
             inputs["backendServers"] = args ? args.backendServers : undefined;

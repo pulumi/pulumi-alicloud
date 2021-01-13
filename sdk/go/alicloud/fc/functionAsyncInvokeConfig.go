@@ -131,14 +131,15 @@ type FunctionAsyncInvokeConfig struct {
 // NewFunctionAsyncInvokeConfig registers a new resource with the given unique name, arguments, and options.
 func NewFunctionAsyncInvokeConfig(ctx *pulumi.Context,
 	name string, args *FunctionAsyncInvokeConfigArgs, opts ...pulumi.ResourceOption) (*FunctionAsyncInvokeConfig, error) {
-	if args == nil || args.FunctionName == nil {
-		return nil, errors.New("missing required argument 'FunctionName'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &FunctionAsyncInvokeConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FunctionName == nil {
+		return nil, errors.New("invalid value for required argument 'FunctionName'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource FunctionAsyncInvokeConfig
 	err := ctx.RegisterResource("alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig", name, args, &resource, opts...)

@@ -27,3 +27,59 @@ from .route_map import *
 from .route_service import *
 from .vbr_health_check import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:cen/bandwidthLimit:BandwidthLimit":
+                return BandwidthLimit(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/bandwidthPackage:BandwidthPackage":
+                return BandwidthPackage(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment":
+                return BandwidthPackageAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/flowLog:FlowLog":
+                return FlowLog(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/instance:Instance":
+                return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/instanceAttachment:InstanceAttachment":
+                return InstanceAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/instanceGrant:InstanceGrant":
+                return InstanceGrant(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/privateZone:PrivateZone":
+                return PrivateZone(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/routeEntry:RouteEntry":
+                return RouteEntry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/routeMap:RouteMap":
+                return RouteMap(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/routeService:RouteService":
+                return RouteService(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/vbrHealthCheck:VbrHealthCheck":
+                return VbrHealthCheck(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "cen/bandwidthLimit", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/bandwidthPackage", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/bandwidthPackageAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/flowLog", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/instance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/instanceAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/instanceGrant", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/privateZone", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/routeEntry", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/routeMap", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/routeService", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/vbrHealthCheck", _module_instance)
+
+_register_module()

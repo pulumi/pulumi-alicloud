@@ -78,17 +78,18 @@ type ClientUser struct {
 // NewClientUser registers a new resource with the given unique name, arguments, and options.
 func NewClientUser(ctx *pulumi.Context,
 	name string, args *ClientUserArgs, opts ...pulumi.ResourceOption) (*ClientUser, error) {
-	if args == nil || args.Bandwidth == nil {
-		return nil, errors.New("missing required argument 'Bandwidth'")
-	}
-	if args == nil || args.SagId == nil {
-		return nil, errors.New("missing required argument 'SagId'")
-	}
-	if args == nil || args.UserMail == nil {
-		return nil, errors.New("missing required argument 'UserMail'")
-	}
 	if args == nil {
-		args = &ClientUserArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bandwidth == nil {
+		return nil, errors.New("invalid value for required argument 'Bandwidth'")
+	}
+	if args.SagId == nil {
+		return nil, errors.New("invalid value for required argument 'SagId'")
+	}
+	if args.UserMail == nil {
+		return nil, errors.New("invalid value for required argument 'UserMail'")
 	}
 	var resource ClientUser
 	err := ctx.RegisterResource("alicloud:rocketmq/clientUser:ClientUser", name, args, &resource, opts...)

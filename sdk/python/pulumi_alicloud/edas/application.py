@@ -73,11 +73,11 @@ class Application(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if application_name is None:
+            if application_name is None and not opts.urn:
                 raise TypeError("Missing required property 'application_name'")
             __props__['application_name'] = application_name
             __props__['build_pack_id'] = build_pack_id
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['descriotion'] = descriotion
@@ -85,7 +85,7 @@ class Application(pulumi.CustomResource):
             __props__['group_id'] = group_id
             __props__['health_check_url'] = health_check_url
             __props__['logical_region_id'] = logical_region_id
-            if package_type is None:
+            if package_type is None and not opts.urn:
                 raise TypeError("Missing required property 'package_type'")
             __props__['package_type'] = package_type
             __props__['package_version'] = package_version

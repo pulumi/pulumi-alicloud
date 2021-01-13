@@ -98,7 +98,7 @@ class ImageImport(pulumi.CustomResource):
 
             __props__['architecture'] = architecture
             __props__['description'] = description
-            if disk_device_mappings is None:
+            if disk_device_mappings is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_device_mappings'")
             __props__['disk_device_mappings'] = disk_device_mappings
             __props__['image_name'] = image_name

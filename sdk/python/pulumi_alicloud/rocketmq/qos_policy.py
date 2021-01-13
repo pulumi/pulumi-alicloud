@@ -101,27 +101,27 @@ class QosPolicy(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if dest_cidr is None:
+            if dest_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'dest_cidr'")
             __props__['dest_cidr'] = dest_cidr
-            if dest_port_range is None:
+            if dest_port_range is None and not opts.urn:
                 raise TypeError("Missing required property 'dest_port_range'")
             __props__['dest_port_range'] = dest_port_range
             __props__['end_time'] = end_time
-            if ip_protocol is None:
+            if ip_protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_protocol'")
             __props__['ip_protocol'] = ip_protocol
             __props__['name'] = name
-            if priority is None:
+            if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
             __props__['priority'] = priority
-            if qos_id is None:
+            if qos_id is None and not opts.urn:
                 raise TypeError("Missing required property 'qos_id'")
             __props__['qos_id'] = qos_id
-            if source_cidr is None:
+            if source_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'source_cidr'")
             __props__['source_cidr'] = source_cidr
-            if source_port_range is None:
+            if source_port_range is None and not opts.urn:
                 raise TypeError("Missing required property 'source_port_range'")
             __props__['source_port_range'] = source_port_range
             __props__['start_time'] = start_time

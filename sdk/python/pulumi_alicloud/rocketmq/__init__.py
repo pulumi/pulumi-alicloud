@@ -19,3 +19,56 @@ from .qos_policy import *
 from .snat_entry import *
 from .topic import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:rocketmq/acl:Acl":
+                return Acl(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:rocketmq/aclRule:AclRule":
+                return AclRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:rocketmq/clientUser:ClientUser":
+                return ClientUser(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:rocketmq/dnatEntry:DnatEntry":
+                return DnatEntry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:rocketmq/group:Group":
+                return Group(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:rocketmq/instance:Instance":
+                return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:rocketmq/qos:Qos":
+                return Qos(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:rocketmq/qosCar:QosCar":
+                return QosCar(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:rocketmq/qosPolicy:QosPolicy":
+                return QosPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:rocketmq/snatEntry:SnatEntry":
+                return SnatEntry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:rocketmq/topic:Topic":
+                return Topic(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "rocketmq/acl", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "rocketmq/aclRule", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "rocketmq/clientUser", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "rocketmq/dnatEntry", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "rocketmq/group", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "rocketmq/instance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "rocketmq/qos", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "rocketmq/qosCar", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "rocketmq/qosPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "rocketmq/snatEntry", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "rocketmq/topic", _module_instance)
+
+_register_module()

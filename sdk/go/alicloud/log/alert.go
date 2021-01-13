@@ -134,29 +134,30 @@ type Alert struct {
 // NewAlert registers a new resource with the given unique name, arguments, and options.
 func NewAlert(ctx *pulumi.Context,
 	name string, args *AlertArgs, opts ...pulumi.ResourceOption) (*Alert, error) {
-	if args == nil || args.AlertDisplayname == nil {
-		return nil, errors.New("missing required argument 'AlertDisplayname'")
-	}
-	if args == nil || args.AlertName == nil {
-		return nil, errors.New("missing required argument 'AlertName'")
-	}
-	if args == nil || args.Condition == nil {
-		return nil, errors.New("missing required argument 'Condition'")
-	}
-	if args == nil || args.Dashboard == nil {
-		return nil, errors.New("missing required argument 'Dashboard'")
-	}
-	if args == nil || args.NotificationLists == nil {
-		return nil, errors.New("missing required argument 'NotificationLists'")
-	}
-	if args == nil || args.ProjectName == nil {
-		return nil, errors.New("missing required argument 'ProjectName'")
-	}
-	if args == nil || args.QueryLists == nil {
-		return nil, errors.New("missing required argument 'QueryLists'")
-	}
 	if args == nil {
-		args = &AlertArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AlertDisplayname == nil {
+		return nil, errors.New("invalid value for required argument 'AlertDisplayname'")
+	}
+	if args.AlertName == nil {
+		return nil, errors.New("invalid value for required argument 'AlertName'")
+	}
+	if args.Condition == nil {
+		return nil, errors.New("invalid value for required argument 'Condition'")
+	}
+	if args.Dashboard == nil {
+		return nil, errors.New("invalid value for required argument 'Dashboard'")
+	}
+	if args.NotificationLists == nil {
+		return nil, errors.New("invalid value for required argument 'NotificationLists'")
+	}
+	if args.ProjectName == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectName'")
+	}
+	if args.QueryLists == nil {
+		return nil, errors.New("invalid value for required argument 'QueryLists'")
 	}
 	var resource Alert
 	err := ctx.RegisterResource("alicloud:log/alert:Alert", name, args, &resource, opts...)

@@ -174,23 +174,24 @@ type Kubernetes struct {
 // NewKubernetes registers a new resource with the given unique name, arguments, and options.
 func NewKubernetes(ctx *pulumi.Context,
 	name string, args *KubernetesArgs, opts ...pulumi.ResourceOption) (*Kubernetes, error) {
-	if args == nil || args.MasterInstanceTypes == nil {
-		return nil, errors.New("missing required argument 'MasterInstanceTypes'")
-	}
-	if args == nil || args.MasterVswitchIds == nil {
-		return nil, errors.New("missing required argument 'MasterVswitchIds'")
-	}
-	if args == nil || args.WorkerInstanceTypes == nil {
-		return nil, errors.New("missing required argument 'WorkerInstanceTypes'")
-	}
-	if args == nil || args.WorkerNumber == nil {
-		return nil, errors.New("missing required argument 'WorkerNumber'")
-	}
-	if args == nil || args.WorkerVswitchIds == nil {
-		return nil, errors.New("missing required argument 'WorkerVswitchIds'")
-	}
 	if args == nil {
-		args = &KubernetesArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.MasterInstanceTypes == nil {
+		return nil, errors.New("invalid value for required argument 'MasterInstanceTypes'")
+	}
+	if args.MasterVswitchIds == nil {
+		return nil, errors.New("invalid value for required argument 'MasterVswitchIds'")
+	}
+	if args.WorkerInstanceTypes == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerInstanceTypes'")
+	}
+	if args.WorkerNumber == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerNumber'")
+	}
+	if args.WorkerVswitchIds == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerVswitchIds'")
 	}
 	var resource Kubernetes
 	err := ctx.RegisterResource("alicloud:cs/kubernetes:Kubernetes", name, args, &resource, opts...)

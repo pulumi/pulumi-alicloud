@@ -122,10 +122,10 @@ export class Endpoint extends pulumi.CustomResource {
             inputs["readWriteMode"] = state ? state.readWriteMode : undefined;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
-            if (!args || args.dbClusterId === undefined) {
+            if ((!args || args.dbClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if (!args || args.endpointType === undefined) {
+            if ((!args || args.endpointType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'endpointType'");
             }
             inputs["autoAddNewNodes"] = args ? args.autoAddNewNodes : undefined;

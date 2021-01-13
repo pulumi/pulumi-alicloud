@@ -82,6 +82,7 @@ func NewInstance(ctx *pulumi.Context,
 	if args == nil {
 		args = &InstanceArgs{}
 	}
+
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:rocketmq/instance:Instance", name, args, &resource, opts...)
 	if err != nil {

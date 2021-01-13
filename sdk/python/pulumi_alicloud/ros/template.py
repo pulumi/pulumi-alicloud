@@ -83,7 +83,7 @@ class Template(pulumi.CustomResource):
             __props__['description'] = description
             __props__['tags'] = tags
             __props__['template_body'] = template_body
-            if template_name is None:
+            if template_name is None and not opts.urn:
                 raise TypeError("Missing required property 'template_name'")
             __props__['template_name'] = template_name
             __props__['template_url'] = template_url

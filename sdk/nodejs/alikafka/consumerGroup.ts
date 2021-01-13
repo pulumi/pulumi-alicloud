@@ -111,10 +111,10 @@ export class ConsumerGroup extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ConsumerGroupArgs | undefined;
-            if (!args || args.consumerId === undefined) {
+            if ((!args || args.consumerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'consumerId'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["consumerId"] = args ? args.consumerId : undefined;

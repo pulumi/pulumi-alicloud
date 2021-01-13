@@ -109,7 +109,7 @@ class Topic(pulumi.CustomResource):
             __props__['comment'] = comment
             __props__['life_cycle'] = life_cycle
             __props__['name'] = name
-            if project_name is None:
+            if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
             __props__['project_name'] = project_name
             __props__['record_schema'] = record_schema

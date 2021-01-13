@@ -95,7 +95,7 @@ export class AlarmContactGroup extends pulumi.CustomResource {
             inputs["enableSubscribed"] = state ? state.enableSubscribed : undefined;
         } else {
             const args = argsOrState as AlarmContactGroupArgs | undefined;
-            if (!args || args.alarmContactGroupName === undefined) {
+            if ((!args || args.alarmContactGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'alarmContactGroupName'");
             }
             inputs["alarmContactGroupName"] = args ? args.alarmContactGroupName : undefined;

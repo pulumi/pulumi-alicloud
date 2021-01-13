@@ -126,7 +126,7 @@ export class ImageImport extends pulumi.CustomResource {
             inputs["platform"] = state ? state.platform : undefined;
         } else {
             const args = argsOrState as ImageImportArgs | undefined;
-            if (!args || args.diskDeviceMappings === undefined) {
+            if ((!args || args.diskDeviceMappings === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'diskDeviceMappings'");
             }
             inputs["architecture"] = args ? args.architecture : undefined;

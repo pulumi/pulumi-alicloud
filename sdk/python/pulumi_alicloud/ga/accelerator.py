@@ -86,10 +86,10 @@ class Accelerator(pulumi.CustomResource):
             __props__['accelerator_name'] = accelerator_name
             __props__['auto_use_coupon'] = auto_use_coupon
             __props__['description'] = description
-            if duration is None:
+            if duration is None and not opts.urn:
                 raise TypeError("Missing required property 'duration'")
             __props__['duration'] = duration
-            if spec is None:
+            if spec is None and not opts.urn:
                 raise TypeError("Missing required property 'spec'")
             __props__['spec'] = spec
             __props__['status'] = None

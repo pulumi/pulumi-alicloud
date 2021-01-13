@@ -14,3 +14,38 @@ from .group import *
 from .vpc_access import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:apigateway/api:Api":
+                return Api(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:apigateway/app:App":
+                return App(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:apigateway/appAttachment:AppAttachment":
+                return AppAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:apigateway/group:Group":
+                return Group(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:apigateway/vpcAccess:VpcAccess":
+                return VpcAccess(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "apigateway/api", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "apigateway/app", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "apigateway/appAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "apigateway/group", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "apigateway/vpcAccess", _module_instance)
+
+_register_module()

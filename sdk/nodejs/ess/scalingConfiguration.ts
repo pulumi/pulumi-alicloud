@@ -238,7 +238,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as ScalingConfigurationArgs | undefined;
-            if (!args || args.scalingGroupId === undefined) {
+            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
             inputs["active"] = args ? args.active : undefined;

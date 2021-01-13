@@ -97,20 +97,21 @@ type PrivateZone struct {
 // NewPrivateZone registers a new resource with the given unique name, arguments, and options.
 func NewPrivateZone(ctx *pulumi.Context,
 	name string, args *PrivateZoneArgs, opts ...pulumi.ResourceOption) (*PrivateZone, error) {
-	if args == nil || args.AccessRegionId == nil {
-		return nil, errors.New("missing required argument 'AccessRegionId'")
-	}
-	if args == nil || args.CenId == nil {
-		return nil, errors.New("missing required argument 'CenId'")
-	}
-	if args == nil || args.HostRegionId == nil {
-		return nil, errors.New("missing required argument 'HostRegionId'")
-	}
-	if args == nil || args.HostVpcId == nil {
-		return nil, errors.New("missing required argument 'HostVpcId'")
-	}
 	if args == nil {
-		args = &PrivateZoneArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccessRegionId == nil {
+		return nil, errors.New("invalid value for required argument 'AccessRegionId'")
+	}
+	if args.CenId == nil {
+		return nil, errors.New("invalid value for required argument 'CenId'")
+	}
+	if args.HostRegionId == nil {
+		return nil, errors.New("invalid value for required argument 'HostRegionId'")
+	}
+	if args.HostVpcId == nil {
+		return nil, errors.New("invalid value for required argument 'HostVpcId'")
 	}
 	var resource PrivateZone
 	err := ctx.RegisterResource("alicloud:cen/privateZone:PrivateZone", name, args, &resource, opts...)

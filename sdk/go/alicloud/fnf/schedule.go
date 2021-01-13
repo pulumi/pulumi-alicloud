@@ -88,17 +88,18 @@ type Schedule struct {
 // NewSchedule registers a new resource with the given unique name, arguments, and options.
 func NewSchedule(ctx *pulumi.Context,
 	name string, args *ScheduleArgs, opts ...pulumi.ResourceOption) (*Schedule, error) {
-	if args == nil || args.CronExpression == nil {
-		return nil, errors.New("missing required argument 'CronExpression'")
-	}
-	if args == nil || args.FlowName == nil {
-		return nil, errors.New("missing required argument 'FlowName'")
-	}
-	if args == nil || args.ScheduleName == nil {
-		return nil, errors.New("missing required argument 'ScheduleName'")
-	}
 	if args == nil {
-		args = &ScheduleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CronExpression == nil {
+		return nil, errors.New("invalid value for required argument 'CronExpression'")
+	}
+	if args.FlowName == nil {
+		return nil, errors.New("invalid value for required argument 'FlowName'")
+	}
+	if args.ScheduleName == nil {
+		return nil, errors.New("invalid value for required argument 'ScheduleName'")
 	}
 	var resource Schedule
 	err := ctx.RegisterResource("alicloud:fnf/schedule:Schedule", name, args, &resource, opts...)

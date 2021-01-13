@@ -91,15 +91,15 @@ class Secret(pulumi.CustomResource):
             __props__['encryption_key_id'] = encryption_key_id
             __props__['force_delete_without_recovery'] = force_delete_without_recovery
             __props__['recovery_window_in_days'] = recovery_window_in_days
-            if secret_data is None:
+            if secret_data is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_data'")
             __props__['secret_data'] = secret_data
             __props__['secret_data_type'] = secret_data_type
-            if secret_name is None:
+            if secret_name is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_name'")
             __props__['secret_name'] = secret_name
             __props__['tags'] = tags
-            if version_id is None:
+            if version_id is None and not opts.urn:
                 raise TypeError("Missing required property 'version_id'")
             __props__['version_id'] = version_id
             __props__['version_stages'] = version_stages

@@ -116,13 +116,13 @@ export class ClientUser extends pulumi.CustomResource {
             inputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as ClientUserArgs | undefined;
-            if (!args || args.bandwidth === undefined) {
+            if ((!args || args.bandwidth === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if (!args || args.sagId === undefined) {
+            if ((!args || args.sagId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sagId'");
             }
-            if (!args || args.userMail === undefined) {
+            if ((!args || args.userMail === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'userMail'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;

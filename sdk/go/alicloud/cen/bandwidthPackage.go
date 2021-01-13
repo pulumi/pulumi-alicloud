@@ -88,11 +88,12 @@ type BandwidthPackage struct {
 // NewBandwidthPackage registers a new resource with the given unique name, arguments, and options.
 func NewBandwidthPackage(ctx *pulumi.Context,
 	name string, args *BandwidthPackageArgs, opts ...pulumi.ResourceOption) (*BandwidthPackage, error) {
-	if args == nil || args.Bandwidth == nil {
-		return nil, errors.New("missing required argument 'Bandwidth'")
-	}
 	if args == nil {
-		args = &BandwidthPackageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bandwidth == nil {
+		return nil, errors.New("invalid value for required argument 'Bandwidth'")
 	}
 	var resource BandwidthPackage
 	err := ctx.RegisterResource("alicloud:cen/bandwidthPackage:BandwidthPackage", name, args, &resource, opts...)

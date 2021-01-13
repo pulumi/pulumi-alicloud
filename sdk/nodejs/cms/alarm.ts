@@ -200,16 +200,16 @@ export class Alarm extends pulumi.CustomResource {
             inputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as AlarmArgs | undefined;
-            if (!args || args.contactGroups === undefined) {
+            if ((!args || args.contactGroups === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'contactGroups'");
             }
-            if (!args || args.dimensions === undefined) {
+            if ((!args || args.dimensions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dimensions'");
             }
-            if (!args || args.metric === undefined) {
+            if ((!args || args.metric === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'metric'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["contactGroups"] = args ? args.contactGroups : undefined;

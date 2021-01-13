@@ -157,10 +157,10 @@ export class Domain extends pulumi.CustomResource {
             inputs["topLevelDomain"] = state ? state.topLevelDomain : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if (!args || args.domainName === undefined) {
+            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if (!args || args.sources === undefined) {
+            if ((!args || args.sources === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sources'");
             }
             inputs["certName"] = args ? args.certName : undefined;

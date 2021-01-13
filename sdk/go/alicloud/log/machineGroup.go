@@ -36,14 +36,15 @@ type MachineGroup struct {
 // NewMachineGroup registers a new resource with the given unique name, arguments, and options.
 func NewMachineGroup(ctx *pulumi.Context,
 	name string, args *MachineGroupArgs, opts ...pulumi.ResourceOption) (*MachineGroup, error) {
-	if args == nil || args.IdentifyLists == nil {
-		return nil, errors.New("missing required argument 'IdentifyLists'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &MachineGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IdentifyLists == nil {
+		return nil, errors.New("invalid value for required argument 'IdentifyLists'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource MachineGroup
 	err := ctx.RegisterResource("alicloud:log/machineGroup:MachineGroup", name, args, &resource, opts...)

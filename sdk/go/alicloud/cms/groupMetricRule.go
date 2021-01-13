@@ -66,29 +66,30 @@ type GroupMetricRule struct {
 // NewGroupMetricRule registers a new resource with the given unique name, arguments, and options.
 func NewGroupMetricRule(ctx *pulumi.Context,
 	name string, args *GroupMetricRuleArgs, opts ...pulumi.ResourceOption) (*GroupMetricRule, error) {
-	if args == nil || args.Category == nil {
-		return nil, errors.New("missing required argument 'Category'")
-	}
-	if args == nil || args.Escalations == nil {
-		return nil, errors.New("missing required argument 'Escalations'")
-	}
-	if args == nil || args.GroupId == nil {
-		return nil, errors.New("missing required argument 'GroupId'")
-	}
-	if args == nil || args.GroupMetricRuleName == nil {
-		return nil, errors.New("missing required argument 'GroupMetricRuleName'")
-	}
-	if args == nil || args.MetricName == nil {
-		return nil, errors.New("missing required argument 'MetricName'")
-	}
-	if args == nil || args.Namespace == nil {
-		return nil, errors.New("missing required argument 'Namespace'")
-	}
-	if args == nil || args.RuleId == nil {
-		return nil, errors.New("missing required argument 'RuleId'")
-	}
 	if args == nil {
-		args = &GroupMetricRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Category == nil {
+		return nil, errors.New("invalid value for required argument 'Category'")
+	}
+	if args.Escalations == nil {
+		return nil, errors.New("invalid value for required argument 'Escalations'")
+	}
+	if args.GroupId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupId'")
+	}
+	if args.GroupMetricRuleName == nil {
+		return nil, errors.New("invalid value for required argument 'GroupMetricRuleName'")
+	}
+	if args.MetricName == nil {
+		return nil, errors.New("invalid value for required argument 'MetricName'")
+	}
+	if args.Namespace == nil {
+		return nil, errors.New("invalid value for required argument 'Namespace'")
+	}
+	if args.RuleId == nil {
+		return nil, errors.New("invalid value for required argument 'RuleId'")
 	}
 	var resource GroupMetricRule
 	err := ctx.RegisterResource("alicloud:cms/groupMetricRule:GroupMetricRule", name, args, &resource, opts...)

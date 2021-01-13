@@ -34,17 +34,18 @@ type BackupPolicy struct {
 // NewBackupPolicy registers a new resource with the given unique name, arguments, and options.
 func NewBackupPolicy(ctx *pulumi.Context,
 	name string, args *BackupPolicyArgs, opts ...pulumi.ResourceOption) (*BackupPolicy, error) {
-	if args == nil || args.DbClusterId == nil {
-		return nil, errors.New("missing required argument 'DbClusterId'")
-	}
-	if args == nil || args.PreferredBackupPeriods == nil {
-		return nil, errors.New("missing required argument 'PreferredBackupPeriods'")
-	}
-	if args == nil || args.PreferredBackupTime == nil {
-		return nil, errors.New("missing required argument 'PreferredBackupTime'")
-	}
 	if args == nil {
-		args = &BackupPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DbClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'DbClusterId'")
+	}
+	if args.PreferredBackupPeriods == nil {
+		return nil, errors.New("invalid value for required argument 'PreferredBackupPeriods'")
+	}
+	if args.PreferredBackupTime == nil {
+		return nil, errors.New("invalid value for required argument 'PreferredBackupTime'")
 	}
 	var resource BackupPolicy
 	err := ctx.RegisterResource("alicloud:adb/backupPolicy:BackupPolicy", name, args, &resource, opts...)

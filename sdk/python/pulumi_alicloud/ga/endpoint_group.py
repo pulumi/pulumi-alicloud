@@ -117,14 +117,14 @@ class EndpointGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if accelerator_id is None:
+            if accelerator_id is None and not opts.urn:
                 raise TypeError("Missing required property 'accelerator_id'")
             __props__['accelerator_id'] = accelerator_id
             __props__['description'] = description
-            if endpoint_configurations is None:
+            if endpoint_configurations is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_configurations'")
             __props__['endpoint_configurations'] = endpoint_configurations
-            if endpoint_group_region is None:
+            if endpoint_group_region is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_group_region'")
             __props__['endpoint_group_region'] = endpoint_group_region
             __props__['endpoint_group_type'] = endpoint_group_type
@@ -133,7 +133,7 @@ class EndpointGroup(pulumi.CustomResource):
             __props__['health_check_path'] = health_check_path
             __props__['health_check_port'] = health_check_port
             __props__['health_check_protocol'] = health_check_protocol
-            if listener_id is None:
+            if listener_id is None and not opts.urn:
                 raise TypeError("Missing required property 'listener_id'")
             __props__['listener_id'] = listener_id
             __props__['name'] = name

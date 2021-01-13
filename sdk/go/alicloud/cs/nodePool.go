@@ -73,17 +73,18 @@ type NodePool struct {
 // NewNodePool registers a new resource with the given unique name, arguments, and options.
 func NewNodePool(ctx *pulumi.Context,
 	name string, args *NodePoolArgs, opts ...pulumi.ResourceOption) (*NodePool, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.InstanceTypes == nil {
-		return nil, errors.New("missing required argument 'InstanceTypes'")
-	}
-	if args == nil || args.VswitchIds == nil {
-		return nil, errors.New("missing required argument 'VswitchIds'")
-	}
 	if args == nil {
-		args = &NodePoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.InstanceTypes == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceTypes'")
+	}
+	if args.VswitchIds == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchIds'")
 	}
 	var resource NodePool
 	err := ctx.RegisterResource("alicloud:cs/nodePool:NodePool", name, args, &resource, opts...)

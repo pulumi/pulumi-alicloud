@@ -87,7 +87,7 @@ export class KeyVersion extends pulumi.CustomResource {
             inputs["keyVersionId"] = state ? state.keyVersionId : undefined;
         } else {
             const args = argsOrState as KeyVersionArgs | undefined;
-            if (!args || args.keyId === undefined) {
+            if ((!args || args.keyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'keyId'");
             }
             inputs["keyId"] = args ? args.keyId : undefined;

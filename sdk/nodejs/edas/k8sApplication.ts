@@ -260,10 +260,10 @@ export class K8sApplication extends pulumi.CustomResource {
             inputs["webContainer"] = state ? state.webContainer : undefined;
         } else {
             const args = argsOrState as K8sApplicationArgs | undefined;
-            if (!args || args.applicationName === undefined) {
+            if ((!args || args.applicationName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'applicationName'");
             }
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["applicationDescriotion"] = args ? args.applicationDescriotion : undefined;

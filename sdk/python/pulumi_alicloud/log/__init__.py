@@ -15,3 +15,50 @@ from .store import *
 from .store_index import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:log/alert:Alert":
+                return Alert(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:log/audit:Audit":
+                return Audit(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:log/dashboard:Dashboard":
+                return Dashboard(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:log/logTailAttachment:LogTailAttachment":
+                return LogTailAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:log/logTailConfig:LogTailConfig":
+                return LogTailConfig(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:log/machineGroup:MachineGroup":
+                return MachineGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:log/project:Project":
+                return Project(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:log/store:Store":
+                return Store(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:log/storeIndex:StoreIndex":
+                return StoreIndex(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "log/alert", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "log/audit", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "log/dashboard", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "log/logTailAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "log/logTailConfig", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "log/machineGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "log/project", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "log/store", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "log/storeIndex", _module_instance)
+
+_register_module()

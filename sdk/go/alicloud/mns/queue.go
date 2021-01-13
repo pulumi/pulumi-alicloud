@@ -40,6 +40,7 @@ func NewQueue(ctx *pulumi.Context,
 	if args == nil {
 		args = &QueueArgs{}
 	}
+
 	var resource Queue
 	err := ctx.RegisterResource("alicloud:mns/queue:Queue", name, args, &resource, opts...)
 	if err != nil {

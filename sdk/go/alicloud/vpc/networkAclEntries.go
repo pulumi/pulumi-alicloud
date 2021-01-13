@@ -125,11 +125,12 @@ type NetworkAclEntries struct {
 // NewNetworkAclEntries registers a new resource with the given unique name, arguments, and options.
 func NewNetworkAclEntries(ctx *pulumi.Context,
 	name string, args *NetworkAclEntriesArgs, opts ...pulumi.ResourceOption) (*NetworkAclEntries, error) {
-	if args == nil || args.NetworkAclId == nil {
-		return nil, errors.New("missing required argument 'NetworkAclId'")
-	}
 	if args == nil {
-		args = &NetworkAclEntriesArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NetworkAclId == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkAclId'")
 	}
 	var resource NetworkAclEntries
 	err := ctx.RegisterResource("alicloud:vpc/networkAclEntries:NetworkAclEntries", name, args, &resource, opts...)

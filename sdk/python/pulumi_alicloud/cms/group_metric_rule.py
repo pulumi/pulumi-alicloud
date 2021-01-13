@@ -87,32 +87,32 @@ class GroupMetricRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if category is None:
+            if category is None and not opts.urn:
                 raise TypeError("Missing required property 'category'")
             __props__['category'] = category
             __props__['contact_groups'] = contact_groups
             __props__['dimensions'] = dimensions
             __props__['effective_interval'] = effective_interval
             __props__['email_subject'] = email_subject
-            if escalations is None:
+            if escalations is None and not opts.urn:
                 raise TypeError("Missing required property 'escalations'")
             __props__['escalations'] = escalations
-            if group_id is None:
+            if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__['group_id'] = group_id
-            if group_metric_rule_name is None:
+            if group_metric_rule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'group_metric_rule_name'")
             __props__['group_metric_rule_name'] = group_metric_rule_name
             __props__['interval'] = interval
-            if metric_name is None:
+            if metric_name is None and not opts.urn:
                 raise TypeError("Missing required property 'metric_name'")
             __props__['metric_name'] = metric_name
-            if namespace is None:
+            if namespace is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace'")
             __props__['namespace'] = namespace
             __props__['no_effective_interval'] = no_effective_interval
             __props__['period'] = period
-            if rule_id is None:
+            if rule_id is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_id'")
             __props__['rule_id'] = rule_id
             __props__['silence_time'] = silence_time

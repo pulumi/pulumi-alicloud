@@ -106,19 +106,19 @@ class Table(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['deviation_cell_version_in_sec'] = deviation_cell_version_in_sec
-            if instance_name is None:
+            if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__['instance_name'] = instance_name
-            if max_version is None:
+            if max_version is None and not opts.urn:
                 raise TypeError("Missing required property 'max_version'")
             __props__['max_version'] = max_version
-            if primary_keys is None:
+            if primary_keys is None and not opts.urn:
                 raise TypeError("Missing required property 'primary_keys'")
             __props__['primary_keys'] = primary_keys
-            if table_name is None:
+            if table_name is None and not opts.urn:
                 raise TypeError("Missing required property 'table_name'")
             __props__['table_name'] = table_name
-            if time_to_live is None:
+            if time_to_live is None and not opts.urn:
                 raise TypeError("Missing required property 'time_to_live'")
             __props__['time_to_live'] = time_to_live
         super(Table, __self__).__init__(

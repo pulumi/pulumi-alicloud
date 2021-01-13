@@ -40,11 +40,12 @@ type RouteEntry struct {
 // NewRouteEntry registers a new resource with the given unique name, arguments, and options.
 func NewRouteEntry(ctx *pulumi.Context,
 	name string, args *RouteEntryArgs, opts ...pulumi.ResourceOption) (*RouteEntry, error) {
-	if args == nil || args.RouteTableId == nil {
-		return nil, errors.New("missing required argument 'RouteTableId'")
-	}
 	if args == nil {
-		args = &RouteEntryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RouteTableId == nil {
+		return nil, errors.New("invalid value for required argument 'RouteTableId'")
 	}
 	var resource RouteEntry
 	err := ctx.RegisterResource("alicloud:vpc/routeEntry:RouteEntry", name, args, &resource, opts...)

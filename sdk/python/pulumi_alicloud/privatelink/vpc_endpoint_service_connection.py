@@ -77,10 +77,10 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
 
             __props__['bandwidth'] = bandwidth
             __props__['dry_run'] = dry_run
-            if endpoint_id is None:
+            if endpoint_id is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_id'")
             __props__['endpoint_id'] = endpoint_id
-            if service_id is None:
+            if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__['service_id'] = service_id
             __props__['status'] = None

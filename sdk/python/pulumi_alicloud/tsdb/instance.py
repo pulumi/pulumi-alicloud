@@ -123,16 +123,16 @@ class Instance(pulumi.CustomResource):
             __props__['duration'] = duration
             __props__['engine_type'] = engine_type
             __props__['instance_alias'] = instance_alias
-            if instance_class is None:
+            if instance_class is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_class'")
             __props__['instance_class'] = instance_class
-            if instance_storage is None:
+            if instance_storage is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_storage'")
             __props__['instance_storage'] = instance_storage
-            if payment_type is None:
+            if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__['payment_type'] = payment_type
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id

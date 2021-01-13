@@ -44,9 +44,9 @@ class BandwidthLimit(pulumi.CustomResource):
         fra = pulumi.providers.Alicloud("fra", region="eu-central-1")
         sh = pulumi.providers.Alicloud("sh", region="cn-shanghai")
         vpc1 = alicloud.vpc.Network("vpc1", cidr_block="192.168.0.0/16",
-        opts=ResourceOptions(provider=alicloud["fra"]))
+        opts=pulumi.ResourceOptions(provider=alicloud["fra"]))
         vpc2 = alicloud.vpc.Network("vpc2", cidr_block="172.16.0.0/12",
-        opts=ResourceOptions(provider=alicloud["sh"]))
+        opts=pulumi.ResourceOptions(provider=alicloud["sh"]))
         cen = alicloud.cen.Instance("cen", description="tf-testAccCenBandwidthLimitConfigDescription")
         bwp = alicloud.cen.BandwidthPackage("bwp",
             bandwidth=5,
@@ -74,7 +74,7 @@ class BandwidthLimit(pulumi.CustomResource):
                 "cn-shanghai",
             ],
             bandwidth_limit=4,
-            opts=ResourceOptions(depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     bwp_attach,
                     vpc_attach1,
                     vpc_attach2,
@@ -112,13 +112,13 @@ class BandwidthLimit(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bandwidth_limit is None:
+            if bandwidth_limit is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth_limit'")
             __props__['bandwidth_limit'] = bandwidth_limit
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
-            if region_ids is None:
+            if region_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'region_ids'")
             __props__['region_ids'] = region_ids
         super(BandwidthLimit, __self__).__init__(

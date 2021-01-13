@@ -144,7 +144,7 @@ export class BackendServer extends pulumi.CustomResource {
             inputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
         } else {
             const args = argsOrState as BackendServerArgs | undefined;
-            if (!args || args.loadBalancerId === undefined) {
+            if ((!args || args.loadBalancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
             inputs["backendServers"] = args ? args.backendServers : undefined;

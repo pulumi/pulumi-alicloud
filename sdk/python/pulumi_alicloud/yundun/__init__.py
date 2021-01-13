@@ -8,3 +8,29 @@ from .db_audit_instance import *
 from .get_bastion_host_instances import *
 from .get_db_audit_instance import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:yundun/bastionHostInstance:BastionHostInstance":
+                return BastionHostInstance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:yundun/dBAuditInstance:DBAuditInstance":
+                return DBAuditInstance(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "yundun/bastionHostInstance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "yundun/dBAuditInstance", _module_instance)
+
+_register_module()

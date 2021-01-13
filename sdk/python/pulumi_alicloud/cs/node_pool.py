@@ -92,12 +92,12 @@ class NodePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['data_disks'] = data_disks
             __props__['image_id'] = image_id
-            if instance_types is None:
+            if instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_types'")
             __props__['instance_types'] = instance_types
             __props__['key_name'] = key_name
@@ -115,7 +115,7 @@ class NodePool(pulumi.CustomResource):
             __props__['tags'] = tags
             __props__['taints'] = taints
             __props__['user_data'] = user_data
-            if vswitch_ids is None:
+            if vswitch_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_ids'")
             __props__['vswitch_ids'] = vswitch_ids
             __props__['scaling_group_id'] = None

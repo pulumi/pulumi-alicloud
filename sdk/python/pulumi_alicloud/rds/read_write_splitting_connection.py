@@ -70,7 +70,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             instance_id=default_instance.id,
             connection_prefix="t-con-123",
             distribution_type="Standard",
-            opts=ResourceOptions(depends_on=[default_read_only_instance]))
+            opts=pulumi.ResourceOptions(depends_on=[default_read_only_instance]))
         ```
 
         > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
@@ -110,10 +110,10 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['connection_prefix'] = connection_prefix
-            if distribution_type is None:
+            if distribution_type is None and not opts.urn:
                 raise TypeError("Missing required property 'distribution_type'")
             __props__['distribution_type'] = distribution_type
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['max_delay_time'] = max_delay_time

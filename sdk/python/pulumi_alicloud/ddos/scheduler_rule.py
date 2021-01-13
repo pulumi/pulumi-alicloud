@@ -107,13 +107,13 @@ class SchedulerRule(pulumi.CustomResource):
 
             __props__['param'] = param
             __props__['resource_group_id'] = resource_group_id
-            if rule_name is None:
+            if rule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_name'")
             __props__['rule_name'] = rule_name
-            if rule_type is None:
+            if rule_type is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_type'")
             __props__['rule_type'] = rule_type
-            if rules is None:
+            if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
             __props__['rules'] = rules
             __props__['cname'] = None

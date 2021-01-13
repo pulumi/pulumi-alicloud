@@ -85,17 +85,17 @@ class InstanceAttachment(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['cen_owner_id'] = cen_owner_id
-            if child_instance_id is None:
+            if child_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'child_instance_id'")
             __props__['child_instance_id'] = child_instance_id
             __props__['child_instance_owner_id'] = child_instance_owner_id
-            if child_instance_region_id is None:
+            if child_instance_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'child_instance_region_id'")
             __props__['child_instance_region_id'] = child_instance_region_id
-            if child_instance_type is None:
+            if child_instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'child_instance_type'")
             __props__['child_instance_type'] = child_instance_type
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['status'] = None

@@ -69,7 +69,7 @@ class Folder(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if folder_name is None:
+            if folder_name is None and not opts.urn:
                 raise TypeError("Missing required property 'folder_name'")
             __props__['folder_name'] = folder_name
             __props__['parent_folder_id'] = parent_folder_id

@@ -92,10 +92,10 @@ export class NetworkAclAttachment extends pulumi.CustomResource {
             inputs["resources"] = state ? state.resources : undefined;
         } else {
             const args = argsOrState as NetworkAclAttachmentArgs | undefined;
-            if (!args || args.networkAclId === undefined) {
+            if ((!args || args.networkAclId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkAclId'");
             }
-            if (!args || args.resources === undefined) {
+            if ((!args || args.resources === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resources'");
             }
             inputs["networkAclId"] = args ? args.networkAclId : undefined;

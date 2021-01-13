@@ -63,6 +63,7 @@ func NewDomainGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &DomainGroupArgs{}
 	}
+
 	var resource DomainGroup
 	err := ctx.RegisterResource("alicloud:dns/domainGroup:DomainGroup", name, args, &resource, opts...)
 	if err != nil {

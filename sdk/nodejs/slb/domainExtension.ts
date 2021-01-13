@@ -177,16 +177,16 @@ export class DomainExtension extends pulumi.CustomResource {
             inputs["serverCertificateId"] = state ? state.serverCertificateId : undefined;
         } else {
             const args = argsOrState as DomainExtensionArgs | undefined;
-            if (!args || args.domain === undefined) {
+            if ((!args || args.domain === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domain'");
             }
-            if (!args || args.frontendPort === undefined) {
+            if ((!args || args.frontendPort === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'frontendPort'");
             }
-            if (!args || args.loadBalancerId === undefined) {
+            if ((!args || args.loadBalancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            if (!args || args.serverCertificateId === undefined) {
+            if ((!args || args.serverCertificateId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serverCertificateId'");
             }
             inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;

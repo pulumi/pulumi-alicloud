@@ -62,14 +62,14 @@ class TopicSubscription(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if endpoint is None:
+            if endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint'")
             __props__['endpoint'] = endpoint
             __props__['filter_tag'] = filter_tag
             __props__['name'] = name
             __props__['notify_content_format'] = notify_content_format
             __props__['notify_strategy'] = notify_strategy
-            if topic_name is None:
+            if topic_name is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_name'")
             __props__['topic_name'] = topic_name
         super(TopicSubscription, __self__).__init__(

@@ -103,11 +103,12 @@ type Stack struct {
 // NewStack registers a new resource with the given unique name, arguments, and options.
 func NewStack(ctx *pulumi.Context,
 	name string, args *StackArgs, opts ...pulumi.ResourceOption) (*Stack, error) {
-	if args == nil || args.StackName == nil {
-		return nil, errors.New("missing required argument 'StackName'")
-	}
 	if args == nil {
-		args = &StackArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.StackName == nil {
+		return nil, errors.New("invalid value for required argument 'StackName'")
 	}
 	var resource Stack
 	err := ctx.RegisterResource("alicloud:ros/stack:Stack", name, args, &resource, opts...)

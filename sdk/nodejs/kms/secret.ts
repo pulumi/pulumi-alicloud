@@ -137,13 +137,13 @@ export class Secret extends pulumi.CustomResource {
             inputs["versionStages"] = state ? state.versionStages : undefined;
         } else {
             const args = argsOrState as SecretArgs | undefined;
-            if (!args || args.secretData === undefined) {
+            if ((!args || args.secretData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'secretData'");
             }
-            if (!args || args.secretName === undefined) {
+            if ((!args || args.secretName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'secretName'");
             }
-            if (!args || args.versionId === undefined) {
+            if ((!args || args.versionId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'versionId'");
             }
             inputs["description"] = args ? args.description : undefined;

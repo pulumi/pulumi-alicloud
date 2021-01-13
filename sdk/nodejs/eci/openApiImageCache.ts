@@ -72,16 +72,16 @@ export class OpenApiImageCache extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as OpenApiImageCacheArgs | undefined;
-            if (!args || args.imageCacheName === undefined) {
+            if ((!args || args.imageCacheName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'imageCacheName'");
             }
-            if (!args || args.images === undefined) {
+            if ((!args || args.images === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'images'");
             }
-            if (!args || args.securityGroupId === undefined) {
+            if ((!args || args.securityGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if (!args || args.vswitchId === undefined) {
+            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;

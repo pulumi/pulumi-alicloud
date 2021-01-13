@@ -94,13 +94,13 @@ export class SnatEntry extends pulumi.CustomResource {
             inputs["snatIp"] = state ? state.snatIp : undefined;
         } else {
             const args = argsOrState as SnatEntryArgs | undefined;
-            if (!args || args.cidrBlock === undefined) {
+            if ((!args || args.cidrBlock === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if (!args || args.sagId === undefined) {
+            if ((!args || args.sagId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sagId'");
             }
-            if (!args || args.snatIp === undefined) {
+            if ((!args || args.snatIp === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'snatIp'");
             }
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;

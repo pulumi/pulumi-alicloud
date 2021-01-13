@@ -159,10 +159,10 @@ class ContainerGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if container_group_name is None:
+            if container_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'container_group_name'")
             __props__['container_group_name'] = container_group_name
-            if containers is None:
+            if containers is None and not opts.urn:
                 raise TypeError("Missing required property 'containers'")
             __props__['containers'] = containers
             __props__['cpu'] = cpu
@@ -175,12 +175,12 @@ class ContainerGroup(pulumi.CustomResource):
             __props__['ram_role_name'] = ram_role_name
             __props__['resource_group_id'] = resource_group_id
             __props__['restart_policy'] = restart_policy
-            if security_group_id is None:
+            if security_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_id'")
             __props__['security_group_id'] = security_group_id
             __props__['tags'] = tags
             __props__['volumes'] = volumes
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id

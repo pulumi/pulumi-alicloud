@@ -100,10 +100,10 @@ class Audit(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if aliuid is None:
+            if aliuid is None and not opts.urn:
                 raise TypeError("Missing required property 'aliuid'")
             __props__['aliuid'] = aliuid
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['multi_accounts'] = multi_accounts

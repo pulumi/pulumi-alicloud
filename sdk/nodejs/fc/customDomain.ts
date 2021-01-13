@@ -152,10 +152,10 @@ export class CustomDomain extends pulumi.CustomResource {
             inputs["routeConfigs"] = state ? state.routeConfigs : undefined;
         } else {
             const args = argsOrState as CustomDomainArgs | undefined;
-            if (!args || args.domainName === undefined) {
+            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
             inputs["certConfig"] = args ? args.certConfig : undefined;

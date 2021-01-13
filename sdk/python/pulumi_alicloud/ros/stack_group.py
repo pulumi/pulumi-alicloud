@@ -104,7 +104,7 @@ class StackGroup(pulumi.CustomResource):
             __props__['operation_preferences'] = operation_preferences
             __props__['parameters'] = parameters
             __props__['region_ids'] = region_ids
-            if stack_group_name is None:
+            if stack_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'stack_group_name'")
             __props__['stack_group_name'] = stack_group_name
             __props__['template_body'] = template_body

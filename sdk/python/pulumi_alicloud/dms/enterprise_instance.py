@@ -125,50 +125,50 @@ class EnterpriseInstance(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['data_link_name'] = data_link_name
-            if database_password is None:
+            if database_password is None and not opts.urn:
                 raise TypeError("Missing required property 'database_password'")
             __props__['database_password'] = database_password
-            if database_user is None:
+            if database_user is None and not opts.urn:
                 raise TypeError("Missing required property 'database_user'")
             __props__['database_user'] = database_user
             __props__['dba_id'] = dba_id
-            if dba_uid is None:
+            if dba_uid is None and not opts.urn:
                 raise TypeError("Missing required property 'dba_uid'")
             __props__['dba_uid'] = dba_uid
             __props__['ddl_online'] = ddl_online
             __props__['ecs_instance_id'] = ecs_instance_id
             __props__['ecs_region'] = ecs_region
-            if env_type is None:
+            if env_type is None and not opts.urn:
                 raise TypeError("Missing required property 'env_type'")
             __props__['env_type'] = env_type
-            if export_timeout is None:
+            if export_timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'export_timeout'")
             __props__['export_timeout'] = export_timeout
-            if host is None:
+            if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
             __props__['host'] = host
-            if instance_alias is not None:
+            if instance_alias is not None and not opts.urn:
                 warnings.warn("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.")
             __props__['instance_alias'] = instance_alias
             __props__['instance_id'] = instance_id
             __props__['instance_name'] = instance_name
-            if instance_source is None:
+            if instance_source is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_source'")
             __props__['instance_source'] = instance_source
-            if instance_type is None:
+            if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__['instance_type'] = instance_type
-            if network_type is None:
+            if network_type is None and not opts.urn:
                 raise TypeError("Missing required property 'network_type'")
             __props__['network_type'] = network_type
-            if port is None:
+            if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
             __props__['port'] = port
-            if query_timeout is None:
+            if query_timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'query_timeout'")
             __props__['query_timeout'] = query_timeout
-            if safe_rule is None:
+            if safe_rule is None and not opts.urn:
                 raise TypeError("Missing required property 'safe_rule'")
             __props__['safe_rule'] = safe_rule
             __props__['safe_rule_id'] = safe_rule_id

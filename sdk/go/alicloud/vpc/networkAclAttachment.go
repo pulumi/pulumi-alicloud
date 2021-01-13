@@ -91,14 +91,15 @@ type NetworkAclAttachment struct {
 // NewNetworkAclAttachment registers a new resource with the given unique name, arguments, and options.
 func NewNetworkAclAttachment(ctx *pulumi.Context,
 	name string, args *NetworkAclAttachmentArgs, opts ...pulumi.ResourceOption) (*NetworkAclAttachment, error) {
-	if args == nil || args.NetworkAclId == nil {
-		return nil, errors.New("missing required argument 'NetworkAclId'")
-	}
-	if args == nil || args.Resources == nil {
-		return nil, errors.New("missing required argument 'Resources'")
-	}
 	if args == nil {
-		args = &NetworkAclAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NetworkAclId == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkAclId'")
+	}
+	if args.Resources == nil {
+		return nil, errors.New("invalid value for required argument 'Resources'")
 	}
 	var resource NetworkAclAttachment
 	err := ctx.RegisterResource("alicloud:vpc/networkAclAttachment:NetworkAclAttachment", name, args, &resource, opts...)

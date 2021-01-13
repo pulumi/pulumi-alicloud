@@ -92,7 +92,7 @@ class Connection(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['connection_prefix'] = connection_prefix
-            if db_cluster_id is None:
+            if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__['db_cluster_id'] = db_cluster_id
             __props__['connection_string'] = None

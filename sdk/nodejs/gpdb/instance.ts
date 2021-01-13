@@ -143,10 +143,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.instanceClass === undefined) {
+            if ((!args || args.instanceClass === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceClass'");
             }
-            if (!args || args.instanceGroupCount === undefined) {
+            if ((!args || args.instanceGroupCount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceGroupCount'");
             }
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;

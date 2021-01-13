@@ -48,17 +48,18 @@ type SslVpnServer struct {
 // NewSslVpnServer registers a new resource with the given unique name, arguments, and options.
 func NewSslVpnServer(ctx *pulumi.Context,
 	name string, args *SslVpnServerArgs, opts ...pulumi.ResourceOption) (*SslVpnServer, error) {
-	if args == nil || args.ClientIpPool == nil {
-		return nil, errors.New("missing required argument 'ClientIpPool'")
-	}
-	if args == nil || args.LocalSubnet == nil {
-		return nil, errors.New("missing required argument 'LocalSubnet'")
-	}
-	if args == nil || args.VpnGatewayId == nil {
-		return nil, errors.New("missing required argument 'VpnGatewayId'")
-	}
 	if args == nil {
-		args = &SslVpnServerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClientIpPool == nil {
+		return nil, errors.New("invalid value for required argument 'ClientIpPool'")
+	}
+	if args.LocalSubnet == nil {
+		return nil, errors.New("invalid value for required argument 'LocalSubnet'")
+	}
+	if args.VpnGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'VpnGatewayId'")
 	}
 	var resource SslVpnServer
 	err := ctx.RegisterResource("alicloud:vpn/sslVpnServer:SslVpnServer", name, args, &resource, opts...)

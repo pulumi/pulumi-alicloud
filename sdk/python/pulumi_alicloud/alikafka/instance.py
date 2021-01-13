@@ -114,17 +114,17 @@ class Instance(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['config'] = config
-            if deploy_type is None:
+            if deploy_type is None and not opts.urn:
                 raise TypeError("Missing required property 'deploy_type'")
             __props__['deploy_type'] = deploy_type
-            if disk_size is None:
+            if disk_size is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_size'")
             __props__['disk_size'] = disk_size
-            if disk_type is None:
+            if disk_type is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_type'")
             __props__['disk_type'] = disk_type
             __props__['eip_max'] = eip_max
-            if io_max is None:
+            if io_max is None and not opts.urn:
                 raise TypeError("Missing required property 'io_max'")
             __props__['io_max'] = io_max
             __props__['name'] = name
@@ -133,10 +133,10 @@ class Instance(pulumi.CustomResource):
             __props__['service_version'] = service_version
             __props__['spec_type'] = spec_type
             __props__['tags'] = tags
-            if topic_quota is None:
+            if topic_quota is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_quota'")
             __props__['topic_quota'] = topic_quota
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['end_point'] = None

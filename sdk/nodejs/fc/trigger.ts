@@ -111,13 +111,13 @@ export class Trigger extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
-            if (!args || args.function === undefined) {
+            if ((!args || args.function === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'function'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["config"] = args ? args.config : undefined;

@@ -150,7 +150,7 @@ export class StackGroup extends pulumi.CustomResource {
             inputs["templateVersion"] = state ? state.templateVersion : undefined;
         } else {
             const args = argsOrState as StackGroupArgs | undefined;
-            if (!args || args.stackGroupName === undefined) {
+            if ((!args || args.stackGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'stackGroupName'");
             }
             inputs["accountIds"] = args ? args.accountIds : undefined;

@@ -75,30 +75,30 @@ class AclRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if acl_id is None:
+            if acl_id is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_id'")
             __props__['acl_id'] = acl_id
             __props__['description'] = description
-            if dest_cidr is None:
+            if dest_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'dest_cidr'")
             __props__['dest_cidr'] = dest_cidr
-            if dest_port_range is None:
+            if dest_port_range is None and not opts.urn:
                 raise TypeError("Missing required property 'dest_port_range'")
             __props__['dest_port_range'] = dest_port_range
-            if direction is None:
+            if direction is None and not opts.urn:
                 raise TypeError("Missing required property 'direction'")
             __props__['direction'] = direction
-            if ip_protocol is None:
+            if ip_protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_protocol'")
             __props__['ip_protocol'] = ip_protocol
-            if policy is None:
+            if policy is None and not opts.urn:
                 raise TypeError("Missing required property 'policy'")
             __props__['policy'] = policy
             __props__['priority'] = priority
-            if source_cidr is None:
+            if source_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'source_cidr'")
             __props__['source_cidr'] = source_cidr
-            if source_port_range is None:
+            if source_port_range is None and not opts.urn:
                 raise TypeError("Missing required property 'source_port_range'")
             __props__['source_port_range'] = source_port_range
         super(AclRule, __self__).__init__(

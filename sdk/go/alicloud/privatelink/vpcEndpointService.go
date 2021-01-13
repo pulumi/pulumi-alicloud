@@ -77,6 +77,7 @@ func NewVpcEndpointService(ctx *pulumi.Context,
 	if args == nil {
 		args = &VpcEndpointServiceArgs{}
 	}
+
 	var resource VpcEndpointService
 	err := ctx.RegisterResource("alicloud:privatelink/vpcEndpointService:VpcEndpointService", name, args, &resource, opts...)
 	if err != nil {

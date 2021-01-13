@@ -34,14 +34,15 @@ type PolicyVersion struct {
 // NewPolicyVersion registers a new resource with the given unique name, arguments, and options.
 func NewPolicyVersion(ctx *pulumi.Context,
 	name string, args *PolicyVersionArgs, opts ...pulumi.ResourceOption) (*PolicyVersion, error) {
-	if args == nil || args.PolicyDocument == nil {
-		return nil, errors.New("missing required argument 'PolicyDocument'")
-	}
-	if args == nil || args.PolicyName == nil {
-		return nil, errors.New("missing required argument 'PolicyName'")
-	}
 	if args == nil {
-		args = &PolicyVersionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PolicyDocument == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyDocument'")
+	}
+	if args.PolicyName == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyName'")
 	}
 	var resource PolicyVersion
 	err := ctx.RegisterResource("alicloud:resourcemanager/policyVersion:PolicyVersion", name, args, &resource, opts...)

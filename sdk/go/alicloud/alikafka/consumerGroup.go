@@ -105,14 +105,15 @@ type ConsumerGroup struct {
 // NewConsumerGroup registers a new resource with the given unique name, arguments, and options.
 func NewConsumerGroup(ctx *pulumi.Context,
 	name string, args *ConsumerGroupArgs, opts ...pulumi.ResourceOption) (*ConsumerGroup, error) {
-	if args == nil || args.ConsumerId == nil {
-		return nil, errors.New("missing required argument 'ConsumerId'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &ConsumerGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConsumerId == nil {
+		return nil, errors.New("invalid value for required argument 'ConsumerId'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource ConsumerGroup
 	err := ctx.RegisterResource("alicloud:alikafka/consumerGroup:ConsumerGroup", name, args, &resource, opts...)

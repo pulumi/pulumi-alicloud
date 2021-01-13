@@ -78,11 +78,12 @@ type EnterpriseUser struct {
 // NewEnterpriseUser registers a new resource with the given unique name, arguments, and options.
 func NewEnterpriseUser(ctx *pulumi.Context,
 	name string, args *EnterpriseUserArgs, opts ...pulumi.ResourceOption) (*EnterpriseUser, error) {
-	if args == nil || args.Uid == nil {
-		return nil, errors.New("missing required argument 'Uid'")
-	}
 	if args == nil {
-		args = &EnterpriseUserArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Uid == nil {
+		return nil, errors.New("invalid value for required argument 'Uid'")
 	}
 	var resource EnterpriseUser
 	err := ctx.RegisterResource("alicloud:dms/enterpriseUser:EnterpriseUser", name, args, &resource, opts...)

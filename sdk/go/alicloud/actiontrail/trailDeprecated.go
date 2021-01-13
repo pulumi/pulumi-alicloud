@@ -51,6 +51,7 @@ func NewTrailDeprecated(ctx *pulumi.Context,
 	if args == nil {
 		args = &TrailDeprecatedArgs{}
 	}
+
 	var resource TrailDeprecated
 	err := ctx.RegisterResource("alicloud:actiontrail/trailDeprecated:TrailDeprecated", name, args, &resource, opts...)
 	if err != nil {

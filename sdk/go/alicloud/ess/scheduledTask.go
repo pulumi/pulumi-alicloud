@@ -66,6 +66,7 @@ func NewScheduledTask(ctx *pulumi.Context,
 	if args == nil {
 		args = &ScheduledTaskArgs{}
 	}
+
 	var resource ScheduledTask
 	err := ctx.RegisterResource("alicloud:ess/scheduledTask:ScheduledTask", name, args, &resource, opts...)
 	if err != nil {

@@ -70,14 +70,15 @@ type LoginProfile struct {
 // NewLoginProfile registers a new resource with the given unique name, arguments, and options.
 func NewLoginProfile(ctx *pulumi.Context,
 	name string, args *LoginProfileArgs, opts ...pulumi.ResourceOption) (*LoginProfile, error) {
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
-	if args == nil || args.UserName == nil {
-		return nil, errors.New("missing required argument 'UserName'")
-	}
 	if args == nil {
-		args = &LoginProfileArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.UserName == nil {
+		return nil, errors.New("invalid value for required argument 'UserName'")
 	}
 	var resource LoginProfile
 	err := ctx.RegisterResource("alicloud:ram/loginProfile:LoginProfile", name, args, &resource, opts...)

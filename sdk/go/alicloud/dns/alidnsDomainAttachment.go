@@ -61,14 +61,15 @@ type AlidnsDomainAttachment struct {
 // NewAlidnsDomainAttachment registers a new resource with the given unique name, arguments, and options.
 func NewAlidnsDomainAttachment(ctx *pulumi.Context,
 	name string, args *AlidnsDomainAttachmentArgs, opts ...pulumi.ResourceOption) (*AlidnsDomainAttachment, error) {
-	if args == nil || args.DomainNames == nil {
-		return nil, errors.New("missing required argument 'DomainNames'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &AlidnsDomainAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DomainNames == nil {
+		return nil, errors.New("invalid value for required argument 'DomainNames'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource AlidnsDomainAttachment
 	err := ctx.RegisterResource("alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment", name, args, &resource, opts...)

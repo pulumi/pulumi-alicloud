@@ -78,14 +78,14 @@ class DiskAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if device_name is not None:
+            if device_name is not None and not opts.urn:
                 warnings.warn("""Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
                 pulumi.log.warn("device_name is deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.")
             __props__['device_name'] = device_name
-            if disk_id is None:
+            if disk_id is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_id'")
             __props__['disk_id'] = disk_id
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
         super(DiskAttachment, __self__).__init__(

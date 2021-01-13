@@ -77,14 +77,14 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cluster_name is None:
+            if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
             __props__['cluster_name'] = cluster_name
-            if cluster_type is None:
+            if cluster_type is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_type'")
             __props__['cluster_type'] = cluster_type
             __props__['logical_region_id'] = logical_region_id
-            if network_mode is None:
+            if network_mode is None and not opts.urn:
                 raise TypeError("Missing required property 'network_mode'")
             __props__['network_mode'] = network_mode
             __props__['vpc_id'] = vpc_id

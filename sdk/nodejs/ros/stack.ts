@@ -194,7 +194,7 @@ export class Stack extends pulumi.CustomResource {
             inputs["usePreviousParameters"] = state ? state.usePreviousParameters : undefined;
         } else {
             const args = argsOrState as StackArgs | undefined;
-            if (!args || args.stackName === undefined) {
+            if ((!args || args.stackName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'stackName'");
             }
             inputs["createOption"] = args ? args.createOption : undefined;

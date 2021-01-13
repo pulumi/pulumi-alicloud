@@ -111,13 +111,13 @@ export class NetworkGrant extends pulumi.CustomResource {
             inputs["cenUid"] = state ? state.cenUid : undefined;
         } else {
             const args = argsOrState as NetworkGrantArgs | undefined;
-            if (!args || args.ccnId === undefined) {
+            if ((!args || args.ccnId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ccnId'");
             }
-            if (!args || args.cenId === undefined) {
+            if ((!args || args.cenId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if (!args || args.cenUid === undefined) {
+            if ((!args || args.cenUid === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cenUid'");
             }
             inputs["ccnId"] = args ? args.ccnId : undefined;

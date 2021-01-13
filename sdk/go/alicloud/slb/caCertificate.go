@@ -40,11 +40,12 @@ type CaCertificate struct {
 // NewCaCertificate registers a new resource with the given unique name, arguments, and options.
 func NewCaCertificate(ctx *pulumi.Context,
 	name string, args *CaCertificateArgs, opts ...pulumi.ResourceOption) (*CaCertificate, error) {
-	if args == nil || args.CaCertificate == nil {
-		return nil, errors.New("missing required argument 'CaCertificate'")
-	}
 	if args == nil {
-		args = &CaCertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CaCertificate == nil {
+		return nil, errors.New("invalid value for required argument 'CaCertificate'")
 	}
 	var resource CaCertificate
 	err := ctx.RegisterResource("alicloud:slb/caCertificate:CaCertificate", name, args, &resource, opts...)

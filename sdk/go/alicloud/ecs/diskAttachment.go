@@ -86,14 +86,15 @@ type DiskAttachment struct {
 // NewDiskAttachment registers a new resource with the given unique name, arguments, and options.
 func NewDiskAttachment(ctx *pulumi.Context,
 	name string, args *DiskAttachmentArgs, opts ...pulumi.ResourceOption) (*DiskAttachment, error) {
-	if args == nil || args.DiskId == nil {
-		return nil, errors.New("missing required argument 'DiskId'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &DiskAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DiskId == nil {
+		return nil, errors.New("invalid value for required argument 'DiskId'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource DiskAttachment
 	err := ctx.RegisterResource("alicloud:ecs/diskAttachment:DiskAttachment", name, args, &resource, opts...)

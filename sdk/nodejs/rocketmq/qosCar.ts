@@ -137,13 +137,13 @@ export class QosCar extends pulumi.CustomResource {
             inputs["qosId"] = state ? state.qosId : undefined;
         } else {
             const args = argsOrState as QosCarArgs | undefined;
-            if (!args || args.limitType === undefined) {
+            if ((!args || args.limitType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'limitType'");
             }
-            if (!args || args.priority === undefined) {
+            if ((!args || args.priority === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'priority'");
             }
-            if (!args || args.qosId === undefined) {
+            if ((!args || args.qosId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'qosId'");
             }
             inputs["description"] = args ? args.description : undefined;

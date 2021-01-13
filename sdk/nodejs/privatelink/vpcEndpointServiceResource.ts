@@ -97,13 +97,13 @@ export class VpcEndpointServiceResource extends pulumi.CustomResource {
             inputs["serviceId"] = state ? state.serviceId : undefined;
         } else {
             const args = argsOrState as VpcEndpointServiceResourceArgs | undefined;
-            if (!args || args.resourceId === undefined) {
+            if ((!args || args.resourceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            if (!args || args.resourceType === undefined) {
+            if ((!args || args.resourceType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            if (!args || args.serviceId === undefined) {
+            if ((!args || args.serviceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceId'");
             }
             inputs["dryRun"] = args ? args.dryRun : undefined;

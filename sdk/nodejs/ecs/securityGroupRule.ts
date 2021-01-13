@@ -103,13 +103,13 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as SecurityGroupRuleArgs | undefined;
-            if (!args || args.ipProtocol === undefined) {
+            if ((!args || args.ipProtocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            if (!args || args.securityGroupId === undefined) {
+            if ((!args || args.securityGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["cidrIp"] = args ? args.cidrIp : undefined;

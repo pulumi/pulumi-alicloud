@@ -150,16 +150,16 @@ class DomainExtension(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['delete_protection_validation'] = delete_protection_validation
-            if domain is None:
+            if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__['domain'] = domain
-            if frontend_port is None:
+            if frontend_port is None and not opts.urn:
                 raise TypeError("Missing required property 'frontend_port'")
             __props__['frontend_port'] = frontend_port
-            if load_balancer_id is None:
+            if load_balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_id'")
             __props__['load_balancer_id'] = load_balancer_id
-            if server_certificate_id is None:
+            if server_certificate_id is None and not opts.urn:
                 raise TypeError("Missing required property 'server_certificate_id'")
             __props__['server_certificate_id'] = server_certificate_id
         super(DomainExtension, __self__).__init__(

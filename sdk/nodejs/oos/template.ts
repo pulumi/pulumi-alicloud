@@ -179,10 +179,10 @@ export class Template extends pulumi.CustomResource {
             inputs["versionName"] = state ? state.versionName : undefined;
         } else {
             const args = argsOrState as TemplateArgs | undefined;
-            if (!args || args.content === undefined) {
+            if ((!args || args.content === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'content'");
             }
-            if (!args || args.templateName === undefined) {
+            if ((!args || args.templateName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'templateName'");
             }
             inputs["autoDeleteExecutions"] = args ? args.autoDeleteExecutions : undefined;

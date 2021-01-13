@@ -110,39 +110,39 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if big_screen is None:
+            if big_screen is None and not opts.urn:
                 raise TypeError("Missing required property 'big_screen'")
             __props__['big_screen'] = big_screen
-            if exclusive_ip_package is None:
+            if exclusive_ip_package is None and not opts.urn:
                 raise TypeError("Missing required property 'exclusive_ip_package'")
             __props__['exclusive_ip_package'] = exclusive_ip_package
-            if ext_bandwidth is None:
+            if ext_bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'ext_bandwidth'")
             __props__['ext_bandwidth'] = ext_bandwidth
-            if ext_domain_package is None:
+            if ext_domain_package is None and not opts.urn:
                 raise TypeError("Missing required property 'ext_domain_package'")
             __props__['ext_domain_package'] = ext_domain_package
-            if log_storage is None:
+            if log_storage is None and not opts.urn:
                 raise TypeError("Missing required property 'log_storage'")
             __props__['log_storage'] = log_storage
-            if log_time is None:
+            if log_time is None and not opts.urn:
                 raise TypeError("Missing required property 'log_time'")
             __props__['log_time'] = log_time
             __props__['modify_type'] = modify_type
-            if package_code is None:
+            if package_code is None and not opts.urn:
                 raise TypeError("Missing required property 'package_code'")
             __props__['package_code'] = package_code
             __props__['period'] = period
-            if prefessional_service is None:
+            if prefessional_service is None and not opts.urn:
                 raise TypeError("Missing required property 'prefessional_service'")
             __props__['prefessional_service'] = prefessional_service
             __props__['renew_period'] = renew_period
             __props__['renewal_status'] = renewal_status
             __props__['resource_group_id'] = resource_group_id
-            if subscription_type is None:
+            if subscription_type is None and not opts.urn:
                 raise TypeError("Missing required property 'subscription_type'")
             __props__['subscription_type'] = subscription_type
-            if waf_log is None:
+            if waf_log is None and not opts.urn:
                 raise TypeError("Missing required property 'waf_log'")
             __props__['waf_log'] = waf_log
             __props__['status'] = None

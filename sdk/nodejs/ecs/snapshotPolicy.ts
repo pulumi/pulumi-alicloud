@@ -109,13 +109,13 @@ export class SnapshotPolicy extends pulumi.CustomResource {
             inputs["timePoints"] = state ? state.timePoints : undefined;
         } else {
             const args = argsOrState as SnapshotPolicyArgs | undefined;
-            if (!args || args.repeatWeekdays === undefined) {
+            if ((!args || args.repeatWeekdays === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'repeatWeekdays'");
             }
-            if (!args || args.retentionDays === undefined) {
+            if ((!args || args.retentionDays === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'retentionDays'");
             }
-            if (!args || args.timePoints === undefined) {
+            if ((!args || args.timePoints === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'timePoints'");
             }
             inputs["name"] = args ? args.name : undefined;

@@ -102,16 +102,16 @@ export class Connection extends pulumi.CustomResource {
             inputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if (!args || args.customerGatewayId === undefined) {
+            if ((!args || args.customerGatewayId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'customerGatewayId'");
             }
-            if (!args || args.localSubnets === undefined) {
+            if ((!args || args.localSubnets === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'localSubnets'");
             }
-            if (!args || args.remoteSubnets === undefined) {
+            if ((!args || args.remoteSubnets === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'remoteSubnets'");
             }
-            if (!args || args.vpnGatewayId === undefined) {
+            if ((!args || args.vpnGatewayId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
             inputs["customerGatewayId"] = args ? args.customerGatewayId : undefined;
