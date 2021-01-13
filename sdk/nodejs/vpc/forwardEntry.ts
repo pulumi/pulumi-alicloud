@@ -136,22 +136,22 @@ export class ForwardEntry extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ForwardEntryArgs | undefined;
-            if (!args || args.externalIp === undefined) {
+            if ((!args || args.externalIp === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'externalIp'");
             }
-            if (!args || args.externalPort === undefined) {
+            if ((!args || args.externalPort === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'externalPort'");
             }
-            if (!args || args.forwardTableId === undefined) {
+            if ((!args || args.forwardTableId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'forwardTableId'");
             }
-            if (!args || args.internalIp === undefined) {
+            if ((!args || args.internalIp === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'internalIp'");
             }
-            if (!args || args.internalPort === undefined) {
+            if ((!args || args.internalPort === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'internalPort'");
             }
-            if (!args || args.ipProtocol === undefined) {
+            if ((!args || args.ipProtocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
             inputs["externalIp"] = args ? args.externalIp : undefined;

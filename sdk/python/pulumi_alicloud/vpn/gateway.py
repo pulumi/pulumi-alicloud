@@ -68,7 +68,7 @@ class Gateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bandwidth is None:
+            if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__['bandwidth'] = bandwidth
             __props__['description'] = description
@@ -78,7 +78,7 @@ class Gateway(pulumi.CustomResource):
             __props__['name'] = name
             __props__['period'] = period
             __props__['ssl_connections'] = ssl_connections
-            if vpc_id is None:
+            if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
             __props__['vswitch_id'] = vswitch_id

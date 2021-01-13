@@ -98,13 +98,13 @@ class Notification(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if notification_arn is None:
+            if notification_arn is None and not opts.urn:
                 raise TypeError("Missing required property 'notification_arn'")
             __props__['notification_arn'] = notification_arn
-            if notification_types is None:
+            if notification_types is None and not opts.urn:
                 raise TypeError("Missing required property 'notification_types'")
             __props__['notification_types'] = notification_types
-            if scaling_group_id is None:
+            if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__['scaling_group_id'] = scaling_group_id
         super(Notification, __self__).__init__(

@@ -126,44 +126,45 @@ type EnterpriseInstance struct {
 // NewEnterpriseInstance registers a new resource with the given unique name, arguments, and options.
 func NewEnterpriseInstance(ctx *pulumi.Context,
 	name string, args *EnterpriseInstanceArgs, opts ...pulumi.ResourceOption) (*EnterpriseInstance, error) {
-	if args == nil || args.DatabasePassword == nil {
-		return nil, errors.New("missing required argument 'DatabasePassword'")
-	}
-	if args == nil || args.DatabaseUser == nil {
-		return nil, errors.New("missing required argument 'DatabaseUser'")
-	}
-	if args == nil || args.DbaUid == nil {
-		return nil, errors.New("missing required argument 'DbaUid'")
-	}
-	if args == nil || args.EnvType == nil {
-		return nil, errors.New("missing required argument 'EnvType'")
-	}
-	if args == nil || args.ExportTimeout == nil {
-		return nil, errors.New("missing required argument 'ExportTimeout'")
-	}
-	if args == nil || args.Host == nil {
-		return nil, errors.New("missing required argument 'Host'")
-	}
-	if args == nil || args.InstanceSource == nil {
-		return nil, errors.New("missing required argument 'InstanceSource'")
-	}
-	if args == nil || args.InstanceType == nil {
-		return nil, errors.New("missing required argument 'InstanceType'")
-	}
-	if args == nil || args.NetworkType == nil {
-		return nil, errors.New("missing required argument 'NetworkType'")
-	}
-	if args == nil || args.Port == nil {
-		return nil, errors.New("missing required argument 'Port'")
-	}
-	if args == nil || args.QueryTimeout == nil {
-		return nil, errors.New("missing required argument 'QueryTimeout'")
-	}
-	if args == nil || args.SafeRule == nil {
-		return nil, errors.New("missing required argument 'SafeRule'")
-	}
 	if args == nil {
-		args = &EnterpriseInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatabasePassword == nil {
+		return nil, errors.New("invalid value for required argument 'DatabasePassword'")
+	}
+	if args.DatabaseUser == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseUser'")
+	}
+	if args.DbaUid == nil {
+		return nil, errors.New("invalid value for required argument 'DbaUid'")
+	}
+	if args.EnvType == nil {
+		return nil, errors.New("invalid value for required argument 'EnvType'")
+	}
+	if args.ExportTimeout == nil {
+		return nil, errors.New("invalid value for required argument 'ExportTimeout'")
+	}
+	if args.Host == nil {
+		return nil, errors.New("invalid value for required argument 'Host'")
+	}
+	if args.InstanceSource == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceSource'")
+	}
+	if args.InstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceType'")
+	}
+	if args.NetworkType == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkType'")
+	}
+	if args.Port == nil {
+		return nil, errors.New("invalid value for required argument 'Port'")
+	}
+	if args.QueryTimeout == nil {
+		return nil, errors.New("invalid value for required argument 'QueryTimeout'")
+	}
+	if args.SafeRule == nil {
+		return nil, errors.New("invalid value for required argument 'SafeRule'")
 	}
 	var resource EnterpriseInstance
 	err := ctx.RegisterResource("alicloud:dms/enterpriseInstance:EnterpriseInstance", name, args, &resource, opts...)

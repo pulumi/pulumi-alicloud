@@ -61,21 +61,21 @@ class LogTailConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if input_detail is None:
+            if input_detail is None and not opts.urn:
                 raise TypeError("Missing required property 'input_detail'")
             __props__['input_detail'] = input_detail
-            if input_type is None:
+            if input_type is None and not opts.urn:
                 raise TypeError("Missing required property 'input_type'")
             __props__['input_type'] = input_type
             __props__['log_sample'] = log_sample
-            if logstore is None:
+            if logstore is None and not opts.urn:
                 raise TypeError("Missing required property 'logstore'")
             __props__['logstore'] = logstore
             __props__['name'] = name
-            if output_type is None:
+            if output_type is None and not opts.urn:
                 raise TypeError("Missing required property 'output_type'")
             __props__['output_type'] = output_type
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
         super(LogTailConfig, __self__).__init__(

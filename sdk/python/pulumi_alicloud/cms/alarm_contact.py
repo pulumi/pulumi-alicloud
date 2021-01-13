@@ -91,14 +91,14 @@ class AlarmContact(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if alarm_contact_name is None:
+            if alarm_contact_name is None and not opts.urn:
                 raise TypeError("Missing required property 'alarm_contact_name'")
             __props__['alarm_contact_name'] = alarm_contact_name
             __props__['channels_aliim'] = channels_aliim
             __props__['channels_ding_web_hook'] = channels_ding_web_hook
             __props__['channels_mail'] = channels_mail
             __props__['channels_sms'] = channels_sms
-            if describe is None:
+            if describe is None and not opts.urn:
                 raise TypeError("Missing required property 'describe'")
             __props__['describe'] = describe
             __props__['lang'] = lang

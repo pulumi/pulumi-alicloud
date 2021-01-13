@@ -56,23 +56,24 @@ type Api struct {
 // NewApi registers a new resource with the given unique name, arguments, and options.
 func NewApi(ctx *pulumi.Context,
 	name string, args *ApiArgs, opts ...pulumi.ResourceOption) (*Api, error) {
-	if args == nil || args.AuthType == nil {
-		return nil, errors.New("missing required argument 'AuthType'")
-	}
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.GroupId == nil {
-		return nil, errors.New("missing required argument 'GroupId'")
-	}
-	if args == nil || args.RequestConfig == nil {
-		return nil, errors.New("missing required argument 'RequestConfig'")
-	}
-	if args == nil || args.ServiceType == nil {
-		return nil, errors.New("missing required argument 'ServiceType'")
-	}
 	if args == nil {
-		args = &ApiArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AuthType == nil {
+		return nil, errors.New("invalid value for required argument 'AuthType'")
+	}
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.GroupId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupId'")
+	}
+	if args.RequestConfig == nil {
+		return nil, errors.New("invalid value for required argument 'RequestConfig'")
+	}
+	if args.ServiceType == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceType'")
 	}
 	var resource Api
 	err := ctx.RegisterResource("alicloud:apigateway/api:Api", name, args, &resource, opts...)

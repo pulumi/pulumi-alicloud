@@ -76,17 +76,18 @@ type DdosBgpInstance struct {
 // NewDdosBgpInstance registers a new resource with the given unique name, arguments, and options.
 func NewDdosBgpInstance(ctx *pulumi.Context,
 	name string, args *DdosBgpInstanceArgs, opts ...pulumi.ResourceOption) (*DdosBgpInstance, error) {
-	if args == nil || args.Bandwidth == nil {
-		return nil, errors.New("missing required argument 'Bandwidth'")
-	}
-	if args == nil || args.IpCount == nil {
-		return nil, errors.New("missing required argument 'IpCount'")
-	}
-	if args == nil || args.IpType == nil {
-		return nil, errors.New("missing required argument 'IpType'")
-	}
 	if args == nil {
-		args = &DdosBgpInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bandwidth == nil {
+		return nil, errors.New("invalid value for required argument 'Bandwidth'")
+	}
+	if args.IpCount == nil {
+		return nil, errors.New("invalid value for required argument 'IpCount'")
+	}
+	if args.IpType == nil {
+		return nil, errors.New("invalid value for required argument 'IpType'")
 	}
 	var resource DdosBgpInstance
 	err := ctx.RegisterResource("alicloud:dns/ddosBgpInstance:DdosBgpInstance", name, args, &resource, opts...)

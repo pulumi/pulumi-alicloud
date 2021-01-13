@@ -73,21 +73,21 @@ class ZoneRecord(pulumi.CustomResource):
             __props__['lang'] = lang
             __props__['priority'] = priority
             __props__['remark'] = remark
-            if resource_record is not None:
+            if resource_record is not None and not opts.urn:
                 warnings.warn("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""", DeprecationWarning)
                 pulumi.log.warn("resource_record is deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.")
             __props__['resource_record'] = resource_record
             __props__['rr'] = rr
             __props__['status'] = status
             __props__['ttl'] = ttl
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['user_client_ip'] = user_client_ip
-            if value is None:
+            if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['record_id'] = None

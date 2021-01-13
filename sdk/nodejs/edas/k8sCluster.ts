@@ -112,7 +112,7 @@ export class K8sCluster extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as K8sClusterArgs | undefined;
-            if (!args || args.csClusterId === undefined) {
+            if ((!args || args.csClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'csClusterId'");
             }
             inputs["csClusterId"] = args ? args.csClusterId : undefined;

@@ -81,10 +81,10 @@ export class MachineGroup extends pulumi.CustomResource {
             inputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as MachineGroupArgs | undefined;
-            if (!args || args.identifyLists === undefined) {
+            if ((!args || args.identifyLists === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'identifyLists'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["identifyLists"] = args ? args.identifyLists : undefined;

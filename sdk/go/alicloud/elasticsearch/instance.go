@@ -140,26 +140,27 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.DataNodeAmount == nil {
-		return nil, errors.New("missing required argument 'DataNodeAmount'")
-	}
-	if args == nil || args.DataNodeDiskSize == nil {
-		return nil, errors.New("missing required argument 'DataNodeDiskSize'")
-	}
-	if args == nil || args.DataNodeDiskType == nil {
-		return nil, errors.New("missing required argument 'DataNodeDiskType'")
-	}
-	if args == nil || args.DataNodeSpec == nil {
-		return nil, errors.New("missing required argument 'DataNodeSpec'")
-	}
-	if args == nil || args.Version == nil {
-		return nil, errors.New("missing required argument 'Version'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataNodeAmount == nil {
+		return nil, errors.New("invalid value for required argument 'DataNodeAmount'")
+	}
+	if args.DataNodeDiskSize == nil {
+		return nil, errors.New("invalid value for required argument 'DataNodeDiskSize'")
+	}
+	if args.DataNodeDiskType == nil {
+		return nil, errors.New("invalid value for required argument 'DataNodeDiskType'")
+	}
+	if args.DataNodeSpec == nil {
+		return nil, errors.New("invalid value for required argument 'DataNodeSpec'")
+	}
+	if args.Version == nil {
+		return nil, errors.New("invalid value for required argument 'Version'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:elasticsearch/instance:Instance", name, args, &resource, opts...)

@@ -27,20 +27,21 @@ type AppAttachment struct {
 // NewAppAttachment registers a new resource with the given unique name, arguments, and options.
 func NewAppAttachment(ctx *pulumi.Context,
 	name string, args *AppAttachmentArgs, opts ...pulumi.ResourceOption) (*AppAttachment, error) {
-	if args == nil || args.ApiId == nil {
-		return nil, errors.New("missing required argument 'ApiId'")
-	}
-	if args == nil || args.AppId == nil {
-		return nil, errors.New("missing required argument 'AppId'")
-	}
-	if args == nil || args.GroupId == nil {
-		return nil, errors.New("missing required argument 'GroupId'")
-	}
-	if args == nil || args.StageName == nil {
-		return nil, errors.New("missing required argument 'StageName'")
-	}
 	if args == nil {
-		args = &AppAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiId'")
+	}
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
+	}
+	if args.GroupId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupId'")
+	}
+	if args.StageName == nil {
+		return nil, errors.New("invalid value for required argument 'StageName'")
 	}
 	var resource AppAttachment
 	err := ctx.RegisterResource("alicloud:apigateway/appAttachment:AppAttachment", name, args, &resource, opts...)

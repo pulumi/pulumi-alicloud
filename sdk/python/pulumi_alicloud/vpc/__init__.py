@@ -37,3 +37,83 @@ from .subnet import *
 from .switch import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:vpc/commonBandwithPackage:CommonBandwithPackage":
+                return CommonBandwithPackage(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment":
+                return CommonBandwithPackageAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/forwardEntry:ForwardEntry":
+                return ForwardEntry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/hAVip:HAVip":
+                return HAVip(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/hAVipAttachment:HAVipAttachment":
+                return HAVipAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/natGateway:NatGateway":
+                return NatGateway(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/network:Network":
+                return Network(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/networkAcl:NetworkAcl":
+                return NetworkAcl(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/networkAclAttachment:NetworkAclAttachment":
+                return NetworkAclAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/networkAclEntries:NetworkAclEntries":
+                return NetworkAclEntries(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/networkInterface:NetworkInterface":
+                return NetworkInterface(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment":
+                return NetworkInterfaceAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/routeEntry:RouteEntry":
+                return RouteEntry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/routeTable:RouteTable":
+                return RouteTable(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/routeTableAttachment:RouteTableAttachment":
+                return RouteTableAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/routerInterface:RouterInterface":
+                return RouterInterface(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection":
+                return RouterInterfaceConnection(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/snatEntry:SnatEntry":
+                return SnatEntry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/subnet:Subnet":
+                return Subnet(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/switch:Switch":
+                return Switch(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "vpc/commonBandwithPackage", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/commonBandwithPackageAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/forwardEntry", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/hAVip", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/hAVipAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/natGateway", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/network", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/networkAcl", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/networkAclAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/networkAclEntries", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/networkInterface", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/networkInterfaceAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/routeEntry", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/routeTable", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/routeTableAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/routerInterface", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/routerInterfaceConnection", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/snatEntry", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/subnet", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/switch", _module_instance)
+
+_register_module()

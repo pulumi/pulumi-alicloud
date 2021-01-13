@@ -131,13 +131,13 @@ export class LogTailAttachment extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as LogTailAttachmentArgs | undefined;
-            if (!args || args.logtailConfigName === undefined) {
+            if ((!args || args.logtailConfigName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'logtailConfigName'");
             }
-            if (!args || args.machineGroupName === undefined) {
+            if ((!args || args.machineGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'machineGroupName'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["logtailConfigName"] = args ? args.logtailConfigName : undefined;

@@ -168,13 +168,13 @@ export class NodePool extends pulumi.CustomResource {
             inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.instanceTypes === undefined) {
+            if ((!args || args.instanceTypes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceTypes'");
             }
-            if (!args || args.vswitchIds === undefined) {
+            if ((!args || args.vswitchIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vswitchIds'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;

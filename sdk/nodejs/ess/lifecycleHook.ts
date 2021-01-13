@@ -91,10 +91,10 @@ export class LifecycleHook extends pulumi.CustomResource {
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
         } else {
             const args = argsOrState as LifecycleHookArgs | undefined;
-            if (!args || args.lifecycleTransition === undefined) {
+            if ((!args || args.lifecycleTransition === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'lifecycleTransition'");
             }
-            if (!args || args.scalingGroupId === undefined) {
+            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
             inputs["defaultResult"] = args ? args.defaultResult : undefined;

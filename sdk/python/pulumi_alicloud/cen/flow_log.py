@@ -92,15 +92,15 @@ class FlowLog(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cen_id is None:
+            if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
             __props__['cen_id'] = cen_id
             __props__['description'] = description
             __props__['flow_log_name'] = flow_log_name
-            if log_store_name is None:
+            if log_store_name is None and not opts.urn:
                 raise TypeError("Missing required property 'log_store_name'")
             __props__['log_store_name'] = log_store_name
-            if project_name is None:
+            if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
             __props__['project_name'] = project_name
             __props__['status'] = status

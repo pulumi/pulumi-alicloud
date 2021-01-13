@@ -109,13 +109,13 @@ class LogTailAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if logtail_config_name is None:
+            if logtail_config_name is None and not opts.urn:
                 raise TypeError("Missing required property 'logtail_config_name'")
             __props__['logtail_config_name'] = logtail_config_name
-            if machine_group_name is None:
+            if machine_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_group_name'")
             __props__['machine_group_name'] = machine_group_name
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
         super(LogTailAttachment, __self__).__init__(

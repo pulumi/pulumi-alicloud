@@ -99,11 +99,12 @@ type ChangeSet struct {
 // NewChangeSet registers a new resource with the given unique name, arguments, and options.
 func NewChangeSet(ctx *pulumi.Context,
 	name string, args *ChangeSetArgs, opts ...pulumi.ResourceOption) (*ChangeSet, error) {
-	if args == nil || args.ChangeSetName == nil {
-		return nil, errors.New("missing required argument 'ChangeSetName'")
-	}
 	if args == nil {
-		args = &ChangeSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ChangeSetName == nil {
+		return nil, errors.New("invalid value for required argument 'ChangeSetName'")
 	}
 	var resource ChangeSet
 	err := ctx.RegisterResource("alicloud:ros/changeSet:ChangeSet", name, args, &resource, opts...)

@@ -131,7 +131,7 @@ class Stack(pulumi.CustomResource):
             __props__['replacement_option'] = replacement_option
             __props__['retain_all_resources'] = retain_all_resources
             __props__['retain_resources'] = retain_resources
-            if stack_name is None:
+            if stack_name is None and not opts.urn:
                 raise TypeError("Missing required property 'stack_name'")
             __props__['stack_name'] = stack_name
             __props__['stack_policy_body'] = stack_policy_body

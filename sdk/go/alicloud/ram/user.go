@@ -40,6 +40,7 @@ func NewUser(ctx *pulumi.Context,
 	if args == nil {
 		args = &UserArgs{}
 	}
+
 	var resource User
 	err := ctx.RegisterResource("alicloud:ram/user:User", name, args, &resource, opts...)
 	if err != nil {

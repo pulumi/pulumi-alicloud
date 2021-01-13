@@ -65,11 +65,11 @@ class Policy(pulumi.CustomResource):
             __props__['document'] = document
             __props__['force'] = force
             __props__['name'] = name
-            if statements is not None:
+            if statements is not None and not opts.urn:
                 warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
                 pulumi.log.warn("statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
             __props__['statements'] = statements
-            if version is not None:
+            if version is not None and not opts.urn:
                 warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
                 pulumi.log.warn("version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
             __props__['version'] = version

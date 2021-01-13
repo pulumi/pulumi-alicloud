@@ -102,13 +102,13 @@ export class Cluster extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if (!args || args.clusterName === undefined) {
+            if ((!args || args.clusterName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if (!args || args.clusterType === undefined) {
+            if ((!args || args.clusterType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterType'");
             }
-            if (!args || args.networkMode === undefined) {
+            if ((!args || args.networkMode === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkMode'");
             }
             inputs["clusterName"] = args ? args.clusterName : undefined;

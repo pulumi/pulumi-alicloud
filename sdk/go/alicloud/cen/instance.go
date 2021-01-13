@@ -72,6 +72,7 @@ func NewInstance(ctx *pulumi.Context,
 	if args == nil {
 		args = &InstanceArgs{}
 	}
+
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:cen/instance:Instance", name, args, &resource, opts...)
 	if err != nil {

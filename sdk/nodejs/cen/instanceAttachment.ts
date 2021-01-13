@@ -115,16 +115,16 @@ export class InstanceAttachment extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as InstanceAttachmentArgs | undefined;
-            if (!args || args.childInstanceId === undefined) {
+            if ((!args || args.childInstanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'childInstanceId'");
             }
-            if (!args || args.childInstanceRegionId === undefined) {
+            if ((!args || args.childInstanceRegionId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'childInstanceRegionId'");
             }
-            if (!args || args.childInstanceType === undefined) {
+            if ((!args || args.childInstanceType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'childInstanceType'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;

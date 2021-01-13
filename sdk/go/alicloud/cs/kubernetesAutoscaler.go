@@ -150,20 +150,21 @@ type KubernetesAutoscaler struct {
 // NewKubernetesAutoscaler registers a new resource with the given unique name, arguments, and options.
 func NewKubernetesAutoscaler(ctx *pulumi.Context,
 	name string, args *KubernetesAutoscalerArgs, opts ...pulumi.ResourceOption) (*KubernetesAutoscaler, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.CoolDownDuration == nil {
-		return nil, errors.New("missing required argument 'CoolDownDuration'")
-	}
-	if args == nil || args.DeferScaleInDuration == nil {
-		return nil, errors.New("missing required argument 'DeferScaleInDuration'")
-	}
-	if args == nil || args.Utilization == nil {
-		return nil, errors.New("missing required argument 'Utilization'")
-	}
 	if args == nil {
-		args = &KubernetesAutoscalerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.CoolDownDuration == nil {
+		return nil, errors.New("invalid value for required argument 'CoolDownDuration'")
+	}
+	if args.DeferScaleInDuration == nil {
+		return nil, errors.New("invalid value for required argument 'DeferScaleInDuration'")
+	}
+	if args.Utilization == nil {
+		return nil, errors.New("invalid value for required argument 'Utilization'")
 	}
 	var resource KubernetesAutoscaler
 	err := ctx.RegisterResource("alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler", name, args, &resource, opts...)

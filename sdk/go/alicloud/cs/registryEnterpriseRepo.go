@@ -85,20 +85,21 @@ type RegistryEnterpriseRepo struct {
 // NewRegistryEnterpriseRepo registers a new resource with the given unique name, arguments, and options.
 func NewRegistryEnterpriseRepo(ctx *pulumi.Context,
 	name string, args *RegistryEnterpriseRepoArgs, opts ...pulumi.ResourceOption) (*RegistryEnterpriseRepo, error) {
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
-	if args == nil || args.Namespace == nil {
-		return nil, errors.New("missing required argument 'Namespace'")
-	}
-	if args == nil || args.RepoType == nil {
-		return nil, errors.New("missing required argument 'RepoType'")
-	}
-	if args == nil || args.Summary == nil {
-		return nil, errors.New("missing required argument 'Summary'")
-	}
 	if args == nil {
-		args = &RegistryEnterpriseRepoArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
+	if args.Namespace == nil {
+		return nil, errors.New("invalid value for required argument 'Namespace'")
+	}
+	if args.RepoType == nil {
+		return nil, errors.New("invalid value for required argument 'RepoType'")
+	}
+	if args.Summary == nil {
+		return nil, errors.New("invalid value for required argument 'Summary'")
 	}
 	var resource RegistryEnterpriseRepo
 	err := ctx.RegisterResource("alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo", name, args, &resource, opts...)

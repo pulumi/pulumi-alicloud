@@ -130,26 +130,27 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.DeployType == nil {
-		return nil, errors.New("missing required argument 'DeployType'")
-	}
-	if args == nil || args.DiskSize == nil {
-		return nil, errors.New("missing required argument 'DiskSize'")
-	}
-	if args == nil || args.DiskType == nil {
-		return nil, errors.New("missing required argument 'DiskType'")
-	}
-	if args == nil || args.IoMax == nil {
-		return nil, errors.New("missing required argument 'IoMax'")
-	}
-	if args == nil || args.TopicQuota == nil {
-		return nil, errors.New("missing required argument 'TopicQuota'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DeployType == nil {
+		return nil, errors.New("invalid value for required argument 'DeployType'")
+	}
+	if args.DiskSize == nil {
+		return nil, errors.New("invalid value for required argument 'DiskSize'")
+	}
+	if args.DiskType == nil {
+		return nil, errors.New("invalid value for required argument 'DiskType'")
+	}
+	if args.IoMax == nil {
+		return nil, errors.New("invalid value for required argument 'IoMax'")
+	}
+	if args.TopicQuota == nil {
+		return nil, errors.New("invalid value for required argument 'TopicQuota'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:alikafka/instance:Instance", name, args, &resource, opts...)

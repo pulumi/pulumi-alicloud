@@ -56,11 +56,12 @@ type ServerGroup struct {
 // NewServerGroup registers a new resource with the given unique name, arguments, and options.
 func NewServerGroup(ctx *pulumi.Context,
 	name string, args *ServerGroupArgs, opts ...pulumi.ResourceOption) (*ServerGroup, error) {
-	if args == nil || args.LoadBalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerId'")
-	}
 	if args == nil {
-		args = &ServerGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LoadBalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerId'")
 	}
 	var resource ServerGroup
 	err := ctx.RegisterResource("alicloud:slb/serverGroup:ServerGroup", name, args, &resource, opts...)

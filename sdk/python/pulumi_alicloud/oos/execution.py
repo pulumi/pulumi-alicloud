@@ -115,7 +115,7 @@ class Execution(pulumi.CustomResource):
             __props__['parameters'] = parameters
             __props__['parent_execution_id'] = parent_execution_id
             __props__['safety_check'] = safety_check
-            if template_name is None:
+            if template_name is None and not opts.urn:
                 raise TypeError("Missing required property 'template_name'")
             __props__['template_name'] = template_name
             __props__['template_version'] = template_version

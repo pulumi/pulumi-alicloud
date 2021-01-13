@@ -101,6 +101,7 @@ func NewKey(ctx *pulumi.Context,
 	if args == nil {
 		args = &KeyArgs{}
 	}
+
 	var resource Key
 	err := ctx.RegisterResource("alicloud:kms/key:Key", name, args, &resource, opts...)
 	if err != nil {

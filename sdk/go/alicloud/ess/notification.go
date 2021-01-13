@@ -133,17 +133,18 @@ type Notification struct {
 // NewNotification registers a new resource with the given unique name, arguments, and options.
 func NewNotification(ctx *pulumi.Context,
 	name string, args *NotificationArgs, opts ...pulumi.ResourceOption) (*Notification, error) {
-	if args == nil || args.NotificationArn == nil {
-		return nil, errors.New("missing required argument 'NotificationArn'")
-	}
-	if args == nil || args.NotificationTypes == nil {
-		return nil, errors.New("missing required argument 'NotificationTypes'")
-	}
-	if args == nil || args.ScalingGroupId == nil {
-		return nil, errors.New("missing required argument 'ScalingGroupId'")
-	}
 	if args == nil {
-		args = &NotificationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NotificationArn == nil {
+		return nil, errors.New("invalid value for required argument 'NotificationArn'")
+	}
+	if args.NotificationTypes == nil {
+		return nil, errors.New("invalid value for required argument 'NotificationTypes'")
+	}
+	if args.ScalingGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ScalingGroupId'")
 	}
 	var resource Notification
 	err := ctx.RegisterResource("alicloud:ess/notification:Notification", name, args, &resource, opts...)

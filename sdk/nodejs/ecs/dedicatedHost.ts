@@ -190,7 +190,7 @@ export class DedicatedHost extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DedicatedHostArgs | undefined;
-            if (!args || args.dedicatedHostType === undefined) {
+            if ((!args || args.dedicatedHostType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dedicatedHostType'");
             }
             inputs["actionOnMaintenance"] = args ? args.actionOnMaintenance : undefined;

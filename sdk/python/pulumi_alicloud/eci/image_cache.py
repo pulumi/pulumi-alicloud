@@ -92,20 +92,20 @@ class ImageCache(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['eip_instance_id'] = eip_instance_id
-            if image_cache_name is None:
+            if image_cache_name is None and not opts.urn:
                 raise TypeError("Missing required property 'image_cache_name'")
             __props__['image_cache_name'] = image_cache_name
             __props__['image_cache_size'] = image_cache_size
             __props__['image_registry_credentials'] = image_registry_credentials
-            if images is None:
+            if images is None and not opts.urn:
                 raise TypeError("Missing required property 'images'")
             __props__['images'] = images
             __props__['resource_group_id'] = resource_group_id
             __props__['retention_days'] = retention_days
-            if security_group_id is None:
+            if security_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_id'")
             __props__['security_group_id'] = security_group_id
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id

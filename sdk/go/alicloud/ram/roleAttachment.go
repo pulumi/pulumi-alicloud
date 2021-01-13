@@ -24,14 +24,15 @@ type RoleAttachment struct {
 // NewRoleAttachment registers a new resource with the given unique name, arguments, and options.
 func NewRoleAttachment(ctx *pulumi.Context,
 	name string, args *RoleAttachmentArgs, opts ...pulumi.ResourceOption) (*RoleAttachment, error) {
-	if args == nil || args.InstanceIds == nil {
-		return nil, errors.New("missing required argument 'InstanceIds'")
-	}
-	if args == nil || args.RoleName == nil {
-		return nil, errors.New("missing required argument 'RoleName'")
-	}
 	if args == nil {
-		args = &RoleAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceIds == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceIds'")
+	}
+	if args.RoleName == nil {
+		return nil, errors.New("invalid value for required argument 'RoleName'")
 	}
 	var resource RoleAttachment
 	err := ctx.RegisterResource("alicloud:ram/roleAttachment:RoleAttachment", name, args, &resource, opts...)

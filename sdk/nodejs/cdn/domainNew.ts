@@ -126,13 +126,13 @@ export class DomainNew extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DomainNewArgs | undefined;
-            if (!args || args.cdnType === undefined) {
+            if ((!args || args.cdnType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cdnType'");
             }
-            if (!args || args.domainName === undefined) {
+            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if (!args || args.sources === undefined) {
+            if ((!args || args.sources === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sources'");
             }
             inputs["cdnType"] = args ? args.cdnType : undefined;

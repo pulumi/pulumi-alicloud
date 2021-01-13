@@ -68,20 +68,21 @@ type SlbAttachment struct {
 // NewSlbAttachment registers a new resource with the given unique name, arguments, and options.
 func NewSlbAttachment(ctx *pulumi.Context,
 	name string, args *SlbAttachmentArgs, opts ...pulumi.ResourceOption) (*SlbAttachment, error) {
-	if args == nil || args.AppId == nil {
-		return nil, errors.New("missing required argument 'AppId'")
-	}
-	if args == nil || args.SlbId == nil {
-		return nil, errors.New("missing required argument 'SlbId'")
-	}
-	if args == nil || args.SlbIp == nil {
-		return nil, errors.New("missing required argument 'SlbIp'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &SlbAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
+	}
+	if args.SlbId == nil {
+		return nil, errors.New("invalid value for required argument 'SlbId'")
+	}
+	if args.SlbIp == nil {
+		return nil, errors.New("invalid value for required argument 'SlbIp'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource SlbAttachment
 	err := ctx.RegisterResource("alicloud:edas/slbAttachment:SlbAttachment", name, args, &resource, opts...)

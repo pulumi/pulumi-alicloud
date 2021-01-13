@@ -65,19 +65,19 @@ class SecurityGroupRule(pulumi.CustomResource):
 
             __props__['cidr_ip'] = cidr_ip
             __props__['description'] = description
-            if ip_protocol is None:
+            if ip_protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_protocol'")
             __props__['ip_protocol'] = ip_protocol
             __props__['nic_type'] = nic_type
             __props__['policy'] = policy
             __props__['port_range'] = port_range
             __props__['priority'] = priority
-            if security_group_id is None:
+            if security_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_id'")
             __props__['security_group_id'] = security_group_id
             __props__['source_group_owner_account'] = source_group_owner_account
             __props__['source_security_group_id'] = source_security_group_id
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
         super(SecurityGroupRule, __self__).__init__(

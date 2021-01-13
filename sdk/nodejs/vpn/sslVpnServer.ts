@@ -111,13 +111,13 @@ export class SslVpnServer extends pulumi.CustomResource {
             inputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
         } else {
             const args = argsOrState as SslVpnServerArgs | undefined;
-            if (!args || args.clientIpPool === undefined) {
+            if ((!args || args.clientIpPool === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clientIpPool'");
             }
-            if (!args || args.localSubnet === undefined) {
+            if ((!args || args.localSubnet === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'localSubnet'");
             }
-            if (!args || args.vpnGatewayId === undefined) {
+            if ((!args || args.vpnGatewayId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
             inputs["cipher"] = args ? args.cipher : undefined;

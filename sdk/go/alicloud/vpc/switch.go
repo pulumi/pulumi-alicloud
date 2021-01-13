@@ -38,17 +38,18 @@ type Switch struct {
 // NewSwitch registers a new resource with the given unique name, arguments, and options.
 func NewSwitch(ctx *pulumi.Context,
 	name string, args *SwitchArgs, opts ...pulumi.ResourceOption) (*Switch, error) {
-	if args == nil || args.AvailabilityZone == nil {
-		return nil, errors.New("missing required argument 'AvailabilityZone'")
-	}
-	if args == nil || args.CidrBlock == nil {
-		return nil, errors.New("missing required argument 'CidrBlock'")
-	}
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
 	if args == nil {
-		args = &SwitchArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AvailabilityZone == nil {
+		return nil, errors.New("invalid value for required argument 'AvailabilityZone'")
+	}
+	if args.CidrBlock == nil {
+		return nil, errors.New("invalid value for required argument 'CidrBlock'")
+	}
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
 	var resource Switch
 	err := ctx.RegisterResource("alicloud:vpc/switch:Switch", name, args, &resource, opts...)

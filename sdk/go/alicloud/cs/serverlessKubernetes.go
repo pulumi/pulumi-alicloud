@@ -66,11 +66,12 @@ type ServerlessKubernetes struct {
 // NewServerlessKubernetes registers a new resource with the given unique name, arguments, and options.
 func NewServerlessKubernetes(ctx *pulumi.Context,
 	name string, args *ServerlessKubernetesArgs, opts ...pulumi.ResourceOption) (*ServerlessKubernetes, error) {
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
 	if args == nil {
-		args = &ServerlessKubernetesArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
 	var resource ServerlessKubernetes
 	err := ctx.RegisterResource("alicloud:cs/serverlessKubernetes:ServerlessKubernetes", name, args, &resource, opts...)

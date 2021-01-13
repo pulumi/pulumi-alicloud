@@ -91,10 +91,10 @@ export class NetworkAttachment extends pulumi.CustomResource {
             inputs["sagId"] = state ? state.sagId : undefined;
         } else {
             const args = argsOrState as NetworkAttachmentArgs | undefined;
-            if (!args || args.ccnId === undefined) {
+            if ((!args || args.ccnId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ccnId'");
             }
-            if (!args || args.sagId === undefined) {
+            if ((!args || args.sagId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sagId'");
             }
             inputs["ccnId"] = args ? args.ccnId : undefined;

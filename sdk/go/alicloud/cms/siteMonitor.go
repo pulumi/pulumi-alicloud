@@ -82,17 +82,18 @@ type SiteMonitor struct {
 // NewSiteMonitor registers a new resource with the given unique name, arguments, and options.
 func NewSiteMonitor(ctx *pulumi.Context,
 	name string, args *SiteMonitorArgs, opts ...pulumi.ResourceOption) (*SiteMonitor, error) {
-	if args == nil || args.Address == nil {
-		return nil, errors.New("missing required argument 'Address'")
-	}
-	if args == nil || args.TaskName == nil {
-		return nil, errors.New("missing required argument 'TaskName'")
-	}
-	if args == nil || args.TaskType == nil {
-		return nil, errors.New("missing required argument 'TaskType'")
-	}
 	if args == nil {
-		args = &SiteMonitorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Address == nil {
+		return nil, errors.New("invalid value for required argument 'Address'")
+	}
+	if args.TaskName == nil {
+		return nil, errors.New("invalid value for required argument 'TaskName'")
+	}
+	if args.TaskType == nil {
+		return nil, errors.New("invalid value for required argument 'TaskType'")
 	}
 	var resource SiteMonitor
 	err := ctx.RegisterResource("alicloud:cms/siteMonitor:SiteMonitor", name, args, &resource, opts...)

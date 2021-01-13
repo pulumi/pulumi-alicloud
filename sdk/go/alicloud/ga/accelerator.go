@@ -77,14 +77,15 @@ type Accelerator struct {
 // NewAccelerator registers a new resource with the given unique name, arguments, and options.
 func NewAccelerator(ctx *pulumi.Context,
 	name string, args *AcceleratorArgs, opts ...pulumi.ResourceOption) (*Accelerator, error) {
-	if args == nil || args.Duration == nil {
-		return nil, errors.New("missing required argument 'Duration'")
-	}
-	if args == nil || args.Spec == nil {
-		return nil, errors.New("missing required argument 'Spec'")
-	}
 	if args == nil {
-		args = &AcceleratorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Duration == nil {
+		return nil, errors.New("invalid value for required argument 'Duration'")
+	}
+	if args.Spec == nil {
+		return nil, errors.New("invalid value for required argument 'Spec'")
 	}
 	var resource Accelerator
 	err := ctx.RegisterResource("alicloud:ga/accelerator:Accelerator", name, args, &resource, opts...)

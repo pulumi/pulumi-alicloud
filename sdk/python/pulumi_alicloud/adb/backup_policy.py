@@ -53,13 +53,13 @@ class BackupPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if db_cluster_id is None:
+            if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__['db_cluster_id'] = db_cluster_id
-            if preferred_backup_periods is None:
+            if preferred_backup_periods is None and not opts.urn:
                 raise TypeError("Missing required property 'preferred_backup_periods'")
             __props__['preferred_backup_periods'] = preferred_backup_periods
-            if preferred_backup_time is None:
+            if preferred_backup_time is None and not opts.urn:
                 raise TypeError("Missing required property 'preferred_backup_time'")
             __props__['preferred_backup_time'] = preferred_backup_time
             __props__['backup_retention_period'] = None

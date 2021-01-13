@@ -101,10 +101,10 @@ export class DiskAttachment extends pulumi.CustomResource {
             inputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as DiskAttachmentArgs | undefined;
-            if (!args || args.diskId === undefined) {
+            if ((!args || args.diskId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'diskId'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["deviceName"] = args ? args.deviceName : undefined;

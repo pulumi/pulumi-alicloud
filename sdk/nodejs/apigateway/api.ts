@@ -132,19 +132,19 @@ export class Api extends pulumi.CustomResource {
             inputs["systemParameters"] = state ? state.systemParameters : undefined;
         } else {
             const args = argsOrState as ApiArgs | undefined;
-            if (!args || args.authType === undefined) {
+            if ((!args || args.authType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'authType'");
             }
-            if (!args || args.description === undefined) {
+            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'description'");
             }
-            if (!args || args.groupId === undefined) {
+            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (!args || args.requestConfig === undefined) {
+            if ((!args || args.requestConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'requestConfig'");
             }
-            if (!args || args.serviceType === undefined) {
+            if ((!args || args.serviceType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceType'");
             }
             inputs["authType"] = args ? args.authType : undefined;

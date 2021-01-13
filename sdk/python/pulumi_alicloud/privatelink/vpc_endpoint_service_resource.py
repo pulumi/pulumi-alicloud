@@ -76,13 +76,13 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['dry_run'] = dry_run
-            if resource_id is None:
+            if resource_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_id'")
             __props__['resource_id'] = resource_id
-            if resource_type is None:
+            if resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_type'")
             __props__['resource_type'] = resource_type
-            if service_id is None:
+            if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__['service_id'] = service_id
         super(VpcEndpointServiceResource, __self__).__init__(

@@ -86,14 +86,15 @@ type GroupMembership struct {
 // NewGroupMembership registers a new resource with the given unique name, arguments, and options.
 func NewGroupMembership(ctx *pulumi.Context,
 	name string, args *GroupMembershipArgs, opts ...pulumi.ResourceOption) (*GroupMembership, error) {
-	if args == nil || args.GroupName == nil {
-		return nil, errors.New("missing required argument 'GroupName'")
-	}
-	if args == nil || args.UserNames == nil {
-		return nil, errors.New("missing required argument 'UserNames'")
-	}
 	if args == nil {
-		args = &GroupMembershipArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.GroupName == nil {
+		return nil, errors.New("invalid value for required argument 'GroupName'")
+	}
+	if args.UserNames == nil {
+		return nil, errors.New("invalid value for required argument 'UserNames'")
 	}
 	var resource GroupMembership
 	err := ctx.RegisterResource("alicloud:ram/groupMembership:GroupMembership", name, args, &resource, opts...)

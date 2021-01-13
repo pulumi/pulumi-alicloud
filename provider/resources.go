@@ -1050,17 +1050,13 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 			},
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^2.0.0",
-			},
-			Overlay: &tfbridge.OverlayInfo{
-				Modules: map[string]*tfbridge.OverlayInfo{},
+				"@pulumi/pulumi": "^2.15.0",
 			},
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=2.9.0,<3.0.0",
+				"pulumi": ">=2.15.0,<3.0.0",
 			},
-			UsesIOClasses: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{

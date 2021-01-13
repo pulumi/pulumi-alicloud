@@ -87,17 +87,18 @@ type Rule struct {
 // NewRule registers a new resource with the given unique name, arguments, and options.
 func NewRule(ctx *pulumi.Context,
 	name string, args *RuleArgs, opts ...pulumi.ResourceOption) (*Rule, error) {
-	if args == nil || args.FrontendPort == nil {
-		return nil, errors.New("missing required argument 'FrontendPort'")
-	}
-	if args == nil || args.LoadBalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerId'")
-	}
-	if args == nil || args.ServerGroupId == nil {
-		return nil, errors.New("missing required argument 'ServerGroupId'")
-	}
 	if args == nil {
-		args = &RuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FrontendPort == nil {
+		return nil, errors.New("invalid value for required argument 'FrontendPort'")
+	}
+	if args.LoadBalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerId'")
+	}
+	if args.ServerGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ServerGroupId'")
 	}
 	var resource Rule
 	err := ctx.RegisterResource("alicloud:slb/rule:Rule", name, args, &resource, opts...)

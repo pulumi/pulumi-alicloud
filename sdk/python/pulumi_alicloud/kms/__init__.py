@@ -17,3 +17,38 @@ from .key import *
 from .key_version import *
 from .secret import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:kms/alias:Alias":
+                return Alias(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:kms/ciphertext:Ciphertext":
+                return Ciphertext(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:kms/key:Key":
+                return Key(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:kms/keyVersion:KeyVersion":
+                return KeyVersion(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:kms/secret:Secret":
+                return Secret(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "kms/alias", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "kms/ciphertext", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "kms/key", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "kms/keyVersion", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "kms/secret", _module_instance)
+
+_register_module()

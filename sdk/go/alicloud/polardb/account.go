@@ -114,17 +114,18 @@ type Account struct {
 // NewAccount registers a new resource with the given unique name, arguments, and options.
 func NewAccount(ctx *pulumi.Context,
 	name string, args *AccountArgs, opts ...pulumi.ResourceOption) (*Account, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.AccountPassword == nil {
-		return nil, errors.New("missing required argument 'AccountPassword'")
-	}
-	if args == nil || args.DbClusterId == nil {
-		return nil, errors.New("missing required argument 'DbClusterId'")
-	}
 	if args == nil {
-		args = &AccountArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.AccountPassword == nil {
+		return nil, errors.New("invalid value for required argument 'AccountPassword'")
+	}
+	if args.DbClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'DbClusterId'")
 	}
 	var resource Account
 	err := ctx.RegisterResource("alicloud:polardb/account:Account", name, args, &resource, opts...)

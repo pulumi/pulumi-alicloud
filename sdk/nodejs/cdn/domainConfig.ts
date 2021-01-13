@@ -109,13 +109,13 @@ export class DomainConfig extends pulumi.CustomResource {
             inputs["functionName"] = state ? state.functionName : undefined;
         } else {
             const args = argsOrState as DomainConfigArgs | undefined;
-            if (!args || args.domainName === undefined) {
+            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if (!args || args.functionArgs === undefined) {
+            if ((!args || args.functionArgs === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'functionArgs'");
             }
-            if (!args || args.functionName === undefined) {
+            if ((!args || args.functionName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'functionName'");
             }
             inputs["domainName"] = args ? args.domainName : undefined;

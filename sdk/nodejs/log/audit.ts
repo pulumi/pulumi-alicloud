@@ -123,10 +123,10 @@ export class Audit extends pulumi.CustomResource {
             inputs["variableMap"] = state ? state.variableMap : undefined;
         } else {
             const args = argsOrState as AuditArgs | undefined;
-            if (!args || args.aliuid === undefined) {
+            if ((!args || args.aliuid === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'aliuid'");
             }
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["aliuid"] = args ? args.aliuid : undefined;

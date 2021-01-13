@@ -65,11 +65,12 @@ type KeyVersion struct {
 // NewKeyVersion registers a new resource with the given unique name, arguments, and options.
 func NewKeyVersion(ctx *pulumi.Context,
 	name string, args *KeyVersionArgs, opts ...pulumi.ResourceOption) (*KeyVersion, error) {
-	if args == nil || args.KeyId == nil {
-		return nil, errors.New("missing required argument 'KeyId'")
-	}
 	if args == nil {
-		args = &KeyVersionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KeyId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyId'")
 	}
 	var resource KeyVersion
 	err := ctx.RegisterResource("alicloud:kms/keyVersion:KeyVersion", name, args, &resource, opts...)

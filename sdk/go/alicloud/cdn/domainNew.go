@@ -82,17 +82,18 @@ type DomainNew struct {
 // NewDomainNew registers a new resource with the given unique name, arguments, and options.
 func NewDomainNew(ctx *pulumi.Context,
 	name string, args *DomainNewArgs, opts ...pulumi.ResourceOption) (*DomainNew, error) {
-	if args == nil || args.CdnType == nil {
-		return nil, errors.New("missing required argument 'CdnType'")
-	}
-	if args == nil || args.DomainName == nil {
-		return nil, errors.New("missing required argument 'DomainName'")
-	}
-	if args == nil || args.Sources == nil {
-		return nil, errors.New("missing required argument 'Sources'")
-	}
 	if args == nil {
-		args = &DomainNewArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CdnType == nil {
+		return nil, errors.New("invalid value for required argument 'CdnType'")
+	}
+	if args.DomainName == nil {
+		return nil, errors.New("invalid value for required argument 'DomainName'")
+	}
+	if args.Sources == nil {
+		return nil, errors.New("invalid value for required argument 'Sources'")
 	}
 	var resource DomainNew
 	err := ctx.RegisterResource("alicloud:cdn/domainNew:DomainNew", name, args, &resource, opts...)

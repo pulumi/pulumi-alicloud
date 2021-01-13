@@ -99,7 +99,7 @@ export class Store extends pulumi.CustomResource {
             inputs["shards"] = state ? state.shards : undefined;
         } else {
             const args = argsOrState as StoreArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["appendMeta"] = args ? args.appendMeta : undefined;

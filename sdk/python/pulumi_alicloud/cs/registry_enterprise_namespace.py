@@ -77,13 +77,13 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if auto_create is None:
+            if auto_create is None and not opts.urn:
                 raise TypeError("Missing required property 'auto_create'")
             __props__['auto_create'] = auto_create
-            if default_visibility is None:
+            if default_visibility is None and not opts.urn:
                 raise TypeError("Missing required property 'default_visibility'")
             __props__['default_visibility'] = default_visibility
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['name'] = name

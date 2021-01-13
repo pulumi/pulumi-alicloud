@@ -88,20 +88,20 @@ class ShardingInstance(pulumi.CustomResource):
             __props__['account_password'] = account_password
             __props__['backup_periods'] = backup_periods
             __props__['backup_time'] = backup_time
-            if engine_version is None:
+            if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__['engine_version'] = engine_version
             __props__['instance_charge_type'] = instance_charge_type
             __props__['kms_encrypted_password'] = kms_encrypted_password
             __props__['kms_encryption_context'] = kms_encryption_context
-            if mongo_lists is None:
+            if mongo_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'mongo_lists'")
             __props__['mongo_lists'] = mongo_lists
             __props__['name'] = name
             __props__['period'] = period
             __props__['security_group_id'] = security_group_id
             __props__['security_ip_lists'] = security_ip_lists
-            if shard_lists is None:
+            if shard_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'shard_lists'")
             __props__['shard_lists'] = shard_lists
             __props__['storage_engine'] = storage_engine

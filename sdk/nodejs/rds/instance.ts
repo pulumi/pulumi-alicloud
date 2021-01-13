@@ -312,16 +312,16 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneIdSlaveB"] = state ? state.zoneIdSlaveB : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.engine === undefined) {
+            if ((!args || args.engine === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'engine'");
             }
-            if (!args || args.engineVersion === undefined) {
+            if ((!args || args.engineVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if (!args || args.instanceStorage === undefined) {
+            if ((!args || args.instanceStorage === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceStorage'");
             }
-            if (!args || args.instanceType === undefined) {
+            if ((!args || args.instanceType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceType'");
             }
             inputs["autoRenew"] = args ? args.autoRenew : undefined;

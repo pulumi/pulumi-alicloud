@@ -72,14 +72,15 @@ type NetworkAttachment struct {
 // NewNetworkAttachment registers a new resource with the given unique name, arguments, and options.
 func NewNetworkAttachment(ctx *pulumi.Context,
 	name string, args *NetworkAttachmentArgs, opts ...pulumi.ResourceOption) (*NetworkAttachment, error) {
-	if args == nil || args.CcnId == nil {
-		return nil, errors.New("missing required argument 'CcnId'")
-	}
-	if args == nil || args.SagId == nil {
-		return nil, errors.New("missing required argument 'SagId'")
-	}
 	if args == nil {
-		args = &NetworkAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CcnId == nil {
+		return nil, errors.New("invalid value for required argument 'CcnId'")
+	}
+	if args.SagId == nil {
+		return nil, errors.New("invalid value for required argument 'SagId'")
 	}
 	var resource NetworkAttachment
 	err := ctx.RegisterResource("alicloud:cloudconnect/networkAttachment:NetworkAttachment", name, args, &resource, opts...)

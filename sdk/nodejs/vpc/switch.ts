@@ -86,13 +86,13 @@ export class Switch extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as SwitchArgs | undefined;
-            if (!args || args.availabilityZone === undefined) {
+            if ((!args || args.availabilityZone === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if (!args || args.cidrBlock === undefined) {
+            if ((!args || args.cidrBlock === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if (!args || args.vpcId === undefined) {
+            if ((!args || args.vpcId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vpcId'");
             }
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;

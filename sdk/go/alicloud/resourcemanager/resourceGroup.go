@@ -68,11 +68,12 @@ type ResourceGroup struct {
 // NewResourceGroup registers a new resource with the given unique name, arguments, and options.
 func NewResourceGroup(ctx *pulumi.Context,
 	name string, args *ResourceGroupArgs, opts ...pulumi.ResourceOption) (*ResourceGroup, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
 	if args == nil {
-		args = &ResourceGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	var resource ResourceGroup
 	err := ctx.RegisterResource("alicloud:resourcemanager/resourceGroup:ResourceGroup", name, args, &resource, opts...)

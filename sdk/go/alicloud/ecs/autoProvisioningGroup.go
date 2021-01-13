@@ -168,17 +168,18 @@ type AutoProvisioningGroup struct {
 // NewAutoProvisioningGroup registers a new resource with the given unique name, arguments, and options.
 func NewAutoProvisioningGroup(ctx *pulumi.Context,
 	name string, args *AutoProvisioningGroupArgs, opts ...pulumi.ResourceOption) (*AutoProvisioningGroup, error) {
-	if args == nil || args.LaunchTemplateConfigs == nil {
-		return nil, errors.New("missing required argument 'LaunchTemplateConfigs'")
-	}
-	if args == nil || args.LaunchTemplateId == nil {
-		return nil, errors.New("missing required argument 'LaunchTemplateId'")
-	}
-	if args == nil || args.TotalTargetCapacity == nil {
-		return nil, errors.New("missing required argument 'TotalTargetCapacity'")
-	}
 	if args == nil {
-		args = &AutoProvisioningGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LaunchTemplateConfigs == nil {
+		return nil, errors.New("invalid value for required argument 'LaunchTemplateConfigs'")
+	}
+	if args.LaunchTemplateId == nil {
+		return nil, errors.New("invalid value for required argument 'LaunchTemplateId'")
+	}
+	if args.TotalTargetCapacity == nil {
+		return nil, errors.New("invalid value for required argument 'TotalTargetCapacity'")
 	}
 	var resource AutoProvisioningGroup
 	err := ctx.RegisterResource("alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup", name, args, &resource, opts...)

@@ -88,11 +88,12 @@ type ImageImport struct {
 // NewImageImport registers a new resource with the given unique name, arguments, and options.
 func NewImageImport(ctx *pulumi.Context,
 	name string, args *ImageImportArgs, opts ...pulumi.ResourceOption) (*ImageImport, error) {
-	if args == nil || args.DiskDeviceMappings == nil {
-		return nil, errors.New("missing required argument 'DiskDeviceMappings'")
-	}
 	if args == nil {
-		args = &ImageImportArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DiskDeviceMappings == nil {
+		return nil, errors.New("invalid value for required argument 'DiskDeviceMappings'")
 	}
 	var resource ImageImport
 	err := ctx.RegisterResource("alicloud:ecs/imageImport:ImageImport", name, args, &resource, opts...)

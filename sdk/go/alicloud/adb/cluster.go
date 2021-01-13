@@ -130,23 +130,24 @@ type Cluster struct {
 // NewCluster registers a new resource with the given unique name, arguments, and options.
 func NewCluster(ctx *pulumi.Context,
 	name string, args *ClusterArgs, opts ...pulumi.ResourceOption) (*Cluster, error) {
-	if args == nil || args.DbClusterCategory == nil {
-		return nil, errors.New("missing required argument 'DbClusterCategory'")
-	}
-	if args == nil || args.DbNodeClass == nil {
-		return nil, errors.New("missing required argument 'DbNodeClass'")
-	}
-	if args == nil || args.DbNodeCount == nil {
-		return nil, errors.New("missing required argument 'DbNodeCount'")
-	}
-	if args == nil || args.DbNodeStorage == nil {
-		return nil, errors.New("missing required argument 'DbNodeStorage'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &ClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DbClusterCategory == nil {
+		return nil, errors.New("invalid value for required argument 'DbClusterCategory'")
+	}
+	if args.DbNodeClass == nil {
+		return nil, errors.New("invalid value for required argument 'DbNodeClass'")
+	}
+	if args.DbNodeCount == nil {
+		return nil, errors.New("invalid value for required argument 'DbNodeCount'")
+	}
+	if args.DbNodeStorage == nil {
+		return nil, errors.New("invalid value for required argument 'DbNodeStorage'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource Cluster
 	err := ctx.RegisterResource("alicloud:adb/cluster:Cluster", name, args, &resource, opts...)

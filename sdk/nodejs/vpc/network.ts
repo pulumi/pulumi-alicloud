@@ -101,7 +101,7 @@ export class Network extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            if (!args || args.cidrBlock === undefined) {
+            if ((!args || args.cidrBlock === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;

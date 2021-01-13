@@ -131,19 +131,19 @@ export class Table extends pulumi.CustomResource {
             inputs["timeToLive"] = state ? state.timeToLive : undefined;
         } else {
             const args = argsOrState as TableArgs | undefined;
-            if (!args || args.instanceName === undefined) {
+            if ((!args || args.instanceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if (!args || args.maxVersion === undefined) {
+            if ((!args || args.maxVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'maxVersion'");
             }
-            if (!args || args.primaryKeys === undefined) {
+            if ((!args || args.primaryKeys === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'primaryKeys'");
             }
-            if (!args || args.tableName === undefined) {
+            if ((!args || args.tableName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tableName'");
             }
-            if (!args || args.timeToLive === undefined) {
+            if ((!args || args.timeToLive === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'timeToLive'");
             }
             inputs["deviationCellVersionInSec"] = args ? args.deviationCellVersionInSec : undefined;

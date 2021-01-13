@@ -143,25 +143,25 @@ export class QosPolicy extends pulumi.CustomResource {
             inputs["startTime"] = state ? state.startTime : undefined;
         } else {
             const args = argsOrState as QosPolicyArgs | undefined;
-            if (!args || args.destCidr === undefined) {
+            if ((!args || args.destCidr === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destCidr'");
             }
-            if (!args || args.destPortRange === undefined) {
+            if ((!args || args.destPortRange === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destPortRange'");
             }
-            if (!args || args.ipProtocol === undefined) {
+            if ((!args || args.ipProtocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            if (!args || args.priority === undefined) {
+            if ((!args || args.priority === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'priority'");
             }
-            if (!args || args.qosId === undefined) {
+            if ((!args || args.qosId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'qosId'");
             }
-            if (!args || args.sourceCidr === undefined) {
+            if ((!args || args.sourceCidr === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceCidr'");
             }
-            if (!args || args.sourcePortRange === undefined) {
+            if ((!args || args.sourcePortRange === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourcePortRange'");
             }
             inputs["description"] = args ? args.description : undefined;

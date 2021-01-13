@@ -93,13 +93,13 @@ export class ApplicationScale extends pulumi.CustomResource {
             inputs["forceStatus"] = state ? state.forceStatus : undefined;
         } else {
             const args = argsOrState as ApplicationScaleArgs | undefined;
-            if (!args || args.appId === undefined) {
+            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'appId'");
             }
-            if (!args || args.deployGroup === undefined) {
+            if ((!args || args.deployGroup === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deployGroup'");
             }
-            if (!args || args.ecuInfos === undefined) {
+            if ((!args || args.ecuInfos === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ecuInfos'");
             }
             inputs["appId"] = args ? args.appId : undefined;

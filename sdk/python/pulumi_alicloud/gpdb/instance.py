@@ -107,10 +107,10 @@ class Instance(pulumi.CustomResource):
             __props__['engine'] = engine
             __props__['engine_version'] = engine_version
             __props__['instance_charge_type'] = instance_charge_type
-            if instance_class is None:
+            if instance_class is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_class'")
             __props__['instance_class'] = instance_class
-            if instance_group_count is None:
+            if instance_group_count is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_group_count'")
             __props__['instance_group_count'] = instance_group_count
             __props__['security_ip_lists'] = security_ip_lists

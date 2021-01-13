@@ -99,14 +99,14 @@ class Account(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['account_description'] = account_description
-            if account_name is None:
+            if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
             __props__['account_name'] = account_name
-            if account_password is None:
+            if account_password is None and not opts.urn:
                 raise TypeError("Missing required property 'account_password'")
             __props__['account_password'] = account_password
             __props__['account_type'] = account_type
-            if db_cluster_id is None:
+            if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__['db_cluster_id'] = db_cluster_id
             __props__['kms_encrypted_password'] = kms_encrypted_password

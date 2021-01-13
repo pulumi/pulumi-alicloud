@@ -111,14 +111,15 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.InstanceClass == nil {
-		return nil, errors.New("missing required argument 'InstanceClass'")
-	}
-	if args == nil || args.InstanceGroupCount == nil {
-		return nil, errors.New("missing required argument 'InstanceGroupCount'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceClass == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceClass'")
+	}
+	if args.InstanceGroupCount == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceGroupCount'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:gpdb/instance:Instance", name, args, &resource, opts...)

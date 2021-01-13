@@ -54,32 +54,33 @@ type AclRule struct {
 // NewAclRule registers a new resource with the given unique name, arguments, and options.
 func NewAclRule(ctx *pulumi.Context,
 	name string, args *AclRuleArgs, opts ...pulumi.ResourceOption) (*AclRule, error) {
-	if args == nil || args.AclId == nil {
-		return nil, errors.New("missing required argument 'AclId'")
-	}
-	if args == nil || args.DestCidr == nil {
-		return nil, errors.New("missing required argument 'DestCidr'")
-	}
-	if args == nil || args.DestPortRange == nil {
-		return nil, errors.New("missing required argument 'DestPortRange'")
-	}
-	if args == nil || args.Direction == nil {
-		return nil, errors.New("missing required argument 'Direction'")
-	}
-	if args == nil || args.IpProtocol == nil {
-		return nil, errors.New("missing required argument 'IpProtocol'")
-	}
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
-	if args == nil || args.SourceCidr == nil {
-		return nil, errors.New("missing required argument 'SourceCidr'")
-	}
-	if args == nil || args.SourcePortRange == nil {
-		return nil, errors.New("missing required argument 'SourcePortRange'")
-	}
 	if args == nil {
-		args = &AclRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AclId == nil {
+		return nil, errors.New("invalid value for required argument 'AclId'")
+	}
+	if args.DestCidr == nil {
+		return nil, errors.New("invalid value for required argument 'DestCidr'")
+	}
+	if args.DestPortRange == nil {
+		return nil, errors.New("invalid value for required argument 'DestPortRange'")
+	}
+	if args.Direction == nil {
+		return nil, errors.New("invalid value for required argument 'Direction'")
+	}
+	if args.IpProtocol == nil {
+		return nil, errors.New("invalid value for required argument 'IpProtocol'")
+	}
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
+	}
+	if args.SourceCidr == nil {
+		return nil, errors.New("invalid value for required argument 'SourceCidr'")
+	}
+	if args.SourcePortRange == nil {
+		return nil, errors.New("invalid value for required argument 'SourcePortRange'")
 	}
 	var resource AclRule
 	err := ctx.RegisterResource("alicloud:rocketmq/aclRule:AclRule", name, args, &resource, opts...)

@@ -249,17 +249,18 @@ type Listener struct {
 // NewListener registers a new resource with the given unique name, arguments, and options.
 func NewListener(ctx *pulumi.Context,
 	name string, args *ListenerArgs, opts ...pulumi.ResourceOption) (*Listener, error) {
-	if args == nil || args.FrontendPort == nil {
-		return nil, errors.New("missing required argument 'FrontendPort'")
-	}
-	if args == nil || args.LoadBalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerId'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
 	if args == nil {
-		args = &ListenerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FrontendPort == nil {
+		return nil, errors.New("invalid value for required argument 'FrontendPort'")
+	}
+	if args.LoadBalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerId'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
 	}
 	var resource Listener
 	err := ctx.RegisterResource("alicloud:slb/listener:Listener", name, args, &resource, opts...)

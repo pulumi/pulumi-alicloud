@@ -99,7 +99,7 @@ export class ServerGroup extends pulumi.CustomResource {
             inputs["servers"] = state ? state.servers : undefined;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
-            if (!args || args.loadBalancerId === undefined) {
+            if ((!args || args.loadBalancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
             inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;

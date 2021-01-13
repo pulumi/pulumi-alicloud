@@ -95,20 +95,20 @@ class Cluster(pulumi.CustomResource):
 
             __props__['acl_entry_lists'] = acl_entry_lists
             __props__['cluster_alias_name'] = cluster_alias_name
-            if cluster_specification is None:
+            if cluster_specification is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_specification'")
             __props__['cluster_specification'] = cluster_specification
-            if cluster_type is None:
+            if cluster_type is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_type'")
             __props__['cluster_type'] = cluster_type
-            if cluster_version is None:
+            if cluster_version is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_version'")
             __props__['cluster_version'] = cluster_version
             __props__['disk_type'] = disk_type
-            if instance_count is None:
+            if instance_count is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_count'")
             __props__['instance_count'] = instance_count
-            if net_type is None:
+            if net_type is None and not opts.urn:
                 raise TypeError("Missing required property 'net_type'")
             __props__['net_type'] = net_type
             __props__['private_slb_specification'] = private_slb_specification

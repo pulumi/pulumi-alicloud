@@ -130,14 +130,15 @@ type CustomDomain struct {
 // NewCustomDomain registers a new resource with the given unique name, arguments, and options.
 func NewCustomDomain(ctx *pulumi.Context,
 	name string, args *CustomDomainArgs, opts ...pulumi.ResourceOption) (*CustomDomain, error) {
-	if args == nil || args.DomainName == nil {
-		return nil, errors.New("missing required argument 'DomainName'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
 	if args == nil {
-		args = &CustomDomainArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DomainName == nil {
+		return nil, errors.New("invalid value for required argument 'DomainName'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
 	}
 	var resource CustomDomain
 	err := ctx.RegisterResource("alicloud:fc/customDomain:CustomDomain", name, args, &resource, opts...)

@@ -262,7 +262,7 @@ class Bucket(pulumi.CustomResource):
             __props__['force_destroy'] = force_destroy
             __props__['lifecycle_rules'] = lifecycle_rules
             __props__['logging'] = logging
-            if logging_isenable is not None:
+            if logging_isenable is not None and not opts.urn:
                 warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
                 pulumi.log.warn("logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.")
             __props__['logging_isenable'] = logging_isenable

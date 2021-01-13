@@ -61,11 +61,12 @@ type MasterSlaveServerGroup struct {
 // NewMasterSlaveServerGroup registers a new resource with the given unique name, arguments, and options.
 func NewMasterSlaveServerGroup(ctx *pulumi.Context,
 	name string, args *MasterSlaveServerGroupArgs, opts ...pulumi.ResourceOption) (*MasterSlaveServerGroup, error) {
-	if args == nil || args.LoadBalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerId'")
-	}
 	if args == nil {
-		args = &MasterSlaveServerGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LoadBalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerId'")
 	}
 	var resource MasterSlaveServerGroup
 	err := ctx.RegisterResource("alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup", name, args, &resource, opts...)

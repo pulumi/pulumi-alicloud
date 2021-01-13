@@ -90,13 +90,13 @@ class DomainConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if domain_name is None:
+            if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__['domain_name'] = domain_name
-            if function_args is None:
+            if function_args is None and not opts.urn:
                 raise TypeError("Missing required property 'function_args'")
             __props__['function_args'] = function_args
-            if function_name is None:
+            if function_name is None and not opts.urn:
                 raise TypeError("Missing required property 'function_name'")
             __props__['function_name'] = function_name
         super(DomainConfig, __self__).__init__(

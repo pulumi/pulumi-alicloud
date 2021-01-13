@@ -162,13 +162,13 @@ export class Function extends pulumi.CustomResource {
             inputs["timeout"] = state ? state.timeout : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
-            if (!args || args.handler === undefined) {
+            if ((!args || args.handler === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'handler'");
             }
-            if (!args || args.runtime === undefined) {
+            if ((!args || args.runtime === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'runtime'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["caPort"] = args ? args.caPort : undefined;

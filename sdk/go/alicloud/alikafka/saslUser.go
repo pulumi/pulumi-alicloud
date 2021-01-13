@@ -114,14 +114,15 @@ type SaslUser struct {
 // NewSaslUser registers a new resource with the given unique name, arguments, and options.
 func NewSaslUser(ctx *pulumi.Context,
 	name string, args *SaslUserArgs, opts ...pulumi.ResourceOption) (*SaslUser, error) {
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &SaslUserArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource SaslUser
 	err := ctx.RegisterResource("alicloud:alikafka/saslUser:SaslUser", name, args, &resource, opts...)

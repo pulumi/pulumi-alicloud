@@ -41,17 +41,18 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.DnsSecurity == nil {
-		return nil, errors.New("missing required argument 'DnsSecurity'")
-	}
-	if args == nil || args.DomainNumbers == nil {
-		return nil, errors.New("missing required argument 'DomainNumbers'")
-	}
-	if args == nil || args.VersionCode == nil {
-		return nil, errors.New("missing required argument 'VersionCode'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DnsSecurity == nil {
+		return nil, errors.New("invalid value for required argument 'DnsSecurity'")
+	}
+	if args.DomainNumbers == nil {
+		return nil, errors.New("invalid value for required argument 'DomainNumbers'")
+	}
+	if args.VersionCode == nil {
+		return nil, errors.New("invalid value for required argument 'VersionCode'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:dns/instance:Instance", name, args, &resource, opts...)

@@ -58,14 +58,15 @@ type InstanceClusterAttachment struct {
 // NewInstanceClusterAttachment registers a new resource with the given unique name, arguments, and options.
 func NewInstanceClusterAttachment(ctx *pulumi.Context,
 	name string, args *InstanceClusterAttachmentArgs, opts ...pulumi.ResourceOption) (*InstanceClusterAttachment, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.InstanceIds == nil {
-		return nil, errors.New("missing required argument 'InstanceIds'")
-	}
 	if args == nil {
-		args = &InstanceClusterAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.InstanceIds == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceIds'")
 	}
 	var resource InstanceClusterAttachment
 	err := ctx.RegisterResource("alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment", name, args, &resource, opts...)

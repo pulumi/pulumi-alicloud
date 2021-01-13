@@ -64,14 +64,15 @@ type VpcEndpointServiceUser struct {
 // NewVpcEndpointServiceUser registers a new resource with the given unique name, arguments, and options.
 func NewVpcEndpointServiceUser(ctx *pulumi.Context,
 	name string, args *VpcEndpointServiceUserArgs, opts ...pulumi.ResourceOption) (*VpcEndpointServiceUser, error) {
-	if args == nil || args.ServiceId == nil {
-		return nil, errors.New("missing required argument 'ServiceId'")
-	}
-	if args == nil || args.UserId == nil {
-		return nil, errors.New("missing required argument 'UserId'")
-	}
 	if args == nil {
-		args = &VpcEndpointServiceUserArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ServiceId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceId'")
+	}
+	if args.UserId == nil {
+		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
 	var resource VpcEndpointServiceUser
 	err := ctx.RegisterResource("alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser", name, args, &resource, opts...)

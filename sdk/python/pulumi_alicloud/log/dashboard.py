@@ -106,14 +106,14 @@ class Dashboard(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if char_list is None:
+            if char_list is None and not opts.urn:
                 raise TypeError("Missing required property 'char_list'")
             __props__['char_list'] = char_list
-            if dashboard_name is None:
+            if dashboard_name is None and not opts.urn:
                 raise TypeError("Missing required property 'dashboard_name'")
             __props__['dashboard_name'] = dashboard_name
             __props__['display_name'] = display_name
-            if project_name is None:
+            if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
             __props__['project_name'] = project_name
         super(Dashboard, __self__).__init__(

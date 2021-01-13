@@ -82,20 +82,21 @@ type AlidnsRecord struct {
 // NewAlidnsRecord registers a new resource with the given unique name, arguments, and options.
 func NewAlidnsRecord(ctx *pulumi.Context,
 	name string, args *AlidnsRecordArgs, opts ...pulumi.ResourceOption) (*AlidnsRecord, error) {
-	if args == nil || args.DomainName == nil {
-		return nil, errors.New("missing required argument 'DomainName'")
-	}
-	if args == nil || args.Rr == nil {
-		return nil, errors.New("missing required argument 'Rr'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &AlidnsRecordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DomainName == nil {
+		return nil, errors.New("invalid value for required argument 'DomainName'")
+	}
+	if args.Rr == nil {
+		return nil, errors.New("invalid value for required argument 'Rr'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource AlidnsRecord
 	err := ctx.RegisterResource("alicloud:dns/alidnsRecord:AlidnsRecord", name, args, &resource, opts...)

@@ -130,13 +130,13 @@ export class Schedule extends pulumi.CustomResource {
             inputs["scheduleName"] = state ? state.scheduleName : undefined;
         } else {
             const args = argsOrState as ScheduleArgs | undefined;
-            if (!args || args.cronExpression === undefined) {
+            if ((!args || args.cronExpression === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cronExpression'");
             }
-            if (!args || args.flowName === undefined) {
+            if ((!args || args.flowName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'flowName'");
             }
-            if (!args || args.scheduleName === undefined) {
+            if ((!args || args.scheduleName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scheduleName'");
             }
             inputs["cronExpression"] = args ? args.cronExpression : undefined;

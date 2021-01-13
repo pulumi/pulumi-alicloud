@@ -254,22 +254,22 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneCount"] = state ? state.zoneCount : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.dataNodeAmount === undefined) {
+            if ((!args || args.dataNodeAmount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataNodeAmount'");
             }
-            if (!args || args.dataNodeDiskSize === undefined) {
+            if ((!args || args.dataNodeDiskSize === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataNodeDiskSize'");
             }
-            if (!args || args.dataNodeDiskType === undefined) {
+            if ((!args || args.dataNodeDiskType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataNodeDiskType'");
             }
-            if (!args || args.dataNodeSpec === undefined) {
+            if ((!args || args.dataNodeSpec === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataNodeSpec'");
             }
-            if (!args || args.version === undefined) {
+            if ((!args || args.version === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'version'");
             }
-            if (!args || args.vswitchId === undefined) {
+            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["clientNodeAmount"] = args ? args.clientNodeAmount : undefined;

@@ -86,7 +86,7 @@ export class Folder extends pulumi.CustomResource {
             inputs["parentFolderId"] = state ? state.parentFolderId : undefined;
         } else {
             const args = argsOrState as FolderArgs | undefined;
-            if (!args || args.folderName === undefined) {
+            if ((!args || args.folderName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'folderName'");
             }
             inputs["folderName"] = args ? args.folderName : undefined;

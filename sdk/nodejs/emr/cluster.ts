@@ -620,13 +620,13 @@ export class Cluster extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if (!args || args.clusterType === undefined) {
+            if ((!args || args.clusterType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterType'");
             }
-            if (!args || args.emrVer === undefined) {
+            if ((!args || args.emrVer === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'emrVer'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["bootstrapActions"] = args ? args.bootstrapActions : undefined;

@@ -94,20 +94,20 @@ class RouteService(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if access_region_id is None:
+            if access_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'access_region_id'")
             __props__['access_region_id'] = access_region_id
-            if cen_id is None:
+            if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
             __props__['cen_id'] = cen_id
             __props__['description'] = description
-            if host is None:
+            if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
             __props__['host'] = host
-            if host_region_id is None:
+            if host_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'host_region_id'")
             __props__['host_region_id'] = host_region_id
-            if host_vpc_id is None:
+            if host_vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'host_vpc_id'")
             __props__['host_vpc_id'] = host_vpc_id
             __props__['status'] = None

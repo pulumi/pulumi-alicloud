@@ -30,14 +30,15 @@ type RouteTableAttachment struct {
 // NewRouteTableAttachment registers a new resource with the given unique name, arguments, and options.
 func NewRouteTableAttachment(ctx *pulumi.Context,
 	name string, args *RouteTableAttachmentArgs, opts ...pulumi.ResourceOption) (*RouteTableAttachment, error) {
-	if args == nil || args.RouteTableId == nil {
-		return nil, errors.New("missing required argument 'RouteTableId'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &RouteTableAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RouteTableId == nil {
+		return nil, errors.New("invalid value for required argument 'RouteTableId'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource RouteTableAttachment
 	err := ctx.RegisterResource("alicloud:vpc/routeTableAttachment:RouteTableAttachment", name, args, &resource, opts...)

@@ -53,14 +53,15 @@ type Gateway struct {
 // NewGateway registers a new resource with the given unique name, arguments, and options.
 func NewGateway(ctx *pulumi.Context,
 	name string, args *GatewayArgs, opts ...pulumi.ResourceOption) (*Gateway, error) {
-	if args == nil || args.Bandwidth == nil {
-		return nil, errors.New("missing required argument 'Bandwidth'")
-	}
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
 	if args == nil {
-		args = &GatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bandwidth == nil {
+		return nil, errors.New("invalid value for required argument 'Bandwidth'")
+	}
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
 	var resource Gateway
 	err := ctx.RegisterResource("alicloud:vpn/gateway:Gateway", name, args, &resource, opts...)

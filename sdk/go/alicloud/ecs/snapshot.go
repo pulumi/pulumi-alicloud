@@ -68,11 +68,12 @@ type Snapshot struct {
 // NewSnapshot registers a new resource with the given unique name, arguments, and options.
 func NewSnapshot(ctx *pulumi.Context,
 	name string, args *SnapshotArgs, opts ...pulumi.ResourceOption) (*Snapshot, error) {
-	if args == nil || args.DiskId == nil {
-		return nil, errors.New("missing required argument 'DiskId'")
-	}
 	if args == nil {
-		args = &SnapshotArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DiskId == nil {
+		return nil, errors.New("invalid value for required argument 'DiskId'")
 	}
 	var resource Snapshot
 	err := ctx.RegisterResource("alicloud:ecs/snapshot:Snapshot", name, args, &resource, opts...)

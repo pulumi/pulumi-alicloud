@@ -97,10 +97,10 @@ class KeyPairAttachment(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['force'] = force
-            if instance_ids is None:
+            if instance_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_ids'")
             __props__['instance_ids'] = instance_ids
-            if key_name is None:
+            if key_name is None and not opts.urn:
                 raise TypeError("Missing required property 'key_name'")
             __props__['key_name'] = key_name
         super(KeyPairAttachment, __self__).__init__(

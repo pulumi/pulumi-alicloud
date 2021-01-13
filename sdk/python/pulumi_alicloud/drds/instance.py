@@ -96,20 +96,20 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if description is None:
+            if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__['description'] = description
             __props__['instance_charge_type'] = instance_charge_type
-            if instance_series is None:
+            if instance_series is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_series'")
             __props__['instance_series'] = instance_series
-            if specification is None:
+            if specification is None and not opts.urn:
                 raise TypeError("Missing required property 'specification'")
             __props__['specification'] = specification
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(Instance, __self__).__init__(

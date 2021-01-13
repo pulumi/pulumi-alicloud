@@ -92,17 +92,18 @@ type QosCar struct {
 // NewQosCar registers a new resource with the given unique name, arguments, and options.
 func NewQosCar(ctx *pulumi.Context,
 	name string, args *QosCarArgs, opts ...pulumi.ResourceOption) (*QosCar, error) {
-	if args == nil || args.LimitType == nil {
-		return nil, errors.New("missing required argument 'LimitType'")
-	}
-	if args == nil || args.Priority == nil {
-		return nil, errors.New("missing required argument 'Priority'")
-	}
-	if args == nil || args.QosId == nil {
-		return nil, errors.New("missing required argument 'QosId'")
-	}
 	if args == nil {
-		args = &QosCarArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LimitType == nil {
+		return nil, errors.New("invalid value for required argument 'LimitType'")
+	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
+	}
+	if args.QosId == nil {
+		return nil, errors.New("invalid value for required argument 'QosId'")
 	}
 	var resource QosCar
 	err := ctx.RegisterResource("alicloud:rocketmq/qosCar:QosCar", name, args, &resource, opts...)

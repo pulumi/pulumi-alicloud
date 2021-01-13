@@ -104,38 +104,39 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.BigScreen == nil {
-		return nil, errors.New("missing required argument 'BigScreen'")
-	}
-	if args == nil || args.ExclusiveIpPackage == nil {
-		return nil, errors.New("missing required argument 'ExclusiveIpPackage'")
-	}
-	if args == nil || args.ExtBandwidth == nil {
-		return nil, errors.New("missing required argument 'ExtBandwidth'")
-	}
-	if args == nil || args.ExtDomainPackage == nil {
-		return nil, errors.New("missing required argument 'ExtDomainPackage'")
-	}
-	if args == nil || args.LogStorage == nil {
-		return nil, errors.New("missing required argument 'LogStorage'")
-	}
-	if args == nil || args.LogTime == nil {
-		return nil, errors.New("missing required argument 'LogTime'")
-	}
-	if args == nil || args.PackageCode == nil {
-		return nil, errors.New("missing required argument 'PackageCode'")
-	}
-	if args == nil || args.PrefessionalService == nil {
-		return nil, errors.New("missing required argument 'PrefessionalService'")
-	}
-	if args == nil || args.SubscriptionType == nil {
-		return nil, errors.New("missing required argument 'SubscriptionType'")
-	}
-	if args == nil || args.WafLog == nil {
-		return nil, errors.New("missing required argument 'WafLog'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BigScreen == nil {
+		return nil, errors.New("invalid value for required argument 'BigScreen'")
+	}
+	if args.ExclusiveIpPackage == nil {
+		return nil, errors.New("invalid value for required argument 'ExclusiveIpPackage'")
+	}
+	if args.ExtBandwidth == nil {
+		return nil, errors.New("invalid value for required argument 'ExtBandwidth'")
+	}
+	if args.ExtDomainPackage == nil {
+		return nil, errors.New("invalid value for required argument 'ExtDomainPackage'")
+	}
+	if args.LogStorage == nil {
+		return nil, errors.New("invalid value for required argument 'LogStorage'")
+	}
+	if args.LogTime == nil {
+		return nil, errors.New("invalid value for required argument 'LogTime'")
+	}
+	if args.PackageCode == nil {
+		return nil, errors.New("invalid value for required argument 'PackageCode'")
+	}
+	if args.PrefessionalService == nil {
+		return nil, errors.New("invalid value for required argument 'PrefessionalService'")
+	}
+	if args.SubscriptionType == nil {
+		return nil, errors.New("invalid value for required argument 'SubscriptionType'")
+	}
+	if args.WafLog == nil {
+		return nil, errors.New("invalid value for required argument 'WafLog'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:waf/instance:Instance", name, args, &resource, opts...)

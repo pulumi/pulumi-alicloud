@@ -186,14 +186,15 @@ type Attachment struct {
 // NewAttachment registers a new resource with the given unique name, arguments, and options.
 func NewAttachment(ctx *pulumi.Context,
 	name string, args *AttachmentArgs, opts ...pulumi.ResourceOption) (*Attachment, error) {
-	if args == nil || args.InstanceIds == nil {
-		return nil, errors.New("missing required argument 'InstanceIds'")
-	}
-	if args == nil || args.ScalingGroupId == nil {
-		return nil, errors.New("missing required argument 'ScalingGroupId'")
-	}
 	if args == nil {
-		args = &AttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceIds == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceIds'")
+	}
+	if args.ScalingGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ScalingGroupId'")
 	}
 	var resource Attachment
 	err := ctx.RegisterResource("alicloud:ess/attachment:Attachment", name, args, &resource, opts...)

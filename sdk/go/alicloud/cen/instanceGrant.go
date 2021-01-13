@@ -107,17 +107,18 @@ type InstanceGrant struct {
 // NewInstanceGrant registers a new resource with the given unique name, arguments, and options.
 func NewInstanceGrant(ctx *pulumi.Context,
 	name string, args *InstanceGrantArgs, opts ...pulumi.ResourceOption) (*InstanceGrant, error) {
-	if args == nil || args.CenId == nil {
-		return nil, errors.New("missing required argument 'CenId'")
-	}
-	if args == nil || args.CenOwnerId == nil {
-		return nil, errors.New("missing required argument 'CenOwnerId'")
-	}
-	if args == nil || args.ChildInstanceId == nil {
-		return nil, errors.New("missing required argument 'ChildInstanceId'")
-	}
 	if args == nil {
-		args = &InstanceGrantArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CenId == nil {
+		return nil, errors.New("invalid value for required argument 'CenId'")
+	}
+	if args.CenOwnerId == nil {
+		return nil, errors.New("invalid value for required argument 'CenOwnerId'")
+	}
+	if args.ChildInstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'ChildInstanceId'")
 	}
 	var resource InstanceGrant
 	err := ctx.RegisterResource("alicloud:cen/instanceGrant:InstanceGrant", name, args, &resource, opts...)

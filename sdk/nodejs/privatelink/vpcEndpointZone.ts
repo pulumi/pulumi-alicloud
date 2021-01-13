@@ -102,10 +102,10 @@ export class VpcEndpointZone extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as VpcEndpointZoneArgs | undefined;
-            if (!args || args.endpointId === undefined) {
+            if ((!args || args.endpointId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            if (!args || args.vswitchId === undefined) {
+            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["dryRun"] = args ? args.dryRun : undefined;

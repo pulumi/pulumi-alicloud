@@ -82,17 +82,18 @@ type Dashboard struct {
 // NewDashboard registers a new resource with the given unique name, arguments, and options.
 func NewDashboard(ctx *pulumi.Context,
 	name string, args *DashboardArgs, opts ...pulumi.ResourceOption) (*Dashboard, error) {
-	if args == nil || args.CharList == nil {
-		return nil, errors.New("missing required argument 'CharList'")
-	}
-	if args == nil || args.DashboardName == nil {
-		return nil, errors.New("missing required argument 'DashboardName'")
-	}
-	if args == nil || args.ProjectName == nil {
-		return nil, errors.New("missing required argument 'ProjectName'")
-	}
 	if args == nil {
-		args = &DashboardArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CharList == nil {
+		return nil, errors.New("invalid value for required argument 'CharList'")
+	}
+	if args.DashboardName == nil {
+		return nil, errors.New("invalid value for required argument 'DashboardName'")
+	}
+	if args.ProjectName == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectName'")
 	}
 	var resource Dashboard
 	err := ctx.RegisterResource("alicloud:log/dashboard:Dashboard", name, args, &resource, opts...)

@@ -136,20 +136,21 @@ type ReadOnlyInstance struct {
 // NewReadOnlyInstance registers a new resource with the given unique name, arguments, and options.
 func NewReadOnlyInstance(ctx *pulumi.Context,
 	name string, args *ReadOnlyInstanceArgs, opts ...pulumi.ResourceOption) (*ReadOnlyInstance, error) {
-	if args == nil || args.EngineVersion == nil {
-		return nil, errors.New("missing required argument 'EngineVersion'")
-	}
-	if args == nil || args.InstanceStorage == nil {
-		return nil, errors.New("missing required argument 'InstanceStorage'")
-	}
-	if args == nil || args.InstanceType == nil {
-		return nil, errors.New("missing required argument 'InstanceType'")
-	}
-	if args == nil || args.MasterDbInstanceId == nil {
-		return nil, errors.New("missing required argument 'MasterDbInstanceId'")
-	}
 	if args == nil {
-		args = &ReadOnlyInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EngineVersion == nil {
+		return nil, errors.New("invalid value for required argument 'EngineVersion'")
+	}
+	if args.InstanceStorage == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceStorage'")
+	}
+	if args.InstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceType'")
+	}
+	if args.MasterDbInstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'MasterDbInstanceId'")
 	}
 	var resource ReadOnlyInstance
 	err := ctx.RegisterResource("alicloud:rds/readOnlyInstance:ReadOnlyInstance", name, args, &resource, opts...)

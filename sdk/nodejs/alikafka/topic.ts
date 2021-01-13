@@ -135,13 +135,13 @@ export class Topic extends pulumi.CustomResource {
             inputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (!args || args.remark === undefined) {
+            if ((!args || args.remark === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'remark'");
             }
-            if (!args || args.topic === undefined) {
+            if ((!args || args.topic === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'topic'");
             }
             inputs["compactTopic"] = args ? args.compactTopic : undefined;

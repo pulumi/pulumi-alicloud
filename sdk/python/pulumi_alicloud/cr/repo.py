@@ -85,13 +85,13 @@ class Repo(pulumi.CustomResource):
 
             __props__['detail'] = detail
             __props__['name'] = name
-            if namespace is None:
+            if namespace is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace'")
             __props__['namespace'] = namespace
-            if repo_type is None:
+            if repo_type is None and not opts.urn:
                 raise TypeError("Missing required property 'repo_type'")
             __props__['repo_type'] = repo_type
-            if summary is None:
+            if summary is None and not opts.urn:
                 raise TypeError("Missing required property 'summary'")
             __props__['summary'] = summary
             __props__['domain_list'] = None

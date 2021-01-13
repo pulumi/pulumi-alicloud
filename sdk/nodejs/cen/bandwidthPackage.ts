@@ -142,7 +142,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as BandwidthPackageArgs | undefined;
-            if (!args || args.bandwidth === undefined) {
+            if ((!args || args.bandwidth === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bandwidth'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;

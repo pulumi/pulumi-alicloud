@@ -60,10 +60,10 @@ class InstanceClusterAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
-            if instance_ids is None:
+            if instance_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_ids'")
             __props__['instance_ids'] = instance_ids
             __props__['cluster_member_ids'] = None

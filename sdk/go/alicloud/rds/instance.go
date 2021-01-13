@@ -179,20 +179,21 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.Engine == nil {
-		return nil, errors.New("missing required argument 'Engine'")
-	}
-	if args == nil || args.EngineVersion == nil {
-		return nil, errors.New("missing required argument 'EngineVersion'")
-	}
-	if args == nil || args.InstanceStorage == nil {
-		return nil, errors.New("missing required argument 'InstanceStorage'")
-	}
-	if args == nil || args.InstanceType == nil {
-		return nil, errors.New("missing required argument 'InstanceType'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Engine == nil {
+		return nil, errors.New("invalid value for required argument 'Engine'")
+	}
+	if args.EngineVersion == nil {
+		return nil, errors.New("invalid value for required argument 'EngineVersion'")
+	}
+	if args.InstanceStorage == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceStorage'")
+	}
+	if args.InstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceType'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:rds/instance:Instance", name, args, &resource, opts...)

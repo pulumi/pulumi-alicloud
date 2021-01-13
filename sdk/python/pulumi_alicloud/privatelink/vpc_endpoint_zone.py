@@ -76,10 +76,10 @@ class VpcEndpointZone(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['dry_run'] = dry_run
-            if endpoint_id is None:
+            if endpoint_id is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_id'")
             __props__['endpoint_id'] = endpoint_id
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id

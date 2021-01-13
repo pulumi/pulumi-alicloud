@@ -113,13 +113,13 @@ export class DdosBgpInstance extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DdosBgpInstanceArgs | undefined;
-            if (!args || args.bandwidth === undefined) {
+            if ((!args || args.bandwidth === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if (!args || args.ipCount === undefined) {
+            if ((!args || args.ipCount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipCount'");
             }
-            if (!args || args.ipType === undefined) {
+            if ((!args || args.ipType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipType'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;

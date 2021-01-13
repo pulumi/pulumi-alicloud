@@ -52,7 +52,7 @@ class SslVpnClientCert(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            if ssl_vpn_server_id is None:
+            if ssl_vpn_server_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ssl_vpn_server_id'")
             __props__['ssl_vpn_server_id'] = ssl_vpn_server_id
             __props__['ca_cert'] = None

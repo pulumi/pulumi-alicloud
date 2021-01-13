@@ -99,13 +99,13 @@ export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as RegistryEnterpriseNamespaceArgs | undefined;
-            if (!args || args.autoCreate === undefined) {
+            if ((!args || args.autoCreate === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'autoCreate'");
             }
-            if (!args || args.defaultVisibility === undefined) {
+            if ((!args || args.defaultVisibility === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'defaultVisibility'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["autoCreate"] = args ? args.autoCreate : undefined;

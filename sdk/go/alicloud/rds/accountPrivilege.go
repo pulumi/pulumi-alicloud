@@ -141,17 +141,18 @@ type AccountPrivilege struct {
 // NewAccountPrivilege registers a new resource with the given unique name, arguments, and options.
 func NewAccountPrivilege(ctx *pulumi.Context,
 	name string, args *AccountPrivilegeArgs, opts ...pulumi.ResourceOption) (*AccountPrivilege, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.DbNames == nil {
-		return nil, errors.New("missing required argument 'DbNames'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &AccountPrivilegeArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.DbNames == nil {
+		return nil, errors.New("invalid value for required argument 'DbNames'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource AccountPrivilege
 	err := ctx.RegisterResource("alicloud:rds/accountPrivilege:AccountPrivilege", name, args, &resource, opts...)

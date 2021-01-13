@@ -72,10 +72,10 @@ export class EipAssociation extends pulumi.CustomResource {
             inputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
         } else {
             const args = argsOrState as EipAssociationArgs | undefined;
-            if (!args || args.allocationId === undefined) {
+            if ((!args || args.allocationId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'allocationId'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["allocationId"] = args ? args.allocationId : undefined;

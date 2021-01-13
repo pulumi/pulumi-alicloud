@@ -88,22 +88,22 @@ class DnatEntry(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['external_ip'] = external_ip
-            if external_port is None:
+            if external_port is None and not opts.urn:
                 raise TypeError("Missing required property 'external_port'")
             __props__['external_port'] = external_port
-            if internal_ip is None:
+            if internal_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'internal_ip'")
             __props__['internal_ip'] = internal_ip
-            if internal_port is None:
+            if internal_port is None and not opts.urn:
                 raise TypeError("Missing required property 'internal_port'")
             __props__['internal_port'] = internal_port
-            if ip_protocol is None:
+            if ip_protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_protocol'")
             __props__['ip_protocol'] = ip_protocol
-            if sag_id is None:
+            if sag_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sag_id'")
             __props__['sag_id'] = sag_id
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
         super(DnatEntry, __self__).__init__(

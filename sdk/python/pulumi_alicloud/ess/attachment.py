@@ -131,10 +131,10 @@ class Attachment(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['force'] = force
-            if instance_ids is None:
+            if instance_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_ids'")
             __props__['instance_ids'] = instance_ids
-            if scaling_group_id is None:
+            if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__['scaling_group_id'] = scaling_group_id
         super(Attachment, __self__).__init__(

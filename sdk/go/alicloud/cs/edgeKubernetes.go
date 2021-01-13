@@ -103,17 +103,18 @@ type EdgeKubernetes struct {
 // NewEdgeKubernetes registers a new resource with the given unique name, arguments, and options.
 func NewEdgeKubernetes(ctx *pulumi.Context,
 	name string, args *EdgeKubernetesArgs, opts ...pulumi.ResourceOption) (*EdgeKubernetes, error) {
-	if args == nil || args.WorkerInstanceTypes == nil {
-		return nil, errors.New("missing required argument 'WorkerInstanceTypes'")
-	}
-	if args == nil || args.WorkerNumber == nil {
-		return nil, errors.New("missing required argument 'WorkerNumber'")
-	}
-	if args == nil || args.WorkerVswitchIds == nil {
-		return nil, errors.New("missing required argument 'WorkerVswitchIds'")
-	}
 	if args == nil {
-		args = &EdgeKubernetesArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.WorkerInstanceTypes == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerInstanceTypes'")
+	}
+	if args.WorkerNumber == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerNumber'")
+	}
+	if args.WorkerVswitchIds == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerVswitchIds'")
 	}
 	var resource EdgeKubernetes
 	err := ctx.RegisterResource("alicloud:cs/edgeKubernetes:EdgeKubernetes", name, args, &resource, opts...)

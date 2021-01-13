@@ -132,16 +132,16 @@ export class VbrHealthCheck extends pulumi.CustomResource {
             inputs["vbrInstanceRegionId"] = state ? state.vbrInstanceRegionId : undefined;
         } else {
             const args = argsOrState as VbrHealthCheckArgs | undefined;
-            if (!args || args.cenId === undefined) {
+            if ((!args || args.cenId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if (!args || args.healthCheckTargetIp === undefined) {
+            if ((!args || args.healthCheckTargetIp === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'healthCheckTargetIp'");
             }
-            if (!args || args.vbrInstanceId === undefined) {
+            if ((!args || args.vbrInstanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vbrInstanceId'");
             }
-            if (!args || args.vbrInstanceRegionId === undefined) {
+            if ((!args || args.vbrInstanceRegionId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vbrInstanceRegionId'");
             }
             inputs["cenId"] = args ? args.cenId : undefined;

@@ -61,7 +61,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bandwidth is None:
+            if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__['bandwidth'] = bandwidth
             __props__['description'] = description

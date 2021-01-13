@@ -67,14 +67,15 @@ type FileSystem struct {
 // NewFileSystem registers a new resource with the given unique name, arguments, and options.
 func NewFileSystem(ctx *pulumi.Context,
 	name string, args *FileSystemArgs, opts ...pulumi.ResourceOption) (*FileSystem, error) {
-	if args == nil || args.ProtocolType == nil {
-		return nil, errors.New("missing required argument 'ProtocolType'")
-	}
-	if args == nil || args.StorageType == nil {
-		return nil, errors.New("missing required argument 'StorageType'")
-	}
 	if args == nil {
-		args = &FileSystemArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProtocolType == nil {
+		return nil, errors.New("invalid value for required argument 'ProtocolType'")
+	}
+	if args.StorageType == nil {
+		return nil, errors.New("invalid value for required argument 'StorageType'")
 	}
 	var resource FileSystem
 	err := ctx.RegisterResource("alicloud:nas/fileSystem:FileSystem", name, args, &resource, opts...)

@@ -91,11 +91,11 @@ class Database(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['character_set_name'] = character_set_name
-            if db_cluster_id is None:
+            if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__['db_cluster_id'] = db_cluster_id
             __props__['db_description'] = db_description
-            if db_name is None:
+            if db_name is None and not opts.urn:
                 raise TypeError("Missing required property 'db_name'")
             __props__['db_name'] = db_name
         super(Database, __self__).__init__(

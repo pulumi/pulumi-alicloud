@@ -94,10 +94,10 @@ export class FileSystem extends pulumi.CustomResource {
             inputs["storageType"] = state ? state.storageType : undefined;
         } else {
             const args = argsOrState as FileSystemArgs | undefined;
-            if (!args || args.protocolType === undefined) {
+            if ((!args || args.protocolType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocolType'");
             }
-            if (!args || args.storageType === undefined) {
+            if ((!args || args.storageType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'storageType'");
             }
             inputs["description"] = args ? args.description : undefined;

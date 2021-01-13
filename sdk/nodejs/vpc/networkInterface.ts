@@ -138,10 +138,10 @@ export class NetworkInterface extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as NetworkInterfaceArgs | undefined;
-            if (!args || args.securityGroups === undefined) {
+            if ((!args || args.securityGroups === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'securityGroups'");
             }
-            if (!args || args.vswitchId === undefined) {
+            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["description"] = args ? args.description : undefined;

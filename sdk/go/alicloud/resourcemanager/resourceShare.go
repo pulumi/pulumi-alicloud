@@ -63,11 +63,12 @@ type ResourceShare struct {
 // NewResourceShare registers a new resource with the given unique name, arguments, and options.
 func NewResourceShare(ctx *pulumi.Context,
 	name string, args *ResourceShareArgs, opts ...pulumi.ResourceOption) (*ResourceShare, error) {
-	if args == nil || args.ResourceShareName == nil {
-		return nil, errors.New("missing required argument 'ResourceShareName'")
-	}
 	if args == nil {
-		args = &ResourceShareArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceShareName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceShareName'")
 	}
 	var resource ResourceShare
 	err := ctx.RegisterResource("alicloud:resourcemanager/resourceShare:ResourceShare", name, args, &resource, opts...)

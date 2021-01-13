@@ -75,7 +75,7 @@ class Alarm(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if alarm_actions is None:
+            if alarm_actions is None and not opts.urn:
                 raise TypeError("Missing required property 'alarm_actions'")
             __props__['alarm_actions'] = alarm_actions
             __props__['cloud_monitor_group_id'] = cloud_monitor_group_id
@@ -84,17 +84,17 @@ class Alarm(pulumi.CustomResource):
             __props__['dimensions'] = dimensions
             __props__['enable'] = enable
             __props__['evaluation_count'] = evaluation_count
-            if metric_name is None:
+            if metric_name is None and not opts.urn:
                 raise TypeError("Missing required property 'metric_name'")
             __props__['metric_name'] = metric_name
             __props__['metric_type'] = metric_type
             __props__['name'] = name
             __props__['period'] = period
-            if scaling_group_id is None:
+            if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__['scaling_group_id'] = scaling_group_id
             __props__['statistics'] = statistics
-            if threshold is None:
+            if threshold is None and not opts.urn:
                 raise TypeError("Missing required property 'threshold'")
             __props__['threshold'] = threshold
             __props__['state'] = None

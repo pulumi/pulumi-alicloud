@@ -77,10 +77,10 @@ export class SharedTarget extends pulumi.CustomResource {
             inputs["targetId"] = state ? state.targetId : undefined;
         } else {
             const args = argsOrState as SharedTargetArgs | undefined;
-            if (!args || args.resourceShareId === undefined) {
+            if ((!args || args.resourceShareId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceShareId'");
             }
-            if (!args || args.targetId === undefined) {
+            if ((!args || args.targetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'targetId'");
             }
             inputs["resourceShareId"] = args ? args.resourceShareId : undefined;

@@ -63,7 +63,7 @@ class ZoneAttachment(pulumi.CustomResource):
             __props__['user_client_ip'] = user_client_ip
             __props__['vpc_ids'] = vpc_ids
             __props__['vpcs'] = vpcs
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(ZoneAttachment, __self__).__init__(

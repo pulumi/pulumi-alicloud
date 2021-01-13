@@ -129,11 +129,12 @@ type DedicatedHost struct {
 // NewDedicatedHost registers a new resource with the given unique name, arguments, and options.
 func NewDedicatedHost(ctx *pulumi.Context,
 	name string, args *DedicatedHostArgs, opts ...pulumi.ResourceOption) (*DedicatedHost, error) {
-	if args == nil || args.DedicatedHostType == nil {
-		return nil, errors.New("missing required argument 'DedicatedHostType'")
-	}
 	if args == nil {
-		args = &DedicatedHostArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DedicatedHostType == nil {
+		return nil, errors.New("invalid value for required argument 'DedicatedHostType'")
 	}
 	var resource DedicatedHost
 	err := ctx.RegisterResource("alicloud:ecs/dedicatedHost:DedicatedHost", name, args, &resource, opts...)

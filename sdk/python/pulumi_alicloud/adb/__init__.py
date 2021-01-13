@@ -10,3 +10,35 @@ from .connection import *
 from .get_clusters import *
 from .get_zones import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:adb/account:Account":
+                return Account(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:adb/backupPolicy:BackupPolicy":
+                return BackupPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:adb/cluster:Cluster":
+                return Cluster(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:adb/connection:Connection":
+                return Connection(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "adb/account", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "adb/backupPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "adb/cluster", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "adb/connection", _module_instance)
+
+_register_module()

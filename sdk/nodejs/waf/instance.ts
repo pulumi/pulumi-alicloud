@@ -170,34 +170,34 @@ export class Instance extends pulumi.CustomResource {
             inputs["wafLog"] = state ? state.wafLog : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.bigScreen === undefined) {
+            if ((!args || args.bigScreen === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bigScreen'");
             }
-            if (!args || args.exclusiveIpPackage === undefined) {
+            if ((!args || args.exclusiveIpPackage === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'exclusiveIpPackage'");
             }
-            if (!args || args.extBandwidth === undefined) {
+            if ((!args || args.extBandwidth === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'extBandwidth'");
             }
-            if (!args || args.extDomainPackage === undefined) {
+            if ((!args || args.extDomainPackage === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'extDomainPackage'");
             }
-            if (!args || args.logStorage === undefined) {
+            if ((!args || args.logStorage === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'logStorage'");
             }
-            if (!args || args.logTime === undefined) {
+            if ((!args || args.logTime === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'logTime'");
             }
-            if (!args || args.packageCode === undefined) {
+            if ((!args || args.packageCode === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'packageCode'");
             }
-            if (!args || args.prefessionalService === undefined) {
+            if ((!args || args.prefessionalService === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'prefessionalService'");
             }
-            if (!args || args.subscriptionType === undefined) {
+            if ((!args || args.subscriptionType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subscriptionType'");
             }
-            if (!args || args.wafLog === undefined) {
+            if ((!args || args.wafLog === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'wafLog'");
             }
             inputs["bigScreen"] = args ? args.bigScreen : undefined;

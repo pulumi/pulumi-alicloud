@@ -87,17 +87,18 @@ type InstanceAttachment struct {
 // NewInstanceAttachment registers a new resource with the given unique name, arguments, and options.
 func NewInstanceAttachment(ctx *pulumi.Context,
 	name string, args *InstanceAttachmentArgs, opts ...pulumi.ResourceOption) (*InstanceAttachment, error) {
-	if args == nil || args.InstanceName == nil {
-		return nil, errors.New("missing required argument 'InstanceName'")
-	}
-	if args == nil || args.VpcName == nil {
-		return nil, errors.New("missing required argument 'VpcName'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &InstanceAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceName == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceName'")
+	}
+	if args.VpcName == nil {
+		return nil, errors.New("invalid value for required argument 'VpcName'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource InstanceAttachment
 	err := ctx.RegisterResource("alicloud:ots/instanceAttachment:InstanceAttachment", name, args, &resource, opts...)

@@ -66,17 +66,18 @@ type Cluster struct {
 // NewCluster registers a new resource with the given unique name, arguments, and options.
 func NewCluster(ctx *pulumi.Context,
 	name string, args *ClusterArgs, opts ...pulumi.ResourceOption) (*Cluster, error) {
-	if args == nil || args.ClusterType == nil {
-		return nil, errors.New("missing required argument 'ClusterType'")
-	}
-	if args == nil || args.EmrVer == nil {
-		return nil, errors.New("missing required argument 'EmrVer'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &ClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterType == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterType'")
+	}
+	if args.EmrVer == nil {
+		return nil, errors.New("invalid value for required argument 'EmrVer'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource Cluster
 	err := ctx.RegisterResource("alicloud:emr/cluster:Cluster", name, args, &resource, opts...)

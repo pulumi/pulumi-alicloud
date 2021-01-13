@@ -122,7 +122,7 @@ export class NetworkAclEntries extends pulumi.CustomResource {
             inputs["networkAclId"] = state ? state.networkAclId : undefined;
         } else {
             const args = argsOrState as NetworkAclEntriesArgs | undefined;
-            if (!args || args.networkAclId === undefined) {
+            if ((!args || args.networkAclId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkAclId'");
             }
             inputs["egresses"] = args ? args.egresses : undefined;

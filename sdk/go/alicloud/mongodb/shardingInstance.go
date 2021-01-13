@@ -64,17 +64,18 @@ type ShardingInstance struct {
 // NewShardingInstance registers a new resource with the given unique name, arguments, and options.
 func NewShardingInstance(ctx *pulumi.Context,
 	name string, args *ShardingInstanceArgs, opts ...pulumi.ResourceOption) (*ShardingInstance, error) {
-	if args == nil || args.EngineVersion == nil {
-		return nil, errors.New("missing required argument 'EngineVersion'")
-	}
-	if args == nil || args.MongoLists == nil {
-		return nil, errors.New("missing required argument 'MongoLists'")
-	}
-	if args == nil || args.ShardLists == nil {
-		return nil, errors.New("missing required argument 'ShardLists'")
-	}
 	if args == nil {
-		args = &ShardingInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EngineVersion == nil {
+		return nil, errors.New("invalid value for required argument 'EngineVersion'")
+	}
+	if args.MongoLists == nil {
+		return nil, errors.New("invalid value for required argument 'MongoLists'")
+	}
+	if args.ShardLists == nil {
+		return nil, errors.New("invalid value for required argument 'ShardLists'")
 	}
 	var resource ShardingInstance
 	err := ctx.RegisterResource("alicloud:mongodb/shardingInstance:ShardingInstance", name, args, &resource, opts...)

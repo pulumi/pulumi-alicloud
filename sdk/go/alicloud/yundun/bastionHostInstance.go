@@ -78,20 +78,21 @@ type BastionHostInstance struct {
 // NewBastionHostInstance registers a new resource with the given unique name, arguments, and options.
 func NewBastionHostInstance(ctx *pulumi.Context,
 	name string, args *BastionHostInstanceArgs, opts ...pulumi.ResourceOption) (*BastionHostInstance, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.LicenseCode == nil {
-		return nil, errors.New("missing required argument 'LicenseCode'")
-	}
-	if args == nil || args.SecurityGroupIds == nil {
-		return nil, errors.New("missing required argument 'SecurityGroupIds'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &BastionHostInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.LicenseCode == nil {
+		return nil, errors.New("invalid value for required argument 'LicenseCode'")
+	}
+	if args.SecurityGroupIds == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroupIds'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource BastionHostInstance
 	err := ctx.RegisterResource("alicloud:yundun/bastionHostInstance:BastionHostInstance", name, args, &resource, opts...)

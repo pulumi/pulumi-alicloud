@@ -43,11 +43,12 @@ type Store struct {
 // NewStore registers a new resource with the given unique name, arguments, and options.
 func NewStore(ctx *pulumi.Context,
 	name string, args *StoreArgs, opts ...pulumi.ResourceOption) (*Store, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &StoreArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Store
 	err := ctx.RegisterResource("alicloud:log/store:Store", name, args, &resource, opts...)

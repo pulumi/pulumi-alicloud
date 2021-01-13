@@ -135,10 +135,10 @@ export class ImageCopy extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ImageCopyArgs | undefined;
-            if (!args || args.sourceImageId === undefined) {
+            if ((!args || args.sourceImageId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceImageId'");
             }
-            if (!args || args.sourceRegionId === undefined) {
+            if ((!args || args.sourceRegionId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceRegionId'");
             }
             inputs["description"] = args ? args.description : undefined;

@@ -82,17 +82,17 @@ class AlidnsInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if dns_security is None:
+            if dns_security is None and not opts.urn:
                 raise TypeError("Missing required property 'dns_security'")
             __props__['dns_security'] = dns_security
-            if domain_numbers is None:
+            if domain_numbers is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_numbers'")
             __props__['domain_numbers'] = domain_numbers
             __props__['payment_type'] = payment_type
             __props__['period'] = period
             __props__['renew_period'] = renew_period
             __props__['renewal_status'] = renewal_status
-            if version_code is None:
+            if version_code is None and not opts.urn:
                 raise TypeError("Missing required property 'version_code'")
             __props__['version_code'] = version_code
             __props__['version_name'] = None

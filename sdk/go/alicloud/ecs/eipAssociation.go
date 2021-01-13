@@ -29,14 +29,15 @@ type EipAssociation struct {
 // NewEipAssociation registers a new resource with the given unique name, arguments, and options.
 func NewEipAssociation(ctx *pulumi.Context,
 	name string, args *EipAssociationArgs, opts ...pulumi.ResourceOption) (*EipAssociation, error) {
-	if args == nil || args.AllocationId == nil {
-		return nil, errors.New("missing required argument 'AllocationId'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &EipAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AllocationId == nil {
+		return nil, errors.New("invalid value for required argument 'AllocationId'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource EipAssociation
 	err := ctx.RegisterResource("alicloud:ecs/eipAssociation:EipAssociation", name, args, &resource, opts...)

@@ -91,10 +91,10 @@ export class ImageExport extends pulumi.CustomResource {
             inputs["ossPrefix"] = state ? state.ossPrefix : undefined;
         } else {
             const args = argsOrState as ImageExportArgs | undefined;
-            if (!args || args.imageId === undefined) {
+            if ((!args || args.imageId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if (!args || args.ossBucket === undefined) {
+            if ((!args || args.ossBucket === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ossBucket'");
             }
             inputs["imageId"] = args ? args.imageId : undefined;

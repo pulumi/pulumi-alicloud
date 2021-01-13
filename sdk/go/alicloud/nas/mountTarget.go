@@ -91,14 +91,15 @@ type MountTarget struct {
 // NewMountTarget registers a new resource with the given unique name, arguments, and options.
 func NewMountTarget(ctx *pulumi.Context,
 	name string, args *MountTargetArgs, opts ...pulumi.ResourceOption) (*MountTarget, error) {
-	if args == nil || args.AccessGroupName == nil {
-		return nil, errors.New("missing required argument 'AccessGroupName'")
-	}
-	if args == nil || args.FileSystemId == nil {
-		return nil, errors.New("missing required argument 'FileSystemId'")
-	}
 	if args == nil {
-		args = &MountTargetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccessGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'AccessGroupName'")
+	}
+	if args.FileSystemId == nil {
+		return nil, errors.New("invalid value for required argument 'FileSystemId'")
 	}
 	var resource MountTarget
 	err := ctx.RegisterResource("alicloud:nas/mountTarget:MountTarget", name, args, &resource, opts...)

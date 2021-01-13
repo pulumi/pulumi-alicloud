@@ -103,10 +103,10 @@ export class Subscription extends pulumi.CustomResource {
             inputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
-            if (!args || args.projectName === undefined) {
+            if ((!args || args.projectName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if (!args || args.topicName === undefined) {
+            if ((!args || args.topicName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'topicName'");
             }
             inputs["comment"] = args ? args.comment : undefined;

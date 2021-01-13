@@ -149,10 +149,10 @@ export class ScalingGroup extends pulumi.CustomResource {
             inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
         } else {
             const args = argsOrState as ScalingGroupArgs | undefined;
-            if (!args || args.maxSize === undefined) {
+            if ((!args || args.maxSize === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'maxSize'");
             }
-            if (!args || args.minSize === undefined) {
+            if ((!args || args.minSize === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'minSize'");
             }
             inputs["dbInstanceIds"] = args ? args.dbInstanceIds : undefined;

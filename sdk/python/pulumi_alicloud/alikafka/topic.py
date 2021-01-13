@@ -103,16 +103,16 @@ class Topic(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['compact_topic'] = compact_topic
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['local_topic'] = local_topic
             __props__['partition_num'] = partition_num
-            if remark is None:
+            if remark is None and not opts.urn:
                 raise TypeError("Missing required property 'remark'")
             __props__['remark'] = remark
             __props__['tags'] = tags
-            if topic is None:
+            if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
             __props__['topic'] = topic
         super(Topic, __self__).__init__(

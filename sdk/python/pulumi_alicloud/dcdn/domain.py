@@ -111,14 +111,14 @@ class Domain(pulumi.CustomResource):
             __props__['cert_name'] = cert_name
             __props__['cert_type'] = cert_type
             __props__['check_url'] = check_url
-            if domain_name is None:
+            if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__['domain_name'] = domain_name
             __props__['force_set'] = force_set
             __props__['resource_group_id'] = resource_group_id
             __props__['scope'] = scope
             __props__['security_token'] = security_token
-            if sources is None:
+            if sources is None and not opts.urn:
                 raise TypeError("Missing required property 'sources'")
             __props__['sources'] = sources
             __props__['ssl_pri'] = ssl_pri

@@ -117,17 +117,18 @@ type Topic struct {
 // NewTopic registers a new resource with the given unique name, arguments, and options.
 func NewTopic(ctx *pulumi.Context,
 	name string, args *TopicArgs, opts ...pulumi.ResourceOption) (*Topic, error) {
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
-	if args == nil || args.Remark == nil {
-		return nil, errors.New("missing required argument 'Remark'")
-	}
-	if args == nil || args.Topic == nil {
-		return nil, errors.New("missing required argument 'Topic'")
-	}
 	if args == nil {
-		args = &TopicArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
+	if args.Remark == nil {
+		return nil, errors.New("invalid value for required argument 'Remark'")
+	}
+	if args.Topic == nil {
+		return nil, errors.New("invalid value for required argument 'Topic'")
 	}
 	var resource Topic
 	err := ctx.RegisterResource("alicloud:alikafka/topic:Topic", name, args, &resource, opts...)

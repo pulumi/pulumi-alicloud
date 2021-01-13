@@ -72,10 +72,10 @@ class Handshake(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['note'] = note
-            if target_entity is None:
+            if target_entity is None and not opts.urn:
                 raise TypeError("Missing required property 'target_entity'")
             __props__['target_entity'] = target_entity
-            if target_type is None:
+            if target_type is None and not opts.urn:
                 raise TypeError("Missing required property 'target_type'")
             __props__['target_type'] = target_type
             __props__['expire_time'] = None

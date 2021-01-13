@@ -137,10 +137,10 @@ export class RouterInterfaceConnection extends pulumi.CustomResource {
             inputs["oppositeRouterType"] = state ? state.oppositeRouterType : undefined;
         } else {
             const args = argsOrState as RouterInterfaceConnectionArgs | undefined;
-            if (!args || args.interfaceId === undefined) {
+            if ((!args || args.interfaceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'interfaceId'");
             }
-            if (!args || args.oppositeInterfaceId === undefined) {
+            if ((!args || args.oppositeInterfaceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'oppositeInterfaceId'");
             }
             inputs["interfaceId"] = args ? args.interfaceId : undefined;

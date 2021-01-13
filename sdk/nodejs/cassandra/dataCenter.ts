@@ -175,19 +175,19 @@ export class DataCenter extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DataCenterArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.instanceType === undefined) {
+            if ((!args || args.instanceType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if (!args || args.nodeCount === undefined) {
+            if ((!args || args.nodeCount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            if (!args || args.payType === undefined) {
+            if ((!args || args.payType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'payType'");
             }
-            if (!args || args.vswitchId === undefined) {
+            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["autoRenew"] = args ? args.autoRenew : undefined;

@@ -101,7 +101,7 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
-            if (!args || args.diskId === undefined) {
+            if ((!args || args.diskId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'diskId'");
             }
             inputs["description"] = args ? args.description : undefined;

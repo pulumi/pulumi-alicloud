@@ -87,17 +87,17 @@ class SiteMonitor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if address is None:
+            if address is None and not opts.urn:
                 raise TypeError("Missing required property 'address'")
             __props__['address'] = address
             __props__['alert_ids'] = alert_ids
             __props__['interval'] = interval
             __props__['isp_cities'] = isp_cities
             __props__['options_json'] = options_json
-            if task_name is None:
+            if task_name is None and not opts.urn:
                 raise TypeError("Missing required property 'task_name'")
             __props__['task_name'] = task_name
-            if task_type is None:
+            if task_type is None and not opts.urn:
                 raise TypeError("Missing required property 'task_type'")
             __props__['task_type'] = task_type
             __props__['create_time'] = None

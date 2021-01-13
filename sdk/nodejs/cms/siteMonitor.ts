@@ -123,13 +123,13 @@ export class SiteMonitor extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as SiteMonitorArgs | undefined;
-            if (!args || args.address === undefined) {
+            if ((!args || args.address === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'address'");
             }
-            if (!args || args.taskName === undefined) {
+            if ((!args || args.taskName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'taskName'");
             }
-            if (!args || args.taskType === undefined) {
+            if ((!args || args.taskType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'taskType'");
             }
             inputs["address"] = args ? args.address : undefined;

@@ -115,13 +115,13 @@ export class UserPolicyAttachment extends pulumi.CustomResource {
             inputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as UserPolicyAttachmentArgs | undefined;
-            if (!args || args.policyName === undefined) {
+            if ((!args || args.policyName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if (!args || args.policyType === undefined) {
+            if ((!args || args.policyType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyType'");
             }
-            if (!args || args.userName === undefined) {
+            if ((!args || args.userName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'userName'");
             }
             inputs["policyName"] = args ? args.policyName : undefined;

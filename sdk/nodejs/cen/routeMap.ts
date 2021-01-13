@@ -272,19 +272,19 @@ export class RouteMap extends pulumi.CustomResource {
             inputs["transmitDirection"] = state ? state.transmitDirection : undefined;
         } else {
             const args = argsOrState as RouteMapArgs | undefined;
-            if (!args || args.cenId === undefined) {
+            if ((!args || args.cenId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if (!args || args.cenRegionId === undefined) {
+            if ((!args || args.cenRegionId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cenRegionId'");
             }
-            if (!args || args.mapResult === undefined) {
+            if ((!args || args.mapResult === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'mapResult'");
             }
-            if (!args || args.priority === undefined) {
+            if ((!args || args.priority === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'priority'");
             }
-            if (!args || args.transmitDirection === undefined) {
+            if ((!args || args.transmitDirection === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'transmitDirection'");
             }
             inputs["asPathMatchMode"] = args ? args.asPathMatchMode : undefined;

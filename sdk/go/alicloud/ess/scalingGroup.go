@@ -71,14 +71,15 @@ type ScalingGroup struct {
 // NewScalingGroup registers a new resource with the given unique name, arguments, and options.
 func NewScalingGroup(ctx *pulumi.Context,
 	name string, args *ScalingGroupArgs, opts ...pulumi.ResourceOption) (*ScalingGroup, error) {
-	if args == nil || args.MaxSize == nil {
-		return nil, errors.New("missing required argument 'MaxSize'")
-	}
-	if args == nil || args.MinSize == nil {
-		return nil, errors.New("missing required argument 'MinSize'")
-	}
 	if args == nil {
-		args = &ScalingGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.MaxSize == nil {
+		return nil, errors.New("invalid value for required argument 'MaxSize'")
+	}
+	if args.MinSize == nil {
+		return nil, errors.New("invalid value for required argument 'MinSize'")
 	}
 	var resource ScalingGroup
 	err := ctx.RegisterResource("alicloud:ess/scalingGroup:ScalingGroup", name, args, &resource, opts...)

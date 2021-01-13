@@ -86,21 +86,21 @@ class DdosCooInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bandwidth is None:
+            if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__['bandwidth'] = bandwidth
-            if base_bandwidth is None:
+            if base_bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'base_bandwidth'")
             __props__['base_bandwidth'] = base_bandwidth
-            if domain_count is None:
+            if domain_count is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_count'")
             __props__['domain_count'] = domain_count
             __props__['name'] = name
             __props__['period'] = period
-            if port_count is None:
+            if port_count is None and not opts.urn:
                 raise TypeError("Missing required property 'port_count'")
             __props__['port_count'] = port_count
-            if service_bandwidth is None:
+            if service_bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'service_bandwidth'")
             __props__['service_bandwidth'] = service_bandwidth
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="alicloud:dns/ddosCooInstance:DdosCooInstance")])

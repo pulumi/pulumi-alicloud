@@ -55,11 +55,12 @@ type ScalingRule struct {
 // NewScalingRule registers a new resource with the given unique name, arguments, and options.
 func NewScalingRule(ctx *pulumi.Context,
 	name string, args *ScalingRuleArgs, opts ...pulumi.ResourceOption) (*ScalingRule, error) {
-	if args == nil || args.ScalingGroupId == nil {
-		return nil, errors.New("missing required argument 'ScalingGroupId'")
-	}
 	if args == nil {
-		args = &ScalingRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ScalingGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ScalingGroupId'")
 	}
 	var resource ScalingRule
 	err := ctx.RegisterResource("alicloud:ess/scalingRule:ScalingRule", name, args, &resource, opts...)

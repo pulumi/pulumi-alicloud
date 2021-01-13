@@ -62,11 +62,12 @@ type Folder struct {
 // NewFolder registers a new resource with the given unique name, arguments, and options.
 func NewFolder(ctx *pulumi.Context,
 	name string, args *FolderArgs, opts ...pulumi.ResourceOption) (*Folder, error) {
-	if args == nil || args.FolderName == nil {
-		return nil, errors.New("missing required argument 'FolderName'")
-	}
 	if args == nil {
-		args = &FolderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FolderName == nil {
+		return nil, errors.New("invalid value for required argument 'FolderName'")
 	}
 	var resource Folder
 	err := ctx.RegisterResource("alicloud:resourcemanager/folder:Folder", name, args, &resource, opts...)

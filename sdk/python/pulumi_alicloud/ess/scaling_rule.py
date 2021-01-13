@@ -83,7 +83,7 @@ class ScalingRule(pulumi.CustomResource):
             __props__['disable_scale_in'] = disable_scale_in
             __props__['estimated_instance_warmup'] = estimated_instance_warmup
             __props__['metric_name'] = metric_name
-            if scaling_group_id is None:
+            if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__['scaling_group_id'] = scaling_group_id
             __props__['scaling_rule_name'] = scaling_rule_name

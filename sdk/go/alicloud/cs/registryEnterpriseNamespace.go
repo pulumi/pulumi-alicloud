@@ -69,17 +69,18 @@ type RegistryEnterpriseNamespace struct {
 // NewRegistryEnterpriseNamespace registers a new resource with the given unique name, arguments, and options.
 func NewRegistryEnterpriseNamespace(ctx *pulumi.Context,
 	name string, args *RegistryEnterpriseNamespaceArgs, opts ...pulumi.ResourceOption) (*RegistryEnterpriseNamespace, error) {
-	if args == nil || args.AutoCreate == nil {
-		return nil, errors.New("missing required argument 'AutoCreate'")
-	}
-	if args == nil || args.DefaultVisibility == nil {
-		return nil, errors.New("missing required argument 'DefaultVisibility'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &RegistryEnterpriseNamespaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutoCreate == nil {
+		return nil, errors.New("invalid value for required argument 'AutoCreate'")
+	}
+	if args.DefaultVisibility == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultVisibility'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource RegistryEnterpriseNamespace
 	err := ctx.RegisterResource("alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace", name, args, &resource, opts...)

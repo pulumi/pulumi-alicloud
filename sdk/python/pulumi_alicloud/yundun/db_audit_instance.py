@@ -82,16 +82,16 @@ class DBAuditInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if description is None:
+            if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__['description'] = description
             __props__['period'] = period
-            if plan_code is None:
+            if plan_code is None and not opts.urn:
                 raise TypeError("Missing required property 'plan_code'")
             __props__['plan_code'] = plan_code
             __props__['resource_group_id'] = resource_group_id
             __props__['tags'] = tags
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
         super(DBAuditInstance, __self__).__init__(

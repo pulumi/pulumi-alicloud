@@ -128,13 +128,13 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
             inputs["roleName"] = state ? state.roleName : undefined;
         } else {
             const args = argsOrState as RolePolicyAttachmentArgs | undefined;
-            if (!args || args.policyName === undefined) {
+            if ((!args || args.policyName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if (!args || args.policyType === undefined) {
+            if ((!args || args.policyType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyType'");
             }
-            if (!args || args.roleName === undefined) {
+            if ((!args || args.roleName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'roleName'");
             }
             inputs["policyName"] = args ? args.policyName : undefined;

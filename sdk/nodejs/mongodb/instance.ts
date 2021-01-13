@@ -185,13 +185,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.dbInstanceClass === undefined) {
+            if ((!args || args.dbInstanceClass === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbInstanceClass'");
             }
-            if (!args || args.dbInstanceStorage === undefined) {
+            if ((!args || args.dbInstanceStorage === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbInstanceStorage'");
             }
-            if (!args || args.engineVersion === undefined) {
+            if ((!args || args.engineVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'engineVersion'");
             }
             inputs["accountPassword"] = args ? args.accountPassword : undefined;

@@ -235,13 +235,13 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
         } else {
             const args = argsOrState as EdgeKubernetesArgs | undefined;
-            if (!args || args.workerInstanceTypes === undefined) {
+            if ((!args || args.workerInstanceTypes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'workerInstanceTypes'");
             }
-            if (!args || args.workerNumber === undefined) {
+            if ((!args || args.workerNumber === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'workerNumber'");
             }
-            if (!args || args.workerVswitchIds === undefined) {
+            if ((!args || args.workerVswitchIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'workerVswitchIds'");
             }
             inputs["addons"] = args ? args.addons : undefined;

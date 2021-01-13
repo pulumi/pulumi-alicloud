@@ -111,22 +111,22 @@ class SaslAcl(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if acl_operation_type is None:
+            if acl_operation_type is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_operation_type'")
             __props__['acl_operation_type'] = acl_operation_type
-            if acl_resource_name is None:
+            if acl_resource_name is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_resource_name'")
             __props__['acl_resource_name'] = acl_resource_name
-            if acl_resource_pattern_type is None:
+            if acl_resource_pattern_type is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_resource_pattern_type'")
             __props__['acl_resource_pattern_type'] = acl_resource_pattern_type
-            if acl_resource_type is None:
+            if acl_resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_resource_type'")
             __props__['acl_resource_type'] = acl_resource_type
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
-            if username is None:
+            if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__['username'] = username
             __props__['host'] = None

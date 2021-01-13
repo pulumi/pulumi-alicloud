@@ -181,22 +181,22 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.deployType === undefined) {
+            if ((!args || args.deployType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deployType'");
             }
-            if (!args || args.diskSize === undefined) {
+            if ((!args || args.diskSize === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'diskSize'");
             }
-            if (!args || args.diskType === undefined) {
+            if ((!args || args.diskType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'diskType'");
             }
-            if (!args || args.ioMax === undefined) {
+            if ((!args || args.ioMax === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ioMax'");
             }
-            if (!args || args.topicQuota === undefined) {
+            if ((!args || args.topicQuota === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'topicQuota'");
             }
-            if (!args || args.vswitchId === undefined) {
+            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["config"] = args ? args.config : undefined;

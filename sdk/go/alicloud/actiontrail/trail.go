@@ -84,6 +84,7 @@ func NewTrail(ctx *pulumi.Context,
 	if args == nil {
 		args = &TrailArgs{}
 	}
+
 	var resource Trail
 	err := ctx.RegisterResource("alicloud:actiontrail/trail:Trail", name, args, &resource, opts...)
 	if err != nil {

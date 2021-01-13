@@ -107,20 +107,21 @@ type Swarm struct {
 // NewSwarm registers a new resource with the given unique name, arguments, and options.
 func NewSwarm(ctx *pulumi.Context,
 	name string, args *SwarmArgs, opts ...pulumi.ResourceOption) (*Swarm, error) {
-	if args == nil || args.CidrBlock == nil {
-		return nil, errors.New("missing required argument 'CidrBlock'")
-	}
-	if args == nil || args.InstanceType == nil {
-		return nil, errors.New("missing required argument 'InstanceType'")
-	}
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &SwarmArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CidrBlock == nil {
+		return nil, errors.New("invalid value for required argument 'CidrBlock'")
+	}
+	if args.InstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceType'")
+	}
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource Swarm
 	err := ctx.RegisterResource("alicloud:cs/swarm:Swarm", name, args, &resource, opts...)

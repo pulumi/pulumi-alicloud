@@ -89,10 +89,10 @@ export class DeployGroup extends pulumi.CustomResource {
             inputs["groupType"] = state ? state.groupType : undefined;
         } else {
             const args = argsOrState as DeployGroupArgs | undefined;
-            if (!args || args.appId === undefined) {
+            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'appId'");
             }
-            if (!args || args.groupName === undefined) {
+            if ((!args || args.groupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupName'");
             }
             inputs["appId"] = args ? args.appId : undefined;

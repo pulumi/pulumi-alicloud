@@ -96,13 +96,13 @@ export class Order extends pulumi.CustomResource {
             inputs["quantity"] = state ? state.quantity : undefined;
         } else {
             const args = argsOrState as OrderArgs | undefined;
-            if (!args || args.packageVersion === undefined) {
+            if ((!args || args.packageVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'packageVersion'");
             }
-            if (!args || args.pricingCycle === undefined) {
+            if ((!args || args.pricingCycle === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'pricingCycle'");
             }
-            if (!args || args.productCode === undefined) {
+            if ((!args || args.productCode === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'productCode'");
             }
             inputs["components"] = args ? args.components : undefined;

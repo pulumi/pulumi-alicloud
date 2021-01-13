@@ -133,10 +133,10 @@ export class EndpointAddress extends pulumi.CustomResource {
             inputs["port"] = state ? state.port : undefined;
         } else {
             const args = argsOrState as EndpointAddressArgs | undefined;
-            if (!args || args.dbClusterId === undefined) {
+            if ((!args || args.dbClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if (!args || args.dbEndpointId === undefined) {
+            if ((!args || args.dbEndpointId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbEndpointId'");
             }
             inputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;

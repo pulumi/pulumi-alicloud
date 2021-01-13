@@ -133,10 +133,10 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['force'] = force
-            if scaling_group_id is None:
+            if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__['scaling_group_id'] = scaling_group_id
-            if vserver_groups is None:
+            if vserver_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'vserver_groups'")
             __props__['vserver_groups'] = vserver_groups
         super(ScalingGroupVServerGroups, __self__).__init__(

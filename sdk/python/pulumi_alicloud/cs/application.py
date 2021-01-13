@@ -96,14 +96,14 @@ class Application(pulumi.CustomResource):
 
             __props__['blue_green'] = blue_green
             __props__['blue_green_confirm'] = blue_green_confirm
-            if cluster_name is None:
+            if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
             __props__['cluster_name'] = cluster_name
             __props__['description'] = description
             __props__['environment'] = environment
             __props__['latest_image'] = latest_image
             __props__['name'] = name
-            if template is None:
+            if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__['template'] = template
             __props__['version'] = version

@@ -71,6 +71,7 @@ func NewConfigurationRecorder(ctx *pulumi.Context,
 	if args == nil {
 		args = &ConfigurationRecorderArgs{}
 	}
+
 	var resource ConfigurationRecorder
 	err := ctx.RegisterResource("alicloud:cfg/configurationRecorder:ConfigurationRecorder", name, args, &resource, opts...)
 	if err != nil {

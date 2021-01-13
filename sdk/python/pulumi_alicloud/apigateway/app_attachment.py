@@ -48,16 +48,16 @@ class AppAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if api_id is None:
+            if api_id is None and not opts.urn:
                 raise TypeError("Missing required property 'api_id'")
             __props__['api_id'] = api_id
-            if app_id is None:
+            if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
             __props__['app_id'] = app_id
-            if group_id is None:
+            if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__['group_id'] = group_id
-            if stage_name is None:
+            if stage_name is None and not opts.urn:
                 raise TypeError("Missing required property 'stage_name'")
             __props__['stage_name'] = stage_name
         super(AppAttachment, __self__).__init__(

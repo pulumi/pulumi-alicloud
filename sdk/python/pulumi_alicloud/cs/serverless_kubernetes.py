@@ -103,10 +103,10 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__['security_group_id'] = security_group_id
             __props__['tags'] = tags
             __props__['version'] = version
-            if vpc_id is None:
+            if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
-            if vswitch_id is not None:
+            if vswitch_id is not None and not opts.urn:
                 warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
                 pulumi.log.warn("vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.")
             __props__['vswitch_id'] = vswitch_id

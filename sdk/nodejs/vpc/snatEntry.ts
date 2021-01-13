@@ -88,10 +88,10 @@ export class SnatEntry extends pulumi.CustomResource {
             inputs["sourceVswitchId"] = state ? state.sourceVswitchId : undefined;
         } else {
             const args = argsOrState as SnatEntryArgs | undefined;
-            if (!args || args.snatIp === undefined) {
+            if ((!args || args.snatIp === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'snatIp'");
             }
-            if (!args || args.snatTableId === undefined) {
+            if ((!args || args.snatTableId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'snatTableId'");
             }
             inputs["snatEntryName"] = args ? args.snatEntryName : undefined;

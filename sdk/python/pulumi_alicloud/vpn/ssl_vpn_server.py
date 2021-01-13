@@ -64,17 +64,17 @@ class SslVpnServer(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['cipher'] = cipher
-            if client_ip_pool is None:
+            if client_ip_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'client_ip_pool'")
             __props__['client_ip_pool'] = client_ip_pool
             __props__['compress'] = compress
-            if local_subnet is None:
+            if local_subnet is None and not opts.urn:
                 raise TypeError("Missing required property 'local_subnet'")
             __props__['local_subnet'] = local_subnet
             __props__['name'] = name
             __props__['port'] = port
             __props__['protocol'] = protocol
-            if vpn_gateway_id is None:
+            if vpn_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpn_gateway_id'")
             __props__['vpn_gateway_id'] = vpn_gateway_id
             __props__['connections'] = None

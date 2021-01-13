@@ -179,16 +179,16 @@ export class EndpointGroup extends pulumi.CustomResource {
             inputs["trafficPercentage"] = state ? state.trafficPercentage : undefined;
         } else {
             const args = argsOrState as EndpointGroupArgs | undefined;
-            if (!args || args.acceleratorId === undefined) {
+            if ((!args || args.acceleratorId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if (!args || args.endpointConfigurations === undefined) {
+            if ((!args || args.endpointConfigurations === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'endpointConfigurations'");
             }
-            if (!args || args.endpointGroupRegion === undefined) {
+            if ((!args || args.endpointGroupRegion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'endpointGroupRegion'");
             }
-            if (!args || args.listenerId === undefined) {
+            if ((!args || args.listenerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'listenerId'");
             }
             inputs["acceleratorId"] = args ? args.acceleratorId : undefined;

@@ -95,7 +95,7 @@ class BucketObject(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['acl'] = acl
-            if bucket is None:
+            if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__['bucket'] = bucket
             __props__['cache_control'] = cache_control
@@ -105,7 +105,7 @@ class BucketObject(pulumi.CustomResource):
             __props__['content_md5'] = content_md5
             __props__['content_type'] = content_type
             __props__['expires'] = expires
-            if key is None:
+            if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__['key'] = key
             __props__['kms_key_id'] = kms_key_id

@@ -120,10 +120,10 @@ export class Gateway extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
-            if (!args || args.bandwidth === undefined) {
+            if ((!args || args.bandwidth === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if (!args || args.vpcId === undefined) {
+            if ((!args || args.vpcId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vpcId'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;

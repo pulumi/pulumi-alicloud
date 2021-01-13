@@ -91,23 +91,23 @@ class AlidnsRecord(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if domain_name is None:
+            if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__['domain_name'] = domain_name
             __props__['lang'] = lang
             __props__['line'] = line
             __props__['priority'] = priority
             __props__['remark'] = remark
-            if rr is None:
+            if rr is None and not opts.urn:
                 raise TypeError("Missing required property 'rr'")
             __props__['rr'] = rr
             __props__['status'] = status
             __props__['ttl'] = ttl
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['user_client_ip'] = user_client_ip
-            if value is None:
+            if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
         super(AlidnsRecord, __self__).__init__(

@@ -117,23 +117,24 @@ type Cluster struct {
 // NewCluster registers a new resource with the given unique name, arguments, and options.
 func NewCluster(ctx *pulumi.Context,
 	name string, args *ClusterArgs, opts ...pulumi.ResourceOption) (*Cluster, error) {
-	if args == nil || args.InstanceType == nil {
-		return nil, errors.New("missing required argument 'InstanceType'")
-	}
-	if args == nil || args.MajorVersion == nil {
-		return nil, errors.New("missing required argument 'MajorVersion'")
-	}
-	if args == nil || args.NodeCount == nil {
-		return nil, errors.New("missing required argument 'NodeCount'")
-	}
-	if args == nil || args.PayType == nil {
-		return nil, errors.New("missing required argument 'PayType'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &ClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceType'")
+	}
+	if args.MajorVersion == nil {
+		return nil, errors.New("invalid value for required argument 'MajorVersion'")
+	}
+	if args.NodeCount == nil {
+		return nil, errors.New("invalid value for required argument 'NodeCount'")
+	}
+	if args.PayType == nil {
+		return nil, errors.New("invalid value for required argument 'PayType'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource Cluster
 	err := ctx.RegisterResource("alicloud:cassandra/cluster:Cluster", name, args, &resource, opts...)

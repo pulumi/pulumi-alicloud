@@ -118,22 +118,22 @@ export class DnatEntry extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DnatEntryArgs | undefined;
-            if (!args || args.externalPort === undefined) {
+            if ((!args || args.externalPort === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'externalPort'");
             }
-            if (!args || args.internalIp === undefined) {
+            if ((!args || args.internalIp === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'internalIp'");
             }
-            if (!args || args.internalPort === undefined) {
+            if ((!args || args.internalPort === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'internalPort'");
             }
-            if (!args || args.ipProtocol === undefined) {
+            if ((!args || args.ipProtocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            if (!args || args.sagId === undefined) {
+            if ((!args || args.sagId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sagId'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["externalIp"] = args ? args.externalIp : undefined;

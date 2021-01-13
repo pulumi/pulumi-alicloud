@@ -70,10 +70,10 @@ class Subscription(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['comment'] = comment
-            if project_name is None:
+            if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
             __props__['project_name'] = project_name
-            if topic_name is None:
+            if topic_name is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_name'")
             __props__['topic_name'] = topic_name
             __props__['create_time'] = None

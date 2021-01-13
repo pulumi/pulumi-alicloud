@@ -76,10 +76,10 @@ class FileSystem(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if protocol_type is None:
+            if protocol_type is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol_type'")
             __props__['protocol_type'] = protocol_type
-            if storage_type is None:
+            if storage_type is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_type'")
             __props__['storage_type'] = storage_type
         super(FileSystem, __self__).__init__(

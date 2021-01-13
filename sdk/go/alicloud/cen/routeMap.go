@@ -219,23 +219,24 @@ type RouteMap struct {
 // NewRouteMap registers a new resource with the given unique name, arguments, and options.
 func NewRouteMap(ctx *pulumi.Context,
 	name string, args *RouteMapArgs, opts ...pulumi.ResourceOption) (*RouteMap, error) {
-	if args == nil || args.CenId == nil {
-		return nil, errors.New("missing required argument 'CenId'")
-	}
-	if args == nil || args.CenRegionId == nil {
-		return nil, errors.New("missing required argument 'CenRegionId'")
-	}
-	if args == nil || args.MapResult == nil {
-		return nil, errors.New("missing required argument 'MapResult'")
-	}
-	if args == nil || args.Priority == nil {
-		return nil, errors.New("missing required argument 'Priority'")
-	}
-	if args == nil || args.TransmitDirection == nil {
-		return nil, errors.New("missing required argument 'TransmitDirection'")
-	}
 	if args == nil {
-		args = &RouteMapArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CenId == nil {
+		return nil, errors.New("invalid value for required argument 'CenId'")
+	}
+	if args.CenRegionId == nil {
+		return nil, errors.New("invalid value for required argument 'CenRegionId'")
+	}
+	if args.MapResult == nil {
+		return nil, errors.New("invalid value for required argument 'MapResult'")
+	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
+	}
+	if args.TransmitDirection == nil {
+		return nil, errors.New("invalid value for required argument 'TransmitDirection'")
 	}
 	var resource RouteMap
 	err := ctx.RegisterResource("alicloud:cen/routeMap:RouteMap", name, args, &resource, opts...)

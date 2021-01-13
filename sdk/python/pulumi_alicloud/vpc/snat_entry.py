@@ -60,10 +60,10 @@ class SnatEntry(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['snat_entry_name'] = snat_entry_name
-            if snat_ip is None:
+            if snat_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'snat_ip'")
             __props__['snat_ip'] = snat_ip
-            if snat_table_id is None:
+            if snat_table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'snat_table_id'")
             __props__['snat_table_id'] = snat_table_id
             __props__['source_cidr'] = source_cidr

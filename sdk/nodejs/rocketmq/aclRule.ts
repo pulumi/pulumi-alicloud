@@ -137,28 +137,28 @@ export class AclRule extends pulumi.CustomResource {
             inputs["sourcePortRange"] = state ? state.sourcePortRange : undefined;
         } else {
             const args = argsOrState as AclRuleArgs | undefined;
-            if (!args || args.aclId === undefined) {
+            if ((!args || args.aclId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'aclId'");
             }
-            if (!args || args.destCidr === undefined) {
+            if ((!args || args.destCidr === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destCidr'");
             }
-            if (!args || args.destPortRange === undefined) {
+            if ((!args || args.destPortRange === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destPortRange'");
             }
-            if (!args || args.direction === undefined) {
+            if ((!args || args.direction === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'direction'");
             }
-            if (!args || args.ipProtocol === undefined) {
+            if ((!args || args.ipProtocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            if (!args || args.policy === undefined) {
+            if ((!args || args.policy === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policy'");
             }
-            if (!args || args.sourceCidr === undefined) {
+            if ((!args || args.sourceCidr === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceCidr'");
             }
-            if (!args || args.sourcePortRange === undefined) {
+            if ((!args || args.sourcePortRange === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourcePortRange'");
             }
             inputs["aclId"] = args ? args.aclId : undefined;

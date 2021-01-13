@@ -64,14 +64,15 @@ type Namespace struct {
 // NewNamespace registers a new resource with the given unique name, arguments, and options.
 func NewNamespace(ctx *pulumi.Context,
 	name string, args *NamespaceArgs, opts ...pulumi.ResourceOption) (*Namespace, error) {
-	if args == nil || args.AutoCreate == nil {
-		return nil, errors.New("missing required argument 'AutoCreate'")
-	}
-	if args == nil || args.DefaultVisibility == nil {
-		return nil, errors.New("missing required argument 'DefaultVisibility'")
-	}
 	if args == nil {
-		args = &NamespaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutoCreate == nil {
+		return nil, errors.New("invalid value for required argument 'AutoCreate'")
+	}
+	if args.DefaultVisibility == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultVisibility'")
 	}
 	var resource Namespace
 	err := ctx.RegisterResource("alicloud:cr/namespace:Namespace", name, args, &resource, opts...)

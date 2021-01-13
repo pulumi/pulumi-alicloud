@@ -86,17 +86,17 @@ class ClientUser(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bandwidth is None:
+            if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__['bandwidth'] = bandwidth
             __props__['client_ip'] = client_ip
             __props__['kms_encrypted_password'] = kms_encrypted_password
             __props__['kms_encryption_context'] = kms_encryption_context
             __props__['password'] = password
-            if sag_id is None:
+            if sag_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sag_id'")
             __props__['sag_id'] = sag_id
-            if user_mail is None:
+            if user_mail is None and not opts.urn:
                 raise TypeError("Missing required property 'user_mail'")
             __props__['user_mail'] = user_mail
             __props__['user_name'] = user_name

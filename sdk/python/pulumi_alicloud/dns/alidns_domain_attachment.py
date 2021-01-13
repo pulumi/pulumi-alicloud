@@ -69,10 +69,10 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if domain_names is None:
+            if domain_names is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_names'")
             __props__['domain_names'] = domain_names
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
         super(AlidnsDomainAttachment, __self__).__init__(

@@ -114,10 +114,10 @@ class K8sApplication(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['application_descriotion'] = application_descriotion
-            if application_name is None:
+            if application_name is None and not opts.urn:
                 raise TypeError("Missing required property 'application_name'")
             __props__['application_name'] = application_name
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['command'] = command

@@ -104,13 +104,13 @@ class AccountPrivilege(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if account_name is None:
+            if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
             __props__['account_name'] = account_name
-            if db_names is None:
+            if db_names is None and not opts.urn:
                 raise TypeError("Missing required property 'db_names'")
             __props__['db_names'] = db_names
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['privilege'] = privilege

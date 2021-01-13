@@ -59,10 +59,10 @@ class StoreIndex(pulumi.CustomResource):
 
             __props__['field_searches'] = field_searches
             __props__['full_text'] = full_text
-            if logstore is None:
+            if logstore is None and not opts.urn:
                 raise TypeError("Missing required property 'logstore'")
             __props__['logstore'] = logstore
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
         super(StoreIndex, __self__).__init__(

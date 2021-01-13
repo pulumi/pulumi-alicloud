@@ -106,20 +106,21 @@ type DomainExtension struct {
 // NewDomainExtension registers a new resource with the given unique name, arguments, and options.
 func NewDomainExtension(ctx *pulumi.Context,
 	name string, args *DomainExtensionArgs, opts ...pulumi.ResourceOption) (*DomainExtension, error) {
-	if args == nil || args.Domain == nil {
-		return nil, errors.New("missing required argument 'Domain'")
-	}
-	if args == nil || args.FrontendPort == nil {
-		return nil, errors.New("missing required argument 'FrontendPort'")
-	}
-	if args == nil || args.LoadBalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerId'")
-	}
-	if args == nil || args.ServerCertificateId == nil {
-		return nil, errors.New("missing required argument 'ServerCertificateId'")
-	}
 	if args == nil {
-		args = &DomainExtensionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Domain == nil {
+		return nil, errors.New("invalid value for required argument 'Domain'")
+	}
+	if args.FrontendPort == nil {
+		return nil, errors.New("invalid value for required argument 'FrontendPort'")
+	}
+	if args.LoadBalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerId'")
+	}
+	if args.ServerCertificateId == nil {
+		return nil, errors.New("invalid value for required argument 'ServerCertificateId'")
 	}
 	var resource DomainExtension
 	err := ctx.RegisterResource("alicloud:slb/domainExtension:DomainExtension", name, args, &resource, opts...)

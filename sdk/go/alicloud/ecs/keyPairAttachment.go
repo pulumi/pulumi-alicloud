@@ -154,14 +154,15 @@ type KeyPairAttachment struct {
 // NewKeyPairAttachment registers a new resource with the given unique name, arguments, and options.
 func NewKeyPairAttachment(ctx *pulumi.Context,
 	name string, args *KeyPairAttachmentArgs, opts ...pulumi.ResourceOption) (*KeyPairAttachment, error) {
-	if args == nil || args.InstanceIds == nil {
-		return nil, errors.New("missing required argument 'InstanceIds'")
-	}
-	if args == nil || args.KeyName == nil {
-		return nil, errors.New("missing required argument 'KeyName'")
-	}
 	if args == nil {
-		args = &KeyPairAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceIds == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceIds'")
+	}
+	if args.KeyName == nil {
+		return nil, errors.New("invalid value for required argument 'KeyName'")
 	}
 	var resource KeyPairAttachment
 	err := ctx.RegisterResource("alicloud:ecs/keyPairAttachment:KeyPairAttachment", name, args, &resource, opts...)

@@ -91,12 +91,12 @@ class Cluster(pulumi.CustomResource):
 
             __props__['bootstrap_actions'] = bootstrap_actions
             __props__['charge_type'] = charge_type
-            if cluster_type is None:
+            if cluster_type is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_type'")
             __props__['cluster_type'] = cluster_type
             __props__['deposit_type'] = deposit_type
             __props__['eas_enable'] = eas_enable
-            if emr_ver is None:
+            if emr_ver is None and not opts.urn:
                 raise TypeError("Missing required property 'emr_ver'")
             __props__['emr_ver'] = emr_ver
             __props__['high_availability_enable'] = high_availability_enable
@@ -114,7 +114,7 @@ class Cluster(pulumi.CustomResource):
             __props__['use_local_metadb'] = use_local_metadb
             __props__['user_defined_emr_ecs_role'] = user_defined_emr_ecs_role
             __props__['vswitch_id'] = vswitch_id
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(Cluster, __self__).__init__(

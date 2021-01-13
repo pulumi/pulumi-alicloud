@@ -117,47 +117,47 @@ class Alarm(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if contact_groups is None:
+            if contact_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'contact_groups'")
             __props__['contact_groups'] = contact_groups
-            if dimensions is None:
+            if dimensions is None and not opts.urn:
                 raise TypeError("Missing required property 'dimensions'")
             __props__['dimensions'] = dimensions
             __props__['effective_interval'] = effective_interval
             __props__['enabled'] = enabled
-            if end_time is not None:
+            if end_time is not None and not opts.urn:
                 warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
                 pulumi.log.warn("end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.")
             __props__['end_time'] = end_time
             __props__['escalations_critical'] = escalations_critical
             __props__['escalations_info'] = escalations_info
             __props__['escalations_warn'] = escalations_warn
-            if metric is None:
+            if metric is None and not opts.urn:
                 raise TypeError("Missing required property 'metric'")
             __props__['metric'] = metric
             __props__['name'] = name
-            if operator is not None:
+            if operator is not None and not opts.urn:
                 warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
                 pulumi.log.warn("operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.")
             __props__['operator'] = operator
             __props__['period'] = period
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['silence_time'] = silence_time
-            if start_time is not None:
+            if start_time is not None and not opts.urn:
                 warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
                 pulumi.log.warn("start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.")
             __props__['start_time'] = start_time
-            if statistics is not None:
+            if statistics is not None and not opts.urn:
                 warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
                 pulumi.log.warn("statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.")
             __props__['statistics'] = statistics
-            if threshold is not None:
+            if threshold is not None and not opts.urn:
                 warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
                 pulumi.log.warn("threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.")
             __props__['threshold'] = threshold
-            if triggered_count is not None:
+            if triggered_count is not None and not opts.urn:
                 warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
                 pulumi.log.warn("triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.")
             __props__['triggered_count'] = triggered_count

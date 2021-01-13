@@ -25,3 +25,65 @@ from .user import *
 from .user_policy_attachment import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:ram/accessKey:AccessKey":
+                return AccessKey(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/accountAlias:AccountAlias":
+                return AccountAlias(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy":
+                return AccountPasswordPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/alias:Alias":
+                return Alias(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/group:Group":
+                return Group(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/groupMembership:GroupMembership":
+                return GroupMembership(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment":
+                return GroupPolicyAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/loginProfile:LoginProfile":
+                return LoginProfile(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/policy:Policy":
+                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/role:Role":
+                return Role(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/roleAttachment:RoleAttachment":
+                return RoleAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/rolePolicyAttachment:RolePolicyAttachment":
+                return RolePolicyAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/user:User":
+                return User(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/userPolicyAttachment:UserPolicyAttachment":
+                return UserPolicyAttachment(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "ram/accessKey", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/accountAlias", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/accountPasswordPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/alias", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/group", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/groupMembership", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/groupPolicyAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/loginProfile", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/policy", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/role", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/roleAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/rolePolicyAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/user", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/userPolicyAttachment", _module_instance)
+
+_register_module()

@@ -94,13 +94,13 @@ export class DeliveryChannel extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DeliveryChannelArgs | undefined;
-            if (!args || args.deliveryChannelAssumeRoleArn === undefined) {
+            if ((!args || args.deliveryChannelAssumeRoleArn === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deliveryChannelAssumeRoleArn'");
             }
-            if (!args || args.deliveryChannelTargetArn === undefined) {
+            if ((!args || args.deliveryChannelTargetArn === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deliveryChannelTargetArn'");
             }
-            if (!args || args.deliveryChannelType === undefined) {
+            if ((!args || args.deliveryChannelType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deliveryChannelType'");
             }
             inputs["deliveryChannelAssumeRoleArn"] = args ? args.deliveryChannelAssumeRoleArn : undefined;

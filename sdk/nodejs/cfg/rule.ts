@@ -148,22 +148,22 @@ export class Rule extends pulumi.CustomResource {
             inputs["sourceOwner"] = state ? state.sourceOwner : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if (!args || args.riskLevel === undefined) {
+            if ((!args || args.riskLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'riskLevel'");
             }
-            if (!args || args.ruleName === undefined) {
+            if ((!args || args.ruleName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            if (!args || args.scopeComplianceResourceTypes === undefined) {
+            if ((!args || args.scopeComplianceResourceTypes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scopeComplianceResourceTypes'");
             }
-            if (!args || args.sourceDetailMessageType === undefined) {
+            if ((!args || args.sourceDetailMessageType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceDetailMessageType'");
             }
-            if (!args || args.sourceIdentifier === undefined) {
+            if ((!args || args.sourceIdentifier === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceIdentifier'");
             }
-            if (!args || args.sourceOwner === undefined) {
+            if ((!args || args.sourceOwner === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceOwner'");
             }
             inputs["description"] = args ? args.description : undefined;

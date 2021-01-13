@@ -109,17 +109,18 @@ type LogTailAttachment struct {
 // NewLogTailAttachment registers a new resource with the given unique name, arguments, and options.
 func NewLogTailAttachment(ctx *pulumi.Context,
 	name string, args *LogTailAttachmentArgs, opts ...pulumi.ResourceOption) (*LogTailAttachment, error) {
-	if args == nil || args.LogtailConfigName == nil {
-		return nil, errors.New("missing required argument 'LogtailConfigName'")
-	}
-	if args == nil || args.MachineGroupName == nil {
-		return nil, errors.New("missing required argument 'MachineGroupName'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &LogTailAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LogtailConfigName == nil {
+		return nil, errors.New("invalid value for required argument 'LogtailConfigName'")
+	}
+	if args.MachineGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'MachineGroupName'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource LogTailAttachment
 	err := ctx.RegisterResource("alicloud:log/logTailAttachment:LogTailAttachment", name, args, &resource, opts...)

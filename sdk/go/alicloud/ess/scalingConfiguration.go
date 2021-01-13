@@ -102,11 +102,12 @@ type ScalingConfiguration struct {
 // NewScalingConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewScalingConfiguration(ctx *pulumi.Context,
 	name string, args *ScalingConfigurationArgs, opts ...pulumi.ResourceOption) (*ScalingConfiguration, error) {
-	if args == nil || args.ScalingGroupId == nil {
-		return nil, errors.New("missing required argument 'ScalingGroupId'")
-	}
 	if args == nil {
-		args = &ScalingConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ScalingGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ScalingGroupId'")
 	}
 	var resource ScalingConfiguration
 	err := ctx.RegisterResource("alicloud:ess/scalingConfiguration:ScalingConfiguration", name, args, &resource, opts...)

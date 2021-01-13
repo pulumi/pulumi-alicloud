@@ -108,13 +108,13 @@ export class Alias extends pulumi.CustomResource {
             inputs["serviceVersion"] = state ? state.serviceVersion : undefined;
         } else {
             const args = argsOrState as AliasArgs | undefined;
-            if (!args || args.aliasName === undefined) {
+            if ((!args || args.aliasName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'aliasName'");
             }
-            if (!args || args.serviceName === undefined) {
+            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if (!args || args.serviceVersion === undefined) {
+            if ((!args || args.serviceVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceVersion'");
             }
             inputs["aliasName"] = args ? args.aliasName : undefined;

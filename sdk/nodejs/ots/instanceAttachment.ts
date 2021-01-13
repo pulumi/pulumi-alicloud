@@ -101,13 +101,13 @@ export class InstanceAttachment extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as InstanceAttachmentArgs | undefined;
-            if (!args || args.instanceName === undefined) {
+            if ((!args || args.instanceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if (!args || args.vpcName === undefined) {
+            if ((!args || args.vpcName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vpcName'");
             }
-            if (!args || args.vswitchId === undefined) {
+            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["instanceName"] = args ? args.instanceName : undefined;

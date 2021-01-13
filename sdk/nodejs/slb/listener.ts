@@ -385,13 +385,13 @@ export class Listener extends pulumi.CustomResource {
             inputs["xForwardedFor"] = state ? state.xForwardedFor : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
-            if (!args || args.frontendPort === undefined) {
+            if ((!args || args.frontendPort === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'frontendPort'");
             }
-            if (!args || args.loadBalancerId === undefined) {
+            if ((!args || args.loadBalancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
             inputs["aclId"] = args ? args.aclId : undefined;

@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.AccessKey == nil {
 		args.AccessKey = pulumi.StringPtr(getEnvOrDefault("", nil, "ALICLOUD_ACCESS_KEY").(string))
 	}

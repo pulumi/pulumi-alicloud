@@ -43,17 +43,18 @@ type DeliveryChannel struct {
 // NewDeliveryChannel registers a new resource with the given unique name, arguments, and options.
 func NewDeliveryChannel(ctx *pulumi.Context,
 	name string, args *DeliveryChannelArgs, opts ...pulumi.ResourceOption) (*DeliveryChannel, error) {
-	if args == nil || args.DeliveryChannelAssumeRoleArn == nil {
-		return nil, errors.New("missing required argument 'DeliveryChannelAssumeRoleArn'")
-	}
-	if args == nil || args.DeliveryChannelTargetArn == nil {
-		return nil, errors.New("missing required argument 'DeliveryChannelTargetArn'")
-	}
-	if args == nil || args.DeliveryChannelType == nil {
-		return nil, errors.New("missing required argument 'DeliveryChannelType'")
-	}
 	if args == nil {
-		args = &DeliveryChannelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DeliveryChannelAssumeRoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'DeliveryChannelAssumeRoleArn'")
+	}
+	if args.DeliveryChannelTargetArn == nil {
+		return nil, errors.New("invalid value for required argument 'DeliveryChannelTargetArn'")
+	}
+	if args.DeliveryChannelType == nil {
+		return nil, errors.New("invalid value for required argument 'DeliveryChannelType'")
 	}
 	var resource DeliveryChannel
 	err := ctx.RegisterResource("alicloud:cfg/deliveryChannel:DeliveryChannel", name, args, &resource, opts...)

@@ -154,10 +154,10 @@ export class ScalingGroupVServerGroups extends pulumi.CustomResource {
             inputs["vserverGroups"] = state ? state.vserverGroups : undefined;
         } else {
             const args = argsOrState as ScalingGroupVServerGroupsArgs | undefined;
-            if (!args || args.scalingGroupId === undefined) {
+            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            if (!args || args.vserverGroups === undefined) {
+            if ((!args || args.vserverGroups === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vserverGroups'");
             }
             inputs["force"] = args ? args.force : undefined;

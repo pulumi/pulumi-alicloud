@@ -44,20 +44,21 @@ type Connection struct {
 // NewConnection registers a new resource with the given unique name, arguments, and options.
 func NewConnection(ctx *pulumi.Context,
 	name string, args *ConnectionArgs, opts ...pulumi.ResourceOption) (*Connection, error) {
-	if args == nil || args.CustomerGatewayId == nil {
-		return nil, errors.New("missing required argument 'CustomerGatewayId'")
-	}
-	if args == nil || args.LocalSubnets == nil {
-		return nil, errors.New("missing required argument 'LocalSubnets'")
-	}
-	if args == nil || args.RemoteSubnets == nil {
-		return nil, errors.New("missing required argument 'RemoteSubnets'")
-	}
-	if args == nil || args.VpnGatewayId == nil {
-		return nil, errors.New("missing required argument 'VpnGatewayId'")
-	}
 	if args == nil {
-		args = &ConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CustomerGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'CustomerGatewayId'")
+	}
+	if args.LocalSubnets == nil {
+		return nil, errors.New("invalid value for required argument 'LocalSubnets'")
+	}
+	if args.RemoteSubnets == nil {
+		return nil, errors.New("invalid value for required argument 'RemoteSubnets'")
+	}
+	if args.VpnGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'VpnGatewayId'")
 	}
 	var resource Connection
 	err := ctx.RegisterResource("alicloud:vpn/connection:Connection", name, args, &resource, opts...)

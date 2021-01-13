@@ -77,26 +77,26 @@ class Api(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if auth_type is None:
+            if auth_type is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_type'")
             __props__['auth_type'] = auth_type
             __props__['constant_parameters'] = constant_parameters
-            if description is None:
+            if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__['description'] = description
             __props__['fc_service_config'] = fc_service_config
-            if group_id is None:
+            if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__['group_id'] = group_id
             __props__['http_service_config'] = http_service_config
             __props__['http_vpc_service_config'] = http_vpc_service_config
             __props__['mock_service_config'] = mock_service_config
             __props__['name'] = name
-            if request_config is None:
+            if request_config is None and not opts.urn:
                 raise TypeError("Missing required property 'request_config'")
             __props__['request_config'] = request_config
             __props__['request_parameters'] = request_parameters
-            if service_type is None:
+            if service_type is None and not opts.urn:
                 raise TypeError("Missing required property 'service_type'")
             __props__['service_type'] = service_type
             __props__['stage_names'] = stage_names

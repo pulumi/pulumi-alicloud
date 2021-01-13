@@ -65,7 +65,7 @@ class Zone(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['lang'] = lang
-            if name is not None:
+            if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.")
             __props__['name'] = name

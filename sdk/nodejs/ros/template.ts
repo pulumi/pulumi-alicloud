@@ -104,7 +104,7 @@ export class Template extends pulumi.CustomResource {
             inputs["templateUrl"] = state ? state.templateUrl : undefined;
         } else {
             const args = argsOrState as TemplateArgs | undefined;
-            if (!args || args.templateName === undefined) {
+            if ((!args || args.templateName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'templateName'");
             }
             inputs["description"] = args ? args.description : undefined;

@@ -101,11 +101,11 @@ class Template(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['auto_delete_executions'] = auto_delete_executions
-            if content is None:
+            if content is None and not opts.urn:
                 raise TypeError("Missing required property 'content'")
             __props__['content'] = content
             __props__['tags'] = tags
-            if template_name is None:
+            if template_name is None and not opts.urn:
                 raise TypeError("Missing required property 'template_name'")
             __props__['template_name'] = template_name
             __props__['version_name'] = version_name

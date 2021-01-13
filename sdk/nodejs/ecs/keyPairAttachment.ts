@@ -123,10 +123,10 @@ export class KeyPairAttachment extends pulumi.CustomResource {
             inputs["keyName"] = state ? state.keyName : undefined;
         } else {
             const args = argsOrState as KeyPairAttachmentArgs | undefined;
-            if (!args || args.instanceIds === undefined) {
+            if ((!args || args.instanceIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if (!args || args.keyName === undefined) {
+            if ((!args || args.keyName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'keyName'");
             }
             inputs["force"] = args ? args.force : undefined;

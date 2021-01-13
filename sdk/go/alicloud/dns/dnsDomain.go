@@ -45,11 +45,12 @@ type DnsDomain struct {
 // NewDnsDomain registers a new resource with the given unique name, arguments, and options.
 func NewDnsDomain(ctx *pulumi.Context,
 	name string, args *DnsDomainArgs, opts ...pulumi.ResourceOption) (*DnsDomain, error) {
-	if args == nil || args.DomainName == nil {
-		return nil, errors.New("missing required argument 'DomainName'")
-	}
 	if args == nil {
-		args = &DnsDomainArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DomainName == nil {
+		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
 	var resource DnsDomain
 	err := ctx.RegisterResource("alicloud:dns/dnsDomain:DnsDomain", name, args, &resource, opts...)

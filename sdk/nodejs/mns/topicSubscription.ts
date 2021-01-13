@@ -89,10 +89,10 @@ export class TopicSubscription extends pulumi.CustomResource {
             inputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as TopicSubscriptionArgs | undefined;
-            if (!args || args.endpoint === undefined) {
+            if ((!args || args.endpoint === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if (!args || args.topicName === undefined) {
+            if ((!args || args.topicName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'topicName'");
             }
             inputs["endpoint"] = args ? args.endpoint : undefined;

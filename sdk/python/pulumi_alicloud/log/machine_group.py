@@ -57,12 +57,12 @@ class MachineGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if identify_lists is None:
+            if identify_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'identify_lists'")
             __props__['identify_lists'] = identify_lists
             __props__['identify_type'] = identify_type
             __props__['name'] = name
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['topic'] = topic

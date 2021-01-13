@@ -99,6 +99,7 @@ func NewAccessGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &AccessGroupArgs{}
 	}
+
 	var resource AccessGroup
 	err := ctx.RegisterResource("alicloud:nas/accessGroup:AccessGroup", name, args, &resource, opts...)
 	if err != nil {

@@ -71,13 +71,13 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if connection_string_prefix is None:
+            if connection_string_prefix is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_string_prefix'")
             __props__['connection_string_prefix'] = connection_string_prefix
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
-            if port is None:
+            if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
             __props__['port'] = port
             __props__['connection_string'] = None

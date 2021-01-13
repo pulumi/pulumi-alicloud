@@ -61,10 +61,10 @@ class Attachment(pulumi.CustomResource):
 
             __props__['backend_servers'] = backend_servers
             __props__['delete_protection_validation'] = delete_protection_validation
-            if instance_ids is None:
+            if instance_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_ids'")
             __props__['instance_ids'] = instance_ids
-            if load_balancer_id is None:
+            if load_balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_id'")
             __props__['load_balancer_id'] = load_balancer_id
             __props__['server_type'] = server_type

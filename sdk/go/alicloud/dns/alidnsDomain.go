@@ -81,11 +81,12 @@ type AlidnsDomain struct {
 // NewAlidnsDomain registers a new resource with the given unique name, arguments, and options.
 func NewAlidnsDomain(ctx *pulumi.Context,
 	name string, args *AlidnsDomainArgs, opts ...pulumi.ResourceOption) (*AlidnsDomain, error) {
-	if args == nil || args.DomainName == nil {
-		return nil, errors.New("missing required argument 'DomainName'")
-	}
 	if args == nil {
-		args = &AlidnsDomainArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DomainName == nil {
+		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
 	var resource AlidnsDomain
 	err := ctx.RegisterResource("alicloud:dns/alidnsDomain:AlidnsDomain", name, args, &resource, opts...)

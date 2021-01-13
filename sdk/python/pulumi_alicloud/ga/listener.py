@@ -93,14 +93,14 @@ class Listener(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if accelerator_id is None:
+            if accelerator_id is None and not opts.urn:
                 raise TypeError("Missing required property 'accelerator_id'")
             __props__['accelerator_id'] = accelerator_id
             __props__['certificates'] = certificates
             __props__['client_affinity'] = client_affinity
             __props__['description'] = description
             __props__['name'] = name
-            if port_ranges is None:
+            if port_ranges is None and not opts.urn:
                 raise TypeError("Missing required property 'port_ranges'")
             __props__['port_ranges'] = port_ranges
             __props__['protocol'] = protocol

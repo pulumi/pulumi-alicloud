@@ -62,14 +62,15 @@ type DeployGroup struct {
 // NewDeployGroup registers a new resource with the given unique name, arguments, and options.
 func NewDeployGroup(ctx *pulumi.Context,
 	name string, args *DeployGroupArgs, opts ...pulumi.ResourceOption) (*DeployGroup, error) {
-	if args == nil || args.AppId == nil {
-		return nil, errors.New("missing required argument 'AppId'")
-	}
-	if args == nil || args.GroupName == nil {
-		return nil, errors.New("missing required argument 'GroupName'")
-	}
 	if args == nil {
-		args = &DeployGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
+	}
+	if args.GroupName == nil {
+		return nil, errors.New("invalid value for required argument 'GroupName'")
 	}
 	var resource DeployGroup
 	err := ctx.RegisterResource("alicloud:edas/deployGroup:DeployGroup", name, args, &resource, opts...)

@@ -165,7 +165,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if allocate_public_ip is not None:
+            if allocate_public_ip is not None and not opts.urn:
                 warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
                 pulumi.log.warn("allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.")
             __props__['allocate_public_ip'] = allocate_public_ip
@@ -179,19 +179,19 @@ class Instance(pulumi.CustomResource):
             __props__['dry_run'] = dry_run
             __props__['force_delete'] = force_delete
             __props__['host_name'] = host_name
-            if image_id is None:
+            if image_id is None and not opts.urn:
                 raise TypeError("Missing required property 'image_id'")
             __props__['image_id'] = image_id
             __props__['include_data_disks'] = include_data_disks
             __props__['instance_charge_type'] = instance_charge_type
             __props__['instance_name'] = instance_name
-            if instance_type is None:
+            if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__['instance_type'] = instance_type
             __props__['internet_charge_type'] = internet_charge_type
             __props__['internet_max_bandwidth_in'] = internet_max_bandwidth_in
             __props__['internet_max_bandwidth_out'] = internet_max_bandwidth_out
-            if io_optimized is not None:
+            if io_optimized is not None and not opts.urn:
                 warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
                 pulumi.log.warn("io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.")
             __props__['io_optimized'] = io_optimized
@@ -207,7 +207,7 @@ class Instance(pulumi.CustomResource):
             __props__['resource_group_id'] = resource_group_id
             __props__['role_name'] = role_name
             __props__['security_enhancement_strategy'] = security_enhancement_strategy
-            if security_groups is None:
+            if security_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'security_groups'")
             __props__['security_groups'] = security_groups
             __props__['spot_price_limit'] = spot_price_limit

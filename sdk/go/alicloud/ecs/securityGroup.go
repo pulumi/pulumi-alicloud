@@ -48,6 +48,7 @@ func NewSecurityGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &SecurityGroupArgs{}
 	}
+
 	var resource SecurityGroup
 	err := ctx.RegisterResource("alicloud:ecs/securityGroup:SecurityGroup", name, args, &resource, opts...)
 	if err != nil {

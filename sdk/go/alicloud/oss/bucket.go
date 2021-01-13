@@ -390,6 +390,7 @@ func NewBucket(ctx *pulumi.Context,
 	if args == nil {
 		args = &BucketArgs{}
 	}
+
 	var resource Bucket
 	err := ctx.RegisterResource("alicloud:oss/bucket:Bucket", name, args, &resource, opts...)
 	if err != nil {

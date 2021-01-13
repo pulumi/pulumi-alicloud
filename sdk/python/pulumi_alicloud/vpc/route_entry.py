@@ -63,10 +63,10 @@ class RouteEntry(pulumi.CustomResource):
             __props__['name'] = name
             __props__['nexthop_id'] = nexthop_id
             __props__['nexthop_type'] = nexthop_type
-            if route_table_id is None:
+            if route_table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'route_table_id'")
             __props__['route_table_id'] = route_table_id
-            if router_id is not None:
+            if router_id is not None and not opts.urn:
                 warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
                 pulumi.log.warn("router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.")
             __props__['router_id'] = router_id

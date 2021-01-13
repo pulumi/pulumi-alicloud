@@ -148,7 +148,7 @@ export class Topic extends pulumi.CustomResource {
             inputs["shardCount"] = state ? state.shardCount : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if (!args || args.projectName === undefined) {
+            if ((!args || args.projectName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectName'");
             }
             inputs["comment"] = args ? args.comment : undefined;

@@ -46,21 +46,21 @@ class InstanceGrant(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-testAccCenInstanceGrantBasic"
-        cen = alicloud.cen.Instance("cen", opts=ResourceOptions(provider=alicloud["account2"]))
+        cen = alicloud.cen.Instance("cen", opts=pulumi.ResourceOptions(provider=alicloud["account2"]))
         vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/16",
-        opts=ResourceOptions(provider=alicloud["account1"]))
+        opts=pulumi.ResourceOptions(provider=alicloud["account1"]))
         foo_instance_grant = alicloud.cen.InstanceGrant("fooInstanceGrant",
             cen_id=cen.id,
             child_instance_id=vpc.id,
             cen_owner_id="uid2",
-            opts=ResourceOptions(provider=alicloud["account1"]))
+            opts=pulumi.ResourceOptions(provider=alicloud["account1"]))
         foo_instance_attachment = alicloud.cen.InstanceAttachment("fooInstanceAttachment",
             instance_id=cen.id,
             child_instance_id=vpc.id,
             child_instance_type="VPC",
             child_instance_region_id="cn-qingdao",
             child_instance_owner_id="uid1",
-            opts=ResourceOptions(provider=alicloud["account2"],
+            opts=pulumi.ResourceOptions(provider=alicloud["account2"],
                 depends_on=[foo_instance_grant]))
         ```
 
@@ -95,13 +95,13 @@ class InstanceGrant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cen_id is None:
+            if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
             __props__['cen_id'] = cen_id
-            if cen_owner_id is None:
+            if cen_owner_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_owner_id'")
             __props__['cen_owner_id'] = cen_owner_id
-            if child_instance_id is None:
+            if child_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'child_instance_id'")
             __props__['child_instance_id'] = child_instance_id
         super(InstanceGrant, __self__).__init__(

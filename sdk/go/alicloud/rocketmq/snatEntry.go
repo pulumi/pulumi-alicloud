@@ -67,17 +67,18 @@ type SnatEntry struct {
 // NewSnatEntry registers a new resource with the given unique name, arguments, and options.
 func NewSnatEntry(ctx *pulumi.Context,
 	name string, args *SnatEntryArgs, opts ...pulumi.ResourceOption) (*SnatEntry, error) {
-	if args == nil || args.CidrBlock == nil {
-		return nil, errors.New("missing required argument 'CidrBlock'")
-	}
-	if args == nil || args.SagId == nil {
-		return nil, errors.New("missing required argument 'SagId'")
-	}
-	if args == nil || args.SnatIp == nil {
-		return nil, errors.New("missing required argument 'SnatIp'")
-	}
 	if args == nil {
-		args = &SnatEntryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CidrBlock == nil {
+		return nil, errors.New("invalid value for required argument 'CidrBlock'")
+	}
+	if args.SagId == nil {
+		return nil, errors.New("invalid value for required argument 'SagId'")
+	}
+	if args.SnatIp == nil {
+		return nil, errors.New("invalid value for required argument 'SnatIp'")
 	}
 	var resource SnatEntry
 	err := ctx.RegisterResource("alicloud:rocketmq/snatEntry:SnatEntry", name, args, &resource, opts...)

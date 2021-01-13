@@ -71,7 +71,7 @@ export class CustomerGateway extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as CustomerGatewayArgs | undefined;
-            if (!args || args.ipAddress === undefined) {
+            if ((!args || args.ipAddress === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipAddress'");
             }
             inputs["description"] = args ? args.description : undefined;

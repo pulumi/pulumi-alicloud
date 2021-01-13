@@ -140,17 +140,17 @@ class Instance(pulumi.CustomResource):
 
             __props__['client_node_amount'] = client_node_amount
             __props__['client_node_spec'] = client_node_spec
-            if data_node_amount is None:
+            if data_node_amount is None and not opts.urn:
                 raise TypeError("Missing required property 'data_node_amount'")
             __props__['data_node_amount'] = data_node_amount
             __props__['data_node_disk_encrypted'] = data_node_disk_encrypted
-            if data_node_disk_size is None:
+            if data_node_disk_size is None and not opts.urn:
                 raise TypeError("Missing required property 'data_node_disk_size'")
             __props__['data_node_disk_size'] = data_node_disk_size
-            if data_node_disk_type is None:
+            if data_node_disk_type is None and not opts.urn:
                 raise TypeError("Missing required property 'data_node_disk_type'")
             __props__['data_node_disk_type'] = data_node_disk_type
-            if data_node_spec is None:
+            if data_node_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'data_node_spec'")
             __props__['data_node_spec'] = data_node_spec
             __props__['description'] = description
@@ -170,10 +170,10 @@ class Instance(pulumi.CustomResource):
             __props__['public_whitelists'] = public_whitelists
             __props__['resource_group_id'] = resource_group_id
             __props__['tags'] = tags
-            if version is None:
+            if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__['version'] = version
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_count'] = zone_count

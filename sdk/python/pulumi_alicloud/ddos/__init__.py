@@ -10,3 +10,32 @@ from .get_ddos_coo_instances import *
 from .scheduler_rule import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:ddos/ddosBgpInstance:DdosBgpInstance":
+                return DdosBgpInstance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ddos/ddosCooInstance:DdosCooInstance":
+                return DdosCooInstance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ddos/schedulerRule:SchedulerRule":
+                return SchedulerRule(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "ddos/ddosBgpInstance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ddos/ddosCooInstance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ddos/schedulerRule", _module_instance)
+
+_register_module()

@@ -121,23 +121,24 @@ type DataCenter struct {
 // NewDataCenter registers a new resource with the given unique name, arguments, and options.
 func NewDataCenter(ctx *pulumi.Context,
 	name string, args *DataCenterArgs, opts ...pulumi.ResourceOption) (*DataCenter, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.InstanceType == nil {
-		return nil, errors.New("missing required argument 'InstanceType'")
-	}
-	if args == nil || args.NodeCount == nil {
-		return nil, errors.New("missing required argument 'NodeCount'")
-	}
-	if args == nil || args.PayType == nil {
-		return nil, errors.New("missing required argument 'PayType'")
-	}
-	if args == nil || args.VswitchId == nil {
-		return nil, errors.New("missing required argument 'VswitchId'")
-	}
 	if args == nil {
-		args = &DataCenterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.InstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceType'")
+	}
+	if args.NodeCount == nil {
+		return nil, errors.New("invalid value for required argument 'NodeCount'")
+	}
+	if args.PayType == nil {
+		return nil, errors.New("invalid value for required argument 'PayType'")
+	}
+	if args.VswitchId == nil {
+		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource DataCenter
 	err := ctx.RegisterResource("alicloud:cassandra/dataCenter:DataCenter", name, args, &resource, opts...)

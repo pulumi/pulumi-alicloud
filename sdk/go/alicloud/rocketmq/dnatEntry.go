@@ -79,26 +79,27 @@ type DnatEntry struct {
 // NewDnatEntry registers a new resource with the given unique name, arguments, and options.
 func NewDnatEntry(ctx *pulumi.Context,
 	name string, args *DnatEntryArgs, opts ...pulumi.ResourceOption) (*DnatEntry, error) {
-	if args == nil || args.ExternalPort == nil {
-		return nil, errors.New("missing required argument 'ExternalPort'")
-	}
-	if args == nil || args.InternalIp == nil {
-		return nil, errors.New("missing required argument 'InternalIp'")
-	}
-	if args == nil || args.InternalPort == nil {
-		return nil, errors.New("missing required argument 'InternalPort'")
-	}
-	if args == nil || args.IpProtocol == nil {
-		return nil, errors.New("missing required argument 'IpProtocol'")
-	}
-	if args == nil || args.SagId == nil {
-		return nil, errors.New("missing required argument 'SagId'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &DnatEntryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ExternalPort == nil {
+		return nil, errors.New("invalid value for required argument 'ExternalPort'")
+	}
+	if args.InternalIp == nil {
+		return nil, errors.New("invalid value for required argument 'InternalIp'")
+	}
+	if args.InternalPort == nil {
+		return nil, errors.New("invalid value for required argument 'InternalPort'")
+	}
+	if args.IpProtocol == nil {
+		return nil, errors.New("invalid value for required argument 'IpProtocol'")
+	}
+	if args.SagId == nil {
+		return nil, errors.New("invalid value for required argument 'SagId'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource DnatEntry
 	err := ctx.RegisterResource("alicloud:rocketmq/dnatEntry:DnatEntry", name, args, &resource, opts...)

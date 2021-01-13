@@ -65,14 +65,15 @@ type ScalingGroupVServerGroups struct {
 // NewScalingGroupVServerGroups registers a new resource with the given unique name, arguments, and options.
 func NewScalingGroupVServerGroups(ctx *pulumi.Context,
 	name string, args *ScalingGroupVServerGroupsArgs, opts ...pulumi.ResourceOption) (*ScalingGroupVServerGroups, error) {
-	if args == nil || args.ScalingGroupId == nil {
-		return nil, errors.New("missing required argument 'ScalingGroupId'")
-	}
-	if args == nil || args.VserverGroups == nil {
-		return nil, errors.New("missing required argument 'VserverGroups'")
-	}
 	if args == nil {
-		args = &ScalingGroupVServerGroupsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ScalingGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ScalingGroupId'")
+	}
+	if args.VserverGroups == nil {
+		return nil, errors.New("invalid value for required argument 'VserverGroups'")
 	}
 	var resource ScalingGroupVServerGroups
 	err := ctx.RegisterResource("alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups", name, args, &resource, opts...)

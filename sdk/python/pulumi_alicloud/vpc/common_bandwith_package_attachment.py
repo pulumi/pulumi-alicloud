@@ -51,10 +51,10 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bandwidth_package_id is None:
+            if bandwidth_package_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth_package_id'")
             __props__['bandwidth_package_id'] = bandwidth_package_id
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
         super(CommonBandwithPackageAttachment, __self__).__init__(

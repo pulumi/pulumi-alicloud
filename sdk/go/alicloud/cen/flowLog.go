@@ -96,17 +96,18 @@ type FlowLog struct {
 // NewFlowLog registers a new resource with the given unique name, arguments, and options.
 func NewFlowLog(ctx *pulumi.Context,
 	name string, args *FlowLogArgs, opts ...pulumi.ResourceOption) (*FlowLog, error) {
-	if args == nil || args.CenId == nil {
-		return nil, errors.New("missing required argument 'CenId'")
-	}
-	if args == nil || args.LogStoreName == nil {
-		return nil, errors.New("missing required argument 'LogStoreName'")
-	}
-	if args == nil || args.ProjectName == nil {
-		return nil, errors.New("missing required argument 'ProjectName'")
-	}
 	if args == nil {
-		args = &FlowLogArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CenId == nil {
+		return nil, errors.New("invalid value for required argument 'CenId'")
+	}
+	if args.LogStoreName == nil {
+		return nil, errors.New("invalid value for required argument 'LogStoreName'")
+	}
+	if args.ProjectName == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectName'")
 	}
 	var resource FlowLog
 	err := ctx.RegisterResource("alicloud:cen/flowLog:FlowLog", name, args, &resource, opts...)

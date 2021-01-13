@@ -124,25 +124,25 @@ class DataCenter(pulumi.CustomResource):
 
             __props__['auto_renew'] = auto_renew
             __props__['auto_renew_period'] = auto_renew_period
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['data_center_name'] = data_center_name
             __props__['disk_size'] = disk_size
             __props__['disk_type'] = disk_type
             __props__['enable_public'] = enable_public
-            if instance_type is None:
+            if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__['instance_type'] = instance_type
-            if node_count is None:
+            if node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'node_count'")
             __props__['node_count'] = node_count
-            if pay_type is None:
+            if pay_type is None and not opts.urn:
                 raise TypeError("Missing required property 'pay_type'")
             __props__['pay_type'] = pay_type
             __props__['period'] = period
             __props__['period_unit'] = period_unit
-            if vswitch_id is None:
+            if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id

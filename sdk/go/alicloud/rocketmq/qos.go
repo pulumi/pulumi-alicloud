@@ -61,6 +61,7 @@ func NewQos(ctx *pulumi.Context,
 	if args == nil {
 		args = &QosArgs{}
 	}
+
 	var resource Qos
 	err := ctx.RegisterResource("alicloud:rocketmq/qos:Qos", name, args, &resource, opts...)
 	if err != nil {

@@ -112,7 +112,7 @@ class Rule(pulumi.CustomResource):
             __props__['cookie_timeout'] = cookie_timeout
             __props__['delete_protection_validation'] = delete_protection_validation
             __props__['domain'] = domain
-            if frontend_port is None:
+            if frontend_port is None and not opts.urn:
                 raise TypeError("Missing required property 'frontend_port'")
             __props__['frontend_port'] = frontend_port
             __props__['health_check'] = health_check
@@ -124,12 +124,12 @@ class Rule(pulumi.CustomResource):
             __props__['health_check_uri'] = health_check_uri
             __props__['healthy_threshold'] = healthy_threshold
             __props__['listener_sync'] = listener_sync
-            if load_balancer_id is None:
+            if load_balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_id'")
             __props__['load_balancer_id'] = load_balancer_id
             __props__['name'] = name
             __props__['scheduler'] = scheduler
-            if server_group_id is None:
+            if server_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'server_group_id'")
             __props__['server_group_id'] = server_group_id
             __props__['sticky_session'] = sticky_session

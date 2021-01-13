@@ -139,13 +139,13 @@ export class Application extends pulumi.CustomResource {
             inputs["warUrl"] = state ? state.warUrl : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if (!args || args.applicationName === undefined) {
+            if ((!args || args.applicationName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'applicationName'");
             }
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.packageType === undefined) {
+            if ((!args || args.packageType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'packageType'");
             }
             inputs["applicationName"] = args ? args.applicationName : undefined;

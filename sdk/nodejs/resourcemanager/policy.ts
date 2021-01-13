@@ -110,10 +110,10 @@ export class Policy extends pulumi.CustomResource {
             inputs["policyType"] = state ? state.policyType : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if (!args || args.policyDocument === undefined) {
+            if ((!args || args.policyDocument === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyDocument'");
             }
-            if (!args || args.policyName === undefined) {
+            if ((!args || args.policyName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyName'");
             }
             inputs["defaultVersion"] = args ? args.defaultVersion : undefined;

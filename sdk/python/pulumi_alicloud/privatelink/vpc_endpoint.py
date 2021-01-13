@@ -69,13 +69,13 @@ class VpcEndpoint(pulumi.CustomResource):
 
             __props__['dry_run'] = dry_run
             __props__['endpoint_description'] = endpoint_description
-            if security_group_ids is None:
+            if security_group_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_ids'")
             __props__['security_group_ids'] = security_group_ids
             __props__['service_id'] = service_id
             __props__['service_name'] = service_name
             __props__['vpc_endpoint_name'] = vpc_endpoint_name
-            if vpc_id is None:
+            if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
             __props__['bandwidth'] = None

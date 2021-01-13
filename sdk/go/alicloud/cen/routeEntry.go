@@ -172,17 +172,18 @@ type RouteEntry struct {
 // NewRouteEntry registers a new resource with the given unique name, arguments, and options.
 func NewRouteEntry(ctx *pulumi.Context,
 	name string, args *RouteEntryArgs, opts ...pulumi.ResourceOption) (*RouteEntry, error) {
-	if args == nil || args.CidrBlock == nil {
-		return nil, errors.New("missing required argument 'CidrBlock'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
-	if args == nil || args.RouteTableId == nil {
-		return nil, errors.New("missing required argument 'RouteTableId'")
-	}
 	if args == nil {
-		args = &RouteEntryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CidrBlock == nil {
+		return nil, errors.New("invalid value for required argument 'CidrBlock'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
+	if args.RouteTableId == nil {
+		return nil, errors.New("invalid value for required argument 'RouteTableId'")
 	}
 	var resource RouteEntry
 	err := ctx.RegisterResource("alicloud:cen/routeEntry:RouteEntry", name, args, &resource, opts...)

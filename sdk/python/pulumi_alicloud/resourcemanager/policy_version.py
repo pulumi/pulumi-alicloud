@@ -53,14 +53,14 @@ class PolicyVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if is_default_version is not None:
+            if is_default_version is not None and not opts.urn:
                 warnings.warn("""Field 'is_default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
                 pulumi.log.warn("is_default_version is deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0")
             __props__['is_default_version'] = is_default_version
-            if policy_document is None:
+            if policy_document is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_document'")
             __props__['policy_document'] = policy_document
-            if policy_name is None:
+            if policy_name is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_name'")
             __props__['policy_name'] = policy_name
         super(PolicyVersion, __self__).__init__(

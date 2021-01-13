@@ -93,7 +93,7 @@ class Function(pulumi.CustomResource):
             __props__['description'] = description
             __props__['environment_variables'] = environment_variables
             __props__['filename'] = filename
-            if handler is None:
+            if handler is None and not opts.urn:
                 raise TypeError("Missing required property 'handler'")
             __props__['handler'] = handler
             __props__['initialization_timeout'] = initialization_timeout
@@ -105,10 +105,10 @@ class Function(pulumi.CustomResource):
             __props__['name_prefix'] = name_prefix
             __props__['oss_bucket'] = oss_bucket
             __props__['oss_key'] = oss_key
-            if runtime is None:
+            if runtime is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime'")
             __props__['runtime'] = runtime
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['timeout'] = timeout

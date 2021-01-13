@@ -386,7 +386,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
         } else {
             const args = argsOrState as ManagedKubernetesArgs | undefined;
-            if (!args || args.workerVswitchIds === undefined) {
+            if ((!args || args.workerVswitchIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'workerVswitchIds'");
             }
             inputs["addons"] = args ? args.addons : undefined;

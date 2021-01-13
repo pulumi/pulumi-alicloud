@@ -91,20 +91,21 @@ type InstanceAttachment struct {
 // NewInstanceAttachment registers a new resource with the given unique name, arguments, and options.
 func NewInstanceAttachment(ctx *pulumi.Context,
 	name string, args *InstanceAttachmentArgs, opts ...pulumi.ResourceOption) (*InstanceAttachment, error) {
-	if args == nil || args.ChildInstanceId == nil {
-		return nil, errors.New("missing required argument 'ChildInstanceId'")
-	}
-	if args == nil || args.ChildInstanceRegionId == nil {
-		return nil, errors.New("missing required argument 'ChildInstanceRegionId'")
-	}
-	if args == nil || args.ChildInstanceType == nil {
-		return nil, errors.New("missing required argument 'ChildInstanceType'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &InstanceAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ChildInstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'ChildInstanceId'")
+	}
+	if args.ChildInstanceRegionId == nil {
+		return nil, errors.New("invalid value for required argument 'ChildInstanceRegionId'")
+	}
+	if args.ChildInstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'ChildInstanceType'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource InstanceAttachment
 	err := ctx.RegisterResource("alicloud:cen/instanceAttachment:InstanceAttachment", name, args, &resource, opts...)

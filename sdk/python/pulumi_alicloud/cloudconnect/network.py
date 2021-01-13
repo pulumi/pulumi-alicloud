@@ -79,7 +79,7 @@ class Network(pulumi.CustomResource):
 
             __props__['cidr_block'] = cidr_block
             __props__['description'] = description
-            if is_default is None:
+            if is_default is None and not opts.urn:
                 raise TypeError("Missing required property 'is_default'")
             __props__['is_default'] = is_default
             __props__['name'] = name

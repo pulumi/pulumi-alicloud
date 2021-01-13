@@ -185,13 +185,13 @@ export class Cluster extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if (!args || args.dbNodeClass === undefined) {
+            if ((!args || args.dbNodeClass === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbNodeClass'");
             }
-            if (!args || args.dbType === undefined) {
+            if ((!args || args.dbType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbType'");
             }
-            if (!args || args.dbVersion === undefined) {
+            if ((!args || args.dbVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dbVersion'");
             }
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;

@@ -97,20 +97,21 @@ type VbrHealthCheck struct {
 // NewVbrHealthCheck registers a new resource with the given unique name, arguments, and options.
 func NewVbrHealthCheck(ctx *pulumi.Context,
 	name string, args *VbrHealthCheckArgs, opts ...pulumi.ResourceOption) (*VbrHealthCheck, error) {
-	if args == nil || args.CenId == nil {
-		return nil, errors.New("missing required argument 'CenId'")
-	}
-	if args == nil || args.HealthCheckTargetIp == nil {
-		return nil, errors.New("missing required argument 'HealthCheckTargetIp'")
-	}
-	if args == nil || args.VbrInstanceId == nil {
-		return nil, errors.New("missing required argument 'VbrInstanceId'")
-	}
-	if args == nil || args.VbrInstanceRegionId == nil {
-		return nil, errors.New("missing required argument 'VbrInstanceRegionId'")
-	}
 	if args == nil {
-		args = &VbrHealthCheckArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CenId == nil {
+		return nil, errors.New("invalid value for required argument 'CenId'")
+	}
+	if args.HealthCheckTargetIp == nil {
+		return nil, errors.New("invalid value for required argument 'HealthCheckTargetIp'")
+	}
+	if args.VbrInstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'VbrInstanceId'")
+	}
+	if args.VbrInstanceRegionId == nil {
+		return nil, errors.New("invalid value for required argument 'VbrInstanceRegionId'")
 	}
 	var resource VbrHealthCheck
 	err := ctx.RegisterResource("alicloud:cen/vbrHealthCheck:VbrHealthCheck", name, args, &resource, opts...)

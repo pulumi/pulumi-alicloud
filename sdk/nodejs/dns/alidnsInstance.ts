@@ -118,13 +118,13 @@ export class AlidnsInstance extends pulumi.CustomResource {
             inputs["versionName"] = state ? state.versionName : undefined;
         } else {
             const args = argsOrState as AlidnsInstanceArgs | undefined;
-            if (!args || args.dnsSecurity === undefined) {
+            if ((!args || args.dnsSecurity === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dnsSecurity'");
             }
-            if (!args || args.domainNumbers === undefined) {
+            if ((!args || args.domainNumbers === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domainNumbers'");
             }
-            if (!args || args.versionCode === undefined) {
+            if ((!args || args.versionCode === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'versionCode'");
             }
             inputs["dnsSecurity"] = args ? args.dnsSecurity : undefined;

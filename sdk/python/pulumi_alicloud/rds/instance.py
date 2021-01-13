@@ -166,19 +166,19 @@ class Instance(pulumi.CustomResource):
             __props__['auto_upgrade_minor_version'] = auto_upgrade_minor_version
             __props__['db_instance_storage_type'] = db_instance_storage_type
             __props__['encryption_key'] = encryption_key
-            if engine is None:
+            if engine is None and not opts.urn:
                 raise TypeError("Missing required property 'engine'")
             __props__['engine'] = engine
-            if engine_version is None:
+            if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__['engine_version'] = engine_version
             __props__['force_restart'] = force_restart
             __props__['instance_charge_type'] = instance_charge_type
             __props__['instance_name'] = instance_name
-            if instance_storage is None:
+            if instance_storage is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_storage'")
             __props__['instance_storage'] = instance_storage
-            if instance_type is None:
+            if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__['instance_type'] = instance_type
             __props__['maintain_time'] = maintain_time
@@ -186,7 +186,7 @@ class Instance(pulumi.CustomResource):
             __props__['parameters'] = parameters
             __props__['period'] = period
             __props__['resource_group_id'] = resource_group_id
-            if security_group_id is not None:
+            if security_group_id is not None and not opts.urn:
                 warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
                 pulumi.log.warn("security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.")
             __props__['security_group_id'] = security_group_id

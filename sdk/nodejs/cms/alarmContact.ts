@@ -123,10 +123,10 @@ export class AlarmContact extends pulumi.CustomResource {
             inputs["lang"] = state ? state.lang : undefined;
         } else {
             const args = argsOrState as AlarmContactArgs | undefined;
-            if (!args || args.alarmContactName === undefined) {
+            if ((!args || args.alarmContactName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'alarmContactName'");
             }
-            if (!args || args.describe === undefined) {
+            if ((!args || args.describe === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'describe'");
             }
             inputs["alarmContactName"] = args ? args.alarmContactName : undefined;

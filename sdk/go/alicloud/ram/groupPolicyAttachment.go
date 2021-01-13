@@ -76,17 +76,18 @@ type GroupPolicyAttachment struct {
 // NewGroupPolicyAttachment registers a new resource with the given unique name, arguments, and options.
 func NewGroupPolicyAttachment(ctx *pulumi.Context,
 	name string, args *GroupPolicyAttachmentArgs, opts ...pulumi.ResourceOption) (*GroupPolicyAttachment, error) {
-	if args == nil || args.GroupName == nil {
-		return nil, errors.New("missing required argument 'GroupName'")
-	}
-	if args == nil || args.PolicyName == nil {
-		return nil, errors.New("missing required argument 'PolicyName'")
-	}
-	if args == nil || args.PolicyType == nil {
-		return nil, errors.New("missing required argument 'PolicyType'")
-	}
 	if args == nil {
-		args = &GroupPolicyAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.GroupName == nil {
+		return nil, errors.New("invalid value for required argument 'GroupName'")
+	}
+	if args.PolicyName == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyName'")
+	}
+	if args.PolicyType == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyType'")
 	}
 	var resource GroupPolicyAttachment
 	err := ctx.RegisterResource("alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment", name, args, &resource, opts...)

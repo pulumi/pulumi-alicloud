@@ -79,17 +79,18 @@ type SnapshotPolicy struct {
 // NewSnapshotPolicy registers a new resource with the given unique name, arguments, and options.
 func NewSnapshotPolicy(ctx *pulumi.Context,
 	name string, args *SnapshotPolicyArgs, opts ...pulumi.ResourceOption) (*SnapshotPolicy, error) {
-	if args == nil || args.RepeatWeekdays == nil {
-		return nil, errors.New("missing required argument 'RepeatWeekdays'")
-	}
-	if args == nil || args.RetentionDays == nil {
-		return nil, errors.New("missing required argument 'RetentionDays'")
-	}
-	if args == nil || args.TimePoints == nil {
-		return nil, errors.New("missing required argument 'TimePoints'")
-	}
 	if args == nil {
-		args = &SnapshotPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RepeatWeekdays == nil {
+		return nil, errors.New("invalid value for required argument 'RepeatWeekdays'")
+	}
+	if args.RetentionDays == nil {
+		return nil, errors.New("invalid value for required argument 'RetentionDays'")
+	}
+	if args.TimePoints == nil {
+		return nil, errors.New("invalid value for required argument 'TimePoints'")
 	}
 	var resource SnapshotPolicy
 	err := ctx.RegisterResource("alicloud:ecs/snapshotPolicy:SnapshotPolicy", name, args, &resource, opts...)

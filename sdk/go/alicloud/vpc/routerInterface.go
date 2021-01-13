@@ -73,20 +73,21 @@ type RouterInterface struct {
 // NewRouterInterface registers a new resource with the given unique name, arguments, and options.
 func NewRouterInterface(ctx *pulumi.Context,
 	name string, args *RouterInterfaceArgs, opts ...pulumi.ResourceOption) (*RouterInterface, error) {
-	if args == nil || args.OppositeRegion == nil {
-		return nil, errors.New("missing required argument 'OppositeRegion'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.RouterId == nil {
-		return nil, errors.New("missing required argument 'RouterId'")
-	}
-	if args == nil || args.RouterType == nil {
-		return nil, errors.New("missing required argument 'RouterType'")
-	}
 	if args == nil {
-		args = &RouterInterfaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.OppositeRegion == nil {
+		return nil, errors.New("invalid value for required argument 'OppositeRegion'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.RouterId == nil {
+		return nil, errors.New("invalid value for required argument 'RouterId'")
+	}
+	if args.RouterType == nil {
+		return nil, errors.New("invalid value for required argument 'RouterType'")
 	}
 	var resource RouterInterface
 	err := ctx.RegisterResource("alicloud:vpc/routerInterface:RouterInterface", name, args, &resource, opts...)

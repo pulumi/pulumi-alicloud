@@ -88,13 +88,13 @@ class SnapshotPolicy(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            if repeat_weekdays is None:
+            if repeat_weekdays is None and not opts.urn:
                 raise TypeError("Missing required property 'repeat_weekdays'")
             __props__['repeat_weekdays'] = repeat_weekdays
-            if retention_days is None:
+            if retention_days is None and not opts.urn:
                 raise TypeError("Missing required property 'retention_days'")
             __props__['retention_days'] = retention_days
-            if time_points is None:
+            if time_points is None and not opts.urn:
                 raise TypeError("Missing required property 'time_points'")
             __props__['time_points'] = time_points
         super(SnapshotPolicy, __self__).__init__(

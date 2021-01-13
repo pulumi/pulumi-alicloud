@@ -81,19 +81,19 @@ export class RouteEntry extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as RouteEntryArgs | undefined;
-            if (!args || args.nextHop === undefined) {
+            if ((!args || args.nextHop === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nextHop'");
             }
-            if (!args || args.publishVpc === undefined) {
+            if ((!args || args.publishVpc === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'publishVpc'");
             }
-            if (!args || args.routeDest === undefined) {
+            if ((!args || args.routeDest === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'routeDest'");
             }
-            if (!args || args.vpnGatewayId === undefined) {
+            if ((!args || args.vpnGatewayId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
-            if (!args || args.weight === undefined) {
+            if ((!args || args.weight === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'weight'");
             }
             inputs["nextHop"] = args ? args.nextHop : undefined;

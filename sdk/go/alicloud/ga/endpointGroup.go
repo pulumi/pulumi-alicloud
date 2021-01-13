@@ -126,20 +126,21 @@ type EndpointGroup struct {
 // NewEndpointGroup registers a new resource with the given unique name, arguments, and options.
 func NewEndpointGroup(ctx *pulumi.Context,
 	name string, args *EndpointGroupArgs, opts ...pulumi.ResourceOption) (*EndpointGroup, error) {
-	if args == nil || args.AcceleratorId == nil {
-		return nil, errors.New("missing required argument 'AcceleratorId'")
-	}
-	if args == nil || args.EndpointConfigurations == nil {
-		return nil, errors.New("missing required argument 'EndpointConfigurations'")
-	}
-	if args == nil || args.EndpointGroupRegion == nil {
-		return nil, errors.New("missing required argument 'EndpointGroupRegion'")
-	}
-	if args == nil || args.ListenerId == nil {
-		return nil, errors.New("missing required argument 'ListenerId'")
-	}
 	if args == nil {
-		args = &EndpointGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AcceleratorId == nil {
+		return nil, errors.New("invalid value for required argument 'AcceleratorId'")
+	}
+	if args.EndpointConfigurations == nil {
+		return nil, errors.New("invalid value for required argument 'EndpointConfigurations'")
+	}
+	if args.EndpointGroupRegion == nil {
+		return nil, errors.New("invalid value for required argument 'EndpointGroupRegion'")
+	}
+	if args.ListenerId == nil {
+		return nil, errors.New("invalid value for required argument 'ListenerId'")
 	}
 	var resource EndpointGroup
 	err := ctx.RegisterResource("alicloud:ga/endpointGroup:EndpointGroup", name, args, &resource, opts...)

@@ -92,14 +92,15 @@ type K8sApplication struct {
 // NewK8sApplication registers a new resource with the given unique name, arguments, and options.
 func NewK8sApplication(ctx *pulumi.Context,
 	name string, args *K8sApplicationArgs, opts ...pulumi.ResourceOption) (*K8sApplication, error) {
-	if args == nil || args.ApplicationName == nil {
-		return nil, errors.New("missing required argument 'ApplicationName'")
-	}
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &K8sApplicationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApplicationName == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationName'")
+	}
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource K8sApplication
 	err := ctx.RegisterResource("alicloud:edas/k8sApplication:K8sApplication", name, args, &resource, opts...)

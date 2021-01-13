@@ -72,7 +72,7 @@ class AlarmContactGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if alarm_contact_group_name is None:
+            if alarm_contact_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'alarm_contact_group_name'")
             __props__['alarm_contact_group_name'] = alarm_contact_group_name
             __props__['contacts'] = contacts

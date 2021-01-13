@@ -119,13 +119,13 @@ export class InstanceGrant extends pulumi.CustomResource {
             inputs["childInstanceId"] = state ? state.childInstanceId : undefined;
         } else {
             const args = argsOrState as InstanceGrantArgs | undefined;
-            if (!args || args.cenId === undefined) {
+            if ((!args || args.cenId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if (!args || args.cenOwnerId === undefined) {
+            if ((!args || args.cenOwnerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cenOwnerId'");
             }
-            if (!args || args.childInstanceId === undefined) {
+            if ((!args || args.childInstanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'childInstanceId'");
             }
             inputs["cenId"] = args ? args.cenId : undefined;

@@ -85,10 +85,10 @@ export class Certificate extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            if (!args || args.cert === undefined) {
+            if ((!args || args.cert === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cert'");
             }
-            if (!args || args.key === undefined) {
+            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'key'");
             }
             inputs["cert"] = args ? args.cert : undefined;

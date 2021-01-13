@@ -69,14 +69,15 @@ type ImageSharePermission struct {
 // NewImageSharePermission registers a new resource with the given unique name, arguments, and options.
 func NewImageSharePermission(ctx *pulumi.Context,
 	name string, args *ImageSharePermissionArgs, opts ...pulumi.ResourceOption) (*ImageSharePermission, error) {
-	if args == nil || args.AccountId == nil {
-		return nil, errors.New("missing required argument 'AccountId'")
-	}
-	if args == nil || args.ImageId == nil {
-		return nil, errors.New("missing required argument 'ImageId'")
-	}
 	if args == nil {
-		args = &ImageSharePermissionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.ImageId == nil {
+		return nil, errors.New("invalid value for required argument 'ImageId'")
 	}
 	var resource ImageSharePermission
 	err := ctx.RegisterResource("alicloud:ecs/imageSharePermission:ImageSharePermission", name, args, &resource, opts...)

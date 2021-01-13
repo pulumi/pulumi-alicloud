@@ -183,13 +183,13 @@ export class Rule extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if (!args || args.frontendPort === undefined) {
+            if ((!args || args.frontendPort === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'frontendPort'");
             }
-            if (!args || args.loadBalancerId === undefined) {
+            if ((!args || args.loadBalancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            if (!args || args.serverGroupId === undefined) {
+            if ((!args || args.serverGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serverGroupId'");
             }
             inputs["cookie"] = args ? args.cookie : undefined;

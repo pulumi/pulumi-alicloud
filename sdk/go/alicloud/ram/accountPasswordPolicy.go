@@ -46,6 +46,7 @@ func NewAccountPasswordPolicy(ctx *pulumi.Context,
 	if args == nil {
 		args = &AccountPasswordPolicyArgs{}
 	}
+
 	var resource AccountPasswordPolicy
 	err := ctx.RegisterResource("alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy", name, args, &resource, opts...)
 	if err != nil {

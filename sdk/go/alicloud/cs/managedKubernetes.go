@@ -162,11 +162,12 @@ type ManagedKubernetes struct {
 // NewManagedKubernetes registers a new resource with the given unique name, arguments, and options.
 func NewManagedKubernetes(ctx *pulumi.Context,
 	name string, args *ManagedKubernetesArgs, opts ...pulumi.ResourceOption) (*ManagedKubernetes, error) {
-	if args == nil || args.WorkerVswitchIds == nil {
-		return nil, errors.New("missing required argument 'WorkerVswitchIds'")
-	}
 	if args == nil {
-		args = &ManagedKubernetesArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.WorkerVswitchIds == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerVswitchIds'")
 	}
 	var resource ManagedKubernetes
 	err := ctx.RegisterResource("alicloud:cs/managedKubernetes:ManagedKubernetes", name, args, &resource, opts...)

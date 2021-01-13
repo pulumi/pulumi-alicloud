@@ -48,17 +48,18 @@ type Trigger struct {
 // NewTrigger registers a new resource with the given unique name, arguments, and options.
 func NewTrigger(ctx *pulumi.Context,
 	name string, args *TriggerArgs, opts ...pulumi.ResourceOption) (*Trigger, error) {
-	if args == nil || args.Function == nil {
-		return nil, errors.New("missing required argument 'Function'")
-	}
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &TriggerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Function == nil {
+		return nil, errors.New("invalid value for required argument 'Function'")
+	}
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource Trigger
 	err := ctx.RegisterResource("alicloud:fc/trigger:Trigger", name, args, &resource, opts...)

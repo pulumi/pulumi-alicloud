@@ -125,20 +125,21 @@ type Alarm struct {
 // NewAlarm registers a new resource with the given unique name, arguments, and options.
 func NewAlarm(ctx *pulumi.Context,
 	name string, args *AlarmArgs, opts ...pulumi.ResourceOption) (*Alarm, error) {
-	if args == nil || args.ContactGroups == nil {
-		return nil, errors.New("missing required argument 'ContactGroups'")
-	}
-	if args == nil || args.Dimensions == nil {
-		return nil, errors.New("missing required argument 'Dimensions'")
-	}
-	if args == nil || args.Metric == nil {
-		return nil, errors.New("missing required argument 'Metric'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &AlarmArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ContactGroups == nil {
+		return nil, errors.New("invalid value for required argument 'ContactGroups'")
+	}
+	if args.Dimensions == nil {
+		return nil, errors.New("invalid value for required argument 'Dimensions'")
+	}
+	if args.Metric == nil {
+		return nil, errors.New("invalid value for required argument 'Metric'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Alarm
 	err := ctx.RegisterResource("alicloud:cms/alarm:Alarm", name, args, &resource, opts...)

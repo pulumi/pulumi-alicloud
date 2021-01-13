@@ -204,7 +204,7 @@ export class Execution extends pulumi.CustomResource {
             inputs["updateDate"] = state ? state.updateDate : undefined;
         } else {
             const args = argsOrState as ExecutionArgs | undefined;
-            if (!args || args.templateName === undefined) {
+            if ((!args || args.templateName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'templateName'");
             }
             inputs["description"] = args ? args.description : undefined;

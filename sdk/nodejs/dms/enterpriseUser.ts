@@ -121,7 +121,7 @@ export class EnterpriseUser extends pulumi.CustomResource {
             inputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as EnterpriseUserArgs | undefined;
-            if (!args || args.uid === undefined) {
+            if ((!args || args.uid === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'uid'");
             }
             inputs["maxExecuteCount"] = args ? args.maxExecuteCount : undefined;

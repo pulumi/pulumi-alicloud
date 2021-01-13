@@ -148,25 +148,25 @@ export class GroupMetricRule extends pulumi.CustomResource {
             inputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as GroupMetricRuleArgs | undefined;
-            if (!args || args.category === undefined) {
+            if ((!args || args.category === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'category'");
             }
-            if (!args || args.escalations === undefined) {
+            if ((!args || args.escalations === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'escalations'");
             }
-            if (!args || args.groupId === undefined) {
+            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (!args || args.groupMetricRuleName === undefined) {
+            if ((!args || args.groupMetricRuleName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupMetricRuleName'");
             }
-            if (!args || args.metricName === undefined) {
+            if ((!args || args.metricName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'metricName'");
             }
-            if (!args || args.namespace === undefined) {
+            if ((!args || args.namespace === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if (!args || args.ruleId === undefined) {
+            if ((!args || args.ruleId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ruleId'");
             }
             inputs["category"] = args ? args.category : undefined;

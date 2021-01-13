@@ -36,11 +36,12 @@ type ZoneAttachment struct {
 // NewZoneAttachment registers a new resource with the given unique name, arguments, and options.
 func NewZoneAttachment(ctx *pulumi.Context,
 	name string, args *ZoneAttachmentArgs, opts ...pulumi.ResourceOption) (*ZoneAttachment, error) {
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &ZoneAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource ZoneAttachment
 	err := ctx.RegisterResource("alicloud:pvtz/zoneAttachment:ZoneAttachment", name, args, &resource, opts...)

@@ -233,7 +233,7 @@ class Instance(pulumi.CustomResource):
             __props__['auto_renew'] = auto_renew
             __props__['auto_renew_period'] = auto_renew_period
             __props__['auto_use_coupon'] = auto_use_coupon
-            if availability_zone is not None:
+            if availability_zone is not None and not opts.urn:
                 warnings.warn("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""", DeprecationWarning)
                 pulumi.log.warn("availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.")
             __props__['availability_zone'] = availability_zone
@@ -243,7 +243,7 @@ class Instance(pulumi.CustomResource):
             __props__['business_info'] = business_info
             __props__['capacity'] = capacity
             __props__['config'] = config
-            if connection_string_prefix is not None:
+            if connection_string_prefix is not None and not opts.urn:
                 warnings.warn("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
                 pulumi.log.warn("connection_string_prefix is deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.")
             __props__['connection_string_prefix'] = connection_string_prefix
@@ -251,7 +251,7 @@ class Instance(pulumi.CustomResource):
             __props__['db_instance_name'] = db_instance_name
             __props__['dedicated_host_group_id'] = dedicated_host_group_id
             __props__['enable_backup_log'] = enable_backup_log
-            if enable_public is not None:
+            if enable_public is not None and not opts.urn:
                 warnings.warn("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
                 pulumi.log.warn("enable_public is deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.")
             __props__['enable_public'] = enable_public
@@ -259,12 +259,12 @@ class Instance(pulumi.CustomResource):
             __props__['force_upgrade'] = force_upgrade
             __props__['global_instance'] = global_instance
             __props__['global_instance_id'] = global_instance_id
-            if instance_charge_type is not None:
+            if instance_charge_type is not None and not opts.urn:
                 warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
                 pulumi.log.warn("instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.")
             __props__['instance_charge_type'] = instance_charge_type
             __props__['instance_class'] = instance_class
-            if instance_name is not None:
+            if instance_name is not None and not opts.urn:
                 warnings.warn("""Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("instance_name is deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.")
             __props__['instance_name'] = instance_name
@@ -277,7 +277,7 @@ class Instance(pulumi.CustomResource):
             __props__['modify_mode'] = modify_mode
             __props__['node_type'] = node_type
             __props__['order_type'] = order_type
-            if parameters is not None:
+            if parameters is not None and not opts.urn:
                 warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
                 pulumi.log.warn("parameters is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.")
             __props__['parameters'] = parameters

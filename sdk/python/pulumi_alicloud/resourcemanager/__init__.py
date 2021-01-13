@@ -29,3 +29,59 @@ from .shared_resource import *
 from .shared_target import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "alicloud:resourcemanager/account:Account":
+                return Account(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/folder:Folder":
+                return Folder(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/handshake:Handshake":
+                return Handshake(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/policy:Policy":
+                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/policyAttachment:PolicyAttachment":
+                return PolicyAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/policyVersion:PolicyVersion":
+                return PolicyVersion(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/resourceDirectory:ResourceDirectory":
+                return ResourceDirectory(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/resourceGroup:ResourceGroup":
+                return ResourceGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/resourceShare:ResourceShare":
+                return ResourceShare(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/role:Role":
+                return Role(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/sharedResource:SharedResource":
+                return SharedResource(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/sharedTarget:SharedTarget":
+                return SharedTarget(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/account", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/folder", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/handshake", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/policy", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/policyAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/policyVersion", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/resourceDirectory", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/resourceGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/resourceShare", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/role", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/sharedResource", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/sharedTarget", _module_instance)
+
+_register_module()
