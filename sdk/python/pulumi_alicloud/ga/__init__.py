@@ -5,11 +5,14 @@
 # Export this package's modules as members:
 from .accelerator import *
 from .bandwidth_package import *
+from .bandwidth_package_attachment import *
 from .endpoint_group import *
 from .get_accelerators import *
 from .get_bandwidth_packages import *
 from .get_endpoint_groups import *
+from .get_ip_sets import *
 from .get_listeners import *
+from .ip_set import *
 from .listener import *
 from ._inputs import *
 from . import outputs
@@ -30,8 +33,12 @@ def _register_module():
                 return Accelerator(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ga/bandwidthPackage:BandwidthPackage":
                 return BandwidthPackage(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment":
+                return BandwidthPackageAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ga/endpointGroup:EndpointGroup":
                 return EndpointGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ga/ipSet:IpSet":
+                return IpSet(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ga/listener:Listener":
                 return Listener(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -41,7 +48,9 @@ def _register_module():
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "ga/accelerator", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ga/bandwidthPackage", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ga/bandwidthPackageAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ga/endpointGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ga/ipSet", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ga/listener", _module_instance)
 
 _register_module()

@@ -35,6 +35,8 @@ type EdgeKubernetes struct {
 	Connections   EdgeKubernetesConnectionsOutput `pulumi:"connections"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
+	ForceUpdate pulumi.BoolPtrOutput `pulumi:"forceUpdate"`
 	// Install cloud monitor agent on ECS. default: `true`.
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -152,6 +154,8 @@ type edgeKubernetesState struct {
 	Connections   *EdgeKubernetesConnections `pulumi:"connections"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
+	ForceUpdate *bool `pulumi:"forceUpdate"`
 	// Install cloud monitor agent on ECS. default: `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -232,6 +236,8 @@ type EdgeKubernetesState struct {
 	Connections   EdgeKubernetesConnectionsPtrInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
+	ForceUpdate pulumi.BoolPtrInput
 	// Install cloud monitor agent on ECS. default: `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -313,6 +319,8 @@ type edgeKubernetesArgs struct {
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
+	ForceUpdate *bool `pulumi:"forceUpdate"`
 	// Install cloud monitor agent on ECS. default: `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -382,6 +390,8 @@ type EdgeKubernetesArgs struct {
 	ClusterCaCert pulumi.StringPtrInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
+	ForceUpdate pulumi.BoolPtrInput
 	// Install cloud monitor agent on ECS. default: `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).

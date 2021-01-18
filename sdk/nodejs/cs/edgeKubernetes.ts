@@ -69,6 +69,10 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
+     */
+    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
+    /**
      * Install cloud monitor agent on ECS. default: `true`.
      */
     public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
@@ -202,6 +206,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
             inputs["connections"] = state ? state.connections : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            inputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             inputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
             inputs["isEnterpriseSecurityGroup"] = state ? state.isEnterpriseSecurityGroup : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
@@ -250,6 +255,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["clientKey"] = args ? args.clientKey : undefined;
             inputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            inputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             inputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
             inputs["isEnterpriseSecurityGroup"] = args ? args.isEnterpriseSecurityGroup : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
@@ -325,6 +331,10 @@ export interface EdgeKubernetesState {
      * Whether to enable cluster deletion protection.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
+     */
+    readonly forceUpdate?: pulumi.Input<boolean>;
     /**
      * Install cloud monitor agent on ECS. default: `true`.
      */
@@ -465,6 +475,10 @@ export interface EdgeKubernetesArgs {
      * Whether to enable cluster deletion protection.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
+     */
+    readonly forceUpdate?: pulumi.Input<boolean>;
     /**
      * Install cloud monitor agent on ECS. default: `true`.
      */

@@ -25,6 +25,7 @@ __all__ = [
     'GetGroupMetricRulesRuleEscalationCriticalResult',
     'GetGroupMetricRulesRuleEscalationInfoResult',
     'GetGroupMetricRulesRuleEscalationWarnResult',
+    'GetMonitorGroupsGroupResult',
 ]
 
 @pulumi.output_type
@@ -1058,5 +1059,144 @@ class GetGroupMetricRulesRuleEscalationWarnResult(dict):
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class GetMonitorGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 bind_url: str,
+                 contact_groups: Sequence[str],
+                 dynamic_tag_rule_id: str,
+                 gmt_create: int,
+                 gmt_modified: int,
+                 group_id: str,
+                 id: str,
+                 monitor_group_name: str,
+                 service_id: str,
+                 tags: Mapping[str, Any],
+                 template_ids: Sequence[str],
+                 type: str):
+        """
+        :param str bind_url: The URL of the Kubernetes cluster from which the application group is synchronized.
+        :param Sequence[str] contact_groups: The list of  alert groups that receive alert notifications for the application group.
+        :param str dynamic_tag_rule_id: The ID of the tag rule.
+        :param int gmt_create: The time when the application group was created.
+        :param int gmt_modified: The time when the application group was modified.
+        :param str group_id: The ID of the application group.
+        :param str id: The ID of the Monitor Group.
+        :param str monitor_group_name: The name of the application group.
+        :param str service_id: The ID of the Alibaba Cloud service.
+        :param Mapping[str, Any] tags: A map of tags assigned to the Cms Monitor Group.
+        :param Sequence[str] template_ids: The alert templates applied to the application group.
+        :param str type: The type of the application group.
+        """
+        pulumi.set(__self__, "bind_url", bind_url)
+        pulumi.set(__self__, "contact_groups", contact_groups)
+        pulumi.set(__self__, "dynamic_tag_rule_id", dynamic_tag_rule_id)
+        pulumi.set(__self__, "gmt_create", gmt_create)
+        pulumi.set(__self__, "gmt_modified", gmt_modified)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "monitor_group_name", monitor_group_name)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "template_ids", template_ids)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="bindUrl")
+    def bind_url(self) -> str:
+        """
+        The URL of the Kubernetes cluster from which the application group is synchronized.
+        """
+        return pulumi.get(self, "bind_url")
+
+    @property
+    @pulumi.getter(name="contactGroups")
+    def contact_groups(self) -> Sequence[str]:
+        """
+        The list of  alert groups that receive alert notifications for the application group.
+        """
+        return pulumi.get(self, "contact_groups")
+
+    @property
+    @pulumi.getter(name="dynamicTagRuleId")
+    def dynamic_tag_rule_id(self) -> str:
+        """
+        The ID of the tag rule.
+        """
+        return pulumi.get(self, "dynamic_tag_rule_id")
+
+    @property
+    @pulumi.getter(name="gmtCreate")
+    def gmt_create(self) -> int:
+        """
+        The time when the application group was created.
+        """
+        return pulumi.get(self, "gmt_create")
+
+    @property
+    @pulumi.getter(name="gmtModified")
+    def gmt_modified(self) -> int:
+        """
+        The time when the application group was modified.
+        """
+        return pulumi.get(self, "gmt_modified")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        The ID of the application group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Monitor Group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="monitorGroupName")
+    def monitor_group_name(self) -> str:
+        """
+        The name of the application group.
+        """
+        return pulumi.get(self, "monitor_group_name")
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> str:
+        """
+        The ID of the Alibaba Cloud service.
+        """
+        return pulumi.get(self, "service_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the Cms Monitor Group.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="templateIds")
+    def template_ids(self) -> Sequence[str]:
+        """
+        The alert templates applied to the application group.
+        """
+        return pulumi.get(self, "template_ids")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the application group.
+        """
+        return pulumi.get(self, "type")
 
 

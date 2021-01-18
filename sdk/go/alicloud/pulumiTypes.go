@@ -187,6 +187,7 @@ type ProviderEndpoint struct {
 	Alidns          *string `pulumi:"alidns"`
 	Alikafka        *string `pulumi:"alikafka"`
 	Apigateway      *string `pulumi:"apigateway"`
+	BrainIndustrial *string `pulumi:"brainIndustrial"`
 	Bssopenapi      *string `pulumi:"bssopenapi"`
 	Cas             *string `pulumi:"cas"`
 	Cassandra       *string `pulumi:"cassandra"`
@@ -207,6 +208,7 @@ type ProviderEndpoint struct {
 	Drds            *string `pulumi:"drds"`
 	Eci             *string `pulumi:"eci"`
 	Ecs             *string `pulumi:"ecs"`
+	Eipanycast      *string `pulumi:"eipanycast"`
 	Elasticsearch   *string `pulumi:"elasticsearch"`
 	Emr             *string `pulumi:"emr"`
 	Ess             *string `pulumi:"ess"`
@@ -260,6 +262,7 @@ type ProviderEndpointArgs struct {
 	Alidns          pulumi.StringPtrInput `pulumi:"alidns"`
 	Alikafka        pulumi.StringPtrInput `pulumi:"alikafka"`
 	Apigateway      pulumi.StringPtrInput `pulumi:"apigateway"`
+	BrainIndustrial pulumi.StringPtrInput `pulumi:"brainIndustrial"`
 	Bssopenapi      pulumi.StringPtrInput `pulumi:"bssopenapi"`
 	Cas             pulumi.StringPtrInput `pulumi:"cas"`
 	Cassandra       pulumi.StringPtrInput `pulumi:"cassandra"`
@@ -280,6 +283,7 @@ type ProviderEndpointArgs struct {
 	Drds            pulumi.StringPtrInput `pulumi:"drds"`
 	Eci             pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs             pulumi.StringPtrInput `pulumi:"ecs"`
+	Eipanycast      pulumi.StringPtrInput `pulumi:"eipanycast"`
 	Elasticsearch   pulumi.StringPtrInput `pulumi:"elasticsearch"`
 	Emr             pulumi.StringPtrInput `pulumi:"emr"`
 	Ess             pulumi.StringPtrInput `pulumi:"ess"`
@@ -387,6 +391,10 @@ func (o ProviderEndpointOutput) Apigateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Apigateway }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) BrainIndustrial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.BrainIndustrial }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Bssopenapi() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Bssopenapi }).(pulumi.StringPtrOutput)
 }
@@ -465,6 +473,10 @@ func (o ProviderEndpointOutput) Eci() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Ecs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ecs }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Eipanycast() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eipanycast }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Elasticsearch() pulumi.StringPtrOutput {

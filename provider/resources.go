@@ -35,6 +35,7 @@ const (
 	adbMod             = "Adb"
 	aliKafaMod         = "AliKafka"
 	apiGatewayMod      = "ApiGateway"
+	brainMod           = "Brain"
 	casMod             = "Cas"
 	cassandraMod       = "Cassandra"
 	cdnMod             = "Cdn"
@@ -54,6 +55,7 @@ const (
 	eciMod             = "Eci"
 	ecsMod             = "Ecs"
 	edasMod            = "Edas"
+	eipAnyCastMod      = "EipAnycast"
 	elasticsearchMod   = "ElasticSearch"
 	emrMod             = "Emr"
 	essMod             = "Ess"
@@ -219,6 +221,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_api_gateway_app_attachment": {Tok: resource(apiGatewayMod, "AppAttachment")},
 			"alicloud_api_gateway_vpc_access":     {Tok: resource(apiGatewayMod, "VpcAccess")},
 
+			// Brain
+			"alicloud_brain_industrial_pid_project":      {Tok: resource(brainMod, "IndustrialPidProject")},
+			"alicloud_brain_industrial_pid_organization": {Tok: resource(brainMod, "IndustrialPidOrganization")},
+
 			// Cas
 			"alicloud_cas_certificate": {Tok: resource(casMod, "Certificate")},
 
@@ -268,6 +274,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"alicloud_cms_group_metric_rule": {Tok: resource(cmsMod, "GroupMetricRule")},
+			"alicloud_cms_monitor_group":     {Tok: resource(cmsMod, "MonitorGroup")},
 
 			// Config
 			"alicloud_config_configuration_recorder": {Tok: resource(cfgMod, "ConfigurationRecorder")},
@@ -375,6 +382,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_edas_k8s_cluster":                 {Tok: resource(edasMod, "K8sCluster")},
 			"alicloud_edas_k8s_application":             {Tok: resource(edasMod, "K8sApplication")},
 
+			// EipAnycast
+			"alicloud_eipanycast_anycast_eip_address":            {Tok: resource(eipAnyCastMod, "AnycastEipAddress")},
+			"alicloud_eipanycast_anycast_eip_address_attachment": {Tok: resource(eipAnyCastMod, "AnycastEipAddressAttachment")},
+
 			// ESS
 			"alicloud_ess_alarm":      {Tok: resource(essMod, "Alarm")},
 			"alicloud_ess_attachment": {Tok: resource(essMod, "Attachment")},
@@ -416,10 +427,12 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fnf_flow":     {Tok: resource(fnfMod, "Flow")},
 
 			// Ga
-			"alicloud_ga_listener":          {Tok: resource(gaMod, "Listener")},
-			"alicloud_ga_accelerator":       {Tok: resource(gaMod, "Accelerator")},
-			"alicloud_ga_bandwidth_package": {Tok: resource(gaMod, "BandwidthPackage")},
-			"alicloud_ga_endpoint_group":    {Tok: resource(gaMod, "EndpointGroup")},
+			"alicloud_ga_listener":                     {Tok: resource(gaMod, "Listener")},
+			"alicloud_ga_accelerator":                  {Tok: resource(gaMod, "Accelerator")},
+			"alicloud_ga_bandwidth_package":            {Tok: resource(gaMod, "BandwidthPackage")},
+			"alicloud_ga_endpoint_group":               {Tok: resource(gaMod, "EndpointGroup")},
+			"alicloud_ga_ip_set":                       {Tok: resource(gaMod, "IpSet")},
+			"alicloud_ga_bandwidth_package_attachment": {Tok: resource(gaMod, "BandwidthPackageAttachment")},
 
 			// Gpdb
 			"alicloud_gpdb_connection": {Tok: resource(gpdbMod, "Connection")},
@@ -708,6 +721,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_api_gateway_apps":    {Tok: dataSource(apiGatewayMod, "getApps")},
 			"alicloud_api_gateway_service": {Tok: dataSource(apiGatewayMod, "getService")},
 
+			// Brain
+			"alicloud_brain_industrial_pid_projects":      {Tok: dataSource(brainMod, "getIndustrialPidProjects")},
+			"alicloud_brain_industrial_pid_organizations": {Tok: dataSource(brainMod, "getIndustrialPidOrganizations")},
+
 			// Cas
 			"alicloud_cas_certificates": {Tok: dataSource(casMod, "getCertificates")},
 
@@ -740,6 +757,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cms_alarm_contact_groups": {Tok: dataSource(cmsMod, "getAlarmContactGroups")},
 			"alicloud_cms_group_metric_rules":   {Tok: dataSource(cmsMod, "getGroupMetricRules")},
 			"alicloud_cms_service":              {Tok: dataSource(cmsMod, "getService")},
+			"alicloud_cms_monitor_groups":       {Tok: dataSource(cmsMod, "getMonitorGroups")},
 
 			// Config
 			"alicloud_config_configuration_recorders": {Tok: dataSource(cfgMod, "getConfigurationRecorders")},
@@ -759,6 +777,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cr_ee_namespaces":                  {Tok: dataSource(csMod, "getRegistryEnterpriseNamespaces")},
 			"alicloud_cr_ee_repos":                       {Tok: dataSource(csMod, "getRegistryEnterpriseRepos")},
 			"alicloud_cr_ee_sync_rules":                  {Tok: dataSource(csMod, "getRegistryEnterpriseSyncRules")},
+			"alicloud_ack_service":                       {Tok: dataSource(csMod, "getAckService")},
 
 			// Datahub
 			"alicloud_datahub_service": {Tok: dataSource(datahubMod, "getService")},
@@ -819,6 +838,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_edas_clusters":      {Tok: dataSource(edasMod, "getClusters")},
 			"alicloud_edas_service":       {Tok: dataSource(edasMod, "getService")},
 
+			// EipAnycast
+			"alicloud_eipanycast_anycast_eip_addresses": {Tok: dataSource(eipAnyCastMod, "getAnycastEipAddresses")},
+
 			// Elasticsearch
 			"alicloud_elasticsearch_instances": {Tok: dataSource(elasticsearchMod, "getInstances")},
 			"alicloud_elasticsearch_zones":     {Tok: dataSource(elasticsearchMod, "getZones")},
@@ -854,6 +876,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ga_accelerators":       {Tok: dataSource(gaMod, "getAccelerators")},
 			"alicloud_ga_bandwidth_packages": {Tok: dataSource(gaMod, "getBandwidthPackages")},
 			"alicloud_ga_endpoint_groups":    {Tok: dataSource(gaMod, "getEndpointGroups")},
+			"alicloud_ga_ip_sets":            {Tok: dataSource(gaMod, "getIpSets")},
 
 			// Gpdb
 			"alicloud_gpdb_instances": {Tok: dataSource(gpdbMod, "getInstances")},
@@ -923,6 +946,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// PrivateLink
 			"alicloud_privatelink_vpc_endpoints":      {Tok: dataSource(privateLinkMod, "getVpcEndpoints")},
+			"alicloud_privatelink_service":            {Tok: dataSource(privateLinkMod, "getService")},
 			"alicloud_privatelink_vpc_endpoint_zones": {Tok: dataSource(privateLinkMod, "getVpcEndpointZones")},
 			"alicloud_privatelink_vpc_endpoint_services": {
 				Tok: dataSource(privateLinkMod, "getVpcEndpointServices"),

@@ -7,17 +7,22 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./accelerator";
 export * from "./bandwidthPackage";
+export * from "./bandwidthPackageAttachment";
 export * from "./endpointGroup";
 export * from "./getAccelerators";
 export * from "./getBandwidthPackages";
 export * from "./getEndpointGroups";
+export * from "./getIpSets";
 export * from "./getListeners";
+export * from "./ipSet";
 export * from "./listener";
 
 // Import resources to register:
 import { Accelerator } from "./accelerator";
 import { BandwidthPackage } from "./bandwidthPackage";
+import { BandwidthPackageAttachment } from "./bandwidthPackageAttachment";
 import { EndpointGroup } from "./endpointGroup";
+import { IpSet } from "./ipSet";
 import { Listener } from "./listener";
 
 const _module = {
@@ -28,8 +33,12 @@ const _module = {
                 return new Accelerator(name, <any>undefined, { urn })
             case "alicloud:ga/bandwidthPackage:BandwidthPackage":
                 return new BandwidthPackage(name, <any>undefined, { urn })
+            case "alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment":
+                return new BandwidthPackageAttachment(name, <any>undefined, { urn })
             case "alicloud:ga/endpointGroup:EndpointGroup":
                 return new EndpointGroup(name, <any>undefined, { urn })
+            case "alicloud:ga/ipSet:IpSet":
+                return new IpSet(name, <any>undefined, { urn })
             case "alicloud:ga/listener:Listener":
                 return new Listener(name, <any>undefined, { urn })
             default:
@@ -39,5 +48,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "ga/accelerator", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/bandwidthPackage", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/bandwidthPackageAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/endpointGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/ipSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/listener", _module)

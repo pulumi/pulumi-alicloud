@@ -17,6 +17,7 @@ import * as actiontrail from "./actiontrail";
 import * as adb from "./adb";
 import * as alikafka from "./alikafka";
 import * as apigateway from "./apigateway";
+import * as brain from "./brain";
 import * as cas from "./cas";
 import * as cassandra from "./cassandra";
 import * as cdn from "./cdn";
@@ -37,6 +38,7 @@ import * as drds from "./drds";
 import * as eci from "./eci";
 import * as ecs from "./ecs";
 import * as edas from "./edas";
+import * as eipanycast from "./eipanycast";
 import * as elasticsearch from "./elasticsearch";
 import * as emr from "./emr";
 import * as ess from "./ess";
@@ -79,6 +81,7 @@ export {
     adb,
     alikafka,
     apigateway,
+    brain,
     cas,
     cassandra,
     cdn,
@@ -99,6 +102,7 @@ export {
     eci,
     ecs,
     edas,
+    eipanycast,
     elasticsearch,
     emr,
     ess,

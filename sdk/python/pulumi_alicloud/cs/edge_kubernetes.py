@@ -23,6 +23,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 force_update: Optional[pulumi.Input[bool]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
@@ -68,6 +69,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -120,6 +122,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__['client_key'] = client_key
             __props__['cluster_ca_cert'] = cluster_ca_cert
             __props__['deletion_protection'] = deletion_protection
+            __props__['force_update'] = force_update
             __props__['install_cloud_monitor'] = install_cloud_monitor
             __props__['is_enterprise_security_group'] = is_enterprise_security_group
             __props__['key_name'] = key_name
@@ -177,6 +180,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
             connections: Optional[pulumi.Input[pulumi.InputType['EdgeKubernetesConnectionsArgs']]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
+            force_update: Optional[pulumi.Input[bool]] = None,
             install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
             is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
@@ -221,6 +225,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -266,6 +271,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         __props__["cluster_ca_cert"] = cluster_ca_cert
         __props__["connections"] = connections
         __props__["deletion_protection"] = deletion_protection
+        __props__["force_update"] = force_update
         __props__["install_cloud_monitor"] = install_cloud_monitor
         __props__["is_enterprise_security_group"] = is_enterprise_security_group
         __props__["key_name"] = key_name
@@ -356,6 +362,14 @@ class EdgeKubernetes(pulumi.CustomResource):
         Whether to enable cluster deletion protection.
         """
         return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter(name="forceUpdate")
+    def force_update(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
+        """
+        return pulumi.get(self, "force_update")
 
     @property
     @pulumi.getter(name="installCloudMonitor")

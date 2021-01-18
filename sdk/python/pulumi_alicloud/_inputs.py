@@ -73,6 +73,7 @@ class ProviderEndpointArgs:
                  alidns: Optional[pulumi.Input[str]] = None,
                  alikafka: Optional[pulumi.Input[str]] = None,
                  apigateway: Optional[pulumi.Input[str]] = None,
+                 brain_industrial: Optional[pulumi.Input[str]] = None,
                  bssopenapi: Optional[pulumi.Input[str]] = None,
                  cas: Optional[pulumi.Input[str]] = None,
                  cassandra: Optional[pulumi.Input[str]] = None,
@@ -93,6 +94,7 @@ class ProviderEndpointArgs:
                  drds: Optional[pulumi.Input[str]] = None,
                  eci: Optional[pulumi.Input[str]] = None,
                  ecs: Optional[pulumi.Input[str]] = None,
+                 eipanycast: Optional[pulumi.Input[str]] = None,
                  elasticsearch: Optional[pulumi.Input[str]] = None,
                  emr: Optional[pulumi.Input[str]] = None,
                  ess: Optional[pulumi.Input[str]] = None,
@@ -137,6 +139,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "alikafka", alikafka)
         if apigateway is not None:
             pulumi.set(__self__, "apigateway", apigateway)
+        if brain_industrial is not None:
+            pulumi.set(__self__, "brain_industrial", brain_industrial)
         if bssopenapi is not None:
             pulumi.set(__self__, "bssopenapi", bssopenapi)
         if cas is not None:
@@ -177,6 +181,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
             pulumi.set(__self__, "ecs", ecs)
+        if eipanycast is not None:
+            pulumi.set(__self__, "eipanycast", eipanycast)
         if elasticsearch is not None:
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if emr is not None:
@@ -290,6 +296,15 @@ class ProviderEndpointArgs:
     @apigateway.setter
     def apigateway(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "apigateway", value)
+
+    @property
+    @pulumi.getter(name="brainIndustrial")
+    def brain_industrial(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "brain_industrial")
+
+    @brain_industrial.setter
+    def brain_industrial(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "brain_industrial", value)
 
     @property
     @pulumi.getter
@@ -470,6 +485,15 @@ class ProviderEndpointArgs:
     @ecs.setter
     def ecs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ecs", value)
+
+    @property
+    @pulumi.getter
+    def eipanycast(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "eipanycast")
+
+    @eipanycast.setter
+    def eipanycast(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eipanycast", value)
 
     @property
     @pulumi.getter

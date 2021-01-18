@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 export * from "./application";
 export * from "./cluster";
 export * from "./edgeKubernetes";
+export * from "./getAckService";
 export * from "./getEdgeKubernetesClusters";
 export * from "./getKubernetesClusters";
 export * from "./getManagedKubernetesClusters";

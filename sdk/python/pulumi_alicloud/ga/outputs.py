@@ -21,6 +21,7 @@ __all__ = [
     'GetEndpointGroupsGroupResult',
     'GetEndpointGroupsGroupEndpointConfigurationResult',
     'GetEndpointGroupsGroupPortOverrideResult',
+    'GetIpSetsSetResult',
     'GetListenersListenerResult',
     'GetListenersListenerCertificateResult',
     'GetListenersListenerPortRangeResult',
@@ -834,6 +835,90 @@ class GetEndpointGroupsGroupPortOverrideResult(dict):
         Listener port.
         """
         return pulumi.get(self, "listener_port")
+
+
+@pulumi.output_type
+class GetIpSetsSetResult(dict):
+    def __init__(__self__, *,
+                 accelerate_region_id: str,
+                 bandwidth: int,
+                 id: str,
+                 ip_address_lists: Sequence[str],
+                 ip_set_id: str,
+                 ip_version: str,
+                 status: str):
+        """
+        :param str accelerate_region_id: The ID of an acceleration region.
+        :param int bandwidth: The bandwidth allocated to the acceleration region.
+        :param str id: The ID of the Ip Set.
+        :param Sequence[str] ip_address_lists: The list of accelerated IP addresses in the acceleration region.
+        :param str ip_set_id: Accelerated area ID.
+        :param str ip_version: The IP protocol used by the GA instance.
+        :param str status: The status of the acceleration region.
+        """
+        pulumi.set(__self__, "accelerate_region_id", accelerate_region_id)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_address_lists", ip_address_lists)
+        pulumi.set(__self__, "ip_set_id", ip_set_id)
+        pulumi.set(__self__, "ip_version", ip_version)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accelerateRegionId")
+    def accelerate_region_id(self) -> str:
+        """
+        The ID of an acceleration region.
+        """
+        return pulumi.get(self, "accelerate_region_id")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The bandwidth allocated to the acceleration region.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ip Set.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipAddressLists")
+    def ip_address_lists(self) -> Sequence[str]:
+        """
+        The list of accelerated IP addresses in the acceleration region.
+        """
+        return pulumi.get(self, "ip_address_lists")
+
+    @property
+    @pulumi.getter(name="ipSetId")
+    def ip_set_id(self) -> str:
+        """
+        Accelerated area ID.
+        """
+        return pulumi.get(self, "ip_set_id")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> str:
+        """
+        The IP protocol used by the GA instance.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the acceleration region.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

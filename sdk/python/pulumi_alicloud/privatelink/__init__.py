@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .get_service import *
 from .get_vpc_endpoint_connections import *
 from .get_vpc_endpoint_service_resources import *
 from .get_vpc_endpoint_service_users import *

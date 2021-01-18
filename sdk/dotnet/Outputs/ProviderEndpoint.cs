@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Alidns;
         public readonly string? Alikafka;
         public readonly string? Apigateway;
+        public readonly string? BrainIndustrial;
         public readonly string? Bssopenapi;
         public readonly string? Cas;
         public readonly string? Cassandra;
@@ -38,6 +39,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Drds;
         public readonly string? Eci;
         public readonly string? Ecs;
+        public readonly string? Eipanycast;
         public readonly string? Elasticsearch;
         public readonly string? Emr;
         public readonly string? Ess;
@@ -85,6 +87,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? apigateway,
 
+            string? brainIndustrial,
+
             string? bssopenapi,
 
             string? cas,
@@ -124,6 +128,8 @@ namespace Pulumi.AliCloud.Outputs
             string? eci,
 
             string? ecs,
+
+            string? eipanycast,
 
             string? elasticsearch,
 
@@ -198,6 +204,7 @@ namespace Pulumi.AliCloud.Outputs
             Alidns = alidns;
             Alikafka = alikafka;
             Apigateway = apigateway;
+            BrainIndustrial = brainIndustrial;
             Bssopenapi = bssopenapi;
             Cas = cas;
             Cassandra = cassandra;
@@ -218,6 +225,7 @@ namespace Pulumi.AliCloud.Outputs
             Drds = drds;
             Eci = eci;
             Ecs = ecs;
+            Eipanycast = eipanycast;
             Elasticsearch = elasticsearch;
             Emr = emr;
             Ess = ess;
