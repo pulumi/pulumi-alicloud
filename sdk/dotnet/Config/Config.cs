@@ -101,6 +101,7 @@ namespace Pulumi.AliCloud
                 public string? Alidns { get; set; } = null!;
                 public string? Alikafka { get; set; } = null!;
                 public string? Apigateway { get; set; } = null!;
+                public string? BrainIndustrial { get; set; } = null!;
                 public string? Bssopenapi { get; set; } = null!;
                 public string? Cas { get; set; } = null!;
                 public string? Cassandra { get; set; } = null!;
@@ -121,6 +122,7 @@ namespace Pulumi.AliCloud
                 public string? Drds { get; set; } = null!;
                 public string? Eci { get; set; } = null!;
                 public string? Ecs { get; set; } = null!;
+                public string? Eipanycast { get; set; } = null!;
                 public string? Elasticsearch { get; set; } = null!;
                 public string? Emr { get; set; } = null!;
                 public string? Ess { get; set; } = null!;

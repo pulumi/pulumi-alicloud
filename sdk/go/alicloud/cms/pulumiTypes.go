@@ -2490,6 +2490,202 @@ func (o GetGroupMetricRulesRuleEscalationWarnArrayOutput) Index(i pulumi.IntInpu
 	}).(GetGroupMetricRulesRuleEscalationWarnOutput)
 }
 
+type GetMonitorGroupsGroup struct {
+	// The URL of the Kubernetes cluster from which the application group is synchronized.
+	BindUrl string `pulumi:"bindUrl"`
+	// The list of  alert groups that receive alert notifications for the application group.
+	ContactGroups []string `pulumi:"contactGroups"`
+	// The ID of the tag rule.
+	DynamicTagRuleId string `pulumi:"dynamicTagRuleId"`
+	// The time when the application group was created.
+	GmtCreate int `pulumi:"gmtCreate"`
+	// The time when the application group was modified.
+	GmtModified int `pulumi:"gmtModified"`
+	// The ID of the application group.
+	GroupId string `pulumi:"groupId"`
+	// The ID of the Monitor Group.
+	Id string `pulumi:"id"`
+	// The name of the application group.
+	MonitorGroupName string `pulumi:"monitorGroupName"`
+	// The ID of the Alibaba Cloud service.
+	ServiceId string `pulumi:"serviceId"`
+	// A map of tags assigned to the Cms Monitor Group.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The alert templates applied to the application group.
+	TemplateIds []string `pulumi:"templateIds"`
+	// The type of the application group.
+	Type string `pulumi:"type"`
+}
+
+// GetMonitorGroupsGroupInput is an input type that accepts GetMonitorGroupsGroupArgs and GetMonitorGroupsGroupOutput values.
+// You can construct a concrete instance of `GetMonitorGroupsGroupInput` via:
+//
+//          GetMonitorGroupsGroupArgs{...}
+type GetMonitorGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetMonitorGroupsGroupOutput() GetMonitorGroupsGroupOutput
+	ToGetMonitorGroupsGroupOutputWithContext(context.Context) GetMonitorGroupsGroupOutput
+}
+
+type GetMonitorGroupsGroupArgs struct {
+	// The URL of the Kubernetes cluster from which the application group is synchronized.
+	BindUrl pulumi.StringInput `pulumi:"bindUrl"`
+	// The list of  alert groups that receive alert notifications for the application group.
+	ContactGroups pulumi.StringArrayInput `pulumi:"contactGroups"`
+	// The ID of the tag rule.
+	DynamicTagRuleId pulumi.StringInput `pulumi:"dynamicTagRuleId"`
+	// The time when the application group was created.
+	GmtCreate pulumi.IntInput `pulumi:"gmtCreate"`
+	// The time when the application group was modified.
+	GmtModified pulumi.IntInput `pulumi:"gmtModified"`
+	// The ID of the application group.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The ID of the Monitor Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the application group.
+	MonitorGroupName pulumi.StringInput `pulumi:"monitorGroupName"`
+	// The ID of the Alibaba Cloud service.
+	ServiceId pulumi.StringInput `pulumi:"serviceId"`
+	// A map of tags assigned to the Cms Monitor Group.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The alert templates applied to the application group.
+	TemplateIds pulumi.StringArrayInput `pulumi:"templateIds"`
+	// The type of the application group.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetMonitorGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorGroupsGroup)(nil)).Elem()
+}
+
+func (i GetMonitorGroupsGroupArgs) ToGetMonitorGroupsGroupOutput() GetMonitorGroupsGroupOutput {
+	return i.ToGetMonitorGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetMonitorGroupsGroupArgs) ToGetMonitorGroupsGroupOutputWithContext(ctx context.Context) GetMonitorGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupsGroupOutput)
+}
+
+// GetMonitorGroupsGroupArrayInput is an input type that accepts GetMonitorGroupsGroupArray and GetMonitorGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetMonitorGroupsGroupArrayInput` via:
+//
+//          GetMonitorGroupsGroupArray{ GetMonitorGroupsGroupArgs{...} }
+type GetMonitorGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetMonitorGroupsGroupArrayOutput() GetMonitorGroupsGroupArrayOutput
+	ToGetMonitorGroupsGroupArrayOutputWithContext(context.Context) GetMonitorGroupsGroupArrayOutput
+}
+
+type GetMonitorGroupsGroupArray []GetMonitorGroupsGroupInput
+
+func (GetMonitorGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorGroupsGroup)(nil)).Elem()
+}
+
+func (i GetMonitorGroupsGroupArray) ToGetMonitorGroupsGroupArrayOutput() GetMonitorGroupsGroupArrayOutput {
+	return i.ToGetMonitorGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetMonitorGroupsGroupArray) ToGetMonitorGroupsGroupArrayOutputWithContext(ctx context.Context) GetMonitorGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupsGroupArrayOutput)
+}
+
+type GetMonitorGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorGroupsGroup)(nil)).Elem()
+}
+
+func (o GetMonitorGroupsGroupOutput) ToGetMonitorGroupsGroupOutput() GetMonitorGroupsGroupOutput {
+	return o
+}
+
+func (o GetMonitorGroupsGroupOutput) ToGetMonitorGroupsGroupOutputWithContext(ctx context.Context) GetMonitorGroupsGroupOutput {
+	return o
+}
+
+// The URL of the Kubernetes cluster from which the application group is synchronized.
+func (o GetMonitorGroupsGroupOutput) BindUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) string { return v.BindUrl }).(pulumi.StringOutput)
+}
+
+// The list of  alert groups that receive alert notifications for the application group.
+func (o GetMonitorGroupsGroupOutput) ContactGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) []string { return v.ContactGroups }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the tag rule.
+func (o GetMonitorGroupsGroupOutput) DynamicTagRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) string { return v.DynamicTagRuleId }).(pulumi.StringOutput)
+}
+
+// The time when the application group was created.
+func (o GetMonitorGroupsGroupOutput) GmtCreate() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) int { return v.GmtCreate }).(pulumi.IntOutput)
+}
+
+// The time when the application group was modified.
+func (o GetMonitorGroupsGroupOutput) GmtModified() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) int { return v.GmtModified }).(pulumi.IntOutput)
+}
+
+// The ID of the application group.
+func (o GetMonitorGroupsGroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the Monitor Group.
+func (o GetMonitorGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the application group.
+func (o GetMonitorGroupsGroupOutput) MonitorGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) string { return v.MonitorGroupName }).(pulumi.StringOutput)
+}
+
+// The ID of the Alibaba Cloud service.
+func (o GetMonitorGroupsGroupOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// A map of tags assigned to the Cms Monitor Group.
+func (o GetMonitorGroupsGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The alert templates applied to the application group.
+func (o GetMonitorGroupsGroupOutput) TemplateIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) []string { return v.TemplateIds }).(pulumi.StringArrayOutput)
+}
+
+// The type of the application group.
+func (o GetMonitorGroupsGroupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetMonitorGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorGroupsGroup)(nil)).Elem()
+}
+
+func (o GetMonitorGroupsGroupArrayOutput) ToGetMonitorGroupsGroupArrayOutput() GetMonitorGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetMonitorGroupsGroupArrayOutput) ToGetMonitorGroupsGroupArrayOutputWithContext(ctx context.Context) GetMonitorGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetMonitorGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetMonitorGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorGroupsGroup {
+		return vs[0].([]GetMonitorGroupsGroup)[vs[1].(int)]
+	}).(GetMonitorGroupsGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalPtrOutput{})
@@ -2521,4 +2717,6 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationWarnOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationWarnArrayOutput{})
+	pulumi.RegisterOutputType(GetMonitorGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetMonitorGroupsGroupArrayOutput{})
 }

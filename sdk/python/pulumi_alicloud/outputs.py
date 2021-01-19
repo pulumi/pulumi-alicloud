@@ -62,6 +62,7 @@ class ProviderEndpoint(dict):
                  alidns: Optional[str] = None,
                  alikafka: Optional[str] = None,
                  apigateway: Optional[str] = None,
+                 brain_industrial: Optional[str] = None,
                  bssopenapi: Optional[str] = None,
                  cas: Optional[str] = None,
                  cassandra: Optional[str] = None,
@@ -82,6 +83,7 @@ class ProviderEndpoint(dict):
                  drds: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
+                 eipanycast: Optional[str] = None,
                  elasticsearch: Optional[str] = None,
                  emr: Optional[str] = None,
                  ess: Optional[str] = None,
@@ -126,6 +128,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "alikafka", alikafka)
         if apigateway is not None:
             pulumi.set(__self__, "apigateway", apigateway)
+        if brain_industrial is not None:
+            pulumi.set(__self__, "brain_industrial", brain_industrial)
         if bssopenapi is not None:
             pulumi.set(__self__, "bssopenapi", bssopenapi)
         if cas is not None:
@@ -166,6 +170,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
             pulumi.set(__self__, "ecs", ecs)
+        if eipanycast is not None:
+            pulumi.set(__self__, "eipanycast", eipanycast)
         if elasticsearch is not None:
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if emr is not None:
@@ -259,6 +265,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def apigateway(self) -> Optional[str]:
         return pulumi.get(self, "apigateway")
+
+    @property
+    @pulumi.getter(name="brainIndustrial")
+    def brain_industrial(self) -> Optional[str]:
+        return pulumi.get(self, "brain_industrial")
 
     @property
     @pulumi.getter
@@ -359,6 +370,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def ecs(self) -> Optional[str]:
         return pulumi.get(self, "ecs")
+
+    @property
+    @pulumi.getter
+    def eipanycast(self) -> Optional[str]:
+        return pulumi.get(self, "eipanycast")
 
     @property
     @pulumi.getter

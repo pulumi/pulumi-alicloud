@@ -1613,6 +1613,157 @@ func (o GetEndpointGroupsGroupPortOverrideArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetEndpointGroupsGroupPortOverrideOutput)
 }
 
+type GetIpSetsSet struct {
+	// The ID of an acceleration region.
+	AccelerateRegionId string `pulumi:"accelerateRegionId"`
+	// The bandwidth allocated to the acceleration region.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The ID of the Ip Set.
+	Id string `pulumi:"id"`
+	// The list of accelerated IP addresses in the acceleration region.
+	IpAddressLists []string `pulumi:"ipAddressLists"`
+	// Accelerated area ID.
+	IpSetId string `pulumi:"ipSetId"`
+	// The IP protocol used by the GA instance.
+	IpVersion string `pulumi:"ipVersion"`
+	// The status of the acceleration region.
+	Status string `pulumi:"status"`
+}
+
+// GetIpSetsSetInput is an input type that accepts GetIpSetsSetArgs and GetIpSetsSetOutput values.
+// You can construct a concrete instance of `GetIpSetsSetInput` via:
+//
+//          GetIpSetsSetArgs{...}
+type GetIpSetsSetInput interface {
+	pulumi.Input
+
+	ToGetIpSetsSetOutput() GetIpSetsSetOutput
+	ToGetIpSetsSetOutputWithContext(context.Context) GetIpSetsSetOutput
+}
+
+type GetIpSetsSetArgs struct {
+	// The ID of an acceleration region.
+	AccelerateRegionId pulumi.StringInput `pulumi:"accelerateRegionId"`
+	// The bandwidth allocated to the acceleration region.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The ID of the Ip Set.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The list of accelerated IP addresses in the acceleration region.
+	IpAddressLists pulumi.StringArrayInput `pulumi:"ipAddressLists"`
+	// Accelerated area ID.
+	IpSetId pulumi.StringInput `pulumi:"ipSetId"`
+	// The IP protocol used by the GA instance.
+	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
+	// The status of the acceleration region.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetIpSetsSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpSetsSet)(nil)).Elem()
+}
+
+func (i GetIpSetsSetArgs) ToGetIpSetsSetOutput() GetIpSetsSetOutput {
+	return i.ToGetIpSetsSetOutputWithContext(context.Background())
+}
+
+func (i GetIpSetsSetArgs) ToGetIpSetsSetOutputWithContext(ctx context.Context) GetIpSetsSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpSetsSetOutput)
+}
+
+// GetIpSetsSetArrayInput is an input type that accepts GetIpSetsSetArray and GetIpSetsSetArrayOutput values.
+// You can construct a concrete instance of `GetIpSetsSetArrayInput` via:
+//
+//          GetIpSetsSetArray{ GetIpSetsSetArgs{...} }
+type GetIpSetsSetArrayInput interface {
+	pulumi.Input
+
+	ToGetIpSetsSetArrayOutput() GetIpSetsSetArrayOutput
+	ToGetIpSetsSetArrayOutputWithContext(context.Context) GetIpSetsSetArrayOutput
+}
+
+type GetIpSetsSetArray []GetIpSetsSetInput
+
+func (GetIpSetsSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpSetsSet)(nil)).Elem()
+}
+
+func (i GetIpSetsSetArray) ToGetIpSetsSetArrayOutput() GetIpSetsSetArrayOutput {
+	return i.ToGetIpSetsSetArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpSetsSetArray) ToGetIpSetsSetArrayOutputWithContext(ctx context.Context) GetIpSetsSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpSetsSetArrayOutput)
+}
+
+type GetIpSetsSetOutput struct{ *pulumi.OutputState }
+
+func (GetIpSetsSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpSetsSet)(nil)).Elem()
+}
+
+func (o GetIpSetsSetOutput) ToGetIpSetsSetOutput() GetIpSetsSetOutput {
+	return o
+}
+
+func (o GetIpSetsSetOutput) ToGetIpSetsSetOutputWithContext(ctx context.Context) GetIpSetsSetOutput {
+	return o
+}
+
+// The ID of an acceleration region.
+func (o GetIpSetsSetOutput) AccelerateRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpSetsSet) string { return v.AccelerateRegionId }).(pulumi.StringOutput)
+}
+
+// The bandwidth allocated to the acceleration region.
+func (o GetIpSetsSetOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpSetsSet) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The ID of the Ip Set.
+func (o GetIpSetsSetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpSetsSet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of accelerated IP addresses in the acceleration region.
+func (o GetIpSetsSetOutput) IpAddressLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpSetsSet) []string { return v.IpAddressLists }).(pulumi.StringArrayOutput)
+}
+
+// Accelerated area ID.
+func (o GetIpSetsSetOutput) IpSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpSetsSet) string { return v.IpSetId }).(pulumi.StringOutput)
+}
+
+// The IP protocol used by the GA instance.
+func (o GetIpSetsSetOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpSetsSet) string { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// The status of the acceleration region.
+func (o GetIpSetsSetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpSetsSet) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetIpSetsSetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpSetsSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpSetsSet)(nil)).Elem()
+}
+
+func (o GetIpSetsSetArrayOutput) ToGetIpSetsSetArrayOutput() GetIpSetsSetArrayOutput {
+	return o
+}
+
+func (o GetIpSetsSetArrayOutput) ToGetIpSetsSetArrayOutputWithContext(ctx context.Context) GetIpSetsSetArrayOutput {
+	return o
+}
+
+func (o GetIpSetsSetArrayOutput) Index(i pulumi.IntInput) GetIpSetsSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpSetsSet {
+		return vs[0].([]GetIpSetsSet)[vs[1].(int)]
+	}).(GetIpSetsSetOutput)
+}
+
 type GetListenersListener struct {
 	// The certificates of the listener.
 	Certificates []GetListenersListenerCertificate `pulumi:"certificates"`
@@ -2017,6 +2168,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupEndpointConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupPortOverrideOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupPortOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetIpSetsSetOutput{})
+	pulumi.RegisterOutputType(GetIpSetsSetArrayOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerArrayOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerCertificateOutput{})

@@ -17,6 +17,7 @@ export interface ProviderEndpoint {
     alidns?: pulumi.Input<string>;
     alikafka?: pulumi.Input<string>;
     apigateway?: pulumi.Input<string>;
+    brainIndustrial?: pulumi.Input<string>;
     bssopenapi?: pulumi.Input<string>;
     cas?: pulumi.Input<string>;
     cassandra?: pulumi.Input<string>;
@@ -37,6 +38,7 @@ export interface ProviderEndpoint {
     drds?: pulumi.Input<string>;
     eci?: pulumi.Input<string>;
     ecs?: pulumi.Input<string>;
+    eipanycast?: pulumi.Input<string>;
     elasticsearch?: pulumi.Input<string>;
     emr?: pulumi.Input<string>;
     ess?: pulumi.Input<string>;
@@ -242,6 +244,9 @@ export namespace apigateway {
         nameService: pulumi.Input<string>;
     }
 
+}
+
+export namespace brain {
 }
 
 export namespace cas {
@@ -1553,6 +1558,9 @@ export namespace ecs {
 }
 
 export namespace edas {
+}
+
+export namespace eipanycast {
 }
 
 export namespace elasticsearch {

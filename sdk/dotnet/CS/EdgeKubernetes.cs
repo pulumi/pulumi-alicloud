@@ -63,6 +63,12 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
+        /// </summary>
+        [Output("forceUpdate")]
+        public Output<bool?> ForceUpdate { get; private set; } = null!;
+
+        /// <summary>
         /// Install cloud monitor agent on ECS. default: `true`.
         /// </summary>
         [Output("installCloudMonitor")]
@@ -322,6 +328,12 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
+        /// </summary>
+        [Input("forceUpdate")]
+        public Input<bool>? ForceUpdate { get; set; }
+
+        /// <summary>
         /// Install cloud monitor agent on ECS. default: `true`.
         /// </summary>
         [Input("installCloudMonitor")]
@@ -544,6 +556,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
+        /// </summary>
+        [Input("forceUpdate")]
+        public Input<bool>? ForceUpdate { get; set; }
 
         /// <summary>
         /// Install cloud monitor agent on ECS. default: `true`.

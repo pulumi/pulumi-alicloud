@@ -61,6 +61,7 @@ export interface ProviderEndpoint {
     alidns?: string;
     alikafka?: string;
     apigateway?: string;
+    brainIndustrial?: string;
     bssopenapi?: string;
     cas?: string;
     cassandra?: string;
@@ -81,6 +82,7 @@ export interface ProviderEndpoint {
     drds?: string;
     eci?: string;
     ecs?: string;
+    eipanycast?: string;
     elasticsearch?: string;
     emr?: string;
     ess?: string;
@@ -763,6 +765,54 @@ export namespace apigateway {
          * Upper QPS limit of the API group; default value: 500, which can be increased by submitting an application.
          */
         trafficLimit: number;
+    }
+}
+
+export namespace brain {
+    export interface GetIndustrialPidOrganizationsOrganization {
+        /**
+         * The ID of the Pid Organization.
+         */
+        id: string;
+        /**
+         * The parent organization id.
+         */
+        parentPidOrganizationId: string;
+        /**
+         * The organization id.
+         */
+        pidOrganizationId: string;
+        /**
+         * The organization level.
+         */
+        pidOrganizationLevel: number;
+        /**
+         * The organization name.
+         */
+        pidOrganizationName: string;
+    }
+
+    export interface GetIndustrialPidProjectsProject {
+        /**
+         * The ID of the Pid Project.
+         */
+        id: string;
+        /**
+         * The ID of Pid Organisation.
+         */
+        pidOrganisationId: string;
+        /**
+         * The description of Pid Project.
+         */
+        pidProjectDesc: string;
+        /**
+         * The ID of Pid Project.
+         */
+        pidProjectId: string;
+        /**
+         * The name of Pid Project.
+         */
+        pidProjectName: string;
     }
 }
 
@@ -2094,6 +2144,57 @@ export namespace cms {
         times: number;
     }
 
+    export interface GetMonitorGroupsGroup {
+        /**
+         * The URL of the Kubernetes cluster from which the application group is synchronized.
+         */
+        bindUrl: string;
+        /**
+         * The list of  alert groups that receive alert notifications for the application group.
+         */
+        contactGroups: string[];
+        /**
+         * The ID of the tag rule.
+         */
+        dynamicTagRuleId: string;
+        /**
+         * The time when the application group was created.
+         */
+        gmtCreate: number;
+        /**
+         * The time when the application group was modified.
+         */
+        gmtModified: number;
+        /**
+         * The ID of the application group.
+         */
+        groupId: string;
+        /**
+         * The ID of the Monitor Group.
+         */
+        id: string;
+        /**
+         * The name of the application group.
+         */
+        monitorGroupName: string;
+        /**
+         * The ID of the Alibaba Cloud service.
+         */
+        serviceId: string;
+        /**
+         * A map of tags assigned to the Cms Monitor Group.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The alert templates applied to the application group.
+         */
+        templateIds: string[];
+        /**
+         * The type of the application group.
+         */
+        type: string;
+    }
+
     export interface GroupMetricRuleEscalations {
         /**
          * The critical level.
@@ -2186,6 +2287,7 @@ export namespace config {
         alidns?: string;
         alikafka?: string;
         apigateway?: string;
+        brainIndustrial?: string;
         bssopenapi?: string;
         cas?: string;
         cassandra?: string;
@@ -2206,6 +2308,7 @@ export namespace config {
         drds?: string;
         eci?: string;
         ecs?: string;
+        eipanycast?: string;
         elasticsearch?: string;
         emr?: string;
         ess?: string;
@@ -6130,6 +6233,86 @@ export namespace edas {
     }
 }
 
+export namespace eipanycast {
+    export interface GetAnycastEipAddressesAddress {
+        /**
+         * Anycast EIP instance account ID.
+         */
+        aliUid: number;
+        /**
+         * Anycast EIP instance name.
+         */
+        anycastEipAddressName: string;
+        /**
+         * AnycastEip binding information.
+         */
+        anycastEipBindInfoLists: outputs.eipanycast.GetAnycastEipAddressesAddressAnycastEipBindInfoList[];
+        /**
+         * Anycast EIP instance ID.
+         */
+        anycastId: string;
+        /**
+         * The peak bandwidth of the Anycast EIP instance, in Mbps.
+         */
+        bandwidth: number;
+        /**
+         * Anycast EIP instance account BID.
+         */
+        bid: string;
+        /**
+         * The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
+         */
+        businessStatus: string;
+        /**
+         * Anycast EIP instance description.
+         */
+        description: string;
+        /**
+         * The ID of the Anycast Eip Address.
+         */
+        id: string;
+        /**
+         * The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
+         */
+        internetChargeType: string;
+        /**
+         * Anycast EIP instance IP address.
+         */
+        ipAddress: string;
+        /**
+         * The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+         */
+        paymentType: string;
+        /**
+         * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+         */
+        serviceLocation: string;
+        /**
+         * IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+         */
+        status: string;
+    }
+
+    export interface GetAnycastEipAddressesAddressAnycastEipBindInfoList {
+        /**
+         * The bound cloud resource instance ID.
+         */
+        bindInstanceId: string;
+        /**
+         * The region ID of the bound cloud resource instance.
+         */
+        bindInstanceRegionId: string;
+        /**
+         * Bind the cloud resource instance type.
+         */
+        bindInstanceType: string;
+        /**
+         * Binding time.
+         */
+        bindTime: string;
+    }
+}
+
 export namespace elasticsearch {
     export interface GetInstancesInstance {
         createdAt: string;
@@ -7456,6 +7639,37 @@ export namespace ga {
          * Listener port.
          */
         listenerPort: number;
+    }
+
+    export interface GetIpSetsSet {
+        /**
+         * The ID of an acceleration region.
+         */
+        accelerateRegionId: string;
+        /**
+         * The bandwidth allocated to the acceleration region.
+         */
+        bandwidth: number;
+        /**
+         * The ID of the Ip Set.
+         */
+        id: string;
+        /**
+         * The list of accelerated IP addresses in the acceleration region.
+         */
+        ipAddressLists: string[];
+        /**
+         * Accelerated area ID.
+         */
+        ipSetId: string;
+        /**
+         * The IP protocol used by the GA instance.
+         */
+        ipVersion: string;
+        /**
+         * The status of the acceleration region.
+         */
+        status: string;
     }
 
     export interface GetListenersListener {

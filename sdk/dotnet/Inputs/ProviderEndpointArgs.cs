@@ -27,6 +27,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("apigateway")]
         public Input<string>? Apigateway { get; set; }
 
+        [Input("brainIndustrial")]
+        public Input<string>? BrainIndustrial { get; set; }
+
         [Input("bssopenapi")]
         public Input<string>? Bssopenapi { get; set; }
 
@@ -86,6 +89,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("ecs")]
         public Input<string>? Ecs { get; set; }
+
+        [Input("eipanycast")]
+        public Input<string>? Eipanycast { get; set; }
 
         [Input("elasticsearch")]
         public Input<string>? Elasticsearch { get; set; }
