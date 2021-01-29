@@ -139,6 +139,7 @@ namespace Pulumi.AliCloud.Ess
     ///  $ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups")]
     public partial class ScalingGroupVServerGroups : Pulumi.CustomResource
     {
         /// <summary>

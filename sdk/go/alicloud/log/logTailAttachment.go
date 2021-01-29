@@ -195,15 +195,15 @@ type LogTailAttachmentInput interface {
 	ToLogTailAttachmentOutputWithContext(ctx context.Context) LogTailAttachmentOutput
 }
 
-func (LogTailAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogTailAttachment)(nil)).Elem()
+func (*LogTailAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogTailAttachment)(nil))
 }
 
-func (i LogTailAttachment) ToLogTailAttachmentOutput() LogTailAttachmentOutput {
+func (i *LogTailAttachment) ToLogTailAttachmentOutput() LogTailAttachmentOutput {
 	return i.ToLogTailAttachmentOutputWithContext(context.Background())
 }
 
-func (i LogTailAttachment) ToLogTailAttachmentOutputWithContext(ctx context.Context) LogTailAttachmentOutput {
+func (i *LogTailAttachment) ToLogTailAttachmentOutputWithContext(ctx context.Context) LogTailAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailAttachmentOutput)
 }
 
@@ -212,7 +212,7 @@ type LogTailAttachmentOutput struct {
 }
 
 func (LogTailAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogTailAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*LogTailAttachment)(nil))
 }
 
 func (o LogTailAttachmentOutput) ToLogTailAttachmentOutput() LogTailAttachmentOutput {

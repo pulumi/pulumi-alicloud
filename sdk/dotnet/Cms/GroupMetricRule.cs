@@ -24,6 +24,7 @@ namespace Pulumi.AliCloud.Cms
     ///  $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example &lt;rule_id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cms/groupMetricRule:GroupMetricRule")]
     public partial class GroupMetricRule : Pulumi.CustomResource
     {
         /// <summary>

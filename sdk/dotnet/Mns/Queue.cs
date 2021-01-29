@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Mns
     ///  $ pulumi import alicloud:mns/queue:Queue queue queuename
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:mns/queue:Queue")]
     public partial class Queue : Pulumi.CustomResource
     {
         /// <summary>

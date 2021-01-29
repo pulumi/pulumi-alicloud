@@ -165,15 +165,15 @@ type StoreInput interface {
 	ToStoreOutputWithContext(ctx context.Context) StoreOutput
 }
 
-func (Store) ElementType() reflect.Type {
-	return reflect.TypeOf((*Store)(nil)).Elem()
+func (*Store) ElementType() reflect.Type {
+	return reflect.TypeOf((*Store)(nil))
 }
 
-func (i Store) ToStoreOutput() StoreOutput {
+func (i *Store) ToStoreOutput() StoreOutput {
 	return i.ToStoreOutputWithContext(context.Background())
 }
 
-func (i Store) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
+func (i *Store) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StoreOutput)
 }
 
@@ -182,7 +182,7 @@ type StoreOutput struct {
 }
 
 func (StoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StoreOutput)(nil)).Elem()
+	return reflect.TypeOf((*Store)(nil))
 }
 
 func (o StoreOutput) ToStoreOutput() StoreOutput {

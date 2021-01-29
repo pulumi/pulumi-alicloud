@@ -246,15 +246,15 @@ type FunctionAsyncInvokeConfigInput interface {
 	ToFunctionAsyncInvokeConfigOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigOutput
 }
 
-func (FunctionAsyncInvokeConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionAsyncInvokeConfig)(nil)).Elem()
+func (*FunctionAsyncInvokeConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAsyncInvokeConfig)(nil))
 }
 
-func (i FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigOutput() FunctionAsyncInvokeConfigOutput {
+func (i *FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigOutput() FunctionAsyncInvokeConfigOutput {
 	return i.ToFunctionAsyncInvokeConfigOutputWithContext(context.Background())
 }
 
-func (i FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigOutput {
+func (i *FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigOutput)
 }
 
@@ -263,7 +263,7 @@ type FunctionAsyncInvokeConfigOutput struct {
 }
 
 func (FunctionAsyncInvokeConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionAsyncInvokeConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*FunctionAsyncInvokeConfig)(nil))
 }
 
 func (o FunctionAsyncInvokeConfigOutput) ToFunctionAsyncInvokeConfigOutput() FunctionAsyncInvokeConfigOutput {

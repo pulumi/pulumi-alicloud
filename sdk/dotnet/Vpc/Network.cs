@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/network:Network example vpc-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/network:Network")]
     public partial class Network : Pulumi.CustomResource
     {
         /// <summary>

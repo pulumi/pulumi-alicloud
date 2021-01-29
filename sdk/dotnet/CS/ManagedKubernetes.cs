@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.CS
     ///  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster-id
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cs/managedKubernetes:ManagedKubernetes")]
     public partial class ManagedKubernetes : Pulumi.CustomResource
     {
         [Output("addons")]

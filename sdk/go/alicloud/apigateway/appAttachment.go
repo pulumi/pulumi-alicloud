@@ -124,15 +124,15 @@ type AppAttachmentInput interface {
 	ToAppAttachmentOutputWithContext(ctx context.Context) AppAttachmentOutput
 }
 
-func (AppAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppAttachment)(nil)).Elem()
+func (*AppAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppAttachment)(nil))
 }
 
-func (i AppAttachment) ToAppAttachmentOutput() AppAttachmentOutput {
+func (i *AppAttachment) ToAppAttachmentOutput() AppAttachmentOutput {
 	return i.ToAppAttachmentOutputWithContext(context.Background())
 }
 
-func (i AppAttachment) ToAppAttachmentOutputWithContext(ctx context.Context) AppAttachmentOutput {
+func (i *AppAttachment) ToAppAttachmentOutputWithContext(ctx context.Context) AppAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppAttachmentOutput)
 }
 
@@ -141,7 +141,7 @@ type AppAttachmentOutput struct {
 }
 
 func (AppAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*AppAttachment)(nil))
 }
 
 func (o AppAttachmentOutput) ToAppAttachmentOutput() AppAttachmentOutput {

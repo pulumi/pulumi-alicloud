@@ -255,15 +255,15 @@ type SchedulerRuleInput interface {
 	ToSchedulerRuleOutputWithContext(ctx context.Context) SchedulerRuleOutput
 }
 
-func (SchedulerRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulerRule)(nil)).Elem()
+func (*SchedulerRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulerRule)(nil))
 }
 
-func (i SchedulerRule) ToSchedulerRuleOutput() SchedulerRuleOutput {
+func (i *SchedulerRule) ToSchedulerRuleOutput() SchedulerRuleOutput {
 	return i.ToSchedulerRuleOutputWithContext(context.Background())
 }
 
-func (i SchedulerRule) ToSchedulerRuleOutputWithContext(ctx context.Context) SchedulerRuleOutput {
+func (i *SchedulerRule) ToSchedulerRuleOutputWithContext(ctx context.Context) SchedulerRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleOutput)
 }
 
@@ -272,7 +272,7 @@ type SchedulerRuleOutput struct {
 }
 
 func (SchedulerRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulerRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*SchedulerRule)(nil))
 }
 
 func (o SchedulerRuleOutput) ToSchedulerRuleOutput() SchedulerRuleOutput {

@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/routeTable:RouteTable foo vtb-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/routeTable:RouteTable")]
     public partial class RouteTable : Pulumi.CustomResource
     {
         /// <summary>

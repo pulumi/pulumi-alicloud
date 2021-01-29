@@ -268,15 +268,15 @@ type ScheduledTaskInput interface {
 	ToScheduledTaskOutputWithContext(ctx context.Context) ScheduledTaskOutput
 }
 
-func (ScheduledTask) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduledTask)(nil)).Elem()
+func (*ScheduledTask) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledTask)(nil))
 }
 
-func (i ScheduledTask) ToScheduledTaskOutput() ScheduledTaskOutput {
+func (i *ScheduledTask) ToScheduledTaskOutput() ScheduledTaskOutput {
 	return i.ToScheduledTaskOutputWithContext(context.Background())
 }
 
-func (i ScheduledTask) ToScheduledTaskOutputWithContext(ctx context.Context) ScheduledTaskOutput {
+func (i *ScheduledTask) ToScheduledTaskOutputWithContext(ctx context.Context) ScheduledTaskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledTaskOutput)
 }
 
@@ -285,7 +285,7 @@ type ScheduledTaskOutput struct {
 }
 
 func (ScheduledTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduledTaskOutput)(nil)).Elem()
+	return reflect.TypeOf((*ScheduledTask)(nil))
 }
 
 func (o ScheduledTaskOutput) ToScheduledTaskOutput() ScheduledTaskOutput {

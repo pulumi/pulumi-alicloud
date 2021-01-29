@@ -56,6 +56,7 @@ namespace Pulumi.AliCloud.Cen
     ///  $ pulumi import alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment example bwp-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment")]
     public partial class BandwidthPackageAttachment : Pulumi.CustomResource
     {
         /// <summary>

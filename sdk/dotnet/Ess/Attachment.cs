@@ -139,6 +139,7 @@ namespace Pulumi.AliCloud.Ess
     ///  $ pulumi import alicloud:ess/attachment:Attachment example asg-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ess/attachment:Attachment")]
     public partial class Attachment : Pulumi.CustomResource
     {
         /// <summary>

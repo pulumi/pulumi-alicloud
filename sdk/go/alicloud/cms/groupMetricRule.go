@@ -272,15 +272,15 @@ type GroupMetricRuleInput interface {
 	ToGroupMetricRuleOutputWithContext(ctx context.Context) GroupMetricRuleOutput
 }
 
-func (GroupMetricRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupMetricRule)(nil)).Elem()
+func (*GroupMetricRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMetricRule)(nil))
 }
 
-func (i GroupMetricRule) ToGroupMetricRuleOutput() GroupMetricRuleOutput {
+func (i *GroupMetricRule) ToGroupMetricRuleOutput() GroupMetricRuleOutput {
 	return i.ToGroupMetricRuleOutputWithContext(context.Background())
 }
 
-func (i GroupMetricRule) ToGroupMetricRuleOutputWithContext(ctx context.Context) GroupMetricRuleOutput {
+func (i *GroupMetricRule) ToGroupMetricRuleOutputWithContext(ctx context.Context) GroupMetricRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleOutput)
 }
 
@@ -289,7 +289,7 @@ type GroupMetricRuleOutput struct {
 }
 
 func (GroupMetricRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupMetricRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*GroupMetricRule)(nil))
 }
 
 func (o GroupMetricRuleOutput) ToGroupMetricRuleOutput() GroupMetricRuleOutput {

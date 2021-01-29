@@ -144,15 +144,15 @@ type ServerGroupInput interface {
 	ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput
 }
 
-func (ServerGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerGroup)(nil)).Elem()
+func (*ServerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroup)(nil))
 }
 
-func (i ServerGroup) ToServerGroupOutput() ServerGroupOutput {
+func (i *ServerGroup) ToServerGroupOutput() ServerGroupOutput {
 	return i.ToServerGroupOutputWithContext(context.Background())
 }
 
-func (i ServerGroup) ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput {
+func (i *ServerGroup) ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupOutput)
 }
 
@@ -161,7 +161,7 @@ type ServerGroupOutput struct {
 }
 
 func (ServerGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServerGroup)(nil))
 }
 
 func (o ServerGroupOutput) ToServerGroupOutput() ServerGroupOutput {

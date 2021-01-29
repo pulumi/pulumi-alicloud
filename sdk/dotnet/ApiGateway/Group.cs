@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.ApiGateway
     ///  $ pulumi import alicloud:apigateway/group:Group example "ab2351f2ce904edaa8d92a0510832b91"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:apigateway/group:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

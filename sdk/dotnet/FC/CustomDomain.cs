@@ -95,6 +95,7 @@ namespace Pulumi.AliCloud.FC
     ///  $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:fc/customDomain:CustomDomain")]
     public partial class CustomDomain : Pulumi.CustomResource
     {
         /// <summary>

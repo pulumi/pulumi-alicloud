@@ -185,15 +185,15 @@ type TrailDeprecatedInput interface {
 	ToTrailDeprecatedOutputWithContext(ctx context.Context) TrailDeprecatedOutput
 }
 
-func (TrailDeprecated) ElementType() reflect.Type {
-	return reflect.TypeOf((*TrailDeprecated)(nil)).Elem()
+func (*TrailDeprecated) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailDeprecated)(nil))
 }
 
-func (i TrailDeprecated) ToTrailDeprecatedOutput() TrailDeprecatedOutput {
+func (i *TrailDeprecated) ToTrailDeprecatedOutput() TrailDeprecatedOutput {
 	return i.ToTrailDeprecatedOutputWithContext(context.Background())
 }
 
-func (i TrailDeprecated) ToTrailDeprecatedOutputWithContext(ctx context.Context) TrailDeprecatedOutput {
+func (i *TrailDeprecated) ToTrailDeprecatedOutputWithContext(ctx context.Context) TrailDeprecatedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrailDeprecatedOutput)
 }
 
@@ -202,7 +202,7 @@ type TrailDeprecatedOutput struct {
 }
 
 func (TrailDeprecatedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TrailDeprecatedOutput)(nil)).Elem()
+	return reflect.TypeOf((*TrailDeprecated)(nil))
 }
 
 func (o TrailDeprecatedOutput) ToTrailDeprecatedOutput() TrailDeprecatedOutput {

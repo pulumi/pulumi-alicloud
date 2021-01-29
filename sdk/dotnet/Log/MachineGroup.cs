@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Log
     ///  $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:log/machineGroup:MachineGroup")]
     public partial class MachineGroup : Pulumi.CustomResource
     {
         /// <summary>

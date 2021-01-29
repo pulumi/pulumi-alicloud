@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.FC
     ///  $ pulumi import alicloud:fc/trigger:Trigger foo my-fc-service:hello-world:hello-trigger
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:fc/trigger:Trigger")]
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>

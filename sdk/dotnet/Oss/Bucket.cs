@@ -311,6 +311,7 @@ namespace Pulumi.AliCloud.Oss
     ///  $ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:oss/bucket:Bucket")]
     public partial class Bucket : Pulumi.CustomResource
     {
         /// <summary>

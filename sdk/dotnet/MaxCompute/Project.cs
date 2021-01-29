@@ -45,6 +45,7 @@ namespace Pulumi.AliCloud.MaxCompute
     ///  $ pulumi import alicloud:maxcompute/project:Project example tf_maxcompute_project
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:maxcompute/project:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>

@@ -64,6 +64,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/imageImport:ImageImport default m-uf66871ape***yg1q***
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/imageImport:ImageImport")]
     public partial class ImageImport : Pulumi.CustomResource
     {
         /// <summary>

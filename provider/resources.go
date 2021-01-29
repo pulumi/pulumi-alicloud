@@ -15,11 +15,14 @@
 package alicloud
 
 import (
+	"fmt"
+	"path/filepath"
 	"strings"
 	"unicode"
 
 	"github.com/aliyun/terraform-provider-alicloud/alicloud"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/pulumi/pulumi-alicloud/provider/v2/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
@@ -1082,6 +1085,16 @@ func Provider() tfbridge.ProviderInfo {
 				"pulumi": ">=2.15.0,<3.0.0",
 			},
 		},
+		Golang: &tfbridge.GolangInfo{
+			ImportBasePath: filepath.Join(
+				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", alicloudPkg),
+				tfbridge.GetModuleMajorVersion(version.Version),
+				"go",
+				alicloudPkg,
+			),
+			GenerateResourceContainerTypes: true,
+		},
+
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
 				"Pulumi":                       "2.*",

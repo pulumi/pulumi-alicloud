@@ -48,6 +48,7 @@ namespace Pulumi.AliCloud.Ddos
     ///  $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ddos/ddosBgpInstance:DdosBgpInstance")]
     public partial class DdosBgpInstance : Pulumi.CustomResource
     {
         /// <summary>

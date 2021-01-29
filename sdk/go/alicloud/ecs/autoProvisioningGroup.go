@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -390,15 +391,15 @@ type AutoProvisioningGroupInput interface {
 	ToAutoProvisioningGroupOutputWithContext(ctx context.Context) AutoProvisioningGroupOutput
 }
 
-func (AutoProvisioningGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoProvisioningGroup)(nil)).Elem()
+func (*AutoProvisioningGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProvisioningGroup)(nil))
 }
 
-func (i AutoProvisioningGroup) ToAutoProvisioningGroupOutput() AutoProvisioningGroupOutput {
+func (i *AutoProvisioningGroup) ToAutoProvisioningGroupOutput() AutoProvisioningGroupOutput {
 	return i.ToAutoProvisioningGroupOutputWithContext(context.Background())
 }
 
-func (i AutoProvisioningGroup) ToAutoProvisioningGroupOutputWithContext(ctx context.Context) AutoProvisioningGroupOutput {
+func (i *AutoProvisioningGroup) ToAutoProvisioningGroupOutputWithContext(ctx context.Context) AutoProvisioningGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupOutput)
 }
 
@@ -407,7 +408,7 @@ type AutoProvisioningGroupOutput struct {
 }
 
 func (AutoProvisioningGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoProvisioningGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*AutoProvisioningGroup)(nil))
 }
 
 func (o AutoProvisioningGroupOutput) ToAutoProvisioningGroupOutput() AutoProvisioningGroupOutput {

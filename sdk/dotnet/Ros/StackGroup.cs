@@ -50,6 +50,7 @@ namespace Pulumi.AliCloud.Ros
     ///  $ pulumi import alicloud:ros/stackGroup:StackGroup example &lt;stack_group_name&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ros/stackGroup:StackGroup")]
     public partial class StackGroup : Pulumi.CustomResource
     {
         /// <summary>

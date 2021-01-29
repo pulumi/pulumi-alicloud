@@ -43,6 +43,7 @@ namespace Pulumi.AliCloud.Edas
     ///  $ pulumi import alicloud:edas/k8sCluster:K8sCluster cluster cluster_id
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:edas/k8sCluster:K8sCluster")]
     public partial class K8sCluster : Pulumi.CustomResource
     {
         /// <summary>

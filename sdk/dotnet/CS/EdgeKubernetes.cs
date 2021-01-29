@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.CS
     ///  $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes alicloud_cs_edge_kubernetes.main cluster-id
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cs/edgeKubernetes:EdgeKubernetes")]
     public partial class EdgeKubernetes : Pulumi.CustomResource
     {
         [Output("addons")]

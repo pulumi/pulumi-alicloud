@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/switch:Switch example vsw-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/switch:Switch")]
     public partial class Switch : Pulumi.CustomResource
     {
         /// <summary>

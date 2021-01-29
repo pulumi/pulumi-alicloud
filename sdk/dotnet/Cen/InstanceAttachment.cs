@@ -56,6 +56,7 @@ namespace Pulumi.AliCloud.Cen
     ///  $ pulumi import alicloud:cen/instanceAttachment:InstanceAttachment example cen-m7i7pjmkon********:vpc-2ze2w07mcy9nz********:VPC:cn-beijing
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cen/instanceAttachment:InstanceAttachment")]
     public partial class InstanceAttachment : Pulumi.CustomResource
     {
         /// <summary>

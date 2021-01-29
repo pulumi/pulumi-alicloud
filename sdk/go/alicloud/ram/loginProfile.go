@@ -161,15 +161,15 @@ type LoginProfileInput interface {
 	ToLoginProfileOutputWithContext(ctx context.Context) LoginProfileOutput
 }
 
-func (LoginProfile) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoginProfile)(nil)).Elem()
+func (*LoginProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoginProfile)(nil))
 }
 
-func (i LoginProfile) ToLoginProfileOutput() LoginProfileOutput {
+func (i *LoginProfile) ToLoginProfileOutput() LoginProfileOutput {
 	return i.ToLoginProfileOutputWithContext(context.Background())
 }
 
-func (i LoginProfile) ToLoginProfileOutputWithContext(ctx context.Context) LoginProfileOutput {
+func (i *LoginProfile) ToLoginProfileOutputWithContext(ctx context.Context) LoginProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoginProfileOutput)
 }
 
@@ -178,7 +178,7 @@ type LoginProfileOutput struct {
 }
 
 func (LoginProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoginProfileOutput)(nil)).Elem()
+	return reflect.TypeOf((*LoginProfile)(nil))
 }
 
 func (o LoginProfileOutput) ToLoginProfileOutput() LoginProfileOutput {

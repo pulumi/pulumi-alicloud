@@ -158,15 +158,15 @@ type ApplicationDeploymentInput interface {
 	ToApplicationDeploymentOutputWithContext(ctx context.Context) ApplicationDeploymentOutput
 }
 
-func (ApplicationDeployment) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationDeployment)(nil)).Elem()
+func (*ApplicationDeployment) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationDeployment)(nil))
 }
 
-func (i ApplicationDeployment) ToApplicationDeploymentOutput() ApplicationDeploymentOutput {
+func (i *ApplicationDeployment) ToApplicationDeploymentOutput() ApplicationDeploymentOutput {
 	return i.ToApplicationDeploymentOutputWithContext(context.Background())
 }
 
-func (i ApplicationDeployment) ToApplicationDeploymentOutputWithContext(ctx context.Context) ApplicationDeploymentOutput {
+func (i *ApplicationDeployment) ToApplicationDeploymentOutputWithContext(ctx context.Context) ApplicationDeploymentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDeploymentOutput)
 }
 
@@ -175,7 +175,7 @@ type ApplicationDeploymentOutput struct {
 }
 
 func (ApplicationDeploymentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationDeploymentOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApplicationDeployment)(nil))
 }
 
 func (o ApplicationDeploymentOutput) ToApplicationDeploymentOutput() ApplicationDeploymentOutput {

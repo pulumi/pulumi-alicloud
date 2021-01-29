@@ -77,6 +77,7 @@ namespace Pulumi.AliCloud.KVStore
     ///  $ pulumi import alicloud:kvstore/account:Account example &lt;instance_id&gt;:&lt;account_name&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:kvstore/account:Account")]
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>

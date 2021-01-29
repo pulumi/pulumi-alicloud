@@ -49,6 +49,7 @@ namespace Pulumi.AliCloud.CloudConnect
     ///  $ pulumi import alicloud:cloudconnect/network:Network example ccn-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cloudconnect/network:Network")]
     public partial class Network : Pulumi.CustomResource
     {
         /// <summary>

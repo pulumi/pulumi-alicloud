@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Mns
     ///  $ pulumi import alicloud:mns/topic:Topic topic topicName
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:mns/topic:Topic")]
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>

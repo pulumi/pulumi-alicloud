@@ -19,6 +19,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [Obsolete(@"This resource has been deprecated in favour of DnsDomain")]
+    [AliCloudResourceType("alicloud:dns/domain:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>

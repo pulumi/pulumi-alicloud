@@ -61,6 +61,7 @@ namespace Pulumi.AliCloud.FNF
     ///  $ pulumi import alicloud:fnf/schedule:Schedule example &lt;schedule_name&gt;:&lt;flow_name&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:fnf/schedule:Schedule")]
     public partial class Schedule : Pulumi.CustomResource
     {
         /// <summary>

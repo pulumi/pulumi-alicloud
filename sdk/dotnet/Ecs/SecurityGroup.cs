@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/securityGroup:SecurityGroup")]
     public partial class SecurityGroup : Pulumi.CustomResource
     {
         /// <summary>

@@ -65,6 +65,7 @@ namespace Pulumi.AliCloud.Nas
     ///  $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:nas/mountTarget:MountTarget")]
     public partial class MountTarget : Pulumi.CustomResource
     {
         /// <summary>

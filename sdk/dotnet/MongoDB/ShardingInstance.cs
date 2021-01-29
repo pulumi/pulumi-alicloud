@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.MongoDB
     ///  $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:mongodb/shardingInstance:ShardingInstance")]
     public partial class ShardingInstance : Pulumi.CustomResource
     {
         /// <summary>

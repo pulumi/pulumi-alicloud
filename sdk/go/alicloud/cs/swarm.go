@@ -324,15 +324,15 @@ type SwarmInput interface {
 	ToSwarmOutputWithContext(ctx context.Context) SwarmOutput
 }
 
-func (Swarm) ElementType() reflect.Type {
-	return reflect.TypeOf((*Swarm)(nil)).Elem()
+func (*Swarm) ElementType() reflect.Type {
+	return reflect.TypeOf((*Swarm)(nil))
 }
 
-func (i Swarm) ToSwarmOutput() SwarmOutput {
+func (i *Swarm) ToSwarmOutput() SwarmOutput {
 	return i.ToSwarmOutputWithContext(context.Background())
 }
 
-func (i Swarm) ToSwarmOutputWithContext(ctx context.Context) SwarmOutput {
+func (i *Swarm) ToSwarmOutputWithContext(ctx context.Context) SwarmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SwarmOutput)
 }
 
@@ -341,7 +341,7 @@ type SwarmOutput struct {
 }
 
 func (SwarmOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwarmOutput)(nil)).Elem()
+	return reflect.TypeOf((*Swarm)(nil))
 }
 
 func (o SwarmOutput) ToSwarmOutput() SwarmOutput {

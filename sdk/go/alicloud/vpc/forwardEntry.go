@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -252,15 +253,15 @@ type ForwardEntryInput interface {
 	ToForwardEntryOutputWithContext(ctx context.Context) ForwardEntryOutput
 }
 
-func (ForwardEntry) ElementType() reflect.Type {
-	return reflect.TypeOf((*ForwardEntry)(nil)).Elem()
+func (*ForwardEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardEntry)(nil))
 }
 
-func (i ForwardEntry) ToForwardEntryOutput() ForwardEntryOutput {
+func (i *ForwardEntry) ToForwardEntryOutput() ForwardEntryOutput {
 	return i.ToForwardEntryOutputWithContext(context.Background())
 }
 
-func (i ForwardEntry) ToForwardEntryOutputWithContext(ctx context.Context) ForwardEntryOutput {
+func (i *ForwardEntry) ToForwardEntryOutputWithContext(ctx context.Context) ForwardEntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardEntryOutput)
 }
 
@@ -269,7 +270,7 @@ type ForwardEntryOutput struct {
 }
 
 func (ForwardEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ForwardEntryOutput)(nil)).Elem()
+	return reflect.TypeOf((*ForwardEntry)(nil))
 }
 
 func (o ForwardEntryOutput) ToForwardEntryOutput() ForwardEntryOutput {

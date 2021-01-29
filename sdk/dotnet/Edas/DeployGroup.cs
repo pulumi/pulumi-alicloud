@@ -44,6 +44,7 @@ namespace Pulumi.AliCloud.Edas
     ///  $ pulumi import alicloud:edas/deployGroup:DeployGroup group app_id:group_name:group_id
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:edas/deployGroup:DeployGroup")]
     public partial class DeployGroup : Pulumi.CustomResource
     {
         /// <summary>

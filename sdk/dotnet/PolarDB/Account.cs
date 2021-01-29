@@ -70,6 +70,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///  $ pulumi import alicloud:polardb/account:Account example "pc-12345:tf_account"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:polardb/account:Account")]
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>

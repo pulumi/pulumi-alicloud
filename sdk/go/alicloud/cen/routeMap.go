@@ -509,15 +509,15 @@ type RouteMapInput interface {
 	ToRouteMapOutputWithContext(ctx context.Context) RouteMapOutput
 }
 
-func (RouteMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteMap)(nil)).Elem()
+func (*RouteMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteMap)(nil))
 }
 
-func (i RouteMap) ToRouteMapOutput() RouteMapOutput {
+func (i *RouteMap) ToRouteMapOutput() RouteMapOutput {
 	return i.ToRouteMapOutputWithContext(context.Background())
 }
 
-func (i RouteMap) ToRouteMapOutputWithContext(ctx context.Context) RouteMapOutput {
+func (i *RouteMap) ToRouteMapOutputWithContext(ctx context.Context) RouteMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteMapOutput)
 }
 
@@ -526,7 +526,7 @@ type RouteMapOutput struct {
 }
 
 func (RouteMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteMapOutput)(nil)).Elem()
+	return reflect.TypeOf((*RouteMap)(nil))
 }
 
 func (o RouteMapOutput) ToRouteMapOutput() RouteMapOutput {

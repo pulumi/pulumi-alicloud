@@ -45,6 +45,7 @@ namespace Pulumi.AliCloud.Cms
     ///  $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example &lt;id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cms/monitorGroup:MonitorGroup")]
     public partial class MonitorGroup : Pulumi.CustomResource
     {
         /// <summary>

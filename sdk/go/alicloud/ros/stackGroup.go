@@ -248,15 +248,15 @@ type StackGroupInput interface {
 	ToStackGroupOutputWithContext(ctx context.Context) StackGroupOutput
 }
 
-func (StackGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackGroup)(nil)).Elem()
+func (*StackGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackGroup)(nil))
 }
 
-func (i StackGroup) ToStackGroupOutput() StackGroupOutput {
+func (i *StackGroup) ToStackGroupOutput() StackGroupOutput {
 	return i.ToStackGroupOutputWithContext(context.Background())
 }
 
-func (i StackGroup) ToStackGroupOutputWithContext(ctx context.Context) StackGroupOutput {
+func (i *StackGroup) ToStackGroupOutputWithContext(ctx context.Context) StackGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackGroupOutput)
 }
 
@@ -265,7 +265,7 @@ type StackGroupOutput struct {
 }
 
 func (StackGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*StackGroup)(nil))
 }
 
 func (o StackGroupOutput) ToStackGroupOutput() StackGroupOutput {

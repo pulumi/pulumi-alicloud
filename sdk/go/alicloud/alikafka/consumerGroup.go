@@ -27,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/alikafka"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -188,15 +189,15 @@ type ConsumerGroupInput interface {
 	ToConsumerGroupOutputWithContext(ctx context.Context) ConsumerGroupOutput
 }
 
-func (ConsumerGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsumerGroup)(nil)).Elem()
+func (*ConsumerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerGroup)(nil))
 }
 
-func (i ConsumerGroup) ToConsumerGroupOutput() ConsumerGroupOutput {
+func (i *ConsumerGroup) ToConsumerGroupOutput() ConsumerGroupOutput {
 	return i.ToConsumerGroupOutputWithContext(context.Background())
 }
 
-func (i ConsumerGroup) ToConsumerGroupOutputWithContext(ctx context.Context) ConsumerGroupOutput {
+func (i *ConsumerGroup) ToConsumerGroupOutputWithContext(ctx context.Context) ConsumerGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupOutput)
 }
 
@@ -205,7 +206,7 @@ type ConsumerGroupOutput struct {
 }
 
 func (ConsumerGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsumerGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConsumerGroup)(nil))
 }
 
 func (o ConsumerGroupOutput) ToConsumerGroupOutput() ConsumerGroupOutput {

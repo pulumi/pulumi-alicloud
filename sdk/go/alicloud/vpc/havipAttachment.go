@@ -105,15 +105,15 @@ type HAVipAttachmentInput interface {
 	ToHAVipAttachmentOutputWithContext(ctx context.Context) HAVipAttachmentOutput
 }
 
-func (HAVipAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*HAVipAttachment)(nil)).Elem()
+func (*HAVipAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*HAVipAttachment)(nil))
 }
 
-func (i HAVipAttachment) ToHAVipAttachmentOutput() HAVipAttachmentOutput {
+func (i *HAVipAttachment) ToHAVipAttachmentOutput() HAVipAttachmentOutput {
 	return i.ToHAVipAttachmentOutputWithContext(context.Background())
 }
 
-func (i HAVipAttachment) ToHAVipAttachmentOutputWithContext(ctx context.Context) HAVipAttachmentOutput {
+func (i *HAVipAttachment) ToHAVipAttachmentOutputWithContext(ctx context.Context) HAVipAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipAttachmentOutput)
 }
 
@@ -122,7 +122,7 @@ type HAVipAttachmentOutput struct {
 }
 
 func (HAVipAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HAVipAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*HAVipAttachment)(nil))
 }
 
 func (o HAVipAttachmentOutput) ToHAVipAttachmentOutput() HAVipAttachmentOutput {

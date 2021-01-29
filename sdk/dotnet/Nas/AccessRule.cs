@@ -54,6 +54,7 @@ namespace Pulumi.AliCloud.Nas
     ///  $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:nas/accessRule:AccessRule")]
     public partial class AccessRule : Pulumi.CustomResource
     {
         /// <summary>

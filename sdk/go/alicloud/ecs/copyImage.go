@@ -128,15 +128,15 @@ type CopyImageInput interface {
 	ToCopyImageOutputWithContext(ctx context.Context) CopyImageOutput
 }
 
-func (CopyImage) ElementType() reflect.Type {
-	return reflect.TypeOf((*CopyImage)(nil)).Elem()
+func (*CopyImage) ElementType() reflect.Type {
+	return reflect.TypeOf((*CopyImage)(nil))
 }
 
-func (i CopyImage) ToCopyImageOutput() CopyImageOutput {
+func (i *CopyImage) ToCopyImageOutput() CopyImageOutput {
 	return i.ToCopyImageOutputWithContext(context.Background())
 }
 
-func (i CopyImage) ToCopyImageOutputWithContext(ctx context.Context) CopyImageOutput {
+func (i *CopyImage) ToCopyImageOutputWithContext(ctx context.Context) CopyImageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CopyImageOutput)
 }
 
@@ -145,7 +145,7 @@ type CopyImageOutput struct {
 }
 
 func (CopyImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CopyImageOutput)(nil)).Elem()
+	return reflect.TypeOf((*CopyImage)(nil))
 }
 
 func (o CopyImageOutput) ToCopyImageOutput() CopyImageOutput {

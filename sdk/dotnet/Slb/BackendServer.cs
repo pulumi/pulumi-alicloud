@@ -122,6 +122,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/backendServer:BackendServer example lb-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:slb/backendServer:BackendServer")]
     public partial class BackendServer : Pulumi.CustomResource
     {
         /// <summary>

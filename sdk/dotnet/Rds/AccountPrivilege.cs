@@ -86,6 +86,7 @@ namespace Pulumi.AliCloud.Rds
     ///  $ pulumi import alicloud:rds/accountPrivilege:AccountPrivilege example "rm-12345:tf_account:ReadOnly"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rds/accountPrivilege:AccountPrivilege")]
     public partial class AccountPrivilege : Pulumi.CustomResource
     {
         /// <summary>

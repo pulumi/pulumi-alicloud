@@ -70,6 +70,7 @@ namespace Pulumi.AliCloud.Cen
     ///  $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cen/vbrHealthCheck:VbrHealthCheck")]
     public partial class VbrHealthCheck : Pulumi.CustomResource
     {
         /// <summary>

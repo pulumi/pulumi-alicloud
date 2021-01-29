@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpn
     ///  $ pulumi import alicloud:vpn/sslVpnClientCert:SslVpnClientCert example vsc-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpn/sslVpnClientCert:SslVpnClientCert")]
     public partial class SslVpnClientCert : Pulumi.CustomResource
     {
         /// <summary>

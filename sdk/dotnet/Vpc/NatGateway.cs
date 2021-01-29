@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/natGateway:NatGateway example ngw-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/natGateway:NatGateway")]
     public partial class NatGateway : Pulumi.CustomResource
     {
         /// <summary>

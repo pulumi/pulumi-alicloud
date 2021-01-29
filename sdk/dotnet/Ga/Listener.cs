@@ -59,6 +59,7 @@ namespace Pulumi.AliCloud.Ga
     ///  $ pulumi import alicloud:ga/listener:Listener example &lt;id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ga/listener:Listener")]
     public partial class Listener : Pulumi.CustomResource
     {
         /// <summary>

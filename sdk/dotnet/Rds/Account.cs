@@ -66,6 +66,7 @@ namespace Pulumi.AliCloud.Rds
     ///  $ pulumi import alicloud:rds/account:Account example "rm-12345:tf_account"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rds/account:Account")]
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>

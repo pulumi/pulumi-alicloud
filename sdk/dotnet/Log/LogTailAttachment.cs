@@ -93,6 +93,7 @@ namespace Pulumi.AliCloud.Log
     ///  $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:log/logTailAttachment:LogTailAttachment")]
     public partial class LogTailAttachment : Pulumi.CustomResource
     {
         /// <summary>

@@ -48,6 +48,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/reservedInstance:ReservedInstance")]
     public partial class ReservedInstance : Pulumi.CustomResource
     {
         /// <summary>

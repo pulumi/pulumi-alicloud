@@ -71,6 +71,7 @@ namespace Pulumi.AliCloud.Gpdb
     ///  $ pulumi import alicloud:gpdb/connection:Connection example abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:gpdb/connection:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>

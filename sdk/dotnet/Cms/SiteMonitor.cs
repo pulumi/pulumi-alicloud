@@ -55,6 +55,7 @@ namespace Pulumi.AliCloud.Cms
     ///  $ pulumi import alicloud:cms/siteMonitor:SiteMonitor alarm abc12345
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cms/siteMonitor:SiteMonitor")]
     public partial class SiteMonitor : Pulumi.CustomResource
     {
         /// <summary>

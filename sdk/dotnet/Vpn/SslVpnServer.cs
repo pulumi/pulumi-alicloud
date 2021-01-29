@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpn
     ///  $ pulumi import alicloud:vpn/sslVpnServer:SslVpnServer example vss-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpn/sslVpnServer:SslVpnServer")]
     public partial class SslVpnServer : Pulumi.CustomResource
     {
         /// <summary>

@@ -186,15 +186,15 @@ type SslVpnServerInput interface {
 	ToSslVpnServerOutputWithContext(ctx context.Context) SslVpnServerOutput
 }
 
-func (SslVpnServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslVpnServer)(nil)).Elem()
+func (*SslVpnServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslVpnServer)(nil))
 }
 
-func (i SslVpnServer) ToSslVpnServerOutput() SslVpnServerOutput {
+func (i *SslVpnServer) ToSslVpnServerOutput() SslVpnServerOutput {
 	return i.ToSslVpnServerOutputWithContext(context.Background())
 }
 
-func (i SslVpnServer) ToSslVpnServerOutputWithContext(ctx context.Context) SslVpnServerOutput {
+func (i *SslVpnServer) ToSslVpnServerOutputWithContext(ctx context.Context) SslVpnServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SslVpnServerOutput)
 }
 
@@ -203,7 +203,7 @@ type SslVpnServerOutput struct {
 }
 
 func (SslVpnServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslVpnServerOutput)(nil)).Elem()
+	return reflect.TypeOf((*SslVpnServer)(nil))
 }
 
 func (o SslVpnServerOutput) ToSslVpnServerOutput() SslVpnServerOutput {

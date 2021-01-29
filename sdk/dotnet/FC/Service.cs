@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.FC
     ///  $ pulumi import alicloud:fc/service:Service foo my-fc-service
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:fc/service:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

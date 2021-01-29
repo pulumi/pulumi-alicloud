@@ -117,15 +117,15 @@ type SharedTargetInput interface {
 	ToSharedTargetOutputWithContext(ctx context.Context) SharedTargetOutput
 }
 
-func (SharedTarget) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedTarget)(nil)).Elem()
+func (*SharedTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedTarget)(nil))
 }
 
-func (i SharedTarget) ToSharedTargetOutput() SharedTargetOutput {
+func (i *SharedTarget) ToSharedTargetOutput() SharedTargetOutput {
 	return i.ToSharedTargetOutputWithContext(context.Background())
 }
 
-func (i SharedTarget) ToSharedTargetOutputWithContext(ctx context.Context) SharedTargetOutput {
+func (i *SharedTarget) ToSharedTargetOutputWithContext(ctx context.Context) SharedTargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SharedTargetOutput)
 }
 
@@ -134,7 +134,7 @@ type SharedTargetOutput struct {
 }
 
 func (SharedTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedTargetOutput)(nil)).Elem()
+	return reflect.TypeOf((*SharedTarget)(nil))
 }
 
 func (o SharedTargetOutput) ToSharedTargetOutput() SharedTargetOutput {

@@ -47,6 +47,7 @@ namespace Pulumi.AliCloud.Kms
     ///  $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:kms/alias:Alias")]
     public partial class Alias : Pulumi.CustomResource
     {
         /// <summary>

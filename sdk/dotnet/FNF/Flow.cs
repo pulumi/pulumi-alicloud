@@ -71,6 +71,7 @@ namespace Pulumi.AliCloud.FNF
     ///  $ pulumi import alicloud:fnf/flow:Flow example &lt;name&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:fnf/flow:Flow")]
     public partial class Flow : Pulumi.CustomResource
     {
         /// <summary>

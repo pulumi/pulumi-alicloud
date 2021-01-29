@@ -99,6 +99,7 @@ namespace Pulumi.AliCloud.FC
     ///  $ pulumi import alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig example my_function
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig")]
     public partial class FunctionAsyncInvokeConfig : Pulumi.CustomResource
     {
         /// <summary>

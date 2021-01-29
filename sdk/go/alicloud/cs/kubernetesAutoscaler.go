@@ -271,15 +271,15 @@ type KubernetesAutoscalerInput interface {
 	ToKubernetesAutoscalerOutputWithContext(ctx context.Context) KubernetesAutoscalerOutput
 }
 
-func (KubernetesAutoscaler) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesAutoscaler)(nil)).Elem()
+func (*KubernetesAutoscaler) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesAutoscaler)(nil))
 }
 
-func (i KubernetesAutoscaler) ToKubernetesAutoscalerOutput() KubernetesAutoscalerOutput {
+func (i *KubernetesAutoscaler) ToKubernetesAutoscalerOutput() KubernetesAutoscalerOutput {
 	return i.ToKubernetesAutoscalerOutputWithContext(context.Background())
 }
 
-func (i KubernetesAutoscaler) ToKubernetesAutoscalerOutputWithContext(ctx context.Context) KubernetesAutoscalerOutput {
+func (i *KubernetesAutoscaler) ToKubernetesAutoscalerOutputWithContext(ctx context.Context) KubernetesAutoscalerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAutoscalerOutput)
 }
 
@@ -288,7 +288,7 @@ type KubernetesAutoscalerOutput struct {
 }
 
 func (KubernetesAutoscalerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesAutoscalerOutput)(nil)).Elem()
+	return reflect.TypeOf((*KubernetesAutoscaler)(nil))
 }
 
 func (o KubernetesAutoscalerOutput) ToKubernetesAutoscalerOutput() KubernetesAutoscalerOutput {

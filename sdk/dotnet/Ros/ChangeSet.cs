@@ -49,6 +49,7 @@ namespace Pulumi.AliCloud.Ros
     ///  $ pulumi import alicloud:ros/changeSet:ChangeSet example &lt;change_set_id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ros/changeSet:ChangeSet")]
     public partial class ChangeSet : Pulumi.CustomResource
     {
         /// <summary>

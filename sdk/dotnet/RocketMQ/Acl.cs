@@ -46,6 +46,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///  $ pulumi import alicloud:rocketmq/acl:Acl example acl-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rocketmq/acl:Acl")]
     public partial class Acl : Pulumi.CustomResource
     {
         /// <summary>

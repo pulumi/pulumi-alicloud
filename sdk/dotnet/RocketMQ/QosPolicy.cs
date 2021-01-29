@@ -60,6 +60,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///  $ pulumi import alicloud:rocketmq/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rocketmq/qosPolicy:QosPolicy")]
     public partial class QosPolicy : Pulumi.CustomResource
     {
         /// <summary>

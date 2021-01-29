@@ -89,6 +89,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///  $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:alikafka/saslAcl:SaslAcl")]
     public partial class SaslAcl : Pulumi.CustomResource
     {
         /// <summary>

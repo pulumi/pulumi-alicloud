@@ -58,6 +58,7 @@ namespace Pulumi.AliCloud.Ots
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ots/instanceAttachment:InstanceAttachment")]
     public partial class InstanceAttachment : Pulumi.CustomResource
     {
         /// <summary>

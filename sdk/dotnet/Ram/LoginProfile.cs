@@ -49,6 +49,7 @@ namespace Pulumi.AliCloud.Ram
     ///  $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/loginProfile:LoginProfile")]
     public partial class LoginProfile : Pulumi.CustomResource
     {
         /// <summary>

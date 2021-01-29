@@ -183,15 +183,15 @@ type AccessRuleInput interface {
 	ToAccessRuleOutputWithContext(ctx context.Context) AccessRuleOutput
 }
 
-func (AccessRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessRule)(nil)).Elem()
+func (*AccessRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessRule)(nil))
 }
 
-func (i AccessRule) ToAccessRuleOutput() AccessRuleOutput {
+func (i *AccessRule) ToAccessRuleOutput() AccessRuleOutput {
 	return i.ToAccessRuleOutputWithContext(context.Background())
 }
 
-func (i AccessRule) ToAccessRuleOutputWithContext(ctx context.Context) AccessRuleOutput {
+func (i *AccessRule) ToAccessRuleOutputWithContext(ctx context.Context) AccessRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessRuleOutput)
 }
 
@@ -200,7 +200,7 @@ type AccessRuleOutput struct {
 }
 
 func (AccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccessRule)(nil))
 }
 
 func (o AccessRuleOutput) ToAccessRuleOutput() AccessRuleOutput {

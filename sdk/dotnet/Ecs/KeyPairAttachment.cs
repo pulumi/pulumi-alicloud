@@ -97,6 +97,7 @@ namespace Pulumi.AliCloud.Ecs
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/keyPairAttachment:KeyPairAttachment")]
     public partial class KeyPairAttachment : Pulumi.CustomResource
     {
         /// <summary>

@@ -68,6 +68,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///  $ pulumi import alicloud:polardb/endpoint:Endpoint example pc-abc123456:pe-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:polardb/endpoint:Endpoint")]
     public partial class Endpoint : Pulumi.CustomResource
     {
         /// <summary>

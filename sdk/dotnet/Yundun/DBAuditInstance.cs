@@ -50,6 +50,7 @@ namespace Pulumi.AliCloud.Yundun
     ///  $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:yundun/dBAuditInstance:DBAuditInstance")]
     public partial class DBAuditInstance : Pulumi.CustomResource
     {
         /// <summary>

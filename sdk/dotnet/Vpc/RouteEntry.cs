@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/routeEntry:RouteEntry")]
     public partial class RouteEntry : Pulumi.CustomResource
     {
         /// <summary>

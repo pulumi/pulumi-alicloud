@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Log
     ///  $ pulumi import alicloud:log/store:Store example tf-log:tf-log-store
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:log/store:Store")]
     public partial class Store : Pulumi.CustomResource
     {
         /// <summary>

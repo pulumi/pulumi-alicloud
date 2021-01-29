@@ -28,6 +28,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
@@ -205,15 +206,15 @@ type NetworkAclEntriesInput interface {
 	ToNetworkAclEntriesOutputWithContext(ctx context.Context) NetworkAclEntriesOutput
 }
 
-func (NetworkAclEntries) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAclEntries)(nil)).Elem()
+func (*NetworkAclEntries) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclEntries)(nil))
 }
 
-func (i NetworkAclEntries) ToNetworkAclEntriesOutput() NetworkAclEntriesOutput {
+func (i *NetworkAclEntries) ToNetworkAclEntriesOutput() NetworkAclEntriesOutput {
 	return i.ToNetworkAclEntriesOutputWithContext(context.Background())
 }
 
-func (i NetworkAclEntries) ToNetworkAclEntriesOutputWithContext(ctx context.Context) NetworkAclEntriesOutput {
+func (i *NetworkAclEntries) ToNetworkAclEntriesOutputWithContext(ctx context.Context) NetworkAclEntriesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclEntriesOutput)
 }
 
@@ -222,7 +223,7 @@ type NetworkAclEntriesOutput struct {
 }
 
 func (NetworkAclEntriesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAclEntriesOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkAclEntries)(nil))
 }
 
 func (o NetworkAclEntriesOutput) ToNetworkAclEntriesOutput() NetworkAclEntriesOutput {

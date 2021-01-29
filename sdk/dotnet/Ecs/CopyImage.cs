@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    [AliCloudResourceType("alicloud:ecs/copyImage:CopyImage")]
     public partial class CopyImage : Pulumi.CustomResource
     {
         [Output("description")]

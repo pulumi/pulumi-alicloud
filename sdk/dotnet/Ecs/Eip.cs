@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/eip:Eip")]
     public partial class Eip : Pulumi.CustomResource
     {
         /// <summary>

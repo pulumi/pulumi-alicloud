@@ -72,6 +72,7 @@ namespace Pulumi.AliCloud.Adb
     ///  $ pulumi import alicloud:adb/account:Account example "am-12345:tf_account"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:adb/account:Account")]
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>

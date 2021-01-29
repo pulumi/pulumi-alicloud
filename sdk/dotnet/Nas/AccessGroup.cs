@@ -69,6 +69,7 @@ namespace Pulumi.AliCloud.Nas
     ///  $ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:nas/accessGroup:AccessGroup")]
     public partial class AccessGroup : Pulumi.CustomResource
     {
         /// <summary>

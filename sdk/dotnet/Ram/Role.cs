@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ram
     ///  $ pulumi import alicloud:ram/role:Role example my-role
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/role:Role")]
     public partial class Role : Pulumi.CustomResource
     {
         /// <summary>

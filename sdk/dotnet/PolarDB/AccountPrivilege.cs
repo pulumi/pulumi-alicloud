@@ -85,6 +85,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///  $ pulumi import alicloud:polardb/accountPrivilege:AccountPrivilege example "pc-12345:tf_account:ReadOnly"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:polardb/accountPrivilege:AccountPrivilege")]
     public partial class AccountPrivilege : Pulumi.CustomResource
     {
         /// <summary>

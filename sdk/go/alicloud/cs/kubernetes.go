@@ -796,15 +796,15 @@ type KubernetesInput interface {
 	ToKubernetesOutputWithContext(ctx context.Context) KubernetesOutput
 }
 
-func (Kubernetes) ElementType() reflect.Type {
-	return reflect.TypeOf((*Kubernetes)(nil)).Elem()
+func (*Kubernetes) ElementType() reflect.Type {
+	return reflect.TypeOf((*Kubernetes)(nil))
 }
 
-func (i Kubernetes) ToKubernetesOutput() KubernetesOutput {
+func (i *Kubernetes) ToKubernetesOutput() KubernetesOutput {
 	return i.ToKubernetesOutputWithContext(context.Background())
 }
 
-func (i Kubernetes) ToKubernetesOutputWithContext(ctx context.Context) KubernetesOutput {
+func (i *Kubernetes) ToKubernetesOutputWithContext(ctx context.Context) KubernetesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesOutput)
 }
 
@@ -813,7 +813,7 @@ type KubernetesOutput struct {
 }
 
 func (KubernetesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesOutput)(nil)).Elem()
+	return reflect.TypeOf((*Kubernetes)(nil))
 }
 
 func (o KubernetesOutput) ToKubernetesOutput() KubernetesOutput {

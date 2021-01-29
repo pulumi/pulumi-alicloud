@@ -74,6 +74,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///  $ pulumi import alicloud:alikafka/saslUser:SaslUser user alikafka_post-cn-123455abc:username
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:alikafka/saslUser:SaslUser")]
     public partial class SaslUser : Pulumi.CustomResource
     {
         /// <summary>

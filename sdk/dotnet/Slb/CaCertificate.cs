@@ -69,6 +69,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/caCertificate:CaCertificate example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:slb/caCertificate:CaCertificate")]
     public partial class CaCertificate : Pulumi.CustomResource
     {
         /// <summary>

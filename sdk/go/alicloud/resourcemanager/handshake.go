@@ -181,15 +181,15 @@ type HandshakeInput interface {
 	ToHandshakeOutputWithContext(ctx context.Context) HandshakeOutput
 }
 
-func (Handshake) ElementType() reflect.Type {
-	return reflect.TypeOf((*Handshake)(nil)).Elem()
+func (*Handshake) ElementType() reflect.Type {
+	return reflect.TypeOf((*Handshake)(nil))
 }
 
-func (i Handshake) ToHandshakeOutput() HandshakeOutput {
+func (i *Handshake) ToHandshakeOutput() HandshakeOutput {
 	return i.ToHandshakeOutputWithContext(context.Background())
 }
 
-func (i Handshake) ToHandshakeOutputWithContext(ctx context.Context) HandshakeOutput {
+func (i *Handshake) ToHandshakeOutputWithContext(ctx context.Context) HandshakeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HandshakeOutput)
 }
 
@@ -198,7 +198,7 @@ type HandshakeOutput struct {
 }
 
 func (HandshakeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HandshakeOutput)(nil)).Elem()
+	return reflect.TypeOf((*Handshake)(nil))
 }
 
 func (o HandshakeOutput) ToHandshakeOutput() HandshakeOutput {

@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Cfg
     ///  $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cfg/deliveryChannel:DeliveryChannel")]
     public partial class DeliveryChannel : Pulumi.CustomResource
     {
         /// <summary>

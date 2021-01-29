@@ -177,15 +177,15 @@ type DiskAttachmentInput interface {
 	ToDiskAttachmentOutputWithContext(ctx context.Context) DiskAttachmentOutput
 }
 
-func (DiskAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskAttachment)(nil)).Elem()
+func (*DiskAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAttachment)(nil))
 }
 
-func (i DiskAttachment) ToDiskAttachmentOutput() DiskAttachmentOutput {
+func (i *DiskAttachment) ToDiskAttachmentOutput() DiskAttachmentOutput {
 	return i.ToDiskAttachmentOutputWithContext(context.Background())
 }
 
-func (i DiskAttachment) ToDiskAttachmentOutputWithContext(ctx context.Context) DiskAttachmentOutput {
+func (i *DiskAttachment) ToDiskAttachmentOutputWithContext(ctx context.Context) DiskAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskAttachmentOutput)
 }
 
@@ -194,7 +194,7 @@ type DiskAttachmentOutput struct {
 }
 
 func (DiskAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*DiskAttachment)(nil))
 }
 
 func (o DiskAttachmentOutput) ToDiskAttachmentOutput() DiskAttachmentOutput {

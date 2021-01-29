@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Pvtz
     ///  $ pulumi import alicloud:pvtz/zoneAttachment:ZoneAttachment example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:pvtz/zoneAttachment:ZoneAttachment")]
     public partial class ZoneAttachment : Pulumi.CustomResource
     {
         /// <summary>

@@ -85,6 +85,7 @@ namespace Pulumi.AliCloud.Ram
     ///  $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:my-policy:Custom:my-role
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/rolePolicyAttachment:RolePolicyAttachment")]
     public partial class RolePolicyAttachment : Pulumi.CustomResource
     {
         /// <summary>

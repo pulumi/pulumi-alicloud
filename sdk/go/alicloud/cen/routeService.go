@@ -224,15 +224,15 @@ type RouteServiceInput interface {
 	ToRouteServiceOutputWithContext(ctx context.Context) RouteServiceOutput
 }
 
-func (RouteService) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteService)(nil)).Elem()
+func (*RouteService) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteService)(nil))
 }
 
-func (i RouteService) ToRouteServiceOutput() RouteServiceOutput {
+func (i *RouteService) ToRouteServiceOutput() RouteServiceOutput {
 	return i.ToRouteServiceOutputWithContext(context.Background())
 }
 
-func (i RouteService) ToRouteServiceOutputWithContext(ctx context.Context) RouteServiceOutput {
+func (i *RouteService) ToRouteServiceOutputWithContext(ctx context.Context) RouteServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteServiceOutput)
 }
 
@@ -241,7 +241,7 @@ type RouteServiceOutput struct {
 }
 
 func (RouteServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteServiceOutput)(nil)).Elem()
+	return reflect.TypeOf((*RouteService)(nil))
 }
 
 func (o RouteServiceOutput) ToRouteServiceOutput() RouteServiceOutput {

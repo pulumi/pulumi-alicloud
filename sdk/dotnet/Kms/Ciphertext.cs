@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Kms
 {
+    [AliCloudResourceType("alicloud:kms/ciphertext:Ciphertext")]
     public partial class Ciphertext : Pulumi.CustomResource
     {
         /// <summary>

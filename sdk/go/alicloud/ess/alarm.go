@@ -237,15 +237,15 @@ type AlarmInput interface {
 	ToAlarmOutputWithContext(ctx context.Context) AlarmOutput
 }
 
-func (Alarm) ElementType() reflect.Type {
-	return reflect.TypeOf((*Alarm)(nil)).Elem()
+func (*Alarm) ElementType() reflect.Type {
+	return reflect.TypeOf((*Alarm)(nil))
 }
 
-func (i Alarm) ToAlarmOutput() AlarmOutput {
+func (i *Alarm) ToAlarmOutput() AlarmOutput {
 	return i.ToAlarmOutputWithContext(context.Background())
 }
 
-func (i Alarm) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
+func (i *Alarm) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmOutput)
 }
 
@@ -254,7 +254,7 @@ type AlarmOutput struct {
 }
 
 func (AlarmOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlarmOutput)(nil)).Elem()
+	return reflect.TypeOf((*Alarm)(nil))
 }
 
 func (o AlarmOutput) ToAlarmOutput() AlarmOutput {

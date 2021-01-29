@@ -24,6 +24,7 @@ namespace Pulumi.AliCloud.PrivateLink
     ///  $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example &lt;endpoint_id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:privatelink/vpcEndpoint:VpcEndpoint")]
     public partial class VpcEndpoint : Pulumi.CustomResource
     {
         /// <summary>

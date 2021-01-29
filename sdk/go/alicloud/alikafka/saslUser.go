@@ -27,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/alikafka"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -213,15 +214,15 @@ type SaslUserInput interface {
 	ToSaslUserOutputWithContext(ctx context.Context) SaslUserOutput
 }
 
-func (SaslUser) ElementType() reflect.Type {
-	return reflect.TypeOf((*SaslUser)(nil)).Elem()
+func (*SaslUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaslUser)(nil))
 }
 
-func (i SaslUser) ToSaslUserOutput() SaslUserOutput {
+func (i *SaslUser) ToSaslUserOutput() SaslUserOutput {
 	return i.ToSaslUserOutputWithContext(context.Background())
 }
 
-func (i SaslUser) ToSaslUserOutputWithContext(ctx context.Context) SaslUserOutput {
+func (i *SaslUser) ToSaslUserOutputWithContext(ctx context.Context) SaslUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SaslUserOutput)
 }
 
@@ -230,7 +231,7 @@ type SaslUserOutput struct {
 }
 
 func (SaslUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SaslUserOutput)(nil)).Elem()
+	return reflect.TypeOf((*SaslUser)(nil))
 }
 
 func (o SaslUserOutput) ToSaslUserOutput() SaslUserOutput {

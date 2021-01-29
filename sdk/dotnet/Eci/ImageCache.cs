@@ -52,6 +52,7 @@ namespace Pulumi.AliCloud.Eci
     ///  $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:eci/imageCache:ImageCache")]
     public partial class ImageCache : Pulumi.CustomResource
     {
         /// <summary>

@@ -193,15 +193,15 @@ type InstanceGrantInput interface {
 	ToInstanceGrantOutputWithContext(ctx context.Context) InstanceGrantOutput
 }
 
-func (InstanceGrant) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGrant)(nil)).Elem()
+func (*InstanceGrant) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGrant)(nil))
 }
 
-func (i InstanceGrant) ToInstanceGrantOutput() InstanceGrantOutput {
+func (i *InstanceGrant) ToInstanceGrantOutput() InstanceGrantOutput {
 	return i.ToInstanceGrantOutputWithContext(context.Background())
 }
 
-func (i InstanceGrant) ToInstanceGrantOutputWithContext(ctx context.Context) InstanceGrantOutput {
+func (i *InstanceGrant) ToInstanceGrantOutputWithContext(ctx context.Context) InstanceGrantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGrantOutput)
 }
 
@@ -210,7 +210,7 @@ type InstanceGrantOutput struct {
 }
 
 func (InstanceGrantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGrantOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstanceGrant)(nil))
 }
 
 func (o InstanceGrantOutput) ToInstanceGrantOutput() InstanceGrantOutput {

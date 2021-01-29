@@ -26,6 +26,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///  $ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rocketmq/aclRule:AclRule")]
     public partial class AclRule : Pulumi.CustomResource
     {
         /// <summary>

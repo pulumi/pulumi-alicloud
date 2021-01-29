@@ -128,15 +128,15 @@ type EipAssociationInput interface {
 	ToEipAssociationOutputWithContext(ctx context.Context) EipAssociationOutput
 }
 
-func (EipAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*EipAssociation)(nil)).Elem()
+func (*EipAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*EipAssociation)(nil))
 }
 
-func (i EipAssociation) ToEipAssociationOutput() EipAssociationOutput {
+func (i *EipAssociation) ToEipAssociationOutput() EipAssociationOutput {
 	return i.ToEipAssociationOutputWithContext(context.Background())
 }
 
-func (i EipAssociation) ToEipAssociationOutputWithContext(ctx context.Context) EipAssociationOutput {
+func (i *EipAssociation) ToEipAssociationOutputWithContext(ctx context.Context) EipAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EipAssociationOutput)
 }
 
@@ -145,7 +145,7 @@ type EipAssociationOutput struct {
 }
 
 func (EipAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EipAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*EipAssociation)(nil))
 }
 
 func (o EipAssociationOutput) ToEipAssociationOutput() EipAssociationOutput {

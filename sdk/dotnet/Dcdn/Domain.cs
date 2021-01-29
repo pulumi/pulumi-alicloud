@@ -60,6 +60,7 @@ namespace Pulumi.AliCloud.Dcdn
     ///  $ pulumi import alicloud:dcdn/domain:Domain example example.com
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:dcdn/domain:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>

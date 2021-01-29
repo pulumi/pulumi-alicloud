@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.MongoDB
     ///  $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:mongodb/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

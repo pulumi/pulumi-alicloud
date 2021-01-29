@@ -49,6 +49,7 @@ namespace Pulumi.AliCloud.Nas
     ///  $ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:nas/fileSystem:FileSystem")]
     public partial class FileSystem : Pulumi.CustomResource
     {
         /// <summary>

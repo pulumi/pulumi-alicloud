@@ -206,15 +206,15 @@ type SiteMonitorInput interface {
 	ToSiteMonitorOutputWithContext(ctx context.Context) SiteMonitorOutput
 }
 
-func (SiteMonitor) ElementType() reflect.Type {
-	return reflect.TypeOf((*SiteMonitor)(nil)).Elem()
+func (*SiteMonitor) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteMonitor)(nil))
 }
 
-func (i SiteMonitor) ToSiteMonitorOutput() SiteMonitorOutput {
+func (i *SiteMonitor) ToSiteMonitorOutput() SiteMonitorOutput {
 	return i.ToSiteMonitorOutputWithContext(context.Background())
 }
 
-func (i SiteMonitor) ToSiteMonitorOutputWithContext(ctx context.Context) SiteMonitorOutput {
+func (i *SiteMonitor) ToSiteMonitorOutputWithContext(ctx context.Context) SiteMonitorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorOutput)
 }
 
@@ -223,7 +223,7 @@ type SiteMonitorOutput struct {
 }
 
 func (SiteMonitorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SiteMonitorOutput)(nil)).Elem()
+	return reflect.TypeOf((*SiteMonitor)(nil))
 }
 
 func (o SiteMonitorOutput) ToSiteMonitorOutput() SiteMonitorOutput {

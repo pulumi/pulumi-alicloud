@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CS
 {
+    [AliCloudResourceType("alicloud:cs/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
         [Output("agentVersion")]

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    [AliCloudResourceType("alicloud:ecs/eipAssociation:EipAssociation")]
     public partial class EipAssociation : Pulumi.CustomResource
     {
         /// <summary>

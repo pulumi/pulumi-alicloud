@@ -36,6 +36,7 @@ namespace Pulumi.AliCloud.Edas
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment")]
     public partial class InstanceClusterAttachment : Pulumi.CustomResource
     {
         /// <summary>

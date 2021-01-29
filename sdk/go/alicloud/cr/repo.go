@@ -185,15 +185,15 @@ type RepoInput interface {
 	ToRepoOutputWithContext(ctx context.Context) RepoOutput
 }
 
-func (Repo) ElementType() reflect.Type {
-	return reflect.TypeOf((*Repo)(nil)).Elem()
+func (*Repo) ElementType() reflect.Type {
+	return reflect.TypeOf((*Repo)(nil))
 }
 
-func (i Repo) ToRepoOutput() RepoOutput {
+func (i *Repo) ToRepoOutput() RepoOutput {
 	return i.ToRepoOutputWithContext(context.Background())
 }
 
-func (i Repo) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
+func (i *Repo) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepoOutput)
 }
 
@@ -202,7 +202,7 @@ type RepoOutput struct {
 }
 
 func (RepoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepoOutput)(nil)).Elem()
+	return reflect.TypeOf((*Repo)(nil))
 }
 
 func (o RepoOutput) ToRepoOutput() RepoOutput {

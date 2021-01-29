@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage foo cbwp-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/commonBandwithPackage:CommonBandwithPackage")]
     public partial class CommonBandwithPackage : Pulumi.CustomResource
     {
         /// <summary>

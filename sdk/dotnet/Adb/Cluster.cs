@@ -68,6 +68,7 @@ namespace Pulumi.AliCloud.Adb
     ///  $ pulumi import alicloud:adb/cluster:Cluster example am-abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:adb/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>

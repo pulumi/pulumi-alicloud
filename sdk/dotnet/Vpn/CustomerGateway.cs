@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpn
     ///  $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpn/customerGateway:CustomerGateway")]
     public partial class CustomerGateway : Pulumi.CustomResource
     {
         /// <summary>

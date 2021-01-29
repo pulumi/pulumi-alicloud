@@ -66,6 +66,7 @@ namespace Pulumi.AliCloud.Ram
     ///  $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/groupMembership:GroupMembership")]
     public partial class GroupMembership : Pulumi.CustomResource
     {
         /// <summary>

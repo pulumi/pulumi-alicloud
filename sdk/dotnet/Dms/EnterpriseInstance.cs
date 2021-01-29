@@ -56,6 +56,7 @@ namespace Pulumi.AliCloud.Dms
     ///  $ pulumi import alicloud:dms/enterpriseInstance:EnterpriseInstance example rm-uf648hgs7874xxxx.mysql.rds.aliyuncs.com:3306
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:dms/enterpriseInstance:EnterpriseInstance")]
     public partial class EnterpriseInstance : Pulumi.CustomResource
     {
         /// <summary>

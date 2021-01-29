@@ -63,6 +63,7 @@ namespace Pulumi.AliCloud.Cassandra
     ///  $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cassandra/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>

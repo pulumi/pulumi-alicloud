@@ -308,15 +308,15 @@ type AlertInput interface {
 	ToAlertOutputWithContext(ctx context.Context) AlertOutput
 }
 
-func (Alert) ElementType() reflect.Type {
-	return reflect.TypeOf((*Alert)(nil)).Elem()
+func (*Alert) ElementType() reflect.Type {
+	return reflect.TypeOf((*Alert)(nil))
 }
 
-func (i Alert) ToAlertOutput() AlertOutput {
+func (i *Alert) ToAlertOutput() AlertOutput {
 	return i.ToAlertOutputWithContext(context.Background())
 }
 
-func (i Alert) ToAlertOutputWithContext(ctx context.Context) AlertOutput {
+func (i *Alert) ToAlertOutputWithContext(ctx context.Context) AlertOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlertOutput)
 }
 
@@ -325,7 +325,7 @@ type AlertOutput struct {
 }
 
 func (AlertOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlertOutput)(nil)).Elem()
+	return reflect.TypeOf((*Alert)(nil))
 }
 
 func (o AlertOutput) ToAlertOutput() AlertOutput {

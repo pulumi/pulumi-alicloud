@@ -45,6 +45,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///  $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:resourcemanager/handshake:Handshake")]
     public partial class Handshake : Pulumi.CustomResource
     {
         /// <summary>

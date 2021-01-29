@@ -52,6 +52,7 @@ namespace Pulumi.AliCloud.Mse
     ///  $ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:mse/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>

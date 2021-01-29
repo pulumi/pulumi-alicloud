@@ -182,6 +182,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup")]
     public partial class MasterSlaveServerGroup : Pulumi.CustomResource
     {
         /// <summary>

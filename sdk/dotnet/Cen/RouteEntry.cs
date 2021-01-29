@@ -143,6 +143,7 @@ namespace Pulumi.AliCloud.Cen
     ///  $ pulumi import alicloud:cen/routeEntry:RouteEntry example cen-abc123456:vtb-abc123:192.168.0.0/24
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cen/routeEntry:RouteEntry")]
     public partial class RouteEntry : Pulumi.CustomResource
     {
         /// <summary>

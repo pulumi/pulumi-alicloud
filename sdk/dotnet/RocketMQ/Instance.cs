@@ -48,6 +48,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///  $ pulumi import alicloud:rocketmq/instance:Instance instance MQ_INST_1234567890_Baso1234567
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rocketmq/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

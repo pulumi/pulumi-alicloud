@@ -22,6 +22,7 @@ namespace Pulumi.AliCloud.Edas
     ///  $ pulumi import alicloud:edas/application:Application app app_Id
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:edas/application:Application")]
     public partial class Application : Pulumi.CustomResource
     {
         /// <summary>

@@ -59,6 +59,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/imageCopy:ImageCopy")]
     public partial class ImageCopy : Pulumi.CustomResource
     {
         /// <summary>

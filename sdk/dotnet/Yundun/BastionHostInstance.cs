@@ -52,6 +52,7 @@ namespace Pulumi.AliCloud.Yundun
     ///  $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:yundun/bastionHostInstance:BastionHostInstance")]
     public partial class BastionHostInstance : Pulumi.CustomResource
     {
         /// <summary>

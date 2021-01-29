@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/snatEntry:SnatEntry")]
     public partial class SnatEntry : Pulumi.CustomResource
     {
         /// <summary>

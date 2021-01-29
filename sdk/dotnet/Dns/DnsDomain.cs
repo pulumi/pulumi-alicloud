@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Dns
     ///  $ pulumi import alicloud:dns/dnsDomain:DnsDomain example aliyun.com
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:dns/dnsDomain:DnsDomain")]
     public partial class DnsDomain : Pulumi.CustomResource
     {
         [Output("dnsServers")]

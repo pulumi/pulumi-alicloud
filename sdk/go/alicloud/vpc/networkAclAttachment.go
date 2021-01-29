@@ -24,6 +24,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
@@ -166,15 +167,15 @@ type NetworkAclAttachmentInput interface {
 	ToNetworkAclAttachmentOutputWithContext(ctx context.Context) NetworkAclAttachmentOutput
 }
 
-func (NetworkAclAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAclAttachment)(nil)).Elem()
+func (*NetworkAclAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclAttachment)(nil))
 }
 
-func (i NetworkAclAttachment) ToNetworkAclAttachmentOutput() NetworkAclAttachmentOutput {
+func (i *NetworkAclAttachment) ToNetworkAclAttachmentOutput() NetworkAclAttachmentOutput {
 	return i.ToNetworkAclAttachmentOutputWithContext(context.Background())
 }
 
-func (i NetworkAclAttachment) ToNetworkAclAttachmentOutputWithContext(ctx context.Context) NetworkAclAttachmentOutput {
+func (i *NetworkAclAttachment) ToNetworkAclAttachmentOutputWithContext(ctx context.Context) NetworkAclAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclAttachmentOutput)
 }
 
@@ -183,7 +184,7 @@ type NetworkAclAttachmentOutput struct {
 }
 
 func (NetworkAclAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAclAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkAclAttachment)(nil))
 }
 
 func (o NetworkAclAttachmentOutput) ToNetworkAclAttachmentOutput() NetworkAclAttachmentOutput {

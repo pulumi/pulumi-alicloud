@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    [AliCloudResourceType("alicloud:ecs/securityGroupRule:SecurityGroupRule")]
     public partial class SecurityGroupRule : Pulumi.CustomResource
     {
         /// <summary>

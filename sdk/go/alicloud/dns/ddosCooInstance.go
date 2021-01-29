@@ -204,15 +204,15 @@ type DdosCooInstanceInput interface {
 	ToDdosCooInstanceOutputWithContext(ctx context.Context) DdosCooInstanceOutput
 }
 
-func (DdosCooInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*DdosCooInstance)(nil)).Elem()
+func (*DdosCooInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdosCooInstance)(nil))
 }
 
-func (i DdosCooInstance) ToDdosCooInstanceOutput() DdosCooInstanceOutput {
+func (i *DdosCooInstance) ToDdosCooInstanceOutput() DdosCooInstanceOutput {
 	return i.ToDdosCooInstanceOutputWithContext(context.Background())
 }
 
-func (i DdosCooInstance) ToDdosCooInstanceOutputWithContext(ctx context.Context) DdosCooInstanceOutput {
+func (i *DdosCooInstance) ToDdosCooInstanceOutputWithContext(ctx context.Context) DdosCooInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DdosCooInstanceOutput)
 }
 
@@ -221,7 +221,7 @@ type DdosCooInstanceOutput struct {
 }
 
 func (DdosCooInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DdosCooInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*DdosCooInstance)(nil))
 }
 
 func (o DdosCooInstanceOutput) ToDdosCooInstanceOutput() DdosCooInstanceOutput {

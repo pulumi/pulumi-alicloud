@@ -119,15 +119,15 @@ type QosInput interface {
 	ToQosOutputWithContext(ctx context.Context) QosOutput
 }
 
-func (Qos) ElementType() reflect.Type {
-	return reflect.TypeOf((*Qos)(nil)).Elem()
+func (*Qos) ElementType() reflect.Type {
+	return reflect.TypeOf((*Qos)(nil))
 }
 
-func (i Qos) ToQosOutput() QosOutput {
+func (i *Qos) ToQosOutput() QosOutput {
 	return i.ToQosOutputWithContext(context.Background())
 }
 
-func (i Qos) ToQosOutputWithContext(ctx context.Context) QosOutput {
+func (i *Qos) ToQosOutputWithContext(ctx context.Context) QosOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosOutput)
 }
 
@@ -136,7 +136,7 @@ type QosOutput struct {
 }
 
 func (QosOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosOutput)(nil)).Elem()
+	return reflect.TypeOf((*Qos)(nil))
 }
 
 func (o QosOutput) ToQosOutput() QosOutput {

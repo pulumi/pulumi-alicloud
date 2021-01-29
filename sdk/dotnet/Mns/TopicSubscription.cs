@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Mns
     ///  $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:mns/topicSubscription:TopicSubscription")]
     public partial class TopicSubscription : Pulumi.CustomResource
     {
         /// <summary>

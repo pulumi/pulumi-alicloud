@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment foo havip-abc123456:i-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/hAVipAttachment:HAVipAttachment")]
     public partial class HAVipAttachment : Pulumi.CustomResource
     {
         /// <summary>

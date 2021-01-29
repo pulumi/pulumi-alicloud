@@ -112,15 +112,15 @@ type HAVipInput interface {
 	ToHAVipOutputWithContext(ctx context.Context) HAVipOutput
 }
 
-func (HAVip) ElementType() reflect.Type {
-	return reflect.TypeOf((*HAVip)(nil)).Elem()
+func (*HAVip) ElementType() reflect.Type {
+	return reflect.TypeOf((*HAVip)(nil))
 }
 
-func (i HAVip) ToHAVipOutput() HAVipOutput {
+func (i *HAVip) ToHAVipOutput() HAVipOutput {
 	return i.ToHAVipOutputWithContext(context.Background())
 }
 
-func (i HAVip) ToHAVipOutputWithContext(ctx context.Context) HAVipOutput {
+func (i *HAVip) ToHAVipOutputWithContext(ctx context.Context) HAVipOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipOutput)
 }
 
@@ -129,7 +129,7 @@ type HAVipOutput struct {
 }
 
 func (HAVipOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HAVipOutput)(nil)).Elem()
+	return reflect.TypeOf((*HAVip)(nil))
 }
 
 func (o HAVipOutput) ToHAVipOutput() HAVipOutput {

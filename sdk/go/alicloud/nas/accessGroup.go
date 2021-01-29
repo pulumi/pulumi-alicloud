@@ -197,15 +197,15 @@ type AccessGroupInput interface {
 	ToAccessGroupOutputWithContext(ctx context.Context) AccessGroupOutput
 }
 
-func (AccessGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessGroup)(nil)).Elem()
+func (*AccessGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroup)(nil))
 }
 
-func (i AccessGroup) ToAccessGroupOutput() AccessGroupOutput {
+func (i *AccessGroup) ToAccessGroupOutput() AccessGroupOutput {
 	return i.ToAccessGroupOutputWithContext(context.Background())
 }
 
-func (i AccessGroup) ToAccessGroupOutputWithContext(ctx context.Context) AccessGroupOutput {
+func (i *AccessGroup) ToAccessGroupOutputWithContext(ctx context.Context) AccessGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupOutput)
 }
 
@@ -214,7 +214,7 @@ type AccessGroupOutput struct {
 }
 
 func (AccessGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccessGroup)(nil))
 }
 
 func (o AccessGroupOutput) ToAccessGroupOutput() AccessGroupOutput {

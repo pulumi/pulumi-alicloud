@@ -136,6 +136,7 @@ namespace Pulumi.AliCloud.Eci
     ///  $ pulumi import alicloud:eci/containerGroup:ContainerGroup example &lt;container_group_id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:eci/containerGroup:ContainerGroup")]
     public partial class ContainerGroup : Pulumi.CustomResource
     {
         /// <summary>

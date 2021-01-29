@@ -323,15 +323,15 @@ type StackInput interface {
 	ToStackOutputWithContext(ctx context.Context) StackOutput
 }
 
-func (Stack) ElementType() reflect.Type {
-	return reflect.TypeOf((*Stack)(nil)).Elem()
+func (*Stack) ElementType() reflect.Type {
+	return reflect.TypeOf((*Stack)(nil))
 }
 
-func (i Stack) ToStackOutput() StackOutput {
+func (i *Stack) ToStackOutput() StackOutput {
 	return i.ToStackOutputWithContext(context.Background())
 }
 
-func (i Stack) ToStackOutputWithContext(ctx context.Context) StackOutput {
+func (i *Stack) ToStackOutputWithContext(ctx context.Context) StackOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackOutput)
 }
 
@@ -340,7 +340,7 @@ type StackOutput struct {
 }
 
 func (StackOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackOutput)(nil)).Elem()
+	return reflect.TypeOf((*Stack)(nil))
 }
 
 func (o StackOutput) ToStackOutput() StackOutput {

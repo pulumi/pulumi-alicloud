@@ -44,6 +44,7 @@ namespace Pulumi.AliCloud.Brain
     ///  $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example &lt;id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:brain/industrialPidProject:IndustrialPidProject")]
     public partial class IndustrialPidProject : Pulumi.CustomResource
     {
         /// <summary>

@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.KVStore
     ///  $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:kvstore/backupPolicy:BackupPolicy")]
     public partial class BackupPolicy : Pulumi.CustomResource
     {
         /// <summary>

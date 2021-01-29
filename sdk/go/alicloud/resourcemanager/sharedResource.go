@@ -130,15 +130,15 @@ type SharedResourceInput interface {
 	ToSharedResourceOutputWithContext(ctx context.Context) SharedResourceOutput
 }
 
-func (SharedResource) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedResource)(nil)).Elem()
+func (*SharedResource) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedResource)(nil))
 }
 
-func (i SharedResource) ToSharedResourceOutput() SharedResourceOutput {
+func (i *SharedResource) ToSharedResourceOutput() SharedResourceOutput {
 	return i.ToSharedResourceOutputWithContext(context.Background())
 }
 
-func (i SharedResource) ToSharedResourceOutputWithContext(ctx context.Context) SharedResourceOutput {
+func (i *SharedResource) ToSharedResourceOutputWithContext(ctx context.Context) SharedResourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SharedResourceOutput)
 }
 
@@ -147,7 +147,7 @@ type SharedResourceOutput struct {
 }
 
 func (SharedResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedResourceOutput)(nil)).Elem()
+	return reflect.TypeOf((*SharedResource)(nil))
 }
 
 func (o SharedResourceOutput) ToSharedResourceOutput() SharedResourceOutput {

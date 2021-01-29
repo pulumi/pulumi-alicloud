@@ -303,15 +303,15 @@ type ChangeSetInput interface {
 	ToChangeSetOutputWithContext(ctx context.Context) ChangeSetOutput
 }
 
-func (ChangeSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChangeSet)(nil)).Elem()
+func (*ChangeSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeSet)(nil))
 }
 
-func (i ChangeSet) ToChangeSetOutput() ChangeSetOutput {
+func (i *ChangeSet) ToChangeSetOutput() ChangeSetOutput {
 	return i.ToChangeSetOutputWithContext(context.Background())
 }
 
-func (i ChangeSet) ToChangeSetOutputWithContext(ctx context.Context) ChangeSetOutput {
+func (i *ChangeSet) ToChangeSetOutputWithContext(ctx context.Context) ChangeSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetOutput)
 }
 
@@ -320,7 +320,7 @@ type ChangeSetOutput struct {
 }
 
 func (ChangeSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChangeSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*ChangeSet)(nil))
 }
 
 func (o ChangeSetOutput) ToChangeSetOutput() ChangeSetOutput {

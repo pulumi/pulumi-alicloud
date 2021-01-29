@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:slb/attachment:Attachment")]
     public partial class Attachment : Pulumi.CustomResource
     {
         /// <summary>

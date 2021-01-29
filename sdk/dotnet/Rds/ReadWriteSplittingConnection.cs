@@ -91,6 +91,7 @@ namespace Pulumi.AliCloud.Rds
     ///  $ pulumi import alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection example abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection")]
     public partial class ReadWriteSplittingConnection : Pulumi.CustomResource
     {
         /// <summary>

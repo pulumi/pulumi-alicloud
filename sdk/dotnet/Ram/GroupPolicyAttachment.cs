@@ -69,6 +69,7 @@ namespace Pulumi.AliCloud.Ram
     ///  $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment")]
     public partial class GroupPolicyAttachment : Pulumi.CustomResource
     {
         /// <summary>

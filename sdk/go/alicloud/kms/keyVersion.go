@@ -137,15 +137,15 @@ type KeyVersionInput interface {
 	ToKeyVersionOutputWithContext(ctx context.Context) KeyVersionOutput
 }
 
-func (KeyVersion) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVersion)(nil)).Elem()
+func (*KeyVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVersion)(nil))
 }
 
-func (i KeyVersion) ToKeyVersionOutput() KeyVersionOutput {
+func (i *KeyVersion) ToKeyVersionOutput() KeyVersionOutput {
 	return i.ToKeyVersionOutputWithContext(context.Background())
 }
 
-func (i KeyVersion) ToKeyVersionOutputWithContext(ctx context.Context) KeyVersionOutput {
+func (i *KeyVersion) ToKeyVersionOutputWithContext(ctx context.Context) KeyVersionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionOutput)
 }
 
@@ -154,7 +154,7 @@ type KeyVersionOutput struct {
 }
 
 func (KeyVersionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVersionOutput)(nil)).Elem()
+	return reflect.TypeOf((*KeyVersion)(nil))
 }
 
 func (o KeyVersionOutput) ToKeyVersionOutput() KeyVersionOutput {

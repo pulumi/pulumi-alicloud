@@ -62,6 +62,7 @@ namespace Pulumi.AliCloud.Cms
     ///  $ pulumi import alicloud:cms/alarm:Alarm alarm abc12345
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cms/alarm:Alarm")]
     public partial class Alarm : Pulumi.CustomResource
     {
         /// <summary>

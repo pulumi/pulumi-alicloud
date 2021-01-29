@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Dns
     ///  $ pulumi import alicloud:dns/record:Record example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:dns/record:Record")]
     public partial class Record : Pulumi.CustomResource
     {
         /// <summary>

@@ -38,6 +38,7 @@ namespace Pulumi.AliCloud.Edas
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:edas/applicationScale:ApplicationScale")]
     public partial class ApplicationScale : Pulumi.CustomResource
     {
         /// <summary>

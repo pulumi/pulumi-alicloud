@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Pvtz
     ///  $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:pvtz/zoneRecord:ZoneRecord")]
     public partial class ZoneRecord : Pulumi.CustomResource
     {
         /// <summary>

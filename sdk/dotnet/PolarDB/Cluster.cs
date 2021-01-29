@@ -66,6 +66,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///  $ pulumi import alicloud:polardb/cluster:Cluster example pc-abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:polardb/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>

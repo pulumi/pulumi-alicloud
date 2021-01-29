@@ -49,6 +49,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [Obsolete(@"alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance")]
+    [AliCloudResourceType("alicloud:dns/ddosBgpInstance:DdosBgpInstance")]
     public partial class DdosBgpInstance : Pulumi.CustomResource
     {
         /// <summary>

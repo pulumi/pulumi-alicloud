@@ -158,15 +158,15 @@ type ApplicationScaleInput interface {
 	ToApplicationScaleOutputWithContext(ctx context.Context) ApplicationScaleOutput
 }
 
-func (ApplicationScale) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationScale)(nil)).Elem()
+func (*ApplicationScale) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScale)(nil))
 }
 
-func (i ApplicationScale) ToApplicationScaleOutput() ApplicationScaleOutput {
+func (i *ApplicationScale) ToApplicationScaleOutput() ApplicationScaleOutput {
 	return i.ToApplicationScaleOutputWithContext(context.Background())
 }
 
-func (i ApplicationScale) ToApplicationScaleOutputWithContext(ctx context.Context) ApplicationScaleOutput {
+func (i *ApplicationScale) ToApplicationScaleOutputWithContext(ctx context.Context) ApplicationScaleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScaleOutput)
 }
 
@@ -175,7 +175,7 @@ type ApplicationScaleOutput struct {
 }
 
 func (ApplicationScaleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationScaleOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApplicationScale)(nil))
 }
 
 func (o ApplicationScaleOutput) ToApplicationScaleOutput() ApplicationScaleOutput {

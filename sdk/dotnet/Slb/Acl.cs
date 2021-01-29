@@ -83,6 +83,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/acl:Acl example acl-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:slb/acl:Acl")]
     public partial class Acl : Pulumi.CustomResource
     {
         /// <summary>

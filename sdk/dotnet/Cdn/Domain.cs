@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cdn
 {
+    [AliCloudResourceType("alicloud:cdn/domain:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>

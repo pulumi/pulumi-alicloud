@@ -198,15 +198,15 @@ type AlidnsInstanceInput interface {
 	ToAlidnsInstanceOutputWithContext(ctx context.Context) AlidnsInstanceOutput
 }
 
-func (AlidnsInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlidnsInstance)(nil)).Elem()
+func (*AlidnsInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlidnsInstance)(nil))
 }
 
-func (i AlidnsInstance) ToAlidnsInstanceOutput() AlidnsInstanceOutput {
+func (i *AlidnsInstance) ToAlidnsInstanceOutput() AlidnsInstanceOutput {
 	return i.ToAlidnsInstanceOutputWithContext(context.Background())
 }
 
-func (i AlidnsInstance) ToAlidnsInstanceOutputWithContext(ctx context.Context) AlidnsInstanceOutput {
+func (i *AlidnsInstance) ToAlidnsInstanceOutputWithContext(ctx context.Context) AlidnsInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsInstanceOutput)
 }
 
@@ -215,7 +215,7 @@ type AlidnsInstanceOutput struct {
 }
 
 func (AlidnsInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlidnsInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*AlidnsInstance)(nil))
 }
 
 func (o AlidnsInstanceOutput) ToAlidnsInstanceOutput() AlidnsInstanceOutput {

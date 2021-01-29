@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ess
     ///  $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ess/scalingRule:ScalingRule")]
     public partial class ScalingRule : Pulumi.CustomResource
     {
         /// <summary>

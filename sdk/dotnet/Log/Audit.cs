@@ -84,6 +84,7 @@ namespace Pulumi.AliCloud.Log
     ///  $ pulumi import alicloud:log/audit:Audit example tf-audit-test
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:log/audit:Audit")]
     public partial class Audit : Pulumi.CustomResource
     {
         /// <summary>

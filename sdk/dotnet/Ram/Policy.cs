@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ram
     ///  $ pulumi import alicloud:ram/policy:Policy example my-policy
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/policy:Policy")]
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>

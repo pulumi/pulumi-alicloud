@@ -26,6 +26,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -237,15 +238,15 @@ type KeyPairAttachmentInput interface {
 	ToKeyPairAttachmentOutputWithContext(ctx context.Context) KeyPairAttachmentOutput
 }
 
-func (KeyPairAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyPairAttachment)(nil)).Elem()
+func (*KeyPairAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyPairAttachment)(nil))
 }
 
-func (i KeyPairAttachment) ToKeyPairAttachmentOutput() KeyPairAttachmentOutput {
+func (i *KeyPairAttachment) ToKeyPairAttachmentOutput() KeyPairAttachmentOutput {
 	return i.ToKeyPairAttachmentOutputWithContext(context.Background())
 }
 
-func (i KeyPairAttachment) ToKeyPairAttachmentOutputWithContext(ctx context.Context) KeyPairAttachmentOutput {
+func (i *KeyPairAttachment) ToKeyPairAttachmentOutputWithContext(ctx context.Context) KeyPairAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPairAttachmentOutput)
 }
 
@@ -254,7 +255,7 @@ type KeyPairAttachmentOutput struct {
 }
 
 func (KeyPairAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyPairAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*KeyPairAttachment)(nil))
 }
 
 func (o KeyPairAttachmentOutput) ToKeyPairAttachmentOutput() KeyPairAttachmentOutput {

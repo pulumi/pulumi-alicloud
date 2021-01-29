@@ -73,6 +73,7 @@ namespace Pulumi.AliCloud.Adb
     ///  $ pulumi import alicloud:adb/connection:Connection example am-12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:adb/connection:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>

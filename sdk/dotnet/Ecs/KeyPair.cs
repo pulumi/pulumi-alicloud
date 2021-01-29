@@ -52,6 +52,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/keyPair:KeyPair")]
     public partial class KeyPair : Pulumi.CustomResource
     {
         [Output("fingerPrint")]

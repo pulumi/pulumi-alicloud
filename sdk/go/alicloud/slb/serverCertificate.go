@@ -184,15 +184,15 @@ type ServerCertificateInput interface {
 	ToServerCertificateOutputWithContext(ctx context.Context) ServerCertificateOutput
 }
 
-func (ServerCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerCertificate)(nil)).Elem()
+func (*ServerCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerCertificate)(nil))
 }
 
-func (i ServerCertificate) ToServerCertificateOutput() ServerCertificateOutput {
+func (i *ServerCertificate) ToServerCertificateOutput() ServerCertificateOutput {
 	return i.ToServerCertificateOutputWithContext(context.Background())
 }
 
-func (i ServerCertificate) ToServerCertificateOutputWithContext(ctx context.Context) ServerCertificateOutput {
+func (i *ServerCertificate) ToServerCertificateOutputWithContext(ctx context.Context) ServerCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerCertificateOutput)
 }
 
@@ -201,7 +201,7 @@ type ServerCertificateOutput struct {
 }
 
 func (ServerCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerCertificateOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServerCertificate)(nil))
 }
 
 func (o ServerCertificateOutput) ToServerCertificateOutput() ServerCertificateOutput {

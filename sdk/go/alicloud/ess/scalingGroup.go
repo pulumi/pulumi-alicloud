@@ -310,15 +310,15 @@ type ScalingGroupInput interface {
 	ToScalingGroupOutputWithContext(ctx context.Context) ScalingGroupOutput
 }
 
-func (ScalingGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingGroup)(nil)).Elem()
+func (*ScalingGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingGroup)(nil))
 }
 
-func (i ScalingGroup) ToScalingGroupOutput() ScalingGroupOutput {
+func (i *ScalingGroup) ToScalingGroupOutput() ScalingGroupOutput {
 	return i.ToScalingGroupOutputWithContext(context.Background())
 }
 
-func (i ScalingGroup) ToScalingGroupOutputWithContext(ctx context.Context) ScalingGroupOutput {
+func (i *ScalingGroup) ToScalingGroupOutputWithContext(ctx context.Context) ScalingGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupOutput)
 }
 
@@ -327,7 +327,7 @@ type ScalingGroupOutput struct {
 }
 
 func (ScalingGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ScalingGroup)(nil))
 }
 
 func (o ScalingGroupOutput) ToScalingGroupOutput() ScalingGroupOutput {

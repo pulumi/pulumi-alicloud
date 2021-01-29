@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ess
     ///  $ pulumi import alicloud:ess/scalingConfiguration:ScalingConfiguration example asg-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ess/scalingConfiguration:ScalingConfiguration")]
     public partial class ScalingConfiguration : Pulumi.CustomResource
     {
         /// <summary>

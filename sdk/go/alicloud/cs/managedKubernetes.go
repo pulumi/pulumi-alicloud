@@ -728,15 +728,15 @@ type ManagedKubernetesInput interface {
 	ToManagedKubernetesOutputWithContext(ctx context.Context) ManagedKubernetesOutput
 }
 
-func (ManagedKubernetes) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetes)(nil)).Elem()
+func (*ManagedKubernetes) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetes)(nil))
 }
 
-func (i ManagedKubernetes) ToManagedKubernetesOutput() ManagedKubernetesOutput {
+func (i *ManagedKubernetes) ToManagedKubernetesOutput() ManagedKubernetesOutput {
 	return i.ToManagedKubernetesOutputWithContext(context.Background())
 }
 
-func (i ManagedKubernetes) ToManagedKubernetesOutputWithContext(ctx context.Context) ManagedKubernetesOutput {
+func (i *ManagedKubernetes) ToManagedKubernetesOutputWithContext(ctx context.Context) ManagedKubernetesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesOutput)
 }
 
@@ -745,7 +745,7 @@ type ManagedKubernetesOutput struct {
 }
 
 func (ManagedKubernetesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManagedKubernetes)(nil))
 }
 
 func (o ManagedKubernetesOutput) ToManagedKubernetesOutput() ManagedKubernetesOutput {

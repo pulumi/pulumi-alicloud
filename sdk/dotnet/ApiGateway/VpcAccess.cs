@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.ApiGateway
     ///  $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:apigateway/vpcAccess:VpcAccess")]
     public partial class VpcAccess : Pulumi.CustomResource
     {
         /// <summary>

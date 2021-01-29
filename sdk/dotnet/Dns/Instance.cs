@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Dns
     ///  $ pulumi import alicloud:dns/instance:Instance example dns-cn-v0h1ldjhfff
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:dns/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

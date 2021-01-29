@@ -132,15 +132,15 @@ type ZoneAttachmentInput interface {
 	ToZoneAttachmentOutputWithContext(ctx context.Context) ZoneAttachmentOutput
 }
 
-func (ZoneAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneAttachment)(nil)).Elem()
+func (*ZoneAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneAttachment)(nil))
 }
 
-func (i ZoneAttachment) ToZoneAttachmentOutput() ZoneAttachmentOutput {
+func (i *ZoneAttachment) ToZoneAttachmentOutput() ZoneAttachmentOutput {
 	return i.ToZoneAttachmentOutputWithContext(context.Background())
 }
 
-func (i ZoneAttachment) ToZoneAttachmentOutputWithContext(ctx context.Context) ZoneAttachmentOutput {
+func (i *ZoneAttachment) ToZoneAttachmentOutputWithContext(ctx context.Context) ZoneAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentOutput)
 }
 
@@ -149,7 +149,7 @@ type ZoneAttachmentOutput struct {
 }
 
 func (ZoneAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*ZoneAttachment)(nil))
 }
 
 func (o ZoneAttachmentOutput) ToZoneAttachmentOutput() ZoneAttachmentOutput {

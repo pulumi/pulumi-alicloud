@@ -79,6 +79,7 @@ namespace Pulumi.AliCloud.Ga
     ///  $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example &lt;id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ga/endpointGroup:EndpointGroup")]
     public partial class EndpointGroup : Pulumi.CustomResource
     {
         /// <summary>

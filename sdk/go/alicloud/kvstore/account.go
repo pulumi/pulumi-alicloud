@@ -26,6 +26,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/kvstore"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -281,15 +282,15 @@ type AccountInput interface {
 	ToAccountOutputWithContext(ctx context.Context) AccountOutput
 }
 
-func (Account) ElementType() reflect.Type {
-	return reflect.TypeOf((*Account)(nil)).Elem()
+func (*Account) ElementType() reflect.Type {
+	return reflect.TypeOf((*Account)(nil))
 }
 
-func (i Account) ToAccountOutput() AccountOutput {
+func (i *Account) ToAccountOutput() AccountOutput {
 	return i.ToAccountOutputWithContext(context.Background())
 }
 
-func (i Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
+func (i *Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountOutput)
 }
 
@@ -298,7 +299,7 @@ type AccountOutput struct {
 }
 
 func (AccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountOutput)(nil)).Elem()
+	return reflect.TypeOf((*Account)(nil))
 }
 
 func (o AccountOutput) ToAccountOutput() AccountOutput {

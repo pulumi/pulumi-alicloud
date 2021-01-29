@@ -136,15 +136,15 @@ type AlidnsDomainAttachmentInput interface {
 	ToAlidnsDomainAttachmentOutputWithContext(ctx context.Context) AlidnsDomainAttachmentOutput
 }
 
-func (AlidnsDomainAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlidnsDomainAttachment)(nil)).Elem()
+func (*AlidnsDomainAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlidnsDomainAttachment)(nil))
 }
 
-func (i AlidnsDomainAttachment) ToAlidnsDomainAttachmentOutput() AlidnsDomainAttachmentOutput {
+func (i *AlidnsDomainAttachment) ToAlidnsDomainAttachmentOutput() AlidnsDomainAttachmentOutput {
 	return i.ToAlidnsDomainAttachmentOutputWithContext(context.Background())
 }
 
-func (i AlidnsDomainAttachment) ToAlidnsDomainAttachmentOutputWithContext(ctx context.Context) AlidnsDomainAttachmentOutput {
+func (i *AlidnsDomainAttachment) ToAlidnsDomainAttachmentOutputWithContext(ctx context.Context) AlidnsDomainAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainAttachmentOutput)
 }
 
@@ -153,7 +153,7 @@ type AlidnsDomainAttachmentOutput struct {
 }
 
 func (AlidnsDomainAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlidnsDomainAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*AlidnsDomainAttachment)(nil))
 }
 
 func (o AlidnsDomainAttachmentOutput) ToAlidnsDomainAttachmentOutput() AlidnsDomainAttachmentOutput {

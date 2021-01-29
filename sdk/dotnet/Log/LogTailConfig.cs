@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Log
     ///  $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:log/logTailConfig:LogTailConfig")]
     public partial class LogTailConfig : Pulumi.CustomResource
     {
         /// <summary>

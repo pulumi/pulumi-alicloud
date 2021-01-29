@@ -52,6 +52,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///  $ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rocketmq/clientUser:ClientUser")]
     public partial class ClientUser : Pulumi.CustomResource
     {
         /// <summary>

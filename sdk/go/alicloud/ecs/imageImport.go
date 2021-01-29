@@ -200,15 +200,15 @@ type ImageImportInput interface {
 	ToImageImportOutputWithContext(ctx context.Context) ImageImportOutput
 }
 
-func (ImageImport) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageImport)(nil)).Elem()
+func (*ImageImport) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImport)(nil))
 }
 
-func (i ImageImport) ToImageImportOutput() ImageImportOutput {
+func (i *ImageImport) ToImageImportOutput() ImageImportOutput {
 	return i.ToImageImportOutputWithContext(context.Background())
 }
 
-func (i ImageImport) ToImageImportOutputWithContext(ctx context.Context) ImageImportOutput {
+func (i *ImageImport) ToImageImportOutputWithContext(ctx context.Context) ImageImportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageImportOutput)
 }
 
@@ -217,7 +217,7 @@ type ImageImportOutput struct {
 }
 
 func (ImageImportOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageImportOutput)(nil)).Elem()
+	return reflect.TypeOf((*ImageImport)(nil))
 }
 
 func (o ImageImportOutput) ToImageImportOutput() ImageImportOutput {

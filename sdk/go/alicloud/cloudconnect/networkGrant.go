@@ -180,15 +180,15 @@ type NetworkGrantInput interface {
 	ToNetworkGrantOutputWithContext(ctx context.Context) NetworkGrantOutput
 }
 
-func (NetworkGrant) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkGrant)(nil)).Elem()
+func (*NetworkGrant) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkGrant)(nil))
 }
 
-func (i NetworkGrant) ToNetworkGrantOutput() NetworkGrantOutput {
+func (i *NetworkGrant) ToNetworkGrantOutput() NetworkGrantOutput {
 	return i.ToNetworkGrantOutputWithContext(context.Background())
 }
 
-func (i NetworkGrant) ToNetworkGrantOutputWithContext(ctx context.Context) NetworkGrantOutput {
+func (i *NetworkGrant) ToNetworkGrantOutputWithContext(ctx context.Context) NetworkGrantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantOutput)
 }
 
@@ -197,7 +197,7 @@ type NetworkGrantOutput struct {
 }
 
 func (NetworkGrantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkGrantOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkGrant)(nil))
 }
 
 func (o NetworkGrantOutput) ToNetworkGrantOutput() NetworkGrantOutput {

@@ -47,6 +47,7 @@ namespace Pulumi.AliCloud.Kms
     ///  $ pulumi import alicloud:kms/secret:Secret default secret-foo
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:kms/secret:Secret")]
     public partial class Secret : Pulumi.CustomResource
     {
         /// <summary>

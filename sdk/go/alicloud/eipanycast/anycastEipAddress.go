@@ -179,15 +179,15 @@ type AnycastEipAddressInput interface {
 	ToAnycastEipAddressOutputWithContext(ctx context.Context) AnycastEipAddressOutput
 }
 
-func (AnycastEipAddress) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnycastEipAddress)(nil)).Elem()
+func (*AnycastEipAddress) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnycastEipAddress)(nil))
 }
 
-func (i AnycastEipAddress) ToAnycastEipAddressOutput() AnycastEipAddressOutput {
+func (i *AnycastEipAddress) ToAnycastEipAddressOutput() AnycastEipAddressOutput {
 	return i.ToAnycastEipAddressOutputWithContext(context.Background())
 }
 
-func (i AnycastEipAddress) ToAnycastEipAddressOutputWithContext(ctx context.Context) AnycastEipAddressOutput {
+func (i *AnycastEipAddress) ToAnycastEipAddressOutputWithContext(ctx context.Context) AnycastEipAddressOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressOutput)
 }
 
@@ -196,7 +196,7 @@ type AnycastEipAddressOutput struct {
 }
 
 func (AnycastEipAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnycastEipAddressOutput)(nil)).Elem()
+	return reflect.TypeOf((*AnycastEipAddress)(nil))
 }
 
 func (o AnycastEipAddressOutput) ToAnycastEipAddressOutput() AnycastEipAddressOutput {

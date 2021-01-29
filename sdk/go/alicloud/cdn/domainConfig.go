@@ -173,15 +173,15 @@ type DomainConfigInput interface {
 	ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput
 }
 
-func (DomainConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainConfig)(nil)).Elem()
+func (*DomainConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainConfig)(nil))
 }
 
-func (i DomainConfig) ToDomainConfigOutput() DomainConfigOutput {
+func (i *DomainConfig) ToDomainConfigOutput() DomainConfigOutput {
 	return i.ToDomainConfigOutputWithContext(context.Background())
 }
 
-func (i DomainConfig) ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput {
+func (i *DomainConfig) ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigOutput)
 }
 
@@ -190,7 +190,7 @@ type DomainConfigOutput struct {
 }
 
 func (DomainConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainConfig)(nil))
 }
 
 func (o DomainConfigOutput) ToDomainConfigOutput() DomainConfigOutput {

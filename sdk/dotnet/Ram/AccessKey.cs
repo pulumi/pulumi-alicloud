@@ -77,6 +77,7 @@ namespace Pulumi.AliCloud.Ram
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/accessKey:AccessKey")]
     public partial class AccessKey : Pulumi.CustomResource
     {
         [Output("encryptedSecret")]

@@ -83,6 +83,7 @@ namespace Pulumi.AliCloud.Log
     ///  $ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:log/dashboard:Dashboard")]
     public partial class Dashboard : Pulumi.CustomResource
     {
         /// <summary>

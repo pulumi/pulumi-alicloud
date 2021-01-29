@@ -61,6 +61,7 @@ namespace Pulumi.AliCloud.Ga
     ///  $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example &lt;bandwidth_package_id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment")]
     public partial class BandwidthPackageAttachment : Pulumi.CustomResource
     {
         /// <summary>

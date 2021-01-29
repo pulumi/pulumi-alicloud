@@ -74,6 +74,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:slb/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : Pulumi.CustomResource
     {
         /// <summary>

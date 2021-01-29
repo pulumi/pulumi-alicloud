@@ -125,15 +125,15 @@ type StoreIndexInput interface {
 	ToStoreIndexOutputWithContext(ctx context.Context) StoreIndexOutput
 }
 
-func (StoreIndex) ElementType() reflect.Type {
-	return reflect.TypeOf((*StoreIndex)(nil)).Elem()
+func (*StoreIndex) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreIndex)(nil))
 }
 
-func (i StoreIndex) ToStoreIndexOutput() StoreIndexOutput {
+func (i *StoreIndex) ToStoreIndexOutput() StoreIndexOutput {
 	return i.ToStoreIndexOutputWithContext(context.Background())
 }
 
-func (i StoreIndex) ToStoreIndexOutputWithContext(ctx context.Context) StoreIndexOutput {
+func (i *StoreIndex) ToStoreIndexOutputWithContext(ctx context.Context) StoreIndexOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexOutput)
 }
 
@@ -142,7 +142,7 @@ type StoreIndexOutput struct {
 }
 
 func (StoreIndexOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StoreIndexOutput)(nil)).Elem()
+	return reflect.TypeOf((*StoreIndex)(nil))
 }
 
 func (o StoreIndexOutput) ToStoreIndexOutput() StoreIndexOutput {

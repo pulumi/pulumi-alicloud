@@ -219,15 +219,15 @@ type ZoneRecordInput interface {
 	ToZoneRecordOutputWithContext(ctx context.Context) ZoneRecordOutput
 }
 
-func (ZoneRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneRecord)(nil)).Elem()
+func (*ZoneRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneRecord)(nil))
 }
 
-func (i ZoneRecord) ToZoneRecordOutput() ZoneRecordOutput {
+func (i *ZoneRecord) ToZoneRecordOutput() ZoneRecordOutput {
 	return i.ToZoneRecordOutputWithContext(context.Background())
 }
 
-func (i ZoneRecord) ToZoneRecordOutputWithContext(ctx context.Context) ZoneRecordOutput {
+func (i *ZoneRecord) ToZoneRecordOutputWithContext(ctx context.Context) ZoneRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneRecordOutput)
 }
 
@@ -236,7 +236,7 @@ type ZoneRecordOutput struct {
 }
 
 func (ZoneRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*ZoneRecord)(nil))
 }
 
 func (o ZoneRecordOutput) ToZoneRecordOutput() ZoneRecordOutput {

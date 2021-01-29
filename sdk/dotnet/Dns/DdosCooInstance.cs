@@ -53,6 +53,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [Obsolete(@"alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance")]
+    [AliCloudResourceType("alicloud:dns/ddosCooInstance:DdosCooInstance")]
     public partial class DdosCooInstance : Pulumi.CustomResource
     {
         /// <summary>

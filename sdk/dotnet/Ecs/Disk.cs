@@ -51,6 +51,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/disk:Disk")]
     public partial class Disk : Pulumi.CustomResource
     {
         /// <summary>

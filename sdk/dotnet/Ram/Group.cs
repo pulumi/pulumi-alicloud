@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ram
     ///  $ pulumi import alicloud:ram/group:Group example my-group
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/group:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

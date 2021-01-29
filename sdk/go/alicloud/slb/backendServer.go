@@ -125,15 +125,15 @@ type BackendServerInput interface {
 	ToBackendServerOutputWithContext(ctx context.Context) BackendServerOutput
 }
 
-func (BackendServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendServer)(nil)).Elem()
+func (*BackendServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServer)(nil))
 }
 
-func (i BackendServer) ToBackendServerOutput() BackendServerOutput {
+func (i *BackendServer) ToBackendServerOutput() BackendServerOutput {
 	return i.ToBackendServerOutputWithContext(context.Background())
 }
 
-func (i BackendServer) ToBackendServerOutputWithContext(ctx context.Context) BackendServerOutput {
+func (i *BackendServer) ToBackendServerOutputWithContext(ctx context.Context) BackendServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServerOutput)
 }
 
@@ -142,7 +142,7 @@ type BackendServerOutput struct {
 }
 
 func (BackendServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendServerOutput)(nil)).Elem()
+	return reflect.TypeOf((*BackendServer)(nil))
 }
 
 func (o BackendServerOutput) ToBackendServerOutput() BackendServerOutput {

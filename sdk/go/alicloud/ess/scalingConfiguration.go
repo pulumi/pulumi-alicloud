@@ -462,15 +462,15 @@ type ScalingConfigurationInput interface {
 	ToScalingConfigurationOutputWithContext(ctx context.Context) ScalingConfigurationOutput
 }
 
-func (ScalingConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingConfiguration)(nil)).Elem()
+func (*ScalingConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfiguration)(nil))
 }
 
-func (i ScalingConfiguration) ToScalingConfigurationOutput() ScalingConfigurationOutput {
+func (i *ScalingConfiguration) ToScalingConfigurationOutput() ScalingConfigurationOutput {
 	return i.ToScalingConfigurationOutputWithContext(context.Background())
 }
 
-func (i ScalingConfiguration) ToScalingConfigurationOutputWithContext(ctx context.Context) ScalingConfigurationOutput {
+func (i *ScalingConfiguration) ToScalingConfigurationOutputWithContext(ctx context.Context) ScalingConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationOutput)
 }
 
@@ -479,7 +479,7 @@ type ScalingConfigurationOutput struct {
 }
 
 func (ScalingConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*ScalingConfiguration)(nil))
 }
 
 func (o ScalingConfigurationOutput) ToScalingConfigurationOutput() ScalingConfigurationOutput {

@@ -97,6 +97,7 @@ namespace Pulumi.AliCloud.Vpc
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/networkAclEntries:NetworkAclEntries")]
     public partial class NetworkAclEntries : Pulumi.CustomResource
     {
         /// <summary>

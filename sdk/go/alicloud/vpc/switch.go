@@ -148,15 +148,15 @@ type SwitchInput interface {
 	ToSwitchOutputWithContext(ctx context.Context) SwitchOutput
 }
 
-func (Switch) ElementType() reflect.Type {
-	return reflect.TypeOf((*Switch)(nil)).Elem()
+func (*Switch) ElementType() reflect.Type {
+	return reflect.TypeOf((*Switch)(nil))
 }
 
-func (i Switch) ToSwitchOutput() SwitchOutput {
+func (i *Switch) ToSwitchOutput() SwitchOutput {
 	return i.ToSwitchOutputWithContext(context.Background())
 }
 
-func (i Switch) ToSwitchOutputWithContext(ctx context.Context) SwitchOutput {
+func (i *Switch) ToSwitchOutputWithContext(ctx context.Context) SwitchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SwitchOutput)
 }
 
@@ -165,7 +165,7 @@ type SwitchOutput struct {
 }
 
 func (SwitchOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwitchOutput)(nil)).Elem()
+	return reflect.TypeOf((*Switch)(nil))
 }
 
 func (o SwitchOutput) ToSwitchOutput() SwitchOutput {

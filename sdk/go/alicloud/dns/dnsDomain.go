@@ -167,15 +167,15 @@ type DnsDomainInput interface {
 	ToDnsDomainOutputWithContext(ctx context.Context) DnsDomainOutput
 }
 
-func (DnsDomain) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnsDomain)(nil)).Elem()
+func (*DnsDomain) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsDomain)(nil))
 }
 
-func (i DnsDomain) ToDnsDomainOutput() DnsDomainOutput {
+func (i *DnsDomain) ToDnsDomainOutput() DnsDomainOutput {
 	return i.ToDnsDomainOutputWithContext(context.Background())
 }
 
-func (i DnsDomain) ToDnsDomainOutputWithContext(ctx context.Context) DnsDomainOutput {
+func (i *DnsDomain) ToDnsDomainOutputWithContext(ctx context.Context) DnsDomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnsDomainOutput)
 }
 
@@ -184,7 +184,7 @@ type DnsDomainOutput struct {
 }
 
 func (DnsDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnsDomainOutput)(nil)).Elem()
+	return reflect.TypeOf((*DnsDomain)(nil))
 }
 
 func (o DnsDomainOutput) ToDnsDomainOutput() DnsDomainOutput {

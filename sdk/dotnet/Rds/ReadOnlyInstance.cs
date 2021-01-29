@@ -77,6 +77,7 @@ namespace Pulumi.AliCloud.Rds
     ///  $ pulumi import alicloud:rds/readOnlyInstance:ReadOnlyInstance example rm-abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rds/readOnlyInstance:ReadOnlyInstance")]
     public partial class ReadOnlyInstance : Pulumi.CustomResource
     {
         /// <summary>

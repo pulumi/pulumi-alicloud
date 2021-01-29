@@ -43,6 +43,7 @@ namespace Pulumi.AliCloud.Brain
     ///  $ pulumi import alicloud:brain/industrialPidOrganization:IndustrialPidOrganization example &lt;id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:brain/industrialPidOrganization:IndustrialPidOrganization")]
     public partial class IndustrialPidOrganization : Pulumi.CustomResource
     {
         /// <summary>
