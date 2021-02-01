@@ -164,15 +164,15 @@ type VpcEndpointServiceConnectionInput interface {
 	ToVpcEndpointServiceConnectionOutputWithContext(ctx context.Context) VpcEndpointServiceConnectionOutput
 }
 
-func (VpcEndpointServiceConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointServiceConnection)(nil)).Elem()
+func (*VpcEndpointServiceConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointServiceConnection)(nil))
 }
 
-func (i VpcEndpointServiceConnection) ToVpcEndpointServiceConnectionOutput() VpcEndpointServiceConnectionOutput {
+func (i *VpcEndpointServiceConnection) ToVpcEndpointServiceConnectionOutput() VpcEndpointServiceConnectionOutput {
 	return i.ToVpcEndpointServiceConnectionOutputWithContext(context.Background())
 }
 
-func (i VpcEndpointServiceConnection) ToVpcEndpointServiceConnectionOutputWithContext(ctx context.Context) VpcEndpointServiceConnectionOutput {
+func (i *VpcEndpointServiceConnection) ToVpcEndpointServiceConnectionOutputWithContext(ctx context.Context) VpcEndpointServiceConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceConnectionOutput)
 }
 
@@ -181,7 +181,7 @@ type VpcEndpointServiceConnectionOutput struct {
 }
 
 func (VpcEndpointServiceConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointServiceConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpcEndpointServiceConnection)(nil))
 }
 
 func (o VpcEndpointServiceConnectionOutput) ToVpcEndpointServiceConnectionOutput() VpcEndpointServiceConnectionOutput {

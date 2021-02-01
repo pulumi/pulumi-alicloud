@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.MarketPlace
     ///  $ pulumi import alicloud:marketplace/order:Order order your-order-id
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:marketplace/order:Order")]
     public partial class Order : Pulumi.CustomResource
     {
         /// <summary>

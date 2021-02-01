@@ -23,6 +23,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/polardb"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -220,15 +221,15 @@ type EndpointAddressInput interface {
 	ToEndpointAddressOutputWithContext(ctx context.Context) EndpointAddressOutput
 }
 
-func (EndpointAddress) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointAddress)(nil)).Elem()
+func (*EndpointAddress) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointAddress)(nil))
 }
 
-func (i EndpointAddress) ToEndpointAddressOutput() EndpointAddressOutput {
+func (i *EndpointAddress) ToEndpointAddressOutput() EndpointAddressOutput {
 	return i.ToEndpointAddressOutputWithContext(context.Background())
 }
 
-func (i EndpointAddress) ToEndpointAddressOutputWithContext(ctx context.Context) EndpointAddressOutput {
+func (i *EndpointAddress) ToEndpointAddressOutputWithContext(ctx context.Context) EndpointAddressOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAddressOutput)
 }
 
@@ -237,7 +238,7 @@ type EndpointAddressOutput struct {
 }
 
 func (EndpointAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointAddressOutput)(nil)).Elem()
+	return reflect.TypeOf((*EndpointAddress)(nil))
 }
 
 func (o EndpointAddressOutput) ToEndpointAddressOutput() EndpointAddressOutput {

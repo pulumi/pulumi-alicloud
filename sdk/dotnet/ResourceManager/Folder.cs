@@ -46,6 +46,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///  $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****	
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:resourcemanager/folder:Folder")]
     public partial class Folder : Pulumi.CustomResource
     {
         /// <summary>

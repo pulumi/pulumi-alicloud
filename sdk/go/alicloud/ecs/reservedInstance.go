@@ -221,15 +221,15 @@ type ReservedInstanceInput interface {
 	ToReservedInstanceOutputWithContext(ctx context.Context) ReservedInstanceOutput
 }
 
-func (ReservedInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReservedInstance)(nil)).Elem()
+func (*ReservedInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservedInstance)(nil))
 }
 
-func (i ReservedInstance) ToReservedInstanceOutput() ReservedInstanceOutput {
+func (i *ReservedInstance) ToReservedInstanceOutput() ReservedInstanceOutput {
 	return i.ToReservedInstanceOutputWithContext(context.Background())
 }
 
-func (i ReservedInstance) ToReservedInstanceOutputWithContext(ctx context.Context) ReservedInstanceOutput {
+func (i *ReservedInstance) ToReservedInstanceOutputWithContext(ctx context.Context) ReservedInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedInstanceOutput)
 }
 
@@ -238,7 +238,7 @@ type ReservedInstanceOutput struct {
 }
 
 func (ReservedInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReservedInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*ReservedInstance)(nil))
 }
 
 func (o ReservedInstanceOutput) ToReservedInstanceOutput() ReservedInstanceOutput {

@@ -115,6 +115,7 @@ namespace Pulumi.AliCloud.Cen
     ///  $ pulumi import alicloud:cen/bandwidthLimit:BandwidthLimit example cen-abc123456:cn-beijing:eu-west-1
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cen/bandwidthLimit:BandwidthLimit")]
     public partial class BandwidthLimit : Pulumi.CustomResource
     {
         /// <summary>

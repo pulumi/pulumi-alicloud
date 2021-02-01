@@ -27,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/alikafka"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -260,15 +261,15 @@ type SaslAclInput interface {
 	ToSaslAclOutputWithContext(ctx context.Context) SaslAclOutput
 }
 
-func (SaslAcl) ElementType() reflect.Type {
-	return reflect.TypeOf((*SaslAcl)(nil)).Elem()
+func (*SaslAcl) ElementType() reflect.Type {
+	return reflect.TypeOf((*SaslAcl)(nil))
 }
 
-func (i SaslAcl) ToSaslAclOutput() SaslAclOutput {
+func (i *SaslAcl) ToSaslAclOutput() SaslAclOutput {
 	return i.ToSaslAclOutputWithContext(context.Background())
 }
 
-func (i SaslAcl) ToSaslAclOutputWithContext(ctx context.Context) SaslAclOutput {
+func (i *SaslAcl) ToSaslAclOutputWithContext(ctx context.Context) SaslAclOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SaslAclOutput)
 }
 
@@ -277,7 +278,7 @@ type SaslAclOutput struct {
 }
 
 func (SaslAclOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SaslAclOutput)(nil)).Elem()
+	return reflect.TypeOf((*SaslAcl)(nil))
 }
 
 func (o SaslAclOutput) ToSaslAclOutput() SaslAclOutput {

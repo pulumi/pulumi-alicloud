@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpn
     ///  $ pulumi import alicloud:vpn/connection:Connection example vco-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpn/connection:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>

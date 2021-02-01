@@ -225,15 +225,15 @@ type ScalingRuleInput interface {
 	ToScalingRuleOutputWithContext(ctx context.Context) ScalingRuleOutput
 }
 
-func (ScalingRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingRule)(nil)).Elem()
+func (*ScalingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingRule)(nil))
 }
 
-func (i ScalingRule) ToScalingRuleOutput() ScalingRuleOutput {
+func (i *ScalingRule) ToScalingRuleOutput() ScalingRuleOutput {
 	return i.ToScalingRuleOutputWithContext(context.Background())
 }
 
-func (i ScalingRule) ToScalingRuleOutputWithContext(ctx context.Context) ScalingRuleOutput {
+func (i *ScalingRule) ToScalingRuleOutputWithContext(ctx context.Context) ScalingRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleOutput)
 }
 
@@ -242,7 +242,7 @@ type ScalingRuleOutput struct {
 }
 
 func (ScalingRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*ScalingRule)(nil))
 }
 
 func (o ScalingRuleOutput) ToScalingRuleOutput() ScalingRuleOutput {

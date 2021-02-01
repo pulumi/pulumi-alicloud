@@ -54,6 +54,7 @@ namespace Pulumi.AliCloud.FC
     ///  $ pulumi import alicloud:fc/alias:Alias example my_alias_id
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:fc/alias:Alias")]
     public partial class Alias : Pulumi.CustomResource
     {
         /// <summary>

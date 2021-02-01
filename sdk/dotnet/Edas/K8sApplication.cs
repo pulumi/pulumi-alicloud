@@ -22,6 +22,7 @@ namespace Pulumi.AliCloud.Edas
     ///  $ pulumi import alicloud:edas/k8sApplication:K8sApplication new_k8s_application application_id
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:edas/k8sApplication:K8sApplication")]
     public partial class K8sApplication : Pulumi.CustomResource
     {
         /// <summary>

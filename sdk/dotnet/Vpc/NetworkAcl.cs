@@ -48,6 +48,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/networkAcl:NetworkAcl default nacl-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/networkAcl:NetworkAcl")]
     public partial class NetworkAcl : Pulumi.CustomResource
     {
         /// <summary>

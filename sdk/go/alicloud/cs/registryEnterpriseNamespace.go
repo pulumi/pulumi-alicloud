@@ -163,15 +163,15 @@ type RegistryEnterpriseNamespaceInput interface {
 	ToRegistryEnterpriseNamespaceOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceOutput
 }
 
-func (RegistryEnterpriseNamespace) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryEnterpriseNamespace)(nil)).Elem()
+func (*RegistryEnterpriseNamespace) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseNamespace)(nil))
 }
 
-func (i RegistryEnterpriseNamespace) ToRegistryEnterpriseNamespaceOutput() RegistryEnterpriseNamespaceOutput {
+func (i *RegistryEnterpriseNamespace) ToRegistryEnterpriseNamespaceOutput() RegistryEnterpriseNamespaceOutput {
 	return i.ToRegistryEnterpriseNamespaceOutputWithContext(context.Background())
 }
 
-func (i RegistryEnterpriseNamespace) ToRegistryEnterpriseNamespaceOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceOutput {
+func (i *RegistryEnterpriseNamespace) ToRegistryEnterpriseNamespaceOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseNamespaceOutput)
 }
 
@@ -180,7 +180,7 @@ type RegistryEnterpriseNamespaceOutput struct {
 }
 
 func (RegistryEnterpriseNamespaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryEnterpriseNamespaceOutput)(nil)).Elem()
+	return reflect.TypeOf((*RegistryEnterpriseNamespace)(nil))
 }
 
 func (o RegistryEnterpriseNamespaceOutput) ToRegistryEnterpriseNamespaceOutput() RegistryEnterpriseNamespaceOutput {

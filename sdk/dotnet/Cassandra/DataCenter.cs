@@ -77,6 +77,7 @@ namespace Pulumi.AliCloud.Cassandra
     ///  $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cassandra/dataCenter:DataCenter")]
     public partial class DataCenter : Pulumi.CustomResource
     {
         /// <summary>

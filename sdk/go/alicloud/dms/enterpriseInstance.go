@@ -431,15 +431,15 @@ type EnterpriseInstanceInput interface {
 	ToEnterpriseInstanceOutputWithContext(ctx context.Context) EnterpriseInstanceOutput
 }
 
-func (EnterpriseInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseInstance)(nil)).Elem()
+func (*EnterpriseInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseInstance)(nil))
 }
 
-func (i EnterpriseInstance) ToEnterpriseInstanceOutput() EnterpriseInstanceOutput {
+func (i *EnterpriseInstance) ToEnterpriseInstanceOutput() EnterpriseInstanceOutput {
 	return i.ToEnterpriseInstanceOutputWithContext(context.Background())
 }
 
-func (i EnterpriseInstance) ToEnterpriseInstanceOutputWithContext(ctx context.Context) EnterpriseInstanceOutput {
+func (i *EnterpriseInstance) ToEnterpriseInstanceOutputWithContext(ctx context.Context) EnterpriseInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstanceOutput)
 }
 
@@ -448,7 +448,7 @@ type EnterpriseInstanceOutput struct {
 }
 
 func (EnterpriseInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*EnterpriseInstance)(nil))
 }
 
 func (o EnterpriseInstanceOutput) ToEnterpriseInstanceOutput() EnterpriseInstanceOutput {

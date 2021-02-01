@@ -24,6 +24,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/providers"
@@ -258,15 +259,15 @@ type RouteEntryInput interface {
 	ToRouteEntryOutputWithContext(ctx context.Context) RouteEntryOutput
 }
 
-func (RouteEntry) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteEntry)(nil)).Elem()
+func (*RouteEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteEntry)(nil))
 }
 
-func (i RouteEntry) ToRouteEntryOutput() RouteEntryOutput {
+func (i *RouteEntry) ToRouteEntryOutput() RouteEntryOutput {
 	return i.ToRouteEntryOutputWithContext(context.Background())
 }
 
-func (i RouteEntry) ToRouteEntryOutputWithContext(ctx context.Context) RouteEntryOutput {
+func (i *RouteEntry) ToRouteEntryOutputWithContext(ctx context.Context) RouteEntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryOutput)
 }
 
@@ -275,7 +276,7 @@ type RouteEntryOutput struct {
 }
 
 func (RouteEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteEntryOutput)(nil)).Elem()
+	return reflect.TypeOf((*RouteEntry)(nil))
 }
 
 func (o RouteEntryOutput) ToRouteEntryOutput() RouteEntryOutput {

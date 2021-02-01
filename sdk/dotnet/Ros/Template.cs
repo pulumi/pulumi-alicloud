@@ -50,6 +50,7 @@ namespace Pulumi.AliCloud.Ros
     ///  $ pulumi import alicloud:ros/template:Template example &lt;template_id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ros/template:Template")]
     public partial class Template : Pulumi.CustomResource
     {
         /// <summary>

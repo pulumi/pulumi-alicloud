@@ -57,6 +57,7 @@ namespace Pulumi.AliCloud.CS
     ///  $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo")]
     public partial class RegistryEnterpriseRepo : Pulumi.CustomResource
     {
         /// <summary>

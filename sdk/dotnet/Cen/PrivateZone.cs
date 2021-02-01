@@ -78,6 +78,7 @@ namespace Pulumi.AliCloud.Cen
     ///  $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cen/privateZone:PrivateZone")]
     public partial class PrivateZone : Pulumi.CustomResource
     {
         /// <summary>

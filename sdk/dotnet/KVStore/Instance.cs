@@ -140,6 +140,7 @@ namespace Pulumi.AliCloud.KVStore
     ///  $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:kvstore/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

@@ -141,6 +141,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/listener:Listener example "lb-abc123456:22"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:slb/listener:Listener")]
     public partial class Listener : Pulumi.CustomResource
     {
         /// <summary>

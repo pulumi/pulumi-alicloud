@@ -23,6 +23,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///  $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:resourcemanager/policyAttachment:PolicyAttachment")]
     public partial class PolicyAttachment : Pulumi.CustomResource
     {
         /// <summary>

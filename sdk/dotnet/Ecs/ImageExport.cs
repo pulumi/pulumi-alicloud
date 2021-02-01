@@ -46,6 +46,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// * `id` - ID of the image.
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/imageExport:ImageExport")]
     public partial class ImageExport : Pulumi.CustomResource
     {
         /// <summary>

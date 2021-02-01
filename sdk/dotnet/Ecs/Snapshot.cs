@@ -46,6 +46,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/snapshot:Snapshot")]
     public partial class Snapshot : Pulumi.CustomResource
     {
         /// <summary>

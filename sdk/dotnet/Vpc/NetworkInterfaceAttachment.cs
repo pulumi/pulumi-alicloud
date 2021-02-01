@@ -115,6 +115,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment eni eni-abc123456789000:i-abc123456789000
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment")]
     public partial class NetworkInterfaceAttachment : Pulumi.CustomResource
     {
         /// <summary>

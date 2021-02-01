@@ -68,6 +68,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///  $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:polardb/database:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>

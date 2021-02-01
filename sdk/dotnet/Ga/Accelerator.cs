@@ -47,6 +47,7 @@ namespace Pulumi.AliCloud.Ga
     ///  $ pulumi import alicloud:ga/accelerator:Accelerator example &lt;accelerator_id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ga/accelerator:Accelerator")]
     public partial class Accelerator : Pulumi.CustomResource
     {
         /// <summary>

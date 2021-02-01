@@ -75,6 +75,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry foo ftb-1aece3:fwd-232ce2
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/forwardEntry:ForwardEntry")]
     public partial class ForwardEntry : Pulumi.CustomResource
     {
         /// <summary>

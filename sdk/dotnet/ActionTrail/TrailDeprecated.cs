@@ -19,6 +19,7 @@ namespace Pulumi.AliCloud.ActionTrail
     /// ```
     /// </summary>
     [Obsolete(@"Resource renamed to `Trail`")]
+    [AliCloudResourceType("alicloud:actiontrail/trailDeprecated:TrailDeprecated")]
     public partial class TrailDeprecated : Pulumi.CustomResource
     {
         /// <summary>

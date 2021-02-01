@@ -128,15 +128,15 @@ type CaCertificateInput interface {
 	ToCaCertificateOutputWithContext(ctx context.Context) CaCertificateOutput
 }
 
-func (CaCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaCertificate)(nil)).Elem()
+func (*CaCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaCertificate)(nil))
 }
 
-func (i CaCertificate) ToCaCertificateOutput() CaCertificateOutput {
+func (i *CaCertificate) ToCaCertificateOutput() CaCertificateOutput {
 	return i.ToCaCertificateOutputWithContext(context.Background())
 }
 
-func (i CaCertificate) ToCaCertificateOutputWithContext(ctx context.Context) CaCertificateOutput {
+func (i *CaCertificate) ToCaCertificateOutputWithContext(ctx context.Context) CaCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaCertificateOutput)
 }
 
@@ -145,7 +145,7 @@ type CaCertificateOutput struct {
 }
 
 func (CaCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaCertificateOutput)(nil)).Elem()
+	return reflect.TypeOf((*CaCertificate)(nil))
 }
 
 func (o CaCertificateOutput) ToCaCertificateOutput() CaCertificateOutput {

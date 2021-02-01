@@ -105,15 +105,15 @@ type CommonBandwithPackageAttachmentInput interface {
 	ToCommonBandwithPackageAttachmentOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentOutput
 }
 
-func (CommonBandwithPackageAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*CommonBandwithPackageAttachment)(nil)).Elem()
+func (*CommonBandwithPackageAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonBandwithPackageAttachment)(nil))
 }
 
-func (i CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentOutput() CommonBandwithPackageAttachmentOutput {
+func (i *CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentOutput() CommonBandwithPackageAttachmentOutput {
 	return i.ToCommonBandwithPackageAttachmentOutputWithContext(context.Background())
 }
 
-func (i CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentOutput {
+func (i *CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageAttachmentOutput)
 }
 
@@ -122,7 +122,7 @@ type CommonBandwithPackageAttachmentOutput struct {
 }
 
 func (CommonBandwithPackageAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CommonBandwithPackageAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*CommonBandwithPackageAttachment)(nil))
 }
 
 func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachmentOutput() CommonBandwithPackageAttachmentOutput {

@@ -235,15 +235,15 @@ type AlidnsRecordInput interface {
 	ToAlidnsRecordOutputWithContext(ctx context.Context) AlidnsRecordOutput
 }
 
-func (AlidnsRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlidnsRecord)(nil)).Elem()
+func (*AlidnsRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlidnsRecord)(nil))
 }
 
-func (i AlidnsRecord) ToAlidnsRecordOutput() AlidnsRecordOutput {
+func (i *AlidnsRecord) ToAlidnsRecordOutput() AlidnsRecordOutput {
 	return i.ToAlidnsRecordOutputWithContext(context.Background())
 }
 
-func (i AlidnsRecord) ToAlidnsRecordOutputWithContext(ctx context.Context) AlidnsRecordOutput {
+func (i *AlidnsRecord) ToAlidnsRecordOutputWithContext(ctx context.Context) AlidnsRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsRecordOutput)
 }
 
@@ -252,7 +252,7 @@ type AlidnsRecordOutput struct {
 }
 
 func (AlidnsRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlidnsRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*AlidnsRecord)(nil))
 }
 
 func (o AlidnsRecordOutput) ToAlidnsRecordOutput() AlidnsRecordOutput {

@@ -79,6 +79,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/dedicatedHost:DedicatedHost default dh-2zedmxxxx
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/dedicatedHost:DedicatedHost")]
     public partial class DedicatedHost : Pulumi.CustomResource
     {
         /// <summary>

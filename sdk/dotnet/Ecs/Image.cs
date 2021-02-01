@@ -56,6 +56,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/image:Image default m-uf66871ape***yg1q***
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/image:Image")]
     public partial class Image : Pulumi.CustomResource
     {
         /// <summary>

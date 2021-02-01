@@ -234,15 +234,15 @@ type QosCarInput interface {
 	ToQosCarOutputWithContext(ctx context.Context) QosCarOutput
 }
 
-func (QosCar) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosCar)(nil)).Elem()
+func (*QosCar) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosCar)(nil))
 }
 
-func (i QosCar) ToQosCarOutput() QosCarOutput {
+func (i *QosCar) ToQosCarOutput() QosCarOutput {
 	return i.ToQosCarOutputWithContext(context.Background())
 }
 
-func (i QosCar) ToQosCarOutputWithContext(ctx context.Context) QosCarOutput {
+func (i *QosCar) ToQosCarOutputWithContext(ctx context.Context) QosCarOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosCarOutput)
 }
 
@@ -251,7 +251,7 @@ type QosCarOutput struct {
 }
 
 func (QosCarOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosCarOutput)(nil)).Elem()
+	return reflect.TypeOf((*QosCar)(nil))
 }
 
 func (o QosCarOutput) ToQosCarOutput() QosCarOutput {

@@ -140,15 +140,15 @@ type OpenApiImageCacheInput interface {
 	ToOpenApiImageCacheOutputWithContext(ctx context.Context) OpenApiImageCacheOutput
 }
 
-func (OpenApiImageCache) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenApiImageCache)(nil)).Elem()
+func (*OpenApiImageCache) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiImageCache)(nil))
 }
 
-func (i OpenApiImageCache) ToOpenApiImageCacheOutput() OpenApiImageCacheOutput {
+func (i *OpenApiImageCache) ToOpenApiImageCacheOutput() OpenApiImageCacheOutput {
 	return i.ToOpenApiImageCacheOutputWithContext(context.Background())
 }
 
-func (i OpenApiImageCache) ToOpenApiImageCacheOutputWithContext(ctx context.Context) OpenApiImageCacheOutput {
+func (i *OpenApiImageCache) ToOpenApiImageCacheOutputWithContext(ctx context.Context) OpenApiImageCacheOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OpenApiImageCacheOutput)
 }
 
@@ -157,7 +157,7 @@ type OpenApiImageCacheOutput struct {
 }
 
 func (OpenApiImageCacheOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenApiImageCacheOutput)(nil)).Elem()
+	return reflect.TypeOf((*OpenApiImageCache)(nil))
 }
 
 func (o OpenApiImageCacheOutput) ToOpenApiImageCacheOutput() OpenApiImageCacheOutput {

@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Adb
     ///  $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example "am-12345678"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:adb/backupPolicy:BackupPolicy")]
     public partial class BackupPolicy : Pulumi.CustomResource
     {
         /// <summary>

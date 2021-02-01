@@ -54,6 +54,7 @@ namespace Pulumi.AliCloud.Waf
     ///  $ pulumi import alicloud:waf/instance:Instance default waf-cn-132435
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:waf/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

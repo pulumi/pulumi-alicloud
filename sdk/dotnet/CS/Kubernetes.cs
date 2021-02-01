@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.CS
     ///  $ pulumi import alicloud:cs/kubernetes:Kubernetes alicloud_cs_kubernetes.main cluster-id
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cs/kubernetes:Kubernetes")]
     public partial class Kubernetes : Pulumi.CustomResource
     {
         [Output("addons")]

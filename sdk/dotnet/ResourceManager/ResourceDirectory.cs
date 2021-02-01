@@ -50,6 +50,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///  $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:resourcemanager/resourceDirectory:ResourceDirectory")]
     public partial class ResourceDirectory : Pulumi.CustomResource
     {
         /// <summary>

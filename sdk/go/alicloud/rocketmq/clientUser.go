@@ -196,15 +196,15 @@ type ClientUserInput interface {
 	ToClientUserOutputWithContext(ctx context.Context) ClientUserOutput
 }
 
-func (ClientUser) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientUser)(nil)).Elem()
+func (*ClientUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientUser)(nil))
 }
 
-func (i ClientUser) ToClientUserOutput() ClientUserOutput {
+func (i *ClientUser) ToClientUserOutput() ClientUserOutput {
 	return i.ToClientUserOutputWithContext(context.Background())
 }
 
-func (i ClientUser) ToClientUserOutputWithContext(ctx context.Context) ClientUserOutput {
+func (i *ClientUser) ToClientUserOutputWithContext(ctx context.Context) ClientUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientUserOutput)
 }
 
@@ -213,7 +213,7 @@ type ClientUserOutput struct {
 }
 
 func (ClientUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientUserOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClientUser)(nil))
 }
 
 func (o ClientUserOutput) ToClientUserOutput() ClientUserOutput {

@@ -209,15 +209,15 @@ type AlarmContactInput interface {
 	ToAlarmContactOutputWithContext(ctx context.Context) AlarmContactOutput
 }
 
-func (AlarmContact) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlarmContact)(nil)).Elem()
+func (*AlarmContact) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmContact)(nil))
 }
 
-func (i AlarmContact) ToAlarmContactOutput() AlarmContactOutput {
+func (i *AlarmContact) ToAlarmContactOutput() AlarmContactOutput {
 	return i.ToAlarmContactOutputWithContext(context.Background())
 }
 
-func (i AlarmContact) ToAlarmContactOutputWithContext(ctx context.Context) AlarmContactOutput {
+func (i *AlarmContact) ToAlarmContactOutputWithContext(ctx context.Context) AlarmContactOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmContactOutput)
 }
 
@@ -226,7 +226,7 @@ type AlarmContactOutput struct {
 }
 
 func (AlarmContactOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlarmContactOutput)(nil)).Elem()
+	return reflect.TypeOf((*AlarmContact)(nil))
 }
 
 func (o AlarmContactOutput) ToAlarmContactOutput() AlarmContactOutput {

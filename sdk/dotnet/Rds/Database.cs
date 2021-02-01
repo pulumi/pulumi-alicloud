@@ -67,6 +67,7 @@ namespace Pulumi.AliCloud.Rds
     ///  $ pulumi import alicloud:rds/database:Database example "rm-12345:tf_database"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rds/database:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>

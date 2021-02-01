@@ -105,15 +105,15 @@ type DomainAttachmentInput interface {
 	ToDomainAttachmentOutputWithContext(ctx context.Context) DomainAttachmentOutput
 }
 
-func (DomainAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainAttachment)(nil)).Elem()
+func (*DomainAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainAttachment)(nil))
 }
 
-func (i DomainAttachment) ToDomainAttachmentOutput() DomainAttachmentOutput {
+func (i *DomainAttachment) ToDomainAttachmentOutput() DomainAttachmentOutput {
 	return i.ToDomainAttachmentOutputWithContext(context.Background())
 }
 
-func (i DomainAttachment) ToDomainAttachmentOutputWithContext(ctx context.Context) DomainAttachmentOutput {
+func (i *DomainAttachment) ToDomainAttachmentOutputWithContext(ctx context.Context) DomainAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainAttachmentOutput)
 }
 
@@ -122,7 +122,7 @@ type DomainAttachmentOutput struct {
 }
 
 func (DomainAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainAttachment)(nil))
 }
 
 func (o DomainAttachmentOutput) ToDomainAttachmentOutput() DomainAttachmentOutput {

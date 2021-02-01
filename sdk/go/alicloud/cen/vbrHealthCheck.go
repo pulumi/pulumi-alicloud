@@ -226,15 +226,15 @@ type VbrHealthCheckInput interface {
 	ToVbrHealthCheckOutputWithContext(ctx context.Context) VbrHealthCheckOutput
 }
 
-func (VbrHealthCheck) ElementType() reflect.Type {
-	return reflect.TypeOf((*VbrHealthCheck)(nil)).Elem()
+func (*VbrHealthCheck) ElementType() reflect.Type {
+	return reflect.TypeOf((*VbrHealthCheck)(nil))
 }
 
-func (i VbrHealthCheck) ToVbrHealthCheckOutput() VbrHealthCheckOutput {
+func (i *VbrHealthCheck) ToVbrHealthCheckOutput() VbrHealthCheckOutput {
 	return i.ToVbrHealthCheckOutputWithContext(context.Background())
 }
 
-func (i VbrHealthCheck) ToVbrHealthCheckOutputWithContext(ctx context.Context) VbrHealthCheckOutput {
+func (i *VbrHealthCheck) ToVbrHealthCheckOutputWithContext(ctx context.Context) VbrHealthCheckOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VbrHealthCheckOutput)
 }
 
@@ -243,7 +243,7 @@ type VbrHealthCheckOutput struct {
 }
 
 func (VbrHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VbrHealthCheckOutput)(nil)).Elem()
+	return reflect.TypeOf((*VbrHealthCheck)(nil))
 }
 
 func (o VbrHealthCheckOutput) ToVbrHealthCheckOutput() VbrHealthCheckOutput {

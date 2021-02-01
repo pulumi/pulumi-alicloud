@@ -72,6 +72,7 @@ namespace Pulumi.AliCloud.Gpdb
     ///  $ pulumi import alicloud:gpdb/instance:Instance example gp-bp1291daeda44194
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:gpdb/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         [Output("availabilityZone")]

@@ -48,6 +48,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///  $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:resourcemanager/account:Account")]
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>

@@ -69,6 +69,7 @@ namespace Pulumi.AliCloud.Rds
     ///  $ pulumi import alicloud:rds/connection:Connection example abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rds/connection:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>

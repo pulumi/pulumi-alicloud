@@ -204,15 +204,15 @@ type DomainNewInput interface {
 	ToDomainNewOutputWithContext(ctx context.Context) DomainNewOutput
 }
 
-func (DomainNew) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainNew)(nil)).Elem()
+func (*DomainNew) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainNew)(nil))
 }
 
-func (i DomainNew) ToDomainNewOutput() DomainNewOutput {
+func (i *DomainNew) ToDomainNewOutput() DomainNewOutput {
 	return i.ToDomainNewOutputWithContext(context.Background())
 }
 
-func (i DomainNew) ToDomainNewOutputWithContext(ctx context.Context) DomainNewOutput {
+func (i *DomainNew) ToDomainNewOutputWithContext(ctx context.Context) DomainNewOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainNewOutput)
 }
 
@@ -221,7 +221,7 @@ type DomainNewOutput struct {
 }
 
 func (DomainNewOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainNewOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainNew)(nil))
 }
 
 func (o DomainNewOutput) ToDomainNewOutput() DomainNewOutput {

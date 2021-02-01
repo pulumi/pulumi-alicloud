@@ -42,6 +42,7 @@ namespace Pulumi.AliCloud.Dns
     ///  $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:dns/domainGroup:DomainGroup")]
     public partial class DomainGroup : Pulumi.CustomResource
     {
         /// <summary>

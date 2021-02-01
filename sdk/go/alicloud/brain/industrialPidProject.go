@@ -145,15 +145,15 @@ type IndustrialPidProjectInput interface {
 	ToIndustrialPidProjectOutputWithContext(ctx context.Context) IndustrialPidProjectOutput
 }
 
-func (IndustrialPidProject) ElementType() reflect.Type {
-	return reflect.TypeOf((*IndustrialPidProject)(nil)).Elem()
+func (*IndustrialPidProject) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndustrialPidProject)(nil))
 }
 
-func (i IndustrialPidProject) ToIndustrialPidProjectOutput() IndustrialPidProjectOutput {
+func (i *IndustrialPidProject) ToIndustrialPidProjectOutput() IndustrialPidProjectOutput {
 	return i.ToIndustrialPidProjectOutputWithContext(context.Background())
 }
 
-func (i IndustrialPidProject) ToIndustrialPidProjectOutputWithContext(ctx context.Context) IndustrialPidProjectOutput {
+func (i *IndustrialPidProject) ToIndustrialPidProjectOutputWithContext(ctx context.Context) IndustrialPidProjectOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidProjectOutput)
 }
 
@@ -162,7 +162,7 @@ type IndustrialPidProjectOutput struct {
 }
 
 func (IndustrialPidProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IndustrialPidProjectOutput)(nil)).Elem()
+	return reflect.TypeOf((*IndustrialPidProject)(nil))
 }
 
 func (o IndustrialPidProjectOutput) ToIndustrialPidProjectOutput() IndustrialPidProjectOutput {

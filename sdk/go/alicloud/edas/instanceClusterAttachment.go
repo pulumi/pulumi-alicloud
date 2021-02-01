@@ -145,15 +145,15 @@ type InstanceClusterAttachmentInput interface {
 	ToInstanceClusterAttachmentOutputWithContext(ctx context.Context) InstanceClusterAttachmentOutput
 }
 
-func (InstanceClusterAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceClusterAttachment)(nil)).Elem()
+func (*InstanceClusterAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceClusterAttachment)(nil))
 }
 
-func (i InstanceClusterAttachment) ToInstanceClusterAttachmentOutput() InstanceClusterAttachmentOutput {
+func (i *InstanceClusterAttachment) ToInstanceClusterAttachmentOutput() InstanceClusterAttachmentOutput {
 	return i.ToInstanceClusterAttachmentOutputWithContext(context.Background())
 }
 
-func (i InstanceClusterAttachment) ToInstanceClusterAttachmentOutputWithContext(ctx context.Context) InstanceClusterAttachmentOutput {
+func (i *InstanceClusterAttachment) ToInstanceClusterAttachmentOutputWithContext(ctx context.Context) InstanceClusterAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAttachmentOutput)
 }
 
@@ -162,7 +162,7 @@ type InstanceClusterAttachmentOutput struct {
 }
 
 func (InstanceClusterAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceClusterAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstanceClusterAttachment)(nil))
 }
 
 func (o InstanceClusterAttachmentOutput) ToInstanceClusterAttachmentOutput() InstanceClusterAttachmentOutput {

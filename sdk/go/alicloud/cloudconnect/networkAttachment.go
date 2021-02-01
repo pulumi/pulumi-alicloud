@@ -147,15 +147,15 @@ type NetworkAttachmentInput interface {
 	ToNetworkAttachmentOutputWithContext(ctx context.Context) NetworkAttachmentOutput
 }
 
-func (NetworkAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAttachment)(nil)).Elem()
+func (*NetworkAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAttachment)(nil))
 }
 
-func (i NetworkAttachment) ToNetworkAttachmentOutput() NetworkAttachmentOutput {
+func (i *NetworkAttachment) ToNetworkAttachmentOutput() NetworkAttachmentOutput {
 	return i.ToNetworkAttachmentOutputWithContext(context.Background())
 }
 
-func (i NetworkAttachment) ToNetworkAttachmentOutputWithContext(ctx context.Context) NetworkAttachmentOutput {
+func (i *NetworkAttachment) ToNetworkAttachmentOutputWithContext(ctx context.Context) NetworkAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentOutput)
 }
 
@@ -164,7 +164,7 @@ type NetworkAttachmentOutput struct {
 }
 
 func (NetworkAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkAttachment)(nil))
 }
 
 func (o NetworkAttachmentOutput) ToNetworkAttachmentOutput() NetworkAttachmentOutput {

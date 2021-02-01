@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpn
     ///  $ pulumi import alicloud:vpn/routeEntry:RouteEntry example vpn-abc123456:vco-abc123456:10.0.0.10/24
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpn/routeEntry:RouteEntry")]
     public partial class RouteEntry : Pulumi.CustomResource
     {
         /// <summary>

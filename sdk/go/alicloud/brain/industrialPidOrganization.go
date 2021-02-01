@@ -131,15 +131,15 @@ type IndustrialPidOrganizationInput interface {
 	ToIndustrialPidOrganizationOutputWithContext(ctx context.Context) IndustrialPidOrganizationOutput
 }
 
-func (IndustrialPidOrganization) ElementType() reflect.Type {
-	return reflect.TypeOf((*IndustrialPidOrganization)(nil)).Elem()
+func (*IndustrialPidOrganization) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndustrialPidOrganization)(nil))
 }
 
-func (i IndustrialPidOrganization) ToIndustrialPidOrganizationOutput() IndustrialPidOrganizationOutput {
+func (i *IndustrialPidOrganization) ToIndustrialPidOrganizationOutput() IndustrialPidOrganizationOutput {
 	return i.ToIndustrialPidOrganizationOutputWithContext(context.Background())
 }
 
-func (i IndustrialPidOrganization) ToIndustrialPidOrganizationOutputWithContext(ctx context.Context) IndustrialPidOrganizationOutput {
+func (i *IndustrialPidOrganization) ToIndustrialPidOrganizationOutputWithContext(ctx context.Context) IndustrialPidOrganizationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidOrganizationOutput)
 }
 
@@ -148,7 +148,7 @@ type IndustrialPidOrganizationOutput struct {
 }
 
 func (IndustrialPidOrganizationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IndustrialPidOrganizationOutput)(nil)).Elem()
+	return reflect.TypeOf((*IndustrialPidOrganization)(nil))
 }
 
 func (o IndustrialPidOrganizationOutput) ToIndustrialPidOrganizationOutput() IndustrialPidOrganizationOutput {

@@ -214,15 +214,15 @@ type EnterpriseUserInput interface {
 	ToEnterpriseUserOutputWithContext(ctx context.Context) EnterpriseUserOutput
 }
 
-func (EnterpriseUser) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseUser)(nil)).Elem()
+func (*EnterpriseUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseUser)(nil))
 }
 
-func (i EnterpriseUser) ToEnterpriseUserOutput() EnterpriseUserOutput {
+func (i *EnterpriseUser) ToEnterpriseUserOutput() EnterpriseUserOutput {
 	return i.ToEnterpriseUserOutputWithContext(context.Background())
 }
 
-func (i EnterpriseUser) ToEnterpriseUserOutputWithContext(ctx context.Context) EnterpriseUserOutput {
+func (i *EnterpriseUser) ToEnterpriseUserOutputWithContext(ctx context.Context) EnterpriseUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserOutput)
 }
 
@@ -231,7 +231,7 @@ type EnterpriseUserOutput struct {
 }
 
 func (EnterpriseUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseUserOutput)(nil)).Elem()
+	return reflect.TypeOf((*EnterpriseUser)(nil))
 }
 
 func (o EnterpriseUserOutput) ToEnterpriseUserOutput() EnterpriseUserOutput {

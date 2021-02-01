@@ -61,6 +61,7 @@ namespace Pulumi.AliCloud.Tsdb
     ///  $ pulumi import alicloud:tsdb/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:tsdb/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

@@ -45,6 +45,7 @@ namespace Pulumi.AliCloud.Cms
     ///  $ pulumi import alicloud:cms/alarmContactGroup:AlarmContactGroup example tf-testacc123
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cms/alarmContactGroup:AlarmContactGroup")]
     public partial class AlarmContactGroup : Pulumi.CustomResource
     {
         /// <summary>

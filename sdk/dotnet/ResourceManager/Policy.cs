@@ -54,6 +54,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///  $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:resourcemanager/policy:Policy")]
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>

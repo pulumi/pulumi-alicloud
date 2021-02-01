@@ -211,15 +211,15 @@ type AclRuleInput interface {
 	ToAclRuleOutputWithContext(ctx context.Context) AclRuleOutput
 }
 
-func (AclRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclRule)(nil)).Elem()
+func (*AclRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRule)(nil))
 }
 
-func (i AclRule) ToAclRuleOutput() AclRuleOutput {
+func (i *AclRule) ToAclRuleOutput() AclRuleOutput {
 	return i.ToAclRuleOutputWithContext(context.Background())
 }
 
-func (i AclRule) ToAclRuleOutputWithContext(ctx context.Context) AclRuleOutput {
+func (i *AclRule) ToAclRuleOutputWithContext(ctx context.Context) AclRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclRuleOutput)
 }
 
@@ -228,7 +228,7 @@ type AclRuleOutput struct {
 }
 
 func (AclRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*AclRule)(nil))
 }
 
 func (o AclRuleOutput) ToAclRuleOutput() AclRuleOutput {

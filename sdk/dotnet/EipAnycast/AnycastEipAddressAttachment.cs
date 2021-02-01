@@ -55,6 +55,7 @@ namespace Pulumi.AliCloud.EipAnycast
     ///  $ pulumi import alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment example `anycast_id`:`bind_instance_id`:`bind_instance_region_id`:`bind_instance_type`
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment")]
     public partial class AnycastEipAddressAttachment : Pulumi.CustomResource
     {
         /// <summary>

@@ -751,6 +751,7 @@ namespace Pulumi.AliCloud.Emr
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:emr/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
         [Output("bootstrapActions")]

@@ -144,15 +144,15 @@ type ImageSharePermissionInput interface {
 	ToImageSharePermissionOutputWithContext(ctx context.Context) ImageSharePermissionOutput
 }
 
-func (ImageSharePermission) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageSharePermission)(nil)).Elem()
+func (*ImageSharePermission) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageSharePermission)(nil))
 }
 
-func (i ImageSharePermission) ToImageSharePermissionOutput() ImageSharePermissionOutput {
+func (i *ImageSharePermission) ToImageSharePermissionOutput() ImageSharePermissionOutput {
 	return i.ToImageSharePermissionOutputWithContext(context.Background())
 }
 
-func (i ImageSharePermission) ToImageSharePermissionOutputWithContext(ctx context.Context) ImageSharePermissionOutput {
+func (i *ImageSharePermission) ToImageSharePermissionOutputWithContext(ctx context.Context) ImageSharePermissionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageSharePermissionOutput)
 }
 
@@ -161,7 +161,7 @@ type ImageSharePermissionOutput struct {
 }
 
 func (ImageSharePermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageSharePermissionOutput)(nil)).Elem()
+	return reflect.TypeOf((*ImageSharePermission)(nil))
 }
 
 func (o ImageSharePermissionOutput) ToImageSharePermissionOutput() ImageSharePermissionOutput {

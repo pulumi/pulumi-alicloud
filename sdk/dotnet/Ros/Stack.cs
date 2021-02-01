@@ -60,6 +60,7 @@ namespace Pulumi.AliCloud.Ros
     ///  $ pulumi import alicloud:ros/stack:Stack example &lt;stack_id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ros/stack:Stack")]
     public partial class Stack : Pulumi.CustomResource
     {
         /// <summary>

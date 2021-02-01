@@ -95,6 +95,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup")]
     public partial class AutoProvisioningGroup : Pulumi.CustomResource
     {
         /// <summary>

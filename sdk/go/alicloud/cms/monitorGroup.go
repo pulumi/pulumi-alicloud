@@ -138,15 +138,15 @@ type MonitorGroupInput interface {
 	ToMonitorGroupOutputWithContext(ctx context.Context) MonitorGroupOutput
 }
 
-func (MonitorGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorGroup)(nil)).Elem()
+func (*MonitorGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorGroup)(nil))
 }
 
-func (i MonitorGroup) ToMonitorGroupOutput() MonitorGroupOutput {
+func (i *MonitorGroup) ToMonitorGroupOutput() MonitorGroupOutput {
 	return i.ToMonitorGroupOutputWithContext(context.Background())
 }
 
-func (i MonitorGroup) ToMonitorGroupOutputWithContext(ctx context.Context) MonitorGroupOutput {
+func (i *MonitorGroup) ToMonitorGroupOutputWithContext(ctx context.Context) MonitorGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupOutput)
 }
 
@@ -155,7 +155,7 @@ type MonitorGroupOutput struct {
 }
 
 func (MonitorGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*MonitorGroup)(nil))
 }
 
 func (o MonitorGroupOutput) ToMonitorGroupOutput() MonitorGroupOutput {

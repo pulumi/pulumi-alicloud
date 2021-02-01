@@ -75,6 +75,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:slb/serverCertificate:ServerCertificate")]
     public partial class ServerCertificate : Pulumi.CustomResource
     {
         [Output("alicloudCertifacteId")]

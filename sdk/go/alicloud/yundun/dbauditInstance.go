@@ -184,15 +184,15 @@ type DBAuditInstanceInput interface {
 	ToDBAuditInstanceOutputWithContext(ctx context.Context) DBAuditInstanceOutput
 }
 
-func (DBAuditInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*DBAuditInstance)(nil)).Elem()
+func (*DBAuditInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*DBAuditInstance)(nil))
 }
 
-func (i DBAuditInstance) ToDBAuditInstanceOutput() DBAuditInstanceOutput {
+func (i *DBAuditInstance) ToDBAuditInstanceOutput() DBAuditInstanceOutput {
 	return i.ToDBAuditInstanceOutputWithContext(context.Background())
 }
 
-func (i DBAuditInstance) ToDBAuditInstanceOutputWithContext(ctx context.Context) DBAuditInstanceOutput {
+func (i *DBAuditInstance) ToDBAuditInstanceOutputWithContext(ctx context.Context) DBAuditInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstanceOutput)
 }
 
@@ -201,7 +201,7 @@ type DBAuditInstanceOutput struct {
 }
 
 func (DBAuditInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DBAuditInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*DBAuditInstance)(nil))
 }
 
 func (o DBAuditInstanceOutput) ToDBAuditInstanceOutput() DBAuditInstanceOutput {

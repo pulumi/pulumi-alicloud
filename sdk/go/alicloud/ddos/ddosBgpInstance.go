@@ -198,15 +198,15 @@ type DdosBgpInstanceInput interface {
 	ToDdosBgpInstanceOutputWithContext(ctx context.Context) DdosBgpInstanceOutput
 }
 
-func (DdosBgpInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*DdosBgpInstance)(nil)).Elem()
+func (*DdosBgpInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdosBgpInstance)(nil))
 }
 
-func (i DdosBgpInstance) ToDdosBgpInstanceOutput() DdosBgpInstanceOutput {
+func (i *DdosBgpInstance) ToDdosBgpInstanceOutput() DdosBgpInstanceOutput {
 	return i.ToDdosBgpInstanceOutputWithContext(context.Background())
 }
 
-func (i DdosBgpInstance) ToDdosBgpInstanceOutputWithContext(ctx context.Context) DdosBgpInstanceOutput {
+func (i *DdosBgpInstance) ToDdosBgpInstanceOutputWithContext(ctx context.Context) DdosBgpInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DdosBgpInstanceOutput)
 }
 
@@ -215,7 +215,7 @@ type DdosBgpInstanceOutput struct {
 }
 
 func (DdosBgpInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DdosBgpInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*DdosBgpInstance)(nil))
 }
 
 func (o DdosBgpInstanceOutput) ToDdosBgpInstanceOutput() DdosBgpInstanceOutput {

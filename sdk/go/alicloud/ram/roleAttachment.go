@@ -99,15 +99,15 @@ type RoleAttachmentInput interface {
 	ToRoleAttachmentOutputWithContext(ctx context.Context) RoleAttachmentOutput
 }
 
-func (RoleAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleAttachment)(nil)).Elem()
+func (*RoleAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAttachment)(nil))
 }
 
-func (i RoleAttachment) ToRoleAttachmentOutput() RoleAttachmentOutput {
+func (i *RoleAttachment) ToRoleAttachmentOutput() RoleAttachmentOutput {
 	return i.ToRoleAttachmentOutputWithContext(context.Background())
 }
 
-func (i RoleAttachment) ToRoleAttachmentOutputWithContext(ctx context.Context) RoleAttachmentOutput {
+func (i *RoleAttachment) ToRoleAttachmentOutputWithContext(ctx context.Context) RoleAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentOutput)
 }
 
@@ -116,7 +116,7 @@ type RoleAttachmentOutput struct {
 }
 
 func (RoleAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*RoleAttachment)(nil))
 }
 
 func (o RoleAttachmentOutput) ToRoleAttachmentOutput() RoleAttachmentOutput {

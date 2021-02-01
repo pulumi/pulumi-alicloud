@@ -59,6 +59,7 @@ namespace Pulumi.AliCloud.Oss
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:oss/bucketObject:BucketObject")]
     public partial class BucketObject : Pulumi.CustomResource
     {
         /// <summary>

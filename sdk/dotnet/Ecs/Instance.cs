@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

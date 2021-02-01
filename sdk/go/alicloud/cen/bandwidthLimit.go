@@ -231,15 +231,15 @@ type BandwidthLimitInput interface {
 	ToBandwidthLimitOutputWithContext(ctx context.Context) BandwidthLimitOutput
 }
 
-func (BandwidthLimit) ElementType() reflect.Type {
-	return reflect.TypeOf((*BandwidthLimit)(nil)).Elem()
+func (*BandwidthLimit) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthLimit)(nil))
 }
 
-func (i BandwidthLimit) ToBandwidthLimitOutput() BandwidthLimitOutput {
+func (i *BandwidthLimit) ToBandwidthLimitOutput() BandwidthLimitOutput {
 	return i.ToBandwidthLimitOutputWithContext(context.Background())
 }
 
-func (i BandwidthLimit) ToBandwidthLimitOutputWithContext(ctx context.Context) BandwidthLimitOutput {
+func (i *BandwidthLimit) ToBandwidthLimitOutputWithContext(ctx context.Context) BandwidthLimitOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitOutput)
 }
 
@@ -248,7 +248,7 @@ type BandwidthLimitOutput struct {
 }
 
 func (BandwidthLimitOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BandwidthLimitOutput)(nil)).Elem()
+	return reflect.TypeOf((*BandwidthLimit)(nil))
 }
 
 func (o BandwidthLimitOutput) ToBandwidthLimitOutput() BandwidthLimitOutput {

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ess
 {
+    [AliCloudResourceType("alicloud:ess/schedule:Schedule")]
     public partial class Schedule : Pulumi.CustomResource
     {
         [Output("description")]

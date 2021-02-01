@@ -52,6 +52,7 @@ namespace Pulumi.AliCloud.Drds
     ///  $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:drds/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

@@ -48,7 +48,7 @@ setup(name='pulumi_alicloud',
       packages=find_packages(),
       package_data={
           'pulumi_alicloud': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

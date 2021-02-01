@@ -125,6 +125,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:slb/domainExtension:DomainExtension")]
     public partial class DomainExtension : Pulumi.CustomResource
     {
         /// <summary>

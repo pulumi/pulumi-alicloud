@@ -69,6 +69,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/networkInterface:NetworkInterface")]
     public partial class NetworkInterface : Pulumi.CustomResource
     {
         /// <summary>

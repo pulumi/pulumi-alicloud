@@ -245,15 +245,15 @@ type RegistryEnterpriseSyncRuleInput interface {
 	ToRegistryEnterpriseSyncRuleOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleOutput
 }
 
-func (RegistryEnterpriseSyncRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryEnterpriseSyncRule)(nil)).Elem()
+func (*RegistryEnterpriseSyncRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseSyncRule)(nil))
 }
 
-func (i RegistryEnterpriseSyncRule) ToRegistryEnterpriseSyncRuleOutput() RegistryEnterpriseSyncRuleOutput {
+func (i *RegistryEnterpriseSyncRule) ToRegistryEnterpriseSyncRuleOutput() RegistryEnterpriseSyncRuleOutput {
 	return i.ToRegistryEnterpriseSyncRuleOutputWithContext(context.Background())
 }
 
-func (i RegistryEnterpriseSyncRule) ToRegistryEnterpriseSyncRuleOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleOutput {
+func (i *RegistryEnterpriseSyncRule) ToRegistryEnterpriseSyncRuleOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseSyncRuleOutput)
 }
 
@@ -262,7 +262,7 @@ type RegistryEnterpriseSyncRuleOutput struct {
 }
 
 func (RegistryEnterpriseSyncRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryEnterpriseSyncRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*RegistryEnterpriseSyncRule)(nil))
 }
 
 func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRuleOutput() RegistryEnterpriseSyncRuleOutput {

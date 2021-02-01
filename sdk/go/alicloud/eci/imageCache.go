@@ -240,15 +240,15 @@ type ImageCacheInput interface {
 	ToImageCacheOutputWithContext(ctx context.Context) ImageCacheOutput
 }
 
-func (ImageCache) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageCache)(nil)).Elem()
+func (*ImageCache) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageCache)(nil))
 }
 
-func (i ImageCache) ToImageCacheOutput() ImageCacheOutput {
+func (i *ImageCache) ToImageCacheOutput() ImageCacheOutput {
 	return i.ToImageCacheOutputWithContext(context.Background())
 }
 
-func (i ImageCache) ToImageCacheOutputWithContext(ctx context.Context) ImageCacheOutput {
+func (i *ImageCache) ToImageCacheOutputWithContext(ctx context.Context) ImageCacheOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheOutput)
 }
 
@@ -257,7 +257,7 @@ type ImageCacheOutput struct {
 }
 
 func (ImageCacheOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageCacheOutput)(nil)).Elem()
+	return reflect.TypeOf((*ImageCache)(nil))
 }
 
 func (o ImageCacheOutput) ToImageCacheOutput() ImageCacheOutput {

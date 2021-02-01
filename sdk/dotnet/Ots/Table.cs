@@ -76,6 +76,7 @@ namespace Pulumi.AliCloud.Ots
     ///  $ pulumi import alicloud:ots/table:Table table "my-ots:ots_table"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ots/table:Table")]
     public partial class Table : Pulumi.CustomResource
     {
         /// <summary>

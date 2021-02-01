@@ -147,15 +147,15 @@ type VpcEndpointServiceUserInput interface {
 	ToVpcEndpointServiceUserOutputWithContext(ctx context.Context) VpcEndpointServiceUserOutput
 }
 
-func (VpcEndpointServiceUser) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointServiceUser)(nil)).Elem()
+func (*VpcEndpointServiceUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointServiceUser)(nil))
 }
 
-func (i VpcEndpointServiceUser) ToVpcEndpointServiceUserOutput() VpcEndpointServiceUserOutput {
+func (i *VpcEndpointServiceUser) ToVpcEndpointServiceUserOutput() VpcEndpointServiceUserOutput {
 	return i.ToVpcEndpointServiceUserOutputWithContext(context.Background())
 }
 
-func (i VpcEndpointServiceUser) ToVpcEndpointServiceUserOutputWithContext(ctx context.Context) VpcEndpointServiceUserOutput {
+func (i *VpcEndpointServiceUser) ToVpcEndpointServiceUserOutputWithContext(ctx context.Context) VpcEndpointServiceUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceUserOutput)
 }
 
@@ -164,7 +164,7 @@ type VpcEndpointServiceUserOutput struct {
 }
 
 func (VpcEndpointServiceUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointServiceUserOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpcEndpointServiceUser)(nil))
 }
 
 func (o VpcEndpointServiceUserOutput) ToVpcEndpointServiceUserOutput() VpcEndpointServiceUserOutput {

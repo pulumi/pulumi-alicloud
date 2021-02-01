@@ -54,6 +54,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///  $ pulumi import alicloud:rocketmq/group:Group group MQ_INST_1234567890_Baso1234567:GID-onsGroupDemo
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rocketmq/group:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

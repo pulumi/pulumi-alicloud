@@ -47,6 +47,7 @@ namespace Pulumi.AliCloud.Ots
     ///  $ pulumi import alicloud:ots/instance:Instance foo "my-ots-instance"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ots/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ess
     ///  $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ess/lifecycleHook:LifecycleHook")]
     public partial class LifecycleHook : Pulumi.CustomResource
     {
         /// <summary>

@@ -149,15 +149,15 @@ type ConfigurationRecorderInput interface {
 	ToConfigurationRecorderOutputWithContext(ctx context.Context) ConfigurationRecorderOutput
 }
 
-func (ConfigurationRecorder) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigurationRecorder)(nil)).Elem()
+func (*ConfigurationRecorder) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationRecorder)(nil))
 }
 
-func (i ConfigurationRecorder) ToConfigurationRecorderOutput() ConfigurationRecorderOutput {
+func (i *ConfigurationRecorder) ToConfigurationRecorderOutput() ConfigurationRecorderOutput {
 	return i.ToConfigurationRecorderOutputWithContext(context.Background())
 }
 
-func (i ConfigurationRecorder) ToConfigurationRecorderOutputWithContext(ctx context.Context) ConfigurationRecorderOutput {
+func (i *ConfigurationRecorder) ToConfigurationRecorderOutputWithContext(ctx context.Context) ConfigurationRecorderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationRecorderOutput)
 }
 
@@ -166,7 +166,7 @@ type ConfigurationRecorderOutput struct {
 }
 
 func (ConfigurationRecorderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigurationRecorderOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConfigurationRecorder)(nil))
 }
 
 func (o ConfigurationRecorderOutput) ToConfigurationRecorderOutput() ConfigurationRecorderOutput {

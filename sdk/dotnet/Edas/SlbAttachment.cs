@@ -40,6 +40,7 @@ namespace Pulumi.AliCloud.Edas
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:edas/slbAttachment:SlbAttachment")]
     public partial class SlbAttachment : Pulumi.CustomResource
     {
         /// <summary>

@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rds"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -255,15 +256,15 @@ type AccountPrivilegeInput interface {
 	ToAccountPrivilegeOutputWithContext(ctx context.Context) AccountPrivilegeOutput
 }
 
-func (AccountPrivilege) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountPrivilege)(nil)).Elem()
+func (*AccountPrivilege) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountPrivilege)(nil))
 }
 
-func (i AccountPrivilege) ToAccountPrivilegeOutput() AccountPrivilegeOutput {
+func (i *AccountPrivilege) ToAccountPrivilegeOutput() AccountPrivilegeOutput {
 	return i.ToAccountPrivilegeOutputWithContext(context.Background())
 }
 
-func (i AccountPrivilege) ToAccountPrivilegeOutputWithContext(ctx context.Context) AccountPrivilegeOutput {
+func (i *AccountPrivilege) ToAccountPrivilegeOutputWithContext(ctx context.Context) AccountPrivilegeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegeOutput)
 }
 
@@ -272,7 +273,7 @@ type AccountPrivilegeOutput struct {
 }
 
 func (AccountPrivilegeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountPrivilegeOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccountPrivilege)(nil))
 }
 
 func (o AccountPrivilegeOutput) ToAccountPrivilegeOutput() AccountPrivilegeOutput {

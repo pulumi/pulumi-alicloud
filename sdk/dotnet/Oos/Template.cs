@@ -71,6 +71,7 @@ namespace Pulumi.AliCloud.Oos
     ///  $ pulumi import alicloud:oos/template:Template example template_name
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:oos/template:Template")]
     public partial class Template : Pulumi.CustomResource
     {
         /// <summary>

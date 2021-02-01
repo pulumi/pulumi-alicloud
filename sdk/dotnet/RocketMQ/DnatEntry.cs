@@ -53,6 +53,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///  $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rocketmq/dnatEntry:DnatEntry")]
     public partial class DnatEntry : Pulumi.CustomResource
     {
         /// <summary>

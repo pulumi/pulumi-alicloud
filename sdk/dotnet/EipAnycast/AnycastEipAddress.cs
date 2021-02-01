@@ -45,6 +45,7 @@ namespace Pulumi.AliCloud.EipAnycast
     ///  $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example &lt;id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:eipanycast/anycastEipAddress:AnycastEipAddress")]
     public partial class AnycastEipAddress : Pulumi.CustomResource
     {
         /// <summary>

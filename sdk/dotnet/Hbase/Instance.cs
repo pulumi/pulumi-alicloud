@@ -60,6 +60,7 @@ namespace Pulumi.AliCloud.Hbase
     ///  $ pulumi import alicloud:hbase/instance:Instance example hb-wz96815u13k659fvd
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:hbase/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

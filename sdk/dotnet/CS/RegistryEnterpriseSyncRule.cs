@@ -54,6 +54,7 @@ namespace Pulumi.AliCloud.CS
     ///  $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule")]
     public partial class RegistryEnterpriseSyncRule : Pulumi.CustomResource
     {
         /// <summary>

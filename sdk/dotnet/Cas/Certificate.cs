@@ -40,6 +40,7 @@ namespace Pulumi.AliCloud.Cas
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cas/certificate:Certificate")]
     public partial class Certificate : Pulumi.CustomResource
     {
         /// <summary>

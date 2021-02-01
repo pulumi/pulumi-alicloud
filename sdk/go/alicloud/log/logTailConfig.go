@@ -164,15 +164,15 @@ type LogTailConfigInput interface {
 	ToLogTailConfigOutputWithContext(ctx context.Context) LogTailConfigOutput
 }
 
-func (LogTailConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogTailConfig)(nil)).Elem()
+func (*LogTailConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogTailConfig)(nil))
 }
 
-func (i LogTailConfig) ToLogTailConfigOutput() LogTailConfigOutput {
+func (i *LogTailConfig) ToLogTailConfigOutput() LogTailConfigOutput {
 	return i.ToLogTailConfigOutputWithContext(context.Background())
 }
 
-func (i LogTailConfig) ToLogTailConfigOutputWithContext(ctx context.Context) LogTailConfigOutput {
+func (i *LogTailConfig) ToLogTailConfigOutputWithContext(ctx context.Context) LogTailConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailConfigOutput)
 }
 
@@ -181,7 +181,7 @@ type LogTailConfigOutput struct {
 }
 
 func (LogTailConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogTailConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*LogTailConfig)(nil))
 }
 
 func (o LogTailConfigOutput) ToLogTailConfigOutput() LogTailConfigOutput {

@@ -303,15 +303,15 @@ type DataCenterInput interface {
 	ToDataCenterOutputWithContext(ctx context.Context) DataCenterOutput
 }
 
-func (DataCenter) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataCenter)(nil)).Elem()
+func (*DataCenter) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCenter)(nil))
 }
 
-func (i DataCenter) ToDataCenterOutput() DataCenterOutput {
+func (i *DataCenter) ToDataCenterOutput() DataCenterOutput {
 	return i.ToDataCenterOutputWithContext(context.Background())
 }
 
-func (i DataCenter) ToDataCenterOutputWithContext(ctx context.Context) DataCenterOutput {
+func (i *DataCenter) ToDataCenterOutputWithContext(ctx context.Context) DataCenterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataCenterOutput)
 }
 
@@ -320,7 +320,7 @@ type DataCenterOutput struct {
 }
 
 func (DataCenterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataCenterOutput)(nil)).Elem()
+	return reflect.TypeOf((*DataCenter)(nil))
 }
 
 func (o DataCenterOutput) ToDataCenterOutput() DataCenterOutput {

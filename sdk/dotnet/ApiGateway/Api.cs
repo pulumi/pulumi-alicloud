@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.ApiGateway
     ///  $ pulumi import alicloud:apigateway/api:Api example "ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:apigateway/api:Api")]
     public partial class Api : Pulumi.CustomResource
     {
         /// <summary>

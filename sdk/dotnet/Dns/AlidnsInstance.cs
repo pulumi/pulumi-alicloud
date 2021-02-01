@@ -48,6 +48,7 @@ namespace Pulumi.AliCloud.Dns
     ///  $ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:dns/alidnsInstance:AlidnsInstance")]
     public partial class AlidnsInstance : Pulumi.CustomResource
     {
         /// <summary>

@@ -60,6 +60,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///  $ pulumi import alicloud:resourcemanager/role:Role example testrd
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:resourcemanager/role:Role")]
     public partial class Role : Pulumi.CustomResource
     {
         /// <summary>

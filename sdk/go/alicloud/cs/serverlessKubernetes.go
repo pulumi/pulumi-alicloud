@@ -282,15 +282,15 @@ type ServerlessKubernetesInput interface {
 	ToServerlessKubernetesOutputWithContext(ctx context.Context) ServerlessKubernetesOutput
 }
 
-func (ServerlessKubernetes) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessKubernetes)(nil)).Elem()
+func (*ServerlessKubernetes) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetes)(nil))
 }
 
-func (i ServerlessKubernetes) ToServerlessKubernetesOutput() ServerlessKubernetesOutput {
+func (i *ServerlessKubernetes) ToServerlessKubernetesOutput() ServerlessKubernetesOutput {
 	return i.ToServerlessKubernetesOutputWithContext(context.Background())
 }
 
-func (i ServerlessKubernetes) ToServerlessKubernetesOutputWithContext(ctx context.Context) ServerlessKubernetesOutput {
+func (i *ServerlessKubernetes) ToServerlessKubernetesOutputWithContext(ctx context.Context) ServerlessKubernetesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesOutput)
 }
 
@@ -299,7 +299,7 @@ type ServerlessKubernetesOutput struct {
 }
 
 func (ServerlessKubernetesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessKubernetesOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServerlessKubernetes)(nil))
 }
 
 func (o ServerlessKubernetesOutput) ToServerlessKubernetesOutput() ServerlessKubernetesOutput {

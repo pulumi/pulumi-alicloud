@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ess
     ///  $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ess/alarm:Alarm")]
     public partial class Alarm : Pulumi.CustomResource
     {
         /// <summary>

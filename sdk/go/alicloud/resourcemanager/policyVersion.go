@@ -125,15 +125,15 @@ type PolicyVersionInput interface {
 	ToPolicyVersionOutputWithContext(ctx context.Context) PolicyVersionOutput
 }
 
-func (PolicyVersion) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyVersion)(nil)).Elem()
+func (*PolicyVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyVersion)(nil))
 }
 
-func (i PolicyVersion) ToPolicyVersionOutput() PolicyVersionOutput {
+func (i *PolicyVersion) ToPolicyVersionOutput() PolicyVersionOutput {
 	return i.ToPolicyVersionOutputWithContext(context.Background())
 }
 
-func (i PolicyVersion) ToPolicyVersionOutputWithContext(ctx context.Context) PolicyVersionOutput {
+func (i *PolicyVersion) ToPolicyVersionOutputWithContext(ctx context.Context) PolicyVersionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVersionOutput)
 }
 
@@ -142,7 +142,7 @@ type PolicyVersionOutput struct {
 }
 
 func (PolicyVersionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyVersionOutput)(nil)).Elem()
+	return reflect.TypeOf((*PolicyVersion)(nil))
 }
 
 func (o PolicyVersionOutput) ToPolicyVersionOutput() PolicyVersionOutput {

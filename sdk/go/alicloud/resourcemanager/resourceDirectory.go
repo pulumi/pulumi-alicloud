@@ -131,15 +131,15 @@ type ResourceDirectoryInput interface {
 	ToResourceDirectoryOutputWithContext(ctx context.Context) ResourceDirectoryOutput
 }
 
-func (ResourceDirectory) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceDirectory)(nil)).Elem()
+func (*ResourceDirectory) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDirectory)(nil))
 }
 
-func (i ResourceDirectory) ToResourceDirectoryOutput() ResourceDirectoryOutput {
+func (i *ResourceDirectory) ToResourceDirectoryOutput() ResourceDirectoryOutput {
 	return i.ToResourceDirectoryOutputWithContext(context.Background())
 }
 
-func (i ResourceDirectory) ToResourceDirectoryOutputWithContext(ctx context.Context) ResourceDirectoryOutput {
+func (i *ResourceDirectory) ToResourceDirectoryOutputWithContext(ctx context.Context) ResourceDirectoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDirectoryOutput)
 }
 
@@ -148,7 +148,7 @@ type ResourceDirectoryOutput struct {
 }
 
 func (ResourceDirectoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceDirectoryOutput)(nil)).Elem()
+	return reflect.TypeOf((*ResourceDirectory)(nil))
 }
 
 func (o ResourceDirectoryOutput) ToResourceDirectoryOutput() ResourceDirectoryOutput {

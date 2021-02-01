@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Dns
     ///  $ pulumi import alicloud:dns/domainAttachment:DomainAttachment example dns-cn-v0h1ldjhxxx
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:dns/domainAttachment:DomainAttachment")]
     public partial class DomainAttachment : Pulumi.CustomResource
     {
         /// <summary>

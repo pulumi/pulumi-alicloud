@@ -147,15 +147,15 @@ type ImageExportInput interface {
 	ToImageExportOutputWithContext(ctx context.Context) ImageExportOutput
 }
 
-func (ImageExport) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageExport)(nil)).Elem()
+func (*ImageExport) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageExport)(nil))
 }
 
-func (i ImageExport) ToImageExportOutput() ImageExportOutput {
+func (i *ImageExport) ToImageExportOutput() ImageExportOutput {
 	return i.ToImageExportOutputWithContext(context.Background())
 }
 
-func (i ImageExport) ToImageExportOutputWithContext(ctx context.Context) ImageExportOutput {
+func (i *ImageExport) ToImageExportOutputWithContext(ctx context.Context) ImageExportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageExportOutput)
 }
 
@@ -164,7 +164,7 @@ type ImageExportOutput struct {
 }
 
 func (ImageExportOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageExportOutput)(nil)).Elem()
+	return reflect.TypeOf((*ImageExport)(nil))
 }
 
 func (o ImageExportOutput) ToImageExportOutput() ImageExportOutput {

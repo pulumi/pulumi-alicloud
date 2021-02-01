@@ -44,6 +44,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///  $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:resourcemanager/resourceGroup:ResourceGroup")]
     public partial class ResourceGroup : Pulumi.CustomResource
     {
         /// <summary>

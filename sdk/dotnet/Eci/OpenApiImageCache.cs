@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Eci
 {
+    [AliCloudResourceType("alicloud:eci/openApiImageCache:OpenApiImageCache")]
     public partial class OpenApiImageCache : Pulumi.CustomResource
     {
         [Output("containerGroupId")]

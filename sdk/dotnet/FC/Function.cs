@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.FC
     ///  $ pulumi import alicloud:fc/function:Function foo my-fc-service:hello-world
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:fc/function:Function")]
     public partial class Function : Pulumi.CustomResource
     {
         /// <summary>

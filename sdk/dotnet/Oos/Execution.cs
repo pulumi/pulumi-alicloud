@@ -77,6 +77,7 @@ namespace Pulumi.AliCloud.Oos
     ///  $ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:oos/execution:Execution")]
     public partial class Execution : Pulumi.CustomResource
     {
         /// <summary>

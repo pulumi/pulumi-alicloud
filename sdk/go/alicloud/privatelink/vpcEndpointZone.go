@@ -164,15 +164,15 @@ type VpcEndpointZoneInput interface {
 	ToVpcEndpointZoneOutputWithContext(ctx context.Context) VpcEndpointZoneOutput
 }
 
-func (VpcEndpointZone) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointZone)(nil)).Elem()
+func (*VpcEndpointZone) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointZone)(nil))
 }
 
-func (i VpcEndpointZone) ToVpcEndpointZoneOutput() VpcEndpointZoneOutput {
+func (i *VpcEndpointZone) ToVpcEndpointZoneOutput() VpcEndpointZoneOutput {
 	return i.ToVpcEndpointZoneOutputWithContext(context.Background())
 }
 
-func (i VpcEndpointZone) ToVpcEndpointZoneOutputWithContext(ctx context.Context) VpcEndpointZoneOutput {
+func (i *VpcEndpointZone) ToVpcEndpointZoneOutputWithContext(ctx context.Context) VpcEndpointZoneOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointZoneOutput)
 }
 
@@ -181,7 +181,7 @@ type VpcEndpointZoneOutput struct {
 }
 
 func (VpcEndpointZoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointZoneOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpcEndpointZone)(nil))
 }
 
 func (o VpcEndpointZoneOutput) ToVpcEndpointZoneOutput() VpcEndpointZoneOutput {

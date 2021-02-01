@@ -73,6 +73,7 @@ namespace Pulumi.AliCloud.Waf
     ///  $ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:waf/domain:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>

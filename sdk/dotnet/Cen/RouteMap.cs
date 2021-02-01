@@ -159,6 +159,7 @@ namespace Pulumi.AliCloud.Cen
     ///  $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cen/routeMap:RouteMap")]
     public partial class RouteMap : Pulumi.CustomResource
     {
         /// <summary>

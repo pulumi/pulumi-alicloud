@@ -56,6 +56,7 @@ namespace Pulumi.AliCloud.Cdn
     ///  $ pulumi import alicloud:cdn/domainNew:DomainNew example xxxx.com
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cdn/domainNew:DomainNew")]
     public partial class DomainNew : Pulumi.CustomResource
     {
         /// <summary>

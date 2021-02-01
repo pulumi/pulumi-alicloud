@@ -62,6 +62,7 @@ namespace Pulumi.AliCloud.Cfg
     ///  $ pulumi import alicloud:cfg/rule:Rule this cr-ed4bad756057********
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cfg/rule:Rule")]
     public partial class Rule : Pulumi.CustomResource
     {
         /// <summary>

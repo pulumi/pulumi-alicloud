@@ -46,6 +46,7 @@ namespace Pulumi.AliCloud.Kms
     ///  $ pulumi import alicloud:kms/keyVersion:KeyVersion example 72da539a-2fa8-4f2d-b854-*****	
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:kms/keyVersion:KeyVersion")]
     public partial class KeyVersion : Pulumi.CustomResource
     {
         /// <summary>

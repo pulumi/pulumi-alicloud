@@ -97,6 +97,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/launchTemplate:LaunchTemplate")]
     public partial class LaunchTemplate : Pulumi.CustomResource
     {
         /// <summary>

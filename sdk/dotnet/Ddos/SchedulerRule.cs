@@ -63,6 +63,7 @@ namespace Pulumi.AliCloud.Ddos
     ///  $ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ddos/schedulerRule:SchedulerRule")]
     public partial class SchedulerRule : Pulumi.CustomResource
     {
         /// <summary>

@@ -307,15 +307,15 @@ type NodePoolInput interface {
 	ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput
 }
 
-func (NodePool) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodePool)(nil)).Elem()
+func (*NodePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePool)(nil))
 }
 
-func (i NodePool) ToNodePoolOutput() NodePoolOutput {
+func (i *NodePool) ToNodePoolOutput() NodePoolOutput {
 	return i.ToNodePoolOutputWithContext(context.Background())
 }
 
-func (i NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput {
+func (i *NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolOutput)
 }
 
@@ -324,7 +324,7 @@ type NodePoolOutput struct {
 }
 
 func (NodePoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodePoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*NodePool)(nil))
 }
 
 func (o NodePoolOutput) ToNodePoolOutput() NodePoolOutput {

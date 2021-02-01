@@ -77,4 +77,11 @@ namespace Pulumi.AliCloud
             }
         }
     }
+
+    internal sealed class AliCloudResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public AliCloudResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

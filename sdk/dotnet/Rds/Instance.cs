@@ -66,6 +66,7 @@ namespace Pulumi.AliCloud.Rds
     ///  $ pulumi import alicloud:rds/instance:Instance example rm-abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rds/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

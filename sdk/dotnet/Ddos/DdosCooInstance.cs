@@ -52,6 +52,7 @@ namespace Pulumi.AliCloud.Ddos
     ///  $ pulumi import alicloud:ddos/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ddos/ddosCooInstance:DdosCooInstance")]
     public partial class DdosCooInstance : Pulumi.CustomResource
     {
         /// <summary>

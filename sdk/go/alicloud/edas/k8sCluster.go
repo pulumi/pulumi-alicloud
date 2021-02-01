@@ -173,15 +173,15 @@ type K8sClusterInput interface {
 	ToK8sClusterOutputWithContext(ctx context.Context) K8sClusterOutput
 }
 
-func (K8sCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sCluster)(nil)).Elem()
+func (*K8sCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sCluster)(nil))
 }
 
-func (i K8sCluster) ToK8sClusterOutput() K8sClusterOutput {
+func (i *K8sCluster) ToK8sClusterOutput() K8sClusterOutput {
 	return i.ToK8sClusterOutputWithContext(context.Background())
 }
 
-func (i K8sCluster) ToK8sClusterOutputWithContext(ctx context.Context) K8sClusterOutput {
+func (i *K8sCluster) ToK8sClusterOutputWithContext(ctx context.Context) K8sClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterOutput)
 }
 
@@ -190,7 +190,7 @@ type K8sClusterOutput struct {
 }
 
 func (K8sClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*K8sCluster)(nil))
 }
 
 func (o K8sClusterOutput) ToK8sClusterOutput() K8sClusterOutput {

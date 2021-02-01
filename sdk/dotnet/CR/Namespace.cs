@@ -46,6 +46,7 @@ namespace Pulumi.AliCloud.CR
     ///  $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cr/namespace:Namespace")]
     public partial class Namespace : Pulumi.CustomResource
     {
         /// <summary>

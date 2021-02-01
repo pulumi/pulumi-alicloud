@@ -55,6 +55,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///  $ pulumi import alicloud:rocketmq/topic:Topic topic MQ_INST_1234567890_Baso1234567:onsTopicDemo
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rocketmq/topic:Topic")]
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>

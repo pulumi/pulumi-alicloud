@@ -45,6 +45,7 @@ namespace Pulumi.AliCloud.KVStore
     ///  $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:kvstore/connection:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>

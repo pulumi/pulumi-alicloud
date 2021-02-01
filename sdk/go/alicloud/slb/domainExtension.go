@@ -211,15 +211,15 @@ type DomainExtensionInput interface {
 	ToDomainExtensionOutputWithContext(ctx context.Context) DomainExtensionOutput
 }
 
-func (DomainExtension) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainExtension)(nil)).Elem()
+func (*DomainExtension) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainExtension)(nil))
 }
 
-func (i DomainExtension) ToDomainExtensionOutput() DomainExtensionOutput {
+func (i *DomainExtension) ToDomainExtensionOutput() DomainExtensionOutput {
 	return i.ToDomainExtensionOutputWithContext(context.Background())
 }
 
-func (i DomainExtension) ToDomainExtensionOutputWithContext(ctx context.Context) DomainExtensionOutput {
+func (i *DomainExtension) ToDomainExtensionOutputWithContext(ctx context.Context) DomainExtensionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainExtensionOutput)
 }
 
@@ -228,7 +228,7 @@ type DomainExtensionOutput struct {
 }
 
 func (DomainExtensionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainExtensionOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainExtension)(nil))
 }
 
 func (o DomainExtensionOutput) ToDomainExtensionOutput() DomainExtensionOutput {

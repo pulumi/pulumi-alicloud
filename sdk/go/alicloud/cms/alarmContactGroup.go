@@ -153,15 +153,15 @@ type AlarmContactGroupInput interface {
 	ToAlarmContactGroupOutputWithContext(ctx context.Context) AlarmContactGroupOutput
 }
 
-func (AlarmContactGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlarmContactGroup)(nil)).Elem()
+func (*AlarmContactGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmContactGroup)(nil))
 }
 
-func (i AlarmContactGroup) ToAlarmContactGroupOutput() AlarmContactGroupOutput {
+func (i *AlarmContactGroup) ToAlarmContactGroupOutput() AlarmContactGroupOutput {
 	return i.ToAlarmContactGroupOutputWithContext(context.Background())
 }
 
-func (i AlarmContactGroup) ToAlarmContactGroupOutputWithContext(ctx context.Context) AlarmContactGroupOutput {
+func (i *AlarmContactGroup) ToAlarmContactGroupOutputWithContext(ctx context.Context) AlarmContactGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmContactGroupOutput)
 }
 
@@ -170,7 +170,7 @@ type AlarmContactGroupOutput struct {
 }
 
 func (AlarmContactGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlarmContactGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*AlarmContactGroup)(nil))
 }
 
 func (o AlarmContactGroupOutput) ToAlarmContactGroupOutput() AlarmContactGroupOutput {

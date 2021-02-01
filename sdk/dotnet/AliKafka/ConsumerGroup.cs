@@ -72,6 +72,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///  $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:alikafka/consumerGroup:ConsumerGroup")]
     public partial class ConsumerGroup : Pulumi.CustomResource
     {
         /// <summary>

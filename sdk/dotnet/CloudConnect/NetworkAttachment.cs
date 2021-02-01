@@ -58,6 +58,7 @@ namespace Pulumi.AliCloud.CloudConnect
     ///  $ pulumi import alicloud:cloudconnect/networkAttachment:NetworkAttachment example ccn-abc123456:sag-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cloudconnect/networkAttachment:NetworkAttachment")]
     public partial class NetworkAttachment : Pulumi.CustomResource
     {
         /// <summary>

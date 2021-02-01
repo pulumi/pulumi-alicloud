@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** From version 1.111.0, support auto scaling node pool.
     /// </summary>
+    [AliCloudResourceType("alicloud:cs/nodePool:NodePool")]
     public partial class NodePool : Pulumi.CustomResource
     {
         /// <summary>

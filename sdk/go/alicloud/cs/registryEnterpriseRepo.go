@@ -202,15 +202,15 @@ type RegistryEnterpriseRepoInput interface {
 	ToRegistryEnterpriseRepoOutputWithContext(ctx context.Context) RegistryEnterpriseRepoOutput
 }
 
-func (RegistryEnterpriseRepo) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryEnterpriseRepo)(nil)).Elem()
+func (*RegistryEnterpriseRepo) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseRepo)(nil))
 }
 
-func (i RegistryEnterpriseRepo) ToRegistryEnterpriseRepoOutput() RegistryEnterpriseRepoOutput {
+func (i *RegistryEnterpriseRepo) ToRegistryEnterpriseRepoOutput() RegistryEnterpriseRepoOutput {
 	return i.ToRegistryEnterpriseRepoOutputWithContext(context.Background())
 }
 
-func (i RegistryEnterpriseRepo) ToRegistryEnterpriseRepoOutputWithContext(ctx context.Context) RegistryEnterpriseRepoOutput {
+func (i *RegistryEnterpriseRepo) ToRegistryEnterpriseRepoOutputWithContext(ctx context.Context) RegistryEnterpriseRepoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseRepoOutput)
 }
 
@@ -219,7 +219,7 @@ type RegistryEnterpriseRepoOutput struct {
 }
 
 func (RegistryEnterpriseRepoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryEnterpriseRepoOutput)(nil)).Elem()
+	return reflect.TypeOf((*RegistryEnterpriseRepo)(nil))
 }
 
 func (o RegistryEnterpriseRepoOutput) ToRegistryEnterpriseRepoOutput() RegistryEnterpriseRepoOutput {

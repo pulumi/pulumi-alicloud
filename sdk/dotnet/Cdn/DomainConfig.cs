@@ -69,6 +69,7 @@ namespace Pulumi.AliCloud.Cdn
     ///  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example cdn:config-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cdn/domainConfig:DomainConfig")]
     public partial class DomainConfig : Pulumi.CustomResource
     {
         /// <summary>

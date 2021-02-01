@@ -64,6 +64,7 @@ namespace Pulumi.AliCloud.Ecs
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ecs/diskAttachment:DiskAttachment")]
     public partial class DiskAttachment : Pulumi.CustomResource
     {
         /// <summary>

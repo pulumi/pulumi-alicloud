@@ -208,15 +208,15 @@ type InstanceAttachmentInput interface {
 	ToInstanceAttachmentOutputWithContext(ctx context.Context) InstanceAttachmentOutput
 }
 
-func (InstanceAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceAttachment)(nil)).Elem()
+func (*InstanceAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAttachment)(nil))
 }
 
-func (i InstanceAttachment) ToInstanceAttachmentOutput() InstanceAttachmentOutput {
+func (i *InstanceAttachment) ToInstanceAttachmentOutput() InstanceAttachmentOutput {
 	return i.ToInstanceAttachmentOutputWithContext(context.Background())
 }
 
-func (i InstanceAttachment) ToInstanceAttachmentOutputWithContext(ctx context.Context) InstanceAttachmentOutput {
+func (i *InstanceAttachment) ToInstanceAttachmentOutputWithContext(ctx context.Context) InstanceAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttachmentOutput)
 }
 
@@ -225,7 +225,7 @@ type InstanceAttachmentOutput struct {
 }
 
 func (InstanceAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstanceAttachment)(nil))
 }
 
 func (o InstanceAttachmentOutput) ToInstanceAttachmentOutput() InstanceAttachmentOutput {

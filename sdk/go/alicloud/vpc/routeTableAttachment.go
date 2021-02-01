@@ -105,15 +105,15 @@ type RouteTableAttachmentInput interface {
 	ToRouteTableAttachmentOutputWithContext(ctx context.Context) RouteTableAttachmentOutput
 }
 
-func (RouteTableAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteTableAttachment)(nil)).Elem()
+func (*RouteTableAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTableAttachment)(nil))
 }
 
-func (i RouteTableAttachment) ToRouteTableAttachmentOutput() RouteTableAttachmentOutput {
+func (i *RouteTableAttachment) ToRouteTableAttachmentOutput() RouteTableAttachmentOutput {
 	return i.ToRouteTableAttachmentOutputWithContext(context.Background())
 }
 
-func (i RouteTableAttachment) ToRouteTableAttachmentOutputWithContext(ctx context.Context) RouteTableAttachmentOutput {
+func (i *RouteTableAttachment) ToRouteTableAttachmentOutputWithContext(ctx context.Context) RouteTableAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteTableAttachmentOutput)
 }
 
@@ -122,7 +122,7 @@ type RouteTableAttachmentOutput struct {
 }
 
 func (RouteTableAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteTableAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*RouteTableAttachment)(nil))
 }
 
 func (o RouteTableAttachmentOutput) ToRouteTableAttachmentOutput() RouteTableAttachmentOutput {

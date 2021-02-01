@@ -257,15 +257,15 @@ type QosPolicyInput interface {
 	ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyOutput
 }
 
-func (QosPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosPolicy)(nil)).Elem()
+func (*QosPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosPolicy)(nil))
 }
 
-func (i QosPolicy) ToQosPolicyOutput() QosPolicyOutput {
+func (i *QosPolicy) ToQosPolicyOutput() QosPolicyOutput {
 	return i.ToQosPolicyOutputWithContext(context.Background())
 }
 
-func (i QosPolicy) ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyOutput {
+func (i *QosPolicy) ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyOutput)
 }
 
@@ -274,7 +274,7 @@ type QosPolicyOutput struct {
 }
 
 func (QosPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*QosPolicy)(nil))
 }
 
 func (o QosPolicyOutput) ToQosPolicyOutput() QosPolicyOutput {

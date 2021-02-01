@@ -24,6 +24,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ess"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
@@ -269,15 +270,15 @@ type AttachmentInput interface {
 	ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput
 }
 
-func (Attachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*Attachment)(nil)).Elem()
+func (*Attachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*Attachment)(nil))
 }
 
-func (i Attachment) ToAttachmentOutput() AttachmentOutput {
+func (i *Attachment) ToAttachmentOutput() AttachmentOutput {
 	return i.ToAttachmentOutputWithContext(context.Background())
 }
 
-func (i Attachment) ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput {
+func (i *Attachment) ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttachmentOutput)
 }
 
@@ -286,7 +287,7 @@ type AttachmentOutput struct {
 }
 
 func (AttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*Attachment)(nil))
 }
 
 func (o AttachmentOutput) ToAttachmentOutput() AttachmentOutput {

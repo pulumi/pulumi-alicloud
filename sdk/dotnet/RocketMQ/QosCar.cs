@@ -59,6 +59,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///  $ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rocketmq/qosCar:QosCar")]
     public partial class QosCar : Pulumi.CustomResource
     {
         /// <summary>

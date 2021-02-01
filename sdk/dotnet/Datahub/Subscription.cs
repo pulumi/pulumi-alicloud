@@ -43,6 +43,7 @@ namespace Pulumi.AliCloud.Datahub
     ///  $ pulumi import alicloud:datahub/subscription:Subscription example tf_datahub_project:tf_datahub_topic:1539073399567UgCzY
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:datahub/subscription:Subscription")]
     public partial class Subscription : Pulumi.CustomResource
     {
         /// <summary>

@@ -101,6 +101,7 @@ namespace Pulumi.AliCloud.Log
     ///  $ pulumi import alicloud:log/alert:Alert example tf-log:tf-log-alert
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:log/alert:Alert")]
     public partial class Alert : Pulumi.CustomResource
     {
         /// <summary>

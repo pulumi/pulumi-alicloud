@@ -48,6 +48,7 @@ namespace Pulumi.AliCloud.Cfg
     ///  $ pulumi import alicloud:cfg/configurationRecorder:ConfigurationRecorder example 122378463********
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cfg/configurationRecorder:ConfigurationRecorder")]
     public partial class ConfigurationRecorder : Pulumi.CustomResource
     {
         /// <summary>

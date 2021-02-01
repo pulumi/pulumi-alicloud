@@ -149,15 +149,15 @@ type MasterSlaveServerGroupInput interface {
 	ToMasterSlaveServerGroupOutputWithContext(ctx context.Context) MasterSlaveServerGroupOutput
 }
 
-func (MasterSlaveServerGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*MasterSlaveServerGroup)(nil)).Elem()
+func (*MasterSlaveServerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*MasterSlaveServerGroup)(nil))
 }
 
-func (i MasterSlaveServerGroup) ToMasterSlaveServerGroupOutput() MasterSlaveServerGroupOutput {
+func (i *MasterSlaveServerGroup) ToMasterSlaveServerGroupOutput() MasterSlaveServerGroupOutput {
 	return i.ToMasterSlaveServerGroupOutputWithContext(context.Background())
 }
 
-func (i MasterSlaveServerGroup) ToMasterSlaveServerGroupOutputWithContext(ctx context.Context) MasterSlaveServerGroupOutput {
+func (i *MasterSlaveServerGroup) ToMasterSlaveServerGroupOutputWithContext(ctx context.Context) MasterSlaveServerGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupOutput)
 }
 
@@ -166,7 +166,7 @@ type MasterSlaveServerGroupOutput struct {
 }
 
 func (MasterSlaveServerGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MasterSlaveServerGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*MasterSlaveServerGroup)(nil))
 }
 
 func (o MasterSlaveServerGroupOutput) ToMasterSlaveServerGroupOutput() MasterSlaveServerGroupOutput {

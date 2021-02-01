@@ -52,6 +52,7 @@ namespace Pulumi.AliCloud.CS
     ///  $ pulumi import alicloud:cs/swarm:Swarm foo cf123456789
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cs/swarm:Swarm")]
     public partial class Swarm : Pulumi.CustomResource
     {
         /// <summary>

@@ -22,6 +22,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rds"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -245,15 +246,15 @@ type ReadWriteSplittingConnectionInput interface {
 	ToReadWriteSplittingConnectionOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionOutput
 }
 
-func (ReadWriteSplittingConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReadWriteSplittingConnection)(nil)).Elem()
+func (*ReadWriteSplittingConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReadWriteSplittingConnection)(nil))
 }
 
-func (i ReadWriteSplittingConnection) ToReadWriteSplittingConnectionOutput() ReadWriteSplittingConnectionOutput {
+func (i *ReadWriteSplittingConnection) ToReadWriteSplittingConnectionOutput() ReadWriteSplittingConnectionOutput {
 	return i.ToReadWriteSplittingConnectionOutputWithContext(context.Background())
 }
 
-func (i ReadWriteSplittingConnection) ToReadWriteSplittingConnectionOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionOutput {
+func (i *ReadWriteSplittingConnection) ToReadWriteSplittingConnectionOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReadWriteSplittingConnectionOutput)
 }
 
@@ -262,7 +263,7 @@ type ReadWriteSplittingConnectionOutput struct {
 }
 
 func (ReadWriteSplittingConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReadWriteSplittingConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*ReadWriteSplittingConnection)(nil))
 }
 
 func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionOutput() ReadWriteSplittingConnectionOutput {

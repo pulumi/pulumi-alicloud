@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///  $ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example "rm-12345678"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:polardb/backupPolicy:BackupPolicy")]
     public partial class BackupPolicy : Pulumi.CustomResource
     {
         /// <summary>

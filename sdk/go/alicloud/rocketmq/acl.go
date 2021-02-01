@@ -119,15 +119,15 @@ type AclInput interface {
 	ToAclOutputWithContext(ctx context.Context) AclOutput
 }
 
-func (Acl) ElementType() reflect.Type {
-	return reflect.TypeOf((*Acl)(nil)).Elem()
+func (*Acl) ElementType() reflect.Type {
+	return reflect.TypeOf((*Acl)(nil))
 }
 
-func (i Acl) ToAclOutput() AclOutput {
+func (i *Acl) ToAclOutput() AclOutput {
 	return i.ToAclOutputWithContext(context.Background())
 }
 
-func (i Acl) ToAclOutputWithContext(ctx context.Context) AclOutput {
+func (i *Acl) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclOutput)
 }
 
@@ -136,7 +136,7 @@ type AclOutput struct {
 }
 
 func (AclOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclOutput)(nil)).Elem()
+	return reflect.TypeOf((*Acl)(nil))
 }
 
 func (o AclOutput) ToAclOutput() AclOutput {

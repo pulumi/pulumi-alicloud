@@ -40,6 +40,7 @@ namespace Pulumi.AliCloud.Ram
     ///  $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/accountAlias:AccountAlias")]
     public partial class AccountAlias : Pulumi.CustomResource
     {
         /// <summary>

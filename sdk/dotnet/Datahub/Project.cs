@@ -43,6 +43,7 @@ namespace Pulumi.AliCloud.Datahub
     ///  $ pulumi import alicloud:datahub/project:Project example tf_datahub_project
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:datahub/project:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>

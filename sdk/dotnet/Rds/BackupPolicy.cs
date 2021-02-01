@@ -67,6 +67,7 @@ namespace Pulumi.AliCloud.Rds
     ///  $ pulumi import alicloud:rds/backupPolicy:BackupPolicy example "rm-12345678"
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rds/backupPolicy:BackupPolicy")]
     public partial class BackupPolicy : Pulumi.CustomResource
     {
         /// <summary>

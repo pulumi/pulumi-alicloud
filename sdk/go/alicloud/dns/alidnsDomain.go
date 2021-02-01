@@ -207,15 +207,15 @@ type AlidnsDomainInput interface {
 	ToAlidnsDomainOutputWithContext(ctx context.Context) AlidnsDomainOutput
 }
 
-func (AlidnsDomain) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlidnsDomain)(nil)).Elem()
+func (*AlidnsDomain) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlidnsDomain)(nil))
 }
 
-func (i AlidnsDomain) ToAlidnsDomainOutput() AlidnsDomainOutput {
+func (i *AlidnsDomain) ToAlidnsDomainOutput() AlidnsDomainOutput {
 	return i.ToAlidnsDomainOutputWithContext(context.Background())
 }
 
-func (i AlidnsDomain) ToAlidnsDomainOutputWithContext(ctx context.Context) AlidnsDomainOutput {
+func (i *AlidnsDomain) ToAlidnsDomainOutputWithContext(ctx context.Context) AlidnsDomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainOutput)
 }
 
@@ -224,7 +224,7 @@ type AlidnsDomainOutput struct {
 }
 
 func (AlidnsDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlidnsDomainOutput)(nil)).Elem()
+	return reflect.TypeOf((*AlidnsDomain)(nil))
 }
 
 func (o AlidnsDomainOutput) ToAlidnsDomainOutput() AlidnsDomainOutput {

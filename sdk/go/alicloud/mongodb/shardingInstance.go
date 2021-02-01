@@ -274,15 +274,15 @@ type ShardingInstanceInput interface {
 	ToShardingInstanceOutputWithContext(ctx context.Context) ShardingInstanceOutput
 }
 
-func (ShardingInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShardingInstance)(nil)).Elem()
+func (*ShardingInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingInstance)(nil))
 }
 
-func (i ShardingInstance) ToShardingInstanceOutput() ShardingInstanceOutput {
+func (i *ShardingInstance) ToShardingInstanceOutput() ShardingInstanceOutput {
 	return i.ToShardingInstanceOutputWithContext(context.Background())
 }
 
-func (i ShardingInstance) ToShardingInstanceOutputWithContext(ctx context.Context) ShardingInstanceOutput {
+func (i *ShardingInstance) ToShardingInstanceOutputWithContext(ctx context.Context) ShardingInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceOutput)
 }
 
@@ -291,7 +291,7 @@ type ShardingInstanceOutput struct {
 }
 
 func (ShardingInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShardingInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*ShardingInstance)(nil))
 }
 
 func (o ShardingInstanceOutput) ToShardingInstanceOutput() ShardingInstanceOutput {

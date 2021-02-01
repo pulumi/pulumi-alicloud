@@ -189,15 +189,15 @@ type SlbAttachmentInput interface {
 	ToSlbAttachmentOutputWithContext(ctx context.Context) SlbAttachmentOutput
 }
 
-func (SlbAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*SlbAttachment)(nil)).Elem()
+func (*SlbAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlbAttachment)(nil))
 }
 
-func (i SlbAttachment) ToSlbAttachmentOutput() SlbAttachmentOutput {
+func (i *SlbAttachment) ToSlbAttachmentOutput() SlbAttachmentOutput {
 	return i.ToSlbAttachmentOutputWithContext(context.Background())
 }
 
-func (i SlbAttachment) ToSlbAttachmentOutputWithContext(ctx context.Context) SlbAttachmentOutput {
+func (i *SlbAttachment) ToSlbAttachmentOutputWithContext(ctx context.Context) SlbAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SlbAttachmentOutput)
 }
 
@@ -206,7 +206,7 @@ type SlbAttachmentOutput struct {
 }
 
 func (SlbAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SlbAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*SlbAttachment)(nil))
 }
 
 func (o SlbAttachmentOutput) ToSlbAttachmentOutput() SlbAttachmentOutput {

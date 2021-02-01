@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/hAVip:HAVip")]
     public partial class HAVip : Pulumi.CustomResource
     {
         /// <summary>

@@ -40,6 +40,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/serverGroup:ServerGroup example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:slb/serverGroup:ServerGroup")]
     public partial class ServerGroup : Pulumi.CustomResource
     {
         /// <summary>

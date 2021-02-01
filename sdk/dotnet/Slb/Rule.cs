@@ -31,6 +31,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/rule:Rule example rule-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:slb/rule:Rule")]
     public partial class Rule : Pulumi.CustomResource
     {
         /// <summary>

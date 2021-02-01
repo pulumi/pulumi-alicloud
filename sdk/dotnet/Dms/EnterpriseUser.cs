@@ -47,6 +47,7 @@ namespace Pulumi.AliCloud.Dms
     ///  $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:dms/enterpriseUser:EnterpriseUser")]
     public partial class EnterpriseUser : Pulumi.CustomResource
     {
         /// <summary>

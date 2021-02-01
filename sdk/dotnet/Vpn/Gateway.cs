@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Vpn
     ///  $ pulumi import alicloud:vpn/gateway:Gateway example vpn-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpn/gateway:Gateway")]
     public partial class Gateway : Pulumi.CustomResource
     {
         [Output("bandwidth")]

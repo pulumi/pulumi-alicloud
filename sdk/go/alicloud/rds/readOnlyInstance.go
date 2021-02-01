@@ -22,6 +22,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rds"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -301,15 +302,15 @@ type ReadOnlyInstanceInput interface {
 	ToReadOnlyInstanceOutputWithContext(ctx context.Context) ReadOnlyInstanceOutput
 }
 
-func (ReadOnlyInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReadOnlyInstance)(nil)).Elem()
+func (*ReadOnlyInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReadOnlyInstance)(nil))
 }
 
-func (i ReadOnlyInstance) ToReadOnlyInstanceOutput() ReadOnlyInstanceOutput {
+func (i *ReadOnlyInstance) ToReadOnlyInstanceOutput() ReadOnlyInstanceOutput {
 	return i.ToReadOnlyInstanceOutputWithContext(context.Background())
 }
 
-func (i ReadOnlyInstance) ToReadOnlyInstanceOutputWithContext(ctx context.Context) ReadOnlyInstanceOutput {
+func (i *ReadOnlyInstance) ToReadOnlyInstanceOutputWithContext(ctx context.Context) ReadOnlyInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstanceOutput)
 }
 
@@ -318,7 +319,7 @@ type ReadOnlyInstanceOutput struct {
 }
 
 func (ReadOnlyInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReadOnlyInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*ReadOnlyInstance)(nil))
 }
 
 func (o ReadOnlyInstanceOutput) ToReadOnlyInstanceOutput() ReadOnlyInstanceOutput {

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
+    [AliCloudResourceType("alicloud:vpc/subnet:Subnet")]
     public partial class Subnet : Pulumi.CustomResource
     {
         [Output("availabilityZone")]

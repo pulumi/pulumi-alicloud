@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
+    [AliCloudResourceType("alicloud:dns/group:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

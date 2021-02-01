@@ -149,15 +149,15 @@ type BandwidthPackageAttachmentInput interface {
 	ToBandwidthPackageAttachmentOutputWithContext(ctx context.Context) BandwidthPackageAttachmentOutput
 }
 
-func (BandwidthPackageAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*BandwidthPackageAttachment)(nil)).Elem()
+func (*BandwidthPackageAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthPackageAttachment)(nil))
 }
 
-func (i BandwidthPackageAttachment) ToBandwidthPackageAttachmentOutput() BandwidthPackageAttachmentOutput {
+func (i *BandwidthPackageAttachment) ToBandwidthPackageAttachmentOutput() BandwidthPackageAttachmentOutput {
 	return i.ToBandwidthPackageAttachmentOutputWithContext(context.Background())
 }
 
-func (i BandwidthPackageAttachment) ToBandwidthPackageAttachmentOutputWithContext(ctx context.Context) BandwidthPackageAttachmentOutput {
+func (i *BandwidthPackageAttachment) ToBandwidthPackageAttachmentOutputWithContext(ctx context.Context) BandwidthPackageAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageAttachmentOutput)
 }
 
@@ -166,7 +166,7 @@ type BandwidthPackageAttachmentOutput struct {
 }
 
 func (BandwidthPackageAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BandwidthPackageAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*BandwidthPackageAttachment)(nil))
 }
 
 func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentOutput() BandwidthPackageAttachmentOutput {

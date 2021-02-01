@@ -24,6 +24,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///  $ pulumi import alicloud:resourcemanager/sharedResource:SharedResource example &lt;resource_share_id&gt;:&lt;resource_id&gt;:&lt;resource_type&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:resourcemanager/sharedResource:SharedResource")]
     public partial class SharedResource : Pulumi.CustomResource
     {
         /// <summary>

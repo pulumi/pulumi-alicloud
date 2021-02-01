@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.ApiGateway
 {
+    [AliCloudResourceType("alicloud:apigateway/appAttachment:AppAttachment")]
     public partial class AppAttachment : Pulumi.CustomResource
     {
         /// <summary>

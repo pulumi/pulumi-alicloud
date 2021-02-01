@@ -148,15 +148,15 @@ type ScalingGroupVServerGroupsInput interface {
 	ToScalingGroupVServerGroupsOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsOutput
 }
 
-func (ScalingGroupVServerGroups) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingGroupVServerGroups)(nil)).Elem()
+func (*ScalingGroupVServerGroups) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingGroupVServerGroups)(nil))
 }
 
-func (i ScalingGroupVServerGroups) ToScalingGroupVServerGroupsOutput() ScalingGroupVServerGroupsOutput {
+func (i *ScalingGroupVServerGroups) ToScalingGroupVServerGroupsOutput() ScalingGroupVServerGroupsOutput {
 	return i.ToScalingGroupVServerGroupsOutputWithContext(context.Background())
 }
 
-func (i ScalingGroupVServerGroups) ToScalingGroupVServerGroupsOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsOutput {
+func (i *ScalingGroupVServerGroups) ToScalingGroupVServerGroupsOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsOutput)
 }
 
@@ -165,7 +165,7 @@ type ScalingGroupVServerGroupsOutput struct {
 }
 
 func (ScalingGroupVServerGroupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingGroupVServerGroupsOutput)(nil)).Elem()
+	return reflect.TypeOf((*ScalingGroupVServerGroups)(nil))
 }
 
 func (o ScalingGroupVServerGroupsOutput) ToScalingGroupVServerGroupsOutput() ScalingGroupVServerGroupsOutput {

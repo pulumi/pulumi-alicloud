@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ram
     ///  $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy")]
     public partial class AccountPasswordPolicy : Pulumi.CustomResource
     {
         /// <summary>

@@ -73,6 +73,7 @@ namespace Pulumi.AliCloud.Ga
     ///  $ pulumi import alicloud:ga/ipSet:IpSet example &lt;id&gt;
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ga/ipSet:IpSet")]
     public partial class IpSet : Pulumi.CustomResource
     {
         /// <summary>

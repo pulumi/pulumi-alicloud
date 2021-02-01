@@ -93,6 +93,7 @@ namespace Pulumi.AliCloud.Ess
     ///  $ pulumi import alicloud:ess/notification:Notification example 'scaling_group_id:notification_arn'
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ess/notification:Notification")]
     public partial class Notification : Pulumi.CustomResource
     {
         /// <summary>

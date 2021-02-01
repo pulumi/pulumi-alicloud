@@ -72,6 +72,7 @@ namespace Pulumi.AliCloud.Ram
     ///  $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/userPolicyAttachment:UserPolicyAttachment")]
     public partial class UserPolicyAttachment : Pulumi.CustomResource
     {
         /// <summary>

@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ram
     ///  $ pulumi import alicloud:ram/user:User example 123456789xxx
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/user:User")]
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>

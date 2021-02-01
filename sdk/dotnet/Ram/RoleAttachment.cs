@@ -115,6 +115,7 @@ namespace Pulumi.AliCloud.Ram
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ram/roleAttachment:RoleAttachment")]
     public partial class RoleAttachment : Pulumi.CustomResource
     {
         /// <summary>

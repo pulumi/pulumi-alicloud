@@ -71,6 +71,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///  $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:alikafka/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

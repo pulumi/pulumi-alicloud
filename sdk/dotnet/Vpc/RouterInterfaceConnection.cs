@@ -101,6 +101,7 @@ namespace Pulumi.AliCloud.Vpc
     ///  $ pulumi import alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection foo ri-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection")]
     public partial class RouterInterfaceConnection : Pulumi.CustomResource
     {
         /// <summary>

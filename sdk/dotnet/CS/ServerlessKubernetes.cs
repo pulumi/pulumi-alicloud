@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.CS
     ///  $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cs/serverlessKubernetes:ServerlessKubernetes")]
     public partial class ServerlessKubernetes : Pulumi.CustomResource
     {
         [Output("addons")]

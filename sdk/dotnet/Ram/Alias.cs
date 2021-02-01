@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ram
 {
+    [AliCloudResourceType("alicloud:ram/alias:Alias")]
     public partial class Alias : Pulumi.CustomResource
     {
         [Output("accountAlias")]

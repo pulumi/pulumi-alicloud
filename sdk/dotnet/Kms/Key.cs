@@ -45,6 +45,7 @@ namespace Pulumi.AliCloud.Kms
     ///  $ pulumi import alicloud:kms/key:Key example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:kms/key:Key")]
     public partial class Key : Pulumi.CustomResource
     {
         /// <summary>

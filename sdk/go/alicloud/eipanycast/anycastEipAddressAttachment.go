@@ -180,15 +180,15 @@ type AnycastEipAddressAttachmentInput interface {
 	ToAnycastEipAddressAttachmentOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentOutput
 }
 
-func (AnycastEipAddressAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnycastEipAddressAttachment)(nil)).Elem()
+func (*AnycastEipAddressAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnycastEipAddressAttachment)(nil))
 }
 
-func (i AnycastEipAddressAttachment) ToAnycastEipAddressAttachmentOutput() AnycastEipAddressAttachmentOutput {
+func (i *AnycastEipAddressAttachment) ToAnycastEipAddressAttachmentOutput() AnycastEipAddressAttachmentOutput {
 	return i.ToAnycastEipAddressAttachmentOutputWithContext(context.Background())
 }
 
-func (i AnycastEipAddressAttachment) ToAnycastEipAddressAttachmentOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentOutput {
+func (i *AnycastEipAddressAttachment) ToAnycastEipAddressAttachmentOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressAttachmentOutput)
 }
 
@@ -197,7 +197,7 @@ type AnycastEipAddressAttachmentOutput struct {
 }
 
 func (AnycastEipAddressAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnycastEipAddressAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*AnycastEipAddressAttachment)(nil))
 }
 
 func (o AnycastEipAddressAttachmentOutput) ToAnycastEipAddressAttachmentOutput() AnycastEipAddressAttachmentOutput {

@@ -53,7 +53,7 @@ The following configuration points are available:
   the `ALICLOUD_SECRET_KEY` environment variable.
 - `alicloud:securityToken` - (Optional) Alicloud Security Token Service. It can be sourced from the `ALICLOUD_SECURITY_TOKEN`
   environment variable.
-- `alicloud:escRoleName` - (Optional) The RAM Role Name attached on a ECS instance for API operations. You can retrieve
+- `alicloud:ecsRoleName` - (Optional) The RAM Role Name attached on a ECS instance for API operations. You can retrieve
   this from the 'Access Control' section of the Alibaba Cloud console. It can be sourced from the `ALICLOUD_ECS_ROLE_NAME`
   environment variable.
 - `alicloud:region` - (Required) This is the Alicloud region. It must be provided, but it can also be sourced from the

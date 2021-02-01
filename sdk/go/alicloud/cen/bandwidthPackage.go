@@ -256,15 +256,15 @@ type BandwidthPackageInput interface {
 	ToBandwidthPackageOutputWithContext(ctx context.Context) BandwidthPackageOutput
 }
 
-func (BandwidthPackage) ElementType() reflect.Type {
-	return reflect.TypeOf((*BandwidthPackage)(nil)).Elem()
+func (*BandwidthPackage) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthPackage)(nil))
 }
 
-func (i BandwidthPackage) ToBandwidthPackageOutput() BandwidthPackageOutput {
+func (i *BandwidthPackage) ToBandwidthPackageOutput() BandwidthPackageOutput {
 	return i.ToBandwidthPackageOutputWithContext(context.Background())
 }
 
-func (i BandwidthPackage) ToBandwidthPackageOutputWithContext(ctx context.Context) BandwidthPackageOutput {
+func (i *BandwidthPackage) ToBandwidthPackageOutputWithContext(ctx context.Context) BandwidthPackageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageOutput)
 }
 
@@ -273,7 +273,7 @@ type BandwidthPackageOutput struct {
 }
 
 func (BandwidthPackageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BandwidthPackageOutput)(nil)).Elem()
+	return reflect.TypeOf((*BandwidthPackage)(nil))
 }
 
 func (o BandwidthPackageOutput) ToBandwidthPackageOutput() BandwidthPackageOutput {

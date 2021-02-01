@@ -53,6 +53,7 @@ namespace Pulumi.AliCloud.CR
     ///  $ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cr/repo:Repo")]
     public partial class Repo : Pulumi.CustomResource
     {
         /// <summary>

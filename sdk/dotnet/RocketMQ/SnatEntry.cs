@@ -49,6 +49,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///  $ pulumi import alicloud:rocketmq/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rocketmq/snatEntry:SnatEntry")]
     public partial class SnatEntry : Pulumi.CustomResource
     {
         /// <summary>

@@ -46,6 +46,7 @@ namespace Pulumi.AliCloud.ActionTrail
     ///  $ pulumi import alicloud:actiontrail/trail:Trail default abc12345678
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:actiontrail/trail:Trail")]
     public partial class Trail : Pulumi.CustomResource
     {
         /// <summary>

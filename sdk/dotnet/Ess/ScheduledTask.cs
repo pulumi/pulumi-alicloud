@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ess
     ///  $ pulumi import alicloud:ess/scheduledTask:ScheduledTask example abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:ess/scheduledTask:ScheduledTask")]
     public partial class ScheduledTask : Pulumi.CustomResource
     {
         /// <summary>

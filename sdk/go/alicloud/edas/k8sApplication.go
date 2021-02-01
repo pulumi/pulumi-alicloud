@@ -399,15 +399,15 @@ type K8sApplicationInput interface {
 	ToK8sApplicationOutputWithContext(ctx context.Context) K8sApplicationOutput
 }
 
-func (K8sApplication) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sApplication)(nil)).Elem()
+func (*K8sApplication) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sApplication)(nil))
 }
 
-func (i K8sApplication) ToK8sApplicationOutput() K8sApplicationOutput {
+func (i *K8sApplication) ToK8sApplicationOutput() K8sApplicationOutput {
 	return i.ToK8sApplicationOutputWithContext(context.Background())
 }
 
-func (i K8sApplication) ToK8sApplicationOutputWithContext(ctx context.Context) K8sApplicationOutput {
+func (i *K8sApplication) ToK8sApplicationOutputWithContext(ctx context.Context) K8sApplicationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationOutput)
 }
 
@@ -416,7 +416,7 @@ type K8sApplicationOutput struct {
 }
 
 func (K8sApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sApplicationOutput)(nil)).Elem()
+	return reflect.TypeOf((*K8sApplication)(nil))
 }
 
 func (o K8sApplicationOutput) ToK8sApplicationOutput() K8sApplicationOutput {

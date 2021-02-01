@@ -128,15 +128,15 @@ type VpcAccessInput interface {
 	ToVpcAccessOutputWithContext(ctx context.Context) VpcAccessOutput
 }
 
-func (VpcAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcAccess)(nil)).Elem()
+func (*VpcAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAccess)(nil))
 }
 
-func (i VpcAccess) ToVpcAccessOutput() VpcAccessOutput {
+func (i *VpcAccess) ToVpcAccessOutput() VpcAccessOutput {
 	return i.ToVpcAccessOutputWithContext(context.Background())
 }
 
-func (i VpcAccess) ToVpcAccessOutputWithContext(ctx context.Context) VpcAccessOutput {
+func (i *VpcAccess) ToVpcAccessOutputWithContext(ctx context.Context) VpcAccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessOutput)
 }
 
@@ -145,7 +145,7 @@ type VpcAccessOutput struct {
 }
 
 func (VpcAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcAccessOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpcAccess)(nil))
 }
 
 func (o VpcAccessOutput) ToVpcAccessOutput() VpcAccessOutput {

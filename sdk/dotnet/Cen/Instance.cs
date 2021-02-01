@@ -44,6 +44,7 @@ namespace Pulumi.AliCloud.Cen
     ///  $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cen/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

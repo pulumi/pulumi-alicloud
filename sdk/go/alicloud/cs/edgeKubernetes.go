@@ -459,15 +459,15 @@ type EdgeKubernetesInput interface {
 	ToEdgeKubernetesOutputWithContext(ctx context.Context) EdgeKubernetesOutput
 }
 
-func (EdgeKubernetes) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeKubernetes)(nil)).Elem()
+func (*EdgeKubernetes) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetes)(nil))
 }
 
-func (i EdgeKubernetes) ToEdgeKubernetesOutput() EdgeKubernetesOutput {
+func (i *EdgeKubernetes) ToEdgeKubernetesOutput() EdgeKubernetesOutput {
 	return i.ToEdgeKubernetesOutputWithContext(context.Background())
 }
 
-func (i EdgeKubernetes) ToEdgeKubernetesOutputWithContext(ctx context.Context) EdgeKubernetesOutput {
+func (i *EdgeKubernetes) ToEdgeKubernetesOutputWithContext(ctx context.Context) EdgeKubernetesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesOutput)
 }
 
@@ -476,7 +476,7 @@ type EdgeKubernetesOutput struct {
 }
 
 func (EdgeKubernetesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeKubernetesOutput)(nil)).Elem()
+	return reflect.TypeOf((*EdgeKubernetes)(nil))
 }
 
 func (o EdgeKubernetesOutput) ToEdgeKubernetesOutput() EdgeKubernetesOutput {

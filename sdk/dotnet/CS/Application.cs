@@ -56,6 +56,7 @@ namespace Pulumi.AliCloud.CS
     ///  $ pulumi import alicloud:cs/application:Application app my-first-swarm:wordpress
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cs/application:Application")]
     public partial class Application : Pulumi.CustomResource
     {
         /// <summary>

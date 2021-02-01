@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///  $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:resourcemanager/policyVersion:PolicyVersion")]
     public partial class PolicyVersion : Pulumi.CustomResource
     {
         /// <summary>

@@ -78,6 +78,7 @@ namespace Pulumi.AliCloud.CloudConnect
     ///  $ pulumi import alicloud:cloudconnect/networkGrant:NetworkGrant example ccn-abc123456:cen-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cloudconnect/networkGrant:NetworkGrant")]
     public partial class NetworkGrant : Pulumi.CustomResource
     {
         /// <summary>

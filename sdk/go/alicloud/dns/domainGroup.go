@@ -145,15 +145,15 @@ type DomainGroupInput interface {
 	ToDomainGroupOutputWithContext(ctx context.Context) DomainGroupOutput
 }
 
-func (DomainGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainGroup)(nil)).Elem()
+func (*DomainGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainGroup)(nil))
 }
 
-func (i DomainGroup) ToDomainGroupOutput() DomainGroupOutput {
+func (i *DomainGroup) ToDomainGroupOutput() DomainGroupOutput {
 	return i.ToDomainGroupOutputWithContext(context.Background())
 }
 
-func (i DomainGroup) ToDomainGroupOutputWithContext(ctx context.Context) DomainGroupOutput {
+func (i *DomainGroup) ToDomainGroupOutputWithContext(ctx context.Context) DomainGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainGroupOutput)
 }
 
@@ -162,7 +162,7 @@ type DomainGroupOutput struct {
 }
 
 func (DomainGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainGroup)(nil))
 }
 
 func (o DomainGroupOutput) ToDomainGroupOutput() DomainGroupOutput {

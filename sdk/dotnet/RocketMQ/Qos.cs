@@ -46,6 +46,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///  $ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:rocketmq/qos:Qos")]
     public partial class Qos : Pulumi.CustomResource
     {
         /// <summary>

@@ -104,6 +104,7 @@ namespace Pulumi.AliCloud.CS
     /// }
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler")]
     public partial class KubernetesAutoscaler : Pulumi.CustomResource
     {
         /// <summary>

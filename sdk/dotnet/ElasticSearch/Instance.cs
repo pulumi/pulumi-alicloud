@@ -62,6 +62,7 @@ namespace Pulumi.AliCloud.ElasticSearch
     ///  $ pulumi import alicloud:elasticsearch/instance:Instance example es-cn-abcde123456
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:elasticsearch/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

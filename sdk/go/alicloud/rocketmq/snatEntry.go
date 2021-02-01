@@ -153,15 +153,15 @@ type SnatEntryInput interface {
 	ToSnatEntryOutputWithContext(ctx context.Context) SnatEntryOutput
 }
 
-func (SnatEntry) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnatEntry)(nil)).Elem()
+func (*SnatEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnatEntry)(nil))
 }
 
-func (i SnatEntry) ToSnatEntryOutput() SnatEntryOutput {
+func (i *SnatEntry) ToSnatEntryOutput() SnatEntryOutput {
 	return i.ToSnatEntryOutputWithContext(context.Background())
 }
 
-func (i SnatEntry) ToSnatEntryOutputWithContext(ctx context.Context) SnatEntryOutput {
+func (i *SnatEntry) ToSnatEntryOutputWithContext(ctx context.Context) SnatEntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SnatEntryOutput)
 }
 
@@ -170,7 +170,7 @@ type SnatEntryOutput struct {
 }
 
 func (SnatEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnatEntryOutput)(nil)).Elem()
+	return reflect.TypeOf((*SnatEntry)(nil))
 }
 
 func (o SnatEntryOutput) ToSnatEntryOutput() SnatEntryOutput {

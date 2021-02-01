@@ -67,6 +67,7 @@ namespace Pulumi.AliCloud.Cen
     ///  $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
     /// ```
     /// </summary>
+    [AliCloudResourceType("alicloud:cen/flowLog:FlowLog")]
     public partial class FlowLog : Pulumi.CustomResource
     {
         /// <summary>
