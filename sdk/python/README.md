@@ -62,10 +62,10 @@ The following configuration points are available:
   connect router interfaces. If not provided, the provider will attempt to retrieve it automatically with STS GetCallerIdentity.
   It can be sourced from the `ALICLOUD_ACCOUNT_ID` environment variable.
 - `alicloud:sharedCredentialsFile` - (Optional) This is the path to the shared credentials file. It can also be sourced
-  from the `ALICLOUD_SHARED_CREDENTIALS_FILE` environment variable. If this is not set and a profile is specified, 
+  from the `ALICLOUD_SHARED_CREDENTIALS_FILE` environment variable. If this is not set and a profile is specified,
   `~/.aliyun/config.json` will be used.
 - `alicloud:profile` - (Optional) This is the Alicloud profile name as set in the shared credentials file. It can also be
-  sourced from the `ALICLOUD_PROFILE` environment variable. 
+  sourced from the `ALICLOUD_PROFILE` environment variable.
 - `alicloud:skipRegionValidation` - (Optional) Skip static validation of region ID. Used by users of alternative
   AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
 
