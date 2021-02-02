@@ -20,7 +20,10 @@ class GetPolicyVersionsResult:
     """
     A collection of values returned by getPolicyVersions.
     """
-    def __init__(__self__, id=None, ids=None, output_file=None, policy_name=None, policy_type=None, versions=None):
+    def __init__(__self__, enable_details=None, id=None, ids=None, output_file=None, policy_name=None, policy_type=None, versions=None):
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +42,11 @@ class GetPolicyVersionsResult:
         if versions and not isinstance(versions, list):
             raise TypeError("Expected argument 'versions' to be a list")
         pulumi.set(__self__, "versions", versions)
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -86,6 +94,7 @@ class AwaitableGetPolicyVersionsResult(GetPolicyVersionsResult):
         if False:
             yield self
         return GetPolicyVersionsResult(
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
             output_file=self.output_file,
@@ -94,7 +103,8 @@ class AwaitableGetPolicyVersionsResult(GetPolicyVersionsResult):
             versions=self.versions)
 
 
-def get_policy_versions(ids: Optional[Sequence[str]] = None,
+def get_policy_versions(enable_details: Optional[bool] = None,
+                        ids: Optional[Sequence[str]] = None,
                         output_file: Optional[str] = None,
                         policy_name: Optional[str] = None,
                         policy_type: Optional[str] = None,
@@ -116,11 +126,13 @@ def get_policy_versions(ids: Optional[Sequence[str]] = None,
     ```
 
 
+    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of policy version IDs.
     :param str policy_name: The name of the policy.
     :param str policy_type: The type of the policy. Valid values:`Custom` and `System`.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['policyName'] = policy_name
@@ -132,6 +144,7 @@ def get_policy_versions(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getPolicyVersions:getPolicyVersions', __args__, opts=opts, typ=GetPolicyVersionsResult).value
 
     return AwaitableGetPolicyVersionsResult(
+        enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
         output_file=__ret__.output_file,

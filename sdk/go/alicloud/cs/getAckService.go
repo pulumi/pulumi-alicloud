@@ -28,6 +28,7 @@ import (
 // 		opt0 := "On"
 // 		_, err := cs.GetAckService(ctx, &cs.GetAckServiceArgs{
 // 			Enable: &opt0,
+// 			Type:   "propayasgo",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -49,6 +50,8 @@ func GetAckService(ctx *pulumi.Context, args *GetAckServiceArgs, opts ...pulumi.
 type GetAckServiceArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
 	Enable *string `pulumi:"enable"`
+	// Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
+	Type string `pulumi:"type"`
 }
 
 // A collection of values returned by getAckService.
@@ -58,4 +61,5 @@ type GetAckServiceResult struct {
 	Id string `pulumi:"id"`
 	// The current service enable status.
 	Status string `pulumi:"status"`
+	Type   string `pulumi:"type"`
 }

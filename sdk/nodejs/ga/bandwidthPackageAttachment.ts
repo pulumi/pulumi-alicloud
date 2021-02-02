@@ -19,22 +19,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleAccelerator = new alicloud.ga.Accelerator("example", {
- *     autoUseCoupon: true,
+ * const exampleAccelerator = new alicloud.ga.Accelerator("exampleAccelerator", {
  *     duration: 1,
+ *     autoUseCoupon: true,
  *     spec: "1",
  * });
- * const exampleBandwidthPackage = new alicloud.ga.BandwidthPackage("example", {
- *     autoPay: true,
+ * const exampleBandwidthPackage = new alicloud.ga.BandwidthPackage("exampleBandwidthPackage", {
  *     bandwidth: 20,
- *     bandwidthType: "Basic",
- *     duration: "1",
- *     ratio: 30,
  *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     duration: 1,
+ *     autoPay: true,
+ *     ratio: 30,
  * });
- * const exampleBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("example", {
- *     acceleratorId: "alicloud_ga_accelerator.example.id",
- *     bandwidthPackageId: "alicloud_ga_bandwidth_package.example.id",
+ * const exampleBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
+ *     acceleratorId: exampleAccelerator.id,
+ *     bandwidthPackageId: exampleBandwidthPackage.id,
  * });
  * ```
  *

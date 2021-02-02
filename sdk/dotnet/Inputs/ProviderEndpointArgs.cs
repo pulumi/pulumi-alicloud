@@ -117,6 +117,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("hitsdb")]
         public Input<string>? Hitsdb { get; set; }
 
+        [Input("ims")]
+        public Input<string>? Ims { get; set; }
+
         [Input("kms")]
         public Input<string>? Kms { get; set; }
 

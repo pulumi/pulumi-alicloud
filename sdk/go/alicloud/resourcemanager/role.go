@@ -53,11 +53,10 @@ type Role struct {
 	pulumi.CustomResourceState
 
 	// The resource descriptor of the role.
+	// * `createDate` (Removed form v1.114.0) - Role creation time.
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// The content of the permissions strategy that plays a role.
 	AssumeRolePolicyDocument pulumi.StringOutput `pulumi:"assumeRolePolicyDocument"`
-	// Role creation time.
-	CreateDate pulumi.StringOutput `pulumi:"createDate"`
 	// The description of the Resource Manager role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
@@ -105,11 +104,10 @@ func GetRole(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
 	// The resource descriptor of the role.
+	// * `createDate` (Removed form v1.114.0) - Role creation time.
 	Arn *string `pulumi:"arn"`
 	// The content of the permissions strategy that plays a role.
 	AssumeRolePolicyDocument *string `pulumi:"assumeRolePolicyDocument"`
-	// Role creation time.
-	CreateDate *string `pulumi:"createDate"`
 	// The description of the Resource Manager role.
 	Description *string `pulumi:"description"`
 	// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
@@ -123,11 +121,10 @@ type roleState struct {
 
 type RoleState struct {
 	// The resource descriptor of the role.
+	// * `createDate` (Removed form v1.114.0) - Role creation time.
 	Arn pulumi.StringPtrInput
 	// The content of the permissions strategy that plays a role.
 	AssumeRolePolicyDocument pulumi.StringPtrInput
-	// Role creation time.
-	CreateDate pulumi.StringPtrInput
 	// The description of the Resource Manager role.
 	Description pulumi.StringPtrInput
 	// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.

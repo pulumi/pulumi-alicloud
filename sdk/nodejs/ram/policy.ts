@@ -47,11 +47,17 @@ export class Policy extends pulumi.CustomResource {
      */
     public /*out*/ readonly attachmentCount!: pulumi.Output<number>;
     /**
+     * The default version of policy.
+     */
+    public /*out*/ readonly defaultVersion!: pulumi.Output<string>;
+    /**
      * Description of the RAM policy. This name can have a string of 1 to 1024 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Document of the RAM policy. It is required when the `statement` is not specified.
+     * It has been deprecated from provider version 1.114.0 and `policyDocument` instead.
+     *
+     * @deprecated Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
      */
     public readonly document!: pulumi.Output<string>;
     /**
@@ -59,9 +65,23 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * It has been deprecated from provider version 1.114.0 and `policyName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Document of the RAM policy. It is required when the `statement` is not specified.
+     */
+    public readonly policyDocument!: pulumi.Output<string>;
+    /**
+     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     */
+    public readonly policyName!: pulumi.Output<string>;
+    /**
+     * The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+     */
+    public readonly rotateStrategy!: pulumi.Output<string | undefined>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
      *
@@ -78,6 +98,10 @@ export class Policy extends pulumi.CustomResource {
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
     public readonly version!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of default version policy.
+     */
+    public /*out*/ readonly versionId!: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -92,23 +116,33 @@ export class Policy extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as PolicyState | undefined;
             inputs["attachmentCount"] = state ? state.attachmentCount : undefined;
+            inputs["defaultVersion"] = state ? state.defaultVersion : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["document"] = state ? state.document : undefined;
             inputs["force"] = state ? state.force : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["policyDocument"] = state ? state.policyDocument : undefined;
+            inputs["policyName"] = state ? state.policyName : undefined;
+            inputs["rotateStrategy"] = state ? state.rotateStrategy : undefined;
             inputs["statements"] = state ? state.statements : undefined;
             inputs["type"] = state ? state.type : undefined;
             inputs["version"] = state ? state.version : undefined;
+            inputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["document"] = args ? args.document : undefined;
             inputs["force"] = args ? args.force : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["policyDocument"] = args ? args.policyDocument : undefined;
+            inputs["policyName"] = args ? args.policyName : undefined;
+            inputs["rotateStrategy"] = args ? args.rotateStrategy : undefined;
             inputs["statements"] = args ? args.statements : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["attachmentCount"] = undefined /*out*/;
+            inputs["defaultVersion"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
+            inputs["versionId"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -130,11 +164,17 @@ export interface PolicyState {
      */
     readonly attachmentCount?: pulumi.Input<number>;
     /**
+     * The default version of policy.
+     */
+    readonly defaultVersion?: pulumi.Input<string>;
+    /**
      * Description of the RAM policy. This name can have a string of 1 to 1024 characters.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Document of the RAM policy. It is required when the `statement` is not specified.
+     * It has been deprecated from provider version 1.114.0 and `policyDocument` instead.
+     *
+     * @deprecated Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
      */
     readonly document?: pulumi.Input<string>;
     /**
@@ -142,9 +182,23 @@ export interface PolicyState {
      */
     readonly force?: pulumi.Input<boolean>;
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * It has been deprecated from provider version 1.114.0 and `policyName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Document of the RAM policy. It is required when the `statement` is not specified.
+     */
+    readonly policyDocument?: pulumi.Input<string>;
+    /**
+     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     */
+    readonly policyName?: pulumi.Input<string>;
+    /**
+     * The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+     */
+    readonly rotateStrategy?: pulumi.Input<string>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
      *
@@ -161,6 +215,10 @@ export interface PolicyState {
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
     readonly version?: pulumi.Input<string>;
+    /**
+     * The ID of default version policy.
+     */
+    readonly versionId?: pulumi.Input<string>;
 }
 
 /**
@@ -172,7 +230,9 @@ export interface PolicyArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Document of the RAM policy. It is required when the `statement` is not specified.
+     * It has been deprecated from provider version 1.114.0 and `policyDocument` instead.
+     *
+     * @deprecated Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
      */
     readonly document?: pulumi.Input<string>;
     /**
@@ -180,9 +240,23 @@ export interface PolicyArgs {
      */
     readonly force?: pulumi.Input<boolean>;
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * It has been deprecated from provider version 1.114.0 and `policyName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Document of the RAM policy. It is required when the `statement` is not specified.
+     */
+    readonly policyDocument?: pulumi.Input<string>;
+    /**
+     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     */
+    readonly policyName?: pulumi.Input<string>;
+    /**
+     * The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+     */
+    readonly rotateStrategy?: pulumi.Input<string>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
      *

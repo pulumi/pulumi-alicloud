@@ -21,6 +21,7 @@ class Execution(pulumi.CustomResource):
                  parameters: Optional[pulumi.Input[str]] = None,
                  parent_execution_id: Optional[pulumi.Input[str]] = None,
                  safety_check: Optional[pulumi.Input[str]] = None,
+                 template_content: Optional[pulumi.Input[str]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_version: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -89,6 +90,7 @@ class Execution(pulumi.CustomResource):
         :param pulumi.Input[str] parameters: The parameters required by the template. Default to `{}`.
         :param pulumi.Input[str] parent_execution_id: The id of parent execution.
         :param pulumi.Input[str] safety_check: The mode of safety check.
+        :param pulumi.Input[str] template_content: The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
         :param pulumi.Input[str] template_name: The name of execution template.
         :param pulumi.Input[str] template_version: The version of execution template.
         """
@@ -115,6 +117,7 @@ class Execution(pulumi.CustomResource):
             __props__['parameters'] = parameters
             __props__['parent_execution_id'] = parent_execution_id
             __props__['safety_check'] = safety_check
+            __props__['template_content'] = template_content
             if template_name is None and not opts.urn:
                 raise TypeError("Missing required property 'template_name'")
             __props__['template_name'] = template_name
@@ -157,6 +160,7 @@ class Execution(pulumi.CustomResource):
             start_date: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             status_message: Optional[pulumi.Input[str]] = None,
+            template_content: Optional[pulumi.Input[str]] = None,
             template_id: Optional[pulumi.Input[str]] = None,
             template_name: Optional[pulumi.Input[str]] = None,
             template_version: Optional[pulumi.Input[str]] = None,
@@ -184,6 +188,7 @@ class Execution(pulumi.CustomResource):
         :param pulumi.Input[str] start_date: The time when the execution was started.
         :param pulumi.Input[str] status: The status of OOS Execution.
         :param pulumi.Input[str] status_message: The message of status.
+        :param pulumi.Input[str] template_content: The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
         :param pulumi.Input[str] template_id: The id of template.
         :param pulumi.Input[str] template_name: The name of execution template.
         :param pulumi.Input[str] template_version: The version of execution template.
@@ -209,6 +214,7 @@ class Execution(pulumi.CustomResource):
         __props__["start_date"] = start_date
         __props__["status"] = status
         __props__["status_message"] = status_message
+        __props__["template_content"] = template_content
         __props__["template_id"] = template_id
         __props__["template_name"] = template_name
         __props__["template_version"] = template_version
@@ -342,6 +348,14 @@ class Execution(pulumi.CustomResource):
         The message of status.
         """
         return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter(name="templateContent")
+    def template_content(self) -> pulumi.Output[Optional[str]]:
+        """
+        The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+        """
+        return pulumi.get(self, "template_content")
 
     @property
     @pulumi.getter(name="templateId")

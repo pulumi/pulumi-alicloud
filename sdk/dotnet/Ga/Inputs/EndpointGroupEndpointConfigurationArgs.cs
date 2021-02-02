@@ -25,18 +25,6 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public Input<string> Endpoint { get; set; } = null!;
 
         /// <summary>
-        /// Probe Port.
-        /// </summary>
-        [Input("probePort")]
-        public Input<int>? ProbePort { get; set; }
-
-        /// <summary>
-        /// Probe Protocol.
-        /// </summary>
-        [Input("probeProtocol")]
-        public Input<string>? ProbeProtocol { get; set; }
-
-        /// <summary>
         /// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
         /// </summary>
         [Input("type", required: true)]

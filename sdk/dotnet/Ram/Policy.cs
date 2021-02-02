@@ -28,13 +28,19 @@ namespace Pulumi.AliCloud.Ram
         public Output<int> AttachmentCount { get; private set; } = null!;
 
         /// <summary>
+        /// The default version of policy.
+        /// </summary>
+        [Output("defaultVersion")]
+        public Output<string> DefaultVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Document of the RAM policy. It is required when the `statement` is not specified.
+        /// It has been deprecated from provider version 1.114.0 and `policy_document` instead.
         /// </summary>
         [Output("document")]
         public Output<string> Document { get; private set; } = null!;
@@ -46,10 +52,28 @@ namespace Pulumi.AliCloud.Ram
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// It has been deprecated from provider version 1.114.0 and `policy_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Document of the RAM policy. It is required when the `statement` is not specified.
+        /// </summary>
+        [Output("policyDocument")]
+        public Output<string> PolicyDocument { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// </summary>
+        [Output("policyName")]
+        public Output<string> PolicyName { get; private set; } = null!;
+
+        /// <summary>
+        /// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+        /// </summary>
+        [Output("rotateStrategy")]
+        public Output<string?> RotateStrategy { get; private set; } = null!;
 
         /// <summary>
         /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
@@ -68,6 +92,12 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         [Output("version")]
         public Output<string?> Version { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of default version policy.
+        /// </summary>
+        [Output("versionId")]
+        public Output<string> VersionId { get; private set; } = null!;
 
 
         /// <summary>
@@ -122,7 +152,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Document of the RAM policy. It is required when the `statement` is not specified.
+        /// It has been deprecated from provider version 1.114.0 and `policy_document` instead.
         /// </summary>
         [Input("document")]
         public Input<string>? Document { get; set; }
@@ -134,10 +164,28 @@ namespace Pulumi.AliCloud.Ram
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// It has been deprecated from provider version 1.114.0 and `policy_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Document of the RAM policy. It is required when the `statement` is not specified.
+        /// </summary>
+        [Input("policyDocument")]
+        public Input<string>? PolicyDocument { get; set; }
+
+        /// <summary>
+        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// </summary>
+        [Input("policyName")]
+        public Input<string>? PolicyName { get; set; }
+
+        /// <summary>
+        /// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+        /// </summary>
+        [Input("rotateStrategy")]
+        public Input<string>? RotateStrategy { get; set; }
 
         [Input("statements")]
         private InputList<Inputs.PolicyStatementArgs>? _statements;
@@ -172,13 +220,19 @@ namespace Pulumi.AliCloud.Ram
         public Input<int>? AttachmentCount { get; set; }
 
         /// <summary>
+        /// The default version of policy.
+        /// </summary>
+        [Input("defaultVersion")]
+        public Input<string>? DefaultVersion { get; set; }
+
+        /// <summary>
         /// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Document of the RAM policy. It is required when the `statement` is not specified.
+        /// It has been deprecated from provider version 1.114.0 and `policy_document` instead.
         /// </summary>
         [Input("document")]
         public Input<string>? Document { get; set; }
@@ -190,10 +244,28 @@ namespace Pulumi.AliCloud.Ram
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// It has been deprecated from provider version 1.114.0 and `policy_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Document of the RAM policy. It is required when the `statement` is not specified.
+        /// </summary>
+        [Input("policyDocument")]
+        public Input<string>? PolicyDocument { get; set; }
+
+        /// <summary>
+        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// </summary>
+        [Input("policyName")]
+        public Input<string>? PolicyName { get; set; }
+
+        /// <summary>
+        /// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+        /// </summary>
+        [Input("rotateStrategy")]
+        public Input<string>? RotateStrategy { get; set; }
 
         [Input("statements")]
         private InputList<Inputs.PolicyStatementGetArgs>? _statements;
@@ -219,6 +291,12 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
+
+        /// <summary>
+        /// The ID of default version policy.
+        /// </summary>
+        [Input("versionId")]
+        public Input<string>? VersionId { get; set; }
 
         public PolicyState()
         {

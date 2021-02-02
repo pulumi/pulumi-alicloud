@@ -45,14 +45,14 @@ namespace Pulumi.AliCloud.Ga
     ///         });
     ///         var exampleBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new AliCloud.Ga.BandwidthPackageAttachmentArgs
     ///         {
-    ///             AcceleratorId = "alicloud_ga_accelerator.example.id",
-    ///             BandwidthPackageId = "alicloud_ga_bandwidth_package.example.id",
+    ///             AcceleratorId = exampleAccelerator.Id,
+    ///             BandwidthPackageId = exampleBandwidthPackage.Id,
     ///         });
     ///         var exampleIpSet = new AliCloud.Ga.IpSet("exampleIpSet", new AliCloud.Ga.IpSetArgs
     ///         {
     ///             AccelerateRegionId = "cn-hangzhou",
     ///             Bandwidth = 5,
-    ///             AcceleratorId = "alicloud_ga_accelerator.example.id",
+    ///             AcceleratorId = exampleAccelerator.Id,
     ///         }, new CustomResourceOptions
     ///         {
     ///             DependsOn = 

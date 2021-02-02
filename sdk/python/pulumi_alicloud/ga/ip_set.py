@@ -49,12 +49,12 @@ class IpSet(pulumi.CustomResource):
             auto_pay=True,
             ratio=30)
         example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            accelerator_id="alicloud_ga_accelerator.example.id",
-            bandwidth_package_id="alicloud_ga_bandwidth_package.example.id")
+            accelerator_id=example_accelerator.id,
+            bandwidth_package_id=example_bandwidth_package.id)
         example_ip_set = alicloud.ga.IpSet("exampleIpSet",
             accelerate_region_id="cn-hangzhou",
             bandwidth=5,
-            accelerator_id="alicloud_ga_accelerator.example.id",
+            accelerator_id=example_accelerator.id,
             opts=pulumi.ResourceOptions(depends_on=[example_bandwidth_package_attachment]))
         ```
 

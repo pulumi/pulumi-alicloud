@@ -43,13 +43,18 @@ func GetHandshakes(ctx *pulumi.Context, args *GetHandshakesArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getHandshakes.
 type GetHandshakesArgs struct {
+	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Resource Manager Handshake IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getHandshakes.
 type GetHandshakesResult struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Resource Manager Handshakes. Each element contains the following attributes:
 	Handshakes []GetHandshakesHandshake `pulumi:"handshakes"`
 	// The provider-assigned unique ID for this managed resource.
@@ -57,4 +62,6 @@ type GetHandshakesResult struct {
 	// A list of Resource Manager Handshake IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the invitation.
+	Status *string `pulumi:"status"`
 }

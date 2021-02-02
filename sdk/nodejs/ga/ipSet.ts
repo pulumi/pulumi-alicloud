@@ -33,13 +33,13 @@ import * as utilities from "../utilities";
  *     ratio: 30,
  * });
  * const exampleBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
- *     acceleratorId: "alicloud_ga_accelerator.example.id",
- *     bandwidthPackageId: "alicloud_ga_bandwidth_package.example.id",
+ *     acceleratorId: exampleAccelerator.id,
+ *     bandwidthPackageId: exampleBandwidthPackage.id,
  * });
  * const exampleIpSet = new alicloud.ga.IpSet("exampleIpSet", {
  *     accelerateRegionId: "cn-hangzhou",
  *     bandwidth: "5",
- *     acceleratorId: "alicloud_ga_accelerator.example.id",
+ *     acceleratorId: exampleAccelerator.id,
  * }, {
  *     dependsOn: [exampleBandwidthPackageAttachment],
  * });

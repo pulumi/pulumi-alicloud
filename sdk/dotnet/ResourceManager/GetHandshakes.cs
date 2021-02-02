@@ -46,6 +46,12 @@ namespace Pulumi.AliCloud.ResourceManager
 
     public sealed class GetHandshakesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -61,6 +67,12 @@ namespace Pulumi.AliCloud.ResourceManager
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
         public GetHandshakesArgs()
         {
         }
@@ -70,6 +82,7 @@ namespace Pulumi.AliCloud.ResourceManager
     [OutputType]
     public sealed class GetHandshakesResult
     {
+        public readonly bool? EnableDetails;
         /// <summary>
         /// A list of Resource Manager Handshakes. Each element contains the following attributes:
         /// </summary>
@@ -83,21 +96,31 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the invitation.
+        /// </summary>
+        public readonly string? Status;
 
         [OutputConstructor]
         private GetHandshakesResult(
+            bool? enableDetails,
+
             ImmutableArray<Outputs.GetHandshakesHandshakeResult> handshakes,
 
             string id,
 
             ImmutableArray<string> ids,
 
-            string? outputFile)
+            string? outputFile,
+
+            string? status)
         {
+            EnableDetails = enableDetails;
             Handshakes = handshakes;
             Id = id;
             Ids = ids;
             OutputFile = outputFile;
+            Status = status;
         }
     }
 }

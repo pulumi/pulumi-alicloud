@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
+// 		exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
 // 			Duration:      pulumi.Int(1),
 // 			AutoUseCoupon: pulumi.Bool(true),
 // 			Spec:          pulumi.String("1"),
@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
+// 		exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
 // 			Bandwidth:     pulumi.Int(20),
 // 			Type:          pulumi.String("Basic"),
 // 			BandwidthType: pulumi.String("Basic"),
@@ -51,8 +51,8 @@ import (
 // 			return err
 // 		}
 // 		exampleBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-// 			AcceleratorId:      pulumi.String("alicloud_ga_accelerator.example.id"),
-// 			BandwidthPackageId: pulumi.String("alicloud_ga_bandwidth_package.example.id"),
+// 			AcceleratorId:      exampleAccelerator.ID(),
+// 			BandwidthPackageId: exampleBandwidthPackage.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -60,7 +60,7 @@ import (
 // 		_, err = ga.NewIpSet(ctx, "exampleIpSet", &ga.IpSetArgs{
 // 			AccelerateRegionId: pulumi.String("cn-hangzhou"),
 // 			Bandwidth:          pulumi.Int(5),
-// 			AcceleratorId:      pulumi.String("alicloud_ga_accelerator.example.id"),
+// 			AcceleratorId:      exampleAccelerator.ID(),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			exampleBandwidthPackageAttachment,
 // 		}))

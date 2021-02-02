@@ -47,6 +47,7 @@ export interface ProviderEndpoint {
     ga?: pulumi.Input<string>;
     gpdb?: pulumi.Input<string>;
     hitsdb?: pulumi.Input<string>;
+    ims?: pulumi.Input<string>;
     kms?: pulumi.Input<string>;
     kvstore?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
@@ -589,21 +590,9 @@ export namespace cr {
 
 export namespace cs {
     export interface ApplicationService {
-        /**
-         * ID of the service.
-         */
         id?: pulumi.Input<string>;
-        /**
-         * The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-         */
         name?: pulumi.Input<string>;
-        /**
-         * The current status of service.
-         */
         status?: pulumi.Input<string>;
-        /**
-         * The application deploying version. Each updating, it must be different with current. Default to "1.0"
-         */
         version?: pulumi.Input<string>;
     }
 
@@ -983,25 +972,10 @@ export namespace cs {
     }
 
     export interface SwarmNode {
-        /**
-         * The Elastic IP address of node.
-         */
         eip?: pulumi.Input<string>;
-        /**
-         * ID of the node.
-         */
         id?: pulumi.Input<string>;
-        /**
-         * The container cluster's name. It is the only in one Alicloud account.
-         */
         name?: pulumi.Input<string>;
-        /**
-         * The private IP address of node.
-         */
         privateIp?: pulumi.Input<string>;
-        /**
-         * The node current status. It is different with instance status.
-         */
         status?: pulumi.Input<string>;
     }
 }
@@ -1821,14 +1795,6 @@ export namespace ga {
          * The IP address or domain name of Endpoint N in the endpoint group.
          */
         endpoint: pulumi.Input<string>;
-        /**
-         * Probe Port.
-         */
-        probePort?: pulumi.Input<number>;
-        /**
-         * Probe Protocol.
-         */
-        probeProtocol?: pulumi.Input<string>;
         /**
          * The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
          */

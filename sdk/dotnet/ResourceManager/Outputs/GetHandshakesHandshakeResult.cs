@@ -24,6 +24,10 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (Available in v1.114.0+) The real name of the invited account.
+        /// </summary>
+        public readonly string InvitedAccountRealName;
+        /// <summary>
         /// The ID of the master account of the resource directory.
         /// </summary>
         public readonly string MasterAccountId;
@@ -31,6 +35,10 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// The name of the master account of the resource directory.
         /// </summary>
         public readonly string MasterAccountName;
+        /// <summary>
+        /// (Available in v1.114.0+) The real name of the master account of the resource directory.
+        /// </summary>
+        public readonly string MasterAccountRealName;
         /// <summary>
         /// The time when the invitation was modified.
         /// </summary>
@@ -44,7 +52,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string ResourceDirectoryId;
         /// <summary>
-        /// The status of the invitation.
+        /// The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -64,9 +72,13 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
 
             string id,
 
+            string invitedAccountRealName,
+
             string masterAccountId,
 
             string masterAccountName,
+
+            string masterAccountRealName,
 
             string modifyTime,
 
@@ -83,8 +95,10 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
             ExpireTime = expireTime;
             HandshakeId = handshakeId;
             Id = id;
+            InvitedAccountRealName = invitedAccountRealName;
             MasterAccountId = masterAccountId;
             MasterAccountName = masterAccountName;
+            MasterAccountRealName = masterAccountRealName;
             ModifyTime = modifyTime;
             Note = note;
             ResourceDirectoryId = resourceDirectoryId;

@@ -20,13 +20,19 @@ class GetPoliciesResult:
     """
     A collection of values returned by getPolicies.
     """
-    def __init__(__self__, group_name=None, id=None, name_regex=None, names=None, output_file=None, policies=None, role_name=None, type=None, user_name=None):
+    def __init__(__self__, enable_details=None, group_name=None, id=None, ids=None, name_regex=None, names=None, output_file=None, policies=None, role_name=None, type=None, user_name=None):
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if group_name and not isinstance(group_name, str):
             raise TypeError("Expected argument 'group_name' to be a str")
         pulumi.set(__self__, "group_name", group_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ids and not isinstance(ids, list):
+            raise TypeError("Expected argument 'ids' to be a list")
+        pulumi.set(__self__, "ids", ids)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         pulumi.set(__self__, "name_regex", name_regex)
@@ -50,6 +56,11 @@ class GetPoliciesResult:
         pulumi.set(__self__, "user_name", user_name)
 
     @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
+
+    @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[str]:
         return pulumi.get(self, "group_name")
@@ -61,6 +72,11 @@ class GetPoliciesResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Sequence[str]:
+        return pulumi.get(self, "ids")
 
     @property
     @pulumi.getter(name="nameRegex")
@@ -113,8 +129,10 @@ class AwaitableGetPoliciesResult(GetPoliciesResult):
         if False:
             yield self
         return GetPoliciesResult(
+            enable_details=self.enable_details,
             group_name=self.group_name,
             id=self.id,
+            ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
@@ -124,7 +142,9 @@ class AwaitableGetPoliciesResult(GetPoliciesResult):
             user_name=self.user_name)
 
 
-def get_policies(group_name: Optional[str] = None,
+def get_policies(enable_details: Optional[bool] = None,
+                 group_name: Optional[str] = None,
+                 ids: Optional[Sequence[str]] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
                  role_name: Optional[str] = None,
@@ -148,6 +168,7 @@ def get_policies(group_name: Optional[str] = None,
     ```
 
 
+    :param bool enable_details: Default to `true`. Set it to true can output more details.
     :param str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.
     :param str name_regex: A regex string to filter resulting policies by name.
     :param str role_name: Filter results by a specific role name. Returned policies are attached to the specified role.
@@ -155,7 +176,9 @@ def get_policies(group_name: Optional[str] = None,
     :param str user_name: Filter results by a specific user name. Returned policies are attached to the specified user.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['groupName'] = group_name
+    __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['roleName'] = role_name
@@ -168,8 +191,10 @@ def get_policies(group_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ram/getPolicies:getPolicies', __args__, opts=opts, typ=GetPoliciesResult).value
 
     return AwaitableGetPoliciesResult(
+        enable_details=__ret__.enable_details,
         group_name=__ret__.group_name,
         id=__ret__.id,
+        ids=__ret__.ids,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,

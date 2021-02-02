@@ -96,6 +96,8 @@ type Execution struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The message of status.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
+	// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+	TemplateContent pulumi.StringPtrOutput `pulumi:"templateContent"`
 	// The id of template.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// The name of execution template.
@@ -170,6 +172,8 @@ type executionState struct {
 	Status *string `pulumi:"status"`
 	// The message of status.
 	StatusMessage *string `pulumi:"statusMessage"`
+	// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+	TemplateContent *string `pulumi:"templateContent"`
 	// The id of template.
 	TemplateId *string `pulumi:"templateId"`
 	// The name of execution template.
@@ -213,6 +217,8 @@ type ExecutionState struct {
 	Status pulumi.StringPtrInput
 	// The message of status.
 	StatusMessage pulumi.StringPtrInput
+	// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+	TemplateContent pulumi.StringPtrInput
 	// The id of template.
 	TemplateId pulumi.StringPtrInput
 	// The name of execution template.
@@ -240,6 +246,8 @@ type executionArgs struct {
 	ParentExecutionId *string `pulumi:"parentExecutionId"`
 	// The mode of safety check.
 	SafetyCheck *string `pulumi:"safetyCheck"`
+	// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+	TemplateContent *string `pulumi:"templateContent"`
 	// The name of execution template.
 	TemplateName string `pulumi:"templateName"`
 	// The version of execution template.
@@ -260,6 +268,8 @@ type ExecutionArgs struct {
 	ParentExecutionId pulumi.StringPtrInput
 	// The mode of safety check.
 	SafetyCheck pulumi.StringPtrInput
+	// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+	TemplateContent pulumi.StringPtrInput
 	// The name of execution template.
 	TemplateName pulumi.StringInput
 	// The version of execution template.

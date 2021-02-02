@@ -20,7 +20,10 @@ class GetFoldersResult:
     """
     A collection of values returned by getFolders.
     """
-    def __init__(__self__, folders=None, id=None, ids=None, name_regex=None, names=None, output_file=None, parent_folder_id=None):
+    def __init__(__self__, enable_details=None, folders=None, id=None, ids=None, name_regex=None, names=None, output_file=None, parent_folder_id=None, query_keyword=None):
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if folders and not isinstance(folders, list):
             raise TypeError("Expected argument 'folders' to be a list")
         pulumi.set(__self__, "folders", folders)
@@ -42,6 +45,14 @@ class GetFoldersResult:
         if parent_folder_id and not isinstance(parent_folder_id, str):
             raise TypeError("Expected argument 'parent_folder_id' to be a str")
         pulumi.set(__self__, "parent_folder_id", parent_folder_id)
+        if query_keyword and not isinstance(query_keyword, str):
+            raise TypeError("Expected argument 'query_keyword' to be a str")
+        pulumi.set(__self__, "query_keyword", query_keyword)
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -90,6 +101,11 @@ class GetFoldersResult:
     def parent_folder_id(self) -> Optional[str]:
         return pulumi.get(self, "parent_folder_id")
 
+    @property
+    @pulumi.getter(name="queryKeyword")
+    def query_keyword(self) -> Optional[str]:
+        return pulumi.get(self, "query_keyword")
+
 
 class AwaitableGetFoldersResult(GetFoldersResult):
     # pylint: disable=using-constant-test
@@ -97,19 +113,23 @@ class AwaitableGetFoldersResult(GetFoldersResult):
         if False:
             yield self
         return GetFoldersResult(
+            enable_details=self.enable_details,
             folders=self.folders,
             id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            parent_folder_id=self.parent_folder_id)
+            parent_folder_id=self.parent_folder_id,
+            query_keyword=self.query_keyword)
 
 
-def get_folders(ids: Optional[Sequence[str]] = None,
+def get_folders(enable_details: Optional[bool] = None,
+                ids: Optional[Sequence[str]] = None,
                 name_regex: Optional[str] = None,
                 output_file: Optional[str] = None,
                 parent_folder_id: Optional[str] = None,
+                query_keyword: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFoldersResult:
     """
     This data source provides the resource manager folders of the current Alibaba Cloud user.
@@ -129,15 +149,19 @@ def get_folders(ids: Optional[Sequence[str]] = None,
     ```
 
 
+    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of resource manager folders IDs.
     :param str name_regex: A regex string to filter results by folder name.
     :param str parent_folder_id: The ID of the parent folder.
+    :param str query_keyword: The query keyword.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['parentFolderId'] = parent_folder_id
+    __args__['queryKeyword'] = query_keyword
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -145,10 +169,12 @@ def get_folders(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getFolders:getFolders', __args__, opts=opts, typ=GetFoldersResult).value
 
     return AwaitableGetFoldersResult(
+        enable_details=__ret__.enable_details,
         folders=__ret__.folders,
         id=__ret__.id,
         ids=__ret__.ids,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
-        parent_folder_id=__ret__.parent_folder_id)
+        parent_folder_id=__ret__.parent_folder_id,
+        query_keyword=__ret__.query_keyword)

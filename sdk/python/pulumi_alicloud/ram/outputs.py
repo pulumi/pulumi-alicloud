@@ -13,6 +13,7 @@ __all__ = [
     'GetGroupsGroupResult',
     'GetPoliciesPolicyResult',
     'GetRolesRoleResult',
+    'GetSamlProvidersProviderResult',
     'GetUsersUserResult',
 ]
 
@@ -96,9 +97,14 @@ class GetPoliciesPolicyResult(dict):
                  default_version: str,
                  description: str,
                  document: str,
+                 id: str,
                  name: str,
+                 policy_document: str,
+                 policy_name: str,
                  type: str,
-                 update_date: str):
+                 update_date: str,
+                 user_name: str,
+                 version_id: str):
         """
         :param int attachment_count: Attachment count of the policy.
         :param str create_date: Creation date of the policy.
@@ -106,17 +112,26 @@ class GetPoliciesPolicyResult(dict):
         :param str description: Description of the policy.
         :param str document: Policy document of the policy.
         :param str name: Name of the policy.
+        :param str policy_document: Policy document of the policy.
+        :param str policy_name: Name of the policy.
         :param str type: Filter results by a specific policy type. Valid values are `Custom` and `System`.
         :param str update_date: Update date of the policy.
+        :param str user_name: Filter results by a specific user name. Returned policies are attached to the specified user.
+        :param str version_id: The ID of default policy.
         """
         pulumi.set(__self__, "attachment_count", attachment_count)
         pulumi.set(__self__, "create_date", create_date)
         pulumi.set(__self__, "default_version", default_version)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "document", document)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "policy_document", policy_document)
+        pulumi.set(__self__, "policy_name", policy_name)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "update_date", update_date)
+        pulumi.set(__self__, "user_name", user_name)
+        pulumi.set(__self__, "version_id", version_id)
 
     @property
     @pulumi.getter(name="attachmentCount")
@@ -160,11 +175,32 @@ class GetPoliciesPolicyResult(dict):
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         Name of the policy.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="policyDocument")
+    def policy_document(self) -> str:
+        """
+        Policy document of the policy.
+        """
+        return pulumi.get(self, "policy_document")
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> str:
+        """
+        Name of the policy.
+        """
+        return pulumi.get(self, "policy_name")
 
     @property
     @pulumi.getter
@@ -181,6 +217,22 @@ class GetPoliciesPolicyResult(dict):
         Update date of the policy.
         """
         return pulumi.get(self, "update_date")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        Filter results by a specific user name. Returned policies are attached to the specified user.
+        """
+        return pulumi.get(self, "user_name")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> str:
+        """
+        The ID of default policy.
+        """
+        return pulumi.get(self, "version_id")
 
 
 @pulumi.output_type
@@ -274,6 +326,79 @@ class GetRolesRoleResult(dict):
     def update_date(self) -> str:
         """
         Update date of the role.
+        """
+        return pulumi.get(self, "update_date")
+
+
+@pulumi.output_type
+class GetSamlProvidersProviderResult(dict):
+    def __init__(__self__, *,
+                 arn: str,
+                 description: str,
+                 encodedsaml_metadata_document: str,
+                 id: str,
+                 saml_provider_name: str,
+                 update_date: str):
+        """
+        :param str arn: The Alibaba Cloud Resource Name (ARN) of the IdP.
+        :param str description: The description of SAML Provider.
+        :param str encodedsaml_metadata_document: The encodedsaml metadata document.
+        :param str id: The ID of the SAML Provider.
+        :param str saml_provider_name: The saml provider name.
+        :param str update_date: The update time.
+        """
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encodedsaml_metadata_document", encodedsaml_metadata_document)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "saml_provider_name", saml_provider_name)
+        pulumi.set(__self__, "update_date", update_date)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> str:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the IdP.
+        """
+        return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of SAML Provider.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="encodedsamlMetadataDocument")
+    def encodedsaml_metadata_document(self) -> str:
+        """
+        The encodedsaml metadata document.
+        """
+        return pulumi.get(self, "encodedsaml_metadata_document")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the SAML Provider.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="samlProviderName")
+    def saml_provider_name(self) -> str:
+        """
+        The saml provider name.
+        """
+        return pulumi.get(self, "saml_provider_name")
+
+    @property
+    @pulumi.getter(name="updateDate")
+    def update_date(self) -> str:
+        """
+        The update time.
         """
         return pulumi.get(self, "update_date")
 

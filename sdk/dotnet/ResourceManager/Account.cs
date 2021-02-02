@@ -52,6 +52,12 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>
+        /// The name prefix of account.
+        /// </summary>
+        [Output("accountNamePrefix")]
+        public Output<string?> AccountNamePrefix { get; private set; } = null!;
+
+        /// <summary>
         /// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         /// </summary>
         [Output("displayName")]
@@ -61,7 +67,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// The ID of the parent folder.
         /// </summary>
         [Output("folderId")]
-        public Output<string?> FolderId { get; private set; } = null!;
+        public Output<string> FolderId { get; private set; } = null!;
 
         /// <summary>
         /// Ways for members to join the resource directory. Valid values: `invited`, `created`.
@@ -152,6 +158,12 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class AccountArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name prefix of account.
+        /// </summary>
+        [Input("accountNamePrefix")]
+        public Input<string>? AccountNamePrefix { get; set; }
+
+        /// <summary>
         /// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         /// </summary>
         [Input("displayName", required: true)]
@@ -176,6 +188,12 @@ namespace Pulumi.AliCloud.ResourceManager
 
     public sealed class AccountState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name prefix of account.
+        /// </summary>
+        [Input("accountNamePrefix")]
+        public Input<string>? AccountNamePrefix { get; set; }
+
         /// <summary>
         /// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         /// </summary>

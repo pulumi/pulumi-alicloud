@@ -11,13 +11,9 @@ import (
 )
 
 type ApplicationService struct {
-	// ID of the service.
-	Id *string `pulumi:"id"`
-	// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-	Name *string `pulumi:"name"`
-	// The current status of service.
-	Status *string `pulumi:"status"`
-	// The application deploying version. Each updating, it must be different with current. Default to "1.0"
+	Id      *string `pulumi:"id"`
+	Name    *string `pulumi:"name"`
+	Status  *string `pulumi:"status"`
 	Version *string `pulumi:"version"`
 }
 
@@ -33,13 +29,9 @@ type ApplicationServiceInput interface {
 }
 
 type ApplicationServiceArgs struct {
-	// ID of the service.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The current status of service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The application deploying version. Each updating, it must be different with current. Default to "1.0"
+	Id      pulumi.StringPtrInput `pulumi:"id"`
+	Name    pulumi.StringPtrInput `pulumi:"name"`
+	Status  pulumi.StringPtrInput `pulumi:"status"`
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -94,22 +86,18 @@ func (o ApplicationServiceOutput) ToApplicationServiceOutputWithContext(ctx cont
 	return o
 }
 
-// ID of the service.
 func (o ApplicationServiceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationService) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
 func (o ApplicationServiceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationService) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The current status of service.
 func (o ApplicationServiceOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationService) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The application deploying version. Each updating, it must be different with current. Default to "1.0"
 func (o ApplicationServiceOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationService) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -4345,16 +4333,11 @@ func (o ServerlessKubernetesAddonArrayOutput) Index(i pulumi.IntInput) Serverles
 }
 
 type SwarmNode struct {
-	// The Elastic IP address of node.
-	Eip *string `pulumi:"eip"`
-	// ID of the node.
-	Id *string `pulumi:"id"`
-	// The container cluster's name. It is the only in one Alicloud account.
-	Name *string `pulumi:"name"`
-	// The private IP address of node.
+	Eip       *string `pulumi:"eip"`
+	Id        *string `pulumi:"id"`
+	Name      *string `pulumi:"name"`
 	PrivateIp *string `pulumi:"privateIp"`
-	// The node current status. It is different with instance status.
-	Status *string `pulumi:"status"`
+	Status    *string `pulumi:"status"`
 }
 
 // SwarmNodeInput is an input type that accepts SwarmNodeArgs and SwarmNodeOutput values.
@@ -4369,16 +4352,11 @@ type SwarmNodeInput interface {
 }
 
 type SwarmNodeArgs struct {
-	// The Elastic IP address of node.
-	Eip pulumi.StringPtrInput `pulumi:"eip"`
-	// ID of the node.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The container cluster's name. It is the only in one Alicloud account.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The private IP address of node.
+	Eip       pulumi.StringPtrInput `pulumi:"eip"`
+	Id        pulumi.StringPtrInput `pulumi:"id"`
+	Name      pulumi.StringPtrInput `pulumi:"name"`
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
-	// The node current status. It is different with instance status.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status    pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (SwarmNodeArgs) ElementType() reflect.Type {
@@ -4432,27 +4410,22 @@ func (o SwarmNodeOutput) ToSwarmNodeOutputWithContext(ctx context.Context) Swarm
 	return o
 }
 
-// The Elastic IP address of node.
 func (o SwarmNodeOutput) Eip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwarmNode) *string { return v.Eip }).(pulumi.StringPtrOutput)
 }
 
-// ID of the node.
 func (o SwarmNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwarmNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The container cluster's name. It is the only in one Alicloud account.
 func (o SwarmNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwarmNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The private IP address of node.
 func (o SwarmNodeOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwarmNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
 
-// The node current status. It is different with instance status.
 func (o SwarmNodeOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwarmNode) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

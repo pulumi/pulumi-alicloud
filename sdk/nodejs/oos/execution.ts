@@ -154,6 +154,10 @@ export class Execution extends pulumi.CustomResource {
      */
     public /*out*/ readonly statusMessage!: pulumi.Output<string>;
     /**
+     * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+     */
+    public readonly templateContent!: pulumi.Output<string | undefined>;
+    /**
      * The id of template.
      */
     public /*out*/ readonly templateId!: pulumi.Output<string>;
@@ -198,6 +202,7 @@ export class Execution extends pulumi.CustomResource {
             inputs["startDate"] = state ? state.startDate : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["statusMessage"] = state ? state.statusMessage : undefined;
+            inputs["templateContent"] = state ? state.templateContent : undefined;
             inputs["templateId"] = state ? state.templateId : undefined;
             inputs["templateName"] = state ? state.templateName : undefined;
             inputs["templateVersion"] = state ? state.templateVersion : undefined;
@@ -213,6 +218,7 @@ export class Execution extends pulumi.CustomResource {
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["parentExecutionId"] = args ? args.parentExecutionId : undefined;
             inputs["safetyCheck"] = args ? args.safetyCheck : undefined;
+            inputs["templateContent"] = args ? args.templateContent : undefined;
             inputs["templateName"] = args ? args.templateName : undefined;
             inputs["templateVersion"] = args ? args.templateVersion : undefined;
             inputs["counters"] = undefined /*out*/;
@@ -308,6 +314,10 @@ export interface ExecutionState {
      */
     readonly statusMessage?: pulumi.Input<string>;
     /**
+     * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+     */
+    readonly templateContent?: pulumi.Input<string>;
+    /**
      * The id of template.
      */
     readonly templateId?: pulumi.Input<string>;
@@ -353,6 +363,10 @@ export interface ExecutionArgs {
      * The mode of safety check.
      */
     readonly safetyCheck?: pulumi.Input<string>;
+    /**
+     * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+     */
+    readonly templateContent?: pulumi.Input<string>;
     /**
      * The name of execution template.
      */

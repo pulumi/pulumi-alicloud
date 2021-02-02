@@ -70,12 +70,6 @@ class ApplicationService(dict):
                  name: Optional[str] = None,
                  status: Optional[str] = None,
                  version: Optional[str] = None):
-        """
-        :param str id: ID of the service.
-        :param str name: The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        :param str status: The current status of service.
-        :param str version: The application deploying version. Each updating, it must be different with current. Default to "1.0"
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
@@ -88,33 +82,21 @@ class ApplicationService(dict):
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        ID of the service.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
-        """
-        The current status of service.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
-        """
-        The application deploying version. Each updating, it must be different with current. Default to "1.0"
-        """
         return pulumi.get(self, "version")
 
     def _translate_property(self, prop):
@@ -1563,13 +1545,6 @@ class SwarmNode(dict):
                  name: Optional[str] = None,
                  private_ip: Optional[str] = None,
                  status: Optional[str] = None):
-        """
-        :param str eip: The Elastic IP address of node.
-        :param str id: ID of the node.
-        :param str name: The container cluster's name. It is the only in one Alicloud account.
-        :param str private_ip: The private IP address of node.
-        :param str status: The node current status. It is different with instance status.
-        """
         if eip is not None:
             pulumi.set(__self__, "eip", eip)
         if id is not None:
@@ -1584,41 +1559,26 @@ class SwarmNode(dict):
     @property
     @pulumi.getter
     def eip(self) -> Optional[str]:
-        """
-        The Elastic IP address of node.
-        """
         return pulumi.get(self, "eip")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        ID of the node.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The container cluster's name. It is the only in one Alicloud account.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[str]:
-        """
-        The private IP address of node.
-        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
-        """
-        The node current status. It is different with instance status.
-        """
         return pulumi.get(self, "status")
 
     def _translate_property(self, prop):

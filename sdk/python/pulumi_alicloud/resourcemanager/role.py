@@ -97,7 +97,6 @@ class Role(pulumi.CustomResource):
                 raise TypeError("Missing required property 'role_name'")
             __props__['role_name'] = role_name
             __props__['arn'] = None
-            __props__['create_date'] = None
             __props__['role_id'] = None
             __props__['update_date'] = None
         super(Role, __self__).__init__(
@@ -112,7 +111,6 @@ class Role(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
             assume_role_policy_document: Optional[pulumi.Input[str]] = None,
-            create_date: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             max_session_duration: Optional[pulumi.Input[int]] = None,
             role_id: Optional[pulumi.Input[str]] = None,
@@ -126,8 +124,8 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The resource descriptor of the role.
+               * `create_date` (Removed form v1.114.0) - Role creation time.
         :param pulumi.Input[str] assume_role_policy_document: The content of the permissions strategy that plays a role.
-        :param pulumi.Input[str] create_date: Role creation time.
         :param pulumi.Input[str] description: The description of the Resource Manager role.
         :param pulumi.Input[int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         :param pulumi.Input[str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
@@ -139,7 +137,6 @@ class Role(pulumi.CustomResource):
 
         __props__["arn"] = arn
         __props__["assume_role_policy_document"] = assume_role_policy_document
-        __props__["create_date"] = create_date
         __props__["description"] = description
         __props__["max_session_duration"] = max_session_duration
         __props__["role_id"] = role_id
@@ -152,6 +149,7 @@ class Role(pulumi.CustomResource):
     def arn(self) -> pulumi.Output[str]:
         """
         The resource descriptor of the role.
+        * `create_date` (Removed form v1.114.0) - Role creation time.
         """
         return pulumi.get(self, "arn")
 
@@ -162,14 +160,6 @@ class Role(pulumi.CustomResource):
         The content of the permissions strategy that plays a role.
         """
         return pulumi.get(self, "assume_role_policy_document")
-
-    @property
-    @pulumi.getter(name="createDate")
-    def create_date(self) -> pulumi.Output[str]:
-        """
-        Role creation time.
-        """
-        return pulumi.get(self, "create_date")
 
     @property
     @pulumi.getter

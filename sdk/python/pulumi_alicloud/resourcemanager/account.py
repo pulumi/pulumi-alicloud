@@ -15,6 +15,7 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  payer_account_id: Optional[pulumi.Input[str]] = None,
@@ -50,6 +51,7 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_name_prefix: The name prefix of account.
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         :param pulumi.Input[str] folder_id: The ID of the parent folder.
         :param pulumi.Input[str] payer_account_id: Settlement account ID. If the value is empty, the current account will be used for settlement.
@@ -71,6 +73,7 @@ class Account(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['account_name_prefix'] = account_name_prefix
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
@@ -92,6 +95,7 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_name_prefix: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
             join_method: Optional[pulumi.Input[str]] = None,
@@ -108,6 +112,7 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_name_prefix: The name prefix of account.
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         :param pulumi.Input[str] folder_id: The ID of the parent folder.
         :param pulumi.Input[str] join_method: Ways for members to join the resource directory. Valid values: `invited`, `created`.
@@ -122,6 +127,7 @@ class Account(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["account_name_prefix"] = account_name_prefix
         __props__["display_name"] = display_name
         __props__["folder_id"] = folder_id
         __props__["join_method"] = join_method
@@ -134,6 +140,14 @@ class Account(pulumi.CustomResource):
         return Account(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="accountNamePrefix")
+    def account_name_prefix(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name prefix of account.
+        """
+        return pulumi.get(self, "account_name_prefix")
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
@@ -143,7 +157,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> pulumi.Output[Optional[str]]:
+    def folder_id(self) -> pulumi.Output[str]:
         """
         The ID of the parent folder.
         """

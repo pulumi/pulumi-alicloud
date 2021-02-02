@@ -76,6 +76,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+        /// </summary>
+        [Output("collectorStatus")]
+        public Output<string> CollectorStatus { get; private set; } = null!;
+
+        /// <summary>
         /// (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
         /// </summary>
         [Output("connectionString")]
@@ -233,6 +239,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+        /// </summary>
+        [Input("collectorStatus")]
+        public Input<string>? CollectorStatus { get; set; }
+
+        /// <summary>
         /// The db_node_class of cluster node.
         /// </summary>
         [Input("dbNodeClass", required: true)]
@@ -361,6 +373,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+        /// </summary>
+        [Input("collectorStatus")]
+        public Input<string>? CollectorStatus { get; set; }
 
         /// <summary>
         /// (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.

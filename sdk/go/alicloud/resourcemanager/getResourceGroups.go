@@ -46,17 +46,20 @@ func GetResourceGroups(ctx *pulumi.Context, args *GetResourceGroupsArgs, opts ..
 
 // A collection of arguments for invoking getResourceGroups.
 type GetResourceGroupsArgs struct {
+	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of resource group IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by resource group name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getResourceGroups.
 type GetResourceGroupsResult struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of resource groups. Each element contains the following attributes:
 	Groups []GetResourceGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
@@ -67,6 +70,6 @@ type GetResourceGroupsResult struct {
 	// A list of resource group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+	// The status of the regional resource group.
 	Status *string `pulumi:"status"`
 }

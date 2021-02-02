@@ -33,6 +33,7 @@ export function getAccounts(args?: GetAccountsArgs, opts?: pulumi.InvokeOptions)
     return pulumi.runtime.invoke("alicloud:resourcemanager/getAccounts:getAccounts", {
         "ids": args.ids,
         "outputFile": args.outputFile,
+        "status": args.status,
     }, opts);
 }
 
@@ -45,6 +46,10 @@ export interface GetAccountsArgs {
      */
     readonly ids?: string[];
     readonly outputFile?: string;
+    /**
+     * The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+     */
+    readonly status?: string;
 }
 
 /**
@@ -64,4 +69,8 @@ export interface GetAccountsResult {
      */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the member account.
+     */
+    readonly status?: string;
 }

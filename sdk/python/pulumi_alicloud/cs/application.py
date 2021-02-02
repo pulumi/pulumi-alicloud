@@ -30,52 +30,9 @@ class Application(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        > **DEPRECATED:** This resource manages applications in swarm cluster only, which is being deprecated and will be replaced by Kubernetes cluster.
-
-        This resource use an orchestration template to define and deploy a multi-container application. An application is created by using an orchestration template.
-        Each application can contain one or more services.
-
-        > **NOTE:** Application orchestration template must be a valid Docker Compose YAML template.
-
-        > **NOTE:** At present, this resource only support swarm cluster.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        app = alicloud.cs.Application("app",
-            cluster_name="my-first-swarm",
-            version="1.2",
-            template=(lambda path: open(path).read())("wordpress.yml"),
-            latest_image=True,
-            environment={
-                "EXTERNAL_URL": "123.123.123.123:8080",
-            })
-        ```
-
-        ## Import
-
-        Swarm application can be imported using the id, e.g.
-
-        ```sh
-         $ pulumi import alicloud:cs/application:Application app my-first-swarm:wordpress
-        ```
-
+        Create a Application resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] blue_green: Wherther to use "Blue Green" method when release a new version. Default to false.
-        :param pulumi.Input[bool] blue_green_confirm: Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blue_green` is false.
-        :param pulumi.Input[str] cluster_name: The swarm cluster's name.
-        :param pulumi.Input[str] description: The description of application.
-        :param pulumi.Input[Mapping[str, Any]] environment: A key/value map used to replace the variable parameter in the Compose template.
-        :param pulumi.Input[bool] latest_image: Whether to use latest docker image while each updating application. Default to false.
-        :param pulumi.Input[str] name: The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        :param pulumi.Input[str] template: The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-        :param pulumi.Input[str] version: The application deploying version. Each updating, it must be different with current. Default to "1.0"
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -137,17 +94,6 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] blue_green: Wherther to use "Blue Green" method when release a new version. Default to false.
-        :param pulumi.Input[bool] blue_green_confirm: Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blue_green` is false.
-        :param pulumi.Input[str] cluster_name: The swarm cluster's name.
-        :param pulumi.Input[str] default_domain: The application default domain and it can be used to configure routing service.
-        :param pulumi.Input[str] description: The description of application.
-        :param pulumi.Input[Mapping[str, Any]] environment: A key/value map used to replace the variable parameter in the Compose template.
-        :param pulumi.Input[bool] latest_image: Whether to use latest docker image while each updating application. Default to false.
-        :param pulumi.Input[str] name: The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationServiceArgs']]]] services: List of services in the application. It contains several attributes to `Block Nodes`.
-        :param pulumi.Input[str] template: The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-        :param pulumi.Input[str] version: The application deploying version. Each updating, it must be different with current. Default to "1.0"
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -169,89 +115,56 @@ class Application(pulumi.CustomResource):
     @property
     @pulumi.getter(name="blueGreen")
     def blue_green(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Wherther to use "Blue Green" method when release a new version. Default to false.
-        """
         return pulumi.get(self, "blue_green")
 
     @property
     @pulumi.getter(name="blueGreenConfirm")
     def blue_green_confirm(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blue_green` is false.
-        """
         return pulumi.get(self, "blue_green_confirm")
 
     @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Output[str]:
-        """
-        The swarm cluster's name.
-        """
         return pulumi.get(self, "cluster_name")
 
     @property
     @pulumi.getter(name="defaultDomain")
     def default_domain(self) -> pulumi.Output[str]:
-        """
-        The application default domain and it can be used to configure routing service.
-        """
         return pulumi.get(self, "default_domain")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description of application.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def environment(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        A key/value map used to replace the variable parameter in the Compose template.
-        """
         return pulumi.get(self, "environment")
 
     @property
     @pulumi.getter(name="latestImage")
     def latest_image(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether to use latest docker image while each updating application. Default to false.
-        """
         return pulumi.get(self, "latest_image")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def services(self) -> pulumi.Output[Sequence['outputs.ApplicationService']]:
-        """
-        List of services in the application. It contains several attributes to `Block Nodes`.
-        """
         return pulumi.get(self, "services")
 
     @property
     @pulumi.getter
     def template(self) -> pulumi.Output[str]:
-        """
-        The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-        """
         return pulumi.get(self, "template")
 
     @property
     @pulumi.getter
     def version(self) -> pulumi.Output[Optional[str]]:
-        """
-        The application deploying version. Each updating, it must be different with current. Default to "1.0"
-        """
         return pulumi.get(self, "version")
 
     def translate_output_property(self, prop):

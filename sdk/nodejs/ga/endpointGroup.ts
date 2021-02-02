@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     spec: "1",
  * });
  * const exampleListener = new alicloud.ga.Listener("exampleListener", {
- *     acceleratorId: "alicloud_ga_accelerator.example.id",
+ *     acceleratorId: exampleAccelerator.id,
  *     portRanges: [{
  *         fromPort: 60,
  *         toPort: 70,

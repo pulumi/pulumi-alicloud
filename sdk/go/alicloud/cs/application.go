@@ -11,47 +11,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// > **DEPRECATED:** This resource manages applications in swarm cluster only, which is being deprecated and will be replaced by Kubernetes cluster.
-//
-// This resource use an orchestration template to define and deploy a multi-container application. An application is created by using an orchestration template.
-// Each application can contain one or more services.
-//
-// > **NOTE:** Application orchestration template must be a valid Docker Compose YAML template.
-//
-// > **NOTE:** At present, this resource only support swarm cluster.
-//
-// ## Import
-//
-// Swarm application can be imported using the id, e.g.
-//
-// ```sh
-//  $ pulumi import alicloud:cs/application:Application app my-first-swarm:wordpress
-// ```
 type Application struct {
 	pulumi.CustomResourceState
 
-	// Wherther to use "Blue Green" method when release a new version. Default to false.
-	BlueGreen pulumi.BoolPtrOutput `pulumi:"blueGreen"`
-	// Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
-	BlueGreenConfirm pulumi.BoolPtrOutput `pulumi:"blueGreenConfirm"`
-	// The swarm cluster's name.
-	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
-	// The application default domain and it can be used to configure routing service.
-	DefaultDomain pulumi.StringOutput `pulumi:"defaultDomain"`
-	// The description of application.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A key/value map used to replace the variable parameter in the Compose template.
-	Environment pulumi.MapOutput `pulumi:"environment"`
-	// Whether to use latest docker image while each updating application. Default to false.
-	LatestImage pulumi.BoolPtrOutput `pulumi:"latestImage"`
-	// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// List of services in the application. It contains several attributes to `Block Nodes`.
-	Services ApplicationServiceArrayOutput `pulumi:"services"`
-	// The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-	Template pulumi.StringOutput `pulumi:"template"`
-	// The application deploying version. Each updating, it must be different with current. Default to "1.0"
-	Version pulumi.StringPtrOutput `pulumi:"version"`
+	BlueGreen        pulumi.BoolPtrOutput          `pulumi:"blueGreen"`
+	BlueGreenConfirm pulumi.BoolPtrOutput          `pulumi:"blueGreenConfirm"`
+	ClusterName      pulumi.StringOutput           `pulumi:"clusterName"`
+	DefaultDomain    pulumi.StringOutput           `pulumi:"defaultDomain"`
+	Description      pulumi.StringPtrOutput        `pulumi:"description"`
+	Environment      pulumi.MapOutput              `pulumi:"environment"`
+	LatestImage      pulumi.BoolPtrOutput          `pulumi:"latestImage"`
+	Name             pulumi.StringOutput           `pulumi:"name"`
+	Services         ApplicationServiceArrayOutput `pulumi:"services"`
+	Template         pulumi.StringOutput           `pulumi:"template"`
+	Version          pulumi.StringPtrOutput        `pulumi:"version"`
 }
 
 // NewApplication registers a new resource with the given unique name, arguments, and options.
@@ -89,53 +62,31 @@ func GetApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Application resources.
 type applicationState struct {
-	// Wherther to use "Blue Green" method when release a new version. Default to false.
-	BlueGreen *bool `pulumi:"blueGreen"`
-	// Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
-	BlueGreenConfirm *bool `pulumi:"blueGreenConfirm"`
-	// The swarm cluster's name.
-	ClusterName *string `pulumi:"clusterName"`
-	// The application default domain and it can be used to configure routing service.
-	DefaultDomain *string `pulumi:"defaultDomain"`
-	// The description of application.
-	Description *string `pulumi:"description"`
-	// A key/value map used to replace the variable parameter in the Compose template.
-	Environment map[string]interface{} `pulumi:"environment"`
-	// Whether to use latest docker image while each updating application. Default to false.
-	LatestImage *bool `pulumi:"latestImage"`
-	// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-	Name *string `pulumi:"name"`
-	// List of services in the application. It contains several attributes to `Block Nodes`.
-	Services []ApplicationService `pulumi:"services"`
-	// The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-	Template *string `pulumi:"template"`
-	// The application deploying version. Each updating, it must be different with current. Default to "1.0"
-	Version *string `pulumi:"version"`
+	BlueGreen        *bool                  `pulumi:"blueGreen"`
+	BlueGreenConfirm *bool                  `pulumi:"blueGreenConfirm"`
+	ClusterName      *string                `pulumi:"clusterName"`
+	DefaultDomain    *string                `pulumi:"defaultDomain"`
+	Description      *string                `pulumi:"description"`
+	Environment      map[string]interface{} `pulumi:"environment"`
+	LatestImage      *bool                  `pulumi:"latestImage"`
+	Name             *string                `pulumi:"name"`
+	Services         []ApplicationService   `pulumi:"services"`
+	Template         *string                `pulumi:"template"`
+	Version          *string                `pulumi:"version"`
 }
 
 type ApplicationState struct {
-	// Wherther to use "Blue Green" method when release a new version. Default to false.
-	BlueGreen pulumi.BoolPtrInput
-	// Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
+	BlueGreen        pulumi.BoolPtrInput
 	BlueGreenConfirm pulumi.BoolPtrInput
-	// The swarm cluster's name.
-	ClusterName pulumi.StringPtrInput
-	// The application default domain and it can be used to configure routing service.
-	DefaultDomain pulumi.StringPtrInput
-	// The description of application.
-	Description pulumi.StringPtrInput
-	// A key/value map used to replace the variable parameter in the Compose template.
-	Environment pulumi.MapInput
-	// Whether to use latest docker image while each updating application. Default to false.
-	LatestImage pulumi.BoolPtrInput
-	// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-	Name pulumi.StringPtrInput
-	// List of services in the application. It contains several attributes to `Block Nodes`.
-	Services ApplicationServiceArrayInput
-	// The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-	Template pulumi.StringPtrInput
-	// The application deploying version. Each updating, it must be different with current. Default to "1.0"
-	Version pulumi.StringPtrInput
+	ClusterName      pulumi.StringPtrInput
+	DefaultDomain    pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
+	Environment      pulumi.MapInput
+	LatestImage      pulumi.BoolPtrInput
+	Name             pulumi.StringPtrInput
+	Services         ApplicationServiceArrayInput
+	Template         pulumi.StringPtrInput
+	Version          pulumi.StringPtrInput
 }
 
 func (ApplicationState) ElementType() reflect.Type {
@@ -143,46 +94,28 @@ func (ApplicationState) ElementType() reflect.Type {
 }
 
 type applicationArgs struct {
-	// Wherther to use "Blue Green" method when release a new version. Default to false.
-	BlueGreen *bool `pulumi:"blueGreen"`
-	// Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
-	BlueGreenConfirm *bool `pulumi:"blueGreenConfirm"`
-	// The swarm cluster's name.
-	ClusterName string `pulumi:"clusterName"`
-	// The description of application.
-	Description *string `pulumi:"description"`
-	// A key/value map used to replace the variable parameter in the Compose template.
-	Environment map[string]interface{} `pulumi:"environment"`
-	// Whether to use latest docker image while each updating application. Default to false.
-	LatestImage *bool `pulumi:"latestImage"`
-	// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-	Name *string `pulumi:"name"`
-	// The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-	Template string `pulumi:"template"`
-	// The application deploying version. Each updating, it must be different with current. Default to "1.0"
-	Version *string `pulumi:"version"`
+	BlueGreen        *bool                  `pulumi:"blueGreen"`
+	BlueGreenConfirm *bool                  `pulumi:"blueGreenConfirm"`
+	ClusterName      string                 `pulumi:"clusterName"`
+	Description      *string                `pulumi:"description"`
+	Environment      map[string]interface{} `pulumi:"environment"`
+	LatestImage      *bool                  `pulumi:"latestImage"`
+	Name             *string                `pulumi:"name"`
+	Template         string                 `pulumi:"template"`
+	Version          *string                `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Application resource.
 type ApplicationArgs struct {
-	// Wherther to use "Blue Green" method when release a new version. Default to false.
-	BlueGreen pulumi.BoolPtrInput
-	// Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
+	BlueGreen        pulumi.BoolPtrInput
 	BlueGreenConfirm pulumi.BoolPtrInput
-	// The swarm cluster's name.
-	ClusterName pulumi.StringInput
-	// The description of application.
-	Description pulumi.StringPtrInput
-	// A key/value map used to replace the variable parameter in the Compose template.
-	Environment pulumi.MapInput
-	// Whether to use latest docker image while each updating application. Default to false.
-	LatestImage pulumi.BoolPtrInput
-	// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-	Name pulumi.StringPtrInput
-	// The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-	Template pulumi.StringInput
-	// The application deploying version. Each updating, it must be different with current. Default to "1.0"
-	Version pulumi.StringPtrInput
+	ClusterName      pulumi.StringInput
+	Description      pulumi.StringPtrInput
+	Environment      pulumi.MapInput
+	LatestImage      pulumi.BoolPtrInput
+	Name             pulumi.StringPtrInput
+	Template         pulumi.StringInput
+	Version          pulumi.StringPtrInput
 }
 
 func (ApplicationArgs) ElementType() reflect.Type {

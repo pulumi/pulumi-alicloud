@@ -12,6 +12,7 @@ from .get_account_aliases import *
 from .get_groups import *
 from .get_policies import *
 from .get_roles import *
+from .get_saml_providers import *
 from .get_users import *
 from .group import *
 from .group_membership import *
@@ -21,6 +22,7 @@ from .policy import *
 from .role import *
 from .role_attachment import *
 from .role_policy_attachment import *
+from .saml_provider import *
 from .user import *
 from .user_policy_attachment import *
 from ._inputs import *
@@ -62,6 +64,8 @@ def _register_module():
                 return RoleAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ram/rolePolicyAttachment:RolePolicyAttachment":
                 return RolePolicyAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ram/samlProvider:SamlProvider":
+                return SamlProvider(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ram/user:User":
                 return User(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ram/userPolicyAttachment:UserPolicyAttachment":
@@ -83,6 +87,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "ram/role", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ram/roleAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ram/rolePolicyAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ram/samlProvider", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ram/user", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ram/userPolicyAttachment", _module_instance)
 

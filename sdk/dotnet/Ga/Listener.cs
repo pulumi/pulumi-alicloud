@@ -30,13 +30,13 @@ namespace Pulumi.AliCloud.Ga
     ///     {
     ///         var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new AliCloud.Ga.AcceleratorArgs
     ///         {
-    ///             AutoUseCoupon = true,
     ///             Duration = 1,
+    ///             AutoUseCoupon = true,
     ///             Spec = "1",
     ///         });
     ///         var exampleListener = new AliCloud.Ga.Listener("exampleListener", new AliCloud.Ga.ListenerArgs
     ///         {
-    ///             AcceleratorId = "alicloud_ga_accelerator.example.id",
+    ///             AcceleratorId = exampleAccelerator.Id,
     ///             PortRanges = 
     ///             {
     ///                 new AliCloud.Ga.Inputs.ListenerPortRangeArgs

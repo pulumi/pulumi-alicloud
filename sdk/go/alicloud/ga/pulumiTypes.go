@@ -15,10 +15,6 @@ type EndpointGroupEndpointConfiguration struct {
 	EnableClientipPreservation *bool `pulumi:"enableClientipPreservation"`
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint string `pulumi:"endpoint"`
-	// Probe Port.
-	ProbePort *int `pulumi:"probePort"`
-	// Probe Protocol.
-	ProbeProtocol *string `pulumi:"probeProtocol"`
 	// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
 	Type string `pulumi:"type"`
 	// The weight of Endpoint N in the endpoint group.
@@ -41,10 +37,6 @@ type EndpointGroupEndpointConfigurationArgs struct {
 	EnableClientipPreservation pulumi.BoolPtrInput `pulumi:"enableClientipPreservation"`
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// Probe Port.
-	ProbePort pulumi.IntPtrInput `pulumi:"probePort"`
-	// Probe Protocol.
-	ProbeProtocol pulumi.StringPtrInput `pulumi:"probeProtocol"`
 	// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The weight of Endpoint N in the endpoint group.
@@ -110,16 +102,6 @@ func (o EndpointGroupEndpointConfigurationOutput) EnableClientipPreservation() p
 // The IP address or domain name of Endpoint N in the endpoint group.
 func (o EndpointGroupEndpointConfigurationOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) string { return v.Endpoint }).(pulumi.StringOutput)
-}
-
-// Probe Port.
-func (o EndpointGroupEndpointConfigurationOutput) ProbePort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *int { return v.ProbePort }).(pulumi.IntPtrOutput)
-}
-
-// Probe Protocol.
-func (o EndpointGroupEndpointConfigurationOutput) ProbeProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *string { return v.ProbeProtocol }).(pulumi.StringPtrOutput)
 }
 
 // The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.

@@ -172,6 +172,10 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// (Available in v1.114.0+) A list of OOS Template names.
+        /// </summary>
+        public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? ShareType;
         public readonly string? SortField;
@@ -202,6 +206,8 @@ namespace Pulumi.AliCloud.Oos
 
             string? nameRegex,
 
+            ImmutableArray<string> names,
+
             string? outputFile,
 
             string? shareType,
@@ -226,6 +232,7 @@ namespace Pulumi.AliCloud.Oos
             Id = id;
             Ids = ids;
             NameRegex = nameRegex;
+            Names = names;
             OutputFile = outputFile;
             ShareType = shareType;
             SortField = sortField;

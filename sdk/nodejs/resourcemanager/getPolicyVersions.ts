@@ -33,6 +33,7 @@ export function getPolicyVersions(args: GetPolicyVersionsArgs, opts?: pulumi.Inv
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "outputFile": args.outputFile,
         "policyName": args.policyName,
@@ -44,6 +45,10 @@ export function getPolicyVersions(args: GetPolicyVersionsArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getPolicyVersions.
  */
 export interface GetPolicyVersionsArgs {
+    /**
+     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
     /**
      * A list of policy version IDs.
      */
@@ -63,6 +68,7 @@ export interface GetPolicyVersionsArgs {
  * A collection of values returned by getPolicyVersions.
  */
 export interface GetPolicyVersionsResult {
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

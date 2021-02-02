@@ -133,7 +133,7 @@ type GetAccountsAccount struct {
 	ModifyTime string `pulumi:"modifyTime"`
 	// The ID of the resource directory.
 	ResourceDirectoryId string `pulumi:"resourceDirectoryId"`
-	// The status of the member account.
+	// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
 	Status string `pulumi:"status"`
 	// The type of the member account.
 	Type string `pulumi:"type"`
@@ -167,7 +167,7 @@ type GetAccountsAccountArgs struct {
 	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
 	// The ID of the resource directory.
 	ResourceDirectoryId pulumi.StringInput `pulumi:"resourceDirectoryId"`
-	// The status of the member account.
+	// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The type of the member account.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -264,7 +264,7 @@ func (o GetAccountsAccountOutput) ResourceDirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.ResourceDirectoryId }).(pulumi.StringOutput)
 }
 
-// The status of the member account.
+// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
 func (o GetAccountsAccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -300,7 +300,10 @@ type GetFoldersFolder struct {
 	// The ID of the folder.
 	// * `folderId`- The ID of the folder.
 	// * `folderName`- The name of the folder.
+	// * `parentFolderId`- (Available in v1.114.0+)The ID of the parent folder.
 	Id string `pulumi:"id"`
+	// The ID of the parent folder.
+	ParentFolderId string `pulumi:"parentFolderId"`
 }
 
 // GetFoldersFolderInput is an input type that accepts GetFoldersFolderArgs and GetFoldersFolderOutput values.
@@ -320,7 +323,10 @@ type GetFoldersFolderArgs struct {
 	// The ID of the folder.
 	// * `folderId`- The ID of the folder.
 	// * `folderName`- The name of the folder.
+	// * `parentFolderId`- (Available in v1.114.0+)The ID of the parent folder.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the parent folder.
+	ParentFolderId pulumi.StringInput `pulumi:"parentFolderId"`
 }
 
 func (GetFoldersFolderArgs) ElementType() reflect.Type {
@@ -385,8 +391,14 @@ func (o GetFoldersFolderOutput) FolderName() pulumi.StringOutput {
 // The ID of the folder.
 // * `folderId`- The ID of the folder.
 // * `folderName`- The name of the folder.
+// * `parentFolderId`- (Available in v1.114.0+)The ID of the parent folder.
 func (o GetFoldersFolderOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFoldersFolder) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the parent folder.
+func (o GetFoldersFolderOutput) ParentFolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.ParentFolderId }).(pulumi.StringOutput)
 }
 
 type GetFoldersFolderArrayOutput struct{ *pulumi.OutputState }
@@ -416,17 +428,21 @@ type GetHandshakesHandshake struct {
 	// The ID of the resource.
 	// * `handshakeId`- The ID of the invitation.
 	Id string `pulumi:"id"`
+	// (Available in v1.114.0+) The real name of the invited account.
+	InvitedAccountRealName string `pulumi:"invitedAccountRealName"`
 	// The ID of the master account of the resource directory.
 	MasterAccountId string `pulumi:"masterAccountId"`
 	// The name of the master account of the resource directory.
 	MasterAccountName string `pulumi:"masterAccountName"`
+	// (Available in v1.114.0+) The real name of the master account of the resource directory.
+	MasterAccountRealName string `pulumi:"masterAccountRealName"`
 	// The time when the invitation was modified.
 	ModifyTime string `pulumi:"modifyTime"`
 	// The invitation note.
 	Note string `pulumi:"note"`
 	// The ID of the resource directory.
 	ResourceDirectoryId string `pulumi:"resourceDirectoryId"`
-	// The status of the invitation.
+	// The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
 	Status string `pulumi:"status"`
 	// The ID or logon email address of the invited account.
 	TargetEntity string `pulumi:"targetEntity"`
@@ -452,17 +468,21 @@ type GetHandshakesHandshakeArgs struct {
 	// The ID of the resource.
 	// * `handshakeId`- The ID of the invitation.
 	Id pulumi.StringInput `pulumi:"id"`
+	// (Available in v1.114.0+) The real name of the invited account.
+	InvitedAccountRealName pulumi.StringInput `pulumi:"invitedAccountRealName"`
 	// The ID of the master account of the resource directory.
 	MasterAccountId pulumi.StringInput `pulumi:"masterAccountId"`
 	// The name of the master account of the resource directory.
 	MasterAccountName pulumi.StringInput `pulumi:"masterAccountName"`
+	// (Available in v1.114.0+) The real name of the master account of the resource directory.
+	MasterAccountRealName pulumi.StringInput `pulumi:"masterAccountRealName"`
 	// The time when the invitation was modified.
 	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
 	// The invitation note.
 	Note pulumi.StringInput `pulumi:"note"`
 	// The ID of the resource directory.
 	ResourceDirectoryId pulumi.StringInput `pulumi:"resourceDirectoryId"`
-	// The status of the invitation.
+	// The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The ID or logon email address of the invited account.
 	TargetEntity pulumi.StringInput `pulumi:"targetEntity"`
@@ -536,6 +556,11 @@ func (o GetHandshakesHandshakeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Available in v1.114.0+) The real name of the invited account.
+func (o GetHandshakesHandshakeOutput) InvitedAccountRealName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.InvitedAccountRealName }).(pulumi.StringOutput)
+}
+
 // The ID of the master account of the resource directory.
 func (o GetHandshakesHandshakeOutput) MasterAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.MasterAccountId }).(pulumi.StringOutput)
@@ -544,6 +569,11 @@ func (o GetHandshakesHandshakeOutput) MasterAccountId() pulumi.StringOutput {
 // The name of the master account of the resource directory.
 func (o GetHandshakesHandshakeOutput) MasterAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.MasterAccountName }).(pulumi.StringOutput)
+}
+
+// (Available in v1.114.0+) The real name of the master account of the resource directory.
+func (o GetHandshakesHandshakeOutput) MasterAccountRealName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.MasterAccountRealName }).(pulumi.StringOutput)
 }
 
 // The time when the invitation was modified.
@@ -561,7 +591,7 @@ func (o GetHandshakesHandshakeOutput) ResourceDirectoryId() pulumi.StringOutput 
 	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.ResourceDirectoryId }).(pulumi.StringOutput)
 }
 
-// The status of the invitation.
+// The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
 func (o GetHandshakesHandshakeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -599,8 +629,6 @@ func (o GetHandshakesHandshakeArrayOutput) Index(i pulumi.IntInput) GetHandshake
 type GetPoliciesPolicy struct {
 	// The number of times the policy is referenced.
 	AttachmentCount int `pulumi:"attachmentCount"`
-	// The time when the policy was created.
-	CreateDate string `pulumi:"createDate"`
 	// The default version of the policy.
 	DefaultVersion string `pulumi:"defaultVersion"`
 	// The description of the policy.
@@ -630,8 +658,6 @@ type GetPoliciesPolicyInput interface {
 type GetPoliciesPolicyArgs struct {
 	// The number of times the policy is referenced.
 	AttachmentCount pulumi.IntInput `pulumi:"attachmentCount"`
-	// The time when the policy was created.
-	CreateDate pulumi.StringInput `pulumi:"createDate"`
 	// The default version of the policy.
 	DefaultVersion pulumi.StringInput `pulumi:"defaultVersion"`
 	// The description of the policy.
@@ -701,11 +727,6 @@ func (o GetPoliciesPolicyOutput) ToGetPoliciesPolicyOutputWithContext(ctx contex
 // The number of times the policy is referenced.
 func (o GetPoliciesPolicyOutput) AttachmentCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) int { return v.AttachmentCount }).(pulumi.IntOutput)
-}
-
-// The time when the policy was created.
-func (o GetPoliciesPolicyOutput) CreateDate() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.CreateDate }).(pulumi.StringOutput)
 }
 
 // The default version of the policy.
@@ -932,13 +953,14 @@ func (o GetPolicyAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetP
 }
 
 type GetPolicyVersionsVersion struct {
-	CreateDate string `pulumi:"createDate"`
 	// The ID of the resource, the value is `<policy_name>`:`<version_id>`.
 	// * `versionId`- The ID of the policy version.
-	// * `createDate`- The time when the policy version was created.
+	// * `createDate`- (Removed form v1.114.0)The time when the policy version was created.
 	// * `isDefaultVersion`- Indicates whether the policy version is the default version.
+	// * `policyDocument`- (Available in v1.114.0+) The policy document of the policy version.
 	Id               string `pulumi:"id"`
 	IsDefaultVersion bool   `pulumi:"isDefaultVersion"`
+	PolicyDocument   string `pulumi:"policyDocument"`
 	VersionId        string `pulumi:"versionId"`
 }
 
@@ -954,13 +976,14 @@ type GetPolicyVersionsVersionInput interface {
 }
 
 type GetPolicyVersionsVersionArgs struct {
-	CreateDate pulumi.StringInput `pulumi:"createDate"`
 	// The ID of the resource, the value is `<policy_name>`:`<version_id>`.
 	// * `versionId`- The ID of the policy version.
-	// * `createDate`- The time when the policy version was created.
+	// * `createDate`- (Removed form v1.114.0)The time when the policy version was created.
 	// * `isDefaultVersion`- Indicates whether the policy version is the default version.
+	// * `policyDocument`- (Available in v1.114.0+) The policy document of the policy version.
 	Id               pulumi.StringInput `pulumi:"id"`
 	IsDefaultVersion pulumi.BoolInput   `pulumi:"isDefaultVersion"`
+	PolicyDocument   pulumi.StringInput `pulumi:"policyDocument"`
 	VersionId        pulumi.StringInput `pulumi:"versionId"`
 }
 
@@ -1015,20 +1038,21 @@ func (o GetPolicyVersionsVersionOutput) ToGetPolicyVersionsVersionOutputWithCont
 	return o
 }
 
-func (o GetPolicyVersionsVersionOutput) CreateDate() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPolicyVersionsVersion) string { return v.CreateDate }).(pulumi.StringOutput)
-}
-
 // The ID of the resource, the value is `<policy_name>`:`<version_id>`.
 // * `versionId`- The ID of the policy version.
-// * `createDate`- The time when the policy version was created.
+// * `createDate`- (Removed form v1.114.0)The time when the policy version was created.
 // * `isDefaultVersion`- Indicates whether the policy version is the default version.
+// * `policyDocument`- (Available in v1.114.0+) The policy document of the policy version.
 func (o GetPolicyVersionsVersionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetPolicyVersionsVersionOutput) IsDefaultVersion() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPolicyVersionsVersion) bool { return v.IsDefaultVersion }).(pulumi.BoolOutput)
+}
+
+func (o GetPolicyVersionsVersionOutput) PolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyVersionsVersion) string { return v.PolicyDocument }).(pulumi.StringOutput)
 }
 
 func (o GetPolicyVersionsVersionOutput) VersionId() pulumi.StringOutput {
@@ -1191,15 +1215,16 @@ func (o GetResourceDirectoriesDirectoryArrayOutput) Index(i pulumi.IntInput) Get
 type GetResourceGroupsGroup struct {
 	// The ID of the Alibaba Cloud account to which the resource group belongs.
 	AccountId string `pulumi:"accountId"`
-	// The time when the resource group was created.
-	CreateDate string `pulumi:"createDate"`
 	// The display name of the resource group.
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the resource group.
 	Id string `pulumi:"id"`
 	// The unique identifier of the resource group.
-	Name string `pulumi:"name"`
-	// The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+	Name           string                               `pulumi:"name"`
+	RegionStatuses []GetResourceGroupsGroupRegionStatus `pulumi:"regionStatuses"`
+	// (Available in v1.114.0+) The unique identifier of the resource group.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
 	Status string `pulumi:"status"`
 }
 
@@ -1217,15 +1242,16 @@ type GetResourceGroupsGroupInput interface {
 type GetResourceGroupsGroupArgs struct {
 	// The ID of the Alibaba Cloud account to which the resource group belongs.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// The time when the resource group was created.
-	CreateDate pulumi.StringInput `pulumi:"createDate"`
 	// The display name of the resource group.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The ID of the resource group.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The unique identifier of the resource group.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+	Name           pulumi.StringInput                           `pulumi:"name"`
+	RegionStatuses GetResourceGroupsGroupRegionStatusArrayInput `pulumi:"regionStatuses"`
+	// (Available in v1.114.0+) The unique identifier of the resource group.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -1285,11 +1311,6 @@ func (o GetResourceGroupsGroupOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The time when the resource group was created.
-func (o GetResourceGroupsGroupOutput) CreateDate() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.CreateDate }).(pulumi.StringOutput)
-}
-
 // The display name of the resource group.
 func (o GetResourceGroupsGroupOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -1305,7 +1326,16 @@ func (o GetResourceGroupsGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+func (o GetResourceGroupsGroupOutput) RegionStatuses() GetResourceGroupsGroupRegionStatusArrayOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) []GetResourceGroupsGroupRegionStatus { return v.RegionStatuses }).(GetResourceGroupsGroupRegionStatusArrayOutput)
+}
+
+// (Available in v1.114.0+) The unique identifier of the resource group.
+func (o GetResourceGroupsGroupOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
 func (o GetResourceGroupsGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1328,6 +1358,112 @@ func (o GetResourceGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetResourceG
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceGroupsGroup {
 		return vs[0].([]GetResourceGroupsGroup)[vs[1].(int)]
 	}).(GetResourceGroupsGroupOutput)
+}
+
+type GetResourceGroupsGroupRegionStatus struct {
+	// The region ID.
+	RegionId string `pulumi:"regionId"`
+	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+	Status string `pulumi:"status"`
+}
+
+// GetResourceGroupsGroupRegionStatusInput is an input type that accepts GetResourceGroupsGroupRegionStatusArgs and GetResourceGroupsGroupRegionStatusOutput values.
+// You can construct a concrete instance of `GetResourceGroupsGroupRegionStatusInput` via:
+//
+//          GetResourceGroupsGroupRegionStatusArgs{...}
+type GetResourceGroupsGroupRegionStatusInput interface {
+	pulumi.Input
+
+	ToGetResourceGroupsGroupRegionStatusOutput() GetResourceGroupsGroupRegionStatusOutput
+	ToGetResourceGroupsGroupRegionStatusOutputWithContext(context.Context) GetResourceGroupsGroupRegionStatusOutput
+}
+
+type GetResourceGroupsGroupRegionStatusArgs struct {
+	// The region ID.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetResourceGroupsGroupRegionStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceGroupsGroupRegionStatus)(nil)).Elem()
+}
+
+func (i GetResourceGroupsGroupRegionStatusArgs) ToGetResourceGroupsGroupRegionStatusOutput() GetResourceGroupsGroupRegionStatusOutput {
+	return i.ToGetResourceGroupsGroupRegionStatusOutputWithContext(context.Background())
+}
+
+func (i GetResourceGroupsGroupRegionStatusArgs) ToGetResourceGroupsGroupRegionStatusOutputWithContext(ctx context.Context) GetResourceGroupsGroupRegionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupRegionStatusOutput)
+}
+
+// GetResourceGroupsGroupRegionStatusArrayInput is an input type that accepts GetResourceGroupsGroupRegionStatusArray and GetResourceGroupsGroupRegionStatusArrayOutput values.
+// You can construct a concrete instance of `GetResourceGroupsGroupRegionStatusArrayInput` via:
+//
+//          GetResourceGroupsGroupRegionStatusArray{ GetResourceGroupsGroupRegionStatusArgs{...} }
+type GetResourceGroupsGroupRegionStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceGroupsGroupRegionStatusArrayOutput() GetResourceGroupsGroupRegionStatusArrayOutput
+	ToGetResourceGroupsGroupRegionStatusArrayOutputWithContext(context.Context) GetResourceGroupsGroupRegionStatusArrayOutput
+}
+
+type GetResourceGroupsGroupRegionStatusArray []GetResourceGroupsGroupRegionStatusInput
+
+func (GetResourceGroupsGroupRegionStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceGroupsGroupRegionStatus)(nil)).Elem()
+}
+
+func (i GetResourceGroupsGroupRegionStatusArray) ToGetResourceGroupsGroupRegionStatusArrayOutput() GetResourceGroupsGroupRegionStatusArrayOutput {
+	return i.ToGetResourceGroupsGroupRegionStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceGroupsGroupRegionStatusArray) ToGetResourceGroupsGroupRegionStatusArrayOutputWithContext(ctx context.Context) GetResourceGroupsGroupRegionStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupRegionStatusArrayOutput)
+}
+
+type GetResourceGroupsGroupRegionStatusOutput struct{ *pulumi.OutputState }
+
+func (GetResourceGroupsGroupRegionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceGroupsGroupRegionStatus)(nil)).Elem()
+}
+
+func (o GetResourceGroupsGroupRegionStatusOutput) ToGetResourceGroupsGroupRegionStatusOutput() GetResourceGroupsGroupRegionStatusOutput {
+	return o
+}
+
+func (o GetResourceGroupsGroupRegionStatusOutput) ToGetResourceGroupsGroupRegionStatusOutputWithContext(ctx context.Context) GetResourceGroupsGroupRegionStatusOutput {
+	return o
+}
+
+// The region ID.
+func (o GetResourceGroupsGroupRegionStatusOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroupRegionStatus) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+func (o GetResourceGroupsGroupRegionStatusOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroupRegionStatus) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetResourceGroupsGroupRegionStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceGroupsGroupRegionStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceGroupsGroupRegionStatus)(nil)).Elem()
+}
+
+func (o GetResourceGroupsGroupRegionStatusArrayOutput) ToGetResourceGroupsGroupRegionStatusArrayOutput() GetResourceGroupsGroupRegionStatusArrayOutput {
+	return o
+}
+
+func (o GetResourceGroupsGroupRegionStatusArrayOutput) ToGetResourceGroupsGroupRegionStatusArrayOutputWithContext(ctx context.Context) GetResourceGroupsGroupRegionStatusArrayOutput {
+	return o
+}
+
+func (o GetResourceGroupsGroupRegionStatusArrayOutput) Index(i pulumi.IntInput) GetResourceGroupsGroupRegionStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceGroupsGroupRegionStatus {
+		return vs[0].([]GetResourceGroupsGroupRegionStatus)[vs[1].(int)]
+	}).(GetResourceGroupsGroupRegionStatusOutput)
 }
 
 type GetResourceSharesShare struct {
@@ -1464,17 +1600,18 @@ func (o GetResourceSharesShareArrayOutput) Index(i pulumi.IntInput) GetResourceS
 }
 
 type GetRolesRole struct {
-	Arn         string `pulumi:"arn"`
-	CreateDate  string `pulumi:"createDate"`
-	Description string `pulumi:"description"`
+	Arn                      string `pulumi:"arn"`
+	AssumeRolePolicyDocument string `pulumi:"assumeRolePolicyDocument"`
+	Description              string `pulumi:"description"`
 	// The ID of the role.
 	// * `roleId`- The ID of the role.
 	// * `roleName`- The name of the role.
 	// * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
-	// * `createDate`- The time when the RAM role was created.
+	// * `createDate`- (Removed form v1.114.0) The time when the RAM role was created.
 	// * `updateDate`- The time when the RAM role was updated.
 	// * `description`- The description of the RAM role.
 	// * `maxSessionDuration`- The maximum session duration of the RAM role.
+	// * `assumeRolePolicyDocument`- (Available in v1.114.0+) The assume role policy document.
 	Id                 string `pulumi:"id"`
 	MaxSessionDuration int    `pulumi:"maxSessionDuration"`
 	RoleId             string `pulumi:"roleId"`
@@ -1494,17 +1631,18 @@ type GetRolesRoleInput interface {
 }
 
 type GetRolesRoleArgs struct {
-	Arn         pulumi.StringInput `pulumi:"arn"`
-	CreateDate  pulumi.StringInput `pulumi:"createDate"`
-	Description pulumi.StringInput `pulumi:"description"`
+	Arn                      pulumi.StringInput `pulumi:"arn"`
+	AssumeRolePolicyDocument pulumi.StringInput `pulumi:"assumeRolePolicyDocument"`
+	Description              pulumi.StringInput `pulumi:"description"`
 	// The ID of the role.
 	// * `roleId`- The ID of the role.
 	// * `roleName`- The name of the role.
 	// * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
-	// * `createDate`- The time when the RAM role was created.
+	// * `createDate`- (Removed form v1.114.0) The time when the RAM role was created.
 	// * `updateDate`- The time when the RAM role was updated.
 	// * `description`- The description of the RAM role.
 	// * `maxSessionDuration`- The maximum session duration of the RAM role.
+	// * `assumeRolePolicyDocument`- (Available in v1.114.0+) The assume role policy document.
 	Id                 pulumi.StringInput `pulumi:"id"`
 	MaxSessionDuration pulumi.IntInput    `pulumi:"maxSessionDuration"`
 	RoleId             pulumi.StringInput `pulumi:"roleId"`
@@ -1567,8 +1705,8 @@ func (o GetRolesRoleOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Arn }).(pulumi.StringOutput)
 }
 
-func (o GetRolesRoleOutput) CreateDate() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRolesRole) string { return v.CreateDate }).(pulumi.StringOutput)
+func (o GetRolesRoleOutput) AssumeRolePolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesRole) string { return v.AssumeRolePolicyDocument }).(pulumi.StringOutput)
 }
 
 func (o GetRolesRoleOutput) Description() pulumi.StringOutput {
@@ -1579,10 +1717,11 @@ func (o GetRolesRoleOutput) Description() pulumi.StringOutput {
 // * `roleId`- The ID of the role.
 // * `roleName`- The name of the role.
 // * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
-// * `createDate`- The time when the RAM role was created.
+// * `createDate`- (Removed form v1.114.0) The time when the RAM role was created.
 // * `updateDate`- The time when the RAM role was updated.
 // * `description`- The description of the RAM role.
 // * `maxSessionDuration`- The maximum session duration of the RAM role.
+// * `assumeRolePolicyDocument`- (Available in v1.114.0+) The assume role policy document.
 func (o GetRolesRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1899,6 +2038,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceDirectoriesDirectoryArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceGroupsGroupRegionStatusOutput{})
+	pulumi.RegisterOutputType(GetResourceGroupsGroupRegionStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceSharesShareOutput{})
 	pulumi.RegisterOutputType(GetResourceSharesShareArrayOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleOutput{})

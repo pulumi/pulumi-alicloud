@@ -18,10 +18,6 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly int AttachmentCount;
         /// <summary>
-        /// The time when the policy was created.
-        /// </summary>
-        public readonly string CreateDate;
-        /// <summary>
         /// The default version of the policy.
         /// </summary>
         public readonly string DefaultVersion;
@@ -49,8 +45,6 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         private GetPoliciesPolicyResult(
             int attachmentCount,
 
-            string createDate,
-
             string defaultVersion,
 
             string description,
@@ -64,7 +58,6 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
             string updateDate)
         {
             AttachmentCount = attachmentCount;
-            CreateDate = createDate;
             DefaultVersion = defaultVersion;
             Description = description;
             Id = id;

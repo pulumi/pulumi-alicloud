@@ -50,12 +50,6 @@ class ApplicationServiceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] id: ID of the service.
-        :param pulumi.Input[str] name: The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        :param pulumi.Input[str] status: The current status of service.
-        :param pulumi.Input[str] version: The application deploying version. Each updating, it must be different with current. Default to "1.0"
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
@@ -68,9 +62,6 @@ class ApplicationServiceArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the service.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -80,9 +71,6 @@ class ApplicationServiceArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -92,9 +80,6 @@ class ApplicationServiceArgs:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The current status of service.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -104,9 +89,6 @@ class ApplicationServiceArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
-        """
-        The application deploying version. Each updating, it must be different with current. Default to "1.0"
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -1934,13 +1916,6 @@ class SwarmNodeArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] eip: The Elastic IP address of node.
-        :param pulumi.Input[str] id: ID of the node.
-        :param pulumi.Input[str] name: The container cluster's name. It is the only in one Alicloud account.
-        :param pulumi.Input[str] private_ip: The private IP address of node.
-        :param pulumi.Input[str] status: The node current status. It is different with instance status.
-        """
         if eip is not None:
             pulumi.set(__self__, "eip", eip)
         if id is not None:
@@ -1955,9 +1930,6 @@ class SwarmNodeArgs:
     @property
     @pulumi.getter
     def eip(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Elastic IP address of node.
-        """
         return pulumi.get(self, "eip")
 
     @eip.setter
@@ -1967,9 +1939,6 @@ class SwarmNodeArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the node.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -1979,9 +1948,6 @@ class SwarmNodeArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The container cluster's name. It is the only in one Alicloud account.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1991,9 +1957,6 @@ class SwarmNodeArgs:
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        The private IP address of node.
-        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -2003,9 +1966,6 @@ class SwarmNodeArgs:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The node current status. It is different with instance status.
-        """
         return pulumi.get(self, "status")
 
     @status.setter

@@ -31,16 +31,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
-// 			AutoUseCoupon: pulumi.Bool(true),
+// 		exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
 // 			Duration:      pulumi.Int(1),
+// 			AutoUseCoupon: pulumi.Bool(true),
 // 			Spec:          pulumi.String("1"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = ga.NewListener(ctx, "exampleListener", &ga.ListenerArgs{
-// 			AcceleratorId: pulumi.String("alicloud_ga_accelerator.example.id"),
+// 			AcceleratorId: exampleAccelerator.ID(),
 // 			PortRanges: ga.ListenerPortRangeArray{
 // 				&ga.ListenerPortRangeArgs{
 // 					FromPort: pulumi.Int(60),

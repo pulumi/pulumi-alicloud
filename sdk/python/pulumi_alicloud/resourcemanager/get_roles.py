@@ -20,7 +20,10 @@ class GetRolesResult:
     """
     A collection of values returned by getRoles.
     """
-    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, roles=None):
+    def __init__(__self__, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None, roles=None):
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +42,11 @@ class GetRolesResult:
         if roles and not isinstance(roles, list):
             raise TypeError("Expected argument 'roles' to be a list")
         pulumi.set(__self__, "roles", roles)
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -89,6 +97,7 @@ class AwaitableGetRolesResult(GetRolesResult):
         if False:
             yield self
         return GetRolesResult(
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
@@ -97,7 +106,8 @@ class AwaitableGetRolesResult(GetRolesResult):
             roles=self.roles)
 
 
-def get_roles(ids: Optional[Sequence[str]] = None,
+def get_roles(enable_details: Optional[bool] = None,
+              ids: Optional[Sequence[str]] = None,
               name_regex: Optional[str] = None,
               output_file: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesResult:
@@ -117,10 +127,12 @@ def get_roles(ids: Optional[Sequence[str]] = None,
     ```
 
 
+    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of Resource Manager Role IDs.
     :param str name_regex: A regex string to filter results by role name.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -131,6 +143,7 @@ def get_roles(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult).value
 
     return AwaitableGetRolesResult(
+        enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
         name_regex=__ret__.name_regex,

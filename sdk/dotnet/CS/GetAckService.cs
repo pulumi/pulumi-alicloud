@@ -33,6 +33,7 @@ namespace Pulumi.AliCloud.CS
         ///         var open = Output.Create(AliCloud.CS.GetAckService.InvokeAsync(new AliCloud.CS.GetAckServiceArgs
         ///         {
         ///             Enable = "On",
+        ///             Type = "propayasgo",
         ///         }));
         ///     }
         /// 
@@ -41,7 +42,7 @@ namespace Pulumi.AliCloud.CS
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetAckServiceResult> InvokeAsync(GetAckServiceArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetAckServiceResult> InvokeAsync(GetAckServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceArgs(), options.WithVersion());
     }
 
@@ -53,6 +54,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("enable")]
         public string? Enable { get; set; }
+
+        /// <summary>
+        /// Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
+        /// </summary>
+        [Input("type", required: true)]
+        public string Type { get; set; } = null!;
 
         public GetAckServiceArgs()
         {
@@ -72,6 +79,7 @@ namespace Pulumi.AliCloud.CS
         /// The current service enable status.
         /// </summary>
         public readonly string Status;
+        public readonly string Type;
 
         [OutputConstructor]
         private GetAckServiceResult(
@@ -79,11 +87,14 @@ namespace Pulumi.AliCloud.CS
 
             string id,
 
-            string status)
+            string status,
+
+            string type)
         {
             Enable = enable;
             Id = id;
             Status = status;
+            Type = type;
         }
     }
 }

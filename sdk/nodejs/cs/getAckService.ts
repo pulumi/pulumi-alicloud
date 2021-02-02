@@ -20,11 +20,11 @@ import * as utilities from "../utilities";
  *
  * const open = pulumi.output(alicloud.cs.getAckService({
  *     enable: "On",
+ *     type: "propayasgo",
  * }, { async: true }));
  * ```
  */
-export function getAckService(args?: GetAckServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAckServiceResult> {
-    args = args || {};
+export function getAckService(args: GetAckServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAckServiceResult> {
     if (!opts) {
         opts = {}
     }
@@ -34,6 +34,7 @@ export function getAckService(args?: GetAckServiceArgs, opts?: pulumi.InvokeOpti
     }
     return pulumi.runtime.invoke("alicloud:cs/getAckService:getAckService", {
         "enable": args.enable,
+        "type": args.type,
     }, opts);
 }
 
@@ -45,6 +46,10 @@ export interface GetAckServiceArgs {
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
      */
     readonly enable?: string;
+    /**
+     * Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
+     */
+    readonly type: string;
 }
 
 /**
@@ -60,4 +65,5 @@ export interface GetAckServiceResult {
      * The current service enable status.
      */
     readonly status: string;
+    readonly type: string;
 }

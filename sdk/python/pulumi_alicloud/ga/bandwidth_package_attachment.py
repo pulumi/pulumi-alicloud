@@ -36,19 +36,19 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
-            auto_use_coupon=True,
             duration=1,
+            auto_use_coupon=True,
             spec="1")
         example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
-            auto_pay=True,
             bandwidth=20,
+            type="Basic",
             bandwidth_type="Basic",
             duration="1",
-            ratio=30,
-            type="Basic")
+            auto_pay=True,
+            ratio=30)
         example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            accelerator_id="alicloud_ga_accelerator.example.id",
-            bandwidth_package_id="alicloud_ga_bandwidth_package.example.id")
+            accelerator_id=example_accelerator.id,
+            bandwidth_package_id=example_bandwidth_package.id)
         ```
 
         ## Import

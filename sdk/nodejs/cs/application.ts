@@ -5,44 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * > **DEPRECATED:** This resource manages applications in swarm cluster only, which is being deprecated and will be replaced by Kubernetes cluster.
- *
- * This resource use an orchestration template to define and deploy a multi-container application. An application is created by using an orchestration template.
- * Each application can contain one or more services.
- *
- * > **NOTE:** Application orchestration template must be a valid Docker Compose YAML template.
- *
- * > **NOTE:** At present, this resource only support swarm cluster.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * from "fs";
- *
- * const app = new alicloud.cs.Application("app", {
- *     clusterName: "my-first-swarm",
- *     version: "1.2",
- *     template: fs.readFileSync("wordpress.yml"),
- *     latestImage: true,
- *     environment: {
- *         EXTERNAL_URL: "123.123.123.123:8080",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * Swarm application can be imported using the id, e.g.
- *
- * ```sh
- *  $ pulumi import alicloud:cs/application:Application app my-first-swarm:wordpress
- * ```
- */
 export class Application extends pulumi.CustomResource {
     /**
      * Get an existing Application resource's state with the given name, ID, and optional extra
@@ -71,49 +33,16 @@ export class Application extends pulumi.CustomResource {
         return obj['__pulumiType'] === Application.__pulumiType;
     }
 
-    /**
-     * Wherther to use "Blue Green" method when release a new version. Default to false.
-     */
     public readonly blueGreen!: pulumi.Output<boolean | undefined>;
-    /**
-     * Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
-     */
     public readonly blueGreenConfirm!: pulumi.Output<boolean | undefined>;
-    /**
-     * The swarm cluster's name.
-     */
     public readonly clusterName!: pulumi.Output<string>;
-    /**
-     * The application default domain and it can be used to configure routing service.
-     */
     public /*out*/ readonly defaultDomain!: pulumi.Output<string>;
-    /**
-     * The description of application.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * A key/value map used to replace the variable parameter in the Compose template.
-     */
     public readonly environment!: pulumi.Output<{[key: string]: any} | undefined>;
-    /**
-     * Whether to use latest docker image while each updating application. Default to false.
-     */
     public readonly latestImage!: pulumi.Output<boolean | undefined>;
-    /**
-     * The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * List of services in the application. It contains several attributes to `Block Nodes`.
-     */
     public /*out*/ readonly services!: pulumi.Output<outputs.cs.ApplicationService[]>;
-    /**
-     * The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-     */
     public readonly template!: pulumi.Output<string>;
-    /**
-     * The application deploying version. Each updating, it must be different with current. Default to "1.0"
-     */
     public readonly version!: pulumi.Output<string | undefined>;
 
     /**
@@ -174,49 +103,16 @@ export class Application extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Application resources.
  */
 export interface ApplicationState {
-    /**
-     * Wherther to use "Blue Green" method when release a new version. Default to false.
-     */
     readonly blueGreen?: pulumi.Input<boolean>;
-    /**
-     * Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
-     */
     readonly blueGreenConfirm?: pulumi.Input<boolean>;
-    /**
-     * The swarm cluster's name.
-     */
     readonly clusterName?: pulumi.Input<string>;
-    /**
-     * The application default domain and it can be used to configure routing service.
-     */
     readonly defaultDomain?: pulumi.Input<string>;
-    /**
-     * The description of application.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A key/value map used to replace the variable parameter in the Compose template.
-     */
     readonly environment?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Whether to use latest docker image while each updating application. Default to false.
-     */
     readonly latestImage?: pulumi.Input<boolean>;
-    /**
-     * The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * List of services in the application. It contains several attributes to `Block Nodes`.
-     */
     readonly services?: pulumi.Input<pulumi.Input<inputs.cs.ApplicationService>[]>;
-    /**
-     * The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-     */
     readonly template?: pulumi.Input<string>;
-    /**
-     * The application deploying version. Each updating, it must be different with current. Default to "1.0"
-     */
     readonly version?: pulumi.Input<string>;
 }
 
@@ -224,40 +120,13 @@ export interface ApplicationState {
  * The set of arguments for constructing a Application resource.
  */
 export interface ApplicationArgs {
-    /**
-     * Wherther to use "Blue Green" method when release a new version. Default to false.
-     */
     readonly blueGreen?: pulumi.Input<boolean>;
-    /**
-     * Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
-     */
     readonly blueGreenConfirm?: pulumi.Input<boolean>;
-    /**
-     * The swarm cluster's name.
-     */
     readonly clusterName: pulumi.Input<string>;
-    /**
-     * The description of application.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A key/value map used to replace the variable parameter in the Compose template.
-     */
     readonly environment?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Whether to use latest docker image while each updating application. Default to false.
-     */
     readonly latestImage?: pulumi.Input<boolean>;
-    /**
-     * The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-     */
     readonly template: pulumi.Input<string>;
-    /**
-     * The application deploying version. Each updating, it must be different with current. Default to "1.0"
-     */
     readonly version?: pulumi.Input<string>;
 }

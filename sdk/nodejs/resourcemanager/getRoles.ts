@@ -33,6 +33,7 @@ export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Prom
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:resourcemanager/getRoles:getRoles", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -43,6 +44,10 @@ export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getRoles.
  */
 export interface GetRolesArgs {
+    /**
+     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
     /**
      * A list of Resource Manager Role IDs.
      */
@@ -58,6 +63,7 @@ export interface GetRolesArgs {
  * A collection of values returned by getRoles.
  */
 export interface GetRolesResult {
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

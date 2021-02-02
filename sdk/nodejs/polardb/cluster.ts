@@ -82,6 +82,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
+     * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+     */
+    public readonly collectorStatus!: pulumi.Output<string>;
+    /**
      * (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
@@ -166,6 +170,7 @@ export class Cluster extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ClusterState | undefined;
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            inputs["collectorStatus"] = state ? state.collectorStatus : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
             inputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
             inputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
@@ -195,6 +200,7 @@ export class Cluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'dbVersion'");
             }
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            inputs["collectorStatus"] = args ? args.collectorStatus : undefined;
             inputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
             inputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
             inputs["dbType"] = args ? args.dbType : undefined;
@@ -232,6 +238,10 @@ export interface ClusterState {
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+     */
+    readonly collectorStatus?: pulumi.Input<string>;
     /**
      * (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
      */
@@ -313,6 +323,10 @@ export interface ClusterArgs {
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+     */
+    readonly collectorStatus?: pulumi.Input<string>;
     /**
      * The dbNodeClass of cluster node.
      */

@@ -50,8 +50,11 @@ func GetPolicies(ctx *pulumi.Context, args *GetPoliciesArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getPolicies.
 type GetPoliciesArgs struct {
+	// Default to `true`. Set it to true can output more details.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// Filter results by a specific group name. Returned policies are attached to the specified group.
-	GroupName *string `pulumi:"groupName"`
+	GroupName *string  `pulumi:"groupName"`
+	Ids       []string `pulumi:"ids"`
 	// A regex string to filter resulting policies by name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -65,10 +68,12 @@ type GetPoliciesArgs struct {
 
 // A collection of values returned by getPolicies.
 type GetPoliciesResult struct {
-	GroupName *string `pulumi:"groupName"`
+	EnableDetails *bool   `pulumi:"enableDetails"`
+	GroupName     *string `pulumi:"groupName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string  `pulumi:"id"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of ram group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`

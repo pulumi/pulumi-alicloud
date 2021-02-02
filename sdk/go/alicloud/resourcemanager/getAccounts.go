@@ -46,6 +46,8 @@ type GetAccountsArgs struct {
 	// A list of account IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getAccounts.
@@ -57,4 +59,6 @@ type GetAccountsResult struct {
 	// A list of account IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the member account.
+	Status *string `pulumi:"status"`
 }

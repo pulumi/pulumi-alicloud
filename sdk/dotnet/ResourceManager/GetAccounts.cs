@@ -61,6 +61,12 @@ namespace Pulumi.AliCloud.ResourceManager
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
         public GetAccountsArgs()
         {
         }
@@ -83,6 +89,10 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the member account.
+        /// </summary>
+        public readonly string? Status;
 
         [OutputConstructor]
         private GetAccountsResult(
@@ -92,12 +102,15 @@ namespace Pulumi.AliCloud.ResourceManager
 
             ImmutableArray<string> ids,
 
-            string? outputFile)
+            string? outputFile,
+
+            string? status)
         {
             Accounts = accounts;
             Id = id;
             Ids = ids;
             OutputFile = outputFile;
+            Status = status;
         }
     }
 }

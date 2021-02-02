@@ -33,26 +33,18 @@ class EndpointGroupEndpointConfiguration(dict):
                  endpoint: str,
                  type: str,
                  weight: int,
-                 enable_clientip_preservation: Optional[bool] = None,
-                 probe_port: Optional[int] = None,
-                 probe_protocol: Optional[str] = None):
+                 enable_clientip_preservation: Optional[bool] = None):
         """
         :param str endpoint: The IP address or domain name of Endpoint N in the endpoint group.
         :param str type: The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
         :param int weight: The weight of Endpoint N in the endpoint group.
         :param bool enable_clientip_preservation: Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
-        :param int probe_port: Probe Port.
-        :param str probe_protocol: Probe Protocol.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "weight", weight)
         if enable_clientip_preservation is not None:
             pulumi.set(__self__, "enable_clientip_preservation", enable_clientip_preservation)
-        if probe_port is not None:
-            pulumi.set(__self__, "probe_port", probe_port)
-        if probe_protocol is not None:
-            pulumi.set(__self__, "probe_protocol", probe_protocol)
 
     @property
     @pulumi.getter
@@ -85,22 +77,6 @@ class EndpointGroupEndpointConfiguration(dict):
         Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
         """
         return pulumi.get(self, "enable_clientip_preservation")
-
-    @property
-    @pulumi.getter(name="probePort")
-    def probe_port(self) -> Optional[int]:
-        """
-        Probe Port.
-        """
-        return pulumi.get(self, "probe_port")
-
-    @property
-    @pulumi.getter(name="probeProtocol")
-    def probe_protocol(self) -> Optional[str]:
-        """
-        Probe Protocol.
-        """
-        return pulumi.get(self, "probe_protocol")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
